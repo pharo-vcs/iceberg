@@ -1,6 +1,12 @@
 # Git integration for Pharo
 
 ## Instalation (for development)
+### Download latest pharo 5.0 image
+```
+curl get.pharo.org/50+vm | bash
+./pharo-ui Pharo.image
+```
+
 
 ### Install Dependencies
 ```
