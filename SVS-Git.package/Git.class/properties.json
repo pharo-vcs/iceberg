@@ -1,0 +1,15 @@
+{
+	"category" : "SVS-Git",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"origin",
+		"repository" ],
+	"name" : "Git",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
