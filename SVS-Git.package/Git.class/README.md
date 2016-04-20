@@ -12,11 +12,10 @@ Public API and Key Messages
 - loadPackage
 - createBranch
 
-Sample usage:
- ̀ ̀ ̀
-Git new origin: 'git@github.com:npasserini/pharo-git-test.git'.
-git loadPackage: 'Pharo-Git-Test'. 
- ̀ ̀ ̀
+Sample usage:̀
+   Git new origin: 'git@github.com:npasserini/pharo-git-test.git'.
+   git loadPackage: 'Pharo-Git-Test'. 
+
 
     Instance Variables
 	origin:		<Object>
