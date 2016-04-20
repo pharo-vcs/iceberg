@@ -14,8 +14,8 @@ Public API and Key Messages
 
 Sample usage:
 
-   Git new origin: 'git@github.com:npasserini/pharo-git-test.git'.
-   git loadPackage: 'Pharo-Git-Test'. 
+    Git new origin: 'git@github.com:npasserini/pharo-git-test.git'.
+    git loadPackage: 'Pharo-Git-Test'. 
 
 
     Instance Variables
