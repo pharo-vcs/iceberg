@@ -9,8 +9,8 @@ My main responsibilities are:
 For the Collaborators Part: State my main collaborators and one line about how I interact with them. 
 
 Public API and Key Messages
-- loadPackage
-- createBranch
+- loadPackage: packageName
+- createBranch: newBranchName
 
 Sample usage:
 
