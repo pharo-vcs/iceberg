@@ -4,9 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 4/20/2016 12:12",
+	"commentStamp" : "NicoPasserini 4/20/2016 12:15",
 	"instvars" : [
 		"origin",
+		"branch",
 		"repository" ],
 	"name" : "Git",
 	"pools" : [

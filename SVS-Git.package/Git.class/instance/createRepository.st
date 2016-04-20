@@ -2,6 +2,6 @@ repository handling
 createRepository
 	^ MCFileTreeGitRemoteRepository 
 		location: self origin 
-		name: '' 
+		name: (self branch ifNil: '')
 		subdirectory: '' 
 		branch: ''.

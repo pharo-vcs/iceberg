@@ -18,9 +18,9 @@ Sample usage:
     git loadPackage: 'Pharo-Git-Test'. 
 
 
-    Instance Variables
-	origin:		<Object>
-	repository:		<Object>
+Instance Variables
+- origin: A string representing the url of a remote git repository (used as origin)
+- repository:	An MCFileTreeGitRemoteRepository, which provides underlying git operations.
 
 
     Implementation Points
