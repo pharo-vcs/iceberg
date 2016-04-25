@@ -6,7 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"git" ],
+		"git",
+		"packageName",
+		"repositoryName" ],
 	"name" : "GitTest",
 	"pools" : [
 		 ],
