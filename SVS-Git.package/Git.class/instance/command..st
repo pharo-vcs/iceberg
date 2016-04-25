@@ -4,6 +4,6 @@ command: stringOrArrayOfStrings
 	arguments := stringOrArrayOfStrings isString 
 		ifTrue: [ ' ' split: stringOrArrayOfStrings ]
 		ifFalse: [ stringOrArrayOfStrings ].
-	^ self repository 
-		gitCommand: arguments 
+	^ MCFileTreeGitRepository 
+		runGitCommand: arguments 
 		in: self repository directory
