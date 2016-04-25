@@ -1,0 +1,16 @@
+{
+	"category" : "SVS-Git",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 4/20/2016 16:07",
+	"instvars" : [
+		"origin",
+		"branch",
+		"repository" ],
+	"name" : "Git",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
