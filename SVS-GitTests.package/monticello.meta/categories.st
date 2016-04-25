@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #'SVS-Git'!
+SystemOrganization addCategory: #'SVS-GitTests'!
