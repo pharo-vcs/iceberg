@@ -1,0 +1,15 @@
+{
+	"category" : "SVS-Git-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"list",
+		"repository" ],
+	"name" : "PackageList",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }
