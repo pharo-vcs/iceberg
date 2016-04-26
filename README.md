@@ -1,4 +1,5 @@
 # Git integration for Pharo
+This is only a prototype and is not intended for production, but you are invited to try it and provide feedback. Right now it has only been tested in a linux environment.
 
 ## Instalation (for development)
 ### Download latest pharo 5.0 image
