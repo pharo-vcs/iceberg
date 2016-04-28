@@ -8,8 +8,7 @@
 	"instvars" : [
 		"origin",
 		"branch",
-		"repository",
-		"packages" ],
+		"repository" ],
 	"name" : "Git",
 	"pools" : [
 		 ],

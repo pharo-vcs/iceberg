@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 4/28/2016 14:42",
 	"instvars" : [
 		"list",
 		"repository" ],
-	"name" : "PackageList",
+	"name" : "IceWorkingCopyList",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",

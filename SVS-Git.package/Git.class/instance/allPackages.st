@@ -1,5 +1,5 @@
 querying
 allPackages
-	^ packages ifNil: [ packages := self lookupPackages collect: [ :directory | | packageName |
+	^ self lookupPackages collect: [ :directory | | packageName |
 			packageName := directory asFileReference basenameWithoutExtension.			
-			Ice workingCopyForPackageNamed: packageName ]] .
+			Ice packageNamed: packageName ]
