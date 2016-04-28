@@ -4,13 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 4/20/2016 16:07",
+	"commentStamp" : "NicoPasserini 4/28/2016 14:10",
 	"instvars" : [
-		"origin",
-		"branch",
-		"repository",
-		"packages" ],
-	"name" : "Git",
+		 ],
+	"name" : "Ice",
 	"pools" : [
 		 ],
 	"super" : "Object",

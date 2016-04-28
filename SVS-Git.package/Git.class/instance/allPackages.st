@@ -1,4 +1,5 @@
 querying
 allPackages
-	^ self repository directory entries select: [ :entry | 
-		entry isDirectory and: [ repository canReadFileNamed: entry name ] ].
+	^ packages ifNil: [ packages := self lookupPackages collect: [ :directory | | packageName |
+			packageName := directory asFileReference basenameWithoutExtension.			
+			Ice workingCopyForPackageNamed: packageName ]] .
