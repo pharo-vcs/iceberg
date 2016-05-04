@@ -1,4 +1,4 @@
-accessing
+initialization
 repository: aGitRepository
 	repository := aGitRepository.
 	list items: ((Ice workingCopiesForRepository: repository) 

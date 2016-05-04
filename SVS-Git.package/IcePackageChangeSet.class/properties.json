@@ -1,0 +1,17 @@
+{
+	"category" : "SVS-Git",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"package",
+		"mine",
+		"theirs",
+		"patch" ],
+	"name" : "IcePackageChangeSet",
+	"pools" : [
+		 ],
+	"super" : "IceChangeSet",
+	"type" : "normal" }

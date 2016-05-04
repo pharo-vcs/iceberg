@@ -1,0 +1,15 @@
+{
+	"category" : "SVS-Git",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"targetClass",
+		"operations" ],
+	"name" : "IceClassChangeSet",
+	"pools" : [
+		 ],
+	"super" : "IceChangeSet",
+	"type" : "normal" }

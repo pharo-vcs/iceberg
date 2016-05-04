@@ -1,0 +1,15 @@
+{
+	"category" : "SVS-Git-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"tree",
+		"model" ],
+	"name" : "IceChangesTreeView",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }
