@@ -6,8 +6,8 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"repository" ],
-	"name" : "IceRepositoryChangeSet",
+		"operation" ],
+	"name" : "IceClassSingleChange",
 	"pools" : [
 		 ],
 	"super" : "IceStructuralChangeSet",

@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 5/9/2016 18:10",
 	"instvars" : [
-		"repository" ],
-	"name" : "IceRepositoryChangeSet",
+		 ],
+	"name" : "IceStructuralChangeSet",
 	"pools" : [
 		 ],
-	"super" : "IceStructuralChangeSet",
+	"super" : "IceChangeSet",
 	"type" : "normal" }

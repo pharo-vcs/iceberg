@@ -1,14 +1,14 @@
 {
-	"category" : "SVS-Git",
+	"category" : "SVS-Git-Examples",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"repository" ],
-	"name" : "IceRepositoryChangeSet",
+		 ],
+	"name" : "IceExamples",
 	"pools" : [
 		 ],
-	"super" : "IceStructuralChangeSet",
+	"super" : "Object",
 	"type" : "normal" }

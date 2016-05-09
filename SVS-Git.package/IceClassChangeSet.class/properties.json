@@ -11,5 +11,5 @@
 	"name" : "IceClassChangeSet",
 	"pools" : [
 		 ],
-	"super" : "IceChangeSet",
+	"super" : "IceStructuralChangeSet",
 	"type" : "normal" }
