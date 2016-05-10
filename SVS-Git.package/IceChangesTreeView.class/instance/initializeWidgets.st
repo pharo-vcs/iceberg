@@ -4,7 +4,12 @@ initializeWidgets
 		"beCheckList; "
 		"autoMultiSelection: true;"
 		childrenBlock: [ :changeSet | changeSet elements sorted: [:a :b | a name < b name]];
-		displayBlock: [ :changeSet | changeSet description ]
-		yourself.
+		displayBlock: [ :changeSet | changeSet description ];
+		rootNodeHolder: [ :item |
+			IceChangesTreeNodeModel new 
+				content: item;
+				children: [ tree childrenFor: item ];
+				yourself ];
+ 		yourself.
 		
 	self focusOrder add: tree.

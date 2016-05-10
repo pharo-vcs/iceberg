@@ -6,10 +6,8 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"targetClass",
-		"operations",
-		"classDefinition" ],
-	"name" : "IceClassChangeSet",
+		"operation" ],
+	"name" : "IceMethodChange",
 	"pools" : [
 		 ],
 	"super" : "IceStructuralChangeSet",

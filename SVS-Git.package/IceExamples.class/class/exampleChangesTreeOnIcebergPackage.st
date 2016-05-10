@@ -1,5 +1,5 @@
 examples - change tree
-exampleChangesTree
+exampleChangesTreeOnIcebergPackage
 	| git changes |
 	Transcript show: '----------------------------------'; cr.
 	git := Git new origin: 'git@github.com:npasserini/pharo-git.git'.

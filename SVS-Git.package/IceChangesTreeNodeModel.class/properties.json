@@ -1,14 +1,14 @@
 {
-	"category" : "SVS-Git",
+	"category" : "SVS-Git-UI",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"operation" ],
-	"name" : "IceClassSingleChange",
+		 ],
+	"name" : "IceChangesTreeNodeModel",
 	"pools" : [
 		 ],
-	"super" : "IceStructuralChangeSet",
+	"super" : "TreeNodeModel",
 	"type" : "normal" }

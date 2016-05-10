@@ -1,5 +1,5 @@
 *SVS-Git-UI
 asIceChangeSet
-	^ IceClassSingleChange new 
+	^ IceMethodChange new 
 		operation: self; 
 		yourself.
