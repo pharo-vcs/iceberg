@@ -1,5 +1,6 @@
 *SVS-Git-UI
 icon
-	^ self elements 
-		ifEmpty: [ Smalltalk ui icons iconNamed: #emptyPackage ]
-		ifNotEmpty: [ Smalltalk ui icons iconNamed: #dirtyMonticelloPackage ]
+	^ Smalltalk ui icons iconNamed: 
+		(self hasChanges 
+			ifTrue: [ #dirtyMonticelloPackage ]
+			ifFalse: [ #emptyPackage  ])

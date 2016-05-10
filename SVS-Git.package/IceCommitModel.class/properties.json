@@ -4,10 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 4/26/2016 12:30",
+	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "GitSynchronizer",
+		"message",
+		"commitButton",
+		"model" ],
+	"name" : "IceCommitModel",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",
