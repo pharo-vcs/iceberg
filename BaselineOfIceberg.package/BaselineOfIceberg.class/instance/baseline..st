@@ -4,7 +4,8 @@ baseline: spec
 	spec for: #common do: [ spec
 		baseline: 'FileTree'
 			with: [ spec
-				repository: 'github://dalehenrich/filetree:pharo5.0_dev/repository' ];
+				repository: 'github://dalehenrich/filetree:pharo5.0_dev/repository';
+				requires: 'Git' ];
 		package: 'SVS-Git'
 			with: [ spec requires: #('FileTree') ];
 		package: 'SVS-GitTests'
