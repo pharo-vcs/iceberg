@@ -5,7 +5,7 @@ baseline: spec
 		baseline: 'FileTree'
 			with: [ spec
 				repository: 'github://dalehenrich/filetree:pharo5.0_dev/repository';
-				requires: 'Git' ];
+				loads: 'Git' ];
 		package: 'SVS-Git'
 			with: [ spec requires: #('FileTree') ];
 		package: 'SVS-GitTests'
