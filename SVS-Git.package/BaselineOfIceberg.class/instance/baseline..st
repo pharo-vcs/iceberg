@@ -6,7 +6,8 @@ baseline: spec
 			with: [ spec
 				versionString: #stable;
 				repository: 'github://dalehenrich/filetree:pharo5.0_dev/repository' ];
-		package: 'SVS-Git';
+		package: 'SVS-Git'
+			with: [ spec requires: #('FileTree') ];
 		package: 'SVS-GitTests'
 			with: [ spec requires: #('default') ];
 		group: 'default'
