@@ -1,4 +1,4 @@
 initialization
 initializePresenter
-	commitButton action: 
-		[ self model commitWithMessage: message text ]
+	message acceptBlock: [ :text | self model commitWithMessage: message text ].
+	commitButton action: [ message accept ]
