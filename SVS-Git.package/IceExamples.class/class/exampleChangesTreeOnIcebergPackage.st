@@ -1,8 +1,8 @@
 examples - change tree
 exampleChangesTreeOnIcebergPackage
-	| git changes |
-	git := Git new origin: 'git@github.com:npasserini/pharo-git.git'.
-	changes := IceRepositoryChangeSet fromRepository: git.
+	| repository changeSet |
+	repository := Git new origin: 'git@github.com:npasserini/pharo-git-test.git'.
+	changeSet := IceWorkingCopyDiff forRepository: repository.
 	IceChangesTreeView new
-		model: changes;
+		model: changeSet;
 		openWithSpec.

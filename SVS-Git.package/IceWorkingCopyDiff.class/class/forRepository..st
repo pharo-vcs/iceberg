@@ -1,5 +1,5 @@
 instance creation
-fromRepository: aRepository 
+forRepository: aRepository 
 	^ self new 
 		repository: aRepository;
 		yourself.

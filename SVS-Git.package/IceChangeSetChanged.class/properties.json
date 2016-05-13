@@ -6,9 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"repository" ],
-	"name" : "IceRepositoryChangeSet",
+		 ],
+	"name" : "IceChangeSetChanged",
 	"pools" : [
 		 ],
-	"super" : "IceStructuralChangeSet",
+	"super" : "Announcement",
 	"type" : "normal" }
