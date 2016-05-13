@@ -8,7 +8,6 @@ initializeWidgets
 		rootNodeHolder: [ :item |
 			IceChangesTreeNodeModel new 
 				content: item;
-				children: [ tree childrenFor: item ];
 				yourself ];
  		yourself.
 		

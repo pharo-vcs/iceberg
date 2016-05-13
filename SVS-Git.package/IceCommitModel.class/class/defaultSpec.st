@@ -5,5 +5,8 @@ defaultSpec
 	^ SpecLayout composed newColumn: 
 		[ :col | col 
 			add: #message; 
-			add: #commitButton height: self toolbarHeight 
+			newRow: [ :row | row
+				add: #commitButton;
+				add: #refreshButton
+			] height: self toolbarHeight 
 		]

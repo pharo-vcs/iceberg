@@ -1,3 +1,4 @@
 api
-model: newModel
-	model value: newModel
+model: anIceChangeSet
+	model value: anIceChangeSet.
+	anIceChangeSet whenChangedDo: [ self tree updateTree.  ]

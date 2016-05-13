@@ -4,11 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 5/12/2016 17:23",
 	"instvars" : [
-		"description" ],
-	"name" : "IceSimpleChangeSet",
+		"elements",
+		"announcer" ],
+	"name" : "IceDiff",
 	"pools" : [
 		 ],
-	"super" : "IceChangeSet",
+	"super" : "Object",
 	"type" : "normal" }

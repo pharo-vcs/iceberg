@@ -4,12 +4,9 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 5/12/2016 17:32",
 	"instvars" : [
-		"package",
-		"mine",
-		"theirs",
-		"patch" ],
+		"package" ],
 	"name" : "IcePackageChangeSet",
 	"pools" : [
 		 ],

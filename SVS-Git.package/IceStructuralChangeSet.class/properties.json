@@ -4,9 +4,9 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 5/9/2016 18:10",
+	"commentStamp" : "",
 	"instvars" : [
-		 ],
+		"parent" ],
 	"name" : "IceStructuralChangeSet",
 	"pools" : [
 		 ],
