@@ -1,4 +1,4 @@
 actions
 refresh
-	super refresh.
 	changes := nil.
+	super refresh.

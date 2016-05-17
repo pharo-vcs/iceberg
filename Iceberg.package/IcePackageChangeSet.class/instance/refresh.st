@@ -1,4 +1,4 @@
 actions
 refresh
-	super refresh.
 	elements := nil.
+	super refresh.

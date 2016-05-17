@@ -1,5 +1,4 @@
 initialization
 initialize
-	model := nil asValueHolder.
+	changeSetHolder := nil asValueHolder.
 	super initialize.
-	model whenChangedDo: [ :changeSet | tree roots: changeSet elements ]

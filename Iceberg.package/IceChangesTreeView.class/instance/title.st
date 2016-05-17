@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Changes tree for repository'
+	^ self changeSet asString
