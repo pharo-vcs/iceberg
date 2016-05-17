@@ -1,0 +1,15 @@
+{
+	"category" : "Iceberg-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
+	"instvars" : [
+		"repository",
+		"changes" ],
+	"name" : "IceWorkingCopyDiff",
+	"pools" : [
+		 ],
+	"super" : "IceDiff",
+	"type" : "normal" }
