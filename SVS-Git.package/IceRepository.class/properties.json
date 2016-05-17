@@ -9,7 +9,7 @@
 		"origin",
 		"branch",
 		"repository" ],
-	"name" : "Git",
+	"name" : "IceRepository",
 	"pools" : [
 		 ],
 	"super" : "Object",
