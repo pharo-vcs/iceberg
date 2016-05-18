@@ -1,4 +1,4 @@
-*SVS-Git-UI
+*Iceberg-UI
 updateDiff: aDiffModel 
 	aDiffModel
 		contextClass: self operation targetClass;

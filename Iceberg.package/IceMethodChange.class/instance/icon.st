@@ -1,4 +1,4 @@
-*SVS-Git-UI
+*Iceberg-UI
 icon
 	self operation isAddition ifTrue: [ ^ Smalltalk ui icons iconNamed: #changeAdd ].
 	self operation isModification ifTrue: [ ^ Smalltalk ui icons iconNamed: #changeUpdate ].

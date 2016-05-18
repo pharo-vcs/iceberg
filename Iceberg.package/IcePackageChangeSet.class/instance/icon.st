@@ -1,4 +1,4 @@
-*SVS-Git-UI
+*Iceberg-UI
 icon
 	^ Smalltalk ui icons iconNamed: 
 		(self hasChanges 

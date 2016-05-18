@@ -1,3 +1,3 @@
 *Iceberg-Core
 icePackage
-	^ self iceClass package
+	^ self iceClass ifNotNil: [:class | class package]

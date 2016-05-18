@@ -1,3 +1,4 @@
 *Iceberg-Core
 iceClass
-	^ IceSimpleClassReference new targetClass: self targetClass
+	^ self targetClass ifNotNil: [:class |
+		IceSimpleClassReference new targetClass: class ]
