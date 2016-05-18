@@ -9,7 +9,7 @@
 		"git",
 		"packageName",
 		"repositoryName" ],
-	"name" : "IcebergRepositoryTest",
+	"name" : "IceRepositoryTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",
