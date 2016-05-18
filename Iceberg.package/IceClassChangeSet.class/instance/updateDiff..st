@@ -1,4 +1,4 @@
-*SVS-Git-UI
+*Iceberg-UI
 updateDiff: aDiffModel
 	self classDefinition 
 		ifNil: [ super updateDiff: aDiffModel ]

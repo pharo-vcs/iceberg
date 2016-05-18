@@ -4,10 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 5/18/2016 12:20",
 	"instvars" : [
 		 ],
-	"name" : "IcePackage",
+	"name" : "IceClassReference",
 	"pools" : [
 		 ],
 	"super" : "Object",

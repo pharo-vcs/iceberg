@@ -2,7 +2,7 @@ private
 analyseChanges
 	| newChanges |
 	newChanges := self parent changes select: [ :operation | 
-		operation targetClass = self targetClass ].
+		operation iceClass = self targetClass ].
 	
 	newChanges
 		detect: [ :operation | operation definition isClassDefinition ]

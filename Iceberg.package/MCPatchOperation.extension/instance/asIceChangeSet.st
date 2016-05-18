@@ -1,4 +1,4 @@
-*Iceberg-UI
+*Iceberg-Core
 asIceChangeSet
 	^ IceMethodChange new 
 		operation: self; 

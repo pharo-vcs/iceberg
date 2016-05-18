@@ -1,3 +1,3 @@
 initialization
 changedClasses
-	^ self changes collect: #targetClass as: Set
+	^ self changes collect: #iceClass as: Set
