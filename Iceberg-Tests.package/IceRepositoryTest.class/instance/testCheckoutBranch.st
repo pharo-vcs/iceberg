@@ -1,8 +1,8 @@
 tests
 testCheckoutBranch
-	git command: 'branch testBranch'.
-	self assert: (git currentBranchName = 'master').
+	repository command: 'branch testBranch'.
+	self assert: (repository currentBranchName = 'master').
 	
-	git checkoutBranch: 'testBranch'.
+	repository checkoutBranch: 'testBranch'.
 
-	self assert: (git currentBranchName = 'testBranch')
+	self assert: (repository currentBranchName = 'testBranch')

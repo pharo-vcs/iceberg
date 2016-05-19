@@ -6,12 +6,8 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"packageName",
-		"repository",
-		"location",
-		"origin",
-		"projectName" ],
-	"name" : "IceRepositoryTest",
+		 ],
+	"name" : "IceRemoteRepositoryTest",
 	"pools" : [
 		 ],
 	"super" : "TestCase",

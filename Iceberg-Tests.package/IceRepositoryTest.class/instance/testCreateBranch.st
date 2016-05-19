@@ -1,7 +1,7 @@
 tests
 testCreateBranch
-	self assert: git currentBranchName equals: 'master'.
+	self assert: repository currentBranchName equals: 'master'.
 	
-	git createBranch: 'testBranch'.
+	repository createBranch: 'testBranch'.
 
-	self assert: git currentBranchName equals: 'testBranch'
+	self assert: repository currentBranchName equals: 'testBranch'
