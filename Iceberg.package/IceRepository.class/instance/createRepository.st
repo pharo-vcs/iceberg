@@ -1,8 +1,8 @@
 repository handling
 createRepository
 	^ MCFileTreeGitRemoteRepository 
-		location: self origin 
-		name: ''
+		location: self origin url
+		name: ('iceberg-cache/{1}/{2}' format: { self origin owner. self origin projectName })
 		subdirectory: '' 
 		branch: (self branch ifNil: '').
 
