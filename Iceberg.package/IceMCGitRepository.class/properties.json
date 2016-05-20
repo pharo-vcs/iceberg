@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Adapters-GitFileTree",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 5/20/2016 18:31",
+	"instvars" : [
+		 ],
+	"name" : "IceMCGitRepository",
+	"pools" : [
+		 ],
+	"super" : "MCFileTreeGitRepository",
+	"type" : "normal" }
