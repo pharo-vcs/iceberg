@@ -6,12 +6,12 @@ baseline: spec
 			with: [ spec
 				repository: 'github://npasserini/filetree:pharo5.0_dev/repository';
 				loads: 'Git' ];
-		package: 'SVS-Git'
+		package: 'Iceberg'
 			with: [ spec requires: #('FileTree') ];
-		package: 'SVS-GitTests'
+		package: 'Iceberg-Tests'
 			with: [ spec requires: #('default') ];
 		group: 'default'
-			with: #('SVS-Git');
+			with: #('Iceberg');
 		group: 'tests'
-			with: #('SVS-GitTests')
+			with: #('Iceberg-Tests')
 	]
