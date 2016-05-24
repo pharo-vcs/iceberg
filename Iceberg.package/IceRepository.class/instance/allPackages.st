@@ -1,5 +1,7 @@
 querying
 allPackages
-	^ self lookupPackages collect: [ :directory | | packageName |
-			packageName := directory asFileReference basenameWithoutExtension.			
-			Ice packageNamed: packageName ]
+	^ Array streamContents: [ :result |
+		self lookupPackages collect: [ :directory |
+			Ice packageNamed: (directory asFileReference basenameWithoutExtension)
+				 ifPresent: [ :package | result nextPut: package mcPackage ]
+		]]
