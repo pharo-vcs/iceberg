@@ -1,5 +1,6 @@
 repository handling
 searchExistingRepository
-	^ MCFileTreeGitRemoteRepository superclass allInstances 
+	^ IceMCGitRepository allInstances 
 		detect: [ :repo | repo remoteUrl = self origin ]
+		ifFound: [ :repo | repo validate ]
 		ifNone: [ nil ]

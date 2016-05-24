@@ -1,9 +1,8 @@
 repository handling
 createLocalClone
-	| readonly remoteUrl targetDirName |
-	self in: self location parent executeCommand: 
+	IceGitCommand in: self location parent execute: 
 		{'clone'.
 		branch notNil ifTrue: {'-b'. branch}.
-		readonly ifTrue: {'--depth'. '1'}.
-		remoteUrl.
-		location basename}
+		"(readonly ifNil: false) ifTrue: {'--depth'. '1'}."
+		origin url.
+		location basename}.
