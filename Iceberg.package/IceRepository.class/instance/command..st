@@ -1,9 +1,5 @@
 repository handling
-command: stringOrArrayOfStrings
-	| arguments |
-	arguments := stringOrArrayOfStrings isString 
-		ifTrue: [ ' ' split: stringOrArrayOfStrings ]
-		ifFalse: [ stringOrArrayOfStrings ].
-	^ MCFileTreeGitRepository 
-		runGitCommand: arguments 
-		in: self repository directory
+command: aCommandDescription
+	"See IceGitCommand for the specification of possible command descriptions"
+	self ensureLocalRepository.
+	IceGitCommand in: self location execute: aCommandDescription

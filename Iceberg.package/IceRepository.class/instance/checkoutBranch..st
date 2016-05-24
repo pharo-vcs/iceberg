@@ -1,4 +1,4 @@
 actions
 checkoutBranch: branchName
-	self command: {'checkout'. branchName}.
-	self branch: branchName
+	self branch: branchName.
+	self command: {'checkout'. branchName}

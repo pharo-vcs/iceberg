@@ -1,12 +1,12 @@
 {
-	"category" : "Iceberg-Adapters-GitFileTree",
+	"category" : "Iceberg-Adapters",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 5/20/2016 18:31",
+	"commentStamp" : "NicoPasserini 5/23/2016 18:03",
 	"instvars" : [
-		 ],
+		"localRepository" ],
 	"name" : "IceMCGitRepository",
 	"pools" : [
 		 ],

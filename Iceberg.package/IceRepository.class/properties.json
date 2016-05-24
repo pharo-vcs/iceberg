@@ -8,7 +8,8 @@
 	"instvars" : [
 		"origin",
 		"branch",
-		"repository" ],
+		"repository",
+		"location" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],
