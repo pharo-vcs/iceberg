@@ -8,9 +8,10 @@
 	"instvars" : [
 		"packageName",
 		"repository",
-		"location",
 		"origin",
-		"projectName" ],
+		"projectName",
+		"defaultLocation",
+		"absoluteLocation" ],
 	"name" : "IceRepositoryTest",
 	"pools" : [
 		 ],

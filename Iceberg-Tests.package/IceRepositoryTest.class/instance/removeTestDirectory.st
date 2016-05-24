@@ -1,3 +1,4 @@
 auxiliar
 removeTestDirectory
-	location exists ifTrue: [location deleteAll].
+	{defaultLocation. absoluteLocation} do: [ :location |
+		location exists ifTrue: [defaultLocation deleteAll ]].
