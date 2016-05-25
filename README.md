@@ -2,11 +2,10 @@
 This is only a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has only been tested in a linux environment.
 
 ## Instalation (for development)
-### Download latest pharo 5.0 image
-```
-curl get.pharo.org/50+vm | bash
-./pharo-ui Pharo.image
-```
+### Prerrequisites
+- Latest Pharo 6.0 image.
+- Git v1.9.1 or later
+- An [SSH Key](https://help.github.com/articles/generating-an-ssh-key/)
 
 ### Install pharo-git
 ```
@@ -18,33 +17,38 @@ Metacello new
 ```
 
 ## Usage
-### Basic repository handling.
-The first thing you need is a reference to a repository, for example:
+### Creating and retreiving repositories.
+A repository is created out of an SCP URL (with the form `[user@]host:filename`, frequently `git@github.com:username/projectname.git`).
 ```
-  myRepo := Git new origin: 'git@github.com:npasserini/pharo-git.git'
-```
-
-If you want to checkout specific branch you can do:
-```
-  myRepo branch: 'newBranchName'
+  myRepo := IceRepository origin: 'git@github.com:npasserini/pharo-git-test.git'.
 ```
 
-Please note that this will create a directory with the same name as your
-repository in your image directory. Right now you can not use an already existing
-local repository. Moreover, if a repository in that directory already exists,
-your selected branch has to match the currently checked out branch of such repository.
-In the future we plan to avoid using repositories on disk.
+### Local storage of a repository
+When the repository gets first used, it will create a local clone in your disk.
+> By default clones are created in ./iceberg-cache directory, but the idea is that you should not care about it.
+> In the future we would like avoid having local working copies on disk.
 
-To the moment there is no registry of the repositories, you can keep your repository
-or you can re-create it any time you need, it will have no side-effect.
+If you prefere to do clones at specific locations, you can provide a directory:
+```
+  myRepo := IceRepository new
+    origin: 'git@github.com:npasserini/pharo-git.git';
+    localDirectory: ... absolute or relative path
+```
+
+Or, if you already have a local repository, you can avoid setting the origin, it will be inferred for you.
+```
+  myRepo := IceRepository new localDirectory: ... absolute or relative path
+```
+
+If a local repository already exists at the same location we will get all necessary information from it (for example: remote origin and current checkd out branch).
 
 ### Manage branches
-If afterwards you want to checkout another branch, you can do:
+By default repositories will checkout the 'master' branch. If you need to work with another branch you can do:
 ```
   myRepo checkoutBranch: 'anotherBranch'
 ```
 
-or if you want to create a new branch
+If you want to create a new branch it is slight different:
 ```
   myRepo createBranch: 'newBranchName'
 ```
@@ -61,6 +65,9 @@ After making some changes, you can use the IceSynchronizer to commit them:
     changeSet: (IceWorkingCopyDiff forRepository: myRepo);
     openWithSpec.
 ```
+
+From this window you can see the changes you are about to commit, and commit.
+> Tip: Ctrl/Cmd + s on the commit message textarea will also commit.
 
 Currently it is not possible to cherry pick your commits, all changes in the
 repository will be commited.
