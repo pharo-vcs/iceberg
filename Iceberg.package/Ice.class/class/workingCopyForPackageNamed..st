@@ -1,3 +1,3 @@
 accessing
 workingCopyForPackageNamed: packageName
-	^ self workingCopyForPackage: (self packageNamed: packageName)
+	^ (self packageNamed: packageName) workingCopy

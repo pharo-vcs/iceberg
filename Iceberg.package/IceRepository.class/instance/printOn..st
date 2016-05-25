@@ -2,5 +2,5 @@ printing
 printOn: aStream
 	aStream nextPutAll: self class name;
 		nextPut: $(;
-		nextPutAll: self package packageName;
+		nextPutAll: self origin url;
 		nextPut: $)

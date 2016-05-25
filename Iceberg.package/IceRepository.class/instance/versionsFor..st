@@ -1,3 +1,3 @@
 versions handling
 versionsFor: package
-	^ self allVersionDescriptors select: [ :version | version packageName = package name ]
+	^ self allVersionDescriptors select: [ :version | version packageName = package packageName ]

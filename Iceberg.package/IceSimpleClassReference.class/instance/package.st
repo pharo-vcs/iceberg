@@ -1,3 +1,3 @@
 accessing
 package
-	^ self targetClass package mcPackage
+	^ Ice packageNamed: self targetClass package name

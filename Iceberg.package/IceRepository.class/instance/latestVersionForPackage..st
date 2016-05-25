@@ -5,4 +5,4 @@ latestVersionForPackage: package
 			| latest | 
 			latest := versions detectMax: #versionNumber.
 			repository versionFromFileNamed: latest]
-		ifEmpty: [ self error: 'Package ', package name, ' is not found in repository ', self ]
+		ifEmpty: [ self error: 'Package ', package name, ' is not found in repository ', self printString ]

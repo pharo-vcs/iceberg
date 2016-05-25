@@ -1,5 +1,5 @@
 initialization
 repository: aGitRepository
 	repository := aGitRepository.
-	list items: ((Ice workingCopiesForRepository: repository) 
+	list items: (repository workingCopies
 		sorted: [ :a :b | a name < b name ]).
