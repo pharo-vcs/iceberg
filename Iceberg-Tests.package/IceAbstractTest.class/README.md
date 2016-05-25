@@ -1,0 +1,1 @@
+Base class for building IceTests, it provides some simple data that is reused along the test cases.

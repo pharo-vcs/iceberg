@@ -1,0 +1,3 @@
+auxiliar
+tempDirectories
+	^ { self defaultLocation  }

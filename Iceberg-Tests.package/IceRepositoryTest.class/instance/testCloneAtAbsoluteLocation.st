@@ -1,8 +1,8 @@
 tests
 testCloneAtAbsoluteLocation
-	repository := IceRepository origin: origin location: absoluteLocation.
+	repository := IceRepository origin: origin location: self absoluteLocation.
 
-	self deny: absoluteLocation exists.
+	self deny: self absoluteLocation exists.
 	repository createRepository.
-	self assert: absoluteLocation exists.
-	self assert: (absoluteLocation / '.git') exists.
+	self assert: self absoluteLocation exists.
+	self assert: (self absoluteLocation / '.git') exists.

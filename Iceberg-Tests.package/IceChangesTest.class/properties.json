@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceRepositoryTest",
+	"name" : "IceChangesTest",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractTest",
+	"super" : "TestCase",
 	"type" : "normal" }
