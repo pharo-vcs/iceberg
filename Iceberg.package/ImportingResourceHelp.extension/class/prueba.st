@@ -1,2 +1,0 @@
-*Iceberg-Core
-prueba
