@@ -1,2 +1,19 @@
 tests
 testExtensionMethodAddition
+	| class diff elements |
+	
+	"Prepare"
+	repository loadPackage: packageName.
+	class := Object subclass: #ForExtensionMethods.
+	class compile: 'myExtensionMethod'.
+	class organization classify: #myExtensionMethod under: '*', packageName.
+	
+	"Asserts"
+	diff := IceWorkingCopyDiff forRepository: repository.
+	self assert: diff changes notEmpty.
+	
+	elements := diff elements.
+	self assert: elements notEmpty.
+	
+	self assert: elements first changes notEmpty.
+	
