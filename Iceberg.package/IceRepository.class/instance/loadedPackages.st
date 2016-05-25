@@ -1,3 +1,3 @@
 working copies
 loadedPackages
-	^ self allPackages filter: #isLoaded
+	^ self allPackages select: #isLoaded
