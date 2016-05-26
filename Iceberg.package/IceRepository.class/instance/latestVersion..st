@@ -1,5 +1,5 @@
 querying
 latestVersion: packageName
 	| package |
-	package := Ice packageNamed: packageName.
+	package := Iceberg packageNamed: packageName.
 	^ (self versionsFor: package) detectMax: #versionNumber.

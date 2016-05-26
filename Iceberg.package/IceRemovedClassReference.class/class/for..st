@@ -2,5 +2,5 @@ instance creation
 for: aMCClassDefinition 
 	^ self new
 		targetClassName: aMCClassDefinition className;
-		package: (Ice packageForCategoryNamed: aMCClassDefinition category)
+		package: (Iceberg packageForCategoryNamed: aMCClassDefinition category)
 		yourself

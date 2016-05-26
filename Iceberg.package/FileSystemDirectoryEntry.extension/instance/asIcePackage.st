@@ -1,3 +1,3 @@
 *Iceberg-Core
 asIcePackage
-	^ Ice packageNamed: self asFileReference basenameWithoutExtension
+	^ Iceberg packageNamed: self asFileReference basenameWithoutExtension

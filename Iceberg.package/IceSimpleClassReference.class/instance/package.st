@@ -1,3 +1,3 @@
 accessing
 package
-	^ Ice packageNamed: self targetClass package name
+	^ Iceberg packageNamed: self targetClass package name

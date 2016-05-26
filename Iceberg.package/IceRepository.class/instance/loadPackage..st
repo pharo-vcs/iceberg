@@ -1,5 +1,5 @@
 actions
 loadPackage: packageName
 	| package |
-	package := Ice packageNamed: packageName. 	
+	package := Iceberg packageNamed: packageName. 	
 	(self latestVersionForPackage: package) load
