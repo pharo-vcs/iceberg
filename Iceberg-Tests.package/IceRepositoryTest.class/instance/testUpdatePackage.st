@@ -1,7 +1,7 @@
 tests
 testUpdatePackage
 	| latestVersionNumber | 
-	"1. - Preparation: create a new version of a packa ge in the remote repository"
+	"1. - Preparation: create a new version of a package in the remote repository"
 	"1.1 - First load a package"
 	repository loadPackage: packageName.
 	latestVersionNumber := (repository latestVersion: packageName) versionNumber.
