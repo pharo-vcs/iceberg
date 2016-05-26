@@ -15,5 +15,5 @@ testExtensionMethodAddition
 	elements := diff elements.
 	self assert: elements notEmpty.
 	
-	self assert: elements first changes notEmpty.
+	self assert: (elements detect: [:elem | elem description = packageName ]) changes notEmpty.
 	

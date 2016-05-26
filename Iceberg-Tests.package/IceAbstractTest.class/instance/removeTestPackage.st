@@ -1,5 +1,6 @@
 auxiliar
 removeTestPackage
-	MCWorkingCopy registry
-		at: (MCPackage named: packageName)
-		ifPresent: [ :wc | wc unload ]
+	{ packageName. 'BaselineOfPharoGitTest' } do: [ :name |
+		MCWorkingCopy registry
+			at: (MCPackage named: name)
+			ifPresent: [ :wc | wc unload ]]
