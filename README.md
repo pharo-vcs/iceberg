@@ -7,14 +7,20 @@ This is only a prototype and is not yet ready for production, but you are invite
 - Git v1.9.1 or later
 - An [SSH Key](https://help.github.com/articles/generating-an-ssh-key/)
 
-### Install pharo-git
+### Install Iceberg
 ```
 Metacello new
   baseline: 'Iceberg';
-  repository: 'github://npasserini/pharo-git';
+  repository: 'github://npasserini/iceberg';
   onConflict: [:ex | ex allow];
   load.
 ```
+
+### Update Iceberg (since v0.0.3)
+```
+Iceberg update
+```
+
 
 ## Usage
 ### Creating and retreiving repositories.
@@ -31,7 +37,7 @@ When the repository gets first used, it will create a local clone in your disk.
 If you prefere to do clones at specific locations, you can provide a directory:
 ```
   myRepo := IceRepository new
-    origin: 'git@github.com:npasserini/pharo-git.git';
+    origin: 'git@github.com:npasserini/iceberg.git';
     localDirectory: ... absolute or relative path
 ```
 
@@ -57,6 +63,10 @@ If you want to create a new branch it is slight different:
 ```
   myRepo loadPackage: 'Package-Name'
 ```
+
+### Update packages
+- `myRepo pull` will update all the packages in the repo (that have already been loaded).
+- To update an individual package you can write: `myRepo updatePackage: 'Some-Package-Name'`
 
 ### Commit your changes
 After making some changes, you can use the IceSynchronizer to commit them:
