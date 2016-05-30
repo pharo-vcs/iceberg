@@ -1,10 +1,10 @@
 specs
 defaultSpec
-	<spec: default>
-	
-	^ SpecLayout composed 
-		newRow: [ :top | 
-			top 
+	<spec: #default>
+
+	^ SpecLayout composed
+		newRow: [ :top |
+			top
 				add: #changes;
 				addVSplitter;
 				add: #commit
