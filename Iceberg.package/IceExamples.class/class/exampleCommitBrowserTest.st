@@ -1,8 +1,8 @@
 examples - change tree
-exampleSynchronizerTest
+exampleCommitBrowserTest
 	| repository changeSet |
 	repository := IceRepository origin: 'git@github.com:npasserini/pharo-git-test.git'.
 	changeSet := IceWorkingCopyDiff forRepository: repository.
-	IceSynchronizer new
+	IceCommitBrowser new
 		changeSet: changeSet;
 		openWithSpec.

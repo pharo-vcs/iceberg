@@ -4,11 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 4/26/2016 12:30",
 	"instvars" : [
-		"manager",
-		"commitBrowser" ],
-	"name" : "IceSynchronizer",
+		"changes",
+		"diff",
+		"commit" ],
+	"name" : "IceCommitBrowser",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",
