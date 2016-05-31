@@ -1,0 +1,17 @@
+tests
+testRemoveTag
+	| package packageChangeSet |
+	
+	"Prepare"
+	repository loadPackage: packageName.
+	package := RPackageOrganizer default packageNamed: packageName.
+	package addClassTag: 'NewTag'.
+	repository savePackage: packageName withMessage: 'for #testRemoveTag'.
+	
+	package removeClassTag: 'NewTag'.
+	
+	"Asserts"
+	packageChangeSet := (IceWorkingCopyDiff forRepository: repository) elements 
+		detect: [ :changeSet | changeSet description = 'Pharo-Git-Test' ].
+	self assert: (packageChangeSet oldOrganization includes: 'Pharo-Git-Test-NewTag').
+	self assert: (packageChangeSet newOrganization includes: 'Pharo-Git-Test-NewTag') not.
