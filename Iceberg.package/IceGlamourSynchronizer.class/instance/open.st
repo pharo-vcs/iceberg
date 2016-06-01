@@ -1,3 +1,3 @@
 showing
 open
-	^ self buildBrowser openOn: self
+	^ self openOn: self
