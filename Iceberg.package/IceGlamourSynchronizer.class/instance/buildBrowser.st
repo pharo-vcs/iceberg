@@ -2,9 +2,9 @@ building
 buildBrowser
 	| browser |
 	browser := GLMCompositePresentation new
-		title: self title.
+		title: self title;
+		custom: IceGlamourCommitBrowser new.
 		
-	self buildCommitBrowserOn: browser.
 	self buildUpdateBrowserOn: browser.
 	self buildPushBrowserOn: browser.
 		
