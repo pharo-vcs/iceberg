@@ -1,4 +1,4 @@
-examples - change tree
+examples - commit
 exampleCommitBrowserTest
 	| repository changeSet |
 	repository := IceRepository origin: 'git@github.com:npasserini/pharo-git-test.git'.

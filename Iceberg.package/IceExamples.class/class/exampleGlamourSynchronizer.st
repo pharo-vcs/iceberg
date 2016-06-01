@@ -1,7 +1,5 @@
 examples - synchronize
-exampleSynchronizer
+exampleGlamourSynchronizer
 	| repository |
 	repository := IceRepository origin: 'git@github.com:npasserini/iceberg.git'.
-	IceSynchronizer new
-		repository: repository;
-		openWithSpec.
+	IceGlamourSynchronizer synchronize: repository.

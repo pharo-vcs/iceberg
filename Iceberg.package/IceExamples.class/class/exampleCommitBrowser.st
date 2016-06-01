@@ -1,4 +1,4 @@
-examples - change tree
+examples - commit
 exampleCommitBrowser
 	| repository changeSet |
 	repository := IceRepository origin: 'git@github.com:npasserini/iceberg.git'.
