@@ -1,4 +1,4 @@
-as yet unclassified
+initializing
 initialElements
 	^ repository allPackages collect: [ :package |
 			IcePackageChangeSet 

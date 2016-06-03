@@ -10,13 +10,14 @@ compose
 		browser transmit 
 			to: #changes; 
 			transformed: #elements;
-			andShow: [ :a |
+			andShow: [ :a :anIceChangeSet | 
+				a updateOn: IceChangeSetChanged from: [ anIceChangeSet announcer. ].
 				a fastTree title: 'Local changes';
+					allExpanded;
 					children: #elements;
 					icon: #icon;
-					format: #description 
-			].
-		
+					format: #description ].
+	
 		browser transmit to: #commit; andShow: [ :a | a tabulator with: [ :commiter |
 			commiter title: 'Commit'.
 			commiter row: #message.
@@ -28,7 +29,7 @@ compose
 						
 			commiter transmit to: #actions; andShow: [ :b | b actionList
 				act: [ :presentation :entity | entity commitWithMessage: (presentation pane port: #commitText) value asString ] entitled: 'Commit';
-				act: [ :entity | entity inspect ] entitled: 'Refesh changes' ].
+				act: [ :presentation :entity | entity refresh ] entitled: 'Refesh changes' ].
 			
 			commiter transmit 
 				from: #message port: #text; 
@@ -43,5 +44,3 @@ compose
 					change myVersion ifNil: ''. 
 					change theirVersion ifNil: '' } ]]
 	]
-		
- 
