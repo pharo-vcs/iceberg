@@ -18,25 +18,19 @@ compose
 					icon: #icon;
 					format: #description ].
 	
-		browser transmit to: #commit; andShow: [ :a | a tabulator with: [ :commiter |
-			commiter title: 'Commit'.
-			commiter row: #message.
-			commiter row: #actions size: 30.
-			
-			commiter transmit to: #message; andShow: [ :b | b text 
-				display: '';
-				act: [ :presentation :entity | entity commitWithMessage: presentation text asString ] icon: GLMUIThemeExtraIcons glamorousSave on: $s entitled: 'Commit' ].
-						
-			commiter transmit to: #actions; andShow: [ :b | b actionList
-				act: [ :presentation :entity | entity commitWithMessage: (presentation pane port: #commitText) value asString ] entitled: 'Commit';
-				act: [ :presentation :entity | entity refresh ] entitled: 'Refesh changes' ].
-			
-			commiter transmit 
-				from: #message port: #text; 
-				to: #actions port: #commitText.
-		]].
-				
-		
+		browser transmit to: #commit; andShow: [ :a | a text
+			display: '';
+			title: 'Commit message';
+			act: [ :presentation :entity | entity commitWithMessage: presentation text asString ] 
+				icon: GLMUIThemeExtraIcons glamorousSave 
+				on: $s 
+				entitled: 'Commit';
+			act: [ :presentation :entity | entity refresh ] 
+				icon: GLMUIThemeExtraIcons glamorousRefresh 
+				on: $r
+				entitled: 'Refesh changes'
+		].
+								
 		browser transmit from: #changes; to: #diff; andShow: [ :a | 
 			a diff 
 				title: 'Left: working copy / Right: local repository';
