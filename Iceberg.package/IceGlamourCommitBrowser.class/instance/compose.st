@@ -25,11 +25,6 @@ compose
 				shortcut: $r;
 				title: 'Refesh changes'; showTitle)
 		].
-								
-		browser transmit from: #changes; to: #diff; andShow: [ :a | 
-			a diff 
-				title: 'Left: working copy / Right: local repository';
-				display: [:change | { 
-					change myVersion ifNil: ''. 
-					change theirVersion ifNil: '' } ]]
+
+		self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'.
 	]

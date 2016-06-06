@@ -8,4 +8,11 @@ compose
 			andShow: [ :a | a 
 				title: 'Commit your changes'; 
 				custom: IceGlamourCommitBrowser new ].
+
+		browser aPane: #update.
+		browser transmit 
+			to: #update;
+			andShow: [ :a | a 
+				title: 'Update'; 
+				custom: IceGlamourUpdateBrowser new ].
 	]
