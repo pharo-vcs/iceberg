@@ -1,4 +1,4 @@
-initializing
+initialization
 initialElements
 	^ repository allPackages collect: [ :package |
 			IcePackageChangeSet 
