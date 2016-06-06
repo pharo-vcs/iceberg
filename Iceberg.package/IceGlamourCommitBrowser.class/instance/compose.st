@@ -9,26 +9,21 @@ compose
 
 		browser transmit 
 			to: #changes; 
-			transformed: #elements;
-			andShow: [ :a :anIceChangeSet | 
-				a updateOn: IceChangeSetChanged from: [ anIceChangeSet announcer. ].
-				a fastTree title: 'Local changes';
-					allExpanded;
-					children: #elements;
-					icon: #icon;
-					format: #description ].
+			andShow: [ :a | a custom: IceGlamourChangesTree new ].
 	
 		browser transmit to: #commit; andShow: [ :a | a text
 			display: '';
 			title: 'Commit message';
-			act: [ :presentation :entity | entity commitWithMessage: presentation text asString ] 
-				icon: GLMUIThemeExtraIcons glamorousSave 
-				on: $s 
-				entitled: 'Commit';
-			act: [ :presentation :entity | entity refresh ] 
-				icon: GLMUIThemeExtraIcons glamorousRefresh 
-				on: $r
-				entitled: 'Refesh changes'
+			addAction: (GLMGenericAction new
+				action: [ :presentation :entity | entity commitWithMessage: presentation text asString ];
+				icon: GLMUIThemeExtraIcons glamorousSave;
+				shortcut: $s;
+				title: 'Commit'; showTitle);
+			addAction: (GLMGenericAction new
+				action: [ :presentation :entity | entity refresh ];
+				icon: GLMUIThemeExtraIcons glamorousRefresh;
+				shortcut: $r;
+				title: 'Refesh changes'; showTitle)
 		].
 								
 		browser transmit from: #changes; to: #diff; andShow: [ :a | 
