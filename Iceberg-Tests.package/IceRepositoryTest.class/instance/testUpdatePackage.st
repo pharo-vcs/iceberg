@@ -10,7 +10,7 @@ testUpdatePackage
 	"1.2 - Modify it and commit to a new branch"
 	self updateVersionNumber: latestVersionNumber + 1.
 	repository savePackage: packageName 
-		withMessage: ('Updated test method with version {1}' format: (latestVersionNumber + 1) asString).
+		withMessage: ('Updated test method with version {1}' format: {latestVersionNumber + 1}).
 	self checkVersionNumber: latestVersionNumber + 1.
 	
 	"1.3 - Push the branch to origin/master"

@@ -1,7 +1,7 @@
 tests
 testFrom
 	| info |
-	info := IceCommitInfo from: '|f659e2851cb84eb6812b19e5a820c06fb509b0d5|Nicolás Passerini|2016-05-27 09:20:49 +0200|ea6c151|Updated test method with version 2'.
+	info := IceCommitInfo from: '|f659e2851cb84eb6812b19e5a820c06fb509b0d5|Nicolás Passerini|2016-05-27 09:20:49 +0200|ea6c151|Updated test method with version 2' repository: nil.
 	
 	self assert: info commitId equals: 'f659e2851cb84eb6812b19e5a820c06fb509b0d5'.
 	self assert: info username equals: 'Nicolás Passerini'.
