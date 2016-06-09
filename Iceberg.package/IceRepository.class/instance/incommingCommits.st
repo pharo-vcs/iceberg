@@ -1,14 +1,13 @@
 querying
 incommingCommits
-	| lines currentLine |
-	lines := OrderedCollection new.
-	(self command: 'log --format=|%H|%an|%ai|%p|%s') linesDo: [ :line |
-		(line beginsWith: '|')
-			ifTrue:  [ 
-				currentLine ifNotNil: [ lines add: currentLine contents ].
-				currentLine := WriteStream with: line ]
-			ifFalse: [ 
-				currentLine cr; nextPutAll: line ]].
+	| loadedVersions incommingCommits |
+	loadedVersions := self workingCopies collect: [ :wc | self versionDescriptorFor: wc versionInfo  ].
+	incommingCommits := OrderedCollection new.
 	
+	self allCommits do: [ :commit | 
+		(loadedVersions anySatisfy: [ :entry | entry commitID hex = commit commitId ])
+			ifTrue: [ ^ incommingCommits ]
+			ifFalse: [incommingCommits add: commit]]
 	
-	^ lines collect: [ :line | IceCommitInfo from: line ]
+"	^ collect: [ 
+		allCommits select: #isLoaded"

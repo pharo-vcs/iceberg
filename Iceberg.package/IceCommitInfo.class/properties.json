@@ -10,7 +10,8 @@
 		"username",
 		"datetime",
 		"parents",
-		"comment" ],
+		"comment",
+		"repository" ],
 	"name" : "IceCommitInfo",
 	"pools" : [
 		 ],

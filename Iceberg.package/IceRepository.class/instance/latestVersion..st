@@ -1,4 +1,4 @@
-querying
+versions handling
 latestVersion: packageName
 	| package |
 	package := Iceberg packageNamed: packageName.

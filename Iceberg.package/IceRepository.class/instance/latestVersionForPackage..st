@@ -1,4 +1,4 @@
-querying
+versions handling
 latestVersionForPackage: package
 	^ (self versionsFor: package)
 		ifNotEmpty: [ :versions | 

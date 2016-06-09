@@ -1,3 +1,3 @@
 versions handling
 allVersionDescriptors
-	^ self repository readableFileNames  
+	^ versionDescriptors ifNil: [ versionDescriptors := self repository readableFileNames ]

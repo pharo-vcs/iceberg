@@ -9,7 +9,9 @@
 		"origin",
 		"branch",
 		"repository",
-		"location" ],
+		"location",
+		"commits",
+		"versionDescriptors" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],
