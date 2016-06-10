@@ -15,4 +15,11 @@ compose
 			andShow: [ :a | a 
 				title: 'Update'; 
 				custom: IceGlamourUpdateBrowser new ].
+
+		browser aPane: #publish.
+		browser transmit 
+			to: #publish;
+			andShow: [ :a | a 
+				title: 'Publish'; 
+				custom: IceGlamourPublishBrowser new ].
 	]

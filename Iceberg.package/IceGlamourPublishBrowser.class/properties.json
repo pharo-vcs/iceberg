@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Glamour",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"announcer" ],
+	"name" : "IceGlamourPublishBrowser",
+	"pools" : [
+		 ],
+	"super" : "IceAbstractBrowser",
+	"type" : "normal" }

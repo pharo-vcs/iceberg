@@ -10,17 +10,17 @@ compose
 		browser transmit
 			to: #commits;
 			andShow: [ :a | a fastTable
-				title: 'New commits to be imported';
-				display: #incommingCommits;
+				title: 'New local commits to be published';
+				display: #outgoingCommits;
 				column: 'User' evaluated: #username width: 120;
 				column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
 				column: 'Comment' evaluated: #comment;
-				updateOn: IcePackageLoaded from: #announcer;
+				updateOn: IcePushed from: #announcer;
 				addAction: (GLMGenericAction new
-					action: [ :presentation | presentation selection load. presentation selection: nil ];
-					icon: GLMUIThemeExtraIcons glamorousLeftSide;
+					action: [ :presentation :repository | repository push. presentation selection: nil ];
+					icon: GLMUIThemeExtraIcons glamorousRightSide;
 					shortcut: $u;
-					title: 'Update to selected commit'; showTitle)].
+					title: 'Publish all'; showTitle)].
 
 		browser transmit
 			fromOutsideEntityPort;
@@ -29,5 +29,5 @@ compose
 			transformed: [ :model :commit | commit ifNotNil: [model workingCopyDiffToCommit: commit] ];
 			andShow: [ :a | a custom: IceGlamourChangesTree new ].
 
-		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
+		self addDiffTo: browser withTitle: 'Left: selected commit / Right: remote version'.
 	]
