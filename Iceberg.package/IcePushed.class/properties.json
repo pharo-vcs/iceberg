@@ -10,5 +10,5 @@
 	"name" : "IcePushed",
 	"pools" : [
 		 ],
-	"super" : "Announcer",
+	"super" : "Announcement",
 	"type" : "normal" }
