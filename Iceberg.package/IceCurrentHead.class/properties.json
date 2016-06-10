@@ -4,12 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
+	"commentStamp" : "",
 	"instvars" : [
-		"repository",
-		"changes" ],
-	"name" : "IceWorkingCopyDiff",
+		"repository" ],
+	"name" : "IceCurrentHead",
 	"pools" : [
 		 ],
-	"super" : "IceDiff",
+	"super" : "IceCommitish",
 	"type" : "normal" }

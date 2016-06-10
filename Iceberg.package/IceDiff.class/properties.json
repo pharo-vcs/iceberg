@@ -4,12 +4,13 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 5/12/2016 17:23",
+	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
 	"instvars" : [
-		"elements",
-		"announcer" ],
+		"repository",
+		"changes",
+		"theirVersion" ],
 	"name" : "IceDiff",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceAbstractDiff",
 	"type" : "normal" }

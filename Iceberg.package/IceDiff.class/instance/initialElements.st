@@ -1,3 +1,6 @@
 initialization
 initialElements
-	^ self subclassResponsibility 
+	^ repository allPackages collect: [ :package |
+			IcePackageChangeSet 
+				package: package 
+				parent: self ]

@@ -1,3 +1,3 @@
 accessing
 repository
-	^ repository
+	^ (self pane port: #entity) value

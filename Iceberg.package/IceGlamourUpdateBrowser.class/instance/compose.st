@@ -1,6 +1,6 @@
 building
 compose
-	self tabulator with: [ :browser | 
+	self tabulator with: [ :browser |
 		browser
 			row: [ :top | top
 				column: #commits; 
@@ -16,10 +16,12 @@ compose
 					column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
 					column: 'Comment' evaluated: #comment ].
 
-		browser transmit 
+		browser transmit
+			fromOutsideEntityPort;
+			from: #commits; 
 			to: #changes; 
-			transformed: #workingCopyDiff;
-			andShow: [ :a | a custom: IceGlamourChangesTree new ].
+			transformed: [ :model :commit | model workingCopyDiffToCommit: commit ];
+			andShowIfNone: [ :a | a custom: IceGlamourChangesTree new ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
 	]

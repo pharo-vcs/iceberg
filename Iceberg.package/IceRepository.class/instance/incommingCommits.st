@@ -7,7 +7,7 @@ incommingCommits
 	self allCommits do: [ :commit | 
 		(loadedVersions anySatisfy: [ :entry | entry commitID hex = commit commitId ])
 			ifTrue: [ ^ incommingCommits ]
-			ifFalse: [incommingCommits add: commit]]
+			ifFalse: [incommingCommits add: commit]].
+		
+	^ incommingCommits.
 	
-"	^ collect: [ 
-		allCommits select: #isLoaded"
