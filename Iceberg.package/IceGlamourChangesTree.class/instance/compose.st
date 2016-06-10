@@ -12,4 +12,4 @@ compose
 			action: [ :presentation :entity | entity refresh ];
 			icon: GLMUIThemeExtraIcons glamorousRefresh;
 			shortcut: $r;
-			title: 'Refesh'; showTitle)
+			title: 'Refresh'; showTitle)
