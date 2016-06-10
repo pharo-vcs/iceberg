@@ -11,7 +11,7 @@ testRemoveTag
 	package removeClassTag: 'NewTag'.
 	
 	"Asserts"
-	packageChangeSet := (IceWorkingCopyDiff forRepository: repository) elements 
+	packageChangeSet := (IceDiff forRepository: repository) elements 
 		detect: [ :changeSet | changeSet description = 'Pharo-Git-Test' ].
 	self assert: (packageChangeSet organizationChange oldOrganization includes: 'Pharo-Git-Test-NewTag').
 	self assert: (packageChangeSet organizationChange newOrganization includes: 'Pharo-Git-Test-NewTag') not.
