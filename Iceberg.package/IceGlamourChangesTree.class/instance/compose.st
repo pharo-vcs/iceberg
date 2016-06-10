@@ -4,14 +4,19 @@ compose
 		browser row: #tree.
 		browser transmit 
 			to: #tree;
-			transformed: #elements;
-			andShow: [ :a :anIceChangeSet | 
-				a updateOn: IceChangeSetChanged from: [ anIceChangeSet announcer. ].
-				a fastTree title: 'Local changes';
-					allExpanded;
-					children: #elements;
-					icon: #icon;
-					format: #description.
+			andShow: [ :a | a fastTree 
+				title: 'Local changes';
+				allExpanded;
+				children: #elements;
+				icon: #icon;
+				format: #description;
+				display: #elements;
+				updateOn: IceChangeSetChanged from: #announcer;
+				addAction: (GLMGenericAction new
+					action: [ :presentation :entity | entity refresh ];
+					icon: GLMUIThemeExtraIcons glamorousRefresh;
+					shortcut: $r;
+					title: 'Refesh'; showTitle)
 			].
 		
 		browser sendToOutside: #selection from: #tree.

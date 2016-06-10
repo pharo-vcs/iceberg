@@ -18,12 +18,7 @@ compose
 				action: [ :presentation :entity | entity commitWithMessage: presentation text asString ];
 				icon: GLMUIThemeExtraIcons glamorousSave;
 				shortcut: $s;
-				title: 'Commit'; showTitle);
-			addAction: (GLMGenericAction new
-				action: [ :presentation :entity | entity refresh ];
-				icon: GLMUIThemeExtraIcons glamorousRefresh;
-				shortcut: $r;
-				title: 'Refesh changes'; showTitle)
+				title: 'Commit'; showTitle)
 		].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'.
