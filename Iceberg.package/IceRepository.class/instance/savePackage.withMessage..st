@@ -5,4 +5,5 @@ savePackage: packageName withMessage: commitMessage
 	workingCopy := 	Iceberg workingCopyForPackageNamed: packageName.
 	newVersion := workingCopy newVersionWithMessage: commitMessage in: self repository. 
 	self repository storeVersion: newVersion.
+	self announcer announce: IceCommited new.
 	self clearCaches.

@@ -16,6 +16,7 @@ compose
 				column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
 				column: 'Comment' evaluated: #comment;
 				updateOn: IcePushed from: #announcer;
+				updateOn: IceCommited from: #announcer;
 				addAction: (GLMGenericAction new
 					action: [ :presentation :repository | repository push. presentation selection: nil ];
 					icon: GLMUIThemeExtraIcons glamorousRightSide;

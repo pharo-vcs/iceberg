@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Announcer",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceCommited",
+	"pools" : [
+		 ],
+	"super" : "Announcer",
+	"type" : "normal" }

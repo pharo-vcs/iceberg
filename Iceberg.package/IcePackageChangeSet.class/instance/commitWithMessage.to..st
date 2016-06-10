@@ -4,4 +4,4 @@ commitWithMessage: commitMessage to: repository
 	from the package (which should be smarter)"
 	repository 
 		savePackage: self package packageName
-		withMessage: commitMessage
+		withMessage: commitMessage.
