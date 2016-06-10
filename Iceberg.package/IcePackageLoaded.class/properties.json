@@ -1,14 +1,14 @@
 {
-	"category" : "Iceberg-Glamour",
+	"category" : "Iceberg-Announcements",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"announcer" ],
-	"name" : "IceGlamourUpdateBrowser",
+		 ],
+	"name" : "IcePackageLoaded",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractBrowser",
+	"super" : "Announcement",
 	"type" : "normal" }

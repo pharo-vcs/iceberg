@@ -9,12 +9,18 @@ compose
 
 		browser transmit
 			to: #commits;
-			transformed: #incommingCommits;
-			andShow: [ :a | a title: 'New commits to be imported'.
-				a fastTable
-					column: 'User' evaluated: #username width: 120;
-					column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
-					column: 'Comment' evaluated: #comment ].
+			andShow: [ :a | a fastTable
+				title: 'New commits to be imported';
+				display: #incommingCommits;
+				column: 'User' evaluated: #username width: 120;
+				column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
+				column: 'Comment' evaluated: #comment;
+				updateOn: IcePackageLoaded from: #announcer;
+				addAction: (GLMGenericAction new
+					action: [ :presentation | presentation selection load. presentation selection: nil ];
+					icon: GLMUIThemeExtraIcons glamorousLeftSide;
+					shortcut: $u;
+					title: 'Update'; showTitle)].
 
 		browser transmit
 			fromOutsideEntityPort;
