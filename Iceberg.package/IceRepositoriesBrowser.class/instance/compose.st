@@ -14,5 +14,5 @@ compose
 			title: 'Packages';
 			display: #allSavedPackages;
 			column: 'Name' evaluated: #packageName;
-			column: 'Is loaded' evaluated: [:pkg | self statusFor: pkg ]]
+			column: 'Status' evaluated: [:pkg | self statusFor: pkg ]]
 	]

@@ -4,11 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 6/13/2016 15:57",
+	"commentStamp" : "",
 	"instvars" : [
 		"package",
-		"repository" ],
-	"name" : "IceSavedPackage",
+		"repository",
+		"entry" ],
+	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],
 	"super" : "Object",
