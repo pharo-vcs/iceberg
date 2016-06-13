@@ -1,4 +1,4 @@
 querying
 mySnapshot: package
-	^ package workingCopy snapshot.
+	^ self myVersion snapshotFor: package
 	

@@ -8,7 +8,8 @@
 	"instvars" : [
 		"repository",
 		"changes",
-		"theirVersion" ],
+		"theirVersion",
+		"myVersion" ],
 	"name" : "IceDiff",
 	"pools" : [
 		 ],
