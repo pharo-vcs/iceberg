@@ -3,7 +3,7 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"Registry" ],
 	"commentStamp" : "NicoPasserini 4/20/2016 16:07",
 	"instvars" : [
 		"announcer",

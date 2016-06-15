@@ -3,6 +3,7 @@ SystemOrganization addCategory: 'Iceberg-Adapters'!
 SystemOrganization addCategory: 'Iceberg-Announcements'!
 SystemOrganization addCategory: 'Iceberg-Changes'!
 SystemOrganization addCategory: 'Iceberg-Core'!
+SystemOrganization addCategory: 'Iceberg-Errors'!
 SystemOrganization addCategory: 'Iceberg-Examples'!
 SystemOrganization addCategory: 'Iceberg-Glamour'!
 SystemOrganization addCategory: 'Iceberg-UI'!

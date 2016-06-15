@@ -1,5 +1,5 @@
 {
-	"category" : "Iceberg-Glamour",
+	"category" : "Iceberg-Errors",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceRepositoriesBrowser",
+	"name" : "IceWrongUrl",
 	"pools" : [
 		 ],
-	"super" : "IceTool",
+	"super" : "Error",
 	"type" : "normal" }

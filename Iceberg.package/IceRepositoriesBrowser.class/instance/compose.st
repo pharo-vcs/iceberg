@@ -9,6 +9,11 @@ compose
 			column: 'Project name' evaluated: [: repo | repo origin projectName ];
 			column: 'Current branch' evaluated: #branch;
 			addAction: (GLMGenericAction new
+				action: [ :presentation | self class createRepository ifNotNil: [ presentation update ]];
+				icon: GLMUIThemeExtraIcons glamorousAdd;
+				shortcut: $a;
+				title: 'Add repository'; showTitle);
+			addAction: (GLMGenericAction new
 				action: [ :table | IceGlamourSynchronizer synchronize: table selection ];
 				icon: GLMUIThemeExtraIcons glamorousBrowse;
 				shortcut: $s;

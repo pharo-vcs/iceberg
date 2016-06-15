@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceRepositoriesBrowser",
+	"name" : "IceTool",
 	"pools" : [
 		 ],
-	"super" : "IceTool",
+	"super" : "GLMCompositePresentation",
 	"type" : "normal" }

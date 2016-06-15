@@ -1,4 +1,4 @@
 opening
 open
 	"self open"
-	^ self openOn: IceRepository allInstances.
+	^ self openOn: IceRepository registry.

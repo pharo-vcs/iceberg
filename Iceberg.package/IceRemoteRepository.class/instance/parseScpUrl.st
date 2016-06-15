@@ -8,7 +8,7 @@ parseScpUrl
 			owner := matcher subexpression: 4.
 			projectName := matcher subexpression: 5.
 		]
-		ifFalse: [ self error: 'Could not parse scp url: ', url ]
+		ifFalse: [ IceWrongUrl signal: 'Could not parse scp url: ', url ]
 			
 
 	
