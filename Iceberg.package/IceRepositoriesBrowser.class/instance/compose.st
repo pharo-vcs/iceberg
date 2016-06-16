@@ -17,7 +17,11 @@ compose
 				action: [ :table | IceGlamourSynchronizer synchronize: table selection ];
 				icon: GLMUIThemeExtraIcons glamorousBrowse;
 				shortcut: $s;
-				title: 'Synchronize with repository'; showTitle)
+				title: 'Synchronize with repository'; showTitle);
+			selectionAct: [:presentation :repo | 
+					self class switchBranchOf: presentation selection.
+					presentation update 
+				] on: $b entitled: 'Switch branch'
 		].
 	
 		browser transmit from: #repositories; to: #packages; andShow: [ :a | a fastTable
