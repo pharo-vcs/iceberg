@@ -1,8 +1,10 @@
 querying
 outgoingCommits
-	| lines currentLine |
+	| remoteBranch lines currentLine |
+	
+	remoteBranch := self remoteBranchName ifNil: [ IceNoRemoteBranch signal ].
 	lines := OrderedCollection new.
-	(self command: {'log'. 'origin/{1}..HEAD' format: {self branch}. '--format=|%H|%an|%ai|%p|%s'}) linesDo: [ :line |
+	(self command: {'log'. 'origin/{1}..HEAD' format: {remoteBranch}. '--format=|%H|%an|%ai|%p|%s'}) linesDo: [ :line |
 		(line beginsWith: '|')
 			ifTrue:  [ 
 				currentLine ifNotNil: [ lines add: currentLine contents ].
