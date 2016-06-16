@@ -1,7 +1,7 @@
 querying
 incommingCommits
 	| loadedCommits |
-	loadedCommits := self workingCopies collect: [ :wc | 
-		(self versionDescriptorFor: wc versionInfo) commitID hex  ].
+	loadedCommits := self loadedPackages 
+		collect: [ :package | package loadedVersion commitId ].
 	
 	^ self allCommitsNewerThanAny: loadedCommits	
