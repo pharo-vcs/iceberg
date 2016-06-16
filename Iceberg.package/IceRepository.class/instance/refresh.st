@@ -1,4 +1,4 @@
 private
-clearCaches
+refresh
 	versionDescriptors := nil.
 	commits := nil.

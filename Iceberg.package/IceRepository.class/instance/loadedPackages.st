@@ -1,3 +1,3 @@
 working copies
 loadedPackages
-	^ self allPackages select: #isLoaded
+	^ self allSavedPackages select: #isLoaded
