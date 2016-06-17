@@ -20,7 +20,7 @@ compose
 				title: 'Synchronize with repository'; showTitle);
 			selectionAct: [:presentation :repo | 
 					self class switchBranchOf: presentation selection.
-					presentation update 
+					presentation pane browser update.
 				] on: $b entitled: 'Switch branch'
 		].
 	

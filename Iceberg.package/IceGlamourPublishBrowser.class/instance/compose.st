@@ -23,7 +23,7 @@ compose
 					shortcut: $u;
 					title: 'Publish all'; showTitle)].
 
-		browser transmit
+"		browser transmit
 			fromOutsideEntityPort;
 			from: #commits; 
 			to: #changes; 
@@ -31,4 +31,4 @@ compose
 			andShow: [ :a | a custom: IceGlamourChangesTree new ].
 
 		self addDiffTo: browser withTitle: 'Left: selected commit / Right: remote version'.
-	]
+"	]

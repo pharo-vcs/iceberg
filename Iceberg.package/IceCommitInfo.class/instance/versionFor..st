@@ -1,5 +1,6 @@
 as yet unclassified
 versionFor: anIcePackageReference 
-	| packageVersion |
-	packageVersion := self versionDescriptorFor: anIcePackageReference.	
-	^ (self repository repository versionFromFileNamed: packageVersion)
+	^ (self versionDescriptorFor: anIcePackageReference)
+		ifNotNil: [ :packageVersion |
+	 		self repository repository versionFromFileNamed: packageVersion 
+		]

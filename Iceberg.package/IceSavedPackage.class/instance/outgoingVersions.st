@@ -1,3 +1,5 @@
 querying
 outgoingVersions
-	^ self versions select: [ :version | self repository outgoingCommits includes: version commit ]
+	| outgoingCommits |
+	outgoingCommits := self repository outgoingCommits.
+	^ self versions select: [ :version | outgoingCommits includes: version commit ]

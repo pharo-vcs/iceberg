@@ -17,10 +17,18 @@ compose
 				column: 'Comment' evaluated: #comment;
 				updateOn: IcePackageLoaded from: #announcer;
 				addAction: (GLMGenericAction new
+					action: [ :presentation :repository | 
+						repository command: 'pull'; refresh.
+						presentation update ];
+					icon: GLMUIThemeExtraIcons glamorousLeftSide;
+					shortcut: $f;
+					title: 'Fecth changes from upstream'; showTitle);
+				addSelectionAction: (GLMGenericAction new
 					action: [ :presentation | presentation selection load. presentation selection: nil ];
 					icon: GLMUIThemeExtraIcons glamorousLeftSide;
 					shortcut: $u;
-					title: 'Update to selected commit'; showTitle)].
+					title: 'Update to selected commit'; showTitle)
+			].
 
 		browser transmit
 			fromOutsideEntityPort;
