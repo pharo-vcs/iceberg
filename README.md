@@ -12,7 +12,6 @@ This is only a prototype and is not yet ready for production, but you are invite
 Metacello new
   baseline: 'Iceberg';
   repository: 'github://npasserini/iceberg';
-  onConflict: [:ex | ex allow];
   load.
 ```
 
@@ -20,7 +19,6 @@ Metacello new
 ```
 Iceberg update
 ```
-
 
 ## Usage
 ### Creating and retreiving repositories.
@@ -32,7 +30,7 @@ A repository is created out of an SCP URL (with the form `[user@]host:filename`,
 ### Local storage of a repository
 When the repository gets first used, it will create a local clone in your disk.
 > By default clones are created in ./iceberg-cache directory, but the idea is that you should not care about it.
-> In the future we would like avoid having local working copies on disk.
+> In the future we would like to avoid having local working copies on disk.
 
 If you prefere to do clones at specific locations, you can provide a directory:
 ```
@@ -46,7 +44,7 @@ Or, if you already have a local repository, you can avoid setting the origin, it
   myRepo := IceRepository new localDirectory: ... absolute or relative path
 ```
 
-If a local repository already exists at the same location we will get all necessary information from it (for example: remote origin and current checkd out branch).
+If a local repository already exists at the same location we will get all necessary information from it (for example: remote origin and current checked out branch).
 
 ### Manage branches
 By default repositories will checkout the 'master' branch. If you need to work with another branch you can do:
