@@ -3,5 +3,5 @@ createRepository
 	self repository: (IceMCGitRepository new
 		localRepository: self location;
 		remoteUrl: self origin url;
-		"subdirectory: '';"
+		subdirectory: (self subdirectory ifNil: '');
 		readonly: false).

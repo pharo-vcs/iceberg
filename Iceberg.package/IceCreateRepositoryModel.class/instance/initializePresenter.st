@@ -1,8 +1,11 @@
 initialization
 initializePresenter
 	createButton action: [
-		[	
-			(IceRepository origin: remoteUrl text) register.
+		[	| repository |
+			repository := IceRepository origin: remoteUrl text.
+			subdirectory text ifNotNil: [ :text | repository subdirectory: text ].
+			repository register.
+			
 			self window delete. 
 		]
 		on: IceWrongUrl 

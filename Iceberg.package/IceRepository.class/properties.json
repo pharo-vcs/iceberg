@@ -12,7 +12,8 @@
 		"repository",
 		"location",
 		"commits",
-		"versionDescriptors" ],
+		"versionDescriptors",
+		"subdirectory" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],
