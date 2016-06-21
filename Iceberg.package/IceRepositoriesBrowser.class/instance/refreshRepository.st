@@ -1,6 +1,6 @@
 action creators
-switchBranch
+refreshRepository
 	^ [ :presentation | 
-		self class switchBranchOf: presentation selection.
+		presentation selection refresh.
 		presentation pane browser update. 
 	]

@@ -8,9 +8,11 @@ compose
 			column: 'Remote host' evaluated: [:repo | repo origin host, '/', repo origin owner ];
 			column: 'Project name' evaluated: [: repo | repo origin projectName ];
 			column: 'Current branch' evaluated: #branch;
+			column: 'Location' evaluated: #location;
 			addAction: self createRepositoryAction;
 			addAction: self synchronizeRepositoryAction;
 			selectionAct: self switchBranch on: $b entitled: 'Switch branch';
+			selectionAct: self refreshRepository on: $r entitled: 'Refresh repository';
 			onChangeOfPort: #strongSelection act: [ :table | IceGlamourSynchronizer synchronize: table selection ]
 		].
 	
