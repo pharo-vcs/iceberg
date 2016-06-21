@@ -20,7 +20,13 @@ Sample usage:
 
 Instance Variables
 - origin: A string representing the url of a remote git repository (used as origin)
-- repository:	An MCFileTreeGitRemoteRepository, which provides underlying git operations.
+- repository:	An IceGitTreeGitRemoteRepository, which provides underlying git operations.
+- location: <FileReference> The directory of the local repository.
+- commits: <OrderedCollection of IceCommitInfo> Cached list of all commits in the current branch (in the local repo).
+- subdirectory: <String> The subdirectory of the local repository which is handled by the underlying GitFileTree
+- versionDescriptors: <List of GitFileTreePackageEntry> cached list of all package versions saved in the (currently selected branch) of the (local) repository.
+- announcer: <Announcer>
+- branch: <String> currently selected branch. Currently it matches with a checked out branch in the working copy associated to the local git repository, this should change in the future.
 
 
-    Implementation Points
+Implementation Points

@@ -9,16 +9,18 @@ compose
 			column: 'Project name' evaluated: [: repo | repo origin projectName ];
 			column: 'Current branch' evaluated: #branch;
 			addAction: self createRepositoryAction;
-			addAction: self createSynchronizeAction;
-			selectionAct: [:presentation :repo | 
-					self class switchBranchOf: presentation selection.
-					presentation pane browser update.
-				] on: $b entitled: 'Switch branch'
+			addAction: self synchronizeRepositoryAction;
+			selectionAct: self switchBranch on: $b entitled: 'Switch branch';
+			onChangeOfPort: #strongSelection act: [ :table | IceGlamourSynchronizer synchronize: table selection ]
 		].
 	
 		browser transmit from: #repositories; to: #packages; andShow: [ :a | a fastTable
 			title: 'Packages';
 			display: #allSavedPackages;
 			column: 'Name' evaluated: #packageName;
-			column: 'Status' evaluated: [:pkg | self statusFor: pkg ]]
+			column: 'Status' evaluated: [:pkg | self statusFor: pkg ];
+			addSelectionAction: self loadPackageAction;
+			addSelectionAction: self unloadPackageAction
+		].
+
 	]

@@ -1,7 +1,3 @@
 querying
 allSavedPackages
-	^ self allPackages collect: [ :pkg | 
-		IceSavedPackage new 
-			package: pkg; 
-			repository: self; 
-			yourself ]
+	^ (savedPackages ifNil: [ self loadSavedPackages ]) values

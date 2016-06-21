@@ -4,16 +4,17 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 6/20/2016 17:10",
 	"instvars" : [
 		"remoteUrl",
 		"remoteUrlLabel",
 		"localDirectory",
-		"subdirectory",
-		"createButton",
 		"localDirectoryLabel",
+		"location",
+		"subdirectoryLabel",
+		"subdirectory",
 		"changeLocationButton",
-		"subdirectoryLabel" ],
+		"createButton" ],
 	"name" : "IceCreateRepositoryModel",
 	"pools" : [
 		 ],

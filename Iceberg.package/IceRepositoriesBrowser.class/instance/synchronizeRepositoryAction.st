@@ -1,5 +1,5 @@
-building
-createSynchronizeAction
+action creators
+synchronizeRepositoryAction
 	^ GLMGenericAction new
 		action: [ :table | IceGlamourSynchronizer synchronize: table selection ];
 		icon: GLMUIThemeExtraIcons glamorousBrowse;
