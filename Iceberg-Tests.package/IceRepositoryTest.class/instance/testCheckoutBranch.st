@@ -1,8 +1,8 @@
 tests
 testCheckoutBranch
 	repository command: 'branch testBranch'.
-	self assert: (repository currentBranchName = 'master').
+	self assert: repository branch equals: 'master'.
 	
 	repository checkoutBranch: 'testBranch'.
 
-	self assert: (repository currentBranchName = 'testBranch')
+	self assert: repository branch equals: 'testBranch'
