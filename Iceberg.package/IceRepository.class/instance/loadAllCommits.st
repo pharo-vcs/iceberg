@@ -9,6 +9,7 @@ loadAllCommits
 				currentLine := WriteStream with: line ]
 			ifFalse: [ 
 				currentLine cr; nextPutAll: line ]].
-	
+		
+	currentLine ifNotNil: [ lines add: currentLine contents ].
 	
 	^ lines collect: [ :line | IceCommitInfo from: line repository: self ]
