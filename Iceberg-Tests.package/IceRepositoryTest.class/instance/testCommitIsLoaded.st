@@ -10,7 +10,7 @@ testCommitIsLoaded
 	self checkVersionNumber: latestVersionNumber.
 	
 	"A1.2 - Go back to HEAD"
-	repository command: 'checkout master'.
+	repository command: 'checkout master'; refresh.
 	
 	"A3.1 - Assert there is a new incomming commit"
 	self assert: repository incommingCommits size equals: 1.
