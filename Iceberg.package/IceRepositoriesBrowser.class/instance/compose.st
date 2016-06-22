@@ -18,7 +18,7 @@ compose
 	
 		browser transmit from: #repositories; to: #packages; andShow: [ :a | a fastTable
 			title: 'Packages';
-			display: #allSavedPackages;
+			display: #savedPackages;
 			column: 'Name' evaluated: #packageName;
 			column: 'Status' evaluated: [:pkg | self statusFor: pkg ];
 			addSelectionAction: self loadPackageAction;

@@ -1,5 +1,5 @@
 actions
 updatePackage: packageName 
 	self command: 'pull'.
-	self loadPackageNamed: packageName.
+	(self packageNamed: packageName) loadLatest.
 	self refresh.

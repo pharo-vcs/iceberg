@@ -1,3 +1,3 @@
 querying
-allSavedPackages
+savedPackages
 	^ (savedPackages ifNil: [ self loadSavedPackages ]) values
