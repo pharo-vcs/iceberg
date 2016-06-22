@@ -1,3 +1,3 @@
 accessing
 branch
-	^ branch
+	^ branch ifNil: [ branch := self repository branch ]

@@ -5,5 +5,3 @@ createRepository
 		remoteUrl: self origin url;
 		subdirectory: (self subdirectory ifNil: '');
 		readonly: false).
-
-	self branch: self repository branch
