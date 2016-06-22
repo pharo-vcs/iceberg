@@ -14,10 +14,10 @@ testUpdatePackage
 	self checkVersionNumber: latestVersionNumber + 1.
 	
 	"1.3 - Push the branch to origin/master"
-	repository command: 'push'.
+	repository push.
 
 	"1.4 - Remove last commit from local repo"
-	repository command: 'reset --hard HEAD^'.
+	repository command: 'reset --hard HEAD^'; refresh.
 	
 	"1.5 - Reload the package from local repository"
 	self removeTestPackage.
