@@ -4,7 +4,7 @@ outgoingCommits
 	
 	remoteBranch := self remoteBranchName ifNil: [ IceNoRemoteBranch signal ].
 	lines := OrderedCollection new.
-	(self command: {'log'. 'origin/{1}..HEAD' format: {remoteBranch}. '--format=|%H|%an|%ai|%p|%s'}) linesDo: [ :line |
+	(self command: {'log'. 'origin/{1}..HEAD' format: {remoteBranch}. '--format=|%H|%an|%ai|%P|%s'}) linesDo: [ :line |
 		(line beginsWith: '|')
 			ifTrue:  [ 
 				currentLine ifNotNil: [ lines add: currentLine contents ].
@@ -14,4 +14,4 @@ outgoingCommits
 
 	currentLine ifNotNil: [ lines add: currentLine contents ].
 	
-	^ lines collect: [ :line | IceCommitInfo from: line repository: self ]
+	^ lines collect: [ :line | IceCommitInfo new initializeFrom: line ]

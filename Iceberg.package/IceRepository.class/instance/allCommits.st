@@ -1,3 +1,3 @@
 querying
 allCommits
-	^ commits ifNil: [ commits := self loadAllCommits ]
+	^ (commits ifNil: [ self loadAllCommits ]) values sorted: [ :a :b | a datetime > b datetime ]

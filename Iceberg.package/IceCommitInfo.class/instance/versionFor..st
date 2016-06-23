@@ -1,6 +1,7 @@
 as yet unclassified
-versionFor: anIcePackageReference 
-	^ (self versionDescriptorFor: anIcePackageReference)
+versionFor: anIceSavedPackage 
+	^ (self versionDescriptorFor: anIceSavedPackage)
 		ifNotNil: [ :packageVersion |
 	 		self repository repository versionFromFileNamed: packageVersion 
 		]
+		ifNil: [ self lookupVersionFor: anIceSavedPackage ]

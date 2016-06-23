@@ -1,15 +1,16 @@
-querying
+private
 loadAllCommits
-	| lines currentLine |
-	lines := OrderedCollection new.
-	(self command: 'log --format=|%H|%an|%ai|%p|%s') linesDo: [ :line |
+	| currentLine |
+	commits := Dictionary new.
+	
+	(self command: 'log --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
 		(line beginsWith: '|')
 			ifTrue:  [ 
-				currentLine ifNotNil: [ lines add: currentLine contents ].
+				currentLine ifNotNil: [ IceCommitInfo createIn: self from: currentLine contents ].
 				currentLine := WriteStream with: line ]
 			ifFalse: [ 
 				currentLine cr; nextPutAll: line ]].
 		
-	currentLine ifNotNil: [ lines add: currentLine contents ].
+	currentLine ifNotNil: [ IceCommitInfo createIn: self from: currentLine contents ].
 	
-	^ lines collect: [ :line | IceCommitInfo from: line repository: self ]
+	^ commits
