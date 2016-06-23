@@ -1,3 +1,3 @@
 *Iceberg-Core
-asIceRepository
+getOrCreateIcebergRepository
 	^ IceRepository forMCRepository: self
