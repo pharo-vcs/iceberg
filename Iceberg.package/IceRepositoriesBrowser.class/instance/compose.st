@@ -21,6 +21,7 @@ compose
 			display: #savedPackages;
 			column: 'Name' evaluated: #packageName;
 			column: 'Status' evaluated: [:pkg | self statusFor: pkg ];
+			addAction: self addPackageAction;
 			addSelectionAction: self loadPackageAction;
 			addSelectionAction: self unloadPackageAction
 		].
