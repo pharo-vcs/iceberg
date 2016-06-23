@@ -4,7 +4,7 @@ testCommitIsLoaded
 
 	"A. Outdated package status"
 	"A1.1 - Preparation: load the next-to-last version"
-	repository command: 'checkout HEAD^1'.
+	repository command: 'checkout master^1'.
 	repository loadPackage: packageName.
 	latestVersionNumber := (repository latestVersion: packageName) versionNumber.
 	self checkVersionNumber: latestVersionNumber.
