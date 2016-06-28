@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 6/28/2016 10:56",
+	"instvars" : [
+		 ],
+	"name" : "IceLibgitLocalRepository",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

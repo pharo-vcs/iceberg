@@ -7,13 +7,14 @@
 	"commentStamp" : "NicoPasserini 6/20/2016 17:22",
 	"instvars" : [
 		"announcer",
-		"origin",
 		"branch",
-		"repository",
 		"location",
+		"subdirectory",
+		"storageClass",
+		"repository",
+		"origin",
 		"commits",
 		"versionDescriptors",
-		"subdirectory",
 		"savedPackages" ],
 	"name" : "IceRepository",
 	"pools" : [
