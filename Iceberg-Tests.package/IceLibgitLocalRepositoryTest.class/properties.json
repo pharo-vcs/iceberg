@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceLibgitLocalRepositoryTest",
+	"pools" : [
+		 ],
+	"super" : "IceRepositoryTest",
+	"type" : "normal" }

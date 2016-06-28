@@ -4,7 +4,7 @@ setUp
 	projectName := 'pharo-git-test'.
 
 	origin := 'git@github.com:npasserini/{1}.git' format: { projectName }.
-	repository := IceRepository origin: origin.
+	repository := self createTestRepository: origin.
 	
 	self removeTempDirectories.
 	self removeTestPackage.
