@@ -1,5 +1,5 @@
 repository handling
 command: aCommandDescription
-	"See IceGitCommand for the specification of possible command descriptions"
+	"This should be avoided and replaced by more specific options to the bare repository"
 	self ensureLocalRepository.
-	^ IceGitCommand in: self location execute: aCommandDescription
+	^ self repository command: aCommandDescription 
