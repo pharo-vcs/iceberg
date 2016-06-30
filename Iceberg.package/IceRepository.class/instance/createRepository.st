@@ -2,5 +2,5 @@ repository handling
 createRepository
 	self repository: (self storageClass 
 		newRepositoryAt: self location
-		remoteUrl: self origin url
+		origin: self origin
 		subdirectory: (self subdirectory ifNil: '')).

@@ -1,6 +1,6 @@
 instance creation
-newRepositoryAt: directory remoteUrl: remoteUrl subdirectory: subdirectory
+newRepositoryAt: directory origin: origin subdirectory: subdirectory
 	^ self new
 		location: directory subdirectory: subdirectory;
-		remoteUrl: remoteUrl;
+		remoteUrl: origin url;
 		readonly: false.

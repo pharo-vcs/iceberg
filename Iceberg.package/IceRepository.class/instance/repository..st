@@ -9,7 +9,7 @@ repository: anMCRepository
 				ifNil: [ branch := repository currentBranch. ]
 				ifNotNil: [ self checkoutBranch: branch ]]
 		ifFalse: [ 
-			repository clone. 
+			repository cloneRepository. 
 			repository validate
 		]
 	

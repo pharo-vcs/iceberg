@@ -1,5 +1,5 @@
 actions
-clone
+cloneRepository
 	self repositoryDirectory parent ensureCreateDirectory.
 
 	IceGitCommand 
