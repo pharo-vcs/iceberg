@@ -2,5 +2,5 @@ private
 command: aCommandDescription
 	"See IceGitCommand for the specification of possible command descriptions"
 	^ IceGitCommand 
-		in: self localRepository 
+		in: self repositoryDirectory 
 		execute: aCommandDescription
