@@ -1,3 +1,6 @@
 auxiliar
 tempDirectories
-	^ { self defaultLocation  }
+	^ { 
+		self defaultLocationForLocalClonedRepository.
+		self defaultLocationForGithubClonedRepository.
+	}

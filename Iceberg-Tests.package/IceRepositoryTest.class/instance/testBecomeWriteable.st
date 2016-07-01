@@ -11,6 +11,6 @@ testBecomeWriteable
 	self package iceRepository ensureLocalRepository.
 	
 	"Test"
-	self assert: self defaultLocation exists.
-	self assert: (self defaultLocation / '.git') exists.
+	self assert: self defaultLocationForGithubClonedRepository exists.
+	self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.
 	
