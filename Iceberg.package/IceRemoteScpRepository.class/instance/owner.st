@@ -1,3 +1,3 @@
-querying
+accessing
 owner
 	 ^ owner

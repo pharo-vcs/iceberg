@@ -1,4 +1,4 @@
 accessing
 location
 	^ location ifNil: [ location := 
-		'iceberg-cache' asFileReference / self origin owner / self origin projectName ]
+		'iceberg-cache' asFileReference / self origin organizer / self origin projectName ]
