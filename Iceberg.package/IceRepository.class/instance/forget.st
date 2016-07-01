@@ -1,3 +1,3 @@
 registry
 forget
-	self class registry remove: self
+	self class registry remove: self ifAbsent: [ "Ignore" ]
