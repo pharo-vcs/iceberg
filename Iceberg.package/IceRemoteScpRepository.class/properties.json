@@ -4,12 +4,12 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 5/18/2016 17:25",
+	"commentStamp" : "",
 	"instvars" : [
-		"url",
-		"projectName" ],
-	"name" : "IceRemoteRepository",
+		"host",
+		"owner" ],
+	"name" : "IceRemoteScpRepository",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceRemoteRepository",
 	"type" : "normal" }

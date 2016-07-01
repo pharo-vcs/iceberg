@@ -1,5 +1,5 @@
 private
-parseScpUrl
+parseUrl
 	| matcher |
 	matcher := '(git@)?([\w.]+)\:([\w]+)/([\w\-]+)\.git/?.*' asRegex.
 	(matcher matches: url) 

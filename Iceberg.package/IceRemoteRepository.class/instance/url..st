@@ -1,6 +1,4 @@
 accessing
-url: anObject
-	url := anObject.
-	(url beginsWith: 'git@') 
-		ifTrue: [ self parseScpUrl ]
-		ifFalse: [ self error: 'Remote repository scheme not supported: ', url ]
+url: aString
+	url := aString.
+	self parseUrl
