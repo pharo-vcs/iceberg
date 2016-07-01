@@ -1,3 +1,4 @@
 running
 tearDown
-	self removeTestPackage 
+	self removeTestPackage.
+	repository forget.
