@@ -1,3 +1,3 @@
 querying
 allPackages
-	^ self lookupPackages collect: #asIcePackage
+	^ self repository lookupPackages

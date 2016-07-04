@@ -2,6 +2,7 @@
 	"category" : "Iceberg-Adapters",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "TIceRepositoryBackend classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 6/28/2016 10:56",
@@ -13,4 +14,5 @@
 	"pools" : [
 		 ],
 	"super" : "Object",
+	"traitcomposition" : "TIceRepositoryBackend",
 	"type" : "normal" }

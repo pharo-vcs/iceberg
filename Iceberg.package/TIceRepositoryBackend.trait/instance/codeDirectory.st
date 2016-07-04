@@ -1,0 +1,3 @@
+requirements
+codeDirectory
+	self requirement
