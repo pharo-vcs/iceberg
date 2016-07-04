@@ -1,7 +1,5 @@
 querying
 branch
-	LGitGlobal runSequence: [ 
-		| repo headReference matcher |
-		repo := (LGitRepository on: self location) open.
+	self withRepoDo: [ :repo |
 		^ repo head basename
 	]
