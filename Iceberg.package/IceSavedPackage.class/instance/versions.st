@@ -1,5 +1,4 @@
 querying
 versions
-	^ self repository allVersionDescriptors 
-		select: [ :each | each packageName = self package packageName ] 
-		thenCollect: [ :each | IceSavedPackageVersion savedPackage: self entry: each ]
+	"Containing info in the repo makes it easy to refresh."
+	^ self repository versionsFor: self

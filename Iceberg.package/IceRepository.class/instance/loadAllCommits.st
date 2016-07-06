@@ -3,7 +3,7 @@ loadAllCommits
 	| currentLine |
 	commits := Dictionary new.
 	
-	(self command: 'log --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
+	(self repository command: 'log --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
 		(line beginsWith: '|')
 			ifTrue:  [ 
 				currentLine ifNotNil: [ IceCommitInfo createIn: self from: currentLine contents ].

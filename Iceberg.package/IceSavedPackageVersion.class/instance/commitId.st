@@ -1,3 +1,3 @@
 accessing
 commitId
-	^ self commit commitId
+	^ commitId

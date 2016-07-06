@@ -1,3 +1,3 @@
 as yet unclassified
 allVersionDescriptors
-	^ self repository allVersionDescriptors select: [ :each | each commitID hex = self commitId ]
+	^ self repository allVersions select: [ :each | each commitId = self commitId ]

@@ -4,4 +4,5 @@ savedPackage: anIceSavedPackage entry: aGitFileTreePackageEntry
 		package: anIceSavedPackage package;
 		repository: anIceSavedPackage repository;
 		entry: aGitFileTreePackageEntry;
+		commitId: aGitFileTreePackageEntry commitID hex;
 		yourself
