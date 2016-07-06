@@ -1,10 +1,16 @@
 tests
 testSaveSinglePackage
-	| latestVersionNumber | 
+	| loadedVersion loadedVersionNumber |
 	repository loadPackage: packageName.
-	latestVersionNumber := (repository latestVersion: packageName) versionNumber.
+
+	loadedVersion := (repository packageNamed: packageName) loadedVersion.
+	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
+	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
+	self assert: loadedVersion commitId equals: self currentCommitId.
 
 	self saveNewVersion.
 	
-	self assert: ((repository latestVersion: packageName) versionNumber) 
-		equals: latestVersionNumber + 1
+	loadedVersion := (repository packageNamed: packageName) latestVersion.
+	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
+	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
+	self assert: loadedVersion commitId equals: self currentCommitId.

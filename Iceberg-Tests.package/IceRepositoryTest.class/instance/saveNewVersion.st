@@ -1,9 +1,10 @@
 auxiliar
 saveNewVersion
-	| latestVersionNumber testClass |
-	latestVersionNumber := (repository latestVersion: packageName) versionNumber.
-
+	| testClass currentVersionNumber |
 	testClass := Smalltalk at: #Test.
-	testClass compile: ('nextVersion ^ {1}' format: {latestVersionNumber + 1}).
+	currentVersionNumber := testClass new versionNumber.
 
-	repository savePackage: packageName withMessage: 'Automatic change done by unit tests'.
+	testClass compile: ('versionNumber ^ {1}' format: {currentVersionNumber + 1}).
+	repository 
+		savePackage: packageName 
+		withMessage: ('Saving version {1}' format: {currentVersionNumber + 1}).

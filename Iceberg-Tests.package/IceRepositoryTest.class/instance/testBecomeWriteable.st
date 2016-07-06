@@ -1,6 +1,7 @@
 tests
 testBecomeWriteable
 	"Prepare"
+	| writableRepository |
 	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
 	Metacello new
 	  baseline: 'PharoGitTest';
@@ -8,9 +9,12 @@ testBecomeWriteable
 	  load.
 
 	"Exercise"
-	self package iceRepository ensureLocalRepository.
-	
-	"Test"
-	self assert: self defaultLocationForGithubClonedRepository exists.
-	self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.
-	
+	writableRepository := self package iceRepository.
+	[
+		writableRepository ensureLocalRepository.
+
+		"Test"
+		self assert: self defaultLocationForGithubClonedRepository exists.
+		self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.
+	]
+	ensure: [ writableRepository forget ]	

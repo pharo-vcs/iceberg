@@ -1,37 +1,34 @@
 tests
 testCommitIsLoaded
-	| latestVersionNumber loadedCommit loadedVersionDescriptor versionInfoFromWorkingCopy |
+	| loadedVersion loadedVersionNumber loadedCommit |
 
-	"A. Outdated package status"
-	"A1.1 - Preparation: load the next-to-last version"
-	repository command: 'checkout master^1'.
-	repository loadPackage: packageName.
-	latestVersionNumber := (repository latestVersion: packageName) versionNumber.
-	self checkVersionNumber: latestVersionNumber.
+	"1. Prepare"
+	"1.1 - Load the next-to-last version"
+	self gitCommand: 'checkout master^1'.
+	loadedVersion := (repository packageNamed: packageName) latestVersion load.
+	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
 	
-	"A1.2 - Go back to HEAD"
-	repository command: 'checkout master'; refresh.
+	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
+	self assert: loadedVersion commitId equals: self currentCommitId.
 	
-	"A3.1 - Assert there is a new incomming commit"
+	"1.2 - Go back to HEAD"
+	self gitCommand: 'checkout master'.
+	
+	"1.3 - Some verifications before excersising"
 	self assert: repository incommingCommits size equals: 1.
-	self assert: (repository latestVersion: packageName) versionNumber equals: latestVersionNumber + 1.
+	self assert: (self currentCommitMessage endsWith: (loadedVersionNumber + 1) asString).
+	self deny: loadedVersion commitId = self currentCommitId.
+	self assert: (repository latestVersion: packageName) commitId equals: self currentCommitId.
 	
-	"A3.2 - The all-but-last commit corresponds to the loaded version / working copy"
-	loadedCommit := repository allCommits second.
-	loadedVersionDescriptor  := repository allVersionDescriptors detect: [ :entry | entry commitID hex = loadedCommit commitId ].
-	versionInfoFromWorkingCopy := (Iceberg packageNamed: packageName) workingCopy versionInfo.
-	self assert: versionInfoFromWorkingCopy id equals: loadedVersionDescriptor info id.
-	
-	"B. Second part: Update the package."
-	"B1 - Preparation"
+	"2. Excercise"
 	repository updatePackage: packageName.
 	
-	"B3.1 - Assert there are no more incomming commits"
+	"3. Verify"
+	"3.1 - There shouldn't be more incomming commits"
 	self assert: repository incommingCommits size equals: 0.
-	self checkVersionNumber: latestVersionNumber + 1.
 
-	"B3.2 - Assert that the newly loaded commit correspond to the loaded version / working copy"
-	loadedCommit := repository allCommits first.
-	loadedVersionDescriptor  := repository allVersionDescriptors detect: [ :entry | entry commitID hex = loadedCommit commitId ].
-	versionInfoFromWorkingCopy := (Iceberg packageNamed: packageName) workingCopy versionInfo.
-	self assert: versionInfoFromWorkingCopy id equals: loadedVersionDescriptor info id.
+	"3.2 - The newly loaded commit should correspond to the loaded version / working copy"
+	loadedVersion := (repository packageNamed: packageName) latestVersion load.
+	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
+	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
+	self assert: loadedVersion commitId equals: self currentCommitId.
