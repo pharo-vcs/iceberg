@@ -1,3 +1,3 @@
 comparing
 = another
-	^ self commitId = another commitId
+	^ another species = self species and: [ self commitId = another commitId ]

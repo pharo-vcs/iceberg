@@ -1,5 +1,5 @@
 actions
 createBranch: branchName
-	self repository command: {'checkout'. '-b'. branchName}.
+	self backend createBranch: branchName.
 	self branch: branchName.
 	self refresh.
