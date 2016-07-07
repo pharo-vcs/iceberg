@@ -1,6 +1,6 @@
 tests
 testLoadCommit
-	| latestVersionNumber commit | 
+	| commit | 
 	"1. - Preparation: have an incomming commit which does not have versions for all loaded packages"
 	"1.1 - Commit a new version of some package"
 	repository loadPackage: packageName.
