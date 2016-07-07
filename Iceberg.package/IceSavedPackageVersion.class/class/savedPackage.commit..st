@@ -4,4 +4,5 @@ savedPackage: anIceSavedPackage commit: aLGitCommit
 		package: anIceSavedPackage package;
 		repository: anIceSavedPackage repository;
 		commitId: aLGitCommit id hexString;
+		author: aLGitCommit author name;
 		yourself

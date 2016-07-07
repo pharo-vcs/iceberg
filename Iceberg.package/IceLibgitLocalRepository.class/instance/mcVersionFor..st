@@ -5,6 +5,6 @@ mcVersionFor: iceVersion
 		commit := LGitCommit of: repo fromId: (LGitId fromHexString: iceVersion commitId).
 
 		^ (IceLibgitVersionReader 
-			on: commit tree
+			on: commit
 			iceVersion: iceVersion) version
 	]

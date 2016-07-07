@@ -1,7 +1,7 @@
 accessing
 loadVersionInfo
   info := MCVersionInfo
-    name: self packageNameFromPackageDirectory , '-cypress.1'
+    name: self versionName
     id: UUID new
     message: 'fabricated from a Cypress format repository'
     date: Date today

@@ -9,4 +9,6 @@ lookupVersionsOfPackage: anIceSavedPackage
 			ifTrue: [ versions add: (IceSavedPackageVersion savedPackage: anIceSavedPackage commit: commit) ]
 	].
 
+	versions reverse doWithIndex: [ :version :index | version number: index ].
+
 	^ versions

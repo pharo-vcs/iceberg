@@ -7,9 +7,6 @@ commitsInCurrentBranchDo: aBlock
 			yourself.
 			
 		[ walk hasNext ] whileTrue: [ 
-			| commit |
-			commit := walk next.
-			aBlock value: commit.
-			commit free.
-		 ]
+			aBlock value: walk next
+		]
 	]

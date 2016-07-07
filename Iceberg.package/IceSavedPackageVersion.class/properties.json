@@ -10,7 +10,9 @@
 		"repository",
 		"entry",
 		"commitId",
-		"commit" ],
+		"commit",
+		"number",
+		"author" ],
 	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],
