@@ -1,4 +1,4 @@
 utilities
-directoryFromPath: aString relativeTo: aLGitTree
-	^ aLGitTree entryByPath: aString
+directoryFromPath: aString relativeTo: aCommitOrTree
+	^ aCommitOrTree tree entryByPath: aString
  

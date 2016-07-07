@@ -7,12 +7,10 @@
 	"commentStamp" : "NicoPasserini 7/6/2016 10:39",
 	"instvars" : [
 		"package",
-		"repository",
 		"entry",
 		"commitId",
 		"commit",
-		"number",
-		"author" ],
+		"info" ],
 	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],

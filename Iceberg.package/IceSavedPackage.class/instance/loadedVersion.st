@@ -1,7 +1,7 @@
 querying
 loadedVersion
 	^ self versions 
-		detect: [ :version | self package workingCopy ancestors includes:version entry info  ] 
+		detect: [ :version | self package workingCopy ancestors includes: version info  ] 
 		ifNone: [ 
 			"Check if working copy came from an MCGithubRepository"
 			(MCGitHubRepository commitIdFor: self workingCopy)

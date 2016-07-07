@@ -1,3 +1,3 @@
 accessing
 repository
-	^ repository
+	^ self package repository

@@ -1,3 +1,3 @@
 accessing
 author
-	^ author
+	^ self info author

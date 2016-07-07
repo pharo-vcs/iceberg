@@ -1,14 +1,18 @@
 private
 lookupVersionsOfPackage: anIceSavedPackage 
 	"Load versions from the real repository, latest first"
-	| versions | 
-	versions := OrderedCollection new.
+	| commitsChangingPackage | 
+	commitsChangingPackage := OrderedCollection new.
 	
 	self commitsInCurrentBranchDo: [ :commit |
 		(commit changesFileNamed: anIceSavedPackage packageName, '.package')
-			ifTrue: [ versions add: (IceSavedPackageVersion savedPackage: anIceSavedPackage commit: commit) ]
+			ifTrue: [ commitsChangingPackage add: commit ]
 	].
 
-	versions reverse doWithIndex: [ :version :index | version number: index ].
-
-	^ versions
+	^ (commitsChangingPackage reverse collectWithIndex: [ :commit :index |
+		IceSavedPackageVersion new 
+			package: anIceSavedPackage;
+			commitId: commit id hexString;
+			info: (self createInfoForPackage: anIceSavedPackage commit: commit versionNumber: index);
+			yourself
+	]) reverse

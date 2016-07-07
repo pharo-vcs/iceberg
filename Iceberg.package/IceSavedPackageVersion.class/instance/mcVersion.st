@@ -1,3 +1,3 @@
-as yet unclassified
+patches
 mcVersion
 	^ self repository backend mcVersionFor: self
