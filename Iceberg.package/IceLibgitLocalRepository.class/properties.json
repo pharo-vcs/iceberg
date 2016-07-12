@@ -9,7 +9,8 @@
 	"instvars" : [
 		"location",
 		"origin",
-		"subdirectory" ],
+		"subdirectory",
+		"branch" ],
 	"name" : "IceLibgitLocalRepository",
 	"pools" : [
 		 ],

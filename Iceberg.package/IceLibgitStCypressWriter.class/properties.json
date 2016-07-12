@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceLibgitStCypressWriter",
+	"pools" : [
+		 ],
+	"super" : "MCFileTreeGitStCypressWriter",
+	"type" : "normal" }
