@@ -1,16 +1,9 @@
 private
 loadAllCommits
-	| currentLine |
 	commits := Dictionary new.
-	
-	(self repository command: 'log --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
-		(line beginsWith: '|')
-			ifTrue:  [ 
-				currentLine ifNotNil: [ IceCommitInfo createIn: self from: currentLine contents ].
-				currentLine := WriteStream with: line ]
-			ifFalse: [ 
-				currentLine cr; nextPutAll: line ]].
-		
-	currentLine ifNotNil: [ IceCommitInfo createIn: self from: currentLine contents ].
-	
+
+	self repository lookupCommitsInCurrentBranch do: [ :commit | 
+		commit addToRepository: self.
+	].
+
 	^ commits

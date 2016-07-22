@@ -1,3 +1,3 @@
 comparing
 isNewerThan: another
-	^ self entry info timeStamp > another entry info timeStamp
+	^ self info timeStamp > another info timeStamp

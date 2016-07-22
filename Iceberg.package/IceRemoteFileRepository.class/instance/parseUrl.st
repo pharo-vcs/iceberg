@@ -8,8 +8,3 @@ parseUrl
 			projectName := path basename.
 		]
 		ifFalse: [ IceWrongUrl signal: 'Could not parse  "file:" url: ', url ]
-			
-
-	
-	
-

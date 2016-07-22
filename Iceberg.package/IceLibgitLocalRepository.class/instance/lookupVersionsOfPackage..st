@@ -1,4 +1,4 @@
-private
+querying
 lookupVersionsOfPackage: anIceSavedPackage 
 	"Load versions from the real repository, latest first"
 	| commitsChangingPackage | 
