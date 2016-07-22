@@ -18,7 +18,7 @@ compose
 				updateOn: IcePackageLoaded from: #announcer;
 				addAction: (GLMGenericAction new
 					action: [ :presentation :repository | 
-						repository command: 'pull'; refresh.
+						repository pull.
 						presentation update ];
 					icon: GLMUIThemeExtraIcons glamorousLeftSide;
 					shortcut: $f;
