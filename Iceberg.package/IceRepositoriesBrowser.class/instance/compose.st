@@ -12,6 +12,7 @@ compose
 			addAction: self createRepositoryAction;
 			addAction: self synchronizeRepositoryAction;
 			selectionAct: self switchBranch on: $b entitled: 'Switch branch';
+			selectionAct: self forgetRepository on: $x entitled: 'Forget repository';
 			selectionAct: self refreshRepository on: $r entitled: 'Refresh repository';
 			onChangeOfPort: #strongSelection act: [ :table | IceGlamourSynchronizer synchronize: table selection ]
 		].
