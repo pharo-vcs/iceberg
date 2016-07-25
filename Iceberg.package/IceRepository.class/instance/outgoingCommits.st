@@ -1,3 +1,3 @@
-querying
+commits
 outgoingCommits
-	^ [ self backend outgoingCommits ] on: IceNoRemoteBranch do: [ self allCommits ]
+	^ [ self backend outgoingCommits ] on: IceNoRemoteBranch do: [ self commits ]

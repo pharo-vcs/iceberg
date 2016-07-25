@@ -1,5 +1,5 @@
 private
 refresh
 	versionDescriptors := nil.
-	commits := nil.
+	commitDictionary := nil.
 	savedPackages := nil.

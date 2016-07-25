@@ -9,6 +9,7 @@
 		"commitId",
 		"username",
 		"datetime",
+		"parentIds",
 		"parents",
 		"comment",
 		"repository" ],

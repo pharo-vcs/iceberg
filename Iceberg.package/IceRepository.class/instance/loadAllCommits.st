@@ -1,9 +1,10 @@
 private
 loadAllCommits
-	commits := Dictionary new.
+	commitDictionary := Dictionary new.
 
 	self repository lookupCommitsInCurrentBranch do: [ :commit | 
-		commit addToRepository: self.
+		commit repository: self.
+		commitDictionary at: commit commitId put: commit.
 	].
 
-	^ commits
+	^ commitDictionary

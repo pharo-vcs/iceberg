@@ -10,6 +10,6 @@ initializeFrom: aGitLogLine
 		commitId: (elements at: 2);
 		username: (elements at: 3);
 		datetime: (DateAndTime readFrom: (elements at: 4) readStream );
-		parents: ((Character space split: (elements at: 5) trim) select: #notEmpty);
+		parentIds: ((Character space split: (elements at: 5) trim) select: #notEmpty);
 		comment: (elements at: 6)
 		

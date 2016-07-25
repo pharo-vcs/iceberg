@@ -9,7 +9,7 @@ lookupCommitsInCurrentBranch
 			commitId: commit id hexString;
 			username: commit committer name;
 			datetime: commit time asDateAndTime;
-			parents: (commit parents collect: [ :parent | parent id hexString ]);
+			parentIds: (commit parents collect: [ :parent | parent id hexString ]);
 			comment: commit message
 		).
 	].

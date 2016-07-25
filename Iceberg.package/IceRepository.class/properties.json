@@ -13,9 +13,9 @@
 		"storageClass",
 		"repository",
 		"origin",
-		"commits",
 		"versionDescriptors",
-		"savedPackages" ],
+		"savedPackages",
+		"commitDictionary" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],

@@ -1,4 +1,4 @@
-querying
+commits
 incommingCommits
 	| loadedCommits |
 	loadedCommits := self loadedPackages 

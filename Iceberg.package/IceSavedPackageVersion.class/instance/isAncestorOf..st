@@ -1,3 +1,3 @@
 comparing
-isAncestorOf: commitId
-	^ (self repository command: { 'merge-base'. commitId. self commitId }) trim = self commitId  
+isAncestorOf: anotherCommitId
+	^ self commit isAncestorOf: (self repository commitAt: anotherCommitId)
