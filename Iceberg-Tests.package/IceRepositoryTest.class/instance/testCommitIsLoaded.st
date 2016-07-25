@@ -15,7 +15,6 @@ testCommitIsLoaded
 	self gitCommand: 'checkout master'.
 	
 	"1.3 - Some verifications before excersising"
-	[  repository incommingCommits ] on: Error do: [ :err | err debug ].
 	self assert: repository incommingCommits size equals: 1.
 	self assert: (self currentCommitMessage endsWith: (loadedVersionNumber + 1) asString).
 	self deny: loadedVersion commitId = self currentCommitId.
