@@ -7,7 +7,7 @@ testLoadCommit
 	self saveNewVersion.
 
 	"1.2 - Remove the modified package"
-	self removeTestPackage.
+	self removeTestPackages.
 
 	"1.3 - Checkout and load the previous version"
 	repository checkoutBranch: 'master^1'.

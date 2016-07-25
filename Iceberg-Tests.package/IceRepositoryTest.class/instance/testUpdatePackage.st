@@ -20,7 +20,7 @@ testUpdatePackage
 	self gitCommand: 'reset --hard HEAD^'.
 	
 	"1.5 - Reload the package from local repository"
-	self removeTestPackage.
+	self removeTestPackages.
 	self deny: (Smalltalk globals includesKey: #Test).	
 	repository loadPackage: packageName.
 	self checkLoadedLatestCommitWithVersion: loadedVersionNumber - 1.

@@ -7,5 +7,5 @@ testFrom
 	self assert: info username equals: 'Nicolás Passerini'.
 	self assert: info datetime equals: 
 		(DateAndTime year: 2016  month: 5 day: 27 hour: 9 minute:20 second:49 offset: 2 hours).
-	self assert: info parents size equals: 1.
+	self assert: info parentIds size equals: 1.
 	self assert: info comment equals: 'Updated test method with version 2'.

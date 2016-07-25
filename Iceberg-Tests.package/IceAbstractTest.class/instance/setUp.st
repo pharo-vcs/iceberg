@@ -8,4 +8,4 @@ setUp
 	repository := self createTestRepository: origin.
 	
 	self removeTempDirectories.
-	self removeTestPackage.
+	self removeTestPackages.
