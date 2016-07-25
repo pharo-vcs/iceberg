@@ -1,10 +1,11 @@
 utilities
 switchBranchOf: anIceRepository
 	| branches selection | 
-	branches := anIceRepository localBranchNames.
+	branches := anIceRepository branchesForCheckout.
 	selection := (UIManager default 
-		chooseFrom: branches
+		chooseFrom: (branches collect: #displayName)
+		values: branches
 		message: 'Select the new branch you want to switch to:' 
 		title: 'Checkout branch').
 
-	selection > 0 ifTrue: [ anIceRepository checkoutBranch: (branches at: selection) ]
+	selection ifNotNil: [ anIceRepository checkoutBranch: selection simpleName ]
