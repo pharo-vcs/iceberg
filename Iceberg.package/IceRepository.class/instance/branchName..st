@@ -1,6 +1,3 @@
 accessing
 branchName: branchName
-	self branch: (IceBranch new 
-		name: branchName;
-		repository: self;
-		yourself)
+	self branch: (IceBranch named: branchName inRepository: self)

@@ -1,4 +1,4 @@
 as yet unclassified
-versionFor: anIceSavedPackage 
-	^ (self versionDescriptorFor: anIceSavedPackage)
-		ifNil: [ self lookupVersionFor: anIceSavedPackage ]
+versionFor: package 
+	^ (self ownVersionFor: package)
+		ifNil: [ self lookupVersionFor: package ]

@@ -1,3 +1,3 @@
 as yet unclassified
-snapshotFor: anIcePackageReference 
-	^ (self versionFor: anIcePackageReference) ifNotNil: #snapshot
+snapshotFor: package 
+	^ (self versionFor: package) ifNotNil: #snapshot
