@@ -4,7 +4,7 @@ testCommitIsLoaded
 
 	"1. Prepare"
 	"1.1 - Load the next-to-last version"
-	self gitCommand: 'checkout master^1'.
+	self gitCommand: 'checkout -b outdatedMaster master^1'.
 	loadedVersion := (repository packageNamed: packageName) latestVersion load.
 	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
 	
@@ -12,7 +12,7 @@ testCommitIsLoaded
 	self assert: loadedVersion commitId equals: self currentCommitId.
 	
 	"1.2 - Go back to HEAD"
-	self gitCommand: 'checkout master'.
+	repository checkoutBranch: 'master'.
 	
 	"1.3 - Some verifications before excersising"
 	self assert: repository incommingCommits size equals: 1.

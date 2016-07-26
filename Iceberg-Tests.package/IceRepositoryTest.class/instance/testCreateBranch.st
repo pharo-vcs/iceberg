@@ -1,7 +1,7 @@
 tests
 testCreateBranch
 	"Verify before exercise"
-	self assert: repository branch equals: 'master'.
+	self assert: repository branch name equals: 'master'.
 	self assert: repository backend branch equals: 'master'.
 	self assert: (self gitCommand: 'symbolic-ref --short HEAD') trim equals: 'master'.
 	self assert: repository outgoingCommits isEmpty.
@@ -12,7 +12,7 @@ testCreateBranch
 
 	"Assert"
 	"1 - Basic asserts"
-	self assert: repository branch equals: 'createdBranch'.
+	self assert: repository branch name equals: 'createdBranch'.
 	self assert: repository backend branch equals: 'createdBranch'.
 	self assert: (self gitCommand: 'symbolic-ref --short HEAD') trim equals: 'createdBranch'.
 	

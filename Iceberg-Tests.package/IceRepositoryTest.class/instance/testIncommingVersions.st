@@ -4,7 +4,7 @@ testIncommingVersions
 	"1. - Preparation: checkout the all-but-last version"
 	self gitCommand: 'checkout master^'.
 	repository loadPackage: packageName.
-	self gitCommand: 'checkout master'.
+	repository checkoutBranch: 'master'.
 
 	"2. - Exercise"
 	package := repository packageNamed: packageName.

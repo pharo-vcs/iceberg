@@ -9,5 +9,5 @@ testUseExistingLocalRepo
 	
 	"test"
 	self assert: (repository allPackages includes: (Iceberg packageNamed: 'Pharo-Git-Test' )).
-	self assert: repository branch equals: 'newBranch'.
+	self assert: repository branch name equals: 'newBranch'.
 
