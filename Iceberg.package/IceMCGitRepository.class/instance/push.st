@@ -2,7 +2,7 @@ actions
 push
 	self command: {
 		'push'.
-		self remoteBranchName isNil ifTrue: [{
+		self upstream isNil ifTrue: [{
 			'--set-upstream'.
 			'origin'.
 			self branch
