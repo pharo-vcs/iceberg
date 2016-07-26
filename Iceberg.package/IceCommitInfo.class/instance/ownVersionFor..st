@@ -1,4 +1,4 @@
-as yet unclassified
+querying
 ownVersionFor: package 
 	^ self ownVersions 
 		detect: [ :each | each packageName = package name ]

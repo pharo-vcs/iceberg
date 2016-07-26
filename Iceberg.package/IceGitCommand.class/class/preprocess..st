@@ -1,7 +1,10 @@
 execute
 preprocess: commandDescription
 	commandDescription ifNil: [ ^ {} ]. 
-	commandDescription isString ifTrue: [ ^ ' ' split: commandDescription ].
+	commandDescription isString ifTrue: [ 
+		(commandDescription beginsWith: '"')
+			ifTrue: [ ^ { commandDescription } ]
+			ifFalse: [ ^ ' ' split: commandDescription ]].
 	commandDescription isCollection ifTrue: [ 
 		^ commandDescription flatCollect: [ :elem | self preprocess: elem ]].
 	

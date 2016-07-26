@@ -1,3 +1,3 @@
-as yet unclassified
+querying
 ownVersions
 	^ self repository versionsInCommit: self
