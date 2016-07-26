@@ -1,10 +1,10 @@
 querying
-lookupCommitsInCurrentBranch
+lookupCommitsInBranch: branchName
 	"Load versions from the real repository, latest first"
 	| commits | 
 	commits := OrderedCollection new.
 	
-	self commitsInCurrentBranchDo: [ :commit |
+	self commitsInBranch: branchName do: [ :commit |
 		commits add: (IceCommitInfo new
 			commitId: commit id hexString;
 			username: commit committer name;

@@ -6,8 +6,8 @@ repository: anMCRepository
 		ifTrue: [ 
 			repository validate. 
 			branch 
-				ifNil: [ branch := repository currentBranch. ]
-				ifNotNil: [ self checkoutBranch: branch ]]
+				ifNil: [ self branchName: repository currentBranch. ]
+				ifNotNil: [ self checkoutBranch: branch name ]]
 		ifFalse: [ 
 			repository cloneRepository. 
 			repository validate

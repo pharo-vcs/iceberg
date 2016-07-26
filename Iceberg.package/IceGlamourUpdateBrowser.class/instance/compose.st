@@ -16,18 +16,9 @@ compose
 				column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
 				column: 'Comment' evaluated: #comment;
 				updateOn: IcePackageLoaded from: #announcer;
-				addAction: (GLMGenericAction new
-					action: [ :presentation :repository | 
-						repository pull.
-						presentation update ];
-					icon: GLMUIThemeExtraIcons glamorousLeftSide;
-					shortcut: $f;
-					title: 'Fecth changes from upstream'; showTitle);
-				addSelectionAction: (GLMGenericAction new
-					action: [ :presentation | presentation selection load. presentation selection: nil ];
-					icon: GLMUIThemeExtraIcons glamorousLeftSide;
-					shortcut: $u;
-					title: 'Update to selected commit'; showTitle)
+				addAction: self fetchAction;
+				addSelectionAction: self loadAction;
+				addSelectionAction: self mergeAction
 			].
 
 		browser transmit

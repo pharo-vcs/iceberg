@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		"Registry" ],
-	"commentStamp" : "NicoPasserini 6/20/2016 17:22",
+	"commentStamp" : "NicoPasserini 7/26/2016 14:54",
 	"instvars" : [
 		"announcer",
 		"branch",
@@ -13,9 +13,8 @@
 		"storageClass",
 		"repository",
 		"origin",
-		"versionDescriptors",
 		"savedPackages",
-		"commitDictionary" ],
+		"upstream" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],

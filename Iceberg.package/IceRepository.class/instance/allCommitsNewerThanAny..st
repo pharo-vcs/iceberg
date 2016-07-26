@@ -9,4 +9,3 @@ allCommitsNewerThanAny: commitIds
 			ifFalse: [incommingCommits add: commit]].
 		
 	^ incommingCommits.
-	

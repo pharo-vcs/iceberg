@@ -1,3 +1,3 @@
 accessing
-branch: anObject
-	branch := anObject
+branch: anIceBranch
+	branch := anIceBranch

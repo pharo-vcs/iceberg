@@ -1,3 +1,4 @@
 accessing
 branch
-	^ branch ifNil: [ branch := self repository branch ]
+	branch ifNil: [ self branchName: self backend branch ].
+	^ branch

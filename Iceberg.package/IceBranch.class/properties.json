@@ -6,7 +6,10 @@
 		 ],
 	"commentStamp" : "NicoPasserini 7/26/2016 00:45",
 	"instvars" : [
-		"name" ],
+		"name",
+		"repository",
+		"versionDictionary",
+		"commitDictionary" ],
 	"name" : "IceBranch",
 	"pools" : [
 		 ],

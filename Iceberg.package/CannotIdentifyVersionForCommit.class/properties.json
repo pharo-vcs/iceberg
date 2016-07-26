@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 7/26/2016 14:05",
+	"instvars" : [
+		 ],
+	"name" : "CannotIdentifyVersionForCommit",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

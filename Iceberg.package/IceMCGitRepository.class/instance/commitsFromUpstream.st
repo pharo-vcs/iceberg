@@ -1,9 +1,9 @@
 querying
-lookupCommitsInCurrentBranch
+commitsFromUpstream
 	| currentLine commits |
 	commits := OrderedCollection new.
 	
-	(self command: 'log --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
+	(self command: 'log HEAD..origin --format=|%H|%an|%ai|%P|%s --reverse') linesDo: [ :line |
 		(line beginsWith: '|')
 			ifTrue:  [ 
 				currentLine ifNotNil: [ commits add: (IceCommitInfo createFrom: currentLine contents) ].

@@ -7,7 +7,7 @@ compose
 			title: 'Repositories';
 			column: 'Remote host' evaluated: [:repo | repo origin host, '/', repo origin owner ];
 			column: 'Project name' evaluated: [: repo | repo origin projectName ];
-			column: 'Current branch' evaluated: #branch;
+			column: 'Current branch' evaluated: #branchName;
 			column: 'Location' evaluated: #location;
 			addAction: self createRepositoryAction;
 			addAction: self synchronizeRepositoryAction;
