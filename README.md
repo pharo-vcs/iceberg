@@ -18,9 +18,13 @@ Metacello new
 ```
 
 ### Update Iceberg (since v0.0.3)
+If you have downloaded a previous version of Iceberg, you can update it by doing:
 ```
 Iceberg update
 ```
+
+You don't need this step if you have just downloaded Iceberg.
+
 
 ## Usage
 ### Repositories Browser
