@@ -24,7 +24,7 @@ testCreateBranch
 	self saveNewVersion.
 	[ 
 		repository push.
-		self assert: repository backend upstream equals: 'origin/createdBranch'.
+		self assert: repository upstream shortName equals: 'origin/createdBranch'.
 		self assert: repository outgoingCommits isEmpty.	
 	]
 	ensure: [ 
