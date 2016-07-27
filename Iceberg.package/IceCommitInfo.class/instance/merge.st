@@ -1,20 +1,9 @@
 actions
 merge
 	| loader |
-	self halt.
-	loader := MCVersionLoader new.
-	self repository loadedPackages do: [ :package |
-		loader addVersion: (self versionFor: package) mcVersion
-	].
+	((self repository loadedPackages collect: #workingCopy) anySatisfy: #modified)
+		ifTrue: [ UIManager default deny: 'Please commit your local changes before merging.' ].
 
-	loader localModifications 
-		ifEmpty: [ 
-			loader loadWithNameLike: 'Merging commit: ', self id ]
-		ifNotEmpty: [ 
-			loader 
-				announceLoad: 'Merging commit: ', self id 
-				do: [ loader mergeVersions ]].
-
-	self halt.
-	loader hasVersions ifFalse: [
-		self repository backend merge: self id. ]
+	"Todo: if merge is not a fast-forward we should allow the user to see the merge before creating a new commit"
+	self repository backend merge: self id.
+	self repository pull.
