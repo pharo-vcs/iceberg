@@ -1,4 +1,4 @@
 actions
 updatePackage: packageName 
-	self pull.
+	self backend pull.
 	(self packageNamed: packageName) loadLatest.
