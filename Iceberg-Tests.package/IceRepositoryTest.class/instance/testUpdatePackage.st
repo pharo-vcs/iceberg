@@ -1,17 +1,17 @@
 tests
 testUpdatePackage
-	| loadedVersionNumber | 
+	| originalVersionNumber | 
 	"1. - Preparation: create a new version of a package in the remote repository"
 	"1.1 - First load a package"
 	repository loadPackage: packageName.
-	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
+	originalVersionNumber := (Smalltalk at: #Test) new versionNumber.
 
 	"1.2 - Modify it and commit to a new branch"
-	self updateVersionNumber: loadedVersionNumber + 1.
+	self updateVersionNumber: originalVersionNumber + 1.
 	repository savePackage: packageName 
-		withMessage: ('Updated test method with version {1}' format: { loadedVersionNumber + 1}).
+		withMessage: ('Updated test method with version {1}' format: { originalVersionNumber + 1}).
 
-	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
+	originalVersionNumber := (Smalltalk at: #Test) new versionNumber.
 
 	"1.3 - Push the branch to origin/master"
 	repository push.
@@ -23,10 +23,10 @@ testUpdatePackage
 	self removeTestPackages.
 	self deny: (Smalltalk globals includesKey: #Test).	
 	repository loadPackage: packageName.
-	self checkLoadedLatestCommitWithVersion: loadedVersionNumber - 1.
+	self checkLoadedLatestCommitWithVersion: originalVersionNumber - 1.
 
 	"2. Exercise: Update the package from remote repository"
 	repository updatePackage: packageName.
 	
 	"3. Verify"
-	self checkLoadedLatestCommitWithVersion: loadedVersionNumber.
+	self checkLoadedLatestCommitWithVersion: originalVersionNumber.

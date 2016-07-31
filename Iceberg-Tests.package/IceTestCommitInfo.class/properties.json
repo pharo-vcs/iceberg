@@ -1,0 +1,16 @@
+{
+	"category" : "Iceberg-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 7/29/2016 12:12",
+	"instvars" : [
+		"id",
+		"parentIds",
+		"message" ],
+	"name" : "IceTestCommitInfo",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
