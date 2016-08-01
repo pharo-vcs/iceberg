@@ -9,7 +9,6 @@ testBecomeWriteable
 	  load.
 
 	"Exercise"
-	self halt.
 	writableRepository := self package iceRepository.
 	[
 		writableRepository ensureLocalRepository.
