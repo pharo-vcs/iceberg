@@ -1,3 +1,3 @@
 accessing
 storageClass
-	^ storageClass ifNil: [ storageClass := IceMCGitRepository ]
+	^ storageClass ifNil: [ storageClass := IceRepository defaultStorageClass ]
