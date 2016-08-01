@@ -1,4 +1,4 @@
-building
+utilities
 statusFor: package
 	| status incomming outgoing | 
 	package isLoaded ifFalse: [ ^ 'Not loaded.' ].
