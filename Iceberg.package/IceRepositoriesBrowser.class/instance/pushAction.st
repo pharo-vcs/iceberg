@@ -3,7 +3,7 @@ pushAction
 	^ GLMGenericAction new
 		action: [ :presentation :repo | 
 			presentation selection push.
-			presentation update
+			presentation pane browser update
 		]; 
 		icon: GLMUIThemeExtraIcons glamorousRightSide;
 		shortcut: $p; 
