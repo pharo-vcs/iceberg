@@ -6,4 +6,4 @@ synchronizeRepositoryAction
 			ifNil: [ self abort: 'Please select a repository to synchronize.' ]];
 		icon: GLMUIThemeExtraIcons glamorousBrowse;
 		shortcut: $s;
-		title: 'Synchronize with repository'; showTitle
+		title: 'Synchronize repository...'; showTitle
