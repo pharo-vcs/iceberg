@@ -1,7 +1,7 @@
 {
 	"category" : "Iceberg-Core",
 	"classinstvars" : [
-		 ],
+		"IcebergAnnouncer" ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 4/28/2016 14:10",

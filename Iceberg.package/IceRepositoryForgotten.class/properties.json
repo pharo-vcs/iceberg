@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Announcements",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceRepositoryForgotten",
+	"pools" : [
+		 ],
+	"super" : "IceRepositoryRegistryModified",
+	"type" : "normal" }

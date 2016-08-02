@@ -1,3 +1,3 @@
 examples - repositories
 exampleCreateRepository
-	IceCreateRepositoryModel new openWithSpec.
+	IceCloneRepositoryModel new openWithSpec.

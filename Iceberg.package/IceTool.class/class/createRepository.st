@@ -1,3 +1,3 @@
 utilities
 createRepository
-	IceCreateRepositoryModel new openWithSpec
+	IceCloneRepositoryModel new openWithSpec

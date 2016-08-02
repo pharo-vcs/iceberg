@@ -15,7 +15,7 @@
 		"subdirectory",
 		"changeLocationButton",
 		"createButton" ],
-	"name" : "IceCreateRepositoryModel",
+	"name" : "IceCloneRepositoryModel",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",

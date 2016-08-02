@@ -1,3 +1,4 @@
 registry
 forget
-	self class registry remove: self ifAbsent: [ "Ignore" ]
+	(self class registry remove: self ifAbsent: [ "Ignore" ])
+		ifNotNil: [ Iceberg announcer announce: IceRepositoryForgotten new ]

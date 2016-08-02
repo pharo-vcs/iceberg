@@ -1,3 +1,4 @@
 registry
 reset
-	Registry := nil
+	Registry := nil.
+	Iceberg announcer announce: IceRepositoryForgotten new.
