@@ -1,7 +1,9 @@
 action creators
 unloadPackageAction
 	^ GLMGenericAction new
-		action: [ :presentation | presentation selection unload ]; 
+		action: [ :presentation | 
+			presentation selection unload.
+			presentation update ]; 
 		icon: (Smalltalk ui icons iconNamed: #delete);
 		shortcut: $u; 
 		title: 'Unload package'; 
