@@ -1,3 +1,3 @@
 api
 title
-	^ 'Create Iceberg Repository'
+	^ 'Clone repository by URL'

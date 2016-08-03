@@ -4,11 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 8/3/2016 18:44",
+	"commentStamp" : "NicoPasserini 8/3/2016 18:45",
 	"instvars" : [
-		"remoteUrl",
-		"remoteUrlLabel" ],
-	"name" : "IceCloneRepositoryModel",
+		 ],
+	"name" : "IceImportLocalRepositoryModel",
 	"pools" : [
 		 ],
 	"super" : "IceCreateRepositoryModel",

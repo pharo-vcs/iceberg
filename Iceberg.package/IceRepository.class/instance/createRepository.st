@@ -6,5 +6,6 @@ createRepository
 		subdirectory: (self subdirectory ifNil: '')).
 		
 	branch ifNotNil: [ repository branch: self branchName ].
+	origin ifNil: [ origin := IceRemoteRepository url: repository remoteUrl ].
 	self repository: repository.
 

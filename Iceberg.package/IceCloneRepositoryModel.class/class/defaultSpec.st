@@ -1,4 +1,5 @@
 specs
+"protocol: specs"
 defaultSpec
 	<spec: #default>
 
