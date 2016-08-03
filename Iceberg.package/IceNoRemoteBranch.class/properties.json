@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 8/3/2016 14:51",
 	"instvars" : [
 		 ],
 	"name" : "IceNoRemoteBranch",
 	"pools" : [
 		 ],
-	"super" : "Error",
+	"super" : "IceError",
 	"type" : "normal" }

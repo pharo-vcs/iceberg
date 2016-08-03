@@ -4,10 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 8/3/2016 14:52",
+	"commentStamp" : "NicoPasserini 8/3/2016 14:50",
 	"instvars" : [
 		 ],
-	"name" : "IceWrongUrl",
+	"name" : "IceDuplicatedRepository",
 	"pools" : [
 		 ],
 	"super" : "IceError",

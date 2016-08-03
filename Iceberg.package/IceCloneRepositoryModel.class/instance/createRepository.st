@@ -9,7 +9,7 @@ createRepository
 			
 		self window delete. 
 	]
-	on: IceWrongUrl 
+	on: IceError 
 	do: [ :error | 
 		UIManager default 
 			abort: error messageText 

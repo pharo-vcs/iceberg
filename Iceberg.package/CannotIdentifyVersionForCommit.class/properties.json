@@ -10,5 +10,5 @@
 	"name" : "CannotIdentifyVersionForCommit",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceError",
 	"type" : "normal" }
