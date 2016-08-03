@@ -1,6 +1,11 @@
-tests
+tests - create repository
 testClone
-	self deny: self defaultLocationForLocalClonedRepository exists.
+	| location |
+	location := self defaultLocationForLocalClonedRepository.
+	
+	self deny: location exists.
+	
 	repository createRepository.
-	self assert: self defaultLocationForLocalClonedRepository exists.
-	self assert: (self defaultLocationForLocalClonedRepository / '.git') exists.
+	
+	self assert: location exists.
+	self assert: (location / '.git') exists.

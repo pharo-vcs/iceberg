@@ -1,4 +1,4 @@
-tests
+tests - create repository
 testUseExistingLocalRepo
 	"prepare"
 	IceGitCommand in: self absoluteLocation parent execute: {'clone'. origin}.
