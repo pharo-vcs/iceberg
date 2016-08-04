@@ -1,4 +1,4 @@
 private
 refresh
-	commitDictionary := nil.
+	commits := nil.
 	versionDictionary := nil

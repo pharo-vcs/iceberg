@@ -1,3 +1,5 @@
 commits
 outgoingCommits
-	^ [ self backend outgoingCommits ] on: IceNoRemoteBranch do: [ self commits ]
+	^ self upstream 
+		ifNil: [self commits ]
+		ifNotNil: [ :upstreamBranch | self branch commitsNotIn: upstreamBranch ]

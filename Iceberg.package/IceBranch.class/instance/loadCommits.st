@@ -1,10 +1,4 @@
 commits
 loadCommits
-	commitDictionary := Dictionary new.
-
-	(self repository backend lookupCommitsInBranch: self name) do: [ :commit | 
-		commit repository: self repository.
-		commitDictionary at: commit commitId put: commit.
-	].
-
-	^ commitDictionary
+	commits := SortedCollection sortBlock: [ :a :b | a datetime > b datetime ].
+	self repository backend lookupCommitsInBranch: self name into: self.

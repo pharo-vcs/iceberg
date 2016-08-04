@@ -1,5 +1,5 @@
 querying
-lookupCommitsInBranch: branchName
+lookupCommitsInBranch: branchName into: aCommitRegistry
 	"Load versions from the real repository, latest first"
 	| commits | 
 	commits := OrderedCollection new.

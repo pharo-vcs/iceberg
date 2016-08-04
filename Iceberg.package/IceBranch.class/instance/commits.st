@@ -1,3 +1,3 @@
 commits
 commits
-	^ self commitDictionary values sorted: [ :a :b | a datetime > b datetime ]
+	^ commits ifNil: [ self loadCommits. commits ]

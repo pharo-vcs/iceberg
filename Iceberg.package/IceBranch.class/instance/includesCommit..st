@@ -1,3 +1,3 @@
 commits
 includesCommit: commit
-	^ self commitDictionary includesKey: commit id
+	^ self commits includes: commit

@@ -14,7 +14,8 @@
 		"repository",
 		"origin",
 		"savedPackages",
-		"upstream" ],
+		"upstream",
+		"commitDictionary" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],
