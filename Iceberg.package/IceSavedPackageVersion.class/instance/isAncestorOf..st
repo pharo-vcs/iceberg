@@ -1,3 +1,3 @@
 comparing
-isAncestorOf: anotherCommitId
-	^ self commit isAncestorOf: (self repository commitAt: anotherCommitId)
+isAncestorOf: anotherVersion
+	^ self commit isAncestorOf: anotherVersion commit

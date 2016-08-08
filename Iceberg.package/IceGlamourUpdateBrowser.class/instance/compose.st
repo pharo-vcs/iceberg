@@ -25,8 +25,8 @@ compose
 			fromOutsideEntityPort;
 			from: #commits; 
 			to: #changes; 
-			transformed: [ :model :commit | commit ifNotNil: [model workingCopyDiffToCommit: commit] ];
-			andShow: [ :a | a custom: IceGlamourChangesTree new ].
+			transformed: [ :model :commit | commit ifNotNil: [model mergeBaseDiffToCommit: commit] ];
+			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incomming changes') ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
 	]

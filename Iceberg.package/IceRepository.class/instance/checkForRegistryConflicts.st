@@ -20,4 +20,4 @@ but with a different origin URL.
 
 You provided {2} 
 and the original repository''s url is {3}.'
-					 format: {self location halt. self origin. repo origin}) ]].
+					 format: {self location. self origin. repo origin}) ]].

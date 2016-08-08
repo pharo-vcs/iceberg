@@ -1,7 +1,8 @@
 private
-lookupVersionsOfPackage: package 
+lookupVersionsOfPackage: package inBranch: branchName
 	"Load versions from the real repository, latest first"
-	^ (self getVersionsForPackageDirectoryName: package packageName, '.package')
+	^ (self getVersionsForPackageDirectoryName: package packageName, '.package'
+			branchName: branchName)
 		reverse collect: [ :entry | 
 			IceSavedPackageVersion new 
 				package: package;

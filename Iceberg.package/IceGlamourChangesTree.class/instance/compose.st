@@ -1,7 +1,7 @@
 building
 compose
 	self fastTree 
-		title: 'Local changes';
+		title: self treeTitle;
 		allExpanded;
 		children: #elements;
 		icon: #icon;

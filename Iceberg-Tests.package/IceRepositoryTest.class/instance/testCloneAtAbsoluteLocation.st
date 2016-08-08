@@ -1,4 +1,4 @@
-tests - create repository
+tests
 testCloneAtAbsoluteLocation
 	repository := IceRepository origin: origin location: self absoluteLocation.
 

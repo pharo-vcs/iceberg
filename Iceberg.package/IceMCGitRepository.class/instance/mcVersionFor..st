@@ -1,3 +1,3 @@
-as yet unclassified
+querying
 mcVersionFor: anIceSavedPackageVersion 
 	^ self versionFromFileNamed: anIceSavedPackageVersion entry

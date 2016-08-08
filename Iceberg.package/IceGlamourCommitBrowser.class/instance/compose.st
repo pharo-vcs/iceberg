@@ -9,7 +9,7 @@ compose
 
 		browser transmit 
 			to: #changes; 
-			andShow: [ :a | a custom: IceGlamourChangesTree new ].
+			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
 	
 		browser transmit to: #commit; andShow: [ :a | a text
 			display: '';

@@ -7,5 +7,5 @@ loadedVersion
 			(MCGitHubRepository commitIdFor: self workingCopy)
 				ifNotNil: [ :commitId |
 					^ self versions reversed 
-						detect: [ :version | version isAncestorOf: commitId ]]
+						detect: [ :version | version isAncestorOfCommitId: commitId ]]
 		]
