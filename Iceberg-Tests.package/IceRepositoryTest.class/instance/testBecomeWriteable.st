@@ -1,4 +1,4 @@
-tests
+tests - create repository
 testBecomeWriteable
 	"Prepare"
 	| writableRepository |
