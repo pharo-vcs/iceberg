@@ -4,7 +4,8 @@ merge: aCommitish
 
 	[ 
 		"First try git automatic merge "
-		self backend merge: aCommitish id 
+		self backend merge: aCommitish id.
+		self refresh.
 	]
 		on: IceMergeAborted
 		do: [ :error |
