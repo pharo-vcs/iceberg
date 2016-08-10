@@ -1,19 +1,17 @@
 actions
 savePackage: packageName withMessage: commitMessage
-	"Mostly copied from MCFileRepositoryInspector>>#saveChanges"
-	| workingCopy newVersion newVersionInfo |
-	workingCopy := 	Iceberg workingCopyForPackageNamed: packageName.
-	newVersionInfo := nil.
-	newVersion := workingCopy 
-		newVersionWithName: (self packageNamed: packageName) latestVersion nextVersionName
-		message: commitMessage 
-		in: self repository. 
-	self repository storeVersion: newVersion.
+	| package version |
+	package := self packageNamed: packageName.
+	version := self 
+		internalSavePackage: package
+		withMessage: commitMessage.
 
+	self backend commit: { version } withMessage: commitMessage.
+	
+	"This is slow but it is required to replace working copy version info 
+	with the info created by our backend, we should find a smarter way."
 	self refresh.
-	
-	"Replace working copy version info with the info created by our backend."
-	workingCopy versionInfo: (self packageNamed: packageName) versions first info.
-	
+	package workingCopy versionInfo: package versions first info.
+
 	self announcer announce: IceCommited new.
 	

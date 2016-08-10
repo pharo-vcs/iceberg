@@ -1,5 +1,5 @@
 changes
 mergeBaseDiffToCommit: aCommitInfo
 	^ IceDiff 
-		from: (self branch lastCommit mergeBaseWith: aCommitInfo) 
+		from: (self mergeBaseWith: aCommitInfo) 
 		to: aCommitInfo
