@@ -1,7 +1,7 @@
 actions
 savePackage: packageName withMessage: commitMessage
 	| package version |
-	package := self packageNamed: packageName.
+	package := self getOrCreatePackageNamed: packageName.
 	version := self 
 		internalSavePackage: package
 		withMessage: commitMessage.

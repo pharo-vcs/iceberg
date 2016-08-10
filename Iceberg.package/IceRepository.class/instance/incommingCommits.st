@@ -1,3 +1,5 @@
 commits
 incommingCommits
-	^ self commitsNotLoaded, (self upstream commitsNotIn: self branch)
+	^ self commitsNotLoaded, (self upstream
+		ifNotNil: [ self upstream commitsNotIn: self branch]
+		ifNil: [ #() ])

@@ -4,7 +4,7 @@ internalSavePackage: package withMessage: commitMessage
 	| workingCopy newVersion |
 	workingCopy := 	package workingCopy.
 	newVersion := workingCopy 
-		newVersionWithName: package latestVersion nextVersionName
+		newVersionWithName: package nextVersionName
 		message: commitMessage "I am not sure that this message will be saved."
 		in: self backend. 
 
