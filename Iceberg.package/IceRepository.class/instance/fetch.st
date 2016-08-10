@@ -1,3 +1,4 @@
 actions
 fetch
-	self backend fetch
+	self backend.
+	self refresh.
