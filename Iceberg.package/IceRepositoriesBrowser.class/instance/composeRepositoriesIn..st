@@ -1,7 +1,7 @@
 building
 composeRepositoriesIn: composite
 	composite fastTable 
-		title: 'My nice repositories';
+		title: 'Repositories #3';
 		column: 'Origin' evaluated: [:repo | repo origin url ] width: 320;
 		column: 'Current branch' evaluated: #branchName;
 		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
