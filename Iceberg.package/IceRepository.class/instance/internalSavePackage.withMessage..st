@@ -12,7 +12,6 @@ internalSavePackage: package withMessage: commitMessage
 	SystemAnnouncer uniqueInstance
 		announce: (MCVersionSaved version: newVersion repository: self backend).
 	
-	self halt.
 	^ newVersion 
 	
 	
