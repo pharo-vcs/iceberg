@@ -6,8 +6,11 @@ commitAndMarkAsMerged: aCommitish
 	changedPackages := self savedPackages select: [ :package | package workingCopy needsSaving ].
 	savedVersions := changedPackages collect: [ :package | 
 		self internalSavePackage: package withMessage: message  ].
-
+	
 	self backend 
 		commit: savedVersions 
 		withMessage: message 
-		andMarkAsMerged: aCommitish
+		andMarkAsMerged: aCommitish.
+
+	changedPackages do: [ :package |
+		package workingCopy versionInfo: package versions first info ]
