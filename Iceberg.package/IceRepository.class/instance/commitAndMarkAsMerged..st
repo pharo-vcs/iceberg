@@ -12,5 +12,6 @@ commitAndMarkAsMerged: aCommitish
 		withMessage: message 
 		andMarkAsMerged: aCommitish.
 
+	self refresh.
 	changedPackages do: [ :package |
 		package workingCopy versionInfo: package versions first info ]
