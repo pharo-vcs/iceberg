@@ -1,3 +1,3 @@
-accessing
+commits
 commitDictionary
-	^ commitDictionary ifNil: [ commitDictionary := Dictionary new ]
+	^ commitDictionary ifNil: [ self loadCommits ].
