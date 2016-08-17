@@ -11,7 +11,7 @@ statusFor: package
 	
 	[
 		outgoing := package outgoingVersions size.
-		outgoing > 0 ifTrue: [ status add: ('{1} outgoing' format: { outgoing })]
+		outgoing > 0 ifTrue: [ status add: ('{1} to be published' format: { outgoing })]
 	]
 	on: IceNoRemoteBranch do: [ status add: 'Branch does not exist in origin' ].
 
