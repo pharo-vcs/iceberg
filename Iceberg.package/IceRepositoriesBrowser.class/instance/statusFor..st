@@ -4,7 +4,7 @@ statusFor: package
 	package isLoaded ifFalse: [ ^ 'Not loaded.' ].
 
 	status := OrderedCollection new.
-	package isModified ifTrue: [ status add: 'Unsaved changes' ].
+	package isModified ifTrue: [ status add: 'Uncommited changes' ].
 	
 	incomming := package incommingVersions size.
 	incomming > 0 ifTrue: [ status add: ('{1} incomming' format: { incomming })].
