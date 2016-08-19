@@ -4,7 +4,7 @@ mergeAction
 		action: [ :presentation |
 			presentation selection merge.
 			presentation selection: nil.
-			presentation browser update. ];
+			presentation pane browser update. ];
 		icon: GLMUIThemeExtraIcons glamorousLeftSide;
 		shortcut: $m;
 		title: 'Merge'; showTitle
