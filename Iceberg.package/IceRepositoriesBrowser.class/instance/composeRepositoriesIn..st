@@ -1,7 +1,7 @@
 building
 composeRepositoriesIn: composite
 	composite fastTable 
-		title: 'Dark Repositories';
+		title: 'Lighter Repositories';
 		column: 'Origin' evaluated: [:repo | repo origin url ] width: 320;
 		column: 'Current branch' evaluated: #branchName;
 		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
