@@ -1,1 +1,0 @@
-Allows you to browse and publish (push) the commits in your local repository onto a remote repository.
