@@ -1,0 +1,1 @@
+Allows you to browse and import (pull and merge) commits from your upstream repositories into your local repository, branch and image.

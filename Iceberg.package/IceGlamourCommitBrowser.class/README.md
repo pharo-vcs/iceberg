@@ -1,0 +1,1 @@
+Allows you to see the changes in your image and commit them to the (local) repository.

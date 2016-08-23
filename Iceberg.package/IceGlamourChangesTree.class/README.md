@@ -1,0 +1,1 @@
+Utility tree showing changes between two commits, used in several browsers.
