@@ -1,1 +1,0 @@
-Base class for creating iceberg tools. See class side for utility methods.

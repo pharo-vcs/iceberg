@@ -1,1 +1,0 @@
-Main view of a repository, which will guide you through the process of synchronizing it: commit - update - publish.
