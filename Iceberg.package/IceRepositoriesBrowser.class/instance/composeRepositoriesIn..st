@@ -1,12 +1,13 @@
 building
 composeRepositoriesIn: composite
 	composite fastTable 
-		title: 'Repositories in ESUG';
+		title: 'Repositories';
 		column: 'Origin' evaluated: [:repo | repo origin url ] width: 320;
 		column: 'Current branch' evaluated: #branchName;
 		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
 		addAction: self createRepositoryAction;
 		addAction: self createLocalRepositoryAction;
+		addSelectionAction: self showHistoryAction;
 		selectionAct: self switchBranch on: $b entitled: 'Switch branch...';
 		selectionAct: self forgetRepository on: $x entitled: 'Forget repository...';
 		addSelectionAction: self synchronizeRepositoryAction;

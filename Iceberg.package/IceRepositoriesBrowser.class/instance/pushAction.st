@@ -1,4 +1,4 @@
-action creators
+actions
 pushAction
 	^ GLMGenericAction new
 		action: [ :presentation :repo | 

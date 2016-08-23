@@ -1,4 +1,4 @@
-action creators
+actions
 switchBranch
 	^ [ :presentation | 
 		self class switchBranchOf: presentation selection.

@@ -1,4 +1,4 @@
-action creators
+actions
 forgetRepository
 	^ [ :presentation | 
 	| repository |

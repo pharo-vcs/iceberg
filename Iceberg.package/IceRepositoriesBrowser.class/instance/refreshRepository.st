@@ -1,4 +1,4 @@
-action creators
+actions
 refreshRepository
 	^ [ :presentation | 
 		presentation selection refresh.
