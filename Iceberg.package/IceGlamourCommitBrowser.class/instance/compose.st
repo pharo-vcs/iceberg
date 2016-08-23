@@ -14,11 +14,7 @@ compose
 		browser transmit to: #commit; andShow: [ :a | a text
 			display: '';
 			title: 'Commit message';
-			addAction: (GLMGenericAction new
-				action: [ :presentation :entity | entity commitWithMessage: presentation text asString ];
-				icon: GLMUIThemeExtraIcons glamorousSave;
-				shortcut: $s;
-				title: 'Commit'; showTitle)
+			addAction: self commitAction
 		].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'.
