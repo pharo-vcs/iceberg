@@ -2,5 +2,5 @@ private
 refresh
 	branch ifNotNil: #refresh.
 	upstream ifNotNil: #refresh.
-	commitDictionary := nil.
+	commitDictionary := Dictionary new.
 	savedPackages := nil.

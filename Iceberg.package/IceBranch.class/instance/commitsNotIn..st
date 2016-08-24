@@ -1,3 +1,3 @@
 commits
-commitsNotIn: anIceBranch 
-	^ self commits reject: [:mine | anIceBranch commits anySatisfy: [:theirs | mine isAncestorOf: theirs]]
+commitsNotIn: anotherBranch
+	^ self commits copyWithoutAll: anotherBranch commits

@@ -5,4 +5,4 @@ basicMerge: aCommitish
 	detects conflicts that have to be solved manually."
 	
 	self backend merge: aCommitish id.
-	self refresh.
+	self loadedPackages do: [ :pkg | pkg loadLatest  ].

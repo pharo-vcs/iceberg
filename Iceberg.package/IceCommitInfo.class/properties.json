@@ -16,5 +16,5 @@
 	"name" : "IceCommitInfo",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceCommitish",
 	"type" : "normal" }

@@ -1,3 +1,4 @@
 commits
 commits
-	^ commits ifNil: [ self repository loadCommits. commits ]
+	self ensureCommitsLoaded.
+	^ commits

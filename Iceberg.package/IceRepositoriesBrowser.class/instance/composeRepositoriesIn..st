@@ -1,7 +1,7 @@
 building
 composeRepositoriesIn: composite
 	composite fastTable 
-		title: 'Esug Repositories';
+		title: 'Repositories';
 		column: 'Origin' evaluated: [:repo | repo origin url ] width: 320;
 		column: 'Current branch' evaluated: #branchName;
 		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
@@ -17,6 +17,7 @@ composeRepositoriesIn: composite
 		addSelectionAction: self synchronizeRepositoryAction;
 		addSelectionAction: self pushAction;
 		selectionAct: self refreshRepository on: $r entitled: 'Refresh repository';
+		addSelectionAction: self inspectRepositoryAction;
 		
 		"Double click action"
 		onChangeOfPort: #strongSelection act: [ :table | self synchronize: table selection ]

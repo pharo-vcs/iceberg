@@ -1,3 +1,5 @@
 commits
 commitDictionary
-	^ commitDictionary ifNil: [ self loadCommits ].
+	self branch ensureCommitsLoaded.
+	self upstream ifNotNil: #ensureCommitsLoaded.
+	^ commitDictionary.

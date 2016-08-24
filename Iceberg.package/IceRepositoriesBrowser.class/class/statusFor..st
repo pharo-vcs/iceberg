@@ -2,7 +2,7 @@ utilities
 statusFor: package
 	| status incomming outgoing | 
 	package isLoaded ifFalse: [ ^ 'Not loaded.' ].
-
+	
 	status := OrderedCollection new.
 	package isModified ifTrue: [ status add: 'Uncommited changes' ].
 	
@@ -16,3 +16,4 @@ statusFor: package
 	on: IceNoRemoteBranch do: [ status add: 'Branch does not exist in origin' ].
 
 	^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]
+
