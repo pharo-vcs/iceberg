@@ -1,8 +1,7 @@
 examples - commit
 exampleCommitBrowser
-	| repository changeSet |
+	| repository |
 	repository := IceRepository origin: 'git@github.com:npasserini/iceberg.git'.
-	changeSet := IceDiff forRepository: repository.
-	IceCommitBrowser new
-		changeSet: changeSet;
+	IceCommitModel new
+		model: repository;
 		openWithSpec.

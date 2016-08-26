@@ -1,0 +1,17 @@
+{
+	"category" : "Iceberg-GUI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 8/25/2016 14:47",
+	"instvars" : [
+		"message",
+		"commitButton",
+		"pushCheckbox",
+		"model" ],
+	"name" : "IceCommitModelNew",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

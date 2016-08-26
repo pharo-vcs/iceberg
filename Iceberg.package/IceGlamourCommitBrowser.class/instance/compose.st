@@ -9,12 +9,14 @@ compose
 
 		browser transmit 
 			to: #changes; 
-			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
+ 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
 	
-		browser transmit to: #commit; andShow: [ :a | a text
-			display: '';
-			title: 'Commit message';
-			addAction: self commitAction
+		browser transmit to: #commit; andShow: [ :a :diff | a morph
+			morph: [ :presentation |
+				IceCommitModelNew new 
+					model: diff;
+					buildWithSpec ];
+			title: 'Commit changes'
 		].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'.
