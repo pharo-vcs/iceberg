@@ -1,8 +1,7 @@
-actions
-commitWithMessage: aCommitMessage
-	self elements do: [ :package |
-		package hasChanges 
-			ifTrue: [ 
-				"It should not be necessary to hand the repository to the package change set"
-				package commitWithMessage: aCommitMessage to: self repository.
-				self refresh. ]]
+deprecated
+commitWithMessage: aString 
+	self
+		deprecated: 'This is only necessary because you have an old window (opened with an old version of Iceberg). Just reopen the window.'
+		on: '1 Sep 2016'
+		in: #Pharo6. 
+	self repository commitWithMessage: aString

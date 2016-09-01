@@ -1,4 +1,4 @@
-tests
+tests - commit
 testSaveSinglePackage
 	| loadedVersion loadedVersionNumber |
 	repository loadPackage: packageName.

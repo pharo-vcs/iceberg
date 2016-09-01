@@ -1,6 +1,7 @@
 building
 compose
 	self tabulator with: [ :browser | 
+
 		browser
 			row: [ :top | top
 				column: #changes; 
