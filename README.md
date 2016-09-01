@@ -1,10 +1,10 @@
 # Git integration for Pharo
 Iceberg is a set of tools that allow to handle git repositories directly from the Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
-This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in a linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
+This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
 
 ## Instalation (for development)
-### Prerrequisites
+### Prerequisites
 - Latest Pharo 6.0 image.
 - Git v1.9.1 or later (we are working to remove this requirement in the near future)
 - An [SSH Key](https://help.github.com/articles/generating-an-ssh-key/) (again, not far from now this will not be mandatory any more ... but in this case I would still recommend to use an SSH Key as the preferred way to authenticate to your Github account.)
@@ -53,7 +53,7 @@ The first step is save the changes in the image onto your local repository, crea
 Right now Iceberg commits all the changes you have made to the packages in the selected repository, in the future we will add *cherry-picking* functionality.
 
 #### 2. Update
-After your changes are saved to your local repository, you should update your repository with eventual commits comming from remote repository(ies), and possibly merge those changes with your own work, before being able to share your code with others.
+After your changes are saved to your local repository, you should update your repository with eventual commits coming from remote repository(ies), and possibly merge those changes with your own work, before being able to share your code with others.
 
 If you are familiar with git you probably know several ways to do this, including operations such as *fetch*, *pull*, *merge*, *rebase*, and others. Iceberg will download (*fetch*) the new commits automatically, show the changes between them and your current working copy and allow you to decide which of them you want to load in your image.
 
