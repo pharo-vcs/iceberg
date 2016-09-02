@@ -1,10 +1,10 @@
 actions
 push
-	self command: {
+	[ self command: {
 		'push'.
 		self upstream isNil ifTrue: [{
 			'--set-upstream'.
 			'origin'.
 			self branch
 		}]
-	}.
+	}] on: MCFileTreeGitError do: #processPushError

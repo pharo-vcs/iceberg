@@ -4,7 +4,7 @@ chooseFrom: options displaying: descriptionBlock
 	
 	| sortedOptions index  |
 	sortedOptions := options asSortedCollection: [:wc1 :wc2 | (descriptionBlock value: wc1) < (descriptionBlock value: wc2) ].
-	index := UIManager default chooseFrom: (sortedOptions collect: descriptionBlock).
+	index := self uiManager chooseFrom: (sortedOptions collect: descriptionBlock).
 	^ index > 0 
 		ifTrue: [ sortedOptions at: index ]
 		ifFalse: [ nil ]

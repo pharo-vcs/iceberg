@@ -1,5 +1,5 @@
 utilities
 abort: message
-	UIManager default 
+	self uiManager
 		abort: message
 		title: 'Iceberg Repositories Browser'

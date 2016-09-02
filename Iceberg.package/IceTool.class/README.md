@@ -1,0 +1,1 @@
+Utility base class for building Iceberg GUI tools.

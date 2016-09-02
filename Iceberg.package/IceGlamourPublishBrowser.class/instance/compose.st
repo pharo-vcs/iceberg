@@ -17,11 +17,7 @@ compose
 				column: 'Comment' evaluated: #comment;
 				updateOn: IcePushed from: #announcer;
 				updateOn: IceCommited from: #announcer;
-				addAction: (GLMGenericAction new
-					action: [ :presentation :repository | repository push. presentation selection: nil ];
-					icon: GLMUIThemeExtraIcons glamorousRightSide;
-					shortcut: $u;
-					title: 'Publish all'; showTitle)].
+				addAction: self pushAction].
 
 "		browser transmit
 			fromOutsideEntityPort;
