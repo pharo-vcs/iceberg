@@ -1,4 +1,4 @@
-privte
+private
 getOrCreatePackageNamed: packageName
 
 	^ (savedPackages ifNil: [ self loadSavedPackages ])
