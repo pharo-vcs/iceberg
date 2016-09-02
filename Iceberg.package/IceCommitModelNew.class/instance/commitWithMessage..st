@@ -4,6 +4,8 @@ commitWithMessage: text
 		UIManager default informUserDuring: [ :bar | 
 			bar label: ('Commiting to {1}' format: {self repository printString}).
 			self repository commitWithMessage: text asString.
-			pushCheckbox state ifTrue: [ self repository push ]
+			
+			pushCheckbox state ifTrue: [ 
+				self pushRepository: self repository andThen: []]
 		]
 	]

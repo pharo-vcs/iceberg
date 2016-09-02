@@ -2,6 +2,7 @@
 	"category" : "Iceberg-GUI",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "TIceTool classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 8/25/2016 14:47",
@@ -14,4 +15,5 @@
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",
+	"traitcomposition" : "TIceTool",
 	"type" : "normal" }

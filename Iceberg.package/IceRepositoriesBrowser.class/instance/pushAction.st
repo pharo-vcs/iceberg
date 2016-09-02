@@ -1,10 +1,10 @@
 actions
 pushAction
 	^ GLMGenericAction new
-		action: [ :presentation :repo | 
-			presentation selection push.
-			presentation pane browser update
-		]; 
+		action: [ :presentation :repository | 
+			self 
+				pushRepository: repository
+				andThen: [ presentation pane browser update ]];
 		icon: GLMUIThemeExtraIcons glamorousRightSide;
 		shortcut: $p; 
 		title: 'Push outgoing commits'; 
