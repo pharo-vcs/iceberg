@@ -24,7 +24,7 @@ testLoadCommit
 
 	commit := repository incommingCommits last.
 	repository loadedPackages do: [ :package | 
-		self assert: (commit versionFor: package ) notNil
+		self assert: (commit properVersionFor: package ) notNil
 	].
 
 

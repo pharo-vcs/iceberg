@@ -1,4 +1,4 @@
 updating
 update
-	{ self. LGitRepository } 
+	{ self. LGitRepository. MCFileTreeGitRepository } 
 		do: [:class | class package iceRepository pull ]

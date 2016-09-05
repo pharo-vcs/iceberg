@@ -8,6 +8,6 @@ loadedVersion
 			"Check if working copy came from an MCGithubRepository"
 			(MCGitHubRepository commitIdFor: self workingCopy)
 				ifNotNil: [ :commitId |
-					^ self versions reversed 
+					^ self versions 
 						detect: [ :version | version isAncestorOfCommitId: commitId ]]
 		]
