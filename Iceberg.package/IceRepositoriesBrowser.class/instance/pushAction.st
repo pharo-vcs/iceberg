@@ -1,9 +1,9 @@
 actions
 pushAction
 	^ GLMGenericAction new
-		action: [ :presentation :repository | 
+		action: [ :presentation | 
 			self 
-				pushRepository: repository
+				pushRepository: presentation selection
 				andThen: [ presentation pane browser update ]];
 		icon: GLMUIThemeExtraIcons glamorousRightSide;
 		shortcut: $p; 
