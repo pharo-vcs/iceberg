@@ -17,7 +17,8 @@ compose
 				column: 'Comment' evaluated: #comment;
 				updateOn: IcePushed from: #announcer;
 				updateOn: IceCommited from: #announcer;
-				addAction: self pushAction].
+				addAction: self pushAction;
+				addSelectionAction: self mergeIntoAction].
 
 		browser transmit
 			fromOutsideEntityPort;
