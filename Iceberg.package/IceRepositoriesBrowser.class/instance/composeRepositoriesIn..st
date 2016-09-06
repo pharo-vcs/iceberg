@@ -13,6 +13,7 @@ composeRepositoriesIn: composite
 		"Repository pop up menu"
 		addSelectionAction: self showHistoryAction;
 		selectionAct: self switchBranch on: $b entitled: 'Switch branch...';
+		selectionAct: self createNewBranch on: $B entitled: 'Create new branch...';
 		selectionAct: self forgetRepository on: $x entitled: 'Forget repository...';
 		addSelectionAction: self synchronizeRepositoryAction;
 		addSelectionAction: self pushAction;
