@@ -12,4 +12,5 @@ composeCommitsIn: composite
 		column: 'Parents' evaluated: [ :commit | ', ' join: (commit parents collect: #shortId) ] width: 100;
 		column: 'User' evaluated: #username width: 120;
 		column: 'Comment' evaluated: #comment width: 300;
-		addSelectionAction: self inspectAction.
+		addSelectionAction: self inspectAction;
+		addSelectionAction: self mergeIntoAction.
