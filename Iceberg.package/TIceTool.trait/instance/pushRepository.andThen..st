@@ -1,9 +1,10 @@
 utilities
 pushRepository: repository andThen: aBlock
-	[ 
+	[ UIManager default informUserDuring: [ :bar | 
+		bar label: ('Publishing local commits to {1}' format: { repository origin url }).
 		repository push. 
 		aBlock value.
-	] 
+	]] 
 	on: YouShouldPullBeforePush
 	do: [ 
 		self uiManager
