@@ -10,6 +10,5 @@ commitWithMessage: message
 		commit: savedVersions 
 		withMessage: message.
 
-	self refresh.
 	changedPackages do: [ :package |
 		package workingCopy versionInfo: package versions first info ]

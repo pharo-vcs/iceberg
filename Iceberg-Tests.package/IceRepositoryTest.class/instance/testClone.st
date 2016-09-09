@@ -1,6 +1,6 @@
 tests - create repository
 testClone
-	| location |
+	| location headCommitId |
 	location := self defaultLocationForLocalClonedRepository.
 	
 	self deny: location exists.
@@ -9,3 +9,4 @@ testClone
 	
 	self assert: location exists.
 	self assert: (location / '.git') exists.
+

@@ -11,4 +11,5 @@ commit: versions withMessage: message andMarkAsMerged: aCommitish
 		'-m'. ('"', (self escapeForShell: message convertToSystemString), '"')
 	}) trim.
 	
-	self command: { 'reset --hard'. newCommitId }
+	self command: { 'reset --hard'. newCommitId }.
+	self lookupLatestCommitInfo 

@@ -1,0 +1,15 @@
+{
+	"category" : "Iceberg-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/7/2016 14:24",
+	"instvars" : [
+		"commit",
+		"versions" ],
+	"name" : "IceSingleCommitLoaded",
+	"pools" : [
+		 ],
+	"super" : "IceLoadedCodeStatus",
+	"type" : "normal" }

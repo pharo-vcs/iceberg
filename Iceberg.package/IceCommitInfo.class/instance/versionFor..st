@@ -1,4 +1,7 @@
 querying
 versionFor: package 
-	^ (self ownVersionFor: package)
-		ifNil: [ self lookupVersionFor: package ]
+	^ IceSavedPackageVersion new 
+		package: package;
+		commitId: self id;
+		info: (IceMCVersionInfo new fromCommit: self package: package);
+		yourself

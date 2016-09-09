@@ -4,4 +4,6 @@ commit: versions withMessage: message
 		gitCommand: 
 			{ 'commit'. '-m'. self escapeForShell: message convertToSystemString. '--' }, 
 			(versions collect: [ :version | version directoryName ])
-		in: directory 
+		in: directory.
+
+	self lookupLatestCommitInfo

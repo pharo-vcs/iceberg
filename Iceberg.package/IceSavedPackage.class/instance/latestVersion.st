@@ -1,3 +1,3 @@
 querying
 latestVersion
-	^ repository latestVersionForPackage: package
+	^ self repository headCommit versionFor: self

@@ -27,6 +27,6 @@ Instance Variables
 - versionDescriptors: <List of GitFileTreePackageEntry> cached list of all package versions saved in the (currently selected branch) of the (local) repository.
 - announcer: <Announcer>
 - branch: <String> currently selected branch. Currently it matches with a checked out branch in the working copy associated to the local git repository, this should change in the future.
-
+- loadedCode:  <IceCommit> contains the reference to the commit which code was loaded into the image. (TODO: maybe handle special cases about loading different versions loaded for different packages, see: https://github.com/npasserini/iceberg/issues/139).
 
 Implementation Points

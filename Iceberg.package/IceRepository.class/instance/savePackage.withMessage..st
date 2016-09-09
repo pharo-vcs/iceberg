@@ -1,17 +1,21 @@
 actions
 savePackage: packageName withMessage: commitMessage
-	| package version |
+	| package mcVersion |
 	package := self getOrCreatePackageNamed: packageName.
-	version := self 
+
+	"File out changes"
+	mcVersion := self 
 		internalSavePackage: package
 		withMessage: commitMessage.
 
-	self backend commit: { version } withMessage: commitMessage.
+	"Commit"
+	self backend commit: { mcVersion } withMessage: commitMessage.
 	
-	"This is slow but it is required to replace working copy version info 
-	with the info created by our backend, we should find a smarter way."
-	self refresh.
-	package workingCopy versionInfo: package versions first info.
+	"Update Monticello metadata"
+	mcVersion info fromCommit: self headCommit package: package.
+	package workingCopy versionInfo: mcVersion info.
+	mcVersion addToCache.
 
+	"Iceberg own announcements"
 	self announcer announce: IceCommited new.
 	
