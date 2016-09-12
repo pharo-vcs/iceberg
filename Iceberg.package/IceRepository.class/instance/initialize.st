@@ -2,7 +2,7 @@ initialization
 initialize
 	super initialize.
 	commitDictionary := Dictionary new.
-	loadedCode := IceNoCodeLoaded repository: self.
+	loadedCode := IceLoadedCode repository: self.
 	
 	announcer := Announcer new.
 	announcer when: IcePackageLoaded do: [ self refresh ].

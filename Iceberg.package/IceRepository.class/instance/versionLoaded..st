@@ -1,5 +1,5 @@
 versions handling
-versionLoaded: anIcePackageVersion 
-	loadedCode := loadedCode updatedWith: anIcePackageVersion.
-	self announcer announce: (IcePackageLoaded version: anIcePackageVersion).
+versionLoaded: version 
+	loadedCode := loadedCode versionLoaded: version.
+	self announcer announce: (IcePackageLoaded version: version).
 	self refresh

@@ -1,0 +1,18 @@
+{
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/12/2016 16:25",
+	"instvars" : [
+		"repository",
+		"from",
+		"upto",
+		"modifyingPackage",
+		"maxNumber" ],
+	"name" : "IceGitFileTreeCommitWalk",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

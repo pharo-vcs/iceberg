@@ -1,36 +1,33 @@
 tests - loading
 testLoadCommit
-	| commit commitToBeLoaded | 
-	"1. - Preparation: have an incomming commit which does not have versions for all loaded packages"
-	"1.1 - Commit a new version of some package"
-	repository loadPackage: packageName.
-	self saveNewVersion.
+	| commit changedPackage unchangedPackage | 
+	self scenarioTwoLoadedPackagesOneOutdated.
 
-	"1.2 - Remove the modified package"
-	self removeTestPackages.
-
-	"1.3 - Checkout and load the previous version"
-	repository checkoutBranch: 'master^1'.
-	repository loadPackage: packageName.
-	repository loadPackage: otherPackageName.
-	
-	"1.4 - Checkout (but not load) the latest version"
-	repository checkoutBranch: 'master'.
-
-	"1.5 - Verify that there is an incomming commit"
+	"1.1 - Verify incomming commits and versions"
 	self assert: repository incommingCommits size equals: 1.
 
-	commit := repository incommingCommits last.
-	repository loadedPackages do: [ :package | 
-		self assert: (commit properVersionFor: package ) notNil
-	].
+	commit := repository incommingCommits first.
+	changedPackage := repository packageNamed: packageName.
+	unchangedPackage := repository packageNamed: otherPackageName.
 
-	"1.6 - Verify that there is an incomming commit"
-	commitToBeLoaded := repository incommingCommits first.	 
-	self deny: repository loadedCode = repository headCommit.
+	self assert: changedPackage incommingVersions size equals: 1.
+	self assert: unchangedPackage incommingVersions isEmpty.
+	self deny: (commit properVersionFor: changedPackage) = changedPackage loadedVersion.
+	self assert: (commit properVersionFor: changedPackage) parent equals: changedPackage loadedVersion.
+	self assert: (commit properVersionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
 	
+	"1.2 - Check the commit and its versions"
+	self assert: (commit ownVersionFor: changedPackage) equals: (commit properVersionFor: changedPackage).
+	self assert: (commit ownVersionFor: unchangedPackage) ~= (commit properVersionFor: unchangedPackage).
+
 	"2. Exercise: Update the package from remote repository"
-	commitToBeLoaded load. 
+	commit load. 
 	
 	"3. Assert the commit is now loaded."	
-	self assert: repository loadedCode equals: repository headCommit.
+	self assert: changedPackage incommingVersions isEmpty.
+	self assert: unchangedPackage incommingVersions isEmpty.
+
+	self assert: (commit properVersionFor: changedPackage) equals: changedPackage loadedVersion.
+	self assert: (commit properVersionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
+	
+	self assert: repository incommingCommits isEmpty.
