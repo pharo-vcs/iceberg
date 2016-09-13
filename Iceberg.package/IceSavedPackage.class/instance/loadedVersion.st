@@ -1,17 +1,3 @@
 querying
 loadedVersion
-	^ self repository loadedCode versionFor: self ifNone: [
-		| workingCopyAncestors |
-		self halt.
-		workingCopyAncestors := self package workingCopy ancestors.
-
-		self versions 
-			detect: [ :version | workingCopyAncestors includes: version info  ] 
-			ifNone: [ 
-				"Check if working copy came from an MCGithubRepository"
-				(MCGitHubRepository commitIdFor: self workingCopy)
-					ifNotNil: [ :commitId |
-						^ self versions 
-							detect: [ :version | version isAncestorOfCommitId: commitId ]]
-			]
-	]
+	^ self repository loadedCode versionFor: self
