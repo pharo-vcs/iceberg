@@ -1,6 +1,8 @@
 building
 compose
 	(self custom: GLMStacker new) with: [ :browser |
+		browser updateOn: Announcement from: [ :repo | repo ].
+
 		browser aPane: #commit.
 		browser transmit 
 			transformed: #workingCopyDiff; 
