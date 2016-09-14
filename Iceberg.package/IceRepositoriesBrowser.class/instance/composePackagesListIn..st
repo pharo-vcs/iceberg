@@ -8,4 +8,5 @@ composePackagesListIn: composite
 		column: 'Loaded version' evaluated: [:pkg | self class loadedVersionOf: pkg ] width: 50;
 		addAction: self addPackageAction;
 		addSelectionAction: self loadPackageAction;
-		addSelectionAction: self unloadPackageAction
+		addSelectionAction: self unloadPackageAction;
+		updateOn: Announcement from: [ :repo | repo announcer. ]
