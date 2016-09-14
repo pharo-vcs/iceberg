@@ -13,8 +13,15 @@ testCommitMultiplePackagesTogether
 		subclass: #IcebergTestClass2 
 		instanceVariableNames: '' 
 		classVariableNames: '' 
-		package: packageName.
+		package: otherPackageName.
 	newClass compile: ('newMethod').
 	
 	repository commitWithMessage: 'Committing two packages together'.
-	self assert: repository commits size equals: oldCommits + 1
+	self assert: repository commits size equals: oldCommits + 1.
+	self assert: repository loadedCode referenceCommit equals: repository headCommit.
+
+	{ packageName. otherPackageName } do: [ :name | | package version |
+		package := repository packageNamed: name.
+		version := repository loadedCode versionFor: package.
+		self assert: version commit equals: repository headCommit.
+	]
