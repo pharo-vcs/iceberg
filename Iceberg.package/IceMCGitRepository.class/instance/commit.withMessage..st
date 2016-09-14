@@ -6,4 +6,4 @@ commit: versions withMessage: message
 			(versions collect: [ :version | version directoryName ])
 		in: directory.
 
-	self lookupLatestCommitInfo
+	^ self updateHeadCommit

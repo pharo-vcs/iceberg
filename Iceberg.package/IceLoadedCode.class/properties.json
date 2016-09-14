@@ -7,7 +7,8 @@
 	"commentStamp" : "NicoPasserini 9/7/2016 14:10",
 	"instvars" : [
 		"repository",
-		"loadedVersions" ],
+		"loadedVersions",
+		"referenceCommit" ],
 	"name" : "IceLoadedCode",
 	"pools" : [
 		 ],

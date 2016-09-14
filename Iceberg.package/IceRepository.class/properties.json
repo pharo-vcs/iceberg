@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		"Registry" ],
-	"commentStamp" : "NicoPasserini 9/7/2016 13:44",
+	"commentStamp" : "NicoPasserini 9/13/2016 17:19",
 	"instvars" : [
 		"announcer",
 		"branch",

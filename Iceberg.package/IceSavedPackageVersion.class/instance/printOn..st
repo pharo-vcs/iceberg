@@ -4,6 +4,8 @@ printOn: aStream
 		nextPut: $(;
 		nextPutAll: self package name;
 		nextPutAll: ', ';
-		nextPutAll: (self commitId first: 7);
+		nextPutAll: ([ self commit shortId ] 
+			on: Error 
+			do: [ 'loaded from: ', updationCommit shortId ]) ;
 		nextPut: $).
 		

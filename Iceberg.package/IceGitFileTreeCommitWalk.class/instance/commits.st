@@ -1,3 +1,6 @@
 walking
 commits
-	^ self commitIds collect: [ :id | self repository frontend commitAt: id ]	
+	| commits |
+	commits := OrderedCollection new.
+	self rawResultsDo: [ :result | commits add: (self commitFrom: result) ].
+	^ commits

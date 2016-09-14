@@ -1,8 +1,9 @@
 accessing
 commitId
 	^ commitId ifNil: [ commitId := 
-		self repository newCommitWalk 
+		(self repository newCommitWalk 
 			fromCommit: self updationCommit;
 			modifyingPackage: self package;
-			firstCommitId
+			firstCommit)
+			id
 	]
