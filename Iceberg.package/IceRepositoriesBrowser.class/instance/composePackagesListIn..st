@@ -9,4 +9,4 @@ composePackagesListIn: composite
 		addAction: self addPackageAction;
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
-		updateOn: Announcement from: [ :repo | repo announcer. ]
+		updateOn: IceCommited from: #announcer
