@@ -9,4 +9,5 @@ compose
 		display: #elements;
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
+		addSelectionAction: self browseAction;
 		addSelectionAction: self revertChangeAction
