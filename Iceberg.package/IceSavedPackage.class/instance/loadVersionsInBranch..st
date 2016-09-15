@@ -1,3 +1,7 @@
 private
 loadVersionsInBranch: branch
-	^ self repository backend lookupVersionsOfPackage: self inBranch: branch committish
+	^ (self repository newCommitWalk
+		fromBranch: branch;
+		modifyingPackage: self;
+		commits)
+		collect: [ :commit | commit versionFor: self ]

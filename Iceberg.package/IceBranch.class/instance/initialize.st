@@ -1,4 +1,3 @@
-private
-refresh
-	commits := nil.
+initialization
+initialize
 	versionDictionary := Dictionary new.

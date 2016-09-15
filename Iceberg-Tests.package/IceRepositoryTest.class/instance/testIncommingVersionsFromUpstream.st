@@ -1,4 +1,4 @@
-tests
+tests - versions
 testIncommingVersionsFromUpstream
 	| package | 
 	"1. - Preparation: checkout the all-but-last version"

@@ -1,3 +1,3 @@
-versions
+accessing
 versionDictionary
-	^ versionDictionary ifNil: [ self loadVersions ]
+	^ versionDictionary

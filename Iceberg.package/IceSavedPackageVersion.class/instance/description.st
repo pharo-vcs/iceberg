@@ -1,5 +1,7 @@
 *Iceberg-UI
 description
+	[ self commit ] on: Error do: [ ^ self internalCommitId ].
+
 	^ String streamContents: [ :stream | 
 		stream 
 			nextPutAll: commit shortId; 

@@ -1,4 +1,4 @@
-tests
+tests - versions
 testIncommingVersions
 	| package | 
 	package := repository packageNamed: packageName.

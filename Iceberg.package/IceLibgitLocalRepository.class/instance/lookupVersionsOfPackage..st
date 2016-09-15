@@ -1,6 +1,7 @@
 querying
 lookupVersionsOfPackage: anIceSavedPackage 
 	"Load versions from the real repository, latest first"
+	"This method is outdated, please check IceSavedPackage>>#loadVersionsInBranch: to see new way of doing it."
 	| commitsChangingPackage | 
 	commitsChangingPackage := OrderedCollection new.
 	
