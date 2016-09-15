@@ -11,3 +11,4 @@ commitWithMessage: message
 		withMessage: message.
 		
 	self loadedCode commited: newCommit changingPackages: changedPackages.
+	self announcer announce: IceCommited new.

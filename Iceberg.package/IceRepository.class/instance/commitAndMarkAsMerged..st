@@ -14,4 +14,5 @@ commitAndMarkAsMerged: aCommitish
 
 	self refresh.
 	changedPackages do: [ :package |
-		package workingCopy versionInfo: package versions first info ]
+		package workingCopy versionInfo: package versions first info ].
+	self announcer announce: IceCommited new.
