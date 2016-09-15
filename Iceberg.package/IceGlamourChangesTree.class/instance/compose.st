@@ -8,5 +8,6 @@ compose
 		format: #description;
 		display: #elements;
 		updateOn: IceChangeSetChanged from: #announcer;
+		updateOn: IceCommited from: [ :diff | diff repository announcer ];
 		addAction: self refreshTreeAction;
 		addSelectionAction: self revertChangeAction
