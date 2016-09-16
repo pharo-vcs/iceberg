@@ -1,5 +1,7 @@
 querying
 outgoingVersions
-	| outgoingCommits |
-	outgoingCommits := self repository outgoingCommits.
-	^ self versions select: [ :version | outgoingCommits includes: version commit ]
+	^ self repository newCommitWalk 
+		fromHead;
+		uptoCommits: { self loadedVersion commit }; 
+		modifyingPackage: self;
+		commits
