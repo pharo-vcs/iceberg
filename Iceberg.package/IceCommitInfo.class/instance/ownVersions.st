@@ -1,3 +1,4 @@
 querying
 ownVersions
-	^ self repository versionsInCommit: self
+	^ self repository savedPackages collect: [ :package | 
+		self versionFor: package ]
