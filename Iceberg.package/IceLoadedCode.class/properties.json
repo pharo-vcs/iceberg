@@ -12,5 +12,5 @@
 	"name" : "IceLoadedCode",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceCommitish",
 	"type" : "normal" }

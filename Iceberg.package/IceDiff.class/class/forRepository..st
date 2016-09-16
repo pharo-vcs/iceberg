@@ -3,5 +3,5 @@ forRepository: aRepository
 	^ self new 
 		repository: aRepository;
 		myVersion: IceCommitish image;
-		theirVersion: (IceCurrentHead new repository: aRepository);
+		theirVersion: (IceLoadedCode new repository: aRepository);
 		yourself.
