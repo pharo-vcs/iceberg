@@ -9,22 +9,16 @@ compose
 
 		browser transmit
 			to: #commits;
-			andShow: [ :a | a fastTable
-				title: 'New local commits to be published';
-				display: #outgoingCommits;
-				column: 'User' evaluated: #username width: 120;
-				column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
-				column: 'Comment' evaluated: #comment;
-				updateOn: IcePushed from: #announcer;
-				updateOn: IceCommited from: #announcer;
-				addAction: self pushAction;
-				addSelectionAction: self mergeIntoAction].
+			andShow: [ :a | self composeCommitsListIn: a ].
 
 		browser transmit
 			fromOutsideEntityPort;
 			from: #commits; 
 			to: #changes; 
-			transformed: [ :model :commit | commit ifNotNil: [model mergeBaseDiffToCommit: commit] ];
+			transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
+				IceDiff
+					from: selectedCommit
+					to: repository upstream lastCommit ]];
 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incomming changes') ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
