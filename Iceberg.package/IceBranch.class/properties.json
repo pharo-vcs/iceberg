@@ -4,7 +4,7 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 7/26/2016 00:45",
+	"commentStamp" : "NicoPasserini 9/16/2016 16:03",
 	"instvars" : [
 		"name",
 		"repository",
@@ -13,5 +13,5 @@
 	"name" : "IceBranch",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceCommitish",
 	"type" : "normal" }

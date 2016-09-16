@@ -1,12 +1,10 @@
 tests - changes
-testOutgoingDiff
+testDiffWithBranch
 	|  diff change | 
 	self scenarioTwoLoadedPackagesOneOutdated.
 	repository commitWithMessage: 'For testing outgoing commits'.
 	
-	diff := IceDiff
-		from: repository headCommit
-		to: repository upstream lastCommit.
+	diff := repository headCommit diffWith: repository upstream.
 
 	self assert: diff changes notEmpty.
 	

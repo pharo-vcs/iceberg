@@ -15,10 +15,8 @@ compose
 			fromOutsideEntityPort;
 			from: #commits; 
 			to: #changes; 
-			transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
-				IceDiff
-					from: selectedCommit
-					to: repository upstream lastCommit ]];
+			transformed: [ :repository :selectedCommit | 
+				selectedCommit ifNotNil: [ selectedCommit diffWith: repository upstream ]];
 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incomming changes') ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.

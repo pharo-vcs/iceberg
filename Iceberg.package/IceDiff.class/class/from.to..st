@@ -1,7 +1,7 @@
 instance creation
-from: myCommit to: theirsCommit
+from: myCommitish to: theirsCommitish
 	^ self new 
-		repository: myCommit repository;
-		myVersion: myCommit;
-		theirVersion: theirsCommit;
+		repository: myCommitish repository;
+		myVersion: myCommitish;
+		theirVersion: theirsCommitish;
 		yourself.
