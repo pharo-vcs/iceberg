@@ -23,7 +23,7 @@ testLoadCommit
 	self assert: changedPackage incommingVersions isEmpty.
 	self assert: unchangedPackage incommingVersions isEmpty.
 
-	self assert: (commit properVersionFor: changedPackage) equals: changedPackage loadedVersion.
-	self assert: (commit properVersionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
+	self assert: (commit versionFor: changedPackage) equals: changedPackage loadedVersion.
+	self assert: (commit versionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
 	
 	self assert: repository incommingCommits isEmpty.

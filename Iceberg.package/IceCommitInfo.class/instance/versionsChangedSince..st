@@ -4,8 +4,8 @@ versionsChangedSince: anotherCommit
 	changes := OrderedCollection new.
 	self repository loadedPackages do: [ :package | 
 		| myVersion theirVersion |
-		myVersion := self properVersionFor: package.
-		theirVersion := anotherCommit properVersionFor: package.
+		myVersion := self versionFor: package.
+		theirVersion := anotherCommit versionFor: package.
 		(myVersion = theirVersion)
 			ifFalse: (changes add: myVersion)
 	].
