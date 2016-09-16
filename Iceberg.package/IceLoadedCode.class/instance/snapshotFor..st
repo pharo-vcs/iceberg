@@ -1,3 +1,3 @@
-as yet unclassified
+querying
 snapshotFor: package
 	^ (self versionFor: package) snapshot

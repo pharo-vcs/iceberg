@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-Changes",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 9/16/2016 14:08",
 	"instvars" : [
 		 ],
 	"name" : "IceCommitish",
