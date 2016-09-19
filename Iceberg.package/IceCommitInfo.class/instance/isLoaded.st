@@ -1,3 +1,3 @@
-querying
+*Iceberg-UI
 isLoaded
-	^ (self repository incommingCommits includes: self) not
+	^ self isAncestorOf: repository loadedCode referenceCommit

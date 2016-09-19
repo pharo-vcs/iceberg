@@ -1,3 +1,3 @@
 accessing
 referenceCommit
-	^ referenceCommit
+	^ referenceCommit ifNil: [ referenceCommit := self computeReferenceCommit ]

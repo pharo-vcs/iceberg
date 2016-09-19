@@ -1,7 +1,7 @@
 querying
 commitsNotLoaded
 	| loadedCommits |
-	loadedCommits := self loadedVersions collect: #commit as: Set.
+	loadedCommits := self loadedVersions collect: #updationCommit as: Set.
 
 	^ self repository newCommitWalk
 		fromHead;
