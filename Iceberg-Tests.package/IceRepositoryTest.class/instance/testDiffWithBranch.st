@@ -1,8 +1,7 @@
 tests - changes
 testDiffWithBranch
 	|  diff change | 
-	self scenarioTwoLoadedPackagesOneOutdated.
-	repository commitWithMessage: 'For testing outgoing commits'.
+	self scenarioOutgoingCommit.
 	
 	diff := repository headCommit diffWith: repository upstream.
 
