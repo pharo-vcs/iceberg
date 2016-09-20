@@ -9,5 +9,6 @@ commitWithMessage: text
 				self pushRepository: self repository andThen: []]
 		].
 	
+		self message text: ''.
 		self uiManager inform: ('Commited with message: ', text)
 	]
