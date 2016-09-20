@@ -2,7 +2,7 @@ actions
 createRepository
 	[
 		| repository |
-		repository := IceRepository origin: remoteUrl text.
+		repository := IceRepository origin: remoteUrl text trim.
 		subdirectory text ifNotNil: [ :text | repository subdirectory: text ].
 		self location ifNotNil: [ :directory | repository location: directory  ].
 		repository register.

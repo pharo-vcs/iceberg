@@ -1,6 +1,10 @@
 commits
 commitAt: commitId
-	commitId size = 40 ifTrue: [ ^ self commitDictionary at: commitId ].
+	commitId size = 40 
+		ifTrue: [ 
+			^ self commitDictionary 
+				at: commitId
+				ifAbsent: [ self lookupCommit: commitId ]].
 
 	"Commit id is an abbreviation, sequential search"	
 	(self commitDictionary keys 
@@ -9,6 +13,6 @@ commitAt: commitId
 			possibleKeys size = 1 
 				ifTrue: [ ^ self commitDictionary at: possibleKeys anyOne ] 
 				ifFalse: [ possibleKeys isEmpty 
-					ifTrue: [ self error: 'Commit is not found in repository: ', commitId ] 
+					ifTrue: [ self lookupCommit: commitId ] 
 					ifFalse: [ self error: 'Ambiguous commit hexString: ', commitId  ]]
 		]
