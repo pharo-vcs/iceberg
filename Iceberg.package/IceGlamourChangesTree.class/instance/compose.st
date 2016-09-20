@@ -11,4 +11,8 @@ compose
 		addAction: self refreshTreeAction;
 		addSelectionAction: self browseAction;
 		addSelectionAction: self browseReferencesAction;
-		addSelectionAction: self revertChangeAction
+		addSelectionAction: self revertChangeAction;
+		onChangeOfPort: #entity act: [ :presentation :diff | 
+			diff ifNotNil: [ diff announcer weak 
+				subscribe: IceChangeSetChanged 
+				do: [ presentation selection: nil ]]]

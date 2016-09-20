@@ -1,7 +1,6 @@
 building
 compose
 	self tabulator with: [ :browser | 
-
 		browser
 			row: [ :top | top
 				column: #changes; 
@@ -13,7 +12,7 @@ compose
  			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
 	
 		browser transmit to: #commit; andShow: [ :a :diff | a morph
-			morph: [ :presentation |
+			morph: [
 				IceCommitModelNew new 
 					model: diff;
 					buildWithSpec ];
