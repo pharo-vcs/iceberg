@@ -7,4 +7,4 @@ push
 			'origin'.
 			self branch
 		}]
-	}] on: MCFileTreeGitError do: #processPushError
+	}] on: MCFileTreeGitError do: [ YouShouldPullBeforePush signal ]
