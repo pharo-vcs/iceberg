@@ -6,6 +6,4 @@ addDiffTo: browser withTitle: diffTitle
 		andShow: [ :a | 
 			a diff 
 				title: diffTitle;
-				display: [:change | { 
-					change myVersion ifNil: ''. 
-					change theirVersion ifNil: '' } ]]
+				display: [:change | self buildDiffInput: change ]]

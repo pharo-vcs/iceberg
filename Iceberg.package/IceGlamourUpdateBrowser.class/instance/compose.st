@@ -16,7 +16,7 @@ compose
 			from: #commits; 
 			to: #changes; 
 			transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
-					repository mergeBaseDiffToCommit: selectedCommit ]];
+					selectedCommit diffWith: (repository mergeBaseWith: selectedCommit) ]];
 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incomming changes') ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
