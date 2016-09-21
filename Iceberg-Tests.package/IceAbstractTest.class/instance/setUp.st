@@ -14,7 +14,7 @@ setUp
 			execute: { 
 				'clone'. 
 				'--bare'. 
-				'git@github.com:npasserini/{1}.git' format: { projectName }. 
+				'https://github.com/npasserini/{1}.git' format: { projectName }. 
 				projectName }. 
 	].
 	
