@@ -14,9 +14,11 @@ setUp
 				'--bare'. 
 				'https://github.com/npasserini/{1}.git' format: { projectName }. 
 				projectName }. 
-				
-		IceGitCommand in: originDirectory execute: { 'config'. 'user.email'. '"npasserini@gmail.com"' }.
-		IceGitCommand in: originDirectory execute: { 'config'. 'user.name'.  '"Nicolás Passerini"' }
+		
+		(OSEnvironment default at: 'CI') = 'true' ifTrue: [ 
+			IceGitCommand in: originDirectory execute: { 'config'. '-global'. 'user.email'. '"npasserini@gmail.com"' }.
+			IceGitCommand in: originDirectory execute: { 'config'. '-global'. 'user.name'.  '"Iceberg CI"' }
+		]				
 	].
 
 	origin := 'file://', originDirectory fullName.
