@@ -15,7 +15,8 @@ setUp
 				'https://github.com/npasserini/{1}.git' format: { projectName }. 
 				projectName }. 
 		
-		(OSEnvironment default at: 'CI') = 'true' ifTrue: [ 
+		(OSEnvironment default at: 'CI') = 'true' ifTrue: [
+			Transcript show: 'Setting user information for CI'; cr. 
 			IceGitCommand in: originDirectory execute: { 'config'. '--global'. 'user.email'. '"npasserini@gmail.com"' }.
 			IceGitCommand in: originDirectory execute: { 'config'. '--global'. 'user.name'.  '"Iceberg CI"' }
 		]				
