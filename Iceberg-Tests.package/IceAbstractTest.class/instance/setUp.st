@@ -16,8 +16,8 @@ setUp
 				projectName }. 
 		
 		(OSEnvironment default at: 'CI') = 'true' ifTrue: [ 
-			IceGitCommand in: originDirectory execute: { 'config'. '-global'. 'user.email'. '"npasserini@gmail.com"' }.
-			IceGitCommand in: originDirectory execute: { 'config'. '-global'. 'user.name'.  '"Iceberg CI"' }
+			IceGitCommand in: originDirectory execute: { 'config'. '--global'. 'user.email'. '"npasserini@gmail.com"' }.
+			IceGitCommand in: originDirectory execute: { 'config'. '--global'. 'user.name'.  '"Iceberg CI"' }
 		]				
 	].
 
