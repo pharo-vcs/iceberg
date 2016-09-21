@@ -8,15 +8,15 @@ setUp
 	originDirectory exists ifFalse: [ 
 		originDirectory parent ensureCreateDirectory.
 		IceGitCommand 
-			in: origin parent  
+			in: originDirectory parent  
 			execute: { 
 				'clone'. 
 				'--bare'. 
 				'https://github.com/npasserini/{1}.git' format: { projectName }. 
 				projectName }. 
 				
-		IceGitCommand in: origin execute: { 'config'. 'user.email'. '"npasserini@gmail.com"' }.
-		IceGitCommand in: origin execute: { 'config'. 'user.name'.  '"Nicolás Passerini"' }
+		IceGitCommand in: originDirectory execute: { 'config'. 'user.email'. '"npasserini@gmail.com"' }.
+		IceGitCommand in: originDirectory execute: { 'config'. 'user.name'.  '"Nicolás Passerini"' }
 	].
 
 	origin := 'file://', originDirectory fullName.
