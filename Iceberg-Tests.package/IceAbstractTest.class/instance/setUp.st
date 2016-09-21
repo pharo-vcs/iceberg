@@ -6,7 +6,7 @@ setUp
 
 	originDirectory := FileLocator temp asFileReference / 'pharo' / 'iceberg' / projectName.
 	originDirectory exists ifFalse: [ 
-		origin parent ensureCreateDirectory.
+		originDirectory parent ensureCreateDirectory.
 		IceGitCommand 
 			in: origin parent  
 			execute: { 

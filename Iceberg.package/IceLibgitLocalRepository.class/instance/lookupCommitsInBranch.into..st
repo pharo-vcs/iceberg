@@ -5,13 +5,12 @@ lookupCommitsInBranch: branchName into: aCommitRegistry
 	commits := OrderedCollection new.
 	
 	self commitsInBranch: branchName do: [ :commit |
-		commits add: (IceCommitInfo new
-			commitId: commit id hexString;
-			username: commit committer name;
-			datetime: commit time asDateAndTime;
-			parentIds: (commit parents collect: [ :parent | parent id hexString ]);
-			comment: commit message
-		).
-	].
+		aCommitRegistry addCommit: 
+			(IceCommitInfo new
+				commitId: commit id hexString;
+				username: commit committer name;
+				datetime: commit time asDateAndTime;
+				parentIds: (commit parents collect: [ :parent | parent id hexString ]);
+				comment: commit message)].
 
 	^ commits reversed
