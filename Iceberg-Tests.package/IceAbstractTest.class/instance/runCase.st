@@ -1,12 +1,20 @@
 running
 runCase
-	Transcript show: 'starting to run case', self printString.
+	Transcript cr; show: 'starting to run case', self printString; cr.
 	EpMonitor current disable.
-	Transcript show: 'after epicea', self printString.
-	[ super runCase.
-		Transcript show: 'after super runCase', self printString.
- ] ensure: [ 
-	Transcript show: 'in ensure', self printString.
+	Transcript show: 'after epicea';cr.
+	[
+		[ 
+			super runCase.
+			Transcript show: 'after super runCase';cr.
+ 		] 
+		on: Error do: [ :error | 
+			Transcript show: 'Error: ', error description; cr.
+			error pass
+		]
+ 	] 
+	ensure: [ 
+		Transcript show: 'in ensure';cr.
 		EpMonitor current enable.
-			Transcript show: 'after ensure', self printString.
- ]
+		Transcript show: 'after ensure';cr.
+ 	]
