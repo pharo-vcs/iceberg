@@ -10,7 +10,8 @@
 		"location",
 		"origin",
 		"subdirectory",
-		"branch" ],
+		"branch",
+		"frontend" ],
 	"name" : "IceLibgitLocalRepository",
 	"pools" : [
 		 ],

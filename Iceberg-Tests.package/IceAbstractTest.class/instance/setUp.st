@@ -1,13 +1,11 @@
 running
 setUp
+	| originDirectory |
 	packageName :=  'Pharo-Git-Test'.
 	projectName := 'pharo-git-test'.
 
-	"origin := 'git@github.com:npasserini/{1}.git' format: { projectName }."
-	"origin := 'file:///home/nico/checkout/inria/{1}' format: { projectName }."
-	origin := FileLocator temp asFileReference / 'pharo' / 'iceberg' / projectName.
-	
-	origin exists ifFalse: [ 
+	originDirectory := FileLocator temp asFileReference / 'pharo' / 'iceberg' / projectName.
+	originDirectory exists ifFalse: [ 
 		origin parent ensureCreateDirectory.
 		IceGitCommand 
 			in: origin parent  
@@ -16,9 +14,13 @@ setUp
 				'--bare'. 
 				'https://github.com/npasserini/{1}.git' format: { projectName }. 
 				projectName }. 
+				
+		IceGitCommand in: origin execute: { 'config'. 'user.email'. '"npasserini@gmail.com"' }.
+		IceGitCommand in: origin execute: { 'config'. 'user.name'.  '"Nicolás Passerini"' }
 	].
-	
-	repository := self createTestRepository: 'file://', origin fullName.
+
+	origin := 'file://', originDirectory fullName.
+	repository := self createTestRepository: origin.
 	
 	self removeTempDirectories.
 	self removeTestPackages.
