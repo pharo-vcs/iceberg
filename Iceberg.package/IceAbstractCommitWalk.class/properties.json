@@ -1,0 +1,15 @@
+{
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/21/2016 14:25",
+	"instvars" : [
+		"repository",
+		"modifyingPackage" ],
+	"name" : "IceAbstractCommitWalk",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

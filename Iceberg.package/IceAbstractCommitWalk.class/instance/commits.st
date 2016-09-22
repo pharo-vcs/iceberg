@@ -2,5 +2,5 @@ walking
 commits
 	| commits |
 	commits := OrderedCollection new.
-	self rawResultsDo: [ :result | commits add: (self commitFrom: result) ].
+	self commitsDo: [ :commit | commits add: commit ].
 	^ commits

@@ -4,12 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/14/2016 11:45",
+	"commentStamp" : "NicoPasserini 9/21/2016 14:26",
 	"instvars" : [
-		"from",
-		"upto",
-		"maxNumber" ],
-	"name" : "IceGitFileTreeCommitWalk",
+		"revwalk",
+		"lgitRepository" ],
+	"name" : "IceLibgitCommitWalk",
 	"pools" : [
 		 ],
 	"super" : "IceAbstractCommitWalk",

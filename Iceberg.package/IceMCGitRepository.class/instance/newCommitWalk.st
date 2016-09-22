@@ -1,3 +1,3 @@
 querying
 newCommitWalk
-	^ IceGitFileTreeCommitWalk new repository: self; yourself
+	^ IceGitFileTreeCommitWalk forRepository: self

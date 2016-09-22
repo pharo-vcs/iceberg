@@ -1,5 +1,5 @@
 private
 commitFrom: result
 	^ self repository frontend
-			commitAt: ($| split: result) second
+			commitAt: (self commitIdFrom: result)
 			ifAbsentPut: [ IceMCGitRepository parseCommitInfo: result ]
