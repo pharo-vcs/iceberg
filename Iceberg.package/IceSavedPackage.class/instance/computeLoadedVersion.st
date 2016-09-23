@@ -6,8 +6,10 @@ computeLoadedVersion
 	^ self versions 
 		detect: [ :version | workingCopyAncestors includes: version info  ] 
 		ifNone: [ 
-			"Check if working copy came from an MCGithubRepository"
-			(MCGitHubRepository commitIdFor: self workingCopy)
-				ifNotNil: [ :commitId | (self repository commitAt: commitId) versionFor: self ]
-				ifNil: [ IceForeignVersion package: self ]
+			self workingCopy repositoryGroup repositories do: [ :mcRepo |
+				mcRepo commitIdFor: self workingCopy ifFound: [ :commitId | 
+					^ (self repository commitAt: commitId) versionFor: self ]
+			].
+		
+			^ IceForeignVersion package: self.
 		]

@@ -1,4 +1,4 @@
-*Iceberg-Core
+*Iceberg-Adapters
 commitId
 	"This kind of repo is associated to a specific commit that was downloaded, 
 	sadly the only way to know it is to parse the directory name."

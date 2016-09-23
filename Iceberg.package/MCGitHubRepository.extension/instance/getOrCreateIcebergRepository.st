@@ -1,4 +1,4 @@
-*Iceberg-Core
+*Iceberg-Adapters
 getOrCreateIcebergRepository
 	^ (IceRepository origin: self scpUrl) 
 		branchName: self projectVersion; 

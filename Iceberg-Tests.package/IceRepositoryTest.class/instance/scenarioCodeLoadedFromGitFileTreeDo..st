@@ -3,7 +3,7 @@ scenarioCodeLoadedFromGitFileTreeDo: testActions
 	| gitFileTreeRepository lastEntry lastVersion |
 	
 	gitFileTreeRepository := MCFileTreeGitRemoteRepository
-		location: 'git@github.com:npasserini/pharo-git-test.git'
+		location: origin
 		name: ''
 		subdirectory: ''
 		branch: ''.
@@ -12,6 +12,7 @@ scenarioCodeLoadedFromGitFileTreeDo: testActions
 
 	lastVersion := gitFileTreeRepository versionFromFileNamed: lastEntry.
 	lastVersion load.
+	lastVersion workingCopy repositoryGroup addRepository: gitFileTreeRepository.
 
 	testActions ensure: [
 		(MCWorkingCopy forPackage: (MCPackage named: 'Pharo-Git-Test')) unload.
