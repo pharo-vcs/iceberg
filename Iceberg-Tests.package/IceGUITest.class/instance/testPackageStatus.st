@@ -1,5 +1,5 @@
 tests
 testPackageStatus
-	repository loadedPackages do: [ :package |
-		IceRepositoriesBrowser statusFor: package
-	]
+	| package |
+	package := IceRepository registry first packageNamed: 'Iceberg'.
+	IceRepositoriesBrowser statusFor: package

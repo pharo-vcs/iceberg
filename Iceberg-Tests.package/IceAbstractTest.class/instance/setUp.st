@@ -4,6 +4,9 @@ setUp
 	packageName :=  'Pharo-Git-Test'.
 	projectName := 'pharo-git-test'.
 
+	self removeTempDirectories.
+	self removeTestPackages.
+
 	originDirectory := FileLocator temp asFileReference / 'pharo' / 'iceberg' / projectName.
 	originDirectory exists ifFalse: [ 
 		originDirectory parent ensureCreateDirectory.
@@ -25,5 +28,3 @@ setUp
 	origin := 'file://', originDirectory fullName.
 	repository := self createTestRepository: origin.
 	
-	self removeTempDirectories.
-	self removeTestPackages.

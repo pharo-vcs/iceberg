@@ -1,3 +1,6 @@
 instance creation
 origin: url
-	^ self new origin: (IceRemoteRepository url: url)
+	^ self basicNew
+		origin: (IceRemoteRepository url: url);
+		initialize;
+		yourself
