@@ -1,10 +1,7 @@
 exploring
 parent
-	| startCommitId |
-	startCommitId := commitId ifNotNil: [ commitId ] ifNil: [ updationCommit id ].
-
 	^ (self repository newCommitWalk 
-		fromCommitId: startCommitId; 
+		fromCommit: self commit; 
 		modifyingPackage: self package;
 		maxNumber: 2;
 		commits)

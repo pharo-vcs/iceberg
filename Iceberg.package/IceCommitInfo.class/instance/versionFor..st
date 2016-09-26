@@ -1,6 +1,3 @@
 querying
 versionFor: package
-	^ IceSavedPackageVersion new 
-		package: package;
-		updationCommit: self;
-		yourself
+	^ IceSavedPackageVersion fromCommit: self package: package

@@ -9,7 +9,7 @@ testCommitIsLoaded
 	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
 	
 	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
-	self assert: loadedVersion commitId equals: self currentCommitId.
+	self assert: loadedVersion commit id equals: self currentCommitId.
 	
 	"1.2 - Go back to HEAD"
 	repository checkoutBranch: 'master'.
@@ -17,8 +17,8 @@ testCommitIsLoaded
 	"1.3 - Some verifications before excersising"
 	self assert: repository incommingCommits size equals: 1.
 	self assert: (self currentCommitMessage endsWith: (loadedVersionNumber + 1) asString).
-	self deny: loadedVersion commitId = self currentCommitId.
-	self assert: (repository latestVersion: packageName) commitId equals: self currentCommitId.
+	self deny: loadedVersion commit id = self currentCommitId.
+	self assert: (repository latestVersion: packageName) commit id equals: self currentCommitId.
 	
 	"2. Excercise"
 	repository updatePackage: packageName.
@@ -31,4 +31,4 @@ testCommitIsLoaded
 	loadedVersion := (repository packageNamed: packageName) latestVersion load.
 	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
 	self assert: (self currentCommitMessage endsWith: loadedVersionNumber asString).
-	self assert: loadedVersion commitId equals: self currentCommitId.
+	self assert: loadedVersion commit id equals: self currentCommitId.

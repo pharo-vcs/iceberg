@@ -1,4 +1,4 @@
 commits
 versionsInCommit: commit
-	^ self versionDictionary values flattened select: [ :version | version commitId = commit id ]
+	^ self versionDictionary values flattened select: [ :version | version commit id = commit id ]
 

@@ -4,14 +4,13 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/12/2016 16:56",
+	"commentStamp" : "NicoPasserini 9/26/2016 11:11",
 	"instvars" : [
 		"package",
 		"entry",
-		"commitId",
-		"updationCommit",
+		"info",
 		"commit",
-		"info" ],
+		"originatingCommit" ],
 	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],
