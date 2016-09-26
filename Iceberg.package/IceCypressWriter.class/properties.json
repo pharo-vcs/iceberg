@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/26/2016 14:55",
+	"instvars" : [
+		 ],
+	"name" : "IceCypressWriter",
+	"pools" : [
+		 ],
+	"super" : "MCFileTreeGitWriter",
+	"type" : "normal" }

@@ -1,12 +1,12 @@
 private
-internalStoreVersion: aVersion
+internalStoreVersion: aMCVersion
 	"Inspired on MCFileTreeGitRepository."
 	"Do a filetree store followed by a git add command, do not commit yet."
 	"Writer is metadata dependent."
 
 	| packageDirectoryString |
 
-	MCFileTreeGitWriter fileOut: aVersion on: self.
+	MCFileTreeGitWriter fileOut: aMCVersion on: self.
 
-	packageDirectoryString := aVersion package name , self packageExtension.
+	packageDirectoryString := aMCVersion package name , self packageExtension.
 	self command: { 'add'. packageDirectoryString }

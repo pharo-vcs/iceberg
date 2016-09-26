@@ -1,3 +1,5 @@
 private
 rawResultsDo: aBlockClosure 
-	self revwalk do: aBlockClosure
+	self revwalk 
+		select: [ :result | self shouldInclude: result ]
+		thenDo: aBlockClosure

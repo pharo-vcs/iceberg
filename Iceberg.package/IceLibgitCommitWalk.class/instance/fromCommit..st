@@ -1,3 +1,3 @@
 walk definition
 fromCommit: commit
-	self revwalk pushCommit: (LGitId fromHexString: commit id)
+	self fromLGitId: (LGitId fromHexString: commit id)
