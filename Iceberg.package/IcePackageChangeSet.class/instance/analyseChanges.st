@@ -4,6 +4,13 @@ analyseChanges
 	newChanges := self parent changes
 		select: [ :change | change icePackage = self package ].
 	
+	newChanges ifEmpty: [ 
+		(self package isLoaded 
+			and: [ self package workingCopy modified
+			and: [(self parent myVersion isKindOf: IceWorkingCopy) 
+			and: [ self parent theirVersion isKindOf: IceLoadedCode ]]])
+			ifTrue: [ self package workingCopy modified: false ]].
+	
 	changes := OrderedCollection new.
 	newChanges do: [ :change | change definition isOrganizationDefinition
 		ifTrue: [ 

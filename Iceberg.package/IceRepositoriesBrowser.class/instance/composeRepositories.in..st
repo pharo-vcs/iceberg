@@ -13,6 +13,7 @@ composeRepositories: repositories in: composite
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].
 	repositories do: [ :repo | 
 		table updateOn: IceCommited from: repo announcer ].
+	table updateOn: MCPackageModified from: MCPackageManager announcer.
 
 	table		
 		"Task bar menu"
