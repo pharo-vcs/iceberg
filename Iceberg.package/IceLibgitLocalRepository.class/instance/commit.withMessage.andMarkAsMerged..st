@@ -1,20 +1,23 @@
 actions
-commit: versions withMessage: message
+commit: versions withMessage: message andMarkAsMerged: aCommitish
 	self withRepoDo: [ :repo | 
-		| head parentCommit index treeId signature commitId newCommit |
+		| head parentCommits index treeId signature commitId newCommit |
 		head := repo head.
-		parentCommit := head object.
+		parentCommits := {
+			head object.
+			LGitCommit of: repo fromHexString: aCommitish id
+		}.
 		signature := repo defaultSignature.
 		
 		"versions do: [ :version | index addAll: version directoryName ]"
 		index := repo index.
 		index addAll.
-		treeId := index  writeTreeAndReturnOid.
+		treeId := index writeTreeAndReturnOid.
 		
 		commitId := (LGitCommitBuilder of: repo)
 			tree: (LGitTree of: repo fromId: treeId);
 			message: message;
-			parents: { parentCommit };
+			parents: parentCommits;
 			updateReference: head;
 			author: signature;
 			committer: signature;
