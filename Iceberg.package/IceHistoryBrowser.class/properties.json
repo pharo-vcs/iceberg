@@ -10,5 +10,5 @@
 	"name" : "IceHistoryBrowser",
 	"pools" : [
 		 ],
-	"super" : "IceTool",
+	"super" : "IceAbstractBrowser",
 	"type" : "normal" }
