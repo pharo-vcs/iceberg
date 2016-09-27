@@ -1,14 +1,20 @@
 building
-composeRepositoriesIn: composite
-	composite fastTable 
+composeRepositories: repositories in: composite
+	| table |
+	table := composite fastTable.
+	
+	table
 		title: 'Repositories';
 		column: 'Origin' evaluated: [:repo | 
 			self highlight: repo origin url accordingToStatusOf: repo ] width: 320;
 		column: 'Status' evaluated: [ :repo | self class statusFor: repo ] width: 150;
-		column: 'Current branch' evaluated: #branchName width: 120;
+		column: 'Current branch' evaluated: #branchName width: 120.
 
-		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
-		
+	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].
+	repositories do: [ :repo | 
+		table updateOn: IceCommited from: repo announcer ].
+
+	table		
 		"Task bar menu"
 		addAction: self createRepositoryAction;
 		addAction: self createLocalRepositoryAction;
@@ -24,4 +30,4 @@ composeRepositoriesIn: composite
 		addSelectionAction: self inspectRepositoryAction;
 		
 		"Double click action"
-		onChangeOfPort: #strongSelection act: [ :table | self synchronize: table selection ]
+		onChangeOfPort: #strongSelection act: [ :presentation | self synchronize: presentation selection ]
