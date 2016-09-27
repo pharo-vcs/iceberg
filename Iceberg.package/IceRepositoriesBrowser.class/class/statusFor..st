@@ -1,15 +1,17 @@
 utilities
-statusFor: package
+statusFor: entity
+	"entity could be a repository or a package"
+	
 	| status incomming outgoing | 
-	package isLoaded ifFalse: [ ^ 'Not loaded.' ].
+	entity isLoaded ifFalse: [ ^ 'Not loaded.' ].
 	
 	status := OrderedCollection new.
-	package isModified ifTrue: [ status add: 'Uncommited changes' ].
+	entity isModified ifTrue: [ status add: 'Uncommited changes' ].
 	
-	incomming := package incommingVersions size.
+	incomming := entity incommingCommits size.
 	incomming > 0 ifTrue: [ status add: ('{1} incomming' format: { incomming })].
 	
-	outgoing := package outgoingVersions size.
+	outgoing := entity outgoingCommits size.
 	outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
 
 	^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]

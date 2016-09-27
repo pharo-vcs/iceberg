@@ -9,7 +9,7 @@ testCreateRepoOnTopOfGitFileTreeLoadedCode
 		self assert: repository incommingCommits isEmpty.
 		self assert: repository headCommit equals: repository loadedCode referenceCommit.
 
-		self assert: package incommingVersions isEmpty.
+		self assert: package incommingCommits isEmpty.
 		
 		repository loadedPackages do: [ :pkg |
 			IceRepositoriesBrowser statusFor: pkg

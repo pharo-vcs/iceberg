@@ -1,5 +1,5 @@
 querying
-outgoingVersions
+outgoingCommits
 	^ self repository newCommitWalk 
 		fromHead;
 		uptoCommits: { self loadedVersion commit }; 

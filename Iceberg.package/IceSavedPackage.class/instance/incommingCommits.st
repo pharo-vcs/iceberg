@@ -1,5 +1,6 @@
 querying
-incommingVersions
+incommingCommits
+	"Returns only the commits modifying this package."
 	^ (self repository newCommitWalk 
 		fromHead;
 		uptoCommits: { self loadedVersion commit }; 

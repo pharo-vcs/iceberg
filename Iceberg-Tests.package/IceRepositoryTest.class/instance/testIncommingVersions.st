@@ -7,4 +7,4 @@ testIncommingVersions
 	package versions second load.
 
 	"2. - Exercise"
-	self assert: package incommingVersions size equals: 1
+	self assert: package incommingCommits size equals: 1

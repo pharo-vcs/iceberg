@@ -2,8 +2,11 @@ building
 composeRepositoriesIn: composite
 	composite fastTable 
 		title: 'Repositories';
-		column: 'Origin' evaluated: [:repo | repo origin url ] width: 320;
-		column: 'Current branch' evaluated: #branchName;
+		column: 'Origin' evaluated: [:repo | 
+			self highlight: repo origin url accordingToStatusOf: repo ] width: 320;
+		column: 'Status' evaluated: [ :repo | self class statusFor: repo ] width: 150;
+		column: 'Current branch' evaluated: #branchName width: 120;
+
 		updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ];
 		
 		"Task bar menu"
