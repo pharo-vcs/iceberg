@@ -12,7 +12,7 @@ composeRepositories: repositories in: composite
 
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].
 	repositories do: [ :repo | 
-		table updateOn: IceRepositoryAnnouncement from: repo announcer ].
+		table updateOn: IceCommited, IcePushed from: repo announcer ].
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
 
 	table		
