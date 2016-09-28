@@ -6,7 +6,6 @@ composeCommitsListIn: composite
 		column: 'User' evaluated: #username width: 120;
 		column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 120;
 		column: 'Comment' evaluated: #comment;
-		updateOn: IcePushed from: #announcer;
-		updateOn: IceCommited from: #announcer;
+		updateOn: IceCommited, IcePushed from: #announcer;
 		addAction: self pushAction;
 		addSelectionAction: self mergeIntoAction
