@@ -7,4 +7,3 @@ exampleChangesTreeOnTestPackage
 		model: changeSet;
 		openWithSpec.
 		
-	Transcript flush.

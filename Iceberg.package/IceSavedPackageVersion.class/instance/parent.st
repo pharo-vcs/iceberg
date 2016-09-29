@@ -1,4 +1,4 @@
-exploring
+querying
 parent
 	^ (self repository newCommitWalk 
 		fromCommit: self commit; 

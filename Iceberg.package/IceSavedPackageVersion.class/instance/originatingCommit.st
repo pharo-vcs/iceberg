@@ -1,4 +1,4 @@
-exploring
+querying
 originatingCommit
 	^ originatingCommit ifNil: [ originatingCommit := 
 		self repository newCommitWalk 
