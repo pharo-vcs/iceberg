@@ -13,6 +13,6 @@ commitAt: commitId
 			possibleKeys size = 1 
 				ifTrue: [ ^ self commitDictionary at: possibleKeys anyOne ] 
 				ifFalse: [ possibleKeys isEmpty 
-					ifTrue: [ self lookupCommit: commitId ] 
+					ifTrue: [ ^ self lookupCommit: commitId ] 
 					ifFalse: [ self error: 'Ambiguous commit hexString: ', commitId  ]]
 		]
