@@ -3,6 +3,10 @@ computeLoadedVersion
 	| workingCopyAncestors |
 	workingCopyAncestors := self package workingCopy ancestors.
 
+	self workingCopy ancestors
+		detect: [ :ancestor | (ancestor respondsTo: #iceVersion) and: [ ancestor commit notNil ] ]
+		ifFound: [ :ancestor | ^ ancestor iceVersion ].
+
 	^ self versions 
 		detect: [ :version | workingCopyAncestors includes: version info  ] 
 		ifNone: [ 

@@ -6,7 +6,8 @@
 		 ],
 	"commentStamp" : "NicoPasserini 9/7/2016 15:19",
 	"instvars" : [
-		 ],
+		"commit",
+		"package" ],
 	"name" : "IceMCVersionInfo",
 	"pools" : [
 		 ],
