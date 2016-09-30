@@ -1,3 +1,3 @@
 printing
 printOn: aStream
-	aStream nextPutAll: targetClass name
+	aStream nextPutAll: targetClass className
