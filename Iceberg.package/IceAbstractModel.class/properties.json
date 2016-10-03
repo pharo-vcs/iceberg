@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-GUI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		"ModelCache" ],
+	"commentStamp" : "",
+	"instvars" : [
+		"entity" ],
+	"name" : "IceAbstractModel",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

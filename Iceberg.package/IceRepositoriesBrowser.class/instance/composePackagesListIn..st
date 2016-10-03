@@ -3,8 +3,8 @@ composePackagesListIn: composite
 	composite fastTable
 		title: 'Packages';
 		display: #savedPackages;
-		column: 'Name' evaluated: [:pkg | self highlight: pkg name accordingToStatusOf: pkg ] width: 150;
-		column: 'Status' evaluated: [:pkg | self class statusFor: pkg ];
+		column: 'Name' evaluated: #nameText width: 150;
+		column: 'Status' evaluated: #status;
 		column: 'Loaded version' evaluated: #loadedVersionName width: 50;
 		addAction: self addPackageAction;
 		addSelectionAction: self loadPackageAction;

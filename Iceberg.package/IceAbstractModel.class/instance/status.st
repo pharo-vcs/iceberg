@@ -1,5 +1,5 @@
-utilities
-statusFor: entity
+accessing
+status
 	"entity could be a repository or a package"
 	
 	| status incomming outgoing | 

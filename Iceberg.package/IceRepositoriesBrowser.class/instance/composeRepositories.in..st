@@ -5,9 +5,9 @@ composeRepositories: repositories in: composite
 	
 	table
 		title: 'Repositories';
-		column: 'Origin' evaluated: [:repo | 
-			self highlight: repo origin url accordingToStatusOf: repo ] width: 320;
-		column: 'Status' evaluated: [ :repo | self class statusFor: repo ] width: 150;
+		display: [ :repos | repos collect: [ :repo | IceRepositoryModel modelFor: repo ] ];
+		column: 'Origin' evaluated: #originText width: 320;
+		column: 'Status' evaluated: #status width: 150;
 		column: 'Current branch' evaluated: #branchName width: 120.
 
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].
@@ -31,4 +31,4 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self inspectRepositoryAction;
 		
 		"Double click action"
-		onChangeOfPort: #strongSelection act: [ :presentation | self synchronize: presentation selection ]
+		onChangeOfPort: #strongSelection act: [ :presentation | self synchronize: presentation selection repository ]

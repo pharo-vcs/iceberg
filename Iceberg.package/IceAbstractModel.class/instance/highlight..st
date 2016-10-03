@@ -1,5 +1,5 @@
 highlighting
-highlight: aString accordingToStatusOf: entity
+highlight: aString
 	"entity could be a repository or a package"
 
 	| text modified incomming outgoing |	

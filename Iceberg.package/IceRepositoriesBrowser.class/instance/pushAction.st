@@ -9,8 +9,6 @@ pushAction
 		shortcut: $p; 
 		title: 'Push outgoing commits'; 
 		condition: [ :presentation | 
-			presentation selection notNil 
-				and: [ presentation selection outgoingCommits notEmpty 
-				and: [ presentation selection incommingCommits isEmpty ]]];
+			presentation selection notNil and: [ presentation selection canPush ]];
 		yourself
 
