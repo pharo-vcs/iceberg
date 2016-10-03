@@ -8,10 +8,10 @@ status
 	status := OrderedCollection new.
 	entity isModified ifTrue: [ status add: 'Uncommited changes' ].
 	
-	incomming := entity incommingCommits size.
+	incomming := self incommingCommits size.
 	incomming > 0 ifTrue: [ status add: ('{1} incomming' format: { incomming })].
 	
-	outgoing := entity outgoingCommits size.
+	outgoing := self outgoingCommits size.
 	outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
 
 	^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]

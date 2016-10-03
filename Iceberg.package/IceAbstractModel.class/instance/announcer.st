@@ -1,3 +1,3 @@
 accessing
 announcer
-	^ self repository announcer
+	^ self entity announcer

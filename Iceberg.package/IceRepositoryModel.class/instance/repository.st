@@ -1,3 +1,3 @@
 accessing
 repository
-	^ entity
+	^ self entity

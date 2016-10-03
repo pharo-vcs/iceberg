@@ -6,10 +6,11 @@
 		"ModelCache" ],
 	"commentStamp" : "",
 	"instvars" : [
-		"entity",
-		"incommingCommits",
-		"outgoingCommits" ],
-	"name" : "IceAbstractModel",
+		"lastUpdated",
+		"updating",
+		"value",
+		"updateAction" ],
+	"name" : "IceCachedValue",
 	"pools" : [
 		 ],
 	"super" : "Object",

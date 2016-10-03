@@ -9,8 +9,8 @@ highlight: aString
 		ifFalse: [ text makeAllColor: Color darkGray ]
 		ifTrue: [  
 			modified := entity isModified.
-			incomming := entity incommingCommits notEmpty.
-			outgoing := entity outgoingCommits notEmpty.
+			incomming := self incommingCommits notEmpty.
+			outgoing := self outgoingCommits notEmpty.
 
 			modified ifTrue: [ text prepend: '* ' ].
 			modified | incomming | outgoing ifTrue: [ 

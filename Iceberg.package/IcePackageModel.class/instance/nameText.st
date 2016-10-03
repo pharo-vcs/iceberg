@@ -1,3 +1,3 @@
 acessing
 nameText
-	^ self package name
+	^ self highlight: self package name
