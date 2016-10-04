@@ -1,3 +1,3 @@
 actions
 synchronizeRepository
-	^ [ :table | IceGlamourSynchronizer synchronize: table selection ]
+	^ [ :table | IceGlamourSynchronizer synchronize: table selection repository ]

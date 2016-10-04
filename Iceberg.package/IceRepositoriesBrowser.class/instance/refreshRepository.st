@@ -1,6 +1,6 @@
 actions
 refreshRepository
 	^ [ :presentation | 
-		presentation selection refresh.
+		presentation selection repository refresh.
 		presentation pane browser update. 
 	]

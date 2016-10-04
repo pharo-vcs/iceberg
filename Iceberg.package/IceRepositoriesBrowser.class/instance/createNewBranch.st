@@ -1,6 +1,6 @@
 actions
 createNewBranch
 	^ [ :presentation | 
-		self class createNewBranchIn: presentation selection.
+		self class createNewBranchIn: presentation selection repository.
 		presentation pane browser update. 
 	]
