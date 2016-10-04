@@ -24,7 +24,7 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self showHistoryAction;
 		selectionAct: self switchBranch on: $b entitled: 'Switch branch...';
 		selectionAct: self createNewBranch on: $B entitled: 'Create new branch...';
-		selectionAct: self forgetRepository on: $x entitled: 'Forget repository...';
+		addSelectionAction: self forgetRepositoryAction;
 		addSelectionAction: self synchronizeRepositoryAction;
 		addSelectionAction: self pushAction;
 		selectionAct: self refreshRepository on: $r entitled: 'Refresh repository';
