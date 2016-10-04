@@ -1,5 +1,5 @@
 acessing
 loadedVersionName
-	^ self package isLoaded 
+	^ self isLoaded 
 		ifTrue: [ self package loadedVersion description ]
 		ifFalse: ''

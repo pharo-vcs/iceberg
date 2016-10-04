@@ -3,7 +3,7 @@ status
 	"entity could be a repository or a package"
 	
 	| status incomming outgoing | 
-	entity isLoaded ifFalse: [ ^ 'Not loaded.' ].
+	self isLoaded ifFalse: [ ^ 'Not loaded.' ].
 	
 	status := OrderedCollection new.
 	entity isModified ifTrue: [ status add: 'Uncommited changes' ].

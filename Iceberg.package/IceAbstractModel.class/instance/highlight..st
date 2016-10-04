@@ -5,7 +5,7 @@ highlight: aString
 	| text modified incomming outgoing |	
 	text := Text fromString: aString.
 
-	entity isLoaded 
+	self isLoaded 
 		ifFalse: [ text makeAllColor: Color darkGray ]
 		ifTrue: [  
 			modified := entity isModified.
