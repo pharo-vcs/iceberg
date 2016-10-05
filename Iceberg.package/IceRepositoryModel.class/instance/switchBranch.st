@@ -1,5 +1,5 @@
 actions
-switchBranchUpdating: presentation
+switchBranch
 	| branches selection | 
 	branches := self repository branchesForCheckout.
 	selection := IceTool uiManager
@@ -8,7 +8,4 @@ switchBranchUpdating: presentation
 		message: 'Select the new branch you want to switch to:' 
 		title: 'Checkout branch'.
 
-	selection ifNotNil: [ 
-		self repository checkoutBranch: selection simpleName.
-		presentation pane browser update. 
-	]
+	selection ifNotNil: [ self repository checkoutBranch: selection simpleName ]

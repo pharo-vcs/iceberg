@@ -14,6 +14,9 @@ composeRepositories: repositories in: composite
 	repositories do: [ :repo | 
 		table updateOn: IceRepositoryAnnouncement from: repo announcer ].
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
+	
+	Iceberg announcer weak 
+		subscribe: IceRepositoryCreated do: [ :ann | table updateOn: IceRepositoryAnnouncement from: ann repository announcer ].
 
 	table		
 		"Task bar menu"

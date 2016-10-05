@@ -1,7 +1,7 @@
 actions - selected repository
 refreshRepository
 	^ GLMGenericAction new
-		selectionAction: #refreshUpdating:;
+		selectionAction: #refresh;
 		showTitle: 'Refresh repository';
 		shortcut: $r
 

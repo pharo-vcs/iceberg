@@ -1,5 +1,4 @@
 actions
-restoreUpdating: aPresentation 
+restore
 	self repository backend cloneRepository.
 	self repository refresh.
-	aPresentation pane browser update
