@@ -1,6 +1,7 @@
-actions
+actions - selected repository
 refreshRepository
-	^ [ :presentation | 
-		presentation selection repository refresh.
-		presentation pane browser update. 
-	]
+	^ GLMGenericAction new
+		selectionAction: #refreshUpdating:;
+		showTitle: 'Refresh repository';
+		shortcut: $r
+

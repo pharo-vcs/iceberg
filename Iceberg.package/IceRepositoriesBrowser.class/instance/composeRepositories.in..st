@@ -17,18 +17,19 @@ composeRepositories: repositories in: composite
 
 	table		
 		"Task bar menu"
-		addAction: self createRepositoryAction;
-		addAction: self createLocalRepositoryAction;
+		addAction: self createRepository;
+		addAction: self createLocalRepository;
 		
 		"Repository pop up menu"
-		addSelectionAction: self showHistoryAction;
-		selectionAct: self switchBranch on: $b entitled: 'Switch branch...';
-		selectionAct: self createNewBranch on: $B entitled: 'Create new branch...';
-		addSelectionAction: self forgetRepositoryAction;
-		addSelectionAction: self synchronizeRepositoryAction;
-		addSelectionAction: self pushAction;
-		selectionAct: self refreshRepository on: $r entitled: 'Refresh repository';
-		addSelectionAction: self inspectRepositoryAction;
+		addSelectionAction: self synchronizeRepository;
+		addSelectionAction: self showHistory;
+		addSelectionAction: self switchBranch;
+		addSelectionAction: self createNewBranch;
+		addSelectionAction: self push;
+		addSelectionAction: self cloneRepositoryAgain;
+		addSelectionAction: self refreshRepository;
+		addSelectionAction: self inspectRepository;
+		addSelectionAction: self forgetRepository;
 		
 		"Double click action"
 		onChangeOfPort: #strongSelection act: [ :presentation | self synchronize: presentation selection repository ]

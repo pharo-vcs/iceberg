@@ -1,4 +1,4 @@
-action creators
+actions - package
 unloadPackageAction
 	^ GLMGenericAction new
 		action: [ :presentation | 

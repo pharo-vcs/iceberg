@@ -4,9 +4,9 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 10/5/2016 15:53",
 	"instvars" : [
-		 ],
+		"repository" ],
 	"name" : "IceRepositoryAnnouncement",
 	"pools" : [
 		 ],

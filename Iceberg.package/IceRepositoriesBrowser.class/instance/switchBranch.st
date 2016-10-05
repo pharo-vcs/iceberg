@@ -1,6 +1,7 @@
-actions
+actions - selected repository
 switchBranch
-	^ [ :presentation | 
-		self class switchBranchOf: presentation selection repository.
-		presentation pane browser update. 
-	]
+	^ GLMGenericAction new
+		selectionAction: #switchBranchUpdating:;
+		selectionCondition: #isOperative;
+		showTitle: 'Switch branch...';
+		shortcut: $b.

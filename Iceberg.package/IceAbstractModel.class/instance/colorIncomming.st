@@ -1,3 +1,3 @@
 highlighting
 colorIncomming
-	^ Color red
+	^ Color brown

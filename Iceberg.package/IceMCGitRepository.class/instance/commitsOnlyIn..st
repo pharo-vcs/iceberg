@@ -7,4 +7,4 @@ commitsOnlyIn: branchName
 		
 	^ (self command: { 'log'. branchName. '--not'. otherBranches . '--format=%H' }) 
 		trim lines 
-		collect: [ :id | self repository commitAt: id ]	
+		collect: [ :id | self frontend commitAt: id ]	

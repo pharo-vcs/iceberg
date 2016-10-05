@@ -1,4 +1,5 @@
 accessing
 canPush
-	^ self outgoingCommits notEmpty 
-		and: [ self incommingCommits isEmpty ]
+	^ self isOperative and: [
+		self outgoingCommits notEmpty and: [ 
+		self incommingCommits isEmpty ]]

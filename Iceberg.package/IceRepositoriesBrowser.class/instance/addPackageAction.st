@@ -1,4 +1,4 @@
-action creators
+actions - package
 addPackageAction
 	^ GLMGenericAction new
 		action: [ :presentation :repo | 

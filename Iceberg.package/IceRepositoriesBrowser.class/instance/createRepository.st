@@ -1,5 +1,5 @@
-action creators
-createRepositoryAction
+actions - repositories list
+createRepository
 	^ GLMGenericAction new
 		action: [ :presentation | self class createRepository];
 		icon: GLMUIThemeExtraIcons glamorousAdd;

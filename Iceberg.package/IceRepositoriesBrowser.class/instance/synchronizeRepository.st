@@ -1,3 +1,8 @@
-actions
+actions - selected repository
 synchronizeRepository
-	^ [ :table | IceGlamourSynchronizer synchronize: table selection repository ]
+	^ GLMGenericAction new
+		selectionAction: #synchronize;
+		selectionCondition: #isOperative;
+		icon: GLMUIThemeExtraIcons glamorousBrowse;
+		shortcut: $s;
+		title: 'Synchronize repository...'; showTitle

@@ -3,6 +3,7 @@ status
 	"entity could be a repository or a package"
 	
 	| status incomming outgoing | 
+	self repository isMissing ifTrue: [ ^ 'Local repository missing' asText allBold makeAllColor: self colorError ].
 	self isLoaded ifFalse: [ ^ 'Not loaded.' ].
 	
 	status := OrderedCollection new.

@@ -1,6 +1,7 @@
-actions
+actions - selected repository
 createNewBranch
-	^ [ :presentation | 
-		self class createNewBranchIn: presentation selection repository.
-		presentation pane browser update. 
-	]
+	^ GLMGenericAction new
+		selectionAction: #createNewBranchUpdating:;
+		selectionCondition: #isOperative;
+		showTitle: 'Create new branch...';
+		shortcut: $B.
