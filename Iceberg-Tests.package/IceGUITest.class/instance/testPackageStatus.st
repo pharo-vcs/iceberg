@@ -1,5 +1,5 @@
 tests
 testPackageStatus
-	| package |
-	package := IceRepository registry first packageNamed: 'Iceberg'.
-	IceRepositoriesBrowser statusFor: package
+	| packageModel |
+	packageModel := (IcePackageModel modelFor: (repository packageNamed: packageName)).
+	self assert: packageModel status equals: 'Not loaded.'

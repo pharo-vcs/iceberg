@@ -3,7 +3,7 @@
 	"classinstvars" : [
 		"IcebergAnnouncer" ],
 	"classvars" : [
-		 ],
+		"EnableMetacelloIntegration" ],
 	"commentStamp" : "NicoPasserini 4/28/2016 14:10",
 	"instvars" : [
 		 ],
