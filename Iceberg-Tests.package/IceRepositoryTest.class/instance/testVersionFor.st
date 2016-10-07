@@ -11,5 +11,5 @@ testVersionFor
 		equals: '5f64053bb832c18c830be1e300ef4d0415c6dfe0'.
 
 	self 
-		assert: version commit datetime printString
-		equals: '2016-08-01T12:41:28+02:00'
+		assert: version commit datetime
+		equals: '2016-08-01T12:41:28+02:00' asDateAndTime
