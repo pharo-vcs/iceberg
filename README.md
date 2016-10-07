@@ -17,14 +17,15 @@ Metacello new
   load.
 ```
 
-### Update Iceberg (since v0.0.3)
-If you have downloaded a previous version of Iceberg, you can update it by doing:
+### Update Iceberg
+If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
 ```
 Iceberg update
 ```
 
-You don't need this step if you have just downloaded Iceberg.
-
+**Important**
+- You don't need this step if you have just downloaded Iceberg.
+- Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
 
 ## Usage
 ### Repositories Browser
@@ -34,11 +35,22 @@ The main entry point to Iceberg is the Repositories Browser. After installing Ic
 
 In the left pane you can see the list of all known repositories, you can add new repositories and you can *synchronize* a repository (see 'Synchronize Repository' section).
 
-When creating a repository you can set:
-- The URL of a remote repository. Currently we support only SCP URLs (i.e. an URL with the form `[user@]host:filename`, frequently `git@github.com:username/projectname.git`), and therefore it is mandatory to have an SSH key to login to your repository.
-- Optionally, select the location in your local disk for the local repository. If you have already a local repository, you can select it here. If not, you can leave this empty and Iceberg will create a local repository in the default location ("iceberg-cache").
-- Optionally you can select a subdirectory of your git repository in which your Pharo code is stored. By default it is the root of the repository, but you can change it.
+#### Adding new repositories
+On top of the repositories panel you will see two actions that allow you to add new repositories to the Iceberg registry.
+You can either create a new repository by cloning a remote repository (such as `git@github.com:username/projectname.git`) or you can add a local repository (which you have previously cloned).
 
+##### Clone new repository
+To clone a new repository you have to provide:
+- The URL of a remote repository. Currently we support only SCP URLs (i.e. an URL with the form `[user@]host:filename`, frequently `git@github.com:username/projectname.git`), and therefore it is mandatory to have an SSH key to login to your repository.
+- Optionally, select the location in your disk for the local repository. If you leave this emptoy, Iceberg will create a local repository in the default location (named `iceberg-cache`).
+- Optionally you can select a subdirectory of your git repository in which your Pharo code is stored. By default it is the root of the repository, but frequently people prefere to put their code under `src` or `mc` (the latter is for historical reasons).
+
+##### Add local Repository
+To add an existing local repository you have to provide:
+- Select the location in your disk where you have a previously cloned git repository.
+- Optionally you can select a subdirectory of your git repository in which your Pharo code is stored. By default it is the root of the repository, but frequently people prefere to put their code under `src` or `mc` (the latter is for historical reasons).
+
+#### Packages Panel
 In the right pane you will see an overview of the current status of the selected repository: which packages are known to that repository and the status of each one. The status of a package can be one of:
 - The package has changes in the image that could (should) be saved (commited) to the (local) repository.
 - There are new versions (commits) of the package in a remote repository, that could (should) be incorporated into the image (i.e. *update* the package to a newer commit).
