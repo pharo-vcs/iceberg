@@ -17,35 +17,31 @@ Metacello new
   load.
 ```
 
-### Update Iceberg (since v0.0.3)
-If you have downloaded a previous version of Iceberg, you can update it by doing:
+### Update Iceberg
+If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
 ```
 Iceberg update
 ```
 
-You don't need this step if you have just downloaded Iceberg.
-
+**Important**
+- You don't need this step if you have just downloaded Iceberg.
+- Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
 
 ## Usage
 ### Repositories Browser
-The main entry point to Iceberg is the Repositories Browser. After installing Iceberg you will see a new entry on Pharo menu, below 'Tools' submenu, called Iceberg, which will open the browser.
+The main entry point to Iceberg is the *Repositories Browser*. After installing Iceberg you will see a new entry on Pharo menu, below 'Tools' submenu, called Iceberg, which will open the browser.
 
 ![image](https://cloud.githubusercontent.com/assets/4633913/16365789/ac446d00-3c0a-11e6-83e0-976b00cbc0fb.png)
 
-In the left pane you can see the list of all known repositories, you can add new repositories and you can *synchronize* a repository (see 'Synchronize Repository' section).
+This tool shows you all known Iceberg repositories, allowing you to clone new repositories, import existing local repositories or forget repositories.  
+It it is the main entrance point to every action to a repository, such as
+- *Synchronize* a repository (see 'Synchronize Repository' section).
+- Browse repository history (see 'Browse history' section).
+- Switch between branches or create new branches.
+- In absence of local changes or conflicts, you also can pull/push from the pop up menu.
 
-When creating a repository you can set:
-- The URL of a remote repository. Currently we support only SCP URLs (i.e. an URL with the form `[user@]host:filename`, frequently `git@github.com:username/projectname.git`), and therefore it is mandatory to have an SSH key to login to your repository.
-- Optionally, select the location in your local disk for the local repository. If you have already a local repository, you can select it here. If not, you can leave this empty and Iceberg will create a local repository in the default location ("iceberg-cache").
-- Optionally you can select a subdirectory of your git repository in which your Pharo code is stored. By default it is the root of the repository, but you can change it.
-
-In the right pane you will see an overview of the current status of the selected repository: which packages are known to that repository and the status of each one. The status of a package can be one of:
-- The package has changes in the image that could (should) be saved (commited) to the (local) repository.
-- There are new versions (commits) of the package in a remote repository, that could (should) be incorporated into the image (i.e. *update* the package to a newer commit).
-- There are commits in the local repository that can (should) be published into a remote repository, in order to make them disponible for other programmers.
-
-### Synchronizer window
-The Synchronizer window allows to manage the code in a repository. The synchronization process involves three steps and the synchronizer window has one tab for each of them.
+### Synchronize repository
+The *Synchronizer window* allows to manage the code in a repository. The synchronization process involves three steps and the synchronizer window has one tab for each of them.
 
 #### 1. Commit your changes
 The first step is save the changes in the image onto your local repository, creating a new *commit*. This view will allow you to browse the changes you have made, and create a new commit. One such commit can (and probably will) include newer versions for several packages in the same repository (even when currently Iceberg will create a new commit for each package).
