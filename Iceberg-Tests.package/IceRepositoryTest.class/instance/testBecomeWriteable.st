@@ -3,10 +3,12 @@ testBecomeWriteable
 	"Prepare"
 	| writableRepository |
 	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
-	Metacello new
-	  baseline: 'PharoGitTest';
-	  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
-	  load.
+	self disablingMetacelloIntegrationDo: [
+		Metacello new
+		  baseline: 'PharoGitTest';
+		  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
+		  load
+	].
 
 	"Exercise"
 	writableRepository := self package iceRepository.

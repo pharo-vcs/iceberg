@@ -11,10 +11,10 @@ testCreateRepoOnTopOfMonticelloLoadedCode
 
 
 		self shouldnt: [ package incommingCommits ] raise: Error.
-		self assert: (package loadedVersionName matchesRegex: package name, '.*\.\d+').
+		self assert: (package loadedVersion description matchesRegex: package name, '.*\.\d+').
 		
 		repository loadedPackages do: [ :pkg |
-			IceRepositoriesBrowser statusFor: pkg
+			(IcePackageModel modelFor: pkg) status
 		]
 	].
 

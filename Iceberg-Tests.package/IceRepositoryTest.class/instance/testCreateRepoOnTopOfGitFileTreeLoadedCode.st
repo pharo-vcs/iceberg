@@ -12,7 +12,7 @@ testCreateRepoOnTopOfGitFileTreeLoadedCode
 		self assert: package incommingCommits isEmpty.
 		
 		repository loadedPackages do: [ :pkg |
-			IceRepositoriesBrowser statusFor: pkg
+			(IcePackageModel modelFor: pkg) status
 		]
 	].
 
