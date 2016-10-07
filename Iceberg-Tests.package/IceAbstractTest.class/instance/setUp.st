@@ -33,5 +33,5 @@ setUp
 			usernameSsh: 'git';
 			keyPassPhrase: '';
 			keyFilePrivatePath: (FileLocator home asFileReference / '.ssh' / 'id_rsa') pathAsString;
-			keyFilePrivatePath: (FileLocator home asFileReference / '.ssh' / 'id_rsa.pub') pathAsString
+			keyFilePublicPath: (FileLocator home asFileReference / '.ssh' / 'id_rsa.pub') pathAsString
 	]
