@@ -6,4 +6,4 @@ runCase
 	
 	EpMonitor ifNotNil: [ EpMonitor current disable ].
 	[ super runCase ]
-		ensure: [ EpMonitor ifNotNil: [ EpMonitor current disable ]]
+		ensure: [ EpMonitor ifNotNil: [ EpMonitor current enable ]]
