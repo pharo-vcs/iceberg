@@ -13,7 +13,7 @@ This is still a prototype and is not yet ready for production, but you are invit
 ```
 Metacello new
   baseline: 'Iceberg';
-  repository: 'github://npasserini/iceberg:stable';
+  repository: 'github://npasserini/iceberg';
   load.
 ```
 
