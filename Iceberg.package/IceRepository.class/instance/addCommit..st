@@ -14,9 +14,8 @@ addCommit: newCommit
 				self assert: commit comment = newCommit comment.
 				commit.
 			]
-			ifAbsentPut: [
-				newCommit 
-					repository: self; 
-					yourself
+			ifAbsent: [
+				commitDictionary at: newCommit id put:
+					(newCommit repository: self; yourself)
 			])
 					
