@@ -40,7 +40,7 @@ It it is the main entrance point to every action to a repository, such as
 - Switch between branches or create new branches.
 - In absence of local changes or conflicts, you also can pull/push from the pop up menu.
 
-You can find a more detailed description of the repositories browser [here](wiki/Repositories-Browser)
+You can find a more detailed description of the repositories browser [here](./wiki/Repositories-Browser)
 
 ### Synchronize repository
 The *Synchronizer window* allows to manage the code in a repository. The synchronization process involves three steps and the synchronizer window has one tab for each of them.
