@@ -3,6 +3,7 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
+		"DefaultBackendType",
 		"Registry" ],
 	"commentStamp" : "NicoPasserini 9/13/2016 17:19",
 	"instvars" : [
