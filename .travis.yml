@@ -13,4 +13,4 @@ before_install:
 - mv iceberg_test.key ~/.ssh/id_rsa
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
 - cat ~/.ssh/known_hosts
-- ssh -T git@github.com
+- ssh -T git@github.com || echo "Ok"
