@@ -8,7 +8,7 @@ smalltalk:
 - Pharo-5.0
 before_install:
 # Installing the dependency until it is included in the VM
-- brew install libgcrypt --universal
+- if [ $TRAVIS_OS_NAME == "osx" ] ; then brew install libgcrypt --universal; fi
 
 - openssl aes-256-cbc -K $encrypted_3ff905aeb922_key -iv $encrypted_3ff905aeb922_iv
   -in iceberg_test.key.enc -out iceberg_test.key -d
