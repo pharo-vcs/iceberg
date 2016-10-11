@@ -11,3 +11,5 @@ before_install:
   -in iceberg_test.key.enc -out iceberg_test.key -d
 - chmod 600 iceberg_test.key
 - mv iceberg_test.key ~/.ssh/id_rsa
+- ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+- ssh -T git@github.com
