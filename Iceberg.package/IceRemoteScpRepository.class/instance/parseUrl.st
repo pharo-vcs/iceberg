@@ -1,7 +1,7 @@
 private
 parseUrl
 	| matcher |
-	matcher := '(git@)?([\w.]+)\:([\w\-]+)/([\w\-]+)(\.git)?' asRegex.
+	matcher := '(git@)?([\w.]+)\:([\w\-]+)/([\w\-.]+)(\.git)?' asRegex.
 	(matcher matches: url) 
 		ifTrue: [ 
 			host := matcher subexpression: 3.
