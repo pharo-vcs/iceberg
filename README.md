@@ -3,7 +3,7 @@ Iceberg is a set of tools that allow one to handle git repositories directly fro
 
 This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
 
-To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of). the [Iceberg]([wiki page](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
+To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
 
 ## Installation (for development)
 ### Prerequisites
