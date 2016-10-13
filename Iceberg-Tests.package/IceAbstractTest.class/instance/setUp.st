@@ -27,7 +27,7 @@ setUp
 
 	origin := 'file://', originDirectory fullName.
 	repository := self createTestRepository: origin.
-	
+		
 	(OSEnvironment default at: 'CI' ifAbsent: []) = 'true' ifTrue: [
 		LGitRemote 
 			usernameSsh: 'git';

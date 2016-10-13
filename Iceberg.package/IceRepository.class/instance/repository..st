@@ -8,7 +8,8 @@ repository: anMCRepository
 			branch 
 				ifNil: [ self branchName: repository currentBranch. ]
 				ifNotNil: [ self checkoutBranch: branch name ]]
-		ifFalse: [ 
+		ifFalse: [
+			branch ifNotNil: [ repository branch: branch name ].
 			repository cloneRepository. 
 			repository validate
 		]

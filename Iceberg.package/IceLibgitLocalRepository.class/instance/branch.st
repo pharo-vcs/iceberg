@@ -1,5 +1,3 @@
-querying
+accessing
 branch
-	self withRepoDo: [ :repo |
-		^ repo head basename
-	]
+	^ branch ifNil: [ branch := 'master' ]
