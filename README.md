@@ -3,6 +3,8 @@ Iceberg is a set of tools that allow one to handle git repositories directly fro
 
 This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
 
+To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of). the [Iceberg]([wiki page](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
+
 ## Installation (for development)
 ### Prerequisites
 - Latest Pharo 6.0 image.
@@ -41,7 +43,7 @@ It it is the main entrance point to every action to a repository, such as
 - Switch between branches or create new branches.
 - In absence of local changes or conflicts, you also can pull/push from the pop up menu.
 
-You can find a more detailed description of the repositories browser [here](../../wiki/Repositories-Browser)
+You can find a more detailed description of the Repositories Browser in its [wiki page](../../wiki/Repositories-Browser)
 
 ### Synchronize repository
 The *Synchronizer window* allows to manage the code in a repository. The synchronization process involves three steps and the synchronizer window has one tab for each of them.
