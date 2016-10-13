@@ -10,6 +10,7 @@ composeCommitsListIn: composite
 		column: 'Comment' evaluated: #comment;
 		updateOn: IcePackageLoaded from: #announcer;
 		addAction: self fetchAction;
+		addAction: self pullAction;
 		addSelectionAction: self loadAction;
 		addSelectionAction: self mergeAction
 			
