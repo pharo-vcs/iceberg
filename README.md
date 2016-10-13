@@ -1,15 +1,16 @@
 # Git integration for Pharo
-Iceberg is a set of tools that allow to handle git repositories directly from the Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
+Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
 This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
 
-## Instalation (for development)
+## Installation (for development)
 ### Prerequisites
 - Latest Pharo 6.0 image.
 - Git v1.9.1 or later (we are working to remove this requirement in the near future)
 - An [SSH Key](https://help.github.com/articles/generating-an-ssh-key/) (again, not far from now this will not be mandatory any more ... but in this case I would still recommend to use an SSH Key as the preferred way to authenticate to your Github account.)
 
 ### Install Iceberg
+Execute the following expression:
 ```
 Metacello new
   baseline: 'Iceberg';
