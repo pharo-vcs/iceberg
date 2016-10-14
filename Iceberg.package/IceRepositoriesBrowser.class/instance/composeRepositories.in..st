@@ -22,6 +22,7 @@ composeRepositories: repositories in: composite
 		"Task bar menu"
 		addAction: self createRepository;
 		addAction: self createLocalRepository;
+		addAction: self fetchAllRepositories;
 		
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepository;
