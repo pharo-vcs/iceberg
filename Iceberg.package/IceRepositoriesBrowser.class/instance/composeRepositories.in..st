@@ -29,6 +29,7 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self showHistory;
 		addSelectionAction: self switchBranch;
 		addSelectionAction: self createNewBranch;
+		addSelectionAction: self pull;
 		addSelectionAction: self push;
 		addSelectionAction: self cloneRepositoryAgain;
 		addSelectionAction: self refreshRepository;

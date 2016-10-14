@@ -8,6 +8,6 @@ push
 		selectionCondition: #canPush;
 		icon: GLMUIThemeExtraIcons glamorousRightSide;
 		showTitle: 'Push outgoing commits'; 
-		shortcut: $p; 
+		shortcut: $P; 
 		yourself
 
