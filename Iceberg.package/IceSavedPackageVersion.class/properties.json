@@ -14,5 +14,5 @@
 	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceAbstractVersion",
 	"type" : "normal" }
