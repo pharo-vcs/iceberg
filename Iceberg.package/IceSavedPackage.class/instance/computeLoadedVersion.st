@@ -1,6 +1,7 @@
 private
 computeLoadedVersion
 	| workingCopyAncestors |
+	self halt.
 	workingCopyAncestors := self package workingCopy ancestors.
 
 	self workingCopy ancestors
@@ -15,6 +16,5 @@ computeLoadedVersion
 					^ (self repository commitAt: commitId) versionFor: self ]
 			].
 		
-			self halt.
 			^ IceForeignVersion package: self.
 		]
