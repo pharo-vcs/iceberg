@@ -1,12 +1,11 @@
 {
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 9/14/2016 18:01",
 	"instvars" : [
-		"package",
 		"mcVersion" ],
 	"name" : "IceForeignVersion",
 	"pools" : [

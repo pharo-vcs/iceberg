@@ -6,7 +6,7 @@
 		 ],
 	"commentStamp" : "NicoPasserini 10/20/2016 15:48",
 	"instvars" : [
-		 ],
+		"package" ],
 	"name" : "IceAbstractVersion",
 	"pools" : [
 		 ],

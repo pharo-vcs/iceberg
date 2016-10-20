@@ -1,0 +1,1 @@
+I am a temporary place holder for a version. Someone asked for a version but the package is still being loaded, at some point a real version will replace me. In the meanwhile I can respond to some messages as a version would do.

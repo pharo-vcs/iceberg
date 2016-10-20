@@ -1,6 +1,5 @@
 events
 versionLoaded: version
-	self halt.
 	self loadedVersions at: version package put: version.
 	version beCurrent.
 
