@@ -15,5 +15,6 @@ computeLoadedVersion
 					^ (self repository commitAt: commitId) versionFor: self ]
 			].
 		
+			self halt.
 			^ IceForeignVersion package: self.
 		]
