@@ -1,4 +1,4 @@
-tests - branches
+tests
 testCreateBranch
 	"Verify before exercise"
 	self assert: repository branch name equals: 'master'.

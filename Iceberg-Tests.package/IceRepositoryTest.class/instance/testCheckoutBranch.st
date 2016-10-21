@@ -1,15 +1,11 @@
-tests - branches
+tests
 testCheckoutBranch
 	"Prepare"
-	self scenarioForSwitchBranches.
-
-	repository loadPackage: packageName.
+	self gitCommand: 'branch testBranch'.
 	self assert: repository branch name equals: 'master'.
-	self deny: (self theTestClass canUnderstand: #methodInBranch).
 	
 	"Exercise"
-	repository checkoutBranch: 'forTestingCheckout'.
+	repository checkoutBranch: 'testBranch'.
 
 	"Assert"
-	self assert: repository branch name equals: 'forTestingCheckout'.
-	self assert: (self theTestClass canUnderstand: #methodInBranch).
+	self assert: repository branch name equals: 'testBranch'
