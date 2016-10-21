@@ -1,3 +1,3 @@
 patches
-updatedVersion
+updated
 	^ self

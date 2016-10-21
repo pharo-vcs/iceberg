@@ -1,7 +1,7 @@
 querying
-versionFor: package 
+versionFor: package
 	^ self loadedVersions 
 		at: package 
-		ifPresent: #updatedVersion
+		ifPresent: #updated
 		ifAbsentPut: [ package computeLoadedVersion ]
 		
