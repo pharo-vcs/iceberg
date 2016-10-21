@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/14/2016 18:01",
+	"commentStamp" : "NicoPasserini 10/20/2016 15:48",
 	"instvars" : [
-		"mcVersion" ],
-	"name" : "IceForeignVersion",
+		"package" ],
+	"name" : "IceAbstractVersion",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractVersion",
+	"super" : "Object",
 	"type" : "normal" }

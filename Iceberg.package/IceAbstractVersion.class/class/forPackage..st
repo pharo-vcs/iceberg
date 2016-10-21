@@ -1,3 +1,3 @@
 instance creation
-package: package
+forPackage: package
 	^ self new package: package; yourself
