@@ -3,5 +3,5 @@ versionFor: package
 	^ self loadedVersions 
 		at: package 
 		ifPresent: #updatedVersion
-		ifAbsentPut: [ package computeLoadedVersion ]
+		ifAbsent: [ self loadedVersions at: package put: package computeLoadedVersion ]
 		
