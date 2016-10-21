@@ -7,6 +7,7 @@ initializeWidgets
 		
 	pushCheckbox := self newCheckBox
 		label: 'Upload changes on commit?';
+		state: self class uploadChangesOnCommit;
 		yourself.
 	
 	self focusOrder 
