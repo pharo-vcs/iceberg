@@ -1,5 +1,5 @@
 actions
 checkoutBranch: branchName
 	self branchName: branchName.
-	self repository checkoutBranch: branchName.
-	self refresh.
+	self backend checkoutBranch: branchName.
+	self loadedPackages do: [ :pkg | pkg loadLatest ]

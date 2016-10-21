@@ -1,10 +1,11 @@
 tests
 testCommitIsLoaded
-	| loadedVersion loadedVersionNumber loadedCommit |
+	| loadedVersion loadedVersionNumber |
 
 	"1. Prepare"
 	"1.1 - Load the next-to-last version"
-	self gitCommand: 'checkout -b outdatedMaster master^1'.
+	self gitCommand: 'branch newerMaster'.
+	self gitCommand: 'reset --hard master^'.
 	loadedVersion := (repository packageNamed: packageName) latestVersion load.
 	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.
 	
@@ -12,7 +13,7 @@ testCommitIsLoaded
 	self assert: loadedVersion commit id equals: self currentCommitId.
 	
 	"1.2 - Go back to HEAD"
-	repository checkoutBranch: 'master'.
+	self gitCommand: 'merge newerMaster'.
 	
 	"1.3 - Some verifications before excersising"
 	self assert: repository incommingCommits size equals: 1.

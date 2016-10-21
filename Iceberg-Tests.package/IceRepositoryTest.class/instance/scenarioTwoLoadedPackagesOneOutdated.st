@@ -4,6 +4,7 @@ scenarioTwoLoadedPackagesOneOutdated
 
 	"1 - Commit a new version of some package"
 	| versionNumber |
+	repository createBranch: 'newer'.
 	repository loadPackage: packageName.
 	versionNumber := self currentVersionNumber.
 
@@ -15,11 +16,10 @@ scenarioTwoLoadedPackagesOneOutdated
 	Smalltalk at: #Test ifPresent: [ self fail: 'Test class was not correctly removed from system.' ].
 
 	"3 - Checkout and load the previous version"
-	repository checkoutBranch: 'master^1'.
+	repository checkoutBranch: 'master'.
 	repository loadPackage: packageName.
 	repository loadPackage: otherPackageName.
 
+	self gitCommand: 'merge newer'.
+
 	self assert: self currentVersionNumber equals: versionNumber.
-	
-	"4 - Checkout (but not load) the latest version"
-	repository checkoutBranch: 'master'.
