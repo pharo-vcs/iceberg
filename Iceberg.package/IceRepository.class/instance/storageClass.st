@@ -1,3 +1,3 @@
 accessing
 storageClass
-	^ storageClass ifNil: [ storageClass := IceRepository defaultBackendType ]
+	^ storageClass ifNil: [ storageClass := IceRepository defaultStorageClass ]
