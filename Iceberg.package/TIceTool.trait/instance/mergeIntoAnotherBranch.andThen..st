@@ -17,7 +17,7 @@ We recommend that you commit first and then pull incomming changes again.'
 			default: false) 
 			ifFalse: [ ^ self ].
 	 ].	
-	branches := repository branchesForMerge.
+	branches := repository branchesForMerge: aCommit.
 	selection := self uiManager
 		chooseFrom: (branches collect: #displayName)
 		values: branches
