@@ -28,13 +28,13 @@ We recommend that you commit first and then pull incomming changes again.'
 		[ aCommit mergeInto: selection ]
 			on: IceMergeAborted
 			do: [ 
-				selection = repository branchName 
+				selection name = repository branchName 
 					ifTrue: [ repository mergeConflictsWith: aCommit ]
 					ifFalse: [ 
 						self uiManager 
 						abort: 'Automatic (fast-forward) merge is not possible, 
 to merge manually please first checkout 
-branch ', selection, ' and then retry.' 
+branch ', selection name, ' and then retry.' 
 						title: 'Automatic merge failed' ]
 			].
 
