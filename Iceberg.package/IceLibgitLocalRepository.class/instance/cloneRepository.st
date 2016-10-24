@@ -11,7 +11,7 @@ cloneRepository
 		repo := LGitRepository on: self location.
 		repo
 			clone: url;
-			checkout: 'master'.
+			checkout: self branch.
 
 		(LGitRemote of: repo named: 'origin')
 			lookup;
