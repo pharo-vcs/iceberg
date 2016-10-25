@@ -15,4 +15,4 @@ scenarioForSwitchBranches
 	self deny: (Smalltalk globals includesKey: #Test).	
 
 	"3 - Reload package from master branch"
-	repository branchName: 'master'.
+	repository checkoutBranch: 'master'.

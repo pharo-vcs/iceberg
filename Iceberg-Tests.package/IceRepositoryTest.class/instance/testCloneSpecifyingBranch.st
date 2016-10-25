@@ -1,7 +1,6 @@
 tests - create repository
 testCloneSpecifyingBranch
-	repository branchName: 'forBecomeWriteable'.
-	repository createRepository.
+	repository checkoutBranch: 'forBecomeWriteable'.
 
 	self assert: repository branchName equals: 'forBecomeWriteable'.
 	self assert: repository branch name equals: 'forBecomeWriteable'.
