@@ -1,3 +1,3 @@
 commits
 includesCommit: commit
-	^ self commits includes: commit
+	^ self lastCommit isDescendantOf: commit
