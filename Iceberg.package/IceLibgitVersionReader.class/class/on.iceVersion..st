@@ -1,5 +1,5 @@
 instance creation
-on: aLGitTree iceVersion: iceVersion
-	^ (self on: aLGitTree) 
+on: aCommitOrTree iceVersion: iceVersion
+	^ (self on: aCommitOrTree) 
 		iceVersion: iceVersion; 
 		yourself
