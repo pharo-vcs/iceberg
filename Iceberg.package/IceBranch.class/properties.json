@@ -10,7 +10,8 @@
 		"repository",
 		"versionDictionary",
 		"loading",
-		"commits" ],
+		"commits",
+		"upstream" ],
 	"name" : "IceBranch",
 	"pools" : [
 		 ],

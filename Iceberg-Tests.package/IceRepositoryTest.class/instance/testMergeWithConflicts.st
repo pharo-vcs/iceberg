@@ -7,7 +7,7 @@ testMergeWithConflicts
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
 	"2. Exercise: Update the package from remote repository"
-	toMerge := repository upstream lastCommit.
+	toMerge := repository currentBranch upstream lastCommit.
 	self should: [ repository basicMerge: toMerge ] raise: IceMergeAborted.
 	
 	[ repository mergeConflictsWith: toMerge ]

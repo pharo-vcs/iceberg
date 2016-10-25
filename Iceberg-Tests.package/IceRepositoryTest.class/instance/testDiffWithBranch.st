@@ -3,7 +3,7 @@ testDiffWithBranch
 	|  diff change | 
 	self scenarioOutgoingCommit.
 	
-	diff := repository headCommit diffWith: repository upstream.
+	diff := repository headCommit diffWith: repository currentBranch upstream.
 
 	self assert: diff changes notEmpty.
 	
