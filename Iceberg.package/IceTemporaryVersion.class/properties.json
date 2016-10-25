@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 10/20/2016 18:24",
+	"instvars" : [
+		 ],
+	"name" : "IceTemporaryVersion",
+	"pools" : [
+		 ],
+	"super" : "IceAbstractVersion",
+	"type" : "normal" }

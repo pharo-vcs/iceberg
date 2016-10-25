@@ -4,7 +4,7 @@ testCommitMultiplePackagesTogether
 	repository loadPackage: packageName.
 	repository loadPackage: otherPackageName.
 
-	oldCommits := repository commits size.
+	oldCommits := repository currentBranch commits size.
 	
 	testClass := Smalltalk at: #Test.
 	testClass compile: ('newMethod').
@@ -17,7 +17,7 @@ testCommitMultiplePackagesTogether
 	newClass compile: ('newMethod').
 	
 	repository commitWithMessage: 'Committing two packages together'.
-	self assert: repository commits size equals: oldCommits + 1.
+	self assert: repository currentBranch commits size equals: oldCommits + 1.
 	self assert: repository loadedCode referenceCommit equals: repository headCommit.
 
 	{ packageName. otherPackageName } do: [ :name | | package version |

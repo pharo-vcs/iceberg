@@ -12,4 +12,4 @@ commit: versions withMessage: message andMarkAsMerged: aCommitish
 	}) trim.
 	
 	self command: { 'reset --hard'. newCommitId }.
-	^ self updateHeadCommit 
+	^ self headCommit 

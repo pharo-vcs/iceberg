@@ -16,7 +16,7 @@ compose
 			from: #commits; 
 			to: #changes; 
 			transformed: [ :repository :selectedCommit | 
-				selectedCommit ifNotNil: [ selectedCommit diffWith: repository upstream ]];
+				selectedCommit ifNotNil: [ selectedCommit diffWith: repository currentBranch upstream ]];
 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incomming changes') ].
 
 		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.

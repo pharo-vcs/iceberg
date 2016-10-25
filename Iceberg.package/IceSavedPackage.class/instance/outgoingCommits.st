@@ -1,7 +1,5 @@
 querying
 outgoingCommits
-	^ self repository newCommitWalk 
-		fromHead;
-		uptoCommit: self repository upstream lastCommit; 
+	^ self repository currentBranch outgoingCommitsWalk
 		modifyingPackage: self;
 		commits

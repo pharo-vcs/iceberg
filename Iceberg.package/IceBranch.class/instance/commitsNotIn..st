@@ -1,3 +1,6 @@
 commits
 commitsNotIn: anotherBranch
-	^ self commits copyWithoutAll: anotherBranch commits
+	^ self repository newCommitWalk
+		fromBranch: self;
+		uptoBranch: anotherBranch;
+		commits

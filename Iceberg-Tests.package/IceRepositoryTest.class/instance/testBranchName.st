@@ -1,4 +1,4 @@
 tests - branchs
 testBranchName
-	repository branchName: 'nuevoBranch'.
+	repository createBranch: 'nuevoBranch'.
 	self assert: repository branch name equals: 'nuevoBranch'.
