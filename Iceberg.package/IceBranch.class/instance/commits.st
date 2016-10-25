@@ -1,4 +1,3 @@
 commits
 commits
-	self ensureCommitsLoaded.
-	^ commits
+	^ self repository newCommitWalk fromBranch: self; commits
