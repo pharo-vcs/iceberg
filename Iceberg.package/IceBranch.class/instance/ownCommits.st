@@ -1,4 +1,7 @@
 commits
 ownCommits
 	"Return the commits that are only in this branch."
-	^ self backend commitsOnlyIn: self name
+	^ self repository newCommitWalk
+		fromBranch: self;
+		uptoBranches: self repository localBranches;
+		commits.
