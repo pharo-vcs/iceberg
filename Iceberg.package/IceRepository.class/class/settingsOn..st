@@ -9,4 +9,18 @@ settingsOn: aBuilder
 		domainValues: {
 			'git command line' -> IceMCGitRepository.
 			'libgit2' -> IceLibgitLocalRepository
-		}
+		}.
+	
+	(aBuilder setting: #shareRepositoriesBetweenImages)
+		parent: #Iceberg;
+		target: self;
+		label: 'Share repositories between images';
+		description: 'Check if you want to have your git repositories cloned by default in a single location that is shared between all your Pharo images';
+		with: [
+			(aBuilder setting: #sharedRepositoriesLocation)
+				target: self;
+				type: #FilePathEncoder;
+				label: 'Location for shared repositories';
+				description: 'A directory where you have your git repositories'.
+		].
+		
