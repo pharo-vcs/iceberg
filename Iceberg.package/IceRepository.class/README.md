@@ -26,7 +26,7 @@ Instance Variables
 - subdirectory: <String> The subdirectory of the local repository which is handled by the underlying GitFileTree
 - versionDescriptors: <List of GitFileTreePackageEntry> cached list of all package versions saved in the (currently selected branch) of the (local) repository.
 - announcer: <Announcer>
-- branch: <String> currently selected branch. Currently it matches with a checked out branch in the working copy associated to the local git repository, this should change in the future.
+- branch: <IceBranch> currently selected branch. 
 - loadedCode:  <IceLoadedCode> Contains information about the loaded code for each package in this repository. (TODO: maybe handle special cases about loading different versions loaded for different packages, see: https://github.com/npasserini/iceberg/issues/139).
 
 Implementation Points

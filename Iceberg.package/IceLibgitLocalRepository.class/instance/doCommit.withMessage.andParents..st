@@ -1,7 +1,7 @@
 private
 doCommit: versions withMessage: message andParents: parentCommitsBlock
 	self withRepoDo: [ :repo | 
-		| index treeId signature commitId newCommit |
+		| index treeId signature commitId |
 		signature := repo defaultSignature.
 		
 		"versions do: [ :version | index addAll: version directoryName ]"
@@ -19,6 +19,5 @@ doCommit: versions withMessage: message andParents: parentCommitsBlock
 			writeCommit;
 			commitId.
 			
-		newCommit := self class parseCommitInfo: (LGitCommit of: repo fromId: commitId).
-		^ self frontend branch addCommit: newCommit.
+		 ^ self class parseCommitInfo: (LGitCommit of: repo fromId: commitId).
 	]

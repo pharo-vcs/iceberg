@@ -4,7 +4,7 @@
 		 ],
 	"classtraitcomposition" : "TIceTool classTrait",
 	"classvars" : [
-		 ],
+		"UploadChangesOnCommit" ],
 	"commentStamp" : "NicoPasserini 8/25/2016 14:47",
 	"instvars" : [
 		"message",

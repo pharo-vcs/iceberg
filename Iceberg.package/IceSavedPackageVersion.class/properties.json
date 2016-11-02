@@ -6,7 +6,6 @@
 		 ],
 	"commentStamp" : "NicoPasserini 9/26/2016 11:11",
 	"instvars" : [
-		"package",
 		"entry",
 		"info",
 		"commit",
@@ -14,5 +13,5 @@
 	"name" : "IceSavedPackageVersion",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "IceAbstractVersion",
 	"type" : "normal" }

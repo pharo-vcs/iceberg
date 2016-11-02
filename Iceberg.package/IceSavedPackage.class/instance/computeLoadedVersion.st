@@ -2,6 +2,7 @@ private
 computeLoadedVersion
 	| workingCopyAncestors |
 	workingCopyAncestors := self package workingCopy ancestors.
+	workingCopyAncestors ifEmpty: [ ^ IceTemporaryVersion forPackage: self ].
 
 	self workingCopy ancestors
 		detect: [ :ancestor | (ancestor respondsTo: #iceVersion) and: [ ancestor commit notNil ] ]
@@ -15,5 +16,5 @@ computeLoadedVersion
 					^ (self repository commitAt: commitId) versionFor: self ]
 			].
 		
-			^ IceForeignVersion package: self.
+			^ IceForeignVersion forPackage: self.
 		]

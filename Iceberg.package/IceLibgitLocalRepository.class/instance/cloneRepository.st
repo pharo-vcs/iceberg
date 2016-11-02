@@ -6,7 +6,7 @@ cloneRepository
 		ifTrue: [ 'https://' , ((self origin url copyAfter: $@) copyUpTo: $:) , '/' , (self origin url copyAfterLast: $:) ]
 		ifFalse: [ self origin url ].
 "
-	LGitGlobal runSequence: [ 
+	LGitGlobal runSequence: [
 		| repo |
 		repo := LGitRepository on: self location.
 		repo

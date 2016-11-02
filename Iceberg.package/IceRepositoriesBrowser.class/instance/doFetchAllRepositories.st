@@ -1,0 +1,16 @@
+actions - repositories list
+doFetchAllRepositories
+	UIManager default informUserDuring: [ :bar |
+		| repositoriesCount |
+		repositoriesCount := IceRepository registry size.
+		bar max: repositoriesCount + 1.
+		
+		IceRepository registry doWithIndex: [ :repository :index|
+			bar label: 
+				('Looking for incomming commigs in all repositories ({1} of {2})'
+					format: {index. repositoriesCount}).
+			bar current: index.
+			
+			repository fetch.
+		]]
+	 
