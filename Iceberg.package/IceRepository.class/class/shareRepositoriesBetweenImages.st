@@ -1,3 +1,3 @@
 accessing
 shareRepositoriesBetweenImages
-	^ ShareRepositoriesBetweenImages ifNil: [ ShareRepositoriesBetweenImages := true ]
+	^ ShareRepositoriesBetweenImages ifNil: [ ShareRepositoriesBetweenImages := false ]

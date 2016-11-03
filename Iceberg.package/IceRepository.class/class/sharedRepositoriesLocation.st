@@ -1,3 +1,3 @@
 accessing
 sharedRepositoriesLocation
-	^ SharedRepositoriesLocation ifNil: [ StartupPreferencesLoader preferencesGeneralFolder / #iceberg ]
+	^ SharedRepositoriesLocation ifNil: [ FileLocator home / #iceberg ]
