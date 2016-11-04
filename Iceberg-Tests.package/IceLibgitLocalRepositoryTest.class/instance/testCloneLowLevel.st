@@ -14,7 +14,6 @@ testCloneLowLevel
 		| repo |
 		repo := LGitRepository on: repository location.
 		repo cloneSsh: 'ssh://github.com/npasserini/pharo-git-test.git'.
-		self halt.
 		repo open.
 
 		(LGitRemote of: repo named: 'origin')

@@ -1,0 +1,3 @@
+detached head
+incommingCommits
+	^ #()

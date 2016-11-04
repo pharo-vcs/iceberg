@@ -1,5 +1,3 @@
 querying
 outgoingCommits
-	^ self repository currentBranch outgoingCommitsWalk
-		modifyingPackage: self;
-		commits
+	^ self repository currentBranch outgoingCommits: [ :walk | walk modifyingPackage: self ]

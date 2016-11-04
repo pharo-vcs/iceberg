@@ -1,5 +1,5 @@
 commits
-outgoingCommitsWalk
+outgoingCommits: aBlock
 	| walk | 
 	walk := self repository newCommitWalk fromBranch: self.
 	self upstream 
@@ -7,4 +7,5 @@ outgoingCommitsWalk
 		ifNil: [ walk uptoBranches: (
 			self repository localBranches copyWithout: self) ].
 
-	^ walk.
+	aBlock cull: walk.
+	^ walk commits.

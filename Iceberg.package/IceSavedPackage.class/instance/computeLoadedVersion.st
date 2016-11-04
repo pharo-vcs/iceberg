@@ -13,7 +13,7 @@ computeLoadedVersion
 		ifNone: [ 
 			self workingCopy repositoryGroup repositories do: [ :mcRepo |
 				mcRepo commitIdFor: self workingCopy ifFound: [ :commitId | 
-					^ (self repository commitAt: commitId) versionFor: self ]
+					^ (self repository revparse: commitId) versionFor: self ]
 			].
 		
 			^ IceForeignVersion forPackage: self.
