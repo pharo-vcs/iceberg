@@ -1,3 +1,3 @@
 *Iceberg-Adapters
-asIcebergObjectInRepository: anIceRepository
-	^ IceTag named: self name inRepository: anIceRepository
+asIcebergObjectInRepository: backend
+	^ IceTag named: self name inRepository: backend frontend

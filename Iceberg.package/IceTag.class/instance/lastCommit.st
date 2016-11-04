@@ -1,3 +1,3 @@
 querying
 lastCommit
-	^ self repository backend revparseCommitId: self name
+	^ self repository backend revparseCommit: self name
