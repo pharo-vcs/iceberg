@@ -6,6 +6,7 @@ value
 	[ 
 		updating := true.
 		value := updateAction value.
+		lastUpdated := DateAndTime current.
 		^ value
 	]
 	ensure: [ updating := false ]
