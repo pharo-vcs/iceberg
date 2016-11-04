@@ -1,5 +1,5 @@
 accessing
 repositoriesLocation
- 	^ self shareRepositoriesBetweenImages 
+ 	^ (self shareRepositoriesBetweenImages 
 		ifTrue: [ self sharedRepositoriesLocation ]
-		ifFalse: [ FileLocator workingDirectory absolutePath / #iceberg ]
+		ifFalse: [ FileLocator localDirectory absolutePath / #iceberg ]) asFileReference 
