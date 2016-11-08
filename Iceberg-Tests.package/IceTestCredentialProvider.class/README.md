@@ -1,0 +1,1 @@
+I am a credentials provider that has fake credentials for testing.

@@ -1,6 +1,7 @@
 tests
 testCloneLowLevel
 	| branch backend |
+	self skip.
 	repository origin: (IceRemoteRepository url: 'ssh://github.com/npasserini/pharo-git-test.git').
 	
 	backend := (repository storageClass 

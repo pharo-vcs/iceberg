@@ -7,10 +7,12 @@ cloneRepository
 		ifFalse: [ self origin url ].
 
 	LGitGlobal runSequence: [ 
-		| repo |
+		| repo cloneOptions |
 		repo := LGitRepository on: self location.
-		repo
-			clone: url;
+		cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider current).
+		
+		repo 
+			clone: url options: cloneOptions;
 			checkout: self branch.
 
 		(LGitRemote of: repo named: 'origin')

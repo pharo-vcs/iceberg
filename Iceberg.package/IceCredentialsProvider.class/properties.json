@@ -3,7 +3,7 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		 ],
+		"Current" ],
 	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
 	"instvars" : [
 		"tries" ],

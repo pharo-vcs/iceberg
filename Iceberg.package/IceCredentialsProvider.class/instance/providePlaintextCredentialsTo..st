@@ -1,6 +1,7 @@
 as yet unclassified
 providePlaintextCredentialsTo: credentials
-	Transcript logCr: 'providing'.
+	self shouldBeImplemented 
+"	Transcript logCr: 'providing'.
 	tries < 3 
 		ifTrue: [ 
 			tries := tries + 1.
@@ -9,4 +10,4 @@ providePlaintextCredentialsTo: credentials
 			]
 		ifFalse: [ 
 			self error: 'There where already three failed attempts, aborting'
-		]
+		]"
