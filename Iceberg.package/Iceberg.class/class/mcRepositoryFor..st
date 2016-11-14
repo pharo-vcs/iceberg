@@ -12,6 +12,6 @@ mcRepositoryFor: aLocationString
 			Transcript 
 				show: 'Creating iceberg-metacello adapter for: ';
 				show: aLocationString; cr.
-			^ [ baseRepo getOrCreateIcebergRepository metacelloAdapter ] on: Error do: [ self halt ]
+			^ baseRepo getOrCreateIcebergRepository metacelloAdapter
 		]
 	

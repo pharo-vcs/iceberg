@@ -1,4 +1,4 @@
 accessing
 branch: aString
 	branch := aString.
-	frontend branch: self lookupHead
+	frontend ifNotNil: [ frontend branch: self lookupHead ]
