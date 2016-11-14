@@ -1,6 +1,6 @@
 repository handling
 ensureLocalRepository
-	repository ifNil: [ 
+	backend ifNil: [ 
 		self searchExistingRepository
 			ifNotNil: [ :repo | self repository: repo ]
 			ifNil: [ self createRepository ]

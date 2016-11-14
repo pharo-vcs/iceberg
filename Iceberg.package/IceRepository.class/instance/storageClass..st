@@ -1,5 +1,5 @@
 accessing
 storageClass: anObject
 	storageClass := anObject.
-	repository := nil.
+	backend := nil.
 	self refresh.

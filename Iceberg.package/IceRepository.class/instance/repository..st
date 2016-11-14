@@ -1,8 +1,8 @@
 repository handling
 repository: anMCRepository
-	repository := anMCRepository.
+	backend := anMCRepository.
 
 	(self location exists not or: [ self location hasChildren not ])
-		ifTrue: [ repository cloneRepository ].
+		ifTrue: [ backend cloneRepository ].
 
-	repository validate
+	backend validate

@@ -1,12 +1,12 @@
 repository handling
 createRepository
-	repository := (self storageClass 
+	backend := (self storageClass 
 		newRepositoryAt: self location
 		origin: self origin
 		subdirectory: (self subdirectory ifNil: '')).
 	
-	repository frontend: self.
-	branch ifNotNil: [ repository branch: self branch name ].
-	origin ifNil: [ origin := IceRemoteRepository url: repository remoteUrl ].
-	self repository: repository.
+	backend frontend: self.
+	branch ifNotNil: [ backend branch: self branch name ].
+	origin ifNil: [ origin := IceRemoteRepository url: backend remoteUrl ].
+	self repository: backend.
 
