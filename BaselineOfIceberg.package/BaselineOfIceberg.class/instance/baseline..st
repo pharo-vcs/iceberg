@@ -6,7 +6,7 @@ baseline: spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
 		baseline: 'LibGit' with: [ spec 
-			repository: 'github://npasserini/LibGit:pharo60_dev';
+			repository: 'github://npasserini/LibGit:pharo6.0_dev';
   			loads: 'default' ];
 		package: 'Iceberg'
 			with: [ spec requires: #(FileTree LibGit) ];
