@@ -5,6 +5,6 @@ testCloneOntoExistingDirectory
 	location := repository location.
 	location ensureCreateDirectory.
 	
-	repository createRepository.
+	repository createRepository: nil.
 	self assert: (location / '.git') exists.
 

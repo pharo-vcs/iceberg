@@ -5,7 +5,7 @@ testClone
 	
 	self deny: location exists.
 	
-	repository createRepository.
+	repository createRepository: nil.
 	
 	self assert: location exists.
 	self assert: (location / '.git') exists.
