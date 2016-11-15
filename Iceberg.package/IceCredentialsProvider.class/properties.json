@@ -3,7 +3,9 @@
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		"Current" ],
+		"Password",
+		"ProviderType",
+		"Username" ],
 	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
 	"instvars" : [
 		"tries" ],

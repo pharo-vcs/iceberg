@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-GUI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/15/2016 12:15",
+	"instvars" : [
+		 ],
+	"name" : "IceInteractiveCredentialsProvider",
+	"pools" : [
+		 ],
+	"super" : "IceCredentialsProvider",
+	"type" : "normal" }

@@ -1,0 +1,20 @@
+{
+	"category" : "Iceberg-GUI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/15/2016 15:25",
+	"instvars" : [
+		"storage",
+		"usernameLabel",
+		"usernameInput",
+		"passwordLabel",
+		"passwordInput",
+		"storeCheckbox",
+		"acceptButton" ],
+	"name" : "IceAskForPlaintextCredentialsModel",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

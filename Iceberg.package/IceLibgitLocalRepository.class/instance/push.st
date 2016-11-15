@@ -12,7 +12,7 @@ push
 				destination: remoteBranchName;
 				yourself)
 			pushOptions: (LGitPushOptions defaults
-				callbacks: (LGitRemoteCallbacks withProvider: IceCredentialsProvider current);
+				callbacks: (LGitRemoteCallbacks withProvider: IceCredentialsProvider default);
 				yourself).
 
 		"Since the push created the branch in the remote, we can now add an upstream to this branch."

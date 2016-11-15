@@ -9,7 +9,7 @@ cloneRepository
 	LGitGlobal runSequence: [ 
 		| repo cloneOptions |
 		repo := LGitRepository on: self location.
-		cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider current).
+		cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider default).
 		
 		repo 
 			clone: url options: cloneOptions;
