@@ -1,0 +1,3 @@
+querying
+allBranchNames
+	^ { self currentBranch }
