@@ -1,8 +1,8 @@
 installing
 uninstall
 	PreviousProvider ifNotNil: [ 
-		self assert: (IceCredentialsProvider current isKindOf: self).
+		self assert: (IceCredentialsProvider providerType = self).
 
-		IceCredentialsProvider current: PreviousProvider.
+		IceCredentialsProvider providerType: PreviousProvider.
 		PreviousProvider := nil.
 	]
