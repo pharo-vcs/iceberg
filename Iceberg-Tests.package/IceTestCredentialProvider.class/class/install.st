@@ -2,8 +2,8 @@ installing
 install
 	PreviousProvider 
 		ifNil: [
-			PreviousProvider := IceCredentialsProvider providerType.
-			IceCredentialsProvider providerType: self.
+			PreviousProvider := IceCredentialsProvider current.
+			IceCredentialsProvider current: self new.
 		]
-		ifNotNil: [ self assert: (IceCredentialsProvider providerType = self) ]
+		ifNotNil: [ self assert: (IceCredentialsProvider current isKindOf: self) ]
 	
