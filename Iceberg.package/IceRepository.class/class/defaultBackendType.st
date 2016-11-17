@@ -1,3 +1,3 @@
 accessing
 defaultBackendType
-	^ DefaultBackendType ifNil: [ DefaultBackendType := IceMCGitRepository ]
+	^ DefaultBackendType ifNil: [ DefaultBackendType := IceLibgitLocalRepository ]
