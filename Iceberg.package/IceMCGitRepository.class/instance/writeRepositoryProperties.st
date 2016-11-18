@@ -1,3 +1,3 @@
 patches
 writeRepositoryProperties
-	self halt
+	self shouldBeImplemented
