@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "NicoPasserini 7/1/2016 11:40",
 	"instvars" : [
-		"host",
-		"owner" ],
-	"name" : "IceRemoteScpRepository",
+		 ],
+	"name" : "IceScpRemote",
 	"pools" : [
 		 ],
-	"super" : "IceRemoteRepository",
+	"super" : "IceNetworkRemote",
 	"type" : "normal" }
