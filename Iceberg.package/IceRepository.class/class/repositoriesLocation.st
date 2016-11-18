@@ -1,5 +1,5 @@
 accessing
 repositoriesLocation
- 	^ (self shareRepositoriesBetweenImages 
+ 	^ self shareRepositoriesBetweenImages 
 		ifTrue: [ self sharedRepositoriesLocation ]
-		ifFalse: [ self localRepositoriesLocation ]) asFileReference 
+		ifFalse: [ self localRepositoriesLocation ] 

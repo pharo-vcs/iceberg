@@ -1,3 +1,4 @@
 accessing
 sharedRepositoriesLocation
-	^ SharedRepositoriesLocation ifNil: [ FileLocator home / #iceberg ]
+	^ SharedRepositoriesLocation ifNil: [ 
+		SharedRepositoriesLocation := (FileLocator home / #iceberg) asFileReference ]

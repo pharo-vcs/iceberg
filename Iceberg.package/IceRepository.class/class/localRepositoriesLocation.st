@@ -1,5 +1,5 @@
 accessing
 localRepositoriesLocation
-	^ (FileLocator respondsTo: #localDirectory) 
+	^ ((FileLocator respondsTo: #localDirectory) 
 		ifTrue: [ FileLocator localDirectory / #iceberg ]
-		ifFalse: [ FileLocator imageDirectory / #'iceberg-cache' ]
+		ifFalse: [ FileLocator imageDirectory / #'iceberg-cache' ]) asFileReference

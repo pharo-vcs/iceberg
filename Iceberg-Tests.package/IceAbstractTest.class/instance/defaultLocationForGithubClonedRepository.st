@@ -1,3 +1,3 @@
 auxiliar
 defaultLocationForGithubClonedRepository
-	^ FileLocator localDirectory asFileReference / 'iceberg'/ 'npasserini' / projectName
+	^ IceRepository localRepositoriesLocation / 'npasserini' / projectName
