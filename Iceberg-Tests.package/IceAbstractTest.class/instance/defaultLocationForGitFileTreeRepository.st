@@ -1,3 +1,3 @@
 auxiliar
 defaultLocationForGitFileTreeRepository
-	^ projectName asFileReference
+	^ ('{1}' format: { projectName }) asFileReference.
