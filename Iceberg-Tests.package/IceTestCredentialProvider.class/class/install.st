@@ -6,4 +6,3 @@ install
 			IceCredentialsProvider providerType: self.
 		]
 		ifNotNil: [ self assert: (IceCredentialsProvider providerType = self) ]
-	

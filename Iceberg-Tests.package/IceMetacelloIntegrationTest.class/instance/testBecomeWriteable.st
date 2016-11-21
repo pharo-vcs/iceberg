@@ -25,4 +25,4 @@ testBecomeWriteable
 		writableRepository pull.
 		self assert: ((Smalltalk at: #Test) canUnderstand: #forBecomeWritable)
 	]
-	ensure: [ writableRepository forget ]	
+	ensure: [ writableRepository forget ]

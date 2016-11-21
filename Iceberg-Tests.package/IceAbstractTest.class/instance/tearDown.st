@@ -1,8 +1,10 @@
 running
 tearDown
-	self removeTestPackages.
+	super tearDown. 
 	
-	IceTestCredentialProvider install.
+	self removeTestPackages.
+
+	IceTestCredentialProvider uninstall.
 	repository ifNotNil: #forget.
 
 	(IceRepository registry 
