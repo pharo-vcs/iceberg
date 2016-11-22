@@ -2,21 +2,17 @@ actions
 askForPlaintextCredentials: response
 	| model cancelled |
 	cancelled := false.
-	model := IceAskForPlaintextCredentialsModel new.
 
-	model
+	(model := IceAskForPlaintextCredentialsModel new)
 		openDialogWithSpec
 		okAction: [
 			| credentials | 
-			credentials := 	IcePlaintextCredentials new 
-				username: model username;
-				password: model password;
-				yourself.
+			credentials := model credentials.
 
 			model storeCredentials 
 				ifTrue: [ self class plaintextCredentials: credentials ].
 
-			response readFrom: model.
+			response readFrom: credentials.
 		];
 		cancelAction: [ cancelled := true ];
 		centered;
