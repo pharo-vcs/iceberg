@@ -14,7 +14,7 @@ baseline: spec
 		package: 'Iceberg'
 			with: [ spec requires: #(FileTree LibGit) ];
 		package: 'Iceberg-Tests'
-			with: [ spec requires: #(default 'LiGit-Tests') ];
+			with: [ spec requires: #(default 'LibGit-Tests') ];
 		group: 'default'
 			with: #(Iceberg);
 		group: 'development'
