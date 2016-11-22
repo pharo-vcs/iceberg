@@ -1,6 +1,3 @@
 configurations
 parameters
-	^ { 
-		self remoteTypeConfiguration. 
-		self repositoryBackendConfiguration
-	}
+	^ { IceTestParameter withOptions: TIceRepositoryBackend traitUsers }
