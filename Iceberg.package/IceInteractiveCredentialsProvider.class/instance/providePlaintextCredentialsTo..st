@@ -6,7 +6,7 @@ providePlaintextCredentialsTo: credentials
 		Transcript show: 'aborting'; cr.
 		IceNoCredentialsProvided signal: 'There where already three failed attempts, aborting' ].
 	
-	tries = 1 & self areStoredPlaintextCredentialsPresent
-		ifTrue: [ self provideStoredPlaintextCredentialsTo: credentials ]
+	tries = 1 & self plaintextCredentials isPresent
+		ifTrue: [ credentials readFrom: self plaintextCredentials ]
 		ifFalse: [ self askForPlaintextCredentials: credentials ].
 
