@@ -1,3 +1,5 @@
 building suites
 buildSuite
-	^ self buildSuiteNamed: self name asString withGlobals: #() andConfigurations: self parameters
+	^ self buildSuiteNamed: self name asString 
+		withGlobals: #() 
+		andSubsuites: self parameters

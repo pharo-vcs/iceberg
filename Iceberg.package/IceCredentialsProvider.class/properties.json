@@ -1,11 +1,11 @@
 {
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Security",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
-		"Password",
+		"PlaintextCredentials",
 		"ProviderType",
-		"Username" ],
+		"SshCredentials" ],
 	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
 	"instvars" : [
 		"tries" ],
