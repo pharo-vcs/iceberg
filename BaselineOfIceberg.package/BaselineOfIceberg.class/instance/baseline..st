@@ -8,7 +8,7 @@ baseline: spec
 		baseline: 'LibGit' with: [ spec 
 			repository: 'github://npasserini/libgit2-pharo-bindings:development';
   			loads: 'default' ];
-		project: 'LigGit-Tests'
+		project: 'LibGit-Tests'
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
 		package: 'Iceberg'
