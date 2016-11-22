@@ -5,9 +5,12 @@ baseline: spec
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
-		baseline: 'LibGit' with: [ spec 
+		baseline: 'LibGit' with: [ spec
 			repository: 'github://npasserini/LibGit:pharo60';
   			loads: 'default' ];
+		project: 'LigGit-Tests'
+          copyFrom: 'LibGit'
+          with: [ spec loads: #('tests') ];
 		package: 'Iceberg'
 			with: [ spec requires: #(FileTree LibGit) ];
 		package: 'Iceberg-Tests'
