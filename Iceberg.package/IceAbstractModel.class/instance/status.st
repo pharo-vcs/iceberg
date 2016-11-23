@@ -9,7 +9,7 @@ status
 		status := OrderedCollection new.
 		entity isModified ifTrue: [ status add: 'Uncommited changes' ].
 		
-		incoming := self incommingCommits size.
+		incoming := self incomingCommits size.
 		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].
 		
 		outgoing := self outgoingCommits size.

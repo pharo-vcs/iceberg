@@ -1,5 +1,5 @@
 querying
-incommingCommits
+incomingCommits
 	"Returns only the commits modifying this package."
 	^ (self repository newCommitWalk 
 		fromHead;

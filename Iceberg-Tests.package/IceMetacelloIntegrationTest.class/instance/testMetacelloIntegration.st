@@ -13,5 +13,5 @@ testMetacelloIntegration
 
 	self assert: (repository loadedCode loadedVersions noneSatisfy: [ :version | version isKindOf: IceForeignVersion ]).
 	self assert: ((repository loadedCode versionFor: (repository packageNamed: packageName)) isKindOf: IceSavedPackageVersion ).
-	self assert: repository incommingCommits isEmpty.
+	self assert: repository incomingCommits isEmpty.
 	self assert: repository outgoingCommits isEmpty.

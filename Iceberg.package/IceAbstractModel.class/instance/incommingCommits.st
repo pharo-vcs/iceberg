@@ -1,3 +1,0 @@
-accessing
-incommingCommits
-	^ incommingCommits value

@@ -2,7 +2,7 @@ building
 composeCommitsListIn: composite
 	composite fastTable
 		title: 'New commits to be imported';
-		display: #incommingCommits;
+		display: #incomingCommits;
 		column: 'User' evaluated: #username width: 120;
 		column: 'SHA' evaluated: #shortId width: 60;
 		column: 'Date & time' evaluated: [:commit | commit datetime asLocal asStringYMDHM ] width: 100;

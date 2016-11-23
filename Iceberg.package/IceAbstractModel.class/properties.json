@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"entity",
-		"incommingCommits",
-		"outgoingCommits" ],
+		"outgoingCommits",
+		"incomingCommits" ],
 	"name" : "IceAbstractModel",
 	"pools" : [
 		 ],

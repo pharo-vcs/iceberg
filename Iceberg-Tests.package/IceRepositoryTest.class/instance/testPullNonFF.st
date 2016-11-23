@@ -2,7 +2,7 @@ tests
 testPullNonFF
 	| newVersionNumber testObject lastCommits | 
 	"1. Prepare, create diverging but not conflicting changes in HEAD and upstream."
-	newVersionNumber := self createIncommingCommit.
+	newVersionNumber := self createIncomingCommit.
 	self createNonConflictingModification.
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
