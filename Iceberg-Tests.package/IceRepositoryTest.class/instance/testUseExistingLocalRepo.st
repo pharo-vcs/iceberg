@@ -5,7 +5,7 @@ testUseExistingLocalRepo
 	IceGitCommand in: self absoluteLocation execute: {'checkout -b newBranch'}.
 
 	"exercise"
-	repository := IceRepository origin: origin location: self absoluteLocation.
+	repository := IceRepository location: self absoluteLocation.
 	
 	"test"
 	self assert: (repository allPackages includes: (Iceberg packageNamed: 'Pharo-Git-Test' )).
