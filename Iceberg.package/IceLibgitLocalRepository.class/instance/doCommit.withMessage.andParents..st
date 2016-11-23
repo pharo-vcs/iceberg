@@ -9,6 +9,7 @@ doCommit: versions withMessage: message andParents: parentCommitsBlock
 		index addAll: (versions collect: [ :version | self directoryForPackage: version package]).
 		treeId := index writeTreeAndReturnOid.
 		
+		self halt.
 		commitId := (LGitCommitBuilder of: repo)
 			tree: (LGitTree of: repo fromId: treeId);
 			message: message;
