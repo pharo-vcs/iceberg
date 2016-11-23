@@ -16,5 +16,5 @@ compose
 			andShow: [ :a | a custom: 
 				(IceGlamourChangesTree withTitle: 'Modifications since selected commit') ].		
 
-		self addDiffTo: browser withTitle: 'Left: working copy / Right: incomming updates'.
+		self addDiffTo: browser withTitle: 'Left: working copy / Right: incoming updates'.
 	]
