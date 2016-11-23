@@ -2,7 +2,6 @@ actions
 commitWithMessage: message
 	| changedPackages savedVersions newCommit |
 
-	"hila"
 	changedPackages := self loadedPackages select: [ :package | package workingCopy needsSaving ].
 	changedPackages isEmpty ifTrue: [ NothingToCommitException signal ].
 	
