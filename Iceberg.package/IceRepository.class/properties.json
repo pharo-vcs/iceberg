@@ -9,6 +9,7 @@
 		"SharedRepositoriesLocation" ],
 	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
 	"instvars" : [
+		"name",
 		"announcer",
 		"branch",
 		"location",

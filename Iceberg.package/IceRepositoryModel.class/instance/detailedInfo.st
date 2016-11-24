@@ -1,3 +1,5 @@
 accessing
 detailedInfo
-	^ 	self repository origin detailedInfo, { 'Location' -> self repository location pathAsString. } 
+	^ 	self repository origin detailedInfo, { 
+		'Location' -> self repository location pathAsString. 
+	} 
