@@ -2,7 +2,7 @@ tests
 testMergeWithConflicts
 	| newVersionNumber testObject lastCommits toMerge | 
 	"1. Prepare, create diverging but not conflicting changes in HEAD and upstream."
-	newVersionNumber := self createIncomingCommit.
+	newVersionNumber := self createIncommingCommit.
 	self createConflictingModification.
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
@@ -30,4 +30,4 @@ testMergeWithConflicts
 	self assert: ((lastCommits at: 3) message endsWith: newVersionNumber asString).
 	self assert: ((lastCommits at: 4) message endsWith: (newVersionNumber - 1) asString).
 
-	self assert: repository incomingCommits isEmpty
+	self assert: repository incommingCommits isEmpty

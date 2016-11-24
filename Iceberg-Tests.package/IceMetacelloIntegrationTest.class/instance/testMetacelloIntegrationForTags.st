@@ -13,10 +13,10 @@ testMetacelloIntegrationForTags
 
 	self assert: (repository loadedCode loadedVersions noneSatisfy: [ :version | version isKindOf: IceForeignVersion ]).
 	self assert: ((repository loadedCode versionFor: (repository packageNamed: packageName)) isKindOf: IceSavedPackageVersion ).
-	self assert: repository incomingCommits isEmpty.
+	self assert: repository incommingCommits isEmpty.
 	self assert: repository outgoingCommits isEmpty.
 	
 	repository loadedPackages do: [ :package | 
-		self assert: package incomingCommits isEmpty.
+		self assert: package incommingCommits isEmpty.
 		self assert: package outgoingCommits isEmpty 
 	].

@@ -6,8 +6,9 @@ composeRepositories: repositories in: composite
 	table
 		title: 'Repositories';
 		display: [ :repos | repos collect: [ :repo | IceRepositoryModel modelFor: repo ] ];
-		column: 'Origin' evaluated: #descriptionText width: 320;
+		column: 'Name' evaluated: #descriptionText width: 200;
 		column: 'Current branch' evaluated: #branchName width: 120;
+		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
 		column: 'Status' evaluated: #status width: 150.
 
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].

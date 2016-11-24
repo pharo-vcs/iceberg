@@ -1,5 +1,5 @@
 auxiliar
-createIncomingCommit
+createIncommingCommit
 	"Create a new version of a package in the remote repository.
 	Return the version number in the created commit, so it can be verified after loading it."
 

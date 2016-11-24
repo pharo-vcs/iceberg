@@ -6,10 +6,10 @@ testCreateRepoOnTopOfGitFileTreeLoadedCode
 		package := repository packageNamed: packageName. 
 
 		self assert: repository loadedCode loadedVersions isNotEmpty.
-		self assert: repository incomingCommits isEmpty.
+		self assert: repository incommingCommits isEmpty.
 		self assert: repository headCommit equals: repository loadedCode referenceCommit.
 
-		self assert: package incomingCommits isEmpty.
+		self assert: package incommingCommits isEmpty.
 		
 		repository loadedPackages do: [ :pkg |
 			(IcePackageModel modelFor: pkg) status
