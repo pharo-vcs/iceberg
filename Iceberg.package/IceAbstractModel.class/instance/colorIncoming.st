@@ -1,3 +1,3 @@
 highlighting
-colorIncomming
+colorIncoming
 	^ Color brown

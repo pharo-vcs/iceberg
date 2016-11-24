@@ -4,6 +4,6 @@ pull
 		selectionAction: #pull;
 		selectionCondition: #isOperative;
 		icon: GLMUIThemeExtraIcons glamorousLeftSide;
-		showTitle: 'Pull incomming commits'; 
+		showTitle: 'Pull incoming commits'; 
 		shortcut: $p; 
 		yourself

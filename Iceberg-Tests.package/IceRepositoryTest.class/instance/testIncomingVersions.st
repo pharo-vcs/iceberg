@@ -1,5 +1,5 @@
 tests - versions
-testIncommingVersions
+testIncomingVersions
 	| package | 
 	package := repository packageNamed: packageName.
 
@@ -7,4 +7,4 @@ testIncommingVersions
 	package versions second load.
 
 	"2. - Exercise"
-	self assert: package incommingCommits size equals: 1
+	self assert: package incomingCommits size equals: 1

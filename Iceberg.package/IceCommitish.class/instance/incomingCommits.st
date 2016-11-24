@@ -1,3 +1,3 @@
 detached head
-incommingCommits
+incomingCommits
 	^ #()

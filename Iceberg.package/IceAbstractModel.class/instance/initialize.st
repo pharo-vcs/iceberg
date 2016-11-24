@@ -1,6 +1,6 @@
 initialization
 initialize
-	incommingCommits := (IceCachedValue for: [ self entity incommingCommits ])
+	incomingCommits := (IceCachedValue for: [ self entity incomingCommits ])
 		invalidateOn: IceRepositoryAnnouncement from: self repository announcer.
 		
 	outgoingCommits := (IceCachedValue for: [ self entity outgoingCommits ])

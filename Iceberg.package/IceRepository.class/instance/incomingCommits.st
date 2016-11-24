@@ -1,6 +1,6 @@
 commits
-incommingCommits
+incomingCommits
 	^ (SortedCollection sortBlock: [ :a :b | a datetime > b datetime ])
 		addAll: self commitsNotLoaded;
-		addAll: self currentBranch incommingCommits;
+		addAll: self currentBranch incomingCommits;
 		yourself
