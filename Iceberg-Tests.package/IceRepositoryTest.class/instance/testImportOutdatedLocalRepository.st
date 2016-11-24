@@ -29,9 +29,5 @@ testImportOutdatedLocalRepository
 
 	"Assert"
 	self assert: repository branch name equals: 'forBecomeWriteable'.
-
-	Transcript cr; tab; show: 'REPO '; show: repository headCommit id; cr.
-	Transcript cr; tab; show: 'INCOMMING '; show: (repository incommingCommits collect: #id) asArray; cr.
-
-	self assert: (IceRepositoryModel modelFor: repository) status equals: '1 incomming'.
-	self assert: repository incommingCommits size equals: 1
+	self assert: (IceRepositoryModel modelFor: repository) status equals: '1 incoming'.
+	self assert: repository incomingCommits size equals: 1
