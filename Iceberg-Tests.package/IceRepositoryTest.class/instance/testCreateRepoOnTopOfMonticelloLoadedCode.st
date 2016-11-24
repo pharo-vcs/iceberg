@@ -6,11 +6,11 @@ testCreateRepoOnTopOfMonticelloLoadedCode
 		package := repository packageNamed: packageName. 
 
 		self assert: repository loadedCode loadedVersions isNotEmpty.
-		self assert: repository incommingCommits isEmpty.
+		self assert: repository incomingCommits isEmpty.
 		self assert: repository headCommit equals: repository loadedCode referenceCommit.
 
 
-		self shouldnt: [ package incommingCommits ] raise: Error.
+		self shouldnt: [ package incomingCommits ] raise: Error.
 		self assert: (package loadedVersion description matchesRegex: package name, '.*\.\d+').
 		
 		repository loadedPackages do: [ :pkg |
