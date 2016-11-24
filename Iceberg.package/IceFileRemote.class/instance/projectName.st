@@ -1,3 +1,3 @@
 accessing
 projectName
-	^ self path basename
+	^ path basename
