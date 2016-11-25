@@ -1,3 +1,3 @@
 accessing
 testParameters
-	^ testParameters
+	^ testParameters ifNil: [ testParameters := #() ]

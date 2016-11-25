@@ -6,9 +6,7 @@ scenarioForSwitchBranches
 	repository loadPackage: packageName.
 	repository createBranch: 'forTestingCheckout'.
 	self theTestClass compile: 'methodInBranch'.
-	repository 
-		savePackage: packageName 
-		withMessage: 'New method in branch'.
+	repository commitWithMessage: 'New method in branch'.
 
 	"2 - Remove all code from the image"
 	self removeTestPackages.
