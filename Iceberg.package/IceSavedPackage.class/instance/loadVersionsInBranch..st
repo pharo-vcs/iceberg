@@ -1,7 +1,5 @@
 private
 loadVersionsInBranch: branch
-	^ (self repository newCommitWalk
+	^ self repository newCommitWalk
 		fromBranch: branch;
-		modifyingPackage: self;
-		commits)
-		collect: [ :commit | commit versionFor: self ]
+		versionsFor: self

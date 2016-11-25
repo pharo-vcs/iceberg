@@ -13,3 +13,5 @@ printOn: aStream
 		aStream 
 			nextPutAll: ', committed in: ';
 			nextPutAll: originatingCommit shortId ].
+		
+	aStream nextPut: $).
