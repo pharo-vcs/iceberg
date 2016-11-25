@@ -1,8 +1,7 @@
 initialization
 analyseChanges
 	| newChanges |
-	newChanges := self parent changes
-		select: [ :change | change icePackage = self package ].
+	newChanges := self basicChanges.
 	
 	newChanges ifEmpty: [ 
 		(self package isLoaded 

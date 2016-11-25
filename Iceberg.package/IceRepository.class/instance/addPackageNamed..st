@@ -1,7 +1,7 @@
-private
-getOrCreatePackageNamed: packageName
+actions
+addPackageNamed: packageName
 	^ self savedPackagesDictionary
 		at: packageName
 		ifAbsentPut: [ IceSavedPackage 
-			named: packageName
+			named: packageName 
 			repository: self ]

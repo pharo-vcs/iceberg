@@ -8,6 +8,6 @@ testUseExistingLocalRepo
 	repository := IceRepository location: self absoluteLocation.
 	
 	"test"
-	self assert: (repository allPackages includes: (Iceberg packageNamed: 'Pharo-Git-Test' )).
+	self assert: (repository savedPackages anySatisfy: [:pkg | pkg name = 'Pharo-Git-Test']).
 	self assert: repository branch name equals: 'newBranch'.
 

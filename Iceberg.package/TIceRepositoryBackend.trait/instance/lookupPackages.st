@@ -1,4 +1,9 @@
-querying
+private
 lookupPackages
-	^ self packageEntries collect: #asIcePackage 
-	
+	^ (self packageEntries
+		collect: [ :entry |
+			entry packageName -> (IceSavedPackage 
+				named: entry packageName
+				repository: self frontend).
+		])
+		asDictionary
