@@ -1,4 +1,6 @@
 accessing
 models
-	"self models removeAll"
+	"
+	self models removeAll
+	"
 	^ ModelCache ifNil: [ ModelCache := IdentityDictionary new ]
