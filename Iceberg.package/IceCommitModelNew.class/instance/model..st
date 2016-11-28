@@ -1,3 +1,3 @@
 accessing
-model: anIceRepository
-	model value: anIceRepository 
+model: aDiff
+	model value: aDiff 
