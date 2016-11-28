@@ -11,7 +11,6 @@ testRemoveTag
 	
 	package removeClassTag: 'NewTag'.
 	repository register.
-	self halt.
 	
 	"Asserts"
 	packageChangeSet := (IceDiff forRepository: repository) elements 
