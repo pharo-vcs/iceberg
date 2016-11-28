@@ -21,5 +21,6 @@ baseline: spec
 
 		group: 'core' with: #(Iceberg);
 		group: 'default' with: #('Iceberg-UI');
-		group: 'development' with: #(default 'Iceberg-Tests')
+		group: 'test' with: #(core 'Iceberg-Tests');
+		group: 'development' with: #(default test)
 	]
