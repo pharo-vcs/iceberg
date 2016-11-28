@@ -11,7 +11,7 @@
 		"commitButton",
 		"pushCheckbox",
 		"model" ],
-	"name" : "IceCommitModelNew",
+	"name" : "IceCommitModel",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",

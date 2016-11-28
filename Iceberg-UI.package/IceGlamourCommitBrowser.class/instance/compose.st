@@ -13,7 +13,7 @@ compose
 	
 		browser transmit to: #commit; andShow: [ :a :diff | a morph
 			morph: [
-				IceCommitModelNew new 
+				IceCommitModel new 
 					model: diff;
 					buildWithSpec ];
 			title: 'Commit changes'
