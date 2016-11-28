@@ -10,7 +10,4 @@ addPackageToRepository: repo
 	options := (MCWorkingCopy allManagers difference: repo workingCopies).
 
 	(self chooseFrom: options displaying: descriptionBlock) 
-		ifNotNil: [ :workingCopy | 
-			repo 
-				savePackage: workingCopy packageName 
-				withMessage: ('Importing package ', workingCopy packageName) ]
+		ifNotNil: [ :workingCopy | repo addPackageNamed: workingCopy packageName ]
