@@ -16,6 +16,6 @@ setUp
 		LGitRemote 
 			usernameSsh: 'git';
 			keyPassPhrase: '';
-			keyFilePrivatePath: (FileLocator home asFileReference / '.ssh' / 'id_rsa') pathAsString;
-			keyFilePublicPath: (FileLocator home asFileReference / '.ssh' / 'id_rsa.pub') pathAsString
+			keyFilePrivatePath: (FileLocator home asFileReference / '.ssh' / 'id_rsa') pathString;
+			keyFilePublicPath: (FileLocator home asFileReference / '.ssh' / 'id_rsa.pub') pathString
 	].

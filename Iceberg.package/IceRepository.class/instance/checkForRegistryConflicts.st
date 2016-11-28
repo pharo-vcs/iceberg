@@ -11,7 +11,7 @@ and with the same origin URL.
 
 If you really whant create another one, 
 please locate it in a different directory.'
-					 format: {self location pathAsString}) ]
+					 format: {self location pathString}) ]
 			ifFalse: [
 				IceDuplicatedRepository signal: 
 					('You already have an Iceberg repository at 
