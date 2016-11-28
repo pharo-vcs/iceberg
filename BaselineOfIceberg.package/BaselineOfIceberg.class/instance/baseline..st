@@ -11,12 +11,15 @@ baseline: spec
 		project: 'LibGit-Tests'
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
+
 		package: 'Iceberg'
 			with: [ spec requires: #(FileTree LibGit) ];
+		package: 'Iceberg-UI'
+			with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests'
 			with: [ spec requires: #(default 'LibGit-Tests') ];
-		group: 'default'
-			with: #(Iceberg);
-		group: 'development'
-			with: #(default 'Iceberg-Tests')
+
+		group: 'core' with: #(Iceberg);
+		group: 'default' with: #('Iceberg-UI');
+		group: 'development' with: #(default 'Iceberg-Tests')
 	]
