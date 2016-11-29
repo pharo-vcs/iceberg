@@ -10,5 +10,5 @@
 	"name" : "IceLibgitLocalRepositoryTest",
 	"pools" : [
 		 ],
-	"super" : "IceRepositoryTest",
+	"super" : "IceAbstractTest",
 	"type" : "normal" }

@@ -7,6 +7,7 @@
 	"commentStamp" : "NicoPasserini 5/25/2016 10:53",
 	"instvars" : [
 		"packageName",
+		"otherPackageName",
 		"repository",
 		"origin",
 		"projectName" ],
