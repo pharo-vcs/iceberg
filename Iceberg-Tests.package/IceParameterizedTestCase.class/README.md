@@ -1,3 +1,5 @@
 I am a test case that is run several times with different configuration. Each configuration is defined by a set of IceParameterValué's. Possible values are defined in IceParameter objects, which in turn are provided by my #parameters class method, which should be overriden by my subclasses.
 
 If #parameters method is not overriden, I will be run as a normal test case.
+
+To run with the parameterization you have to use Test Runner. If you run tests from Nautilus, they will ignore parameterization and run with current global configuration. For example if you ran IceBranchTest from the test runner it will be run with every Iceberg backend loaded in the image (see #parameters class method in IceBranchTest). But if you run it from Nautilus it will run the test only once with the current backend, as specified by IceRepository class>>defaultBackendType.

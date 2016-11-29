@@ -1,3 +1,3 @@
 querying
 allBranchNames
-	^ { self currentBranch }
+	self withRepoDo: [ :repo | ^ repo allBranches collect: #shortName ]

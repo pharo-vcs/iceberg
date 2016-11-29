@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 11/29/2016 11:10",
+	"commentStamp" : "",
 	"instvars" : [
-		"testParameters" ],
-	"name" : "IceParameterizedTestCase",
+		 ],
+	"name" : "IceBranchTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "IceAbstractTest",
 	"type" : "normal" }
