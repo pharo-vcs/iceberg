@@ -1,3 +1,4 @@
 querying
 localBranches
-	^ self backend localBranches
+	^ self backend localBranchNames collect: [ :branchName | 
+		IceBranch named: branchName inRepository: self ]

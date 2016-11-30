@@ -10,7 +10,6 @@ testExtensionMethodAddition
 	
 	"Asserts"
 	diff := IceDiff forRepository: repository.
-	self assert: diff changes notEmpty.
 	
 	elements := diff elements.
 	self assert: elements notEmpty.
