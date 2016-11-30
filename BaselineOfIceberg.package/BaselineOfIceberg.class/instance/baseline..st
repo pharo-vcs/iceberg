@@ -5,22 +5,18 @@ baseline: spec
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
-		baseline: 'LibGit' with: [ spec 
-			repository: 'github://npasserini/libgit2-pharo-bindings:development';
+		baseline: 'LibGit' with: [ spec
+			repository: 'github://npasserini/libgit2-pharo-bindings';
   			loads: 'default' ];
-		project: 'LibGit-Tests'
+		project: 'LigGit-Tests'
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
-
 		package: 'Iceberg'
 			with: [ spec requires: #(FileTree LibGit) ];
-		package: 'Iceberg-UI'
-			with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests'
-			with: [ spec requires: #(default 'LibGit-Tests') ];
-
-		group: 'core' with: #(Iceberg);
-		group: 'default' with: #('Iceberg-UI');
-		group: 'test' with: #(core 'Iceberg-Tests');
-		group: 'development' with: #(default test)
+			with: [ spec requires: #(default) ];
+		group: 'default'
+			with: #(Iceberg);
+		group: 'development'
+			with: #(default 'Iceberg-Tests')
 	]

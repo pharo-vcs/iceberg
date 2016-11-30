@@ -1,3 +1,3 @@
 *Iceberg-Adapters
 readStreamDo: aBlock
-	aBlock value: (ReadStream on: self object contents)
+	aBlock value: (ReadStream on: self object contents asString)
