@@ -6,7 +6,9 @@ settingsOn: aBuilder
 		target: self;
 		label: 'Backend type';
 		description: 'Select your preferred way to access git repositories from Iceberg: the git command line (OSSubprocess) or the libgit2 library';
-		domainValues: (TIceRepositoryBackend traitUsers collect: [:class | class description -> class ]).
+		domainValues: 
+			((TIceRepositoryBackend traitUsers collect: [:class | class description -> class ]) 
+				ifEmpty: { 'No backend' -> 'Please select a backend type' }).
 	
 	(aBuilder setting: #shareRepositoriesBetweenImages)
 		parent: #Iceberg;
