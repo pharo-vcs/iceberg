@@ -1,6 +1,6 @@
 repository handling
 searchExistingRepository
-	^ IceMCGitRepository allInstances 
+	^ self defaultBackendType allInstances 
 		detect: [ :repo | repo remoteUrl = self origin ]
 		ifFound: [ :repo | repo validate ]
 		ifNone: [ nil ]

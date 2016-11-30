@@ -1,3 +1,3 @@
 descriptions
 description
-	^ 'Ice+Libgit'
+	^ 'Libgit'

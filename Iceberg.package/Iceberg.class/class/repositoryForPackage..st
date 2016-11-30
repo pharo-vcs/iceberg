@@ -2,7 +2,7 @@ accessing
 repositoryForPackage: anRPackage 
 	| existingRepositories possibleRepositoryTypes |
 	existingRepositories := (MCWorkingCopy forPackage: anRPackage mcPackage) repositoryGroup repositories.
-	possibleRepositoryTypes := { IceMCGitRepository. MCGitHubRepository }.
+	possibleRepositoryTypes := TIceRepositoryBackend traitUsers, { MCGitHubRepository }.
 	
 	possibleRepositoryTypes do: [ :class |
 		existingRepositories 
