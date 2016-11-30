@@ -3,6 +3,5 @@ printOn: aStream
 	aStream 
 		print: self class;
 		nextPut: $(;
-		nextPutAll: targetClass description;
+		print: self targetClass;
 		nextPut: $)
-		

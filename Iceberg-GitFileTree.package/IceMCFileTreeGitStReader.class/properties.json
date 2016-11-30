@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-GitFileTree",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 11/30/2016 15:34",
 	"instvars" : [
 		 ],
 	"name" : "IceMCFileTreeGitStReader",
