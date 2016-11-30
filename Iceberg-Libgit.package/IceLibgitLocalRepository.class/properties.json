@@ -1,5 +1,5 @@
 {
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-Libgit",
 	"classinstvars" : [
 		 ],
 	"classtraitcomposition" : "TIceRepositoryBackend classTrait",

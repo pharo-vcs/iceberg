@@ -1,13 +1,13 @@
 {
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-Libgit",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/26/2016 14:55",
+	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceCypressWriter",
+	"name" : "IceLibgitWriter",
 	"pools" : [
 		 ],
 	"super" : "MCFileTreeGitWriter",
