@@ -20,5 +20,5 @@ baseline: spec
 
 		group: 'core' with: #(Iceberg);
 		group: 'default' with: #(Iceberg 'Iceberg-Libgit' 'Iceberg-UI');
-		group: 'development' with: #(default test)
+		group: 'development' with: #(default 'Iceberg-GitFileTree' 'Iceberg-Tests')
 	]
