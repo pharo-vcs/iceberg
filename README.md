@@ -31,6 +31,10 @@ Iceberg update
 
 ## 5 minutes tutorial
 ### Clone a repository
+- Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
+
+  > Please ensure that your repository is not empty (see #127). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
+
 - Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter.
 
 - Click on 'Clone new Repository' and fill the required data:
@@ -44,7 +48,7 @@ Iceberg update
 
 
 - If your repository is new, you should add some packages to it.
-  - First create a Pahro package in the usual way, it should have at least one class, and the class should have at least one method.
+  - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
   - Then open the repositories browser and select your repository.
   - In the bottom right panel you will see the current packages in your repository.
   - Click on 'Add package' and select a package.
@@ -68,7 +72,7 @@ Iceberg update
   - By default Iceberg will try to immediately *push* your commits to your remote repository. If you do not want that you can uncheck the 'Upload changes on commit' option. If you do so, your changes will be saved only in the local repository, and you can push them later.
 
   - Whenever you decide to push your commits, Iceberg will require your github credentials. Currently Iceberg (in its default configuration) can not use SSH keys to connect to github, so you will have to provide your github user and password.
-  
+
     > By default, these credentials will be saved to avoid requiring them each time, but **be aware that this is is not a really safe option**.
 
 ## Usage
