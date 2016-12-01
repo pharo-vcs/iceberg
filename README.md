@@ -33,7 +33,7 @@ Iceberg update
 ### Clone a repository
 - Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
 
-  > Please ensure that your repository is not empty (see #127). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
+  > Please ensure that your repository is not empty (see [#127](https://github.com/npasserini/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
 
 - Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter.
 
