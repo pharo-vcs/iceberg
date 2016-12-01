@@ -14,11 +14,12 @@ baseline: spec
 
 		package: 'Iceberg' with: [ spec requires: #(FileTree LibGit) ];
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
-		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'LibGit-Tests') ];
+		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg) ];
 
 		group: 'core' with: #(Iceberg);
 		group: 'default' with: #(Iceberg 'Iceberg-Libgit' 'Iceberg-UI');
-		group: 'development' with: #(default 'Iceberg-GitFileTree' 'Iceberg-Tests')
+		group: 'allTests' with: #('Iceberg-Tests' 'Libgit-Tests''Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
+		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]
