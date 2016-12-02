@@ -2,6 +2,23 @@ baseline
 baseline: spec
 	<baseline>
 	spec for: #common do: [ spec
+		configuration: 'OSSubprocess' with: [ spec
+			versionString: #stable;
+			repository: 'github://marianopeck/OSSubprocess/repository' ];
+		configuration: 'ProcessWrapper' with: [ spec
+			versionString: #stable;
+			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
+
+		for: #MacOS do: [ spec
+			package: 'Iceberg-Tests'
+			with: [ spec requires: #('OSSubprocess') ] ];
+		for: #Unix do: [ spec
+			package: 'Iceberg-Tests'
+			with: [ spec requires: #('OSSubprocess' ) ] ];
+		for: #Windows do: [ spec
+			package: 'Iceberg-Tests'
+			with: [ spec requires: #('ProcessWrapper') ] ];
+
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
