@@ -1,3 +1,3 @@
-patches
+initialize-release
 propertyFileExtension
   ^ MCFileTreeRepository defaultPropertyFileExtension

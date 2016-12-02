@@ -10,5 +10,5 @@
 	"name" : "IceLibgitWriter",
 	"pools" : [
 		 ],
-	"super" : "MCFileTreeGitWriter",
+	"super" : "MCFileTreeWriter",
 	"type" : "normal" }

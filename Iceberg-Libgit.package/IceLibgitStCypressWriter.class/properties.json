@@ -10,5 +10,5 @@
 	"name" : "IceLibgitStCypressWriter",
 	"pools" : [
 		 ],
-	"super" : "MCFileTreeGitStCypressWriter",
+	"super" : "MCFileTreeStCypressWriter",
 	"type" : "normal" }
