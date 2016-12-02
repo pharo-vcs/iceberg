@@ -9,16 +9,6 @@ baseline: spec
 			versionString: #stable;
 			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
 
-		for: #MacOS do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('OSSubprocess') ] ];
-		for: #Unix do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('OSSubprocess' ) ] ];
-		for: #Windows do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('ProcessWrapper') ] ];
-
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
@@ -30,10 +20,21 @@ baseline: spec
           with: [ spec loads: #('tests') ];
 
 		package: 'Iceberg';
+		package: 'Iceberg-GitCommand';
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
 		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
+
+		for: #MacOS do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('OSSubprocess') ] ];
+		for: #Unix do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('OSSubprocess' ) ] ];
+		for: #Windows do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('ProcessWrapper') ] ];
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');
