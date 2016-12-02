@@ -10,25 +10,4 @@ testCreateRepoOnTopOfGitFileTreeLoadedCode
 		self assert: repository headCommit equals: repository loadedCode referenceCommit.
 
 		self assert: package incomingCommits isEmpty.
-		
-		repository loadedPackages do: [ :pkg |
-			(IcePackageModel modelFor: pkg) status
-		]
 	].
-
-	"Exercise"
-	"writableRepository := self package iceRepository.
-	[
-		writableRepository ensureLocalRepository.
-
-		""Test""
-		self assert: self defaultLocationForGithubClonedRepository exists.
-		self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.
-		
-		self assert: writableRepository currentBranch name equals: 'forBecomeWriteable'.
-		self assert: writableRepository backend currentBranch equals: 'forBecomeWriteable'.
-		
-		writableRepository pull.
-		self assert: ((Smalltalk at: #Test) canUnderstand: #forBecomeWritable)
-	]
-	ensure: [ writableRepository forget ]	"
