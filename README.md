@@ -57,11 +57,12 @@ Iceberg update
 - After adding a package or modifying some code in one of the packages known to your repository, you are ready to *commit* your changes.
   - Open the Repositories Browser
   - You should see that your repository name is highlighted in green, and its status changed to 'Uncommited changes'.
-  - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository).
+  - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository). You should see something like this: ![image](https://cloud.githubusercontent.com/assets/4633913/20834916/fb505832-b897-11e6-8247-66776e97b826.png)
+
 
   - In this window you will see a tree with all your changes, by clicking on the changes tree you will see the differences in the bottom panel.
 
-    > **Please be aware that current Iceberg version has a bug and shows your version in red, while the original version is shown in green**.
+    > **Please be aware that current Iceberg version has a bug and shows your version in red, while the original version is shown in green.**.
 
   - From the contextual menu of the tree, you can also *revert* a change, or *browse* the changed method/class.
   - If you make more changes after opening the synchronize view, you have to click on *Refresh tree* to see the new changes.
