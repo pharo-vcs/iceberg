@@ -19,13 +19,6 @@ baseline: spec
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
 
-		package: 'Iceberg';
-		package: 'Iceberg-GitCommand';
-		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
-		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
-		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
-		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
-
 		for: #MacOS do: [ spec
 			package: 'Iceberg-GitCommand'
 			with: [ spec requires: #('OSSubprocess') ] ];
@@ -35,6 +28,12 @@ baseline: spec
 		for: #Windows do: [ spec
 			package: 'Iceberg-GitCommand'
 			with: [ spec requires: #('ProcessWrapper') ] ];
+
+		package: 'Iceberg';
+		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
+		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
+		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
+		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');
