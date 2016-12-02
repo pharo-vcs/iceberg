@@ -1,4 +1,4 @@
-as yet unclassified
+visiting
 writeVersion: aVersion
 	directory := aVersion package name, '.package'.
 

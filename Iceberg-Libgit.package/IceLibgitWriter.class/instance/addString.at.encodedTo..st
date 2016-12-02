@@ -1,4 +1,4 @@
-as yet unclassified
+writing
 addString: string at: fileNameOrPath encodedTo: ignored
     "fileNameOrPath may have one or two elements"
     "encodeTo: arg, because FileTree uses UTF8 by default"

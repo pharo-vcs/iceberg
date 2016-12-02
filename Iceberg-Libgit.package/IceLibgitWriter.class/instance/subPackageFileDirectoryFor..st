@@ -1,3 +1,3 @@
-as yet unclassified
+visiting
 subPackageFileDirectoryFor: directoryNameOrPath
 	^ self packageFileDirectory entryByPath: directoryNameOrPath 

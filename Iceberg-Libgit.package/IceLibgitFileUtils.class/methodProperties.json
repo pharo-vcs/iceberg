@@ -1,0 +1,11 @@
+{
+	"class" : {
+		"current" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"deleteAll:" : " 11/28/2016 11:42:15",
+		"directoryExists:" : " 11/28/2016 11:42:15",
+		"directoryFromEntry:" : " 11/28/2016 11:42:15",
+		"directoryFromPath:relativeTo:" : "NicoPasserini 11/28/2016 14:35",
+		"pathNameDelimiter" : " 11/28/2016 11:42:15",
+		"readStreamFor:in:do:" : " 11/28/2016 11:42:15",
+		"writeStreamFor:in:do:" : " 11/28/2016 11:42:15" } }

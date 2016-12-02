@@ -6,7 +6,7 @@ internalStoreVersion: aMCVersion
 
 	| packageDirectoryString |
 
-	MCFileTreeGitWriter fileOut: aMCVersion on: self.
+	IceMetadatalessFileTreeWriter fileOut: aMCVersion on: self.
 
 	packageDirectoryString := aMCVersion package name , self packageExtension.
 	self command: { 'add'. packageDirectoryString }

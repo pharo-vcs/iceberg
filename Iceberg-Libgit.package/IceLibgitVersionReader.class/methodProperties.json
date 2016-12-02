@@ -1,0 +1,12 @@
+{
+	"class" : {
+		"on:iceVersion:" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"commit" : " 11/28/2016 11:42:15",
+		"fileUtils" : " 11/28/2016 11:42:15",
+		"hasMonticelloMetadata" : " 11/28/2016 11:42:15",
+		"iceVersion" : " 11/28/2016 11:42:15",
+		"iceVersion:" : " 11/28/2016 11:42:15",
+		"loadVersionInfo" : " 11/28/2016 11:42:15",
+		"packageNameFromPackageDirectory" : " 11/28/2016 11:42:15",
+		"versionName" : " 11/28/2016 11:42:15" } }
