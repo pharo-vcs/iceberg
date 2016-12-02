@@ -35,41 +35,44 @@ Iceberg update
 
   > Please ensure that your repository is not empty (see [#127](https://github.com/npasserini/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
 
-- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. You will see something like this:
+- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. Normally you will see something like this:
 
-  ![image](https://cloud.githubusercontent.com/assets/4633913/20835743/6c492c5e-b89c-11e6-9565-11c267c3103d.png)
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20836463/b9398eac-b89f-11e6-92c7-d0f6ed785c83.png)
 
-  Or, if you do not have any repository yet, you might see this:
+  But if it is the first time you use Iceberg you might be looking at this:
 
   ![image](https://cloud.githubusercontent.com/assets/4633913/20835889/3a2c2914-b89d-11e6-96fa-c0ba1f16041b.png)
 
   So let's add a repository.
 
-- Click on 'Clone new Repository' and fill the required data:
+- The easiest way to create a new repository is by clicking on 'Clone new Repository'. You will see this dialog:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20840028/27e57712-b8af-11e6-8b20-76c674afe21d.png)
+
   - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:npasserini/iceberg.git` or `https://github.com/npasserini/iceberg.git`.
 
     > **Tip:** If you do not know it, you can get it from github, look for the green "Clone or Download" button.
+
+  - Local directory: You can just leave the default location for a start.
 
   - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
 
   - Click on 'Create repository', then you should see a new entry in the repositories browser.
 
-
+### Add packages to your repository
 - If your repository is new, you should add some packages to it.
   - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
   - Then open the repositories browser and select your repository.
   - In the bottom right panel you will see the current packages in your repository.
   - Click on 'Add package' and select a package.
 
-
+### Your first commit
 - After adding a package or modifying some code in one of the packages known to your repository, you are ready to *commit* your changes.
   - Open the Repositories Browser
   - You should see that your repository name is highlighted in green, and its status changed to 'Uncommited changes'.
   - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository). You should see something like this:
 
-
-    ![image](https://cloud.githubusercontent.com/assets/4633913/20834916/fb505832-b897-11e6-8247-66776e97b826.png)
-
+    ![image](https://cloud.githubusercontent.com/assets/4633913/20836730/eaf72804-b8a0-11e6-8f01-10a6ca25d41e.png)
 
     On the top-left panel, you will see all changes to the packages stored in the repository, by selecting a method on the changes tree you will see the differences in the bottom panel.
 
