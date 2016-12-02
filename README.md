@@ -35,7 +35,15 @@ Iceberg update
 
   > Please ensure that your repository is not empty (see [#127](https://github.com/npasserini/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
 
-- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter.
+- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. You will see something like this:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20835743/6c492c5e-b89c-11e6-9565-11c267c3103d.png)
+
+  Or, if you do not have any repository yet, you might see this:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20835889/3a2c2914-b89d-11e6-96fa-c0ba1f16041b.png)
+
+  So let's add a repository.
 
 - Click on 'Clone new Repository' and fill the required data:
   - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:npasserini/iceberg.git` or `https://github.com/npasserini/iceberg.git`.
