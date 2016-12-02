@@ -16,7 +16,7 @@ baseline: spec
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
-		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg Libgit) ];
+		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');
