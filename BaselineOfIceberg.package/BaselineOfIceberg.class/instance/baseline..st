@@ -10,13 +10,13 @@ baseline: spec
 			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
 
 		for: #MacOS do: [ spec
-			package: 'Iceberg-Tests'
+			package: 'Iceberg-GitCommand'
 			with: [ spec requires: #('OSSubprocess') ] ];
 		for: #Unix do: [ spec
-			package: 'Iceberg-Tests'
+			package: 'Iceberg-GitCommand'
 			with: [ spec requires: #('OSSubprocess' ) ] ];
 		for: #Windows do: [ spec
-			package: 'Iceberg-Tests'
+			package: 'Iceberg-GitCommand'
 			with: [ spec requires: #('ProcessWrapper') ] ];
 
 		baseline: 'FileTree' with: [ spec
@@ -30,7 +30,6 @@ baseline: spec
           with: [ spec loads: #('tests') ];
 
 		package: 'Iceberg';
-		package: 'Iceberg-GitCommand';
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
