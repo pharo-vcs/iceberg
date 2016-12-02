@@ -1,6 +1,7 @@
 execute
 in: directory execute: commandDescription
 	"See class comments for the specification of possible command descriptions"
-	^ MCFileTreeGitRepository 
-		runGitCommand: (self preprocess: commandDescription) 
-		in: directory
+	^ self new 
+		directory: directory;
+		command: (self preprocess: commandDescription);
+		run

@@ -1,12 +1,13 @@
 {
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-GitCommand",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 5/24/2016 11:11",
 	"instvars" : [
-		 ],
+		"directory",
+		"command" ],
 	"name" : "IceGitCommand",
 	"pools" : [
 		 ],
