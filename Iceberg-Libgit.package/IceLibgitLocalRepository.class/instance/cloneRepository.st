@@ -11,9 +11,13 @@ cloneRepository
 		repo := LGitRepository on: self location.
 		cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider default).
 		
-		repo 
-			clone: url options: cloneOptions;
-			checkout: self branch.
+		repo clone: url options: cloneOptions.
+		
+		(branch notNil or: [ repo allBranches notEmpty ]) ifTrue: [ 
+			"If the repository has no branches, we can not checkout anything, so do not try... unless you specified a branch, 
+			then I will try and you will most probably get an error showing that the branch does not exist."
+			repo checkout: self branch
+		].
 
 		(LGitRemote of: repo named: 'origin')
 			lookup;

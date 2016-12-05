@@ -1,16 +1,15 @@
 {
-	"category" : "Iceberg-Changes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
+	"super" : "IceAbstractDiff",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"repository",
 		"theirVersion",
-		"myVersion" ],
+		"myVersion"
+	],
 	"name" : "IceDiff",
-	"pools" : [
-		 ],
-	"super" : "IceAbstractDiff",
-	"type" : "normal" }
+	"type" : "normal"
+}

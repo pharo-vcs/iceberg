@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-UI",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 8/23/2016 14:34",
-	"instvars" : [
-		 ],
-	"name" : "IceHistoryBrowser",
-	"pools" : [
-		 ],
 	"super" : "IceAbstractBrowser",
-	"type" : "normal" }
+	"category" : "Iceberg-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceHistoryBrowser",
+	"type" : "normal"
+}

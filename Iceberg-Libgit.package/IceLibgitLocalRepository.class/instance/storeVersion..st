@@ -13,7 +13,7 @@ storeVersion: aMCVersion
 			tree: treeBuilder buildTree;
 			message: aMCVersion info message;
 			parents: { parentCommit };
-			updateReference: head;
+			updateReference: head name;
 			author: signature;
 			committer: signature;
 			writeCommit.		
