@@ -1,4 +1,4 @@
-scenarios
+*Iceberg-GitFileTree-Tests
 scenarioCodeLoadedFromGitFileTreeDo: testActions
 	| gitFileTreeRepository lastEntry lastVersion |
 	
