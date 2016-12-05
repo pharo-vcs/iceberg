@@ -7,7 +7,7 @@ commitPackages: packagesToCommit withMessage: message
 		self internalSavePackage: package withMessage: message  ].
 	
 	newCommit := self backend 
-		commit: savedVersions 
+		commitMcVersions: savedVersions 
 		withMessage: message.
 		
 	self loadedCode commited: newCommit changingPackages: packagesToCommit.

@@ -1,5 +1,5 @@
 actions
-commit: versions withMessage: message
+commitMcVersions: versions withMessage: message
 	self 
 		gitCommand: 
 			{ 'commit'. '-m'. self escapeForShell: message convertToSystemString. '--' }, 

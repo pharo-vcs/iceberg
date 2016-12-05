@@ -1,5 +1,5 @@
 actions
-commit: versions withMessage: message andMarkAsMerged: aCommitish
+commitMcVersions: versions withMessage: message andMarkAsMerged: aCommitish
 	| treeId newCommitId |
 	treeId := (self command: 'write-tree') trim.
 	

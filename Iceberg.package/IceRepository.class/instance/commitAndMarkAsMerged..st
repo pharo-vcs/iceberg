@@ -8,7 +8,7 @@ commitAndMarkAsMerged: aCommitish
 		self internalSavePackage: package withMessage: message  ].
 	
 	newCommit := self backend 
-		commit: savedVersions 
+		commitMcVersions: savedVersions 
 		withMessage: message 
 		andMarkAsMerged: aCommitish.
 
