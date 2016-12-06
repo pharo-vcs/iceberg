@@ -1,26 +1,23 @@
 {
+	"class" : {
+		"class:parent:" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"canBrowseReferences" : " 11/28/2016 11:42:15",
-		"canBeBrowsed" : " 11/28/2016 11:42:15",
-		"changes" : " 11/28/2016 11:42:15",
-		"initialElements" : " 11/28/2016 11:42:15",
-		"targetClass" : " 11/28/2016 11:42:15",
 		"analyseChanges" : " 11/28/2016 11:42:15",
-		"myVersion" : " 11/28/2016 11:42:15",
-		"icon" : " 11/28/2016 11:42:15",
-		"updateDiff:" : " 11/28/2016 11:42:15",
-		"theirVersion" : " 11/28/2016 11:42:15",
-		"classDefinition" : " 11/28/2016 11:42:15",
+		"browse" : " 11/28/2016 11:42:15",
 		"browseReferences" : " 11/28/2016 11:42:15",
-		"targetClass:" : " 11/28/2016 11:42:15",
+		"canBeBrowsed" : " 11/28/2016 11:42:15",
+		"canBrowseReferences" : " 11/28/2016 11:42:15",
+		"changes" : " 11/28/2016 11:42:15",
+		"classDefinition" : " 11/28/2016 11:42:15",
 		"description" : " 11/28/2016 11:42:15",
+		"icon" : " 11/28/2016 11:42:15",
+		"initialElements" : " 11/28/2016 11:42:15",
 		"isExtension" : " 11/28/2016 11:42:15",
+		"myVersion" : " 11/28/2016 11:42:15",
+		"package" : " 11/28/2016 11:42:15",
 		"packageName" : " 11/28/2016 11:42:15",
 		"printOn:" : "NicoPasserini 11/30/2016 15:47",
-		"package" : " 11/28/2016 11:42:15",
-		"browse" : " 11/28/2016 11:42:15"
-	},
-	"class" : {
-		"class:parent:" : " 11/28/2016 11:42:15"
-	}
-}
+		"targetClass" : " 11/28/2016 11:42:15",
+		"targetClass:" : " 11/28/2016 11:42:15",
+		"theirVersion" : " 11/28/2016 11:42:15",
+		"updateDiff:" : " 11/28/2016 11:42:15" } }

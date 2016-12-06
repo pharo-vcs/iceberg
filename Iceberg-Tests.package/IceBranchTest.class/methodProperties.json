@@ -1,11 +1,8 @@
 {
-	"instance" : {
-		"testAllBranches" : "NicoPasserini 12/6/2016 13:51",
-		"testBranchName" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05",
-		"testBranchIncludesCommit" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05",
-		"testBranches" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05"
-	},
 	"class" : {
-		"parameters" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05"
-	}
-}
+		"parameters" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05" },
+	"instance" : {
+		"testAllBranches" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05",
+		"testBranchIncludesCommit" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05",
+		"testBranchName" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05",
+		"testBranches" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05" } }

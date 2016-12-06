@@ -4,6 +4,6 @@ lookupHead
 		| head |
 		head := repo head.
 		^ head isBranch 
-			ifTrue: [ IceLocalBranch named: head basename inRepository: self frontend ] 
+			ifTrue: [ IceBranch named: self currentBranch inRepository: self frontend ] 
 			ifFalse: [ self revparse: branch ]
 	]

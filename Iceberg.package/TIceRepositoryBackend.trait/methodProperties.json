@@ -1,16 +1,13 @@
 {
+	"class" : {
+		"initialize" : "NicoPasserini 11/30/2016 18:28" },
 	"instance" : {
+		"basicCodeDirectory" : " 11/28/2016 11:42:15",
+		"codeDirectory" : " 11/28/2016 11:42:15",
 		"description" : " 11/28/2016 11:42:15",
 		"iceCommitFrom:" : " 11/28/2016 11:42:15",
 		"isMissing" : " 11/28/2016 11:42:15",
-		"codeDirectory" : " 11/28/2016 11:42:15",
-		"basicCodeDirectory" : " 11/28/2016 11:42:15",
 		"isPackageEntry:" : " 11/28/2016 11:42:15",
 		"lookupPackages" : " 11/28/2016 11:42:15",
-		"packageEntries" : " 11/28/2016 11:42:15",
-		"merge:into:" : "NicoPasserini 12/6/2016 10:59"
-	},
-	"class" : {
-		"initialize" : "NicoPasserini 11/30/2016 18:28"
-	}
-}
+		"merge:into:" : "NicoPasserini 12/6/2016 10:21",
+		"packageEntries" : " 11/28/2016 11:42:15" } }

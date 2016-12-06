@@ -1,10 +1,9 @@
 {
+	"class" : {
+		 },
 	"instance" : {
-		"hideYourselfFromCommitWalk:" : " 11/28/2016 11:42:15",
+		"commit" : " 11/28/2016 11:42:15",
 		"description" : " 11/28/2016 11:42:15",
-		"printOn:" : " 11/28/2016 11:42:15",
+		"hideYourselfFromCommitWalk:" : " 11/28/2016 11:42:15",
 		"mcVersion" : " 11/28/2016 11:42:15",
-		"commit" : " 11/28/2016 11:42:15"
-	},
-	"class" : { }
-}
+		"printOn:" : " 11/28/2016 11:42:15" } }

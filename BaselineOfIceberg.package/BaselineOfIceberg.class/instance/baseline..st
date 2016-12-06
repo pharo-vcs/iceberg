@@ -34,6 +34,8 @@ baseline: spec
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
 		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
+		package: 'Iceberg-UI-Tests';
+		package: 'Iceberg-GitFileTree-Tests';
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');

@@ -1,9 +1,6 @@
 {
-	"instance" : {
-		"providePlaintextCredentialsTo:" : " 11/28/2016 11:42:15"
-	},
 	"class" : {
 		"install" : " 11/28/2016 11:42:15",
-		"uninstall" : " 11/28/2016 11:42:15"
-	}
-}
+		"uninstall" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"providePlaintextCredentialsTo:" : " 11/28/2016 11:42:15" } }

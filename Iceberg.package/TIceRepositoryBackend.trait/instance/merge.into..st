@@ -1,7 +1,6 @@
 actions
 merge: aCommitId into: aBranchName
 	| currentBranch |
-	self halt.
 	currentBranch := self branch.
 	[ 
 		self checkoutBranch: aBranchName.

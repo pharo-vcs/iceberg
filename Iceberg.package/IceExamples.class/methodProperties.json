@@ -1,17 +1,16 @@
 {
-	"instance" : { },
 	"class" : {
-		"exampleCommitBrowser" : " 11/28/2016 11:42:15",
-		"exampleCommitBrowserTest" : " 11/28/2016 11:42:15",
-		"exampleGlamourSynchronizer" : " 11/28/2016 11:42:15",
-		"exampleChangesTreeOnTestPackage" : " 11/28/2016 11:42:15",
-		"exampleSynchronizer" : " 11/28/2016 11:42:15",
-		"exampleCreateRepository" : " 11/28/2016 11:42:15",
-		"exampleGlamourCommitBrowser" : " 11/28/2016 11:42:15",
-		"exampleGlamourSynchronizerTestForUpdate" : " 11/28/2016 11:42:15",
-		"exampleRepositoriesBrowser" : " 11/28/2016 11:42:15",
 		"exampleChangesTree2" : " 11/28/2016 11:42:15",
 		"exampleChangesTreeOnIcebergPackage" : " 11/28/2016 11:42:15",
-		"exampleGlamourSynchronizerTest" : " 11/28/2016 11:42:15"
-	}
-}
+		"exampleChangesTreeOnTestPackage" : " 11/28/2016 11:42:15",
+		"exampleCommitBrowser" : " 11/28/2016 11:42:15",
+		"exampleCommitBrowserTest" : " 11/28/2016 11:42:15",
+		"exampleCreateRepository" : " 11/28/2016 11:42:15",
+		"exampleGlamourCommitBrowser" : " 11/28/2016 11:42:15",
+		"exampleGlamourSynchronizer" : " 11/28/2016 11:42:15",
+		"exampleGlamourSynchronizerTest" : " 11/28/2016 11:42:15",
+		"exampleGlamourSynchronizerTestForUpdate" : " 11/28/2016 11:42:15",
+		"exampleRepositoriesBrowser" : " 11/28/2016 11:42:15",
+		"exampleSynchronizer" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		 } }

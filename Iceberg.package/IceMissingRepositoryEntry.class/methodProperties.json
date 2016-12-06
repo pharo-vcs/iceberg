@@ -1,10 +1,9 @@
 {
+	"class" : {
+		 },
 	"instance" : {
-		"name:" : "NicoPasserini 11/28/2016 14:28",
-		"owner" : "NicoPasserini 11/28/2016 14:28",
 		"messageText" : "NicoPasserini 11/28/2016 14:34",
 		"name" : "NicoPasserini 11/28/2016 14:28",
-		"owner:" : "NicoPasserini 11/28/2016 14:28"
-	},
-	"class" : { }
-}
+		"name:" : "NicoPasserini 11/28/2016 14:28",
+		"owner" : "NicoPasserini 11/28/2016 14:28",
+		"owner:" : "NicoPasserini 11/28/2016 14:28" } }

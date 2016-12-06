@@ -1,3 +1,3 @@
-testing
+querying
 isLocal
-	^ false
+	^ self isRemote not

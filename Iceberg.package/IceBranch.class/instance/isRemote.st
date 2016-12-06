@@ -1,3 +1,3 @@
-testing
+querying
 isRemote
-	^ false
+	^ self name beginsWith: 'remotes'
