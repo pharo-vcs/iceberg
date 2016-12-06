@@ -1,5 +1,5 @@
-actions
-commitAndMarkAsMerged: aCommitish
+actions - utility
+commitPackagesAndMarkAsMerged: aCommitish
 	| message changedPackages savedVersions newCommit |
 
 	message := 'Merging with ', aCommitish id.
@@ -7,9 +7,9 @@ commitAndMarkAsMerged: aCommitish
 	savedVersions := changedPackages collect: [ :package | 
 		self internalSavePackage: package withMessage: message  ].
 	
-	newCommit := self backend 
-		commitMcVersions: savedVersions 
+	newCommit := self
+		doCommitMcVersions: savedVersions 
 		withMessage: message 
-		andMarkAsMerged: aCommitish.
+		andParents: { self headCommit . aCommitish }.
 
 	self loadedCode commited: newCommit changingPackages: changedPackages 

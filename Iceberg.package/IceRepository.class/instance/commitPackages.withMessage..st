@@ -1,4 +1,4 @@
-actions
+actions - utility
 commitPackages: packagesToCommit withMessage: message
 	| savedVersions newCommit |
 	packagesToCommit isEmpty ifTrue: [ NothingToCommitException signal ].
@@ -6,8 +6,9 @@ commitPackages: packagesToCommit withMessage: message
 	savedVersions := packagesToCommit collect: [ :package | 
 		self internalSavePackage: package withMessage: message  ].
 	
-	newCommit := self backend 
-		commitMcVersions: savedVersions 
-		withMessage: message.
+	newCommit := self
+		doCommitMcVersions: savedVersions 
+		withMessage: message 
+		andParents: { self headCommit }.
 		
 	self loadedCode commited: newCommit changingPackages: packagesToCommit.

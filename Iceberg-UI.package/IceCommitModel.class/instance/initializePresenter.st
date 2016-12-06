@@ -1,4 +1,4 @@
 initialization
 initializePresenter
-	message acceptBlock: [ :text | self commitWithMessage: text].
+	message acceptBlock: [ :text | self commitPackagesWithMessage: text].
 	commitButton action: [ message accept ].

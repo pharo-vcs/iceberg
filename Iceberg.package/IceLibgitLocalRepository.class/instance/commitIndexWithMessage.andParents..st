@@ -1,13 +1,14 @@
-private
-doCommitIndex: indexTreeId withMessage: message andParents: parentCommitsBlock
+actions
+commitIndexWithMessage: message andParents: parentCommitishList
+
 	self withRepoDo: [ :repo | 
-		| signature commitId |
-		signature := repo defaultSignature.
-			
+		| signature commitId indexTreeId |
+		signature := repo defaultSignature.			
+		indexTreeId := repo index writeTreeAndReturnOid.		 
 		commitId := (LGitCommitBuilder of: repo)
 			tree: (LGitTree of: repo fromId: indexTreeId);
 			message: message;
-			parents: (parentCommitsBlock value: repo);
+			parents: (self libGitCommitsFrom: repo for: parentCommitishList);
 			updateReference: repo head;
 			author: signature;
 			committer: signature;
