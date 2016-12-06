@@ -1,5 +1,6 @@
 {
-	"class" : {
-		 },
 	"instance" : {
-		"confirm:label:trueChoice:falseChoice:cancelChoice:default:" : " 11/28/2016 11:42:15" } }
+		"confirm:label:trueChoice:falseChoice:cancelChoice:default:" : " 11/28/2016 11:42:15"
+	},
+	"class" : { }
+}

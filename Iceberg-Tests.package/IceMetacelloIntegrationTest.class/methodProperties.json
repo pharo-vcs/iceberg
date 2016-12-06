@@ -1,7 +1,10 @@
 {
-	"class" : {
-		"parameters" : " 11/28/2016 11:42:15" },
 	"instance" : {
 		"testBecomeWriteable" : " 11/28/2016 11:42:15",
-		"testMetacelloIntegration" : " 11/28/2016 11:42:15",
-		"testMetacelloIntegrationForTags" : " 11/28/2016 11:42:15" } }
+		"testMetacelloIntegrationForTags" : " 11/28/2016 11:42:15",
+		"testMetacelloIntegration" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"parameters" : " 11/28/2016 11:42:15"
+	}
+}

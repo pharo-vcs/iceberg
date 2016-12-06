@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 9/14/2016 18:01",
-	"instvars" : [
-		"mcVersion" ],
-	"name" : "IceForeignVersion",
-	"pools" : [
-		 ],
 	"super" : "IceAbstractVersion",
-	"type" : "normal" }
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mcVersion"
+	],
+	"name" : "IceForeignVersion",
+	"type" : "normal"
+}

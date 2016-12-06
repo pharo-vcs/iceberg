@@ -1,30 +1,21 @@
 {
-	"class" : {
-		"named:inRepository:" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"=" : " 11/28/2016 11:42:15",
-		"backend" : " 11/28/2016 11:42:15",
-		"commits" : " 11/28/2016 11:42:15",
-		"commitsNotIn:" : " 11/28/2016 11:42:15",
-		"committish" : " 11/28/2016 11:42:15",
-		"displayName" : " 11/28/2016 11:42:15",
-		"includesCommit:" : " 11/28/2016 11:42:15",
-		"incomingCommits" : " 11/28/2016 11:42:15",
-		"initialize" : " 11/28/2016 11:42:15",
-		"isLocal" : " 11/28/2016 11:42:15",
-		"isRemote" : " 11/28/2016 11:42:15",
-		"lastCommit" : " 11/28/2016 11:42:15",
-		"name" : " 11/28/2016 11:42:15",
-		"name:" : " 11/28/2016 11:42:15",
-		"outgoingCommits:" : " 11/28/2016 11:42:15",
-		"printOn:" : " 11/28/2016 11:42:15",
-		"refresh" : " 11/28/2016 11:42:15",
-		"repository" : " 11/28/2016 11:42:15",
-		"repository:" : " 11/28/2016 11:42:15",
-		"shortName" : " 11/28/2016 11:42:15",
-		"simpleName" : " 11/28/2016 11:42:15",
-		"snapshotFor:" : " 11/28/2016 11:42:15",
-		"upstream" : " 11/28/2016 11:42:15",
-		"versionDictionary" : " 11/28/2016 11:42:15",
-		"versionsFor:" : " 11/28/2016 11:42:15",
-		"versionsInCommit:" : " 11/28/2016 11:42:15" } }
+		"backend" : "NicoPasserini 12/6/2016 11:18",
+		"isRemote" : "NicoPasserini 12/6/2016 11:36",
+		"repository" : "NicoPasserini 12/6/2016 11:18",
+		"name" : "NicoPasserini 12/6/2016 11:18",
+		"includesCommit:" : "NicoPasserini 12/6/2016 11:20",
+		"=" : "NicoPasserini 12/6/2016 11:34",
+		"isLocal" : "NicoPasserini 12/6/2016 11:36",
+		"name:" : "NicoPasserini 12/6/2016 11:18",
+		"snapshotFor:" : "NicoPasserini 12/6/2016 11:37",
+		"printOn:" : "NicoPasserini 12/6/2016 11:35",
+		"repository:" : "NicoPasserini 12/6/2016 11:18",
+		"commitsNotIn:" : "NicoPasserini 12/6/2016 11:20",
+		"commits" : "NicoPasserini 12/6/2016 11:20",
+		"lastCommit" : "NicoPasserini 12/6/2016 11:21"
+	},
+	"class" : {
+		"named:local:inRepository:" : "NicoPasserini 12/6/2016 12:03"
+	}
+}

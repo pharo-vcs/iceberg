@@ -1,5 +1,8 @@
 {
-	"class" : {
-		"lastStoredRun" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"testSshUrl" : " 11/28/2016 11:42:15" } }
+		"testSshUrl" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"lastStoredRun" : " 11/28/2016 11:42:15"
+	}
+}

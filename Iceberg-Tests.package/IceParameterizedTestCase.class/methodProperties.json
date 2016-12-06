@@ -1,15 +1,18 @@
 {
-	"class" : {
-		"buildSuite" : " 11/28/2016 11:42:15",
-		"buildSuiteNamed:withGlobals:andConfigurations:" : " 11/28/2016 11:42:15",
-		"buildSuiteNamed:withGlobals:andSubsuites:" : " 11/28/2016 11:42:15",
-		"parameters" : " 11/28/2016 11:42:15",
-		"remoteTypeConfiguration" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05",
-		"repositoryBackendConfiguration" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05" },
 	"instance" : {
 		"cleanUpInstanceVariables" : " 11/28/2016 11:42:15",
 		"printOn:" : " 11/28/2016 11:42:15",
-		"setUp" : " 11/28/2016 11:42:15",
 		"tearDown" : " 11/28/2016 11:42:15",
 		"testParameters" : " 11/28/2016 11:42:15",
-		"testParameters:" : " 11/28/2016 11:42:15" } }
+		"setUp" : " 11/28/2016 11:42:15",
+		"testParameters:" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"parameters" : " 11/28/2016 11:42:15",
+		"buildSuiteNamed:withGlobals:andSubsuites:" : " 11/28/2016 11:42:15",
+		"remoteTypeConfiguration" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05",
+		"buildSuite" : " 11/28/2016 11:42:15",
+		"buildSuiteNamed:withGlobals:andConfigurations:" : " 11/28/2016 11:42:15",
+		"repositoryBackendConfiguration" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05"
+	}
+}

@@ -1,28 +1,31 @@
 {
-	"class" : {
-		"package:parent:" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"analyseChanges" : " 11/28/2016 11:42:15",
-		"basicChanges" : " 11/28/2016 11:42:15",
-		"basicOrganizationChange" : " 11/28/2016 11:42:15",
-		"browse" : " 11/28/2016 11:42:15",
-		"canBeBrowsed" : " 11/28/2016 11:42:15",
 		"canBrowseReferences" : " 11/28/2016 11:42:15",
-		"changedClasses" : " 11/28/2016 11:42:15",
-		"changes" : " 11/28/2016 11:42:15",
-		"description" : " 11/28/2016 11:42:15",
-		"hasChanged" : " 11/28/2016 11:42:15",
-		"hasChanges" : " 11/28/2016 11:42:15",
-		"icon" : " 11/28/2016 11:42:15",
-		"initialElements" : " 11/28/2016 11:42:15",
 		"isExtension:" : " 11/28/2016 11:42:15",
-		"myVersion" : " 11/28/2016 11:42:15",
-		"newOrganization:" : " 11/28/2016 11:42:15",
-		"oldOrganization:" : " 11/28/2016 11:42:15",
-		"organizationChange" : " 11/28/2016 11:42:15",
-		"package" : " 11/28/2016 11:42:15",
-		"package:" : " 11/28/2016 11:42:15",
-		"printOn:" : " 11/28/2016 11:42:15",
+		"changes" : " 11/28/2016 11:42:15",
+		"canBeBrowsed" : " 11/28/2016 11:42:15",
+		"basicChanges" : " 11/28/2016 11:42:15",
+		"analyseChanges" : " 11/28/2016 11:42:15",
+		"initialElements" : " 11/28/2016 11:42:15",
 		"refresh" : " 11/28/2016 11:42:15",
+		"myVersion" : " 11/28/2016 11:42:15",
+		"icon" : " 11/28/2016 11:42:15",
+		"oldOrganization:" : " 11/28/2016 11:42:15",
 		"theirVersion" : " 11/28/2016 11:42:15",
-		"updateDiff:" : " 11/28/2016 11:42:15" } }
+		"updateDiff:" : " 11/28/2016 11:42:15",
+		"changedClasses" : " 11/28/2016 11:42:15",
+		"basicOrganizationChange" : " 11/28/2016 11:42:15",
+		"hasChanged" : " 11/28/2016 11:42:15",
+		"organizationChange" : " 11/28/2016 11:42:15",
+		"package:" : " 11/28/2016 11:42:15",
+		"description" : " 11/28/2016 11:42:15",
+		"newOrganization:" : " 11/28/2016 11:42:15",
+		"hasChanges" : " 11/28/2016 11:42:15",
+		"package" : " 11/28/2016 11:42:15",
+		"printOn:" : " 11/28/2016 11:42:15",
+		"browse" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"package:parent:" : " 11/28/2016 11:42:15"
+	}
+}

@@ -27,7 +27,7 @@ testCreateBranch
 	[ 
 		
 		repository push.
-		self assert: repository currentBranch upstream shortName equals: 'origin/createdBranch'.
+		self assert: repository currentBranch upstream name equals: 'origin/createdBranch'.
 		self assert: repository outgoingCommits isEmpty.	
 	]
 	ensure: [ 

@@ -1,11 +1,14 @@
 {
-	"class" : {
-		"lastStoredRun" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"getTestPackages" : " 11/28/2016 11:42:15",
-		"setUp" : " 11/28/2016 11:42:15",
-		"tearDown" : " 11/28/2016 11:42:15",
 		"testAddTag" : " 11/28/2016 11:42:15",
-		"testExtensionMethodAddition" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05",
 		"testPromoteTagAsPackage" : " 11/28/2016 11:42:15",
-		"testRemoveTag" : "NicolÃÂ¡s Passerini 11/30/2016 15:26:05" } }
+		"tearDown" : " 11/28/2016 11:42:15",
+		"setUp" : " 11/28/2016 11:42:15",
+		"testExtensionMethodAddition" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05",
+		"testRemoveTag" : "NicolÃ\u0083Â\u0083Ã\u0082Â¡s Passerini 11/30/2016 15:26:05",
+		"getTestPackages" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"lastStoredRun" : " 11/28/2016 11:42:15"
+	}
+}

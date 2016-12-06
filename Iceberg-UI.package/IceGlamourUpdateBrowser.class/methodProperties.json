@@ -1,0 +1,12 @@
+{
+	"instance" : {
+		"compose" : " 12/5/2016 12:15:02",
+		"loadAction" : " 12/5/2016 12:15:02",
+		"mergeAction" : " 12/5/2016 12:15:02",
+		"pullAction" : " 12/5/2016 12:15:02",
+		"composeCommitsListIn:" : " 12/5/2016 12:15:02",
+		"fetchAction" : " 12/5/2016 12:15:02",
+		"buildDiffInput:" : " 12/5/2016 12:15:02"
+	},
+	"class" : { }
+}

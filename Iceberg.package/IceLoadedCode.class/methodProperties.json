@@ -1,16 +1,19 @@
 {
-	"class" : {
-		"repository:" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"commited:changingPackages:" : " 11/28/2016 11:42:15",
 		"commitsNotLoaded" : "NicoPasserini 12/5/2016 17:34",
-		"computeReferenceCommit" : " 11/28/2016 11:42:15",
 		"description" : " 11/28/2016 11:42:15",
-		"loadedVersions" : " 11/28/2016 11:42:15",
-		"mergeBaseWith:" : " 11/28/2016 11:42:15",
-		"referenceCommit" : " 11/28/2016 11:42:15",
+		"commited:changingPackages:" : " 11/28/2016 11:42:15",
 		"repository" : " 11/28/2016 11:42:15",
-		"repository:" : " 11/28/2016 11:42:15",
-		"snapshotFor:" : " 11/28/2016 11:42:15",
+		"loadedVersions" : " 11/28/2016 11:42:15",
 		"versionFor:" : " 11/28/2016 11:42:15",
-		"versionLoaded:" : " 11/28/2016 11:42:15" } }
+		"referenceCommit" : " 11/28/2016 11:42:15",
+		"snapshotFor:" : " 11/28/2016 11:42:15",
+		"versionLoaded:" : " 11/28/2016 11:42:15",
+		"computeReferenceCommit" : " 11/28/2016 11:42:15",
+		"repository:" : " 11/28/2016 11:42:15",
+		"mergeBaseWith:" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"repository:" : " 11/28/2016 11:42:15"
+	}
+}
