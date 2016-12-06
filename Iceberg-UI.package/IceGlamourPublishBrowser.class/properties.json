@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "",
-	"super" : "IceAbstractBrowser",
 	"category" : "Iceberg-UI",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
 	"instvars" : [
-		"announcer"
-	],
+		"announcer" ],
 	"name" : "IceGlamourPublishBrowser",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceAbstractBrowser",
+	"type" : "normal" }

@@ -1,8 +1,7 @@
 {
+	"class" : {
+		 },
 	"instance" : {
-		"updated" : " 11/28/2016 11:42:15",
 		"commit" : " 11/28/2016 11:42:15",
-		"snapshot" : "NicoPasserini 11/28/2016 13:47"
-	},
-	"class" : { }
-}
+		"snapshot" : "NicoPasserini 11/28/2016 13:47",
+		"updated" : " 11/28/2016 11:42:15" } }

@@ -1,13 +1,12 @@
 {
+	"class" : {
+		 },
 	"instance" : {
-		"username" : " 11/28/2016 11:42:15",
+		"keyPassphrase" : " 11/28/2016 11:42:15",
 		"keyPassphrase:" : " 11/28/2016 11:42:15",
-		"username:" : " 11/28/2016 11:42:15",
+		"privateKey" : "NicoPasserini 11/28/2016 15:46",
+		"privateKey:" : " 11/28/2016 11:42:15",
 		"publicKey" : "NicoPasserini 11/28/2016 15:46",
 		"publicKey:" : " 11/28/2016 11:42:15",
-		"keyPassphrase" : " 11/28/2016 11:42:15",
-		"privateKey:" : " 11/28/2016 11:42:15",
-		"privateKey" : "NicoPasserini 11/28/2016 15:46"
-	},
-	"class" : { }
-}
+		"username" : " 11/28/2016 11:42:15",
+		"username:" : " 11/28/2016 11:42:15" } }

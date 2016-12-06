@@ -1,14 +1,15 @@
 {
-	"commentStamp" : "NicoPasserini 11/22/2016 14:35",
-	"super" : "Object",
 	"category" : "Iceberg-Security",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/22/2016 14:35",
 	"instvars" : [
 		"username",
-		"password"
-	],
+		"password" ],
 	"name" : "IcePlaintextCredentials",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

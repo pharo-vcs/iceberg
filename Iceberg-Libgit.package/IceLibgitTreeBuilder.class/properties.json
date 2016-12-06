@@ -1,10 +1,10 @@
 {
-	"commentStamp" : "NicoPasserini 7/12/2016 11:29",
-	"super" : "Object",
 	"category" : "Iceberg-Libgit",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 7/12/2016 11:29",
 	"instvars" : [
 		"parent",
 		"entryName",
@@ -12,8 +12,9 @@
 		"children",
 		"changes",
 		"initialTree",
-		"hasChanges"
-	],
+		"hasChanges" ],
 	"name" : "IceLibgitTreeBuilder",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

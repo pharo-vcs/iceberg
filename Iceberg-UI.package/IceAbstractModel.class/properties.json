@@ -1,17 +1,16 @@
 {
-	"commentStamp" : "",
-	"super" : "Object",
 	"category" : "Iceberg-UI",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classinstvars" : [
+		 ],
 	"classvars" : [
-		"ModelCache"
-	],
+		"ModelCache" ],
+	"commentStamp" : "",
 	"instvars" : [
 		"entity",
 		"outgoingCommits",
-		"incomingCommits"
-	],
+		"incomingCommits" ],
 	"name" : "IceAbstractModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

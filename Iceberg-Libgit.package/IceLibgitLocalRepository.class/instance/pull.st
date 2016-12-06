@@ -30,7 +30,7 @@ pull
 					tree: (LGitTree of: repo fromId: treeId);
 					message: 'Merge with ', repo head upstream name;
 					parents: { myCommit. theirCommit };
-					updateReference: repo head name;
+					updateReference: repo head;
 					author: signature;
 					committer: signature;
 					writeCommit.		

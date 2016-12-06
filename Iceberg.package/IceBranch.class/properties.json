@@ -1,17 +1,18 @@
 {
-	"commentStamp" : "NicoPasserini 9/16/2016 16:03",
-	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/16/2016 16:03",
 	"instvars" : [
 		"name",
 		"repository",
 		"versionDictionary",
 		"loading",
-		"upstream"
-	],
+		"upstream" ],
 	"name" : "IceBranch",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceCommitish",
+	"type" : "normal" }

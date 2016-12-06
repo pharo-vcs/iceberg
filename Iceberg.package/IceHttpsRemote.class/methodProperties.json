@@ -1,8 +1,5 @@
 {
-	"instance" : {
-		"parseUrl" : " 11/28/2016 11:42:15"
-	},
 	"class" : {
-		"canHandleUrl:" : " 11/28/2016 11:42:15"
-	}
-}
+		"canHandleUrl:" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"parseUrl" : " 11/28/2016 11:42:15" } }

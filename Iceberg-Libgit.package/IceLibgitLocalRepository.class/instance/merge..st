@@ -33,7 +33,7 @@ merge: commitId
 							tree: (LGitTree of: repo fromId: treeId);
 							message: 'Merge with ', commitId;
 							parents: { myCommit. theirCommit };
-							updateReference: repo head name;
+							updateReference: repo head;
 							author: signature;
 							committer: signature;
 							writeCommit.		

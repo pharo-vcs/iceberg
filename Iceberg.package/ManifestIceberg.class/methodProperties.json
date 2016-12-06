@@ -1,8 +1,7 @@
 {
-	"instance" : { },
 	"class" : {
 		"ruleRBReturnsBooleanAndOtherRuleV1FalsePositive" : " 11/28/2016 11:42:15",
 		"ruleRBTempsReadBeforeWrittenRuleV1FalsePositive" : " 11/28/2016 11:42:15",
-		"ruleRBUtilityMethodsRuleV1FalsePositive" : " 11/28/2016 11:42:15"
-	}
-}
+		"ruleRBUtilityMethodsRuleV1FalsePositive" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		 } }
