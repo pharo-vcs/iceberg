@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-UI",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 8/3/2016 17:51",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"localDirectory",
 		"localDirectoryLabel",
@@ -12,9 +12,8 @@
 		"subdirectoryLabel",
 		"subdirectory",
 		"changeLocationButton",
-		"createButton" ],
+		"createButton"
+	],
 	"name" : "IceCreateRepositoryModel",
-	"pools" : [
-		 ],
-	"super" : "ComposableModel",
-	"type" : "normal" }
+	"type" : "normal"
+}

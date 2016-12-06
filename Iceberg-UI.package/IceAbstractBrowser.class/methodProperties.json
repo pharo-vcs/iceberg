@@ -1,6 +1,7 @@
 {
-	"class" : {
-		 },
 	"instance" : {
-		"addDiffTo:withTitle:" : " 11/28/2016 11:42:15",
-		"buildDiffInput:" : " 11/28/2016 11:42:15" } }
+		"buildDiffInput:" : " 12/5/2016 12:15:02",
+		"addDiffTo:withTitle:" : " 12/5/2016 12:15:02"
+	},
+	"class" : { }
+}

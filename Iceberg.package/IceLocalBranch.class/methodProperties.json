@@ -1,10 +1,13 @@
 {
-	"class" : {
-		"named:inRepository:" : "NicoPasserini 12/6/2016 13:50" },
 	"instance" : {
-		"committish" : "11/28/2016 11:42:15",
-		"displayName" : "11/28/2016 11:42:15",
-		"incomingCommits" : "11/28/2016 11:42:15",
 		"isLocal" : "NicoPasserini 12/6/2016 11:37",
-		"outgoingCommits:" : "11/28/2016 11:42:15",
-		"upstream" : "NicoPasserini 12/6/2016 11:46" } }
+		"upstream" : "NicoPasserini 12/6/2016 11:46",
+		"outgoingCommits:" : " 11/28/2016 11:42:15",
+		"incomingCommits" : " 11/28/2016 11:42:15",
+		"committish" : " 11/28/2016 11:42:15",
+		"displayName" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"named:inRepository:" : "NicoPasserini 12/6/2016 13:50"
+	}
+}

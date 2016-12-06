@@ -14,7 +14,8 @@ pull
 		(mergeBase = myCommit id)
 			ifTrue: [ 
 				"No need to merge, just fast-forward current HEAD"
-				repo fastForward 
+				repo checkout_treeish: repo head upstream object.
+				repo fastForward
 			]
 			ifFalse: [
 				| mergedIndex treeId signature |
@@ -30,7 +31,7 @@ pull
 					tree: (LGitTree of: repo fromId: treeId);
 					message: 'Merge with ', repo head upstream name;
 					parents: { myCommit. theirCommit };
-					updateReference: repo head name;
+					updateReference: repo head;
 					author: signature;
 					committer: signature;
 					writeCommit.		

@@ -1,11 +1,14 @@
 {
-	"class" : {
-		"addPackageToRepository:" : "NicoPasserini 11/28/2016 13:14",
-		"chooseFrom:displaying:" : " 11/28/2016 11:42:15",
-		"createRepository" : " 11/28/2016 11:42:15",
-		"importLocalRepository" : " 11/28/2016 11:42:15",
-		"uiManager" : "" },
 	"instance" : {
-		"mergeIntoAnotherBranch:andThen:" : "",
-		"pushRepository:andThen:" : "",
-		"uiManager" : "" } }
+		"pushRepository:andThen:" : " 12/5/2016 12:15:02",
+		"uiManager" : " 12/5/2016 12:15:02",
+		"mergeIntoAnotherBranch:andThen:" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"addPackageToRepository:" : " 12/5/2016 12:15:02",
+		"createRepository" : " 12/5/2016 12:15:02",
+		"importLocalRepository" : " 12/5/2016 12:15:02",
+		"chooseFrom:displaying:" : " 12/5/2016 12:15:02",
+		"uiManager" : " 12/5/2016 12:15:02"
+	}
+}

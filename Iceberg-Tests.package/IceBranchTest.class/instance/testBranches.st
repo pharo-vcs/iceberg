@@ -1,4 +1,5 @@
 tests
 testBranches
-	self assert: (repository backend localBranches collect: #name as: Array)
-		equals: { 'master' }
+	self assert: (
+		repository backend localBranchNames 
+			includesAll: { 'master' }) 

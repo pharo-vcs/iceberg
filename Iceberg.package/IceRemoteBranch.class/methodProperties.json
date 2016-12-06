@@ -1,5 +1,8 @@
 {
-	"class" : {
-		"named:inRepository:" : "NicoPasserini 12/6/2016 13:50" },
 	"instance" : {
-		"isRemote" : "NicoPasserini 12/6/2016 11:37" } }
+		"isRemote" : "NicoPasserini 12/6/2016 11:37"
+	},
+	"class" : {
+		"named:inRepository:" : "NicoPasserini 12/6/2016 13:50"
+	}
+}

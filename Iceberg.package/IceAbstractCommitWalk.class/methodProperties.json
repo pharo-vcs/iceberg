@@ -1,21 +1,23 @@
 {
-	"class" : {
-		"forRepository:" : " 11/28/2016 11:42:15" },
 	"instance" : {
 		"commitFrom:" : " 11/28/2016 11:42:15",
-		"commits" : " 11/28/2016 11:42:15",
-		"commitsDo:" : " 11/28/2016 11:42:15",
-		"from:" : "NicoPasserini 12/6/2016 16:20",
-		"includesCommit:" : " 11/28/2016 11:42:15",
-		"maxNumber" : " 11/28/2016 11:42:15",
-		"maxNumber:" : " 11/28/2016 11:42:15",
-		"modifyingPackage" : " 11/28/2016 11:42:15",
-		"modifyingPackage:" : " 11/28/2016 11:42:15",
 		"repository" : " 11/28/2016 11:42:15",
-		"repository:" : " 11/28/2016 11:42:15",
+		"commitsDo:" : " 11/28/2016 11:42:15",
+		"versionsFor:" : " 11/28/2016 11:42:15",
 		"upto:" : "NicoPasserini 12/5/2016 17:32",
-		"uptoBranch:" : " 11/28/2016 11:42:15",
-		"uptoBranches:" : " 11/28/2016 11:42:15",
+		"includesCommit:" : " 11/28/2016 11:42:15",
 		"uptoCommits:" : " 11/28/2016 11:42:15",
+		"modifyingPackage:" : " 11/28/2016 11:42:15",
+		"maxNumber" : " 11/28/2016 11:42:15",
+		"repository:" : " 11/28/2016 11:42:15",
 		"uptoVersion:" : " 11/28/2016 11:42:15",
-		"versionsFor:" : " 11/28/2016 11:42:15" } }
+		"uptoBranch:" : " 11/28/2016 11:42:15",
+		"modifyingPackage" : " 11/28/2016 11:42:15",
+		"maxNumber:" : " 11/28/2016 11:42:15",
+		"commits" : " 11/28/2016 11:42:15",
+		"uptoBranches:" : " 11/28/2016 11:42:15"
+	},
+	"class" : {
+		"forRepository:" : " 11/28/2016 11:42:15"
+	}
+}

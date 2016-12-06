@@ -1,11 +1,12 @@
 {
-	"class" : {
-		 },
 	"instance" : {
-		"announcer" : " 11/28/2016 11:42:15",
 		"description" : " 11/28/2016 11:42:15",
-		"elements" : " 11/28/2016 11:42:15",
-		"initialElements" : " 11/28/2016 11:42:15",
+		"announcer" : " 11/28/2016 11:42:15",
 		"initialize" : " 11/28/2016 11:42:15",
+		"whenChangedDo:" : " 11/28/2016 11:42:15",
+		"elements" : " 11/28/2016 11:42:15",
 		"refresh" : " 11/28/2016 11:42:15",
-		"whenChangedDo:" : " 11/28/2016 11:42:15" } }
+		"initialElements" : " 11/28/2016 11:42:15"
+	},
+	"class" : { }
+}

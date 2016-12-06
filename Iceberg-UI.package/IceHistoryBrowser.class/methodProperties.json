@@ -1,10 +1,11 @@
 {
-	"class" : {
-		 },
 	"instance" : {
-		"compose" : " 11/28/2016 11:42:15",
-		"composeBranchesIn:" : " 11/28/2016 11:42:15",
-		"composeCommitsIn:" : " 11/28/2016 11:42:15",
-		"inspectAction" : " 11/28/2016 11:42:15",
-		"mergeIntoAction" : " 11/28/2016 11:42:15",
-		"title" : " 11/28/2016 11:42:15" } }
+		"compose" : " 12/5/2016 12:15:02",
+		"composeCommitsIn:" : " 12/5/2016 12:15:02",
+		"inspectAction" : " 12/5/2016 12:15:02",
+		"composeBranchesIn:" : " 12/5/2016 12:15:02",
+		"title" : " 12/5/2016 12:15:02",
+		"mergeIntoAction" : " 12/5/2016 12:15:02"
+	},
+	"class" : { }
+}

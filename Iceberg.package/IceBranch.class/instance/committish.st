@@ -1,3 +1,0 @@
-accessing
-committish
-	^ self name

@@ -1,17 +1,20 @@
 {
-	"class" : {
-		"defaultSpec" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"acceptButton" : " 11/28/2016 11:42:15",
-		"credentials" : " 11/28/2016 11:42:15",
-		"initialExtent" : " 11/28/2016 11:42:15",
-		"initializeWidgets" : " 11/28/2016 11:42:15",
-		"password" : " 11/28/2016 11:42:15",
-		"passwordInput" : " 11/28/2016 11:42:15",
-		"passwordLabel" : " 11/28/2016 11:42:15",
-		"storeCheckbox" : " 11/28/2016 11:42:15",
-		"storeCredentials" : " 11/28/2016 11:42:15",
-		"title" : " 11/28/2016 11:42:15",
-		"username" : " 11/28/2016 11:42:15",
-		"usernameInput" : " 11/28/2016 11:42:15",
-		"usernameLabel" : " 11/28/2016 11:42:15" } }
+		"passwordInput" : " 12/5/2016 12:15:02",
+		"username" : " 12/5/2016 12:15:02",
+		"usernameInput" : " 12/5/2016 12:15:02",
+		"title" : " 12/5/2016 12:15:02",
+		"storeCredentials" : " 12/5/2016 12:15:02",
+		"initialExtent" : " 12/5/2016 12:15:02",
+		"credentials" : " 12/5/2016 12:15:02",
+		"acceptButton" : " 12/5/2016 12:15:02",
+		"passwordLabel" : " 12/5/2016 12:15:02",
+		"initializeWidgets" : " 12/5/2016 12:15:02",
+		"usernameLabel" : " 12/5/2016 12:15:02",
+		"password" : " 12/5/2016 12:15:02",
+		"storeCheckbox" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"defaultSpec" : " 12/5/2016 12:15:02"
+	}
+}

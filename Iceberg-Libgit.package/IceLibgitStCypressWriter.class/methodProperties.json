@@ -1,7 +1,8 @@
 {
-	"class" : {
-		 },
 	"instance" : {
 		"fileUtils" : " 11/28/2016 11:42:15",
 		"propertyFileExtension" : " 11/28/2016 11:42:15",
-		"writeInDirectoryName:fileName:extension:visit:" : " 11/28/2016 11:42:15" } }
+		"writeInDirectoryName:fileName:extension:visit:" : " 11/28/2016 11:42:15"
+	},
+	"class" : { }
+}

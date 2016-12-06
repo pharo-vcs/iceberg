@@ -1,18 +1,21 @@
 {
-	"class" : {
-		"buildDefaultSpec:" : " 11/28/2016 11:42:15",
-		"defaultSpec" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"changeLocation" : "NicoPasserini 11/28/2016 15:45",
-		"changeLocationButton" : " 11/28/2016 11:42:15",
-		"createButton" : " 11/28/2016 11:42:15",
-		"createButton:" : " 11/28/2016 11:42:15",
-		"initialize" : " 11/28/2016 11:42:15",
-		"initializePresenter" : " 11/28/2016 11:42:15",
-		"initializeWidgets" : " 11/28/2016 11:42:15",
-		"localDirectory" : " 11/28/2016 11:42:15",
-		"localDirectoryLabel" : " 11/28/2016 11:42:15",
-		"location" : " 11/28/2016 11:42:15",
-		"location:" : " 11/28/2016 11:42:15",
-		"subdirectory" : " 11/28/2016 11:42:15",
-		"subdirectoryLabel" : " 11/28/2016 11:42:15" } }
+		"changeLocation" : " 12/5/2016 12:15:02",
+		"subdirectoryLabel" : " 12/5/2016 12:15:02",
+		"createButton:" : " 12/5/2016 12:15:02",
+		"subdirectory" : " 12/5/2016 12:15:02",
+		"location" : " 12/5/2016 12:15:02",
+		"initialize" : " 12/5/2016 12:15:02",
+		"localDirectoryLabel" : " 12/5/2016 12:15:02",
+		"changeLocationButton" : " 12/5/2016 12:15:02",
+		"localDirectory" : " 12/5/2016 12:15:02",
+		"initializePresenter" : " 12/5/2016 12:15:02",
+		"createButton" : " 12/5/2016 12:15:02",
+		"initializeWidgets" : " 12/5/2016 12:15:02",
+		"location:" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"defaultSpec" : " 12/5/2016 12:15:02",
+		"buildDefaultSpec:" : " 12/5/2016 12:15:02"
+	}
+}

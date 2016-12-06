@@ -1,6 +1,7 @@
 {
-	"class" : {
-		 },
 	"instance" : {
 		"latestVersion:" : " 11/28/2016 11:42:15",
-		"loadPackage:" : " 11/28/2016 11:42:15" } }
+		"loadPackage:" : " 11/28/2016 11:42:15"
+	},
+	"class" : { }
+}

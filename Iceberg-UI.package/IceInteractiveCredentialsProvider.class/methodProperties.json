@@ -1,7 +1,10 @@
 {
-	"class" : {
-		"initialize" : " 11/28/2016 11:42:15" },
 	"instance" : {
-		"askForPlaintextCredentials:" : " 11/28/2016 11:42:15",
-		"initialize" : " 11/28/2016 11:42:15",
-		"providePlaintextCredentialsTo:" : " 11/28/2016 11:42:15" } }
+		"initialize" : " 12/5/2016 12:15:02",
+		"askForPlaintextCredentials:" : " 12/5/2016 12:15:02",
+		"providePlaintextCredentialsTo:" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"initialize" : " 12/5/2016 12:15:02"
+	}
+}
