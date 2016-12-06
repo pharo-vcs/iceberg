@@ -1,0 +1,23 @@
+{
+	"class" : {
+		"modelFor:" : " 11/28/2016 11:42:15",
+		"models" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"announcer" : " 11/28/2016 11:42:15",
+		"colorError" : " 11/28/2016 11:42:15",
+		"colorIncoming" : " 11/28/2016 11:42:15",
+		"colorModified" : " 11/28/2016 11:42:15",
+		"colorNotLoaded" : " 11/28/2016 11:42:15",
+		"colorOutgoing" : " 11/28/2016 11:42:15",
+		"computeStatus" : "NicoPasserini 12/6/2016 16:15",
+		"entity" : " 11/28/2016 11:42:15",
+		"entity:" : " 11/28/2016 11:42:15",
+		"highlight:" : " 11/28/2016 11:42:15",
+		"incomingCommits" : " 11/28/2016 11:42:15",
+		"initialize" : " 11/28/2016 11:42:15",
+		"isLoaded" : " 11/28/2016 11:42:15",
+		"isMissing" : " 11/28/2016 11:42:15",
+		"isOperative" : " 11/28/2016 11:42:15",
+		"outgoingCommits" : " 11/28/2016 11:42:15",
+		"repository" : " 11/28/2016 11:42:15",
+		"status" : "NicoPasserini 12/6/2016 17:01" } }

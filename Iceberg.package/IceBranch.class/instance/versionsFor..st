@@ -1,5 +1,6 @@
 querying
-versionsFor: package 
-	^ self versionDictionary  
-		at: package name 
-		ifAbsentPut: [ package loadVersionsInBranch: self ]
+versionsFor: package
+	"Returns only the commits modifying the package."
+	^ self repository newCommitWalk 
+		from: self; 
+		versionsFor: package

@@ -4,5 +4,5 @@
 	"instance" : {
 		"testCreateRepoOnTopOfGitFileTreeLoadedCode" : "NicoPasserini 12/2/2016 10:45",
 		"testCreateRepoOnTopOfMonticelloLoadedCode" : "NicoPasserini 12/5/2016 10:54",
-		"testImportOutdatedLocalRepository" : "NicoPasserini 12/2/2016 10:52",
+		"testImportOutdatedLocalRepository" : "NicoPasserini 12/6/2016 16:17",
 		"testPackageStatus" : " 11/28/2016 11:42:15" } }

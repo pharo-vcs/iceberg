@@ -1,0 +1,24 @@
+{
+	"class" : {
+		"buildDefaultSpec:" : " 11/28/2016 11:42:15",
+		"defaultSpec" : " 11/28/2016 11:42:15" },
+	"instance" : {
+		"changeLocation" : " 11/28/2016 11:42:15",
+		"changeLocationButton" : " 11/28/2016 11:42:15",
+		"createButton" : " 11/28/2016 11:42:15",
+		"createButton:" : " 11/28/2016 11:42:15",
+		"createRepository" : " 11/28/2016 11:42:15",
+		"initialExtent" : " 11/28/2016 11:42:15",
+		"initialLocalDirectory" : " 11/28/2016 11:42:15",
+		"initialize" : " 11/28/2016 11:42:15",
+		"initializePresenter" : " 11/28/2016 11:42:15",
+		"initializeWidgets" : " 11/28/2016 11:42:15",
+		"localDirectory" : " 11/28/2016 11:42:15",
+		"localDirectoryLabel" : " 11/28/2016 11:42:15",
+		"location" : " 11/28/2016 11:42:15",
+		"location:" : " 11/28/2016 11:42:15",
+		"remoteUrl" : " 11/28/2016 11:42:15",
+		"remoteUrlLabel" : " 11/28/2016 11:42:15",
+		"subdirectory" : " 11/28/2016 11:42:15",
+		"subdirectoryLabel" : " 11/28/2016 11:42:15",
+		"title" : " 11/28/2016 11:42:15" } }

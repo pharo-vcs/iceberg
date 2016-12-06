@@ -4,13 +4,10 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/16/2016 16:03",
+	"commentStamp" : "NicoPasserini 12/6/2016 11:40",
 	"instvars" : [
 		"name",
-		"repository",
-		"versionDictionary",
-		"loading",
-		"upstream" ],
+		"repository" ],
 	"name" : "IceBranch",
 	"pools" : [
 		 ],

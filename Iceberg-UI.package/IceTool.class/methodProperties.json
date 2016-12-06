@@ -1,0 +1,11 @@
+{
+	"class" : {
+		"addPackageToRepository:" : "NicoPasserini 11/28/2016 13:14",
+		"chooseFrom:displaying:" : " 11/28/2016 11:42:15",
+		"createRepository" : " 11/28/2016 11:42:15",
+		"importLocalRepository" : " 11/28/2016 11:42:15",
+		"uiManager" : "" },
+	"instance" : {
+		"mergeIntoAnotherBranch:andThen:" : "",
+		"pushRepository:andThen:" : "",
+		"uiManager" : "" } }

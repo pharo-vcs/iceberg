@@ -1,6 +1,6 @@
 private
 lookupHead
-	^ [ IceBranch named: self currentBranch inRepository: self frontend ]
+	^ [ IceLocalBranch named: self currentBranch inRepository: self frontend ]
 		on: MCFileTreeGitError
 		do: [ [ IceTag named: self currentTag inRepository: self frontend ] 
 			on: MCFileTreeGitError 
