@@ -1,0 +1,10 @@
+{
+	"instance" : {
+		"initialize" : " 12/5/2016 12:15:02",
+		"askForPlaintextCredentials:" : " 12/5/2016 12:15:02",
+		"providePlaintextCredentialsTo:" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"initialize" : " 12/5/2016 12:15:02"
+	}
+}

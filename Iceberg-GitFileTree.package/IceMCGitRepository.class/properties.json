@@ -1,0 +1,16 @@
+{
+	"category" : "Iceberg-GitFileTree",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "TIceRepositoryBackend classTrait",
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 5/23/2016 18:03",
+	"instvars" : [
+		"frontend" ],
+	"name" : "IceMCGitRepository",
+	"pools" : [
+		 ],
+	"super" : "MCFileTreeGitRepository",
+	"traitcomposition" : "TIceRepositoryBackend",
+	"type" : "normal" }

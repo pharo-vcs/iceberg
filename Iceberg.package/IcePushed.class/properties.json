@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Announcements",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 10/5/2016 15:53",
-	"instvars" : [
-		 ],
-	"name" : "IcePushed",
-	"pools" : [
-		 ],
 	"super" : "IceRepositoryAnnouncement",
-	"type" : "normal" }
+	"category" : "Iceberg-Announcements",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IcePushed",
+	"type" : "normal"
+}

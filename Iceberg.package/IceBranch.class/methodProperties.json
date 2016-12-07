@@ -1,0 +1,21 @@
+{
+	"instance" : {
+		"backend" : "NicoPasserini 12/6/2016 11:18",
+		"isRemote" : "NicoPasserini 12/6/2016 11:36",
+		"repository" : "NicoPasserini 12/6/2016 11:18",
+		"name" : "NicoPasserini 12/6/2016 11:18",
+		"includesCommit:" : "NicoPasserini 12/6/2016 11:20",
+		"=" : "NicoPasserini 12/6/2016 11:34",
+		"isLocal" : "NicoPasserini 12/6/2016 11:36",
+		"name:" : "NicoPasserini 12/6/2016 11:18",
+		"snapshotFor:" : "NicoPasserini 12/6/2016 11:37",
+		"printOn:" : "NicoPasserini 12/6/2016 11:35",
+		"repository:" : "NicoPasserini 12/6/2016 11:18",
+		"commitsNotIn:" : "NicoPasserini 12/6/2016 11:20",
+		"commits" : "NicoPasserini 12/6/2016 11:20",
+		"lastCommit" : "NicoPasserini 12/6/2016 11:21"
+	},
+	"class" : {
+		"named:local:inRepository:" : "NicoPasserini 12/6/2016 12:03"
+	}
+}

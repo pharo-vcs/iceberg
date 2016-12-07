@@ -1,0 +1,14 @@
+{
+	"instance" : {
+		"pushRepository:andThen:" : " 12/5/2016 12:15:02",
+		"uiManager" : " 12/5/2016 12:15:02",
+		"mergeIntoAnotherBranch:andThen:" : "NicoPasserini 12/7/2016 08:45"
+	},
+	"class" : {
+		"addPackageToRepository:" : " 12/5/2016 12:15:02",
+		"createRepository" : " 12/5/2016 12:15:02",
+		"importLocalRepository" : " 12/5/2016 12:15:02",
+		"chooseFrom:displaying:" : " 12/5/2016 12:15:02",
+		"uiManager" : " 12/5/2016 12:15:02"
+	}
+}

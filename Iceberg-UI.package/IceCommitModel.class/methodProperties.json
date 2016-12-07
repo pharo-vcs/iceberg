@@ -1,0 +1,25 @@
+{
+	"instance" : {
+		"uiManager" : " 12/5/2016 12:15:02",
+		"model" : " 12/5/2016 12:15:02",
+		"repository" : " 12/5/2016 12:15:02",
+		"pushCheckBox" : " 12/5/2016 12:15:02",
+		"model:" : " 12/5/2016 12:15:02",
+		"commitWithMessage:" : " 12/5/2016 12:15:02",
+		"basicCommitWithMessage:" : " 12/5/2016 12:15:02",
+		"initialize" : " 12/5/2016 12:15:02",
+		"initializePresenter" : " 12/5/2016 12:15:02",
+		"initializeWidgets" : " 12/5/2016 12:15:02",
+		"pushRepository:andThen:" : " 12/5/2016 12:15:02",
+		"branchName" : " 12/5/2016 12:15:02",
+		"message" : " 12/5/2016 12:15:02",
+		"commitButton" : " 12/5/2016 12:15:02"
+	},
+	"class" : {
+		"uiManager" : " 12/5/2016 12:15:02",
+		"settingsOn:" : " 12/5/2016 12:15:02",
+		"defaultSpec" : " 12/5/2016 12:15:02",
+		"uploadChangesOnCommit:" : " 12/5/2016 12:15:02",
+		"uploadChangesOnCommit" : " 12/5/2016 12:15:02"
+	}
+}

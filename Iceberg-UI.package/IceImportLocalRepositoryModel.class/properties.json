@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-UI",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 8/3/2016 18:45",
-	"instvars" : [
-		 ],
-	"name" : "IceImportLocalRepositoryModel",
-	"pools" : [
-		 ],
 	"super" : "IceCreateRepositoryModel",
-	"type" : "normal" }
+	"category" : "Iceberg-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceImportLocalRepositoryModel",
+	"type" : "normal"
+}
