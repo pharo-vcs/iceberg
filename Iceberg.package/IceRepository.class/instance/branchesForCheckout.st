@@ -4,5 +4,5 @@ branchesForCheckout
 	| branches |
 	branches := self backend allBranches.
 	^ branches select: [ :br |
-		br isLocal or: [ branches noneSatisfy: [:b | b isLocal and: [ b name = br name ]]]
+		br isLocal or: [ branches noneSatisfy: [:b | b isLocal and: [ b basename = br basename ]]]
 	].
