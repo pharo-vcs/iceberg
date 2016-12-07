@@ -1,7 +1,7 @@
 # Git integration for Pharo
 Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
-This is still a prototype and is not yet ready for production, but you are invited to try it and provide feedback. Right now it has been tested in linux and mac environments, it would be great if you can share your experience using Iceberg on your Windows computer.
+Please be aware this is still an experimental tool, so you have to be careful. But we have already a few early adopters, so you are invited to try it and provide feedback.
 
 To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
 
@@ -9,7 +9,6 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 ### Prerequisites
 - Latest Pharo 6.0 image.
 - Git v1.9.1 or later (we are working to remove this requirement in the near future)
-- An [SSH Key](https://help.github.com/articles/generating-an-ssh-key/) (again, not far from now this will not be mandatory any more ... but in this case I would still recommend to use an SSH Key as the preferred way to authenticate to your Github account.)
 
 ### Install Iceberg
 Execute the following expression:
@@ -29,6 +28,67 @@ Iceberg update
 **Important**
 - You don't need this step if you have just downloaded Iceberg.
 - Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
+
+## 5 minutes tutorial
+### Clone a repository
+- Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
+
+  > Please ensure that your repository is not empty (see [#127](https://github.com/npasserini/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
+
+- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. Normally you will see something like this:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20836463/b9398eac-b89f-11e6-92c7-d0f6ed785c83.png)
+
+  But if it is the first time you use Iceberg you might be looking at this:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20835889/3a2c2914-b89d-11e6-96fa-c0ba1f16041b.png)
+
+  So let's add a repository.
+
+- The easiest way to create a new repository is by clicking on 'Clone new Repository'. You will see this dialog:
+
+  ![image](https://cloud.githubusercontent.com/assets/4633913/20840028/27e57712-b8af-11e6-8b20-76c674afe21d.png)
+
+  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:npasserini/iceberg.git` or `https://github.com/npasserini/iceberg.git`.
+
+    > **Tip:** If you do not know it, you can get it from github, look for the green "Clone or Download" button.
+
+  - Local directory: You can just leave the default location for a start.
+
+  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
+
+  - Click on 'Create repository', then you should see a new entry in the repositories browser.
+
+### Add packages to your repository
+- If your repository is new, you should add some packages to it.
+  - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
+  - Then open the repositories browser and select your repository.
+  - In the bottom right panel you will see the current packages in your repository.
+  - Click on 'Add package' and select a package.
+
+### Your first commit
+- After adding a package or modifying some code in one of the packages known to your repository, you are ready to *commit* your changes.
+  - Open the Repositories Browser
+  - You should see that your repository name is highlighted in green, and its status changed to 'Uncommited changes'.
+  - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository). You should see something like this:
+
+    ![image](https://cloud.githubusercontent.com/assets/4633913/20836730/eaf72804-b8a0-11e6-8f01-10a6ca25d41e.png)
+
+    On the top-left panel, you will see all changes to the packages stored in the repository, by selecting a method on the changes tree you will see the differences in the bottom panel.
+
+    > **Please be aware that current Iceberg version has a bug and shows your version in red, while the original version is shown in green.**.
+
+  - From the contextual menu of the tree, you can also *revert* a change, or *browse* the changed method/class.
+  - If you make more changes after opening the synchronize view, you have to click on *Refresh tree* to see the new changes.
+  - After you are comfortable with your you can commit.
+    - First enter a suitable message in the top right panel, under 'Commit changes'.
+    - Then click on the 'Commit' button.
+
+  - By default Iceberg will try to immediately *push* your commits to your remote repository. If you do not want that you can uncheck the 'Upload changes on commit' option. If you do so, your changes will be saved only in the local repository, and you can push them later.
+
+  - Whenever you decide to push your commits, Iceberg will require your github credentials. Currently Iceberg (in its default configuration) can not use SSH keys to connect to github, so you will have to provide your github user and password.
+
+    > By default, these credentials will be saved to avoid requiring them each time, but **be aware that this is is not a really safe option**.
 
 ## Usage
 ### Repositories Browser
