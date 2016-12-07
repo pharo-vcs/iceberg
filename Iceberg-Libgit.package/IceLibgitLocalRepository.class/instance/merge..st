@@ -1,7 +1,7 @@
 actions
 merge: commitId
 	self withRepoDo: [ :repo | 
-		| remote myCommit theirCommit mergeBase |
+		| myCommit theirCommit mergeBase |
 		"Decide if we can fast-forward or we must do a real merge"
 		myCommit := repo head object.
 		theirCommit := LGitCommit of: repo fromHexString: commitId.
@@ -10,6 +10,7 @@ merge: commitId
 		(mergeBase = myCommit id)
 			ifTrue: [ 
 				"No need to merge, just fast-forward current HEAD"
+				repo checkout_treeish: theirCommit.
 				repo head resolve setTarget: theirCommit.
 			]
 			ifFalse: [
@@ -27,7 +28,7 @@ merge: commitId
 					ifFalse: [
 						"Commit mergedIndex"
 						signature := repo defaultSignature.
-						treeId := mergedIndex writeTreeAndReturnOid.
+						treeId := mergedIndex checkout; writeTreeAndReturnOid.
 			
 						(LGitCommitBuilder of: repo)
 							tree: (LGitTree of: repo fromId: treeId);
