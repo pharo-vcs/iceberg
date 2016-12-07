@@ -11,7 +11,7 @@ merge: commitId
 			ifTrue: [ 
 				"No need to merge, just fast-forward current HEAD"
 				repo checkout_treeish: theirCommit.
-				repo head resolve setTarget: theirCommit.
+				repo head resolve setTargetId: theirCommit id.
 			]
 			ifFalse: [
 				| mergedIndex treeId signature |
