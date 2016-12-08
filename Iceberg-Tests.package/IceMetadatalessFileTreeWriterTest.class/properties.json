@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceRemoteRepositoryTest",
+	"name" : "IceMetadatalessFileTreeWriterTest",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "IceAbstractTest",
 	"type" : "normal" }

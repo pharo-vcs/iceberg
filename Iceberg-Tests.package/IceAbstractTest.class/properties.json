@@ -1,17 +1,18 @@
 {
-	"commentStamp" : "NicoPasserini 5/25/2016 10:53",
-	"super" : "IceParameterizedTestCase",
 	"category" : "Iceberg-Tests",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 5/25/2016 10:53",
 	"instvars" : [
 		"packageName",
 		"otherPackageName",
 		"repository",
 		"origin",
-		"projectName"
-	],
+		"projectName" ],
 	"name" : "IceAbstractTest",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceParameterizedTestCase",
+	"type" : "normal" }
