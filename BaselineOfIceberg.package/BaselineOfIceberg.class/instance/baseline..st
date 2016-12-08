@@ -12,7 +12,7 @@ baseline: spec
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
-		baseline: 'LibGit' with: [ spec 
+		baseline: 'LibGit' with: [ spec
 			repository: 'github://npasserini/libgit2-pharo-bindings:development';
   			loads: 'default' ];
 		project: 'LibGit-Tests'
@@ -30,6 +30,7 @@ baseline: spec
 			with: [ spec requires: #('ProcessWrapper') ] ];
 
 		package: 'Iceberg';
+		package: 'Iceberg-Metacello-Integration' with: [ spec requires: #(Iceberg)];
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
 		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
@@ -38,7 +39,7 @@ baseline: spec
 		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
-		group: 'default' with: #(minimal 'Iceberg-UI');
+		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI');
 		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]
