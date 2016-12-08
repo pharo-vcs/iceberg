@@ -3,6 +3,7 @@ merge: commitId
 	self withRepoDo: [ :repo | 
 		| myCommit theirCommit mergeBase |
 		"Decide if we can fast-forward or we must do a real merge"
+		
 		myCommit := repo head object.
 		theirCommit := LGitCommit of: repo fromHexString: commitId.
 		mergeBase := repo mergeBaseBetween: myCommit id and: theirCommit id.
@@ -28,7 +29,8 @@ merge: commitId
 					ifFalse: [
 						"Commit mergedIndex"
 						signature := repo defaultSignature.
-						treeId := mergedIndex checkout; writeTreeAndReturnOid.
+						treeId := mergedIndex writeTreeAndReturnOid.
+						repo checkout_treeish: (LGitTree of: repo fromId: treeId).
 			
 						(LGitCommitBuilder of: repo)
 							tree: (LGitTree of: repo fromId: treeId);
@@ -38,6 +40,7 @@ merge: commitId
 							author: signature;
 							committer: signature;
 							writeCommit.		
+
 					]
 			]
 	]
