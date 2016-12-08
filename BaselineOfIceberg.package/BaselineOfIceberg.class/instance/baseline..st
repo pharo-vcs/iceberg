@@ -32,11 +32,13 @@ baseline: spec
 		package: 'Iceberg';
 		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
 		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
+		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
+		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];
 		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');
-		group: 'allTests' with: #('Iceberg-Tests' 'Libgit-Tests''Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
+		group: 'allTests' with: #('Iceberg-Tests' 'Libgit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]
