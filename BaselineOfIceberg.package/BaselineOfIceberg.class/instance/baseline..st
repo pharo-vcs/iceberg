@@ -39,6 +39,6 @@ baseline: spec
 
 		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
 		group: 'default' with: #(minimal 'Iceberg-UI');
-		group: 'allTests' with: #('Iceberg-Tests' 'Libgit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
+		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]
