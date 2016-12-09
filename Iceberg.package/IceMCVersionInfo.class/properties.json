@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 9/7/2016 15:19",
+	"super" : "MCLazyVersionInfo",
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"commit",
-		"package" ],
+		"package"
+	],
 	"name" : "IceMCVersionInfo",
-	"pools" : [
-		 ],
-	"super" : "MCLazyVersionInfo",
-	"type" : "normal" }
+	"type" : "normal"
+}

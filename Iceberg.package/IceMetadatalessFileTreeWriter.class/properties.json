@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "IceMetadatalessFileTreeWriter",
-	"pools" : [
-		 ],
 	"super" : "MCFileTreeWriter",
-	"type" : "normal" }
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetadatalessFileTreeWriter",
+	"type" : "normal"
+}
