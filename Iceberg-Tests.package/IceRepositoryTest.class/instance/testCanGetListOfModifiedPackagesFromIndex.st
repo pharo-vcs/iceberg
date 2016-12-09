@@ -3,10 +3,10 @@ testCanGetListOfModifiedPackagesFromIndex
 	| modifiedPackageNames |
 	
 	repository saveContent: 'foo' inWorkingCopyFile: 'foo.txt'.
-	self assert: repository modifiedPackageNames isEmpty.
+	self assert: repository stagedPackageNames isEmpty.
 
 	repository saveContent: '{}' inWorkingCopyFile: 'Pharo-Git-Test.package/properties.json'.
-	modifiedPackageNames := repository modifiedPackageNames.
+	modifiedPackageNames := repository stagedPackageNames.
 	
 	self
 		assert: modifiedPackageNames size

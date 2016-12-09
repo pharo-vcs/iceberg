@@ -1,8 +1,8 @@
 actions
-modifiedFiles
+stagedFiles
 	| modifiedFiles|
 	modifiedFiles := OrderedCollection new.
 	(self command: #('status' '-s'))
 		linesDo: [ :line |
-			modifiedFiles add: (' ' split: line trim) second asFileReference ].
+			modifiedFiles add: line substrings second asFileReference ].
 	^ modifiedFiles

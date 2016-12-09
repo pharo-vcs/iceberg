@@ -1,7 +1,7 @@
-actions
-modifiedPackageNames
+private
+stagedPackageNames
 	| packageSuffix |
 	packageSuffix := '.package'.
-	^ self modifiedFiles
+	^ self stagedFiles
 		select: [ :fileRef | fileRef path segments first endsWith: packageSuffix ]
 		thenCollect: [ :fileRef | fileRef path segments first withoutSuffix: packageSuffix ]

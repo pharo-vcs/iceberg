@@ -1,5 +1,5 @@
 actions
-modifiedFiles
+stagedFiles
 	| statusMask modifiedPathes |
 	statusMask :=  (LGitStatusTypeEnum git_status_wt_new value)
 				| (LGitStatusTypeEnum git_status_wt_modified value)

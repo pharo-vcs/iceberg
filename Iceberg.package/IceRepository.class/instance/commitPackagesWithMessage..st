@@ -1,5 +1,8 @@
 actions - utility
 commitPackagesWithMessage: message
-	self 
-		commitPackages: (self loadedPackages select: [ :package | package workingCopy needsSaving ])
-		withMessage: message.
+	self modifiedPackages 
+		ifEmpty: [ NothingToCommitException signal ]
+		ifNotEmpty: [ :packages |
+			self 
+				commitPackages: packages
+				withMessage: message ]

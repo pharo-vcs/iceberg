@@ -9,7 +9,7 @@ commitIndexWithMessage: message andParents: parentCommitishList
 			tree: (LGitTree of: repo fromId: indexTreeId);
 			message: message;
 			parents: (self libGitCommitsFrom: repo for: parentCommitishList);
-			updateReference: repo head;
+			updateReference: repo head name;
 			author: signature;
 			committer: signature;
 			writeCommit;
