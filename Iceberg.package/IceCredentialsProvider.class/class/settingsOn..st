@@ -45,5 +45,6 @@ settingsOn: aBuilder
 			(aBuilder setting: #password)
 				target: self;
 				targetSelector: #plaintextCredentials;
+				type: #Password;
 				label: 'Your github password, if you want Iceberg to remember it, but be aware that this does not pretend to be safe.'.
 		]
