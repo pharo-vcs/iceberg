@@ -1,3 +1,3 @@
 walk definition
 fromBranch: branch 
-	self basicFrom: branch committish.
+	self basicFrom: branch name
