@@ -1,16 +1,17 @@
 {
-	"commentStamp" : "NicoPasserini 11/22/2016 14:34",
-	"super" : "Object",
 	"category" : "Iceberg-Security",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/22/2016 14:34",
 	"instvars" : [
 		"username",
 		"publicKey",
 		"privateKey",
-		"keyPassphrase"
-	],
+		"keyPassphrase" ],
 	"name" : "IceSshCredentials",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

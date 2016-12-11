@@ -1,5 +1,5 @@
 actions
-commitWithMessage: text
+commitPackagesWithMessage: text
 	text ifNotEmpty: [ 
 		pushCheckbox state 
 			ifTrue: [ 
