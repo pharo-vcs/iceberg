@@ -1,0 +1,19 @@
+{
+	"classtraitcomposition" : "TIceRepositoryBackend classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"location",
+		"origin",
+		"subdirectory",
+		"branch",
+		"frontend"
+	],
+	"name" : "IceLibgitRepositoryBackend",
+	"commentStamp" : "NicoPasserini 6/28/2016 10:56",
+	"super" : "Object",
+	"traitcomposition" : "TIceRepositoryBackend",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-Libgit"
+}

@@ -1,7 +1,7 @@
 tests
 testPush
 	repository := IceRepository origin: 'git@github.com:npasserini/pharo-git-test.git'.
-	self assert: repository backend class equals: IceLibgitLocalRepository.
+	self assert: repository backend class equals: IceLibgitRepositoryBackend.
 
 	self scenarioOutgoingCommit.
 	repository push
