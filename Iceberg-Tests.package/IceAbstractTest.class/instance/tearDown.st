@@ -1,8 +1,17 @@
 running
 tearDown
-	self removeTestPackages.
+	super tearDown. 
 	
-	repository ifNotNil: #forget.
-	self assert: (IceRepository registry noneSatisfy: [:repo | repo origin url endsWith: 'pharo-git-test.git'])
+	self removeTestPackages.
 
-		
+	IceTestCredentialProvider uninstall.
+	repository ifNotNil: #forget.
+
+	(IceRepository registry 
+		select: [:repo | repo origin url endsWith: 'pharo-git-test.git'])
+		do: [ :repo | 
+			repo forget.
+			Transcript logCr: ('Warning {1} left a registered repository' format: {self}) 
+		]
+
+	

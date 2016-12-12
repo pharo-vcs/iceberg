@@ -14,9 +14,7 @@ fromCommit: aCommit package: aPackage
 		commit datetime asUnixTime 
 	}).
 	
-	id := GitFileTreePackageEntry 
-		uuidFromGitSHA: commit id asByteArray 
-		package: package name.
+	id := self class uuidFromCommit: aCommit package: aPackage.
 
    	message := commit comment.
    	author := commit username

@@ -1,3 +1,3 @@
-as yet unclassified
+*Iceberg-UI
 description
 	^ self package workingCopy gtDisplayString 

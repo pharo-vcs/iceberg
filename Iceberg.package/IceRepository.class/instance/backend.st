@@ -1,3 +1,4 @@
 accessing
 backend
-	^ self repository
+	self ensureLocalRepository.
+	^ backend

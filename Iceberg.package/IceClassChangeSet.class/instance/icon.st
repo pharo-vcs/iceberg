@@ -1,5 +1,7 @@
 *Iceberg-UI
 icon
-	^ self isExtension
-		ifTrue: [ self targetClass icon ]
-		ifFalse: [ Smalltalk ui icons iconNamed: #protocolExtension ] 
+	^ self classDefinition 
+		ifNotNil: #icon
+		ifNil: [	self isExtension
+			ifTrue: [ Smalltalk ui icons iconNamed: #protocolExtension ] 
+			ifFalse: [ self targetClass icon ]]

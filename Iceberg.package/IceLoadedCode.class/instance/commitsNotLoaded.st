@@ -2,5 +2,5 @@ querying
 commitsNotLoaded
 	^ self repository newCommitWalk
 		fromHead;
-		uptoCommit: self referenceCommit;
-		commits
+		upto: self referenceCommit;
+		commits 

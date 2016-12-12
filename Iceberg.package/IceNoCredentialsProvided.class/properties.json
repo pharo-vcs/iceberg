@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "NicoPasserini 11/15/2016 15:53",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNoCredentialsProvided",
+	"type" : "normal"
+}

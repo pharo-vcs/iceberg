@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 mcVersion
-	self halt.
 	^ mcVersion ifNil: [ mcVersion := self package workingCopy loadedVersion ]

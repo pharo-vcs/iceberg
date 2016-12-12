@@ -19,12 +19,15 @@ testCreateBranch
 	"2 - Branch does not exist in upstream, cannnot compute outgoingCommits.
 	This could be improved, see https://github.com/npasserini/iceberg/issues/85 "
 	self assert: repository backend upstream isNil.
+	self assert: repository outgoingCommits isEmpty.
 	
 	"3 - Commit and push"
 	self saveNewVersion.
+	self assert: repository outgoingCommits size equals: 1.
 	[ 
+		
 		repository push.
-		self assert: repository currentBranch upstream shortName equals: 'origin/createdBranch'.
+		self assert: repository currentBranch upstream name equals: 'origin/createdBranch'.
 		self assert: repository outgoingCommits isEmpty.	
 	]
 	ensure: [ 

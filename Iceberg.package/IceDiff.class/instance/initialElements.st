@@ -1,6 +1,6 @@
 initialization
 initialElements
-	^ repository allPackages collect: [ :package |
+	^ repository savedPackages collect: [ :package |
 			IcePackageChangeSet 
 				package: package 
 				parent: self ]

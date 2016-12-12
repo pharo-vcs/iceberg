@@ -1,0 +1,3 @@
+accessing
+shareRepositoriesBetweenImages: anObject
+	ShareRepositoriesBetweenImages := anObject

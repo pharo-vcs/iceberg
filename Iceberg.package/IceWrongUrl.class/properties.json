@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Errors",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 8/3/2016 14:52",
-	"instvars" : [
-		 ],
-	"name" : "IceWrongUrl",
-	"pools" : [
-		 ],
 	"super" : "IceError",
-	"type" : "normal" }
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceWrongUrl",
+	"type" : "normal"
+}

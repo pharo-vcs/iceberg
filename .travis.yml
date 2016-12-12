@@ -1,11 +1,14 @@
 language: smalltalk
 sudo: false
+
 os:
 - linux
 - osx
+
 smalltalk:
 - Pharo-6.0
 - Pharo-5.0
+
 before_install:
 # Installing the dependency until it is included in the VM
 - if [ $TRAVIS_OS_NAME == "osx" ] ; then brew install libgcrypt --universal; fi
