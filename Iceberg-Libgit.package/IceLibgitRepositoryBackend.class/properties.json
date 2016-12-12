@@ -12,7 +12,7 @@
 		"subdirectory",
 		"branch",
 		"frontend" ],
-	"name" : "IceLibgitLocalRepository",
+	"name" : "IceLibgitRepositoryBackend",
 	"pools" : [
 		 ],
 	"super" : "Object",
