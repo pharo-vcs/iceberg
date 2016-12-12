@@ -1,5 +1,5 @@
 testing
 canHandleType: aType 
-	^ self allSubclasses
+	^ self allTypes
 		anySatisfy: [ :each | each isSuitableForType: aType ]  
 	
