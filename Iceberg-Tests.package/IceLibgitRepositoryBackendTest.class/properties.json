@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceLibgitLocalRepositoryTest",
+	"name" : "IceLibgitRepositoryBackendTest",
 	"type" : "normal"
 }
