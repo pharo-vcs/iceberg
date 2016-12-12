@@ -19,7 +19,7 @@ We recommend that you commit first and then pull incoming changes again.'
 	 ].	
 	branches := repository branchesForMerge: aCommit.
 	selection := self uiManager
-		chooseFrom: (branches collect: #displayName)
+		chooseFrom: (branches collect: #name)
 		values: branches
 		message: ('Select the branch into you want to merge commit {1}' format: { aCommit shortId })
 		title: 'Merge your changes into another branch'.

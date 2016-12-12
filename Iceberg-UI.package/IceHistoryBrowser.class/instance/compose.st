@@ -12,7 +12,7 @@ compose
 			from: #commits;
 			to: #changes; 
 			transformed: [ :repository :selectedCommit | 
-				selectedCommit ifNotNil: [ IceDiff forRepository: repository commit: selectedCommit ]];
+				selectedCommit ifNotNil: [ IceSpecialDiff forRepository: repository commit: selectedCommit ]];
 			andShow: [ :a | a custom: 
 				(IceGlamourChangesTree withTitle: 'Modifications since selected commit') ].		
 

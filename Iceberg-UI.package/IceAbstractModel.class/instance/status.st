@@ -4,7 +4,7 @@ status
 	[
 		| status incoming outgoing | 
 		self repository isMissing ifTrue: [ ^ 'Local repository missing' asText allBold makeAllColor: self colorError ].
-		self isLoaded ifFalse: [ ^ 'Not loaded.' ].
+		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
 		entity isModified ifTrue: [ status add: 'Uncommited changes' ].

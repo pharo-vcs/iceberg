@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Libgit",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceLibgitWriter",
+	"pools" : [
+		 ],
+	"super" : "IceMetadatalessFileTreeWriter",
+	"type" : "normal" }

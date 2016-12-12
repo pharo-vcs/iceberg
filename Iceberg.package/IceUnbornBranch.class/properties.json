@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Core",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 12/5/2016 16:47",
+	"instvars" : [
+		 ],
+	"name" : "IceUnbornBranch",
+	"pools" : [
+		 ],
+	"super" : "IceCommitish",
+	"type" : "normal" }

@@ -4,4 +4,4 @@ asTestParameterValue
 	^ IceTestParameterValue new 
 		value: self;
 		target: IceRepository;
-		selector: #defaultBackendType
+		selector: #defaultBackend

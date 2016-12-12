@@ -2,25 +2,44 @@ baseline
 baseline: spec
 	<baseline>
 	spec for: #common do: [ spec
+		configuration: 'OSSubprocess' with: [ spec
+			versionString: #stable;
+			repository: 'github://marianopeck/OSSubprocess/repository' ];
+		configuration: 'ProcessWrapper' with: [ spec
+			versionString: #stable;
+			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
+
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
-		baseline: 'LibGit' with: [ spec 
+		baseline: 'LibGit' with: [ spec
 			repository: 'github://npasserini/libgit2-pharo-bindings:development';
   			loads: 'default' ];
 		project: 'LibGit-Tests'
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
 
-		package: 'Iceberg'
-			with: [ spec requires: #(FileTree LibGit) ];
-		package: 'Iceberg-UI'
-			with: [ spec requires: #(Iceberg) ];
-		package: 'Iceberg-Tests'
-			with: [ spec requires: #(default 'LibGit-Tests') ];
+		for: #MacOS do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('OSSubprocess') ] ];
+		for: #Unix do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('OSSubprocess' ) ] ];
+		for: #Windows do: [ spec
+			package: 'Iceberg-GitCommand'
+			with: [ spec requires: #('ProcessWrapper') ] ];
 
-		group: 'core' with: #(Iceberg);
-		group: 'default' with: #('Iceberg-UI');
-		group: 'test' with: #(core 'Iceberg-Tests');
-		group: 'development' with: #(default test)
+		package: 'Iceberg';
+		package: 'Iceberg-Metacello-Integration' with: [ spec requires: #(Iceberg)];
+		package: 'Iceberg-UI' with: [ spec requires: #(Iceberg) ];
+		package: 'Iceberg-Tests' with: [ spec requires: #(Iceberg 'Iceberg-GitCommand') ];
+		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
+		package: 'Iceberg-GitFileTree' with: [ spec requires: #(Iceberg FileTree) ];
+		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];
+		package: 'Iceberg-Libgit' with: [ spec requires: #(Iceberg LibGit) ];
+
+		group: 'minimal' with: #(Iceberg 'Iceberg-Libgit');
+		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI');
+		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
+		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]
