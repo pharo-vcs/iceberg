@@ -18,6 +18,6 @@ createRepository: aRepositorySpec
 	Smalltalk
 		at: #Iceberg
 		ifPresent: [ :cl | 
-			(cl enableMetacelloIntegration and: [ type = 'github' ])
+			(cl enableMetacelloIntegration and: [ IceMetacelloRepositoryType canHandleType: type ])
 				ifTrue: [ ^ cl mcRepositoryFor: aRepositorySpec description ] ].
 	^ super createRepository: aRepositorySpec
