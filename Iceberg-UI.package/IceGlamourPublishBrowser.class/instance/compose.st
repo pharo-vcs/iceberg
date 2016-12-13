@@ -19,5 +19,5 @@ compose
 				selectedCommit ifNotNil: [ selectedCommit diffWith: repository currentBranch upstream ]];
 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incoming changes') ].
 
-		self addDiffTo: browser withTitle: 'Left: working copy / Right: incoming updates'.
+		self addDiffTo: browser withTitle: 'Left: mine / Right: theirs'.
 	]
