@@ -22,6 +22,6 @@ compose
 		browser transmit 
 			to: #publish;
 			andShow: [ :a | a 
-				title: 'Push'; 
+				title: 'Publish'; 
 				custom: IceGlamourPublishBrowser new ].
 	]
