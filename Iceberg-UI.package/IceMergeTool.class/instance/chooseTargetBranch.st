@@ -5,7 +5,7 @@ chooseTargetBranch
 	self targetBranch ifNotNil: [ ^ self targetBranch ].
 	
 	branches := self repository branchesForMerge: self source.
-	^ self uiManager
+	^ targetBranch := self uiManager
 		chooseFrom: (branches collect: #name)
 		values: branches
 		message: ('Select the branch into you want to merge commit {1}' format: { source shortId })
