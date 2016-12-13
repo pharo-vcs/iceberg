@@ -2,7 +2,7 @@ building
 compose
 	self tabulator with: [ :browser |
 		browser 
-			row: [:row | row column: #branches; column: #commits; column: #changes ]; 
+			row: [:row | row column: #branches size: 200; column: #commits; column: #changes ]; 
 			row: #diff.
 		
 		browser transmit to: #branches; andShow: [ :a | self composeBranchesIn: a ].
