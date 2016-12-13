@@ -1,3 +1,3 @@
 configurations
 parameters
-	^ { IceTestParameter withOptions: { IceLibgitLocalRepository } }
+	^ { IceTestParameter withOptions: { IceLibgitRepositoryBackend } }

@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-Libgit",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 9/21/2016 14:26",
+	"super" : "IceAbstractCommitWalk",
+	"category" : "Iceberg-Libgit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"revwalk",
-		"lgitRepository" ],
+		"lgitRepository"
+	],
 	"name" : "IceLibgitCommitWalk",
-	"pools" : [
-		 ],
-	"super" : "IceAbstractCommitWalk",
-	"type" : "normal" }
+	"type" : "normal"
+}
