@@ -1,13 +1,15 @@
 action creators
-mergeIntoAction
+mergeInto
 	^ GLMGenericAction new
 		action: [ :presentation |
-			self 
-				mergeIntoAnotherBranch: presentation selection
-				andThen: [
+			IceMergeTool new 
+				source: presentation selection;
+				onMerge: [
 					presentation selection: nil.
 					presentation pane browser update 
-				]];
+				];
+				run
+		];
 		icon: GLMUIThemeExtraIcons glamorousLeftSide;
 		shortcut: $m;
 		title: 'Merge into another branch...'; 

@@ -5,12 +5,15 @@
 	"classtraitcomposition" : "TIceTool classTrait",
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 9/2/2016 15:26",
+	"commentStamp" : "NicoPasserini 12/13/2016 11:44",
 	"instvars" : [
-		 ],
-	"name" : "IceTool",
+		"onMerge",
+		"source",
+		"targetBranch",
+		"repository" ],
+	"name" : "IceMergeTool",
 	"pools" : [
 		 ],
-	"super" : "GLMCompositePresentation",
+	"super" : "Object",
 	"traitcomposition" : "TIceTool",
 	"type" : "normal" }

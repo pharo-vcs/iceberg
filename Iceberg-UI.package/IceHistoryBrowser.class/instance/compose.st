@@ -7,6 +7,7 @@ compose
 		
 		browser transmit to: #branches; andShow: [ :a | self composeBranchesIn: a ].
 		browser transmit from: #branches; to: #commits; andShow: [ :a | self composeCommitsIn: a ].
+		
 		browser transmit 
 			fromOutsideEntityPort;
 			from: #commits;
