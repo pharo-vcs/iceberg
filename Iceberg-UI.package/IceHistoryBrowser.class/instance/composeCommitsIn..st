@@ -13,6 +13,6 @@ composeCommitsIn: composite
 		column: 'User' evaluated: #username width: 120;
 		column: 'Comment' evaluated: #comment width: 300;
 		
-		addSelectionAction: self inspect;
-		addSelectionAction: self mergeIntoCurrentBranch;
-		addSelectionAction: self mergeInto.
+		addSelectionAction: self inspectAction;
+		addSelectionAction: self mergeIntoCurrentBranchAction;
+		addSelectionAction: self mergeIntoAction.

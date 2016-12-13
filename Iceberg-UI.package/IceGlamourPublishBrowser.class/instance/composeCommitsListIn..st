@@ -8,4 +8,4 @@ composeCommitsListIn: composite
 		column: 'Comment' evaluated: #comment;
 		updateOn: IceCommited, IcePushed from: #announcer;
 		addAction: self pushAction;
-		addSelectionAction: self mergeInto
+		addSelectionAction: self mergeIntoAction

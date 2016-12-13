@@ -1,9 +1,10 @@
-action creators
-mergeInto
+action creations
+mergeIntoCurrentBranchAction
 	^ GLMGenericAction new
 		action: [ :presentation |
 			IceMergeTool new 
 				source: presentation selection;
+				targetBranch: presentation selection repository currentBranch;
 				onMerge: [
 					presentation selection: nil.
 					presentation pane browser update 
@@ -11,6 +12,6 @@ mergeInto
 				run
 		];
 		icon: GLMUIThemeExtraIcons glamorousLeftSide;
-		shortcut: $m;
-		title: 'Merge into another branch...'; 
+		shortcut: $M;
+		title: 'Merge into current branch'; 
 		showTitle
