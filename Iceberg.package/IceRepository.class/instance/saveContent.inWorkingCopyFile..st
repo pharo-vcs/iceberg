@@ -1,5 +1,10 @@
 actions
 saveContent: aString inWorkingCopyFile: aRelativePathString
-	^ self backend 
+	| outputFile |
+	outputFile := self backend 
 		saveContent: aString
-		inWorkingCopyFile: aRelativePathString
+		inWorkingCopyFile: aRelativePathString.
+		
+	self addFilesToIndex: { aRelativePathString }.
+
+	^ outputFile

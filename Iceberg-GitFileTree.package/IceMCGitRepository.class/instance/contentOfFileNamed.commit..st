@@ -5,11 +5,9 @@ contentOfFileNamed: aPathString commit: aCommitId
 	zip := ZipArchive new.
 	zip
 		readFrom:
-			(self
-				gitCommand:
+			(self command:
 					{'archive'.
 					'--format=zip' .
 					aCommitId .
-					aPathString }
-				in: directory) asByteArray readStream.
+					aPathString }) asByteArray readStream.
 	^ (zip memberNamed: aPathString) contents
