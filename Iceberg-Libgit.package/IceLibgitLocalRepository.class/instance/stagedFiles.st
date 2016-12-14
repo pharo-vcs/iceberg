@@ -1,11 +1,11 @@
 actions
 stagedFiles
 	| statusMask modifiedPathes |
-	statusMask :=  (LGitStatusTypeEnum git_status_wt_new value)
-				| (LGitStatusTypeEnum git_status_wt_modified value)
-				| (LGitStatusTypeEnum git_status_wt_deleted value)
-				| (LGitStatusTypeEnum git_status_wt_typechange value)
-				| (LGitStatusTypeEnum git_status_wt_renamed value).
+	statusMask :=  (LGitStatusTypeEnum git_status_index_new value)
+				| (LGitStatusTypeEnum git_status_index_modified value)
+				| (LGitStatusTypeEnum git_status_index_deleted value)
+				| (LGitStatusTypeEnum git_status_index_typechange value)
+				| (LGitStatusTypeEnum git_status_index_renamed value).
 	
 	self withRepoDo: 
 		[ :repo | 

@@ -1,8 +1,8 @@
 actions
-addFilesToIndex: aListOfPathes
+addFilesToIndex: aListOfPaths
 	self withRepoDo: [ :repo | 
 		| index |
 		index := repo index.
-		index addAll: aListOfPathes.
+		index addAll: aListOfPaths.
 		index writeToDisk.
 	]
