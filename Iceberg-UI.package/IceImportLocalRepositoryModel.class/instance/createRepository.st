@@ -12,7 +12,7 @@ createRepository
 		repository := IceRepositoryCreator new 
 			location: self location;
 			subdirectory: subdirectory text;
-			createDirectory.
+			createRepository.
 		repository register.
 			
 		self window delete. 

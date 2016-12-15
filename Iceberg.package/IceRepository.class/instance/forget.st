@@ -1,4 +1,4 @@
 repository handling
 forget
-	(self class registry remove: self ifAbsent: [ "Ignore" ])
+	(self class unregisterRepository: self ifAbsent: [ "Ignore" ])
 		ifNotNil: [ Iceberg announcer announce: (IceRepositoryForgotten repository: self) ]

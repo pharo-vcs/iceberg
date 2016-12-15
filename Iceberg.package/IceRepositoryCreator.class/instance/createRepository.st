@@ -5,8 +5,8 @@ createRepository
 	self validate.
 	
 	backend := (self storageClass 
-		newRepositoryAt: (self location ifNil: [ self defaultLocation ] )
-		origin: (self remote ifNil: [ self defaultRemote ])
+		newRepositoryAt: self locationToUse
+		origin: self remoteToUse
 		subdirectory: self subdirectory).
 	self branchName ifNotNil: [ backend branch: self branchName ].
 

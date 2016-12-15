@@ -1,3 +1,5 @@
 printing
-printOn: aStream
-	aStream nextPutAll: self url
+printOn: stream
+	stream 
+		<< (self remoteName ifNil: [ 'noname' ]) 
+		<< ' (' << self url << ')'
