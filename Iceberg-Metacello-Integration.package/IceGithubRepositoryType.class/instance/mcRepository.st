@@ -11,6 +11,7 @@ mcRepository
 		ifFalse: [  
 			Transcript 
 				show: 'Creating iceberg-metacello adapter for: ';
-				show: self location; cr.
+				show: self location; 
+				cr.
 			^ baseRepo getOrCreateIcebergRepository metacelloAdapter ]
 		

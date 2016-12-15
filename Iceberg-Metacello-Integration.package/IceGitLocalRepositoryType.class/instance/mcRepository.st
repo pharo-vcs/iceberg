@@ -6,8 +6,10 @@ mcRepository
 	repository := IceRepository registry 
 		detect: [ :each | each location = tuple first ]
 		ifNone: [ 
-			(IceRepository location: tuple first) 
-				in: [ :this | tuple second ifNotNil: [ :dir | this subdirectory: dir ] ];
+			(IceRepositoryCreator new 
+				location: tuple first;
+				subdirectory: tuple second;
+				createRepository)
 				register ].
 			
 	^ repository metacelloAdapter

@@ -1,4 +1,5 @@
 instance creation
-forMCRepository: anIceMCGitRepository 
+forMCRepository: anIceMCGitRepository
+	self halt. 
 	^ (self origin: anIceMCGitRepository remoteUrl)
 		repository: anIceMCGitRepository
