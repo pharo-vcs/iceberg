@@ -1,4 +1,4 @@
-as yet unclassified
+versions
 versionFrom: aVersionName 
 	| packageName package version |
 	packageName := (MCFileTreeRepository parseName: aVersionName) first.
