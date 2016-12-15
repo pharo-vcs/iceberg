@@ -1,17 +1,16 @@
 repository handling
 createRepository: branchName
-	| _backend |
-	_backend := (self storageClass 
+	| newBackend |
+
+	newBackend := (self storageClass 
 		newRepositoryAt: self location
 		origin: self origin
 		subdirectory: (self subdirectory ifNil: '')).
 	
-	branchName ifNotNil: [ _backend branch: branchName ].
-
-	_backend frontend: self.
-	origin ifNil: [ origin := IceRemote url: _backend remoteUrl ].
+	branchName ifNotNil: [ newBackend branch: branchName ].
+	origin ifNil: [ origin := IceRemote url: newBackend remoteUrl ].
 
 	(self location exists not or: [ self location hasChildren not ])
-		ifTrue: [ _backend cloneRepository ].
+		ifTrue: [ newBackend cloneRepository ].
 
-	self backend: _backend
+	self backend: newBackend

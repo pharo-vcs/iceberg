@@ -4,6 +4,4 @@ rebuildRepositories
 		repo initialize.
 		repo branch: nil.
 		repo commitDictionary.
-		repo loadedPackages do: [ :pkg |
-			repo versionLoaded: pkg computeLoadedVersion.
-		]]
+		repo loadedPackages do: [ :pkg | repo versionLoaded: pkg computeLoadedVersion ] ]

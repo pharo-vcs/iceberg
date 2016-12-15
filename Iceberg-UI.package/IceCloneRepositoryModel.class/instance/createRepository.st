@@ -2,9 +2,12 @@ actions
 createRepository
 	[
 		| repository |
-		repository := IceRepository origin: remoteUrl text trim.
-		subdirectory text ifNotNil: [ :text | repository subdirectory: text ].
-		self location ifNotNil: [ :directory | repository location: directory  ].
+		
+		repository := IceRepositoryCreator new 
+			remote: (IceRemote named: remoteUrl text trim);
+			location: self location;
+			subdirectory: subdirectory text;
+			createRepository.
 		repository register.
 			
 		self window delete. 
