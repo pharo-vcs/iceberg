@@ -1,3 +1,3 @@
 accessing
-remote: aRemote
-	remote := aRemote
+remote: anObject
+	remote := anObject
