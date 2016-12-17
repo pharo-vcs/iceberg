@@ -11,5 +11,5 @@ testCloneTwiceSameOrigin
 		]
 		raise: IceDuplicatedRepository.
 	
-	secondRepo location: self absoluteLocation.
+	secondRepo backend location: self absoluteLocation.
 	[ secondRepo register ] ensure: [ secondRepo forget ]
