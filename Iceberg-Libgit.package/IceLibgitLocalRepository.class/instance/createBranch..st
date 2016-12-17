@@ -5,4 +5,4 @@ createBranch: branchName
 		newBranch := repo createBranch: branchName target: repo head.
 		repo setHead: newBranch
 	].
-	self branch: branchName.
+	self branch: self lookupHead.

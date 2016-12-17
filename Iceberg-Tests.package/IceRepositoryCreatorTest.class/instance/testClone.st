@@ -1,4 +1,4 @@
-tests - create repository
+tests
 testClone
 	| location |
 	location := self defaultLocationForLocalClonedRepository.

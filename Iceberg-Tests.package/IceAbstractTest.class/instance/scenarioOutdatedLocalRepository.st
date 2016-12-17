@@ -20,4 +20,7 @@ scenarioOutdatedLocalRepository
 	].
 
 	"Excercise"
-	repository := IceRepository origin: origin location: self absoluteLocation.
+	repository := IceRepositoryCreator new
+		url: origin; 
+		location: self absoluteLocation;
+		createRepository

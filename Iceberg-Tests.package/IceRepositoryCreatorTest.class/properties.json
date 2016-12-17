@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "NicoPasserini 11/21/2016 14:12",
+	"commentStamp" : "",
 	"super" : "IceAbstractTest",
 	"category" : "Iceberg-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceMetacelloIntegrationTest",
+	"name" : "IceRepositoryCreatorTest",
 	"type" : "normal"
 }

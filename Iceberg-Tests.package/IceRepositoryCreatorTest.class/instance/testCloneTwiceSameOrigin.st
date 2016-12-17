@@ -1,7 +1,7 @@
-tests - create repository
+tests
 testCloneTwiceSameOrigin
 	"You should not be able to create two IceRepositories pointing to the same local repository."
-	| location secondRepo |
+	| secondRepo |
 	repository register.
 	
 	secondRepo := self createTestRepository: origin.
@@ -13,4 +13,3 @@ testCloneTwiceSameOrigin
 	
 	secondRepo location: self absoluteLocation.
 	[ secondRepo register ] ensure: [ secondRepo forget ]
-	
