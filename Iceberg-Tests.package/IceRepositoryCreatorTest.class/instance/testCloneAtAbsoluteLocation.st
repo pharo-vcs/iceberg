@@ -6,6 +6,7 @@ testCloneAtAbsoluteLocation
 		location: self absoluteLocation;
 		yourself.
 
+	self absoluteLocation ensureDeleteAll.
 	self deny: self absoluteLocation exists.
 	repository := creator createRepository.
 	self assert: self absoluteLocation exists.
