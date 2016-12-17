@@ -1,6 +1,6 @@
 actions
 stagedFiles
-	| statusMask modifiedPathes |
+	| statusMask modifiedPaths |
 	statusMask :=  (LGitStatusTypeEnum git_status_index_new value)
 				| (LGitStatusTypeEnum git_status_index_modified value)
 				| (LGitStatusTypeEnum git_status_index_deleted value)
@@ -9,7 +9,7 @@ stagedFiles
 	
 	self withRepoDo: 
 		[ :repo | 
-		modifiedPathes := repo index 
+		modifiedPaths := repo index 
 			entriesSelect: [ :path :status | (status & statusMask) > 0 ] ].
-	^ modifiedPathes 
+	^ modifiedPaths 
 		collect: [ :entry | entry first asFileReference ]

@@ -1,7 +1,8 @@
 private
 stagedPackageNames
-	| packageSuffix |
-	packageSuffix := '.package'.
-	^ self stagedFiles
-		select: [ :fileRef | fileRef path segments first endsWith: packageSuffix ]
-		thenCollect: [ :fileRef | fileRef path segments first withoutSuffix: packageSuffix ]
+	^ self stagedFiles 
+		select: [ :fileRef | self isFilePartOfAPackage: fileRef ]
+		thenCollect: [ :fileRef | 
+			self subdirectory isEmptyOrNil 
+				ifTrue: [ fileRef path segments first asFileReference basenameWithoutExtension ] 
+				ifFalse: [ fileRef path segments second asFileReference basenameWithoutExtension ] ]
