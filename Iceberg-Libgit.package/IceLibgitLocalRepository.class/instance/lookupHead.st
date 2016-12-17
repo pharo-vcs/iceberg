@@ -5,4 +5,4 @@ lookupHead
 		head := repo head.
 		^ head isBranch 
 			ifTrue: [ IceLocalBranch named: head basename inRepository: self frontend ] 
-			ifFalse: [ self revparse: branch name ] ]
+			ifFalse: [ head object asIcebergObjectInRepository: self ] ]
