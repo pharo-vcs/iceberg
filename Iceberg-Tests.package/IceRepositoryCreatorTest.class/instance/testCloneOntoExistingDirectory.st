@@ -1,10 +1,12 @@
 tests
 testCloneOntoExistingDirectory
-	| location |
+	| location creator |
 	
-	location := repository location.
+	creator := IceRepositoryCreator new 
+		url: origin;
+		yourself.
+	location := creator defaultLocation.
 	location ensureCreateDirectory.
 	
-	repository createRepository: nil.
+	repository := creator createRepository.
 	self assert: (location / '.git') exists.
-

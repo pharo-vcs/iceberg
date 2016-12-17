@@ -1,4 +1,4 @@
-tests
+tests - create repository
 testCloneTwiceSameOrigin
 	"You should not be able to create two IceRepositories pointing to the same local repository."
 	| secondRepo |
