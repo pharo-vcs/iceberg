@@ -13,7 +13,6 @@
 	"instvars" : [
 		"name",
 		"announcer",
-		"branch",
 		"backend",
 		"savedPackages",
 		"upstream",

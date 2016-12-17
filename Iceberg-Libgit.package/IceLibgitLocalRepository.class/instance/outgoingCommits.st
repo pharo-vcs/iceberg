@@ -5,7 +5,7 @@ outgoingCommits
 		| currentBranch commits walk |
 		
 		commits := OrderedCollection new.
-		currentBranch := repo lookupBranch: self branch.
+		currentBranch := repo lookupBranch: self branch name.
 	
 		walk := (LGitRevwalk of: repo)
 			pushReference: currentBranch;
