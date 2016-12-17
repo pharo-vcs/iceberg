@@ -5,12 +5,14 @@ createRepository
 	self validate.
 
 	locationToUse := self locationToUse.
-	backend := (self storageClass 
+	backend := self storageClass 
 		newRepositoryAt: locationToUse
-		subdirectory: self subdirectory).
-	self branchName ifNotNil: [ backend branch: self branchName ].
+		subdirectory: self subdirectory.
 
 	(locationToUse exists not or: [ locationToUse hasChildren not ])
-		ifTrue: [ backend cloneRepositoryFrom: self remoteToUse ].
+		ifTrue: [ 
+			backend 
+				cloneRepositoryFrom: self remoteToUse 
+				branch: self branchName ].
 
 	^ IceRepository backend: backend

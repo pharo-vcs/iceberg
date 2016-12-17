@@ -1,10 +1,11 @@
 *Iceberg-Adapters
 getOrCreateIcebergRepository
-	| remoteUrl |
+	| remoteUrl remote |
 
 	remoteUrl := self perform: Iceberg remoteTypeSelector.
+	remote := IceRemote url: remoteUrl.
 	^ IceRepository registry 
-		detect: [ :repo | repo origin url = remoteUrl ]
+		detect: [ :repo | repo origin isSameUrl: remote ]
 		ifNone: [
 			(IceRepositoryCreator new 
 				url: remoteUrl;
