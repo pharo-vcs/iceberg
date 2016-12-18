@@ -1,5 +1,4 @@
 actions
 push
-	self backend push.
-	self refresh.
-	self announcer announce: IcePushed new
+	self flag: #todo. "replace #origin for a #remoteForPush"
+	self pushTo: self origin

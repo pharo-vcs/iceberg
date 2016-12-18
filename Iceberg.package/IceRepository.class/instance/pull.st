@@ -1,5 +1,4 @@
 actions
 pull
-	self backend pull.
-	self refresh.
-	self loadedPackages do: #loadLatest.
+	self flag: #todo. "replace #origin for a #remoteForPull"
+	self pullFrom: self origin

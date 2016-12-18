@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 8/9/2016 16:35",
-	"super" : "IceError",
 	"category" : "Iceberg-Errors",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 8/9/2016 16:35",
+	"instvars" : [
+		 ],
 	"name" : "IceMergeAborted",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceError",
+	"type" : "normal" }

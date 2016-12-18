@@ -30,8 +30,11 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self showHistory;
 		addSelectionAction: self switchBranch;
 		addSelectionAction: self createNewBranch;
+		addSelectionAction: self addRemote;
 		addSelectionAction: self pull;
+		addSelectionAction: self pullFrom;
 		addSelectionAction: self push;
+		addSelectionAction: self pushTo;
 		addSelectionAction: self cloneRepositoryAgain;
 		addSelectionAction: self refreshRepository;
 		addSelectionAction: self inspectRepository;

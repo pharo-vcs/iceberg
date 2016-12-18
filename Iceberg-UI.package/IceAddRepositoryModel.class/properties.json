@@ -1,0 +1,19 @@
+{
+	"category" : "Iceberg-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"repository",
+		"nameLabel",
+		"namePanel",
+		"urlLabel",
+		"urlPanel",
+		"addButton" ],
+	"name" : "IceAddRepositoryModel",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }
