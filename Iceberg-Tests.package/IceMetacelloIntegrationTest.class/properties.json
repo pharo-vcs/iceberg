@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 11/21/2016 14:12",
-	"super" : "IceAbstractTest",
 	"category" : "Iceberg-Tests",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/21/2016 14:12",
+	"instvars" : [
+		 ],
 	"name" : "IceMetacelloIntegrationTest",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceAbstractTest",
+	"type" : "normal" }

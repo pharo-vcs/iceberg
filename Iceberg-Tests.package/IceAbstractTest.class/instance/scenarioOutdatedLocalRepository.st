@@ -1,6 +1,7 @@
 scenarios
 scenarioOutdatedLocalRepository
 	"Prepare 1 - Create an outdated local repository"
+	self absoluteLocation ensureDeleteAll.
 	IceGitCommand 
 		in: self absoluteLocation parent
 		execute: { 

@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 8/23/2016 17:55",
-	"super" : "IceAbstractTest",
 	"category" : "Iceberg-UI-Tests",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 8/23/2016 17:55",
+	"instvars" : [
+		 ],
 	"name" : "IceGUITest",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceAbstractTest",
+	"type" : "normal" }
