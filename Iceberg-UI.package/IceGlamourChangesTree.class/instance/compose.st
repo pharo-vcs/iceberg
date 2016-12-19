@@ -13,6 +13,9 @@ compose
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
 		onChangeOfPort: #entity act: [ :presentation :diff | 
-			diff ifNotNil: [ diff announcer weak 
-				subscribe: IceChangeSetChanged 
-				do: [ presentation selection: nil ]]]
+			"diff ifNotNil: [ 
+				diff announcer weak 
+					when: IceChangeSetChanged 
+					send: #selection:
+					to: presentation					
+					with: nil ]" ]

@@ -9,7 +9,7 @@ composeBrowserOn: browser
 
 	browser transmit 
 		to: #changes; 
- 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
+ 		andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
 
 	browser transmit to: #commit; andShow: [ :a :diff | 
 		a morph
