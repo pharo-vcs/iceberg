@@ -1,7 +1,8 @@
 actions - remote
 remoteAdd
 	^ GLMGenericAction new
-		action: [ :presentation :model | model addRemote ];
+		action: [ :presentation :model | 
+			model addRemoteThen: [ presentation pane browser update ] ];
 		icon: #add asIcon;
 		showTitle: 'Add remote'; 
 		yourself

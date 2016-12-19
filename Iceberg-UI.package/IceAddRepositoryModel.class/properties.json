@@ -11,7 +11,8 @@
 		"namePanel",
 		"urlLabel",
 		"urlPanel",
-		"addButton" ],
+		"addButton",
+		"acceptBlock" ],
 	"name" : "IceAddRepositoryModel",
 	"pools" : [
 		 ],

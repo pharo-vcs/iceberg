@@ -1,4 +1,4 @@
-instance creation
+testing
 canHandleUrl: aRepositoryUrl
 	"Very simplistic implementation that does not cover all cases"
 	^ (aRepositoryUrl beginsWith: 'git@' )

@@ -1,6 +1,6 @@
 actions
 addRemote
-	| remoteName remoteUrl |
+	| remoteName remoteUrl remote |
 	
 	remoteName := self namePanel text trim.
 	remoteName ifEmpty: [ 
@@ -9,8 +9,7 @@ addRemote
 	remoteUrl ifEmpty: [
 		UIManager default alert: 'You need to specify a remote url.' title: 'Error'. ^ self ].
 	
-	self repository addRemote: ((IceRemote url: remoteUrl) 
-		remoteName: remoteName;
-		yourself).
-	
-	self window delete. 
+	remote := IceRemote name: remoteName url: remoteUrl.
+	self repository addRemote: remote.
+	self window delete.
+	acceptBlock ifNotNil: [ acceptBlock cull: remote ].

@@ -6,7 +6,8 @@ addRepositoryRemotesTo: composite
 		title: 'Remotes';
 		display: #remotes;
 		column: 'Name' evaluated: #remoteName width: 80;
-		column: 'URL' evaluated: #url.
+		column: 'URL' evaluated: #url;
+		updateOn: IceRemoteAdded from: [ self ].
 		
 	"actions"
 	remotes addAction: self remoteAdd.

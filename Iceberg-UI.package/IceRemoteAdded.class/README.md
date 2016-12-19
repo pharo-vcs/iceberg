@@ -1,0 +1,1 @@
+I'm an announcement when a remote has been added.

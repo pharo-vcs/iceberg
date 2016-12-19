@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"remote" ],
+	"name" : "IceRemoteAdded",
+	"pools" : [
+		 ],
+	"super" : "Announcement",
+	"type" : "normal" }
