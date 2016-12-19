@@ -1,3 +1,3 @@
 accessing
 pushingRemote
-	^ pullingRemote ifNil: [ pullingRemote := self repository origin ]
+	^ pushingRemote ifNil: [ self repository origin ]

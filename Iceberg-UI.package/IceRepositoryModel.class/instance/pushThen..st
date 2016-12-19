@@ -1,6 +1,5 @@
 actions
 pushThen: aBlock
-	self flag: #todo. "Replace #origin with #remoteToPush"
 	self 
-		pushTo: self repository origin 
+		pushTo: self repository workConfiguration pushingRemote 
 		then: aBlock

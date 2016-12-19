@@ -13,5 +13,8 @@ addRepositoryRemotesTo: composite
 	remotes addAction: self remoteAdd.
 	
 	"selection actions"
-	remotes addSelectionAction: self remoteRemove.
+	remotes 
+		addSelectionAction: self remoteMakePulling;
+		addSelectionAction: self remoteMakePushing;
+		addSelectionAction: self remoteRemove.
  
