@@ -4,7 +4,7 @@ push
 		action: [ :presentation | 
 			presentation selection pushThen: [ presentation pane browser update ]];
 		selectionCondition: #canPush;
-		icon: GLMUIThemeExtraIcons glamorousRightSide;
+		icon: #glamorousRightSide asIcon;
 		showTitle: 'Push outgoing commits'; 
 		shortcut: $P; 
 		yourself

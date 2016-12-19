@@ -1,5 +1,5 @@
 building
-addBrowserTo: browser
+composeBrowserOn: browser
 	browser
 		row: [ :top | top
 			column: #commits; 
@@ -14,9 +14,8 @@ addBrowserTo: browser
 		fromOutsideEntityPort;
 		from: #commits; 
 		to: #changes; 
-		transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
-				selectedCommit diffWith: (repository mergeBaseWith: selectedCommit) ]];
+		transformed: [ :repository :selectedCommit | 
+			selectedCommit ifNotNil: [ selectedCommit diffWith: repository currentBranch upstream ]];
 		andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incoming changes') ].
 
-	self addDiffTo: browser.
-	self addCommitInfoTo: browser 
+	self addDiffTo: browser withTitle: 'Left: mine / Right: theirs'

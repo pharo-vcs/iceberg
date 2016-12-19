@@ -1,3 +1,3 @@
 accessing
 defaultExtent
-	^ 700@500
+	^ RealEstateAgent standardWindowExtent

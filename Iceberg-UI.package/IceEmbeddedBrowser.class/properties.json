@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "IceGlamourCommitBrowser",
+	"name" : "IceEmbeddedBrowser",
 	"pools" : [
 		 ],
-	"super" : "IceEmbeddedBrowser",
+	"super" : "IceAbstractBrowser",
 	"type" : "normal" }

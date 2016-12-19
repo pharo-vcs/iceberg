@@ -10,5 +10,5 @@
 	"name" : "IceGlamourUpdateBrowser",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractBrowser",
+	"super" : "IceEmbeddedBrowser",
 	"type" : "normal" }

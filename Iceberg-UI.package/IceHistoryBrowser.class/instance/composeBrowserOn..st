@@ -1,5 +1,5 @@
 building
-addBrowserTo: browser
+composeBrowserOn: browser
 	browser 
 		row: [:row | 
 			row column: #branches span: 2; 

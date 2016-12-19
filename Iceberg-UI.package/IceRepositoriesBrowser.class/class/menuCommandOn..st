@@ -4,7 +4,7 @@ menuCommandOn: aBuilder
 	<worldMenu> 
 	
 	(aBuilder item: #'Iceberg')
-			order: 0.18; 
-	      icon: Smalltalk ui icons komitterSmalltalkhubRemote;  
-			parent: #'Tools';
-			action: [ self open ].
+		order: 0.18; 
+		icon: self icon;  
+		parent: #'Tools';
+		action: [ self open ].

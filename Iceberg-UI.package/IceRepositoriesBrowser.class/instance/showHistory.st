@@ -3,6 +3,6 @@ showHistory
 	^ GLMGenericAction new
 		selectionAction: #browseHistory;
 		selectionCondition: #isOperative;
-		icon: GLMUIThemeExtraIcons glamorousBrowse;
+		icon: #glamorousBrowse asIcon;
 		showTitle: 'Show history...';
 		shortcut: $h
