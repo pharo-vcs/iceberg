@@ -5,5 +5,5 @@ addRemoteThen: aBlock
 		repository: self repository;
 		onAccept: [ :remote |
 			self repository addRemote: remote. 
-			aBlock value: aBlock];
+			aBlock cull: remote ];
 		openWithSpec
