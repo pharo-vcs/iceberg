@@ -13,7 +13,7 @@
 		"urlPanel",
 		"addButton",
 		"acceptBlock" ],
-	"name" : "IceAddRepositoryModel",
+	"name" : "IceRemoteModel",
 	"pools" : [
 		 ],
 	"super" : "ComposableModel",

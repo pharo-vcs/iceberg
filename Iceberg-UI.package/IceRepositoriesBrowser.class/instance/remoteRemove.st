@@ -1,4 +1,4 @@
-actions - remote
+actions - remotes
 remoteRemove
 	^ GLMGenericAction new
 		action: [ :presentation :model | 

@@ -12,6 +12,7 @@
 		"name",
 		"announcer",
 		"backend",
+		"workConfiguration",
 		"savedPackages",
 		"upstream",
 		"commitDictionary",

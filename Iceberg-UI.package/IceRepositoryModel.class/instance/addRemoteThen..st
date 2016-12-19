@@ -1,7 +1,9 @@
 actions
 addRemoteThen: aBlock
-	IceAddRepositoryModel new 
+	IceRemoteModel new 
 		setModal: true;
 		repository: self repository;
-		onAccept: aBlock;
+		onAccept: [ :remote |
+			self repository addRemote: remote. 
+			aBlock value: aBlock];
 		openWithSpec

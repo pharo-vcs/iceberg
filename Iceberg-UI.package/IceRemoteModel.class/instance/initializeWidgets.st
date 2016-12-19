@@ -9,7 +9,7 @@ initializeWidgets
 	nameLabel label: 'Remote name'.
 	urlLabel label: 'Remote URL'.
 	addButton label: 'Add remote'.
-	addButton action: [ self addRemote ].
+	addButton action: [ self accept ].
 	
 	self focusOrder 
 		add: namePanel;
