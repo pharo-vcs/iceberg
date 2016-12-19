@@ -1,3 +1,3 @@
 actions
 pull
-	self pullFrom: self workConfiguration pullingRemote
+	self pullFrom: self pullRemote

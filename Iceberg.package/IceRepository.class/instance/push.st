@@ -1,3 +1,3 @@
 actions
 push
-	self pushTo: self workConfiguration pushingRemote
+	self pushTo: self pushRemote

@@ -1,4 +1,4 @@
 accessing
 detachRemote: aRemote
-	(self pushingRemote isSame: aRemote) ifTrue: [ self pushingRemote: nil ].
-	(self pullingRemote isSame: aRemote) ifTrue: [ self pullingRemote: nil ]
+	(self pushRemote isSame: aRemote) ifTrue: [ self pushRemote: nil ].
+	(self pullRemote isSame: aRemote) ifTrue: [ self pullRemote: nil ]

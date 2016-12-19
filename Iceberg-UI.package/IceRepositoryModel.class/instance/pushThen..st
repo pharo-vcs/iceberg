@@ -1,5 +1,5 @@
 actions
 pushThen: aBlock
 	self 
-		pushTo: self repository workConfiguration pushingRemote 
+		pushTo: self repository pushRemote 
 		then: aBlock

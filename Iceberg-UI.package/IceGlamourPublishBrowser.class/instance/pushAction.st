@@ -7,5 +7,5 @@ pushAction
 					andThen: [ presentation selection: nil ]];
 			icon: GLMUIThemeExtraIcons glamorousRightSide;
 			shortcut: $p;
-			title: 'Publish all'; showTitle
+			showTitle: 'Publish all'
 				
