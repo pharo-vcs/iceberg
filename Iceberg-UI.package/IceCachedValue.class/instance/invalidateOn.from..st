@@ -1,3 +1,3 @@
 initialization
 invalidateOn: announcementType from: announcer
-	announcer weak subscribe: announcementType do: [ lastUpdated := nil ] 
+	announcer weak subscribe: announcementType send: #reset to: self

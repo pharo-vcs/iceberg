@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		"Instance" ],
 	"commentStamp" : "NicoPasserini 9/16/2016 14:13",
-	"instvars" : [
-		 ],
-	"name" : "IceWorkingCopy",
-	"pools" : [
-		 ],
 	"super" : "IceCommitish",
-	"type" : "normal" }
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"Instance"
+	],
+	"instvars" : [ ],
+	"name" : "IceWorkingCopy",
+	"type" : "normal"
+}
