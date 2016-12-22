@@ -18,4 +18,6 @@ composeBrowserOn: browser
 			selectedCommit ifNotNil: [ selectedCommit diffWith: repository currentBranch upstream ]];
 		andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incoming changes') ].
 
-	self addDiffTo: browser withTitle: 'Left: mine / Right: theirs'
+	self addDiffTo: browser.
+	self addCommitInfoTo: browser 
+	
