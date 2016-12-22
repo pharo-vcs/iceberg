@@ -1,3 +1,3 @@
-accessing work
+accessing remotes
 pullRemote
-	^ self workConfiguration pullRemote
+	^ pullRemote ifNil: [ pullRemote := self pushRemote ]

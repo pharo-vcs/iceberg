@@ -1,3 +1,3 @@
-accessing work
+accessing remotes
 pushRemote
-	^ self workConfiguration pushRemote
+	^ pushRemote ifNil: [ pushRemote := self origin ]

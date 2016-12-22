@@ -1,3 +1,3 @@
 testing
 isPullRemote: aRemote
-	^ self repository workConfiguration isPullRemote: aRemote
+	^ self repository isPullRemote: aRemote
