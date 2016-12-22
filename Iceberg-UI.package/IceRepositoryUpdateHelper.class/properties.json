@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "Iceberg-UI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"table"
+	],
+	"name" : "IceRepositoryUpdateHelper",
+	"type" : "normal"
+}

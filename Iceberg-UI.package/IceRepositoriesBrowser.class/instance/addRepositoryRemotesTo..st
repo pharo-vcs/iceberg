@@ -7,7 +7,7 @@ addRepositoryRemotesTo: composite
 		display: #remotes;
 		column: 'Name' evaluated: #remoteName width: 80;
 		column: 'URL' evaluated: #url tags: [ :remote :model | model tagsForRemote: remote ];
-		updateOn: IceRemoteAdded from: [ self announcer ].
+		updateOn: IceRemoteAdded from: #announcer.
 		
 	"actions"
 	remotes addAction: self remoteAdd.

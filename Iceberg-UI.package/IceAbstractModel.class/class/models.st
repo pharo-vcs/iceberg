@@ -3,4 +3,4 @@ models
 	"
 	self models removeAll
 	"
-	^ ModelCache ifNil: [ ModelCache := IdentityDictionary new ]
+	^ ModelCache ifNil: [ ModelCache := WeakValueDictionary new ]

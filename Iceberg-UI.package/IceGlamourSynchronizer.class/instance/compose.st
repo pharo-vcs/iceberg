@@ -2,7 +2,7 @@ building
 compose
 	(self custom: GLMStacker new) with: [ :browser |
 		browser initialExtent: self initialExtent.
-		browser updateOn: Announcement from: [ :repo | repo announcer ].
+		browser updateOn: Announcement from: [ :repo | repo announcer weak ].
 
 		browser aPane: #commit.
 		browser transmit 

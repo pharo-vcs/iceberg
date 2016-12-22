@@ -8,7 +8,7 @@ composeCommitsListIn: composite
 		column: 'Date & time' evaluated: [:commit | commit datetime asLocalStringYMDHM ] width: 100;
 		column: 'Status' evaluated: #status width: 80;
 		column: 'Comment' evaluated: #comment;
-		updateOn: IcePackageLoaded from: [ self announcer weak ];
+		updateOn: IcePackageLoaded from: #announcer;
 		addAction: self fetchAction;
 		addAction: self pullAction;
 		addSelectionAction: self loadAction;

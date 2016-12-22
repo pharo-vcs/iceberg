@@ -1,8 +1,8 @@
 building
 composeRepositories: repositories in: composite
 	| table |
+
 	table := composite fastTable.
-	
 	table
 		title: 'Repositories';
 		display: [ :repos | repos collect: [ :repo | IceRepositoryModel modelFor: repo ] ];
@@ -11,13 +11,15 @@ composeRepositories: repositories in: composite
 		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
 		column: 'Status' evaluated: #status width: 150.
 
-	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer ].
+	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer weak ].
 	repositories do: [ :repo | 
 		table updateOn: IceRepositoryAnnouncement from: repo announcer ].
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
 	
 	Iceberg announcer weak 
-		subscribe: IceRepositoryCreated do: [ :ann | table updateOn: IceRepositoryAnnouncement from: ann repository announcer ].
+		subscribe: IceRepositoryCreated 
+		send: #updateOn:
+		to: (IceRepositoryUpdateHelper for: table).
 
 	table		
 		"Task bar menu"
