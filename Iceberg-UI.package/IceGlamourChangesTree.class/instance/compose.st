@@ -12,12 +12,11 @@ compose
 		addSelectionAction: self browseAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
-		updateOn: IceChangeSetChanged from: [ :diff | diff announcer weak  ]
-		"onChangeOfPort: #entity act: [ :presentation :diff | 
+		onChangeOfPort: #entity act: [ :presentation :diff | 
 			diff ifNotNil: [ 
 				diff announcer weak 
 					subscribe: IceChangeSetChanged 
 					do: (WeakMessageSend 
 						receiver: presentation 
 						selector: #selection: 
-						arguments: {nil}) ] ]"
+						arguments: {nil}) ] ]
