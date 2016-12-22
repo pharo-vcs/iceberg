@@ -19,4 +19,4 @@ compose
 					do: (WeakMessageSend 
 						receiver: presentation 
 						selector: #selection: 
-						argument: nil) ] ]
+						arguments: {nil}) ] ]
