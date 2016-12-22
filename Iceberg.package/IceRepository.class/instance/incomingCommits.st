@@ -1,6 +1,6 @@
-commits
+querying
 incomingCommits
 	^ (SortedCollection sortBlock: [ :a :b | a datetime > b datetime ])
 		addAll: self commitsNotLoaded;
-		addAll: self currentBranch incomingCommits;
+		addAll: (self currentBranch incomingCommitsFrom: self pullRemote);
 		yourself
