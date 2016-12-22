@@ -1,14 +1,15 @@
 {
-	"commentStamp" : "NicoPasserini 8/3/2016 18:44",
-	"super" : "IceCreateRepositoryModel",
 	"category" : "Iceberg-UI",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 8/3/2016 18:44",
 	"instvars" : [
 		"remoteUrl",
-		"remoteUrlLabel"
-	],
+		"remoteUrlLabel" ],
 	"name" : "IceCloneRepositoryModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceCreateRepositoryModel",
+	"type" : "normal" }

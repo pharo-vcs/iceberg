@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "",
-	"super" : "GLMCompositePresentation",
 	"category" : "Iceberg-UI",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
 	"instvars" : [
-		"remote"
-	],
+		"remote" ],
 	"name" : "IceGlamourSynchronizer",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "GLMCompositePresentation",
+	"type" : "normal" }
