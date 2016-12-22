@@ -1,3 +1,3 @@
-acessing
+accessing
 loadedCodeDescription
 	^ self repository loadedCode description

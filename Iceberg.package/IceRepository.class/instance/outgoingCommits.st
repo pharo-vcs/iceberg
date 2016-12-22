@@ -1,3 +1,3 @@
 querying
 outgoingCommits
-	^ self currentBranch outgoingCommitsTo: self pushRemote
+	^ self outgoingCommitsTo: self pushRemote
