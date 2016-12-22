@@ -6,7 +6,7 @@ addRepositoryRemotesTo: composite
 		title: 'Remotes';
 		display: #remotes;
 		column: 'Name' evaluated: #remoteName width: 80;
-		column: 'URL' evaluated: #url tags: [ :remote :model | model tagsForRemote: remote ];
+		column: 'URL' evaluated: #url width: 380;
 		column: 'Status' evaluated: [ :remote :model | model statusForRemote: remote ];
 		updateOn: IceRemoteAdded from: #announcer.
 		
