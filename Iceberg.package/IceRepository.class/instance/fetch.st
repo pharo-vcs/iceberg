@@ -1,4 +1,3 @@
 actions
 fetch
-	self backend fetch.
-	self refresh.
+	self fetchFrom: self pullRemote

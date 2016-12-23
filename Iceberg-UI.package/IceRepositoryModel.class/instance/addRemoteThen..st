@@ -1,4 +1,4 @@
-actions
+actions remotes
 addRemoteThen: aBlock
 	IceRemoteModel new 
 		setModal: true;

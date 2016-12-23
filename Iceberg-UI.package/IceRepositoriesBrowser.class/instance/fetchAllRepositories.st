@@ -2,7 +2,7 @@ actions - repositories list
 fetchAllRepositories
 	^ GLMGenericAction new 
 		action: [ self doFetchAllRepositories ];
-		icon: GLMUIThemeExtraIcons glamorousLeftSide;
+		icon: #glamorousLeftSide asIcon;
 		shortcut: $F;
-		title: 'Fetch all'; showTitle
+		showTitle: 'Fetch all'
 		
