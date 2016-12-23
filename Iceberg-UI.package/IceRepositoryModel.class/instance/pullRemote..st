@@ -1,3 +1,3 @@
 actions
 pullRemote: aRemote
-	self repository pullRemote: aRemote
+	self repository pullFrom: aRemote

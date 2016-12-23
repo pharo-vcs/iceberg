@@ -1,3 +1,3 @@
 actions
 pushRemote: aRemote
-	self repository pushRemote: aRemote
+	self repository pushTo: aRemote
