@@ -14,7 +14,7 @@ Then, that code will look like this:
 
 	Iceberg announcer weak 
 		subscribe: IceRepositoryCreated 
-		send: #updateOn:
+		send: #execute:
 		to: (IceRepositoryUpdateHelper for: table).
 
 removing the outer context problems :)
