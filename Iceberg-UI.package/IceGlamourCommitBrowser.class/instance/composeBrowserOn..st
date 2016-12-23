@@ -9,14 +9,17 @@ composeBrowserOn: browser
 
 	browser transmit 
 		to: #changes; 
- 			andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
+ 		andShow: [ :a | 
+			a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
 
-	browser transmit to: #commit; andShow: [ :a :diff | 
-		a morph
-			morph: [
-				IceCommitModel new 
-					model: diff;
-					buildWithSpec ];
-			title: 'Commit changes' ].
+	browser transmit 
+		to: #commit; 
+		andShow: [ :a :diff | 
+			a morph
+				title: 'Commit changes';
+				morph: [
+					IceCommitModel new 
+						model: diff;
+						buildWithSpec ] ].
 
 	self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'

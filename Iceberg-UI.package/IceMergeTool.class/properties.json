@@ -14,5 +14,5 @@
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"category" : "Iceberg-UI"
+	"category" : "Iceberg-UI-Model"
 }

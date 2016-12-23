@@ -16,7 +16,5 @@ compose
 			diff ifNotNil: [ 
 				diff announcer weak 
 					subscribe: IceChangeSetChanged 
-					do: (WeakMessageSend 
-						receiver: presentation 
-						selector: #selection: 
-						arguments: {nil}) ] ]
+					send: #execute:
+					to: (IceChangesTreeResetSelectionHelper for: presentation) ] ]

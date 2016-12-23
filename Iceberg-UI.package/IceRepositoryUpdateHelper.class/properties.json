@@ -1,12 +1,12 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "Object",
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-Utils",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"table"
+		"presentation"
 	],
 	"name" : "IceRepositoryUpdateHelper",
 	"type" : "normal"

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 8/3/2016 17:51",
 	"super" : "ComposableModel",
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

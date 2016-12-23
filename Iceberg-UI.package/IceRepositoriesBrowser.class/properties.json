@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 7/24/2016 20:12",
 	"super" : "IceTool",
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -18,7 +18,7 @@ composeRepositories: repositories in: composite
 	
 	Iceberg announcer weak 
 		subscribe: IceRepositoryCreated 
-		send: #updateOn:
+		send: #execute:
 		to: (IceRepositoryUpdateHelper for: table).
 
 	table		

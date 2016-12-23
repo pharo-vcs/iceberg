@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "ComposableModel",
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

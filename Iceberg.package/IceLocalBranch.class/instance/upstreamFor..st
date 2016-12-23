@@ -1,5 +1,6 @@
 private
 upstreamFor: aRemote
 	^ IceRemoteBranch 
-		named: 'refs/remotes/', aRemote remoteName, '/', self name 
+		remoteName: aRemote remoteName
+		branchName: self name
 		inRepository: self repository

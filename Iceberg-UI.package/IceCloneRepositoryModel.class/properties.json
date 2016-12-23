@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 8/3/2016 18:44",
 	"super" : "IceCreateRepositoryModel",
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

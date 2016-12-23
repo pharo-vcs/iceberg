@@ -1,5 +1,5 @@
 executing
-updateOn: ann
-	table 
+execute: ann
+	self presentation
 		updateOn: IceRepositoryAnnouncement 
 		from: [ ann repository announcer weak ]
