@@ -1,4 +1,4 @@
-utilities
+private utilities
 synchronize: repository
 	"This hack is a workaround because port #strongSelection of glamour generates multiple events for a single double-click."
 	(lastSynchronization isNil 

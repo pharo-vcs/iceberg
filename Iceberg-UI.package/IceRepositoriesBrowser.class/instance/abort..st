@@ -1,4 +1,4 @@
-utilities
+private utilities
 abort: message
 	self uiManager
 		abort: message
