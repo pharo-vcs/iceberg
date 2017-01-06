@@ -12,7 +12,6 @@ addRepositoryRemotesTo: composite
 		
 	"actions"
 	remotes addAction: self remoteAdd.
-	
 	"selection actions"
 	remotes 
 		addSelectionAction: self remoteMakePulling;
