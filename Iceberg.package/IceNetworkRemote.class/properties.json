@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 11/18/2016 13:39",
+	"super" : "IceRemote",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"host",
-		"owner" ],
+		"owner"
+	],
 	"name" : "IceNetworkRemote",
-	"pools" : [
-		 ],
-	"super" : "IceRemote",
-	"type" : "normal" }
+	"type" : "normal"
+}

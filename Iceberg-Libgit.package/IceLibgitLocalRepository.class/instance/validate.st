@@ -1,3 +1,3 @@
-initialize
+initialization
 validate
 	"TODO"

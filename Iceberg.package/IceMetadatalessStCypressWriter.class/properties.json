@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "IceMetadatalessStCypressWriter",
-	"pools" : [
-		 ],
 	"super" : "MCFileTreeStCypressWriter",
-	"type" : "normal" }
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetadatalessStCypressWriter",
+	"type" : "normal"
+}
