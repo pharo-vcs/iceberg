@@ -1,0 +1,3 @@
+patches
+repositoryProperties
+	^ self defaultRepositoryProperties
