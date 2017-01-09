@@ -1,3 +1,3 @@
 accessing
 treeTitle
-	^ treeTitle ifNil: [ 'Changes' ]
+	^ treeTitle

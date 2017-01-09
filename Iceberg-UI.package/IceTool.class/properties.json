@@ -1,13 +1,16 @@
 {
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
 	"classtraitcomposition" : "TIceTool classTrait",
-	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceTool",
+	"classvars" : [
+		 ],
 	"commentStamp" : "NicoPasserini 9/2/2016 15:26",
+	"instvars" : [
+		 ],
+	"name" : "IceTool",
+	"pools" : [
+		 ],
 	"super" : "GLMCompositePresentation",
 	"traitcomposition" : "TIceTool",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "Iceberg-UI-View"
-}
+	"type" : "normal" }
