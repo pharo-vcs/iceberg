@@ -1,9 +1,9 @@
 {
 	"category" : "Iceberg-UI-Model",
 	"classinstvars" : [
-		 ],
+		"modelCache" ],
 	"classvars" : [
-		"ModelCache" ],
+		 ],
 	"commentStamp" : "",
 	"instvars" : [
 		"entity",
