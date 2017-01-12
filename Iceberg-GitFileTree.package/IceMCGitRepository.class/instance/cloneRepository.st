@@ -6,7 +6,7 @@ cloneRepository
 		in: self repositoryDirectory parent
 		execute: {
 			'clone'.
-			branch notNil ifTrue: {'-b'. branch}.
+			branch ifNotNil: [ {'-b'. branch} ].
 			"(readonly ifNil: false) ifTrue: {'--depth'. '1'}."
 			remoteUrl.
 			self repositoryDirectory basename
