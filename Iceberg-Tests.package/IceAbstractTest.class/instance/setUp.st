@@ -1,6 +1,7 @@
 running
 setUp
 	super setUp.
+	IceAbstractModel subclassesDo: #clearModels.
 	
 	projectName := 'pharo-git-test'.
 	packageName :=  'Pharo-Git-Test'.

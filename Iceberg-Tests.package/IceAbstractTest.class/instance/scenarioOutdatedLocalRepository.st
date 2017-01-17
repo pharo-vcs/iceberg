@@ -22,6 +22,7 @@ scenarioOutdatedLocalRepository
 
 	"Excercise"
 	repository := IceRepositoryCreator new
-		url: origin; 
+		url: self scpOriginUrl;
 		location: self absoluteLocation;
+		branchName: 'forBecomeWritable';
 		createRepository

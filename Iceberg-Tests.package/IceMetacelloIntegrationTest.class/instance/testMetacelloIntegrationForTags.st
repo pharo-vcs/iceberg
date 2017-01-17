@@ -20,3 +20,4 @@ testMetacelloIntegrationForTags
 		self assert: package incomingCommits isEmpty.
 		self assert: package outgoingCommits isEmpty 
 	].
+

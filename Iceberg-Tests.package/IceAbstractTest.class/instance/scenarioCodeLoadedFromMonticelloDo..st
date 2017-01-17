@@ -3,10 +3,10 @@ scenarioCodeLoadedFromMonticelloDo: testActions
 	| mcRepository lastEntry lastVersion |
 	
 	mcRepository := MCSmalltalkhubRepository
-	owner: 'NicoPasserini'
-	project: 'IcebergTest'
-	user: ''
-	password: ''.
+		owner: 'NicoPasserini'
+		project: 'IcebergTest'
+		user: ''
+		password: ''.
 	
 	lastEntry := (mcRepository allFileNames select: [:entry | entry beginsWith: 'Pharo-Git-Test' ]) last.	
 
