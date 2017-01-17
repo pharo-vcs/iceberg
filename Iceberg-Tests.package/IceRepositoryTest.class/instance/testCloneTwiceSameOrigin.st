@@ -10,6 +10,11 @@ testCloneTwiceSameOrigin
 			secondRepo forget. "Clean up in case register does not throw the expected exception."
 		]
 		raise: IceDuplicatedRepository.
+
+	"Now try at a different location"
+	secondRepo := IceRepositoryCreator new 
+		url: origin;
+		location: self absoluteLocation;
+		createRepository.
 	
-	secondRepo backend location: self absoluteLocation.
 	[ secondRepo register ] ensure: [ secondRepo forget ]
