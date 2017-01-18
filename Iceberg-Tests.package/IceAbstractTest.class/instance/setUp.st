@@ -2,6 +2,7 @@ running
 setUp
 	super setUp.
 	IceAbstractModel subclassesDo: #clearModels.
+	Smalltalk garbageCollect. "Force weaks to be cleaned"
 	
 	projectName := 'pharo-git-test'.
 	packageName :=  'Pharo-Git-Test'.
