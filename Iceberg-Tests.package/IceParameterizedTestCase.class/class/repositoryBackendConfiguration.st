@@ -1,3 +1,3 @@
 configurations
 repositoryBackendConfiguration
-	^ IceTestParameter withOptions: { IceLibgitLocalRepository } "TIceRepositoryBackend traitUsers"
+	^ IceTestParameter withOptions: { IceMCGitRepository } "TIceRepositoryBackend traitUsers"
