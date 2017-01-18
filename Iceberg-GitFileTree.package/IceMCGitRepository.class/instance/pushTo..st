@@ -5,6 +5,6 @@ pushTo: aRemote
 		self upstream ifNil: [{
 			'--set-upstream'.
 			aRemote remoteName.
-			self branch
+			self branch name
 		}]
 	}] on: MCFileTreeGitError do: [ YouShouldPullBeforePush signal ]
