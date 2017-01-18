@@ -7,5 +7,5 @@ cleanUp
 		select: [:repo | repo origin url endsWith: projectName, '.git'])
 		do: [ :repo | 
 			repo forget.
-			Transcript logCr: ('Warning {1} left a registered repository' format: {self}) 
-		]
+			repo location ensureDeleteAll.
+			Transcript logCr: ('Warning {1} left a registered repository' format: {self}) ].
