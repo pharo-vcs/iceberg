@@ -1,12 +1,15 @@
 *Iceberg-Adapters
 getOrCreateIcebergRepository
-	| origin |
-	origin := self scpUrl.
+	| remoteUrl remote |
+
+	remoteUrl := self perform: Iceberg remoteTypeSelector.
+	remote := IceRemote url: remoteUrl.
 	^ IceRepository registry 
-		detect: [ :repo | repo origin url = origin ]
+		detect: [ :repo | repo origin isSameUrl: remote ]
 		ifNone: [
-			(IceRepository origin: self scpUrl) 
-				subdirectory: self repoPath;
-				checkoutBranch: self projectVersion; 
-				register;
-				yourself ]
+			(IceRepositoryCreator new 
+				url: remoteUrl;
+				subdirectory: repoPath;
+				branchName: self projectVersion;
+				createRepository)
+				register ]

@@ -1,8 +1,0 @@
-initialization
-initialize
-	incommingCommits := (IceCachedValue for: [ self entity incommingCommits ])
-		invalidateOn: IceRepositoryAnnouncement from: self repository announcer.
-		
-	outgoingCommits := (IceCachedValue for: [ self entity outgoingCommits ])
-		invalidateOn: IceRepositoryAnnouncement from: self repository announcer.
-	

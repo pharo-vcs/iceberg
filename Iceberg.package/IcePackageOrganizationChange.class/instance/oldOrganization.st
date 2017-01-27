@@ -1,3 +1,3 @@
 accessing
 oldOrganization
-	^ oldOrganization
+	^ oldOrganization ifNil: #()

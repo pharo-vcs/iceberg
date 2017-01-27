@@ -1,4 +1,6 @@
 updating
 update
-	{ self. LGitRepository. MCFileTreeGitRepository } 
-		do: [:class | class package iceRepository pull ]
+	{ #Iceberg. #LGitRepository. #MCFileTreeGitRepository } 
+		do: [:className | 
+			Smalltalk at: className ifPresent: [ :class |
+				class package iceRepository pull ]]

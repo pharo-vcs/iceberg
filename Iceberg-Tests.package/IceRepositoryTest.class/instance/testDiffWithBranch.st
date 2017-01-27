@@ -5,7 +5,9 @@ testDiffWithBranch
 	
 	diff := repository headCommit diffWith: repository currentBranch upstream.
 
-	self assert: diff changes notEmpty.
+	change := diff elements 
+		detect: [ :pkg | pkg changes notEmpty ]
+		ifFound: [ :pkg | pkg changes first ]
+		ifNone: [ self fail ].
 	
-	change := diff changes first.
 	self assert: change targetClass equals: (Smalltalk at: #Test)

@@ -1,3 +1,0 @@
-patches
-fileUtils
-	^ IceLibgitFileUtils current

@@ -1,0 +1,3 @@
+actions
+createNewBranch
+	self createNewBranchThen: []

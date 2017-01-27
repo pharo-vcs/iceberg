@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 7/24/2016 20:12",
+	"instvars" : [
+		"lastSynchronization" ],
+	"name" : "IceRepositoriesBrowser",
+	"pools" : [
+		 ],
+	"super" : "IceTool",
+	"type" : "normal" }

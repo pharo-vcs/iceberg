@@ -1,3 +1,8 @@
 printing
 printOn: aStream
-	aStream nextPutAll: targetClass className
+	aStream 
+		print: self class;
+		nextPut: $(;
+		nextPutAll: targetClass description;
+		nextPut: $)
+		

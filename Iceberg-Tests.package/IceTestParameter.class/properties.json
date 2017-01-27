@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/21/2016 19:37",
+	"instvars" : [
+		"options" ],
+	"name" : "IceTestParameter",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

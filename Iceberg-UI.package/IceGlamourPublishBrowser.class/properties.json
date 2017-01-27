@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"announcer" ],
+	"name" : "IceGlamourPublishBrowser",
+	"pools" : [
+		 ],
+	"super" : "IceEmbeddedBrowser",
+	"type" : "normal" }

@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"treeTitle" ],
+	"name" : "IceGlamourChangesTree",
+	"pools" : [
+		 ],
+	"super" : "GLMCompositePresentation",
+	"type" : "normal" }

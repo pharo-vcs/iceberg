@@ -1,0 +1,15 @@
+{
+	"category" : "Iceberg-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/29/2016 11:10",
+	"instvars" : [
+		"testParameters",
+		"oldShareRepositoriesBetweenImages" ],
+	"name" : "IceParameterizedTestCase",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

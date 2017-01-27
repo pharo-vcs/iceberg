@@ -1,3 +1,3 @@
-as yet unclassified
+querying
 repositoryVersionString
 	^ self repository headCommit id

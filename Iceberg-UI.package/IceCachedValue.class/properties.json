@@ -1,0 +1,17 @@
+{
+	"category" : "Iceberg-UI-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		"ModelCache" ],
+	"commentStamp" : "",
+	"instvars" : [
+		"lastUpdated",
+		"updating",
+		"value",
+		"updateAction" ],
+	"name" : "IceCachedValue",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

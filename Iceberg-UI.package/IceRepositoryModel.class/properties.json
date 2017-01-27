@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceRepositoryModel",
+	"pools" : [
+		 ],
+	"super" : "IceAbstractModel",
+	"type" : "normal" }

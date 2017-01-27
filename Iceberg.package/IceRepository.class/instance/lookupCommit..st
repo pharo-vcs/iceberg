@@ -1,5 +1,5 @@
 private
 lookupCommit: commitId
-	^ self repository newCommitWalk 
+	^ self backend newCommitWalk 
 		fromCommitId: commitId; 
 		firstCommit

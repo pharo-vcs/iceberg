@@ -1,1 +1,0 @@
-Adaptation of a MCFileTreeGitWriter for Iceberg needs. Base for a future clean implementation of a cypress metadataless writer.

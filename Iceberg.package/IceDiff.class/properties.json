@@ -7,7 +7,6 @@
 	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
 	"instvars" : [
 		"repository",
-		"changes",
 		"theirVersion",
 		"myVersion" ],
 	"name" : "IceDiff",

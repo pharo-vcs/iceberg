@@ -1,0 +1,3 @@
+accessing
+sharedRepositoriesLocationString
+	^ self sharedRepositoriesLocation fullName

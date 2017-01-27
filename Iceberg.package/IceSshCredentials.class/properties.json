@@ -1,0 +1,17 @@
+{
+	"category" : "Iceberg-Security",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 11/22/2016 14:34",
+	"instvars" : [
+		"username",
+		"publicKey",
+		"privateKey",
+		"keyPassphrase" ],
+	"name" : "IceSshCredentials",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

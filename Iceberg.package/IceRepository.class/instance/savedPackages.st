@@ -1,3 +1,3 @@
 querying
 savedPackages
-	^ (savedPackages ifNil: [ self loadSavedPackages ]) values
+	^ self savedPackagesDictionary values

@@ -1,0 +1,3 @@
+configurations
+repositoryBackendConfiguration
+	^ TIceRepositoryBackend traitUsers

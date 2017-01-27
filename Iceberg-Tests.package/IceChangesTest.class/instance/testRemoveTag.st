@@ -1,14 +1,16 @@
 tests
 testRemoveTag
-	| package packageChangeSet |
+	| package tag packageChangeSet |
 	
 	"Prepare"
 	repository loadPackage: packageName.
 	package := RPackageOrganizer default packageNamed: packageName.
-	package addClassTag: 'NewTag'.
-	repository savePackage: packageName withMessage: 'for #testRemoveTag'.
+	tag := package addClassTag: 'NewTag'.
+	Object subclass: #ForTestRemoveTag  instanceVariableNames: '' classVariableNames: '' category: tag categoryName.
+	repository commitWithMessage: 'for #testRemoveTag'.
 	
 	package removeClassTag: 'NewTag'.
+	repository register.
 	
 	"Asserts"
 	packageChangeSet := (IceDiff forRepository: repository) elements 

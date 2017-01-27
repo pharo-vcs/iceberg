@@ -1,3 +1,5 @@
 auxiliar
 createTestRepository: aRemoteRepository
-	^ IceRepository origin: aRemoteRepository.
+	^ IceRepositoryCreator new
+	 	url: aRemoteRepository;
+		createRepository.

@@ -1,3 +1,3 @@
 accessing
 subdirectory
-	^ subdirectory
+	^ self backend subdirectory

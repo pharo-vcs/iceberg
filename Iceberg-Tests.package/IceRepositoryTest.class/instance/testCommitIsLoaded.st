@@ -15,7 +15,7 @@ testCommitIsLoaded
 	repository checkoutBranch: 'master'.
 	
 	"1.3 - Some verifications before excersising"
-	self assert: repository incommingCommits size equals: 1.
+	self assert: repository incomingCommits size equals: 1.
 	self assert: (self currentCommitMessage endsWith: (loadedVersionNumber + 1) asString).
 	self deny: loadedVersion commit id = self currentCommitId.
 	self assert: (repository latestVersion: packageName) commit id equals: self currentCommitId.
@@ -24,8 +24,8 @@ testCommitIsLoaded
 	repository updatePackage: packageName.
 	
 	"3. Verify"
-	"3.1 - There shouldn't be more incomming commits"
-	self assert: repository incommingCommits size equals: 0.
+	"3.1 - There shouldn't be more incoming commits"
+	self assert: repository incomingCommits size equals: 0.
 
 	"3.2 - The newly loaded commit should correspond to the loaded version / working copy"
 	loadedVersion := (repository packageNamed: packageName) latestVersion load.

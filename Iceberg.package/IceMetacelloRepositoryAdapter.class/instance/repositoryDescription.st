@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 repositoryDescription
 	^ self repository description
