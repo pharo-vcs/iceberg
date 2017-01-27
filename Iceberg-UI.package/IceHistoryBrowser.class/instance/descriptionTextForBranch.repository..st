@@ -1,4 +1,4 @@
-building
+private accessing
 descriptionTextForBranch: aBranch repository: repo
 	| text |
 	

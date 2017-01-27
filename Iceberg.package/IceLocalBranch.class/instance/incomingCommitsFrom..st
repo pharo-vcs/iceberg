@@ -1,3 +1,5 @@
 commits
 incomingCommitsFrom: aRemote 
-	^ (self upstreamFor: aRemote) commitsNotIn: self
+	^ (self upstreamFor: aRemote) 
+		ifNotNil: [ :remoteUpstream | remoteUpstream commitsNotIn: self ]
+		ifNil: [ #() ]
