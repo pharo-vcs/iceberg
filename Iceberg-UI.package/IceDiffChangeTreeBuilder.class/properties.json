@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"instvars" : [
-		"treeTitle" ],
-	"name" : "IceGlamourChangesTree",
+		"diff" ],
+	"name" : "IceDiffChangeTreeBuilder",
 	"pools" : [
 		 ],
-	"super" : "GLMCompositePresentation",
+	"super" : "Object",
 	"type" : "normal" }

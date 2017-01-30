@@ -16,7 +16,9 @@ composeBrowserOn: browser
 		to: #changes; 
 		transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
 				selectedCommit diffWith: (repository mergeBaseWith: selectedCommit) ]];
-		andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incoming changes') ].
+		andShow: [ :a :diff | 
+			(IceDiffChangeTreeBuilder diff: diff buildOn: a)
+				title: 'Incoming changes' ].
 
 	self addDiffTo: browser.
 	self addCommitInfoTo: browser 

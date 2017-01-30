@@ -9,8 +9,9 @@ composeBrowserOn: browser
 
 	browser transmit 
 		to: #changes; 
- 		andShow: [ :a | 
-			a custom: (IceGlamourChangesTree withTitle: 'Local changes') ].
+ 		andShow: [ :a :diff |
+			(IceDiffChangeTreeBuilder diff: diff buildOn: a)
+				title: 'Local changes' ].
 
 	browser transmit 
 		to: #commit; 

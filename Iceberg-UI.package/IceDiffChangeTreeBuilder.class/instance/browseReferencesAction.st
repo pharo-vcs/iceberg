@@ -1,4 +1,4 @@
-action creators
+actions
 browseReferencesAction
 	^ GLMGenericAction new
 		action: [ :presentation | presentation selection browseReferences ];
