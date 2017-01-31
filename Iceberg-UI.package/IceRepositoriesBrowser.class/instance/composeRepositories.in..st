@@ -40,9 +40,6 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self refreshRepository;
 		addSelectionAction: self inspectRepository;
 		addSelectionAction: self forgetRepository;
-		"Plugin actions"
-		dynamicActionsOnSelection: [ :presentation | 
-			presentation selection pluginActions ];
 		"Double click action"
 		onChangeOfPort: #strongSelection act: [ :presentation | 
 			self synchronize: presentation selection repository ]
