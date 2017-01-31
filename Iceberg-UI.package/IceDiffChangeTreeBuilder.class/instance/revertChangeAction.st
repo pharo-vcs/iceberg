@@ -1,8 +1,8 @@
 actions
 revertChangeAction
 	^ GLMGenericAction new
-		action: [ :presentation :entity | entity revertChange: presentation selection ];
-		condition: [ :presentation :entity | entity canRevertChanges ];
+		action: [ :presentation | self entity revertChange: presentation selection ];
+		condition: [ self entity canRevertChanges ];
 		icon: #glamorousUndo asIcon;
 		title: 'Revert change'; 
 		showTitle

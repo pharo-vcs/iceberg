@@ -14,10 +14,11 @@ composeBrowserOn: browser
 		fromOutsideEntityPort;
 		from: #commits; 
 		to: #changes; 
-		transformed: [ :repository :selectedCommit | 
-			selectedCommit ifNotNil: [ selectedCommit diffWith: repository currentBranch upstream ]];
-		andShow: [ :a :diff | 
-			(IceDiffChangeTreeBuilder diff: diff buildOn: a)
+		andShow: [ :a :repo :commitInfo | 
+			(IceDiffChangeTreeBuilder new
+				entity: commitInfo; 
+				diff: (commitInfo ifNotNil: [ commitInfo diffWith: repo currentBranch upstream ]);
+				buildOn: a)
 				title: 'Incoming changes' ].
 
 	self addDiffTo: browser.

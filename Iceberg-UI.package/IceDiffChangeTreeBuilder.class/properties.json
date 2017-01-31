@@ -6,6 +6,7 @@
 		 ],
 	"commentStamp" : "<historical>",
 	"instvars" : [
+		"entity",
 		"diff" ],
 	"name" : "IceDiffChangeTreeBuilder",
 	"pools" : [

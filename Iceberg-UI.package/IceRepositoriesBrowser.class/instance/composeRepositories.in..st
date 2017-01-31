@@ -26,7 +26,6 @@ composeRepositories: repositories in: composite
 		addAction: self createRepository;
 		addAction: self createLocalRepository;
 		addAction: self fetchAllRepositories;
-		
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepository;
 		addSelectionAction: self showHistory;
@@ -41,6 +40,9 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self refreshRepository;
 		addSelectionAction: self inspectRepository;
 		addSelectionAction: self forgetRepository;
-		
+		"Plugin actions"
+		dynamicActionsOnSelection: [ :presentation | 
+			presentation selection pluginActions ];
 		"Double click action"
-		onChangeOfPort: #strongSelection act: [ :presentation | self synchronize: presentation selection repository ]
+		onChangeOfPort: #strongSelection act: [ :presentation | 
+			self synchronize: presentation selection repository ]
