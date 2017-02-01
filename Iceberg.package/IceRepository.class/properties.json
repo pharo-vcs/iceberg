@@ -17,7 +17,8 @@
 		"savedPackages",
 		"upstream",
 		"commitDictionary",
-		"loadedCode" ],
+		"loadedCode",
+		"plugins" ],
 	"name" : "IceRepository",
 	"pools" : [
 		 ],
