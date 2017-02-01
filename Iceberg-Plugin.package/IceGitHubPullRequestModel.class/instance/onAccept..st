@@ -1,3 +1,3 @@
-accessing
+events
 onAccept: aBlock
 	acceptBlock := aBlock

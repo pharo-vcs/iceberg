@@ -1,18 +1,17 @@
 initialization
 initializePresenter
-	| currentBranch branches |
+	| currentBranch  |
 	
 	super initializePresenter.
-	branches := self repository allBranches select: #isRemote.
-	currentBranch := branches detect: [ :each | 
+	currentBranch := self branches detect: [ :each | 
 		each remoteName = repository pushRemote remoteName
 		and: [ each basename = repository currentBranch basename ] ]. 
 	self titlePanel text: currentBranch basename.
 	self headPanel
-		items: branches;
+		items: self branches;
 		displayBlock: [ :branch | branch name ];
 		setSelectedItem: currentBranch.
 	self basePanel
-		items: branches;
+		items: self branches;
 		displayBlock: [ :branch | branch name ];
-		setSelectedItem: (branches detect: [ :each | each ~= currentBranch ])
+		setSelectedItem: (self branches detect: [ :each | each ~= currentBranch ])

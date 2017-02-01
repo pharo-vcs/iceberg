@@ -16,7 +16,8 @@
 		"bodyLabel",
 		"bodyPanel",
 		"addButton",
-		"acceptBlock" ],
+		"acceptBlock",
+		"branches" ],
 	"name" : "IceGitHubPullRequestModel",
 	"pools" : [
 		 ],
