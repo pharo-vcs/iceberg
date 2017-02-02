@@ -8,11 +8,6 @@ accept
 		^ self ].
 	
 	acceptBlock ifNotNil: [ 
-		acceptBlock cull: (IceGitHubPullRequest new 
-			title: title;
-			head: self headPanel selectedItem;
-			base: self basePanel selectedItem;
-			body: self bodyPanel text trim;
-			yourself)	 ].
+		acceptBlock cull: self createPullRequest ].
 	
 	self window delete.

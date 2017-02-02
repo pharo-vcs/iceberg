@@ -3,9 +3,11 @@ initializeWidgets
 	titleLabel := self newLabel.
 	titlePanel := self newTextInput.
 	headLabel := self newLabel.
-	headPanel := self newDropList.
+	headForkList := self newDropList.
+	headBranchList := self newDropList.
 	baseLabel := self newLabel.
-	basePanel := self newDropList.
+	baseForkList := self newDropList.
+	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
 	bodyPanel := self newText.
 	addButton := self newButton.
@@ -19,7 +21,9 @@ initializeWidgets
 	
 	self focusOrder 
 		add: titlePanel;
-		add: headPanel;
-		add: basePanel;
+		add: headForkList;
+		add: headBranchList;
+		add: baseForkList;
+		add: baseBranchList;
 		add: bodyPanel;
 		add: addButton

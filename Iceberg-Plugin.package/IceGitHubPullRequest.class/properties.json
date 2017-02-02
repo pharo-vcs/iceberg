@@ -6,9 +6,12 @@
 		 ],
 	"commentStamp" : "<historical>",
 	"instvars" : [
+		"credentials",
 		"title",
-		"base",
-		"head",
+		"baseRemote",
+		"headRemote",
+		"baseBranchName",
+		"headBranchName",
 		"body" ],
 	"name" : "IceGitHubPullRequest",
 	"pools" : [
