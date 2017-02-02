@@ -7,5 +7,5 @@ createPullRequest
 		headBranchName: self headBranchList selectedItem;
 		baseRemote: self baseForkList selectedItem;
 		baseBranchName: self baseBranchList selectedItem;
-		body: self bodyPanel text trim;
+		body: self bodyPanel text asString trim;
 		yourself

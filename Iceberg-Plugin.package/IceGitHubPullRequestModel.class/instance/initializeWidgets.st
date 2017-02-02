@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	titleLabel := self newLabel.
-	titlePanel := self newTextInput.
+	titlePanel := self newTextInput autoAccept: true.
 	headLabel := self newLabel.
 	headForkList := self newDropList.
 	headBranchList := self newDropList.
@@ -9,7 +9,7 @@ initializeWidgets
 	baseForkList := self newDropList.
 	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
-	bodyPanel := self newText.
+	bodyPanel := self newText autoAccept: true.
 	addButton := self newButton.
 		
 	titleLabel label: 'Title'.
