@@ -9,7 +9,7 @@ initializePresenter
 	self headBranchList 
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self currentBranch basename.
+		setSelectedItem: self defaultHeadBranchName.
 	self baseForkList
 		items: self availableRemotes;
 		displayBlock: [ :each | each owner, '/', each projectName ];
