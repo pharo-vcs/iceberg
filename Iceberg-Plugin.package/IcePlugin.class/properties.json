@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Plugin-Base",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		 ],
+	"name" : "IcePlugin",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

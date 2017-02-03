@@ -1,6 +1,6 @@
 actions
 accept
-	| remoteName remoteUrl remote |
+	| remoteName remoteUrl |
 	
 	remoteName := self namePanel text trim.
 	remoteName ifEmpty: [ 
