@@ -2,9 +2,9 @@ action creators
 pullAction
 	^ GLMGenericAction new
 		action: [ :presentation :repository | 
-			repository pullFrom: repository pullRemote.
+			repository pull.
 			presentation update ];
-		icon: GLMUIThemeExtraIcons glamorousLeftSide;
+		icon: #glamorousLeftSide asIcon;
 		shortcut: $p;
 		title: 'Pull'; 
 		showTitle

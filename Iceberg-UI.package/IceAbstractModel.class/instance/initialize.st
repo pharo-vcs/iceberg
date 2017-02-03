@@ -4,11 +4,11 @@ initialize
 	 with weak announcements (they will remain forever)... so we change them for 
 	 WeakMessageSend instances to avoid problems"
 	incomingCommits := (IceCachedValue
-		for: (WeakMessageSend receiver: self selector: #obtainIncomingCommits))
+		for: (WeakMessageSend receiver: self entity selector: #incomingCommitsFromDefinedRemote))
 			invalidateOn: IceRepositoryAnnouncement 
 			from: self repository announcer.
 	
 	outgoingCommits := (IceCachedValue
-		for: (WeakMessageSend receiver: self selector: #obtainOutgoingCommits))
+		for: (WeakMessageSend receiver: self entity selector: #outgoingCommitsToDefinedRemote))
 			invalidateOn: IceRepositoryAnnouncement 
 			from: self repository announcer
