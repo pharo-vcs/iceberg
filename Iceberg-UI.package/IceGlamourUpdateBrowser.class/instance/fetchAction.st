@@ -2,7 +2,7 @@ action creators
 fetchAction
 	^ GLMGenericAction new
 		action: [ :presentation :repository | 
-			repository fetch.
+			repository fetchFrom: repository pullRemote.
 			presentation update ];
 		icon: GLMUIThemeExtraIcons glamorousLeftSide;
 		shortcut: $f;
