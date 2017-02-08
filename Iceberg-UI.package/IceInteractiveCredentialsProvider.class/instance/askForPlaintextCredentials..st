@@ -18,4 +18,4 @@ askForPlaintextCredentials: response
 		centered;
 		modalRelativeTo: World.
 
-	cancelled ifTrue: [ IceNoCredentialsProvided signal ]
+	cancelled ifTrue: [ LGitNoCredentialsProvided signal ]
