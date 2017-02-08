@@ -1,3 +1,5 @@
 accessing
 sshCredentialsClass
-	^ SshCredentialsClass ifNil: [ SshCredentialsClass := self defaultCredentialClass ]
+	self useCustomSsh ifTrue: [ ^ LGitCredentialsSSH ].
+	^ LGitCredentialsSSHAgent
+	
