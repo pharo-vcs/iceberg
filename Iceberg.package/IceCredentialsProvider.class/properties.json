@@ -5,7 +5,8 @@
 	"classvars" : [
 		"PlaintextCredentials",
 		"ProviderType",
-		"SshCredentials" ],
+		"SshCredentials",
+		"SshCredentialsClass" ],
 	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
 	"instvars" : [
 		"tries" ],
