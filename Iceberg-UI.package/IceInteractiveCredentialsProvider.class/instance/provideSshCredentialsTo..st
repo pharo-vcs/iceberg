@@ -6,6 +6,6 @@ provideSshCredentialsTo: credentials
 		Transcript show: 'aborting'; cr.
 		LGitNoCredentialsProvided signal: 'There where already three failed attempts, aborting' ].
 	
-	tries = 1 & self plaintextCredentials isPresent
+	tries = 1 & self sshCredentials isPresent
 		ifTrue: [ credentials readFrom: self sshCredentials ]
 		ifFalse: [ self askForSshCredentials: credentials ].
