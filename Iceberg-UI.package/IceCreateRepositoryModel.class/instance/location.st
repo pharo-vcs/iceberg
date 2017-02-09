@@ -1,3 +1,3 @@
 accessing
 location
-	^ location value
+	^ localDirectoryLocation location

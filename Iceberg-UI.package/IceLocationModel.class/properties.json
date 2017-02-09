@@ -1,0 +1,18 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"locationLabel",
+		"locationInput",
+		"chooseButton",
+		"label",
+		"chooseTitle" ],
+	"name" : "IceLocationModel",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

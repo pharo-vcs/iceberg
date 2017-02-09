@@ -1,8 +1,8 @@
 actions
 askForPlaintextCredentials: response
 	| model cancelled |
+	
 	cancelled := false.
-
 	(model := IceAskForPlaintextCredentialsModel new)
 		openDialogWithSpec
 		okAction: [
