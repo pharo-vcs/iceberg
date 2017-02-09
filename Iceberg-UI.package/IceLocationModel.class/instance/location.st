@@ -1,3 +1,5 @@
 accessing
 location
-	^ locationInput text asFileReference
+	^ locationInput text trim 
+		ifNotEmpty: [ :value | value asFileReference ]
+		ifEmpty: [ nil ]
