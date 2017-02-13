@@ -12,6 +12,7 @@ initializeWidgets
 	
 	createButton 
 		label: 'Create';
+		icon: #add asIcon;
 		action: [ self createBranch ].	
 	
 	self focusOrder 
