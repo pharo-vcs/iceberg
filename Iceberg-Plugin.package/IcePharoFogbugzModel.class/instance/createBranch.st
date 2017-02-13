@@ -6,4 +6,4 @@ createBranch
 		issueNumberText text trim. 
 		issueText text trim }.
 	acceptBlock ifNotNil: [ acceptBlock value: branchName ].
-	window delete.
+	window value delete.
