@@ -1,8 +1,8 @@
 actions
 askForPlaintextCredentials: response
 	| model cancelled |
+	
 	cancelled := false.
-
 	(model := IceAskForPlaintextCredentialsModel new)
 		openDialogWithSpec
 		okAction: [
@@ -18,4 +18,4 @@ askForPlaintextCredentials: response
 		centered;
 		modalRelativeTo: World.
 
-	cancelled ifTrue: [ IceNoCredentialsProvided signal ]
+	cancelled ifTrue: [ LGitNoCredentialsProvided signal ]

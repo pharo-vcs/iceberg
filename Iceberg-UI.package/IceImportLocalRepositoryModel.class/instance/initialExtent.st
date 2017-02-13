@@ -1,4 +1,4 @@
-initialization
+api
 initialExtent
 	^ (500@(
 		self class inputTextHeight * 2

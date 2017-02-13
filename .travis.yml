@@ -19,5 +19,6 @@ before_install:
 - mv iceberg_test.key ~/.ssh/id_rsa
 # Forcing the known host to have the github.com
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
+- ssh-add ~/.ssh/id_rsa
 - cat ~/.ssh/known_hosts
 - ssh -T git@github.com || echo "Ok"
