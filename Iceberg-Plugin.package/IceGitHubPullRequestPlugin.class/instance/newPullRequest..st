@@ -1,5 +1,5 @@
 actions
-newPullRequestFor: aRepository 
+newPullRequest: aRepository 
 	(self validateMakePullRequestOn: aRepository) ifFalse: [ ^ #() ].
 	
 	(IceGitHubPullRequestModel for: aRepository)

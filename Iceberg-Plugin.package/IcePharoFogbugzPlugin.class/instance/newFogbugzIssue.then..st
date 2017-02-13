@@ -1,5 +1,5 @@
 actions
-newFogbugzIssueFor: aRepository then: aBlock.
+newFogbugzIssue: aRepository then: aBlock.
 	IcePharoFogbugzModel new 
 		onAccept: [ :branchName | 
 			aRepository createBranch: branchName.
