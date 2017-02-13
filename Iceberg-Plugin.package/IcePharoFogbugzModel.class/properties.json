@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-Plugin-PharoDev",
+	"category" : "Iceberg-Plugin-Pharo-FogBugz",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"instvars" : [
 		"issueNumberText",
 		"issueText",
