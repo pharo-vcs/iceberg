@@ -1,4 +1,4 @@
-accessing
+private actions
 newPullRequestAction
 	^ GLMGenericAction new
 		action: [ :presenter | self newPullRequestFor: presenter selection repository ];

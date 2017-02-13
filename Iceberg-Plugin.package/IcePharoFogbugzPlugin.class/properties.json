@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Plugin-PharoDev",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IcePharoFogbugzPlugin",
+	"pools" : [
+		 ],
+	"super" : "IcePlugin",
+	"type" : "normal" }
