@@ -4,4 +4,4 @@ requestGitRepositoryInfo
 	remote := self repository pushRemote.
 	^ IceGitHubAPI new 
 		credentials: self credentials;
-		requestRepositoryFrom: remote owner project: remote projectName
+		requestRepository: remote owner project: remote projectName

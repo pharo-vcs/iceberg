@@ -1,3 +1,3 @@
 requesting
-requestRepositoryFrom: owner project: projectName
+requestRepository: owner project: projectName
 	^ self get: 'repos/', owner,'/', projectName

@@ -1,0 +1,15 @@
+{
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"list",
+		"item" ],
+	"name" : "IceGitHubSelectItem",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

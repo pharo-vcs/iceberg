@@ -1,3 +1,3 @@
 instance creation
 new
-	self error: 'Use #repository:'
+	self error: 'Use #repository:credentials:'
