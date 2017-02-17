@@ -1,0 +1,19 @@
+{
+	"category" : "Iceberg-UI-Model",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "TIceTool classTrait",
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 12/13/2016 11:44",
+	"instvars" : [
+		"onMerge",
+		"source",
+		"targetBranch",
+		"repository" ],
+	"name" : "IceMergeTool",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"traitcomposition" : "TIceTool",
+	"type" : "normal" }

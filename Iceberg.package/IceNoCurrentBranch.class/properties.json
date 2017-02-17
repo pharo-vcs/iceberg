@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceNoCurrentBranch",
+	"pools" : [
+		 ],
+	"super" : "IceError",
+	"type" : "normal" }

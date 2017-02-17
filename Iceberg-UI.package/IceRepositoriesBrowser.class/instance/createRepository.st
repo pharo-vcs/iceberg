@@ -2,6 +2,6 @@ actions - repositories list
 createRepository
 	^ GLMGenericAction new
 		action: [ :presentation | self class createRepository];
-		icon: GLMUIThemeExtraIcons glamorousAdd;
+		icon: #add asIcon;
 		shortcut: $c;
 		title: 'Clone new repository'; showTitle

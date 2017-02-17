@@ -1,6 +1,7 @@
 scenarios
 scenarioOutdatedLocalRepository
 	"Prepare 1 - Create an outdated local repository"
+	self absoluteLocation ensureDeleteAll.
 	IceGitCommand 
 		in: self absoluteLocation parent
 		execute: { 
@@ -15,9 +16,13 @@ scenarioOutdatedLocalRepository
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
 		  baseline: 'PharoGitTest';
-		  repository: 'github://npasserini/pharo-git-test';
+		  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
 		  load
 	].
 
 	"Excercise"
-	repository := IceRepository origin: origin location: self absoluteLocation.
+	repository := IceRepositoryCreator new
+		url: self scpOriginUrl;
+		location: self absoluteLocation;
+		branchName: 'forBecomeWritable';
+		createRepository

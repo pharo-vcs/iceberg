@@ -4,6 +4,6 @@ addPackageAction
 		action: [ :presentation :repo | 
 			self class addPackageToRepository: repo repository.
 			presentation update ];
-		icon: GLMUIThemeExtraIcons glamorousAdd;
+		icon: #add asIcon;
 		shortcut: $a;
 		title: 'Add package'; showTitle

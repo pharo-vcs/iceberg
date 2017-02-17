@@ -3,6 +3,6 @@ synchronizeRepository
 	^ GLMGenericAction new
 		selectionAction: #synchronize;
 		selectionCondition: #isOperative;
-		icon: GLMUIThemeExtraIcons glamorousBrowse;
+		icon: #glamorousBrowse asIcon;
 		shortcut: $s;
 		title: 'Synchronize repository...'; showTitle

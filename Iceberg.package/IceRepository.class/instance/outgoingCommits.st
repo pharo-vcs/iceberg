@@ -1,3 +1,3 @@
-commits
+querying
 outgoingCommits
-	^ self currentBranch outgoingCommits
+	^ self currentBranch outgoingCommits 

@@ -1,16 +1,11 @@
 *Iceberg-Core
-changesFileNamed: fileName 
-	^ self parents allSatisfy: [ :parent |
-		| selfTree parentTree diff |
-		[ 	
-			selfTree := self tree.
-			parentTree := parent tree.
-		
-			diff := (LGitDiff of: self repository)
-				diffTree: selfTree 
-				toTree: parentTree.
-		
-			diff includesFileNamed: fileName
-		] 
-		ensure: [ { diff. selfTree. parentTree} do: #free ]
-	]
+changesFileNamed: fileName
+	| lookup myVersion parentVersions |
+	lookup := [:commit | [ commit entryByPath: fileName ] on: Error do: [ nil ]].
+	myVersion := lookup value: self.
+	parentVersions := self parents collect: lookup.
+	
+	^ (myVersion 
+		ifNil: [ parentVersions includes: nil ]
+		ifNotNil: [ parentVersions anySatisfy: [ :version | 
+				version notNil and: [ version objectId = myVersion objectId ]]]) not

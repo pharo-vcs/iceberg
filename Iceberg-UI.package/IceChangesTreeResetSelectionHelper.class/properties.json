@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-Utils",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"presentation" ],
+	"name" : "IceChangesTreeResetSelectionHelper",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

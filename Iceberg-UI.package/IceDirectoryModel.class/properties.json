@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		 ],
+	"name" : "IceDirectoryModel",
+	"pools" : [
+		 ],
+	"super" : "IceLocationModel",
+	"type" : "normal" }

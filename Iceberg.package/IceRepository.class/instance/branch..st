@@ -1,4 +1,4 @@
 accessing
-branch: anIceBranch
-	branch := anIceBranch.
-	self refresh.
+branch: aBranch
+	self backend branch: aBranch.
+	self refresh

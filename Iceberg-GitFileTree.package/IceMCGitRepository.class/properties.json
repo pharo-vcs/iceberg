@@ -7,7 +7,8 @@
 		 ],
 	"commentStamp" : "NicoPasserini 5/23/2016 18:03",
 	"instvars" : [
-		"frontend" ],
+		"frontend",
+		"currentHead" ],
 	"name" : "IceMCGitRepository",
 	"pools" : [
 		 ],

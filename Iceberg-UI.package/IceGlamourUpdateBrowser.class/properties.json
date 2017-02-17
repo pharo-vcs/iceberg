@@ -1,5 +1,5 @@
 {
-	"category" : "Iceberg-UI",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -10,5 +10,5 @@
 	"name" : "IceGlamourUpdateBrowser",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractBrowser",
+	"super" : "IceEmbeddedBrowser",
 	"type" : "normal" }

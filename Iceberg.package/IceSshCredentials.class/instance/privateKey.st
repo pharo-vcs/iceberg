@@ -1,3 +1,3 @@
 accessing
 privateKey
-	^ privateKey ifNil: [ privateKey := (FileLocator home asFileReference / '.ssh' / 'id_rsa') pathString ]
+	^ privateKey ifNil: [ privateKey := self class defaultPrivateKey ]

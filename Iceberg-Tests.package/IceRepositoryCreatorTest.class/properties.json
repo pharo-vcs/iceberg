@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceRepositoryCreatorTest",
+	"pools" : [
+		 ],
+	"super" : "IceAbstractTest",
+	"type" : "normal" }

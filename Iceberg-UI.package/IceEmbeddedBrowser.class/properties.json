@@ -1,0 +1,14 @@
+{
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "IceEmbeddedBrowser",
+	"pools" : [
+		 ],
+	"super" : "IceAbstractBrowser",
+	"type" : "normal" }

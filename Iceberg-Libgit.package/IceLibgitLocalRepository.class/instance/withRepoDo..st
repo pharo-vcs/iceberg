@@ -1,4 +1,4 @@
-auxiliar
+private auxiliar
 withRepoDo: aBlock
 	LGitGlobal runSequence: [ 
 		| repo |

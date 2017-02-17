@@ -1,0 +1,20 @@
+{
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"credentials",
+		"title",
+		"baseRemote",
+		"headRemote",
+		"baseBranchName",
+		"headBranchName",
+		"body" ],
+	"name" : "IceGitHubPullRequest",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

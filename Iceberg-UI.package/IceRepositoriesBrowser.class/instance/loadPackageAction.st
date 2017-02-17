@@ -5,7 +5,7 @@ loadPackageAction
 			presentation selection loadLatest.
 			presentation update
 		]; 
-		icon: (Smalltalk ui icons iconNamed: #add);
+		icon: #add asIcon;
 		shortcut: $l; 
 		title: 'Load package'; 
 		condition: [ :presentation | presentation selection notNil and: [ presentation selection isLoaded not ]];

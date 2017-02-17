@@ -1,7 +1,8 @@
 building
 compose
 	(self custom: GLMStacker new) with: [ :browser |
-		browser updateOn: Announcement from: [ :repo | repo announcer ].
+		browser initialExtent: self initialExtent.
+		browser updateOn: Announcement from: [ :repo | repo announcer weak ].
 
 		browser aPane: #commit.
 		browser transmit 
@@ -22,6 +23,6 @@ compose
 		browser transmit 
 			to: #publish;
 			andShow: [ :a | a 
-				title: 'Publish'; 
+				title: 'Push'; 
 				custom: IceGlamourPublishBrowser new ].
 	]

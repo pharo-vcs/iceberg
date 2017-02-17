@@ -1,3 +1,3 @@
 actions
 fetch
-	self withRepoDo: [ :repo | repo origin fetch ]
+	self fetchFrom: self origin

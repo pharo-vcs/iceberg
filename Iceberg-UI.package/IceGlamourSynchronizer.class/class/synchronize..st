@@ -1,3 +1,3 @@
-as yet unclassified
+utilities
 synchronize: anIceRepository
-	self new openOn: anIceRepository
+	self new openOn: anIceRepository.

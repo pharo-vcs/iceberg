@@ -2,11 +2,9 @@ actions - selected repository
 push
 	^ GLMGenericAction new
 		action: [ :presentation | 
-			self 
-				pushRepository: presentation selection repository
-				andThen: [ presentation pane browser update ]];
+			presentation selection pushThen: [ presentation pane browser update ]];
 		selectionCondition: #canPush;
-		icon: GLMUIThemeExtraIcons glamorousRightSide;
+		icon: #glamorousRightSide asIcon;
 		showTitle: 'Push outgoing commits'; 
 		shortcut: $P; 
 		yourself

@@ -13,8 +13,6 @@ testBecomeWriteable
 	"Exercise"
 	writableRepository := self package iceRepository.
 	[
-		writableRepository ensureLocalRepository.
-
 		"Test"
 		self assert: self defaultLocationForGithubClonedRepository exists.
 		self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.

@@ -1,13 +1,18 @@
 actions
 createRepository
-	self location ifNil: [ UIManager default
+	self location ifNil: [ 
+		UIManager default 
 			abort: 'Please select a repository location'
-			title: 'Could not create repository' ].
+			title: 'Could not create repository'. 
+		^ self ].
 
 	[
 		| repository |
-		repository := IceRepository location: self location.
-		subdirectory text ifNotNil: [ :text | repository subdirectory: text ].
+		
+		repository := IceRepositoryCreator new 
+			location: self location;
+			subdirectory: subdirectory text;
+			createRepository.
 		repository register.
 			
 		self window delete. 

@@ -4,7 +4,5 @@ description
 		stream 
 			nextPutAll: self shortId; 
 			nextPutAll: ' (';
-			nextPutAll: (self datetime asDate = Date today
-				ifTrue: [ self datetime asTime asString ]
-				ifFalse: [ self datetime asDate asString ]);
+			nextPutAll: self printShortTime;
 			nextPut: $) ]

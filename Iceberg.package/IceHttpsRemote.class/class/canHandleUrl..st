@@ -1,3 +1,3 @@
-instance creation
+testing
 canHandleUrl: aRepositoryUrl
 	^ aRepositoryUrl beginsWith: 'https://'

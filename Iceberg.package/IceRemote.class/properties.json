@@ -7,7 +7,8 @@
 	"commentStamp" : "NicoPasserini 11/17/2016 12:30",
 	"instvars" : [
 		"url",
-		"projectName" ],
+		"projectName",
+		"remoteName" ],
 	"name" : "IceRemote",
 	"pools" : [
 		 ],
