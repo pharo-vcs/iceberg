@@ -9,4 +9,4 @@ basicCommitWithMessage: text
 			self message text: ''.
 			self uiManager inform: ('Commited with message ', text)
 		on: NothingToCommitException 
-		do: [ :e | UIManager default inform: 'There is nothing to commit.' ] ]
+		do: [ :e | UIManager default inform: 'There is nothing to commit.' ] ] ]
