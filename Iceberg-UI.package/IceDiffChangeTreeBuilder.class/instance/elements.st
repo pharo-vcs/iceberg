@@ -1,3 +1,3 @@
 accessing
 elements 
-	^ self diff elements
+	^ self diff elements select: #hasChanges
