@@ -1,8 +1,10 @@
-actions
-newPullRequestFor: aRepository 
-	(self validateMakePullRequestOn: aRepository) ifFalse: [ ^ #() ].
+execute
+execute 
+	(self validateMakePullRequestOn: self repository) ifFalse: [ ^ #() ].
 	
-	(IceGitHubPullRequestModel for: aRepository)
+	(IceGitHubPullRequestModel 
+		repository: self repository 
+		credentials: self credentials)
 		setModal: true; 
 		onAccept: [ :pullRequest | 
 			[ 

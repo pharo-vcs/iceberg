@@ -1,5 +1,5 @@
 requesting
-postPullRequestTo: owner project: projectName data: aDictionary
+postPullRequest: owner project: projectName data: aDictionary
 	^ self 
 		post: 'repos/', owner, '/', projectName, '/pulls'
 		with: [ :client |

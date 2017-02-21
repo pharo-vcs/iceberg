@@ -1,3 +1,6 @@
 accessing
 repositoryActions
-	^ { self newPullRequestAction }
+	^ { 
+	self newPullRequestAction. 
+	self removeOldBranchesAction. 
+	}
