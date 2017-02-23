@@ -3,6 +3,14 @@ addChangesTreesTo: browser
 	browser transmit 
 		from: #commits;
 		to: #changes; 
-		andShow: [ :a | (a custom: GLMStacker new) with: [ :stacker |
-			self addChangesTree: #diffFromHead to: stacker title: 'Changes since selection'.
-			self addChangesTree: #diffToParent to: stacker title: 'Changes vs. parent' ]]
+		andShow: [ :a :commitInfo |
+			(IceDiffChangeTreeBuilder new 
+				entity: commitInfo;
+				diff: (commitInfo ifNotNil: [ commitInfo diffFromHead ]); 
+				buildOn: a)
+				title: 'Changes since selection'.
+			(IceDiffChangeTreeBuilder new
+				entity: commitInfo;
+				diff: (commitInfo ifNotNil: [ commitInfo diffToParent ]);
+				buildOn: a)
+				title: 'Changes vs. parent' ].

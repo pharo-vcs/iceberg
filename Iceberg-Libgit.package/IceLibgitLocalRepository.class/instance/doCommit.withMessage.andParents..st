@@ -20,7 +20,7 @@ doCommit: versions withMessage: message andParents: parentCommitsBlock
 			but we have to remember it to notify the frontend."
 			updateReference: ([ branchIsNew := false. repo head name ] 
 				on: LGit_GIT_EUNBORNBRANCH
-				do: [ branchIsNew := true. 'refs/heads/', self branch name]);
+				do: [ branchIsNew := true. 'refs/heads/', self branch nameForFirstCommit ]);
 			author: signature;
 			committer: signature;
 			writeCommit;

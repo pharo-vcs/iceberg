@@ -4,4 +4,5 @@ detailedInfo
 		'Location' -> self repository location pathString. 
 		'Pulling from' -> self repository pullRemote remoteName. 
 		'Pushing to' -> self repository pushRemote remoteName.
+		'On branch' -> self repository currentBranch name.
 	} 
