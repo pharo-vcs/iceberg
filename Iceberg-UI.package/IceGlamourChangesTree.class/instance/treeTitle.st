@@ -1,3 +1,0 @@
-accessing
-treeTitle
-	^ treeTitle

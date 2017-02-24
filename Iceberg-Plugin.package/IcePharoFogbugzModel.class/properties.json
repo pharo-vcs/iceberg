@@ -1,0 +1,18 @@
+{
+	"category" : "Iceberg-Plugin-Pharo-FogBugz",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"issueNumberText",
+		"issueText",
+		"createButton",
+		"issue",
+		"acceptBlock" ],
+	"name" : "IcePharoFogbugzModel",
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

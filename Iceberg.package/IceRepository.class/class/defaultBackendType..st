@@ -1,3 +1,3 @@
-accessing
+accessing settings
 defaultBackendType: anObject
 	DefaultBackendType := anObject
