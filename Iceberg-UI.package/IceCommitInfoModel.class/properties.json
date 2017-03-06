@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-UI-View",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"commit",
 		"idLabel",
@@ -16,9 +16,8 @@
 		"commentLabel",
 		"commentPanel",
 		"parentsLabel",
-		"parentsPanel" ],
+		"parentsPanel"
+	],
 	"name" : "IceCommitInfoModel",
-	"pools" : [
-		 ],
-	"super" : "ComposableModel",
-	"type" : "normal" }
+	"type" : "normal"
+}

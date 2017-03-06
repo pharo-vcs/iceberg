@@ -2,6 +2,6 @@ private
 directoryForPackage: mcPackage
 	| package |
 	package := self packageNamed: mcPackage name.
-	^ subdirectory isEmptyOrNil
+	^ self subdirectory isEmptyOrNil
 		ifTrue: [ package directoryName ]
-		ifFalse: [ subdirectory, '/', package directoryName ]
+		ifFalse: [ self subdirectory, '/', package directoryName ]
