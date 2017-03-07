@@ -8,7 +8,7 @@ testCanGetListOfModifiedPackagesFromIndexWhenPackageRepositoryInSubdirectory
 		ensureOriginRepository: 'https://github.com/pharo-project/pharo-metacello'
 		for: 'pharo-metacello'.
 	repository := self createTestRepository: origin.
-	repository subdirectory: 'repository'.
+	repository backend subdirectory: 'repository'.
 			
 	repository saveContent: 'foo' inWorkingCopyFile: 'foo.package'.
 	self assert: repository stagedPackageNames isEmpty.
