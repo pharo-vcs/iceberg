@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-Errors",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 11/28/2016 14:05",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"name",
-		"owner" ],
+		"owner"
+	],
 	"name" : "IceMissingRepositoryEntry",
-	"pools" : [
-		 ],
-	"super" : "IceError",
-	"type" : "normal" }
+	"type" : "normal"
+}

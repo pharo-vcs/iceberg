@@ -1,19 +1,18 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "EstebanLorenzano 12/7/2016 18:46",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"location",
 		"url",
 		"remote",
 		"branchName",
 		"subdirectory",
-		"storageClass" ],
+		"storageClass"
+	],
 	"name" : "IceRepositoryCreator",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}
