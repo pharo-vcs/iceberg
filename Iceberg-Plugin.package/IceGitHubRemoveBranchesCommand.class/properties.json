@@ -1,16 +1,15 @@
 {
-	"category" : "Iceberg-Plugin-GitHub",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "IceGitHubCommand",
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"remote",
 		"branches",
-		"branchesByName" ],
+		"branchesByName"
+	],
 	"name" : "IceGitHubRemoveBranchesCommand",
-	"pools" : [
-		 ],
-	"super" : "IceGitHubCommand",
-	"type" : "normal" }
+	"type" : "normal"
+}
