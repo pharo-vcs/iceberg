@@ -6,7 +6,7 @@ createRepository
 		repository := IceRepositoryCreator new 
 			remote: (IceRemote url: remoteUrl text trim);
 			location: self location;
-			addSubdirectory: subdirectory text;
+			subdirectory: subdirectory text;
 			createRepository.
 		repository register.
 			

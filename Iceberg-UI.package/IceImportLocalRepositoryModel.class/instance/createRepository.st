@@ -11,7 +11,7 @@ createRepository
 		
 		repository := IceRepositoryCreator new 
 			location: self location;
-			addSubdirectory: subdirectory text;
+			subdirectory: subdirectory text;
 			createRepository.
 		repository register.
 			

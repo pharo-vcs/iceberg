@@ -8,7 +8,7 @@ mcRepository
 		ifNone: [ 
 			(IceRepositoryCreator new 
 				location: tuple first;
-				addSubdirectory: tuple second;
+				subdirectory: tuple second;
 				createRepository)
 				register ].
 			
