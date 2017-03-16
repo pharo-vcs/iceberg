@@ -1,15 +1,16 @@
 {
-	"commentStamp" : "",
-	"super" : "IceStructuralChangeSet",
 	"category" : "Iceberg-Changes",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
 	"instvars" : [
 		"targetClass",
 		"classDefinition",
-		"changes"
-	],
+		"changes" ],
 	"name" : "IceClassChangeSet",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceStructuralChangeSet",
+	"type" : "normal" }
