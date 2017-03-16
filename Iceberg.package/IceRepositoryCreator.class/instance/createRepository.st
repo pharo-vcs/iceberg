@@ -7,7 +7,7 @@ createRepository
 	locationToUse := self locationToUse.
 	backend := self storageClass 
 		newRepositoryAt: locationToUse
-		subdirectory: self subdirectory.
+		subdirectories: self subdirectories.
 
 	(locationToUse exists not or: [ locationToUse hasChildren not ])
 		ifTrue: [ 
