@@ -1,3 +1,3 @@
 accesing
 directory
-	^ self backend codeDirectory 
+	^ package parentDirectory 

@@ -14,9 +14,12 @@ composeBrowserOn: browser
 		fromOutsideEntityPort;
 		from: #commits; 
 		to: #changes; 
-		transformed: [ :repository :selectedCommit | selectedCommit ifNotNil: [
-				selectedCommit diffWith: (repository mergeBaseWith: selectedCommit) ]];
-		andShow: [ :a | a custom: (IceGlamourChangesTree withTitle: 'Incoming changes') ].
+		andShow: [ :a :repo :commitInfo |.
+			(IceDiffChangeTreeBuilder new
+				entity: commitInfo;
+				diff: (commitInfo ifNotNil: [ commitInfo diffWith: (repo mergeBaseWith: commitInfo) ]); 
+				buildOn: a)
+				title: 'Incoming changes' ].
 
 	self addDiffTo: browser.
 	self addCommitInfoTo: browser 

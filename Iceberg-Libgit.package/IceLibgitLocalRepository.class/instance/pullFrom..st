@@ -5,7 +5,7 @@ pullFrom: aRemote
 
 		"Fetch"
 		gitRemote := (LGitRemote of: repo named: aRemote remoteName) lookup.
-		gitRemote fetch.		
+		gitRemote fetchWithCredentials: IceCredentialsProvider default.		
 
 		"Decide if we can fast-forward or we must do a real merge"
 		myCommit := repo head object.

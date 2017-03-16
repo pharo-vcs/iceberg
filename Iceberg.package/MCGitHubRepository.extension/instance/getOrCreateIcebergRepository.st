@@ -9,7 +9,7 @@ getOrCreateIcebergRepository
 		ifNone: [
 			(IceRepositoryCreator new 
 				url: remoteUrl;
-				subdirectory: repoPath;
+				addSubdirectory: repoPath;
 				branchName: self projectVersion;
 				createRepository)
 				register ]

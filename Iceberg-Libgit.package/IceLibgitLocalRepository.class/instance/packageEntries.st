@@ -1,5 +1,5 @@
 private
 packageEntries
-	^ self codeDirectory entries select: [ :entry | self isPackageEntry: entry ]. 
-
 	
+	 ^ self codeDirectories flatCollect: [ :dir |
+		dir entries select: [ :entry | self isPackageEntry: entry ] ]
