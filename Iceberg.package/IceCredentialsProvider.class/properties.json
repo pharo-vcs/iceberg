@@ -8,8 +8,13 @@
 		"PlaintextCredentials",
 		"ProviderType",
 		"SshCredentials",
+<<<<<<< HEAD
 		"UseCustomSsh"
 	],
+=======
+		"UseCustomSsh" ],
+	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
+>>>>>>> origin/dev-0.4
 	"instvars" : [
 		"tries"
 	],
