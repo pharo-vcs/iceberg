@@ -1,3 +1,6 @@
 accessing
 remoteActions
-	^ { self removeOldBranchesRemoteAction }
+	^ { 
+	self newPullRequestRemoteAction.
+	self removeOldBranchesRemoteAction. 
+	}

@@ -3,7 +3,7 @@ preprocess: commandDescription
 	commandDescription ifNil: [ ^ {} ]. 
 	commandDescription isString ifTrue: [ 
 		(commandDescription beginsWith: '"')
-			ifTrue: [ ^ { commandDescription } ]
+			ifTrue: [ ^ { self preprocessString: commandDescription } ]
 			ifFalse: [ ^ ' ' split: commandDescription ]].
 	commandDescription isCollection ifTrue: [ 
 		^ commandDescription flatCollect: [ :elem | self preprocess: elem ]].

@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Plugin-Pharo-FogBugz",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "EstebanLorenzano 2/13/2017 16:59",
-	"instvars" : [
-		 ],
-	"name" : "IcePharoFogbugzPlugin",
-	"pools" : [
-		 ],
 	"super" : "IcePlugin",
-	"type" : "normal" }
+	"category" : "Iceberg-Plugin-Pharo-FogBugz",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IcePharoFogbugzPlugin",
+	"type" : "normal"
+}

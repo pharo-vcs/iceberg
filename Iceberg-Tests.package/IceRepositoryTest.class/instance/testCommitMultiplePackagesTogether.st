@@ -16,7 +16,7 @@ testCommitMultiplePackagesTogether
 		package: otherPackageName.
 	newClass compile: ('newMethod').
 	
-	repository commitWithMessage: 'Committing two packages together'.
+	repository commitPackagesWithMessage: 'Committing two packages together'.
 	self assert: repository currentBranch commits size equals: oldCommits + 1.
 	self assert: repository loadedCode referenceCommit equals: repository headCommit.
 

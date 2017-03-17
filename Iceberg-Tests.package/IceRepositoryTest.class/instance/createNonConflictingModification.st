@@ -13,4 +13,4 @@ createNonConflictingModification
 	testClass compile: ('nonConflictingMethod ^ {1}' format: { nextVersionNumber }).
 
 	"3 - Commit"
-	repository commitWithMessage: ('Created non conflicting method with version {1}' format: { nextVersionNumber }).
+	repository commitPackagesWithMessage: ('Created non conflicting method with version {1}' format: { nextVersionNumber }).

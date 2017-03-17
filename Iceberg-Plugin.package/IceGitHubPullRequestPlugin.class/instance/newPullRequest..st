@@ -1,3 +1,3 @@
 actions
 newPullRequest: aRepository 
-	(IceGitHubNewPullRequestCommand repository: aRepository) execute
+	^ self newPullRequest: aRepository remote: aRepository pushRemote 

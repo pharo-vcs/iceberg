@@ -10,5 +10,5 @@ mergeConflictsWith: aCommitish
 	(MCVersionMerger new
 		addVersions: (versionsChangedInCommit collect: #mcVersion);
 		merge)
-		ifTrue: [ self commitAndMarkAsMerged: aCommitish ]
+		ifTrue: [ self commitPackagesAndMarkAsMerged: aCommitish ]
 
