@@ -3,5 +3,4 @@ parentDirectory
 
 	^ self subdirectory isEmptyOrNil
 		ifTrue: [ self repository backend repositoryDirectory ]
-		ifFalse: [ self repositoryDirectory, self subdirectory ]
-	
+		ifFalse: [ self repository backend repositoryDirectory / self subdirectory ]
