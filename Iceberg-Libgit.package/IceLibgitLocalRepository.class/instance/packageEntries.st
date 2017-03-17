@@ -1,5 +1,7 @@
 private
 packageEntries
+
+	"returns a collection of associations (directory->package directory"
 	
-	 ^ self codeDirectories flatCollect: [ :dir |
-		dir entries select: [ :entry | self isPackageEntry: entry ] ]
+	 ^ self codeDirectories collect: [ :dir |
+		dir -> (dir entries select: [ :entry | self isPackageEntry: entry ]) ]
