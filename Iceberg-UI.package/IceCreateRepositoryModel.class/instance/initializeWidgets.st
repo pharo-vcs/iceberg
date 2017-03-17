@@ -6,7 +6,7 @@ initializeWidgets
 		chooseTitle: 'Choose local repository';
 		location: self defaultLocation.
 	
-	subdirectoryLabel := self newLabel label: 'Code subdirectory'.
+	subdirectoryLabel := self newLabel label: 'Code subdirectories'.
 	subdirectory := self newTextInput autoAccept: true.
 	
 	createButton := self newButton
