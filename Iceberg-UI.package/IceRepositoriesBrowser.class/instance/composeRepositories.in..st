@@ -38,7 +38,7 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self pushTo;
 		addSelectionAction: self cloneRepositoryAgain;
 		addSelectionAction: self refreshRepository;
-		addSelectionAction: self inspectRepository;
+		addSelectionAction: self editRepository;
 		addSelectionAction: self forgetRepository;
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
