@@ -1,14 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 9/26/2016 15:01",
-	"super" : "Object",
 	"category" : "Iceberg-Adapters",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/26/2016 15:01",
 	"instvars" : [
-		"backend",
-		"package"
-	],
+		"backend" ],
 	"name" : "IceBackendWriterAdapter",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
