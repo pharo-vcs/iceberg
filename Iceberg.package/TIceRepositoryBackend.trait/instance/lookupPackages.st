@@ -6,7 +6,9 @@ lookupPackages
 	entries := self packageEntries.
 	allPackages := entries flatCollect: [ :each |
 		| filesystemEntries pkg relativePath |
-		relativePath := each key pathString copyWithoutAll: self repositoryDirectory pathString.
+		relativePath := each key pathString withoutPrefix: self repositoryDirectory pathString.
+		(relativePath beginsWith: '/') 
+		  ifTrue: [relativePath := relativePath copyWithoutFirst ].
 		filesystemEntries := each value.
 		filesystemEntries collect: [ :entry |
 		pkg := IceSavedPackage
