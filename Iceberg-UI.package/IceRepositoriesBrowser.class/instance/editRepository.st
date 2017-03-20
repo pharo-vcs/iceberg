@@ -1,7 +1,9 @@
 actions - selected repository
 editRepository
 	^ GLMGenericAction new
-		selectionAction: #editRepository;
-		showTitle: 'Edit...';
+		action: [ :presentation | 
+			presentation selection editRepositoryThen: [
+				presentation pane browser update ] ];
+		showTitle: 'Edit repository...';
 		shortcut: $e;
 		yourself

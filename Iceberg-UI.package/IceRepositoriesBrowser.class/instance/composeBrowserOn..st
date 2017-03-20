@@ -3,7 +3,7 @@ composeBrowserOn: browser
 	browser 
 		row: #repositories; 
 		row: #info.
-	
+
 	browser transmit 
 		to: #repositories; 
 		andShow: [ :presentation :repositories | 
@@ -11,4 +11,10 @@ composeBrowserOn: browser
 	browser transmit 
 		from: #repositories; 
 		to: #info; 
-		andShow: [ :a | self composeRepositoryInfoIn: a ]
+		andShow: [ :a | self composeRepositoryInfoIn: a ];
+		when: [ :a | a isValid ].
+	browser transmit 
+		from: #repositories; 
+		to: #info; 
+		andShow: [ :a | self composeNotValidIn: a ];
+		when: [ :a | a isValid not ]
