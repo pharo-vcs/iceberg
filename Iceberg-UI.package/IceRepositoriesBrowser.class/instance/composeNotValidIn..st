@@ -5,5 +5,8 @@ composeNotValidIn: composite
 		beVertical;
 		act: [ :presentation :model | 
 			model editRepositoryThen: [ 
-				presentation pane browser update ]  ] entitled: 'Edit...';
-		act: [ :presentation :model | model forget ] entitled: 'Forget'
+				"scale to top browser"
+				presentation pane browser pane browser update ] ] entitled: 'Edit...';
+		act: [ :presentation :model | 
+			model forgetThen: [ 
+				presentation pane browser pane browser update ] ] entitled: 'Forget'

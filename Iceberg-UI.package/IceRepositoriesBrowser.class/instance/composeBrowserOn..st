@@ -11,10 +11,11 @@ composeBrowserOn: browser
 	browser transmit 
 		from: #repositories; 
 		to: #info; 
-		andShow: [ :a | self composeRepositoryInfoIn: a ];
-		when: [ :a | a isValid ].
-	browser transmit 
-		from: #repositories; 
-		to: #info; 
-		andShow: [ :a | self composeNotValidIn: a ];
-		when: [ :a | a isValid not ]
+		andShow: [ :a |
+			(a custom: GLMWrapper new)
+				show: [ :wrapper | self composeRepositoryInfoIn: wrapper ];
+				when: [ :model | model isValid ].
+			(a custom: GLMWrapper new) 
+				show: [ :wrapper | self composeNotValidIn: wrapper ];
+				when: [ :model | model isValid not ] ].
+		
