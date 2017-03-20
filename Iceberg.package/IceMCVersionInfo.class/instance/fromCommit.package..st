@@ -10,11 +10,11 @@ fromCommit: aCommit package: aPackage
 	
 	name := ('{1}-{2}.{3}' format: {
 		package name. 
-		commit username. 
+		commit compatibleUsername. 
 		commit datetime asUnixTime 
 	}).
 	
 	id := self class uuidFromCommit: aCommit package: aPackage.
 
    	message := commit comment.
-   	author := commit username
+   	author := commit compatibleUsername
