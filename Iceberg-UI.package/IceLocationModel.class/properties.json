@@ -1,17 +1,18 @@
 {
-	"commentStamp" : "<historical>",
-	"super" : "ComposableModel",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
 	"instvars" : [
 		"locationLabel",
 		"locationInput",
 		"chooseButton",
 		"label",
-		"chooseTitle"
-	],
+		"chooseTitle" ],
 	"name" : "IceLocationModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }
