@@ -5,7 +5,7 @@ initializePresenter
 	self headForkList
 		items: self availableRemotes;
 		displayBlock: [ :each | each owner, '/', each projectName ];
-		setSelectedItem: self repository pushRemote.
+		setSelectedItem: self headRemote.
 	self headBranchList 
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];

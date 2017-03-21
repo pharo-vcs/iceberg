@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Plugin-GitHub",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
-	"instvars" : [
-		 ],
-	"name" : "IceGitHubPullRequestPlugin",
-	"pools" : [
-		 ],
 	"super" : "IcePlugin",
-	"type" : "normal" }
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitHubPullRequestPlugin",
+	"type" : "normal"
+}

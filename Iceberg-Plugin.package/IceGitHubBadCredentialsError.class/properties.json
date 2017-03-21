@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Plugin-GitHub",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
-	"instvars" : [
-		 ],
-	"name" : "IceGitHubBadCredentialsError",
-	"pools" : [
-		 ],
 	"super" : "IceGitHubError",
-	"type" : "normal" }
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitHubBadCredentialsError",
+	"type" : "normal"
+}

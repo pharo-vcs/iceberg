@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-Plugin-GitHub",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"credentials",
 		"title",
@@ -12,9 +12,8 @@
 		"headRemote",
 		"baseBranchName",
 		"headBranchName",
-		"body" ],
+		"body"
+	],
 	"name" : "IceGitHubPullRequest",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

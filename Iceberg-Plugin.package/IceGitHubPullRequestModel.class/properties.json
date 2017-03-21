@@ -1,10 +1,10 @@
 {
-	"category" : "Iceberg-Plugin-GitHub",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-Plugin-GitHub",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"repository",
 		"titleLabel",
@@ -24,9 +24,9 @@
 		"baseRemote",
 		"gitRepositoryInfo",
 		"credentials",
-		"baseBranches" ],
+		"baseBranches",
+		"headRemote"
+	],
 	"name" : "IceGitHubPullRequestModel",
-	"pools" : [
-		 ],
-	"super" : "ComposableModel",
-	"type" : "normal" }
+	"type" : "normal"
+}

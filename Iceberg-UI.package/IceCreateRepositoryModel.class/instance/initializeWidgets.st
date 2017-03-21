@@ -10,7 +10,7 @@ initializeWidgets
 	subdirectory := self newTextInput autoAccept: true.
 	
 	createButton := self newButton
-		label: 'Create repository';
+		label: self class buttonLabel;
 		yourself.
 	
 	self focusOrder 

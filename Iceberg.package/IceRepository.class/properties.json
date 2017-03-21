@@ -17,7 +17,6 @@
 		"pullRemote",
 		"pushRemote",
 		"savedPackages",
-		"upstream",
 		"commitDictionary",
 		"loadedCode"
 	],

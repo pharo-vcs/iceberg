@@ -4,7 +4,8 @@ execute
 	
 	(IceGitHubPullRequestModel 
 		repository: self repository 
-		credentials: self credentials)
+		credentials: self credentials
+		headRemote: self remote)
 		setModal: true; 
 		onAccept: [ :pullRequest | 
 			[ 
