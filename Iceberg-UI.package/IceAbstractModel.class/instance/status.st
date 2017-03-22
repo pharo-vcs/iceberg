@@ -3,13 +3,9 @@ status
 	"entity could be a repository or a package"
 	[
 		| status incoming outgoing | 
-		
-		self repository isMissing 
-			ifTrue: [ ^ self makeError: 'Local repository missing' ].
-		self repository isCodeMissing
-			ifTrue: [ ^ self makeError: 'Code directory missing' ].
-		self isLoaded 
-			ifFalse: [ ^ 'Not loaded' ].
+
+		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].		
+		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
 		entity isModified ifTrue: [ status add: 'Uncommited changes' ].

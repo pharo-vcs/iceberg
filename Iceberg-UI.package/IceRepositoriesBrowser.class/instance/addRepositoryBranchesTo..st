@@ -12,4 +12,5 @@ addRepositoryBranchesTo: composite
 	branches addAction: self branchCreateNew.
 	"selection actions"
 	branches 
-		addSelectionAction: self branchSwitch	
+		addSelectionAction: self branchSwitch;
+		addSelectionAction: self branchCompareWithCurrent	

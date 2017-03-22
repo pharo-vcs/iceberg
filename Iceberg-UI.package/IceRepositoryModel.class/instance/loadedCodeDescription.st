@@ -1,7 +1,4 @@
 accessing
 loadedCodeDescription
-	self repository isMissing 
-		ifTrue: [ ^ self makeError: 'Local repository missing' ].
-	self repository isCodeMissing
-		ifTrue: [ ^ self makeError: 'Code directory missing' ].
+	self verifyDirectoryStructureIfMissing: [ :message | ^ message ].
 	^ self repository loadedCode description

@@ -1,5 +1,7 @@
 private
 packageEntries
-	^ self codeDirectory entries select: [ :entry | self isPackageEntry: entry ]. 
+	self codeDirectory exists ifFalse: [ ^ #() ].
+	^ self codeDirectory entries 
+		select: [ :entry | self isPackageEntry: entry ]. 
 
 	
