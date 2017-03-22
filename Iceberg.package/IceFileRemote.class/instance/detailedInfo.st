@@ -1,3 +1,3 @@
-*Iceberg-UI
+accessing
 detailedInfo
 	^ { 'Origin' -> path pathString }
