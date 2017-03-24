@@ -1,10 +1,10 @@
 {
-	"commentStamp" : "EstebanLorenzano 2/8/2017 17:52",
-	"super" : "ComposableModel",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EstebanLorenzano 2/8/2017 17:52",
 	"instvars" : [
 		"storage",
 		"usernameLabel",
@@ -14,8 +14,9 @@
 		"passwordLabel",
 		"passwordInput",
 		"storeCheckbox",
-		"acceptButton"
-	],
+		"acceptButton" ],
 	"name" : "IceAskForSshCredentialsModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "ComposableModel",
+	"type" : "normal" }

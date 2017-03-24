@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "EstebanLorenzano 1/6/2017 09:12",
-	"super" : "Announcement",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EstebanLorenzano 1/6/2017 09:12",
 	"instvars" : [
-		"remote"
-	],
+		"remote" ],
 	"name" : "IceRemoteAdded",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Announcement",
+	"type" : "normal" }
