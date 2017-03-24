@@ -1,18 +1,17 @@
 {
-	"commentStamp" : "",
-	"super" : "Object",
 	"category" : "Iceberg-UI-Model",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classinstvars" : [
+		 ],
 	"classvars" : [
-		"ModelCache"
-	],
+		"ModelCache" ],
+	"commentStamp" : "",
 	"instvars" : [
 		"lastUpdated",
 		"updating",
 		"value",
-		"updateAction"
-	],
+		"updateAction" ],
 	"name" : "IceCachedValue",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
