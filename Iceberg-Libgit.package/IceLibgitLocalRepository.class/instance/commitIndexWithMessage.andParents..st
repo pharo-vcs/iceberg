@@ -3,7 +3,11 @@ commitIndexWithMessage: message andParents: parentCommitishList
 
 	self withRepoDo: [ :repo | 
 		| signature commitId indexTreeId branchIsNew |
-		signature := repo defaultSignature.			
+		[ signature := repo defaultSignature ]
+		on: LGit_GIT_ENOTFOUND do: [ :e | 
+			self 
+				guessUsernameOrEmailNotFound: e 
+				ifNot: [ e pass ] ].
 		indexTreeId := repo index writeTreeAndReturnOid.		 
 		commitId := (LGitCommitBuilder of: repo)
 			tree: (LGitTree of: repo fromId: indexTreeId);
