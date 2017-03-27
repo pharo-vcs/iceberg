@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Please provide required values'
+	^ 'Please provide required properties'

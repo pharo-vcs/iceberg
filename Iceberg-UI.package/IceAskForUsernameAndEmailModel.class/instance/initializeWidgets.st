@@ -9,7 +9,7 @@ initializeWidgets
 		ghostText: 'johndoe@mail.net';		
 		autoAccept: true.
 	globalCheckbox := self newCheckBox
-		label: 'Save global?';
+		label: 'Save properties as global?';
 		state: false.
 	acceptButton := self newButton
 		label: 'Set properties';
