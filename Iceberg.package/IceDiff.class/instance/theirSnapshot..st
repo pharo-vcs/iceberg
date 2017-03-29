@@ -1,3 +1,4 @@
 querying
 theirSnapshot: package 
-	^ theirVersion snapshotFor: package
+	^ theirVersion ifNotNil: [ 
+		theirVersion snapshotFor: package ]
