@@ -1,4 +1,4 @@
-actions - branches
+menu actions - branches
 branchCompareWithCurrent
 	^ GLMGenericAction new
 		action: [ :presentation :model | 

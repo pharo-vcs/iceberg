@@ -23,8 +23,9 @@ composeRepositories: repositories in: composite
 
 	table		
 		"Task bar menu"
-		addAction: self createRepository;
-		addAction: self createLocalRepository;
+		addAction: self newRepository;
+		addAction: self cloneRepository;
+		addAction: self addLocalRepository;
 		addAction: self fetchAllRepositories;
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepository;

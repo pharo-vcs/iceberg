@@ -1,3 +1,0 @@
-utilities
-createRepository
-	IceCloneRepositoryModel new openWithSpec

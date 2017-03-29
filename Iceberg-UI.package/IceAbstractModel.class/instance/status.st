@@ -18,5 +18,5 @@ status
 
 		^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]
 	] 
-	on: Error do: [ :error | ^ error description asText makeAllColor: self colorError ]
+	on: Error do: [ :error | ^ self makeError: error description ]
 

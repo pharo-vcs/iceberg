@@ -1,4 +1,4 @@
-actions - selected repository
+menu actions - selected repository
 cloneRepositoryAgain
 	^ GLMGenericAction new
 		selectionAction: #restore;

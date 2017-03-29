@@ -1,4 +1,4 @@
-actions - repositories list
+menu actions - repositories list
 fetchAllRepositories
 	^ GLMGenericAction new 
 		action: [ self doFetchAllRepositories ];
