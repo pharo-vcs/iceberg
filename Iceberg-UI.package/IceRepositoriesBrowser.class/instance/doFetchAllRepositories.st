@@ -1,4 +1,4 @@
-actions - repositories list
+actions
 doFetchAllRepositories
 	UIManager default informUserDuring: [ :bar |
 		| repositoriesCount |

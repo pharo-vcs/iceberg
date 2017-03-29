@@ -1,3 +1,4 @@
 accessing remotes
 origin
-	^ self backend origin
+	^ self basicOrigin 
+		ifNil: [ IceUndefinedRemote new ]

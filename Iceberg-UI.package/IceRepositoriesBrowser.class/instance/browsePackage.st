@@ -1,4 +1,4 @@
-actions - package
+menu actions - package
 browsePackage
 	^ GLMGenericAction new
 		selectionAction: #browse;

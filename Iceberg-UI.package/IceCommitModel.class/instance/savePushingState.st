@@ -1,0 +1,3 @@
+actions
+savePushingState
+	self class uploadChangesOnCommit: self isPushingCommit

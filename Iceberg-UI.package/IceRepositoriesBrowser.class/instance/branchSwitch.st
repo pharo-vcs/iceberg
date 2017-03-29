@@ -1,4 +1,4 @@
-actions - branches
+menu actions - branches
 branchSwitch
 	^ GLMGenericAction new
 		action: [ :presentation :model | 

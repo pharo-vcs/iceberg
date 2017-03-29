@@ -1,4 +1,4 @@
-actions - package
+menu actions - package
 unloadPackageAction
 	^ GLMGenericAction new
 		action: [ :presentation | 

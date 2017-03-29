@@ -1,4 +1,4 @@
-actions - remotes
+menu actions - remotes
 remoteFetch
 	^ GLMGenericAction new
 		action: [ :presentation :model | 

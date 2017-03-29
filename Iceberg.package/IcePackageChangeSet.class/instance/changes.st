@@ -1,3 +1,5 @@
 initialization
 changes
-	^ changes ifNil: [ self analyseChanges. changes ]
+	^ changes ifNil: [ 
+			self analyseChanges. 
+			changes ]

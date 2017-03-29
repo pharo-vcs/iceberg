@@ -1,3 +1,3 @@
 accessing remotes
-addRemote: aRemote
+addRemote: aRemote  
 	^ self backend addRemote: aRemote

@@ -5,7 +5,7 @@ getOrCreateIcebergRepository
 	remoteUrl := self perform: Iceberg remoteTypeSelector.
 	remote := IceRemote url: remoteUrl.
 	^ IceRepository registry 
-		detect: [ :repo | repo origin isSameUrl: remote ]
+		detect: [ :repo | repo origin referencesSameRemoteLocationAs: remote ]
 		ifNone: [
 			(IceRepositoryCreator new 
 				url: remoteUrl;

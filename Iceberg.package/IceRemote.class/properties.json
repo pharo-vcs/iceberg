@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 11/17/2016 12:30",
 	"super" : "Object",
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Core-Remotes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

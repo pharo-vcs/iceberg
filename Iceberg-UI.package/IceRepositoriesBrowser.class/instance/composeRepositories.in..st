@@ -23,8 +23,9 @@ composeRepositories: repositories in: composite
 
 	table		
 		"Task bar menu"
-		addAction: self createRepository;
-		addAction: self createLocalRepository;
+		addAction: self newRepository;
+		addAction: self cloneRepository;
+		addAction: self addLocalRepository;
 		addAction: self fetchAllRepositories;
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepository;
@@ -38,7 +39,7 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self pushTo;
 		addSelectionAction: self cloneRepositoryAgain;
 		addSelectionAction: self refreshRepository;
-		addSelectionAction: self inspectRepository;
+		addSelectionAction: self editRepository;
 		addSelectionAction: self forgetRepository;
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 

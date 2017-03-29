@@ -1,4 +1,4 @@
-actions - remotes
+menu actions - remotes
 remoteMakePushing
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
