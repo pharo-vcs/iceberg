@@ -2,4 +2,4 @@ private
 requestRemoteBranches
 	^ self github
 		requestBranches: self remote owner 
-		project: self remote projectName
+		project: self remote projectBasename
