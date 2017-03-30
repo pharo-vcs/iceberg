@@ -12,6 +12,5 @@ send
 	IceGitHubAPI new 
 		credentials: self credentials;
 		postPullRequest: self baseRemote owner 
-			project: self baseRemote projectName 
+			project: self baseRemote projectBasename 
 			data: pullRequestData
-	
