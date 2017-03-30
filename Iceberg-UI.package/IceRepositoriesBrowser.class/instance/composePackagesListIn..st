@@ -9,4 +9,5 @@ composePackagesListIn: composite
 		addSelectionAction: self browsePackage;
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
+		addSelectionAction: self reloadPackageAction;
 		updateOn: IceCommited from: #announcer
