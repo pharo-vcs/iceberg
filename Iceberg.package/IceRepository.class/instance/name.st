@@ -1,3 +1,3 @@
 accessing
 name
-	^ name ifNil: [ name := self origin projectName ]
+	^ name ifNil: [ name := self origin projectBasename ]
