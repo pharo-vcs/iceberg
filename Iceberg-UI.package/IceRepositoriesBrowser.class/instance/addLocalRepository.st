@@ -1,7 +1,3 @@
-menu actions - repositories list
+actions
 addLocalRepository
-	^ GLMGenericAction new
-		action: [ self doAddLocalRepository ];
-		icon: #packageAdd asIcon;
-		shortcut: $a;
-		title: 'Add local repository'; showTitle
+	IceImportLocalRepositoryModel new openWithSpec

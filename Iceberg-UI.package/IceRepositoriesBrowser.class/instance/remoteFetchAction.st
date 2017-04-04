@@ -1,9 +1,9 @@
 menu actions - remotes
-remotePull
+remoteFetchAction
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
-			model pullRemote: presentation selection. 
+			model fetchRemote: presentation selection. 
 			presentation pane browser update ];
 		icon: #glamorousLeftSide asIcon;
-		showTitle: 'Pull'; 
+		showTitle: 'Fetch'; 
 		yourself

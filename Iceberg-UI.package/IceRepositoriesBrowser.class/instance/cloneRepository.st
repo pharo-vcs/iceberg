@@ -1,7 +1,3 @@
-menu actions - repositories list
+actions
 cloneRepository
-	^ GLMGenericAction new
-		action: [ self doCloneRepository ];
-		icon: #add asIcon;
-		shortcut: $c;
-		title: 'Clone repository'; showTitle
+	IceCloneRepositoryModel new openWithSpec

@@ -1,9 +1,9 @@
 menu actions - selected repository
-editRepository
+forgetRepositoryAction
 	^ GLMGenericAction new
 		action: [ :presentation | 
-			presentation selection editRepositoryThen: [
+			presentation selection forgetThen: [ 
 				presentation pane browser pane update ] ];
-		showTitle: 'Edit repository...';
-		shortcut: $e;
+		showTitle: 'Forget repository...'; 
+		shortcut: $x; 
 		yourself

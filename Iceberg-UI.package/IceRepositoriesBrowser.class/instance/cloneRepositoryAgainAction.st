@@ -1,5 +1,5 @@
 menu actions - selected repository
-cloneRepositoryAgain
+cloneRepositoryAgainAction
 	^ GLMGenericAction new
 		selectionAction: #restore;
 		selectionCondition: #isMissing;

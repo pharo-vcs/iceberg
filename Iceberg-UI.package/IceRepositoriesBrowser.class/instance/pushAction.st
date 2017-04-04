@@ -1,5 +1,5 @@
 menu actions - selected repository
-push
+pushAction
 	^ GLMGenericAction new
 		action: [ :presentation | 
 			presentation selection pushThen: [ presentation pane browser update ]];

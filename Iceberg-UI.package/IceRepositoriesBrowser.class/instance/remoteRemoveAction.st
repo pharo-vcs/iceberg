@@ -1,5 +1,5 @@
 menu actions - remotes
-remoteRemove
+remoteRemoveAction
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
 			model 

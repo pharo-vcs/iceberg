@@ -7,7 +7,7 @@ composePackagesListIn: composite
 		column: 'Status' evaluated: #status;
 		addAction: self reloadAllPackagesAction;
 		addAction: self addPackageAction;
-		addSelectionAction: self browsePackage;
+		addSelectionAction: self browsePackageAction;
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
 		addSelectionAction: self reloadPackageAction;

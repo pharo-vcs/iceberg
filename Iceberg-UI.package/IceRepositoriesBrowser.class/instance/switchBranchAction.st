@@ -1,5 +1,5 @@
 menu actions - selected repository
-switchBranch
+switchBranchAction
 	^ GLMGenericAction new
 		selectionAction: #switchBranch;
 		selectionCondition: #isOperative;

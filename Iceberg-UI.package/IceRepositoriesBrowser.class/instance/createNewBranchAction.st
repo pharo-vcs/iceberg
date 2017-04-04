@@ -1,7 +1,8 @@
 menu actions - selected repository
-createNewBranch
+createNewBranchAction
 	^ GLMGenericAction new
-		selectionAction: #createNewBranch;
+		action: [ :presentation | 
+			presentation selection createNewBranchThen: [] ];
 		selectionCondition: #isOperative;
 		showTitle: 'Create new branch...';
 		shortcut: $B.

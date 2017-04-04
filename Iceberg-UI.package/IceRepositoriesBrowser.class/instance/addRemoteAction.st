@@ -1,5 +1,5 @@
 menu actions - selected repository
-addRemote
+addRemoteAction
 	^ GLMGenericAction new
 		action: [ :presenter | 
 			presenter selection addRemoteThen: [ :remote | 

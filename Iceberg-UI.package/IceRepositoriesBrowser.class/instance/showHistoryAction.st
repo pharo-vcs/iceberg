@@ -1,8 +1,8 @@
 menu actions - selected repository
-synchronizeRepository
+showHistoryAction
 	^ GLMGenericAction new
-		selectionAction: #synchronize;
+		selectionAction: #browseHistory;
 		selectionCondition: #isOperative;
 		icon: #glamorousBrowse asIcon;
-		shortcut: $s;
-		title: 'Synchronize repository...'; showTitle
+		showTitle: 'Show history...';
+		shortcut: $h

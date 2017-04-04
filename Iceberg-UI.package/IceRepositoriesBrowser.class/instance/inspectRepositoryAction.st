@@ -1,5 +1,5 @@
 menu actions - selected repository
-inspectRepository
+inspectRepositoryAction
 	^ GLMGenericAction new
 		selectionAction: #inspectRepository;
 		showTitle: 'Inspect';

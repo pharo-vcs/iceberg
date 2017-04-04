@@ -1,5 +1,5 @@
 menu actions - selected repository
-pull
+pullAction
 	^ GLMGenericAction new
 		selectionAction: #pull;
 		selectionCondition: #isOperative;

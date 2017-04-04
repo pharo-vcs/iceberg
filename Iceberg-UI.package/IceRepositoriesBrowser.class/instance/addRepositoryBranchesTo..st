@@ -9,8 +9,8 @@ addRepositoryBranchesTo: composite
 		column: 'Status' evaluated: [ :branch :model | model statusForBranch: branch ].
 		
 	"actions"
-	branches addAction: self branchCreateNew.
+	branches addAction: self branchCreateNewAction.
 	"selection actions"
 	branches 
-		addSelectionAction: self branchSwitch;
-		addSelectionAction: self branchCompareWithCurrent	
+		addSelectionAction: self branchSwitchAction;
+		addSelectionAction: self branchCompareWithCurrentAction	

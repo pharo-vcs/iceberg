@@ -1,5 +1,5 @@
 menu actions - package
-browsePackage
+browsePackageAction
 	^ GLMGenericAction new
 		selectionAction: #browse;
 		selectionCondition: #isLoaded;

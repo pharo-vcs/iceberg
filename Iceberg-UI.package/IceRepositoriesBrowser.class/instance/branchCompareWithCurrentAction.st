@@ -1,5 +1,5 @@
 menu actions - branches
-branchCompareWithCurrent
+branchCompareWithCurrentAction
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
 			model compareCurrentBranchWithBranch: presentation selection. 

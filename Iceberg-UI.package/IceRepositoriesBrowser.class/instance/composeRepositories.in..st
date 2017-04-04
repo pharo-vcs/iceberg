@@ -23,24 +23,24 @@ composeRepositories: repositories in: composite
 
 	table		
 		"Task bar menu"
-		addAction: self newRepository;
-		addAction: self cloneRepository;
-		addAction: self addLocalRepository;
-		addAction: self fetchAllRepositories;
+		addAction: self newRepositoryAction;
+		addAction: self cloneRepositoryAction;
+		addAction: self addLocalRepositoryAction;
+		addAction: self fetchAllRepositoriesAction;
 		"Repository pop up menu"
-		addSelectionAction: self synchronizeRepository;
-		addSelectionAction: self showHistory;
-		addSelectionAction: self switchBranch;
-		addSelectionAction: self createNewBranch;
-		addSelectionAction: self addRemote;
-		addSelectionAction: self pull;
-		addSelectionAction: self pullFrom;
-		addSelectionAction: self push;
-		addSelectionAction: self pushTo;
-		addSelectionAction: self cloneRepositoryAgain;
-		addSelectionAction: self refreshRepository;
-		addSelectionAction: self editRepository;
-		addSelectionAction: self forgetRepository;
+		addSelectionAction: self synchronizeRepositoryAction;
+		addSelectionAction: self showHistoryAction;
+		addSelectionAction: self switchBranchAction;
+		addSelectionAction: self createNewBranchAction;
+		addSelectionAction: self addRemoteAction;
+		addSelectionAction: self pullAction;
+		addSelectionAction: self pullFromAction;
+		addSelectionAction: self pushAction;
+		addSelectionAction: self pushToAction;
+		addSelectionAction: self cloneRepositoryAgainAction;
+		addSelectionAction: self refreshRepositoryAction;
+		addSelectionAction: self editRepositoryAction;
+		addSelectionAction: self forgetRepositoryAction;
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
 			presentation selection pluginActions ];

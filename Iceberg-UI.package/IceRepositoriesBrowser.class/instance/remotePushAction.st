@@ -1,5 +1,5 @@
 menu actions - remotes
-remotePush
+remotePushAction
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
 			model pushRemote: presentation selection. 

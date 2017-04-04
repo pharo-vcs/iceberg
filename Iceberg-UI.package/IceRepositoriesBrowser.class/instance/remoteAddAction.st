@@ -1,5 +1,5 @@
 menu actions - remotes
-remoteAdd
+remoteAddAction
 	^ GLMGenericAction new
 		action: [ :presentation :model | 
 			model addRemoteThen: [ presentation pane browser update ] ];

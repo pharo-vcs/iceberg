@@ -1,5 +1,5 @@
 menu actions - selected repository
-refreshRepository
+refreshRepositoryAction
 	^ GLMGenericAction new
 		selectionAction: #refresh;
 		showTitle: 'Refresh repository';
