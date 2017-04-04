@@ -11,4 +11,6 @@ composePackagesListIn: composite
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
 		addSelectionAction: self reloadPackageAction;
+		addSelectionAction: self unloadAndRemovePackageAction;
+		addSelectionAction: self removePackageAction;
 		updateOn: IceCommited from: #announcer

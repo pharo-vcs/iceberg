@@ -1,8 +1,8 @@
 menu actions - package
 reloadAllPackagesAction
 	^ GLMGenericAction new
-		action: [ :presentation :repo | 
-			repo entity savedPackages select: #isLoaded thenDo: [ :each | each reload ].
+		action: [ :presentation :model | 
+			model reloadAllLoadedPackages. 
 			presentation update ];
 		condition: [ :presentation :repo | (repo entity savedPackages select: #isLoaded) notEmpty ];
 		icon: #refresh asIcon;
