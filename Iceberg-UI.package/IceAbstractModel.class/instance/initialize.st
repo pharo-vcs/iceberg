@@ -6,9 +6,9 @@ initialize
 	incomingCommits := (IceCachedValue
 		for: (WeakMessageSend receiver: self entity selector: #incomingCommits))
 			invalidateOn: IceRepositoryAnnouncement 
-			from: self repository announcer.
+			from: self repository announcer weak.
 	
 	outgoingCommits := (IceCachedValue
 		for: (WeakMessageSend receiver: self entity selector: #outgoingCommits))
 			invalidateOn: IceRepositoryAnnouncement 
-			from: self repository announcer
+			from: self repository announcer weak
