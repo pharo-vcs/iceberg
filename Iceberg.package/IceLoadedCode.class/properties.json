@@ -1,15 +1,16 @@
 {
-	"commentStamp" : "NicoPasserini 9/16/2016 14:14",
-	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 9/16/2016 14:14",
 	"instvars" : [
 		"repository",
 		"loadedVersions",
-		"referenceCommit"
-	],
+		"referenceCommit" ],
 	"name" : "IceLoadedCode",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceCommitish",
+	"type" : "normal" }
