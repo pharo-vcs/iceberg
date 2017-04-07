@@ -1,5 +1,5 @@
-actions
-installBaseline: icePackage
+private
+installBaseline: icePackage groups: anArray
 	| packageDir baselineName |
 	
 	packageDir := icePackage location parent fullName.
@@ -7,4 +7,4 @@ installBaseline: icePackage
 	Metacello new
 		repository: 'gitlocal://', packageDir;
 		baseline: baselineName;
-		load
+		load: anArray
