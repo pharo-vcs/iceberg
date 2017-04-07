@@ -1,5 +1,5 @@
 accessing
-remoteActions
+remoteActionsFor: aRemote
 	^ { 
 	self newPullRequestRemoteAction.
 	self removeOldBranchesRemoteAction. 

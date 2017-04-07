@@ -13,4 +13,7 @@ composePackagesListIn: composite
 		addSelectionAction: self reloadPackageAction;
 		addSelectionAction: self unloadAndRemovePackageAction;
 		addSelectionAction: self removePackageAction;
+		"Plugin actions"
+		dynamicActionsOnSelection: [ :presentation | 
+			presentation entity pluginPackageActionsFor: presentation selection entity ];
 		updateOn: IceCommited from: #announcer

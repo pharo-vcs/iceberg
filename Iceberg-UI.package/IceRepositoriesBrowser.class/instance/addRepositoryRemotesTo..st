@@ -22,4 +22,4 @@ addRepositoryRemotesTo: composite
 		addSelectionAction: self remoteRemoveAction.
 	"Plugin actions"
 	remotes dynamicActionsOnSelection: [ :presentation | 
-		presentation entity pluginRemoteActions ]
+		presentation entity pluginRemoteActionsFor: presentation selection ]
