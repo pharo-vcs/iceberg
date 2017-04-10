@@ -9,4 +9,6 @@ addPackageToRepository: repo
 	options := (MCWorkingCopy allManagers difference: repo workingCopies).
 
 	(self class chooseFrom: options displaying: descriptionBlock) 
-		ifNotNil: [ :workingCopy | repo addPackageNamed: workingCopy packageName ]
+		ifNotNil: [ :workingCopy | 
+			workingCopy modified: true.
+			repo addPackageNamed: workingCopy packageName. ]
