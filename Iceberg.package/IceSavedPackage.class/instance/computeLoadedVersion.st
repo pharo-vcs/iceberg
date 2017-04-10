@@ -8,13 +8,10 @@ computeLoadedVersion
 		detect: [ :ancestor | (ancestor respondsTo: #iceVersion) and: [ ancestor commit notNil ] ]
 		ifFound: [ :ancestor | ^ ancestor iceVersion ].
 
-	^ self 
-		versionLike: [ :version | workingCopyAncestors includes: version info  ] 
-		ifNone: [ 
-			self workingCopy repositoryGroup repositories do: [ :mcRepo |
-				mcRepo commitIdFor: self workingCopy ifFound: [ :commitOrTag | 
-					^ (self repository revparse: commitOrTag) versionFor: self ]
-			].
+	self workingCopy repositoryGroup repositories do: [ :mcRepo |
+		mcRepo 
+			commitIdFor: self workingCopy 
+			ifFound: [ :commitOrTag | ^ (self repository revparse: commitOrTag) versionFor: self ]
+	].
 		
-			^ IceForeignVersion forPackage: self.
-		]
+	^ IceForeignVersion forPackage: self.
