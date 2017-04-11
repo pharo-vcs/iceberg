@@ -15,5 +15,6 @@ composePackagesListIn: composite
 		addSelectionAction: self removePackageAction;
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
-			presentation entity pluginPackageActionsFor: presentation selection entity ];
+			presentation selection ifNotNil: [ 
+				presentation entity pluginPackageActionsFor: presentation selection entity ]];
 		updateOn: IceCommited from: #announcer
