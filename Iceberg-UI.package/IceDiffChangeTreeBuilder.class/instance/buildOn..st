@@ -13,7 +13,7 @@ buildOn: aPresenter
 		addSelectionAction: self revertChangeAction;
 		onChangeOfPort: #entity act: [ :presentation | 
 			self diff ifNotNil: [  
-				self diff announcer weak 
+				self diff announcer 
 					subscribe: IceChangeSetChanged 
 					send: #execute:
 					to: (IceChangesTreeResetSelectionHelper for: presentation) ] ];

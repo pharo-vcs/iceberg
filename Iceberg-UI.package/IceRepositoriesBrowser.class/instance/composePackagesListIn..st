@@ -7,8 +7,13 @@ composePackagesListIn: composite
 		column: 'Status' evaluated: #status;
 		addAction: self reloadAllPackagesAction;
 		addAction: self addPackageAction;
-		addSelectionAction: self browsePackage;
+		addSelectionAction: self browsePackageAction;
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
 		addSelectionAction: self reloadPackageAction;
+		addSelectionAction: self unloadAndRemovePackageAction;
+		addSelectionAction: self removePackageAction;
+		"Plugin actions"
+		dynamicActionsOnSelection: [ :presentation | 
+			presentation entity pluginPackageActionsFor: presentation selection entity ];
 		updateOn: IceCommited from: #announcer

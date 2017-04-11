@@ -11,15 +11,15 @@ addRepositoryRemotesTo: composite
 		updateOn: IceRemoteAdded from: #announcer.
 		
 	"actions"
-	remotes addAction: self remoteAdd.
+	remotes addAction: self remoteAddAction.
 	"selection actions"
 	remotes 
-		addSelectionAction: self remoteMakePulling;
-		addSelectionAction: self remoteMakePushing;
-		addSelectionAction: self remoteFetch;
-		addSelectionAction: self remotePull;
-		addSelectionAction: self remotePush;
-		addSelectionAction: self remoteRemove.
+		addSelectionAction: self remoteMakePullingAction;
+		addSelectionAction: self remoteMakePushingAction;
+		addSelectionAction: self remoteFetchAction;
+		addSelectionAction: self remotePullAction;
+		addSelectionAction: self remotePushAction;
+		addSelectionAction: self remoteRemoveAction.
 	"Plugin actions"
 	remotes dynamicActionsOnSelection: [ :presentation | 
-		presentation entity pluginRemoteActions ]
+		presentation entity pluginRemoteActionsFor: presentation selection ]
