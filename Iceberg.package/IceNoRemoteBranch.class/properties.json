@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 8/3/2016 14:51",
-	"super" : "IceError",
 	"category" : "Iceberg-Errors",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 8/3/2016 14:51",
+	"instvars" : [
+		 ],
 	"name" : "IceNoRemoteBranch",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceError",
+	"type" : "normal" }
