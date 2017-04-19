@@ -1,5 +1,5 @@
 {
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Core-Remotes",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
@@ -10,5 +10,5 @@
 	"name" : "IceHttpsRemote",
 	"pools" : [
 		 ],
-	"super" : "IceNetworkRemote",
+	"super" : "IceHttpRemote",
 	"type" : "normal" }

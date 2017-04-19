@@ -1,6 +1,6 @@
 actions
 unload
 	self workingCopy unload.
-	
-	repository announcer announce: IcePackageUnloaded new.
-	repository refresh
+	self repository announcer 
+		announce: IcePackageUnloaded new.
+	self repository refresh

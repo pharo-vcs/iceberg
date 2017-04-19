@@ -7,11 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"localDirectory",
-		"localDirectoryLabel",
-		"location",
+		"localDirectoryLocation",
 		"subdirectoryLabel",
 		"subdirectory",
-		"changeLocationButton",
 		"createButton"
 	],
 	"name" : "IceCreateRepositoryModel",

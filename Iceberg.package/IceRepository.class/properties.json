@@ -15,7 +15,6 @@
 		"pullRemote",
 		"pushRemote",
 		"savedPackages",
-		"upstream",
 		"commitDictionary",
 		"loadedCode" ],
 	"name" : "IceRepository",

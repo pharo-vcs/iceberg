@@ -1,3 +1,3 @@
 accessing
 location: anObject
-	location value: anObject
+	localDirectoryLocation location: anObject

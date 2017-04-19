@@ -1,4 +1,4 @@
-actions - package
+menu actions - package
 unloadPackageAction
 	^ GLMGenericAction new
 		action: [ :presentation | 
@@ -7,6 +7,6 @@ unloadPackageAction
 		icon: #delete asIcon;
 		shortcut: $u; 
 		title: 'Unload package'; 
-		condition: [ :presentation | presentation selection notNil and: [ presentation selection isLoaded ]];
+		condition: [ :presentation | 
+			presentation selection notNil and: [ presentation selection isLoaded ]];
 		yourself
-

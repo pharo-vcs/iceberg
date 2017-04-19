@@ -1,12 +1,15 @@
 {
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Core-Remotes",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "NicoPasserini 11/18/2016 13:39",
 	"instvars" : [
+		"user",
 		"host",
+		"port",
+		"path",
 		"owner" ],
 	"name" : "IceNetworkRemote",
 	"pools" : [

@@ -1,17 +1,19 @@
 initialization
 initializeWidgets
-	localDirectoryLabel := self newLabel label: 'Local directory:'.
-	localDirectory := self newLabel label: self initialLocalDirectory.
-	changeLocationButton := self newButton label: 'Change'.
+	localDirectoryLocation := self instantiate: IceDirectoryModel.
+	localDirectoryLocation 
+		label: 'Local directory';
+		chooseTitle: 'Choose local repository';
+		location: self defaultLocation.
 	
-	subdirectoryLabel := self newLabel label: 'Code subdirectory:'.
+	subdirectoryLabel := self newLabel label: 'Code subdirectory'.
 	subdirectory := self newTextInput autoAccept: true.
 	
 	createButton := self newButton
-		label: 'Create repository';
+		label: self class buttonLabel;
 		yourself.
 	
 	self focusOrder 
-		add: changeLocationButton;
+		add: localDirectoryLocation;
 		add: subdirectory;
 		add: createButton

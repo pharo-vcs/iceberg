@@ -1,0 +1,3 @@
+testing
+isPushingCommit
+	^ pushCheckbox state

@@ -3,7 +3,8 @@ status
 	"entity could be a repository or a package"
 	[
 		| status incoming outgoing | 
-		self repository isMissing ifTrue: [ ^ 'Local repository missing' asText allBold makeAllColor: self colorError ].
+
+		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].		
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
@@ -17,5 +18,5 @@ status
 
 		^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]
 	] 
-	on: Error do: [ :error | ^ error description asText makeAllColor: self colorError ]
+	on: Error do: [ :error | ^ self makeError: error description ]
 
