@@ -8,26 +8,27 @@ baseline: spec
 		configuration: 'ProcessWrapper' with: [ spec
 			versionString: #stable;
 			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
-
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
 		baseline: 'LibGit' with: [ spec
-			repository: 'github://npasserini/libgit2-pharo-bindings:development';
+			repository: 'github://npasserini/libgit2-pharo-bindings:v0.25.1';
   			loads: 'default' ];
 		project: 'LibGit-Tests'
           copyFrom: 'LibGit'
           with: [ spec loads: #('tests') ];
-
-		for: #MacOS do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('OSSubprocess') ] ];
-		for: #Unix do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('OSSubprocess' ) ] ];
-		for: #Windows do: [ spec
-			package: 'Iceberg-GitCommand'
-			with: [ spec requires: #('ProcessWrapper') ] ];
+		for: #MacOS do: [ 
+			spec
+				package: 'Iceberg-GitCommand'
+				with: [ spec requires: #('OSSubprocess') ] ];
+		for: #Unix do: [ 
+			spec
+				package: 'Iceberg-GitCommand'
+				with: [ spec requires: #('OSSubprocess' ) ] ];
+		for: #Windows do: [ 
+			spec
+				package: 'Iceberg-GitCommand'
+				with: [ spec requires: #('ProcessWrapper') ] ];
 
 		package: 'Iceberg';
 		package: 'Iceberg-Plugin';
