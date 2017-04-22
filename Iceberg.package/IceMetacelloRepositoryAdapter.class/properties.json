@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-Adapters",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 9/30/2016 15:01",
-	"instvars" : [
-		"repository" ],
-	"name" : "IceMetacelloRepositoryAdapter",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceMetacelloRepositoryAdapter",
+	"type" : "normal"
+}
