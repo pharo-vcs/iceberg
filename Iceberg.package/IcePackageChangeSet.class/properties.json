@@ -9,7 +9,8 @@
 		"package",
 		"changes",
 		"organizationChange",
-		"changedClasses"
+		"changedClasses",
+		"analyseFullChanges"
 	],
 	"name" : "IcePackageChangeSet",
 	"type" : "normal"

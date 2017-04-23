@@ -1,6 +1,6 @@
 *Iceberg-Changes
 diffToParent
-	^ IceDiff 
+	^ IceFullDiff 
 		from: self 
 		to: (self parents 
 			ifNotEmpty: #first
