@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 11/7/2016 18:13",
-	"super" : "Object",
 	"category" : "Iceberg-Tests-Base",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classinstvars" : [
+		 ],
 	"classvars" : [
-		"PreviousProvider"
-	],
-	"instvars" : [ ],
+		"PreviousProvider" ],
+	"commentStamp" : "NicoPasserini 11/7/2016 18:13",
+	"instvars" : [
+		 ],
 	"name" : "IceTestCredentialProvider",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
