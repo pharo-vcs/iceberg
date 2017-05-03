@@ -1,3 +1,3 @@
 auxiliar
 defaultLocationForGithubClonedRepository
-	^ FileLocator localDirectory asFileReference / 'iceberg'/ 'npasserini' / projectName
+	^ FileLocator localDirectory asFileReference / 'iceberg'/ 'pharo-vcs' / projectName

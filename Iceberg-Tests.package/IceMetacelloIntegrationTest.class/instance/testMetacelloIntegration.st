@@ -4,7 +4,7 @@ testMetacelloIntegration
 	
 	Metacello new
 	  baseline: 'PharoGitTest';
-	  repository: 'github://npasserini/', projectName;
+	  repository: 'github://pharo-vcs/', projectName;
 	  load.
 
 	repository := IceRepository registry 
