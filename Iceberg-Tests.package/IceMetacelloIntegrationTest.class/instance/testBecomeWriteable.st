@@ -6,7 +6,7 @@ testBecomeWriteable
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
 		  baseline: 'PharoGitTest';
-		  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
+		  repository: 'github://pharo-vcs/pharo-git-test:forBecomeWriteable';
 		  load
 	].
 

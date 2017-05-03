@@ -1,4 +1,4 @@
 auxiliar
 scpOriginUrl
-	^ 'https://github.com/npasserini/{1}.git' format: { projectName }
-	"^ 'git@github.com/npasserini/{1}.git' format: { projectName }"
+	^ 'https://github.com/pharo-vcs/{1}.git' format: { projectName }
+	"^ 'git@github.com/pharo-vcs/{1}.git' format: { projectName }"
