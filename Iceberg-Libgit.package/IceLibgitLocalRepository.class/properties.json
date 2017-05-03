@@ -1,18 +1,19 @@
 {
+	"category" : "Iceberg-Libgit",
+	"classinstvars" : [
+		 ],
 	"classtraitcomposition" : "TIceRepositoryBackend classTrait",
-	"classvars" : [ ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 6/28/2016 10:56",
 	"instvars" : [
 		"location",
 		"subdirectory",
 		"branch",
-		"frontend"
-	],
+		"frontend" ],
 	"name" : "IceLibgitLocalRepository",
-	"commentStamp" : "NicoPasserini 6/28/2016 10:56",
+	"pools" : [
+		 ],
 	"super" : "Object",
 	"traitcomposition" : "TIceRepositoryBackend",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "Iceberg-Libgit"
-}
+	"type" : "normal" }
