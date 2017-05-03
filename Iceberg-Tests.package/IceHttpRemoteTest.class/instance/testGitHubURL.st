@@ -6,4 +6,4 @@ testGitHubURL
 		assert: remote host equals: 'github.com';
 		assert: remote owner equals: 'owner';	
 		assert: remote path isEmpty;
-		assert: remote projectName equals: 'repo.git'
+		assert: remote projectName equals: 'repo'
