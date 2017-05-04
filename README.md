@@ -8,14 +8,16 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 ## Installation (for development)
 ### Prerequisites
 - Latest Pharo 6.0 image.
-- Git v1.9.1 or later (we are working to remove this requirement in the near future)
+- Latest Pharo VM.
+- NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
-Execute the following expression:
-```
+We are in active development and too many things have changed, until we release an official stable version we recommend to install with following expression (version dev-0.4):
+
+```Smalltalk
 Metacello new
   baseline: 'Iceberg';
-  repository: 'github://npasserini/iceberg';
+  repository: 'github://npasserini/iceberg:dev-0.4';
   load.
 ```
 

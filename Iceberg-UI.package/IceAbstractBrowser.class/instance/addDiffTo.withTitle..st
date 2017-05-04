@@ -4,6 +4,6 @@ addDiffTo: browser withTitle: diffTitle
 		from: #changes; 
 		to: #diff; 
 		andShow: [ :a | 
-			a diff 
+			a swappedColorDiff
 				title: diffTitle;
 				display: [:change | self buildDiffInput: change ]]
