@@ -17,7 +17,7 @@ We are in active development and too many things have changed, until we release 
 ```Smalltalk
 Metacello new
   baseline: 'Iceberg';
-  repository: 'github://npasserini/iceberg:dev-0.4';
+  repository: 'github://pharo-vcs/iceberg:dev-0.4';
   load.
 ```
 
@@ -35,7 +35,7 @@ Iceberg update
 ### Clone a repository
 - Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
 
-  > Please ensure that your repository is not empty (see [#127](https://github.com/npasserini/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
+  > Please ensure that your repository is not empty (see [#127](https://github.com/pharo-vcs/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
 
 - Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. Normally you will see something like this:
 
@@ -51,7 +51,7 @@ Iceberg update
 
   ![image](https://cloud.githubusercontent.com/assets/4633913/20840028/27e57712-b8af-11e6-8b20-76c674afe21d.png)
 
-  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:npasserini/iceberg.git` or `https://github.com/npasserini/iceberg.git`.
+  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:pharo-vcs/iceberg.git` or `https://github.com/pharo-vcs/iceberg.git`.
 
     > **Tip:** If you do not know it, you can get it from github, look for the green "Clone or Download" button.
 
@@ -131,7 +131,7 @@ Right now this is ths simplest of the three views, you can only push all of your
 ### Creating and retreiving repositories.
 Example:
 ```
-  myRepo := IceRepository origin: 'git@github.com:npasserini/pharo-git-test.git'.
+  myRepo := IceRepository origin: 'git@github.com:pharo-vcs/pharo-git-test.git'.
 ```
 
 ### Local storage of a repository
@@ -142,7 +142,7 @@ When the repository gets first used, it will create a local clone in your disk.
 If you prefere to do clones at specific locations, you can provide a directory:
 ```
   myRepo := IceRepository new
-    origin: 'git@github.com:npasserini/iceberg.git';
+    origin: 'git@github.com:pharo-vcs/iceberg.git';
     localDirectory: ... absolute or relative path
 ```
 
