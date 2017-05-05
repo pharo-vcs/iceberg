@@ -6,7 +6,7 @@ buildOn: aPresenter
 		icon: #icon;
 		format: #description;
 		display: [ self elements ];
-		"allSelected;"
+		allSelected;
 		onChangeOfCherryPick: [ :presentation | self selectedElements: presentation cherryPick ];
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
