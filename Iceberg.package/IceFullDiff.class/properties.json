@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Changes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
-	"instvars" : [
-		 ],
-	"name" : "IceFullDiff",
-	"pools" : [
-		 ],
 	"super" : "IceDiff",
-	"type" : "normal" }
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceFullDiff",
+	"type" : "normal"
+}

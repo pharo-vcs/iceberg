@@ -1,0 +1,3 @@
+testing
+isAllSelected
+	^ allSelected

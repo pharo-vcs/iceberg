@@ -10,7 +10,7 @@ composeBrowserOn: browser
 	browser transmit 
 		to: #changes; 
  		andShow: [ :a :diff |
-			(IceDiffChangeTreeBuilder new 
+			(IceDiffCherryPickChangeTreeBuilder new 
 				diff: diff;
 				buildOn: a)
 				title: 'Local changes' ].

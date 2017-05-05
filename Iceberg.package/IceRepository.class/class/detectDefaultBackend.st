@@ -6,7 +6,7 @@ detectDefaultBackend
 	
 	"Detect default backend"
 	Smalltalk globals 
-		at: ##IceLibgitLocalRepository
+		at: #IceLibgitLocalRepository
 		ifPresent: [ :class | ^ class ].
 	
 	^ TIceRepositoryBackend traitUsers anyOne
