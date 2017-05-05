@@ -9,7 +9,7 @@ smalltalk:
 - Pharo-alpha
 
 smalltalk_edge:
-  source: estebanlm/smalltalk-travis-ci
+  source: estebanlm/smalltalkCI
   branch: dev
 
 env:
