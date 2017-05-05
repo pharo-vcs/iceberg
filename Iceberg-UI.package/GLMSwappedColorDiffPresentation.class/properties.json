@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "NicoPasserini 8/23/2016 14:34",
+	"commentStamp" : "EstebanLorenzano 5/5/2017 12:19",
 	"instvars" : [
 		 ],
-	"name" : "IceHistoryBrowser",
+	"name" : "GLMSwappedColorDiffPresentation",
 	"pools" : [
 		 ],
-	"super" : "IceAbstractBrowser",
+	"super" : "GLMDiffPresentation",
 	"type" : "normal" }

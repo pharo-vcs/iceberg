@@ -1,1 +1,1 @@
-A glamour rendered for the swapped diff morph
+A glamour renderer for the swapped diff morph
