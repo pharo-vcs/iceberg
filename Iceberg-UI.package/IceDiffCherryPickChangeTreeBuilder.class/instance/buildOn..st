@@ -7,7 +7,7 @@ buildOn: aPresenter
 		format: #description;
 		display: [ self elements ];
 		allSelected;
-		onChangeOfCherryPick: [ :presentation | self selectedElements: presentation cherryPick ];
+		onChangeOfCherryPick: [ :presentation | self selectedCherryPick: presentation cherryPick ];
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
 		addSelectionAction: self browseAction;

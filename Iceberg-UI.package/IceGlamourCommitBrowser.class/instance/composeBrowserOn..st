@@ -12,17 +12,19 @@ composeBrowserOn: browser
  		andShow: [ :a :diff |
 			(IceDiffCherryPickChangeTreeBuilder new 
 				diff: diff;
+				onSelectCherryPick: [ :aSet | self selectedElements: aSet ];
 				buildOn: a)
 				title: 'Local changes' ].
 
 	browser transmit 
-		to: #commit; 
+		to: #commit;
 		andShow: [ :a :diff | 
 			a morph
 				title: 'Commit changes';
 				morph: [
-					IceCommitModel new 
+					IceCherryPickCommitModel new 
 						model: diff;
+						withSelectedCherryPick: [ self selectedElements ];
 						buildWithSpec ] ].
 
 	self addDiffTo: browser withTitle: 'Left: working copy / Right: local repository'
