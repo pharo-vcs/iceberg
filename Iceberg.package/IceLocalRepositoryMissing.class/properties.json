@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-Errors",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 10/4/2016 17:44",
-	"instvars" : [
-		"repository" ],
-	"name" : "IceLocalRepositoryMissing",
-	"pools" : [
-		 ],
 	"super" : "IceError",
-	"type" : "normal" }
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceLocalRepositoryMissing",
+	"type" : "normal"
+}

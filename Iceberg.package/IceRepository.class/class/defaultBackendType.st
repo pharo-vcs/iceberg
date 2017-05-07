@@ -1,3 +1,3 @@
 accessing settings
 defaultBackendType
-	^ DefaultBackendType
+	^ DefaultBackendType ifNil: [ DefaultBackendType := self detectDefaultBackend name ]

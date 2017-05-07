@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Errors",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "NothingToCommitException",
-	"pools" : [
-		 ],
 	"super" : "IceError",
-	"type" : "normal" }
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "NothingToCommitException",
+	"type" : "normal"
+}
