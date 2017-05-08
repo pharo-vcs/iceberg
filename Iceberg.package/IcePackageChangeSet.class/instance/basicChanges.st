@@ -2,6 +2,9 @@ initialization
 basicChanges
 	| mine theirs |
 	self package isLoaded ifFalse: [ ^ #() ].
+	(self isAnalyseFullChanges not 
+		and: [ self package isModified not ]) 
+		ifTrue: [ ^ #() ].
 	
 	mine := self parent mySnapshot: package.
 	theirs := self parent theirSnapshot: package.
