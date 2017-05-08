@@ -2,8 +2,8 @@ menu actions - package
 removePackageAction
 	^ GLMGenericAction new
 		action: [ :presentation | 
-			presentation selection removeFromDisk.
-			presentation update ]; 
+			presentation selection 
+				removeFromDiskThen: [ presentation update ] ]; 
 		icon: #smallDelete asIcon;
 		title: 'Remove package from disk'; 
 		condition: [ :presentation | 

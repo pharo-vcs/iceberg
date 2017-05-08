@@ -3,9 +3,7 @@ unloadAndRemovePackageAction
 	^ GLMGenericAction new
 		action: [ :presentation | 
 			presentation selection 
-				unload;
-				removeFromDisk.
-			presentation update ]; 
+				unloadAndRemoveFromDiskThen: [ presentation update ] ]; 
 		icon: #smallDelete asIcon;
 		title: 'Unload & remove package from disk'; 
 		condition: [ :presentation | 

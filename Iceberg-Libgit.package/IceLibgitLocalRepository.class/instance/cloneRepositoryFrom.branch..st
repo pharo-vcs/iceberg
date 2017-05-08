@@ -6,7 +6,7 @@ cloneRepositoryFrom: aRemote branch: aBranchName
 	LGitGlobal runSequence: [ 
 		| repo cloneOptions |
 		repo := LGitRepository on: self location.
-		cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider default).
+		cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
 		
 		repo clone: url options: cloneOptions.
 		aBranchName ifNotNil: [ 

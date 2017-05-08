@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "YuriyTymchuk 4/7/2017 12:11",
+	"commentStamp" : "EstebanLorenzano 5/5/2017 12:19",
 	"super" : "GLMMorphicWidgetRenderer",
-	"category" : "Iceberg-UI-Utils",
+	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
