@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "EstebanLorenzano 5/5/2017 12:19",
-	"super" : "GLMDiffPresentation",
 	"category" : "Iceberg-UI-Utils",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EstebanLorenzano 5/8/2017 13:57",
+	"instvars" : [
+		 ],
 	"name" : "GLMSwappedColorDiffPresentation",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "GLMDiffPresentation",
+	"type" : "normal" }

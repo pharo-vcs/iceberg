@@ -1,15 +1,16 @@
 {
-	"commentStamp" : "",
-	"super" : "IceDiffChangeTreeBuilder",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
 	"instvars" : [
 		"diffTreeMorph",
 		"diffTreeDataSource",
-		"cherryPickBlock"
-	],
+		"cherryPickBlock" ],
 	"name" : "IceDiffCherryPickChangeTreeBuilder",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceDiffChangeTreeBuilder",
+	"type" : "normal" }

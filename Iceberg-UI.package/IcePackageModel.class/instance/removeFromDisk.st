@@ -1,0 +1,3 @@
+actions
+removeFromDisk
+	self entity removeFromDisk

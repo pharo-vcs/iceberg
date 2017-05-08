@@ -1,20 +1,19 @@
 {
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [
+		 ],
 	"classtraitcomposition" : "TIceTool classTrait",
 	"classvars" : [
-		"UploadChangesOnCommit"
-	],
+		"UploadChangesOnCommit" ],
+	"commentStamp" : "NicoPasserini 8/25/2016 14:47",
 	"instvars" : [
 		"message",
 		"commitButton",
 		"pushCheckbox",
-		"model"
-	],
+		"model" ],
 	"name" : "IceCommitModel",
-	"commentStamp" : "NicoPasserini 8/25/2016 14:47",
+	"pools" : [
+		 ],
 	"super" : "ComposableModel",
 	"traitcomposition" : "TIceTool",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "Iceberg-UI-View"
-}
+	"type" : "normal" }

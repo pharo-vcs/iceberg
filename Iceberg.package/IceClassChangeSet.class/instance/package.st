@@ -1,3 +1,3 @@
 accessing
 package
-	^ self targetClass package.
+	^ self targetClass package

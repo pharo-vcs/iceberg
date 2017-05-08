@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "",
-	"super" : "IceCommitModel",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
 	"instvars" : [
-		"cherryPickBlock"
-	],
+		"cherryPickBlock" ],
 	"name" : "IceCherryPickCommitModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceCommitModel",
+	"type" : "normal" }

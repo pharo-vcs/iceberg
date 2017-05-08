@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "EstebanLorenzano 5/5/2017 12:19",
-	"super" : "GLMMorphicWidgetRenderer",
 	"category" : "Iceberg-UI-Utils",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "EstebanLorenzano 5/5/2017 12:19",
+	"instvars" : [
+		 ],
 	"name" : "GLMMorphicSwappedColorDiffRenderer",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "GLMMorphicWidgetRenderer",
+	"type" : "normal" }

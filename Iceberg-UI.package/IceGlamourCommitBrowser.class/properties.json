@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "<historical>",
-	"super" : "IceEmbeddedBrowser",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
 	"instvars" : [
-		"selectedElements"
-	],
+		"selectedElements" ],
 	"name" : "IceGlamourCommitBrowser",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceEmbeddedBrowser",
+	"type" : "normal" }

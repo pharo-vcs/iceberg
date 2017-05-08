@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "",
-	"super" : "IceAbstractModel",
 	"category" : "Iceberg-UI-Model",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
 	"name" : "IceRepositoryModel",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceAbstractModel",
+	"type" : "normal" }
