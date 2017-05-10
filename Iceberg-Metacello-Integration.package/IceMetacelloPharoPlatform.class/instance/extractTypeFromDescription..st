@@ -1,7 +1,7 @@
-*Iceberg-Metacello-Integration
+repository creation
 extractTypeFromDescription: description
 	(description beginsWith: 'ftp://') ifTrue: [ ^'ftp' ].
-	(Smalltalk classNamed: #IceMetacelloRepositoryType) allTypes 
+	IceMetacelloRepositoryType allTypes 
 		detect:  [ :each | each isSuitableForLocation: description  ] 
 		ifFound: [ :class | ^ class type ].
-	^super extractTypeFromDescription: description
+	^ super extractTypeFromDescription: description
