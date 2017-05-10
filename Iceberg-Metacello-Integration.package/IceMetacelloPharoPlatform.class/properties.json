@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MetacelloPharo30Platform",
+	"category" : "Iceberg-Metacello-Integration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetacelloPharoPlatform",
+	"type" : "normal"
+}
