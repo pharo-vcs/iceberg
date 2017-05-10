@@ -18,6 +18,7 @@ createRepository: aRepositorySpec
 	Smalltalk
 		at: #Iceberg
 		ifPresent: [ :cl | 
-			(cl enableMetacelloIntegration and: [ IceMetacelloRepositoryType canHandleType: type ])
+			(cl enableMetacelloIntegration 
+				and: [ (Smalltalk classNamed: #IceMetacelloRepositoryType) canHandleType: type ])
 				ifTrue: [ ^ cl mcRepositoryFor: aRepositorySpec description ] ].
 	^ super createRepository: aRepositorySpec
