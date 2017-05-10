@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"super" : "MetacelloPharo30Platform",
 	"category" : "Iceberg-Metacello-Integration",
 	"classinstvars" : [ ],
