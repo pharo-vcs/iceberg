@@ -10,7 +10,7 @@ baseline: spec
 			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
 
 		baseline: 'FileTree' with: [ spec
-			repository: 'github://npasserini/filetree:pharo6.0_dev/repository';
+			repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
 		baseline: 'LibGit' with: [ spec
 			repository: 'github://pharo-vcs/libgit2-pharo-bindings:development';
