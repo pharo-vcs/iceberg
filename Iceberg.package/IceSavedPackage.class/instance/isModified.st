@@ -1,3 +1,3 @@
 querying
 isModified
-	^ self package workingCopy modified.
+	^ self package workingCopy modified
