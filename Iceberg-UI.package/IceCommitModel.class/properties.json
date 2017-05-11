@@ -1,12 +1,10 @@
 {
 	"classtraitcomposition" : "TIceTool classTrait",
-	"classvars" : [
-		"UploadChangesOnCommit"
-	],
+	"classvars" : [ ],
 	"instvars" : [
 		"message",
 		"commitButton",
-		"pushCheckbox",
+		"commitPushButton",
 		"model"
 	],
 	"name" : "IceCommitModel",
