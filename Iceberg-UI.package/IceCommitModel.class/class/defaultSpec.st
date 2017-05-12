@@ -7,6 +7,6 @@ defaultSpec
 			add: #message;
 			newRow: [ :row | row
 				add: #commitButton;
-				add: #pushCheckBox
+				add: #commitPushButton
 			] height: self toolbarHeight
 		]
