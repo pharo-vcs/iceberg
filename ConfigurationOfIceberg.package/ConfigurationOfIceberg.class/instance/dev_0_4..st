@@ -5,4 +5,7 @@ dev_0_4: spec
 	spec for: #'common' do: [
   		spec
 			baseline: 'Iceberg'
-			with: [ spec repository: 'github://pharo-vcs/iceberg:dev-0.4' ] ].
+			with: [ 
+				spec 
+					repository: 'github://pharo-vcs/iceberg:dev-0.4';
+					loads: 'development' ] ].
