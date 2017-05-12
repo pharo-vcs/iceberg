@@ -8,6 +8,6 @@ mergeAction
 		condition: [ :presentation | 
 			presentation selection notNil 
 				and: [ presentation selection isMerged not ] ];
-		icon: GLMUIThemeExtraIcons glamorousLeftSide;
+		icon: #glamorousLeftSide asIcon;
 		shortcut: $m;
 		title: 'Merge and load'; showTitle
