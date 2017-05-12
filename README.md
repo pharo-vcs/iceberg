@@ -9,6 +9,7 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 ### Prerequisites
 - Latest Pharo 6.0 image.
 - Latest Pharo VM.
+	- **IMPORTANT FOR LINUX USERS:** For Pharo6, you need a special VM (it will be default for Pharo7), the "threaded hearbeat VM". You can download it by executing `curl get.pharo.org/vmT60 | bash`.
 - NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
@@ -93,6 +94,10 @@ A. There is a known bug around HTTPS and the get of credentials. We will fix thi
 
 - Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
 - Just using SSH protocol (but that option is not so easy on Windows).
+
+Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
+A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
+default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.
 
 ## Usage
 ### Repositories Browser
