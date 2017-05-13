@@ -3,7 +3,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"location",
-		"subdirectory",
+		"subdirectories",
 		"branch",
 		"frontend"
 	],

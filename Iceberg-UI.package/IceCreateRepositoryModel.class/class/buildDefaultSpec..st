@@ -5,7 +5,7 @@ buildDefaultSpec: col
 		height: self inputTextHeight;
 		
 		newRow: [:row | row 
-			add: #subdirectoryLabel width: 100;
+			add: #subdirectoryLabel width: 110;
 			add: #subdirectory ]
 		height: self inputTextHeight;
 			

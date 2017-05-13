@@ -16,7 +16,7 @@ internalSavePackage: package withMessage: commitMessage
 		snapshot: workingCopy package snapshot
 		dependencies: #(). "Note we do not track Monticello dependencies."
 
-	self backend internalStoreVersion: newVersion.
+	self backend internalStoreVersion: newVersion of: package.
 
 	SystemAnnouncer uniqueInstance
 		announce: (MCVersionSaved version: newVersion repository: self backend).

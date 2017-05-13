@@ -1,5 +1,6 @@
 accessing
 directoryPathString
-	^ self repository subdirectory isEmptyOrNil 
+
+	^ self subdirectory isEmptyOrNil
 		ifTrue: [ self directoryName ]
 		ifFalse: [ self repository subdirectory, '/',  self directoryName ].

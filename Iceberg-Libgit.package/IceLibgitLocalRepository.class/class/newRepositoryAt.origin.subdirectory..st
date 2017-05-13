@@ -3,5 +3,5 @@ newRepositoryAt: aFileReference origin: anIceRemoteRepository subdirectory: aStr
 	^ self new
 		location: aFileReference;
 		origin: anIceRemoteRepository;
-		subdirectory: aString;
+		addSubdirectory: aString;
 		yourself
