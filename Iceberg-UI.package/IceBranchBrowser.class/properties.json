@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "<historical>",
-	"super" : "IceHistoryBrowser",
 	"category" : "Iceberg-UI-View",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		 ],
 	"name" : "IceBranchBrowser",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceHistoryBrowser",
+	"type" : "normal" }

@@ -3,7 +3,7 @@ basicCommitWithMessage: text ifCancel: cancelBlock
 	UIManager default informUserDuring: [ :bar | 
 		bar label: ('Commiting to {1}' format: {self repository printString}).
 		[
-			[ self repository 
+			[ self halt. self repository 
 				commitPackages: self model changedPackages
 				withMessage: text asString ]
 			on: IceGitUsernameOrEmailNotFound do: [ :e |
