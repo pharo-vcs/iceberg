@@ -1,3 +1,3 @@
 accessing
 repository
-	^ self model repository.
+	^ self model repository

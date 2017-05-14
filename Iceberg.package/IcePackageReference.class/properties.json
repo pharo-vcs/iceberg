@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 5/25/2016 12:00",
-	"instvars" : [
-		"packageName" ],
-	"name" : "IcePackageReference",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageName"
+	],
+	"name" : "IcePackageReference",
+	"type" : "normal"
+}

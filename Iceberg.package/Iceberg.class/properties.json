@@ -1,15 +1,16 @@
 {
+	"commentStamp" : "NicoPasserini 4/28/2016 14:10",
+	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [
-		"IcebergAnnouncer" ],
+		"IcebergAnnouncer"
+	],
+	"pools" : [ ],
 	"classvars" : [
 		"EnableMetacelloIntegration",
-		"RemoteTypeSelector" ],
-	"commentStamp" : "NicoPasserini 4/28/2016 14:10",
-	"instvars" : [
-		 ],
+		"RemoteTypeSelector"
+	],
+	"instvars" : [ ],
 	"name" : "Iceberg",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

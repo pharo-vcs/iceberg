@@ -1,3 +1,6 @@
 accessing
 repositoryActions
-	^ { self newIssueFixAction }
+	^ { 
+	self newIssueFixAction.
+	self newPullRequestAction.
+	}

@@ -1,17 +1,18 @@
 {
+	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
+	"super" : "Object",
 	"category" : "Iceberg-Security",
-	"classinstvars" : [
-		 ],
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [
 		"PlaintextCredentials",
 		"ProviderType",
 		"SshCredentials",
-		"UseCustomSsh" ],
-	"commentStamp" : "NicoPasserini 11/7/2016 15:01",
+		"UseCustomSsh"
+	],
 	"instvars" : [
-		"tries" ],
+		"tries"
+	],
 	"name" : "IceCredentialsProvider",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

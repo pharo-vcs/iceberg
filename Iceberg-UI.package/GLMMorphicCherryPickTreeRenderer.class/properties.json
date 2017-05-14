@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-UI-Utils",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "GLMMorphicCherryPickTreeRenderer",
-	"pools" : [
-		 ],
 	"super" : "GLMMorphicFastTreeRenderer",
-	"type" : "normal" }
+	"category" : "Iceberg-UI-Utils",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GLMMorphicCherryPickTreeRenderer",
+	"type" : "normal"
+}

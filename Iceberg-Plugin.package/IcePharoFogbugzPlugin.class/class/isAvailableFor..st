@@ -4,5 +4,5 @@ isAvailableFor: aRepository
 	| origin |
 	origin := aRepository origin.
 	^ (origin host = 'github.com')
-		and: [ origin owner = 'guillep' 
-		and: [ origin projectName = 'pharo-core' ] ]
+		and: [ origin owner = 'pharo-project'
+		and: [ origin projectName = 'pharo' ] ]

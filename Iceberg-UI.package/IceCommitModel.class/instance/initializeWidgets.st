@@ -1,14 +1,14 @@
 initialization
 initializeWidgets
-	message := self newText.
-	commitButton := self newButton 
-		label: 'Commit';
+	message := self newText
+		autoAccept: true;
 		yourself.
 		
-	pushCheckbox := self newCheckBox
-		label: 'Upload changes on commit?';
-		state: self class uploadChangesOnCommit;
+	commitButton := self newButton
+		label: 'Commit';
 		yourself.
-	
-	self focusOrder 
-		add: message.
+	commitPushButton := self newButton
+		label: 'Commit and push';
+		yourself.
+		
+	self focusOrder add: message

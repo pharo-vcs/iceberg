@@ -5,8 +5,8 @@ removePackageAction
 			presentation selection 
 				removeFromDiskThen: [ presentation update ] ]; 
 		icon: #smallDelete asIcon;
-		title: 'Remove package from disk'; 
+		title: 'Remove package from repository (do not unload)'; 
 		condition: [ :presentation | 
-			presentation selection notNil and: [ presentation selection isLoaded not ] ];
+			presentation selection notNil and: [ presentation selection isLoaded ] ];
 		yourself
 

@@ -1,14 +1,13 @@
 {
-	"category" : "Iceberg-UI-Utils",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "EstebanLorenzano 12/23/2016 15:50",
-	"instvars" : [
-		"presentation" ],
-	"name" : "IceRepositoryUpdateHelper",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Iceberg-UI-Utils",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"presentation"
+	],
+	"name" : "IceRepositoryUpdateHelper",
+	"type" : "normal"
+}

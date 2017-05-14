@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-UI-View",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "YuriyTymchuk 4/7/2017 11:32",
-	"instvars" : [
-		 ],
-	"name" : "SwappedColorDiffMorph",
-	"pools" : [
-		 ],
 	"super" : "DiffMorph",
-	"type" : "normal" }
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SwappedColorDiffMorph",
+	"type" : "normal"
+}
