@@ -5,7 +5,6 @@ commitPackages: packagesToCommit withMessage: message andParents: parentCommitis
 	savedVersions := packagesToCommit collect: [ :package | 
 		self internalSavePackage: package withMessage: message ].
 	
-	self halt.
 	self
 		doCommitMcVersions: savedVersions 
 		withMessage: message 
