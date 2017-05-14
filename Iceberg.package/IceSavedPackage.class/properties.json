@@ -1,14 +1,15 @@
 {
-	"commentStamp" : "NicoPasserini 6/13/2016 15:57",
-	"super" : "Object",
 	"category" : "Iceberg-Core",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 6/13/2016 15:57",
 	"instvars" : [
 		"package",
-		"repository"
-	],
+		"repository" ],
 	"name" : "IceSavedPackage",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,11 +1,14 @@
 {
-	"commentStamp" : "",
-	"super" : "IceError",
 	"category" : "Iceberg-Errors",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
 	"name" : "YouShouldPullBeforePush",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceError",
+	"type" : "normal" }

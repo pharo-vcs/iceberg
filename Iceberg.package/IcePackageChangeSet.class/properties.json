@@ -1,17 +1,18 @@
 {
-	"commentStamp" : "NicoPasserini 5/12/2016 17:32",
-	"super" : "IceStructuralChangeSet",
 	"category" : "Iceberg-Changes",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"classvars" : [ ],
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "NicoPasserini 5/12/2016 17:32",
 	"instvars" : [
 		"package",
 		"changes",
 		"organizationChange",
 		"changedClasses",
-		"analyseFullChanges"
-	],
+		"analyseFullChanges" ],
 	"name" : "IcePackageChangeSet",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "IceStructuralChangeSet",
+	"type" : "normal" }
