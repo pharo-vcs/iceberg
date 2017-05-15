@@ -15,4 +15,4 @@ computeReferenceCommit
 	candidates isEmpty ifTrue: [ ^ self repository headCommit ].
 
 	"4. We could try other strategies... but this should be good for now."	
-	^ candidates detectMin: #datetime
+	^ candidates detectMax: #datetime
