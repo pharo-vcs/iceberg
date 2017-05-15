@@ -1,15 +1,13 @@
 {
-	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
-	"super" : "Object",
 	"category" : "Iceberg-Core",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classinstvars" : [
+		 ],
 	"classvars" : [
 		"DefaultBackendType",
 		"Registry",
 		"ShareRepositoriesBetweenImages",
-		"SharedRepositoriesLocation"
-	],
+		"SharedRepositoriesLocation" ],
+	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
 	"instvars" : [
 		"name",
 		"announcer",
@@ -18,8 +16,9 @@
 		"pushRemote",
 		"savedPackages",
 		"commitDictionary",
-		"loadedCode"
-	],
+		"loadedCode" ],
 	"name" : "IceRepository",
-	"type" : "normal"
-}
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
