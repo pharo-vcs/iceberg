@@ -1,0 +1,3 @@
+accessing
+getOrCreateIcebergRepository
+	^ self repository
