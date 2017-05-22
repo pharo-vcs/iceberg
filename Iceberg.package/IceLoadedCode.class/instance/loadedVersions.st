@@ -2,7 +2,7 @@ accessing
 loadedVersions
 	^ loadedVersions ifNil: [ 
 		loadedVersions := Dictionary new.
-		repository loadedPackages do: [ :pkg | self versionLoaded: pkg computeLoadedVersion ].
+		repository loadedPackages do: [ :pkg | self versionLoaded: pkg computeLoadedVersion ] displayingProgress: 'Compute versions'.
 	
 		loadedVersions
  	]
