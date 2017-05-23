@@ -1,4 +1,4 @@
 accessing
 userName
-	^user ifNil: [ String empty ] ifNotNil: [ user ].
+	^user ifNil: [ String empty ].
 	
