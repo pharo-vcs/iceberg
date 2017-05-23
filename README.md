@@ -90,10 +90,14 @@ Q. Image seems freeze when doing a clone of a repository.
 A. This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
 
 Q. Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
-A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:
-
+A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
 - Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
 - Just using SSH protocol (but that option is not so easy on Windows).
+
+Q. I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
+A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
+- In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
+- Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
 
 Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
 A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
