@@ -1,8 +1,10 @@
 testing
 isAvailableFor: aRepository
-	"validate if this is a github repository"
-	| origin |
-	origin := aRepository origin.
-	^ (origin host = 'github.com')
-		and: [ origin owner = 'pharo-project'
-		and: [ origin projectName = 'pharo' ] ]
+
+	"ATTENTION: Bad practice!
+	
+	We cannot resolve remotes during repository creation so we unfortunately need this
+	pluggin enabled for all repositories. Please do not create own pluggins enabled for all
+	repositories unless you have a very, very, very good reason."
+	
+	^ true
