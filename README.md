@@ -1,9 +1,9 @@
 # Git integration for Pharo
-Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
+Iceberg is a set of tools that allow you to handle git repositories directly from a Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
-Please be aware this is still an experimental tool, so you have to be careful. But we have already a few early adopters, so you are invited to try it and provide feedback.
+Please be aware this is still an experimental tool, so you have to be careful. However we already have many early adopters, so you are invited to try it and provide feedback.
 
-To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
+To better understand Iceberg (or even this documentation), I recommend reading the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
 
 ## Installation (for development)
 ### Prerequisites
@@ -13,7 +13,7 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 - NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
-We are in active development and too many things have changed, until we release an official stable version we recommend to install with following expression (version dev-0.4):
+We are in active development and many things have changed! Until we release an official stable version we recommend you install it using the following expression (version dev-0.4):
 
 ```Smalltalk
 Metacello new
@@ -30,9 +30,9 @@ Iceberg update
 
 **Important**
 - You don't need this step if you have just downloaded Iceberg.
-- Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
+- While updating is useable, please note it is still an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always to start with a clean image.
 
-## 5 minutes tutorial
+## 5 minute tutorial
 ### Clone a repository
 - Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
 
@@ -86,15 +86,15 @@ Iceberg update
 
 ## FAQ
 
-Q. Image seems freeze when doing a clone of a repository.  
-A. This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
+Q. My Image seems freeze when doing a clone of a repository.  
+A. This is because the operation is taking time and Iceberg still does not show feedback properly. You just need to be patient :)  
 
-Q. Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
+Q. My Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
 A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
 - Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
 - Just using SSH protocol (but that option is not so easy on Windows).
 
-Q. I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
+Q. I installed iceberg and tried to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
 A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
 - In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
 - Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
