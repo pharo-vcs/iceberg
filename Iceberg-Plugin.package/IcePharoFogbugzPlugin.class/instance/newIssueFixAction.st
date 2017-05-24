@@ -7,4 +7,5 @@ newIssueFixAction
 				then: [ presentation pane browser update ] ];
 		category: 'Pharo';
 		showTitle: 'Create new branch from FogBugz issue...'; 
+		condition: [ :presentation | self isAvailableFor: presentation selection repository]
 		yourself	

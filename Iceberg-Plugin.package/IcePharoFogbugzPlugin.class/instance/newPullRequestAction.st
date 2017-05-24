@@ -5,4 +5,5 @@ newPullRequestAction
 		action: [ :presenter | self newPullRequest: presenter selection repository ];
 		category: 'Pharo';
 		showTitle: 'Create pull request...'; 
+		condition: [ :presentation | self isAvailableFor: presentation selection repository]
 		yourself
