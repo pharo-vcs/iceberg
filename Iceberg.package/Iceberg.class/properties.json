@@ -1,7 +1,7 @@
 {
 	"category" : "Iceberg-Core",
 	"classinstvars" : [
-		"IcebergAnnouncer" ],
+		"icebergAnnouncer" ],
 	"classvars" : [
 		"EnableMetacelloIntegration",
 		"RemoteTypeSelector" ],
