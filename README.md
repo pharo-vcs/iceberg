@@ -102,8 +102,8 @@ A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. Y
 ```Smalltalk
 IceCredentialsProvider useCustomSsh: true.
 IceCredentialsProvider sshCredentials
-	publicKey: '/path/to/youruser/.ssh/id_rsa.pub’;
-	privateKey: '/path/to/youruser/.ssh/id_rsa’
+	publicKey: '/path/to/youruser/.ssh/id_rsa.pub';
+	privateKey: '/path/to/youruser/.ssh/id_rsa'
 ```
 You will need to change the `/path/to/youruser/.ssh` part to your user SSH home-path (in macOS is `/Users/YourName/.ssh`, in linux `/home/yourname` and I don't know in windows ;)
 
