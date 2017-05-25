@@ -98,6 +98,14 @@ Q. I installed iceberg and tried to clone a project, but I'm getting "LGit_GIT_E
 A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
 - In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
 - Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
+	- this may also be achieved by not using ssh-agent at all (just using regulat ssh keys), executing: 
+```Smalltalk
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: '/path/to/youruser/.ssh/id_rsa.pub’;
+	privateKey: '/path/to/youruser/.ssh/id_rsa’
+```
+You will need to change the `/path/to/youruser/.ssh` part to your user SSH home-path (in macOS is `/Users/YourName/.ssh`, in linux `/home/yourname` and I don't know in windows ;)
 
 Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
 A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
