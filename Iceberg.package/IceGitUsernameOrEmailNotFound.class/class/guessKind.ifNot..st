@@ -1,7 +1,7 @@
-private
-guessUsernameOrEmailNotFound: anError ifNot: notBlock 
+accessing
+guessKind: anError ifNot: notBlock 
 	(anError messageText = 'Config value ''user.name'' was not found' 
 		or: [ anError messageText = 'Config value ''user.email'' was not found' 
 		or: [ anError messageText = 'Failed to parse signature - Signature cannot have an empty name or email' ] ])
-		ifTrue: [ IceGitUsernameOrEmailNotFound signal ].
+		ifTrue: [ self signal ].
 	notBlock value
