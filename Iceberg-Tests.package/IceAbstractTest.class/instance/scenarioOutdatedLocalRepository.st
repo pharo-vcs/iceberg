@@ -16,7 +16,7 @@ scenarioOutdatedLocalRepository
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
 		  baseline: 'PharoGitTest';
-		  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
+		  repository: ('github://npasserini/{1}:forBecomeWriteable' format: { projectName });
 		  load
 	].
 
