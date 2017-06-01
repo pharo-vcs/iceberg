@@ -13,7 +13,7 @@ To better understand Iceberg (or even this documentation), I recommend reading t
 - NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
-We are in active development and many things have changed! Until we release an official stable version we recommend you install it using the following expression (version dev-0.4):
+The stable version of iceberg can be installed executing this:
 
 ```Smalltalk
 Metacello new
@@ -21,6 +21,8 @@ Metacello new
   repository: 'github://pharo-vcs/iceberg';
   load.
 ```
+
+**Notice**: Iceberg is already included in [Pharo 6.0](http://github.com/pharo-project/pharo)
 
 ### Update Iceberg
 If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
