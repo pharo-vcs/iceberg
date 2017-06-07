@@ -1,3 +1,3 @@
 accessing
 defaultHeadBranchName
-	^ self currentBranch basename 
+	^ self branch basename 

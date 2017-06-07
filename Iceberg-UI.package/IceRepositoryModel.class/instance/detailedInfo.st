@@ -8,5 +8,5 @@ detailedInfo
 		'Pushing to' -> (self repository pushRemote 
 			ifNotNil: [ :r | r remoteName ]
 			ifNil: [ self repository origin remoteName ]).
-		'On branch' -> self repository currentBranch name.
+		'On branch' -> self repository branchName.
 	} 

@@ -1,3 +1,3 @@
 testing
 isCurrentBranch: aBranch
-	^ self repository currentBranch = aBranch
+	^ self repository branch = aBranch

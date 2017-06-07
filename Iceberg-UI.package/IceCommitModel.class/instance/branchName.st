@@ -1,3 +1,3 @@
 accessing
 branchName
-	^ self model repository branch name
+	^ self model repository branchName

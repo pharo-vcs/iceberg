@@ -1,3 +1,3 @@
-*Iceberg-UI
+accessing
 branchName
 	^ self branch name

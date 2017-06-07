@@ -5,7 +5,7 @@ descriptionTextForBranch: aBranch repository: repo
 	self flag: #todo. "This is a duplication of IceRepositoryModel>>descriptionTextForBranch:. 
 	This can be solved by using an IceBranchModel instead the branch directly"
 	text := aBranch name asText.
-	(repo currentBranch = aBranch)
+	(repo branch = aBranch)
 		ifTrue: [ text allBold ].
 		
 	^ text

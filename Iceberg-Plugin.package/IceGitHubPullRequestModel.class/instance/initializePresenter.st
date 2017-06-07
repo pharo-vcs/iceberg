@@ -1,7 +1,7 @@
 initialization
 initializePresenter
 	super initializePresenter.
-	self titlePanel text: self currentBranch basename.
+	self titlePanel text: self branch basename.
 	self headForkList
 		items: self availableRemotes;
 		displayBlock: [ :each | each owner, '/', each projectName ];
