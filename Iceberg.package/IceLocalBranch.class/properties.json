@@ -1,16 +1,15 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 12/6/2016 11:40",
+	"super" : "IceBranch",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"versionDictionary",
 		"loading",
-		"upstream" ],
+		"upstream"
+	],
 	"name" : "IceLocalBranch",
-	"pools" : [
-		 ],
-	"super" : "IceBranch",
-	"type" : "normal" }
+	"type" : "normal"
+}

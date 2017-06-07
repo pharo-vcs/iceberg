@@ -1,17 +1,16 @@
 {
-	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 9/26/2016 11:11",
+	"super" : "IceAbstractVersion",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"entry",
 		"info",
 		"commit",
-		"originatingCommit" ],
+		"originatingCommit"
+	],
 	"name" : "IceSavedPackageVersion",
-	"pools" : [
-		 ],
-	"super" : "IceAbstractVersion",
-	"type" : "normal" }
+	"type" : "normal"
+}

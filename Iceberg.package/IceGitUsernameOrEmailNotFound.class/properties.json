@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Errors",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
-	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "IceGitUsernameOrEmailNotFound",
-	"pools" : [
-		 ],
+	"commentStamp" : "<historical>",
 	"super" : "IceError",
-	"type" : "normal" }
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitUsernameOrEmailNotFound",
+	"type" : "normal"
+}
