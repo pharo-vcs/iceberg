@@ -4,7 +4,6 @@
 	"instvars" : [
 		"location",
 		"subdirectory",
-		"branch",
 		"frontend"
 	],
 	"name" : "IceLibgitLocalRepository",
