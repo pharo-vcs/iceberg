@@ -1,3 +1,5 @@
 initialization
 initialElements
-	^ repository savedPackages collect: [ :package | self createChangeSetFor: package ]
+	| changedPackages |
+	changedPackages := self myVersion changedPackagesTo: self theirVersion.
+	^ changedPackages collect: [ :package | self createChangeSetFor: package ]

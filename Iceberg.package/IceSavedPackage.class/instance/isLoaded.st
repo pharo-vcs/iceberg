@@ -1,3 +1,3 @@
-querying
+testing
 isLoaded
 	^ self package isLoaded

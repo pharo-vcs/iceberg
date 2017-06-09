@@ -3,9 +3,9 @@ basicChanges
 	| mine theirs |
 
 	self package isLoaded ifFalse: [ ^ #() ].
-	(self isAnalyseFullChanges not 
+	"(self isAnalyseFullChanges not 
 		and: [ self package isModified not and: [ self package isExported ] ]) 
-		ifTrue: [ ^ #() ].
+		ifTrue: [ ^ #() ]."
 	
 	mine := self parent mySnapshot: self package.
 	theirs := (self package isExported 

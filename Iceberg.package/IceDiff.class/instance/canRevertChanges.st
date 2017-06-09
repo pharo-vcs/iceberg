@@ -1,3 +1,3 @@
-querying
+testing
 canRevertChanges
 	^ self myVersion canRevertChanges 
