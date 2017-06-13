@@ -1,3 +1,3 @@
-accessing
+private
 backend
 	^ self repository backend
