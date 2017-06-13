@@ -10,5 +10,6 @@ changedPackagesToCommitInfo: aCommitInfo
 				ifTrue: [ packageName copyAfterLast: $/ ]
 				ifFalse: [ packageName ] ])
 		asSet.
-	^ packageNames sorted 
-		collect: [ :each | self repository packageNamed: each ]
+	^ packageNames sorted
+		select: [ :each | self repository includesPackageNamed: each  ] 
+		thenCollect: [ :each | self repository packageNamed: each ]
