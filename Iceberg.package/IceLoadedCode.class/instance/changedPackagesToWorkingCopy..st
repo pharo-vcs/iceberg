@@ -7,9 +7,10 @@ changedPackagesToWorkingCopy: aWorkingCopy
 	loadedPackageNames := self repository loadedPackages collect: #name.
 	added := (loadedPackageNames \ commitPackageNames) 
 		collect: [ :each | self repository packageNamed: each ]. 
-	self flag: #todo.
-	"This may be a problem. It *may* means package was removed. 
-	 But it can also means package was simply not loaded."
-	"removed := commitPackageNames \ loadedPackageNames."
-	^ added, 
+	"this will give me the removals, but I'm still don't know what to do with them
+	 (because if I just add it it will show them as added not as removed)"
+	"removed := (commitPackageNames \ loadedPackageNames)
+		reject: [ :each | self repository includesPackageNamed: each ]
+		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ]."
+	^ added,
 		(self loadedVersions keys select: [ :each | each isModified ])
