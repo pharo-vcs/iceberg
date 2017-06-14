@@ -10,6 +10,7 @@ composeBrowserOn: browser
 	browser transmit 
 		to: #changes; 
  		andShow: [ :a :diff |
+			self selectedElements: nil.
 			(IceDiffCherryPickChangeTreeBuilder new 
 				diff: diff;
 				onSelectCherryPick: [ :aSet | self selectedElements: aSet ];
