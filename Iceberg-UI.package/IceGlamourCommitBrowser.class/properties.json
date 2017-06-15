@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"selectedElements"
+	],
 	"name" : "IceGlamourCommitBrowser",
 	"type" : "normal"
 }

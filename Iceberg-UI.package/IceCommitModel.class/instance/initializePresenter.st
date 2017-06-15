@@ -1,4 +1,4 @@
 initialization
 initializePresenter
-	commitButton action: [ self commitPackages ].
-	commitPushButton action: [ self commitAndPushPackages ]
+	commitButton action: [ self commitPushing: false ].
+	commitPushButton action: [ self commitPushing: true ]

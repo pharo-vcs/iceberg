@@ -3,7 +3,6 @@ initializeWidgets
 	message := self newText
 		autoAccept: true;
 		yourself.
-		
 	commitButton := self newButton
 		label: 'Commit';
 		yourself.
