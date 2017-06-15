@@ -5,10 +5,10 @@ commitPushing: pushBoolean
 	(text := self message getText) ifEmpty: [ ^ self ].
 	UIManager default
 		informUserDuring: [ :bar | 
-			| remote |
-			remote := self repository pushRemote.
-			bar label: ('Commiting and uploading changes to {1}' format: {remote}).
+			bar label: ('Commiting changes to {1}' format: {self repository}).
 			self basicCommitWithMessage: text ifCancel: [ ^ self ].
-			pushBoolean ifTrue: [ 
+			pushBoolean ifTrue: [ | remote |
+				remote := self repository pushRemote.
+				bar label: ('Pushing changes to {1}' format: {remote}).
 				self pushRepository: self repository andThen: [ ]. 
 				UIManager default inform: ('Uploaded changes to {1}' format: {remote}) ] ]
