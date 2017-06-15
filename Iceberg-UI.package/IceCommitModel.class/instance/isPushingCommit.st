@@ -1,3 +1,0 @@
-testing
-isPushingCommit
-	^ pushCheckbox state

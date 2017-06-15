@@ -2,7 +2,7 @@ actions
 commitPushing: pushBoolean
 	| text |
 	
-	(text := self message getText) ifEmpty: [ ^ self ].
+	(text := self messageText) ifEmpty: [ ^ self ].
 	UIManager default
 		informUserDuring: [ :bar | 
 			bar label: ('Commiting changes to {1}' format: {self repository}).
