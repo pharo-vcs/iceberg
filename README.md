@@ -190,7 +190,7 @@ myRepository createBranch: 'newBranchName'
 
 ### Load a package from a repository
 ```Smalltalk
-myRepository loadPackage: 'Package-Name'
+(myRepository packageNamed: 'Package-Name') loadLatest.
 ```
 
 ### Update packages
