@@ -1,17 +1,16 @@
 {
-	"category" : "Iceberg-Tests-Base",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 11/21/2016 19:44",
+	"super" : "Object",
+	"category" : "Iceberg-Tests-Base",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"value",
 		"target",
 		"selector",
-		"previousValue" ],
+		"previousValue"
+	],
 	"name" : "IceTestParameterValue",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}
