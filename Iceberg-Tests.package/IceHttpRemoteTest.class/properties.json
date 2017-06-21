@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Tests-Core-Remotes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "TorstenBergmann 2/23/2017 13:28",
-	"instvars" : [
-		 ],
-	"name" : "IceHttpRemoteTest",
-	"pools" : [
-		 ],
 	"super" : "TestCase",
-	"type" : "normal" }
+	"category" : "Iceberg-Tests-Core-Remotes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceHttpRemoteTest",
+	"type" : "normal"
+}
