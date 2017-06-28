@@ -12,5 +12,4 @@ changedPackagesToWorkingCopy: aWorkingCopy
 	"removed := (commitPackageNames \ loadedPackageNames)
 		reject: [ :each | self repository includesPackageNamed: each ]
 		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ]."
-	^ added,
-		(self loadedVersions keys select: [ :each | each isModified ])
+	^ added, (self loadedVersions keys select: #isModified)
