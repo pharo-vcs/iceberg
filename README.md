@@ -32,6 +32,25 @@ Iceberg update
 - You don't need this step if you have just downloaded Iceberg.
 - Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
 
+## FAQ
+
+Q. Image seems freeze when doing a clone of a repository.  
+A. This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
+
+Q. Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
+A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
+- Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
+- Just using SSH protocol (but that option is not so easy on Windows).
+
+Q. I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
+A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
+- In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
+- Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
+
+Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
+A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
+default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.
+
 ## 5 minutes tutorial
 ### Clone a repository
 - Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
@@ -83,25 +102,6 @@ Iceberg update
     - Then click on the 'Commit' button.
 
   - You can choose to just *commit* your changes or *commit and push*. There will be buttons available for both options.
-
-## FAQ
-
-Q. Image seems freeze when doing a clone of a repository.  
-A. This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
-
-Q. Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
-A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
-- Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
-- Just using SSH protocol (but that option is not so easy on Windows).
-
-Q. I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
-A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
-- In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
-- Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
-
-Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
-A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
-default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.
 
 ## Usage
 ### Repositories Browser
