@@ -3,7 +3,7 @@
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [
-		"IcebergAnnouncer"
+		"icebergAnnouncer"
 	],
 	"pools" : [ ],
 	"classvars" : [
