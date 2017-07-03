@@ -165,7 +165,7 @@ If you want to create a new branch it is slight different:
 ```
 
 ### Load a package from a repository
-```
+```Smalltalk
   myRepo loadPackage: 'Package-Name'
 ```
 
