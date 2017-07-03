@@ -6,4 +6,4 @@ testBitBucketURL
 		assert: remote host equals: 'bitbucket.org';
 		assert: remote owner equals: 'owner';	
 		assert: remote path isEmpty;
-		assert: remote projectName equals: 'repo.git'
+		assert: remote projectName equals: 'repo'

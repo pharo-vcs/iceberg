@@ -6,7 +6,7 @@ scenarioOutdatedLocalRepository
 		in: self absoluteLocation parent
 		execute: { 
 			'clone'. 
-			'https://github.com/npasserini/{1}.git' format: { projectName }. 
+			'https://github.com/pharo-vcs/{1}.git' format: { projectName }. 
 			projectName }. 
 
 	IceGitCommand in: self absoluteLocation execute: {'checkout forBecomeWriteable'}.
@@ -16,7 +16,7 @@ scenarioOutdatedLocalRepository
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
 		  baseline: 'PharoGitTest';
-		  repository: 'github://npasserini/pharo-git-test:forBecomeWriteable';
+		  repository: 'github://pharo-vcs/pharo-git-test:forBecomeWriteable';
 		  load
 	].
 

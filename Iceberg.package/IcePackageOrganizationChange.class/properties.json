@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-Changes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "IceChangeSet",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"oldOrganization",
-		"newOrganization" ],
+		"newOrganization"
+	],
 	"name" : "IcePackageOrganizationChange",
-	"pools" : [
-		 ],
-	"super" : "IceChangeSet",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,3 +1,3 @@
 accessing
 projectVersion
-	^ self repository branch name
+	^ self repository branchName

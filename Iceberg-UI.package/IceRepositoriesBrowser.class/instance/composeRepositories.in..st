@@ -33,6 +33,7 @@ composeRepositories: repositories in: composite
 		addSelectionAction: self switchBranchAction;
 		addSelectionAction: self createNewBranchAction;
 		addSelectionAction: self addRemoteAction;
+		addSelectionAction: self fetchAction;
 		addSelectionAction: self pullAction;
 		addSelectionAction: self pullFromAction;
 		addSelectionAction: self pushAction;

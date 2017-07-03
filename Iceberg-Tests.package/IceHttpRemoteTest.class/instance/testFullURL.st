@@ -6,4 +6,4 @@ testFullURL
 		assert: remote host equals: 'hostname.com';
 		assert: remote port equals: 1234;
 		assert: remote owner equals: 'owner';
-		assert: remote projectName equals: 'repo.git'
+		assert: remote projectName equals: 'repo'

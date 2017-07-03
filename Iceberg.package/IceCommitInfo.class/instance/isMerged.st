@@ -1,3 +1,3 @@
 *Iceberg-UI
 isMerged
-	^ repository currentBranch includesCommit: self
+	^ repository branch includesCommit: self

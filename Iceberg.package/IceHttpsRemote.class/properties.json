@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Core-Remotes",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 11/18/2016 12:39",
-	"instvars" : [
-		 ],
-	"name" : "IceHttpsRemote",
-	"pools" : [
-		 ],
 	"super" : "IceHttpRemote",
-	"type" : "normal" }
+	"category" : "Iceberg-Core-Remotes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceHttpsRemote",
+	"type" : "normal"
+}

@@ -1,16 +1,15 @@
 {
-	"category" : "Iceberg-UI-View",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "IceCreateRepositoryModel",
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"projectNameLabel",
 		"projectNameInput",
-		"acceptBlock" ],
+		"acceptBlock"
+	],
 	"name" : "IceNewRepositoryModel",
-	"pools" : [
-		 ],
-	"super" : "IceCreateRepositoryModel",
-	"type" : "normal" }
+	"type" : "normal"
+}

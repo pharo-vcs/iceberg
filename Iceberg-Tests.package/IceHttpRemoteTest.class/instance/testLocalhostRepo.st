@@ -6,4 +6,4 @@ testLocalhostRepo
 		assert: remote host equals: 'hostname';
 		assert: remote owner equals: 'owner';		
 		assert: remote port equals: self defaultTestClass defaultPort;	
-		assert: remote projectName equals: 'repo.git'
+		assert: remote projectName equals: 'repo'

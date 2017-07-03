@@ -1,3 +1,5 @@
-as yet unclassified
+actions
 providePlaintextCredentialsTo: credentials
-	credentials username: 'iceberg-test'; passphrase: 'iceberg2016'.  
+	credentials 
+		username: 'iceberg-test'; 
+		passphrase: 'iceberg2016'

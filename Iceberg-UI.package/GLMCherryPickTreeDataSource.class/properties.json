@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GLMFastTreeDataSource",
+	"category" : "Iceberg-UI-Utils",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selection"
+	],
+	"name" : "GLMCherryPickTreeDataSource",
+	"type" : "normal"
+}

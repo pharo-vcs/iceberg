@@ -1,5 +1,5 @@
 running
 ensureOriginRepository
 	^ self 
-		ensureOriginRepository: ('https://github.com/npasserini/{1}.git' format: { projectName })
+		ensureOriginRepository: ('https://github.com/pharo-vcs/{1}.git' format: { projectName })
 		for: projectName

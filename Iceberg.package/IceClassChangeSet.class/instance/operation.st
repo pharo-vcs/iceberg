@@ -1,0 +1,3 @@
+accessing
+operation
+	^ self classDefinition

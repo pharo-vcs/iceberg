@@ -1,3 +1,3 @@
 *Iceberg-Changes
 diffFromHead
-	^ IceFullDiff from: self repository headCommit to: self
+	^ IceDiff from: self repository headCommit to: self

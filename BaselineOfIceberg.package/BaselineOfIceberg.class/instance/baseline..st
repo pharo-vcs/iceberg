@@ -13,7 +13,7 @@ baseline: spec
 			repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
 		baseline: 'LibGit' with: [ spec
-			repository: 'github://pharo-vcs/libgit2-pharo-bindings:development';
+			repository: 'github://pharo-vcs/libgit2-pharo-bindings:v0.25.1';
   			loads: 'default' ];
 		project: 'LibGit-Tests'
           copyFrom: 'LibGit'

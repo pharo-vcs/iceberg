@@ -6,7 +6,7 @@
 		"PreviousProvider" ],
 	"commentStamp" : "NicoPasserini 11/7/2016 18:13",
 	"instvars" : [
-		 ],
+		"tries" ],
 	"name" : "IceTestCredentialProvider",
 	"pools" : [
 		 ],

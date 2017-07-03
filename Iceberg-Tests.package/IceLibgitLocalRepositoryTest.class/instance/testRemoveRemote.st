@@ -2,7 +2,7 @@ tests
 testRemoveRemote
 	| backend |
 	repository := IceRepositoryCreator new 
-		url: 'git@github.com/npasserini/pharo-git-test.git';
+		url: self scpOriginUrl;
 		createRepository.
 	backend := repository backend.
 	
