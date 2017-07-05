@@ -1,0 +1,25 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"urlLabel",
+		"urlText",
+		"authorLabel",
+		"authorText",
+		"mergeableLabel",
+		"mergeableText",
+		"statusLabel",
+		"statusPanel",
+		"checksLabel",
+		"checksTable",
+		"bodyLabel",
+		"bodyText",
+		"pullRequest"
+	],
+	"name" : "IceGitHubPullRequestDetailModel",
+	"type" : "normal"
+}

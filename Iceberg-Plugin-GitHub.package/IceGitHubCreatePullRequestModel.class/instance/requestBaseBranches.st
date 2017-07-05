@@ -2,4 +2,4 @@ private request
 requestBaseBranches
 	^ IceGitHubAPI new 
 		credentials: self credentials;
-		requestBranches: self baseRemote owner project: self baseRemote projectBasename 
+		getBranches: self baseRemote owner project: self baseRemote projectBasename 

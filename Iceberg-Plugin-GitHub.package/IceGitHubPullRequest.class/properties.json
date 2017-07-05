@@ -9,7 +9,9 @@
 		"repository",
 		"json",
 		"fetched",
-		"branch"
+		"branch",
+		"detail",
+		"status"
 	],
 	"name" : "IceGitHubPullRequest",
 	"type" : "normal"

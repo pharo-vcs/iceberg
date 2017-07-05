@@ -1,6 +1,6 @@
 execute
 execute
-	IceGitHubPullRequestsBrowser new
+	IceGitHubPullRequestListBrowser new
 		remote: self remote;
 		pullRequests: self fetchPullRequestsInRemote;
 		open

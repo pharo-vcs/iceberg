@@ -1,7 +1,7 @@
 actions
 acceptMessage: messageString type: typeString
 	IceGitHubAPI new 
-		putAcceptPullRequest: self owner 
+		acceptPullRequest: self owner 
 			project: self projectName
 			number: self number
 			data: { 
@@ -11,5 +11,5 @@ acceptMessage: messageString type: typeString
 				#commit_message -> (messageString lines 
 					ifNotEmpty: [ :lines | (lines allButFirst joinUsing: String lf) trimBoth ] 
 					ifEmpty: [ '' ]). 
-				#sha-> self branch lastCommit commitId.
+				#sha-> self headSHA.
 				#merge_method -> typeString } asDictionary

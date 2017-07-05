@@ -1,5 +1,5 @@
 private
 requestRemoteBranches
-	^ self github
-		requestBranches: self remote owner 
+	^ IceGitHubAPI new
+		getBranches: self remote owner 
 		project: self remote projectBasename

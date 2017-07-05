@@ -3,5 +3,5 @@ viewPullRequestsAction
 	^ GLMGenericAction new
 		action: [ :presenter | self viewPullRequest: presenter selection repository ];
 		category: 'GitHub';
-		showTitle: 'View pull requests...'; 
+		showTitle: 'Review pull requests...'; 
 		yourself
