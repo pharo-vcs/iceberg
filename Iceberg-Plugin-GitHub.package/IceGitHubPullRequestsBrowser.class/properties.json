@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "GLMCompositePresentation",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote",
+		"pullRequests"
+	],
+	"name" : "IceGitHubPullRequestsBrowser",
+	"type" : "normal"
+}

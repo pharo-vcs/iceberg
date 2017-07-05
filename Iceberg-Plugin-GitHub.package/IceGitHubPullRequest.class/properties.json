@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository",
+		"json",
+		"fetched",
+		"branch"
+	],
+	"name" : "IceGitHubPullRequest",
+	"type" : "normal"
+}

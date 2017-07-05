@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceBranchBrowser",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"pullRequest"
+	],
+	"name" : "IcePullRequestBrowser",
+	"type" : "normal"
+}
