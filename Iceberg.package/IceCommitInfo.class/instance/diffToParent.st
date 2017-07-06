@@ -1,7 +1,5 @@
 *Iceberg-Changes
 diffToParent
-	^ IceDiff 
-		from: self 
-		to: (self parents 
+	^ self diffTo: (self parents 
 			ifNotEmpty: #first
 			ifEmpty: [ nil ])
