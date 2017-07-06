@@ -1,0 +1,3 @@
+accessing
+refreshPullRequests
+	self pullRequests: self fetchPullRequests

@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mergeButton",
+		"acceptButton",
+		"rejectButton",
+		"mergeBlock",
+		"acceptBlock",
+		"rejectBlock"
+	],
+	"name" : "IceGitHubPullRequestActionsModel",
+	"type" : "normal"
+}

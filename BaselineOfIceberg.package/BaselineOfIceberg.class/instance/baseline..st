@@ -31,8 +31,9 @@ baseline: spec
 
 		package: 'Iceberg';
 		package: 'Iceberg-Plugin';
+		package: 'Iceberg-Plugin-GitHub';
 		package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
-		package: 'Iceberg-UI' with: [ spec requires: #('Iceberg' 'Iceberg-Plugin') ];
+		package: 'Iceberg-UI' with: [ spec requires: #('Iceberg' 'Iceberg-Plugin' 'Iceberg-Plugin-GitHub') ];
 		package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand') ];
 		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 		package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
