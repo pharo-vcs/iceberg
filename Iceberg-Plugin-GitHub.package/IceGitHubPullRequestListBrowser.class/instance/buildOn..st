@@ -2,7 +2,7 @@ building
 buildOn: browser
 	browser 
 		row: #pullRequests;
-		row: #detail.
+		row: #detail span: 2.
 		
 	browser transmit to: #pullRequests; andShow: [ :a |
 		a fastTable 

@@ -2,10 +2,10 @@ initialization
 initializeWidgets
 	urlLabel := self newLabel label: 'Url'.
 	authorLabel := self newLabel label: 'Author'.
+	fromLabel := self newLabel label: 'From'.
+	toLabel := self newLabel label: 'Into'.
 	mergeableLabel := self newLabel label: 'Mergeable'.
 	statusLabel := self newLabel label: 'Status'.
-	checksLabel := self newLabel label: 'Validations'.
-	bodyLabel := self newLabel label: 'Comment'.
 
 	urlText := self newTextInput 
 		enabled: false;
@@ -13,6 +13,12 @@ initializeWidgets
 	authorText  := self newTextInput 
 		enabled: false;
 		text: self pullRequest author.
+	fromText  := self newTextInput 
+		enabled: false;
+		text: self pullRequest headLabel.
+	toText  := self newTextInput 
+		enabled: false;
+		text: self pullRequest baseLabel.
 	mergeableText := self newTextInput
 		enabled: false.
 	statusPanel := self newStatusPanel.

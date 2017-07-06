@@ -1,5 +1,6 @@
-initialization
+private
 retrieveStatuses
+	self statusPanel widget addMorphBack: 'Loading...' asMorph.
 	[ 
 	| status generalStatus statuses |
 	status := self pullRequest status.
@@ -7,10 +8,8 @@ retrieveStatuses
 	statuses := status at: 'statuses'.
 	
 	UIManager default defer: [ 
-		self statusPanel widget 
-			addMorphBack: (generalStatus asMorph
-				hResizing: #spaceFill;
-				vResizing: #spaceFill;
-				yourself).
+		self statusPanel widget
+			removeAllMorphs;
+			addMorphBack: generalStatus asStringMorph.
 	 	self checksTable widget dataSource: (IceGitHubJSONDataSource elements: statuses) ]
 	] fork

@@ -1,5 +1,6 @@
-initialization
+private
 retrieveDetail
+	self mergeableText text: 'Loading...'.
 	[ 
 	| detail| 
 	detail := self pullRequest detail. 
