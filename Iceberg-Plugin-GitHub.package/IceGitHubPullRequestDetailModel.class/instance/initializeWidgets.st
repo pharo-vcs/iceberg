@@ -19,8 +19,7 @@ initializeWidgets
 	toText  := self newTextInput 
 		enabled: false;
 		text: self pullRequest baseLabel.
-	mergeableText := self newTextInput
-		enabled: false.
+	mergeablePanel := self newMergeablePanel.
 	statusPanel := self newStatusPanel.
 	checksTable := self newChecksTable.
 	bodyText := self newText 

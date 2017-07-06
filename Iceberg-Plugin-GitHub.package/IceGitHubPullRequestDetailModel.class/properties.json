@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"super" : "ComposableModel",
 	"category" : "Iceberg-Plugin-GitHub-View",
 	"classinstvars" : [ ],
@@ -15,7 +15,7 @@
 		"toLabel",
 		"toText",
 		"mergeableLabel",
-		"mergeableText",
+		"mergeablePanel",
 		"statusLabel",
 		"statusPanel",
 		"checksTable",

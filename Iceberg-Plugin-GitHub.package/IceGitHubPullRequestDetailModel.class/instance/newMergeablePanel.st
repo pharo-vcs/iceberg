@@ -1,5 +1,5 @@
 private factory
-newStatusPanel
+newMergeablePanel
 	^ PanelMorph new 
 		color: Color transparent;
 		layoutPolicy: TableLayout new;
