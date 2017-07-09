@@ -1,0 +1,3 @@
+accessing
+nameToDisplay
+	^ self subclassResponsibility 
