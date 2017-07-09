@@ -12,7 +12,7 @@ addRepositoryBranchesTo: composite
 		children: #children;
 		column: 'Name' evaluated: #nameToDisplay;
 		column: 'Status' evaluated: #status;
-		shouldAllExpand.
+		allExpanded.
 
 	"actions"
 	branches addAction: self branchCreateNewAction.
