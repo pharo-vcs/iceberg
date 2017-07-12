@@ -1,7 +1,11 @@
 baseline
 baseline: spec
 	<baseline>
-	spec for: #common do: [ spec
+	spec for: #common do: [ 
+		
+		spec postLoadDoIt: #resetKMRepository.
+		
+		spec
 		configuration: 'OSSubprocess' with: [ spec
 			versionString: #stable;
 			repository: 'github://marianopeck/OSSubprocess/repository' ];
