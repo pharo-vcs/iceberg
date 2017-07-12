@@ -7,4 +7,5 @@ menuCommandOn: aBuilder
 		order: 0.18; 
 		icon: self icon;  
 		parent: #'Tools';
+		keyText: 'o, i';
 		action: [ self open ].
