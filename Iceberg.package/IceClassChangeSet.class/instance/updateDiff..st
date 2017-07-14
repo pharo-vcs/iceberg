@@ -1,10 +1,10 @@
 *Iceberg-UI
 updateDiff: aDiffModel
-	self classDefinition 
+	self classDefinition
 		ifNil: [ super updateDiff: aDiffModel ]
 		ifNotNil: [ :cd |
 			aDiffModel
 				contextClass: nil;
-				leftText: cd toSource;
-				rightText: cd fromSource
+				leftText: cd diffToSource;
+				rightText: cd diffFromSource
 		]

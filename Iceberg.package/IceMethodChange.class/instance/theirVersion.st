@@ -1,3 +1,3 @@
 *Iceberg-UI
 theirVersion
-	^ self operation fromSource
+	^ self operation diffFromSource
