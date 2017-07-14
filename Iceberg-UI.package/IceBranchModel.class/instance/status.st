@@ -1,9 +1,9 @@
 accessing
-statusForBranch: aBranch
+status
 	| incoming outgoing allStatus |
 	
-	incoming := aBranch incomingCommits size.
-	outgoing := aBranch outgoingCommits size.
+	incoming := self branch incomingCommits size.
+	outgoing := self branch outgoingCommits size.
 	
 	allStatus := OrderedCollection new.
 	(incoming = 0 and: [ outgoing = 0 ]) ifTrue: [ allStatus add: 'Up to date' ].
