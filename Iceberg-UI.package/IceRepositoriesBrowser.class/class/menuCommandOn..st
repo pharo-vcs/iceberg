@@ -4,7 +4,6 @@ menuCommandOn: aBuilder
 	<worldMenu> 
 	
 	(aBuilder item: #'Iceberg')
-		order: 0.18; 
-		icon: self icon;  
-		parent: #'Tools';
+		icon: self icon;
+		parent: #MostUsedTools;
 		action: [ self open ].
