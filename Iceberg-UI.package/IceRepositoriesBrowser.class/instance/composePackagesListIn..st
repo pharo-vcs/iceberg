@@ -17,5 +17,6 @@ composePackagesListIn: composite
 		enableFilter: [ :packageModel :pattern | packageModel package name includesSubstring: pattern caseSensitive: false ];
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
-			presentation entity pluginPackageActionsFor: presentation selection entity ];
+			presentation selection ifNotNil: [ 
+				presentation entity pluginPackageActionsFor: presentation selection entity ]];
 		updateOn: IceCommited from: #announcer
