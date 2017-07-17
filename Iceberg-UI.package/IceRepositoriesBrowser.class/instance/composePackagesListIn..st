@@ -14,7 +14,9 @@ composePackagesListIn: composite
 		addSelectionAction: self unloadAndRemovePackageAction;
 		addSelectionAction: self removePackageAction;
 		addSelectionAction: self removePackageFromDiskAction;
+		enableFilter: [ :packageModel :pattern | packageModel packageName includesSubstring: pattern caseSensitive: false ];
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
-			presentation entity pluginPackageActionsFor: presentation selection entity ];
+			presentation selection ifNotNil: [ 
+				presentation entity pluginPackageActionsFor: presentation selection entity ]];
 		updateOn: IceCommited from: #announcer

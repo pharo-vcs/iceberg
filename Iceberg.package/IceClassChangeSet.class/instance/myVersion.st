@@ -1,3 +1,3 @@
 *Iceberg-UI
 myVersion
-	^ self classDefinition ifNotNil: #toSource
+	^ self classDefinition ifNotNil: #diffToSource

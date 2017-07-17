@@ -6,8 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"versionDictionary",
-		"loading",
 		"upstream"
 	],
 	"name" : "IceLocalBranch",
