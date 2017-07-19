@@ -1,4 +1,5 @@
 accessing
 location: aFileReference
 	self backend location: aFileReference.
-	self refresh
+	aFileReference 
+		ifNotNil: [ self refresh ]
