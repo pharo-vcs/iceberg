@@ -4,7 +4,7 @@ fetchAction
 		action: [ :presentation :repository | 
 			repository fetch.
 			presentation update ];
-		icon: GLMUIThemeExtraIcons glamorousLeftSide;
+		icon: #glamorousLeftSide asIcon;
 		shortcut: $f;
 		title: 'Fetch new versions'; 
 		showTitle

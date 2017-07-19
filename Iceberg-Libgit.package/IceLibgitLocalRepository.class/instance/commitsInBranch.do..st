@@ -5,5 +5,4 @@ commitsInBranch: branchName do: aBlock
 		(LGitRevwalk of: repo)
 			pushReference: (repo lookupBranch: branchName);
 			beSortedReverse;
-			do: aBlock.
-	]
+			do: aBlock ]
