@@ -1,4 +1,4 @@
 opening
 open
 	"self open"
-	^ self openOn: IceRepository registry.
+	^ self openOn: Object new

@@ -1,3 +1,4 @@
 accessing
 isMissing
-	^ self repositoryDirectory exists not
+	^ self repositoryDirectory isNil 
+		or: [ self repositoryDirectory exists not ]

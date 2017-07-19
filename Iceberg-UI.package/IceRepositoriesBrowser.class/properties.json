@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"lastSynchronization"
+		"lastSynchronization",
+		"showSystemRepositories"
 	],
 	"name" : "IceRepositoriesBrowser",
 	"type" : "normal"

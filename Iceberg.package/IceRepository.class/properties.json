@@ -18,7 +18,8 @@
 		"pushRemote",
 		"savedPackages",
 		"commitDictionary",
-		"loadedCode"
+		"loadedCode",
+		"system"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"

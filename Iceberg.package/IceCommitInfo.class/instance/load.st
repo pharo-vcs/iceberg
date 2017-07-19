@@ -1,7 +1,5 @@
 actions
 load
-	self repository loadedPackages 
+	(self changedPackagesTo: self repository loadedCode referenceCommit)
 		collect: [ :package | self versionFor: package ]
-		thenDo: [:version | 
-			version load.
-		]
+		thenDo: [:version | version load ]
