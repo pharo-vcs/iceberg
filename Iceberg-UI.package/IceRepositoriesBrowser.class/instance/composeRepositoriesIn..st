@@ -1,5 +1,5 @@
 building
-composeRepositories: repositories in: composite
+composeRepositoriesIn: composite
 	| table |
 
 	table := composite fastTable.
@@ -12,7 +12,7 @@ composeRepositories: repositories in: composite
 		column: 'Status' evaluated: #status width: 150.
 
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer weak ].
-	repositories do: [ :repo | 
+	self repositoryRegistry do: [ :repo | 
 		table updateOn: IceRepositoryAnnouncement from: repo announcer ].
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
 	

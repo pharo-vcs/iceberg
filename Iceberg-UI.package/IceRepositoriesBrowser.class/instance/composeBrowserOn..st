@@ -6,8 +6,8 @@ composeBrowserOn: browser
 
 	browser transmit 
 		to: #repositories; 
-		andShow: [ :presentation :repositories | 
-			self composeRepositories: repositories in: presentation ].
+		andShow: [ :presentation | 
+			self composeRepositoriesIn: presentation ].
 	browser transmit 
 		from: #repositories; 
 		to: #info; 
