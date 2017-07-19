@@ -14,4 +14,4 @@ splitRootAndSubdirectoryFromLocation
 	
 	^ { 
 		root. "a FileReference"
-		String streamContents: [ :stream | subDir asStringOn: stream delimiter: $/ ] "a String" }
+		String streamContents: [ :stream | subDir asStringOn: stream delimiter: '/' ] "a String" }
