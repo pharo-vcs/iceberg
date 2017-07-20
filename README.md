@@ -13,7 +13,6 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 - NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
-We are in active development and too many things have changed, until we release an official stable version we recommend to install with following expression (version dev-0.4):
 
 ```Smalltalk
 Metacello new
@@ -24,8 +23,14 @@ Metacello new
 
 ### Update Iceberg
 If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
-```
-Iceberg update
+```Smalltalk
+#('Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
+do: [ :each | each asPackage removeFromSystem ].
+
+Metacello new
+  baseline: 'Iceberg';
+  repository: 'github://pharo-vcs/iceberg';
+  load.
 ```
 
 **Important**
