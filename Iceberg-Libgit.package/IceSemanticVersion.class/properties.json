@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Magnitude",
+	"category" : "Iceberg-Libgit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"major",
+		"minor",
+		"patch"
+	],
+	"name" : "IceSemanticVersion",
+	"type" : "normal"
+}

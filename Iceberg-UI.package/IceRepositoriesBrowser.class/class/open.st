@@ -1,4 +1,4 @@
 opening
 open
 	"self open"
-	^ self openOn: Object new
+	^ self new open
