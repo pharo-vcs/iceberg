@@ -11,5 +11,7 @@ validateIssue: aString
 			issue := PharoIssue number: number.
 			[ 	"Fork to allow UI to continue"
 				issue downloadTitle.
-				World defer: [ self updateText: (self sanitizeTitle: issue title) ] ] fork ]
+				UIManager default defer: [ 
+					self updateText: (self sanitizeTitle: issue title).
+					self createButton enabled: true ] ] fork ]
 	
