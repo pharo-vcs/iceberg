@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceGithubRepositoryType",
+	"name" : "IceBitbucketRepositoryType",
 	"type" : "normal"
 }

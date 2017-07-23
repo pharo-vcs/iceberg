@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "EstebanLorenzano 7/23/2017 13:18",
-	"super" : "IceProviderRepositoryType",
+	"commentStamp" : "<historical>",
+	"super" : "IceMetacelloRepositoryType",
 	"category" : "Iceberg-Metacello-Integration",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceGithubRepositoryType",
+	"name" : "IceProviderRepositoryType",
 	"type" : "normal"
 }
