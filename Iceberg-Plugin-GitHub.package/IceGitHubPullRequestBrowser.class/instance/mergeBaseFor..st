@@ -1,5 +1,5 @@
 accessing
 mergeBaseFor: commitInfo
-	^ commitInfo repository backend
+	^ commitInfo repository
 		mergeBaseBetween: commitInfo commitId 
 		and: self baseSHA
