@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	issueNumberText := self newTextInput autoAccept: true.
 	issueText := self newTextInput autoAccept: true.
-	createButton := self newButton.
+	createButton := self newButton enabled: false.
 	
 	
 	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
