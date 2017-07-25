@@ -1,0 +1,3 @@
+hook
+onChoose
+	^ chooseBlock
