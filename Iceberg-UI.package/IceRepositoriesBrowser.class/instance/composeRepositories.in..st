@@ -17,7 +17,7 @@ composeRepositories: repositories in: composite
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
 	
 	Iceberg announcer weak 
-		subscribe: IceRepositoryCreated 
+		when: IceRepositoryCreated 
 		send: #execute:
 		to: (IceRepositoryUpdateHelper for: table).
 
