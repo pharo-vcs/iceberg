@@ -1,5 +1,7 @@
 private
 compactIfNeeded
+	| newModelCache |
 	self models size > 250 ifFalse: [ ^ self ].
-	"it looks like rehash will do what I need :)"
-	modelCache rehash
+	newModelCache := self models select: [ :each | each notNil ].
+	modelCache := newModelCache
+	
