@@ -4,7 +4,9 @@ changedFilesBetween: aCommitish and: otherCommitish
 	| fromTree toTree |
 	
 	self withRepoDo: [ :repo | | diff |
-		fromTree := (LGitCommit of: repo fromHexString: aCommitish id) tree.
-		toTree := (LGitCommit of: repo fromHexString: otherCommitish id) tree.
-		diff := fromTree diffTo: toTree. 
+		fromTree := (LGitCommit of: repo fromId: (LGitId fromHexString: aCommitish id)) tree.
+		toTree := (LGitCommit of: repo fromId: (LGitId fromHexString: otherCommitish id)) tree.
+		
+		diff := LGitDiff of: repo.
+		diff diffTree: fromTree toTree: toTree. 
 		^ diff files ]
