@@ -7,10 +7,12 @@ cloneRepositoryFrom: aRemote branch: aBranchName
 		| repo cloneOptions |
 		repo := LGitRepository on: self location.
 		cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
-		
+		cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_none.
 		repo clone: url options: cloneOptions.
-		aBranchName ifNotNil: [ 
-			repo checkout: aBranchName ].
+		repo checkout: (aBranchName ifNil: [ 
+			self branch
+				ifNotNil: [ :b | b name ]
+				ifNil: [ 'master' ] ]).
 
 		(LGitRemote of: repo named: 'origin')
 			lookup;

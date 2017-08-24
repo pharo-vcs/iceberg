@@ -14,7 +14,7 @@ buildOn: aPresenter
 		onChangeOfPort: #entity act: [ :presentation | 
 			self diff ifNotNil: [  
 				self diff announcer 
-					subscribe: IceChangeSetChanged 
+					when: IceChangeSetChanged 
 					send: #execute:
 					to: (IceChangesTreeResetSelectionHelper for: presentation) ] ];
 		yourself
