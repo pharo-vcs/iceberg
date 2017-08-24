@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Iceberg-Plugin-Base",
+	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"plugins"
+		"repository"
 	],
-	"name" : "IcePluginManager",
+	"name" : "IceLog",
 	"type" : "normal"
 }
