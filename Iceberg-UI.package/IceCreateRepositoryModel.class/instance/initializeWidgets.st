@@ -2,6 +2,7 @@ initialization
 initializeWidgets
 	localDirectoryLocation := self instantiate: IceDirectoryModel.
 	localDirectoryLocation 
+		onChoose: [ self guessSubDirectory ];
 		label: 'Local directory';
 		chooseTitle: 'Choose local repository';
 		location: self defaultLocation.

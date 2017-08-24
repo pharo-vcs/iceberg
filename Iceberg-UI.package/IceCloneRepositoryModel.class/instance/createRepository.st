@@ -8,7 +8,7 @@ createRepository
 			location: self location;
 			subdirectory: subdirectory text;
 			createRepository.
-		repository register.
+		self configureRepository: repository.
 			
 		self window delete. 
 	]

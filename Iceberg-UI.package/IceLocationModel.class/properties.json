@@ -10,7 +10,8 @@
 		"locationInput",
 		"chooseButton",
 		"label",
-		"chooseTitle"
+		"chooseTitle",
+		"chooseBlock"
 	],
 	"name" : "IceLocationModel",
 	"type" : "normal"
