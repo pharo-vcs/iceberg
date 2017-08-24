@@ -1,4 +1,4 @@
-initialization
+private
 availablePluginsFor: aRepository
 	^ (IcePlugin allAvailableFor: aRepository) 
 		collect: #new
