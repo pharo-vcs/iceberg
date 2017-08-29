@@ -17,4 +17,5 @@ initializePresenter
 	self baseBranchList 
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self defaultBaseBranchName
+		setSelectedItem: self defaultBaseBranchName.
+	self bodyPanel text: self obtainLastCommitMessage
