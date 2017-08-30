@@ -1,3 +1,3 @@
 highlighting
 colorError
-	^ Color red
+	^ Smalltalk ui theme dangerTextColor

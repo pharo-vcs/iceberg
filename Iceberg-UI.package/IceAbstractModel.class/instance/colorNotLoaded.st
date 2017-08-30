@@ -1,3 +1,3 @@
 highlighting
 colorNotLoaded
-	^ Color darkGray
+	^ Smalltalk ui theme disabledTextColor
