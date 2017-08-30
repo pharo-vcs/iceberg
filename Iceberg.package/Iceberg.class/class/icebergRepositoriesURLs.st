@@ -1,7 +1,7 @@
 *Iceberg-Adapters
 icebergRepositoriesURLs
 	^ {
-		'git@github.com:npasserini/iceberg.git'. 
-		'git@github.com:npasserini/filetree.git'.
-		'git@github.com:npasserini/LibGit.git'
+		'git@github.com:pharo-vcs/iceberg.git'. 
+		'git@github.com:pharo-vcs/filetree.git'.
+		'git@github.com:pharo-vcs/libgit2-pharo-bindings.git'
 	}

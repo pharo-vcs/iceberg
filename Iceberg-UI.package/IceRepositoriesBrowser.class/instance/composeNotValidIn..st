@@ -8,5 +8,8 @@ composeNotValidIn: composite
 				"scale to top browser"
 				presentation pane browser pane browser update ] ] entitled: 'Edit...';
 		act: [ :presentation :model | 
+				model restore. 
+				presentation pane browser pane browser update ] entitled: 'Clone';
+		act: [ :presentation :model | 
 			model forgetThen: [ 
 				presentation pane browser pane browser update ] ] entitled: 'Forget'

@@ -19,7 +19,7 @@ composeBrowserOn: browser
 				entity: commitInfo; 
 				diff: (commitInfo ifNotNil: [ commitInfo diffWith: repo branch upstream ]);
 				buildOn: a)
-				title: 'Incoming changes' ].
+				title: 'Outgoing changes' ].
 
 	self addDiffTo: browser.
 	self addCommitInfoTo: browser 

@@ -1,3 +1,3 @@
 initialization
 invalidateOn: announcementType from: announcer
-	announcer subscribe: announcementType send: #reset to: self
+	announcer when: announcementType send: #reset to: self

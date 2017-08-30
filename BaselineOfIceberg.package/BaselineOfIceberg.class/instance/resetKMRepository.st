@@ -1,0 +1,3 @@
+script
+resetKMRepository
+	KMRepository reset

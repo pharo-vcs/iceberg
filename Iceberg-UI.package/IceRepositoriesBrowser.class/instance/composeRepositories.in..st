@@ -5,7 +5,7 @@ composeRepositories: repositories in: composite
 	table := composite fastTable.
 	table
 		title: 'Repositories';
-		display: [ :repos | repos collect: [ :repo | IceRepositoryModel modelFor: repo ] ];
+		display: [ self visibleRepositoryModels  ];
 		column: 'Name' evaluated: #descriptionText width: 200;
 		column: 'Current branch' evaluated: #branchName width: 120;
 		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
@@ -17,7 +17,7 @@ composeRepositories: repositories in: composite
 	table updateOn: MCPackageModified from: MCPackageManager announcer.
 	
 	Iceberg announcer weak 
-		subscribe: IceRepositoryCreated 
+		when: IceRepositoryCreated 
 		send: #execute:
 		to: (IceRepositoryUpdateHelper for: table).
 

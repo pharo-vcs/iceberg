@@ -9,27 +9,52 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 ### Prerequisites
 - Latest Pharo 6.0 image.
 - Latest Pharo VM.
+	- **IMPORTANT FOR LINUX USERS:** For Pharo6, you need a special VM (it will be default for Pharo7), the "threaded hearbeat VM". You can download it by executing `curl get.pharo.org/vmT60 | bash`.
 - NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
 
 ### Install Iceberg
-We are in active development and too many things have changed, until we release an official stable version we recommend to install with following expression (version dev-0.4):
 
 ```Smalltalk
 Metacello new
   baseline: 'Iceberg';
-  repository: 'github://pharo-vcs/iceberg:dev-0.4';
+  repository: 'github://pharo-vcs/iceberg';
   load.
 ```
 
 ### Update Iceberg
 If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
-```
-Iceberg update
+```Smalltalk
+#('Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
+do: [ :each | each asPackage removeFromSystem ].
+
+Metacello new
+  baseline: 'Iceberg';
+  repository: 'github://pharo-vcs/iceberg';
+  load.
 ```
 
 **Important**
 - You don't need this step if you have just downloaded Iceberg.
 - Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
+
+## FAQ
+
+Q. Image seems freeze when doing a clone of a repository.  
+A. This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
+
+Q. Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.  
+A. There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
+- Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
+- Just using SSH protocol (but that option is not so easy on Windows).
+
+Q. I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.  
+A. For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
+- In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
+- Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.
+
+Q. I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."  
+A. Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
+default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.
 
 ## 5 minutes tutorial
 ### Clone a repository
@@ -39,33 +64,30 @@ Iceberg update
 
 - Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. Normally you will see something like this:
 
-  ![image](https://cloud.githubusercontent.com/assets/4633913/20836463/b9398eac-b89f-11e6-92c7-d0f6ed785c83.png)
+  ![image](https://cloud.githubusercontent.com/assets/513630/25996638/9316c4fe-3718-11e7-91a6-dd2e1e5168bd.png)
 
-  But if it is the first time you use Iceberg you might be looking at this:
-
-  ![image](https://cloud.githubusercontent.com/assets/4633913/20835889/3a2c2914-b89d-11e6-96fa-c0ba1f16041b.png)
+  But if it is the first time you use Iceberg you might be looking at an empty list. 
 
   So let's add a repository.
 
-- The easiest way to create a new repository is by clicking on 'Clone new Repository'. You will see this dialog:
+- The easiest way to create a new repository is by clicking on 'Clone repository'. You will see this dialog:
 
-  ![image](https://cloud.githubusercontent.com/assets/4633913/20840028/27e57712-b8af-11e6-8b20-76c674afe21d.png)
+  ![image](https://cloud.githubusercontent.com/assets/513630/25996645/9a441b3c-3718-11e7-95ea-8e7c71b91ece.png)
 
-  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:pharo-vcs/iceberg.git` or `https://github.com/pharo-vcs/iceberg.git`.
+  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:pharo-vcs/iceberg.git` or `https://github.com/pharo-vcs/iceberg.git` (**IMPORTANT:** HTTPS is not recommended for the moment, since it has problems with getting credentials. See [FAQ](#FAQ) section).
 
     > **Tip:** If you do not know it, you can get it from github, look for the green "Clone or Download" button.
 
   - Local directory: You can just leave the default location for a start.
 
-  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
+  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
 
   - Click on 'Create repository', then you should see a new entry in the repositories browser.
 
 ### Add packages to your repository
 - If your repository is new, you should add some packages to it.
   - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
-  - Then open the repositories browser and select your repository.
-  - In the bottom right panel you will see the current packages in your repository.
+  - Then open the repositories browser, select your repository and click on the "Packages" tab.
   - Click on 'Add package' and select a package.
 
 ### Your first commit
@@ -74,11 +96,9 @@ Iceberg update
   - You should see that your repository name is highlighted in green, and its status changed to 'Uncommited changes'.
   - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository). You should see something like this:
 
-    ![image](https://cloud.githubusercontent.com/assets/4633913/20836730/eaf72804-b8a0-11e6-8f01-10a6ca25d41e.png)
+    ![image](https://cloud.githubusercontent.com/assets/513630/25996648/9cf5d442-3718-11e7-9f4d-fdb598c51f1e.png)
 
     On the top-left panel, you will see all changes to the packages stored in the repository, by selecting a method on the changes tree you will see the differences in the bottom panel.
-
-    > **Please be aware that current Iceberg version has a bug and shows your version in red, while the original version is shown in green.**.
 
   - From the contextual menu of the tree, you can also *revert* a change, or *browse* the changed method/class.
   - If you make more changes after opening the synchronize view, you have to click on *Refresh tree* to see the new changes.
@@ -86,17 +106,11 @@ Iceberg update
     - First enter a suitable message in the top right panel, under 'Commit changes'.
     - Then click on the 'Commit' button.
 
-  - By default Iceberg will try to immediately *push* your commits to your remote repository. If you do not want that you can uncheck the 'Upload changes on commit' option. If you do so, your changes will be saved only in the local repository, and you can push them later.
-
-  - Whenever you decide to push your commits, Iceberg will require your github credentials. Currently Iceberg (in its default configuration) can not use SSH keys to connect to github, so you will have to provide your github user and password.
-
-    > By default, these credentials will be saved to avoid requiring them each time, but **be aware that this is is not a really safe option**.
+  - You can choose to just *commit* your changes or *commit and push*. There will be buttons available for both options.
 
 ## Usage
 ### Repositories Browser
 The main entry point to Iceberg is the *Repositories Browser*. After installing Iceberg you will see a new entry on Pharo menu, below 'Tools' submenu, called Iceberg, which will open the browser.
-
-![image](https://cloud.githubusercontent.com/assets/4633913/16365789/ac446d00-3c0a-11e6-83e0-976b00cbc0fb.png)
 
 This tool shows you all known Iceberg repositories, allowing you to clone new repositories, import existing local repositories or forget repositories.  
 It it is the main entrance point to every action to a repository, such as
@@ -130,8 +144,10 @@ Right now this is ths simplest of the three views, you can only push all of your
 ## Iceberg API
 ### Creating and retreiving repositories.
 Example:
-```
-  myRepo := IceRepository origin: 'git@github.com:pharo-vcs/pharo-git-test.git'.
+```Smalltalk
+myRepository := IceRepositoryCreator new 
+	url: 'git@github.com:pharo-vcs/pharo-git-test.git';
+	createRepository.
 ```
 
 ### Local storage of a repository
@@ -140,44 +156,47 @@ When the repository gets first used, it will create a local clone in your disk.
 > In the future we would like to avoid having local working copies on disk.
 
 If you prefere to do clones at specific locations, you can provide a directory:
-```
-  myRepo := IceRepository new
-    origin: 'git@github.com:pharo-vcs/iceberg.git';
-    localDirectory: ... absolute or relative path
+```Smalltalk
+myRepository := IceRepositoryCreator new
+	url: 'git@github.com:pharo-vcs/iceberg.git';
+	location: aFileReference; "... absolute or relative path"
+	createRepository.
 ```
 
 Or, if you already have a local repository, you can avoid setting the origin, it will be inferred for you.
-```
-  myRepo := IceRepository new localDirectory: ... absolute or relative path
+```Smalltalk
+myRepository := IceRepositoryCreator new 
+	location: aFileReference; "... absolute or relative path"
+	createRepository.
 ```
 
 If a local repository already exists at the same location we will get all necessary information from it (for example: remote origin and current checked out branch).
 
 ### Manage branches
 By default repositories will checkout the 'master' branch. If you need to work with another branch you can do:
-```
-  myRepo checkoutBranch: 'anotherBranch'
+```Smalltalk
+myRepository checkoutBranch: 'anotherBranch'
 ```
 
 If you want to create a new branch it is slight different:
-```
-  myRepo createBranch: 'newBranchName'
+```Smalltalk
+myRepository createBranch: 'newBranchName'
 ```
 
 ### Load a package from a repository
-```
+```Smalltalk
   myRepo loadPackage: 'Package-Name'
 ```
 
 ### Update packages
-- `myRepo pull` will update all the packages in the repo (that have already been loaded).
-- To update an individual package you can write: `myRepo updatePackage: 'Some-Package-Name'`
+- `myRepository pull` will update all the packages in the repo (that have already been loaded).
+- To update an individual package you can write: `myRepository updatePackage: 'Some-Package-Name'`
 
 ### Commit your changes
 After making some changes, you can use the IceSynchronizer to commit them:
-```
+```Smalltalk
   IceSynchronizer new
-    changeSet: (IceWorkingCopyDiff forRepository: myRepo);
+    changeSet: (IceWorkingCopyDiff forRepository: myRepository);
     openWithSpec.
 ```
 

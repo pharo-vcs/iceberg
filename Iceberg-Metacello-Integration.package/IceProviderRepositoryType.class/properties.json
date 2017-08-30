@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "IceMetacelloRepositoryType",
+	"category" : "Iceberg-Metacello-Integration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceProviderRepositoryType",
+	"type" : "normal"
+}

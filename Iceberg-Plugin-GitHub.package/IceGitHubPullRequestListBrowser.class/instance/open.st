@@ -1,3 +1,3 @@
 scripting opening
 open
-	^ self openOn: self pullRequests
+	^ self openOn: Object new

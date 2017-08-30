@@ -5,7 +5,9 @@ mcRepository
 	tuple := self splitRootAndSubdirectoryFromLocation.
 	extractedLocation := tuple first asFileReference asAbsolute.
 	repository := IceRepository registry 
-		detect: [ :each | each location asAbsolute = extractedLocation ]
+		detect: [ :each | 
+			each location notNil 
+				and: [ each location asAbsolute = extractedLocation ] ]
 		ifNone: [ 
 			(IceRepositoryCreator new 
 				location: tuple first;

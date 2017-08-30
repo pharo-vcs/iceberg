@@ -7,6 +7,7 @@ buildOn: browser
 	browser transmit to: #pullRequests; andShow: [ :a |
 		a fastTable 
 			title: 'Open pull requests';
+			display: [ self pullRequests ];
 			addAction: self refreshAction;
 			selectionAct: [ :presentation | 
 				self viewPullRequest: presentation selection ] 

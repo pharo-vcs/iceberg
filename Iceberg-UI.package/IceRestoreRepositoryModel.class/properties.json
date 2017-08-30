@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCloneRepositoryModel",
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceRestoreRepositoryModel",
+	"type" : "normal"
+}

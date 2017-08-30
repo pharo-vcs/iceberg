@@ -1,5 +1,5 @@
 instance creation
 for: aLocationString
-	^ (self allSubclasses
+	^ (self allTypes
 		detect: [ :each | each isSuitableForLocation: aLocationString ])
 		location: aLocationString
