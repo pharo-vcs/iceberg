@@ -4,7 +4,9 @@
 	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"SortingStrategy"
+	],
 	"instvars" : [
 		"lastSynchronization",
 		"showSystemRepositories"
