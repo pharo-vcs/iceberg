@@ -7,12 +7,18 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 
 ## Installation (for development)
 ### Prerequisites
-- Latest Pharo 6.0 image.
-- Latest Pharo VM.
-	- **IMPORTANT FOR LINUX USERS:** For Pharo6, you need a special VM (it will be default for Pharo7), the "threaded hearbeat VM". You can download it by executing `curl get.pharo.org/vmT60 | bash`.
-- NO LONGER NEEDED (Just for testing iceberg itself): Git v1.9.1 or later.
+- Latest Pharo 6.1 image.
+- Pharo VM for Pharo 6.1.
+
+You can get both downloading it from [Pharo](http://pharo.org) site or in command-line with [zeroconf](get.pharo.org): 
+
+```Shell
+wget -O- get.pharo.org | bash
+```
 
 ### Install Iceberg
+Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below) but if you need to install, you can execute this:
+
 
 ```Smalltalk
 Metacello new
@@ -24,7 +30,7 @@ Metacello new
 ### Update Iceberg
 If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
 ```Smalltalk
-#('Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
+#('Iceberg-UI' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
 do: [ :each | each asPackage removeFromSystem ].
 
 Metacello new
