@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Tonel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snapshot",
+		"sourceDir",
+		"packageDir"
+	],
+	"name" : "TonelWriter",
+	"type" : "normal"
+}

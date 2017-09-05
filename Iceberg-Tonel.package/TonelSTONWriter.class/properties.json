@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "STONWriter",
+	"category" : "Iceberg-Tonel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"aliases"
+	],
+	"name" : "TonelSTONWriter",
+	"type" : "normal"
+}
