@@ -7,6 +7,9 @@ typeClassDefinitionOf: aClassDefinition
 		at: #superclass put: aClassDefinition superclassName;
 		yourself.
 
+	aClassDefinition type = #normal ifFalse: [ 
+		definition at: #type put: aClassDefinition type ].
+	
 	aClassDefinition hasTraitComposition ifTrue: [ 
 		definition	
 			at: #traits put: aClassDefinition traitCompositionString;
@@ -19,8 +22,11 @@ typeClassDefinitionOf: aClassDefinition
 		ifNotEmpty: [ :vars | definition at: #classVars put: vars asArray ].
 		
 	(aClassDefinition variables select: #isPoolImport thenCollect: #name)
-		ifNotEmpty: [ :vars | definition at: #poolVars put: vars asArray ].
+		ifNotEmpty: [ :vars | definition at: #pools put: vars asArray ].
 		
+	(aClassDefinition variables select: #isClassInstanceVariable thenCollect: #name)
+		ifNotEmpty: [ :vars | definition at: #classInstVars put: vars asArray ].
+
 	definition 		
 		at: #category put: aClassDefinition category;
 		at: #timestamp put: aClassDefinition commentStamp.
