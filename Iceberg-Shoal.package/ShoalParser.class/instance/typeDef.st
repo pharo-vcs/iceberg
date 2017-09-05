@@ -1,6 +1,6 @@
 parsing
 typeDef
-	^ self newMCTypeDefinitionFrom: { 
+	^ self newTypeDefinitionFrom: { 
 		self separator.
 		self try: [ self comment ]. 
 		self separator. 

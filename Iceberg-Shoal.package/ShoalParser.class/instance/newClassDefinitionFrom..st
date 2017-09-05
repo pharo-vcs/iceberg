@@ -1,5 +1,5 @@
 private factory
-newMCClassDefinitionFrom: anArray
+newClassDefinitionFrom: anArray
 	| metadata |
 
 	metadata := anArray sixth.
