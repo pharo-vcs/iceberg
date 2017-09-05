@@ -1,0 +1,1 @@
+I indicate when a file is a reader 

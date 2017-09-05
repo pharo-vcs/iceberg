@@ -4,7 +4,7 @@ mcVersionFor: iceVersion
 		| commit |
 		commit := LGitCommit of: repo fromId: (LGitId fromHexString: iceVersion commit id).
 
-		[ ^ (IceLibgitVersionReader 
+		[ ^ (self readerClass
 				on: commit
 				iceVersion: iceVersion) 
 				version ] 

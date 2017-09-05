@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "IceError",
 	"category" : "Iceberg-Errors",
 	"classinstvars" : [ ],
