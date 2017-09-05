@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceLibgitCypressWriter",
+	"name" : "IceLibgitCypressSnapshotWriter",
 	"type" : "normal"
 }

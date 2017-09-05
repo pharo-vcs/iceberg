@@ -1,1 +1,1 @@
-I indicate when a file is a reader 
+I indicate when a clas is reader for iceberg 

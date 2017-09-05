@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "TIceRepositoryWriter classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceLibgiCypresstWriter",
+	"commentStamp" : "",
+	"super" : "IceMetadatalessFileTreeWriter",
+	"traitcomposition" : "TIceRepositoryWriter",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-Libgit-Cypress"
+}

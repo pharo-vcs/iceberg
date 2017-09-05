@@ -1,4 +1,4 @@
-initialization
+accessing
 readerClass
 	^ properties 
 		at: 'format' 

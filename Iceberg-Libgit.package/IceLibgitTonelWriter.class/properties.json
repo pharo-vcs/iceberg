@@ -1,0 +1,15 @@
+{
+	"classtraitcomposition" : "TIceRepositoryWriter classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"repositoryDirectory"
+	],
+	"name" : "IceLibgitTonelWriter",
+	"commentStamp" : "",
+	"super" : "MCWriter",
+	"traitcomposition" : "TIceRepositoryWriter",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-Libgit-Tonel"
+}
