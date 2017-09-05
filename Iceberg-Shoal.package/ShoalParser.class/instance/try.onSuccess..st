@@ -1,4 +1,4 @@
-private
+private parsing
 try: aBlock onSuccess: successBlock
 	^ self 
 		try: aBlock 
