@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Iceberg-Shoal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ShoalParserTest",
+	"type" : "normal"
+}

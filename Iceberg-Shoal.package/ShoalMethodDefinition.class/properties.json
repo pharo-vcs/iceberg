@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "ShoalDefinition",
+	"category" : "Iceberg-Shoal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ShoalMethodDefinition",
+	"type" : "normal"
+}
