@@ -1,3 +1,3 @@
 accessing
 id
-	^ 'tonel'
+	^ #tonel

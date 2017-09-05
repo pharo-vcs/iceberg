@@ -1,3 +1,3 @@
 testing
 id
-	^ 'cypress'
+	^ #cypress
