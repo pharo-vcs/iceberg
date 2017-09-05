@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MCVersionReader",
+	"category" : "Iceberg-Tonel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageDirectory"
+	],
+	"name" : "TonelReader",
+	"type" : "normal"
+}
