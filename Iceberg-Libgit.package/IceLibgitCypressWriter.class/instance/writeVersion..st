@@ -1,8 +1,9 @@
 visiting
 writeVersion: aVersion
 	directory := aVersion package name, '.package'.
+	packageFileDirectory := stream / directory.
 
-	self packageFileDirectory deleteAll.
+	self packageFileDirectory ensureDeleteAll.
 	self writeFormat.
 	self writePackage: aVersion package.
 	self writeDefinitions: aVersion.

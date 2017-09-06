@@ -1,5 +1,5 @@
 actions
 internalStoreVersion: aMCVersion 
-	IceMetadatalessFileTreeWriter 
+	self writerClass forInternalStore
 		fileOut: aMCVersion 
-		on: (IceBackendWriterAdapter for: self).
+		on: (IceBackendWriterAdapter for: self)
