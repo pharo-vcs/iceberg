@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "Notification",
-	"category" : "Iceberg-Tonel",
+	"category" : "Iceberg-Tonel-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
