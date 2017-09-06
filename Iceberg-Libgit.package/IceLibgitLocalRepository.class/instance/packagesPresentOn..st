@@ -1,6 +1,8 @@
 querying
 packagesPresentOn: aCommitish
 	"Answer a list of package names present on this commit"
+	| writerClass |
+	writerClass := self writerClass.
 	self withRepoDo: [ :repo | | tree dir sourceEntries |
 		tree := (LGitCommit of: repo fromId: (LGitId fromHexString: aCommitish id)) tree.
 		self flag: #todo. "this needs to change with multiple dirs"
@@ -10,5 +12,5 @@ packagesPresentOn: aCommitish
 			ifFalse: [ (tree entryByPath: dir) entries ]. 
 		^ ((sourceEntries 
 			collect: [ :each | each filename ])
-			select: [ :each | each endsWith: '.package' ])
-			collect: [ :each | each copyFrom: 1 to: (each findString: '.package') - 1 ] ]
+			select: [ :each | writerClass isValidPackageName: each ])
+			collect: [ :each | writerClass packageNameFromDirectoryName: each ] ]
