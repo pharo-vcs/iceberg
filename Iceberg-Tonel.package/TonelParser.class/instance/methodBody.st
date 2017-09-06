@@ -7,6 +7,7 @@ methodBody
 		- I can mention [] in strings
 		- I can use $[, $] 
 		- I can have inner blocks
+		- I can mention a comment of the form ""$"" or a comment of the form '$'
 	 all that needs to be skipped "
 	| result char prevChar comment string count |
 	
@@ -21,9 +22,9 @@ methodBody
 	whileTrue: [ 
 		char := stream next.
 		result nextPut: char.
-		(char = $" and: [ string not and: [ prevChar ~= $$ ] ]) 
+		(char = $" and: [ string not and: [ prevChar ~= $$ or: [ comment ] ] ]) 
 			ifTrue: [ comment := comment not ]. 
-		(char = $' and: [ comment not and: [ prevChar ~= $$ ] ]) 
+		(char = $' and: [ comment not and: [ prevChar ~= $$ or: [ string ] ] ]) 
 			ifTrue: [ string := string not ]. 
 		(comment or: [ string ]) ifFalse: [ 
 			(char = $[ and: [  prevChar ~= $$ ]) ifTrue: [ count := count +1 ].

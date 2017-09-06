@@ -7,7 +7,7 @@ newMethodDefinitionFrom: anArray
 	meta := anArray fourth first second notNil.
 	selector := (RBParser parseMethod: anArray fourth second) selector.
 	source := String streamContents: [ :s | 
-		s << anArray fourth second << String cr << anArray sixth ].
+		s << anArray fourth second << String lf << anArray sixth ].
 
 	^ MCMethodDefinition
 		className: className

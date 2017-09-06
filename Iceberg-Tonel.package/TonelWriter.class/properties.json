@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "MCWriter",
 	"category" : "Iceberg-Tonel-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],

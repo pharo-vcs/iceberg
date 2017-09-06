@@ -1,4 +1,4 @@
-private writing
+private
 splitMethodSouce: aMethodDefinition into: aBlock
 	| keywords sourceStream declaration |
 	
@@ -9,7 +9,10 @@ splitMethodSouce: aMethodDefinition into: aBlock
 	whileFalse: [ 
 		declaration ifNotEmpty: [ declaration := declaration, self newLine ].
 		declaration := declaration, (sourceStream upToAnyOf: CharacterSet crlf) ].
-	
+	declaration := declaration trimBoth.
+	"verify if parameter is in next line (yes, it can happen)" 
+	declaration last = $: ifTrue: [ 
+		declaration := declaration, ' ', (sourceStream upToAnyOf: CharacterSet separators) ].
 	aBlock 
 		value: declaration 
 		value: (sourceStream upToEnd withLineEndings: self newLine)

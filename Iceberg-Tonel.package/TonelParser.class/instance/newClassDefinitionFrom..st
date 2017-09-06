@@ -13,6 +13,6 @@ newClassDefinitionFrom: anArray
         classVarNames: (metadata at: 'classVars' ifAbsent: [ #() ])
         poolDictionaryNames: (metadata at: 'pools' ifAbsent: [ #() ])
         classInstVarNames: (metadata at: 'classInstVars' ifAbsent: [ #() ])
-        type: (metadata at: 'type' ifAbsent: [ 'normal' ]) asSymbol
+        type: (metadata at: #type ifAbsent: [ #normal ]) asSymbol
         comment: anArray second
-        commentStamp: (metadata at: 'stamp' ifAbsent: [ '' ])
+        commentStamp: (metadata at: #timestamp ifAbsent: [ '' ])
