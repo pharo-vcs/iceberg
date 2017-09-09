@@ -9,6 +9,5 @@ writeMethodDefinition: aMethodDefinition on: aStream
 			aStream 
 				<< nl 
 				<< (self methodDefinitionOf: aMethodDefinition) << nl 
-				<< aMethodDefinition fullClassName << ' >> ' << methodDeclaration << ' [' << nl	
-				<< methodBody << nl 
-				<< ']' << nl ]
+				<< aMethodDefinition fullClassName << ' >> ' << methodDeclaration 
+				<< ' [' << methodBody << nl << ']' << nl ]

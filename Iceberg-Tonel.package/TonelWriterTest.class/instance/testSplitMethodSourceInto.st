@@ -49,7 +49,7 @@ testSplitMethodSourceInto
 	with: var2
 	several: var3
 	lines: var4' withLineEndings: OSPlatform current lineEnding).
-	self assert: source equals: (newLine, newLine, tab, '^ var1 + var2 + var3 + var4' withLineEndings: newLine).
+	self assert: source equals: (newLine, tab, newLine, tab, '^ var1 + var2 + var3 + var4' withLineEndings: newLine).
 
 	"test comment before declaration (it may happen, if someone copied from diffmorph)"
 	definition := MCMethodDefinition
@@ -62,8 +62,8 @@ testSplitMethodSourceInto
 name: aString 
 	name := aString'.
 	writer splitMethodSource: definition into: [ :d :s | declaration := d. source := s ].
-	self assert: declaration equals: 'name: aString '.
-	self assert: source equals: newLine, tab, 'name := aString'.
+	self assert: declaration equals: 'name: aString'.
+	self assert: source equals: space, newLine, tab, 'name := aString'.
 
 	"test source right after declaration (no enter between selector and source)"
 	definition := MCMethodDefinition
