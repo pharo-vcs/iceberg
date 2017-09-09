@@ -11,15 +11,17 @@ splitMethodSource: aMethodDefinition into: aBlock
 	"Parse declaration"
 	declaration := String new writeStream.
 	[ (keywords allSatisfy: [ :each | 
-		declaration originalContents 
+			declaration originalContents 
 			includesSubstring: each 
 			caseSensitive: true ]) not
-			or: [ declaration contents trimRight last = $: ] ]
+		or: [ declaration contents trimRight last = $: ] ]
 	whileTrue: [ 
 		"get separators"
-		[ source peek isSeparator ] whileTrue: [ declaration nextPut: source next ].
+		[ source atEnd not and: [ source peek isSeparator ] ]
+			whileTrue: [ declaration nextPut: source next ].
 		"take next word"
-		[ source peek isSeparator ] whileFalse: [ declaration nextPut: source next ] ].
+		[ source atEnd not and: [ source peek isSeparator not ] ]
+			whileTrue: [ declaration nextPut: source next ] ].
 	aBlock 
 		value: (declaration contents trimLeft withLineEndings: self newLine)
 		value: (source upToEnd withLineEndings: self newLine)
