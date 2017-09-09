@@ -1,9 +1,21 @@
 private definitions
 typeTraitDefinitionOf: aClassDefinition
-	^ self toSTON: (OrderedDictionary new 
+	| definition |
+	
+	definition := OrderedDictionary new 
 		at: #name put: aClassDefinition className; 
-		at: #traits put: aClassDefinition traitCompositionString;
-		at: #classTraits put: aClassDefinition classTraitCompositionString;
-		at: #category put: aClassDefinition category;
-		at: #timestamp put: aClassDefinition commentStamp;
-		yourself)	
+		yourself.
+
+	aClassDefinition hasTraitComposition ifTrue: [ 
+		definition		
+			at: #traits 
+			put: aClassDefinition traitCompositionString ].
+		
+	aClassDefinition hasClassTraitComposition ifTrue: [ 
+		definition		
+			at: #classTraits 
+			put: aClassDefinition classTraitCompositionString ].
+	
+	definition at: #category put: aClassDefinition category.
+		
+	^ self toSTON: definition

@@ -15,4 +15,4 @@ newClassDefinitionFrom: anArray
         classInstVarNames: (metadata at: 'classInstVars' ifAbsent: [ #() ])
         type: (metadata at: #type ifAbsent: [ #normal ]) asSymbol
         comment: anArray second
-        commentStamp: (metadata at: #timestamp ifAbsent: [ '' ])
+        commentStamp: nil

@@ -11,9 +11,10 @@ typeClassDefinitionOf: aClassDefinition
 		definition at: #type put: aClassDefinition type ].
 	
 	aClassDefinition hasTraitComposition ifTrue: [ 
-		definition	
-			at: #traits put: aClassDefinition traitCompositionString;
-			at: #classTraits put: aClassDefinition classTraitCompositionString ].
+		definition at: #traits put: aClassDefinition traitCompositionString ].
+	
+	aClassDefinition hasClassTraitComposition ifTrue: [ 
+		definition at: #classTraits put: aClassDefinition classTraitCompositionString ].
 	
 	(aClassDefinition variables select: #isInstanceVariable thenCollect: #name)
 		ifNotEmpty: [ :vars | definition at: #instVars put: vars asArray ].
@@ -28,7 +29,6 @@ typeClassDefinitionOf: aClassDefinition
 		ifNotEmpty: [ :vars | definition at: #classInstVars put: vars asArray ].
 
 	definition 		
-		at: #category put: aClassDefinition category;
-		at: #timestamp put: aClassDefinition commentStamp.
+		at: #category put: aClassDefinition category.
 	
 	^ self toSTON: definition

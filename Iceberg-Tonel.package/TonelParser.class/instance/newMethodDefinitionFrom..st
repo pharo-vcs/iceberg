@@ -7,12 +7,13 @@ newMethodDefinitionFrom: anArray
 	meta := anArray fourth first second notNil.
 	selector := (RBParser parseMethod: anArray fourth second) selector.
 	source := String streamContents: [ :s | 
-		s << anArray fourth second << String lf << anArray sixth ].
+		s << anArray fourth second.
+		anArray sixth ifNotEmpty: [ :src | s << String lf << src ] ].
 
 	^ MCMethodDefinition
 		className: className
 		classIsMeta: meta
 		selector: selector
-		category: (metadata at: #category ifAbsent: [ nil ]) 
-		timeStamp: (metadata at: #timestamp ifAbsent: [ nil ])
+		category: (metadata at: #category ifAbsent: [ '' ]) 
+		timeStamp: nil
 		source: source

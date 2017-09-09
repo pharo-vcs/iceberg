@@ -6,6 +6,8 @@ testTypeDef
 this is a test
 "
 Class { 
+	#name: ''X'',
+	#superclass: ''Y'',
 	#category: ''X'' 
 }'
 		rule: #typeDef

@@ -8,7 +8,7 @@ newTraitDefinitionFrom: anArray
 		traitComposition: (metadata at: 'traitcomposition' ifAbsent: [ '{}' ])
 		category: (metadata at: #category)
 		comment: anArray second
-		commentStamp: (metadata at: #timestamp ifAbsent: [ '' ]).
+		commentStamp: nil. 
 	MCClassTraitDefinition
  		baseTraitName: (metadata at: #name)
  		classTraitComposition: (metadata at: #classTraits).

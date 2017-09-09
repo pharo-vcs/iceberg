@@ -1,14 +1,14 @@
 private writing
-writeMethodDefinition: aMethodDefinition on: stream
+writeMethodDefinition: aMethodDefinition on: aStream
 	| nl |
 	
 	nl := self newLine.
 	self 
-		splitMethodSouce: aMethodDefinition 
+		splitMethodSource: aMethodDefinition 
 		into: [ :methodDeclaration :methodBody |
-			stream 
+			aStream 
 				<< nl 
 				<< (self methodDefinitionOf: aMethodDefinition) << nl 
-				<< aMethodDefinition fullClassName << '>>' << methodDeclaration << ' [' << nl	
+				<< aMethodDefinition fullClassName << ' >> ' << methodDeclaration << ' [' << nl	
 				<< methodBody << nl 
 				<< ']' << nl ]
