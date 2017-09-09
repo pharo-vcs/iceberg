@@ -8,13 +8,19 @@ this is a test
 Class { 
 	#name: ''X'',
 	#superclass: ''Y'',
-	#category: ''X'' 
+	#category: ''Z'' 
 }'
 		rule: #typeDef
-		equals: { 
-			nil.
-			'this is a test'. 
-			nil.
-			'Class'.
-			nil.  
-			{ #category -> 'X' } asDictionary }
+		equals: (MCClassDefinition
+        name: 'X'
+        superclassName: 'Y'
+        traitComposition: '{}'
+        classTraitComposition: '{}'
+        category: 'Z'
+        instVarNames: #()
+        classVarNames: #()
+        poolDictionaryNames: #()
+        classInstVarNames: #()
+        type: #normal
+        comment: 'this is a test'
+        commentStamp: nil)
