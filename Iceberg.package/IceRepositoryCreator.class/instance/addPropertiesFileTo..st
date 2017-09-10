@@ -1,4 +1,6 @@
 private
 addPropertiesFileTo: repository
-	repository addProperties: (IceRepositoryProperties 
-		fromDictionary: { #format -> self formatToUse } asDictionary)
+	| properties |
+	properties := IceRepositoryProperties 
+		fromDictionary: { #format -> self formatToUse } asDictionary.
+	repository addProperties: properties

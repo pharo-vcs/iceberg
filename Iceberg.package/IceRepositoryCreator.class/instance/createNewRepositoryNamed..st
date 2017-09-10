@@ -21,6 +21,6 @@ createNewRepositoryNamed: aString
 		name: aString;
 		yourself.
 		
-	self useTonel ifTrue: [ self addPropertiesFileTo: repository ].
+	self addPropertiesFileTo: repository.
 
 	^ repository

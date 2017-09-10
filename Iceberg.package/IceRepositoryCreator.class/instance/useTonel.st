@@ -1,3 +1,0 @@
-testing
-useTonel
-	^ IceRepository defaultFileFormatType
