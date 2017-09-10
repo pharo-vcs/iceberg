@@ -3,7 +3,7 @@ testMethodBody
 	self 
 		assertParse: '[ method body... I will ignore what is inside ]'
 		rule: #methodBody
-		equals: 'method body... I will ignore what is inside'.
+		equals: ' method body... I will ignore what is inside'.
 
 	self 
 		assertParse: '[
@@ -13,7 +13,8 @@ method
 what] is inside
 ]'
 		rule: #methodBody
-		equals: 'method 
+		equals: '
+method 
 	[body... [I 
 		will ignore] 
 what] is inside'.
@@ -21,5 +22,5 @@ what] is inside'.
 	self 
 		assertParse: '[ method body with "''", ''"'', "[", '']'' ]'
 		rule: #methodBody
-		equals: 'method body with "''", ''"'', "[", '']'''.
+		equals: ' method body with "''", ''"'', "[", '']'''.
 	
