@@ -2,7 +2,7 @@
 	"classtraitcomposition" : "TIceRepositoryWriter classTrait",
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceLibgitCypressWriter",
+	"name" : "IceLibgitFiletreeWriter",
 	"commentStamp" : "",
 	"super" : "IceMetadatalessFileTreeWriter",
 	"traitcomposition" : "TIceRepositoryWriter",

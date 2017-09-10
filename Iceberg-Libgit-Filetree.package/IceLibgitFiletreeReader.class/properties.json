@@ -4,7 +4,7 @@
 	"instvars" : [
 		"iceVersion"
 	],
-	"name" : "IceLibgitCypressReader",
+	"name" : "IceLibgitFiletreeReader",
 	"commentStamp" : "NicoPasserini 7/7/2016 11:58",
 	"super" : "MCFileTreeStCypressReader",
 	"traitcomposition" : "TIceRepositoryReader",
