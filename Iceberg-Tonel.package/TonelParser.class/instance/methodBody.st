@@ -33,7 +33,8 @@ methodBody
 			^ self 
 				removeFrom: result contents 
 				enclosingStart: $[ 
-				end: $] ].
+				end: $]
+				clean: #right ].
 		prevChar := char ].
 
 	TonelParseError signal: 'Can''t parse method body'

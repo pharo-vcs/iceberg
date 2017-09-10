@@ -8,8 +8,8 @@ newMethodDefinitionFrom: anArray
 	selector := (RBParser parseMethod: anArray fourth second) selector.
 	source := String streamContents: [ :s | 
 		s << anArray fourth second.
-		anArray sixth ifNotEmpty: [ :src | s << String lf << src ] ].
-
+		anArray fifth ifNotEmpty: [ :src | s << src ] ].
+	
 	^ MCMethodDefinition
 		className: className
 		classIsMeta: meta

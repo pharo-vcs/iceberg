@@ -18,7 +18,7 @@ Object>>name [
 			
 	self 
 		assertParse: '
-Object class>>name [
+Object class>>name [ 
 	^ self printString
 ]'
 		rule: #methodDef
@@ -28,5 +28,20 @@ Object class>>name [
 			selector: #name
 			category: ''
 			timeStamp: nil
-			source: 'name
+			source: 'name 
 	^ self printString').
+
+	self 
+		assertParse: '
+TClass classSide >> template: aSystemCategoryName [ 
+	"I really do not care"
+]'
+		rule: #methodDef
+		equals: (MCMethodDefinition
+			className: #TClass
+			classIsMeta: true
+			selector: #template:
+			category: ''
+			timeStamp: nil
+			source: 'template: aSystemCategoryName 
+	"I really do not care"').
