@@ -17,7 +17,7 @@ composeBrowserOn: browser
 		andShow: [ :a :repo :commitInfo |.
 			(IceDiffChangeTreeBuilder new
 				entity: commitInfo;
-				diff: (commitInfo ifNotNil: [ commitInfo diffWith: (repo mergeBaseWith: commitInfo) ]); 
+				diff: (commitInfo ifNotNil: [ commitInfo diffTo: (repo mergeBaseWith: commitInfo) ]); 
 				buildOn: a)
 				title: 'Incoming changes' ].
 

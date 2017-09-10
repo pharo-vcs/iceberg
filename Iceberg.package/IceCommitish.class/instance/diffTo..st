@@ -1,3 +1,3 @@
 *Iceberg-Changes
-diffWith: aCommitish
+diffTo: aCommitish
 	^ IceDiff from: self to: aCommitish 

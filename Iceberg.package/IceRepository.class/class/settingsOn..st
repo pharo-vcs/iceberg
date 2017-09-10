@@ -1,6 +1,15 @@
 settings
 settingsOn: aBuilder 
 	<systemsettings>
+	
+	(aBuilder pickOne: #'defaultFileFormatType')
+		parent: #Iceberg;
+		target: self;
+		label: 'File format type';
+		description: 'Select your preferred file format.';
+		domainValues: (TIceRepositoryWriter traitUsers 
+			collect: [:class | class description -> class name ]).
+
 	(aBuilder pickOne: #'defaultBackendType')
 		parent: #Iceberg;
 		target: self;
@@ -9,7 +18,7 @@ settingsOn: aBuilder
 		domainValues: 
 			((TIceRepositoryBackend traitUsers collect: [:class | class description -> class name ]) 
 				ifEmpty: { 'No backend' -> nil }).
-	
+				
 	(aBuilder setting: #shareRepositoriesBetweenImages)
 		parent: #Iceberg;
 		target: self;

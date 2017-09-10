@@ -2,7 +2,6 @@ baseline
 baseline: spec
 	<baseline>
 	spec for: #common do: [ 
-		
 		spec postLoadDoIt: #resetKMRepository.
 		
 		spec
@@ -12,10 +11,11 @@ baseline: spec
 		configuration: 'ProcessWrapper' with: [ spec
 			versionString: #stable;
 			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
-
 		baseline: 'FileTree' with: [ spec
 			repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
 			loads: 'Git' ];
+		baseline: 'Tonel' with: [ spec
+			repository: 'github://pharo-vcs/tonel' ];
 		baseline: 'LibGit' with: [ spec
 			repository: 'github://pharo-vcs/libgit2-pharo-bindings:v0.25.1';
   			loads: 'default' ];
@@ -40,14 +40,16 @@ baseline: spec
 		package: 'Iceberg-UI' with: [ spec requires: #('Iceberg') ];
 		package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand') ];
 		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
-		package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
-		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];
+		
 		package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 		package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg-Libgit') ];
-		package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg-Libgit') ];
+		package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg-Libgit' 'Tonel') ];
 
-		group: 'minimal' with: #('Iceberg' 'Iceberg-Libgit');
-		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Plugin-GitHub');
+		package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
+		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];
+		
+		group: 'minimal' with: #('Iceberg' 'Iceberg-Libgit' 'Iceberg-Libgit-Filetree');
+		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Plugin-GitHub' 'Iceberg-Libgit-Tonel');
 		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	]

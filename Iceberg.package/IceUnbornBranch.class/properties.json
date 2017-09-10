@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "NicoPasserini 12/5/2016 16:47",
 	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
 	"name" : "IceUnbornBranch",
 	"type" : "normal"
 }
