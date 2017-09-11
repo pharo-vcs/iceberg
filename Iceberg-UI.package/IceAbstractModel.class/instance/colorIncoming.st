@@ -1,3 +1,3 @@
 highlighting
 colorIncoming
-	^ Color brown
+	^ Smalltalk ui theme warningTextColor

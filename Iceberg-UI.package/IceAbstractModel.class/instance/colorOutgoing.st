@@ -1,3 +1,3 @@
 highlighting
 colorOutgoing
-	^ Color blue
+	^ Smalltalk ui theme successTextColor
