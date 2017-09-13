@@ -7,7 +7,7 @@ fetchAllRepositories
 		
 		IceRepository registry doWithIndex: [ :repository :index|
 			bar label: 
-				('Looking for incoming commigs in all repositories ({1} of {2})'
+				('Looking for incoming commits in all repositories ({1} of {2})'
 					format: {index. repositoriesCount}).
 			bar current: index.
 			
