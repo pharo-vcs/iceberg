@@ -1,3 +1,3 @@
 descriptions
 description
-	^ 'Libgit2'
+	^ 'Libgit'
