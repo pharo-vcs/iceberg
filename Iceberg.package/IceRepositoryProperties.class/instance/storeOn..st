@@ -3,6 +3,7 @@ storeOn: aRepository
 	(self fileFor: aRepository)
 		ensureDelete;
 		writeStreamDo: [ :stream | 
-			STON 
-				put: self properties 
-				onStreamPretty: stream  ]
+			(STONWriter on: stream) 
+				prettyPrint: true;
+				newLine: OSPlatform current lineEnding;
+				nextPut: self properties  ]
