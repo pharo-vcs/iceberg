@@ -4,4 +4,3 @@ directoryFromPath: aString relativeTo: aCommitOrTree
 		entryByPath: aString 
 		ifAbsent: [ 
 			IceMissingRepositoryEntry new name: aString; owner: aCommitOrTree; signal ]
- 

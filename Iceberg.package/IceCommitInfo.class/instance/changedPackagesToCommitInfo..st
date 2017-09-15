@@ -1,15 +1,17 @@
 accessing
 changedPackagesToCommitInfo: aCommitInfo
-	| files packageNames |
+	| writerClass files packageNames |
+	
+	writerClass := self backend writerClass.
 	files := self backend changedFilesBetween: self and: aCommitInfo.
-	packageNames := (files 
-		select: [ :each | each includesSubstring: '.package' ] 
-		thenCollect: [ :each | | packageName |
-			packageName := each copyFrom: 1 to: (each findString: '.package') - 1.
-			(packageName includesSubstring: '/') 
-				ifTrue: [ packageName copyAfterLast: $/ ]
-				ifFalse: [ packageName ] ])
-		asSet.
+	self backend subdirectory ifNotEmpty: [ :subDir |
+		files := files 
+			select: [ :each | each beginsWith: subDir, '/' ]
+			thenCollect: [ :each | each allButFirst: (subDir size + 1) ] ].
+	packageNames := ((files 
+		collect: [ :each | each copyUpTo: $/ ]
+		thenSelect: [ :each | writerClass isValidPackageName: each ]))
+		collect: [ :each | writerClass packageNameFromDirectoryName: each ] as: Set.
 	^ packageNames sorted
-		select: [ :each | self repository includesPackageNamed: each  ] 
+		select: [ :each | self repository includesPackageNamed: each ]
 		thenCollect: [ :each | self repository packageNamed: each ]

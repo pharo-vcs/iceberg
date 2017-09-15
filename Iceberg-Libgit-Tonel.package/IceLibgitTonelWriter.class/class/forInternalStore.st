@@ -1,3 +1,3 @@
 accessing
 forInternalStore
-	^ self
+	^ TonelWriter

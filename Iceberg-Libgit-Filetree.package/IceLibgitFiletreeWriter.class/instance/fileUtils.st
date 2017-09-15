@@ -1,3 +1,3 @@
 accessing
 fileUtils
-	^ IceLibgitFiletreeFileUtils current
+	^ IceLibgitFiletreeFileUtils
