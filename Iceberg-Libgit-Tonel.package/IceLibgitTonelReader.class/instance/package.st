@@ -1,3 +1,3 @@
 accessing
 package
-	^ self iceVersion package
+	^ MCPackage named: self iceVersion packageName
