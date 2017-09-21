@@ -10,19 +10,19 @@ compose
 			to: #commit;
 			andShow: [ :a | a 
 				title: 'Commit your changes'; 
-				custom: IceGlamourCommitBrowser new ].
+				custom: IceCommitBrowser new ].
 
 		browser aPane: #update.
 		browser transmit 
 			to: #update;
 			andShow: [ :a | a 
 				title: 'Update'; 
-				custom: IceGlamourUpdateBrowser new ].
+				custom: IceUpdateBrowser new ].
 
 		browser aPane: #publish.
 		browser transmit 
 			to: #publish;
 			andShow: [ :a | a 
 				title: 'Push'; 
-				custom: IceGlamourPublishBrowser new ].
+				custom: IcePublishBrowser new ].
 	]

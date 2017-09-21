@@ -5,7 +5,7 @@
 		"repositoryDirectory"
 	],
 	"name" : "IceLibgitTonelWriter",
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:35",
 	"super" : "MCWriter",
 	"traitcomposition" : "TIceRepositoryWriter",
 	"type" : "normal",

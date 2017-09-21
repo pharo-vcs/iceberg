@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:29",
 	"super" : "MCFileTreeStCypressWriter",
-	"category" : "Iceberg-Adapters",
+	"category" : "Iceberg-Libgit-Filetree",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

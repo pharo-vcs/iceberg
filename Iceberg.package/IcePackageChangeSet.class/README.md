@@ -1,1 +1,1 @@
-Provides a filtered version of a diff, restricted to a package.
+I provide a filtered version of a diff, restricted to a package.

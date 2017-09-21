@@ -1,0 +1,1 @@
+I indicate when there is nothing to commit (and you tried to do it)

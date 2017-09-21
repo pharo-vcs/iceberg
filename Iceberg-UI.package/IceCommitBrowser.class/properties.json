@@ -8,6 +8,6 @@
 	"instvars" : [
 		"selectedElements"
 	],
-	"name" : "IceGlamourCommitBrowser",
+	"name" : "IceCommitBrowser",
 	"type" : "normal"
 }

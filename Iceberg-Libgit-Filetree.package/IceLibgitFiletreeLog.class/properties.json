@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:11",
 	"super" : "Object",
-	"category" : "Iceberg-Changes",
+	"category" : "Iceberg-Libgit-Filetree",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"repository"
 	],
-	"name" : "IceLog",
+	"name" : "IceLibgitFiletreeLog",
 	"type" : "normal"
 }

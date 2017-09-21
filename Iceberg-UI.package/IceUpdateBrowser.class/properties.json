@@ -8,6 +8,6 @@
 	"instvars" : [
 		"announcer"
 	],
-	"name" : "IceGlamourUpdateBrowser",
+	"name" : "IceUpdateBrowser",
 	"type" : "normal"
 }
