@@ -7,17 +7,14 @@ settingsOn: aBuilder
 		target: self;
 		label: 'File format type';
 		description: 'Select your preferred file format.';
-		domainValues: (TIceRepositoryWriter traitUsers 
-			collect: [:class | class description -> class name ]).
+		domainValues: self formatTypeDomainValues.
 
 	(aBuilder pickOne: #'defaultBackendType')
 		parent: #Iceberg;
 		target: self;
 		label: 'Backend type';
 		description: 'Select your preferred way to access git repositories from Iceberg: the git command line (OSSubprocess) or the libgit2 library';
-		domainValues: 
-			((TIceRepositoryBackend traitUsers collect: [:class | class description -> class name ]) 
-				ifEmpty: { 'No backend' -> nil }).
+		domainValues: self backendTypeDomainValues.
 				
 	(aBuilder setting: #shareRepositoriesBetweenImages)
 		parent: #Iceberg;
