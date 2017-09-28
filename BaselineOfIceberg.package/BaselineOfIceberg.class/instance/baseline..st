@@ -52,4 +52,7 @@ baseline: spec
 		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Plugin-GitHub' 'Iceberg-Libgit-Tonel');
 		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
-	]
+	].
+
+	spec for: #'pharo6.x' do: [	spec package: 'Iceberg-Pharo6' ].
+
