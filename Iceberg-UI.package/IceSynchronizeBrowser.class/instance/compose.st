@@ -6,7 +6,7 @@ compose
 
 		browser aPane: #commit.
 		browser transmit 
-			transformed: #workingCopyDiff; 
+			transformed: self workingCopyDiffSelector;
 			to: #commit;
 			andShow: [ :a | a 
 				title: 'Commit your changes'; 

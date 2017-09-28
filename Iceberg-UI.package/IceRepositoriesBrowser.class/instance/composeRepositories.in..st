@@ -29,6 +29,7 @@ composeRepositories: repositories in: composite
 		addAction: self fetchAllRepositoriesAction;
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepositoryAction;
+		addSelectionAction: self fullSynchronizeRepositoryAction;
 		addSelectionAction: self showHistoryAction;
 		addSelectionAction: self switchBranchAction;
 		addSelectionAction: self createNewBranchAction;

@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"remote"
+		"remote",
+		"fullSync"
 	],
 	"name" : "IceSynchronizeBrowser",
 	"type" : "normal"
