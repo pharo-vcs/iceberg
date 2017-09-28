@@ -8,6 +8,7 @@ composePackagesListIn: composite
 		addAction: self reloadAllPackagesAction;
 		addAction: self addPackageAction;
 		addSelectionAction: self browsePackageAction;
+		addSelectionAction: self browseLocalPackageAction;
 		addSelectionAction: self loadPackageAction;
 		addSelectionAction: self unloadPackageAction;
 		addSelectionAction: self reloadPackageAction;
