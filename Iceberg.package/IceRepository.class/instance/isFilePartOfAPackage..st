@@ -4,7 +4,7 @@ isFilePartOfAPackage: aFileReferenceRelativeToRepositoryDirectory
 
 	segments := aFileReferenceRelativeToRepositoryDirectory path segments.
 	^ self subdirectory isEmptyOrNil
-		ifTrue: [ self writerClass isValidPackageName: segments first ]
+		ifTrue: [ self backend writerClass isValidPackageName: segments first ]
 		ifFalse: [  
 			(segments first = self subdirectory) 
-				and: [ self writerClass isValidPackageName: segments second ] ]
+				and: [ self backend writerClass isValidPackageName: segments second ] ]

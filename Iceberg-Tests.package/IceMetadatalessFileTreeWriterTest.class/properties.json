@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Tests-Base",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "IceMetadatalessFileTreeWriterTest",
-	"pools" : [
-		 ],
 	"super" : "IceAbstractTest",
-	"type" : "normal" }
+	"category" : "Iceberg-Tests-Base",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetadatalessFileTreeWriterTest",
+	"type" : "normal"
+}

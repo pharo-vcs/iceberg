@@ -17,8 +17,7 @@ testBecomeWriteable
 		self assert: self defaultLocationForGithubClonedRepository exists.
 		self assert: (self defaultLocationForGithubClonedRepository / '.git') exists.
 		
-		self assert: writableRepository currentBranch name equals: 'forBecomeWriteable'.
-		self assert: writableRepository backend currentBranch equals: 'forBecomeWriteable'.
+		self assert: writableRepository branch name equals: 'forBecomeWriteable'.
 		
 		writableRepository pull.
 		self assert: ((Smalltalk at: #Test) canUnderstand: #forBecomeWritable)
