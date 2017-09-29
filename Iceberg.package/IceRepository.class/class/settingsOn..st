@@ -9,6 +9,12 @@ settingsOn: aBuilder
 		domainValues: 
 			((TIceRepositoryBackend traitUsers collect: [:class | class description -> class name ]) 
 				ifEmpty: { 'No backend' -> nil }).
+				
+	(aBuilder setting: #'defaultCodeSubdirectory')
+		parent: #Iceberg;
+		target: self;
+		label: 'Default Code Subdirectory';
+		description: 'Select your preferred source code folder name'.
 	
 	(aBuilder setting: #shareRepositoriesBetweenImages)
 		parent: #Iceberg;
