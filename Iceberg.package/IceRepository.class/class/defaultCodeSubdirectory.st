@@ -1,3 +1,3 @@
 accessing settings
 defaultCodeSubdirectory
-	^ DefaultCodeSubdirectory ifNil: [ DefaultCodeSubdirectory := 'repository' ]
+	^ DefaultCodeSubdirectory ifNil: [ DefaultCodeSubdirectory := 'source' ]
