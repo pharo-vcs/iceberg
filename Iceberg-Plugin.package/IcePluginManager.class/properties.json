@@ -4,9 +4,7 @@
 	"category" : "Iceberg-Plugin-Base",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"Managers"
-	],
+	"classvars" : [ ],
 	"instvars" : [
 		"plugins"
 	],
