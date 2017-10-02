@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "ProtoObject",
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"LastCommitFound"
+	],
+	"instvars" : [
+		"commitId",
+		"packageName",
+		"remoteUrl",
+		"stub"
+	],
+	"name" : "IceProxyMCVersionInfo",
+	"type" : "normal"
+}
