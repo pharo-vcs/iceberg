@@ -9,8 +9,8 @@ commitCherryPick: pickedCollection withMessage: message andParents: parentCommit
 	changesByPackage := SmallDictionary new.
 
 	"Collect changes by package"
-	pickedCollection 
-		do: [ :each | (changesByPackage at: each packageName ifAbsentPut: [ Set new ]) add: each ].	
+	pickedCollection do: [ :each | 
+		(changesByPackage at: each packageName ifAbsentPut: [ Set new ]) add: each ].	
 	"Create patched versions for each package"
 	changesByPackage 
 		keysAndValuesDo: [ :packageName :changes | | workingCopy snapshot patcher |

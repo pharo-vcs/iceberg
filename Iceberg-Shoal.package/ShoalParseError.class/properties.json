@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Error",
+	"category" : "Iceberg-Shoal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"char"
+	],
+	"name" : "ShoalParseError",
+	"type" : "normal"
+}

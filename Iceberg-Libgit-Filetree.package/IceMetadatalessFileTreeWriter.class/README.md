@@ -1,0 +1,1 @@
+I can write metadataless filetree versions from an ice formed version.

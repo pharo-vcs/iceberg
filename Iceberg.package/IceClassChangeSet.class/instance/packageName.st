@@ -1,3 +1,3 @@
 accessing
 packageName
-	^ self targetClass packageName
+	^ self parent packageName

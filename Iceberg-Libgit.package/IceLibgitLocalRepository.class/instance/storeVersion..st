@@ -5,7 +5,9 @@ storeVersion: aMCVersion
 		head := repo head.
 		parentCommit := head object.
 		treeBuilder := IceLibgitTreeBuilder on: parentCommit tree.
-		IceLibgitWriter fileOut: aMCVersion on: (treeBuilder entryByPath: self subdirectory).
+		self writerClass 
+			fileOut: aMCVersion 
+			on: (treeBuilder entryByPath: self subdirectory).
 		
 		signature := repo defaultSignature.
 

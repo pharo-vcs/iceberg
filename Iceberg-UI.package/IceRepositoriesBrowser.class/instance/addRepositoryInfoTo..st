@@ -1,7 +1,5 @@
 building
 addRepositoryInfoTo: composite
-	composite fastTable
+	composite morph
 		title: 'General';
-		display: #detailedInfo;
-		column: 'Name' evaluated: #key width: 80;
-		column: 'Value' evaluated: #value
+		display: [ :model | self createInfoPanel: model detailedInfo ]

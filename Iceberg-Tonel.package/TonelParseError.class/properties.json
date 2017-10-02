@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Error",
+	"category" : "Iceberg-Tonel-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"char"
+	],
+	"name" : "TonelParseError",
+	"type" : "normal"
+}

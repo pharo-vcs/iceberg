@@ -1,3 +1,3 @@
 accessing
 package
-	^ self operation definition actualClass package
+	^ self parent package

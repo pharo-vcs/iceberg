@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "MCWriter",
+	"category" : "Iceberg-Tonel-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snapshot",
+		"sourceDir",
+		"packageDir"
+	],
+	"name" : "TonelWriter",
+	"type" : "normal"
+}

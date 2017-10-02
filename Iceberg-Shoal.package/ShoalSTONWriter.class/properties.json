@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "STONWriter",
+	"category" : "Iceberg-Shoal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"aliases"
+	],
+	"name" : "ShoalSTONWriter",
+	"type" : "normal"
+}

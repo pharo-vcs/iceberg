@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Shoal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"snapshot",
+		"sourceDir",
+		"packageDir"
+	],
+	"name" : "ShoalWriter",
+	"type" : "normal"
+}

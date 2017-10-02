@@ -1,0 +1,1 @@
+I announce when a repository has been forgotten (removed from iceberg).

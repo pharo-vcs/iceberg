@@ -1,8 +1,10 @@
 private
 isFilePartOfAPackage: aFileReferenceRelativeToRepositoryDirectory
-	| packageSuffix segments |
-	packageSuffix := '.package'.
+	| segments |
+
 	segments := aFileReferenceRelativeToRepositoryDirectory path segments.
 	^ self subdirectory isEmptyOrNil
-		ifTrue: [ segments first endsWith: packageSuffix ]
-		ifFalse: [  (segments first = self subdirectory) and: [ segments second endsWith: packageSuffix ] ]
+		ifTrue: [ self backend writerClass isValidPackageName: segments first ]
+		ifFalse: [  
+			(segments first = self subdirectory) 
+				and: [ self backend writerClass isValidPackageName: segments second ] ]

@@ -1,0 +1,3 @@
+private
+packageNameFromPackageDirectory
+    ^ packageDirectory basename

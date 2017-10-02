@@ -1,0 +1,3 @@
+accessing
+packageNameFromDirectoryName: aString
+	^ aString

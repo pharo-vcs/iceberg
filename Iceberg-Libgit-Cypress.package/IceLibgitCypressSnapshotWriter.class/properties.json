@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceMetadatalessStCypressWriter",
+	"category" : "Iceberg-Libgit-Cypress",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceLibgitCypressSnapshotWriter",
+	"type" : "normal"
+}

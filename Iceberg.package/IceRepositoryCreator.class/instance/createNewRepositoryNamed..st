@@ -1,6 +1,6 @@
 actions
 createNewRepositoryNamed: aString
-	| backend locationToUse |
+	| backend locationToUse repository |
 	
 	self validate.
 
@@ -17,6 +17,10 @@ createNewRepositoryNamed: aString
 		subdirectory: self subdirectory.
 	backend init.
 
-	^ (IceRepository backend: backend)
+	repository := (IceRepository backend: backend)
 		name: aString;
-		yourself
+		yourself.
+		
+	self addPropertiesFileTo: repository.
+
+	^ repository

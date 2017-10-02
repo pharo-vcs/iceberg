@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "Notification",
+	"category" : "Iceberg-Tonel-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TonelShouldIgnore",
+	"type" : "normal"
+}

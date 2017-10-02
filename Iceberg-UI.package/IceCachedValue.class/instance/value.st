@@ -3,10 +3,11 @@ value
 	self isValid ifTrue: [ ^ value ].
 	updating ifTrue: [ ^ 'Loading...' asText allItalic ].
 
+	updating := true.
 	[ 
-		updating := true.
 		value := updateAction value.
-		lastUpdated := DateAndTime current.
-		^ value
-	]
-	ensure: [ updating := false ]
+		lastUpdated := DateAndTime current ]
+	ensure: [ updating := false ].
+	
+	^ value
+	

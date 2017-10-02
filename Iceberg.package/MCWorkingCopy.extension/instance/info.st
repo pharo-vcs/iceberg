@@ -1,0 +1,3 @@
+*Iceberg
+info
+	^ self versionInfo

@@ -3,7 +3,7 @@ testDiffWithBranch
 	|  diff change | 
 	self scenarioOutgoingCommit.
 	
-	diff := repository headCommit diffWith: repository currentBranch upstream.
+	diff := repository headCommit diffTo: repository branch upstream.
 
 	change := diff elements 
 		detect: [ :pkg | pkg changes notEmpty ]

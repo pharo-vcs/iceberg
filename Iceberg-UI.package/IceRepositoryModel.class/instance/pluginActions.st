@@ -1,3 +1,3 @@
 accessing plugins
 pluginActions
-	^ self repository pluginManager repositoryActions
+	^ self repository pluginManager repositoryActionsFor: self repository

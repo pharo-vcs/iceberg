@@ -1,14 +1,11 @@
 {
-	"category" : "Iceberg-Tests-Base",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "IceBranchTest",
-	"pools" : [
-		 ],
 	"super" : "IceAbstractTest",
-	"type" : "normal" }
+	"category" : "Iceberg-Tests-Base",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceBranchTest",
+	"type" : "normal"
+}

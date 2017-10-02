@@ -1,4 +1,3 @@
 actions
 addFilesToIndex: aListOfPaths
-	^ self backend 
-		addFilesToIndex: aListOfPaths
+	^ self backend addFilesToIndex: aListOfPaths

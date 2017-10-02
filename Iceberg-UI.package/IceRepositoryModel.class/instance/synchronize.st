@@ -1,3 +1,3 @@
 actions
 synchronize
-	IceGlamourSynchronizer synchronize: self repository
+	IceSynchronizeBrowser synchronize: self repository

@@ -6,5 +6,5 @@ synchronize: repository
 		or: [ lastSynchronization second  ~= repository ]])
 		ifTrue: [ 
 			lastSynchronization := { DateAndTime current. repository }.
-			IceGlamourSynchronizer synchronize: repository ]
+			IceSynchronizeBrowser synchronize: repository ]
 	
