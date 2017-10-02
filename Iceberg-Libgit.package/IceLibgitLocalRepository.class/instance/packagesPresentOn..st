@@ -9,7 +9,10 @@ packagesPresentOn: aCommitish
 		dir := self subdirectory.
 		sourceEntries := dir isEmptyOrNil
 			ifTrue: [ tree entries ]
-			ifFalse: [ (tree entryByPath: dir) entries ]. 
+			ifFalse: [ 
+				(tree entryByPath: dir ifAbsent: [ nil]) 
+					ifNotNil: #entries
+					ifNil: [ #() ] ]. 
 		^ ((sourceEntries 
 			collect: [ :each | each filename ])
 			select: [ :each | writerClass isValidPackageName: each ])
