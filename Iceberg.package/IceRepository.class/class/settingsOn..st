@@ -13,9 +13,15 @@ settingsOn: aBuilder
 		parent: #Iceberg;
 		target: self;
 		label: 'Backend type';
-		description: 'Select your preferred way to access git repositories from Iceberg: the git command line (OSSubprocess) or the libgit2 library';
-		domainValues: self backendTypeDomainValues.
-				
+		description: 'Select your preferred way to access git repositories from Iceberg: the git command line (OSSubprocess) or the libgit2 library';	
+    domainValues: self backendTypeDomainValues.
+  
+	(aBuilder setting: #'defaultCodeSubdirectory')
+		parent: #Iceberg;
+		target: self;
+		label: 'Default Code Subdirectory';
+		description: 'Select your preferred source code folder name'.
+
 	(aBuilder setting: #shareRepositoriesBetweenImages)
 		parent: #Iceberg;
 		target: self;
