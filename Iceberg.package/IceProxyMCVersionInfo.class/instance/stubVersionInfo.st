@@ -1,7 +1,7 @@
-private
+accessing
 stubVersionInfo 
-	^ stub ifNil: [ 
-		stub := MCVersionInfo
+	^ stubVersionInfo ifNil: [ 
+		stubVersionInfo := MCVersionInfo
 			name: packageName
 			id: UUID new
 			message: 'fabricated from a proxy repository'

@@ -11,7 +11,7 @@
 		"commitId",
 		"packageName",
 		"remoteUrl",
-		"stub"
+		"stubVersionInfo"
 	],
 	"name" : "IceProxyMCVersionInfo",
 	"type" : "normal"
