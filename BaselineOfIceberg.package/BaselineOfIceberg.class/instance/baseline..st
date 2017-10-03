@@ -5,23 +5,23 @@ baseline: spec
 		spec postLoadDoIt: #resetKMRepository.
 		
 		spec
-		configuration: 'OSSubprocess' with: [ spec
-			versionString: #stable;
-			repository: 'github://marianopeck/OSSubprocess/repository' ];
-		configuration: 'ProcessWrapper' with: [ spec
-			versionString: #stable;
-			repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
-		baseline: 'FileTree' with: [ spec
-			repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
-			loads: 'Git' ];
-		baseline: 'Tonel' with: [ spec
-			repository: 'github://pharo-vcs/tonel' ];
-		baseline: 'LibGit' with: [ spec
-			repository: 'github://pharo-vcs/libgit2-pharo-bindings:v0.25.1';
-  			loads: 'default' ];
-		project: 'LibGit-Tests'
-          copyFrom: 'LibGit'
-          with: [ spec loads: #('tests') ];
+			configuration: 'OSSubprocess' with: [ spec
+				versionString: #stable;
+				repository: 'github://marianopeck/OSSubprocess/repository' ];
+			configuration: 'ProcessWrapper' with: [ spec
+				versionString: #stable;
+				repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
+			baseline: 'FileTree' with: [ spec
+				repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
+				loads: 'Git' ];
+			baseline: 'Tonel' with: [ spec
+				repository: 'github://pharo-vcs/tonel' ];
+			baseline: 'LibGit' with: [ spec
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v0.25.1';
+  				loads: 'default' ];
+			project: 'LibGit-Tests'
+   	       	copyFrom: 'LibGit'
+          	with: [ spec loads: #('tests') ];
 
 		for: #MacOS do: [ spec
 			package: 'Iceberg-GitCommand'
@@ -54,5 +54,10 @@ baseline: spec
 		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
 	].
 
-	spec for: #'pharo6.x' do: [	spec package: 'Iceberg-Pharo6' ].
-
+	spec for: #'pharo6.x' do: [	
+			spec 
+				baseline: 'Metacello' with: [ 
+					spec repository: 'github://metacello/metacello:Pharo6.1/repository' ];
+				package: 'Iceberg' with: [ 
+					spec requires: #('Metacello') ];
+				package: 'Iceberg-Pharo6' ]
