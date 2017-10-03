@@ -55,4 +55,11 @@ baseline: spec
 	].
 
 	spec for: #'pharo6.x' do: [	
-		spec package: 'Iceberg-Pharo6' ]
+			spec 
+				baseline: 'Metacello' with: [ 
+					spec 
+						repository: 'github://metacello/metacello:Pharo6.1/repository';
+						loads: 'default' ];
+				package: 'Iceberg' with: [ 
+					spec requires: #('Metacello') ];
+				package: 'Iceberg-Pharo6' ]
