@@ -3,4 +3,4 @@ readerClass
 	^ properties 
 		at: 'format' 
 		ifPresent: [ :v | TIceRepositoryReader users detect: [ :each | each id = v  ] ]
-		ifAbsent: [ TIceRepositoryReader users detect: #isDefault  ]
+		ifAbsent: [ TIceRepositoryReader users detect: #isLegacyDefault ]

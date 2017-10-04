@@ -1,3 +1,3 @@
 testing
-isDefault
+isLegacyDefault
 	^ false
