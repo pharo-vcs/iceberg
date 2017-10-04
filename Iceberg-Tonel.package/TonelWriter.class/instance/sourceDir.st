@@ -1,3 +1,0 @@
-accessing
-sourceDir
-	^ sourceDir
