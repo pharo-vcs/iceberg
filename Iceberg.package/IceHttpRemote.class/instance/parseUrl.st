@@ -1,17 +1,9 @@
 private
 parseUrl
-	| matcher |
-	matcher := '((http|https)\://)(([\w]+)@)*([\w.]+)(\:([\d]+))*(/[\w]+)*/([\w\-]+)/([\w\-.]+(.git)?)' asRegex.
-	(matcher matches: url) 
-		ifTrue: [		
-			user := matcher subexpression: 5.
-			host := matcher subexpression: 6.
-			port := (matcher subexpression: 8)
-				ifNotNil: [: x | x asInteger ] 
-				ifNil: [ self class defaultPort ].				 
-			path := (matcher subexpressions: 9)
-				inject: OrderedCollection new 
-				into: [:coll :each  | coll add: each allButFirst. coll ]. 
-			owner := matcher subexpression: 10.
-			projectName := self stripPossibleExtension: (matcher subexpression: 11) ]
-		ifFalse: [ IceWrongUrl signal: 'Could not parse URL: ', url ]
+	| znUrl |
+	znUrl := ZnUrl fromString: url.
+	user := znUrl username.
+	host := znUrl host.
+	port := znUrl port ifNil: [self class defaultPort].
+	owner := znUrl segments first.
+	projectName := self stripPossibleExtension: (znUrl segments second).
