@@ -6,3 +6,4 @@ SystemOrganization addCategory: #'Iceberg-Core'!
 SystemOrganization addCategory: #'Iceberg-Core-Remotes'!
 SystemOrganization addCategory: #'Iceberg-Errors'!
 SystemOrganization addCategory: #'Iceberg-Security'!
+SystemOrganization addCategory: #'Iceberg-Tests'!
