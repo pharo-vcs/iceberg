@@ -7,8 +7,8 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 
 ## Installation (for development)
 ### Prerequisites
-- Latest Pharo 6.1 image.
-- Pharo VM for Pharo 6.1.
+- Latest Pharo 6.1+ image.
+- Pharo VM for Pharo 6.1+.
 
 You can get both downloading it from [Pharo](http://pharo.org) site or in command-line with [zeroconf](get.pharo.org): 
 
@@ -28,20 +28,25 @@ Metacello new
 ```
 
 ### Update Iceberg
-If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
-```Smalltalk
-#('Iceberg-UI' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
-do: [ :each | each asPackage removeFromSystem ].
+(Pharo 7.0a comes with latest stable Iceberg version, you do not need to update)
 
+#### For Pharo 6.0
+
+```Smalltalk
+"Restore defaults"
+Iceberg enableMetacelloIntegration: false.
+MetacelloPharo30Platform select.
+
+"Update iceberg"
+ #('Iceberg-UI' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
+do: [ :each | each asPackage removeFromSystem ].
 Metacello new
   baseline: 'Iceberg';
   repository: 'github://pharo-vcs/iceberg';
   load.
+"You will probably turn Tonel file format your preferred file format"
+IceRepository defaultFileFormatType: #IceLibgitTonelWriter.
 ```
-
-**Important**
-- You don't need this step if you have just downloaded Iceberg.
-- Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
 
 ## FAQ
 
