@@ -3,6 +3,7 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'Iceberg',
       #platforms : [ #pharo ],
+	  #useLatestMetacello : true,
       #load : [ 'development' ]
      }
   ]
