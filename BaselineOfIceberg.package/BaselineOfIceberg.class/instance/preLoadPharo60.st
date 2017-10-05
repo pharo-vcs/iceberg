@@ -11,8 +11,5 @@ preLoadPharo60
 		'Iceberg-Metacello-Integration' 
 		'Iceberg-Libgit' 
 		'Iceberg' 
-		'LibGit-Core' 
-		'BaselineOfLibGit') 
-	do: [ :each | each asPackage removeFromSystem ].
-		
-	
+		'LibGit-Core' ) 
+	do: [ :each | each asPackage removeFromSystem ]
