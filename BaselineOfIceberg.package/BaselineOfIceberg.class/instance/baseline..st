@@ -11,9 +11,9 @@ baseline: spec
 			configuration: 'ProcessWrapper' with: [ spec
 				versionString: #stable;
 				repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ];
-			baseline: 'FileTree' with: [ spec
+			"baseline: 'FileTree' with: [ spec
 				repository: 'github://pharo-vcs/filetree:pharo6.0_dev/repository';
-				loads: 'Git' ];
+				loads: 'Git' ];"
 			baseline: 'Tonel' with: [ spec
 				repository: 'github://pharo-vcs/tonel' ];
 			baseline: 'LibGit' with: [ spec
@@ -45,13 +45,13 @@ baseline: spec
 		package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg-Libgit') ];
 		package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg-Libgit' 'Tonel') ];
 
-		package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
-		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];
+		"package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
+		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];"
 		
 		group: 'minimal' with: #('Iceberg' 'Iceberg-Libgit' 'Iceberg-Libgit-Filetree');
 		group: 'default' with: #(minimal 'Iceberg-Metacello-Integration' 'Iceberg-UI' 'Iceberg-Plugin' 'Iceberg-Plugin-GitHub' 'Iceberg-Libgit-Tonel');
-		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' 'Iceberg-GitFileTree-Tests' 'Iceberg-UI-Tests' );
-		group: 'development' with: #(default 'Iceberg-GitFileTree' allTests)
+		group: 'allTests' with: #('Iceberg-Tests' 'LibGit-Tests' "'Iceberg-GitFileTree-Tests'" 'Iceberg-UI-Tests' );
+		group: 'development' with: #(default "'Iceberg-GitFileTree'" allTests)
 	].
 
 	spec for: #'pharo6.x' do: [	
