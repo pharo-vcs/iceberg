@@ -55,6 +55,7 @@ baseline: spec
 	].
 
 	spec for: #'pharo6.x' do: [	
+			spec preLoadDoIt: #preLoadPharo60.
 			spec 
 				"baseline: 'Metacello' with: [ 
 					spec 
