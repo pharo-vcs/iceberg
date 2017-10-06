@@ -1,0 +1,1 @@
+I'm a helper to store chached values into IceAbstractModel hierarchy.

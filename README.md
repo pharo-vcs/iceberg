@@ -7,8 +7,8 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 
 ## Installation (for development)
 ### Prerequisites
-- Latest Pharo 6.1 image.
-- Pharo VM for Pharo 6.1.
+- Latest Pharo 6.1+ image.
+- Pharo VM for Pharo 6.1+.
 
 You can get both downloading it from [Pharo](http://pharo.org) site or in command-line with [zeroconf](get.pharo.org): 
 
@@ -17,31 +17,35 @@ wget -O- get.pharo.org | bash
 ```
 
 ### Install Iceberg
-Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below) but if you need to install, you can execute this:
-
-
-```Smalltalk
-Metacello new
-  baseline: 'Iceberg';
-  repository: 'github://pharo-vcs/iceberg';
-  load.
-```
+Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below).
 
 ### Update Iceberg
-If you have downloaded a previous version of Iceberg, and you want to update it, you can do:
+Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceberg in your repo and then pull changes.
+
+#### For Pharo 6
+
 ```Smalltalk
-#('Iceberg-UI' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
-do: [ :each | each asPackage removeFromSystem ].
+"Restore defaults"
+Iceberg enableMetacelloIntegration: false.
+MetacelloPharo30Platform select.
 
+"Update iceberg"
+ #(
+	'Iceberg-UI' 
+	'Iceberg-Plugin-GitHub' 
+	'Iceberg-Plugin' 
+	'Iceberg-Metacello-Integration' 
+	'Iceberg-Libgit-Tonel' 
+	'Iceberg-Libgit-Filetree' 
+	'Iceberg-Libgit' 
+	'Iceberg' 
+	'LibGit-Core') 
+do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
-  baseline: 'Iceberg';
-  repository: 'github://pharo-vcs/iceberg';
-  load.
+  	baseline: 'Iceberg';
+  	repository: 'github://pharo-vcs/iceberg:dev-0.6';
+  	load.
 ```
-
-**Important**
-- You don't need this step if you have just downloaded Iceberg.
-- Update is comfortable, but please note that it is just an **experimental feature**. Building a software that is able to update itself in a 100% safe way is far beyond the scope of the Iceberg project. The safest way is always start with a clean image.
 
 ## FAQ
 

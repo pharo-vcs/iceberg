@@ -1,7 +1,7 @@
 actions - utility
 commitPackagesWithMessage: message
 	self modifiedPackages 
-		ifEmpty: [ NothingToCommitException signal ]
+		ifEmpty: [ NothingToCommit signal ]
 		ifNotEmpty: [ :packages |
 			self 
 				commitPackages: packages

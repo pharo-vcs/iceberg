@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "TIceRepositoryWriter classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceLibgitFiletreeWriter",
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:28",
+	"super" : "IceMetadatalessFileTreeWriter",
+	"traitcomposition" : "TIceRepositoryWriter",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-Libgit-Filetree"
+}

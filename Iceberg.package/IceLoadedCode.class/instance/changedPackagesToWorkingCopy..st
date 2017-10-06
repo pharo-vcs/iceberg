@@ -9,7 +9,7 @@ changedPackagesToWorkingCopy: aWorkingCopy
 		collect: [ :each | self repository packageNamed: each ]. 
 	"this will give me the removals, but I'm still don't know what to do with them
 	 (because if I just add it it will show them as added not as removed)"
-	"removed := (commitPackageNames \ loadedPackageNames)
+	removed := (commitPackageNames \ loadedPackageNames)
 		reject: [ :each | self repository includesPackageNamed: each ]
-		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ]."
-	^ added, (self loadedVersions keys select: #isModified)
+		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ].
+	^ added, (self loadedVersions keys select: #isModified), removed

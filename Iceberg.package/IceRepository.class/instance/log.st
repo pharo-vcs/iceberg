@@ -1,3 +1,3 @@
 accessing
 log
-	^ IceLog for: self
+	^ IceLibgitFiletreeLog for: self

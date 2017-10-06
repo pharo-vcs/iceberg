@@ -1,0 +1,2 @@
+I'm a proxy to keep information on pre-loaded packages when repository is not present.
+This is the case of pharo project, which is distributed without a repository connection, but users may still need to link with it to make contributions.

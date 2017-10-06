@@ -1,11 +1,11 @@
 tests - commit
 testCommitMultiplePackagesTogether
 	| oldCommits | 
-	oldCommits := repository currentBranch commits size.
+	oldCommits := repository branch commits size.
 	self scenarioTwoDirtyPackages.
 	
 	repository commitPackagesWithMessage: 'Committing two packages together'.
-	self assert: repository currentBranch commits size equals: oldCommits + 1.
+	self assert: repository branch commits size equals: oldCommits + 1.
 	self assert: repository loadedCode referenceCommit equals: repository headCommit.
 
 	{ packageName. otherPackageName } do: [ :name | | package version |

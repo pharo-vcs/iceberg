@@ -6,16 +6,7 @@ os:
 - osx
 
 smalltalk:
-- Pharo-alpha
-
-smalltalk_edge:
-  source: estebanlm/smalltalkCI
-  branch: dev
-
-env:
-  global:
-  - PHARO_VM=latest
-  - LINUX_HEARTBEAT=threaded
+- Pharo-6.1
 
 before_install:
 # Installing the dependency until it is included in the VM

@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "MetacelloPharo30Platform",
+	"super" : "MetacelloPharoPlatform",
 	"category" : "Iceberg-Metacello-Integration",
 	"classinstvars" : [ ],
 	"pools" : [ ],

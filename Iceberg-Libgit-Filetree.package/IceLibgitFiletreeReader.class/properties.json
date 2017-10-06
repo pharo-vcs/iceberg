@@ -1,0 +1,15 @@
+{
+	"classtraitcomposition" : "TIceRepositoryReader classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"iceVersion"
+	],
+	"name" : "IceLibgitFiletreeReader",
+	"commentStamp" : "NicoPasserini 7/7/2016 11:58",
+	"super" : "MCFileTreeStCypressReader",
+	"traitcomposition" : "TIceRepositoryReader",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-Libgit-Filetree"
+}

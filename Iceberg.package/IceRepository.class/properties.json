@@ -6,6 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [
 		"DefaultBackendType",
+		"DefaultCodeSubdirectory",
+		"DefaultFileFormatType",
 		"Registry",
 		"ShareRepositoriesBetweenImages",
 		"SharedRepositoriesLocation"
