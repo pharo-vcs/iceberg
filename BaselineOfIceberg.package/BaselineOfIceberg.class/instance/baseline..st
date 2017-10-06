@@ -42,8 +42,8 @@ baseline: spec
 		package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 		
 		package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
-		package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg-Libgit') ];
-		package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg-Libgit' 'Tonel') ];
+		package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
+		package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
 
 		"package: 'Iceberg-GitFileTree' with: [ spec requires: #('Iceberg' 'FileTree') ];
 		package: 'Iceberg-GitFileTree-Tests' with: [ spec requires: #('Iceberg-GitFileTree' 'Iceberg-Tests') ];"
