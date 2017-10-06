@@ -17,20 +17,12 @@ wget -O- get.pharo.org | bash
 ```
 
 ### Install Iceberg
-Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below) but if you need to install, you can execute this:
-
-
-```Smalltalk
-Metacello new
-  baseline: 'Iceberg';
-  repository: 'github://pharo-vcs/iceberg';
-  load.
-```
+Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below).
 
 ### Update Iceberg
-(Pharo 7.0a comes with latest stable Iceberg version, you do not need to update)
+Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceberg in your repo and then pull changes.
 
-#### For Pharo 6.0
+#### For Pharo 6
 
 ```Smalltalk
 "Restore defaults"
@@ -38,14 +30,21 @@ Iceberg enableMetacelloIntegration: false.
 MetacelloPharo30Platform select.
 
 "Update iceberg"
- #('Iceberg-UI' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin' 'Iceberg-Metacello-Integration' 'Iceberg-Libgit' 'Iceberg' 'BaselineOfIceberg' 'LibGit-Core' 'BaselineOfLibGit') 
-do: [ :each | each asPackage removeFromSystem ].
+ #(
+	'Iceberg-UI' 
+	'Iceberg-Plugin-GitHub' 
+	'Iceberg-Plugin' 
+	'Iceberg-Metacello-Integration' 
+	'Iceberg-Libgit-Tonel' 
+	'Iceberg-Libgit-Filetree' 
+	'Iceberg-Libgit' 
+	'Iceberg' 
+	'LibGit-Core') 
+do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
-  baseline: 'Iceberg';
-  repository: 'github://pharo-vcs/iceberg';
-  load.
-"You will probably turn Tonel file format your preferred file format"
-IceRepository defaultFileFormatType: #IceLibgitTonelWriter.
+  	baseline: 'Iceberg';
+  	repository: 'github://pharo-vcs/iceberg:dev-0.6';
+  	load.
 ```
 
 ## FAQ
