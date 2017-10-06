@@ -26,6 +26,10 @@ Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceber
 Since we are including tonel file format, we need to adapt also Metacello to process it, so you will need to update it too.
 
 ```Smalltalk
+"Restore defaults"
+Iceberg enableMetacelloIntegration: false.
+MetacelloPharo30Platform select.
+
 "Update metacello" 
 Metacello new
   baseline: 'Metacello';
@@ -33,10 +37,6 @@ Metacello new
   onConflict: [:e | e useIncoming ];
   get;
   load.
-
-"Restore defaults"
-Iceberg enableMetacelloIntegration: false.
-MetacelloPharo30Platform select.
 
 "Update iceberg"
  #(
@@ -55,6 +55,8 @@ Metacello new
   	repository: 'github://pharo-vcs/iceberg:v0.6';
   	load.
 ```
+
+*NOTE: you need to update iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## FAQ
 
