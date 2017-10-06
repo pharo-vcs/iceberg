@@ -5,9 +5,13 @@ unloadIcebergPackages
 		'Iceberg-Plugin-GitHub' 
 		'Iceberg-Plugin' 
 		'Iceberg-Metacello-Integration' 
+		'Iceberg-Libgit-Tonel' 
+		'Iceberg-Libgit-Filetree' 
 		'Iceberg-Libgit' 
 		'Iceberg' 
-		'LibGit-Core' ) 
+		'LibGit-Core') 
 	do: [ :each | 
 		(RPackageOrganizer default includesPackageNamed: each)
-			ifTrue: [ each asPackage removeFromSystem ] ]
+			ifTrue: [ 
+				Transcript crShow: 'Unload ', each.
+				each asPackage removeFromSystem ] ]
