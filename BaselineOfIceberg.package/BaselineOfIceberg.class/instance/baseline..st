@@ -18,7 +18,7 @@ baseline: spec
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 			"libgit"
-			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'Libgit') ];
+			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
 			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
 			"for testing"
@@ -37,16 +37,15 @@ baseline: spec
 				'Iceberg-Metacello-Integration' 
 				'Iceberg-UI' 
 				'Iceberg-Plugin' 
-				'Iceberg-Plugin-GitHub'
-				'Iceberg-Libgit-Filetree');
+				'Iceberg-Plugin-GitHub');
 			group: 'minimal' with: #(
-				'Libgit'
 				'Iceberg'
 				'Iceberg-Libgit' 
-				'Iceberg-Libgit-Tonel');
+				'Iceberg-Libgit-Tonel'
+				'Iceberg-Libgit-Filetree');
 			group: 'allTests' with: #(
 				'Iceberg-Tests' 
-				'Libgit-Tests' 
+				'LibGit-Tests' 
 				'Iceberg-UI-Tests' );
 			group: 'development' with: #(default allTests) ].
 
