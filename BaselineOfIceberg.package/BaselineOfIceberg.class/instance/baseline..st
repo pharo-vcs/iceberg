@@ -50,4 +50,6 @@ baseline: spec
 			group: 'development' with: #(default allTests) ].
 
 	spec for: #'pharo6.x' do: [	
-		spec package: 'Iceberg-Pharo6' ]
+		spec 
+			package: 'Iceberg-Pharo6';
+			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg-Pharo6') ] ]
