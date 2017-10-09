@@ -6,5 +6,5 @@ fetchAction
 			presentation update ];
 		selectionCondition: #isOperative;
 		icon: #glamorousLeftSide asIcon;
-		showTitle: 'Fetch incoming comits';
+		showTitle: 'Fetch incoming commits';
 		yourself
