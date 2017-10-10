@@ -1,3 +1,3 @@
 testing
 canHandleUrl: aRepositoryUrl
-	^ aRepositoryUrl beginsWith: 'file:'
+	^ (aRepositoryUrl beginsWith: 'file:') or: [aRepositoryUrl beginsWith: '/']
