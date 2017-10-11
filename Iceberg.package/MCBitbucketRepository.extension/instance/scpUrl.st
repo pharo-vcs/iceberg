@@ -1,3 +1,3 @@
 *Iceberg-Adapters
 scpUrl
-	^ 'git@itbucket.org:', projectPath, '.git'
+	^ 'git@bitbucket.org:', projectPath, '.git'
