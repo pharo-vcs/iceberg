@@ -1,3 +1,3 @@
 comparing
 referencesSameRemoteLocationAs: another
-	^ (self url withoutSuffix: '.git') = (another url withoutSuffix: '.git')
+	^ (self url withoutSuffix: '.git') sameAs: (another url withoutSuffix: '.git')
