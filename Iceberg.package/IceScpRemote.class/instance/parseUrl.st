@@ -1,7 +1,7 @@
 private
 parseUrl
 	| matcher |
-	matcher := '(ssh\://)?([\w\-]+@)?([\w.]+)(\:[\d]+)?(\:|/)/?([\w\-]+)/([\w\-]+)(\.git)?' asRegex.
+	matcher := '(ssh\://)?([\w\-]+@)?([\w\-.]+)(\:[\d]+)?(\:|/)/?([\w\-]+)/([\w\-]+)(\.git)?' asRegex.
 	(matcher matches: url) 
 		ifTrue: [
 			host := matcher subexpression: 4.
