@@ -5,6 +5,8 @@ commitCherryPick: pickedCollection withMessage: message andParents: parentCommit
 	 which is annoying but is the price of using MC definitions :)"
 	| changesByPackage versions |
 	
+	self validateCanCommit.
+	
 	versions := OrderedCollection new.
 	changesByPackage := SmallDictionary new.
 

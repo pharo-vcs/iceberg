@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCommand",
+	"category" : "Iceberg-UI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceCreateBranchCommand",
+	"type" : "normal"
+}
