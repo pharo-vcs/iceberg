@@ -1,0 +1,1 @@
+I'm a command to perform a merge  of current image sources with head commit.

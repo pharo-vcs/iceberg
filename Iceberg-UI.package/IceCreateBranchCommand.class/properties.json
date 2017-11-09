@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "IceCommand",
+	"commentStamp" : "<historical>",
+	"super" : "IceRepositoryCommand",
 	"category" : "Iceberg-UI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
