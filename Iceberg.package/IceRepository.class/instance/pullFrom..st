@@ -4,4 +4,5 @@ pullFrom: aRemote
 	currentCommit := self loadedCode referenceCommit.
 	self backend pullFrom: aRemote.
 	self refresh.
-	(self headCommit changedPackagesTo: currentCommit) do: #loadLatest
+	(self headCommit changedPackagesTo: currentCommit) do: #loadLatest.
+	self loadedCode moveReferenceCommitTo: self headCommit
