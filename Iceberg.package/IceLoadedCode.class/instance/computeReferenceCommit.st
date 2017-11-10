@@ -8,8 +8,15 @@ computeReferenceCommit
 	"2. Happy path: see if all loaded code has the same updation commit. 
 	If we can't compute an updation commit for some loaded code, it means that it has been 
 	probably loaded from another kind of repository, we just ignore it."
+	
 	candidates := (self loadedVersions collect: [:version | version commit] as: Set) reject: #isNil.
-	candidates size = 1 ifTrue: [ ^ candidates anyOne ].
+	candidates size = 1 ifTrue: [ 
+		"If there is no newer commit for this repository until the loaded one we use the
+		head commit instead. This covers the case where commits external to pharo happened
+		since last time the package was loaded"
+		^ (repository headCommit changedPackagesTo: candidates anyOne)
+			ifNotEmpty: [ candidates anyOne ]
+			ifEmpty: [ repository headCommit ] ].
 
 	"3. None of the loaded versions produced a non nil candidate, just use the HEAD commit"	
 	candidates isEmpty ifTrue: [ ^ self repository headCommit ].
