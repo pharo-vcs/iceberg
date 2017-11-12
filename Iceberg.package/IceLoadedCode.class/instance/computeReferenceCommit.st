@@ -25,11 +25,12 @@ computeReferenceCommit
 		"sort by anchestry"
 		consistent := true.
 		"check if all versions are related"
-		(candidates sorted: [ :a :b | a parents includes: b ]) pairsDo: [ :a :b |
+		candidates := candidates sorted: [ :a :b | a parents includes: b ].
+		candidates pairsDo: [ :a :b |
 			(a parents includes: b) ifFalse: [ consistent := false ] ].
 		consistent ifTrue: [ 
-			^ (repository headCommit changedPackagesTo: candidates anyOne)
-				ifNotEmpty: [ candidates anyOne ]
+			^ (repository headCommit changedPackagesTo: candidates first)
+				ifNotEmpty: [ candidates first ]
 				ifEmpty: [ repository headCommit ] ] ] .
 
 	"3. None of the loaded versions produced a non nil candidate, just use the HEAD commit"	
