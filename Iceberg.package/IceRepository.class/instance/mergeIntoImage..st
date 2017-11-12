@@ -3,4 +3,4 @@ mergeIntoImage: aCommitInfo
 	(aCommitInfo changedPackagesTo: self loadedCode referenceCommit)
 		collect: [ :package | aCommitInfo versionFor: package ]
 		thenDo: [:version | version merge ].
-	self loadedCode moveReferenceCommitTo: aCommitInfo
+	self loadedCode refreshTo: aCommitInfo
