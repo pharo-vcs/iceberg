@@ -1,4 +1,5 @@
 actions
 pull
-	self validateCanPull ifFalse: [ ^ self ].
-	self repository pull
+	[ self repository pull ]
+	on: IceShouldCommitBeforePull 
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]

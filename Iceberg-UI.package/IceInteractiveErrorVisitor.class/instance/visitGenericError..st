@@ -1,5 +1,5 @@
 visiting
-visitGenericError: error
+visitGenericError: anError
 	UIManager default 
-		alert: self messageText
+		alert: anError messageText
 		title: 'Iceberg Generic Error'
