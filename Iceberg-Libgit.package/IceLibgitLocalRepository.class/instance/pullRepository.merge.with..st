@@ -8,7 +8,8 @@ pullRepository: repo merge: myCommit with: theirCommit
 	"Commit index"
 	signature := repo defaultSignature.
 	treeId := mergedIndex writeTreeAndReturnOid.
-
+	
+	repo checkout_treeish: (LGitTree of: repo fromId: treeId).
 	(LGitCommitBuilder of: repo)
 		tree: (LGitTree of: repo fromId: treeId);
 		message: 'Merge with ', repo head upstream name;
