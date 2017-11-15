@@ -1,3 +1,3 @@
 visiting
 acceptError: anObject
-	anObject visitWorkingCopyDesyncronizedError: self
+	anObject visitWorkingCopyDesynchronizedError: self

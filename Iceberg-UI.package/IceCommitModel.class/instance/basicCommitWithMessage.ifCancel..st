@@ -7,8 +7,5 @@ basicCommitWithMessage: text ifCancel: cancelBlock
 			self configGitUsernameAndEmailOnCancel: cancelBlock.
 			e retry ].
 		self resetText ]
-	on: NothingToCommit, IceWorkingCopyDesyncronized  
-	do: [ :e | 
-		e acceptError: (IceInteractiveErrorVisitor new
-			repository: self repository;
-			yourself) ]
+	on: IceNothingToCommit, IceWorkingCopyDesyncronized  
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]

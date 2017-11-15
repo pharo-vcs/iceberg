@@ -6,10 +6,5 @@ pushRepository: repository andThen: aBlock
 		repository pushTo: remote. 
 		aBlock value.
 	]] 
-	on: YouShouldPullBeforePush
-	do: [ 
-		self uiManager
-			abort: 'Publish operation is not possible because your repository is out of date. 
-Please update your local repository and retry.'
-			title: 'Publishing aborted' 
-	]
+	on: IceRemoteDesynchronized
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: repository) ]

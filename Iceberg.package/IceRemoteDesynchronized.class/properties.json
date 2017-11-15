@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "EstebanLorenzano 9/21/2017 12:14",
+	"commentStamp" : "EstebanLorenzano 11/15/2017 08:39",
 	"super" : "IceError",
 	"category" : "Iceberg-Errors",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "YouShouldPullBeforePush",
+	"instvars" : [
+		"remote"
+	],
+	"name" : "IceRemoteDesynchronized",
 	"type" : "normal"
 }

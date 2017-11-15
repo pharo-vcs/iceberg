@@ -1,3 +1,0 @@
-visiting
-visitWorkingCopyDesyncronizedError: anError
-	self visitGenericError: anError

@@ -7,4 +7,4 @@ execute
 		title: 'Create new branch'.
 	selection isEmptyOrNil ifTrue: [ ^ self ].
 	self repository createBranchFromReference: selection.
-	success := true
+	self beSuccess
