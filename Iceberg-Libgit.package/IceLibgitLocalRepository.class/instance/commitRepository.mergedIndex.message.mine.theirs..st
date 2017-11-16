@@ -5,7 +5,10 @@ commitRepository: repo mergedIndex: mergedIndex message: aString mine: myCommit 
 	
 	signature := repo defaultSignature.
 	treeId := mergedIndex writeTreeAndReturnOid.
-	repo checkout_treeish: (LGitTree of: repo fromId: treeId).
+	[ repo checkout_treeish: (LGitTree of: repo fromId: treeId) ]
+	on: LGit_GIT_ECONFLICT 
+	do: [ :e | e resignalAs: IceMergeAborted new ].
+	
 	(LGitCommitBuilder of: repo)
 		tree: (LGitTree of: repo fromId: treeId);
 		message: 'Merge with ' , aString;
