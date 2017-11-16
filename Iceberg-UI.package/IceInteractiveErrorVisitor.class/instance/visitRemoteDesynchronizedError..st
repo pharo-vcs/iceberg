@@ -10,9 +10,10 @@ visitRemoteDesynchronizedError: anError
 You need to solve this problem before you continue, please choose one of the strategies below.'
 		title: 'Local and remote repositories out of sync!'.
 	solveStrategy ifNil: [ ^ self ].
-	(command := solveStrategy new) 
+	[ (command := solveStrategy new) 
 		repository: self repository;
 		remote: anError remote;
-		execute.
+		execute ]
+	on: IceMergeAborted do: [ :e | e acceptError: self ].
 	command isSuccess 
 		ifTrue: [ anError retry ]
