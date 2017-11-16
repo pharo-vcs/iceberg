@@ -11,5 +11,5 @@ pushTo: aRemote then: aBlock
 			bar label: ('Publishing local commits to {1}' format: { aRemote url }).
 			self repository pushTo: aRemote. 
 			aBlock value ] ] 
-	on: IceRemoteDesynchronized 
+	on: IceRemoteDesynchronized , IceMergeAborted
 	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]

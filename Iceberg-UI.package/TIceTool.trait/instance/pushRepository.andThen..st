@@ -5,6 +5,6 @@ pushRepository: repository andThen: aBlock
 		bar label: ('Publishing local commits to {1}' format: {remote}).
 		repository pushTo: remote. 
 		aBlock value.
-	]] 
-	on: IceRemoteDesynchronized
+	] ] 
+	on: IceRemoteDesynchronized, IceMergeAborted
 	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: repository) ]

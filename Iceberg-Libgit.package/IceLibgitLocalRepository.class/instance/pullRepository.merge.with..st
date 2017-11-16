@@ -1,20 +1,16 @@
 private pulling
 pullRepository: repo merge: myCommit with: theirCommit
-	| mergedIndex treeId signature |
+	| mergedIndex |
 			
 	"Merge both commits"
 	mergedIndex := myCommit merge: theirCommit.
+	mergedIndex hasConflicts 
+		ifTrue: [ IceMergeAborted signal ].
 	
 	"Commit index"
-	signature := repo defaultSignature.
-	treeId := mergedIndex writeTreeAndReturnOid.
-	
-	repo checkout_treeish: (LGitTree of: repo fromId: treeId).
-	(LGitCommitBuilder of: repo)
-		tree: (LGitTree of: repo fromId: treeId);
-		message: 'Merge with ', repo head upstream name;
-		parents: { myCommit. theirCommit };
-		updateReference: repo head name;
-		author: signature;
-		committer: signature;
-		writeCommit
+	self 
+		commitRepository: repo 
+		mergedIndex: mergedIndex 
+		message: repo head upstream name 
+		mine: myCommit 
+		theirs: theirCommit
