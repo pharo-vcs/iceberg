@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"remote"
+		"remote",
+		"resumable"
 	],
 	"name" : "IceRemoteDesynchronized",
 	"type" : "normal"

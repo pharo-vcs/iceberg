@@ -1,4 +1,4 @@
-private validating
+validating
 validateCanPull
 	self isModified 
 		ifTrue: [ IceShouldCommitBeforePull signal ]

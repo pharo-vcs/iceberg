@@ -1,23 +1,29 @@
 visiting
 visitRemoteDesynchronizedError: anError
-	| solveStrategy command |
-	solveStrategy := UIManager default 
-		chooseFrom: #(
-			'Pull from remote then push' )
-		values: { 
-			IcePullRemoteCommand }
-		message: 'Your local repository is not synchronized with the remote repository. 
-You need to solve this problem before you continue, please choose one of the strategies below.'
-		title: 'Local and remote repositories out of sync!'.
-	solveStrategy ifNil: [ ^ self ].
-	command := solveStrategy new
+	| continue command |
+	
+	continue := UIManager default
+		confirm: ('Your repository is out of sync with remote {1}. 
+You need to pull remote changes before continue and push your changes.' format: { anError remote name })
+		label: 'Remote repository out of sync!'
+		trueChoice: 'Pull'
+		falseChoice: 'Cancel'
+		cancelChoice: nil
+		default: false.	
+	continue ifFalse: [ ^ self ].	
+
+	command := IcePullRemoteCommand new
 		repository: self repository;
 		remote: anError remote;
 		yourself.
-	
+
 	[ command execute ]
-	on: IceMergeAborted 
-	do: [ :e | e acceptError: self ].
+	on: IceMergeAborted, IceShouldCommitBeforePull
+	do: [ :e | 
+		(e isKindOf: IceShouldCommitBeforePull)
+			ifTrue: [ e resume ]
+			ifFalse: [ e acceptError: self ] ].
 	
-	command isSuccess 
-		ifTrue: [ anError retry ]
+	command isSuccess ifFalse: [ ^ self ].
+	anError isResumable ifTrue: [ ^ anError resume ].
+	anError retry
