@@ -4,7 +4,7 @@ visitRemoteDesynchronizedError: anError
 	
 	continue := UIManager default
 		confirm: ('Your repository is out of sync with remote {1}. 
-You need to pull remote changes before continue and push your changes.' format: { anError remote name })
+You need to pull remote changes before continue and push your changes.' format: { anError remote })
 		label: 'Remote repository out of sync!'
 		trueChoice: 'Pull'
 		falseChoice: 'Cancel'
