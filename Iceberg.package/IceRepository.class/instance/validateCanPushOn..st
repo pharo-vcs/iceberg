@@ -2,9 +2,10 @@ validating
 validateCanPushOn: aRemote
 	| commits |
 	
-	self flag: #todo. "I need to perform a fetch to have access to latest commits, but this can 
-	be done better by emulating the 'git status' command (to know if we are x commit behind)."
+	"I need to perform a fetch to have access to latest commits, because there is no 
+	 other way to know if local repository is behind remote repository."
 	self fetchFrom: aRemote.
+	"Now I can check if we are in sync"
 	commits := self branch incomingCommitsFrom: aRemote.
 	commits ifEmpty: [ ^ self ].
 
