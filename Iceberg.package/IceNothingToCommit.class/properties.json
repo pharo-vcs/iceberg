@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:13",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNothingToCommit",
+	"type" : "normal"
+}

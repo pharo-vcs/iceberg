@@ -7,5 +7,5 @@ basicCommitWithMessage: text ifCancel: cancelBlock
 			self configGitUsernameAndEmailOnCancel: cancelBlock.
 			e retry ].
 		self resetText ]
-	on: NothingToCommit 
-	do: [ :e | UIManager default inform: 'There is nothing to commit.' ]
+	on: IceNothingToCommit, IceWorkingCopyDesyncronized  
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]

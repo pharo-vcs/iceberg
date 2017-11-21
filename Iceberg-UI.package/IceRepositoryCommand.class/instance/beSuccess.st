@@ -1,0 +1,3 @@
+accessing
+beSuccess
+	success := true

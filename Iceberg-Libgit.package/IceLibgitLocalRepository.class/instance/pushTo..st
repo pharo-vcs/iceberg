@@ -7,14 +7,18 @@ pushTo: aRemote
 		reference := repo head.	
 		remoteBranchName := reference name. "TODO: https://github.com/npasserini/iceberg/issues/90"
 		
-		gitRemote
+		[ gitRemote
 			pushWithRefSpec: (LGitRefSpec new
 				source: reference name;
 				destination: remoteBranchName;
 				yourself)
 			pushOptions: (LGitPushOptions defaults
 				callbacks: (LGitRemoteCallbacks withProvider: IceCredentialsProvider default);
-				yourself).
+				yourself) ]
+		on: LGit_GIT_ENONFASTFORWARD do: [ :e |
+			e resignalAs: (IceRemoteDesynchronized new 
+				remote: aRemote;
+				yourself)].
 
 		"Since the push created the branch in the remote, we can now add an upstream to this branch."
 		reference upstream ifNil: [ 
