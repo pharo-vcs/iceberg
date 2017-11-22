@@ -1,4 +1,4 @@
-as yet unclassified
+actions
 mergeIntoImage: aCommitInfo
 	(aCommitInfo changedPackagesTo: self loadedCode referenceCommit)
 		collect: [ :package | aCommitInfo versionFor: package ]
