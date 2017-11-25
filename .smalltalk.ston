@@ -1,4 +1,6 @@
 SmalltalkCISpec {
+  #name: 'Iceberg',
+  #preLoading: 'scripts/preLoading.st',
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Iceberg',
