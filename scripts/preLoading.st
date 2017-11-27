@@ -4,3 +4,5 @@
 	'BaselineOfLibGit'
 	'BaselineOfIceberg') 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
+"Temporal remove of wrong tag 'Tests'"
+#Iceberg asPackage removeClassTag: 'Tests'.
