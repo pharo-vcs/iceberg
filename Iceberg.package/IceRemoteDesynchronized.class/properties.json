@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 11/15/2017 08:39",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote",
+		"resumable"
+	],
+	"name" : "IceRemoteDesynchronized",
+	"type" : "normal"
+}

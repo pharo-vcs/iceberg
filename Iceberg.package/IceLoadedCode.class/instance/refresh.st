@@ -1,4 +1,3 @@
 private
 refresh
-	loadedVersions := nil.
-	referenceCommit := nil.
+	self refreshTo: nil

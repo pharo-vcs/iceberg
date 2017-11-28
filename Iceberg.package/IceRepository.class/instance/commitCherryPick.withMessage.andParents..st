@@ -5,6 +5,8 @@ commitCherryPick: pickedCollection withMessage: message andParents: parentCommit
 	 which is annoying but is the price of using MC definitions :)"
 	| changesByPackage versions |
 	
+	self validateCanCommit.
+	
 	versions := OrderedCollection new.
 	changesByPackage := SmallDictionary new.
 
@@ -12,19 +14,11 @@ commitCherryPick: pickedCollection withMessage: message andParents: parentCommit
 	pickedCollection do: [ :each | 
 		(changesByPackage at: each packageName ifAbsentPut: [ Set new ]) add: each ].	
 	"Create patched versions for each package"
-	changesByPackage 
-		keysAndValuesDo: [ :packageName :changes | | workingCopy snapshot patcher |
-			workingCopy := (RPackageOrganizer default packageNamed: packageName) mcWorkingCopy.
-			snapshot := (self packageNamed: packageName) loadedVersion snapshot.
-			patcher := MCPatcher snapshot: snapshot.
-			changes 
-				select: [ :each | each operation notNil ]
-				thenDo: [ :each | each operation applyTo: patcher ].
-			versions add: (MCVersion new
-				setPackage: workingCopy package
-				info: (IceMCVersionInfo package: workingCopy package message: message)
-				snapshot: patcher patchedSnapshot
-				dependencies: #()) ].	
+	changesByPackage keysAndValuesDo: [ :packageName :changes | 
+		versions add: (self 
+			patchVersionOf: packageName 
+			changes: changes 
+			message: message) ].	
 	"save versions"
 	versions do: [ :each | self backend internalStoreVersion: each ].
 	"now perform commit"

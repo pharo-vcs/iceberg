@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 11/15/2017 08:38",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceWorkingCopyDesyncronized",
+	"type" : "normal"
+}

@@ -7,5 +7,7 @@ newRequestTo: aString
 					username: self credentials username 
 					password: self credentials password ] ]; 
 		headerAt: 'Accept' put: 'application/vnd.github.v3+json';
-		url: 'https://api.github.com/', aString;
+		url: 'https://api.github.com/', (aString first = $/
+			ifTrue: [ aString allButFirst ]
+			ifFalse: [ aString ]);
 		yourself

@@ -1,4 +1,4 @@
 testing
 referencesSameRemoteLocationAs: aRemote
 	^ (super referencesSameRemoteLocationAs: aRemote)
-		or: [ self url = aRemote httpsUrl ] 
+		or: [ self url sameAs: aRemote httpsUrl ] 

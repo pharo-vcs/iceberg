@@ -4,5 +4,4 @@ addFilesToIndex: aListOfPaths
 		| index |
 		index := repo index.
 		index addAll: aListOfPaths.
-		index writeToDisk.
-	]
+		index writeToDisk ]
