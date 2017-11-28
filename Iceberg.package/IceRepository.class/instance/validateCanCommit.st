@@ -1,5 +1,7 @@
 validating
 validateCanCommit
 	"Verify sync between image version and working copy"
-	(self loadedCode referenceCommit = self headCommit)
-		ifFalse: [ IceWorkingCopyDesyncronized signal ]
+	
+	"If there are incomming commits is out of sync"
+	self incomingCommits ifNotEmpty: [ 
+		IceWorkingCopyDesyncronized signal ]
