@@ -14,7 +14,7 @@ cloneRepositoryFrom: aRemote branch: aBranchName
 			"sad that I need to do it like this :("
 			(e messageText beginsWith: 'error authenticating:')
 				ifTrue: [ 
-					Stdio stdout << 'AUTH Error' << e object type asString << ': ' << e object message; lf.
+					Stdio stdout << 'AUTH Error: ' << e object asString << ': ' << e messageText; lf.
 					e resignalAs: IceAuthenticationError new ] ].
 		repo checkout: (aBranchName ifNil: [ 
 			self branch
