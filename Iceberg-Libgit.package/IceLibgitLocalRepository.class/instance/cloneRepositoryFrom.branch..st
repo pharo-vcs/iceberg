@@ -8,7 +8,12 @@ cloneRepositoryFrom: aRemote branch: aBranchName
 		repo := LGitRepository on: self location.
 		cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
 		cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_none.
-		repo clone: url options: cloneOptions.
+		[ repo clone: url options: cloneOptions ]
+		on: LGit_GIT_ERROR 
+		do: [ :e | 
+			"sad that I need to do it like this :("
+			(e messageText beginsWith: 'error authenticating:')
+				ifTrue: [ e resignalAs: IceAuthenticationError new ] ].
 		repo checkout: (aBranchName ifNil: [ 
 			self branch
 				ifNotNil: [ :b | b name ]

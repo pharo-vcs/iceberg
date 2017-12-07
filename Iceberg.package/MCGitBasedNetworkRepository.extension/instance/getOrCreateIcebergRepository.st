@@ -7,9 +7,16 @@ getOrCreateIcebergRepository
 	^ IceRepository registry 
 		detect: [ :repo | repo origin referencesSameRemoteLocationAs: remote ]
 		ifNone: [
-			(IceRepositoryCreator new 
-				url: remoteUrl;
+			| urlToUse |
+			urlToUse := remote url.
+			[ (IceRepositoryCreator new 
+				url: urlToUse;
 				subdirectory: repoPath;
 				branchName: self projectVersion;
 				createRepository)
 				register ]
+			on: IceAuthenticationError 
+			do: [ :e |
+				self crLog: 'I got an error while cloning: {1}. I will try to clone the HTTPS variant.'. 
+				urlToUse := remote httpsUrl.
+				e retry ] ]
