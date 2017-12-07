@@ -3,7 +3,7 @@ testMergeWithConflicts
 	| newVersionNumber testObject lastCommits toMerge | 
 	"1. Prepare, create diverging but not conflicting changes in HEAD and upstream."
 	newVersionNumber := self createIncomingCommit.
-	[self createConflictingModification] 
+	[ self createConflictingModification ] 
 	on: IceWorkingCopyDesyncronized do: #resume.
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
