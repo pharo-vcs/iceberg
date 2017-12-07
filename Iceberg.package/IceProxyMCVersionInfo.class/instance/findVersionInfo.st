@@ -19,8 +19,7 @@ findVersionInfo
 				IceError signal: ('Your repository seems to be out of sync.!
 Please fetch from "{1}" and try again.' 
 					format: { remote }) ].
-			self class lastCommitFound: commit.
-			repo loadedCode refreshTo: commit ].
+			self class lastCommitFound: commit ].
 	
 	^ IceMCVersionInfo new 
 		fromCommit: commit 
