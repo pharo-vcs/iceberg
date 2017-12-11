@@ -9,7 +9,7 @@ checkForRegistryConflicts
 at {1} 
 and with the same origin URL. 
 
-If you really whant create another one, 
+If you really want create another one, 
 please locate it in a different directory.'
 					 format: {self location pathString}) ]
 			ifFalse: [
