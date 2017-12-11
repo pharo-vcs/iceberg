@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "IcePharoCommand",
+	"category" : "Iceberg-Plugin-Pharo-FogBugz",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remotes"
+	],
+	"name" : "IcePharoSynchronizeRepositories",
+	"type" : "normal"
+}
