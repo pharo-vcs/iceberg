@@ -9,7 +9,6 @@ createRepository
 			subdirectory: subdirectory text;
 			createRepository.
 		self configureRepository: repository.
-			
 		self window delete. 
 	]
 	on: IceError 
