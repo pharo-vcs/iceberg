@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 11/9/2017 10:21",
-	"super" : "IceErrorVisitor",
+	"super" : "Object",
 	"category" : "Iceberg-UI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],

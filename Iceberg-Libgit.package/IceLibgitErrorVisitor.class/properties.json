@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Iceberg-UI-Model",
+	"category" : "Iceberg-Libgit",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceErrorVisitor",
+	"name" : "IceLibgitErrorVisitor",
 	"type" : "normal"
 }

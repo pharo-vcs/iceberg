@@ -4,7 +4,7 @@ createBranchNamed: branchName
 		bar max: 3.
 		"fetch pharo remote to be sure we have the commit we need"
 		bar label: 'Fetching last commmits from remote.'.
-		self repository fetchRemote: self remotesIncludingPharoURLs first.
+		self repository fetchFrom: self remotesIncludingPharoURLs first.
 		bar current: 1.
 		"checkout current image version"
 		bar label: 'Moving repository to current image version.'.
