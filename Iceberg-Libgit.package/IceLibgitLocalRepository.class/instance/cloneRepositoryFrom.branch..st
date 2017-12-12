@@ -9,10 +9,7 @@ cloneRepositoryFrom: aRemote branch: aBranchName
 		cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
 		cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_none.
 		[ repo clone: url options: cloneOptions ]
-		on: LGit_GIT_ERROR 
-		do: [ :e | 
-			(e object = LGitErrorTypeEnum giterr_ssh)
-				ifTrue: [ e resignalAs: IceAuthenticationError new ] ].
+		on: LGit_GIT_ERROR do: [ :e | self handleGitError: e ].
 		repo checkout: (aBranchName ifNil: [ 
 			self branch
 				ifNotNil: [ :b | b name ]
