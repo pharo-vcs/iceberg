@@ -10,13 +10,13 @@ synchronizeFrom: pharoRemote to: userRemote
 				self repository checkoutBranch: 'development'.
 				bar value: bar value + 1 ].
 		
-		"clean pull user repository (not inject into image)"
-		bar label: ('Synchronizing changes from {1}/development' format: { userRemote remoteName }).
-		self repository backend pullFrom: userRemote.
-		bar value: bar value + 1.
 		"clean pull pharo repository (not inject into image)"
 		bar label: ('Synchronizing changes from {1}/development' format: { pharoRemote remoteName }).
 		self repository backend pullFrom: pharoRemote.
+		bar value: bar value + 1.
+		"clean pull user repository (not inject into image)"
+		bar label: ('Synchronizing changes from {1}/development' format: { userRemote remoteName }).
+		self repository backend pullFrom: userRemote.
 		bar value: bar value + 1.
 		"push downloaded sources to remote (not needed, but desirable)"
 		bar label: ('Pushing changes to {1}/development' format: { userRemote remoteName }).
