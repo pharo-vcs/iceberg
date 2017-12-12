@@ -1,6 +1,6 @@
 accessing
 defaultMessageText
-	^ 'There was an authentication error while trying to execute the operation. 
+	^ 'There was an authentication error while trying to execute the operation: {1}. 
 This happens usually because you didn''t provide a valid set of credentials. 
 You may fix this problem in different ways: 
 

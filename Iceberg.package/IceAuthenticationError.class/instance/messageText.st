@@ -1,3 +1,3 @@
 accessing
 messageText
-	^ super messageText ifEmpty: [ self defaultMessageText ]
+	^ self defaultMessageText format: { super messageText }
