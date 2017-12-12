@@ -1,3 +1,3 @@
 private
 lastCommitFound
-	^ LastCommitFound
+	^ self cachedValues at: #lastCommit ifAbsent: [ nil ]

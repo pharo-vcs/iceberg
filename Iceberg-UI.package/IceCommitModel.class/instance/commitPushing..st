@@ -9,7 +9,7 @@ commitPushing: pushBoolean
 			pushBoolean ifTrue: [ 
 				"Validate I can push before I do the commit so I can handle fast-forwards (or merges)"
 				[ self repository validateCanPush ]
-				on: IceRemoteDesynchronized 
+				on: IceRemoteDesynchronized, IceAuthenticationError
 				do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ] ].
 			self basicCommitWithMessage: text ifCancel: [ ^ self ].
 			pushBoolean ifTrue: [ | remote |

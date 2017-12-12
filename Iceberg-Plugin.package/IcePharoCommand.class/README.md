@@ -1,0 +1,1 @@
+I'm a generic command for pharo plugin.
