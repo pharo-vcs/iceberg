@@ -14,6 +14,9 @@ execute
 		
 	userRemote := self retrieveUserRemote.
 	userRemote ifNil: [ ^ self ].
-	self inform: ('Synchronizing pharo-project with your repository at {1}' 
-		format: { userRemote remoteName }).
+	
+	(self confirm: ('This process will sinchronize {1}/development with {2}/development. 
+Should I proceed?' format: { userRemote remoteName. pharoRemotes first remoteName }))
+	ifFalse: [ ^ self ].
+	
 	self synchronizeFrom: pharoRemotes first to: userRemote
