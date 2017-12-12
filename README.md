@@ -104,7 +104,7 @@ Metacello new
 
   - Local directory: You can just leave the default location for a start.
 
-  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too. Iceberg will *not* create the code direcotry for you if it does not exist, so if you are cloning a brand new repository with no pre-made code directories in it, leave this blank.
+  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too. Iceberg will *not* create the code directory for you if it does not exist, so if you are cloning a brand new repository with no pre-made code directories in it, leave this blank.
 
   - Click on 'Create repository', then you should see a new entry in the repositories browser.
 
