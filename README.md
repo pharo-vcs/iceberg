@@ -104,13 +104,13 @@ Metacello new
 
   - Local directory: You can just leave the default location for a start.
 
-  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
+  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too. Iceberg will *not* create the code direcotry for you if it does not exist, so if you are cloning a brand new repository with no pre-made code directories in it, leave this blank.
 
   - Click on 'Create repository', then you should see a new entry in the repositories browser.
 
 ### Add packages to your repository
 - If your repository is new, you should add some packages to it.
-  - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
+  - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method. *All* future packages you add to your repository must be similarly non-empty. 
   - Then open the repositories browser, select your repository and click on the "Packages" tab.
   - Click on 'Add package' and select a package.
 
