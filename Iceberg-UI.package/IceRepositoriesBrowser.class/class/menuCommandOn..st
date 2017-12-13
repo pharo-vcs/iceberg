@@ -8,4 +8,5 @@ menuCommandOn: aBuilder
 		icon: self icon;  
 		parent: #'MostUsedTools';
 		keyText: 'o, i';
+		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
 		action: [ self open ].
