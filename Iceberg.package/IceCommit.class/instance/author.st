@@ -1,0 +1,4 @@
+accessing
+author
+	
+	^ self subclassResponsibility

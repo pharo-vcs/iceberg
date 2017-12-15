@@ -1,3 +1,4 @@
 querying
 mergeBaseWith: aCommitInfo
-	^ self loadedCode mergeBaseWith: aCommitInfo
+
+	^ self workingCopy mergeBaseWith: aCommitInfo

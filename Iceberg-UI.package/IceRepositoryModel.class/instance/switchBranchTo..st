@@ -13,6 +13,4 @@ switchBranchTo: branch
 								withRepoDo: [ :repo | repo createBranchFromOrigin: branch basename ].
 							self repository checkoutBranch: branch basename ]
 					ifFalse: [ self shouldBeImplemented ] ] ]
-		ifFalse: [ 
-			[ self repository checkoutBranch: branch basename ]
-			on: IceCheckoutConflictError do: [ :e | e acceptError: IceInteractiveErrorVisitor new ] ]
+		ifFalse: [ self repository checkoutBranch: branch basename ]

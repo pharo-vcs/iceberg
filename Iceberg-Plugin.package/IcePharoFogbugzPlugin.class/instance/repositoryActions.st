@@ -1,6 +1,6 @@
 accessing
 repositoryActions
 	^ { 
+	self prepareToContributeAction.
 	self newIssueFixAction.
-	self synchronizeRepositoriesAction.
 	}

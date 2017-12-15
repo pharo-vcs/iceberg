@@ -3,7 +3,7 @@ cleanUp
 	self removeTempDirectories.
 	self removeTestPackages.
 
-	(IceRepository registry 
+	(IceOldRepository registry 
 		select: [:repo | repo origin url endsWith: projectName, '.git'])
 		do: [ :repo | 
 			repo forget.

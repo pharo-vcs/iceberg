@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceNewCommitish",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"name"
+	],
+	"name" : "IceNewBranch",
+	"type" : "normal"
+}

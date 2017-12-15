@@ -1,6 +1,6 @@
 actions
 createNewRepositoryNamed: aString
-	| backend locationToUse repository |
+	| locationToUse repository |
 	
 	self validate.
 
@@ -12,13 +12,12 @@ createNewRepositoryNamed: aString
 	locationToUse ensureCreateDirectory.
 	self subdirectory  
 		ifNotEmpty: [ (locationToUse / self subdirectory) ensureCreateDirectory ].
-	backend := self storageClass 
-		newRepositoryAt: locationToUse
-		subdirectory: self subdirectory.
-	backend init.
 
-	repository := (IceRepository backend: backend)
+	repository := IceLibgitRepository new
 		name: aString;
+		location: locationToUse;
+		subdirectory: self subdirectory;
+		init;
 		yourself.
 		
 	self addPropertiesFileTo: repository.

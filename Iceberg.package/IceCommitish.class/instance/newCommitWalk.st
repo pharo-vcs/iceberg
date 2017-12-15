@@ -1,0 +1,3 @@
+accessing
+newCommitWalk
+	self subclassResponsibility

@@ -1,5 +1,5 @@
 printing
 printOn: stream
 	stream 
-		<< (self remoteName ifNil: [ 'noname' ]) 
+		<< (self name ifNil: [ 'noname' ]) 
 		<< ' (' << self url << ')'

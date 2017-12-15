@@ -1,0 +1,4 @@
+merging
+mergeBaseWith: anIceGitCommit 
+	
+	^ self

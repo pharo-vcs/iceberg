@@ -1,3 +1,4 @@
 accessing
 stagedFiles
-	^ self backend stagedFiles
+	
+	self subclassResponsibility

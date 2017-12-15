@@ -1,0 +1,4 @@
+tests
+testRepositoryHasOutgoingCommits
+
+	self assert: repository hasOutgoingCommits

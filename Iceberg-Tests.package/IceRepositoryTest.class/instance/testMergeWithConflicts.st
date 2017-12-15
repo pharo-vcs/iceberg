@@ -3,16 +3,14 @@ testMergeWithConflicts
 	| newVersionNumber testObject lastCommits toMerge | 
 	"1. Prepare, create diverging but not conflicting changes in HEAD and upstream."
 	newVersionNumber := self createIncomingCommit.
-	[ self createConflictingModification ] 
-	on: IceWorkingCopyDesyncronized do: #resume.
+	self createConflictingModification.
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
 	"2. Exercise: Update the package from remote repository"
 	toMerge := repository branch upstream lastCommit.
 	self should: [ repository basicMerge: toMerge ] raise: IceMergeAborted.
 	
-	[ [ repository mergeConflictsWith: toMerge ]
-	  on: IceWorkingCopyDesyncronized do: #resume  ]
+	[ repository mergeConflictsWith: toMerge ]
 		on: MCMergeResolutionRequest
 		do: [ 	:resolutionRequest | 
 			resolutionRequest merger conflicts do: [ :ea | ea chooseRemote ].

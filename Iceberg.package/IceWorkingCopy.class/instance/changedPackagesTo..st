@@ -1,3 +1,4 @@
-accessing
+changes
 changedPackagesTo: aCommitish
+
 	^ aCommitish changedPackagesToWorkingCopy: self

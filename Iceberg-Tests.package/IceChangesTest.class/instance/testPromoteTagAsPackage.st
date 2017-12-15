@@ -14,7 +14,7 @@ testPromoteTagAsPackage
 		category: tag categoryName.
 	class compile: 'whatever'.
 	
-	repository commitPackagesWithMessage: 'Preparing for #testPromoteTagAsPackage'.
+	repository commitWithMessage: 'Preparing for #testPromoteTagAsPackage'.
 
 	tag promoteAsRPackage.
 

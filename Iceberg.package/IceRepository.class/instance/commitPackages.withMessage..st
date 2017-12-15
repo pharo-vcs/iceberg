@@ -3,4 +3,6 @@ commitPackages: packagesToCommit withMessage: message
 	^ self 
 		commitPackages: packagesToCommit
 		withMessage: message
-		andParents: { self headCommit }
+		andParents: (self head isUnbornBranch
+			ifTrue: [ #() ]
+			ifFalse: [ { self head commit } ] )

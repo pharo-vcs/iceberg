@@ -3,8 +3,7 @@ testPullNonFF
 	| newVersionNumber testObject lastCommits | 
 	"1. Prepare, create diverging but not conflicting changes in HEAD and upstream."
 	newVersionNumber := self createIncomingCommit.
-	[ self createNonConflictingModification ]
-	on: IceWorkingCopyDesyncronized do: #resume.
+	self createNonConflictingModification.
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
 	"2. Exercise: Update the package from remote repository"

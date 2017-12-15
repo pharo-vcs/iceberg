@@ -1,3 +1,3 @@
-*Iceberg-UI
+as yet unclassified
 canBeBrowsed
 	^ true

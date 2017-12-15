@@ -1,8 +1,8 @@
 tests
 testCanHandleFileUrl
 	| url |
-	self assert: (IceFileRemote canHandleUrl: 'file:///Users/pharo/some-repo-name').
-	url := IceFileRemote new
+	self assert: (IceGitFileRemote canHandleUrl: 'file:///Users/pharo/some-repo-name').
+	url := IceGitFileRemote new
 				url: 'file:///Users/pharo/some-repo-name';
 				parseUrl.
 	self assert: url projectName equals: 'some-repo-name'.

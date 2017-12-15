@@ -1,7 +1,5 @@
 instance creation
 forRepository: aRepository 
-	^ self new 
-		repository: aRepository;
-		myVersion: IceCommitish image;
-		theirVersion: aRepository loadedCode;
-		yourself.
+	^ self 
+		forRepository: aRepository
+		commit: aRepository head

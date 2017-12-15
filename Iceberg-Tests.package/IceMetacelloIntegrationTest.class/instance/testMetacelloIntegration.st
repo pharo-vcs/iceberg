@@ -1,13 +1,13 @@
 tests - create repository
 testMetacelloIntegration
-	self assert: (IceRepository registry noneSatisfy: [ :repo | repo origin projectName = projectName ]).
+	self assert: (IceOldRepository registry noneSatisfy: [ :repo | repo origin projectName = projectName ]).
 	
 	Metacello new
 	  baseline: 'PharoGitTest';
 	  repository: 'github://pharo-vcs/', projectName;
 	  load.
 
-	repository := IceRepository registry 
+	repository := IceOldRepository registry 
 		detect: [ :repo | repo origin projectName = projectName ]
 		ifNone: [ self fail: 'Could not find repository for project: ', projectName ].
 

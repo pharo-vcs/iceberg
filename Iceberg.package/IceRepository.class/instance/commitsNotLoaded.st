@@ -1,4 +1,4 @@
 commits
 commitsNotLoaded
-	self backend isUnborn ifTrue: [ ^ #() ].
-	^ self loadedCode commitsNotLoaded
+	
+	^ self workingCopy commitsNotLoaded

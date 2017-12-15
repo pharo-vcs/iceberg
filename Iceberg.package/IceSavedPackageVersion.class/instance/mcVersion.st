@@ -1,3 +1,4 @@
 patches
 mcVersion
-	^ self repository backend mcVersionFor: self
+
+	^ commit mcVersionFor: self

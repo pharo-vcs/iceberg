@@ -1,0 +1,4 @@
+accessing
+newCommitWalk
+	
+	^ backend newCommitWalk

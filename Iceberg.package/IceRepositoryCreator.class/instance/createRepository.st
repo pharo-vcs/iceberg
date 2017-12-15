@@ -1,18 +1,13 @@
 actions
-createRepository
-	| backend locationToUse |
-	
+createRepository	
+	| repository |
 	self validate.
 
-	locationToUse := self locationToUse.
-	backend := self storageClass 
-		newRepositoryAt: locationToUse
+	repository := self remoteToUse
+		cloneIn: self locationToUse
 		subdirectory: self subdirectory.
-
-	(locationToUse exists not or: [ locationToUse hasChildren not ])
-		ifTrue: [ 
-			backend 
-				cloneRepositoryFrom: self remoteToUse 
-				branch: self branchName ].
-
-	^ IceRepository backend: backend
+		
+	self branchName ifNotNil: [
+		repository switchToBranchNamed: self branchName ].
+	
+	^ repository

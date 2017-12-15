@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "NicoPasserini 12/6/2016 11:40",
+	"super" : "IceBranch",
+	"category" : "Iceberg-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"upstream"
+	],
+	"name" : "IceOldLocalBranch",
+	"type" : "normal"
+}

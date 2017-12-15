@@ -1,3 +1,4 @@
 querying
 packageNamed: packageName
-	^ self savedPackagesDictionary at: packageName
+	
+	^ self workingCopy packageNamed: packageName

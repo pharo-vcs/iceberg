@@ -1,5 +1,7 @@
 actions
 newFogbugzIssue: aRepository then: aBlock
-	(IcePharoCreateBranchFromIssue on: aRepository)
-		onAccept: aBlock;
-		execute
+	IcePharoFogbugzModel new 
+		onAccept: [ :branchName | 
+			aRepository createBranch: branchName.
+			aBlock value ];
+		openWithSpec.

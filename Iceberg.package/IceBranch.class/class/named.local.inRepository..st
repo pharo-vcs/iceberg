@@ -1,4 +1,4 @@
 instance creation
 named: branchName local: isLocal inRepository: repo
-	^ (isLocal ifTrue: IceLocalBranch ifFalse: IceRemoteBranch)
+	^ (isLocal ifTrue: IceOldLocalBranch ifFalse: IceRemoteBranch)
 		named: branchName inRepository: repo.

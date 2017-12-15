@@ -1,3 +1,4 @@
 querying
 isModified
-	^ self loadedPackages anySatisfy: #isModified
+	
+	^ self workingCopy isModified

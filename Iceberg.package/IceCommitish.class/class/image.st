@@ -1,3 +1,3 @@
 instance creation
 image
-	^ IceWorkingCopy instance
+	^ IceOldWorkingCopyComittish instance

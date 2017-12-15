@@ -16,9 +16,9 @@ initializeWidgets
 	dateLabel label: 'Date & time'.
 	datePanel text: self commit datetime asLocalStringYMDHM.
 	authorLabel label: 'Author'.
-	authorPanel text: self commit username.
+	authorPanel text: self commit author.
 	commentLabel label: 'Comment'.
 	commentPanel text: self commit comment.
-	parentsLabel label: 'Parent(s)'.
-	parentsPanel text: (self commit parents collect: #shortId) asCommaString
+	parentsLabel label: 'Ancestors(s)'.
+	parentsPanel text: (self commit ancestors collect: #shortId) asCommaString
 	

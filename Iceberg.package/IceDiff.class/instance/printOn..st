@@ -3,5 +3,5 @@ printOn: aStream
 	aStream 
 		nextPutAll: self class name;
 		nextPut: $(;
-		nextPutAll: self repository location pathString;
+		nextPutAll: self repository asString;
 		nextPut: $)

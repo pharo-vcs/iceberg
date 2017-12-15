@@ -1,3 +1,4 @@
 actions
 createBranch: branchName
-	self backend createBranch: branchName
+	
+	^ self createBranch: branchName inCommit: self head commit

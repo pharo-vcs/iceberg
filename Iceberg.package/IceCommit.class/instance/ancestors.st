@@ -1,0 +1,4 @@
+accessing
+ancestors
+	
+	^ self subclassResponsibility
