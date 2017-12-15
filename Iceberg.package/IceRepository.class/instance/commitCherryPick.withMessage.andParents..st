@@ -20,6 +20,6 @@ commitCherryPick: pickedCollection withMessage: message andParents: parentCommit
 			changes: changes 
 			message: message) ].	
 	"save versions"
-	versions do: [ :each | self backend internalStoreVersion: each ].
+	versions do: [ :each | self internalStoreVersion: each ].
 	"now perform commit"
 	self doCommitMcVersions: versions withMessage: message andParents: parentCommitishList

@@ -1,0 +1,28 @@
+{
+	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
+	"super" : "Object",
+	"category" : "Iceberg-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"DefaultBackendType",
+		"DefaultCodeSubdirectory",
+		"DefaultFileFormatType",
+		"Registry",
+		"ShareRepositoriesBetweenImages",
+		"SharedRepositoriesLocation"
+	],
+	"instvars" : [
+		"name",
+		"announcer",
+		"backend",
+		"pullRemote",
+		"pushRemote",
+		"savedPackages",
+		"commitDictionary",
+		"loadedCode",
+		"system"
+	],
+	"name" : "IceOldRepository",
+	"type" : "normal"
+}

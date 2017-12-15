@@ -7,7 +7,7 @@ testRemoveTag
 	package := RPackageOrganizer default packageNamed: packageName.
 	tag := package addClassTag: 'NewTag'.
 	Object subclass: #ForTestRemoveTag  instanceVariableNames: '' classVariableNames: '' category: tag categoryName.
-	repository commitPackagesWithMessage: 'for #testRemoveTag'.
+	repository commitWithMessage: 'for #testRemoveTag'.
 	
 	package removeClassTag: 'NewTag'.
 	repository register.

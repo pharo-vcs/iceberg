@@ -1,6 +1,5 @@
 instance creation
-forRepository: aRepository commit: anIceCommitInfo
-	^ self new 
-		repository: aRepository;
-		theirVersion: anIceCommitInfo;
-		yourself.
+forRepository: aRepository commit: aCommit
+	^ self
+		from: aRepository workingCopy
+		to: aCommit

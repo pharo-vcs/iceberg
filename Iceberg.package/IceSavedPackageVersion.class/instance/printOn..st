@@ -4,14 +4,14 @@ printOn: aStream
 		nextPut: $(;
 		nextPutAll: self package name.
 
-	commit ifNotNil: [ 
+"	commit ifNotNil: [ 
 		aStream 
 		nextPutAll: ', loaded from: ';
-		nextPutAll: commit shortId ].
+		nextPutAll: commit shortId ]."
 		
-	originatingCommit ifNotNil: [ 
+"	originatingCommit ifNotNil: [ 
 		aStream 
 			nextPutAll: ', committed in: ';
-			nextPutAll: originatingCommit shortId ].
+			nextPutAll: originatingCommit shortId ]."
 		
 	aStream nextPut: $).

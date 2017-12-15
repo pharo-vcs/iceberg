@@ -24,4 +24,4 @@ historyOfMethod: aMethod
 						diff := tree diffTo: eachParent tree options: options. 
 						diff numberOfDeltas > 0 
 							ifTrue: [ history add: eachCommit ] ] ] ].
-	^ history collect: [ :each | IceLibgitLocalRepository parseCommitInfo: each ]
+	^ history collect: [ :each | IceLibgitRepositoryBackend parseCommitInfo: each ]

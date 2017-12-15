@@ -1,3 +1,0 @@
-accessing
-pharoURLs
-	^ IcePharoFogbugzPlugin pharoURLs

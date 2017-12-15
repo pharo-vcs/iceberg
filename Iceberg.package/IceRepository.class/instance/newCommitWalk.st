@@ -1,3 +1,4 @@
-commits
+accessing
 newCommitWalk
-	^ self backend newCommitWalk
+	
+	self subclassResponsibility

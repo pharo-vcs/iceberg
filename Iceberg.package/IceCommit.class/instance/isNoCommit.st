@@ -1,0 +1,4 @@
+testin
+isNoCommit
+	
+	^ false

@@ -9,7 +9,7 @@ testCommitAndReloadEmptyClass
 		classVariableNames: '' 
 		package: packageName.
 	
-	repository commitPackagesWithMessage: 'Trying to save an empty class'.
+	repository commitWithMessage: 'Trying to save an empty class'.
 
 	"1.2 - Remove the package from the system."
 	self removeTestPackages.

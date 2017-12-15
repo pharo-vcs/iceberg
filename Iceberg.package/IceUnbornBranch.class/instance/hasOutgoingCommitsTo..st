@@ -1,0 +1,4 @@
+testing
+hasOutgoingCommitsTo: aRemote
+
+	^ false

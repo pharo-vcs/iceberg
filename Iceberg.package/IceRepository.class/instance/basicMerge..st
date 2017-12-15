@@ -5,5 +5,5 @@ basicMerge: aCommitInfo
 	detects conflicts that have to be solved manually."
 	| currentCommit |
 	currentCommit := self loadedCode referenceCommit.
-	self backend merge: aCommitInfo id.
+	self doMergeCommitId: aCommitInfo id.
 	(self headCommit changedPackagesTo: currentCommit) do: #loadLatest

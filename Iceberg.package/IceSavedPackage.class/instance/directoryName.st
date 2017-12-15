@@ -1,5 +1,5 @@
 *Iceberg-Adapters
 directoryName
-	^ (self repository backend writerClass 
+	^ (self repository writerClass 
 		directoryNameFor: package)
 		asString

@@ -1,3 +1,4 @@
 accessing
 location
-	^ self backend location
+	
+	self subclassResponsibility

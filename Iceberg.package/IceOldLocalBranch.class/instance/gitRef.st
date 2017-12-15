@@ -1,0 +1,4 @@
+accessing
+gitRef
+	
+	^ self name

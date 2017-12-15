@@ -1,3 +1,4 @@
 testing
 isMissing
-	^ self backend isMissing 
+	
+	self subclassResponsibility

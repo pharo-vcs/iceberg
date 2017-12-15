@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
+	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
@@ -15,10 +15,8 @@
 	"instvars" : [
 		"name",
 		"announcer",
-		"backend",
 		"pullRemote",
 		"pushRemote",
-		"savedPackages",
 		"commitDictionary",
 		"loadedCode",
 		"system"

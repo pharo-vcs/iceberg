@@ -4,4 +4,4 @@ initialize
 	system := false. "by default, this is not a system repository"
 	commitDictionary := Dictionary new.
 	self initializeAnnouncer.
-	loadedCode := IceLoadedCode repository: self.
+	loadedCode := IceWorkingCopy repository: self.

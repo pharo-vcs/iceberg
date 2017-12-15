@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 11/3/2016 17:20",
 	"super" : "IceCommitish",
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

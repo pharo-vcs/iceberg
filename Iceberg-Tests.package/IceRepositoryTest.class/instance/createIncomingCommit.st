@@ -11,7 +11,7 @@ createIncomingCommit
 
 	"2 - Modify it and commit to a new branch"
 	self updateVersionNumber: versionNumber + 1.
-	repository commitPackagesWithMessage: ('Updated test method with version {1}' format: { versionNumber + 1}).
+	repository commitWithMessage: ('Updated test method with version {1}' format: { versionNumber + 1}).
 
 	versionNumber := (Smalltalk at: #Test) new versionNumber.
 

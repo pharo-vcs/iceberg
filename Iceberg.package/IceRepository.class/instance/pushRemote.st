@@ -1,3 +1,3 @@
 accessing remotes
 pushRemote
-	^ pushRemote ifNil: [ pushRemote := self basicOrigin ]
+	^ pushRemote ifNil: [ pushRemote := self origin ]

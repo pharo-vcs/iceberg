@@ -1,3 +1,3 @@
 printing
 description
-	^ self package packageName
+	^ self package name

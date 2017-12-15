@@ -1,3 +1,4 @@
-querying
+changes
 snapshotFor: package
-	^ package workingCopy snapshot
+
+	^ (self versionFor: package) snapshot

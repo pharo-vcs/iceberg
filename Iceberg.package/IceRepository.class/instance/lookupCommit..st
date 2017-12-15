@@ -1,3 +1,6 @@
 private
 lookupCommit: commitId
-	^ self backend lookupCommit: commitId
+
+	^ self newCommitWalk 
+		fromCommitId: commitId; 
+		firstCommit

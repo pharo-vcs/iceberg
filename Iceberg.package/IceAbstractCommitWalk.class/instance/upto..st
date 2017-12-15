@@ -1,3 +1,3 @@
 walk definition
 upto: aCommitish
-	aCommitish hideYourselfFromCommitWalk: self
+	self uptoCommit: aCommitish commit

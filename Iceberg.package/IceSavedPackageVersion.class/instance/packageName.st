@@ -1,3 +1,3 @@
 accessing
 packageName
-	^ self package packageName
+	^ self package name

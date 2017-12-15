@@ -1,4 +1,5 @@
 accessing
 branch
-	self isValid ifFalse: [ ^ IceUnknownBranch new ].
-	^ self backend branch
+	
+	self head validateIsBranch.
+	^ self head

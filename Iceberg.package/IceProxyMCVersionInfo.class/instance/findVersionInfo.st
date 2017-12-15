@@ -10,8 +10,8 @@ findVersionInfo
 		ifFalse: [ 
 			remote := IceRemote url: remoteUrl.
 			repo := IceRepository registry 
-				detect: [ :eachRepo |
-					(self class repositoryRemotesOf: eachRepo)
+				detect: [ :eachRepo | 
+					eachRepo remotes 
 						anySatisfy: [ :each | each referencesSameRemoteLocationAs: remote ] ]
 				ifNone: [ ^ nil ].
 			commit := repo commitAt: commitId.

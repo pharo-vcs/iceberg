@@ -1,6 +1,6 @@
 running
 setUp
-	oldShareRepositoriesBetweenImages := IceRepository shareRepositoriesBetweenImages.
-	IceRepository shareRepositoriesBetweenImages: false.
-	self testParameters do: #activate.
+	oldShareRepositoriesBetweenImages := IceOldRepository shareRepositoriesBetweenImages.
+	IceOldRepository shareRepositoriesBetweenImages: false.
+	self parameters do: #activate.
 	

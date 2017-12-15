@@ -1,3 +1,4 @@
 querying
 allBranches
-	^ self backend allBranches	
+	
+	self subclassResponsibility

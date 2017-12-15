@@ -3,7 +3,7 @@ buildSuiteNamed: suiteName withGlobals: globalParameterValues andSubsuites: more
 	| suite |
 	moreParameters ifEmpty: [ 
 		suite := self buildSuiteFromSelectors. 
-		suite tests do: [ :test | test testParameters: globalParameterValues ]
+		suite tests do: [ :test | test parameters: globalParameterValues ]
 	]
 	ifNotEmpty: [ 
 		| config |

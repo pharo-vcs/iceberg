@@ -1,7 +1,7 @@
 tests - commit
 testStatusAfterCommit
 	self scenarioTwoDirtyPackages.
-	repository commitPackagesWithMessage: 'Committing two packages together'.
+	repository commitWithMessage: 'Committing two packages together'.
 
 	self assert: repository incomingCommits isEmpty.
 	self assert: repository outgoingCommits isNotEmpty.

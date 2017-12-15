@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepository",
+	"category" : "Iceberg-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"backend",
+		"savedPackages"
+	],
+	"name" : "IceRepositoryWithBackend",
+	"type" : "normal"
+}

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepositoryWithSingleRemoteAndMergeConflictTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteFileUrl",
+		"projectName"
+	],
+	"name" : "IceGitRepositoryWithSingleRemoteAndMergeConflictTest",
+	"type" : "normal"
+}

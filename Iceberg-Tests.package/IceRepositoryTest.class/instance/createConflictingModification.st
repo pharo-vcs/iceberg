@@ -13,4 +13,4 @@ createConflictingModification
 	testClass compile: ('versionNumber ^ ''Created for conflicting with version {1}''' format: {nextVersionNumber}).
 
 	"3 - Commit"
-	repository commitPackagesWithMessage: ('Created conflicting method with version {1}' format: { nextVersionNumber }).
+	repository commitWithMessage: ('Created conflicting method with version {1}' format: { nextVersionNumber }).
