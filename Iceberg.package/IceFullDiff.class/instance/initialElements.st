@@ -1,4 +1,8 @@
 initialization
 initialElements
-	^ self repository savedPackages
-		collect: [ :package | self createChangeSetFor: package ]
+	^ self repository workingCopy packages
+		collect: [ :package | | icepackage |
+			icepackage := IceSavedPackage 
+				named: package name
+				repository: self repository.
+			self createChangeSetFor: icepackage ]
