@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCommit",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mcCommit"
+	],
+	"name" : "IceMemoryCommit",
+	"type" : "normal"
+}

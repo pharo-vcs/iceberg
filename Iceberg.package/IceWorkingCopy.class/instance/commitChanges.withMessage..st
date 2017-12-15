@@ -4,7 +4,7 @@ commitChanges: changesToCommit withMessage: message
 	"Commits a snapshot of definitions (can be a cherry-pick). 
 	 I need to group definitions in packages and create new versions for those packages, 
 	 which is annoying but is the price of using MC definitions :)"
-	| changesByPackage versions |
+	| changesByPackage versions newCommit |
 	self flag: #refactor.
 	"This is really similar to a non-cherry-pick change.
 	See #commitPackages:withMessage:"
@@ -26,5 +26,8 @@ commitChanges: changesToCommit withMessage: message
 	versions do: [ :each | self repository internalStoreVersion: each ].
 
 	"now perform commit"
-	self repository
-		doCommitMcVersions: versions withMessage: message andParents: referenceCommits
+	newCommit := self repository
+		doCommitMcVersions: versions withMessage: message andParents: referenceCommits.
+		
+	self referenceCommit: newCommit.
+	^ newCommit
