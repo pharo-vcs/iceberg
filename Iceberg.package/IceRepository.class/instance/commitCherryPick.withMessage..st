@@ -1,8 +1,6 @@
 actions - utility
-commitCherryPick: pickedCollection withMessage: message
+commitCherryPick: changes withMessage: message
 
-	self halt.
-	^ self 
-		commitCherryPick: pickedCollection
+	^ self workingCopy
+		commitChanges: changes
 		withMessage: message
-		andParents: { self headCommit }

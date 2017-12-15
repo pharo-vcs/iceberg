@@ -1,3 +1,4 @@
 *Iceberg-UI
 description
-	^ 'FRUTA___'
+	
+	^ ', ' join: (self referenceCommit collect: #description)
