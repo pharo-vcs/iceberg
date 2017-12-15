@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRemote",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteRepository",
+		"branchRepository"
+	],
+	"name" : "IceMemoryRemote",
+	"type" : "normal"
+}
