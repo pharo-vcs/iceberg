@@ -1,9 +1,10 @@
 commits
 outgoingCommitsTo: aRemote
 	
-	| remoteBranch |
+	| remoteBranch walk |
 	aRemote fetchBranch: self.
-	remoteBranch := aRemote remoteBranchNamed: self name.
-	^ self newCommitWalk
-		uptoCommit: remoteBranch commit;
-		commits
+	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ nil ].
+	walk := self newCommitWalk.
+	remoteBranch ifNotNil: [ 
+		walk uptoCommit: remoteBranch commit ].
+	^ walk commits
