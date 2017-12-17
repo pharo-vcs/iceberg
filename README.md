@@ -45,23 +45,13 @@ Since Pharo 6.0, iceberg is included in the image, so you probably will need to 
 Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceberg in your repo and then pull changes.
 
 #### For Pharo 6
-Since we are including tonel file format, we need to adapt also Metacello to process it, so you will need to update it too.
 
 ```Smalltalk
-"Restore defaults"
-Iceberg enableMetacelloIntegration: false.
-MetacelloPharo30Platform select.
-
-"Update metacello" 
-Metacello new
-  baseline: 'Metacello';
-  repository: 'github://metacello/metacello:Pharo6.1/repository';
-  onConflict: [:e | e useIncoming ];
-  get;
-  load.
-
-"Update iceberg"
- #(
+MetacelloPharoPlatform select.
+#(
+	'BaselineOfTonel'
+	'BaselineOfLibGit'
+	'BaselineOfIceberg'
 	'Iceberg-UI' 
 	'Iceberg-Plugin-GitHub' 
 	'Iceberg-Plugin' 
@@ -70,11 +60,14 @@ Metacello new
 	'Iceberg-Libgit-Filetree' 
 	'Iceberg-Libgit' 
 	'Iceberg' 
-	'LibGit-Core') 
+	'LibGit-Core'
+	'MonticelloTonel-Tests'
+	'MonticelloTonel-Core'
+	'MonticelloTonel-FileSystem' ) 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6';
+  	repository: 'github://pharo-vcs/iceberg:v0.6.5';
   	load.
 ```
 
