@@ -4,8 +4,11 @@ status
 	[
 		| status incoming outgoing | 
 
-		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].		
+		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
+		
+		entity workingCopy isDetached ifTrue: [ ^ self makeError: 'Detached Working Copy' ].
+		entity head isDetached ifTrue: [ ^ self makeError: 'Detached HEAD' ].
 
 		status := OrderedCollection new.
 		entity isModified ifTrue: [ status add: 'Uncommited changes' ].

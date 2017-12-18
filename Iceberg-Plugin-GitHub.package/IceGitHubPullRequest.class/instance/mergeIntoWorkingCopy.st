@@ -1,5 +1,5 @@
 actions
-mergeIntoImage
+mergeIntoWorkingCopy
 	self repository 
 		ensureBranch: self branchName;
 		checkoutBranch: self branchName;

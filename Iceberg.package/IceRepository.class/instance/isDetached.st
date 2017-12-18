@@ -1,4 +1,5 @@
 testing
 isDetached
 	
-	^ self head isBranch not
+	^ self workingCopy isDetached
+		or: [ self head isDetached ]
