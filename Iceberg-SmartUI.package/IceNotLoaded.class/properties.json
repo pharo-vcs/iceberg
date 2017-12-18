@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceStatus",
+	"category" : "Iceberg-SmartUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNotLoaded",
+	"type" : "normal"
+}
