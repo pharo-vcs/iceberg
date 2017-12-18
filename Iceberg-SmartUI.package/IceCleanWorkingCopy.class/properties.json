@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceStatus",
+	"category" : "Iceberg-SmartUI-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceCleanWorkingCopy",
+	"type" : "normal"
+}
