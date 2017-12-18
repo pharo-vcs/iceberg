@@ -11,17 +11,9 @@ mergeCommit: aCommit
 			"The commit is already merged"
 			^ self ].
 	
-	(currentCommit isAncestorOf: aCommit)
-		ifTrue: [ 
-			"Our commit is simply an ancestor.
-			We can fast forward to that commit."
-			repository branch setCommit: aCommit.
-			^ self ].
-	
 	"Otherwise, we have to do a merge"
-	
 	merger := MCThreeWayMerger
-			base: currentCommit mcSnapshot
+			base: self mcSnapshot
 			target: aCommit mcSnapshot
 			ancestor: ((currentCommit commonAncestorWith: aCommit)
 				ifNil: [ MCSnapshot empty ]
@@ -36,6 +28,5 @@ mergeCommit: aCommit
 
 	"Load changes into the image"
 	merger load.
-	referenceCommits add: aCommit.
-
-	^ self commitWithMessage: ('Automatic Merge between {1} and {2}' format: {currentCommit id . aCommit id}).
+	self referenceCommit: aCommit.
+	^ aCommit

@@ -2,6 +2,6 @@ execute
 execute
 	| commit |
 	commit := self repository headCommit.
-	commit mergeIntoImage.
+	commit mergeIntoWorkingCopy.
 	(self repository loadedCode referenceCommit = commit)
 		ifTrue: [ self beSuccess ]

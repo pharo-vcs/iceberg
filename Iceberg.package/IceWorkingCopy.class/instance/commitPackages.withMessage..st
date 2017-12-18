@@ -4,6 +4,7 @@ commitPackages: modifiedPackages withMessage: message
 	| newCommit |
 	"Validate that the working copy is in the same state as the repository and we are in a branch.
 	If we pass this validation, this means that the current HEAD is a parent for a next commit."
+	self halt.
 	self validateCanCommit.
 	self flag: #refactor.
 	"This is really similar to a cherry-pick change.
