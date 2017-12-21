@@ -1,3 +1,5 @@
 script
 resetKMRepository
-	KMRepository reset
+	Smalltalk 
+		at: #KMRepository 
+		ifPresent: [ :class | class reset ]
