@@ -1,5 +1,5 @@
-actions
-askForSshCredentials: response
+private
+obtainSshCredentials: response
 	| model cancelled |
 	
 	cancelled := false.

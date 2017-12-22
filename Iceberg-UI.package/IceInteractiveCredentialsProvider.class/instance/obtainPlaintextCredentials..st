@@ -1,5 +1,5 @@
-actions
-askForPlaintextCredentials: response
+private
+obtainPlaintextCredentials: response
 	| model cancelled |
 	
 	cancelled := false.

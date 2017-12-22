@@ -8,4 +8,4 @@ provideSshCredentialsTo: credentials
 	
 	tries = 1 & self sshCredentials isPresent
 		ifTrue: [ credentials readFrom: self sshCredentials ]
-		ifFalse: [ self askForSshCredentials: credentials ].
+		ifFalse: [ self obtainSshCredentials: credentials ].

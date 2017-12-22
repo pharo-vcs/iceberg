@@ -2,7 +2,7 @@ accessing
 changedPackagesToWorkingCopy: aWorkingCopy
 	| lastCommit commitPackageNames loadedPackageNames added removed |
 	
-	lastCommit := self repository branch lastCommit.
+	lastCommit := self referenceCommit.
 	commitPackageNames := lastCommit packageNames.
 	loadedPackageNames := self repository loadedPackages collect: #name.
 	added := (loadedPackageNames \ commitPackageNames) 
