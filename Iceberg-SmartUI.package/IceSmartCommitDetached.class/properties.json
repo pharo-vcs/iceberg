@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GLMCompositePresentation",
+	"category" : "Iceberg-SmartUI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedElements"
+	],
+	"name" : "IceSmartCommitDetached",
+	"type" : "normal"
+}
