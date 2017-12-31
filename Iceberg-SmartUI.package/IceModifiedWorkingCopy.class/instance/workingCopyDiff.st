@@ -1,0 +1,4 @@
+actions
+workingCopyDiff
+	
+	^ repository workingCopyDiff

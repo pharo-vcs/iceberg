@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceCleanWorkingCopy",
+	"name" : "IceDetachedWorkingCopy",
 	"type" : "normal"
 }

@@ -1,5 +1,5 @@
 utilities
-contractedNameFor: diff
+contractedNameFor: status
 	"If the name of a branch is too long it is better to contract it in order to limit the UI glitches."
 
-	^ diff repository branchName contractTo: 20
+	^ status headCommitString
