@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-SmartUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"message",
+		"commitButton",
+		"model",
+		"cherryPickBlock",
+		"browser"
+	],
+	"name" : "IceSmartCommitModel",
+	"type" : "normal"
+}

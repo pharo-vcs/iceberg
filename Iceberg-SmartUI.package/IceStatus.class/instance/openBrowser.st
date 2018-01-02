@@ -1,0 +1,3 @@
+browsing
+openBrowser
+	self subclassResponsibility

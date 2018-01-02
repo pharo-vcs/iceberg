@@ -3,9 +3,8 @@ compose
 
 	| browser |
 	browser := self tabulator.
-	browser title: [ :status | status shortDescription ].
 	browser
-		row: #description size: 80;
+		row: #description size: 100;
 		row: [ :row | 
 			row
 				column: #changes; 
@@ -17,6 +16,7 @@ compose
 		to: #description;
 		andShow: [ :a :status |
 			a text
+				title: 'Explanation';
 				display: status longDescription ].
 
 	browser transmit 
@@ -33,9 +33,10 @@ compose
 			a morph
 				title: 'Commit changes';
 				morph: [
-					IceCherryPickCommitModel new 
+					IceSmartCommitModel new 
 						model: diff;
 						withSelectedCherryPick: [ self selectedElements ];
+						browser: self;
 						buildWithSpec ] ].
 
 	browser transmit 

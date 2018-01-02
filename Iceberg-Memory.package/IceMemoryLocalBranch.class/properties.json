@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceNewLocalBranch",
+	"super" : "IceLocalBranch",
 	"category" : "Iceberg-Memory",
 	"classinstvars" : [ ],
 	"pools" : [ ],
