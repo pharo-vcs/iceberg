@@ -1,3 +1,3 @@
 accessing
 loadedCode
-	^ loadedCode
+	^ workingCopy

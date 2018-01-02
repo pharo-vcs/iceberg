@@ -1,4 +1,3 @@
-instance creation
+accessing
 newCommitWalk
-
 	self subclassResponsibility

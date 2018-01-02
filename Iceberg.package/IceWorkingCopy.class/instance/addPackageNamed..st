@@ -1,4 +1,4 @@
 packages
 addPackageNamed: aString 
 	
-	self addPackage: (MCPackage named: aString)
+	self addPackage: (MCPackage named: aString asSymbol)

@@ -1,4 +1,4 @@
-querying
+operations
 newCommitWalk
 
-	^ self repository newCommitWalk fromBranch: self
+	^ repository newCommitWalk fromBranch: self

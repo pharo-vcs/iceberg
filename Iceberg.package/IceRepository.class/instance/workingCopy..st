@@ -1,4 +1,4 @@
 accessing
 workingCopy: aWorkingCopy
 	
-	loadedCode := aWorkingCopy
+	workingCopy := aWorkingCopy

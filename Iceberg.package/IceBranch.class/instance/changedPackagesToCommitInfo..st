@@ -1,3 +1,4 @@
-accessing
-changedPackagesToCommitInfo: aCommitish
-	^ aCommitish changedPackagesToCommitInfo: self lastCommit
+TOMOVE
+changedPackagesToCommitInfo: anIceGitCommit 
+	
+	^ self commit changedPackagesToCommitInfo: anIceGitCommit

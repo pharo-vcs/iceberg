@@ -1,7 +1,8 @@
 printing
 printOn: aStream
-	aStream 
+
+	aStream
 		nextPutAll: self class name;
-		nextPut: $(;
+		nextPutAll: '(';
 		nextPutAll: self name;
-		nextPut: $).
+		nextPutAll: ')'

@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceNewCommitish",
+	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],

@@ -1,4 +1,4 @@
 accessing
 workingCopy
 	
-	^ loadedCode
+	^ workingCopy

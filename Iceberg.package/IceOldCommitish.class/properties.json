@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "NicoPasserini 9/16/2016 14:08",
+	"super" : "Object",
+	"category" : "Iceberg-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceOldCommitish",
+	"type" : "normal"
+}

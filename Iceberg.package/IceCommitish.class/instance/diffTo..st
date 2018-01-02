@@ -1,3 +1,4 @@
-as yet unclassified
+accessing
 diffTo: aCommitish
-	^ IceDiff from: self to: aCommitish 
+
+	^ IceDiff from: self to: aCommitish

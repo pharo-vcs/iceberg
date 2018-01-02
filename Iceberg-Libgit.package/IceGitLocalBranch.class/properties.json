@@ -4,7 +4,7 @@
 	"instvars" : [ ],
 	"name" : "IceGitLocalBranch",
 	"commentStamp" : "",
-	"super" : "IceNewLocalBranch",
+	"super" : "IceLocalBranch",
 	"traitcomposition" : "IceTGitBranch",
 	"type" : "normal",
 	"classinstvars" : [ ],

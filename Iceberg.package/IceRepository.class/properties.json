@@ -18,8 +18,8 @@
 		"pullRemote",
 		"pushRemote",
 		"commitDictionary",
-		"loadedCode",
-		"system"
+		"system",
+		"workingCopy"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"

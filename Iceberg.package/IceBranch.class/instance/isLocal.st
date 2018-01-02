@@ -1,3 +1,4 @@
 testing
 isLocal
-	^ false
+	
+	^ self isRemote not

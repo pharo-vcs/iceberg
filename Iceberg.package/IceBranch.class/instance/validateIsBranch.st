@@ -1,4 +1,4 @@
 validation
 validateIsBranch
 	
-	"Do nothing, I'm a branch"
+	"Nothing. I'm a branch"

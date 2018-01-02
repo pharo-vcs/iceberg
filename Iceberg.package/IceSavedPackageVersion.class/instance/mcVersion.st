@@ -1,4 +1,5 @@
 patches
 mcVersion
 
-	^ commit mcVersionFor: self
+	^ (commit mcVersionFor: self)
+		ifNil: [ IceVersionDoesNotExist new version: self; signal ]
