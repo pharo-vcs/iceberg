@@ -4,7 +4,7 @@ lookupBranchNamed: branchName inRemote: remoteName
 		[ repo lookupRemoteBranch: remoteName, '/', branchName ]
 			on: LGit_GIT_ENOTFOUND do: [ ^ nil ].
 		
-		^ IceRemoteBranch 
+		^ IceOldRemoteBranch 
 			remoteName: remoteName
 			branchName: branchName
 			inRepository: self frontend

@@ -4,7 +4,7 @@ allBranches
 		^ OrderedCollection new: 10 streamContents: [ :stream |
 			repo allBranchesDo: [ :br :isLocal | 
 				stream nextPut: (
-					IceBranch 
+					IceOldBranch 
 						named: br name 
 						local: isLocal
 						inRepository: self frontend) ]]]

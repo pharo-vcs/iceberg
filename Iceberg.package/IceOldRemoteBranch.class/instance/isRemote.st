@@ -1,4 +1,3 @@
 testing
 isRemote
-
 	^ true

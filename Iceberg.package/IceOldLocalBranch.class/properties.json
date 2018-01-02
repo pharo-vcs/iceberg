@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "NicoPasserini 12/6/2016 11:40",
-	"super" : "IceBranch",
+	"super" : "IceOldBranch",
 	"category" : "Iceberg-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],

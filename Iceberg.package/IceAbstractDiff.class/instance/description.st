@@ -1,3 +1,4 @@
 printing
 description
-	^ self name
+
+	^ self subclassResponsibility

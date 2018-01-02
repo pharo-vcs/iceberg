@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 7/19/2017 14:20",
-	"super" : "IceCommitish",
+	"super" : "IceOldCommitish",
 	"category" : "Iceberg-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
