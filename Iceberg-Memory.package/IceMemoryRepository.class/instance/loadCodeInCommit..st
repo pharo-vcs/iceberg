@@ -3,4 +3,4 @@ loadCodeInCommit: aCommit
 	
 	| newWorkingCopy |
 	newWorkingCopy := self loadWorkingCopyFromCommit: aCommit.
-	loadedCode := newWorkingCopy.
+	workingCopy := newWorkingCopy.

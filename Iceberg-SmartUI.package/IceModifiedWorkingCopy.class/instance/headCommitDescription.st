@@ -1,0 +1,4 @@
+accessing
+headCommitDescription
+	
+	^ repository headCommitDescription
