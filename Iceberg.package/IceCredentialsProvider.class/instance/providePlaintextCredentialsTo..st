@@ -8,5 +8,5 @@ providePlaintextCredentialsTo: credentials
 	
 	tries = 1 & self plaintextCredentials isPresent
 		ifTrue: [ credentials readFrom: self plaintextCredentials ]
-		ifFalse: [ self askForPlaintextCredentials: credentials ].
+		ifFalse: [ self obtainPlaintextCredentials: credentials ].
 
