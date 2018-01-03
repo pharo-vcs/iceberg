@@ -1,4 +1,4 @@
-settings
+accessing settings
 settingsOn: aBuilder 
 	<systemsettings>
 	
@@ -8,13 +8,6 @@ settingsOn: aBuilder
 		label: 'File format type';
 		description: 'Select your preferred file format.';
 		domainValues: self formatTypeDomainValues.
-
-	(aBuilder pickOne: #'defaultBackendType')
-		parent: #Iceberg;
-		target: self;
-		label: 'Backend type';
-		description: 'Select your preferred way to access git repositories from Iceberg: the git command line (OSSubprocess) or the libgit2 library';	
-    domainValues: self backendTypeDomainValues.
   
 	(aBuilder setting: #'defaultCodeSubdirectory')
 		parent: #Iceberg;

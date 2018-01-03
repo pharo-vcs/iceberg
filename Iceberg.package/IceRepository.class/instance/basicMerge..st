@@ -4,6 +4,6 @@ basicMerge: aCommitInfo
 	Will raise an IceMergeAborted in case that automatic merge 
 	detects conflicts that have to be solved manually."
 	| currentCommit |
-	currentCommit := self loadedCode referenceCommit.
+	currentCommit := self workingCopy referenceCommit.
 	self doMergeCommitId: aCommitInfo id.
 	(self headCommit changedPackagesTo: currentCommit) do: #loadLatest

@@ -1,4 +1,4 @@
 accessing
 goferReferences
-	^ self repository savedPackages collect: [ :package | 
+	^ self repository packages collect: [ :package | 
 		GoferResolvedReference name: package latestVersion info name repository: self ]

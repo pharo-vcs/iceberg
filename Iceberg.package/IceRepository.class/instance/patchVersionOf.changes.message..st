@@ -1,15 +1,15 @@
 private
 patchVersionOf: packageName changes: changes message: message
-	| workingCopy snapshot patcher |
+	| mcWorkingCopy snapshot patcher |
 	
-	workingCopy := (RPackageOrganizer default packageNamed: packageName) mcWorkingCopy.
-	snapshot := self loadedCode referenceCommit snapshotFor: (self packageNamed: packageName).
+	mcWorkingCopy := (RPackageOrganizer default packageNamed: packageName) mcWorkingCopy.
+	snapshot := self workingCopy referenceCommit snapshotFor: (self packageNamed: packageName).
 	patcher := MCPatcher snapshot: snapshot.
 	changes 
 		select: [ :each | each operation notNil ]
 		thenDo: [ :each | each operation applyTo: patcher ].
 	^ MCVersion new
-		setPackage: workingCopy package
-		info: (IceMCVersionInfo package: workingCopy package message: message)
+		setPackage: mcWorkingCopy package
+		info: (IceMCVersionInfo package: mcWorkingCopy package message: message)
 		snapshot: patcher patchedSnapshot
 		dependencies: #()

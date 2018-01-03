@@ -9,7 +9,7 @@ tearDown
 		each forget.
 		each location ensureDeleteAll ].
 
-	(IceOldRepository registry 
+	(IceRepository registry 
 		select: [:repo | repo origin url endsWith: 'pharo-git-test.git'])
 		do: [ :repo | 
 			repo forget.

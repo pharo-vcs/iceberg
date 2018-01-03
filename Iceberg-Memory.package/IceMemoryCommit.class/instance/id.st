@@ -1,3 +1,3 @@
 accessing
 id
-	^ self mcCommit info id
+	^ self mcCommit info id asString

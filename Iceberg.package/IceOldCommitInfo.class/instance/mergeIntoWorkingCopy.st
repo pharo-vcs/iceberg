@@ -1,3 +1,0 @@
-querying
-mergeIntoWorkingCopy
-	self repository mergeIntoWorkingCopy: self
