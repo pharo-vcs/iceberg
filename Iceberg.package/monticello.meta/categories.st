@@ -5,5 +5,4 @@ SystemOrganization addCategory: #'Iceberg-Changes'!
 SystemOrganization addCategory: #'Iceberg-Core'!
 SystemOrganization addCategory: #'Iceberg-Core-Properties'!
 SystemOrganization addCategory: #'Iceberg-Errors'!
-SystemOrganization addCategory: #'Iceberg-Old'!
 SystemOrganization addCategory: #'Iceberg-Security'!

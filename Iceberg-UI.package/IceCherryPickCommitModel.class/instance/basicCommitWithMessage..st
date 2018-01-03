@@ -7,7 +7,6 @@ basicCommitWithMessage: aString
 	cherryPickBlock ifNotNil: [ picked := cherryPickBlock value ].
 	"Nothing was picked, continue as usual"
 	picked ifNil: [ ^ super basicCommitWithMessage: aString ].
-	self halt.
 	self repository 
 		commitCherryPick: picked  
 		withMessage: aString
