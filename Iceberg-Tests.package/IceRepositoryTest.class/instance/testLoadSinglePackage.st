@@ -8,4 +8,4 @@ testLoadSinglePackage
 	self assert: (RPackageOrganizer default includesPackageNamed: packageName).
 	
 	package := repository packageNamed: packageName.
-	self assert: repository headCommit equals: (repository loadedCode loadedVersions at: package) commit
+	self assert: repository headCommit equals: (repository workingCopy loadedVersions at: package) commit

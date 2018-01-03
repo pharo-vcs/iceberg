@@ -1,3 +1,3 @@
 querying
 loadedVersion
-	^ self repository loadedCode versionFor: self
+	^ self repository workingCopy versionFor: self

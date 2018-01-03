@@ -1,13 +1,12 @@
 {
 	"commentStamp" : "NicoPasserini 11/3/2016 17:20",
-	"super" : "IceOldCommitish",
-	"category" : "Iceberg-Old",
+	"super" : "IceCommitish",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"name",
-		"repository",
 		"commit"
 	],
 	"name" : "IceTag",

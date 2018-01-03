@@ -2,7 +2,7 @@ building
 composePackagesListIn: composite
 	composite fastTable
 		title: 'Packages';
-		display: [ :model | self sortingStrategy sort: model savedPackages ];
+		display: [ :model | self sortingStrategy sort: model packages ];
 		column: 'Name' evaluated: #nameText width: 200;
 		column: 'Status' evaluated: #status;
 		addAction: self reloadAllPackagesAction;

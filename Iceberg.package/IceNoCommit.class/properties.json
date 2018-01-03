@@ -1,13 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceOldCommitish",
+	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"repository"
-	],
+	"instvars" : [ ],
 	"name" : "IceNoCommit",
 	"type" : "normal"
 }

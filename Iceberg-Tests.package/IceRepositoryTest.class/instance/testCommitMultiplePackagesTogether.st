@@ -6,10 +6,10 @@ testCommitMultiplePackagesTogether
 	
 	repository commitWithMessage: 'Committing two packages together'.
 	self assert: repository branch commits size equals: oldCommits + 1.
-	self assert: repository loadedCode referenceCommit equals: repository headCommit.
+	self assert: repository workingCopy referenceCommit equals: repository headCommit.
 
 	{ packageName. otherPackageName } do: [ :name | | package version |
 		package := repository packageNamed: name.
-		version := repository loadedCode versionFor: package.
+		version := repository workingCopy versionFor: package.
 		self assert: version commit equals: repository headCommit.
 	].

@@ -1,6 +1,6 @@
 actions
 load: aCommitInfo
-	(aCommitInfo changedPackagesTo: self loadedCode referenceCommit)
+	(aCommitInfo changedPackagesTo: self workingCopy referenceCommit)
 		collect: [ :package | aCommitInfo versionFor: package ]
 		thenDo: [:version | version load ].
-	self loadedCode refreshTo: aCommitInfo
+	self workingCopy refreshTo: aCommitInfo

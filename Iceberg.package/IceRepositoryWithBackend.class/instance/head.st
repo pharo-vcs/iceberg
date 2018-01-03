@@ -1,4 +1,0 @@
-accessing
-head
-	
-	^ backend lookupHead

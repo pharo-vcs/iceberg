@@ -2,5 +2,5 @@ patches
 updated
 	| newVersion |
 	newVersion := self package computeLoadedVersion.
-	self package repository loadedCode versionLoaded: newVersion.
+	self package repository workingCopy versionLoaded: newVersion.
 	^ newVersion

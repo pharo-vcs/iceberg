@@ -1,3 +1,3 @@
 auxiliar
 defaultLocationForLocalClonedRepository
-	^ IceOldRepository repositoriesLocation / #local / projectName 
+	^ IceRepository repositoriesLocation / #local / projectName 
