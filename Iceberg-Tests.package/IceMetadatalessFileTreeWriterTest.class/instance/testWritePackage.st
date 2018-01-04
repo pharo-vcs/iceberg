@@ -1,18 +1,17 @@
 tests
 testWritePackage
-	| package wc mcVersion |
-	package := repository packageNamed: packageName.
-	package loadLatest.
-	wc := package workingCopy.
+	| wc mcVersion |
+	repository checkout.
+	wc := (MCPackage named: packageName) workingCopy.
 
-	mcVersion := MCVersion
-		package: wc package
+	mcVersion := MCVersion new
+		setPackage: wc package
 		info: wc ancestors first
 		snapshot: wc snapshot
 		dependencies: #().
 		
 	IceMetadatalessFileTreeWriter 
 		fileOut: mcVersion 
-		on: (IceBackendWriterAdapter for: repository backend).
+		on: (IceBackendWriterAdapter for: repository).
 
 	self assert: (repository location allChildrenMatching: 'methodProperties.json') isEmpty

@@ -4,6 +4,7 @@ setUp
 
 	packageName := 'IceMockPackage'.
 	repository := IceMemoryRepository new.
+	repository workingCopy: (IceRingWorkingCopy repository: repository).
 	repository workingCopy addPackageNamed: packageName.
 	repository commitWithMessage: 'Local commit'.
 

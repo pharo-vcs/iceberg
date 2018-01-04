@@ -1,3 +1,4 @@
 *Iceberg-Tests
 loadPackage: packageName
-	(self packageNamed: packageName) loadLatest
+
+	self workingCopy checkoutPackageNamed: packageName fromCommit: self head commit

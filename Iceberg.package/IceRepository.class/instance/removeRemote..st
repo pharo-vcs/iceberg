@@ -1,4 +1,9 @@
 accessing remotes
 removeRemote: aRemote
 	
-	self subclassResponsibility
+	(self hasRemoteNamed: aRemote name)
+		ifFalse: [ IceRemoteNotFoundError new
+			remoteName: aRemote name;
+			signal ].
+		
+	self doRemoteRemote: aRemote

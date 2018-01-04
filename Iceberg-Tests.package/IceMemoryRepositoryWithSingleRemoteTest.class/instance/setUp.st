@@ -4,6 +4,7 @@ setUp
 
 	packageName := 'IceMockPackage'.
 	repository := IceMemoryRepository new.
+	repository workingCopy: (IceRingWorkingCopy repository: repository).
 
 	remote := self newRemoteNamed: 'origin'.
 	remoteRepository := remote remoteRepository.

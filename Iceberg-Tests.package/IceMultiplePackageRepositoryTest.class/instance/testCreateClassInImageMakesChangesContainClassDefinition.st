@@ -2,10 +2,10 @@ tests-changes
 testCreateClassInImageMakesChangesContainClassDefinition
 
 	| changes |
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName1 asSymbol.
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName1 asSymbol.
 
 	changes := repository workingCopyDiff elements first changes.
 	self assert: changes size equals: 1.

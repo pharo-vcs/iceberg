@@ -1,4 +1,4 @@
 accessing
-stagedFiles
+commit: anIceCommit
 	
 	self subclassResponsibility

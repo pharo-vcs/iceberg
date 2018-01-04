@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopy",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"ringEnvironment",
+		"dirtyPackages"
+	],
+	"name" : "IceRingWorkingCopy",
+	"type" : "normal"
+}

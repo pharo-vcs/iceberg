@@ -11,4 +11,4 @@ accept
 	
 	self window delete.
 	acceptBlock ifNotNil: [ 
-		acceptBlock cull: (IceRemote name: remoteName url: remoteUrl) ]
+		acceptBlock cull: (IceGitRemote name: remoteName url: remoteUrl) ]

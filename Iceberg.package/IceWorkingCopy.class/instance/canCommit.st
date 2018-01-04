@@ -1,5 +1,5 @@
 testing
 canCommit
 	
-	^ self head isDetached not and: [ 
+	^ self repository head isDetached not and: [ 
 		self isDetached not ]

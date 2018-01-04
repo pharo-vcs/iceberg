@@ -8,7 +8,7 @@ findVersionInfo
 			commit := self class lastCommitFound.
 			repo := commit repository ]
 		ifFalse: [ 
-			remote := IceRemote url: remoteUrl.
+			remote := IceGitRemote url: remoteUrl.
 			repo := IceRepository registry 
 				detect: [ :eachRepo | 
 					eachRepo remotes 

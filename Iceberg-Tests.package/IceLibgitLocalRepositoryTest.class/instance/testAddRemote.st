@@ -1,13 +1,11 @@
 tests
 testAddRemote
-	| backend |
 	repository := IceRepositoryCreator new 
 		url: self scpOriginUrl;
-		createRepository.
-	backend := repository backend.
-	
-	self assert: backend remotes size equals: 1.
-	backend addRemote: (IceRemote 
+		createRepository.	
+
+	self assert: repository remotes size equals: 1.
+	repository addRemote: (IceGitRemote 
 		name: 'other-for-test'
 		url: 'git@github.com/pharo-vcs/pharo-git-test.git').
-	self assert: backend remotes size equals: 2.
+	self assert: repository remotes size equals: 2.

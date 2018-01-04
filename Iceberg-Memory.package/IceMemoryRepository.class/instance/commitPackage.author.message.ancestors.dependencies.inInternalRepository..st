@@ -2,8 +2,8 @@ private-commits
 commitPackage: aMCPackage author: authorString message: messageString ancestors: ancestors dependencies: dependencies inInternalRepository: aRepository 
 	
 	| newCommit |
-	newCommit := MCVersion
-		package: aMCPackage
+	newCommit := MCVersion new
+		setPackage: aMCPackage
 		info: (MCVersionInfo
 			name: aMCPackage name
 			id: UUID new
