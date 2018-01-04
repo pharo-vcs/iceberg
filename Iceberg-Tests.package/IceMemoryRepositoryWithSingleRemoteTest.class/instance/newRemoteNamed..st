@@ -1,7 +1,10 @@
 instance creation
 newRemoteNamed: aName
 
+	remoteRepository := IceMemoryRepository new.
+	remoteRepository workingCopy: (IceRingWorkingCopy repository: remoteRepository).
+
 	^ IceMemoryRemote
 		name: aName
-		remoteRepository: IceMemoryRepository new
+		remoteRepository: remoteRepository
 		branchRepository: MCDictionaryRepository new

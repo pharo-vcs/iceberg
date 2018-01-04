@@ -1,5 +1,5 @@
 private - utilities
 protocolURLFor: aString
 
-	^IceRemote url: self protocolID, '://', aString
+	^IceGitRemote url: self protocolID, '://', aString
 	

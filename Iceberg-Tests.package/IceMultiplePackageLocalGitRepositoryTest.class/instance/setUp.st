@@ -10,6 +10,7 @@ setUp
 	repository := IceRepositoryCreator new 
 			location: self location / projectName;
 			createNewRepositoryNamed: projectName.
+	repository workingCopy: (IceRingWorkingCopy repository: repository).
 	
 	repository workingCopy addPackageNamed: packageName1.
 	repository workingCopy addPackageNamed: packageName2.

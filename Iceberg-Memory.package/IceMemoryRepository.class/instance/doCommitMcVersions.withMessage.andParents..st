@@ -6,8 +6,8 @@ doCommitMcVersions: modifiedVersions withMessage: message andParents: parentComm
 	packageNames := head commit packageNames asSet union: (modifiedVersions collect: [ :version | version package name ]).
 	versionInfos := packageNames collect: [ :packageName |
 		(modifiedVersions collect: #info)
-			detect: [ :version | version name = packageName ]
-			ifNone: [ head commit mcCommit dependencies detect: [ :mcVersionInfo | mcVersionInfo name = packageName ] ] ].
+			detect: [ :versionInfo | versionInfo package name = packageName ]
+			ifNone: [ head commit mcCommit dependencies detect: [ :mcVersionInfo | mcVersionInfo package name = packageName ] ] ].
 
 	newCommit := self
 		commitPackage: (MCPackage named: (head isUnbornBranch ifFalse: [ head name ] ifTrue: [ head nameForFirstCommit ]))

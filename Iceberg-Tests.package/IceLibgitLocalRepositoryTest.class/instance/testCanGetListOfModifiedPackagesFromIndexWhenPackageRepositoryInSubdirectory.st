@@ -8,12 +8,20 @@ testCanGetListOfModifiedPackagesFromIndexWhenPackageRepositoryInSubdirectory
 		ensureOriginRepository: 'https://github.com/pharo-project/pharo-metacello'
 		for: 'pharo-metacello'.
 	repository := self createTestRepository: origin.
-	repository backend subdirectory: 'repository'.
+	repository subdirectory: 'repository'.
 			
-	repository saveContent: 'foo' inWorkingCopyFile: 'foo.package'.
+	(repository location / 'foo.package')
+		writeStreamDo: [ :stream |
+			(ZnCharacterWriteStream on: stream binary encoding: 'utf8')
+				nextPutAll: 'foo' ].
+	repository addFileToIndex: (repository location / 'foo.package').
 	self assert: repository stagedPackageNames isEmpty.
 
-	repository saveContent: '{}' inWorkingCopyFile: 'repository/Metacello-Base.package/properties.json'.
+	(repository location / 'repository/Metacello-Base.package/properties.json')
+		writeStreamDo: [ :stream |
+			(ZnCharacterWriteStream on: stream binary encoding: 'utf8')
+				nextPutAll: '{}' ].
+	repository addFileToIndex: (repository location / 'repository/Metacello-Base.package/properties.json').
 	modifiedPackageNames := repository stagedPackageNames.
 	
 	self

@@ -1,6 +1,6 @@
 tests
 testCommitsInCurrentBranchDo
-	repository backend commitsInCurrentBranchDo: [ :commit | 
+	repository branch commitsDo: [ :commit | 
 		"No assertions right now, just verify that no errors ocurred and we found at least one commit"
 		^ self ].
 	

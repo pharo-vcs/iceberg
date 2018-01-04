@@ -3,10 +3,12 @@ testCommitModificationsDoesNotCreateBranch
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName asSymbol.
+	
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName asSymbol.
+
 	repository commitWithMessage: message.
 	
 	self assert: repository allBranches size equals: 1

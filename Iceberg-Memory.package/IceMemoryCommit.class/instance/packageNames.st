@@ -1,4 +1,4 @@
 accessing
 packageNames
 	
-	^ mcCommit dependencies collect: [ :each | each name ]
+	^ mcCommit dependencies collect: [ :each | each package name ]

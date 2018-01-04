@@ -26,7 +26,9 @@ mergeCommit: aCommit
 		IceMergeAborted signal
 	].
 
-	"Load changes into the image"
-	merger load.
+	self loadChangesFromMCPatch: merger.
 	self referenceCommit: aCommit.
+	
+	"Update current branch target commit"
+	self repository branch commit: aCommit.
 	^ aCommit

@@ -9,6 +9,10 @@ baseline: spec
 		self libgit: spec.
 		
 		spec
+			baseline: 'Ring2' 
+			with: [ spec repository: 'github://pharo-vcs/tonel:mergeDev' ].
+		
+		spec
 			"iceberg"
 			package: 'Iceberg';
 			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg') ];
@@ -16,7 +20,7 @@ baseline: spec
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
-			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory') ];
+			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 			"libgit"
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];

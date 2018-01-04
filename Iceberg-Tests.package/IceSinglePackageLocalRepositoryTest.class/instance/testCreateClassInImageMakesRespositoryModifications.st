@@ -1,8 +1,8 @@
 tests-changes
 testCreateClassInImageMakesRespositoryModifications
 
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName asSymbol.
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName asSymbol.
 	self assert: repository isModified

@@ -10,5 +10,5 @@ mcVersionFor: iceVersion
 		put: (UUID fromString: iceVersion commit id asString);
 		yourself).
 	dependencyCommitInfo := branchCommit dependencies detect: [ :each |
-		each name = iceVersion packageName ].
+		each package name = iceVersion packageName ].
 	^ codeRepository versionWithInfo: dependencyCommitInfo

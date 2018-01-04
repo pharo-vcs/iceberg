@@ -3,17 +3,20 @@ testCheckoutOlderCommitLeavesRepositoryInDetachedMode
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName asSymbol.
+
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName asSymbol.
+
 	repository commitWithMessage: message.
 	
 	message := 'Added IceAnotherClass'.
-	Object subclass: 'IceAnotherClass'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName asSymbol.
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceAnotherClass'
+		inPackage: packageName asSymbol.
+
 	repository commitWithMessage: message.
 	
 	repository branch newCommitWalk commits second checkout.

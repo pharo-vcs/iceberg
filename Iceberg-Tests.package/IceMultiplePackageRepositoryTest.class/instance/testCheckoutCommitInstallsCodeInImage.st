@@ -3,25 +3,25 @@ testCheckoutCommitInstallsCodeInImage
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName1 asSymbol.
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName1 asSymbol.
 	repository commitWithMessage: message.
 
 	message := 'Added IceAnotherGeneratedClassForTesting'.
-	Object subclass: 'IceAnotherGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName2 asSymbol.
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceAnotherGeneratedClassForTesting' 
+		inPackage: packageName1 asSymbol.
 	repository commitWithMessage: message.
 	
 	repository unload.
-	self deny: (RPackageOrganizer default includesPackageNamed: packageName1).
-	self deny: (RPackageOrganizer default includesPackageNamed: packageName2).
+	self denyPackageExists: packageName1.
+	self denyPackageExists: packageName2.
 	
 	repository branch commit checkout.
-	self assert: (Smalltalk globals includesKey: #IceGeneratedClassForTesting).
-	self assert: (Smalltalk globals includesKey: #IceAnotherGeneratedClassForTesting).
-	self assert: (RPackageOrganizer default includesPackageNamed: packageName1).
-	self assert: (RPackageOrganizer default includesPackageNamed: packageName2)
+	self assertClassExists: #IceGeneratedClassForTesting.
+	self assertClassExists: #IceAnotherGeneratedClassForTesting.
+	self assertPackageExists: packageName1.
+	self assertPackageExists: packageName2

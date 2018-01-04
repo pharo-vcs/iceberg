@@ -3,15 +3,17 @@ testCheckoutBranchInstallsCodeInImage
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
-	Object subclass: 'IceGeneratedClassForTesting'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: packageName asSymbol.
+	
+	"This is a Ring working copy"
+	repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: packageName asSymbol.
+	
 	repository commitWithMessage: message.
 	
 	repository unload.
-	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
+	self denyPackageExists: packageName.
 	
 	repository branch checkout.
-	self assert: (Smalltalk globals includesKey: #IceGeneratedClassForTesting).
-	self assert: (RPackageOrganizer default includesPackageNamed: packageName)
+	self assertClassExists: #IceGeneratedClassForTesting.
+	self assertPackageExists: packageName.

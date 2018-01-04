@@ -1,7 +1,7 @@
 tests
 testGitHubURL
 	| remote |
-	remote := IceRemote url: 'git@github.com:owner/repo.git'.
+	remote := IceGitRemote url: 'git@github.com:owner/repo.git'.
 	self 
 		assert: remote host equals: 'github.com';
 		assert: remote owner equals: 'owner';

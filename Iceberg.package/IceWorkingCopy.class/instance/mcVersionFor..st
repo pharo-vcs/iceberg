@@ -1,4 +1,11 @@
-changes
+private-monticello
 mcVersionFor: anIceSavedPackageVersion 
-	
-	^ anIceSavedPackageVersion package workingCopy
+
+	| mcPackage mcWorkingCopy |
+	mcPackage := anIceSavedPackageVersion mcPackage.
+	mcWorkingCopy := mcPackage workingCopy.
+	^ MCVersion new
+		setPackage: anIceSavedPackageVersion mcPackage
+		info: mcWorkingCopy versionInfo
+		snapshot: mcWorkingCopy snapshot
+		dependencies: #()

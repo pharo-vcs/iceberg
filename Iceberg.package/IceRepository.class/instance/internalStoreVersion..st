@@ -1,5 +1,4 @@
-actions
+private-monticello
 internalStoreVersion: aMCVersion 
-	self writerClass 
-		forInternalStoreFileOut: aMCVersion 
-		on: self
+	
+	self subclassResponsibility
