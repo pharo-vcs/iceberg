@@ -10,7 +10,7 @@ baseline: spec
 		
 		spec
 			baseline: 'Ring2' 
-			with: [ spec repository: 'github://pharo-vcs/tonel:mergeDev' ].
+			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
 		
 		spec
 			"iceberg"

@@ -1,3 +1,3 @@
 accessing
 description
-	^ self repository backend description
+	^ self repository description
