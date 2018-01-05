@@ -1,0 +1,4 @@
+accessing
+remote
+
+	^ self entity

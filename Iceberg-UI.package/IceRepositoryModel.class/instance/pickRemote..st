@@ -4,7 +4,7 @@ pickRemote: aTitle
 	 
 	remotes := self repository remotes.
 	^ UIManager default
-		chooseFrom: (remotes collect: #remoteName)
+		chooseFrom: (remotes collect: #name)
 		values: remotes
 		message: 'Select the remote you want to use:' 
 		title: aTitle

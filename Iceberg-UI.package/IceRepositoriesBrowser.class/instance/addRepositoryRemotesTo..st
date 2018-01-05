@@ -5,9 +5,9 @@ addRepositoryRemotesTo: composite
 	(remotes := composite fastTable)
 		title: 'Remotes';
 		display: #remotes;
-		column: 'Name' evaluated: [ :remote :model | model descriptionTextForRemote: remote] width: 80;
+		column: 'Name' evaluated: [ :remote :model | remote descriptionText ] width: 80;
 		column: 'URL' evaluated: #url width: 380;
-		column: 'Status' evaluated: [ :remote :model | model statusForRemote: remote ];
+		column: 'Status' evaluated: [ :remote :model | remote status ];
 		updateOn: IceRemoteAdded from: #announcer.
 		
 	"actions"

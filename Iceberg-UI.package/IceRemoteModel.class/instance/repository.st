@@ -1,3 +1,4 @@
 accessing
 repository
-	^ repository
+
+	^ self remote localRepository

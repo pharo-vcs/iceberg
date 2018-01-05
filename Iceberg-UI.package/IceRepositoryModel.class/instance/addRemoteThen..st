@@ -1,6 +1,6 @@
 actions remotes
 addRemoteThen: aBlock
-	IceRemoteModel new 
+	IceRemotePresenter new 
 		setModal: true;
 		repository: self repository;
 		onAccept: [ :remote |

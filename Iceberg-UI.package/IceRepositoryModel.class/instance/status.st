@@ -19,7 +19,11 @@ status
 		outgoing := self outgoingCommits size.
 		outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
 
-		^ status ifEmpty: 'Up to date' ifNotEmpty: [ ', ' join: status ]
+		status ifEmpty: [ status add: 'Up to date' ].
+		
+		status add: 'Last Fetched: ', self pullRemote lastFetchTimestamp asString.
+
+		^ ', ' join: status
 	] 
 	on: Error do: [ :error | ^ self makeError: error description ]
 
