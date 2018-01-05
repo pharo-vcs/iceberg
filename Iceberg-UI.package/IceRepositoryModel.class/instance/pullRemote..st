@@ -1,5 +1,5 @@
 actions remotes
-pullRemote: aRemote
-	[ self repository pullFrom: aRemote ]
+pullRemote: aRemoteModel
+	[ self repository pullFrom: aRemoteModel remote ]
 	on: IceShouldCommitBeforePull 
 	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]

@@ -1,7 +1,7 @@
 actions remotes
-removeRemote: aRemote then: aBlock
+removeRemote: aRemoteModel then: aBlock
 	(self confirm: (('You are going to remove remote {1}. 
-Are you sure?') format: {aRemote}))
+Are you sure?') format: {aRemoteModel remote}))
 		ifFalse: [ ^ self ].
-	self repository removeRemote: aRemote.
-	aBlock cull: aRemote
+	self repository removeRemote: aRemoteModel remote.
+	aBlock cull: aRemoteModel remote
