@@ -1,5 +1,5 @@
 displaying
 displayString
 	^ '{1}: {2}' format: { 
-			self remoteName.
+			self name.
 			self url }
