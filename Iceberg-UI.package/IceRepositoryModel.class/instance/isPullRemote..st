@@ -1,3 +1,3 @@
 testing
 isPullRemote: aRemote
-	^ self repository isPullRemote: aRemote
+	^ self repository isPullRemote: aRemote remote

@@ -21,8 +21,6 @@ status
 
 		status ifEmpty: [ status add: 'Up to date' ].
 		
-		status add: 'Last Fetched: ', self pullRemote lastFetchTimestamp asString.
-
 		^ ', ' join: status
 	] 
 	on: Error do: [ :error | ^ self makeError: error description ]

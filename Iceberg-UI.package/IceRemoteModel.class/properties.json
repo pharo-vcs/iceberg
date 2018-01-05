@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"lastFetchTimestamp"
-	],
+	"instvars" : [ ],
 	"name" : "IceRemoteModel",
 	"type" : "normal"
 }

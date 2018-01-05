@@ -1,3 +1,3 @@
 actions remotes
-makePushRemote: aRemote
-	self repository pushRemote: aRemote
+makePushRemote: aRemoteModel
+	self repository pushRemote: aRemoteModel remote
