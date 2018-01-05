@@ -1,0 +1,4 @@
+accessing
+lastFetchTimestamp
+
+	^ lastFetchTimestamp

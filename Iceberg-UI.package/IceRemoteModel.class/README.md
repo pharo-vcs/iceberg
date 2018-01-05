@@ -1,1 +1,1 @@
-I'm a dialog for adding remotes to repositories.
+I am a UI model for remote interaction.
