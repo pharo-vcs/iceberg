@@ -1,4 +1,4 @@
 accessing
-calculateOutgoingCommits
+outgoingCommits
 
 	^ self repository outgoingCommitsTo: self remote
