@@ -1,3 +1,8 @@
 actions
 refresh
-	self repository refresh
+	super refresh.
+	outgoingCommitsPerRemote removeAll.
+	incomingCommitsPerRemote removeAll.
+	
+"	self repository refresh
+"

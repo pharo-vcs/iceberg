@@ -1,3 +1,3 @@
 settings
 timeout
-	^ 30 seconds
+	^ 5 minutes
