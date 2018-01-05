@@ -1,4 +1,3 @@
 accessing
 outgoingCommits
-	^ outgoingCommits value
-	
+	^ #()

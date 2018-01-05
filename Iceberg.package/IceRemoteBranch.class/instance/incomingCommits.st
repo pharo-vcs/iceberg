@@ -1,3 +1,3 @@
 accessing
 incomingCommits
-	^ incomingCommits value
+	^ #()

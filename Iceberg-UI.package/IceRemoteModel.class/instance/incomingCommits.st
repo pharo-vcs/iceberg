@@ -1,4 +1,4 @@
 accessing
-calculateIncomingCommits
+incomingCommits
 
 	^ self repository incomingCommitsFrom: self remote
