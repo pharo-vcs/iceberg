@@ -2,8 +2,8 @@ accessing
 statusForRemote: aRemote
 	| incoming outgoing allStatus |
 	
-	incoming := (self repository incomingCommitsFrom: aRemote) size.
-	outgoing := (self repository outgoingCommitsTo: aRemote) size.
+	incoming := (self incomingCommitsFrom: aRemote) size.
+	outgoing := (self outgoingCommitsTo: aRemote) size.
 	
 	allStatus := OrderedCollection new.
 	(incoming = 0 and: [ outgoing = 0 ]) ifTrue: [ allStatus add: 'Up to date' ].

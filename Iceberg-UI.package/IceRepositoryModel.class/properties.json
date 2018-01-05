@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"incomingCommitsPerRemote",
+		"outgoingCommitsPerRemote"
+	],
 	"name" : "IceRepositoryModel",
 	"type" : "normal"
 }
