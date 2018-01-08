@@ -1,0 +1,4 @@
+tests
+testRepositoryHasNoIncomingCommitsIfNoFetch
+
+	self deny: repository hasIncomingCommits

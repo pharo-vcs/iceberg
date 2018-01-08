@@ -1,0 +1,4 @@
+tests
+testRepositoryHasNoOutgoingCommitsIfNoFetch
+
+	self deny: repository hasOutgoingCommits

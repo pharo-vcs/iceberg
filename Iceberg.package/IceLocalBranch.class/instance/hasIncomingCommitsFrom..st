@@ -2,8 +2,6 @@ testing
 hasIncomingCommitsFrom: aRemote
 	
 	| localCommits remoteCommits |
-	
-	aRemote fetchBranch: self.
 	self tracksRemoteBranch
 		ifFalse: [ ^ false ].
 	

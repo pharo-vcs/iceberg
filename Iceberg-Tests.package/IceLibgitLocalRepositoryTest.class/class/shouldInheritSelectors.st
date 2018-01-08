@@ -1,3 +1,3 @@
-testing
+as yet unclassified
 shouldInheritSelectors
 	^ true 
