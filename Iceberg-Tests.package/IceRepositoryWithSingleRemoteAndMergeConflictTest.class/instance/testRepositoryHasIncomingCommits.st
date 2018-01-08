@@ -1,4 +1,0 @@
-tests
-testRepositoryHasIncomingCommits
-
-	self assert: repository hasIncomingCommits

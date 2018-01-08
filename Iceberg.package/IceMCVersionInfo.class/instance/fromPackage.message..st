@@ -9,4 +9,4 @@ fromPackage: aPackage message: commitMessage
 	name := ('{1}-{2}.{3}' format: {aPackage name. Author fullName. 'unknown'}).
 	package := aPackage.
 	message := commitMessage.
-
+	id := UUID new
