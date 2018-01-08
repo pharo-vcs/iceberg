@@ -1,4 +1,4 @@
 packages
 addPackageNamed: aString 
 	
-	self addPackage: (MCPackage named: aString asSymbol)
+	self addPackage: (IceSavedPackage named: aString asSymbol repository: repository)

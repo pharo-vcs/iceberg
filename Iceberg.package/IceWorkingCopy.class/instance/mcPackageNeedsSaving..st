@@ -1,4 +1,4 @@
 private-monticello
-mcPackageNeedsSaving: mcPackage
+mcPackageNeedsSaving: iceSavedPackage
 
-	^ mcPackage workingCopy needsSaving
+	^ iceSavedPackage mcPackage workingCopy needsSaving

@@ -1,7 +1,7 @@
 private
 doCommitMcVersions: versions withMessage: message andParents: parentCommitishList
-	| packages newCommit |
-	
+	| newCommit |
+
 	self addFilesToIndex: (versions
 		collect: [ :version | self directoryForPackage: version package ]).
 	newCommit := self commitIndexWithMessage: message andParents: parentCommitishList.
