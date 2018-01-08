@@ -1,6 +1,7 @@
 actions
 addFilesToIndex: aCollection
 
+	self assert: aCollection isDictionary not.
 	self withRepoDo: [ :repo | 
 		| index |
 		index := repo index.

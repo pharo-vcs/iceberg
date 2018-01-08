@@ -1,4 +1,4 @@
 packages
 addPackage: aPackage
 	
-	packages at: aPackage name put: aPackage
+	self packagesDictionary at: aPackage name put: aPackage

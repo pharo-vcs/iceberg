@@ -1,4 +1,4 @@
 packages
 includesPackageNamed: aString 
 	
-	^ packages includesKey: aString
+	^ self packagesDictionary includesKey: aString

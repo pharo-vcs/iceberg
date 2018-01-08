@@ -1,4 +1,4 @@
 packages
 packageNames
 	
-	^ packages keys
+	^ self packagesDictionary keys

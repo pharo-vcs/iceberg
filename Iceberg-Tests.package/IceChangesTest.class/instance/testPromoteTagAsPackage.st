@@ -3,7 +3,7 @@ testPromoteTagAsPackage
 	| package packageChangeSet class tag diff originalPackage newPackage |
 	
 	"Prepare - Save some code within a tag"
-	repository loadPackage: packageName.
+	repository checkout.
 	package := RPackageOrganizer default packageNamed: packageName.
 	tag := package addClassTag: 'ToBePromoted'.
 
@@ -19,7 +19,7 @@ testPromoteTagAsPackage
 	tag promoteAsRPackage.
 
 	"Asserts"
-	repository addPackageNamed: tag categoryName.
+	repository workingCopy addPackageNamed: tag categoryName.
 	repository register.
 	
 	diff := IceDiff forRepository: repository.
