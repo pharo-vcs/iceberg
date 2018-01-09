@@ -1,6 +1,4 @@
 accessing
 commit
 	
-	^ IceNoCommit new
-		repository: repository;
-		yourself 
+	^ IceNoCommit repository: repository

@@ -1,4 +1,4 @@
 testing
 hasSingleCommit
 	
-	^ state isSingleCommitState
+	^ self workingCopyState isSingleCommitState

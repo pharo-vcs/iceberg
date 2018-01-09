@@ -1,3 +1,4 @@
 accessing
 referenceCommit: aCommit
-	referenceCommits := { aCommit } asOrderedCollection
+
+	self packages do: [ :each | self updatePackage: each toCommit: aCommit ]

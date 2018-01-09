@@ -9,4 +9,5 @@ testCommitModificationsCreatesNewCommit
 		inPackage: packageName1 asSymbol.
 	repository commitWithMessage: message.
 	
-	self assert: repository branch commit comment equals:  message
+	self assert: repository branch commit comment equals:  message.
+	self deny: repository workingCopy isDetached.

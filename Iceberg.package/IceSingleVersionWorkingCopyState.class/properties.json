@@ -1,12 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "IceWorkingCopyState",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"commit",
 		"referenceCommit"
 	],
 	"name" : "IceSingleVersionWorkingCopyState",

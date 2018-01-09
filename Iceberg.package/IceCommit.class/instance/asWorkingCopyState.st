@@ -1,4 +1,4 @@
 working-copy
 asWorkingCopyState
 	
-	^ IceSingleVersionWorkingCopyState on: self
+	^ IceSingleVersionWorkingCopyState on: self repository: repository

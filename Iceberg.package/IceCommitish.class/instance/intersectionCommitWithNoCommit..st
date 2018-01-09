@@ -1,0 +1,4 @@
+intersection
+intersectionCommitWithNoCommit: anIceNoCommit 
+	
+	^ self

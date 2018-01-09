@@ -1,5 +1,5 @@
 tests-commit
-testCommitModificationsDoesNotCreateBranch
+testCommitModificationsDoNotCreateBranch
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
@@ -9,4 +9,5 @@ testCommitModificationsDoesNotCreateBranch
 		inPackage: packageName1 asSymbol.
 	repository commitWithMessage: message.
 	
-	self assert: repository allBranches size equals: 1
+	self assert: repository allBranches size equals: 1.
+	self deny: repository workingCopy isDetached.

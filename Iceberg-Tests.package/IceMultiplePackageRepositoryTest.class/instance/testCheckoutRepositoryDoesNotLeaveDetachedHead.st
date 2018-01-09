@@ -2,4 +2,4 @@ tests-checkout
 testCheckoutRepositoryDoesNotLeaveDetachedHead
 
 	repository checkout.
-	self deny: repository isDetached
+	self deny: repository head isDetached

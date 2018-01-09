@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "IceWorkingCopyState",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
