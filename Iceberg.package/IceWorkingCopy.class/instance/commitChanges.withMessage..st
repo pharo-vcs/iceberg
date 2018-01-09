@@ -28,6 +28,6 @@ commitChanges: changesToCommit withMessage: message
 	"now perform commit"
 	newCommit := self repository
 		doCommitMcVersions: versions withMessage: message andParents: referenceCommits.
-		
+		self halt.
 	self referenceCommit: newCommit.
 	^ newCommit

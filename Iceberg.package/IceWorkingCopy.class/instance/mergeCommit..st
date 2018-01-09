@@ -2,9 +2,8 @@ merging
 mergeCommit: aCommit
 	
 	| merger currentCommit |
-	
-	self assert: referenceCommits size = 1.
-	currentCommit := referenceCommits first.
+
+	currentCommit := self referenceCommit.
 	
 	(aCommit isAncestorOf: currentCommit)
 		ifTrue: [

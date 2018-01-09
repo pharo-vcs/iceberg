@@ -1,4 +1,4 @@
 *Iceberg-UI
 description
 	
-	^ ', ' join: (self referenceCommit collect: #description)
+	^ self workingCopyState description

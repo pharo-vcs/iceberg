@@ -1,5 +1,5 @@
 tests
 testWorkingCopyHasUnknownCommit
  	
-	repository workingCopy reset.
+	repository workingCopy initializePackagesFromRepository.
 	self assert: repository workingCopy hasUnknownCommit

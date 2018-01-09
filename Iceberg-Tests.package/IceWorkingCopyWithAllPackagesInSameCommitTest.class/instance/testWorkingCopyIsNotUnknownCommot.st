@@ -1,5 +1,5 @@
 tests
 testWorkingCopyIsNotUnknownCommot
  	
-	repository workingCopy reset.
+	repository workingCopy initializePackagesFromRepository.
 	self deny: repository workingCopy hasUnknownCommit

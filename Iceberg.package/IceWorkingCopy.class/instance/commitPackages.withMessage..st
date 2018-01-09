@@ -17,7 +17,7 @@ commitPackages: modifiedPackages withMessage: message
 	newCommit := self repository
 		commitPackages: modifiedPackages
 		withMessage: message
-		parents: referenceCommits.
+		parents: self referenceCommits.
 		
 	self referenceCommit: newCommit.
 	^ newCommit

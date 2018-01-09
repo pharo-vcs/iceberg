@@ -20,4 +20,4 @@ testCheckoutOlderCommitLeavesRepositoryInDetachedMode
 	repository commitWithMessage: message.
 	
 	repository branch newCommitWalk commits second checkout.
-	self assert: repository isDetached
+	self assert: repository head isDetached

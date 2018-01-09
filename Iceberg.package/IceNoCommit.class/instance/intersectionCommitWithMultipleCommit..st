@@ -1,0 +1,4 @@
+intersection
+intersectionCommitWithMultipleCommit: anIceMultipleCommit 
+	
+	^ anIceMultipleCommit

@@ -1,0 +1,3 @@
+testing
+isDetached
+	self shouldBeImplemented.

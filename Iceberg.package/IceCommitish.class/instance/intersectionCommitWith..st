@@ -1,0 +1,4 @@
+intersection
+intersectionCommitWith: aCommit
+
+	self subclassResponsibility

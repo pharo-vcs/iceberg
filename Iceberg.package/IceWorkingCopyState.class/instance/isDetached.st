@@ -1,0 +1,4 @@
+testing
+isDetached
+	
+	^ self subclassResponsibility

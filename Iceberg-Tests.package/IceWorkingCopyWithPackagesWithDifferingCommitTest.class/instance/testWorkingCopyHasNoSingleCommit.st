@@ -1,5 +1,5 @@
 tests
 testWorkingCopyHasNoSingleCommit
  	
-	repository workingCopy reset.
+	repository workingCopy initializePackagesFromRepository.
 	self deny: repository workingCopy hasSingleCommit

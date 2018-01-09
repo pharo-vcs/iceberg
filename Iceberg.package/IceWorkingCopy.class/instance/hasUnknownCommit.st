@@ -1,4 +1,4 @@
 testing
 hasUnknownCommit
 
-	^ state isUnknownCommitState
+	^ self workingCopyState isUnknownCommitState

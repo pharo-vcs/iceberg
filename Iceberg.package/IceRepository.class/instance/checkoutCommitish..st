@@ -1,6 +1,5 @@
 actions
 checkoutCommitish: aCommitish
 
-	self setHead: aCommitish.	
-	workingCopy referenceCommit: aCommitish commit.
+	self setHead: aCommitish.
 	workingCopy checkoutAllPackages.

@@ -4,10 +4,11 @@ createRepository
 	self validate.
 
 	self remoteToUse ifNil: [
-		^ IceLibgitRepository new
+		repository := IceLibgitRepository new
 			location: self locationToUse;
-			subdirectory: self subdirectory;
-			yourself
+			subdirectory: self subdirectory.
+		repository workingCopy initializePackagesFromRepository.
+		^ repository
 	].
 
 	repository := self remoteToUse
@@ -16,5 +17,7 @@ createRepository
 		
 	self branchName ifNotNil: [
 		repository switchToBranchNamed: self branchName ].
+	
+	repository workingCopy initializePackagesFromRepository.
 	
 	^ repository
