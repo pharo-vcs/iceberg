@@ -1,8 +1,10 @@
 private-monticello
 mcPackageSnapshots
 	
-	^ self packageNames collect: [ :name |
-		(self repository
-			mcVersionForPackage: (MCPackage named: name)
-			inCommit: self)
-				snapshot ]
+	^ self packages
+		select: #isLoaded
+		thenCollect: [ :package |
+			(self repository
+				mcVersionForPackage: package mcPackage
+				inCommit: self)
+					snapshot ]

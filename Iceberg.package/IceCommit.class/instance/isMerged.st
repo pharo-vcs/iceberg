@@ -1,4 +1,4 @@
 testing
 isMerged
 	
-	^ self isAncestorOf: self repository workingCopy referenceCommit first
+	^ self isAncestorOf: self repository workingCopy referenceCommit
