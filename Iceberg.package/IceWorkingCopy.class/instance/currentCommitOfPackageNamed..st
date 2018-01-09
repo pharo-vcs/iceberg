@@ -2,10 +2,9 @@ accessing-monticello
 currentCommitOfPackageNamed: aString 
 	
 	| ancestors mcVersionInfo |
-	(RPackage organizer includesPackageNamed: aString)
-		ifFalse: [ ^ IceNoCommit repository: repository ].
-		
 	ancestors := (MCPackage named: aString) workingCopy ancestors.
+	ancestors ifEmpty: [ ^ IceNoCommit repository: repository ].
+	
 	self assert: ancestors size = 1.
 	mcVersionInfo := ancestors first.
 
