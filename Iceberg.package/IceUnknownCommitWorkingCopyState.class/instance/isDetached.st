@@ -1,3 +1,0 @@
-testing
-isDetached
-	self shouldBeImplemented.

@@ -1,0 +1,4 @@
+merging
+mergeWithUnknownVersionWorkingCopyState: anIceUnknownCommitWorkingCopyState 
+	
+	self subclassResponsibility
