@@ -1,10 +1,6 @@
 accessing-monticello
-updatePackage: anIceSavedPackage toCommit: anIceGitCommit 
+updatePackage: aPackage toCommit: aCommit
 	
-	anIceSavedPackage isLoaded 
-		ifFalse: [ ^ self ].
-	
-	anIceSavedPackage mcWorkingCopy
-		versionInfo: (IceMCVersionInfo new
-			fromCommit: anIceGitCommit
-			package: anIceSavedPackage)
+	self
+		updatePackage: aPackage
+		toCommits: { aCommit }

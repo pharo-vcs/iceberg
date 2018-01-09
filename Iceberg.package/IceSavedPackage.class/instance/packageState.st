@@ -1,15 +1,18 @@
 accessing
 packageState
 	
-	| currentCommit |
+	| currentCommits currentCommit |
 	self isLoaded
 		ifFalse: [ ^ IceNotLoadedPackage package: self ].
 		
 	(repository head packages includes: self)
 		ifFalse: [ ^ IceNewPackage package: self ].
 
-	currentCommit := self currentCommit.
+	currentCommits := self currentCommits.
+	currentCommits size > 1
+		ifTrue: [ ^ IceInMergePackage package: self ].
 	
+	currentCommit := currentCommits first.
 	currentCommit = repository head commit
 		ifTrue: [ ^ IceSynchronizedPackage package: self ].
 	
