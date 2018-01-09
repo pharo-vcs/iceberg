@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"ringEnvironment",
-		"dirtyPackages"
+		"dirtyPackages",
+		"loadedPackageVersions"
 	],
 	"name" : "IceRingWorkingCopy",
 	"type" : "normal"

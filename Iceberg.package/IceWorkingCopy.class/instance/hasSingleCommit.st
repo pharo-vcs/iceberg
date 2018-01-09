@@ -1,0 +1,4 @@
+testing
+hasSingleCommit
+	
+	^ state isSingleCommitState

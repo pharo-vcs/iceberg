@@ -1,16 +1,14 @@
 {
-	"commentStamp" : "NicoPasserini 9/16/2016 14:14",
+	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository",
-		"packages",
-		"referenceCommits",
-		"state"
+		"commit",
+		"referenceCommit"
 	],
-	"name" : "IceWorkingCopy",
+	"name" : "IceSingleVersionWorkingCopyState",
 	"type" : "normal"
 }

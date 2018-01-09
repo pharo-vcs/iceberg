@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packageName"
+		"packageName",
+		"repository"
 	],
 	"name" : "IcePackageReference",
 	"type" : "normal"

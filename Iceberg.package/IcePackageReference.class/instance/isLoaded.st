@@ -1,3 +1,4 @@
 querying
 isLoaded
-	^ RPackageOrganizer default includesPackageNamed: packageName
+
+	^ repository workingCopy isLoadedPackageName: self name
