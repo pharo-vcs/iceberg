@@ -1,4 +1,4 @@
 package-managemnet
 packageStatusForPackage: anIceSavedPackage 
 	
-	^ IceForeignPackage package: self
+	^ IceForeignPackage package: anIceSavedPackage

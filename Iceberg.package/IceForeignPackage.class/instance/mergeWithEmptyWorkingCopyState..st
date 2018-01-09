@@ -3,4 +3,4 @@ mergeWithEmptyWorkingCopyState: anIceEmptyWorkingCopyState
 	
 	^ IceUnknownCommitWorkingCopyState
 		on: { }
-		repository: self
+		repository: anIceEmptyWorkingCopyState repository

@@ -1,4 +1,4 @@
 operations
 unloadPackage: aPackage
 
-	aPackage unload
+	aPackage mcWorkingCopy unload

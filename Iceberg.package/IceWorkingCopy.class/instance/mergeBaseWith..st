@@ -1,4 +1,4 @@
 merging
 mergeBaseWith: aCommit
 
-	^ self referenceCommit mergeBaseWith: aCommit
+	^ self workingCopyState mergeBaseWith: aCommit
