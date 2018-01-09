@@ -1,4 +1,4 @@
 accessing
 referenceCommit: aCommit
 
-	self packages do: [ :each | self updatePackage: each toCommit: aCommit ]
+	self loadedPackages do: [ :each | self updatePackage: each toCommit: aCommit ]

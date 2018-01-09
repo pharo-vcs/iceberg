@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopyState",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mergeCommits"
+	],
+	"name" : "IceInMergeWorkingCopyState",
+	"type" : "normal"
+}

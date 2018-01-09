@@ -1,5 +1,4 @@
 testing
 isInMerge
 	
-	self halt.
-	^ referenceCommits size > 1
+	^ self workingCopyState isInMerge

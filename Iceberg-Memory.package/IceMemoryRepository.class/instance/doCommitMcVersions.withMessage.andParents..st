@@ -17,6 +17,10 @@ doCommitMcVersions: modifiedVersions withMessage: message andParents: parentComm
 		dependencies: versionInfos
 		inInternalRepository: branchRepository.
 		
+	parentCommitishList do: [ :each | 
+		(branchRepository versionWithInfo: each mcCommit info)
+			ifNil: [ branchRepository storeVersion: each mcCommit ] ].
+		
 	"We create an ice commit. This is the commit that is visible in the model"
 	iceCommit := IceMemoryCommit new.
 	iceCommit repository: self.

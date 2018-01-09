@@ -1,4 +1,4 @@
-instance creation
+as yet unclassified
 repository: aRepository 
 
 	^ self new
