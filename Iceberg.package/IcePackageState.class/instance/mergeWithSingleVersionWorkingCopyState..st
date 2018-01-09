@@ -1,0 +1,4 @@
+merging
+mergeWithSingleVersionWorkingCopyState: anIceSingleVersionWorkingCopyState 
+	
+	self subclassResponsibility

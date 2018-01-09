@@ -1,0 +1,4 @@
+merging
+mergeWithEmptyWorkingCopyState: anIceEmptyWorkingCopyState
+
+	^ anIceEmptyWorkingCopyState

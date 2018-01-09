@@ -1,4 +1,4 @@
 actions
 unload
 
-	self mcWorkingCopy unload
+	repository workingCopy unloadPackage: self
