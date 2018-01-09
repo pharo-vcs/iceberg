@@ -1,10 +1,10 @@
 description
 status
 
-	(self repository workingCopy referenceCommit includes: self)
+	(self repository workingCopy referenceCommits includes: self)
 		ifTrue: [ 'Current' ].
 
-	(self repository workingCopy referenceCommit
+	(self repository workingCopy referenceCommits
 		anySatisfy: [ :each | each isNoCommit not and: [ self isAncestorOf: each ]])
 			ifTrue: [ ^ 'Loaded' ].
 
