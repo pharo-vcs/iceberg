@@ -1,4 +1,4 @@
 display
 description
 	
-	^ referenceCommit id asString
+	^ referenceCommit description
