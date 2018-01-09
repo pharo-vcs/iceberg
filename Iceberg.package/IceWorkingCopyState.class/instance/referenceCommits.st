@@ -1,4 +1,4 @@
 accessing
 referenceCommits
 	
-	self subclassResponsibility
+	^ { self referenceCommit }

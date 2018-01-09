@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IcePackageState",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceSynchronizedPackage",
+	"type" : "normal"
+}

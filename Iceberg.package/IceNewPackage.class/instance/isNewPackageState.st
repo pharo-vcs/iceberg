@@ -1,0 +1,4 @@
+testing
+isNewPackageState
+	
+	^ true

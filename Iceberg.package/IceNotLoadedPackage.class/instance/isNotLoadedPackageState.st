@@ -1,0 +1,4 @@
+testing
+isNotLoadedPackageState
+	
+	^ true
