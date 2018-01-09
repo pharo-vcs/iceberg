@@ -1,6 +1,6 @@
 initialization
 initialElements
-	^ self repository workingCopy packages
+	^ self repository workingCopy loadedPackages
 		collect: [ :package | | icepackage |
 			icepackage := IceSavedPackage 
 				named: package name
