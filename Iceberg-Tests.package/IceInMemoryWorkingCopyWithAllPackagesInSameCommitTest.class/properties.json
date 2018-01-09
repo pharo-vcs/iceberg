@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopyWithAllPackagesInSameCommitTest",
+	"category" : "Iceberg-Tests-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceInMemoryWorkingCopyWithAllPackagesInSameCommitTest",
+	"type" : "normal"
+}

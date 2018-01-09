@@ -1,4 +1,4 @@
 accessing
 packages
 
-	self subclassResponsibility
+	^ self head packages

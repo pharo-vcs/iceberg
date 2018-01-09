@@ -1,0 +1,4 @@
+testing
+hasUnknownCommit
+
+	^ state isUnknownCommitState
