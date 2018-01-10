@@ -5,7 +5,7 @@
 	"name" : "IceGitRemoteBranch",
 	"commentStamp" : "",
 	"super" : "IceRemoteBranch",
-	"traitcomposition" : "IceTGitBranch",
+	"traitcomposition" : "IceTGitBranch - {#branchNamePrefix}",
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],

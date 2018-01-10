@@ -1,5 +1,5 @@
 tests
 testBranches
 	self assert: (
-		repository backend localBranchNames 
+		repository localBranchNames
 			includesAll: { 'master' }) 

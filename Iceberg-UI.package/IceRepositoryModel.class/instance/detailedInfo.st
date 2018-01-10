@@ -12,4 +12,4 @@ detailedInfo
 		{ 'Location' -> self repository location pathString },
 		pullRemoteInfo,
 		pushRemoteInfo,
-		{ 'On branch' -> self repository branchName }
+		{ 'On branch' -> self repository description }

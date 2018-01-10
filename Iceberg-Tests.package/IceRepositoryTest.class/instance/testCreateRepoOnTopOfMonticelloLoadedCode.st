@@ -5,10 +5,11 @@ testCreateRepoOnTopOfMonticelloLoadedCode
 		self assert: repository loadedPackages isNotEmpty.
 		package := repository packageNamed: packageName. 
 
-		self assert: repository workingCopy loadedVersions isNotEmpty.
-		self assert: repository incomingCommits isEmpty.
-		self assert: repository headCommit equals: repository workingCopy referenceCommit.
+		"since the package is from monticello, I have no reference commit"
+		self assert: repository workingCopy referenceCommits isEmpty.
+		
+		"Since we cannot know what commit is loaded, everything is incoming"
+		self assert: repository incomingCommits isNotEmpty.
 
-		self shouldnt: [ package incomingCommits ] raise: Error.
-		self assert: (package loadedVersion description matchesRegex: package name, '.*\.\d+').
+		self assert: package packageState isForeignPackageState.
 	].

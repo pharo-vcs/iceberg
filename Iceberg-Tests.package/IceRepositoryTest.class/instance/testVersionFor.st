@@ -7,7 +7,7 @@ testVersionFor
 	
 	self assert: (version isKindOf: IceSavedPackageVersion).
 	self 
-		assert: version commit parentIds first
+		assert: version commit ancestors first id
 		equals: '5f64053bb832c18c830be1e300ef4d0415c6dfe0'.
 
 	self 

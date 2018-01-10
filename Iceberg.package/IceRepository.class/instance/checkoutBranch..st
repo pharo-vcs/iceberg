@@ -1,4 +1,6 @@
 actions
 checkoutBranch: branchName
-	
-	self subclassResponsibility
+
+	(self
+		branchNamed: branchName
+		ifAbsent: [ self createBranchTracking: branchName  ]) checkout

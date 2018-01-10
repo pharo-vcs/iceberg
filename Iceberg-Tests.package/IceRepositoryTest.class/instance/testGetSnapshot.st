@@ -1,7 +1,8 @@
 tests
 testGetSnapshot
 	| snapshot def |
-	snapshot := (repository packageNamed: packageName) latestVersion mcVersion snapshot.
+	repository checkoutPackageNamed: packageName.
+	snapshot := (repository packageNamed: packageName) mcSnapshot.
 	
 	def := snapshot definitions detect: [ :dep | dep class = MCOrganizationDefinition ].
 	self assert: def categories size equals: 1.

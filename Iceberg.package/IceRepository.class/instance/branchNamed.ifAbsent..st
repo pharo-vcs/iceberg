@@ -1,7 +1,7 @@
 branches
 branchNamed: aName ifAbsent: absentBlock
 	
-	self
+	^ self
 		branchNamed: aName
-		ifPresent: [ :branch | ^ branch ]
+		ifPresent: [ :branch | branch ]
 		ifAbsent: absentBlock
