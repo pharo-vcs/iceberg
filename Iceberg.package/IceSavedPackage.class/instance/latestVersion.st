@@ -1,3 +1,4 @@
-querying
+TOMOVE
 latestVersion
-	^ self repository headCommit versionFor: self
+	
+	^ self versionFor: self repository head commit

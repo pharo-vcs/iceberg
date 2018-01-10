@@ -1,4 +1,6 @@
 merging
 mergeWithUnknownVersionWorkingCopyState: anIceUnknownCommitWorkingCopyState 
 	
-	self subclassResponsibility
+	^ IceUnknownCommitWorkingCopyState
+		on: (anIceUnknownCommitWorkingCopyState referenceCommits copyWith: package currentCommit) asSet asArray
+		repository: package repository

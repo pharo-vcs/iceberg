@@ -1,7 +1,7 @@
 tests
 testAllBranches
 	self assert: (
-		(repository backend allBranches collect: #name)
+		(repository allBranches collect: #name)
 			includesAll: { 
 				'master'.
 				'origin/forBecomeWriteable'.

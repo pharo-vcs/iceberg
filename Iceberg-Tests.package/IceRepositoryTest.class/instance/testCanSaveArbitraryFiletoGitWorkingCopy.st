@@ -4,10 +4,10 @@ testCanSaveArbitraryFiletoGitWorkingCopy
 	content := 'a content
 committed through iceberg'.
 
-	repository 
-		saveContent: content
-		inWorkingCopyFile: 'foo.bar'.
-		
+	(repository location / 'foo.bar')
+		writeStreamDo: [ :stream |
+			(ZnCharacterWriteStream on: stream binary encoding: 'utf8')
+				nextPutAll: content ].
 	self assert: (repository location / 'foo.bar') exists.
 	
 	self

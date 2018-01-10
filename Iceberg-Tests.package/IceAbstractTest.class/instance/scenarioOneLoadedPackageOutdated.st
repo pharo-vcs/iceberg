@@ -10,8 +10,7 @@ scenarioOneLoadedPackageOutdated
 	self removeTestPackages.
 
 	"3 - Checkout and load the previous version"
-	repository checkoutBranch: 'master^1'.
-	repository loadPackage: packageName.
+	repository head parent checkoutPackageNamed: packageName.
 	
 	"4 - Checkout (but not load) the latest version"
 	repository checkoutBranch: 'master'.

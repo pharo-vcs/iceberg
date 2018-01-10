@@ -1,6 +1,5 @@
 configurations
 parameters
 	^ { 
-		self remoteTypeConfiguration. 
-		self repositoryBackendConfiguration
+		self remoteTypeConfiguration
 	}

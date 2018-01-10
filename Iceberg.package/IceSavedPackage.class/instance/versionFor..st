@@ -1,3 +1,3 @@
 querying
 versionFor: aCommitId
-	^ (self repository commitAt: aCommitId) versionFor: self
+	^ aCommitId commit versionFor: self

@@ -3,4 +3,4 @@ checkoutPackagesNamed: aCollection
 	
 	self
 		checkoutPackagesNamed: aCollection
-		fromCommit: self referenceCommit
+		fromCommit: self repository head commit

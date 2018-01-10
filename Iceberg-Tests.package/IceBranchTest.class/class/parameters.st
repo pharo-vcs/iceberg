@@ -1,3 +1,0 @@
-configuration
-parameters
-	^ { self repositoryBackendConfiguration }

@@ -1,3 +1,3 @@
 accessing
 description
-	^ self origin url, '[', self branchName, ']'
+	^ self origin url, '[', self head description, ']'

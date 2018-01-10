@@ -4,7 +4,6 @@ testCloneSpecifyingBranch
 
 	self assert: repository branchName equals: 'forBecomeWriteable'.
 	self assert: repository branch name equals: 'forBecomeWriteable'.
-	self assert: repository backend branch name equals: 'forBecomeWriteable'.
 		
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	self assert: ((Smalltalk at: #Test) canUnderstand: #forBecomeWritable)

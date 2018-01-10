@@ -1,11 +1,9 @@
 tests
 testCanLoadArbitraryFileFromGitCommitish
-	| content |
+	| content entry |
 
-	content := repository 
-		contentOfFileNamed: 'BaselineOfPharoGitTest.package/properties.json'
-		commit: repository headCommit id.
-
+	entry := repository headCommit entryByPath: 'BaselineOfPharoGitTest.package/properties.json'.
+	content := entry readStreamDo: [ :stream | stream contents ].
 	self
 		assert: content
 		equals: '{

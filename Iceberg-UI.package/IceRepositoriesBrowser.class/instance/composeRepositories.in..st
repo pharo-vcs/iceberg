@@ -7,7 +7,7 @@ composeRepositories: repositories in: composite
 		title: 'Repositories';
 		display: [ self visibleRepositoryModels  ];
 		column: 'Name' evaluated: #descriptionText width: 200;
-		column: 'Current branch' evaluated: #branchName width: 120;
+		column: 'Current branch' evaluated: #headDescription width: 120;
 		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
 		column: 'Status' evaluated: #status width: 150.
 

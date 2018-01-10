@@ -1,6 +1,6 @@
 actions
 createBranch: aString inCommit: anIceGitCommit 
-	
+
 	self withRepoDo: [ :repo | | newBranch |
 		newBranch := repo 
 			createBranch: aString 
