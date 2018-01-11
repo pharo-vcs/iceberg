@@ -3,6 +3,8 @@ testCanGetListOfModifiedPackagesFromIndexWhenPackageRepositoryInSubdirectory
 	| modifiedPackageNames |
 	
 	self flag: 'TODO - clean the repository after test execution, else seconf test run will failed!'.
+	self timeLimit: 1 minute.
+
 
 	origin := self 
 		ensureOriginRepository: 'https://github.com/pharo-project/pharo-metacello'

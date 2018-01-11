@@ -16,7 +16,7 @@ scenarioOutdatedLocalRepository
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
 			baseline: 'PharoGitTest';
-			repository: 'filetree://', self absoluteLocation fullName;
+			repository: 'github://pharo-vcs/pharo-git-test:forBecomeWriteable';
 			onConflict: [:ex | ex allow];
 			load
 	].
@@ -27,4 +27,4 @@ scenarioOutdatedLocalRepository
 		branchName: 'forBecomeWritable';
 		createRepository.
 		
-	repository head commit merge.
+	repository workingCopy adoptInstance: repository head commit parent.

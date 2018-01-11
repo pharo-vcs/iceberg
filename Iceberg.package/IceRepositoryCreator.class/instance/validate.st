@@ -6,7 +6,7 @@ validate
 		and: [ self remoteToUse isNil ])
 		ifTrue: [ IceError signal: 'No location/url or remote defined.' ].
 		
-	(self locationToUse exists and: [ self locationToUse hasChildren ])
+	(self remoteToUse isNotNil and: [self locationToUse exists and: [ self locationToUse hasChildren ]])
 		ifTrue: [
 				IceDuplicatedRepository signal: 
 					('You already have an Iceberg repository 

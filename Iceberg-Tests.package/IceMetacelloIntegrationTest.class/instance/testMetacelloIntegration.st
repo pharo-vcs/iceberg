@@ -3,9 +3,10 @@ testMetacelloIntegration
 	self assert: (IceRepository registry noneSatisfy: [ :repo | repo origin projectName = projectName ]).
 	
 	Metacello new
-	  baseline: 'PharoGitTest';
-	  repository: 'github://pharo-vcs/', projectName;
-	  load.
+		baseline: 'PharoGitTest';
+		repository: 'github://pharo-vcs/', projectName;
+		onConflict: [ :e | e useIncoming ];
+		load.
 
 	repository := IceRepository registry 
 		detect: [ :repo | repo origin projectName = projectName ]
