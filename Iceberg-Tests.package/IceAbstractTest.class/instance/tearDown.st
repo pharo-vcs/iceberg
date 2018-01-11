@@ -7,7 +7,8 @@ tearDown
 	IceTestCredentialProvider uninstall.
 	repository ifNotNil: [ :each |
 		each forget.
-		each location ensureDeleteAll ].
+		each location ensureDeleteAll.
+		(IceMetacelloRepositoryAdapter for: each) unregister ].
 
 	(IceRepository registry 
 		select: [:repo | repo origin url endsWith: 'pharo-git-test.git'])

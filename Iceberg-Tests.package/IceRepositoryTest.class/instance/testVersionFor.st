@@ -3,7 +3,7 @@ testVersionFor
 	| version commitId|
 
 	commitId := '503091320dcde204e3e5339742ca6ab18cde7c3f'.
-	version := ((repository packageNamed: packageName) versionFor: commitId).
+	version := ((repository packageNamed: packageName) versionFor: (repository lookupCommit: commitId)).
 	
 	self assert: (version isKindOf: IceSavedPackageVersion).
 	self 

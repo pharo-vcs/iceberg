@@ -3,7 +3,7 @@ testIncomingVersionsFromUpstream
 	| package | 
 	"1. - Preparation: checkout the all-but-last version"
 	self gitCommand: 'reset --hard master^'.
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	repository fetch.
 
 	"2. - Exercise"
