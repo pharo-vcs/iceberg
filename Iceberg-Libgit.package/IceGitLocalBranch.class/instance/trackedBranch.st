@@ -6,4 +6,4 @@ trackedBranch
 	upstream ifNil: [ 
 		upstream := self setUpstream: (self lookupRemoteBranch: '/origin/', self name) ].
 	
-	^ repository basicNewRemoteBranchNamed: upstream name
+	^ upstream

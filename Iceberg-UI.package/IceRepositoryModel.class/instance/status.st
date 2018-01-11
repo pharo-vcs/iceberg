@@ -8,7 +8,7 @@ status
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 		
 		entity workingCopy workingCopyState isUnknownCommitState ifTrue: [ ^ self makeError: entity workingCopy workingCopyState description ].
-		entity workingCopy isDetached ifTrue: [ ^ self makeError: 'Detached Working Copy' ].
+		entity workingCopy isDetached ifTrue: [ ^ self makeError: 'Outdated Working Copy' ].
 		entity head isDetached ifTrue: [ ^ self makeError: 'Detached HEAD' ].
 
 		status := OrderedCollection new.
