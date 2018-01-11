@@ -27,4 +27,4 @@ scenarioOutdatedLocalRepository
 		branchName: 'forBecomeWritable';
 		createRepository.
 		
-	repository workingCopy adoptInstance: repository head commit parent.
+	repository workingCopy adoptCommit: repository head commit parent.
