@@ -1,4 +1,4 @@
 accessing
 name
 
-	^ self shortname withoutPrefix: self remoteName, '/'
+	^ self fullname withoutPrefix: self prefix

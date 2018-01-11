@@ -1,13 +1,11 @@
 {
-	"classtraitcomposition" : "IceTGitBranch classTrait",
+	"commentStamp" : "",
+	"super" : "IceRemoteBranch",
+	"category" : "Iceberg-Libgit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "IceGitRemoteBranch",
-	"commentStamp" : "",
-	"super" : "IceRemoteBranch",
-	"traitcomposition" : "IceTGitBranch - {#branchNamePrefix}",
-	"type" : "normal",
-	"classinstvars" : [ ],
-	"pools" : [ ],
-	"category" : "Iceberg-Libgit"
+	"type" : "normal"
 }

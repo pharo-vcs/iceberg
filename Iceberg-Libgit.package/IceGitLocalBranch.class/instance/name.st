@@ -1,4 +1,4 @@
 accessing
-shortname
+name
 
 	^ self fullname withoutPrefix: self branchNamePrefix
