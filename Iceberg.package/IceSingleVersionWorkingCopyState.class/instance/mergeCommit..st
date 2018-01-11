@@ -1,7 +1,7 @@
 merging
 mergeCommit: aCommit
 	
-	| merger currentCommit hadConflicts isFastForward |
+	| merger currentCommit newCommit |
 
 	currentCommit := self referenceCommit.
 	
@@ -18,24 +18,20 @@ mergeCommit: aCommit
 				ifNil: [ MCSnapshot empty ]
 				ifNotNil: [ :ancestor | ancestor mcSnapshot]).
 	
-	hadConflicts := merger hasConflicts.
 	self executeMergeOfCommit: aCommit withMerger: merger.
-	
-	isFastForward := hadConflicts and: [ currentCommit isAncestorOf: aCommit ].
-	isFastForward ifTrue: [ 
-			"Update current branch target commit"
-			self repository branch commit: aCommit.
-			self workingCopy adoptCommit: aCommit.
-			^ aCommit ].
 
+	"If #executeMergeOfCommit:withMerger: returns without exception,
+	we can assume all conflicts were resolved either manually or automatically."
+
+	(currentCommit isAncestorOf: aCommit) ifTrue: [
+		"We can fast-forward"
+		"Update current branch target commit"
+		self repository branch commit: aCommit.
+		self workingCopy adoptCommit: aCommit.
+		^ aCommit ].
 
 	"Otherwise, we enter in a merge case and we should create a merge commit either manually or automatically"
 	self workingCopy setMergeStateBetweenCommits: { currentCommit . aCommit }.
-
-	hadConflicts ifFalse: [ | newCommit |
-		newCommit := self workingCopy commitWithMessage: 'Merge ', aCommit id asString.
-		self repository branch commit: newCommit.
-		^ newCommit
-	].
-
-	^ aCommit
+	newCommit := self workingCopy commitWithMessage: 'Merge ', aCommit id asString.
+	self repository branch commit: newCommit.
+	^ newCommit

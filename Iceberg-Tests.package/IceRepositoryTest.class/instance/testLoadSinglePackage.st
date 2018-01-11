@@ -1,11 +1,9 @@
 tests - loading
 testLoadSinglePackage
-	| package |
 	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
 	
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	
 	self assert: (RPackageOrganizer default includesPackageNamed: packageName).
 	
-	package := repository packageNamed: packageName.
-	self assert: repository headCommit equals: (repository packageNamed: package) currentCommit
+	self assert: repository headCommit equals: (repository packageNamed: packageName) currentCommit

@@ -1,8 +1,8 @@
 tests - commit
 testStatusAfterCommittingOnePackage
 	"Load two packages"
-	repository loadPackage: packageName.
-	repository loadPackage: otherPackageName.
+	repository checkoutPackageNamed: packageName.
+	repository checkoutPackageNamed: otherPackageName.
 	
 	"But save only one"
 	self createLocalChanges.

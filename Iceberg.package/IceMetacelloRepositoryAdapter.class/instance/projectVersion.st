@@ -1,3 +1,3 @@
 accessing
 projectVersion
-	^ self repository branchName
+	^ self repository head gitRef

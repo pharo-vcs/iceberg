@@ -11,13 +11,5 @@ testMetacelloIntegrationForTags
 		detect: [ :repo | repo origin projectName = projectName ]
 		ifNone: [ self fail: 'Could not find repository for project: ', projectName ].
 
-	self assert: (repository workingCopy loadedVersions noneSatisfy: [ :version | version isKindOf: IceForeignVersion ]).
-	self assert: ((repository workingCopy versionFor: (repository packageNamed: packageName)) isKindOf: IceSavedPackageVersion ).
-	self assert: repository incomingCommits isEmpty.
-	self assert: repository outgoingCommits isEmpty.
-	
-	repository loadedPackages do: [ :package | 
-		self assert: package incomingCommits isEmpty.
-		self assert: package outgoingCommits isEmpty 
-	].
-
+	self assert: repository workingCopy workingCopyState isSingleCommitState.
+	self assert: repository head isDetached.

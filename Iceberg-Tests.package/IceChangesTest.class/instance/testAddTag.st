@@ -3,7 +3,7 @@ testAddTag
 	| package packageChangeSet |
 	
 	"Prepare"
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	package := RPackageOrganizer default packageNamed: packageName.
 	package addClassTag: 'NewTag'.
 	

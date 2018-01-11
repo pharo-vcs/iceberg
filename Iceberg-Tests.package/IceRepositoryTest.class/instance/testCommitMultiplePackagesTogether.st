@@ -8,8 +8,7 @@ testCommitMultiplePackagesTogether
 	self assert: repository branch commits size equals: oldCommits + 1.
 	self assert: repository workingCopy referenceCommit equals: repository headCommit.
 
-	{ packageName. otherPackageName } do: [ :name | | package version |
+	{ packageName. otherPackageName } do: [ :name | | package |
 		package := repository packageNamed: name.
-		version := repository workingCopy versionFor: package.
-		self assert: version commit equals: repository headCommit.
-	].
+		self assert: package currentCommit equals: repository headCommit.
+	]

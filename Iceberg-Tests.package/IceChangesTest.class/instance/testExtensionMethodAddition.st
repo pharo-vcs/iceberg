@@ -3,7 +3,7 @@ testExtensionMethodAddition
 	| class diff elements |
 	
 	"Prepare"
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	class := Object subclass: #ForExtensionMethods.
 	class compile: 'myExtensionMethod'.
 	class organization classify: #myExtensionMethod under: '*', packageName.

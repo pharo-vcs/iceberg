@@ -6,7 +6,7 @@ createIncomingCommit
 	| versionNumber | 
 	
 	"1 - First load a package"
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	versionNumber := (Smalltalk at: #Test) new versionNumber.
 
 	"2 - Modify it and commit to a new branch"
@@ -24,7 +24,7 @@ createIncomingCommit
 	"5 - Reload the package from local repository"
 	self removeTestPackages.
 	self deny: (Smalltalk globals includesKey: #Test).	
-	repository loadPackage: packageName.
+	repository checkoutPackageNamed: packageName.
 	self checkLoadedLatestCommitWithVersion: versionNumber - 1.
 
 	^ versionNumber

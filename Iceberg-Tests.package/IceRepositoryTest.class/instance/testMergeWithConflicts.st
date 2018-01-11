@@ -7,10 +7,8 @@ testMergeWithConflicts
 	self checkLoadedLatestCommitWithVersion: newVersionNumber.
 
 	"2. Exercise: Update the package from remote repository"
-	toMerge := repository branch upstream lastCommit.
-	self should: [ repository basicMerge: toMerge ] raise: IceMergeAborted.
-	
-	[ repository mergeConflictsWith: toMerge ]
+	toMerge := repository branch upstream commit.
+	[ repository workingCopy mergeCommit: toMerge ]
 		on: MCMergeResolutionRequest
 		do: [ 	:resolutionRequest | 
 			resolutionRequest merger conflicts do: [ :ea | ea chooseRemote ].
@@ -25,7 +23,7 @@ testMergeWithConflicts
 	self assert: (lastCommits at: 2) parentIds equals: (OrderedCollection with: (lastCommits at: 4) id).
 	self assert: (lastCommits at: 3) parentIds equals: (OrderedCollection with: (lastCommits at: 4) id).
 	
-	self assert: ((lastCommits at: 1) message includesSubstring: 'Merging').
+	self assert: ((lastCommits at: 1) message includesSubstring: 'Merge').
 	self assert: ((lastCommits at: 2) message endsWith: newVersionNumber asString).
 	self assert: ((lastCommits at: 3) message endsWith: newVersionNumber asString).
 	self assert: ((lastCommits at: 4) message endsWith: (newVersionNumber - 1) asString).

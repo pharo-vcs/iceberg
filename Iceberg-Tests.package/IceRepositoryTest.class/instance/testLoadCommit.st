@@ -1,29 +1,27 @@
 tests - loading
 testLoadCommit
-	| commit changedPackage unchangedPackage | 
+	| incomingCommit changedPackage unchangedPackage | 
 	self scenarioTwoLoadedPackagesOneOutdated.
+
 
 	"1.1 - Verify incoming commits and versions"
 	self assert: repository incomingCommits size equals: 1.
 
-	commit := repository incomingCommits first.
+	incomingCommit := repository incomingCommits first.
 	changedPackage := repository packageNamed: packageName.
 	unchangedPackage := repository packageNamed: otherPackageName.
 
-	self assert: changedPackage incomingCommits size equals: 1.
-	self assert: unchangedPackage incomingCommits isEmpty.
-	self deny: (commit versionFor: changedPackage) = changedPackage loadedVersion.
-	self assert: (commit versionFor: changedPackage) parent equals: changedPackage loadedVersion.
-	self assert: (commit versionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
+	self deny: incomingCommit equals: changedPackage currentCommit.
+	self deny: incomingCommit equals: unchangedPackage currentCommit.
+	
+	self assert: incomingCommit parent equals: changedPackage currentCommit.
+	self assert: incomingCommit parent equals: unchangedPackage currentCommit.
 	
 	"2. Exercise: Update the package from remote repository"
-	commit load. 
+	repository head checkout.
 	
 	"3. Assert the commit is now loaded."	
-	self assert: changedPackage incomingCommits isEmpty.
-	self assert: unchangedPackage incomingCommits isEmpty.
-
-	self assert: (commit versionFor: changedPackage) equals: changedPackage loadedVersion.
-	self assert: (commit versionFor: unchangedPackage) equals: unchangedPackage loadedVersion.
-	
 	self assert: repository incomingCommits isEmpty.
+
+	self assert: incomingCommit equals: changedPackage currentCommit.
+	self assert: incomingCommit equals: unchangedPackage currentCommit.
