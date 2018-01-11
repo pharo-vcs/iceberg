@@ -1,4 +1,0 @@
-accessing
-branchNamePrefix
-
-	self requirement

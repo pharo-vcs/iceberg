@@ -10,6 +10,6 @@ testLocalBranchTracksRemoteBranchWhenNameMatches
 	remoteTrackedBranch := repository remoteTrackedBranches anyOne.
 	
 	
-	self assert: remoteTrackedBranch name equals: remoteBranchName.
+	self assert: remoteTrackedBranch shortname equals: remoteBranchName.
 	self assert: (repository branchNamed: remoteBranchName) tracksRemoteBranch.
 	self assert: (repository branchNamed: remoteBranchName) trackedBranch equals: remoteTrackedBranch.

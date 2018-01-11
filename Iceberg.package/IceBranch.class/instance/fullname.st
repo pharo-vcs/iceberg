@@ -1,4 +1,4 @@
 accessing
 fullname
 
-	^ super name
+	^ name
