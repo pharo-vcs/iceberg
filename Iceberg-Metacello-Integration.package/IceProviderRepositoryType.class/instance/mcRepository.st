@@ -5,5 +5,5 @@ mcRepository
 	self guessRegisteredRepository
 		ifNotNil: [ :repo | ^ repo metacelloAdapter ].
 	
-	baseRepo := MCBitbucketRepository location: self location.
+	baseRepo := self mcRepositoryClass location: self location.
 	^ baseRepo getOrCreateIcebergRepository metacelloAdapter
