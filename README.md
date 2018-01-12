@@ -25,7 +25,19 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.  
 
 ***Q.** I'm using a server with an alternate SSH port and I'm receiving "connection timeout" when I'm trying to clone.*  
-**A.** You need to use an different url format than default one (the one that is proposed in most sites). You need an url as this one: ` ssh://git@url:port/team/project.git`  
+**A.** You need to use an different url format than default one (the one that is proposed in most sites). You need an url as this one: ` ssh://git@url:port/team/project.git`.
+
+***Q.** I'm using Iceberg on Windows - whilst trying to clone a repository I receive the error "LGit_GIT_ERROR: error authenticating: failed connecting agent".*  
+**A.** Prompting for credentials currently doesn't work on Windows (we can't use ssh-agent).  You need to setup authentication using ssh keys.  Something like so:
+
+```Smalltalk
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: 'c:\path\to\ssh\id_rsa.pub';
+	privateKey: 'c:\path\to\ssh\id_rsa'
+```
+
+(Your key should not have a passphrase)
 
 ## Installation (for development)
 ### Prerequisites
@@ -45,23 +57,13 @@ Since Pharo 6.0, iceberg is included in the image, so you probably will need to 
 Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceberg in your repo and then pull changes.
 
 #### For Pharo 6
-Since we are including tonel file format, we need to adapt also Metacello to process it, so you will need to update it too.
 
 ```Smalltalk
-"Restore defaults"
-Iceberg enableMetacelloIntegration: false.
-MetacelloPharo30Platform select.
-
-"Update metacello" 
-Metacello new
-  baseline: 'Metacello';
-  repository: 'github://metacello/metacello:Pharo6.1/repository';
-  onConflict: [:e | e useIncoming ];
-  get;
-  load.
-
-"Update iceberg"
- #(
+MetacelloPharoPlatform select.
+#(
+	'BaselineOfTonel'
+	'BaselineOfLibGit'
+	'BaselineOfIceberg'
 	'Iceberg-UI' 
 	'Iceberg-Plugin-GitHub' 
 	'Iceberg-Plugin' 
@@ -70,11 +72,14 @@ Metacello new
 	'Iceberg-Libgit-Filetree' 
 	'Iceberg-Libgit' 
 	'Iceberg' 
-	'LibGit-Core') 
+	'LibGit-Core'
+	'MonticelloTonel-Tests'
+	'MonticelloTonel-Core'
+	'MonticelloTonel-FileSystem' ) 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6';
+  	repository: 'github://pharo-vcs/iceberg:v0.6.5';
   	load.
 ```
 
