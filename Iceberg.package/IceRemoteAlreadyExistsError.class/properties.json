@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceError",
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-Errors",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
