@@ -1,7 +1,7 @@
 private-monticello
-mcPackageSnapshots
+mcPackageSnapshotsOfPackages: aCollection
 	
-	^ self packages
+	^ aCollection
 		select: #isLoaded
 		thenCollect: [ :package |
 			(self repository

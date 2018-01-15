@@ -1,4 +1,9 @@
 accessing remotes
 origin
 	
-	^ self remoteNamed: 'origin' ifAbsent: [ IceUndefinedRemote new ]
+	^ self
+		remoteNamed: 'origin'
+		ifAbsent: [
+			IceUndefinedRemote new
+				name: 'origin';
+				yourself ]

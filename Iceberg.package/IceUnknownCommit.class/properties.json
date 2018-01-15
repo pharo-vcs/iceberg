@@ -1,11 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "IceRemote",
+	"super" : "IceCommitish",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceUndefinedRemote",
+	"instvars" : [
+		"id",
+		"datetime"
+	],
+	"name" : "IceUnknownCommit",
 	"type" : "normal"
 }

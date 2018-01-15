@@ -1,4 +1,4 @@
-ancestry
+testing
 isAncestorOf: aCommit
 	
-	^ aCommit newCommitWalk includesCommit: self
+	^ aCommit isParentOf: self

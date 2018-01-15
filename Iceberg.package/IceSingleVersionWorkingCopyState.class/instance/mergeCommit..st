@@ -1,7 +1,7 @@
 merging
 mergeCommit: aCommit
 	
-	| merger currentCommit newCommit |
+	| merger currentCommit newCommit changedPackages |
 
 	currentCommit := self referenceCommit.
 	
@@ -10,13 +10,15 @@ mergeCommit: aCommit
 			"The commit is already merged"
 			^ self ].
 	
+	"Optimize the diff by just comparing changed packages"
+	changedPackages := self workingCopy changedPackagesTo: aCommit.
 	"Otherwise, we have to do a merge"
 	merger := MCThreeWayMerger
-			base: self workingCopy mcSnapshot
-			target: aCommit mcSnapshot
+			base: (self workingCopy mcSnapshotOfPackages: changedPackages)
+			target: (aCommit mcSnapshotOfPackages: changedPackages)
 			ancestor: ((currentCommit commonAncestorWith: aCommit)
 				ifNil: [ MCSnapshot empty ]
-				ifNotNil: [ :ancestor | ancestor mcSnapshot]).
+				ifNotNil: [ :ancestor | (ancestor mcSnapshotOfPackages: changedPackages) ]).
 	
 	self executeMergeOfCommit: aCommit withMerger: merger.
 
