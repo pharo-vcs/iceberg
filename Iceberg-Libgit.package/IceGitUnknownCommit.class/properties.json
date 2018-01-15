@@ -1,13 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "IceCommitish",
-	"category" : "Iceberg-Core",
+	"super" : "IceCommit",
+	"category" : "Iceberg-Libgit",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packageCache"
+		"id",
+		"datetime"
 	],
-	"name" : "IceCommit",
+	"name" : "IceGitUnknownCommit",
 	"type" : "normal"
 }

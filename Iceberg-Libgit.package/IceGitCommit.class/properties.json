@@ -10,7 +10,8 @@
 		"author",
 		"datetime",
 		"ancestorIds",
-		"comment"
+		"comment",
+		"packageNamesCache"
 	],
 	"name" : "IceGitCommit",
 	"type" : "normal"
