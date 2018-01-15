@@ -1,4 +1,0 @@
-testing
-isMissing
-	
-	self subclassResponsibility

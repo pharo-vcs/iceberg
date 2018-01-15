@@ -1,4 +1,4 @@
-accessing remotes
+API-remotes
 removeRemote: aRemote
 	
 	(self hasRemoteNamed: aRemote name)
@@ -6,4 +6,4 @@ removeRemote: aRemote
 			remoteName: aRemote name;
 			signal ].
 		
-	self doRemoteRemote: aRemote
+	self doRemoveRemote: aRemote

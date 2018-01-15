@@ -1,4 +1,4 @@
-actions - utility
+private-commit
 commitPackages: packagesToCommit withMessage: message
 
 	^ self workingCopy

@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "GuillermoPolito 1/15/2018 18:13",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
@@ -17,7 +17,6 @@
 		"announcer",
 		"pullRemote",
 		"pushRemote",
-		"system",
 		"workingCopy"
 	],
 	"name" : "IceRepository",

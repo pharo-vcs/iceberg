@@ -1,5 +1,5 @@
 accessing remotes
-doRemoteRemote: aRemote
+doRemoveRemote: aRemote
 
 	self withRepoDo: [ :repo |
 		(LGitRemote of: repo named: aRemote name)

@@ -1,4 +1,0 @@
-testing
-isCodeMissing
-	
-	self subclassResponsibility

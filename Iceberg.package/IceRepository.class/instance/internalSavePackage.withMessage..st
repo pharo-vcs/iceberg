@@ -1,4 +1,4 @@
-private
+private-commit
 internalSavePackage: aPackage withMessage: commitMessage
 
 	"Save a package to the underlying store but do not commit"

@@ -1,7 +1,5 @@
-operations
+API-loading
 checkout
-	
-	"A checkout operation loads all packages from the repository in the image"
-	"By default, it loads them from the current branch"
+	"A checkout operation loads all packages from the current branch in the image"
 	
 	self branch checkout

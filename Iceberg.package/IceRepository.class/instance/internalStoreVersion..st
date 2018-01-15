@@ -1,4 +1,4 @@
-private-monticello
+private-commit
 internalStoreVersion: aMCVersion 
 	
 	self subclassResponsibility

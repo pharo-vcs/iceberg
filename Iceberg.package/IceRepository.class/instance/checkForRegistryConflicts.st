@@ -1,4 +1,4 @@
-repository handling
+API-registry
 checkForRegistryConflicts
 	self class registry 
 		detect: [ :repo | repo location = self location ]

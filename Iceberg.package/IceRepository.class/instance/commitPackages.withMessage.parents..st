@@ -1,9 +1,16 @@
-actions - utility
-commitPackages: packagesToCommit withMessage: message parents: parentCommits
-
-	^ self 
-		commitPackages: packagesToCommit
-		withMessage: message
-		andParents: (self head isUnbornBranch
+private-commit
+commitPackages: packagesToCommit withMessage: message parents: parentCommitishList
+	| savedVersions parentCommits |
+	
+	savedVersions := packagesToCommit collect: [ :package | 
+		self 
+			internalSavePackage: package 
+			withMessage: message ].	
+			
+	parentCommits := self head isUnbornBranch
 			ifTrue: [ #() ]
-			ifFalse: [ parentCommits ])
+			ifFalse: [ parentCommitishList ].
+	^ self
+		doCommitMcVersions: savedVersions 
+		withMessage: message 
+		andParents: parentCommits

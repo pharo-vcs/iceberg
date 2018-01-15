@@ -1,4 +1,4 @@
-private
+private-commit
 doCommitMcVersions: versions withMessage: message andParents: parentCommitishList
 
 	^ self subclassResponsibility
