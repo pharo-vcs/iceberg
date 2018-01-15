@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Iceberg-Core",
+	"category" : "Iceberg-WorkingCopy",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
