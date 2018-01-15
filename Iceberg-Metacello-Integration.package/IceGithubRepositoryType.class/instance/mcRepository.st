@@ -5,7 +5,7 @@ mcRepository
 	self guessRegisteredRepository
 		ifNotNil: [ :repo | ^ repo metacelloAdapter ].
 		
-	baseRepo := MCGitHubRepository location: self location.
+	baseRepo := self mcRepositoryClass location: self location.
 	^ (Iceberg icebergRepositoriesURLs includes: baseRepo scpUrl)
 		ifTrue: [ 
 			"Do not use Iceberg to load iceberg code, 
