@@ -25,9 +25,10 @@ commitChanges: changesToCommit withMessage: message
 	"save versions"
 	versions do: [ :each | self repository internalStoreVersion: each ].
 
+		self halt.
 	"now perform commit"
 	newCommit := self repository
 		doCommitMcVersions: versions withMessage: message andParents: referenceCommits.
-		self halt.
+
 	self referenceCommit: newCommit.
 	^ newCommit

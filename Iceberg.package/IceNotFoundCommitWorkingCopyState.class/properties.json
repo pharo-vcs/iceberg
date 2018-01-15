@@ -1,14 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "IceCommit",
-	"category" : "Iceberg-Libgit",
+	"super" : "IceWorkingCopyState",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"id",
-		"datetime"
+		"commit"
 	],
-	"name" : "IceGitUnknownCommit",
+	"name" : "IceNotFoundCommitWorkingCopyState",
 	"type" : "normal"
 }

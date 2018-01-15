@@ -1,3 +1,3 @@
 actions
 fetch
-	self fetchFrom: self pullRemote
+	self pullRemote fetch

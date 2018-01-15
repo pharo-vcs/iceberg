@@ -6,4 +6,6 @@ commitFromGitCommit: aLGitCommit
 		author: aLGitCommit committer name;
 		datetime: aLGitCommit time asDateAndTime;
 		ancestorIds: (aLGitCommit parents collect: [ :parent | parent id hexString ]);
-		comment: aLGitCommit message
+		comment: aLGitCommit message;
+		repository: self;
+		yourself
