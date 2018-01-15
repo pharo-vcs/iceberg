@@ -2,7 +2,7 @@ private
 pickBranch 
 	| branches |
 	 
-	branches := self repository branchesForCheckout.
+	branches := self repository allBranches.
 	^ UIManager default
 		chooseFrom: (branches collect: #name)
 		values: branches

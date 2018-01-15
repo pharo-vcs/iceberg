@@ -4,7 +4,6 @@ mcPackageSnapshotsOfPackages: aCollection
 	^ aCollection
 		select: #isLoaded
 		thenCollect: [ :package |
-			(self repository
-				mcVersionForPackage: package mcPackage
-				inCommit: self)
+			(self repository mcVersionFor: 
+				(IceSavedPackageVersion fromCommit: self package: package mcPackage))
 					snapshot ]

@@ -1,4 +1,4 @@
-private
+API-history
 lookupCommit: commitId
 
 	^ self

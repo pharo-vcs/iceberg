@@ -1,4 +1,4 @@
-private-head
+API-accessing
 setHead: anIceGitBranch 
 	
 	self subclassResponsibility

@@ -1,6 +1,6 @@
 API-branches
-branchNamed: aName ifAbsent: absentBlock
-	"Access a branch by name.
+remoteBranchNamed: aName ifAbsent: absentBlock
+	"Access a remote branch by name.
 	Returns the result of the second argument if absent."
 	
 	^ self

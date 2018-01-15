@@ -1,5 +1,3 @@
 private accessing
 visibleRepositoryModels
-	^ self repositoryRegistry 
-		select: [ :each | self isRepositoryVisible: each  ]
-		thenCollect: [ :repo | IceRepositoryModel modelFor: repo ]
+	^ self repositoryRegistry collect: [ :repo | IceRepositoryModel modelFor: repo ]

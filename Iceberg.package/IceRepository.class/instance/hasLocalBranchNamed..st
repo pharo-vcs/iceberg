@@ -1,4 +1,6 @@
-testing
+API-branches
 hasLocalBranchNamed: aString
 	
-	self subclassResponsibility
+	^ self branchNamed: aString
+		ifPresent: [ :branch | true ]
+		ifAbsent: [ false ]

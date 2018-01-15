@@ -1,4 +1,0 @@
-accessing
-subdirectory
-	
-	self subclassResponsibility

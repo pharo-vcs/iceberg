@@ -6,3 +6,4 @@ SystemOrganization addCategory: #'Iceberg-Core'!
 SystemOrganization addCategory: #'Iceberg-Core-Properties'!
 SystemOrganization addCategory: #'Iceberg-Errors'!
 SystemOrganization addCategory: #'Iceberg-Security'!
+SystemOrganization addCategory: #'Iceberg-WorkingCopy'!

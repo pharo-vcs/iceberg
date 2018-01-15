@@ -1,4 +1,4 @@
 private-remotes
-remoteAt: aString put: aRemote
-
+doRemoveRemote: aRemote
+	
 	self subclassResponsibility
