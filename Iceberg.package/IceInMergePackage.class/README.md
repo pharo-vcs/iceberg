@@ -1,0 +1,1 @@
+I represent a package that was has several current commits, and is thus in merge state.

@@ -1,0 +1,1 @@
+I represent a loaded package whose commit is not present in the repository (probably because of a missing fetch).

@@ -1,0 +1,1 @@
+I am an empty working copy, with no loaded packages.

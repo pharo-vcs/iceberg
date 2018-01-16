@@ -1,0 +1,1 @@
+I represent the state of a package with respect to the working copy and the repository HEAD. I  combine myself by means of double dispatch to calculate the working copy state.
