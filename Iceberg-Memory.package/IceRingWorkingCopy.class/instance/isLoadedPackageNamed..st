@@ -1,4 +1,4 @@
 packages
-isLoadedPackageName: aString 
+isLoadedPackageNamed: aString 
 	
 	^ ringEnvironment ask includesPackageNamed: aString
