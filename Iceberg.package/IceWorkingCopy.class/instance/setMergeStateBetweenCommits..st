@@ -1,4 +1,4 @@
-merging
+private-commits
 setMergeStateBetweenCommits: aCollection 
 	
 	self loadedPackages do: [ :each | 

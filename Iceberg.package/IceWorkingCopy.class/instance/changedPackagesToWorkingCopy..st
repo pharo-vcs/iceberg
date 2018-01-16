@@ -1,4 +1,4 @@
-changes
+private-changes
 changedPackagesToWorkingCopy: aWorkingCopy
 	| commitPackageNames loadedPackageNames added removed |
 	commitPackageNames := self repository branch commit packageNames.

@@ -1,4 +1,4 @@
-accessing-monticello
+private-commits
 currentCommitsOfPackageNamed: aString 
 	
 	| ancestors |

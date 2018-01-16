@@ -1,4 +1,4 @@
-accessing-monticello
+API-loading
 loadedPackages
 
 	^ self packages select: #isLoaded

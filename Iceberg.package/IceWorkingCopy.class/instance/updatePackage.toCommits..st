@@ -1,4 +1,4 @@
-accessing-monticello
+private-commits
 updatePackage: anIceSavedPackage toCommits: aCollection
 	
 	| ancestry |

@@ -1,4 +1,4 @@
-packages
+private-packages
 packagesDictionary
 	
 	packages ifNil: [ 
