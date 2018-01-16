@@ -1,3 +1,3 @@
 accessing
 history
-	^ history ifNil: [ history := self repository log historyOfMethod: self method ]
+	^ history ifNil: [ history := self retrieveHistory ]

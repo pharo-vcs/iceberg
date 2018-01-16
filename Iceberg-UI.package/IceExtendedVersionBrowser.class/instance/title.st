@@ -1,3 +1,3 @@
 accessing
 title
-	^ self method printString
+	^ 'History of {1}' format: { self method printString }
