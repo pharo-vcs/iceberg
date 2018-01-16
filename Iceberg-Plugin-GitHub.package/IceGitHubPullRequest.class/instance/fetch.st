@@ -1,4 +1,4 @@
 actions
 fetch
-	[ ^ self remote fetch ]
+	[ ^ self repository fetchFrom: self remote ]
 	ensure: [ fetched := true ]

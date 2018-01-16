@@ -9,5 +9,5 @@ prepareToContribute: aRepository
 		bar max: remotes size + 1.
 		remotes do: [ :each |
 			bar label: ('Fetching {1}: {2}' format: {each remoteName. each url}).
-			each fetch.
+			aRepository fetchFrom: each.
 			bar increment ] ]

@@ -1,3 +1,3 @@
-accessing
-log
+private
+toFileName: aMethod
 	^ self subclassResponsibility
