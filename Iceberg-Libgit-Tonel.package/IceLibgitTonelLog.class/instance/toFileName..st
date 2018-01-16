@@ -1,3 +1,3 @@
 private
 toFileName: aMethod
-	^ self fileNameForClass: aMethod origin
+	^ self fileNameForMethod: aMethod

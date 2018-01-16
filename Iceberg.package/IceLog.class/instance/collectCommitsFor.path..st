@@ -2,7 +2,7 @@ private
 collectCommitsFor: aMethod path: aPath
 	| commit pathSpec options commits |
 
-	commit := self repository branch commit.
+	commit := self repository headCommit.
 	pathSpec := LGitPathSpec withAll: { aPath }.
 	options := LGitDiffOptions defaults.
 	options pathspec: (LGitStringArray withAll: { aPath }).

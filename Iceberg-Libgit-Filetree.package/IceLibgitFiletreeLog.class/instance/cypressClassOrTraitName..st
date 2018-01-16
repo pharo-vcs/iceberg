@@ -1,4 +1,4 @@
 private
 cypressClassOrTraitName: aMethod
-	^ aMethod origin name, (self cypressMethodClassExtension: aMethod)
+	^ aMethod origin instanceSide name, (self cypressMethodClassExtension: aMethod)
 	
