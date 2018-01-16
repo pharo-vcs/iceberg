@@ -1,4 +1,4 @@
-tracking
+API-remotes
 tracksRemoteBranch
 	
 	^ self subclassResponsibility

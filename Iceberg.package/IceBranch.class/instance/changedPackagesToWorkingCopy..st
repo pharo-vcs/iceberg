@@ -1,4 +1,4 @@
-changs
+private-changes
 changedPackagesToWorkingCopy: anIceWorkingCopy 
 	
 	"A branch is just a name to a commit.

@@ -1,4 +1,4 @@
-accessing-monticello
+private-monticello
 snapshotForPackage: anIceSavedPackage
 
 	self halt.

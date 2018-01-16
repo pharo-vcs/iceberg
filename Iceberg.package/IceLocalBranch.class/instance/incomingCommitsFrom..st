@@ -1,4 +1,4 @@
-commits
+API-remotes
 incomingCommitsFrom: aGitRemote
 	
 	| remoteBranch |

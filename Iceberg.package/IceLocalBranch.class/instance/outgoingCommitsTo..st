@@ -1,4 +1,4 @@
-commits
+API-remotes
 outgoingCommitsTo: aRemote
 	
 	| remoteBranch walk |

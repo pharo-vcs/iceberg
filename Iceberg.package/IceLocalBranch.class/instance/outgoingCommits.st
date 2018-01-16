@@ -1,4 +1,4 @@
-commits
+API-remotes
 outgoingCommits
 	
 	^ self outgoingCommitsTo: repository pushRemote

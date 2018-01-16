@@ -1,4 +1,4 @@
-package-managemnet
+API-packages
 packageStatusForPackage: anIceSavedPackage 
 	
 	(anIceSavedPackage currentCommit repository = repository)

@@ -1,0 +1,1 @@
+I represent an commit that cannot be found in the current repository. I have a commit id/hash, but that commit was not fetched (or was wrongly set). Once the real commit is fetched, I'll be becomed into a real commit.

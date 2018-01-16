@@ -78,3 +78,4 @@ The main entry point for merging a commit is the working copy, through the metho
 
   workingCopy mergeCommit: aCommit.
 
+IMPORTANT IMPLEMENTATION NOTE. The version information and commits are so far stored inside MCWorkingCopy and co. Check #updatePackage:toCommits:

@@ -1,4 +1,4 @@
-comparing
+testing
 isNoCommit
 
 	^ true
