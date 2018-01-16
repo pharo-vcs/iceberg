@@ -1,5 +1,5 @@
 private
 tonelMethodClassOrTraitName: aMethod
-	^ aMethod origin name, (self tonelMethodClassExtension: aMethod), '.st'
+	^ aMethod origin instanceSide name, (self tonelMethodClassExtension: aMethod), '.st'
 	
 	
