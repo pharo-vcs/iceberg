@@ -1,4 +1,4 @@
 querying
 isLoaded
 
-	^ repository workingCopy isLoadedPackageName: self name
+	^ repository workingCopy isLoadedPackageNamed: self name

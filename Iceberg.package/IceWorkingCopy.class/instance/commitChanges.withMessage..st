@@ -1,9 +1,12 @@
-operations
+API-commits
 commitChanges: changesToCommit withMessage: message 
+	"Creates a commit with the given changes using the comment given as argument.
 	
-	"Commits a snapshot of definitions (can be a cherry-pick). 
-	 I need to group definitions in packages and create new versions for those packages, 
-	 which is annoying but is the price of using MC definitions :)"
+	NOTICE that commits can only be done if the following is true:
+
+ - HEAD is a branch
+ - the working copy reference commit is the same commit as #headCommit"
+	
 	| changesByPackage versions newCommit |
 	self flag: #refactor.
 	"This is really similar to a non-cherry-pick change.

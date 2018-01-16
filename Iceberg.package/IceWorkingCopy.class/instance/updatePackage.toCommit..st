@@ -1,4 +1,4 @@
-accessing-monticello
+private-commits
 updatePackage: aPackage toCommit: aCommit
 	
 	self

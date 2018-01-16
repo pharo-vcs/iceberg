@@ -1,4 +1,4 @@
-packages
+API-changes
 modifiedPackages
 	
 	"For each of the loaded versions, we obtain the MC working copy.

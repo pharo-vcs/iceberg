@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "NicoPasserini 9/16/2016 14:14",
+	"commentStamp" : "GuillermoPolito 1/16/2018 11:10",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
@@ -7,9 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"repository",
-		"packages",
-		"referenceCommits",
-		"state"
+		"packages"
 	],
 	"name" : "IceWorkingCopy",
 	"type" : "normal"

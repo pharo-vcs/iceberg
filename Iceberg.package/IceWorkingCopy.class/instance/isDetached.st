@@ -1,4 +1,4 @@
-testing
+validating
 isDetached
 
 	^ self workingCopyState isDetached
