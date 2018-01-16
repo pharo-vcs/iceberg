@@ -1,4 +1,4 @@
-TOMOVE
+private-changes
 changedPackagesToWorkingCopy: left 
 	
 	| leftPackageNames rightPackageNames added removed |

@@ -1,4 +1,4 @@
-ancestry
+API-history
 commonAncestorWith: aCommit
 	
 	self subclassResponsibility

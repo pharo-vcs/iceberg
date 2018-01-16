@@ -1,4 +1,4 @@
-testin
+testing
 isNoCommit
 	
 	^ false

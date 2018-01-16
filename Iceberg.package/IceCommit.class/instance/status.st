@@ -1,4 +1,4 @@
-description
+printing
 status
 
 	(self repository workingCopy referenceCommits includes: self)

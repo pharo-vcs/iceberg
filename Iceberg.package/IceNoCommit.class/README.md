@@ -1,0 +1,1 @@
+I am a null object representing the absence of a commit. I'm used generally in the case of unborn branches, or when a package was loaded but no iceberg information is available.

@@ -1,4 +1,4 @@
-testing
+API-remotes
 hasIncomingCommitsFrom: aRemote
 	
 	| localCommits remoteCommits |

@@ -1,4 +1,4 @@
-operations
+API-remotes
 pullFrom: aRemote
 	
 	"This is a special operation: this branch is unborn.
