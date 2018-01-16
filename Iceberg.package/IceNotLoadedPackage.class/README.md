@@ -1,0 +1,1 @@
+I represent a package that is in HEAD but not loaded.
