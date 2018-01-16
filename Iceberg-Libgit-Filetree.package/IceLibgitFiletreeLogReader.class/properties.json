@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 1/16/2018 12:39",
+	"super" : "IceLibgitFiletreeReader",
+	"category" : "Iceberg-Libgit-Filetree",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"fileName"
+	],
+	"name" : "IceLibgitFiletreeLogReader",
+	"type" : "normal"
+}

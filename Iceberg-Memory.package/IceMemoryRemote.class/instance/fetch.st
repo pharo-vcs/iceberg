@@ -1,5 +1,4 @@
 fetching
 fetch
 
-	self fetchCommitsThat: [ :each | true ].
-	localRepository fetchFinished.
+	self fetchCommitsThat: [ :each | true ]

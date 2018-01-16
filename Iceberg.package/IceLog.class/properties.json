@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 1/16/2018 11:31",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceLog",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 1/16/2018 12:39",
+	"super" : "IceLibgitTonelReader",
+	"category" : "Iceberg-Libgit-Tonel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"fileName"
+	],
+	"name" : "IceLibgitTonelLogReader",
+	"type" : "normal"
+}
