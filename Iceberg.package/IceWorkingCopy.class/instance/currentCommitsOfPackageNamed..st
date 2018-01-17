@@ -3,8 +3,8 @@ currentCommitsOfPackageNamed: aString
 	
 	| ancestors |
 	ancestors := (MCPackage named: aString) workingCopy ancestors.
-	ancestors ifEmpty: [ ^ IceNoCommit repository: repository ].
-	
+	ancestors ifEmpty: [ ^ { IceNoCommit repository: repository } ].
+
 	^ ancestors collect: [ :mcVersionInfo |.
 		"Monticello versions loaded by iceberg are IceMCVersionInfo.
 		IceMCVersionInfo know the iceberg commit used to load the package.

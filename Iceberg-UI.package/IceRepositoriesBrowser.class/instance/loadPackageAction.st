@@ -2,7 +2,7 @@ menu actions - package
 loadPackageAction
 	^ GLMGenericAction new
 		action: [ :presentation :repo | 
-			presentation selection loadLatest.
+			presentation selection load.
 			presentation update ]; 
 		icon: #add asIcon;
 		shortcut: $l; 
