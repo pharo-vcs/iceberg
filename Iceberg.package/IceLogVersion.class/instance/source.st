@@ -1,3 +1,6 @@
 accessing
 source
-	^ self definition sourceCode
+	^ String streamContents: [ :stream | 
+		stream 
+			<< '"protocol: ' << self definition category << '"'; cr;
+			<< self definition sourceCode ]
