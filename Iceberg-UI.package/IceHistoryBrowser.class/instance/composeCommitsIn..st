@@ -7,13 +7,13 @@ composeCommitsIn: composite
 			evaluated: [:commit | 
 				commit datetime asLocalStringYMDHM asText 
 					in: [ :text | 
-						commit isLoaded 
+						commit isMerged
 							ifTrue: [ text ] 
 							ifFalse: [ text allBold ] ] ] 
 			width: 120;
 		column: 'Id' evaluated: #shortId width: 50;
-		column: 'User' evaluated: #username width: 120;
-		column: 'Parents' evaluated: [ :commit | ', ' join: (commit parents collect: #shortId) ] width: 100;
+		column: 'User' evaluated: #author width: 120;
+		column: 'Parents' evaluated: [ :commit | ', ' join: (commit ancestors collect: #shortId) ] width: 100;
 		column: 'Comment' evaluated: #comment width: 300;
 		
 		addSelectionAction: self inspectAction;
