@@ -5,12 +5,12 @@ collectVersionsFrom: aCollection method: aMethod path: aPath
 	basepath := self basepathOf: aPath.
 	lastDefinition := MCMethodDefinition new.
 	history := OrderedCollection new.
-	aCollection do: [ :eachCommit | | definition |
+	aCollection reverseDo: [ :eachCommit | | definition |
 		definition := self definitionFor: aMethod path: basepath commit: eachCommit.
-		lastDefinition = definition ifFalse: [ 
+		lastDefinition = definition  ifFalse: [ 
 			history add: (IceLogVersion 
 				commit: (self iceCommitFrom: eachCommit)
 				definition: definition asRing2Definition).
 			lastDefinition := definition ] ].
 
-	^ history
+	^ history reversed

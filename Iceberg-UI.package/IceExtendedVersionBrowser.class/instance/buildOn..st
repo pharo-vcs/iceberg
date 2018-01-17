@@ -11,7 +11,8 @@ buildOn: browser
 				display: [ self history ];				
 				title: 'Versions';
 				column: 'Author' evaluated: [ :each | each author];
-				column: 'Timestamp' evaluated: [ :each | each datetime asLocalStringYMDHM ] ]. 
+				column: 'Timestamp' evaluated: [ :each | each datetime asLocalStringYMDHM ];
+				column: 'Version' evaluated: [ :each | each commit shortId ] ]. 
 			
 	browser transmit 
 		from: #versions;
