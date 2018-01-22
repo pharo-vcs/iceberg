@@ -1,3 +1,3 @@
 private
 obtainLastCommitMessage
-	^ self branch lastCommit comment
+	^ self branch commit comment

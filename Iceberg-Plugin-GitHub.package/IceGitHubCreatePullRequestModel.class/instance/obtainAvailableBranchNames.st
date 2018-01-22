@@ -1,7 +1,7 @@
 private
 obtainAvailableBranchNames
 	^ ((self repository allBranches 
-		collect: #basename as: Set)
+		collect: #shortname as: Set)
 		addAll: self baseBranchNames;
 		asArray)
 		sort.
