@@ -1,5 +1,5 @@
 accessing
 registeredRepositoryIncludingPackage: aPackage 
 	^ self registry 
-		detect: [ :each | each includesPackageNamed: aPackage ]
+		detect: [ :each | each includesPackageNamed: aPackage name ]
 		ifNone: [ nil ]
