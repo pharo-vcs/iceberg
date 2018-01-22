@@ -5,12 +5,9 @@ run
 		self confirmContinueWithDirtyRepository ifFalse: [ ^ self ]].
 
 	self chooseTargetBranch ifNil: [ ^ self ].
+	
+	self assert: (self targetBranch = repository head).
 
-	[ source mergeInto: self targetBranch ]
-		on: IceMergeAborted
-		do: [ 
-			self targetBranch name = repository branchName 
-				ifTrue: [ repository mergeConflictsWith: source ]
-				ifFalse: [ self informAutomaticMergeImpossible. ^ self ]].
-
-	self onMerge value 
+	[ repository workingCopy mergeCommit: source.	
+		self onMerge value ]
+	on: IceMergeAborted do: [ :e | "ignored" ]

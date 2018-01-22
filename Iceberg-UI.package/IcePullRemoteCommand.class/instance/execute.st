@@ -1,4 +1,4 @@
 execute
 execute
-	self repository pullFrom: self remote.
+	self repository branch pullFrom: self remote.
 	self beSuccess
