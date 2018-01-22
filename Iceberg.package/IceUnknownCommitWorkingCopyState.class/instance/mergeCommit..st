@@ -7,7 +7,7 @@ mergeCommit: aCommit
 	"Otherwise, we have to do a merge"
 	merger := MCThreeWayMerger
 			base: (self workingCopy mcSnapshotOfPackages: changedPackages)
-			target: (aCommit mcSnapshotOfPackags: changedPackages)
+			target: (aCommit mcSnapshotOfPackages: changedPackages)
 			ancestor: MCSnapshot empty.
 	
 	self executeMergeOfCommit: aCommit withMerger: merger.
