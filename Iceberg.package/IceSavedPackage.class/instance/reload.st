@@ -1,3 +1,4 @@
 actions
 reload
-	self latestVersion load
+	self latestVersion load.
+	
