@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopyWithForeignPackagesTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectName"
+	],
+	"name" : "IceGitWorkingCopyWithForeignPackagesTest",
+	"type" : "normal"
+}
