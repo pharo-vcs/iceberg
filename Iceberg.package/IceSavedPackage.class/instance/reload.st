@@ -1,3 +1,3 @@
 actions
 reload
-	self load
+	self load.

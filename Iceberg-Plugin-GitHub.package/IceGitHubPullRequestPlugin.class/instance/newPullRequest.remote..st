@@ -1,5 +1,5 @@
 actions
-newPullRequest: aRepository remote: aRemoteModel
+newPullRequest: aRepository remote: aRemote
 	(IceGitHubNewPullRequestCommand repository: aRepository) 
-		remote: aRemoteModel entity;
+		remote: aRemote;
 		execute
