@@ -10,7 +10,7 @@ collectVersionsFrom: aCollection method: aMethod path: aPath
 		lastDefinition = definition  ifFalse: [ 
 			history add: (IceLogVersion 
 				commit: (self iceCommitFrom: eachCommit)
-				definition: definition asRing2Definition).
+				definition: definition asRingDefinition).
 			lastDefinition := definition ] ].
 
 	^ history reversed

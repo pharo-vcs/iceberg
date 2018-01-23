@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopyWithAllPackagesInSameCommitTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageName",
+		"projectName"
+	],
+	"name" : "IceGitWorkingCopyWithAllPackagesInSameCommitTest",
+	"type" : "normal"
+}
