@@ -1,4 +1,9 @@
 API-remotes
 pull
 	
-	self pullFrom: self pullRemote
+	self pullRemote fetchBranch: self.
+	self tracksRemoteBranch
+		ifFalse: [ ^ self ].
+
+	self preMerge.
+	self repository workingCopy mergeCommit: self trackedBranch commit.
