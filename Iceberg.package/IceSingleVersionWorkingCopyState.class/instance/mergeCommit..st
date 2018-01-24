@@ -2,7 +2,7 @@ merging
 mergeCommit: aCommit
 	
 	| merger currentCommit newCommit changedPackages |
-
+	
 	currentCommit := self referenceCommit.
 	
 	(aCommit isAncestorOf: currentCommit)
@@ -16,7 +16,7 @@ mergeCommit: aCommit
 	"Compare working copy and commit packages"
 	merger := MCThreeWayMerger
 			base: (self workingCopy mcSnapshotOfPackages: changedPackages)
-			target: (aCommit mcSnapshotOfPackages: aCommit packages)
+			target: (aCommit mcSnapshotOfPackages: changedPackages)
 			ancestor: ((currentCommit commonAncestorWith: aCommit)
 				ifNil: [ MCSnapshot empty ]
 				ifNotNil: [ :ancestor | ancestor mcSnapshotOfPackages: changedPackages ]).
