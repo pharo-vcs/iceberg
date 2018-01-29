@@ -1,3 +1,3 @@
 accessing
 mergeBaseCommitFor: commitInfo
-	^ commitInfo repository commitAt: (self mergeBaseFor: commitInfo)
+	^ commitInfo repository lookupCommit: (self mergeBaseFor: commitInfo)
