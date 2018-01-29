@@ -9,7 +9,7 @@ collectVersionsFrom: aCollection method: aMethod path: aPath
 		definition := self definitionFor: aMethod path: basepath commit: eachCommit.
 		lastDefinition = definition  ifFalse: [ 
 			history add: (IceLogVersion 
-				commit: (self iceCommitFrom: eachCommit)
+				commit: (self commitFromGitCommit: eachCommit)
 				definition: definition asRingDefinition).
 			lastDefinition := definition ] ].
 

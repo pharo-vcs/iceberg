@@ -1,3 +1,3 @@
 private
 commitFrom: result
-	^ self repository iceCommitFrom: result
+	^ self repository commitFromGitCommit: result
