@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commitish",
+		"commits",
+		"commitDictionary",
+		"headHistory",
+		"repository"
+	],
+	"name" : "IceHistory",
+	"type" : "normal"
+}

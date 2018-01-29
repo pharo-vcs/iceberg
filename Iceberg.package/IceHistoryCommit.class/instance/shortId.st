@@ -1,0 +1,4 @@
+accessing
+shortId
+	
+	^ iceCommit shortId
