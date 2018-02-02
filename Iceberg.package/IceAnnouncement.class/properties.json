@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "EstebanLorenzano 9/21/2017 11:55",
-	"super" : "IceAnnouncement",
+	"commentStamp" : "EstebanLorenzano 1/31/2018 18:23",
+	"super" : "Announcement",
 	"category" : "Iceberg-Announcements",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IcePackageUnloaded",
+	"name" : "IceAnnouncement",
 	"type" : "normal"
 }

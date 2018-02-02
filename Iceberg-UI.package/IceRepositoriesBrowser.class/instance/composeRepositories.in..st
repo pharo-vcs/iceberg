@@ -11,7 +11,7 @@ composeRepositories: repositories in: composite
 		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
 		column: 'Status' evaluated: #status width: 150.
 
-	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer weak ].
+	table updateOn: IceRepositoryRegistryAnnouncement from: [ Iceberg announcer weak ].
 	repositories do: [ :repo | 
 		table updateOn: IceRepositoryAnnouncement from: repo announcer ].
 	table updateOn: MCPackageModified from: MCPackageManager announcer.

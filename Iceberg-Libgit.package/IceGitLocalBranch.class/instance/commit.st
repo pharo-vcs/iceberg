@@ -4,4 +4,4 @@ commit
 		| gitCommit gitId |
 		gitId := (repo lookupLocalBranch: self name) targetId.
 		gitCommit := LGitCommit of: repo fromId: gitId.
-		^ self repository commitFromGitCommit: gitCommit ]
+		^ self repository iceCommitFrom: gitCommit ]
