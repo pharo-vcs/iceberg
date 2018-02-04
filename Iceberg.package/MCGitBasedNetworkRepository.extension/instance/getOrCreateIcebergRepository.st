@@ -6,10 +6,4 @@ getOrCreateIcebergRepository
 	remote := IceGitRemote url: remoteUrl.
 	^ IceRepository registry 
 		detect: [ :repo | repo origin referencesSameRemoteLocationAs: remote ]
-		ifNone: [
-			(IceRepositoryCreator new 
-				url: remoteUrl;
-				subdirectory: repoPath;
-				branchName: self projectVersion;
-				createRepository)
-				register ]
+		ifNone: [ self createIcebergRepositoryFor: remoteUrl ]
