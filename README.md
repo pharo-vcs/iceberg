@@ -25,7 +25,19 @@ To better understand Iceberg (or even this documentation), I recommend to read t
 default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.  
 
 ***Q.** I'm using a server with an alternate SSH port and I'm receiving "connection timeout" when I'm trying to clone.*  
-**A.** You need to use an different url format than default one (the one that is proposed in most sites). You need an url as this one: ` ssh://git@url:port/team/project.git`  
+**A.** You need to use an different url format than default one (the one that is proposed in most sites). You need an url as this one: ` ssh://git@url:port/team/project.git`.
+
+***Q.** I'm using Iceberg on Windows - whilst trying to clone a repository I receive the error "LGit_GIT_ERROR: error authenticating: failed connecting agent".*  
+**A.** Prompting for credentials currently doesn't work on Windows (we can't use ssh-agent).  You need to setup authentication using ssh keys.  Something like so:
+
+```Smalltalk
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: 'c:\path\to\ssh\id_rsa.pub';
+	privateKey: 'c:\path\to\ssh\id_rsa'
+```
+
+(Your key should not have a passphrase)
 
 ## Installation (for development)
 ### Prerequisites
@@ -67,7 +79,7 @@ MetacelloPharoPlatform select.
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6.5';
+  	repository: 'github://pharo-vcs/iceberg:v0.6.7';
   	load.
 ```
 
