@@ -79,7 +79,7 @@ MetacelloPharoPlatform select.
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6.5';
+  	repository: 'github://pharo-vcs/iceberg:v0.6.7';
   	load.
 ```
 
