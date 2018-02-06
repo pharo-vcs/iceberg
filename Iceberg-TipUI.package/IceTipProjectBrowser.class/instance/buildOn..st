@@ -3,7 +3,12 @@ buildOn: browser
 	browser row: #projects.
 	
 	browser transmit to: #projects; andShow: [ :a |
-		a fastList 
+		a fastTable 
 			title: 'Projects';
-			display: [ self projects ];
-			format: #descriptionText ]
+			display: [ self model projects ];
+			in: [ :this | 
+				self addProjectActionsOn: this.
+				self addProjectSelectionActionsOn: this ];
+			column: 'Name' evaluated: #descriptionText;
+			column: 'Status' evaluated: #status;
+			enableFilter: [ :each :pattern | each matches: pattern ] ]

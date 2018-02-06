@@ -1,14 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipBrowser",
-	"category" : "Iceberg-TipUI-View",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"projects",
-		"model"
+		"realObject",
+		"cache"
 	],
-	"name" : "IceTipProjectBrowser",
+	"name" : "IceTipCachedModel",
 	"type" : "normal"
 }

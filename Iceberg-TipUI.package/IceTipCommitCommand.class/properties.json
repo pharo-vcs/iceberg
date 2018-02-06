@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipRegisterProjectCommand",
+	"name" : "IceTipCommitCommand",
 	"type" : "normal"
 }

@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "CmdCommand",
+	"super" : "CmdToolContext",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
