@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Push...'
+	^ 'Push'

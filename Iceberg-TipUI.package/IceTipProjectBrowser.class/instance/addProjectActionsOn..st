@@ -1,3 +1,3 @@
 building
 addProjectActionsOn: aPresentation
-	self addActionsOn: aPresentation context: IceTipProjectBrowserContext new
+	self addActionsOn: aPresentation context: IceTipProjectListContext new

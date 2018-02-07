@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Commit...'
+	^ 'Commit'

@@ -11,7 +11,8 @@
 		"chooseButton",
 		"label",
 		"chooseTitle",
-		"chooseBlock"
+		"chooseBlock",
+		"keptLocation"
 	],
 	"name" : "IceLocationModel",
 	"type" : "normal"

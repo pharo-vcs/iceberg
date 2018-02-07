@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipProjectCommand",
-	"category" : "Iceberg-TipUI-Commands",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipAddProjectCommand",
+	"name" : "IceTipRepositoryTypePresenter",
 	"type" : "normal"
 }

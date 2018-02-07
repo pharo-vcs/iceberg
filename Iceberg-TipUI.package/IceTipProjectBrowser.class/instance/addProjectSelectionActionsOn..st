@@ -1,3 +1,3 @@
 building
 addProjectSelectionActionsOn: aPresentation
-	self addSelectionActionsOn: aPresentation context: IceTipProjectBrowserContext new
+	self addSelectionActionsOn: aPresentation context: IceTipProjectListContext new

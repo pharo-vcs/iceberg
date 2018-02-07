@@ -20,5 +20,5 @@ initializeWidgets
 	commentLabel label: 'Comment'.
 	commentPanel text: self commit comment.
 	parentsLabel label: 'Ancestors(s)'.
-	parentsPanel text: self commit ancestors asCommaString
+	parentsPanel text: (self commit ancestors collect: #shortId) asCommaString
 	

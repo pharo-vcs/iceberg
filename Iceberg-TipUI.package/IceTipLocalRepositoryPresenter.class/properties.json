@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipRepositoryTypePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipLocalRepositoryPresenter",
+	"type" : "normal"
+}

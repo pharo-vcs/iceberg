@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipRepositoryTypePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectNameLabel",
+		"projectNameInputText",
+		"projectLocation",
+		"subdirectoryLabel",
+		"subdirectoryInputText",
+		"remoteLabel",
+		"remoteInputText",
+		"spacePanel"
+	],
+	"name" : "IceTipNewRepositoryPresenter",
+	"type" : "normal"
+}
