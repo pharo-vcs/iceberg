@@ -7,13 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"projectNameLabel",
-		"projectNameInputText",
-		"projectLocation",
-		"subdirectoryLabel",
-		"subdirectoryInputText",
-		"remoteLabel",
-		"remoteInputText",
-		"spacePanel"
+		"projectNameInputText"
 	],
 	"name" : "IceTipNewRepositoryPresenter",
 	"type" : "normal"

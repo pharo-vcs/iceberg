@@ -1,0 +1,6 @@
+initialization
+initializeSourceDirectory
+	subdirectoryLabel := self newLabel label: 'Source directory'.
+	subdirectoryInputText := self newTextInput 
+		ghostText: 'src';		
+		autoAccept: true

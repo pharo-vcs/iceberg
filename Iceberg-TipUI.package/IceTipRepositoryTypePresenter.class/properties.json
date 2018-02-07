@@ -5,7 +5,14 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"projectLocation",
+		"subdirectoryLabel",
+		"subdirectoryInputText",
+		"remoteLabel",
+		"remoteInputText",
+		"spacePanel"
+	],
 	"name" : "IceTipRepositoryTypePresenter",
 	"type" : "normal"
 }

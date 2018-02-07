@@ -1,5 +1,5 @@
 accessing
 openDialogWithSpec
 	^ super openDialogWithSpec
-		okAction: [ acceptAction cull: self selectedType newRepository ];
+		okAction: [ self doAccept ];
 		yourself
