@@ -1,0 +1,1 @@
+The operation you tried (for example push) requires that your branch has a configured upstream (something like origin/name), but is has none.

@@ -11,4 +11,5 @@ buildOn: browser
 				self addProjectSelectionActionsOn: this ];
 			column: 'Name' evaluated: #descriptionText;
 			column: 'Status' evaluated: #status;
-			enableFilter: [ :each :pattern | each matches: pattern ] ]
+			enableFilter: [ :each :pattern | each matches: pattern ];
+			updateOn: IceTipCacheReseted from: [ self detachedAnnouncer ] ]
