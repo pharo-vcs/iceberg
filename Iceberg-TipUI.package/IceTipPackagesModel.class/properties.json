@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"projectModel"
+		"repositoryModel"
 	],
 	"name" : "IceTipPackagesModel",
 	"type" : "normal"

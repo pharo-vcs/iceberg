@@ -1,5 +1,5 @@
 instance creation
-for: aProjectModel 
+for: aRepositoryModel 
 	^ self basicNew 
-		initializeFor: aProjectModel;
+		initializeFor: aRepositoryModel;
 		yourself

@@ -2,4 +2,4 @@ activation
 browserShortcutActivation
 	<classAnnotation>
 	
-	^ CmdShortcutCommandActivation by: $x meta for: IceTipProjectListContext
+	^ CmdShortcutCommandActivation by: $x meta for: IceTipRepositoryListContext

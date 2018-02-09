@@ -1,3 +1,0 @@
-building
-addProjectSelectionActionsOn: aPresentation
-	self addSelectionActionsOn: aPresentation context: IceTipProjectListContext new

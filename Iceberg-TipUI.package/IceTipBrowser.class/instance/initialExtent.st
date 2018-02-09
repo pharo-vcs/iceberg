@@ -1,3 +1,3 @@
-api
+accessing
 initialExtent
-	^ RealEstateAgent standardWindowExtent
+	^ 600@400

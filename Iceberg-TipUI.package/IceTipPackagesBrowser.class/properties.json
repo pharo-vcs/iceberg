@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipBrowser",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model"
+	],
+	"name" : "IceTipPackagesBrowser",
+	"type" : "normal"
+}

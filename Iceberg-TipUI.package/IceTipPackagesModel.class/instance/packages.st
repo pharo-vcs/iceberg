@@ -1,4 +1,4 @@
 accessing
 packages
-	^ self projectModel entity packages 
+	^ self repositoryModel entity packages 
 		collect: [ :each | (IceTipPackageModel for: each) beCached ]

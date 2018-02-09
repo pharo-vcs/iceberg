@@ -1,0 +1,3 @@
+accessing
+prepareWithGlamourContext: anActionContext
+	self repository: anActionContext presentationSelection

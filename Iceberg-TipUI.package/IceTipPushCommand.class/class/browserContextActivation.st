@@ -2,4 +2,4 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation byRootGroupItemOrder: 30 for: IceTipProjectListContext
+	^ CmdContextMenuCommandActivation byRootGroupItemOrder: 30 for: IceTipRepositoryListContext

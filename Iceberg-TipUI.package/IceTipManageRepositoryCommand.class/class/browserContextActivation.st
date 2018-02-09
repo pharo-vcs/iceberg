@@ -4,4 +4,4 @@ browserContextActivation
 	
 	^ CmdContextMenuCommandActivation 
 		byRootGroupItemOrder: 1910
-		for: IceTipProjectListContext
+		for: IceTipRepositoryListContext
