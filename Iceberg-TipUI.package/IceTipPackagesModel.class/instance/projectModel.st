@@ -1,0 +1,3 @@
+accessing
+projectModel
+	^ projectModel

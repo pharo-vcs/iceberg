@@ -1,0 +1,3 @@
+TOMOVE
+colorModified
+	^ Color green

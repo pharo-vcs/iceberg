@@ -1,3 +1,3 @@
-accessing
+private factory
 projects
-	^ self createProjectModels
+	^ self entity collect: [ :each | (IceTipProjectModel for: each) beCached ]

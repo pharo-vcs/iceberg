@@ -1,0 +1,3 @@
+api
+initialExtent
+	^ RealEstateAgent standardWindowExtent
