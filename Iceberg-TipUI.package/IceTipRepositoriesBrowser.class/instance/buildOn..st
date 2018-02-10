@@ -6,9 +6,9 @@ buildOn: browser
 		a fastTable 
 			title: 'Repositories';
 			display: [ self model repositories ];
-			in: [ :this | 
-				self addRepositoryActionsOn: this.
-				self addRepositorySelectionActionsOn: this ];
+			in: [ :this | self addRepositoryActionsOn: this ];
+			onChangeOfPort: #strongSelection act: [ :presentation | 
+				self doStrongSelection: presentation ];
 			column: 'Name' evaluated: #descriptionText;
 			column: 'Status' evaluated: #status;
 			enableFilter: [ :each :pattern | each matches: pattern ];

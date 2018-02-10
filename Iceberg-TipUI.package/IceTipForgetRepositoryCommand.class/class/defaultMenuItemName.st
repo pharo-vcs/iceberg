@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Manage Packages'
+	^ 'Forget repository'

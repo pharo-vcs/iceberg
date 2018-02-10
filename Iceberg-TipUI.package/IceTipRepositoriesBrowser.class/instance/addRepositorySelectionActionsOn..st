@@ -1,3 +1,0 @@
-building
-addRepositorySelectionActionsOn: aPresentation
-	self addSelectionActionsOn: aPresentation context: IceTipRepositoryListContext new

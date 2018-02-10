@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipProjectCommand",
+	"super" : "IceTipRepositoryCommand",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],

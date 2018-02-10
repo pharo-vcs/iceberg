@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "EstebanLorenzano 2/6/2018 21:21",
+	"commentStamp" : "",
 	"super" : "IceTipCommand",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repositoryModel"
+		"packageModel"
 	],
-	"name" : "IceTipProjectCommand",
+	"name" : "IceTipPackageCommand",
 	"type" : "normal"
 }

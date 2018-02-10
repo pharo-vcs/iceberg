@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Forget project'
+	^ 'Reload all'

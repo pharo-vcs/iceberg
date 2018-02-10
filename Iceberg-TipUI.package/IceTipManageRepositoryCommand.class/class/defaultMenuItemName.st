@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Repository'
+	^ 'Manage Repository'
