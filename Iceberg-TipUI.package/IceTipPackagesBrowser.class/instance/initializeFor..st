@@ -1,4 +1,4 @@
 initialization
-initializeFor: aProjectModel
-	model := self createModelFor: aProjectModel.
+initializeFor: aRepositoryModel
+	self model: (self createModelFor: aRepositoryModel).
 	self initialize

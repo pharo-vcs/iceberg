@@ -4,7 +4,7 @@ I receive a list of "label" and "values", being label a string and value a strin
 I can show lists of elements as this example shows: 
 
 IceTipReadOnlyForm new 
-	addLabel: 'Commit:' value: 'more test';
+	addLabel: 'Commit:' value: 'a test';
 	addLabel: 'Parents:' value: '123456789';
 	addLabel: 'Author:' value: 'Some Author <author@email.net>';
 	addLabel: 'Date:' value: DateAndTime now asStringYMDHM;

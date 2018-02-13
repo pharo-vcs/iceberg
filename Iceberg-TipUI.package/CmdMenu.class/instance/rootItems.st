@@ -1,0 +1,3 @@
+accessing
+rootItems
+	^rootGroup contents

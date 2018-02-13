@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View-Component",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"barPanel",
+		"items",
+		"toolbarItemFont",
+		"color",
+		"displayMode"
+	],
+	"name" : "IceTipToolbar",
+	"type" : "normal"
+}

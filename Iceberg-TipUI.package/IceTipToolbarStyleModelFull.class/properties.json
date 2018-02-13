@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipToolbarStyleMode",
+	"category" : "Iceberg-TipUI-View-Component",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipToolbarStyleModelFull",
+	"type" : "normal"
+}

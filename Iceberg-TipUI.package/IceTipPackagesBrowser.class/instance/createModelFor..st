@@ -1,6 +1,6 @@
 private factory
-createModelFor: aProjectModel
-	^ (IceTipPackagesModel for: aProjectModel) beCached
+createModelFor: aRepositoryModel
+	^ (IceTipPackagesModel for: aRepositoryModel) beCached
 		resetOn: IceRepositoryAnnouncement 
 			condition: [ :this :ann | this repository = ann repository ] 
 			from: Iceberg announcer;

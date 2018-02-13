@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"projects",
-		"model"
+		"projects"
 	],
 	"name" : "IceTipRepositoriesBrowser",
 	"type" : "normal"

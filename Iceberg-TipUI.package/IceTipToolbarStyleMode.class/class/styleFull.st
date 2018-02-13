@@ -1,0 +1,3 @@
+accessing
+styleFull
+	^ IceTipToolbarStyleFull uniqueInstance

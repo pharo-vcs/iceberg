@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipRepositoryBrowser for: self repositoryModel) open

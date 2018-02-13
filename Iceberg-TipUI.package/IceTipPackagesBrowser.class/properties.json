@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"model"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipPackagesBrowser",
 	"type" : "normal"
 }

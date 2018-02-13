@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Add repository'
+	^ 'Add'

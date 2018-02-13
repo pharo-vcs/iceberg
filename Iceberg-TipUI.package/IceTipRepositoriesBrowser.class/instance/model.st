@@ -1,3 +1,5 @@
 accessing
 model
-	^ model ifNil: [ model := self createModel ]
+	^ super model ifNil: [ 
+		self model: self createModel.
+		super model ]
