@@ -5,5 +5,5 @@ mergeBaseFor: commitInfo
 	"Should use #commonAncestorWith:"
 	
 	^ commitInfo repository
-		mergeBaseBetween: commitInfo commitId 
+		mergeBaseBetween: commitInfo id 
 		and: self baseSHA
