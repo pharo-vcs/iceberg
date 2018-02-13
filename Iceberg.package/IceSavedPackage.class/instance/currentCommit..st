@@ -1,4 +1,4 @@
 accessing-monticello
 currentCommit: anIceCommit
 	
-	^ repository workingCopy currentCommitOfPackageNamed: package name put: anIceCommit
+	^ repository workingCopy currentCommitOfPackageNamed: package put: anIceCommit

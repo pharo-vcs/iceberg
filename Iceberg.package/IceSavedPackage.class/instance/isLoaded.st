@@ -1,3 +1,4 @@
 testing
 isLoaded
-	^ self package isLoaded
+	
+	^ repository workingCopy isLoadedPackageNamed: self packageName

@@ -1,4 +1,5 @@
 accessing-monticello
 mcWorkingCopy
 
-	^ self package mcWorkingCopy
+	^ self isLoaded ifTrue: [
+		self mcPackage workingCopy ]

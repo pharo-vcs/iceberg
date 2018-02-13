@@ -1,4 +1,4 @@
 accessing-monticello
 mcPackage
 	
-	^ package mcPackage
+	^ MCPackage named: self packageName

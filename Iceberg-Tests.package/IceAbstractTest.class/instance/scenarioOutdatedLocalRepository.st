@@ -24,7 +24,7 @@ scenarioOutdatedLocalRepository
 	"Excercise"
 	repository := IceRepositoryCreator new
 		location: self absoluteLocation;
-		branchName: 'forBecomeWritable';
+		branchName: 'forBecomeWriteable';
 		createRepository.
 		
-	repository workingCopy adoptCommit: repository head commit parent.
+	repository workingCopy adoptCommit: repository headCommit.

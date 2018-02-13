@@ -1,4 +1,4 @@
 accessing-monticello
 currentCommits
 	
-	^ repository workingCopy currentCommitsOfPackageNamed: package name
+	^ repository workingCopy currentCommitsOfPackageNamed: package

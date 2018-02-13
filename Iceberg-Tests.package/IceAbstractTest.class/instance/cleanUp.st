@@ -4,7 +4,7 @@ cleanUp
 	self removeTestPackages.
 
 	(IceRepository registry 
-		select: [:repo | repo origin url endsWith: projectName, '.git'])
+		select: [:repo | repo name = projectName ])
 		do: [ :repo | 
 			repo forget.
 			repo location ensureDeleteAll.

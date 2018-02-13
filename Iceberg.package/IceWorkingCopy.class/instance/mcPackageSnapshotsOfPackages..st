@@ -3,4 +3,4 @@ mcPackageSnapshotsOfPackages: aCollection
 
 	^ aCollection
 		select: #isLoaded
-		thenCollect: [ :package | package mcSnapshot ]
+		thenCollect: [ :package | self snapshotForPackage: package ]

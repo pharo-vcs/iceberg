@@ -17,6 +17,7 @@ createRepository: aRepositorySpec
 			
 	(Iceberg enableMetacelloIntegration 
 		and: [ IceMetacelloRepositoryType canHandleType: type ])
-		ifTrue: [ ^ Iceberg mcRepositoryFor: aRepositorySpec description ].
+		ifTrue: [
+			^ Iceberg mcRepositoryFor: aRepositorySpec description ].
 			
 	^ super createRepository: aRepositorySpec

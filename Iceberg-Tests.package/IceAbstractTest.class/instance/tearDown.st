@@ -1,7 +1,5 @@
 running
 tearDown
-	super tearDown. 
-	
 	self removeTestPackages.
 
 	IceTestCredentialProvider uninstall.
@@ -15,7 +13,7 @@ tearDown
 		do: [ :repo | 
 			repo forget.
 			repo location ensureDeleteAll.
-			Transcript logCr: ('Warning {1} left a registered repository' format: {self}) 
-		]
+			Transcript logCr: ('Warning {1} left a registered repository' format: {self}) ].
+	super tearDown.
 
 	

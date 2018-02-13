@@ -1,3 +1,4 @@
 *Iceberg-UI
 browse
-	^ self package browse
+	
+	(RPackageOrganizer default packageNamed: self name) browse

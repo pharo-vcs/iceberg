@@ -4,7 +4,7 @@ createRepository
 	self validate.
 
 	"Check if a repository in disk corresponds to the asked repository remote"	
-	(self remoteToUse isNotNil and: [ self locationToUse exists ]) ifTrue: [
+	(self remoteToUse isNotNil and: [ self locationToUse exists and: [ self locationToUse children notEmpty ] ]) ifTrue: [
 		repository := IceLibgitRepository new
 			location: self locationToUse;
 			subdirectory: self subdirectory.

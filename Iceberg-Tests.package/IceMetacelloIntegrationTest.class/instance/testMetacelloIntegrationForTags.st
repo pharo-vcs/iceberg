@@ -1,7 +1,6 @@
 tests - create repository
 testMetacelloIntegrationForTags
 	self assert: (IceRepository registry noneSatisfy: [ :repo | repo origin projectName = projectName ]).
-	
 	Metacello new
 		baseline: 'PharoGitTest';
 		repository: 'github://pharo-vcs/', projectName, ':1.2.3';
