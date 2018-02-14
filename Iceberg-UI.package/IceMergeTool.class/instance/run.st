@@ -8,6 +8,6 @@ run
 	
 	self assert: (self targetBranch = repository head).
 
-	[ repository workingCopy mergeCommit: source.	
+	[ repository workingCopy mergeCommit: source iceCommit.
 		self onMerge value ]
 	on: IceMergeAborted do: [ :e | "ignored" ]
