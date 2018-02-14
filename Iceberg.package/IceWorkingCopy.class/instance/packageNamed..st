@@ -4,6 +4,6 @@ packageNamed: aString
 	
 	(self includesPackageNamed: aString)
 		ifFalse: [ self error: 'No package named ', aString ].
-	^ IceSavedPackage
+	^ IcePackage
 		named: aString
 		repository: self repository

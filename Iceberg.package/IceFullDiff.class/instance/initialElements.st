@@ -2,7 +2,7 @@ initialization
 initialElements
 	^ self repository workingCopy loadedPackages
 		collect: [ :package | | icepackage |
-			icepackage := IceSavedPackage 
+			icepackage := IcePackage 
 				named: package name
 				repository: self repository.
 			self createChangeSetFor: icepackage ]

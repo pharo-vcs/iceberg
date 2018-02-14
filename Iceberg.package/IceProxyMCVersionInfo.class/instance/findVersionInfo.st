@@ -23,4 +23,4 @@ Please fetch from "{1}" and try again.'
 	
 	^ IceMCVersionInfo new 
 		fromCommit: commit 
-		package: (IceSavedPackage named: packageName repository: repo)
+		package: (IcePackage named: packageName repository: repo)

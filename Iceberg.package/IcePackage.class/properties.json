@@ -9,6 +9,6 @@
 		"package",
 		"repository"
 	],
-	"name" : "IceSavedPackage",
+	"name" : "IcePackage",
 	"type" : "normal"
 }

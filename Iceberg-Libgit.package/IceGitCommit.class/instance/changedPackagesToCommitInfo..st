@@ -14,4 +14,4 @@ changedPackagesToCommitInfo: aCommitInfo
 		collect: [ :each | writerClass packageNameFromDirectoryName: each ] as: Set.
 	^ packageNames sorted
 		select: [ :each | self repository includesPackageNamed: each ]
-		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ]
+		thenCollect: [ :each | IcePackage named: each repository: self repository ]

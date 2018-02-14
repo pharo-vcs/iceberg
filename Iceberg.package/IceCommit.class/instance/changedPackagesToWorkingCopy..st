@@ -16,14 +16,14 @@ changedPackagesToWorkingCopy: left
 	leftPackageNames := left packageNames.
 	rightPackageNames := self packageNames.
 	added := (leftPackageNames \ rightPackageNames) 
-		collect: [ :each | IceSavedPackage named: each repository: self repository ].
+		collect: [ :each | IcePackage named: each repository: self repository ].
 	"this will give me the removals, but I'm still don't know what to do with them
 	 (because if I just add it it will show them as added not as removed)"
 	removed := (rightPackageNames \ leftPackageNames)
 		reject: [ :each | self packageNames includes: each ]
-		thenCollect: [ :each | IceSavedPackage named: each repository: self repository ].
+		thenCollect: [ :each | IcePackage named: each repository: self repository ].
 	
 	^ added, ((left modifiedPackages
 		reject: [ :p | (leftPackageNames \ rightPackageNames ) includes: p name ])
-		collect: [ :mcPackage | IceSavedPackage named: mcPackage name repository: repository ] as: Array),
+		collect: [ :mcPackage | IcePackage named: mcPackage name repository: repository ] as: Array),
 			removed

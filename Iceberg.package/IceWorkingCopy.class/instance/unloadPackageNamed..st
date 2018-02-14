@@ -1,5 +1,5 @@
 API-loading
 unloadPackageNamed: aPackageName
 
-	self unloadPackage: (IceSavedPackage named: aPackageName repository: repository)
+	self unloadPackage: (IcePackage named: aPackageName repository: repository)
 	

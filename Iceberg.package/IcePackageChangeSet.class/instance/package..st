@@ -1,4 +1,4 @@
 accessing
 package: anObject
-	self assert: (anObject isKindOf: IceSavedPackage).
+	self assert: (anObject isKindOf: IcePackage).
 	package := anObject

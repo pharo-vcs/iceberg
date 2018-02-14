@@ -6,7 +6,7 @@ checkoutPackagesNamed: aCollection fromCommit: aCommit
 	aCollection do: [ :name | | packageVersion |
 		packageVersion := (IceSavedPackageVersion
 			fromCommit: aCommit
-			package: (IceSavedPackage named: name repository: repository))
+			package: (IcePackage named: name repository: repository))
 				mcVersion.
 		loader addVersion: packageVersion.
 	].

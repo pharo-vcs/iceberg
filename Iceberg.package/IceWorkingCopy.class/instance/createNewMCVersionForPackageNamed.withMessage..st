@@ -14,7 +14,7 @@ createNewMCVersionForPackageNamed: aName withMessage: aMessage
 	^ MCVersion new
 		setPackage: mcPackage
 		info: (IceMCVersionInfo
-			package: (IceSavedPackage named: aName repository: repository)
+			package: (IcePackage named: aName repository: repository)
 			message: aMessage)
 		snapshot: mcPackage snapshot
 		dependencies: #().
