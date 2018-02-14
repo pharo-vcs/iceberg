@@ -12,6 +12,4 @@ changedPackagesToCommitInfo: aCommitInfo
 		collect: [ :each | each copyUpTo: $/ ]
 		thenSelect: [ :each | writerClass isValidPackageName: each ]))
 		collect: [ :each | writerClass packageNameFromDirectoryName: each ] as: Set.
-	^ packageNames sorted
-		select: [ :each | self repository includesPackageNamed: each ]
-		thenCollect: [ :each | IcePackage named: each repository: self repository ]
+	^ packageNames sorted collect: [ :each | IcePackage named: each repository: self repository ]
