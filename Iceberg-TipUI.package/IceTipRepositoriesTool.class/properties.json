@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"toolbar",
 		"repositoryList"
 	],
 	"name" : "IceTipRepositoriesTool",

@@ -1,11 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "CmdCommandActivationStrategy",
+	"super" : "CmdMenuCommandActivationStrategy",
 	"category" : "Iceberg-TipUI-View-Toolbar",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"position"
+	],
 	"name" : "IceTipToolbarActivation",
 	"type" : "normal"
 }

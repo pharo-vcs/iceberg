@@ -1,7 +1,11 @@
 initialization
 initializeWidgets
-	toolbar := self instantiate: IceTipToolbar.
-	repositoryList := self newTable asSpecAdapter. 
+	super initializeWidgets.
+	
+	repositoryList := self newTable asSpecAdapter.
+	repositoryList widget
+		onAnnouncement: FTStrongSelectionChanged 
+		send: #repositorySelected: 
+		to: self.
 
-	self initializeToolbar.
 	self initializeRepositoryList.

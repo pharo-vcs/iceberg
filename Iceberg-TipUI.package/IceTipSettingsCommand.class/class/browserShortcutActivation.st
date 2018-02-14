@@ -1,4 +1,4 @@
-activation
+accessing
 browserShortcutActivation
 	<classAnnotation>
 	

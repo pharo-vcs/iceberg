@@ -1,3 +1,3 @@
 accessing
 defaultItemSize
-	^ 45
+	^ 50
