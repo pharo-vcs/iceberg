@@ -12,7 +12,8 @@ newToolbarButtonOn: aToolbar
 		hResizing: #rigid;
 		vResizing: #spaceFill;
 		borderWidth: 0;
-		cellPositioning: #topCenter;
+		borderColor: Color transparent;		
+		cellPositioning: #center;
 		width: aToolbar toolbarItemSize;
 		yourself.
 		
