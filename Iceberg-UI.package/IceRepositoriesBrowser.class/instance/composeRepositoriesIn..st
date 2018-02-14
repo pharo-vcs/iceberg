@@ -40,7 +40,6 @@ composeRepositoriesIn: composite
 		addSelectionAction: self pushAction;
 		addSelectionAction: self pushToAction;
 		addSelectionAction: self cloneRepositoryAgainAction;
-		addSelectionAction: self refreshRepositoryAction;
 		addSelectionAction: self editRepositoryAction;
 		addSelectionAction: self forgetRepositoryAction;
 		"Plugin actions"
