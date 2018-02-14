@@ -1,3 +1,3 @@
-accessing
+private dispatch
 addButtonRight: aButton
-	self halt
+	self rightPanel widget addMorphBack: aButton

@@ -1,3 +1,0 @@
-accessing
-styleIcon
-	^ IceTipToolbarStyleIcon uniqueInstance

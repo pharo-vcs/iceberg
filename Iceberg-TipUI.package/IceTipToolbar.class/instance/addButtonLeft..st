@@ -1,3 +1,3 @@
-accessing
+private dispatch
 addButtonLeft: aButton
-	barPanel widget addMorphBack: aButton
+	self leftPanel widget addMorphBack: aButton

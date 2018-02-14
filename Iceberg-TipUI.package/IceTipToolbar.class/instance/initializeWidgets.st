@@ -1,3 +1,4 @@
 initialization
 initializeWidgets
-	barPanel := self newPanel asSpecAdapter
+	leftPanel := self newPanel asSpecAdapter.
+	rightPanel := self newPanel asSpecAdapter

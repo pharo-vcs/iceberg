@@ -1,0 +1,3 @@
+drawing
+normalFillStyle
+	^ Color transparent

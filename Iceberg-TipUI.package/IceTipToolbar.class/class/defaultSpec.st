@@ -3,4 +3,7 @@ defaultSpec
 	<spec: #default>
 
 	^ SpecLayout composed
-		newRow: #barPanel
+		newRow: [ :row |
+			row 
+				newColumn: #leftPanel;
+				newColumn: #rightPanel ]

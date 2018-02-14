@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceTipToolbarItemPosition",
-	"category" : "Iceberg-TipUI-View-Component",
+	"category" : "Iceberg-TipUI-View-Toolbar",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

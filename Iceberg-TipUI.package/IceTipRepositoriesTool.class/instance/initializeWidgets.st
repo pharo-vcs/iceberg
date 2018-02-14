@@ -1,6 +1,7 @@
 initialization
 initializeWidgets
 	toolbar := self instantiate: IceTipToolbar.
-	repositoryList := self instantiate: FastTablePresenter. 
-	
-	self buildToolbarItems
+	repositoryList := self newTable asSpecAdapter. 
+
+	self initializeToolbar.
+	self initializeRepositoryList.

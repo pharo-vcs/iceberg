@@ -1,5 +1,11 @@
 configuring
 configureButton: aButton item: aToolbarItem
+	"ask for icon and label"
 	aButton 
-		label: #label;
-		icon: #icon
+		on: aToolbarItem 
+		getState: nil
+		action: #execute
+		label: #label 
+		icon: #icon 
+		menu: nil
+	

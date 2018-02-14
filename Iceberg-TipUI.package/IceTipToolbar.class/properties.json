@@ -1,12 +1,13 @@
 {
 	"commentStamp" : "",
 	"super" : "ComposablePresenter",
-	"category" : "Iceberg-TipUI-View-Component",
+	"category" : "Iceberg-TipUI-View-Toolbar",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"barPanel",
+		"leftPanel",
+		"rightPanel",
 		"items",
 		"toolbarItemFont",
 		"color",

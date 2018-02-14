@@ -1,14 +1,11 @@
-building
-buildToolbarButtonOn: aToolbar
+factory
+newToolbarButtonOn: aToolbar
 	| button |
 	
-	button := (PluggableButtonMorph
-		on: self
+	button := (IceTipToolbarItemButtonMorph
+		on: self 
 			getState: nil 
-			action:  #execute 
-			label: #label 
-			icon: #icon
-			menu: nil)
+			action:  #execute)
 		helpText: self help;
 		font: aToolbar toolbarItemFont;
 		beIconTop;
@@ -17,9 +14,10 @@ buildToolbarButtonOn: aToolbar
 		borderWidth: 0;
 		cellPositioning: #topCenter;
 		width: aToolbar toolbarItemSize;
-		"backgroundColor: aToolbar color;"
 		yourself.
 		
-	"aToolbar displayMode configureButton: button item: self."
+	aToolbar displayMode 
+		configureButton: button 
+		item: self.
 	
 	^ button
