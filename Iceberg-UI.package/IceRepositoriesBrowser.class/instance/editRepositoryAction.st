@@ -4,6 +4,6 @@ editRepositoryAction
 		action: [ :presentation | 
 			presentation selection editRepositoryThen: [
 				presentation pane browser pane update ] ];
-		showTitle: 'Edit repository...';
+		showTitle: 'Edit repository';
 		shortcut: $e;
 		yourself

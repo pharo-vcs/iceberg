@@ -5,4 +5,5 @@ cloneRepositoryAgainAction
 		selectionCondition: #isMissing;
 		showTitle: 'Clone repository again';
 		shortcut: $R;
+		category: 'Advanced';
 		yourself

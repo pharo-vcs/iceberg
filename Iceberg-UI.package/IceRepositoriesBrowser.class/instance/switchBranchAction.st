@@ -8,4 +8,5 @@ switchBranchAction
 			presentation selection notNil ];	
 		selectionCondition: #isOperative;
 		showTitle: 'Switch branch...';
+		category: 'Branches';
 		shortcut: $b.

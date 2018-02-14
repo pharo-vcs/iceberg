@@ -29,19 +29,26 @@ composeRepositoriesIn: composite
 		addAction: self fetchAllRepositoriesAction;
 		"Repository pop up menu"
 		addSelectionAction: self synchronizeRepositoryAction;
-		addSelectionAction: self fullSynchronizeRepositoryAction;
-		addSelectionAction: self showHistoryAction;
-		addSelectionAction: self switchBranchAction;
-		addSelectionAction: self createNewBranchAction;
-		addSelectionAction: self addRemoteAction;
+		
 		addSelectionAction: self fetchAction;
 		addSelectionAction: self pullAction;
-		addSelectionAction: self pullFromAction;
 		addSelectionAction: self pushAction;
+		
+		addSelectionAction: self createNewBranchAction;
+		addSelectionAction: self switchBranchAction;
+		
+		addSelectionAction: self addRemoteAction;
+		addSelectionAction: self pullFromAction;
 		addSelectionAction: self pushToAction;
-		addSelectionAction: self cloneRepositoryAgainAction;
+		
+		addSelectionAction: self showHistoryAction;
+		
 		addSelectionAction: self editRepositoryAction;
 		addSelectionAction: self forgetRepositoryAction;
+		
+		addSelectionAction: self fullSynchronizeRepositoryAction;
+		addSelectionAction: self cloneRepositoryAgainAction;
+		
 		"Plugin actions"
 		dynamicActionsOnSelection: [ :presentation | 
 			presentation selection pluginActions ];

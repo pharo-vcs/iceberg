@@ -4,4 +4,7 @@ fullSynchronizeRepositoryAction
 		selectionAction: #fullSynchronize;
 		selectionCondition: #isOperative;
 		icon: #glamorousBrowse asIcon;
-		title: 'Synchronize full repository...'; showTitle
+		category: 'Advanced';
+		title: 'Synchronize full repository...';
+		showTitle;
+		yourself

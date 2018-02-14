@@ -5,7 +5,7 @@ pushAction
 			presentation selection pushThen: [ presentation pane browser update ]];
 		selectionCondition: #canPush;
 		icon: #glamorousRightSide asIcon;
-		showTitle: 'Push outgoing commits'; 
+		showTitle: 'Push'; 
 		shortcut: $P; 
 		yourself
 

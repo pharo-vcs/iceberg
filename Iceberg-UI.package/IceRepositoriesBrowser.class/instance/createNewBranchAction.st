@@ -5,4 +5,5 @@ createNewBranchAction
 			presentation selection createNewBranchThen: [] ];
 		selectionCondition: #isOperative;
 		showTitle: 'Create new branch...';
+		category: 'Branches';
 		shortcut: $B.

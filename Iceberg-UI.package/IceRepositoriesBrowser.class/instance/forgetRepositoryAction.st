@@ -4,6 +4,6 @@ forgetRepositoryAction
 		action: [ :presentation | 
 			presentation selection forgetThen: [ 
 				presentation pane browser pane update ] ];
-		showTitle: 'Forget repository...'; 
+		showTitle: 'Forget repository'; 
 		shortcut: $x; 
 		yourself
