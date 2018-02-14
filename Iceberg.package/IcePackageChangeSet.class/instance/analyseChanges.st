@@ -3,11 +3,11 @@ analyseChanges
 	| newChanges |
 
 	newChanges := self basicChanges.
-	newChanges ifEmpty: [ 
+	newChanges ifEmpty: [
 		(self package isLoaded 
 			and: [ self package isModified
-			and: [ self parent theirVersion isKindOf: IceWorkingCopy ]])
-			ifTrue: [ self package workingCopy modified: false ]].
+			and: [ self parent myVersion isKindOf: IceWorkingCopy ]])
+			ifTrue: [ self package mcWorkingCopy modified: false ]].
 	
 	changes := OrderedCollection new.
 	newChanges do: [ :change | 
