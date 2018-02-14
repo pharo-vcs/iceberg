@@ -1,3 +1,3 @@
 private dispatch
 addButtonRight: aButton
-	self rightPanel widget addMorphBack: aButton
+	self rightPanel addMorphBack: aButton

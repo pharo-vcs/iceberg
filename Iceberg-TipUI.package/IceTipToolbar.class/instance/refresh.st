@@ -1,7 +1,7 @@
 accessing
 refresh
-	self leftPanel widget removeAllMorphs.
-	self rightPanel widget removeAllMorphs.
+	self leftPanel removeAllMorphs.
+	self rightPanel removeAllMorphs.
 	items do: [ :each |  
 		each position 
 			addButton: (each newToolbarButtonOn: self) 
