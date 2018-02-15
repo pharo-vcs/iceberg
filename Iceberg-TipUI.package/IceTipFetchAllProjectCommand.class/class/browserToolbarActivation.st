@@ -2,4 +2,6 @@ accessing
 browserToolbarActivation
 	<classAnnotation>
 	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipRepositoryListContext
+	^ IceTipToolbarActivation 
+		byRootGroupItemFor: IceTipRepositoryListContext
+		order: 20
