@@ -3,4 +3,6 @@ initializeSourceDirectory
 	subdirectoryLabel := self newLabel label: 'Source directory'.
 	subdirectoryInputText := self newTextInput 
 		ghostText: 'src';		
-		autoAccept: true
+		autoAccept: true.
+		
+	subdirectoryInputText text: self defaultSubdirectory
