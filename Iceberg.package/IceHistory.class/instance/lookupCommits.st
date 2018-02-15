@@ -1,8 +1,12 @@
 history
 lookupCommits
 	
-	| newCommitDictionary |
+	| newCommitDictionary newCommits |
 	newCommitDictionary := Dictionary new.
-	commitish commitsDo: [ :each |
-		newCommitDictionary at: each id put: (IceHistoryCommit commit: each history: self) ].
-	commitDictionary := newCommitDictionary
+	newCommits := OrderedCollection new.
+	commitish commitsDo: [ :each | | commit |
+		commit := IceHistoryCommit commit: each history: self.
+		newCommits add: commit.
+		newCommitDictionary at: each id put: commit ].
+	commitDictionary := newCommitDictionary.
+	commits := newCommits.

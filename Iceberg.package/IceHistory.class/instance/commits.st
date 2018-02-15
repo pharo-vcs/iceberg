@@ -1,4 +1,5 @@
 history
 commits
 	
-	^ self commitDictionary values
+	commits ifNil: [ self lookupCommits ].
+	^ commits
