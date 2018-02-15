@@ -1,4 +1,4 @@
-private
+private factory
 newWidgetLabel: labelString value: textOrString do: aBlock
 	| index labelId valueId |
 	

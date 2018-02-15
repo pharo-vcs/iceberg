@@ -1,6 +1,9 @@
-private
+private factory
 newLabel: aString
 	^ self newPanel
 		listDirection: #rightToLeft;
-		addMorph: (FuzzyLabelMorph newLabel: aString);
+		cellPositioning: #center;
+		addMorph: ((LabelMorph newLabel: aString)
+			color: self labelColor;
+			yourself);
 		asSpecAdapter

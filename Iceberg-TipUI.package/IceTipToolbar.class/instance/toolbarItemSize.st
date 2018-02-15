@@ -1,3 +1,3 @@
-private
+accessing
 toolbarItemSize
 	^ self class defaultItemSize

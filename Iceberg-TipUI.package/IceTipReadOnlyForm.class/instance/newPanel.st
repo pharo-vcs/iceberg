@@ -1,4 +1,4 @@
-private
+private factory
 newPanel
 	^ PanelMorph new 
 		changeTableLayout;

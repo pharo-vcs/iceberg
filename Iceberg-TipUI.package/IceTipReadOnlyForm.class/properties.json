@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"items"
+		"items",
+		"labelColor"
 	],
 	"name" : "IceTipReadOnlyForm",
 	"type" : "normal"

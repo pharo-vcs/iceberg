@@ -8,8 +8,10 @@ detailedInfo
 	 on: IceRemoteNotFoundError do: [ #() ].
 	pushRemoteInfo := [ { 'Pushing to' -> (self repository pullRemote name) } ]
 	 on: IceRemoteNotFoundError do: [ #() ].
-	^ 	originInfo,
+	^ 	(originInfo,
 		{ 'Location' -> self repository location pathString },
 		pullRemoteInfo,
 		pushRemoteInfo,
-		{ 'On branch' -> self repository description }
+		{ 'On branch' -> self repository description })
+		collect: [ :each | 
+			(each key, ':') -> each value ]
