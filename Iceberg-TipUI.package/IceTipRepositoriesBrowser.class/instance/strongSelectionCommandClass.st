@@ -1,3 +1,0 @@
-accessing
-strongSelectionCommandClass
-	^ IceTipManagePackagesCommand

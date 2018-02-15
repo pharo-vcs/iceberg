@@ -1,3 +1,0 @@
-accessing
-titleIcon
-	^ #komitterSmalltalkhubRemote asIcon
