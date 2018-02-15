@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"repository"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipRepositoryListContext",
 	"type" : "normal"
 }

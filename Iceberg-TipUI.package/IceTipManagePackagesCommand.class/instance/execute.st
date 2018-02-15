@@ -1,3 +1,3 @@
 execution
 execute
-	(IceTipPackagesBrowser for: self repositoryModel) open
+	(IceTipPackagesTool for: self repositoryModel) openWithSpec

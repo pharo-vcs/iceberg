@@ -1,3 +1,0 @@
-accessing
-context
-	^ IceTipPackageListContext new

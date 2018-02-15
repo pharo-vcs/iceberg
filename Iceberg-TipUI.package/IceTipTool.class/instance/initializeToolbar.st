@@ -1,3 +1,3 @@
 initialization
 initializeToolbar
-	toolbar addItemsFromContext: self context
+	toolbar addItemsFromContext: self newContext
