@@ -1,5 +1,9 @@
 initialization
 initialElements
-	| changedPackages |
-	changedPackages := self myVersion changedPackagesTo: self theirVersion.
-	^ changedPackages collect: [ :package | self createChangeSetFor: package ]
+
+	| builder |
+	builder := IceNewDiff new.
+	builder diff: self.
+	(self myVersion changesTo: self theirVersion)
+		do: [ :change | change buildOn: builder ].
+	^ builder changes

@@ -1,0 +1,3 @@
+accessing
+changes
+	^ changesDictionary values

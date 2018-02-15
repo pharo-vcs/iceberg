@@ -1,0 +1,4 @@
+accessing
+myVersion
+	
+	^ diff myVersion

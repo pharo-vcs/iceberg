@@ -1,0 +1,4 @@
+accessing
+theirVersion
+	
+	self subclassResponsibility

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceNewAbstractDiff",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"name",
+		"parent"
+	],
+	"name" : "IceFileSystemDiff",
+	"type" : "normal"
+}

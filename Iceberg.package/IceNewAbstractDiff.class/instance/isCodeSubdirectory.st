@@ -1,0 +1,4 @@
+testing
+isCodeSubdirectory
+	
+	self subclassResponsibility
