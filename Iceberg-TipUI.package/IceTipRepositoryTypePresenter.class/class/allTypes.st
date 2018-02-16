@@ -1,5 +1,6 @@
 accessing
 allTypes
-	^ (self allSubclasses 
+	^ ((self allSubclasses 
+		reject: #isAbstract)
 		sorted: [ :a :b | a order < b order ])
 		collect: #new

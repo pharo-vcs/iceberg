@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipRemoteRepositoryPresenter",
+	"name" : "IceTipGitRepositoryPresenter",
 	"type" : "normal"
 }
