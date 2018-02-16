@@ -1,6 +1,6 @@
 accessing
 newRepository
 	^ IceRepositoryCreator new 
-		remote: (IceGitRemote url: self remoteInputText text asString trimmed);
+		remote: (IceGitRemote url: self remoteUrl);
 		subdirectory: self subdirectoryInputText text asString trimmed;
 		createRepository

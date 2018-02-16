@@ -1,3 +1,3 @@
 accessing
 icon
-	^ self subclassResponsibility
+	^ self class icon

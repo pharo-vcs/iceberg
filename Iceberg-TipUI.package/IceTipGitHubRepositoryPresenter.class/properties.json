@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipRemoteRepositoryPresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"userNameLabel",
+		"userNameInputText",
+		"projectNameLabel",
+		"projectNameInputText"
+	],
+	"name" : "IceTipGitHubRepositoryPresenter",
+	"type" : "normal"
+}

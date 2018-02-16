@@ -2,7 +2,7 @@ accessing
 validate
 	| remoteString |
 	
-	remoteString := self remoteInputText text asString trimmed.
+	remoteString := self remoteUrl.
 	self 
 		assert: remoteString isNotEmpty  
 		description: 'You must enter your project url.'.
