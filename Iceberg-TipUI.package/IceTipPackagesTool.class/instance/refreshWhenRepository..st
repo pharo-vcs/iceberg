@@ -1,6 +1,6 @@
 private
 refreshWhenRepository: ann
 	(ann repository isNil 
-		or: [ self model entity = ann repository ])
+		or: [ self model repositoryModel entity = ann repository ])
 		ifFalse: [ ^ self ].
 	self refresh
