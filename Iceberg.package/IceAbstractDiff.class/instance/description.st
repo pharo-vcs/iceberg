@@ -1,4 +1,4 @@
-printing
+accessing
 description
-
-	^ self subclassResponsibility
+	
+	self subclassResponsibility

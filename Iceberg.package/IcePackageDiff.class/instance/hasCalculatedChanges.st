@@ -1,0 +1,4 @@
+copy
+hasCalculatedChanges
+		
+	hasCalculatedChanges := true

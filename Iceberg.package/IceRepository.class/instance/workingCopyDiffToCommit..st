@@ -1,3 +1,6 @@
 *Iceberg-Changes
 workingCopyDiffToCommit: anIceCommitInfo
-	^ IceDiff forRepository: self commit: anIceCommitInfo
+
+	^ IceDiff
+		from: self workingCopy
+		to: anIceCommitInfo

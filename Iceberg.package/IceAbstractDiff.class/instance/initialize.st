@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	announcer := Announcer new.
+	changesDictionary := Dictionary new.

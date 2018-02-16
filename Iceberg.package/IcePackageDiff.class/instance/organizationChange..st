@@ -1,0 +1,3 @@
+accessing
+organizationChange: anIcePackageOrganizationDiff 
+	organizationChange := anIcePackageOrganizationDiff

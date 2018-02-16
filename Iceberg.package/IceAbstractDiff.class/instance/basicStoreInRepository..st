@@ -1,0 +1,3 @@
+storing
+basicStoreInRepository: anIceRepository
+	self subclassResponsibility

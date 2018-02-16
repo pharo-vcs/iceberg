@@ -1,4 +1,0 @@
-accessing
-myVersion
-	
-	^ diff myVersion

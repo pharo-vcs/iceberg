@@ -1,12 +1,11 @@
 private
 basicCommitWithMessage: aString
-	| picked |
-
-	self flag: #todo. "I need to check if picked = all changes (in that case, is not 
-	needed the pick and I can just go 'business as usual')"
+	| picked changesToCommit |
 	cherryPickBlock ifNotNil: [ picked := cherryPickBlock value ].
-	"Nothing was picked, continue as usual"
-	picked ifNil: [ ^ super basicCommitWithMessage: aString ].
+	changesToCommit := picked
+		ifNil: [ self model ]
+		ifNotNil: [ self model copyWithOnly: picked ].
+	
 	self repository 
-		commitCherryPick: picked  
-		withMessage: aString
+		commitChanges: changesToCommit
+		withMessage: aString.

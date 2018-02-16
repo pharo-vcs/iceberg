@@ -1,0 +1,1 @@
+I provide a filtered version of a diff, restricted to an element in the file system.

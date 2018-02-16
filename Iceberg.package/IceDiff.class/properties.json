@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
+	"commentStamp" : "GuillermoPolito 2/16/2018 18:36",
 	"super" : "IceAbstractDiff",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
@@ -7,8 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"repository",
-		"theirVersion",
-		"myVersion"
+		"myVersion",
+		"theirVersion"
 	],
 	"name" : "IceDiff",
 	"type" : "normal"
