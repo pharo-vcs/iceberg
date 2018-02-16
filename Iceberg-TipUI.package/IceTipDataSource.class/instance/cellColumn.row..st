@@ -5,5 +5,5 @@ cellColumn: column row: rowIndex
 	item := self elementAt: rowIndex.
 	^ FTCellMorph new
 		cellInset: 5;
-		addMorph: (column read: item) asMorph;
+		addMorph: (column read: item) asMorph asReadOnlyMorph;
 		yourself
