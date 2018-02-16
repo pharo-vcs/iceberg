@@ -1,3 +1,3 @@
 private factory
 newContext
-	^ self contextClass new
+	^ self contextClass for: self

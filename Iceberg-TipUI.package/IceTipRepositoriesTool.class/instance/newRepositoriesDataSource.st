@@ -1,6 +1,6 @@
 private factory
 newRepositoriesDataSource
 	^ IceTipDataSource new
-		menuSelectionContextClass: self contextClass;
+		tool: self;
 		elements: self model repositories;
 		yourself

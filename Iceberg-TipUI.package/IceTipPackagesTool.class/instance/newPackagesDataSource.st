@@ -1,6 +1,6 @@
 private factory
 newPackagesDataSource
 	^ IceTipDataSource new
-		menuSelectionContextClass: self contextClass;
+		tool: self;
 		elements: self model packages;
 		yourself

@@ -2,5 +2,4 @@
 buildToolbarOn: aToolbar
 	(contents 
 		sorted: [ :a :b | a order < b order ])
-		do: [ :each | 
-		aToolbar addItem: each buildToolbarItem ]
+		do: [ :each | aToolbar addItem: each buildToolbarItem ]

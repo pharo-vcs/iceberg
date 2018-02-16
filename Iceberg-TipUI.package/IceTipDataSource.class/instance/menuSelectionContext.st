@@ -1,3 +1,3 @@
 accessing
 menuSelectionContext
-	^ self menuSelectionContextClass new
+	^ self tool newContext

@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"menuSelectionContextClass"
+		"tool"
 	],
 	"name" : "IceTipDataSource",
 	"type" : "normal"
