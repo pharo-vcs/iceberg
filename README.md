@@ -72,6 +72,7 @@ MetacelloPharoPlatform select.
 	'Iceberg-Libgit-Filetree' 
 	'Iceberg-Libgit' 
 	'Iceberg' 
+	'Iceberg-Pharo6' 
 	'LibGit-Core'
 	'MonticelloTonel-Tests'
 	'MonticelloTonel-Core'
@@ -79,7 +80,7 @@ MetacelloPharoPlatform select.
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6.7';
+  	repository: 'github://pharo-vcs/iceberg:v0.6.8';
   	load.
 ```
 
