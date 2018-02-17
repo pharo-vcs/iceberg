@@ -3,8 +3,8 @@ initializeWidgets
 	super initializeWidgets.
 	
 	repositoryList := self newTable asSpecAdapter.
-	repositoryList widget
-		onAnnouncement: FTStrongSelectionChanged 
+	repositoryList widget announcer weak
+		when: FTStrongSelectionChanged 
 		send: #repositorySelected: 
 		to: self.
 
