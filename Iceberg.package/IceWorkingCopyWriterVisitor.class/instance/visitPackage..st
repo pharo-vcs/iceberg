@@ -11,7 +11,7 @@ visitPackage: anIcePackageNode
 	This will create a snapshot with only the selected changes"
 	snapshot := diff targetVersion snapshotFor: anIcePackageNode package.
 	patcher := MCPatcher snapshot: snapshot.
-	anIcePackageNode children do: [ :e | 
+	anIcePackageNode allChildrenDo: [ :e | 
 		diff operationForNode: e ifPresent: [ :o | o applyTo: patcher ] ].
 	version := MCVersion new
 		setPackage: mcPackage

@@ -10,7 +10,6 @@ commitChanges: aDiff withMessage: message
 	| newCommit |
 	self validateCanCommit.
 	
-	1halt.
 	aDiff storeInRepository: self repository.
 
 	newCommit := self repository
