@@ -2,7 +2,9 @@ ui
 iconFor: anIceNode 
 	
 	| nodeOperations |
-	nodeOperations := (operations at: anIceNode ifAbsent: [ { anIceNode } ]).
+	nodeOperations := (operations at: anIceNode description ifAbsent: [ { anIceNode } ]).
 	nodeOperations size = 1
 		ifTrue: [ ^ nodeOperations anyOne icon ].
-	self halt
+	
+	self flag: #strange.
+	^ nodeOperations anyOne icon

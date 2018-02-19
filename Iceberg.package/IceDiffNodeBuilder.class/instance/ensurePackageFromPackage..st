@@ -2,7 +2,7 @@ building
 ensurePackageFromPackage: anIcePackage 
 	
 	| packageNode leftSnapshot rightSnapshot mcChanges |
-	
+	self haltIf: [ anIcePackage name = 'Iceberg-SmartUI' ].
 	parentNode
 		childAt: (diff directoryNameFor: anIcePackage)
 		ifPresent: [ :found | ^ found ].

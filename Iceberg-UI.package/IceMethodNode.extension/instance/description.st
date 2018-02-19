@@ -1,4 +1,0 @@
-*Iceberg-UI
-description
-	
-	^ name

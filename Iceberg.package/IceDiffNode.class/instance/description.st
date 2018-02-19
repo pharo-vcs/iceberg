@@ -1,4 +1,4 @@
 accessing
 description
 	
-	^ node description
+	^ node name

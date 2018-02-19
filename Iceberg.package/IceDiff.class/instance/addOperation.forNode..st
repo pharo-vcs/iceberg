@@ -1,5 +1,7 @@
-private-building
+adding
 addOperation: anOperation forNode: aNode
 	
-	(operations at: aNode ifAbsentPut: [ Set new ])
-		add: anOperation
+	| nodeOperations |
+	nodeOperations := operations at: aNode description ifAbsentPut: [ Set new ].
+	self assert: nodeOperations isEmpty.
+	nodeOperations add: anOperation

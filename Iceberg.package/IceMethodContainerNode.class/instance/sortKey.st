@@ -1,0 +1,4 @@
+equality
+sortKey
+	
+	^ name

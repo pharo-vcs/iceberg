@@ -1,0 +1,4 @@
+testing
+isExtension
+	
+	^ false
