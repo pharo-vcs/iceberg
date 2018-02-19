@@ -1,0 +1,3 @@
+accessing
+providerName
+	self subclassResponsibility

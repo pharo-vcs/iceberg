@@ -3,11 +3,11 @@ initializeWidgets
 	self initializeProjectLocation.
 	self initializeSourceDirectory.
 	self initializeSpacePanel.
-	userNameLabel := self newLabel label: 'GitHub username'.
+	userNameLabel := self newLabel label: self providerName, ' username'.
 	userNameInputText := self newTextInput
 		autoAccept: true;
 		ghostText: 'JohnDoe'.
-	projectNameLabel := self newLabel label: 'GitHub project'.
+	projectNameLabel := self newLabel label: self providerName, ' project'.
 	projectNameInputText := self newTextInput
 		autoAccept: true;
 		ghostText: 'MyProject'.
