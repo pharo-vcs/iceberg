@@ -1,4 +1,4 @@
 snapshotting
 fillSnapshot: anIceSnapshot fromVersion: aVersion
 	
-	anIceSnapshot addDefinition: (IceFileDefinition path: self path vesion: aVersion)
+	anIceSnapshot addDefinition: (IceFileDefinition path: self path version: aVersion)

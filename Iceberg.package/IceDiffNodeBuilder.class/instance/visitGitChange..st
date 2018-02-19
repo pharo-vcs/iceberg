@@ -16,10 +16,22 @@ visitGitChange: anIceGitChange
 	
 	"If path = 1 this means it is a file"
 	anIceGitChange path size = 1
-		ifTrue: [ ^ self ensureFileNamed: currentSegment ].
+		ifTrue: [ | fileNode sourceDefinition targetDefinition fileOperation |
+			sourceDefinition := IceFileDefinition path: anIceGitChange path version: diff sourceVersion.
+			targetDefinition := IceFileDefinition path: anIceGitChange path version: diff targetVersion.
+			fileNode := self ensureFileNamed: currentSegment.
+			fileOperation := (sourceDefinition exists and: [ targetDefinition exists ])
+				ifTrue: [ MCModification of: sourceDefinition to: targetDefinition ]
+				ifFalse: [ sourceDefinition exists
+					ifTrue: [ MCRemoval of: targetDefinition ]
+					ifFalse: [ MCAddition of: targetDefinition ] ].
+			diff addOperation: fileOperation forNode: fileNode. ].
 	
 	anIceGitChange path size > 1 ifTrue: [ 
 		"Otherwise, we recursively create a directory structure"
-		anIceGitChange child buildOn: (self ensureDirectoryNamed: currentSegment) ].
+		anIceGitChange child accept: (IceDiffNodeBuilder new
+				diff: diff;
+				parentNode: (self ensureDirectoryNamed: currentSegment);
+				yourself) ].
 	
 	"If path size = 0 we should stop recursion"

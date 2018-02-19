@@ -1,4 +1,4 @@
 testing
 isCodeSubdirectory
 	
-	self subclassResponsibility
+	^ isSourceDirectory

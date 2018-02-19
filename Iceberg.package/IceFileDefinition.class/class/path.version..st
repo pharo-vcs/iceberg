@@ -1,5 +1,5 @@
 instance-creation
-path: aRelativePath vesion: aVersion
+path: aRelativePath version: aVersion
 	
 	^ self new
 		path: aRelativePath;

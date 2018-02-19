@@ -1,3 +1,3 @@
 accessing
-operation: aMCAddition 
-	operation := aMCAddition
+operation: anOperation 
+	operation := anOperation
