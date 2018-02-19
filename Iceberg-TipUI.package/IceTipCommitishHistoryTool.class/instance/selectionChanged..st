@@ -1,4 +1,4 @@
-initialization
+event handling
 selectionChanged: ann
-	selectedCommit := (self commitList widget dataSource elementAt: ann newSelectedRowIndexes first).
+	selectedModel := (self commitList widget dataSource elementAt: ann newSelectedRowIndexes first).
 	self refreshCommitPanel

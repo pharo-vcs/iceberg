@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "FTTreeDataSource",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tool",
+		"formatBlock"
+	],
+	"name" : "IceTipTreeDataSource",
+	"type" : "normal"
+}

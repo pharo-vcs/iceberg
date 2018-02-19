@@ -10,7 +10,7 @@
 		"commitPanel",
 		"infoTab",
 		"diffTab",
-		"selectedCommit"
+		"selectedModel"
 	],
 	"name" : "IceTipCommitishHistoryTool",
 	"type" : "normal"
