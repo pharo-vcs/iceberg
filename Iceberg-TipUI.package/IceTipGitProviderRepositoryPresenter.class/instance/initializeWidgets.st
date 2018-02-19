@@ -15,4 +15,5 @@ initializeWidgets
 	self focusOrder 
 		add: self userNameInputText;
 		add: self projectNameInputText;
-		add: self subdirectoryInputText		
+		add: self projectLocation;
+		add: self subdirectoryInputText
