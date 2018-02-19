@@ -1,9 +1,8 @@
 instance-creation
-from: myCommitish to: theirsCommitish
-
-	^ self new 
-		repository: myCommitish repository;
-		myVersion: myCommitish;
-		theirVersion: theirsCommitish;
+from: sourceCommitish to: targetCommitish
+	
+	^ self new
+		source: sourceCommitish;
+		target: targetCommitish;
 		build;
-		yourself.
+		yourself

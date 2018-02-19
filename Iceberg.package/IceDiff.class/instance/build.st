@@ -1,5 +1,5 @@
 building
 build
 
-	(self myVersion changesTo: self theirVersion)
-		do: [ :change | change buildOn: self ].
+	self buildSourceDirectory.
+	(source changesTo: target) do: [ :change | change accept: self ].

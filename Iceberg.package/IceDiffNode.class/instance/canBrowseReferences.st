@@ -1,0 +1,4 @@
+ui
+canBrowseReferences
+	
+	^ node canBrowseReferences

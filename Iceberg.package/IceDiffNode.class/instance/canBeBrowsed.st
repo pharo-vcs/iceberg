@@ -1,0 +1,4 @@
+ui
+canBeBrowsed
+	
+	^ node canBeBrowsed

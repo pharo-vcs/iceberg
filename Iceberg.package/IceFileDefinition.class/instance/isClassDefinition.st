@@ -1,0 +1,4 @@
+testing
+isClassDefinition
+	
+	^ false

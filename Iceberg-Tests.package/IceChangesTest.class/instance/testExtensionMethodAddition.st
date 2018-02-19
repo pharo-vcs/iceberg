@@ -9,7 +9,7 @@ testExtensionMethodAddition
 	class organization classify: #myExtensionMethod under: '*', packageName.
 	
 	"Asserts"
-	diff := IceDiff forRepository: repository.
+	diff := IceRootNode forRepository: repository.
 	
 	elements := diff elements.
 	self assert: elements notEmpty.

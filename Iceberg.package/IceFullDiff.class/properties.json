@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "GuillermoPolito 2/16/2018 18:36",
-	"super" : "IceDiff",
+	"super" : "IceRootNode",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],

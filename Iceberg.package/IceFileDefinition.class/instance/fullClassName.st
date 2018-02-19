@@ -1,0 +1,4 @@
+accessing
+fullClassName
+	
+	^ path pathString
