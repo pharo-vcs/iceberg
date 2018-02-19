@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/19/2018 15:18",
+	"super" : "IceTipTool",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commitList",
+		"commitPanel",
+		"infoTab",
+		"diffTab",
+		"selectedCommit"
+	],
+	"name" : "IceTipCommitishHistoryTool",
+	"type" : "normal"
+}

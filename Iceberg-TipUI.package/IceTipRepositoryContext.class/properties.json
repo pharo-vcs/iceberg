@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipCommitishModel",
-	"category" : "Iceberg-TipUI-Model",
+	"super" : "IceTipContext",
+	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipBranchModel",
+	"name" : "IceTipRepositoryContext",
 	"type" : "normal"
 }

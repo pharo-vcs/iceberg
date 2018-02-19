@@ -1,5 +1,5 @@
 initialization
 initializeWidgets
 	super initializeWidgets.
-	packageList := self newTable asSpecAdapter.
+	packageList := self newTable.
 	self initializePackageList

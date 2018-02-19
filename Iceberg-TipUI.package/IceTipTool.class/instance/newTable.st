@@ -4,4 +4,4 @@ newTable
 		changeProportionalLayout;
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		yourself
+		asSpecAdapter

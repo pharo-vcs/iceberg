@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/19/2018 15:19",
+	"super" : "IceTipTool",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"sidebarTree",
+		"historyPanel"
+	],
+	"name" : "IceTipRepositoryTool",
+	"type" : "normal"
+}

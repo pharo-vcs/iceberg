@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipRepositoryTool for: self repositoryModel) openWithSpec
