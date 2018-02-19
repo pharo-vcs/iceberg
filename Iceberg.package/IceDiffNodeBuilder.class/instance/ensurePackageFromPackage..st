@@ -2,6 +2,11 @@ building
 ensurePackageFromPackage: anIcePackage 
 	
 	| packageNode leftSnapshot rightSnapshot mcChanges |
+	
+	parentNode
+		childAt: (diff directoryNameFor: anIcePackage)
+		ifPresent: [ :found | ^ found ].
+	
 	packageNode := IcePackageNode
 		package: anIcePackage
 		parent: parentNode.
@@ -27,11 +32,15 @@ ensurePackageFromPackage: anIcePackage
 	mcChanges do: [ :change | | node |
 		node := change definition
 			accept: (IceDiffNodeBuilder new
-				diff: self;
+				diff: diff;
 				parentNode: packageNode;
 				sourceSnapshot: leftSnapshot;
 				targetSnapshot: rightSnapshot;
 				operation: change;
 				yourself).
 	].
+
+	parentNode
+		childAt: (diff directoryNameFor: anIcePackage)
+		put: packageNode.
 	^ packageNode

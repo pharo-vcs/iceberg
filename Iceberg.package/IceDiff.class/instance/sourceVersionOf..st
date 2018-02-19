@@ -1,6 +1,7 @@
 accessing
 sourceVersionOf: aNode
 	
-	^ operations at: aNode
-		ifPresent: #diffToSource
-		ifAbsent: [ '' ]
+	| nodeOperations |
+	nodeOperations := operations at: aNode ifAbsent: [ ^ '' ].
+	nodeOperations size = 1 ifTrue: [ ^ nodeOperations anyOne diffToSource ].
+	self halt.

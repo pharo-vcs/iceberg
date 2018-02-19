@@ -12,7 +12,7 @@ visitPackage: anIcePackageNode
 	snapshot := diff targetVersion snapshotFor: anIcePackageNode package.
 	patcher := MCPatcher snapshot: snapshot.
 	anIcePackageNode allChildrenDo: [ :e | 
-		diff operationForNode: e ifPresent: [ :o | o applyTo: patcher ] ].
+		diff operationForNode: e ifPresent: [ :ops | ops do: [ :o | o applyTo: patcher ] ] ].
 	version := MCVersion new
 		setPackage: mcPackage
 		info: (IceMCVersionInfo package: mcPackage message: 'Internal...')

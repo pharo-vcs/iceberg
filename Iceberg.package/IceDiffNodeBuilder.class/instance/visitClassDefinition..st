@@ -1,6 +1,4 @@
 visiting
 visitClassDefinition: aMCClassDefinition 
 	
-	| node |
-	node := self ensureClassNamed: aMCClassDefinition className isMeta: false.
-	diff addOperation: operation forNode: node
+	^ self visitClassDefinition: aMCClassDefinition isMeta: false

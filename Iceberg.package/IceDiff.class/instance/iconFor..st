@@ -1,4 +1,8 @@
 ui
-iconFor: anIceRootNode 
+iconFor: anIceNode 
 	
-	^ (operations at: anIceRootNode ifAbsent: [ anIceRootNode ]) icon
+	| nodeOperations |
+	nodeOperations := (operations at: anIceNode ifAbsent: [ { anIceNode } ]).
+	nodeOperations size = 1
+		ifTrue: [ ^ nodeOperations anyOne icon ].
+	self halt
