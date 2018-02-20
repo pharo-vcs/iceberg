@@ -1,6 +1,4 @@
-*Iceberg-UI
+as yet unclassified
 icon
-	^ Smalltalk ui icons iconNamed: 
-		(self hasChanges 
-			ifTrue: [ #dirtyMonticelloPackage ]
-			ifFalse: [ #emptyPackage  ])
+	self hasChanges ifTrue: [ ^ #dirtyMonticelloPackage asIcon ].
+	^ #emptyPackage asIcon

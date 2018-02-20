@@ -1,4 +1,5 @@
 private
 refreshCommitPanel
 	self refreshCommitInfo.
-	self refreshDiff
+	self refreshDiffFromHead.
+	self refreshDiffFromAncestor.

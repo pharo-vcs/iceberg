@@ -9,8 +9,9 @@
 		"commitList",
 		"commitPanel",
 		"infoTab",
-		"diffTab",
-		"selectedModel"
+		"selectedModel",
+		"diffFromHeadTab",
+		"diffFromAncestorTab"
 	],
 	"name" : "IceTipCommitishHistoryTool",
 	"type" : "normal"
