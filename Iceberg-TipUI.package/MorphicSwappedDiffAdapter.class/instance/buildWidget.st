@@ -1,6 +1,5 @@
 factory
 buildWidget
-
 	^ SwappedColorDiffMorph new  
 		on: self ;
 		from: self leftText 

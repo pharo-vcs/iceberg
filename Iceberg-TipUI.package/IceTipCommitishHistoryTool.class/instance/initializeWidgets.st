@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.	
 	commitList := self newTable.
-	commitPanel := self newTabManager.
+	commitTabPanel := self newTabManager.
 	
 	self initializeCommitList.
 	self initializeCommitPanel.

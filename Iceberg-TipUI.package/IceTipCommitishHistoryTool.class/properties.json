@@ -6,12 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"commitList",
-		"commitPanel",
-		"infoTab",
 		"selectedModel",
+		"commitList",
+		"infoTab",
 		"diffFromHeadTab",
-		"diffFromAncestorTab"
+		"diffFromAncestorTab",
+		"commitTabPanel"
 	],
 	"name" : "IceTipCommitishHistoryTool",
 	"type" : "normal"
