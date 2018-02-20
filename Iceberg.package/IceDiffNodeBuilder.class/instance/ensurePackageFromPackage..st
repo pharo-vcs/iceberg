@@ -2,7 +2,6 @@ building
 ensurePackageFromPackage: anIcePackage 
 	
 	| packageNode leftSnapshot rightSnapshot mcChanges |
-	self haltIf: [ anIcePackage name = 'Iceberg-SmartUI' ].
 	parentNode
 		childAt: (diff directoryNameFor: anIcePackage)
 		ifPresent: [ :found | ^ found ].
@@ -10,7 +9,7 @@ ensurePackageFromPackage: anIcePackage
 	packageNode := IcePackageNode
 		package: anIcePackage
 		parent: parentNode.
-			
+
 	"If the package does not exist in any of the versions, we produce an empty snapshot to compare"
 	leftSnapshot := [ diff sourceVersion snapshotFor: anIcePackage ]
 		on: IceVersionDoesNotExist
