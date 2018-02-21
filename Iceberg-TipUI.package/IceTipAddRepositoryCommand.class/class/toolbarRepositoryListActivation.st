@@ -1,7 +1,7 @@
-accessing
-browserToolbarActivation
+activation
+toolbarRepositoryListActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 
 		byRootGroupItemFor: IceTipRepositoryListContext
-		order: 20
+		order: 10

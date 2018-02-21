@@ -4,7 +4,7 @@ repositorySelected: ann
 	
 	selection := repositoryList widget dataSource elementAt: ann selectedRowIndex.
 	context := self newContext.
-	context selection: selection.
+	context actingModel: selection.
 	CmdCommandStrongSelectionActivation
 		activateAllInContext: context
 		by: [ :each | each executeCommand ].		

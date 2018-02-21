@@ -1,5 +1,5 @@
 accessing
-browserToolbarActivation
+toolbarPackageListActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 

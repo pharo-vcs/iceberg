@@ -1,5 +1,5 @@
 accessing
-browserToolbarActivation
+toolbarRepositoryListActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation byRootGroupItemFor: IceTipRepositoryListContext

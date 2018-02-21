@@ -1,5 +1,5 @@
 activation
-browserToolbarActivation
+toolbarPackageListActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation byRootGroupItemFor: IceTipPackageListContext

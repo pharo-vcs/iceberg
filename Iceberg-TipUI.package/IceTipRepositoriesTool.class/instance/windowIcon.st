@@ -1,3 +1,0 @@
-accessing
-windowIcon
-	^ #komitterSmalltalkhubRemote asIcon

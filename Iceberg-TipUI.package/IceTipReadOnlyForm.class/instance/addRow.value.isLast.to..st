@@ -3,8 +3,14 @@ addRow: labelId value: valueId isLast: isLast to: column
 	isLast
 		ifTrue: [
 			column 
-				newRow: [ :row | row newColumn: labelId width: 100; newColumn: valueId ] ]
+				newRow: [ :row | 
+					row 
+						newColumn: labelId width: self labelWidth; 
+						newColumn: valueId ] ]
 		ifFalse: [  
 			column 
-				newRow: [ :row | row newColumn: labelId width: 100; newColumn: valueId ]
-				height: 25 ]
+				newRow: [ :row | 
+						row 
+							newColumn: labelId width: self labelWidth; 
+							newColumn: valueId ]
+				height: self rowHeight ]

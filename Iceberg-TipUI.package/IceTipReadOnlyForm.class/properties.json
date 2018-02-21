@@ -7,7 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"items",
-		"labelColor"
+		"labelColor",
+		"labelWidth",
+		"rowHeight"
 	],
 	"name" : "IceTipReadOnlyForm",
 	"type" : "normal"
