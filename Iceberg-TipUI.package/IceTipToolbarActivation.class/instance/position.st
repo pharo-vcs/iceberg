@@ -1,3 +1,3 @@
 accessing
 position
-	^ IceTipToolbarItemPosition perform: self commandClass defaultPosition
+	^ position ifNil: [ IceTipToolbarItemPosition perform: self commandClass defaultPosition ]

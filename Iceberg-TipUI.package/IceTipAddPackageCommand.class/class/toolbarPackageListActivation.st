@@ -4,4 +4,4 @@ toolbarPackageListActivation
 	
 	^ IceTipToolbarActivation 
 		byRootGroupItemFor: IceTipPackageListContext
-		order: 10
+		order: 20
