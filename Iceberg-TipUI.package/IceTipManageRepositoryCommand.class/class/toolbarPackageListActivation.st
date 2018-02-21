@@ -1,4 +1,4 @@
-accessing
+activation
 toolbarPackageListActivation
 	<classAnnotation>
 	

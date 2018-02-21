@@ -2,5 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.	
 	
-	sidebarTree := self newTree.
-	historyPanel := PanelMorph new asSpecAdapter
+	sidebarTree := self newTable.
+	historyPanel := PanelMorph new asSpecAdapter.
+	
+	self initializeSidebarTree
