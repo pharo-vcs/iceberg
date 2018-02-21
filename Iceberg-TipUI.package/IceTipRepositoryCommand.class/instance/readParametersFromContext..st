@@ -1,4 +1,4 @@
 execution
 readParametersFromContext: aToolContext
 	announcer := IceTipWeakValueHolder contents: aToolContext toolAnnouncer.
-	repositoryModel := aToolContext actingModel.
+	repositoryModel := aToolContext selection.

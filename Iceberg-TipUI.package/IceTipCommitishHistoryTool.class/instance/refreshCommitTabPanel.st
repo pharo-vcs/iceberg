@@ -1,4 +1,9 @@
 private
 refreshCommitTabPanel
 	self refreshCommitInfo.
-	commitTabPanel selectedTab tabSelected
+	"refresh tab headers"
+	self refreshDiffFromHeadLabel.
+	self refreshDiffFromAncestorLabel.
+	"Refresh selected tab contents"
+	commitTabPanel selectedTab tabSelected.
+

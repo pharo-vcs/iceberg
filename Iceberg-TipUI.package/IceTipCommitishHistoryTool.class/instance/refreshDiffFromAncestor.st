@@ -1,3 +1,4 @@
 private
 refreshDiffFromAncestor
-	diffFromAncestorTab contents: (IceTipDiffPresenter diff: (selectedModel diffFromAncestor)) buildWithSpec
+	diffFromAncestorTab 
+		contents: (IceTipDiffPresenter diff: (selectedModel diffFromAncestor)) buildWithSpec

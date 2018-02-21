@@ -4,6 +4,7 @@ initializeWidgets
 	diffPanel := self instantiate: SwappedDiffPresenter.
 
 	self initializeChangeList.
+	self initializeDiffPanel.
 	
 	changeList widget
 		onAnnouncement: FTSelectionChanged 
