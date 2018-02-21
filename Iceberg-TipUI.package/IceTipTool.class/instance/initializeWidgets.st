@@ -1,5 +1,5 @@
 initialization
 initializeWidgets
-	toolbar := self instantiate: IceTipToolbar.
+	toolbar := self newToolbar.
 	self initializeToolbar.
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]

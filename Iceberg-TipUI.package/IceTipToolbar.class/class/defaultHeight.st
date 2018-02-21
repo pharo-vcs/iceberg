@@ -1,3 +1,3 @@
 accessing
 defaultHeight
-	^ 40
+	^ self defaultMode height
