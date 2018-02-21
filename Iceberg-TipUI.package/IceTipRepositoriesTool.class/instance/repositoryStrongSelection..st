@@ -1,5 +1,5 @@
-initialization
-repositorySelected: ann
+private
+repositoryStrongSelection: ann
 	| selection context |
 	
 	selection := repositoryList widget dataSource elementAt: ann selectedRowIndex.

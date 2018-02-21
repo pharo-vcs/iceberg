@@ -10,6 +10,4 @@ buildToolbarItem
 		action: [ self executeCommand ];
 		yourself).
 	
-	self setUpShortcutForToobarItem: item.
-	
 	^ item

@@ -1,7 +1,7 @@
 accessing
-browserContextActivation
+repositoryListContextActivation
 	<classAnnotation>
 	
 	^ CmdContextMenuCommandActivation 
-		byRootGroupItemOrder: 20
+		byRootGroupItemOrder: 210
 		for: IceTipRepositoryListContext

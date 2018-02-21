@@ -5,7 +5,9 @@ initializeWidgets
 	repositoryList := self newTable.
 	repositoryList widget
 		onAnnouncement: FTStrongSelectionChanged 
-		send: #repositorySelected: 
+		send: #repositoryStrongSelection: 
 		to: self.
 
 	self initializeRepositoryList.
+	
+	self focusOrder add: repositoryList 
