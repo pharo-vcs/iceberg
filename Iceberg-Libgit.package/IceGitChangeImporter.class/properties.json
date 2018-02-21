@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Libgit-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"path",
+		"diff",
+		"version"
+	],
+	"name" : "IceGitChangeImporter",
+	"type" : "normal"
+}

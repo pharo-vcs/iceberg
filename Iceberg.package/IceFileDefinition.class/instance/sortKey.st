@@ -1,4 +1,0 @@
-accessing
-sortKey
-	
-	^ path pathString

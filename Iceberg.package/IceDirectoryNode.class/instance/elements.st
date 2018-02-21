@@ -1,4 +1,0 @@
-accessing
-elements
-	
-	^ self changes

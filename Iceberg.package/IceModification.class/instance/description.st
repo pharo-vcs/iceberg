@@ -1,0 +1,4 @@
+accessing
+description
+	
+	^ modifiedNode name

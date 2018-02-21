@@ -1,4 +1,0 @@
-accessing
-fullClassName
-	
-	^ path pathString

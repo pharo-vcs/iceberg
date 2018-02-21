@@ -1,0 +1,4 @@
+testing
+isModification
+	
+	^ true

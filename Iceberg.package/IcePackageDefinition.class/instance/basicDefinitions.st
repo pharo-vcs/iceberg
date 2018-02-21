@@ -1,4 +1,0 @@
-accessing
-basicDefinitions
-	
-	^ snapshot definitions

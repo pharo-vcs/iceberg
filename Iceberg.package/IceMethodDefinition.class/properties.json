@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCodeDefinition",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"className",
+		"classIsMeta",
+		"protocol"
+	],
+	"name" : "IceMethodDefinition",
+	"type" : "normal"
+}

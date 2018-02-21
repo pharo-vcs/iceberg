@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceOperation",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"oldNode"
+	],
+	"name" : "IceModification",
+	"type" : "normal"
+}

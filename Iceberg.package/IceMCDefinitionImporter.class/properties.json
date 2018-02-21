@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageNode",
+		"snapshot"
+	],
+	"name" : "IceMCDefinitionImporter",
+	"type" : "normal"
+}

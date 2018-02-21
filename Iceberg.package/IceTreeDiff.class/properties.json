@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mergedTree",
+		"operations",
+		"sourceTree",
+		"targetTree"
+	],
+	"name" : "IceTreeDiff",
+	"type" : "normal"
+}

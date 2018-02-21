@@ -1,0 +1,4 @@
+accessing
+contents
+	
+	^ fileReference contents

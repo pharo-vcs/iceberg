@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceOperation",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceRemoval",
+	"type" : "normal"
+}

@@ -1,0 +1,4 @@
+testing
+isRemoval
+	
+	^ true

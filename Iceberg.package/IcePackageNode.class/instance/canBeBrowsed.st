@@ -1,4 +1,0 @@
-testing
-canBeBrowsed
-	
-	^ package isLoaded

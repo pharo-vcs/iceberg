@@ -1,0 +1,4 @@
+accessing
+leftNode
+	
+	^ left

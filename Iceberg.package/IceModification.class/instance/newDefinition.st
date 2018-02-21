@@ -1,0 +1,4 @@
+accessing
+newDefinition
+	
+	^ modifiedNode

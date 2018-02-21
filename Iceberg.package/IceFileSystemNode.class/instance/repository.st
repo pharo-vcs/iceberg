@@ -1,4 +1,0 @@
-accessing
-repository
-	
-	^ parent repository

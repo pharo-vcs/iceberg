@@ -1,0 +1,4 @@
+visiting
+visitOrganizationDefinition: aMCOrganizationDefinition 
+	
+	packageNode value categories: aMCOrganizationDefinition categories

@@ -1,4 +1,0 @@
-copy
-basicCopy
-	
-	self subclassResponsibility

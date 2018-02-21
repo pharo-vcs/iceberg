@@ -1,4 +1,0 @@
-testing
-canBrowseReferences
-	
-	^ false

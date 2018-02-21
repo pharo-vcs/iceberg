@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceMethodContainerDefinition",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mcDefinition"
+	],
+	"name" : "IceTraitDefinition",
+	"type" : "normal"
+}

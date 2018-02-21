@@ -1,4 +1,0 @@
-copy
-hasCalculatedChanges
-		
-	hasCalculatedChanges := true

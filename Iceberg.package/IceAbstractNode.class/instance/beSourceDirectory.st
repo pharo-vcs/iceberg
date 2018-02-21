@@ -1,4 +1,0 @@
-accessing
-beSourceDirectory
-	
-	isSourceDirectory := true
