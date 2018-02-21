@@ -9,7 +9,6 @@ commitChanges: aDiff withMessage: message
 	
 	| newCommit |
 	self validateCanCommit.
-	self halt.
 	aDiff storeInRepository: self repository.
 
 	newCommit := self repository
