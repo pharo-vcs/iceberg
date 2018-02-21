@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"selection"
+		"repositoryModel"
 	],
 	"name" : "IceTipContext",
 	"type" : "normal"
