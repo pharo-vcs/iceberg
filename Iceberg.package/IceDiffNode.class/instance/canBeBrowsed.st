@@ -1,4 +1,4 @@
 ui
 canBeBrowsed
 	
-	^ node canBeBrowsed
+	^ node value canBeBrowsed

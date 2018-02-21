@@ -3,4 +3,4 @@ workingCopyDiffToCommit: anIceCommitInfo
 
 	^ IceDiff
 		from: self workingCopy
-		to: anIceCommitInfo
+		to: anIceCommitInfo commit

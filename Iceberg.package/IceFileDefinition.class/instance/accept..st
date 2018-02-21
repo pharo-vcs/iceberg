@@ -1,4 +1,4 @@
 visiting
 accept: aVisitor
-
-	aVisitor visitFileDefinition: self
+	
+	^ aVisitor visitFileNode: self

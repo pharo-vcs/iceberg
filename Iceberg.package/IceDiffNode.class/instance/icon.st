@@ -1,4 +1,4 @@
 ui
 icon
 	
-	^ diff iconFor: node
+	^ node value icon

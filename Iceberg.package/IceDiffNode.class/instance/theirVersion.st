@@ -1,4 +1,4 @@
 accessing
 theirVersion
 	
-	^ diff targetVersionOf: node
+	^ node value rightContents

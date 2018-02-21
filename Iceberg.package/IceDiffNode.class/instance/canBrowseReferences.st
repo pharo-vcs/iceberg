@@ -1,4 +1,4 @@
 ui
 canBrowseReferences
 	
-	^ node canBrowseReferences
+	^ node value canBrowseReferences

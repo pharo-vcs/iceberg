@@ -1,3 +1,8 @@
 accessing
-diff: anObject
-	diff := anObject
+diff: anotherTree
+	
+	^ IceTreeDiff new
+		source: self;
+		target: anotherTree;
+		build;
+		yourself

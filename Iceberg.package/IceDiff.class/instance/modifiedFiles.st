@@ -1,6 +1,9 @@
 accessing
 modifiedFiles
 	
-	^ self root accept: (IceWorkingCopyFileCollectorVisitor new
+	| visitor |
+	visitor := IceWorkingCopyFileCollectorVisitor new
 		repository: self repository;
-		diff: self)
+		diff: self.
+	self root mergedTree accept: visitor.
+	^ visitor modifiedFiles

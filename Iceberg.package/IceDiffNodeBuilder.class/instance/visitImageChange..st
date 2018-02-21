@@ -1,6 +1,9 @@
 visiting
 visitImageChange: anIceImageChange 
 
-	parentNode
-		childAt: (diff directoryNameFor: anIceImageChange package)
-		ifAbsentPut: [ self ensurePackageFromPackage: anIceImageChange package ]
+	| importer |
+	importer := IceMCPackageImporter new
+		package: anIceImageChange package;
+		version: version;
+		yourself.
+	^ importer importOn: parentNode

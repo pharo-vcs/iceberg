@@ -1,4 +1,4 @@
 accessing
 myVersion
 	
-	^ diff sourceVersionOf: node
+	^ node value leftContents

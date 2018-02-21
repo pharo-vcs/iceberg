@@ -4,7 +4,7 @@ simmetricDifference: aNode
 	| valueDiff newNode |
 	valueDiff := (self basicEqualsTo: aNode)
 		ifTrue: [ IceNoModification definition: self value ]
-		ifFalse: [ IceModification from: self value to: aNode value ].
+		ifFalse: [ IceModification from: aNode value to: self value ].
 	
 	newNode := IceNode
 		value: valueDiff.
