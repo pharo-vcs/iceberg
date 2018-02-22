@@ -3,4 +3,4 @@ I define basic actions and an entry point to manage each repository individually
 
 Execution:
 
-IceTipRepositoriesTool new openWithSpec.
+IceTipRepositoriesBrowser new openWithSpec.

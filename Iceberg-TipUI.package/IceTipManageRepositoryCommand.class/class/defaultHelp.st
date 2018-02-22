@@ -1,3 +1,3 @@
 accessing
 defaultHelp
-	^ 'Open repository manager tool for this repository.'
+	^ 'Open repository manager browser for this repository.'

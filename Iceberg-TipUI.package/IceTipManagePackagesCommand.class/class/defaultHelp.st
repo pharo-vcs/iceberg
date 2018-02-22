@@ -1,3 +1,3 @@
 accessing
 defaultHelp
-	^ 'Open packages manager tool for this repository'
+	^ 'Open packages manager browser for this repository'

@@ -1,3 +1,3 @@
 accessing
 defaultHelp
-	^ 'Open settings browser to configure Iceberg Tool'
+	^ 'Open settings browser to configure Iceberg'
