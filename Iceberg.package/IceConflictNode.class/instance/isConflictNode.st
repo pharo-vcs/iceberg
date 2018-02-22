@@ -1,4 +1,0 @@
-testing
-isConflictNode
-	
-	^ true

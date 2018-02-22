@@ -6,11 +6,6 @@ build
 	sourceDiff := IceDiff from: source to: commonAncestor.
 	targetDiff := IceDiff from: target to: commonAncestor.
 	
-	"HERE I WAS"
-	
-	sourceDiff accept: (IcePatchVisitor new
-		merge: self;
-		diff: sourceDiff;
-		yourself).
-	1 applyDiff: targetDiff.
-	1 halt.
+	mergeTree := sourceDiff tree mergedTree
+		mergeWith: targetDiff tree mergedTree
+		onMerge: [ :left :right | left mergeWithOperation: right ]

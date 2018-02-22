@@ -1,0 +1,4 @@
+merging
+mergeWithLeftRemoval: anIceRemoval 
+	
+	^ anIceRemoval

@@ -2,7 +2,7 @@ building
 buildOn: aPresenter
 	^ aPresenter cherryPickTree
 		allExpanded;
-		children: #changes;
+		children: #children;
 		icon: #icon;
 		format: #description;
 		display: [ self changes ];

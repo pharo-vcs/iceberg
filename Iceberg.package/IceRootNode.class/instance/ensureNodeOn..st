@@ -1,4 +1,0 @@
-operations
-ensureNodeOn: aNode
-	
-	^ aNode

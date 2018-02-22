@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceModification",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceConflict",
+	"type" : "normal"
+}

@@ -9,18 +9,28 @@ mergeCommit: aCommit
 		ifTrue: [
 			"The commit is already merged"
 			^ self ].
-	1halt.
-	
+
 	merge := IceMerge from: self workingCopy to: aCommit.
-	merge hasConflicts ifTrue: [ | resolved |
+	merge hasConflicts ifTrue: [ | resolved window mergeMorph |
 		"Abort merge and signal for manual merge. 
 		Index is not saved and repository will be discarded, 
 		so no further action is needed to abort the merge"		
-		resolved := ((MCMergeResolutionRequest new merger: merge)
-			signal: 'Merging ', aCommit id asString).
+
+"		resolved := ((MCMergeResolutionRequest new merger: merge)
+			signal: 'Merging ', aCommit id asString)."
+		mergeMorph := (IceMergeMorph forMerger: merger).
+		mergeMorph
+			fromDescription: 'Working copy' translated;
+			toDescription: aCommit id asString.
+		window := mergeMorph newWindow
+			title: 'Merging';
+			yourself.
+		UIManager default openModal: window.
+		resolved := mergeMorph resolved.
+		1halt.
 		resolved ifFalse: [ IceMergeAborted signal ].
 	].
-
+1halt.
 	"If we are here we can assume all conflicts were resolved either manually or automatically."
 	self workingCopy loadChangesFromMCPatch: merger.
 

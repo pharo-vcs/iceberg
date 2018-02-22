@@ -8,6 +8,6 @@ simmetricDifference: aNode
 		onRight: [ :definition | IceRemoval definition: definition ]
 		onMerge: [ :left :right | (left = right)
 			ifTrue: [ IceNoModification definition: left ]
-			ifFalse: [ IceModification from: left to: right ] ].
+			ifFalse: [ IceModification left: left right: right ] ].
 
 	^ mergedTree select: [ :operation | operation hasChanges ]

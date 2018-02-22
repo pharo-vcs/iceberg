@@ -1,5 +1,5 @@
 accessing
 contents
 	
-	^ fileReference readStreamDo: [ :str | 
+	^ fileReference binaryReadStreamDo: [ :str |
 		(ZnCharacterReadStream on: str encoding: 'utf8') upToEnd ]

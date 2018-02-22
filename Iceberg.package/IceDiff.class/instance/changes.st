@@ -1,4 +1,4 @@
 accessing
 changes
 	
-	^ (IceDiffNode on: tree diff: self) changes
+	^ (IceDiffNode on: tree) children
