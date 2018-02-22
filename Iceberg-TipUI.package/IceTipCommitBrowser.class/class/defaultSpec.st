@@ -5,5 +5,6 @@ defaultSpec
 	^ SpecLayout composed 
 		newColumn: [ :column |
 			column 
-				newRow: #diffPanel;
+				newRow: #diffPanel bottom: 0.35;
+				addHSplitter;
 				newRow: #commentPanel ]

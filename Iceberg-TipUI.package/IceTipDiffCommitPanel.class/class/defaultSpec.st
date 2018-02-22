@@ -5,6 +5,6 @@ defaultSpec
 	^ SpecLayout composed
 		newRow: [ :row |
 			row 
-				newColumn: #changeList width: 350;
+				newColumn: #changeList right: 0.7;
 				addVSplitter; 
-				newColumn: #diffPanel ]
+				newColumn: #diffPanel left: 0.3 ]
