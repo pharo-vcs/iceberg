@@ -1,0 +1,3 @@
+accessing
+allTypes
+	^ IceTipRepositoryTypePanel allTypes

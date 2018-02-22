@@ -1,11 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipGitProviderRepositoryPresenter",
+	"super" : "IceTipComposablePresenter",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceTipGitLabRepositoryPresenter",
+	"instvars" : [
+		"diff",
+		"changeList",
+		"diffPanel"
+	],
+	"name" : "IceTipDiffCommitPanel",
 	"type" : "normal"
 }

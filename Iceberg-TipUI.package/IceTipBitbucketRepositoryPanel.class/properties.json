@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipGitProviderRepositoryPresenter",
+	"super" : "IceTipGitProviderRepositoryPanel",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipGitHubRepositoryPresenter",
+	"name" : "IceTipBitbucketRepositoryPanel",
 	"type" : "normal"
 }

@@ -7,5 +7,9 @@ newSidebarTreeDataSource
 			(data respondsTo: #elements)
 				ifTrue: [ data elements ]
 				ifFalse: [ #() ] ];
+		icon: [ :each | 
+			(each respondsTo: #icon)
+				ifTrue: [ each icon ]
+				ifFalse: [ nil ] ];
 		format: #name;
 		yourself

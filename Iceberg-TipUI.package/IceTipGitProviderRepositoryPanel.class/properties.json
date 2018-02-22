@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipGitRepositoryPresenter",
+	"super" : "IceTipGitRepositoryPanel",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -11,6 +11,6 @@
 		"projectNameLabel",
 		"projectNameInputText"
 	],
-	"name" : "IceTipGitProviderRepositoryPresenter",
+	"name" : "IceTipGitProviderRepositoryPanel",
 	"type" : "normal"
 }

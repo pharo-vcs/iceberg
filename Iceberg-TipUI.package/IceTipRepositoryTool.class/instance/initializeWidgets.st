@@ -6,6 +6,10 @@ initializeWidgets
 	historyPanel := PanelMorph new asSpecAdapter.
 	
 	self initializeSidebarTree.
+	sidebarTree widget
+		onAnnouncement: FTSelectionChanged 
+		send: #commitishSelected: 
+		to: self. 
 	
 	self focusOrder 
 		add: sidebarTree;

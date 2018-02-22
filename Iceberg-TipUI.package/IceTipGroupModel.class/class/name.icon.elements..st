@@ -1,6 +1,7 @@
 instance creation
-name: aName elements: aCollection
+name: aName icon: anIcon elements: aCollection
 	^ self new 
 		name: aName;
+		icon: anIcon;
 		elements: aCollection;
 		yourself

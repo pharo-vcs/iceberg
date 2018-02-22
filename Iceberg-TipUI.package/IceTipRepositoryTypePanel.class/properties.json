@@ -13,6 +13,6 @@
 		"remoteInputText",
 		"spacePanel"
 	],
-	"name" : "IceTipRepositoryTypePresenter",
+	"name" : "IceTipRepositoryTypePanel",
 	"type" : "normal"
 }

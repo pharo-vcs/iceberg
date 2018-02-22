@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 2/8/2018 17:21",
-	"super" : "IceTipRepositoryTypePresenter",
+	"super" : "IceTipRepositoryTypePanel",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],

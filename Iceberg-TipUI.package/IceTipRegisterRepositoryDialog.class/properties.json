@@ -6,10 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"diff",
-		"changeList",
-		"diffPanel"
+		"typeList",
+		"repositoryPanel",
+		"acceptAction",
+		"type"
 	],
-	"name" : "IceTipDiffPresenter",
+	"name" : "IceTipRegisterRepositoryDialog",
 	"type" : "normal"
 }

@@ -1,5 +1,5 @@
 execution
 execute
-	IceTipRegisterRepositoryPresenter new
+	IceTipRegisterRepositoryDialog new
 		onAccept: [ :newRepository | self registerRepository: newRepository ];
 		openDialogWithSpec
