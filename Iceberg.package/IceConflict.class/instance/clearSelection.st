@@ -1,0 +1,4 @@
+resolution
+clearSelection
+	
+	chosen := nil
