@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTreeVisitor",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceWorkingCopyPatcherVisitor",
+	"type" : "normal"
+}

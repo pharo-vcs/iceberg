@@ -1,4 +1,4 @@
 private-monticello
-loadChangesFromMCPatch: aPatch
+loadChangesFromMCPatch: aMerge
 	
-	aPatch load
+	aMerge mergeTree accept: IceWorkingCopyPatcherVisitor new.
