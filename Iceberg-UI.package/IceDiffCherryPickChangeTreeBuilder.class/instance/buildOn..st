@@ -1,4 +1,5 @@
 building
+"building"
 buildOn: aPresenter
 	^ aPresenter cherryPickTree
 		allExpanded;
@@ -11,6 +12,7 @@ buildOn: aPresenter
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
 		addSelectionAction: self browseAction;
+		addSelectionAction: self inspectAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
 		yourself
