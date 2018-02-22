@@ -1,3 +1,3 @@
 accessing
 initialExtent
-	^ 900@600
+	^ 800@500

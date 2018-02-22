@@ -1,3 +1,3 @@
 instance creation
 diff: aDiff
-	^ self new diff: aDiff
+	^ self on: aDiff

@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	changeList := self newTable.
-	diffPanel := self instantiate: SwappedDiffPresenter.
+	diffPanel := self instantiate: DiffPresenter.
 
 	self initializeChangeList.
 	self initializeDiffPanel.
@@ -9,4 +9,10 @@ initializeWidgets
 	changeList widget
 		onAnnouncement: FTSelectionChanged 
 		send: #selectionChanged:
-		to: self
+		to: self.
+		
+	self focusOrder 
+		add: changeList;
+		add: diffPanel.
+		
+	self refresh

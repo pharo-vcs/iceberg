@@ -1,4 +1,4 @@
 private
 refreshDiffFromAncestor
 	diffFromAncestorTab 
-		contents: (IceTipDiffCommitPanel diff: (selectedModel diffFromAncestor)) buildWithSpec
+		contents: (IceTipDiffPanel diff: (selectedModel diffFromAncestor)) buildWithSpec

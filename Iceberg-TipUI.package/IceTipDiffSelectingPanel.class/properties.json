@@ -1,15 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipComposablePresenter",
+	"super" : "IceTipDiffPanel",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"diff",
-		"changeList",
-		"diffPanel"
-	],
-	"name" : "IceTipDiffCommitPanel",
+	"instvars" : [ ],
+	"name" : "IceTipDiffSelectingPanel",
 	"type" : "normal"
 }
