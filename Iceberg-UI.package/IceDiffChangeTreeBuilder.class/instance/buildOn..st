@@ -2,7 +2,7 @@ building
 buildOn: aPresenter
 	^ aPresenter fastTree
 		allExpanded;
-		children: #changes;
+		children: #children;
 		icon: #icon;
 		format: #description;
 		display: [ self changes ];
