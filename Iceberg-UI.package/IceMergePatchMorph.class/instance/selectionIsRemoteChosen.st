@@ -1,4 +1,5 @@
 testing
 selectionIsRemoteChosen
 	self selectedChange ifNil: [ ^ false].
-	^ self selectedChange rightChosen
+	^ self selectedChange isConflict
+		and: [ self selectedChange isRightChosen ]

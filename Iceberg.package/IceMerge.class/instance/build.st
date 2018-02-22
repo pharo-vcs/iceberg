@@ -6,6 +6,6 @@ build
 	sourceDiff := IceDiff from: source to: commonAncestor.
 	targetDiff := IceDiff from: target to: commonAncestor.
 	
-	mergeTree := sourceDiff tree
-		mergeWith: targetDiff tree
+	mergeTree := sourceDiff tree mergedTree
+		mergeWith: targetDiff tree mergedTree
 		onMerge: [ :left :right | left mergeWithOperation: right ]

@@ -1,4 +1,4 @@
 testing
 isResolved
 	
-	^ isResolved
+	^ chosen notNil

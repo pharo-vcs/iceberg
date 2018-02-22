@@ -1,4 +1,4 @@
 resolution
-rightChosen
+isRightChosen
 	
 	^ chosen = rightOperation
