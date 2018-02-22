@@ -1,5 +1,4 @@
 operations
-"operations"
 select: aBlock
 
 	| selectedChildren newNode |

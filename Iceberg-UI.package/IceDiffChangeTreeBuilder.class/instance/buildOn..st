@@ -1,5 +1,4 @@
 building
-"building"
 buildOn: aPresenter
 	^ aPresenter fastTree
 		allExpanded;

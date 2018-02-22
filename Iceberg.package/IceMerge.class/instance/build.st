@@ -1,5 +1,4 @@
 building
-"building"
 build
 	
 	| commonAncestor sourceDiff targetDiff |

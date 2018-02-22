@@ -1,5 +1,4 @@
 operations
-"operations"
 simmetricDifference: aNode
 	
 	| mergedTree |

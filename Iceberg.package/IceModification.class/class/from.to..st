@@ -1,5 +1,4 @@
 instance creation
-"instance creation"
 from: newNode to: oldNode
 
 	^ self new

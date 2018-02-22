@@ -1,5 +1,4 @@
 operations
-"operations"
 mergeWith: anotherTree onLeft: leftBlock onRight: rightBlock onMerge: mergeBlock
 	
 	| mergedTree newNode |

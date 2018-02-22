@@ -1,5 +1,4 @@
 *Iceberg-UI
-"*Iceberg-UI"
 gtInspectorItemsIn: composite
 	<gtInspectorPresentationOrder: 0>
 	^ composite fastTable 

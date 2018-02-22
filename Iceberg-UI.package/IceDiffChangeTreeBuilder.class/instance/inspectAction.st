@@ -1,5 +1,4 @@
 actions
-"actions"
 inspectAction
 	^ GLMGenericAction new
 		action: [ :presentation | presentation selection inspect ];
