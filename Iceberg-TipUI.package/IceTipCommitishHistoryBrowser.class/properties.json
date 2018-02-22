@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 2/19/2018 15:18",
-	"super" : "IceTipTool",
+	"super" : "IceTipBrowser",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -13,6 +13,6 @@
 		"diffFromAncestorTab",
 		"commitTabPanel"
 	],
-	"name" : "IceTipCommitishHistoryTool",
+	"name" : "IceTipCommitishHistoryBrowser",
 	"type" : "normal"
 }

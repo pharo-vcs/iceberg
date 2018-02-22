@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 2/16/2018 11:37",
-	"super" : "IceTipTool",
+	"super" : "IceTipBrowser",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -8,6 +8,6 @@
 	"instvars" : [
 		"repositoryList"
 	],
-	"name" : "IceTipRepositoriesTool",
+	"name" : "IceTipRepositoriesBrowser",
 	"type" : "normal"
 }
