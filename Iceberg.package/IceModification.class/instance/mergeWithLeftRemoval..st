@@ -1,6 +1,4 @@
 merging
 mergeWithLeftRemoval: anIceRemoval 
 	
-	^ (IceRemoval definition: self newDefinition)
-		beConflict;
-		yourself
+	^ IceConflict left: anIceRemoval right: self

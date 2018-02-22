@@ -2,6 +2,6 @@ instance creation
 left: leftDefinition right: rightDefinition
 
 	^ self new
-		oldNode: rightDefinition;
-		modifiedNode: leftDefinition;
+		leftDefinition: leftDefinition;
+		rightDefinition: rightDefinition;
 		yourself

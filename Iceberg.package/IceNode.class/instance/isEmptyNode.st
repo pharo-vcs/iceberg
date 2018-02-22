@@ -1,4 +1,4 @@
 testing
 isEmptyNode
-	
+
 	^ false

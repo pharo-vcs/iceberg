@@ -1,3 +1,5 @@
 morph-compatibility
 hasEquivalentIn: aCollection 
-	self shouldBeImplemented.
+	
+	self haltIf: [ aCollection notEmpty ].
+	^ false

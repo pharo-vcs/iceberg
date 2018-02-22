@@ -1,4 +1,4 @@
 equality
 hash
 
-	^ self name hash
+	^ self key hash

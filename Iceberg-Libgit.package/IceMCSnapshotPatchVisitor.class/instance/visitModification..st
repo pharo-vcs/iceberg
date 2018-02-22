@@ -1,5 +1,5 @@
 visiting
 visitModification: anIceModification
 
-	anIceModification modifiedNode addModification: anIceModification toPatcher: patcher.
+	anIceModification leftDefinition addModification: anIceModification toPatcher: patcher.
 	self visitChildrenOf: currentNode

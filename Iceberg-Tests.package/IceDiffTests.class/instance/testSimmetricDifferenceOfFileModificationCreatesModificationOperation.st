@@ -19,5 +19,5 @@ testSimmetricDifferenceOfFileModificationCreatesModificationOperation
 	diff := left simmetricDifference: right.
 	
 	self assert: (diff / 'Readme.md') isModification.
-	self assert: (diff / 'Readme.md') oldNode fileReference contents equals: 'left'.
-	self assert: (diff / 'Readme.md') modifiedNode fileReference contents equals: 'right'.
+	self assert: (diff / 'Readme.md') rightDefinition fileReference contents equals: 'left'.
+	self assert: (diff / 'Readme.md') leftDefinition fileReference contents equals: 'right'.

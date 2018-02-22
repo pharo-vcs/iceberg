@@ -21,5 +21,5 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOpera
 	diff := left simmetricDifference: right.
 	
 	self assert: (diff / 'src' / 'Readme.md') isModification.
-	self assert: (diff / 'src' / 'Readme.md') oldNode fileReference contents equals: 'left'.
-	self assert: (diff / 'src' / 'Readme.md') modifiedNode fileReference contents equals: 'right'.
+	self assert: (diff / 'src' / 'Readme.md') rightDefinition fileReference contents equals: 'left'.
+	self assert: (diff / 'src' / 'Readme.md') leftDefinition fileReference contents equals: 'right'.

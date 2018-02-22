@@ -1,4 +1,4 @@
 accessing
 leftDefinition
 	
-	^ modifiedNode
+	^ definition

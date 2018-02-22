@@ -1,4 +1,4 @@
 accessing
 description
 	
-	^ modifiedNode name
+	^ definition name

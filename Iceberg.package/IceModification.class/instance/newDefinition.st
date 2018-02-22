@@ -1,4 +1,0 @@
-accessing
-newDefinition
-	
-	^ modifiedNode

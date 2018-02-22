@@ -1,4 +1,4 @@
 accessing
 key
 	
-	^ modifiedNode key
+	^ definition key

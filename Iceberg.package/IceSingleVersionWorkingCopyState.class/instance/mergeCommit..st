@@ -1,7 +1,7 @@
 merging
 mergeCommit: aCommit
 	
-	| merger currentCommit newCommit diff changedPackages merge |
+	| currentCommit newCommit diff changedPackages merge |
 	
 	currentCommit := self referenceCommit.
 	
@@ -18,7 +18,7 @@ mergeCommit: aCommit
 
 "		resolved := ((MCMergeResolutionRequest new merger: merge)
 			signal: 'Merging ', aCommit id asString)."
-		mergeMorph := (IceMergeMorph forMerger: merger).
+		mergeMorph := (IceMergeMorph forMerger: merge).
 		mergeMorph
 			fromDescription: 'Working copy' translated;
 			toDescription: aCommit id asString.
@@ -32,7 +32,7 @@ mergeCommit: aCommit
 	].
 1halt.
 	"If we are here we can assume all conflicts were resolved either manually or automatically."
-	self workingCopy loadChangesFromMCPatch: merger.
+	self workingCopy loadChangesFromMCPatch: merge.
 
 	(currentCommit isAncestorOf: aCommit) ifTrue: [
 		"We can fast-forward"

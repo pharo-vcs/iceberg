@@ -1,4 +1,4 @@
 accessing
 leftContents
 	
-	^ modifiedNode contents
+	^ definition contents

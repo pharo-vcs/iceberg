@@ -1,0 +1,4 @@
+testing
+notEmpty
+	
+	^ childrenDictionary notEmpty

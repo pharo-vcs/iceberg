@@ -1,6 +1,12 @@
 building
 build
-	mergedTree := sourceTree simmetricDifference: targetTree.
-	"mergedTree accept: (IceDiffCalculator new 
-		diff: self;
-		yourself)."
+
+	mergedTree := sourceTree
+		mergeWith: targetTree
+		onLeft: [ :definition | IceAddition definition: definition ]
+		onRight: [ :definition | IceRemoval definition: definition ]
+		onMerge: [ :left :right | (left = right)
+			ifTrue: [ IceNoModification definition: left ]
+			ifFalse: [ IceModification left: left right: right ] ].
+
+	mergedTree := mergedTree select: [ :operation | operation hasChanges ]

@@ -1,0 +1,4 @@
+testing
+isConflict
+
+	^ true
