@@ -1,3 +1,3 @@
 private accessing
 repositoryRemoteName
-	^ 'TODO'
+	^ self repositoryModel pushRemoteName

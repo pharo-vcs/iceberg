@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Packages of: ', self model repositoryName
+	^ 'Packages of ', self model repositoryName

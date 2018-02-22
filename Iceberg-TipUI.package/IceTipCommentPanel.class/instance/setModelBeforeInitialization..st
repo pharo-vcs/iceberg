@@ -1,3 +1,3 @@
-private
+initialization
 setModelBeforeInitialization: anObject 
 	repositoryModel := anObject
