@@ -1,5 +1,4 @@
 tests
-"tests"
 testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation
 
 	| left right diff |

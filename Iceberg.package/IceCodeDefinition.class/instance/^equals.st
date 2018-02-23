@@ -1,5 +1,4 @@
 equality
-"equality"
 = anotherDefinition
 
 	^ super = anotherDefinition

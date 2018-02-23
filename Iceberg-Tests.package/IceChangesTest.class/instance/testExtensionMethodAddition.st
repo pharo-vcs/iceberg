@@ -1,5 +1,4 @@
 tests
-"tests"
 testExtensionMethodAddition
 	| class diff elements |
 	

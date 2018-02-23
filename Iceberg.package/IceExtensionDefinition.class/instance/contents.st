@@ -1,5 +1,4 @@
 visiting
-"visiting"
 contents
 
 	^ ''

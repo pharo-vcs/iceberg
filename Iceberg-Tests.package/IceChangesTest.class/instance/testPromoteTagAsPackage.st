@@ -1,5 +1,4 @@
 tests
-"tests"
 testPromoteTagAsPackage
 	| package packageChangeSet class tag diff originalPackage newPackage |
 	

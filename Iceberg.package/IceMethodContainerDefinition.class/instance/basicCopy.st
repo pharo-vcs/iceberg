@@ -1,5 +1,4 @@
 copy
-"copy"
 basicCopy
 	
 	^ super basicCopy

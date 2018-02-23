@@ -1,5 +1,4 @@
 tests
-"tests"
 testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation
 
 	| left right diff |

@@ -1,5 +1,4 @@
 tests
-"tests"
 testTwoSimmetricDifferencesShouldGiveTheSameResult
 
 	| left right leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef diff1 diff2 |

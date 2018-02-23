@@ -1,5 +1,4 @@
 patching
-"patching"
 asMCDefinition
 
 	^ mcDefinition

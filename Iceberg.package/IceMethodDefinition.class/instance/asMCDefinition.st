@@ -7,4 +7,4 @@ asMCDefinition
 		selector: self name
 		category: self protocol
 		timeStamp: ''
-		source: self source
+		source: sourceCode

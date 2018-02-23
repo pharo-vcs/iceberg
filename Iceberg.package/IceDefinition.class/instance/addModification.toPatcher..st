@@ -1,4 +1,6 @@
 patching
 addModification: anIceModification toPatcher: aMCPatcher 
 	
-	self subclassResponsibility
+	aMCPatcher
+		modifyDefinition: anIceModification rightDefinition asMCDefinition
+		to: anIceModification leftDefinition asMCDefinition

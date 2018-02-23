@@ -1,5 +1,4 @@
 tests-basic
-"tests-basic"
 testMergeEmptyRootNodesReturnsNewEmptyRootNode
 
 	| mergedTree |

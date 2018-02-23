@@ -1,5 +1,4 @@
 tests-basic
-"tests-basic"
 testMergeRightNodeWithLeftEmptyRootNodeIsNotEmpty
 
 	| mergedTree rightTree |

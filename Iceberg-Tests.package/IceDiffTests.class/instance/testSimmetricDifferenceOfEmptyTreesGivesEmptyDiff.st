@@ -1,5 +1,4 @@
 tests
-"tests"
 testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff
 
 	| left right diff |

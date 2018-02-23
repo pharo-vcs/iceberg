@@ -7,5 +7,5 @@ visitMetaclassDefinition: aMCClassDefinition
 		isMeta: true
 		isTrait: false
 		isExtension: false.
-	classDefinition value source: aMCClassDefinition classDefinitionString.
+	classDefinition value mcDefinition: aMCClassDefinition.
 	^ classDefinition

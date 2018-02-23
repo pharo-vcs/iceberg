@@ -1,5 +1,4 @@
 tests
-"tests"
 testRemoveTag
 	| package tag packageChangeSet |
 	

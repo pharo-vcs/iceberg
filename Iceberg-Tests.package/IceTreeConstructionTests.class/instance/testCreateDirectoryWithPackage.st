@@ -1,5 +1,4 @@
 tests
-"tests"
 testCreateDirectoryWithPackage
 
 	| tree srcDirectory importer |

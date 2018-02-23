@@ -1,5 +1,4 @@
 tests
-"tests"
 testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDirectory
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |

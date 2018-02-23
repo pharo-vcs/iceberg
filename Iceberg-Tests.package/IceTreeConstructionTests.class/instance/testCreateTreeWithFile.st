@@ -1,5 +1,4 @@
 tests
-"tests"
 testCreateTreeWithFile
 
 	| tree |

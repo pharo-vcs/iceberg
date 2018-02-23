@@ -1,5 +1,4 @@
 visiting
-"visiting"
 visitMethodDefinition: aMCMethodDefinition 
 	
 	| ownerName isMeta isTrait newDefinition ownerNode |
