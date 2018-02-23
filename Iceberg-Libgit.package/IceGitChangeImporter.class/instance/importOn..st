@@ -16,10 +16,11 @@ importOn: aNode
 	
 	"If path = 1 this means it is a file"
 	path size = 1
-		ifTrue: [ | fileReference |
-			fileReference := version fileSystem resolve: (aNode path / currentSegment).
+		ifTrue: [ | fileReference filePath |
+			filePath := aNode path / currentSegment.
+			fileReference := version fileSystem resolve: filePath.
 			fileReference exists ifTrue: [
-				^ aNode addChild: (IceFileDefinition named: currentSegment fileReference: fileReference) ] ].
+				^ aNode addChild: (IceFileDefinition named: currentSegment path: filePath fileReference: fileReference) ] ].
 	
 	path size > 1 ifTrue: [ 
 		"Otherwise, we recursively create a directory structure"
