@@ -1,7 +1,8 @@
 accessing
 refresh
 	changeList widget 
-		in: [ :this | 
+		in: [ :this |
+			this basicSelectRowIndexes: #(). 
 			this dataSource 
 				rootForItems: self diff elements;
 				expandAll ];
