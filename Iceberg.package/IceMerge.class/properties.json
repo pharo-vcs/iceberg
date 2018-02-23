@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"source",
-		"target"
+		"target",
+		"mergeTree"
 	],
 	"name" : "IceMerge",
 	"type" : "normal"

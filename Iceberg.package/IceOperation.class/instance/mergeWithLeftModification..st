@@ -1,4 +1,4 @@
 merging
 mergeWithLeftModification: anIceModification 
 	
-	self subclassResponsibility
+	^ anIceModification

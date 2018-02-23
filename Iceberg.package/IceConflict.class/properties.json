@@ -1,11 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "IceModification",
+	"super" : "Object",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"chosen",
+		"leftOperation",
+		"rightOperation"
+	],
 	"name" : "IceConflict",
 	"type" : "normal"
 }
