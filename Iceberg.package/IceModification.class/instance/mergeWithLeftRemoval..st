@@ -1,4 +1,4 @@
 merging
 mergeWithLeftRemoval: anIceRemoval 
 	
-	^ IceConflict left: anIceRemoval right: self
+	^ IceConflictingOperation left: anIceRemoval right: self

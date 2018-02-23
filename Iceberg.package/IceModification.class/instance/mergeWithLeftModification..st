@@ -5,4 +5,4 @@ mergeWithLeftModification: anIceModification
 	anIceModification leftDefinition = self leftDefinition 
 		ifTrue: [ ^ anIceModification ].
 		
-	^ IceConflict left: anIceModification right: self
+	^ IceConflictingOperation left: anIceModification right: self

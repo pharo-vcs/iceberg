@@ -1,0 +1,3 @@
+resolution
+selectRight
+	self subclassResponsibility

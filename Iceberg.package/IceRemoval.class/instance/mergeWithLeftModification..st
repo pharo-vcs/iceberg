@@ -1,6 +1,6 @@
 merging
 mergeWithLeftModification: anIceModification 
 	
-	^ IceConflict
+	^ IceConflictingOperation
 		left: anIceModification
 		right: self

@@ -5,4 +5,4 @@ mergeWithLeftAddition: anIceAddition
 	anIceAddition definition = self definition 
 		ifTrue: [ ^ anIceAddition ].
 		
-	^ IceConflict left: anIceAddition right: self
+	^ IceConflictingOperation left: anIceAddition right: self

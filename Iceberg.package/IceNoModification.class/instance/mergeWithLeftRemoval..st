@@ -5,4 +5,4 @@ mergeWithLeftRemoval: anIceRemoval
 	So a removal of a tree with modifications should be a conflict.
 	
 	This should maybe be enhanced: if my children are removals maybe this should not be a conflict, but this is the simplest solution right now."
-	^ IceConflict left: anIceRemoval right: self
+	^ IceConflictingOperation left: anIceRemoval right: self

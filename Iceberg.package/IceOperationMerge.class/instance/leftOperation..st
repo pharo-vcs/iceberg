@@ -1,0 +1,3 @@
+accessing
+leftOperation: anOperation
+	self subclassResponsibility
