@@ -1,11 +1,12 @@
 tests-basic
+"tests-basic"
 testMergeConflictingTreesReturnsConflictingNodes
 
 	| mergedTree leftTree rightTree |
-	leftTree := IceRootNode new.
+	leftTree := IceNode new.
 	leftTree ensureFileNamed: 'Readme.md'.
 
-	rightTree := IceRootNode new.
+	rightTree := IceNode new.
 	rightTree ensureDirectoryNamed: 'Readme.md'.
 	
 	mergedTree := leftTree merge: rightTree.

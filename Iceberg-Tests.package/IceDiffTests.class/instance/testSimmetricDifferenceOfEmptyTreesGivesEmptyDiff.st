@@ -1,9 +1,10 @@
 tests
+"tests"
 testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff
 
 	| left right diff |
-	left := IceRootNode new.	
-	right := IceRootNode new.
+	left := IceNode new.	
+	right := IceNode new.
 	
 	diff := left simmetricDifference: right.
 	

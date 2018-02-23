@@ -1,4 +1,5 @@
 visiting
+"visiting"
 accept: aVisitor
 	
-	^ aVisitor visitTraitNode: self
+	^ aVisitor visitTraitDefinition: self

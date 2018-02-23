@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"isMeta"
+		"isMeta",
+		"mcDefinition"
 	],
 	"name" : "IceMethodContainerDefinition",
 	"type" : "normal"

@@ -1,9 +1,10 @@
 tests
+"tests"
 testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation
 
 	| left right diff |
-	left := IceRootNode new.	
-	right := IceRootNode new.
+	left := IceNode new.	
+	right := IceNode new.
 	right ensureFileNamed: 'Readme.md'.
 	
 	diff := right simmetricDifference: left.

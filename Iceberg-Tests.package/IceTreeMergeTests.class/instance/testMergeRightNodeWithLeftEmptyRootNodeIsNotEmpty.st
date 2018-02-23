@@ -1,11 +1,12 @@
 tests-basic
+"tests-basic"
 testMergeRightNodeWithLeftEmptyRootNodeIsNotEmpty
 
 	| mergedTree rightTree |
-	rightTree := IceRootNode new.
+	rightTree := IceNode new.
 	rightTree ensureFileNamed: 'Readme.md'.
 	
-	mergedTree := IceRootNode new merge: rightTree.
+	mergedTree := IceNode new merge: rightTree.
 	
 	self assert: mergedTree isRootDefinition.
 	self deny: mergedTree isEmpty.

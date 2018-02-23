@@ -1,4 +1,5 @@
 visiting
+"visiting"
 visitMethodDefinition: aMCMethodDefinition 
 	
 	| ownerName isMeta isTrait newDefinition ownerNode |
@@ -18,4 +19,4 @@ visitMethodDefinition: aMCMethodDefinition
 		classIsMeta: aMCMethodDefinition classIsMeta
 		protocol: aMCMethodDefinition protocol
 		name: aMCMethodDefinition selector
-		source: aMCMethodDefinition source)
+		sourceCode: aMCMethodDefinition source)

@@ -1,4 +1,5 @@
 accessing
+"accessing"
 contents
 	
-	^ self source
+	^ self subclassResponsibility

@@ -1,8 +1,9 @@
 tests
+"tests"
 testCreateTreeWithFile
 
 	| tree |
-	tree := IceRootNode new.
+	tree := IceNode new.
 	tree ensureFileNamed: 'Readme.md'.
 	
 	self assert: (tree / 'Readme.md') isFileNode

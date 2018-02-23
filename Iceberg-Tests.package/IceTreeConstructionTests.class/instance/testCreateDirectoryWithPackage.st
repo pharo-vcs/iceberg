@@ -1,8 +1,9 @@
 tests
+"tests"
 testCreateDirectoryWithPackage
 
 	| tree srcDirectory importer |
-	tree := IceRootNode new.
+	tree := IceNode new.
 	srcDirectory := (tree ensureDirectoryNamed: 'src').
 	importer := IceMCPackageImporter new
 		package: (IcePackage named: 'MonticelloMocks' repository: nil);

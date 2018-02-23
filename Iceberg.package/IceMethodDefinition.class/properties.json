@@ -8,7 +8,8 @@
 	"instvars" : [
 		"className",
 		"classIsMeta",
-		"protocol"
+		"protocol",
+		"sourceCode"
 	],
 	"name" : "IceMethodDefinition",
 	"type" : "normal"

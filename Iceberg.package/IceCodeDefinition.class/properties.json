@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"definition"
-	],
+	"instvars" : [ ],
 	"name" : "IceCodeDefinition",
 	"type" : "normal"
 }

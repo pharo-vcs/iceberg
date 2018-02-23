@@ -1,4 +1,5 @@
 tests
+"tests"
 testPromoteTagAsPackage
 	| package packageChangeSet class tag diff originalPackage newPackage |
 	
@@ -22,7 +23,7 @@ testPromoteTagAsPackage
 	repository workingCopy addPackageNamed: tag categoryName.
 	repository register.
 	
-	diff := IceRootNode forRepository: repository.
+	diff := repository workingCopyDiff.
 	originalPackage := diff elements 
 		detect: [ :cs | cs description = packageName ]
 		ifNone: [ self fail ].

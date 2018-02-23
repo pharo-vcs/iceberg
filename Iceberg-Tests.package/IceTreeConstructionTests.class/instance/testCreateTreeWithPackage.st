@@ -1,8 +1,9 @@
 tests
+"tests"
 testCreateTreeWithPackage
 
 	| tree importer |
-	tree := IceRootNode new.
+	tree := IceNode new.
 	importer := IceMCPackageImporter new
 		package: (IcePackage named: 'MonticelloMocks' repository: nil);
 		version: self;

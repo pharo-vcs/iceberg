@@ -1,4 +1,5 @@
 visiting
+"visiting"
 accept: aVisitor
 
-	^ aVisitor visitExtensionNode: self
+	^ aVisitor visitExtensionDefinition: self

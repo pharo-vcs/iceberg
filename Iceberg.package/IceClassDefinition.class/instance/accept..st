@@ -1,4 +1,5 @@
 visiting
+"visiting"
 accept: aVisitor 
 	
-	^ aVisitor visitClassNode: self
+	^ aVisitor visitClassDefinition: self

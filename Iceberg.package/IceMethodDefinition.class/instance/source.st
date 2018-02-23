@@ -1,4 +1,6 @@
 accessing
+"accessing"
 source
 
-	^ definition
+	^ '"{1}"
+{2}' format: { protocol asString. sourceCode asString }

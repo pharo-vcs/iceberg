@@ -1,10 +1,11 @@
 tests-basic
+"tests-basic"
 testMergeRightNodeWithLeftEmptyRootNodeHasFileNode
 
 	| mergedTree rightTree |
-	rightTree := IceRootNode new.
+	rightTree := IceNode new.
 	rightTree ensureFileNamed: 'Readme.md'.
 	
-	mergedTree :=  IceRootNode new merge: rightTree.
+	mergedTree := IceNode new merge: rightTree.
 	
 	self assert: (mergedTree / 'Readme.md') isFileDefinition

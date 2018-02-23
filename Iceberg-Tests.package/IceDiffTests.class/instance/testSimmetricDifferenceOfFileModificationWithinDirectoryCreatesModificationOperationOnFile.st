@@ -1,4 +1,5 @@
 tests
+"tests"
 testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOperationOnFile
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
@@ -10,11 +11,11 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOpera
 	rightFileRef := rightMemoryFileSystem root / 'Readme.md'.
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
-	left := IceRootNode new.
+	left := IceNode new.
 	(left ensureDirectoryNamed: 'src')
 		ensureFile: leftFileRef.
 	
-	right := IceRootNode new.
+	right := IceNode new.
 	(right ensureDirectoryNamed: 'src')
 		ensureFile: rightFileRef.
 

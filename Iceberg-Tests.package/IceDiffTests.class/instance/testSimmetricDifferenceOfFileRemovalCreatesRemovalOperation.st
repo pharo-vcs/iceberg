@@ -1,9 +1,10 @@
 tests
+"tests"
 testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation
 
 	| left right diff |
-	left := IceRootNode new.	
-	right := IceRootNode new.
+	left := IceNode new.
+	right := IceNode new.
 	right ensureFileNamed: 'Readme.md'.
 	
 	diff := left simmetricDifference: right.

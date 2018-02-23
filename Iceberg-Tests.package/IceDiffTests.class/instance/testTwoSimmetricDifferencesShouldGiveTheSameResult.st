@@ -1,4 +1,5 @@
 tests
+"tests"
 testTwoSimmetricDifferencesShouldGiveTheSameResult
 
 	| left right leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef diff1 diff2 |
@@ -10,11 +11,11 @@ testTwoSimmetricDifferencesShouldGiveTheSameResult
 	rightFileRef := rightMemoryFileSystem root / 'Readme.md'.
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
-	left := IceRootNode new.
+	left := IceNode new.
 	(left ensureDirectoryNamed: 'src')
 		ensureFile: leftFileRef.
 	
-	right := IceRootNode new.
+	right := IceNode new.
 	(right ensureDirectoryNamed: 'src')
 		ensureFile: rightFileRef.
 

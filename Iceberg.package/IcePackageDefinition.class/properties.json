@@ -1,13 +1,12 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "IceDefinition",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"package",
-		"snapshot"
+		"package"
 	],
 	"name" : "IcePackageDefinition",
 	"type" : "normal"

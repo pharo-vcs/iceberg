@@ -1,4 +1,5 @@
 tests
+"tests"
 testExtensionMethodAddition
 	| class diff elements |
 	
@@ -9,7 +10,7 @@ testExtensionMethodAddition
 	class organization classify: #myExtensionMethod under: '*', packageName.
 	
 	"Asserts"
-	diff := IceRootNode forRepository: repository.
+	diff := repository workingCopyDiff.
 	
 	elements := diff elements.
 	self assert: elements notEmpty.
