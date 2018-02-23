@@ -1,7 +1,7 @@
 tests
 testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOperationOnFile
 
-	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
+	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef leftSrc rightSrc |
 	leftMemoryFileSystem := FileSystem memory.
 	leftFileRef := leftMemoryFileSystem root / 'Readme.md'.
 	leftFileRef writeStreamDo: [ :str | str nextPutAll: 'left' ].
@@ -11,15 +11,15 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOpera
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
 	left := IceNode new.
-	(left ensureDirectoryNamed: 'src')
-		ensureFile: leftFileRef.
+	leftSrc := left addChild: (IceDirectoryDefinition named: 'src').
+	leftSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: leftFileRef).
 	
 	right := IceNode new.
-	(right ensureDirectoryNamed: 'src')
-		ensureFile: rightFileRef.
+	rightSrc := right addChild: (IceDirectoryDefinition named: 'src').
+	rightSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: rightFileRef).
 
-	diff := left simmetricDifference: right.
+	diff := (IceTreeDiff from: left to: right) mergedTree.
 	
-	self assert: (diff / 'src' / 'Readme.md') isModification.
-	self assert: (diff / 'src' / 'Readme.md') rightDefinition fileReference contents equals: 'left'.
-	self assert: (diff / 'src' / 'Readme.md') leftDefinition fileReference contents equals: 'right'.
+	self assert: (diff / 'src' / 'Readme.md') value isModification.
+	self assert: (diff / 'src' / 'Readme.md') value leftDefinition fileReference contents equals: 'left'.
+	self assert: (diff / 'src' / 'Readme.md') value rightDefinition fileReference contents equals: 'right'.

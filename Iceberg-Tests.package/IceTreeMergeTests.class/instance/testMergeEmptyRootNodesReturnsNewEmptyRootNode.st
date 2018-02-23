@@ -1,8 +1,8 @@
 tests-basic
 testMergeEmptyRootNodesReturnsNewEmptyRootNode
 
-	| mergedTree |
-	mergedTree := IceNode new merge: IceNode new.
-	
-	self assert: mergedTree isRootDefinition.
+	| rightTree leftTree mergedTree |
+	leftTree := rightTree := IceEmptyNode new.
+	mergedTree := IceMerge new merge: leftTree with: rightTree.
+
 	self assert: mergedTree isEmpty.

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipToolbarDisplayMode",
+	"category" : "Iceberg-TipUI-View-Toolbar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipToolbarDisplayModeIconAndLabel",
+	"type" : "normal"
+}

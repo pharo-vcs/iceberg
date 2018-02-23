@@ -1,3 +1,15 @@
 accessing
 location: aReferenceOrString
-	locationInput text: aReferenceOrString asFileReference pathString
+	| ref |
+	
+	ref := aReferenceOrString asFileReference.
+	keptLocation ifNotNil: [ 
+		| newRef |
+		newRef := (self location pathString 
+			copyReplaceAll: keptLocation pathString 
+			with: ref pathString) 
+			asFileReference.
+		keptLocation := ref.
+		ref := newRef ].
+	
+	self basicLocation: ref

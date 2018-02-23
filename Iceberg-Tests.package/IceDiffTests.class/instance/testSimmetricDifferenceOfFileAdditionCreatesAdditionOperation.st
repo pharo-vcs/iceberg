@@ -4,8 +4,8 @@ testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation
 	| left right diff |
 	left := IceNode new.	
 	right := IceNode new.
-	right ensureFileNamed: 'Readme.md'.
+	right addChild: (IceFileDefinition named: 'Readme.md').
 	
-	diff := right simmetricDifference: left.
+	diff := (IceTreeDiff from: right to: left) mergedTree.
 	
-	self assert: (diff / 'Readme.md') isAddition
+	self assert: (diff / 'Readme.md') value isAddition

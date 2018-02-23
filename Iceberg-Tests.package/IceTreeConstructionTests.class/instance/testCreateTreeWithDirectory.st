@@ -3,6 +3,6 @@ testCreateTreeWithDirectory
 
 	| tree |
 	tree := IceNode new.
-	tree ensureDirectoryNamed: 'src'.
+	tree addChild: (IceDirectoryDefinition named: 'src').
 	
-	self assert: (tree / 'src') isDirectoryNode
+	self assert: (tree / 'src') value isDirectoryNode

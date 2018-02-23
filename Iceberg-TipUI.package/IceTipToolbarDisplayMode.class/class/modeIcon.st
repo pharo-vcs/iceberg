@@ -1,0 +1,3 @@
+accessing
+modeIcon
+	^ IceTipToolbarDisplayModeIcon uniqueInstance

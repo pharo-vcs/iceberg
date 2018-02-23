@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 1/31/2018 18:23",
+	"super" : "Announcement",
+	"category" : "Iceberg-Announcements",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceAnnouncement",
+	"type" : "normal"
+}

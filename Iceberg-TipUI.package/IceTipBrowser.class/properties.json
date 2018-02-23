@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/14/2018 13:13",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"toolbar"
+	],
+	"name" : "IceTipBrowser",
+	"type" : "normal"
+}

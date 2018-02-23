@@ -1,0 +1,3 @@
+private
+defaultLocation
+	^ IceRepository repositoriesLocation pathString

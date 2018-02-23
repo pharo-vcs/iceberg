@@ -2,6 +2,6 @@ tests
 testEmptyTreeIsRootNode
 
 	| tree |
-	tree := IceNode new.
+	tree := IceNode value: IceRootDefinition new.
 	
-	self assert: tree isRootDefinition
+	self assert: tree value isRootDefinition

@@ -11,13 +11,11 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDir
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
 	left := IceNode new.
-	(left ensureDirectoryNamed: 'src')
-		ensureFile: leftFileRef.
+	left addChild: (IceFileDefinition named: 'src' fileReference: leftFileRef).
 	
 	right := IceNode new.
-	(right ensureDirectoryNamed: 'src')
-		ensureFile: rightFileRef.
+	right addChild: (IceFileDefinition named: 'src' fileReference: rightFileRef).
 
-	diff := left simmetricDifference: right.
-	
-	self assert: (diff / 'src') isModification
+	diff := (IceTreeDiff from: left to: right) mergedTree.
+
+	self assert: (diff / 'src') value isModification

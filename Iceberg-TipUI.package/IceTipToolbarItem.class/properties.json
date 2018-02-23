@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-View-Toolbar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"label",
+		"icon",
+		"action",
+		"help",
+		"position"
+	],
+	"name" : "IceTipToolbarItem",
+	"type" : "normal"
+}

@@ -6,4 +6,4 @@ addCommitInfoTo: browser
 		andShow: [ :a |
 			a morph
 				title: 'Commit info';
-				display: [ :commitInfo | (IceCommitInfoModel for: commitInfo) buildWithSpec ] ].
+				display: [ :commitInfo | self createCommitInfoFrom: commitInfo ] ].

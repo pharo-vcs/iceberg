@@ -1,0 +1,3 @@
+accessing
+defaultLabelWidth
+	^ 100

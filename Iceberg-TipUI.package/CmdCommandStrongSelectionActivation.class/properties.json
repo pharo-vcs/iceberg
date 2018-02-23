@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "CmdCommandActivationStrategy",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CmdCommandStrongSelectionActivation",
+	"type" : "normal"
+}

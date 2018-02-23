@@ -1,4 +1,4 @@
 merging
 mergeWithLeftNoOperation: anIceNoModification 
 	
-	self subclassResponsibility
+	^ IceConflictingOperation left: anIceNoModification right: self

@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposableModel",
+	"category" : "Iceberg-TipUI-View-Type",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectLocation",
+		"subdirectoryLabel",
+		"subdirectoryInputText",
+		"remoteLabel",
+		"remoteInputText",
+		"spacePanel"
+	],
+	"name" : "IceTipRepositoryTypePanel",
+	"type" : "normal"
+}

@@ -7,6 +7,7 @@ baseline: spec
 		
 		self tonel: spec.
 		self libgit: spec.
+		self commander: spec.
 		
 		spec
 			baseline: 'Ring2' 
@@ -19,6 +20,7 @@ baseline: spec
 			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin' 'Iceberg-UI') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Iceberg-UI' 'Commander') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];

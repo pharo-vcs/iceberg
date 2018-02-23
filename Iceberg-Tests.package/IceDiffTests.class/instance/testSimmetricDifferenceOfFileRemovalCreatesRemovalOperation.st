@@ -4,8 +4,8 @@ testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation
 	| left right diff |
 	left := IceNode new.
 	right := IceNode new.
-	right ensureFileNamed: 'Readme.md'.
+	right addChild: (IceFileDefinition named: 'Readme.md').
 	
-	diff := left simmetricDifference: right.
+	diff := (IceTreeDiff from: left to: right) mergedTree.
 	
-	self assert: (diff / 'Readme.md') isRemoval
+	self assert: (diff / 'Readme.md') value isRemoval

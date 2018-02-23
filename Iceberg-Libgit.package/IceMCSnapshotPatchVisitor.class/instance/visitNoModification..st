@@ -1,4 +1,5 @@
 visiting
 visitNoModification: anIceNoModification
-	"I have no changes myself, iterate my children"
+	
+	anIceNoModification definition addToPatcher: patcher.
 	self visitChildrenOf: currentNode

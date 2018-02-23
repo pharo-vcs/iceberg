@@ -1,0 +1,3 @@
+specs
+labelWidth
+	^ 100

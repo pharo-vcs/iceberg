@@ -1,24 +1,23 @@
 tests
 testCreateDirectoryWithPackage
 
-	| tree srcDirectory importer |
+	| tree srcDirectory importer child |
 	tree := IceNode new.
-	srcDirectory := (tree ensureDirectoryNamed: 'src').
+	child := tree addChild: (IceDirectoryDefinition named: 'src').
 	importer := IceMCPackageImporter new
 		package: (IcePackage named: 'MonticelloMocks' repository: nil);
 		version: self;
 		yourself.
-		
-	importer importOn: srcDirectory.
+	importer importOn: child.
 	
-	self assert: (tree / 'src' / 'MonticelloMocks') isPackageNode.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA') isClassDefinition.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA') isMeta not.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA' / 'a') isMethodDefinition.	
+	self assert: (tree / 'src' / 'MonticelloMocks') value isPackageDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA') value isClassDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA') value isMeta not.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA' / 'a') value isMethodDefinition.	
 
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class') isClassDefinition.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class') isMeta.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class' / 'cVar') isMethodDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class') value isClassDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class') value isMeta.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCMockClassA class' / 'cVar') value isMethodDefinition.
 	
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCSnapshotTest') isExtensionDefinition.
-	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCSnapshotTest' / 'mockClassExtension') isMethodDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCSnapshotTest') value isExtensionDefinition.
+	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCSnapshotTest' / 'mockClassExtension') value isMethodDefinition.

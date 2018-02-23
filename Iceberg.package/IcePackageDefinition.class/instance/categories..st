@@ -1,3 +1,4 @@
 accessing
-categories: aCollection 
+categories: aCollection
+
 	categories := aCollection

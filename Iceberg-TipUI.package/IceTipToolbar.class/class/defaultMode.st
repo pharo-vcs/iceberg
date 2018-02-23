@@ -1,0 +1,3 @@
+accessing
+defaultMode
+	^ IceTipToolbarDisplayMode default

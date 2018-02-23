@@ -11,13 +11,13 @@ testSimmetricDifferenceOfFileModificationCreatesModificationOperation
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
 	left := IceNode new.
-	left ensureFile: leftFileRef.
+	left addChild: (IceFileDefinition named: 'Readme.md' fileReference: leftFileRef).
 	
 	right := IceNode new.
-	right ensureFile: rightFileRef.
+	right addChild: (IceFileDefinition named: 'Readme.md' fileReference: rightFileRef).
 
-	diff := left simmetricDifference: right.
+	diff := (IceTreeDiff from: left to: right) mergedTree.
 	
-	self assert: (diff / 'Readme.md') isModification.
-	self assert: (diff / 'Readme.md') rightDefinition fileReference contents equals: 'left'.
-	self assert: (diff / 'Readme.md') leftDefinition fileReference contents equals: 'right'.
+	self assert: (diff / 'Readme.md') value isModification.
+	self assert: (diff / 'Readme.md') value leftDefinition fileReference contents equals: 'left'.
+	self assert: (diff / 'Readme.md') value rightDefinition fileReference contents equals: 'right'.
