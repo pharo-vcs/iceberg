@@ -1,4 +1,0 @@
-accessing
-modifiedPackages
-	
-	^ self changedPackages
