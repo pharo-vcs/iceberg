@@ -1,14 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "IceTreeVisitor",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"node",
-		"diff"
+		"repository"
 	],
-	"name" : "IceDiffNode",
+	"name" : "IceRevertVisitor",
 	"type" : "normal"
 }
