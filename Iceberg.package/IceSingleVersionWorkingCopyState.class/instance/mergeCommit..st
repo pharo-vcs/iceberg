@@ -7,7 +7,7 @@ mergeCommit: mergeCommit
 	"
 	| imageCommit headCommit leftCommit commitToAdvance merge |
 	
-	self workingCopy hasChanges ifTrue: [ self halt ].
+	self workingCopy isModified ifTrue: [ self halt ].
 	
 	imageCommit := self referenceCommit.
 	headCommit := self repository headCommit.
