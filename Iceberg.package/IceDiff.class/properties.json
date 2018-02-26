@@ -7,7 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"tree",
-		"operations",
 		"source",
 		"target",
 		"sourceDirectory"

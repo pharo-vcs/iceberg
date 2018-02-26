@@ -10,7 +10,8 @@
 		"sourceSnapshot",
 		"targetSnapshot",
 		"diff",
-		"operation"
+		"operation",
+		"version"
 	],
 	"name" : "IceDiffNodeBuilder",
 	"type" : "normal"

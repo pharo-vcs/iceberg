@@ -4,7 +4,7 @@ basicCommitWithMessage: aString
 	cherryPickBlock ifNotNil: [ picked := cherryPickBlock value ].
 	changesToCommit := picked
 		ifNil: [ self model ]
-		ifNotNil: [ self model copyWithOnly: picked ].
+		ifNotNil: [ self model copyWithOnly: (picked collect: #node) ].
 	
 	self repository 
 		commitChanges: changesToCommit
