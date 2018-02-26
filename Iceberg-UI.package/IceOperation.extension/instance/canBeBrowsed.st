@@ -1,4 +1,4 @@
 *Iceberg-UI
 canBeBrowsed
 	
-	^ false
+	^ self leftDefinition canBeBrowsed
