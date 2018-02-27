@@ -16,5 +16,6 @@ commitChanges: aDiff withMessage: message
 		withMessage: message
 		andParents: self workingCopyState referenceCommits.
 	
+	self unmarkDirtyPackages.
 	self adoptCommit: newCommit.
 	^ newCommit

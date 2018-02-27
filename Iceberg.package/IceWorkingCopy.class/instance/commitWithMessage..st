@@ -8,5 +8,5 @@ commitWithMessage: aString
  - the working copy reference commit is the same commit as #headCommit"
 	
 	^ self
-		commitPackages: self modifiedPackages
+		commitChanges: self repository workingCopyDiff
 		withMessage: aString
