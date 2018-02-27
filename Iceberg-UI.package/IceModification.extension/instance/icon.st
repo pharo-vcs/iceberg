@@ -1,4 +1,4 @@
 *Iceberg-UI
 icon
 	
-	^ Smalltalk ui icons iconNamed: #changeUpdate
+	^ #changeUpdate asIcon
