@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Clone Bitbucket project'
+	^ 'Clone Bitbucket repository'

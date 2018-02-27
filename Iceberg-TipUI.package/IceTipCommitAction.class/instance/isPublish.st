@@ -1,0 +1,3 @@
+testing
+isPublish
+	^ publish

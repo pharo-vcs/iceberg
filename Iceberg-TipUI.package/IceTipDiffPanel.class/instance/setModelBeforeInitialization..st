@@ -1,3 +1,3 @@
 initialization
 setModelBeforeInitialization: anObject
-	diff := anObject
+	model := anObject

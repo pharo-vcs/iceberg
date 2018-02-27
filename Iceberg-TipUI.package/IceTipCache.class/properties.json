@@ -6,10 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"objects",
-		"resetConditions",
-		"announcer",
-		"proxy"
+		"proxy",
+		"objects"
 	],
 	"name" : "IceTipCache",
 	"type" : "normal"

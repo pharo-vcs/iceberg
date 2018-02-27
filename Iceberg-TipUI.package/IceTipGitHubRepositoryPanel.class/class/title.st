@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Clone GitHub project'
+	^ 'Clone GitHub repository'

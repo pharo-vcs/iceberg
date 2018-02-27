@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Add local project'
+	^ 'Add local repository'

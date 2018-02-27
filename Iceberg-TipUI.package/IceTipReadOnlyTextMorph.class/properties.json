@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "EstebanLorenzano 2/12/2018 16:09",
 	"super" : "TextMorph",
-	"category" : "Iceberg-TipUI-View-ReadOnlyForm",
+	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

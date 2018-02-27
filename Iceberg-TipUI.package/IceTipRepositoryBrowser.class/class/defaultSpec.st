@@ -8,6 +8,6 @@ defaultSpec
 				newRow: #toolbar height: IceTipToolbar defaultHeight;
 				newRow: [ :row |
 					row 
-						newColumn: #sidebarTree;
+						newColumn: #sidebarTree right: 0.7;
 						addVSplitter;
-						newColumn: #historyPanel ] ]
+						newColumn: #historyPanel left: 0.3 ] ]

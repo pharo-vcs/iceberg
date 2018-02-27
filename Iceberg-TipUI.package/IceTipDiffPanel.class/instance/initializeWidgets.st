@@ -14,5 +14,3 @@ initializeWidgets
 	self focusOrder 
 		add: changeList;
 		add: diffPanel.
-		
-	self refresh

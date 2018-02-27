@@ -1,4 +1,7 @@
 private
 repositorySelected
+	| selectedIndex |
 	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	^ repositoryList widget dataSource elementAt: repositoryList widget selectedRowIndex 
+	selectedIndex := repositoryList widget selectedRowIndex.
+	selectedIndex = 0 ifTrue: [ ^ nil ].	
+	^ repositoryList widget dataSource elementAt: selectedIndex 

@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Clone remote project'
+	^ 'Clone remote repository'

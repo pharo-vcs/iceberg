@@ -1,8 +1,11 @@
 accessing
 refresh
+	self model reset.
 	changeList widget 
-		in: [ :this | 
+		in: [ :this |
+			this basicSelectRowIndexes: #(). 
 			this dataSource 
-				rootForItems: self diff elements;
+				rootForItems: self model elements;
+				selectAll;
 				expandAll ];
 		refresh
