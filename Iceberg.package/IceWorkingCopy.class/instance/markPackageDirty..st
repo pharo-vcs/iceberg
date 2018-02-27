@@ -1,4 +1,4 @@
 API-packages
 markPackageDirty: anIcePackage 
 	
-	self subclassResponsibility
+	anIcePackage mcWorkingCopy modified: true
