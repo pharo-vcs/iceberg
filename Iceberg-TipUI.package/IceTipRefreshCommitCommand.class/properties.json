@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tool",
+		"announcer",
+		"repositoryModel"
+	],
+	"name" : "IceTipRefreshCommitCommand",
+	"type" : "normal"
+}

@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"entity"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipModel",
 	"type" : "normal"
 }

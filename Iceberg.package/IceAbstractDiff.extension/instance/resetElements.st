@@ -1,0 +1,3 @@
+initialization
+resetElements
+	elements := nil
