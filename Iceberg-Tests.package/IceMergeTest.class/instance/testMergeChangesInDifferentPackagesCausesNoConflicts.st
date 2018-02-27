@@ -21,6 +21,7 @@ testMergeChangesInDifferentPackagesCausesNoConflicts
 		inPackage: packageName2 asSymbol.
 	change2Commit := repository commitWithMessage: 'Change 2'.
 	
+	repository unload.
 	(repository branchNamed: 'change1') checkout.
 	
 	repository workingCopy mergeCommit: change2Commit.

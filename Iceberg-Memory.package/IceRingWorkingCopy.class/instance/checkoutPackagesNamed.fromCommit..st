@@ -7,5 +7,6 @@ checkoutPackagesNamed: packageNames fromCommit: aCommit
 			package: (IcePackage named: packageName repository: repository))
 				mcSnapshot.
 		snapshot importInto: ringEnvironment asPackageNamed: packageName.
-		loadedPackageVersions at: packageName put: { aCommit }
+		loadedPackageVersions at: packageName put: { aCommit }.
+		dirtyPackages remove: packageName ifAbsent: [ "Ignore" ].
 	].

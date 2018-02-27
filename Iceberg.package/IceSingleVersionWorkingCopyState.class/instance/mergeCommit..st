@@ -32,8 +32,8 @@ mergeCommit: mergeCommit
 	" 1 - Merge commits.
 	If the image and merge commit are the same, and the headCommit is their ancestor, we should do nothing.
 	Otherwise, we should merge the two commits we have, discerning well which is the left and which is the right commit."
-	 merge := (imageCommit = mergeCommit and: [ headCommit isAncestorOf: imageCommit ])
-		ifTrue: [ IceEmptyMerge new ]
+	 (imageCommit = mergeCommit and: [ headCommit isAncestorOf: imageCommit ])
+		ifTrue: [ merge := IceEmptyMerge new ]
 		ifFalse: [
 			merge := IceMerge from: leftCommit to: mergeCommit.
 			merge hasConflicts ifTrue: [ | resolved window mergeMorph |
@@ -50,7 +50,7 @@ mergeCommit: mergeCommit
 				UIManager default openModal: window.
 				resolved := mergeMorph merged.
 				resolved ifFalse: [ IceMergeAborted signal ].
-			] ].
+				merge ] ].
 
 	" 2 - Update HEAD.
 	If the merged commits are from diverging branches, generate a merge commit.

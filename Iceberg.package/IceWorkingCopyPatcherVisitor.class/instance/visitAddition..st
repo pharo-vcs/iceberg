@@ -2,4 +2,5 @@ visiting
 visitAddition: anIceAddition 
 	
 	"I ignore all additions, even package additions.
-	They should be explicitly loaded in the image"
+	Packages should be explicitly loaded in the image.
+	Classes, traits, and methods will be loaded with their respective package modifications"
