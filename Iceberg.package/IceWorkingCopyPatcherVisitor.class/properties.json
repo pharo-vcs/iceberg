@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
 	"name" : "IceWorkingCopyPatcherVisitor",
 	"type" : "normal"
 }
