@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceTipTreeDataSource",
-	"category" : "Iceberg-TipUI-Spec-DataSource",
+	"category" : "Iceberg-TipUI-View-DataSource",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,3 +1,3 @@
 private
 refresh
-	diffPanel refresh.
+	diffPanel refresh

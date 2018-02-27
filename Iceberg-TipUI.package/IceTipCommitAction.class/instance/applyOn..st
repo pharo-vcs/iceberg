@@ -1,9 +1,10 @@
 executing
 applyOn: aRepository
-	self validateItems.
-	self validateMessage.
-	aRepository
-		commitCherryPick: self items 
-		withMessage: self message.
-	self isPublish 
-		ifTrue: [ aRepository push ]
+	[
+		self validateCanCommit.
+		aRepository
+			commitChanges: (diff copyWithOnly: items)
+			withMessage: message.
+		self isPublish ifTrue: [ aRepository push ] ]
+	on: IceNothingToCommit, IceWorkingCopyDesyncronized  
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor on: aRepository) ]	

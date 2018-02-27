@@ -6,6 +6,6 @@ diffFromHead
 		informUser: 'Calculating diff'
 		during: [ 
 			diff := self entity diffFromHead.
-			diff calculateAllElements ].
+			diff build ].
 	
-	^ diff
+	^ IceTipStaticDiffModel for: diff

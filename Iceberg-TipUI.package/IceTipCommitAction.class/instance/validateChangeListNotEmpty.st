@@ -1,3 +1,5 @@
-executing
+validating
 validateChangeListNotEmpty
-	self flag: #todo. "Validate items is not empty"
+	"If there are no selected changed, no point on commiting :)"
+	
+	items ifEmpty: [ IceNothingToCommit signal ]

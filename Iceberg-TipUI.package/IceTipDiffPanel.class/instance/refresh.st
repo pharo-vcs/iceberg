@@ -5,7 +5,6 @@ refresh
 		in: [ :this |
 			this basicSelectRowIndexes: #(). 
 			this dataSource 
-				rootForItems: self model elements;
-				selectAll;
+				rootForItems: self model treeRoots;
 				expandAll ];
 		refresh

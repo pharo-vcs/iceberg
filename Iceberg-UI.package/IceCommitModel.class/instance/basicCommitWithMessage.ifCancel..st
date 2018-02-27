@@ -8,4 +8,4 @@ basicCommitWithMessage: text ifCancel: cancelBlock
 			e retry ].
 		self resetText ]
 	on: IceNothingToCommit, IceWorkingCopyDesyncronized  
-	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor on: self repository) ]

@@ -1,4 +1,3 @@
-executing
+validating
 validateMessageNotEmpty
-	self flag: #todo. "Validate aString ifEmpty -> ask for continue"
-	self halt
+	self message ifEmpty: [ IceNoCommitMessage signal ]

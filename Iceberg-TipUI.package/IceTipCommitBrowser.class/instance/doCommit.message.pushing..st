@@ -1,9 +1,9 @@
 actions
-doCommit: items message: aString pushing: aBoolean
-	self validateMessage: aString.
+doCommit: aCollection message: aString pushing: aBoolean
 	self model 
 		commit: (IceTipCommitAction new
-			items: items;
+			diff: self model workingCopyDiff;
+			items: aCollection;
 			message: aString;
 			publish: aBoolean;
 			yourself)

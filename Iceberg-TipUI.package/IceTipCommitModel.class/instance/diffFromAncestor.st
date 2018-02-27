@@ -6,6 +6,6 @@ diffFromAncestor
 		informUser: 'Calculating diff'
 		during: [ 
 			diff := self entity ancestors first diffTo: self entity.
-			diff calculateAllElements ].
+			diff build ].
 
-	^ diff
+	^ IceTipStaticDiffModel for: diff

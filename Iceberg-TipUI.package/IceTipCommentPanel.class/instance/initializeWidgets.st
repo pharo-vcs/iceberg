@@ -10,4 +10,9 @@ initializeWidgets
 		label: 'Commit';
 		"icon: #smallOk asIcon;"
 		help: ('Commit your changes to {1}' format: { self repositoryName });
-		yourself)
+		yourself).
+		
+	self focusOrder
+		add: pushCheckbox;
+		add: commentText;
+		add: commitButton

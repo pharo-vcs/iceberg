@@ -1,3 +1,3 @@
 accessing
 diff
-	^ diff
+	^ self subclassResponsibility

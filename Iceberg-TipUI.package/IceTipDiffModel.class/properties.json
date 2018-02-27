@@ -6,6 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"entity",
 		"diff"
 	],
 	"name" : "IceTipDiffModel",
