@@ -5,5 +5,5 @@ modifiedFiles
 	visitor := IceWorkingCopyFileCollectorVisitor new
 		repository: self repository;
 		diff: self.
-	self root mergedTree accept: visitor.
+	tree accept: visitor.
 	^ visitor modifiedFiles

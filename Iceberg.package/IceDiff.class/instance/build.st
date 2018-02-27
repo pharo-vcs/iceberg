@@ -20,7 +20,4 @@ build
 			parentNode: rightTree;
 			yourself) ].
 		
-	tree := IceTreeDiff new
-		source: leftTree;
-		target: rightTree;
-		build
+	tree := self diff: leftTree with: rightTree

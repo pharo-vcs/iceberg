@@ -1,6 +1,6 @@
 operations
 storeInRepository: aRepository
 
-	self root mergedTree accept: (IceWorkingCopyWriterVisitor new
+	tree accept: (IceWorkingCopyWriterVisitor new
 		repository: aRepository;
 		diff: self)

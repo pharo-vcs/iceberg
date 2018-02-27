@@ -1,8 +1,9 @@
 copying
 copyWithOnly: aCollection 
 	
-	| treeCopy |
-	treeCopy := tree copyWithOnly: aCollection.
+	| treeCopy selectedOperations |
+	selectedOperations := aCollection collect: #value.
+	treeCopy := tree select: [ :node | selectedOperations includes: node ].
 	
 	^ self class new
 		source: source;
