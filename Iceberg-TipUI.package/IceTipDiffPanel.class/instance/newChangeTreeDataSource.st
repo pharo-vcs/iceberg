@@ -1,7 +1,7 @@
 private factory
 newChangeTreeDataSource
 	^ IceTipTreeDataSource new 
-		rootForItems: #(); "They will be updated on refresh"
+		rootForItems: self model elements;
 		childrenBlock: [ :data | data elements ];
 		icon: #icon;
 		format: #description;

@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Clone GitLab project'
+	^ 'Clone GitLab repository'

@@ -34,4 +34,5 @@ commitChanges: changesToCommit withMessage: message
 		withMessage: message
 		andParents: self workingCopyState referenceCommits.
 	self referenceCommit: newCommit.
+	
 	^ newCommit

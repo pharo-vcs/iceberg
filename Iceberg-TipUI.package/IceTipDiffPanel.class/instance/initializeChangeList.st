@@ -1,4 +1,6 @@
 initialization
 initializeChangeList
-	changeList widget
-		dataSource: self newChangeTreeDataSource
+	| dataSource |
+	dataSource := self newChangeTreeDataSource.
+	changeList widget dataSource: dataSource.
+	dataSource expandAll

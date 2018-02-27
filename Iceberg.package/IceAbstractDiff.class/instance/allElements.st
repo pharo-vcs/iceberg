@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 allElements
-	^ self collectAllElementsInto: Set new 
-	
+	^ self collectAllElementsInto: Set new

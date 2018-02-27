@@ -1,3 +1,3 @@
 specs
 title
-	^ 'New project'
+	^ 'New repository'
