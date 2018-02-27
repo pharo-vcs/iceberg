@@ -42,8 +42,7 @@ mergeCommit: mergeCommit
 				so no further action is needed to abort the merge"
 				resolved := IceMergeResolutionRequest new
 					merger: merge;
-					signal: 'Merging ', mergeCommit description, ' into ', leftCommit description;
-					merged.
+					signal: 'Merging ', mergeCommit description, ' into ', leftCommit description.
 				resolved ifFalse: [ IceMergeAborted signal ].
 				merge ] ].
 

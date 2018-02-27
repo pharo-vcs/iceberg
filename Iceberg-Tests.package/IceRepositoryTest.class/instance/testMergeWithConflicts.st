@@ -11,7 +11,7 @@ testMergeWithConflicts
 	[ repository workingCopy mergeCommit: toMerge ]
 		on: IceMergeResolutionRequest
 		do: [ 	:resolutionRequest | 
-			resolutionRequest merger conflicts do: [ :ea | ea chooseRemote ].
+			resolutionRequest merge conflictsDo: [ :ea | ea selectRight ].
 			resolutionRequest resume: true ].
 	
 	"3. Verify"

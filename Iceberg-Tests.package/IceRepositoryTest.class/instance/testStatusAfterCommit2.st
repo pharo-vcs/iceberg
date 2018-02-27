@@ -3,7 +3,7 @@ testStatusAfterCommit2
 	self scenarioTwoDirtyPackages.
 
 	repository 
-		commitPackages: repository workingCopyDiff changedPackages
+		commitChanges: repository workingCopyDiff
 		withMessage: 'Committing two packages together'.
 
 	self assert: repository incomingCommits isEmpty.

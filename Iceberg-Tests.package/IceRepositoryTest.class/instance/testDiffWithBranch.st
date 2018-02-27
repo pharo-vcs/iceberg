@@ -1,13 +1,9 @@
 tests - changes
 testDiffWithBranch
-	|  diff change | 
+	|  diff change methodChange | 
 	self scenarioOutgoingCommit.
 	
 	diff := repository headCommit diffTo: repository branch upstream.
 
-	change := diff elements 
-		detect: [ :pkg | pkg changes notEmpty ]
-		ifFound: [ :pkg | pkg changes first ]
-		ifNone: [ self fail ].
-	
-	self assert: change targetClass equals: (Smalltalk at: #Test)
+	methodChange := diff tree / #'Pharo-Git-Test' / 'Test' / 'versionNumber'.
+	self assert: methodChange value isModification
