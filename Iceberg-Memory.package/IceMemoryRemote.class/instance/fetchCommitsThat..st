@@ -10,6 +10,7 @@ fetchCommitsThat: aBlock
 		select: aBlock
 		thenDo: [ :aVersionInfo | | remoteBranchVersion |
 			remoteBranchVersion := remoteBranchRepository versionWithInfo: aVersionInfo.
+			self assert: remoteBranchVersion notNil.
 			branchRepository
 				versionWithInfo: aVersionInfo
 				ifAbsent: [ branchRepository storeVersion: remoteBranchVersion ].

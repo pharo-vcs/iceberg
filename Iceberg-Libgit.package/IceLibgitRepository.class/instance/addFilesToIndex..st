@@ -7,5 +7,6 @@ addFilesToIndex: aCollection
 		index addAll: (aCollection collect: [ :each | 
 				self assert: each asFileReference isRelative.
 				"self assert: (self location resolve: each) exists."
-				each asFileReference path pathString ]).
+				each asFileReference path pathString ]
+			as: Array).
 		index writeToDisk ]

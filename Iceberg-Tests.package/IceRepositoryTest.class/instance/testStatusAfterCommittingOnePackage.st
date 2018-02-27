@@ -9,7 +9,7 @@ testStatusAfterCommittingOnePackage
 
 	"Commit"	
 	repository 
-		commitPackages: repository workingCopyDiff changedPackages
+		commitChanges: repository workingCopyDiff
 		withMessage: 'Commit one package in a repo with two loaded packages'.
 
 	"There shouldn't be any incomming"

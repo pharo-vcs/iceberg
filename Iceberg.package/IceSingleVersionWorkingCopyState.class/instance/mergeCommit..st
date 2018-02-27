@@ -36,19 +36,13 @@ mergeCommit: mergeCommit
 		ifTrue: [ merge := IceEmptyMerge new ]
 		ifFalse: [
 			merge := IceMerge from: leftCommit to: mergeCommit.
-			merge hasConflicts ifTrue: [ | resolved window mergeMorph |
+			merge hasConflicts ifTrue: [ | resolved |
 				"Abort merge and signal for manual merge. 
 				Index is not saved and repository will be discarded, 
-				so no further action is needed to abort the merge"		
-				mergeMorph := (IceMergeMorph forMerger: merge).
-				mergeMorph
-					fromDescription: leftCommit description;
-					toDescription: mergeCommit description.
-				window := mergeMorph newWindow
-					title: 'Merging into Image';
-					yourself.
-				UIManager default openModal: window.
-				resolved := mergeMorph merged.
+				so no further action is needed to abort the merge"
+				resolved := IceMergeResolutionRequest new
+					merger: merge;
+					signal: 'Merging ', mergeCommit description, ' into ', leftCommit description.
 				resolved ifFalse: [ IceMergeAborted signal ].
 				merge ] ].
 

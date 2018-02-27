@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"modifiedVersions",
+		"repository"
+	],
+	"name" : "IceMemoryIndex",
+	"type" : "normal"
+}

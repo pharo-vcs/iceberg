@@ -27,4 +27,4 @@ testMergeChangesInSameClassesSamePackageCausesConflicts
 	change2Commit := repository commitWithMessage: 'Change 2'.
 	
 	(repository branchNamed: 'change1') checkout.
-	self should: [repository workingCopy mergeCommit: change2Commit] raise: MCMergeResolutionRequest
+	self should: [repository workingCopy mergeCommit: change2Commit] raise: IceMergeResolutionRequest

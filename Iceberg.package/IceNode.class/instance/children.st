@@ -1,4 +1,4 @@
 accessing
 children
 	
-	^ childrenDictionary values
+	^ childrenDictionary values sorted: [ :a :b | a key < b key ]

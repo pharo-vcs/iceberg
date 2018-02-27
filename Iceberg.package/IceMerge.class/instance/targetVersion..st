@@ -1,4 +1,4 @@
 accessing
-target: targetVersion
+targetVersion: targetVersion
 	
 	target := targetVersion

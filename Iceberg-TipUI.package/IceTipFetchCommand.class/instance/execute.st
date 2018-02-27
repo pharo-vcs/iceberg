@@ -7,5 +7,5 @@ execute
 		during: [ 
 			[ repository fetch.
 			  Iceberg announcer announce: (IceRepositoryModified for: repository) ]
-			on: IceAuthenticationError 
+			on: IceAuthenticationError
 			do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: repository) ] ]

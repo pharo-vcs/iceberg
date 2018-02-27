@@ -1,5 +1,5 @@
 packages
-addPackage: aPackage
+basicAddPackage: aPackage
 	
-	super addPackage: aPackage.
+	super basicAddPackage: aPackage.
 	ringEnvironment ensurePackageNamed: aPackage name.

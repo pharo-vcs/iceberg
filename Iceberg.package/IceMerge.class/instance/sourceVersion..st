@@ -1,4 +1,4 @@
 accessing
-source: sourceVersion
+sourceVersion: sourceVersion
 
 	source := sourceVersion

@@ -1,4 +1,5 @@
 API-changes
 changesFromCommit: anIceCommit 
 
-	self subclassResponsibility
+	^ anIceCommit packages, self packages
+		collect: [ :package | IceMemoryChange on: package ]

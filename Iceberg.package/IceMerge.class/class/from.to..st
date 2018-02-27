@@ -2,7 +2,7 @@ instance-creation
 from: source to: target
 	
 	^ self new
-		source: source;
-		target: target;
+		sourceVersion: source;
+		targetVersion: target;
 		build;
 		yourself
