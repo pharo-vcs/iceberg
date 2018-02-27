@@ -2,6 +2,8 @@ merging
 mergeCommit: aCommit 
 	
 	| merger changedPackages |
+	self halt: 'We should review this implementation'.
+
 	"Optimize the diff by just comparing changed packages"
 	changedPackages := self workingCopy changedPackagesTo: aCommit.
 	"Otherwise, we have to do a merge"

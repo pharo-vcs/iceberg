@@ -9,7 +9,7 @@ testMergeWithConflicts
 	"2. Exercise: Update the package from remote repository"
 	toMerge := repository branch upstream commit.
 	[ repository workingCopy mergeCommit: toMerge ]
-		on: MCMergeResolutionRequest
+		on: IceMergeResolutionRequest
 		do: [ 	:resolutionRequest | 
 			resolutionRequest merger conflicts do: [ :ea | ea chooseRemote ].
 			resolutionRequest resume: true ].

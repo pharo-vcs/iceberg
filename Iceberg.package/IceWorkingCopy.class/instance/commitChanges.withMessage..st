@@ -7,15 +7,21 @@ commitChanges: aDiff withMessage: message
  - HEAD is a branch
  - the working copy reference commit is the same commit as #headCommit"
 	
-	| newCommit |
+	| newCommit index |
+	
+	aDiff isEmpty ifTrue: [ IceNothingToCommit signal ].
 	self validateCanCommit.
-	aDiff storeInRepository: self repository.
+	
+	index := self repository newIndex.
+	aDiff tree accept: (IceIndexUpdateVisitor new
+		index: index;
+		diff: aDiff).
 
 	newCommit := self repository
-		doCommitChanges: aDiff
+		doCommitIndex: index
 		withMessage: message
-		andParents: self workingCopyState referenceCommits.
-	
+		andParents: (self workingCopyState referenceCommits select: [ :each | each isNoCommit not ]).
 	self adoptCommit: newCommit.
+
 	self unmarkDirtyPackages.
 	^ newCommit
