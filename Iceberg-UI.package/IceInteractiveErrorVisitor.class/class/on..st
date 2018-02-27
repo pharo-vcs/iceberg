@@ -1,3 +1,3 @@
 instance creation
-repository: aRepository
+on: aRepository
 	^ self new repository: aRepository
