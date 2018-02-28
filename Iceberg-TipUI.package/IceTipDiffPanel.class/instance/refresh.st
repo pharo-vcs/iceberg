@@ -3,7 +3,7 @@ refresh
 	self model reset.
 	changeList widget 
 		in: [ :this |
-			this basicSelectRowIndexes: #(). 
+			this selectRowIndexes: #(). 
 			this dataSource 
 				rootForItems: self model treeRoots;
 				expandAll ];
