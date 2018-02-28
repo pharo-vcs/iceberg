@@ -1,6 +1,6 @@
 private factory
 newSidebarTreeDataSource
-	^ IceTipTreeDataSource new 
+	^ IceTipTreeOutlineDataSource new 
 		rootForItems: self model branchesByGroup;
 		childrenBlock: [ :data | 
 			self flag: #todo. "Maybe do something better than this?"
