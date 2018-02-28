@@ -8,8 +8,6 @@ selectionChanged: ann
 				leftText: element value leftContents;
 				rightText: element value rightContents ] 
 		ifEmpty: [ 
-			diffPanel 
-				leftText: '';
-				rightText: '' ].
+			self resetDiffContents ].
 	
 	

@@ -7,4 +7,5 @@ refresh
 			this dataSource 
 				rootForItems: self model treeRoots;
 				expandAll ];
-		refresh
+		refresh.
+	self resetDiffContents
