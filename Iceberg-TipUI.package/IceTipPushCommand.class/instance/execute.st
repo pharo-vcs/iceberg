@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipPushBrowser on: (IceTipPushModel for: repositoryModel entity)) openWithSpec
