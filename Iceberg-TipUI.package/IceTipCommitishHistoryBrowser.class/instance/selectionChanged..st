@@ -1,4 +1,6 @@
 event handling
 selectionChanged: ann
-	selectedModel := (self commitList widget dataSource elementAt: ann newSelectedRowIndexes first).
+	selectedModel := ann newSelectedRowIndexes 
+		ifNotEmpty: [ :indexes |(self commitList widget dataSource elementAt: indexes first) ]
+		ifEmpty: [ nil ].
 	self refreshCommitTabPanel

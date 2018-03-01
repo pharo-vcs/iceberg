@@ -1,3 +1,4 @@
 private
 refreshCommitInfo
-	infoTab contents: (IceTipReadOnlyForm items: selectedModel info) buildWithSpec
+	infoTab contents: (selectedModel info 
+		ifNotNil: [ (IceTipReadOnlyForm items: selectedModel info) buildWithSpec ])

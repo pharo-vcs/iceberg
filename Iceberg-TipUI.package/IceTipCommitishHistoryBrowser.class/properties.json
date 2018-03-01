@@ -11,7 +11,8 @@
 		"infoTab",
 		"diffFromHeadTab",
 		"diffFromAncestorTab",
-		"commitTabPanel"
+		"commitTabPanel",
+		"emptyTab"
 	],
 	"name" : "IceTipCommitishHistoryBrowser",
 	"type" : "normal"
