@@ -4,9 +4,9 @@ selectionChanged: ann
 	ann newSelectedRowIndexes
 		ifNotEmpty: [ :indexes | 
 			element := changeList widget dataSource realElementAt: indexes first.
-			diffPanel 
-				leftText: element value leftContents;
-				rightText: element value rightContents ] 
+			self 
+				diffContentsLeft:  element value leftContents
+				right: element value rightContents ] 
 		ifEmpty: [ 
 			self resetDiffContents ].
 	

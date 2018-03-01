@@ -1,10 +1,10 @@
 specs
 panelSpec
-	<spec: #panel>
+	<spec>
 	
 	^ SpecLayout composed 
 		newColumn: [ :column |
 			column 
 				newRow: #commitList;
 				addHSplitter;
-				newRow: #commitPanel ]
+				newRow: #commitTabPanel ]

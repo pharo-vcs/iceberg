@@ -1,5 +1,3 @@
 private
 resetDiffContents
-	diffPanel 
-		leftText: '';
-		rightText: ''
+	self diffContentsLeft: '' right: ''
