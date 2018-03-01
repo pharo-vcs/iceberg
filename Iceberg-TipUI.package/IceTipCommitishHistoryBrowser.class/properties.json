@@ -8,10 +8,10 @@
 	"instvars" : [
 		"selectedModel",
 		"commitList",
+		"commitTabPanel",
 		"infoTab",
 		"diffFromHeadTab",
 		"diffFromAncestorTab",
-		"commitTabPanel",
 		"emptyTab"
 	],
 	"name" : "IceTipCommitishHistoryBrowser",

@@ -2,4 +2,4 @@ private
 refreshDiffFromHead
 	selectedModel ifNil: [ ^ self ].
 	diffFromHeadTab 
-		contents: (IceTipDiffPanel diff: (selectedModel diffFromHead)) buildWithSpec
+		contents: (IceTipDiffPanel on: (selectedModel diffFromHead)) buildWithSpec

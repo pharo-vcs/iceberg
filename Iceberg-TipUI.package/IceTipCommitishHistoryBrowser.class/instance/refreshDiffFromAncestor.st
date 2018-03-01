@@ -2,4 +2,4 @@ private
 refreshDiffFromAncestor
 	selectedModel ifNil: [ ^ self ].
 	diffFromAncestorTab 
-		contents: (IceTipDiffPanel diff: (selectedModel diffFromAncestor)) buildWithSpec
+		contents: (IceTipDiffPanel on: (selectedModel diffFromAncestor)) buildWithSpec

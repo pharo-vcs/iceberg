@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	changeList := self newTable.
-	diffPanel := self instantiate: SwappedDiffPresenter.
+	diffPanel := self instantiate: DiffPresenter.
 
 	self initializeChangeList.
 	self initializeDiffPanel.
@@ -11,6 +11,8 @@ initializeWidgets
 		send: #selectionChanged:
 		to: self.
 		
+	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
+	
 	self focusOrder 
 		add: changeList;
 		add: diffPanel
