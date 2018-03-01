@@ -5,6 +5,6 @@ pushThen: aBlock
 		during: [
 			self withErrorHandlingDo: [ 
 				self entity push.
-				aBlock value.
-				Iceberg announcer announce: (IceRepositoryModified for: self entity) ] ].
+				Iceberg announcer announce: (IceRepositoryModified for: self entity).
+				aBlock value ] ].
 	
