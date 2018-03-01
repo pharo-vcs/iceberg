@@ -1,3 +1,3 @@
 execution
 execute
-	(IceTipPushBrowser on: (IceTipPushModel for: repositoryModel entity)) openWithSpec
+	(IceTipPushBrowser onRepository: repositoryModel entity) openWithSpec

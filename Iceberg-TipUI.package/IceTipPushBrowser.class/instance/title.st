@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Commit on ', self model remoteName
+	^ 'Push to ', self model remoteName
