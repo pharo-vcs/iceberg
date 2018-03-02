@@ -10,11 +10,9 @@ The working copy state is calculated every time that it is called. This is becau
 	"This method obtains the head commit once and sends it as argument as an optimization.
 	This is because asking for the head commit is expensive.
 	
-	Check the commits of #packageState and #packageStateWithHeadCommit:"
-	
-	| headCommit |
-	headCommit := repository head commit.
+	Check the commits of #packageState"
+
 	^ (self packages select: #isLoaded thenCollect: [ :package | 
-		package packageStateWithHeadCommit: headCommit ])
+		package packageState ])
 			inject: (IceEmptyWorkingCopyState repository: repository)
 			into: [ :a :b | a mergeStateWith: b ]

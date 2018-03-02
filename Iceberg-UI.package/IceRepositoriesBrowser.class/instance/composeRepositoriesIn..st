@@ -7,8 +7,8 @@ composeRepositoriesIn: composite
 		title: 'Repositories';
 		display: [ self visibleRepositoryModels  ];
 		column: 'Name' evaluated: #descriptionText width: 200;
-		column: 'Current branch' evaluated: #headDescription width: 120;
-		column: 'Loaded version' evaluated: #loadedCodeDescription width: 200;
+		column: 'Repository HEAD' evaluated: #headDescription width: 120;
+		column: 'Working copy' evaluated: #workingCopyDescription width: 200;
 		column: 'Status' evaluated: #status width: 150.
 
 	table updateOn: IceRepositoryRegistryModified from: [ Iceberg announcer weak ].

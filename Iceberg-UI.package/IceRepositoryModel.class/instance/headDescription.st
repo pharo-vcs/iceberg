@@ -1,3 +1,3 @@
 accessing
 headDescription
-	^ self highlight: self repository head description
+	^ self highlight: self repository headDescription

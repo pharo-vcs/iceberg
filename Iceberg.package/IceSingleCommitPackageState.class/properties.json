@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "GuillermoPolito 1/16/2018 11:50",
+	"commentStamp" : "GuillermoPolito 1/16/2018 11:53",
 	"super" : "IcePackageState",
 	"category" : "Iceberg-WorkingCopy",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceDetachedPackage",
+	"name" : "IceSingleCommitPackageState",
 	"type" : "normal"
 }

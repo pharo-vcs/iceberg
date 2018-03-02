@@ -1,4 +1,4 @@
-as yet unclassified
+private-changes
 changedFilesBetween: aCommitish and: otherCommitish
 	"Answer a list of files that changed between two commits"
 	| fromTree toTree |
