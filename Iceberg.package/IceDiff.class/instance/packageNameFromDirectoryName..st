@@ -1,4 +1,4 @@
 accessing
 packageNameFromDirectoryName: aString 
 	
-	^ self repository writerClass packageNameFromDirectoryName: aString
+	^ self writerClass packageNameFromDirectoryName: aString

@@ -1,4 +1,4 @@
 building
 directoryNameFor: anIcePackage
 
-	^ self repository writerClass directoryNameFor: anIcePackage
+	^ self writerClass directoryNameFor: anIcePackage

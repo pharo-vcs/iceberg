@@ -1,4 +1,4 @@
 testing
 isValidPackageName: aString 
 	
-	^ self repository writerClass isValidPackageName: aString
+	^ self writerClass isValidPackageName: aString

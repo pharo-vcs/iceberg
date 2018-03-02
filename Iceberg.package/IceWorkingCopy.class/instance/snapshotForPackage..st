@@ -1,6 +1,6 @@
 private-monticello
 snapshotForPackage: aPackage 
 	
-	^ aPackage isLoaded
-		ifTrue: [ (MCPackage named: aPackage name) workingCopy snapshot ]
+	^ (aPackage isLoaded and: [ aPackage isModified ])
+		ifTrue: [ (MCPackage named: aPackage name) snapshot ]
 		ifFalse: [ self referenceCommit snapshotForPackage: aPackage ]

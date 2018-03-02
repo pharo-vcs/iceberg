@@ -9,7 +9,8 @@
 		"tree",
 		"source",
 		"target",
-		"sourceDirectory"
+		"sourceDirectory",
+		"writerClass"
 	],
 	"name" : "IceDiff",
 	"type" : "normal"
