@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.
 	
-	remoteLabel := self newLabel label: 'Remote'.
+	remoteLabel := self newLabel label: 'Remote:'.
 	remoteList := self newDropList.
 	remoteList
 		items: self model remotes;
