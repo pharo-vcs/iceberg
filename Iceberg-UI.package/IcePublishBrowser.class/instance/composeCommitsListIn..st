@@ -9,10 +9,10 @@ composeCommitsListIn: composite
 		updateOn: IceCommited, IcePushed from: #announcer;
 		addAction: self pushAction;
 		addSelectionAction: self mergeIntoAction;
-		when: [ :repository | repository branch tracksRemoteBranch ].
+		when: [ :repository | repository canPush ].
 
 	composite label
 		title: 'New local commits to be published';
 		display: 'There is no remote branch corresponding to this branch. All commits in the branch will be pushed.';
 		addAction: self pushAction;
-		when: [ :repository | repository branch tracksRemoteBranch not ]
+		when: [ :repository | repository canPush not ]

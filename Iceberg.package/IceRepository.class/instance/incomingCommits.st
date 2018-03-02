@@ -1,4 +1,6 @@
 API-remotes
 incomingCommits
-	self pullRemote ifNil: [ ^ #() ].
+	
+	(self head isDetached or: [ self pullRemote isNil ])
+		ifTrue: [ ^ #() ].
 	^ self incomingCommitsFrom: self pullRemote
