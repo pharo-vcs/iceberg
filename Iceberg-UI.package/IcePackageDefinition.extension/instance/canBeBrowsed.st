@@ -1,4 +1,4 @@
 *Iceberg-UI
 canBeBrowsed
 	
-	^ package isLoaded
+	^ RPackage organizer includesPackageNamed: name
