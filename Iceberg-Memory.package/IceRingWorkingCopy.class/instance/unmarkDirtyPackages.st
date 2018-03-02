@@ -5,4 +5,4 @@ unmarkDirtyPackages
 	diff := self repository workingCopyDiff.
 	
 	dirtyPackages removeAll.
-	diff packages do: [ :each | self markPackageDirty: each ]
+	diff packages do: [ :each | self markPackageDirty: each value definition ]

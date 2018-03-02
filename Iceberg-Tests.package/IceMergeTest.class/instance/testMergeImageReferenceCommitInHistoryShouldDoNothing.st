@@ -13,7 +13,7 @@ testMergeImageReferenceCommitInHistoryShouldDoNothing
 	(c2)  -  HEAD commit
 	 |
 	 v
-	(c1)  -  Image reference commit / merge commit
+	(c1)  -  Image reference commit
 	
 	(arrows meaning parent)
 	"

@@ -17,8 +17,7 @@
 		"announcer",
 		"pullRemote",
 		"pushRemote",
-		"workingCopy",
-		"commitCache"
+		"workingCopy"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"

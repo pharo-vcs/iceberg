@@ -10,7 +10,7 @@ testMergeAheadImageCommitShouldFastForwardHEAD
 
 	expected:
 	
-	(c2)  -  HEAD commit / merge commit / Image reference commit
+	(c2)  -  HEAD commit / Image reference commit
 	 |
 	 v
 	(c1)
