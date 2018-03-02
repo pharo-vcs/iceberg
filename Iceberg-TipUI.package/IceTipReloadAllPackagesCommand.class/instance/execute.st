@@ -1,3 +1,4 @@
 execution
 execute
-	self halt
+	repositoryModel reloadAllLoadedPackages.
+	Iceberg announcer announce: (IceRepositoryModified for: repositoryModel entity)
