@@ -9,4 +9,4 @@ commit
 			self basicCommitWithMessage: text ifCancel: [ ^ self ] ].
 	
 	browser window delete.
-	(IceStatus for: self repository) openBrowser.
+	(IceRepositoryStatus for: self repository) openBrowser.

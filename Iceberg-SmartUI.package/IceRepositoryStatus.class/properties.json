@@ -8,6 +8,6 @@
 	"instvars" : [
 		"repository"
 	],
-	"name" : "IceStatus",
+	"name" : "IceRepositoryStatus",
 	"type" : "normal"
 }

@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceStatus",
+	"super" : "IceRepositoryStatus",
 	"category" : "Iceberg-SmartUI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],

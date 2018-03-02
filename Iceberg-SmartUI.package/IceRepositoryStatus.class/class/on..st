@@ -1,7 +1,7 @@
 instance-creation
 on: aRepository
 	
-	self assert: self ~= IceStatus.
+	self assert: self ~= IceRepositoryStatus.
 
 	^ self new
 		repository: aRepository;

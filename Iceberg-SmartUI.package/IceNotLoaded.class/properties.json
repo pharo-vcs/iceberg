@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "GuillermoPolito 1/2/2018 11:46",
-	"super" : "IceStatus",
+	"super" : "IceRepositoryStatus",
 	"category" : "Iceberg-SmartUI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
