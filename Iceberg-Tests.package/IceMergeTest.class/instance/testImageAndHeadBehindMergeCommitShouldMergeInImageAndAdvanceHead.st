@@ -17,7 +17,7 @@ testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead
 	
 	(arrows meaning parent)
 	"
-	| headCommit mergeCommit |
+	| referenceCommit headCommit mergeCommit |
 	
 	repository workingCopy addPackageNamed: packageName1.
 	repository workingCopy addPackageNamed: packageName2.
