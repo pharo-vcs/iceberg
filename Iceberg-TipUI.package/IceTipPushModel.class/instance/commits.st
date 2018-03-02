@@ -1,4 +1,4 @@
 accessing
 commits 
-	^ self entity outgoingCommits
+	^ (self entity outgoingCommitsTo: self remote)
 		collect: [ :each | (IceTipCommitModel for: each)  beCached ]

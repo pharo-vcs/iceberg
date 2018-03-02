@@ -1,11 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipRemoteActionModel",
+	"super" : "IceTipEntityModel",
 	"category" : "Iceberg-TipUI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceTipPushModel",
+	"instvars" : [
+		"remote"
+	],
+	"name" : "IceTipRemoteActionModel",
 	"type" : "normal"
 }

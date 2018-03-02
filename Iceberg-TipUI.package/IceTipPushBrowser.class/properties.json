@@ -1,15 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipBrowser",
+	"super" : "IceTipRemoteActionBrowser",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"commitsPanel",
-		"actionPanel",
-		"pushButton"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipPushBrowser",
 	"type" : "normal"
 }

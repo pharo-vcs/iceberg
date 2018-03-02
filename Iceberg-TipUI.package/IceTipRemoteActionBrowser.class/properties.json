@@ -1,11 +1,17 @@
 {
 	"commentStamp" : "EstebanLorenzano 3/2/2018 16:12",
-	"super" : "IceTipRemoteActionBrowser",
+	"super" : "IceTipBrowser",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceTipPullBrowser",
+	"instvars" : [
+		"remoteLabel",
+		"remoteList",
+		"commitsPanel",
+		"actionPanel",
+		"button"
+	],
+	"name" : "IceTipRemoteActionBrowser",
 	"type" : "normal"
 }

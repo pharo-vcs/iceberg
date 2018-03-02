@@ -1,3 +1,3 @@
 accessing
-repositoryName
+name
 	^ self entity name
