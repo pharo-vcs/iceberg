@@ -12,4 +12,5 @@ buildOn: aPresenter
 		addSelectionAction: self browseAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
+		addSelectionAction: self installAction;
 		yourself
