@@ -6,7 +6,7 @@ initializeWidgets
 	remoteList := self newDropList.
 	remoteList
 		items: self model remotes;
-		displayBlock: [ :each | each descriptionText ].
+		displayBlock: [ :each | each descriptionWithDecoration ].
 	
 	commitsPanel := self instantiate: IceTipCommitishHistoryBrowser on: self model.
 	actionPanel := self instantiate: IceTipActionPanel.

@@ -1,5 +1,5 @@
 accessing
-descriptionText
+descriptionWithDecoration
 	| text |
 	
 	text := self displayString asText.

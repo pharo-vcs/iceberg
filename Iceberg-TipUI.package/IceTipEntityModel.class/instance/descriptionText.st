@@ -1,3 +1,0 @@
-accessing
-descriptionText
-	^ self subclassResponsibility

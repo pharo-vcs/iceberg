@@ -1,3 +1,3 @@
 accessing
-descriptionText
+descriptionWithDecoration
 	^ self name asText

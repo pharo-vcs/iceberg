@@ -1,5 +1,5 @@
 accessing
-statusText
+statusWithDecoration
 	| text |
 	
 	text := self status asText.
