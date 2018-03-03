@@ -4,11 +4,11 @@ initializePackageList
 		beResizable;
 		addColumn: (IceTipTableColumn new 
 			id: 'Name';
-			action: #name;
+			action: #descriptionText;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Status';
-			action: #status;
+			action: #statusText;
 			yourself);		
 		dataSource: self newPackagesDataSource;
 		selectRowIndex: 1;

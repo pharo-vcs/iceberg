@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipRemovePackageCommand",
+	"name" : "IceTipRemoveFromRepositoryPackageCommand",
 	"type" : "normal"
 }
