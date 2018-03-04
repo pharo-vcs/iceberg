@@ -18,9 +18,9 @@ buildOn: browser
 		from: #versions;
 		to: #diff;
 		andShow: [ :a |
-			a swappedColorDiff 
-				title: [ :log | log description, ' / ', (self nextDescriptionOf: log) ];
-				display: [ :log | { log source. self nextSourceOf: log  } ].
+			a diff 
+				title: [ :log | (self nextDescriptionOf: log), ' / ', log description ];
+				display: [ :log | { self nextSourceOf: log. log source  } ].
 			"a swappedColorDiff 
 				title: [ :log | 'Current / ', log description ];
 				display: [ :log | { log originMethod sourceCode. log source  } ] "]
