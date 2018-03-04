@@ -1,3 +1,5 @@
 actions
 doPull
-	self model pullThen: [ self refresh ]
+	self model pullThen: [ 
+		self model reset.
+		self refresh ]
