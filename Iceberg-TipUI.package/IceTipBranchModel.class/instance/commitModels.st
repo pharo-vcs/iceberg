@@ -1,5 +1,5 @@
 accessing
-commits 
+commitModels
 	| commits |
 	commits := OrderedCollection new.
 	self entity commitsDo: [ :each | 

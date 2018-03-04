@@ -1,3 +1,3 @@
-executing
-applyOn: anObject
+accessing
+commitModels
 	self subclassResponsibility

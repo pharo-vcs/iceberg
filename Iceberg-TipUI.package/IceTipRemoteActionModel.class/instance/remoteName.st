@@ -1,3 +1,3 @@
 accessing
 remoteName
-	^ self entity pushRemote name, '/', self entity branch name
+	^ self remote name, '/', self entity branch name

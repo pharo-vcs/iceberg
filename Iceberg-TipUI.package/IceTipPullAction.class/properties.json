@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote"
+	],
+	"name" : "IceTipPullAction",
+	"type" : "normal"
+}

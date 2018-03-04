@@ -1,3 +1,5 @@
 execution
 execute
-	(IceTipPushBrowser onRepository: repositoryModel entity) openWithSpec
+	self withErrorHandlingDo: [ 
+		self validateRemotesPresent.
+		(IceTipPushBrowser onRepository: self repositoryModel entity) openWithSpec ]

@@ -1,3 +1,4 @@
 execution
 readParametersFromContext: aToolContext
-	item := aToolContext item.
+	super readParametersFromContext: aToolContext.
+	item := aToolContext item

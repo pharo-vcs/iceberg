@@ -5,7 +5,7 @@ initializeWidgets
 	remoteLabel := self newLabel label: 'Remote:'.
 	remoteList := self newDropList.
 	remoteList
-		items: self model remotes;
+		items: self model remoteModels;
 		displayBlock: [ :each | each descriptionWithDecoration ].
 	
 	commitsPanel := self instantiate: IceTipCommitishHistoryBrowser on: self model.

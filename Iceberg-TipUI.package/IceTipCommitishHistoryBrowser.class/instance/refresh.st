@@ -1,9 +1,9 @@
 accessing
 refresh
 	commitList widget 
-		in: [ :this | this dataSource elements: self model commits ];
+		in: [ :this | this dataSource elements: self model commitModels ];
 		refresh.
-	selectedModel := self model commits 
+	selectedModel := self model commitModels 
 		ifNotEmpty: #first
 		ifEmpty: [ nil ].
 	self refreshCommitTabPanel.

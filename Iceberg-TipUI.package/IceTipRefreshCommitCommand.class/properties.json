@@ -7,8 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"tool",
-		"announcer",
-		"repositoryModel"
+		"announcer"
 	],
 	"name" : "IceTipRefreshCommitCommand",
 	"type" : "normal"

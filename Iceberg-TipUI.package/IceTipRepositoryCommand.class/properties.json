@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repositoryModel",
 		"announcer"
 	],
 	"name" : "IceTipRepositoryCommand",

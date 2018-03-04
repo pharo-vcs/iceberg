@@ -1,1 +1,0 @@
-I announce when a cache has been reseted.

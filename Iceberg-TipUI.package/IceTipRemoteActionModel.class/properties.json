@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipEntityModel",
+	"super" : "IceTipCommitishModel",
 	"category" : "Iceberg-TipUI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
