@@ -1,3 +1,3 @@
 execution
 execute
-	self halt.
+	self packageModel browseRepositoryVersion

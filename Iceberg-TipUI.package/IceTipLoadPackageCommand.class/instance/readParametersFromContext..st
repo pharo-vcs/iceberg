@@ -1,4 +1,5 @@
 execution
 readParametersFromContext: aToolContext
+	super readParametersFromContext: aToolContext.
 	repositoryModel := aToolContext repositoryModel.
-	packageModel := aToolContext packageModel
+	
