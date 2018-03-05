@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/5/2018 12:18",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"package"
+	],
+	"name" : "IceTipReloadPackageAction",
+	"type" : "normal"
+}
