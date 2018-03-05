@@ -1,2 +1,2 @@
 I perform a commit. 
-If publish flag us true, I also perform a push.
+If publish flag is true, I also perform a push.

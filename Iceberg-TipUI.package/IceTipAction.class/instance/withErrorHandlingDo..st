@@ -1,5 +1,5 @@
 private
 withErrorHandlingDo: aBlock
 	aBlock
-	on: IceError 
+	on: IceError, IceWarning
 	do: [ :e | e acceptError: (IceInteractiveErrorVisitor on: self repository) ]
