@@ -4,5 +4,5 @@ commander: spec
 		baseline: 'Commander' 
 		with: [ 
 			spec 
-				repository: 'github://dionisiydk/Commander:v0.4.1';
+				repository: 'github://dionisiydk/Commander:v0.4.x';
 				loads: #('Core' 'AllActivators' 'Commander-SpecSupport') ]
