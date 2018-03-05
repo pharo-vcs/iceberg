@@ -3,7 +3,7 @@ initializeWidgets
 	super initializeWidgets.	
 	
 	sidebarTree := self newTable.
-	historyPanel := PanelMorph new asSpecAdapter.
+	historyPanel := self instantiate: IceTipCommitishHistoryBrowser on: self model branchModel.
 	
 	self initializeSidebarTree.
 	sidebarTree widget

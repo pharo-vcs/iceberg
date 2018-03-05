@@ -1,3 +1,7 @@
 accessing
 descriptionWithDecoration
-	^ self name asText
+	| text |
+	text := self name asText.
+	self entity isHead 	
+		ifTrue: [ text := text allBold ].
+	^ text

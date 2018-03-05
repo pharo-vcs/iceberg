@@ -6,4 +6,4 @@ refresh
 	selectedModel := self model commitModels 
 		ifNotEmpty: #first
 		ifEmpty: [ nil ].
-	self refreshCommitTabPanel.
+	self refreshCommitTabPanel

@@ -3,4 +3,5 @@ initializeSidebarTree
 	| dataSource |
 	dataSource := self newSidebarTreeDataSource.
 	sidebarTree widget dataSource: dataSource.
-	dataSource expandRoots
+	dataSource expandRoots.
+	self selectCurrentBranch.

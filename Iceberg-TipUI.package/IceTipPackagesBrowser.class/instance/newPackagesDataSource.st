@@ -2,5 +2,5 @@ private factory
 newPackagesDataSource
 	^ IceTipDataSource new
 		tool: self;
-		elements: self model packages;
+		elements: self model packageModels;
 		yourself

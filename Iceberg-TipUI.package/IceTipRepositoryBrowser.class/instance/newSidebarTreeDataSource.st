@@ -1,7 +1,7 @@
 private factory
 newSidebarTreeDataSource
 	^ IceTipTreeOutlineDataSource new 
-		rootForItems: self model branchesByGroup;
+		rootForItems: self model branchModelsByGroup;
 		childrenBlock: [ :data | 
 			self flag: #todo. "Maybe do something better than this?"
 			(data respondsTo: #elements)
@@ -11,5 +11,5 @@ newSidebarTreeDataSource
 			(each respondsTo: #icon)
 				ifTrue: [ each icon ]
 				ifFalse: [ nil ] ];
-		format: #name;
+		format: #descriptionWithDecoration;
 		yourself

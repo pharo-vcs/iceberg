@@ -14,6 +14,6 @@ initializeWidgets
 	
 	self focusOrder 
 		add: commitList;
-		add: commitList.
+		add: commitTabPanel.
 		
 	self refresh
