@@ -1,4 +1,4 @@
-operations
+enumerating
 collect: aBlock
 	
 	parent := IceNode value: (aBlock value: self value).

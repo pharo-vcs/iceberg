@@ -1,4 +1,4 @@
 testing
 includesPackageNamed: aString 
-	
-	^ self codeSubdirectoryNode includesKey: aString
+	self isEmpty ifTrue: [ ^ false ].
+ 	^ self codeSubdirectoryNode includesKey: aString

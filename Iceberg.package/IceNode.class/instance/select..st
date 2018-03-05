@@ -1,4 +1,4 @@
-operations
+enumerating
 select: aBlock
 
 	| selectedChildren newNode |

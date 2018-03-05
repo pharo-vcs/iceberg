@@ -2,5 +2,4 @@ initialization
 initialize
 
 	super initialize.
-	childrenDictionary := Dictionary new.
-	isSourceDirectory := false.
+	childrenDictionary := Dictionary new
