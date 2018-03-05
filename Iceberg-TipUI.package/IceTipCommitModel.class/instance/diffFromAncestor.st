@@ -1,14 +1,14 @@
 accessing
 diffFromAncestor
-	| diff ancestorDiff |
+	| diff ancestorCommit |
 	
-	ancestorDiff := self entity ancestors 
+	ancestorCommit := self entity ancestors 
 		ifNotEmpty: #first
 		ifEmpty: [ IceNoCommit new ].
 	UIManager default 
 		informUser: 'Calculating diff'
 		during: [ 
-			diff := ancestorDiff diffTo: self entity.
+			diff := ancestorCommit diffTo: self entity.
 			diff build ].
 
 	^ IceTipStaticDiffModel for: diff
