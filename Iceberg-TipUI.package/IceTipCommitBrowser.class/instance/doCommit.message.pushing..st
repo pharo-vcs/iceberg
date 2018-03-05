@@ -9,4 +9,5 @@ doCommit: aCollection message: aString pushing: aBoolean
 			yourself)
 		then: [ 
 			self model reset.
+			self commentPanel clear.
 			self refresh	 ]

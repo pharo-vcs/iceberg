@@ -1,6 +1,7 @@
 accessing
 refresh
 	self model reset.
+	self resetDiffContents.
 	changeList widget 
 		in: [ :this |
 			this basicSelectRowIndexes: #(). 
