@@ -1,5 +1,5 @@
 private
 refresh
 	packageList widget 
-		in: [ :this | this dataSource elements: self model packages ];
+		in: [ :this | this dataSource elements: self model packageModels ];
 		refresh
