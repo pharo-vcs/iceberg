@@ -1,3 +1,3 @@
 execution
 execute
-	browser doCommit
+	browser accept

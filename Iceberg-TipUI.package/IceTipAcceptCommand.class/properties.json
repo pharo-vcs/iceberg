@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 3/5/2018 16:28",
 	"super" : "IceTipCommand",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
@@ -8,6 +8,6 @@
 	"instvars" : [
 		"browser"
 	],
-	"name" : "IceTipCommitEditionAcceptCommand",
+	"name" : "IceTipAcceptCommand",
 	"type" : "normal"
 }
