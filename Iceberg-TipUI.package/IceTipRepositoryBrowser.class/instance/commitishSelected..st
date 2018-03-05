@@ -2,5 +2,5 @@ event handling
 commitishSelected: ann
 	| selection |
 	selection := sidebarTree widget dataSource elementAt: ann newSelectedRowIndexes first.
-	selection depth = 0 ifTrue: [ ^ self "do not refresh on root" ].
+	selection hasChildren ifTrue: [ ^ self "just refresh on leafs" ].
 	historyPanel model: selection data
