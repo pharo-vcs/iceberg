@@ -1,3 +1,3 @@
 accessing
 message
-	^ self commentText text asString
+	^ messageText asString
