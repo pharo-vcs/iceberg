@@ -4,4 +4,5 @@ reset
 		informUser: 'Refreshing changes' 
 		during: [ 
 			self resetDiff.
-			self diff build ]
+			"ask for diff to force a build"
+			self diff ]
