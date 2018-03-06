@@ -7,4 +7,6 @@ configureButton: aButton item: aToolbarItem
 		action: #execute
 		label: nil
 		icon: #icon 
-		menu: nil
+		menu: nil.
+		
+	aButton badgeSelector: #badge.
