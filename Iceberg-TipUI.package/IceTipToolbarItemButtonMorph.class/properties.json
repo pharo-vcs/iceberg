@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"badgeFont",
+		"badgeSelector"
+	],
 	"name" : "IceTipToolbarItemButtonMorph",
 	"type" : "normal"
 }

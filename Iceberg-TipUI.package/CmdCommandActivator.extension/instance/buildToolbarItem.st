@@ -7,6 +7,7 @@ buildToolbarItem
 		icon: self menuItemIcon;
 		position: self activationStrategy position;
 		help: self activationStrategy help;
+		badge: self command badge;
 		action: [ self executeCommand ];
 		yourself).
 	

@@ -1,4 +1,4 @@
-drawing
+style
 normalBorderStyle
 	^ BorderStyle simple
 		width: 0;

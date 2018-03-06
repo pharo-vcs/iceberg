@@ -1,3 +1,3 @@
-drawing
+style
 normalFillStyle
 	^ Color transparent

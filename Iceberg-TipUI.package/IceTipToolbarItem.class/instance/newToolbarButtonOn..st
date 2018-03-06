@@ -20,5 +20,5 @@ newToolbarButtonOn: aToolbar
 	aToolbar displayMode 
 		configureButton: button 
 		item: self.
-	
+
 	^ button

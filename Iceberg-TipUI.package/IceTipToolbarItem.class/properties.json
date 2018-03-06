@@ -10,7 +10,8 @@
 		"icon",
 		"action",
 		"help",
-		"position"
+		"position",
+		"badge"
 	],
 	"name" : "IceTipToolbarItem",
 	"type" : "normal"
