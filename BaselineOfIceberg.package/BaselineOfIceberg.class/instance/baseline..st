@@ -43,6 +43,7 @@ baseline: spec
 				minimal 
 				'Iceberg-Metacello-Integration' 
 				'Iceberg-UI' 
+				'Iceberg-TipUI'
 				'Iceberg-Plugin' 
 				'Iceberg-Plugin-GitHub');
 			group: 'minimal' with: #(
