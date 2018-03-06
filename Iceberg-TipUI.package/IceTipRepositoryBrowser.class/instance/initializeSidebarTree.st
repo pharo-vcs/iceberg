@@ -2,6 +2,8 @@ initialization
 initializeSidebarTree
 	| dataSource |
 	dataSource := self newSidebarTreeDataSource.
-	sidebarTree widget dataSource: dataSource.
+	sidebarTree widget 
+		color: Color transparent;
+		dataSource: dataSource.
 	dataSource expandRoots.
 	self selectCurrentBranch.
