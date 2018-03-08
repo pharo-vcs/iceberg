@@ -2,4 +2,4 @@ accessing
 browserStrongSelectionActivation
 	<classAnnotation>
 	
-	^ CmdCommandStrongSelectionActivation for: IceTipRepositoryListContext
+	^ IceTipCommandStrongSelectionActivation for: IceTipRepositoryListContext

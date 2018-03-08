@@ -4,6 +4,6 @@ repositoryStrongSelection: ann
 	
 	selection := repositoryList widget dataSource elementAt: ann selectedRowIndex.
 	context := self newContextWithSelection: selection.
-	CmdCommandStrongSelectionActivation
+	IceTipCommandStrongSelectionActivation
 		activateAllInContext: context
 		by: [ :each | each executeCommand ].		
