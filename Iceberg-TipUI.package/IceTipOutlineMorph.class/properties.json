@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/8/2018 14:04",
+	"super" : "FTTableMorph",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipOutlineMorph",
+	"type" : "normal"
+}
