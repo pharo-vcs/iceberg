@@ -11,7 +11,8 @@
 		"actionPanel",
 		"pushCheckbox",
 		"commitButton",
-		"messageText"
+		"messageText",
+		"message"
 	],
 	"name" : "IceTipCommentPanel",
 	"type" : "normal"

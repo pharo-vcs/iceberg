@@ -4,7 +4,7 @@ initializeWidgets
 		label: ('Push changes to {1}' format: { self repositoryRemoteName }).
 	commentText := self newText
 		autoAccept: true;
-		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
+		whenBuiltDo: [ :ann |  ann widget withGhostText: 'A comment for your commit' ].
 	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (commitButton := self newButton 
 		label: 'Commit';
@@ -15,4 +15,4 @@ initializeWidgets
 	self focusOrder
 		add: pushCheckbox;
 		add: commentText;
-		add: commitButton
+		add: commitButton 
