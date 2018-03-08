@@ -12,5 +12,6 @@ initializeWidgets
 		to: self. 
 	
 	self focusOrder 
-		add: sidebarTree;
-		add: historyPanel
+		add: historyPanel;
+		add: sidebarTree
+		
