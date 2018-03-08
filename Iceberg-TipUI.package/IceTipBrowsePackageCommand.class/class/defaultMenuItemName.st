@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Browse package'
+	^ 'Browse'

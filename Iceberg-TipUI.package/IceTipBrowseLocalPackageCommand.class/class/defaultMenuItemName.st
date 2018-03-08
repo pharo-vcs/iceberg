@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Browse repository package'
+	^ 'Browse repository version'
