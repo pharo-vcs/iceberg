@@ -19,5 +19,5 @@ build
 			diff: self;
 			parentNode: rightTree;
 			yourself) ].
-		
+
 	tree := self diff: leftTree with: rightTree
