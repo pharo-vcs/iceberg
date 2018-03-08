@@ -18,6 +18,6 @@ initializeWidgets
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
 	
 	self focusOrder 
-		add: remoteList;
 		add: commitsPanel;
-		add: actionPanel
+		add: actionPanel;
+		add: remoteList
