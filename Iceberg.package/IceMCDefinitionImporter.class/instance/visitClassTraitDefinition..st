@@ -1,12 +1,11 @@
 visiting
 visitClassTraitDefinition: aMCClassTraitDefinition 
-	| traitDefinitionNode |
-	
-	traitDefinitionNode := self
+
+	| classTraitDefinitionNode |
+	classTraitDefinitionNode := self
 		ensureMethodOwnerNamed: aMCClassTraitDefinition className
 		isMeta: true
 		isTrait: true
 		isExtension: false.
-	traitDefinitionNode value mcDefinition: aMCClassTraitDefinition.
-	
-	^ traitDefinitionNode
+	classTraitDefinitionNode value mcDefinition: aMCClassTraitDefinition.
+	^ classTraitDefinitionNode
