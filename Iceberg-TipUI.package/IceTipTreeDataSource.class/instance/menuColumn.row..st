@@ -5,5 +5,5 @@ menuColumn: column row: rowIndex
 	menuSelection := self elementAt: rowIndex.
 	context := self menuSelectionContextWithSelection: menuSelection data.		
 	^ CmdContextMenuCommandActivation 
-		buildMenuFor: self table
+		buildContextMenuFor: self table
 		inContext: context
