@@ -2,4 +2,4 @@ activation
 toolbarPackageListActivation
 	<classAnnotation>
 	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipPackageListContext
+	^ IceTipToolbarActivation byRootGroupItemFor: IceTipWorkingCopyContext

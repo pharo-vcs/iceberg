@@ -8,6 +8,6 @@
 	"instvars" : [
 		"packageList"
 	],
-	"name" : "IceTipPackagesBrowser",
+	"name" : "IceTipWorkingCopyBrowser",
 	"type" : "normal"
 }

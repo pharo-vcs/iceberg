@@ -2,4 +2,4 @@ activation
 packageListShortcutActivation
 	<classAnnotation>
 	
-	^ CmdShortcutCommandActivation by: $r meta for: IceTipPackageListContext
+	^ CmdShortcutCommandActivation by: $r meta for: IceTipWorkingCopyContext

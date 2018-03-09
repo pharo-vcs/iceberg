@@ -3,5 +3,5 @@ toolbarPackageListActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipPackageListContext
+		byRootGroupItemFor: IceTipWorkingCopyContext
 		order: 10
