@@ -8,5 +8,5 @@ SystemOrganization addCategory: #'Iceberg-TipUI-Spec-Toolbar'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
-ce'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
+pe'!
