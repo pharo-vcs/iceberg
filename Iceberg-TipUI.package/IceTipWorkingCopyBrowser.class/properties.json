@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packageList"
+		"packageList",
+		"statusBar"
 	],
 	"name" : "IceTipWorkingCopyBrowser",
 	"type" : "normal"

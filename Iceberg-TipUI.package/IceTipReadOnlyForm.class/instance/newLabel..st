@@ -1,6 +1,6 @@
 private factory
 newLabel: aString
-	^ self newPanel
+	^ self newPanelMorph
 		listDirection: #rightToLeft;
 		cellPositioning: #center;
 		addMorph: ((LabelMorph newLabel: aString)

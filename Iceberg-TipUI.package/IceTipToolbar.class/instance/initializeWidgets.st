@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
-	leftPanel := self newPanel.
-	rightPanel := self newPanel
+	leftPanel := self newPanelMorph.
+	rightPanel := self newPanelMorph
 		listDirection: #rightToLeft;
 		hResizing: #spaceFill.
 

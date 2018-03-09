@@ -6,4 +6,5 @@ defaultSpec
 		newColumn: [ :column |
 			column 
 				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #packageList ]
+				newRow: #packageList;
+				newRow: #statusBar height: self defaultStatusBarHeight ]
