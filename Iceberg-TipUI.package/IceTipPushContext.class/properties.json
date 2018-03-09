@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "IceTipContext",
+	"commentStamp" : "EstebanLorenzano 3/9/2018 15:29",
+	"super" : "IceTipRemoteActionContext",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],

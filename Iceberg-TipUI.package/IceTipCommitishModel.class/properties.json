@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"repositoryModel"
+	],
 	"name" : "IceTipCommitishModel",
 	"type" : "normal"
 }

@@ -1,3 +1,3 @@
 testing
 canBeExecutedInContext: aToolContext
-	^ aToolContext repositoryModel isDetached not
+	^ aToolContext isRepositoryDetached not
