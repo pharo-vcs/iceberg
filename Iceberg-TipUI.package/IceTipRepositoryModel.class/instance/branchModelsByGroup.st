@@ -3,15 +3,21 @@ branchModelsByGroup
 	| branches |
 	branches := self branchModels.
 	^ { 
-	IceTipGroupModel 
+	IceTipTreeGroupModel 
 		name: 'Branches' 
 		icon: #branch asIcon
-		elements: (branches select: [ :each | each entity isLocal ]).
-	IceTipGroupModel 
+		children: (branches 
+			select: [ :each | each entity isLocal ]
+			thenCollect: [ :each | IceTipTreeElementModel for: each ]).
+	IceTipTreeGroupModel 
 		name: 'Remotes' 
 		icon: #remote asIcon
-		elements: (((branches 
+		children: (((branches 
 			select: [ :each | each entity isRemote ]) 
 			groupedBy: [ :each | each entity remoteName ]) 
 			associations 
-			collect: [ :each | IceTipGroupModel name: each key elements: each value ]) }
+			collect: [ :eachGroup | 
+				IceTipTreeGroupModel 
+					name: eachGroup key 
+					children: (eachGroup value collect: [ :each |
+						IceTipTreeElementModel for: each ]) ]) }
