@@ -9,5 +9,4 @@ copyWithOnly: aCollection
 		source: source;
 		target: target;
 		diffTree: treeCopy;
-		sourceDirectory: sourceDirectory;
 		yourself

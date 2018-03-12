@@ -6,4 +6,4 @@ testCreateDirectoryWithFile
 	child := tree addChild: (IceDirectoryDefinition named: 'src').
 	child  addChild: (IceFileDefinition named: 'tmp').
 	
-	self assert: (tree / 'src' / 'tmp') value isFileNode
+	self assert: (tree / 'src' / 'tmp') value isFileDefinition

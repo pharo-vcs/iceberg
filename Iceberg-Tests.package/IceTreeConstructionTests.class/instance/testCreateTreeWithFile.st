@@ -5,4 +5,4 @@ testCreateTreeWithFile
 	tree := IceNode new.
 	tree addChild: (IceFileDefinition named: 'Readme.md').
 	
-	self assert: (tree / 'Readme.md') value isFileNode
+	self assert: (tree / 'Readme.md') value isFileDefinition

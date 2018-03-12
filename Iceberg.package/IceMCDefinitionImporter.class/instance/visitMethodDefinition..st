@@ -1,7 +1,7 @@
 visiting
 visitMethodDefinition: aMCMethodDefinition 
 	
-	| ownerName isMeta isTrait newDefinition ownerNode |
+	| ownerName isMeta isTrait ownerNode |
 	
 	ownerName := aMCMethodDefinition className.
 	isMeta := aMCMethodDefinition classIsMeta.

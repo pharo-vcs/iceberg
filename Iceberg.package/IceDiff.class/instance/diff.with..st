@@ -1,4 +1,4 @@
-actions
+operations
 diff: leftTree with: rightTree
 	
 	| mergedTree |

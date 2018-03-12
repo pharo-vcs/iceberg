@@ -1,4 +1,4 @@
-equality
+comparing
 = anotherDefinition
 
 	^ self species = anotherDefinition species

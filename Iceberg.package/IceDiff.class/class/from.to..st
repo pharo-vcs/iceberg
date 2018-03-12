@@ -2,7 +2,7 @@ instance-creation
 from: sourceCommitish to: targetCommitish
 	
 	^ self new
-		source: sourceCommitish;
-		target: targetCommitish;
+		sourceVersion: sourceCommitish;
+		targetVersion: targetCommitish;
 		build;
 		yourself

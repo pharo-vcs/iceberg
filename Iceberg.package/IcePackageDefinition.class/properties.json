@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "IceDefinition",
+	"commentStamp" : "GuillermoPolito 3/12/2018 17:57",
+	"super" : "IceCodeDefinition",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],

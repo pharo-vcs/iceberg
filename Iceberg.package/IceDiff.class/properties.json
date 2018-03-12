@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "GuillermoPolito 3/12/2018 18:18",
 	"super" : "Object",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
@@ -9,7 +9,6 @@
 		"tree",
 		"source",
 		"target",
-		"sourceDirectory",
 		"writerClass"
 	],
 	"name" : "IceDiff",

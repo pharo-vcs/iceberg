@@ -1,0 +1,1 @@
+I am an importer that visits MCDefinitions and creates IceDefinitions from them. I install those definitions into a corresponding package node.

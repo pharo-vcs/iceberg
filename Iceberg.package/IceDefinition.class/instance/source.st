@@ -1,4 +1,0 @@
-accessing
-source
-	
-	self subclassResponsibility
