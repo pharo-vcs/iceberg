@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"branchesList",
+		"branchNameText"
+	],
+	"name" : "IceTipCheckoutBranchPanel",
+	"type" : "normal"
+}

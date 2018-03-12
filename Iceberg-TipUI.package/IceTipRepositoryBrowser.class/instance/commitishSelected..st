@@ -4,4 +4,4 @@ commitishSelected: ann
 	selection := sidebarTree widget dataSource elementAt: ann newSelectedRowIndexes first.
 	(selection depth = 0 or: [ selection hasChildren ]) 
 		ifTrue: [ ^ self "just refresh on leafs" ].
-	historyPanel model: selection data
+	historyPanel model: selection data model

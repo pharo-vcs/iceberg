@@ -5,5 +5,5 @@ initializeWidgets
 		listDirection: #leftToRight;
 		hResizing: #spaceFill;
 		vResizing: #spaceFill;
-		color: self color;
+		cellInset: 5;
 		asSpecAdapter

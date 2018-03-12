@@ -1,5 +1,5 @@
 accessing
-diffFromAncestor
+diffFromFirstAncestor
 	| diff ancestorCommit |
 	
 	ancestorCommit := self entity ancestors 
