@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipTreeFilter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipBranchFilter",
+	"type" : "normal"
+}

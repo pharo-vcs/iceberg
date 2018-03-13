@@ -1,0 +1,3 @@
+accessing
+initialExtent
+	^ super initialExtent
