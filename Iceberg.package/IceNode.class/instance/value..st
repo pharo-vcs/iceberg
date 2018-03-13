@@ -1,4 +1,4 @@
-accessing
+evaluating
 value: aValue
  
 	value := aValue

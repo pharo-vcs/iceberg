@@ -9,7 +9,7 @@ select: aBlock
 		or: [ aBlock value: self value ])
 			ifFalse: [ ^ IceEmptyNode new ].
 		
-	newNode := IceNode value: self value.
+	newNode := self class value: self value.
 	selectedChildren do: [ :e |
 		e addTo: newNode ].
 	^ newNode

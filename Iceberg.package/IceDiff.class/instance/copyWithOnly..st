@@ -6,7 +6,7 @@ copyWithOnly: aCollection
 	treeCopy := tree select: [ :node | selectedOperations includes: node ].
 	
 	^ self class new
-		source: source;
-		target: target;
+		sourceVersion: source;
+		targetVersion: target;
 		diffTree: treeCopy;
 		yourself

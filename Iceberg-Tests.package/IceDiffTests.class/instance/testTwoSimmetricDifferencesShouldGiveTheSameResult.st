@@ -18,7 +18,7 @@ testTwoSimmetricDifferencesShouldGiveTheSameResult
 	rightSrc := right addChild: (IceDirectoryDefinition named: 'src').
 	rightSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: rightFileRef).
 
-	diff1 := (IceTreeDiff from: left to: right) mergedTree.
-	diff2 := (IceTreeDiff from: left to: right) mergedTree.
+	diff1 := IceDiff new diff: left with: right.
+	diff2 := IceDiff new diff: left with: right.
 	
 	self assert: diff1 equals: diff2

@@ -1,7 +1,7 @@
 enumerating
 collect: aBlock
 	
-	parent := IceNode value: (aBlock value: self value).
+	parent := self class value: (aBlock value: self value).
 	self nodesDo: [ :e |
 		parent addNode: (e collect: aBlock) ].
 	^ parent
