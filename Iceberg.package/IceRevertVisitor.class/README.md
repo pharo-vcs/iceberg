@@ -1,0 +1,1 @@
+I implement the revert of a node. I revert a node and all its children.
