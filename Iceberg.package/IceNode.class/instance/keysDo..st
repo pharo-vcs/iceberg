@@ -1,4 +1,4 @@
 accessing
 keysDo: aBlockClosure 
 	
-	self keys do: aBlockClosure
+	childrenDictionary keysDo: aBlockClosure

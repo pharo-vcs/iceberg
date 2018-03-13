@@ -1,4 +1,4 @@
-equality
+comparing
 = anotherNode
 
 	^ (self basicEqualsTo: anotherNode)

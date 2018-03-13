@@ -1,9 +1,9 @@
-operations
+enumerating
 mergeWith: anotherTree onLeft: leftBlock onRight: rightBlock onMerge: mergeBlock
 	
 	| mergedTree newNode |
 	mergedTree := mergeBlock value: self value value: anotherTree value.
-	newNode := IceNode value: mergedTree.
+	newNode := self class value: mergedTree.
 		
 	self keysDo: [ :key |
 		(anotherTree includesKey: key)

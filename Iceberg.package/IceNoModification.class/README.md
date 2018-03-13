@@ -1,0 +1,1 @@
+I am a no modification in a tree. I am useful to represent a container (that did not change) containing elements that did change. I contain the definition I represent to be able to show it. I delegate the icon to my definition and I know how to calculate a conflict with other operations.

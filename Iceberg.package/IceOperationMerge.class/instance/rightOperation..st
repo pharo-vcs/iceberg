@@ -1,3 +1,0 @@
-accessing
-rightOperation: anOperation
-	self subclassResponsibility
