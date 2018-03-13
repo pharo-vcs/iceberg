@@ -7,4 +7,5 @@ storeMCVersion: aMCVersion
 	repository subdirectory
 		ifNotEmpty: [ :directory | pathSegments add: directory ].
 	pathSegments add: (repository writerClass directoryNameFor: aMCVersion package).
-	modifiedFilePaths add: (RelativePath withAll: pathSegments)
+	
+	self addPath: (RelativePath withAll: pathSegments)
