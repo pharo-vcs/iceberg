@@ -4,7 +4,9 @@ initializeBranchesList
 	
 	dataSource := self newBranchListDataSource.
 	branchesList widget 
-		useFunction: IceTipTreeFilterFunction do: [ :function | 
-			function filterClass: IceTipBranchFilter ];
+		useFunction: IceTipTreeLinkFilterFunction do: [ :function | 
+			function 
+				filterClass: IceTipBranchFilter;
+				textField: self branchNameText ];
 		dataSource: dataSource.
 	dataSource expandAll
