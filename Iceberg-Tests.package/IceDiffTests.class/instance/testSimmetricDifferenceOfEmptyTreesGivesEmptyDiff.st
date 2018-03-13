@@ -5,6 +5,6 @@ testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff
 	left := IceNode new.	
 	right := IceNode new.
 	
-	diff := IceTreeDiff from: left to: right.
+	diff := IceDiff new diff: left with: right.
 	
-	self deny: diff mergedTree notEmpty
+	self deny: diff notEmpty
