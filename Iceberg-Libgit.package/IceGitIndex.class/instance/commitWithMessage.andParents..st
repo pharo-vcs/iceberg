@@ -1,7 +1,8 @@
-accessing
-commitIndexWithMessage: message andParents: parentCommitishList
+API-commiting
+commitWithMessage: message andParents: parentCommits
 
-	self withRepoDo: [ :repo | 
+	self addToGitIndex.
+	repository withRepoDo: [ :repo | 
 		| signature commitId indexTreeId |
 		[ signature := repo defaultSignature ]
 		on: LGit_GIT_ENOTFOUND do: [ :e | 
@@ -12,14 +13,14 @@ commitIndexWithMessage: message andParents: parentCommitishList
 			message: message withUnixLineEndings utf8Encoded;
 			parents: (repo isUnborn
 				ifTrue: [ #() ]
-				ifFalse: [ self libGitCommitsFrom: repo for: parentCommitishList ]);
+				ifFalse: [ self libGitCommitsFrom: repo for: parentCommits ]);
 			"'HEAD' branch could not exist yet. No problem, libgit will create it, 
 			but we have to remember it to notify the frontend."
 			updateReference: ([ repo head name ] 
 				on: LGit_GIT_EUNBORNBRANCH
-				do: [ 'refs/heads/', self branch nameForFirstCommit ]);
+				do: [ 'refs/heads/', repository branch nameForFirstCommit ]);
 			author: signature;
 			committer: signature;
 			writeCommit;
 			commitId.
-		^ self commitFromGitCommit: (LGitCommit of: repo fromId: commitId) ]
+		^ repository commitFromGitCommit: (LGitCommit of: repo fromId: commitId) ]

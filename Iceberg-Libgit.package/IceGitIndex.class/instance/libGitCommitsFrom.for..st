@@ -1,4 +1,4 @@
-accessing
+API-commiting
 libGitCommitsFrom: aLGitRepository for: aListOfCommitish
 	^ aListOfCommitish collect: 
 		[ :commitish | 

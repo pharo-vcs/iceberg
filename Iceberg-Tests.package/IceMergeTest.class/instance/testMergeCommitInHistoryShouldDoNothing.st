@@ -18,7 +18,6 @@ testMergeCommitInHistoryShouldDoNothing
 	(arrows meaning parent)
 	"
 	| headCommit mergeCommit |
-	
 	repository workingCopy addPackageNamed: packageName1.
 	repository workingCopy addPackageNamed: packageName2.
 	mergeCommit := repository commitWithMessage: 'First commit'.

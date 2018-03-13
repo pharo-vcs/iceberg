@@ -17,7 +17,8 @@
 		"announcer",
 		"pullRemote",
 		"pushRemote",
-		"workingCopy"
+		"workingCopy",
+		"index"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"

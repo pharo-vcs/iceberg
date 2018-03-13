@@ -6,6 +6,6 @@ createClass: className inPackage: packageName superclass: aSuperclass
 	class := ringEnvironment ensureClassNamed: className.
 	class superclass name: aSuperclass.
 	class package: package.
-	class tagWith: packageName.
+	"class tagWith: packageName."
 	
 	self markPackageDirty: package

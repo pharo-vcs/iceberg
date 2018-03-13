@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 3/13/2018 17:43",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceIndex",
+	"type" : "normal"
+}
