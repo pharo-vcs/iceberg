@@ -1,3 +1,3 @@
 code-critics
 ruleRBUtilityMethodsRuleV1FalsePositive
-	^ #(#(#(#RGClassDefinition #(#IceGitFileTreeCommitWalk)) #'2016-09-21T17:13:36.812598+02:00') )
+	^ #(#(#(#RGMethodDefinition #(#IceRepository #fetchFrom: #false)) #'2018-03-13T16:34:52.218313+01:00') )

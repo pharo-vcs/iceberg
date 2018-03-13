@@ -9,4 +9,3 @@ SystemOrganization addCategory: #'Iceberg-TipUI-View'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
-pe'!
