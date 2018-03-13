@@ -9,7 +9,7 @@ commitIndexWithMessage: message andParents: parentCommitishList
 		indexTreeId := repo index writeTreeAndReturnOid.		 
 		commitId := (LGitCommitBuilder of: repo)
 			tree: (LGitTree of: repo fromId: indexTreeId);
-			message: message;
+			message: message withUnixLineEndings utf8Encoded;
 			parents: (repo isUnborn
 				ifTrue: [ #() ]
 				ifFalse: [ self libGitCommitsFrom: repo for: parentCommitishList ]);
