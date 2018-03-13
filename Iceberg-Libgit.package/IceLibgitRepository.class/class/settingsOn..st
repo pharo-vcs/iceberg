@@ -1,4 +1,4 @@
-accessing settings
+settings
 settingsOn: aBuilder 
 	<systemsettings>
 	

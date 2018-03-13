@@ -1,4 +1,4 @@
-accessing settings
+settings
 defaultFileFormatType
 	^ DefaultFileFormatType ifNil: [ 
 		DefaultFileFormatType := TIceRepositoryWriter traitUsers 

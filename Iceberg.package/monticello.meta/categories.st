@@ -7,4 +7,3 @@ SystemOrganization addCategory: #'Iceberg-Errors'!
 SystemOrganization addCategory: #'Iceberg-Security'!
 SystemOrganization addCategory: #'Iceberg-WorkingCopy'!
 SystemOrganization addCategory: #'Iceberg-WorkingCopy'!
-y'!

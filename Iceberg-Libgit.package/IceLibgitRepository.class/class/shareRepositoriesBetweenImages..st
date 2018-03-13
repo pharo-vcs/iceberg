@@ -1,3 +1,3 @@
-accessing settings
+settings
 shareRepositoriesBetweenImages: anObject
 	ShareRepositoriesBetweenImages := anObject

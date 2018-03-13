@@ -1,3 +1,3 @@
-accessing settings
+settings
 sharedRepositoriesLocationString
 	^ self sharedRepositoriesLocation fullName

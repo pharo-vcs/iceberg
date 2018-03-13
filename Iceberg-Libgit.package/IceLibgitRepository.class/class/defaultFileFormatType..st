@@ -1,3 +1,3 @@
-accessing settings
+settings
 defaultFileFormatType: anObject
 	DefaultFileFormatType := anObject

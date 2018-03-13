@@ -4,7 +4,13 @@
 	"category" : "Iceberg-Libgit",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"DefaultBackendType",
+		"DefaultCodeSubdirectory",
+		"DefaultFileFormatType",
+		"ShareRepositoriesBetweenImages",
+		"SharedRepositoriesLocation"
+	],
 	"instvars" : [
 		"location",
 		"subdirectory"

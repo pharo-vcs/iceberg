@@ -1,3 +1,3 @@
-accessing settings
+settings
 defaultCodeSubdirectory: aString
 	DefaultCodeSubdirectory := aString
