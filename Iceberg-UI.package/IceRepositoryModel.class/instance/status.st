@@ -6,6 +6,8 @@ status
 
 		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
+		
+		"Avoid multiple calls to working copy state, since this is the most expensive operation"
 		workingCopyState := entity workingCopy workingCopyState.
 		workingCopyState isUnknownCommitState ifTrue: [ ^ self makeError: workingCopyState description ].
 		workingCopyState isDetached ifTrue: [ ^ self makeError: 'Detached Working Copy' ].

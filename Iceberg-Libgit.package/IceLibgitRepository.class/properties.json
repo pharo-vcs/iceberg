@@ -14,7 +14,8 @@
 	"instvars" : [
 		"location",
 		"subdirectory",
-		"commitCache"
+		"commitCache",
+		"handle"
 	],
 	"name" : "IceLibgitRepository",
 	"type" : "normal"
