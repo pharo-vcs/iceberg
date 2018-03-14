@@ -2,13 +2,13 @@ accessing
 status
 	"entity could be a repository or a package"
 	[
-		| status incoming outgoing | 
+		| status incoming outgoing workingCopyState | 
 
 		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
-		
-		entity workingCopy workingCopyState isUnknownCommitState ifTrue: [ ^ self makeError: entity workingCopy workingCopyState description ].
-		entity workingCopy isDetached ifTrue: [ ^ self makeError: 'Detached Working Copy' ].
+		workingCopyState := entity workingCopy workingCopyState.
+		workingCopyState isUnknownCommitState ifTrue: [ ^ self makeError: workingCopyState description ].
+		workingCopyState isDetached ifTrue: [ ^ self makeError: 'Detached Working Copy' ].
 		entity head isDetached ifTrue: [ ^ self makeError: 'Detached HEAD' ].
 
 		status := OrderedCollection new.
