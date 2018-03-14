@@ -2,6 +2,6 @@ private accessing
 defaultLocation
 	| remoteToUse |
 	remoteToUse := self remoteToUse.
-	^ IceRepository repositoriesLocation 
+	^ IceLibgitRepository repositoriesLocation 
 		/ remoteToUse organizer 
 		/ remoteToUse projectName
