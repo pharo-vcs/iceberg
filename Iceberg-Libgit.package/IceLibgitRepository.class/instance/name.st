@@ -1,4 +1,4 @@
 accessing
 name
 
-	^ name ifNil: [ self obtainRepositoryName ]
+	^ name ifNil: [ name := self obtainRepositoryName ]
