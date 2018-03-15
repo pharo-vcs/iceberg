@@ -4,9 +4,9 @@ SystemOrganization addCategory: #'Iceberg-TipUI-Commands'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Model'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Spec'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Spec-ReadOnlyForm'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Spec-StatusBar'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Spec-Toolbar'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-Branch'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
-SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
-SystemOrganization addCategory: #'Iceberg-TipUI-View-Type'!
-pe'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-RepositoryType'!

@@ -1,3 +1,3 @@
 private
 defaultLocation
-	^ IceRepository repositoriesLocation pathString
+	^ IceLibgitRepository repositoriesLocation pathString

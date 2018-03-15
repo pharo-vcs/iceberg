@@ -1,3 +1,3 @@
 initialization
 defaultSubdirectory
-	^ IceRepository defaultCodeSubdirectory
+	^ IceLibgitRepository defaultCodeSubdirectory

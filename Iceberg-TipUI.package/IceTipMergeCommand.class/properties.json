@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipRepositoryCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipMergeCommand",
+	"type" : "normal"
+}

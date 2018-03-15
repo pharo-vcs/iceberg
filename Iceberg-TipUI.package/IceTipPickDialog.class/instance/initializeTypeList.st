@@ -1,0 +1,3 @@
+initialization
+initializeTypeList
+	typeList widget dataSource: self newTypeListDataSource.

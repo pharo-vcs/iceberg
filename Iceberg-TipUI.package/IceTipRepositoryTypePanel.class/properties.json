@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "EstebanLorenzano 2/25/2018 11:13",
-	"super" : "ComposableModel",
-	"category" : "Iceberg-TipUI-View-Type",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View-RepositoryType",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
