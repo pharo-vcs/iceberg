@@ -1,3 +1,3 @@
 accessing
 title
-	^ self model repositoryName
+	^ 'Working copy of ', self model repositoryName
