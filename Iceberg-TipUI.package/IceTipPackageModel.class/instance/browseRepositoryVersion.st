@@ -1,5 +1,6 @@
 actions
 browseRepositoryVersion
+	<noCache>
 	| snapshot |
 	
 	snapshot := self entity mcSnapshotInRepository.

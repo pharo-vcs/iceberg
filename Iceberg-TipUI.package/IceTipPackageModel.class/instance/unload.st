@@ -1,8 +1,8 @@
 actions
-reload
+unload
 	<noCache>
 
-	IceTipReloadPackageAction new
+	IceTipUnloadPackageAction new
 		repository: self entity repository;
 		package: self entity;
 		execute

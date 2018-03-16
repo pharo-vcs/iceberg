@@ -1,3 +1,3 @@
 execution
 execute
-	self packageModel browse
+	self packageModel browsePackage

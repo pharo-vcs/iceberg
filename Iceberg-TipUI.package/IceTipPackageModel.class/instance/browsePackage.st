@@ -1,3 +1,4 @@
 actions
-browse
+browsePackage
+	<noCache>
 	self entity browse
