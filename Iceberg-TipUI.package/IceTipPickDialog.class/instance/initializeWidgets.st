@@ -7,10 +7,7 @@ initializeWidgets
 		icons: [ :each | each icon ];
 		yourself.
 		
-	typeList whenSelectedItemChanged: [ :aType |
-		type := aType.
-		self replacePanelWith: aType.
-		self title: aType title ].
+	typeList whenSelectedItemChanged: [ :aType | self basicSelectionChanged: aType ].
 		
 	self whenBuiltDo: [ :ann |
 		self addShortcutsTo: ann widget ].
