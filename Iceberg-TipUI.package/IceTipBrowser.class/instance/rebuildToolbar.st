@@ -1,4 +1,4 @@
 accessing
 rebuildToolbar
 	toolbar items: #().
-	self initializeToolbar
+	toolbar addItemsFromContext: self newContext
