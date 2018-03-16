@@ -1,6 +1,7 @@
 private factory
 newBranchListDataSource
 	^ IceTipTreeDataSource new
+		tool: self;
 		rootForItems: (self model 
 			ifNotNil: #branchModelsByGroup
 			ifNil: [ #() ]);

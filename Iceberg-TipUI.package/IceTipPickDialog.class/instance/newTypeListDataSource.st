@@ -1,6 +1,7 @@
 private factory
 newTypeListDataSource
 	^ IceTipTreeOutlineDataSource new 
+		tool: self;
 		rootForItems: self allTypes;
 		childrenBlock: [ :each | #() "no children" ];
 		format: [ :each | each title ];
