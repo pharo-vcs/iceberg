@@ -8,16 +8,10 @@ initializeWidgets
 		items: self model remoteModels;
 		displayBlock: [ :each | each descriptionWithDecoration ].
 	
-	commitsPanel := self instantiate: IceTipCommitishHistoryBrowser on: self model.
-	actionPanel := self instantiate: IceTipActionPanel.
-	actionPanel addAction: (button := self newActionButton).
-	
 	remoteList whenSelectedItemChanged: [ :remoteModel | 
 		self moveToRemote: remoteModel  ].
 		
-	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
-	
 	self focusOrder 
-		add: commitsPanel;
-		add: actionPanel;
-		add: remoteList
+		add: self commitsPanel;
+		add: self actionPanel;
+		add: self remoteList

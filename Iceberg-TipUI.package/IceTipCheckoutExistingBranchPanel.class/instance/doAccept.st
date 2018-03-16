@@ -1,3 +1,4 @@
 actions
 doAccept
-	self branchSelected checkout
+	self validate.
+	self branchSelected previewCheckout

@@ -1,4 +1,4 @@
 actions
 doAccept
 	self validate.
-	self halt
+	self model checkoutNewBranchNamed: self branchName
