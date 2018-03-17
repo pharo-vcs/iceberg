@@ -1,6 +1,6 @@
 initialization
 subscribeToAnnouncements
 	self announcer 
-		when: IceTipDiffRefreshed 
+		when: IceRepositoryModified, IceTipDiffRefreshed 
 		send: #refreshWhenRepository: 
 		to: self	

@@ -1,6 +1,6 @@
 private
 refreshWhenRepository: ann
-	(self model entity = ann repository)
+	(self model isModelOf: ann repository)
 		ifFalse: [ ^ self ].
 	self model reset.
 	self refresh
