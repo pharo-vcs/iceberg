@@ -8,4 +8,6 @@ diffFromHead
 			diff := self entity diffFromHead.
 			diff build ].
 	
-	^ IceTipStaticDiffModel for: diff
+	^ IceTipStaticDiffModel
+		repositoryModel: self repositoryModel 
+		on: diff

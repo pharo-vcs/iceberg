@@ -1,5 +1,5 @@
 instance creation
-for: anObject 
+on: anObject 
 	^ self basicNew 
 		initializeEntity: anObject;
 		yourself

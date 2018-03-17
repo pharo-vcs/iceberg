@@ -1,5 +1,6 @@
 instance creation
 onBranch: aBranch
-	^ self on: ((IceTipBranchModel for: aBranch)
-		repositoryModel: (IceTipRepositoryModel for: aBranch repository) beCached;
-		beCached)
+	^ self on: (IceTipBranchModel 
+		repositoryModel: (IceTipRepositoryModel on: aBranch repository) beCached 
+		on: aBranch)
+		beCached

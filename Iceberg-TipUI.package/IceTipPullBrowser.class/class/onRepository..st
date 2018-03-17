@@ -1,3 +1,3 @@
 instance creation
 onRepository: aRepository
-	^ self on: (IceTipPullModel for: aRepository) beCached
+	^ self on: (IceTipPullModel on: aRepository) beCached

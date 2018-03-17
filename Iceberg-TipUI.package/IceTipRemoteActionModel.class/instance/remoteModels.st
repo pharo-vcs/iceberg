@@ -1,4 +1,4 @@
 accessing
 remoteModels
 	^ self entity remotes collect: [ :each |
-		(IceTipRemoteModel for: each) beCached ]
+		(IceTipRemoteModel on: each) beCached ]

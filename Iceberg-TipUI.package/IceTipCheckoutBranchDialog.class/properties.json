@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipPickDialog",
+	"super" : "IceTipOptionDialog",
 	"category" : "Iceberg-TipUI-View-Branch",
 	"classinstvars" : [ ],
 	"pools" : [ ],

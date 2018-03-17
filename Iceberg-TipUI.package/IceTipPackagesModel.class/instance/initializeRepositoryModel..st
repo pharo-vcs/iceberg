@@ -1,4 +1,4 @@
 initialization
-initializeFor: aRepositoryModel
+initializeRepositoryModel: aRepositoryModel
 	repositoryModel := aRepositoryModel.
 	self initialize

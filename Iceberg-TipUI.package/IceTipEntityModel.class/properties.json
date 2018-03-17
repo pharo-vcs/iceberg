@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"entity"
+		"entity",
+		"repositoryModel"
 	],
 	"name" : "IceTipEntityModel",
 	"type" : "normal"

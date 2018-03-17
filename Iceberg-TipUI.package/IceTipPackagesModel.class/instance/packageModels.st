@@ -1,4 +1,8 @@
 accessing
 packageModels
 	^ self sortingStrategy sort: (self repositoryModel entity packages 
-		collect: [ :each | (IceTipPackageModel for: each) beCached ])
+		collect: [ :each | 
+			(IceTipPackageModel 
+				repositoryModel: self repositoryModel 
+				on: each) 
+				beCached ])

@@ -11,4 +11,6 @@ diffFromFirstAncestor
 			diff := ancestorCommit diffTo: self entity.
 			diff build ].
 
-	^ IceTipStaticDiffModel for: diff
+	^ IceTipStaticDiffModel
+		repositoryModel: self repositoryModel 
+		on: diff

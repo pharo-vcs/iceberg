@@ -1,5 +1,5 @@
 instance creation
-for: aDiff
+on: aDiff
 	^ self basicNew 
 		initializeEntity: aDiff;
 		yourself

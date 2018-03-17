@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 3/17/2018 10:25",
 	"super" : "IceTipComposablePresenter",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
@@ -10,6 +10,6 @@
 		"type",
 		"contentPanel"
 	],
-	"name" : "IceTipPickDialog",
+	"name" : "IceTipOptionDialog",
 	"type" : "normal"
 }

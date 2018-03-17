@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repositoryModel",
-		"sortingStrategy"
+		"sortingStrategy",
+		"repositoryModel"
 	],
 	"name" : "IceTipPackagesModel",
 	"type" : "normal"

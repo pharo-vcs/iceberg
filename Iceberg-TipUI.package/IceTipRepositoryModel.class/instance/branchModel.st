@@ -1,5 +1,6 @@
 accessing
 branchModel
-	^ (IceTipBranchModel for: self entity branch)
-		repositoryModel: self;
+	^ (IceTipBranchModel 
+		repositoryModel: self 
+		on: self entity branch)
 		beCached

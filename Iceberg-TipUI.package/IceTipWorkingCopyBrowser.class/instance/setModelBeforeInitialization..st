@@ -1,3 +1,3 @@
 initialization
 setModelBeforeInitialization: aRepositoryModel
-	self model: (IceTipPackagesModel for: aRepositoryModel)
+	self model: (IceTipPackagesModel on: aRepositoryModel)
