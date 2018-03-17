@@ -1,4 +1,5 @@
 accessing
 title
-	^ 'Checkout {1}' format: { 
+	^ 'Preview checkout of {1}/{2}' format: { 
+		self model repositoryName.
 		self model name }
