@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipCommitishHistoryListContext",
+	"name" : "IceTipHistoryContext",
 	"type" : "normal"
 }

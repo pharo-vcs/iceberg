@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.
 	
-	commitsPanel := self instantiate: IceTipCommitishHistoryBrowser on: self model.
+	commitsPanel := self instantiate: IceTipHistoryBrowser on: self model.
 	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
 	

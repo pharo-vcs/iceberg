@@ -14,6 +14,6 @@
 		"diffFromAncestorTab",
 		"emptyTab"
 	],
-	"name" : "IceTipCommitishHistoryBrowser",
+	"name" : "IceTipHistoryBrowser",
 	"type" : "normal"
 }
