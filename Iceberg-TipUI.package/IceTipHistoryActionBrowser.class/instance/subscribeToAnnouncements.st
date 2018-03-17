@@ -1,6 +1,11 @@
 initialization
 subscribeToAnnouncements
 	self announcer 
-		when: IceRepositoryModified, IceTipDiffRefreshed 
+		when: IceTipDiffRefreshed 
 		send: #refreshWhenRepository: 
-		to: self	
+		to: self.
+		
+	Iceberg announcer weak 
+		when: IceRepositoryAnnouncement 
+		send: #refreshWhenRepository: 
+		to: self
