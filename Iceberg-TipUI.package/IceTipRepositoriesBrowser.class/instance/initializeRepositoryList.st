@@ -12,5 +12,5 @@ initializeRepositoryList
 			yourself);		
 		dataSource: self newRepositoriesDataSource;
 		selectRowIndex: 1;
-		enableFilter: FTSubstringFilter;			
+		enableFilter: IceTipRepositoryFilter;			
 		explicitFunction

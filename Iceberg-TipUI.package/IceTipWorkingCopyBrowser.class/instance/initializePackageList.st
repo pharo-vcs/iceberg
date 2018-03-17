@@ -12,5 +12,5 @@ initializePackageList
 			yourself);		
 		dataSource: self newPackagesDataSource;
 		selectRowIndex: 1;
-		enableFilter: FTSubstringFilter;			
+		enableFilter: IceTipPackageFilter;			
 		explicitFunction

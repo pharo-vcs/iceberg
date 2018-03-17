@@ -1,3 +1,3 @@
 testing
 matches: treeModel
-	^ treeModel model name includesSubstring: self pattern
+	^ treeModel model name asLowercase includesSubstring: self pattern
