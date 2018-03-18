@@ -1,7 +1,7 @@
 accessing
 branchModelsByGroup
 	| branches |
-	branches := self branchModels.
+	branches := self allBranchModels.
 	^ { 
 	IceTipTreeGroup 
 		name: 'Branches' 

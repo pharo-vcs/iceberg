@@ -1,6 +1,6 @@
 accessing
-branchModels
-	^ self entity localBranches
+allBranchModels
+	^ self entity allBranches 
 		collect: [ :each | 
 			(IceTipBranchModel 
 				repositoryModel: self 

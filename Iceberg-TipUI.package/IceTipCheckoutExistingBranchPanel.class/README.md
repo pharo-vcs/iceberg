@@ -1,1 +1,0 @@
-I'm a panel to select an existing branch (local or remote) of a repository.
