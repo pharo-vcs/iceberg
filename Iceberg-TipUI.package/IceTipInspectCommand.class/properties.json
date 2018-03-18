@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipContext",
+	"super" : "IceTipCommand",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -8,6 +8,6 @@
 	"instvars" : [
 		"item"
 	],
-	"name" : "IceTipHistoryContext",
+	"name" : "IceTipInspectCommand",
 	"type" : "normal"
 }
