@@ -2,4 +2,6 @@ activation
 toolbarRepositoryActivation
 	<classAnnotation>
 	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipRepositoryContext
+	^ IceTipToolbarActivation 
+		byRootGroupItemFor: IceTipRepositoryContext
+		order: 1000

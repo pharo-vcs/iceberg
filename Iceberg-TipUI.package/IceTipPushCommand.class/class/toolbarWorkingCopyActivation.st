@@ -1,5 +1,5 @@
 activation
-toolbarPackageListActivation
+toolbarWorkingCopyActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation byRootGroupItemFor: IceTipWorkingCopyContext

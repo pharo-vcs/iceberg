@@ -1,5 +1,5 @@
 accessing
-toolbarPackageListActivation
+toolbarWorkingCopyActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 

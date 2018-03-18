@@ -1,7 +1,7 @@
-accessing
-toolbarPackageListActivation
+activation
+toolbarWorkingCopyActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 
 		byRootGroupItemFor: IceTipWorkingCopyContext
-		order: 20
+		order: 10
