@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipMergeBranchDialog on: self repositoryModel) openDialogWithSpec

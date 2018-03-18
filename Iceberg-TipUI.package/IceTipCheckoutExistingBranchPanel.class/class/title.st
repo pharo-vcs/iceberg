@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Checkout branch'
+	^ 'Remote branch'
