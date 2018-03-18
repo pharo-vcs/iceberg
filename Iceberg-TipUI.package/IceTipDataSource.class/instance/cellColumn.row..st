@@ -1,9 +1,14 @@
 accessing
 cellColumn: column row: rowIndex
 	"Answer a morph with the cell view. I will probably return a FTCellMorph."
-	| item |
+	| item cell |
+
 	item := self elementAt: rowIndex.
-	^ FTCellMorph new
+	cell := FTCellMorph new
 		cellInset: 5;
-		addMorph: (column read: item) asMorph asReadOnlyMorph;
-		yourself
+		yourself.		
+	(column readIcon: item) 
+		ifNotNil: [ :icon | cell addMorphBack: icon asMorph ]. 
+	cell addMorphBack: (column read: item) asMorph asReadOnlyMorph.
+
+	^ cell

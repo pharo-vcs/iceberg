@@ -15,6 +15,6 @@ initializeCommitList
 		addColumn: (IceTipTableColumn new 
 			id: 'Description';
 			action: #descriptionWithDecoration;
-			yourself);		
+			yourself);
 		dataSource: self newCommitsDataSource;
 		selectRowIndex: 1

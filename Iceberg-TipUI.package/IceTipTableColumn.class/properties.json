@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"action"
+		"action",
+		"icon"
 	],
 	"name" : "IceTipTableColumn",
 	"type" : "normal"

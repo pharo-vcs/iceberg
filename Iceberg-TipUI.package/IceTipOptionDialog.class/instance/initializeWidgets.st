@@ -1,16 +1,12 @@
 initialization
 initializeWidgets
 	contentPanel := self emptyPanel asSpecAdapter.
-	typeList := self newList
-		items: self allTypes;
-		displayBlock: [ :each | each title ];
-		icons: [ :each | each icon ];
-		yourself.
-		
-	typeList whenSelectedItemChanged: [ :aType | self basicSelectionChanged: aType ].
-		
+	typeList := self newTable.
+	self initializeTypeList.
+			
 	self whenBuiltDo: [ :ann |
-		self addShortcutsTo: ann widget ].
+		self addShortcutsTo: ann widget.
+		self selectFirst ].
 
 	self focusOrder 
 		add: self typeList;

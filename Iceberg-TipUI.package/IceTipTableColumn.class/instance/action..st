@@ -1,3 +1,3 @@
 accessing
-action: anObject
-	action := anObject
+action: aSymbolOrBlock
+	action := aSymbolOrBlock
