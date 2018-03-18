@@ -1,5 +1,5 @@
 accessing
-branchSelected
+selectedBranch
 	| index |
 	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
 	index := branchesList widget selectedRowIndex.

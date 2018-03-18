@@ -7,10 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"model",
-		"branchesList",
-		"branchNameText",
-		"acceptBlock"
+		"branchPanel"
 	],
-	"name" : "IceTipSelectBranchPanel",
+	"name" : "IceTipMergeBranchDialog",
 	"type" : "normal"
 }
