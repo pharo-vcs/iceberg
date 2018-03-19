@@ -2,4 +2,4 @@ accessing
 workingCopyDiff
 	<noCache>
 
-	^ IceTipWorkingCopyDiffModel on: self entity
+	^ IceTipWorkingCopyDiffModel repositoryModel: self on: self entity

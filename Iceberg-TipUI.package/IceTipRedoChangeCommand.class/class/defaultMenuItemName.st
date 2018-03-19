@@ -1,3 +1,0 @@
-accessing
-defaultMenuItemName
-	^ 'Redo change'
