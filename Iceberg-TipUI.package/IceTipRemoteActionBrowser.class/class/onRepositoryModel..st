@@ -1,3 +1,3 @@
 instance creation
-onRepository: aRepository
+onRepositoryModel: aRepository
 	^ self subclassResponsibility
