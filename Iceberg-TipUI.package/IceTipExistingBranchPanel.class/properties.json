@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipCheckoutBranchPanel",
+	"super" : "IceTipBranchPanel",
 	"category" : "Iceberg-TipUI-View-Branch",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -10,6 +10,6 @@
 		"title",
 		"icon"
 	],
-	"name" : "IceTipCheckoutLocalBranchPanel",
+	"name" : "IceTipExistingBranchPanel",
 	"type" : "normal"
 }

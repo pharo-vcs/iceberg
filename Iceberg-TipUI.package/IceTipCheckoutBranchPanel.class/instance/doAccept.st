@@ -1,3 +1,4 @@
 actions
 doAccept
-	self subclassResponsibility
+	self validate.
+	self selectedBranch previewCheckout

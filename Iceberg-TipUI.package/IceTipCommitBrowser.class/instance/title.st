@@ -1,3 +1,5 @@
 accessing
 title
-	^ 'Commit on ', self model name
+	^ 'Commit on {1} branch {2}' format: { 
+		self model name. 
+		self model branchName } 

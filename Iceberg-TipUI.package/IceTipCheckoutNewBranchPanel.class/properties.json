@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 3/18/2018 16:01",
-	"super" : "IceTipCheckoutBranchPanel",
+	"super" : "IceTipBranchPanel",
 	"category" : "Iceberg-TipUI-View-Branch",
 	"classinstvars" : [ ],
 	"pools" : [ ],

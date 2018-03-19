@@ -1,3 +1,4 @@
 actions
-accept
+doAccept
+	self validate.
 	self selectedBranch previewMerge

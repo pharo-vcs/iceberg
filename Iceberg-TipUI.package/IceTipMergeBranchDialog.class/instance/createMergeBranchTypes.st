@@ -1,16 +1,15 @@
 private factory
-createCheckoutBranchTypes
+createMergeBranchTypes
 	| allTypes |
-
-	"Collect types new+local+remotes"	
+	
+	"Collect types local+remotes"	
 	allTypes :=  { 
-		IceTipCheckoutNewBranchPanel on: self model. "New branch"
-	 	(IceTipCheckoutBranchPanel on: self model) 
+	 	(IceTipMergeBranchPanel on: self model) 
 			title: 'Local';
 			icon: #branch asIcon;
 			yourself }, 
 	(self model remoteModels collect: [ :each | 
-		(IceTipCheckoutBranchPanel on: each)
+		(IceTipMergeBranchPanel on: each)
 			title: each name;
 			icon: #remote asIcon;
 			yourself ]).
@@ -18,4 +17,4 @@ createCheckoutBranchTypes
 	"Doing this because I can trigger the accept inside the panels."
 	allTypes do: [ :each | each onAccept: [ self window delete ] ].
 	
-	^ allTypes
+	^ allTypes	

@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipCheckoutBranchPanel",
+	"name" : "IceTipMergeBranchPanel",
 	"type" : "normal"
 }
