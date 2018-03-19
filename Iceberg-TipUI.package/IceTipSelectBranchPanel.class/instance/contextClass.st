@@ -1,3 +1,3 @@
 accessing
 contextClass
-	^ IceTipCheckoutBranchContext
+	^ IceTipBranchContext
