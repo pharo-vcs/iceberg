@@ -1,3 +1,3 @@
 private
 finished
-	finishBlock ifNotNil: [ finishBlock value ]
+	successBlock ifNotNil: [ successBlock value ]

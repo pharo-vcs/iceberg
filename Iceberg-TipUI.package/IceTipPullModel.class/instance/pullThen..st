@@ -1,7 +1,7 @@
 actions
 pullThen: aBlock
-	IceTipPullAction new
-		repository: self entity;
-		remote: self remote;
-		onFinish: aBlock;
-		execute
+	IceTipStandardUIAction new 
+		message: ('Pulling from {1}' format: { self remote name });
+		onSuccessRepositoryModified: self entity;
+		onSuccess: aBlock;
+		execute: [ self entity pullFrom: self remote ]

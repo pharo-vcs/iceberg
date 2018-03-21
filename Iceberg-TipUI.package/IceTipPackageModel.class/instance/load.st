@@ -2,7 +2,7 @@ actions
 load
 	<noCache>
 
-	IceTipLoadPackageAction new
-		repository: self entity repository;
-		package: self entity;
-		execute
+	IceTipStandardUIAction new 
+		message: ('Loading package {1}' format: { self entity name });
+		onSuccessRepositoryModified: self entity repository;
+		execute: [ self entity load ]

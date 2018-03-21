@@ -1,13 +1,15 @@
 {
-	"commentStamp" : "EstebanLorenzano 3/5/2018 12:18",
+	"commentStamp" : "",
 	"super" : "IceTipAction",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"package"
+		"message",
+		"successAnnounceBlock",
+		"actionBlock"
 	],
-	"name" : "IceTipReloadPackageAction",
+	"name" : "IceTipStandardUIAction",
 	"type" : "normal"
 }

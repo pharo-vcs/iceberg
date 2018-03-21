@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"repository",
-		"finishBlock"
+		"successBlock"
 	],
 	"name" : "IceTipAction",
 	"type" : "normal"

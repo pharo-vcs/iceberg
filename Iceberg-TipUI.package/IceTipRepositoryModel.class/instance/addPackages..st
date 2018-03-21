@@ -1,6 +1,8 @@
 actions
-addPackages: aCollection 
-	IceTipAddPackageAction new 
-		repository: self entity;
-		packages: aCollection;
-		execute
+addPackages: aCollection
+	IceTipStandardUIAction new 
+		message: 'Adding packages';
+		onSuccessRepositoryModified: self entity;
+		execute: [ 
+			aCollection do: [ :each | 
+				self entity workingCopy addPackageNamed: each name ] ]

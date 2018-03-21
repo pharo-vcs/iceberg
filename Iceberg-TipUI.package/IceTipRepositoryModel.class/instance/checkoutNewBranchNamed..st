@@ -1,8 +1,8 @@
 actions
 checkoutNewBranchNamed: aString 
 	<noCache>
-	
-	IceTipCheckoutNewBranchAction new
-		repository: self entity;
-		branchName: aString;
-		execute
+
+	IceTipStandardUIAction new 
+		message: ('Checking out new branch {1}' format: { aString });
+		onSuccessRepositoryModified: self entity;
+		execute: [ self entity createNewBranch: aString ]
