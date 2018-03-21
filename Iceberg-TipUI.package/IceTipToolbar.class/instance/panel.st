@@ -1,3 +1,0 @@
-accessing
-panel
-	^ panel

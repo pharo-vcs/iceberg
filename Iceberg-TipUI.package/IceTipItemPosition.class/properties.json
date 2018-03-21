@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "EstebanLorenzano 3/6/2018 10:59",
+	"commentStamp" : "EstebanLorenzano 3/6/2018 11:15",
 	"super" : "Object",
 	"category" : "Iceberg-TipUI-Spec-ItemBar",
 	"classinstvars" : [
@@ -8,6 +8,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipToolbarDisplayMode",
+	"name" : "IceTipItemPosition",
 	"type" : "normal"
 }

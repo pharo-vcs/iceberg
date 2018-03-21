@@ -4,5 +4,5 @@ refresh
 	self rightPanel removeAllMorphs.
 	items do: [ :each |  
 		each position 
-			addButton: (each newToolbarButtonOn: self) 
+			addItem: (each newToolbarButtonOn: self) 
 			into: self ]

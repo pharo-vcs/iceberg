@@ -1,6 +1,12 @@
 initialization
 initializeStatusBar
-	statusBar addItem: (IceTipStatusBarValueHolder new 
-		target: self model;
-		contents: #status;
-		yourself)
+	statusBar 
+		addItem: (IceTipStatusBarTargetItem new
+			target: self model;
+			contents: #branchName;
+			yourself);
+		addItem: (IceTipStatusBarTargetItem new 
+			bePositionRight;
+			target: self model;
+			contents: #status;
+			yourself)

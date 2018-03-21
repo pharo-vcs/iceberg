@@ -1,8 +1,8 @@
 accessing
 refresh
-	panel widget removeAllMorphs.
-	items do: [ :each |  
-		panel widget addMorphBack: ((each newStatusBarItemOn: self)
-			vResizing: #spaceFill;
-			cellPositioning: #center; 
-			yourself) ]
+	leftPanel removeAllMorphs.
+	rightPanel removeAllMorphs.
+	items do: [ :each |
+		each position 
+			addItem: (each newStatusBarItemOn: self) 
+			into: self ]

@@ -1,4 +1,0 @@
-accessing
-right
-	^ IceTipToolbarItemPositionRight uniqueInstance
-	

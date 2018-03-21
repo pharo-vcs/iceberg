@@ -1,17 +1,12 @@
 {
 	"commentStamp" : "EstebanLorenzano 3/6/2018 10:57",
-	"super" : "ComposablePresenter",
-	"category" : "Iceberg-TipUI-Spec-Toolbar",
+	"super" : "IceTipItemBar",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"panel",
-		"leftPanel",
-		"rightPanel",
-		"items",
 		"toolbarItemFont",
-		"color",
 		"displayMode"
 	],
 	"name" : "IceTipToolbar",

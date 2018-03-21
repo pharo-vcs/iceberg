@@ -1,15 +1,11 @@
 {
-	"commentStamp" : "",
-	"super" : "ComposablePresenter",
-	"category" : "Iceberg-TipUI-Spec-StatusBar",
+	"commentStamp" : "EstebanLorenzano 3/21/2018 14:12",
+	"super" : "IceTipItemBar",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"panel",
-		"items",
-		"color"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipStatusBar",
 	"type" : "normal"
 }

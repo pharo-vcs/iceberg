@@ -1,0 +1,4 @@
+accessing
+left
+	^ IceTipItemPositionLeft uniqueInstance
+	
