@@ -9,6 +9,6 @@
 		"sortingStrategy",
 		"repositoryModel"
 	],
-	"name" : "IceTipPackagesModel",
+	"name" : "IceTipWorkingCopyModel",
 	"type" : "normal"
 }

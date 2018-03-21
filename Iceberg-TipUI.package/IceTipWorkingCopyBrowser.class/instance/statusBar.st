@@ -1,3 +1,3 @@
-accessing
+accessing ui
 statusBar
 	^ statusBar

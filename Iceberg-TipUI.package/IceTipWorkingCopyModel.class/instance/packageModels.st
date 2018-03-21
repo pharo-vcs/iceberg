@@ -1,6 +1,6 @@
 accessing
 packageModels
-	^ self sortingStrategy sort: (self repositoryModel entity packages 
+	^ self sortingStrategy sort: (self repositoryModel entity workingCopy packages 
 		collect: [ :each | 
 			(IceTipPackageModel 
 				repositoryModel: self repositoryModel 
