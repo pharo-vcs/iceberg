@@ -1,13 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipRepositoryCommand",
+	"super" : "IceTipAction",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"branchModel"
+		"message",
+		"successAnnounceBlock",
+		"actionBlock"
 	],
-	"name" : "IceTipDeleteBranchCommand",
+	"name" : "IceTipUIAction",
 	"type" : "normal"
 }

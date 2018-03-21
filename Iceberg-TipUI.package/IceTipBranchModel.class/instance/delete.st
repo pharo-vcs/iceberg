@@ -1,4 +1,8 @@
 actions
 delete
 	<noCache>
-	self entity delete
+	
+	IceTipUIAction new
+		message: ('Removing branch {1}' format: { self name });
+		onSuccessAnnounce: [ IceRepositoryModified for: self repositoryModel entity ];
+		do: [ self entity delete ]
