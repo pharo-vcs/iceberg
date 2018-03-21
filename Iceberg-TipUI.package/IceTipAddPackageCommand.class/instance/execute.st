@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipAddPackagesDialog on: self repositoryModel) openDialogWithSpec 

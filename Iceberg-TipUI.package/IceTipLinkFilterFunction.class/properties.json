@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "FTFilterFunction",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"textField"
+	],
+	"name" : "IceTipLinkFilterFunction",
+	"type" : "normal"
+}
