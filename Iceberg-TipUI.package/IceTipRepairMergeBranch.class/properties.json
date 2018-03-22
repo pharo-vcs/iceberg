@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipRepairOption",
+	"super" : "IceTipRepairAction",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],

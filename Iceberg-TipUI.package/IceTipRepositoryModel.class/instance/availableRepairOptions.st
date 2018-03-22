@@ -1,3 +1,3 @@
 accessing
 availableRepairOptions
-	^ IceTipRepairOption allAvailableFor: self entity
+	^ IceTipRepairAction allAvailableFor: self entity
