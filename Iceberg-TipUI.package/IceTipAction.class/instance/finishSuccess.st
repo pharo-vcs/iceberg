@@ -1,3 +1,3 @@
 private
-finished
+finishSuccess
 	successBlock ifNotNil: [ successBlock value ]

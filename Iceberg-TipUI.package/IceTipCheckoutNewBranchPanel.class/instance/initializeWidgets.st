@@ -7,3 +7,5 @@ initializeWidgets
 		ghostText: 'a-branch-name'.
 		
 	spacePanel := PanelMorph new asSpecAdapter. 
+	
+	self focusOrder add: self branchInputText

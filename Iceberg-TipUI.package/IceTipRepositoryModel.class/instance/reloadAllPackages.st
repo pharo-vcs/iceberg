@@ -2,7 +2,7 @@ actions
 reloadAllPackages
 	<noCache>
 	
-	IceTipStandardUIAction new 
+	IceTipStandardAction new 
 		message: 'Reloading all packages';
 		onSuccessRepositoryModified: self entity;
 		execute: [ 

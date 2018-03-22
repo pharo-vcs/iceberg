@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"optionsList",
+		"detailPanel",
+		"model",
+		"selectedOption"
+	],
+	"name" : "IceTipRepairRepositoryDialog",
+	"type" : "normal"
+}

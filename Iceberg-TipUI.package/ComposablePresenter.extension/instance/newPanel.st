@@ -1,4 +1,4 @@
-private factory
+*Iceberg-TipUI
 newPanel
 	^ PanelMorph new 
 		changeTableLayout;

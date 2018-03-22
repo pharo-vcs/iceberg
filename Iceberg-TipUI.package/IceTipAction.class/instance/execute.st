@@ -2,4 +2,4 @@ executing
 execute
 	self withErrorHandlingDo: [ 
 		self basicExecute.
-		self finished ]
+		self finishSuccess ]

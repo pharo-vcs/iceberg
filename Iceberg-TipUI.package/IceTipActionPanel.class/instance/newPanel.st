@@ -1,8 +1,5 @@
 initialization
 newPanel
-	^ PanelMorph new 
-		changeTableLayout;
-		listDirection: #rightToLeft;
-		hResizing: #spaceFill;
-		vResizing: #spaceFill;
-		asSpecAdapter
+	^ super newPanel
+		in: [ :this | this widget listDirection: #rightToLeft];
+		yourself

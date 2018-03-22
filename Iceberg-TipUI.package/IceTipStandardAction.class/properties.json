@@ -10,6 +10,6 @@
 		"successAnnounceBlock",
 		"actionBlock"
 	],
-	"name" : "IceTipStandardUIAction",
+	"name" : "IceTipStandardAction",
 	"type" : "normal"
 }

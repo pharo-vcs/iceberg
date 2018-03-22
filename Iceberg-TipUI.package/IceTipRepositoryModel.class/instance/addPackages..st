@@ -1,6 +1,6 @@
 actions
 addPackages: aCollection
-	IceTipStandardUIAction new 
+	IceTipStandardAction new 
 		message: 'Adding packages';
 		onSuccessRepositoryModified: self entity;
 		execute: [ 

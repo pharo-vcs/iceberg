@@ -1,6 +1,6 @@
 actions
 pushThen: aBlock
-	IceTipStandardUIAction new 
+	IceTipStandardAction new 
 		message: ('Pushing to {1}' format: { self remote name }) ;
 		onSuccessRepositoryModified: self entity;
 		onSuccess: aBlock;
