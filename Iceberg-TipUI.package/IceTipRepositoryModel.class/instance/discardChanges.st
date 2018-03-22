@@ -1,12 +1,10 @@
 actions
-reloadAllPackages
+discardChanges
 	<noCache>
 	
 	IceTipStandardAction new 
-		message: 'Reloading all packages';
+		message: 'Discarding changes';
 		onSuccessRepositoryModified: self entity;
 		execute: [ 
 			Iceberg announcer suspendAllWhile: [ 
-				self entity packages
-					select: #isLoaded
-					thenDo: #reload ] ]
+				self entity discardChanges ] ]

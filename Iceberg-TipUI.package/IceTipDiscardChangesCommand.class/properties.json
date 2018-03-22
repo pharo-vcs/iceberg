@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipReloadAllPackagesCommand",
+	"name" : "IceTipDiscardChangesCommand",
 	"type" : "normal"
 }
