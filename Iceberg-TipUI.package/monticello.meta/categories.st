@@ -8,4 +8,5 @@ SystemOrganization addCategory: #'Iceberg-TipUI-Spec-ReadOnlyForm'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Branch'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-NOTUSED'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-RepositoryType'!

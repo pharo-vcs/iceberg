@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"mergeType"
+	],
 	"name" : "IceTipMergePreviewBrowser",
 	"type" : "normal"
 }

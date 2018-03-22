@@ -1,4 +1,6 @@
 executing
 basicExecute
 	self fetchAllRemotes.
-	(IceTipMergeBranchDialog on: self repositoryModel) openDialogWithSpec
+	(IceTipMergeBranchDialog on: self repositoryModel) 
+		beSwitchAndMerge;
+		openDialogWithSpec

@@ -1,3 +1,3 @@
 actions
 doMerge
-	self model merge
+	self mergeType mergeOn: self model

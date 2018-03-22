@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 3/22/2018 16:30",
 	"super" : "IceTipComposablePresenter",
-	"category" : "Iceberg-TipUI-View-Branch",
+	"category" : "Iceberg-TipUI-View-NOTUSED",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
