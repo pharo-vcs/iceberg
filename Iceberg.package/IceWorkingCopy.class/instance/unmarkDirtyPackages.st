@@ -1,4 +1,4 @@
 private-monticello
 unmarkDirtyPackages
 	
-	self unmarkDirtyPackages: self repository workingCopyDiff
+	self unmarkDirtyPackagesInDiff: self repository workingCopyDiff
