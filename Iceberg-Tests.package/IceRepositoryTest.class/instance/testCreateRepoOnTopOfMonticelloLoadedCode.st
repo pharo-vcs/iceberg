@@ -10,6 +10,4 @@ testCreateRepoOnTopOfMonticelloLoadedCode
 		
 		"Since we cannot know what commit is loaded, everything is incoming"
 		self assert: repository incomingCommits isNotEmpty.
-
-		self assert: package packageState isForeignPackageState.
 	].

@@ -1,1 +1,0 @@
-I represent a loaded package that was loaded from current HEAD.
