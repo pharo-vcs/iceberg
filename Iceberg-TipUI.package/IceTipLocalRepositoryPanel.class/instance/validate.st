@@ -1,6 +1,10 @@
 accessing
 validate 
 	self
+		assert: self projectLocation location notNil  
+		description: 'Project location must exist!'.
+	
+	self
 		assert: self projectLocation location exists  
 		description: 'Project location must exist!'.
 		

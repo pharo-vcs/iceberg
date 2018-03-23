@@ -1,4 +1,4 @@
 testing
 canBeExecutedInContext: aToolContext
-	^ aToolContext isRepositoryDetached not
+	^ aToolContext isRepositoryOperational
 		and: [ aToolContext repositoryModel hasRemotes ]

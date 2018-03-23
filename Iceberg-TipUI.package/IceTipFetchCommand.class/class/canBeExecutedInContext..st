@@ -1,3 +1,4 @@
 testing
 canBeExecutedInContext: aToolContext
-	^ aToolContext repositoryModel hasRemotes
+	^ aToolContext isRepositoryMissing not 
+		and: [ aToolContext repositoryModel hasRemotes ]

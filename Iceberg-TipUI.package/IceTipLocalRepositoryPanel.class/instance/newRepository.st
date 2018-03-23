@@ -1,6 +1,6 @@
 accessing
 newRepository
 	^ IceRepositoryCreator new 
-		location: self projectLocation location;
-		subdirectory: self subdirectoryInputText text asString trimmed;
+		location: self location;
+		subdirectory: self subdirectory;
 		createRepository

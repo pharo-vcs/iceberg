@@ -1,0 +1,1 @@
+I will perform a switch and merge of current reference commit with the selected branch. 

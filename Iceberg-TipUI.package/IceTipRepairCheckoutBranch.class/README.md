@@ -1,0 +1,1 @@
+I will perform the chechout of an existing branch, but I will remove all changes on image. 
