@@ -1,4 +1,4 @@
-as yet unclassified
+helpers
 createMethod: source inClass: aClassName
 	
 	| class method |

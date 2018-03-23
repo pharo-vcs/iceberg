@@ -1,4 +1,4 @@
-private-monticello
+private-packages
 unmarkDirtyPackagesThat: aBlock
 	
 	self modifiedPackages do: [ :each |

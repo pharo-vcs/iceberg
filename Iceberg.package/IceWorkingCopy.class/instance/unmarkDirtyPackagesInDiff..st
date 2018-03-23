@@ -1,4 +1,4 @@
-private-monticello
+private-packages
 unmarkDirtyPackagesInDiff: aDiff
 	
 	self unmarkDirtyPackagesThat: [ :each |

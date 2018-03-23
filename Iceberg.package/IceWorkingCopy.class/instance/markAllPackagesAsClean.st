@@ -1,4 +1,4 @@
-private-monticello
+private-packages
 markAllPackagesAsClean
 	
 	self unmarkDirtyPackagesThat: [ :each | true ]
