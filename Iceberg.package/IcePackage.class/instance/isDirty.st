@@ -1,4 +1,4 @@
 loading
 isDirty
 
-	^ isDirty ifNil: [ isDirty := false ]
+	^ self isLoaded and: [isDirty ifNil: [ isDirty := false ]]
