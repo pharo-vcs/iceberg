@@ -6,5 +6,5 @@ handlePackagesChange: packages
 			select: [ :package | repository workingCopy includesPackageNamed: package name ]
 			thenCollect: #name.
 		dirtyPackages ifNotEmpty: [ 
-			repository notifyPackageModified: dirtyPackages.
+			dirtyPackages do: [ :each |repository notifyPackageModified: each ].
 			Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]

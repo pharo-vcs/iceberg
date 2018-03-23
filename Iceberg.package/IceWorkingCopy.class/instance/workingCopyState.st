@@ -12,7 +12,9 @@ The working copy state is calculated every time that it is called. This is becau
 	
 	Check the commits of #packageState"
 
-	referenceCommit ifNil: [ ^ IceEmptyWorkingCopyState repository: repository ].
 	^ referenceCommit isCollection
-		ifFalse: [ IceSingleVersionWorkingCopyState repository: repository ]
+		ifFalse: [ 
+			referenceCommit isNoCommit
+				ifTrue: [ IceEmptyWorkingCopyState repository: repository ]
+				ifFalse: [ IceSingleVersionWorkingCopyState repository: repository ] ]
 		ifTrue: [ IceInMergeWorkingCopyState repository: repository ]
