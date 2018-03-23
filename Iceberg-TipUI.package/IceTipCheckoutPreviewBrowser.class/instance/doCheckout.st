@@ -1,3 +1,4 @@
 actions
 doCheckout
-	self model checkout
+	self model checkoutThen: [ 
+		self window delete ]

@@ -1,3 +1,3 @@
 executing
-mergeOn: aModel
+mergeOn: aModel then: aBlock
 	self subclassResponsibility
