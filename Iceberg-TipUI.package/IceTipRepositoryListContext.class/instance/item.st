@@ -1,0 +1,4 @@
+accessing
+item
+	
+	^ self repositoryModel

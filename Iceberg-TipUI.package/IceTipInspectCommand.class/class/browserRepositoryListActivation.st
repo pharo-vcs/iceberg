@@ -1,7 +1,7 @@
 activation
-browserHistoryContextActivation
+browserRepositoryListActivation
 	<classAnnotation>
 	
 	^ CmdContextMenuCommandActivation
 		byItemOf: CmdExtraMenuGroup
-		for: IceTipHistoryContext
+		for: IceTipRepositoryListContext
