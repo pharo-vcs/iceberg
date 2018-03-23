@@ -1,6 +1,5 @@
 initialization
 initializePackagesFromRepository
 	
-	| loadedPackages |
-	loadedPackages := self repository packages select: [ :each | each isLoaded ].
-	loadedPackages do: [ :each | self basicAddPackage: each ]
+	referenceCommit := self repository headCommit.
+	referenceCommit packages do: [ :each | self basicAddPackage: each ].
