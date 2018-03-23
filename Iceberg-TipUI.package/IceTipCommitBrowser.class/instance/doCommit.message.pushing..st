@@ -8,6 +8,4 @@ doCommit: aCollection message: aString pushing: aBoolean
 			publish: aBoolean;
 			yourself)
 		then: [ 
-			self model reset.
-			self commentPanel clear.
-			self refresh	 ]
+			self verifyNeedsRefreshOrClose ]
