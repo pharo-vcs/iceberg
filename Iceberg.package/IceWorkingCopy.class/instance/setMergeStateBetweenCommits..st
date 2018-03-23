@@ -1,5 +1,4 @@
 private-commits
 setMergeStateBetweenCommits: aCollection 
 	
-	self loadedPackages do: [ :each | 
-		self updatePackage: each toCommits: aCollection ]
+	self referenceCommit: aCollection

@@ -1,4 +1,4 @@
 testing
 includesCommit: anIceCommit
 	
-	^ referenceCommit = anIceCommit
+	^ self referenceCommit = anIceCommit

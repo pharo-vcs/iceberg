@@ -1,4 +1,4 @@
 display
 description
 	
-	^ ', ' join: (mergeCommits collect: #description)
+	^ ', ' join: (self referenceCommits collect: #description)

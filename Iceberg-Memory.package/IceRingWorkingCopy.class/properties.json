@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"ringEnvironment",
-		"loadedPackageVersions"
+		"ringEnvironment"
 	],
 	"name" : "IceRingWorkingCopy",
 	"type" : "normal"

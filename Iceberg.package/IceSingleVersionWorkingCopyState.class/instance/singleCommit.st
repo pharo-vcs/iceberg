@@ -1,4 +1,4 @@
 accessing
 singleCommit
 	
-	^ referenceCommit
+	^ self referenceCommit

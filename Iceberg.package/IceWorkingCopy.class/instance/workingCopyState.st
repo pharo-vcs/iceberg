@@ -12,7 +12,7 @@ The working copy state is calculated every time that it is called. This is becau
 	
 	Check the commits of #packageState"
 
-	^ (self packages select: #isLoaded thenCollect: [ :package | 
-		package packageState ])
-			inject: (IceEmptyWorkingCopyState repository: repository)
-			into: [ :a :b | a mergeStateWith: b ]
+	referenceCommit ifNil: [ ^ IceEmptyWorkingCopyState repository: repository ].
+	^ referenceCommit isCollection
+		ifFalse: [ IceSingleVersionWorkingCopyState repository: repository ]
+		ifTrue: [ IceInMergeWorkingCopyState repository: repository ]

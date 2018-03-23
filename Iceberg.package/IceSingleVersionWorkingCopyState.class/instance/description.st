@@ -1,4 +1,4 @@
 display
 description
 	
-	^ referenceCommit description
+	^ self referenceCommit description

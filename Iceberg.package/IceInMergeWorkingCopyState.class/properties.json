@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"mergeCommits"
-	],
+	"instvars" : [ ],
 	"name" : "IceInMergeWorkingCopyState",
 	"type" : "normal"
 }
