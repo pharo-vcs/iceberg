@@ -1,3 +1,3 @@
 accessing
 badgeTextColor
-	^ Smalltalk ui theme textColor
+	^ Smalltalk ui theme badgeTextColor

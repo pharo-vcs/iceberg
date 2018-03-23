@@ -9,7 +9,7 @@ drawBadgeOn: aCanvas
 	badgeBounds := ((bounds right - width - 2)@(bounds top + 2) extent: width@14).
 	aCanvas 
 		fillOval: badgeBounds
-		fillStyle: (Color red alpha: 0.5).
+		fillStyle: self badgeColor.
 		
 	textBounds := 
 		(badgeBounds center - ((textWidth@textHeight) / 2.0)) + (1@0) 
