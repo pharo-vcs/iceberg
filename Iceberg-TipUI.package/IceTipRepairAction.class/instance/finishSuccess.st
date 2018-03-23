@@ -1,3 +1,0 @@
-private
-finishSuccess
-	^ super finishSuccess
