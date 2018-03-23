@@ -6,4 +6,4 @@ createMethod: source inClass: aClassName
 	method := class ensureLocalMethodNamed: (RBParser parseMethod: source) selector.
 	method sourceCode: source.
 	method package: class package.
-	dirtyPackages add: class package name.
+	self markAsDirtyPackageNamed: class package name.

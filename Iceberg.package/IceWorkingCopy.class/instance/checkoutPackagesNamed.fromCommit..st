@@ -3,11 +3,13 @@ checkoutPackagesNamed: aCollection fromCommit: aCommit
 	
 	| loader |
 	loader := MCVersionLoader new.
-	aCollection do: [ :name | | packageVersion |
+	aCollection do: [ :name | | package packageVersion |
+		package := self packageNamed: name.
 		packageVersion := (IceSavedPackageVersion
 			fromCommit: aCommit
-			package: (IcePackage named: name repository: repository))
+			package: package)
 				mcVersion.
 		loader addVersion: packageVersion.
+		package beClean.
 	].
 	loader load.

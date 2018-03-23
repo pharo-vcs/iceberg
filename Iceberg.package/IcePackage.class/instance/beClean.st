@@ -1,0 +1,4 @@
+loading
+beClean
+
+	isDirty := false

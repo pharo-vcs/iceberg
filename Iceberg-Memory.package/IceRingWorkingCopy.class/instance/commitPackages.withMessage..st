@@ -3,5 +3,6 @@ commitPackages: modifiedPackages withMessage: message
 	
 	| commit |
 	commit := super commitPackages: modifiedPackages withMessage: message.
-	dirtyPackages removeAllFoundIn: (modifiedPackages collect: #name).
+	modifiedPackages do: [:each |
+		self markAsDirtyPackageNamed: each name ].
 	^ commit

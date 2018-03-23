@@ -1,12 +1,13 @@
 private-monticello
 checkoutPackagesNamed: packageNames fromCommit: aCommit
 	
-	packageNames do: [ :packageName | | snapshot |
+	packageNames do: [ :packageName | | package snapshot |
+		package := self packageNamed: packageName.
 		snapshot := (IceSavedPackageVersion
 			fromCommit: aCommit
-			package: (IcePackage named: packageName repository: repository))
+			package: package)
 				mcSnapshot.
 		snapshot importInto: ringEnvironment asPackageNamed: packageName.
 		loadedPackageVersions at: packageName put: { aCommit }.
-		dirtyPackages remove: packageName ifAbsent: [ "Ignore" ].
+		package beClean.
 	].

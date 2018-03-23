@@ -8,4 +8,4 @@ createClass: className inPackage: packageName superclass: aSuperclass
 	class package: package.
 	"class tagWith: packageName."
 	
-	self markPackageDirty: package
+	self markAsDirtyPackageNamed: package name
