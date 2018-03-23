@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Reload all'
+	^ 'Discard all'

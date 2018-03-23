@@ -12,8 +12,6 @@ mergeCommit: mergeCommit
 	imageCommit := self referenceCommit.
 	headCommit := self repository headCommit.
 	
-	leftCommit := imageCommit = mergeCommit ifTrue: [ headCommit ] ifFalse: [ imageCommit ].
-	
 	{ mergeCommit . imageCommit . headCommit } asSet size > 2
 		ifTrue: [ 
 			IceMergeAborted signal: ('Cannot perform a tri-merge. You are trying to merge {1} into {2}, but the image is in {3}. Please, procceed to load either {1} or {2} in your image to merge.'
@@ -22,8 +20,12 @@ mergeCommit: mergeCommit
 					self repository head description.
 					imageCommit description }) ].
 	
-	((mergeCommit isAncestorOf: imageCommit)
-		and: [ mergeCommit isAncestorOf: headCommit ])
+	"We check which is the commit we have to mege mergeCommit against"
+	leftCommit := imageCommit = mergeCommit
+		ifTrue: [ headCommit ]
+		ifFalse: [ imageCommit ].
+	
+	(mergeCommit isAncestorOf: leftCommit)
 		ifTrue: [
 			"The commit is already merged in the image and in the head commit.
 			This means the selected commit is already in the history and there is nothing to do about it."
