@@ -1,4 +1,4 @@
-private-commits
+accessing
 referenceCommit: aCommit
 
 	referenceCommit := aCommit

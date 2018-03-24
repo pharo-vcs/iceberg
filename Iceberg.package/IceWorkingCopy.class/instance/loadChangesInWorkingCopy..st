@@ -1,4 +1,4 @@
-private-monticello
-loadChangesFromMCPatch: aMerge
+private-changes
+loadChangesInWorkingCopy: aMerge
 	
 	aMerge mergeTree accept: (IceWorkingCopyPatcherVisitor on: self repository)

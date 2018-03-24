@@ -1,5 +1,5 @@
 private-monticello
-loadChangesFromMCPatch: aMerge
+loadChangesInWorkingCopy: aMerge
 
 	aMerge mergeTree
 		accept: (IceRingWorkingCopyPatcherVisitor workingCopy: self).
