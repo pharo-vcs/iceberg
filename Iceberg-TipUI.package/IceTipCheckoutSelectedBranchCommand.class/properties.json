@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceTipBranchCommand",
+	"instvars" : [
+		"branchModel"
+	],
+	"name" : "IceTipCheckoutSelectedBranchCommand",
 	"type" : "normal"
 }

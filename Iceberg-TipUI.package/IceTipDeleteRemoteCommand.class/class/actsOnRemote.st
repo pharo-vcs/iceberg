@@ -1,4 +1,3 @@
 testing
-isBranch
-	
+actsOnRemote
 	^ true

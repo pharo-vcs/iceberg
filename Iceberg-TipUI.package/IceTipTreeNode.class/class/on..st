@@ -1,3 +1,3 @@
 instance creation
-for: aModel 
+on: aModel
 	^ self new model: aModel

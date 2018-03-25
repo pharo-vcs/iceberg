@@ -2,4 +2,4 @@ execution
 browserContextActivation
     <classAnnotation>
     
-    ^ CmdContextMenuCommandActivation byRootGroupItemOrder: 10 for: IceTipRepositoryContext
+    ^ CmdContextMenuCommandActivation byRootGroupItemOrder: 100 for: IceTipRepositoryContext
