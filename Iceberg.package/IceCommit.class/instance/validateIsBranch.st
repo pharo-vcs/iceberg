@@ -1,4 +1,4 @@
 validating
 validateIsBranch
-	
-	self error: 'Operation not permitted in a detached commit state'
+	"Operation not permitted in a detached commit state"
+	IceNotInBranch signal

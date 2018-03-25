@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceNoRemoteBranchError",
+	"name" : "IceNoRemoteBranch",
 	"type" : "normal"
 }
