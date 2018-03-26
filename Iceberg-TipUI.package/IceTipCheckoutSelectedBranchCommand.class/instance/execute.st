@@ -1,3 +1,3 @@
 execution
 execute
-	branchModel checkout
+	branchModel previewCheckout

@@ -4,7 +4,7 @@ initializeRepositoryList
 		beResizable;
 		addColumn: (IceTipTableColumn new 
 			id: 'Name';
-			action: #name;
+			action: #descriptionWithDecoration;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Status';

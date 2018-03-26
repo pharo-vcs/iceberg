@@ -5,7 +5,11 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"checkoutStrategyLabel",
+		"checkoutStrategyList",
+		"selectedCheckoutStrategy"
+	],
 	"name" : "IceTipCheckoutPreviewBrowser",
 	"type" : "normal"
 }

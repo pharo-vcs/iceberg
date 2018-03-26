@@ -1,5 +1,5 @@
 API-actions
-checkout
+checkoutWithStrategy: aCheckoutStrategy
 	"checkouts a remote branch"
 
 	"if there is a local branch with that name, checkout it (it will be that what you want, you will need to do 
@@ -8,8 +8,8 @@ checkout
 		detect: [ :each | each name = self shortName ]
 		ifFound: [ :each | ^ each checkout ].
 	"there are no local repositories. First we need to create one."
-	self repository 
+	self repository
 		createBranch: self shortName 
-		target: self.
+		inCommit: self commit.
 	"then we can do the checkout"
-	^ super checkout
+	^ super checkoutWithStrategy: aCheckoutStrategy

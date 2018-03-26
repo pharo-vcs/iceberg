@@ -1,0 +1,3 @@
+accessing
+checkoutStrategies
+	^ IceCheckoutStrategy allStrategies

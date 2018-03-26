@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [
+		"uniqueInstance"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceCheckoutStrategy",
+	"type" : "normal"
+}
