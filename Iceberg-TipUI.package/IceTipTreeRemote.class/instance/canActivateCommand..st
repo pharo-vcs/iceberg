@@ -1,3 +1,3 @@
 testing
 canActivateCommand: aCommandClass
-	^ aCommandClass actsOnRemote
+	^ aCommandClass actsOnRemote: self

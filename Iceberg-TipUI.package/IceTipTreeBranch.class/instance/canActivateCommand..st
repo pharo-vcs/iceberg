@@ -1,3 +1,3 @@
 testing
 canActivateCommand: aCommandClass
-	^ aCommandClass actsOnBranch
+	^ aCommandClass actsOnBranch: self
