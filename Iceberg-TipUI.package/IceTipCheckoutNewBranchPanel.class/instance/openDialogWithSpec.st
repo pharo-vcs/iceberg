@@ -1,4 +1,4 @@
-api
+accessing
 openDialogWithSpec
 	^ super openDialogWithSpec
 		okAction: [ self accept ];
