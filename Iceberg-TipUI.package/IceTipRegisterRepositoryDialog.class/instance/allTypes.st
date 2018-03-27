@@ -1,3 +1,3 @@
 accessing
 allTypes
-	^ IceTipRepositoryTypePanel allTypes
+	^ types ifNil: [ types := IceTipRepositoryTypePanel allTypes ]

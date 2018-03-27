@@ -1,7 +1,11 @@
 private
 doAccept
-	| repository |
+	| newRepository |
 	
 	self selectedType validate.
-	repository := self selectedType newRepository.
-	repository register
+	newRepository := self selectedType newRepository.
+	self isEditing 
+		ifTrue: [ self doEdit: newRepository ]
+		ifFalse: [ newRepository register ].
+	acceptBlock ifNotNil: [ 
+		acceptBlock cull: self ]

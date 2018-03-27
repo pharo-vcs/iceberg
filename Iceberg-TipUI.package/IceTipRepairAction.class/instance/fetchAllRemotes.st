@@ -3,6 +3,7 @@ fetchAllRemotes
 	| remotes |
 	remotes := self repository remotes.
 	UIManager default informUserDuring: [ :bar | 
+		bar label: 'Fetching incoming commits'.
 		bar max: remotes size.
 		bar value: 1.
 		remotes withIndexDo: [ :each :index |

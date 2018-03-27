@@ -5,7 +5,11 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"types",
+		"repository",
+		"acceptBlock"
+	],
 	"name" : "IceTipRegisterRepositoryDialog",
 	"type" : "normal"
 }

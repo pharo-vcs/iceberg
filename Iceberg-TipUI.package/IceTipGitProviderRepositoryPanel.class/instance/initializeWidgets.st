@@ -12,6 +12,11 @@ initializeWidgets
 		autoAccept: true;
 		ghostText: 'MyProject'.
 	
+	userNameInputText 	whenTextChanged: [ :text | 
+		projectLocation appendPath: self projectAsPathToAppend ].
+	projectNameInputText whenTextChanged: [ :text |
+		projectLocation appendPath: self projectAsPathToAppend ].
+	
 	self focusOrder 
 		add: self userNameInputText;
 		add: self projectNameInputText;
