@@ -1,4 +1,4 @@
-private
+actions
 doEdit: aRepository
 	repository 
 		location: aRepository location;
