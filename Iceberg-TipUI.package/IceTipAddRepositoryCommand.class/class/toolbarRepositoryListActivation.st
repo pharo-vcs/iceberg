@@ -4,4 +4,4 @@ toolbarRepositoryListActivation
 	
 	^ IceTipToolbarActivation 
 		byRootGroupItemFor: IceTipRepositoryListContext
-		order: 10
+		order: 100
