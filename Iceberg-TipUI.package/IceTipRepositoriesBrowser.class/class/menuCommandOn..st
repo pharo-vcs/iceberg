@@ -1,7 +1,7 @@
 world menu
 menuCommandOn: aBuilder 
 	"Add a custom menu item to the world menu"	
-	"<worldMenu>"
+	<worldMenu> 
 	
 	(aBuilder item: #'Iceberg')
 		order: 0.8; 
@@ -9,4 +9,4 @@ menuCommandOn: aBuilder
 		parent: #'MostUsedTools';
 		keyText: 'o, i';
 		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
-		action: [ self open ].
+		action: [ self new openWithSpec ]
