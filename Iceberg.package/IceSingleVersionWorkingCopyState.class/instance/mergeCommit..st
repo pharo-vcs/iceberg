@@ -67,5 +67,5 @@ mergeCommit: mergeCommit
 	" 3 - Load changes in the image.
 	In case the commit was already in the history, merge is a null object with no changes"
 	self workingCopy loadChangesInWorkingCopy: merge mergeTree.
-	self workingCopy unmarkDirtyPackages.
+	self workingCopy refreshDirtyPackages.
 	^ commitToAdvance

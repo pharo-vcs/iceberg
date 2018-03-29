@@ -1,4 +1,4 @@
 private-changes
-loadChangesInWorkingCopy: aMerge
+loadChangesInWorkingCopy: aTree
 	
-	aMerge mergeTree accept: (IceWorkingCopyPatcherVisitor on: self repository)
+	aTree accept: (IceWorkingCopyPatcherVisitor on: self repository)

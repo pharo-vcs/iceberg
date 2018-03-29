@@ -1,4 +1,4 @@
-private-packages
+API-packages
 markAllPackagesAsClean
 	
-	self unmarkDirtyPackagesThat: [ :each | true ]
+	self markAsCleanPackagesThat: [ :each | true ]
