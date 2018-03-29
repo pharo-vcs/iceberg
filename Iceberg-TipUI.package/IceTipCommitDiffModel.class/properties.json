@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceTipStaticDiffModel",
+	"name" : "IceTipCommitDiffModel",
 	"type" : "normal"
 }

@@ -10,9 +10,11 @@
 		"commitList",
 		"commitTabPanel",
 		"infoTab",
-		"diffFromHeadTab",
-		"diffFromAncestorTab",
-		"emptyTab"
+		"emptyTab",
+		"headTabContainer",
+		"ancestorTabContainer",
+		"headTab",
+		"ancestorTab"
 	],
 	"name" : "IceTipHistoryBrowser",
 	"type" : "normal"

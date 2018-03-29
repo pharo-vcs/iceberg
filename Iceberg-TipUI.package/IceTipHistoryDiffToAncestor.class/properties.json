@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipHistoryDiffUpdater",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipHistoryDiffToAncestor",
+	"type" : "normal"
+}

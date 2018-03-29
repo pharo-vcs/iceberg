@@ -4,6 +4,7 @@ initializeWidgets
 	
 	sidebarTree := self newOutline.
 	historyPanel := self instantiate: IceTipHistoryBrowser on: self model branchModel.
+	historyPanel beForMerge.
 	
 	self initializeSidebarTree.
 	sidebarTree widget

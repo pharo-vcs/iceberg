@@ -1,13 +1,9 @@
 accessing
 diffFromHead
-	| diff |
+	| head diff |
 	
-	UIManager default 
-		informUser: 'Calculating diff'
-		during: [ 
-			diff := self entity diffFromHead.
-			diff build ].
-	
-	^ IceTipStaticDiffModel
+	head := self repositoryModel entity headCommit.
+	diff := self calculateDiff: [ head diffTo: self entity ].
+	^ IceTipCommitDiffModel
 		repositoryModel: self repositoryModel 
 		on: diff

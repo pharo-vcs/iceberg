@@ -3,6 +3,7 @@ fetch
 	<noCache>
 	
 	IceTipStandardAction new 
+		repository: self entity;
 		message: ('Fetching incoming commits of {1}' format: { self name });
-		onSuccessRepositoryModified: self entity;
+		onSuccessRepositoryModified;
 		execute: [ self entity fetch ]

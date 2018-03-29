@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	changeList := self newTable.
 	diffPanel := self instantiate: DiffPresenter.
-
+	
 	self initializeChangeList.
 	self initializeDiffPanel.
 	

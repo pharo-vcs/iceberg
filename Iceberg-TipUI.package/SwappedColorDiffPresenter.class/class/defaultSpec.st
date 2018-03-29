@@ -2,5 +2,5 @@ specs
 defaultSpec
 	<spec>
 	
-	^ #(MorphicSwappedDiffAdapter
+	^ #(#MorphicSwappedColorDiffAdapter
 		adapt: #(model))

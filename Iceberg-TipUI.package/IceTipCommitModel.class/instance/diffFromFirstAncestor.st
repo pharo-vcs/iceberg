@@ -5,12 +5,7 @@ diffFromFirstAncestor
 	ancestorCommit := self entity ancestors 
 		ifNotEmpty: #first
 		ifEmpty: [ IceNoCommit new ].
-	UIManager default 
-		informUser: 'Calculating diff'
-		during: [ 
-			diff := ancestorCommit diffTo: self entity.
-			diff build ].
-
-	^ IceTipStaticDiffModel
+	diff := self calculateDiff: [ ancestorCommit diffTo: self entity ].
+	^ IceTipCommitDiffModel
 		repositoryModel: self repositoryModel 
 		on: diff
