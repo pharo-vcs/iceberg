@@ -5,4 +5,4 @@ gtInspectorItemsIn: composite
 		title: 'Packages';
 		display: [ self workingCopy packages ];
 		column: 'Name' evaluated: [:each | each name ] width: 400;
-		column: 'Status' evaluated: [:each | each packageState ] width: 400
+		column: 'Status' evaluated: [:each | each asString ] width: 400

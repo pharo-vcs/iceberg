@@ -25,7 +25,7 @@ testCommitIsLoaded
 	self assert: loadedVersion commit id equals: self currentCommitId.
 	
 	"2. Excercise"
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	
 	"3. Verify"
 	"3.1 - There shouldn't be more incoming commits"

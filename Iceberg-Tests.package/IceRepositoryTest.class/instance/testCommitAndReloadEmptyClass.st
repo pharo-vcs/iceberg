@@ -2,7 +2,7 @@ tests - commit
 testCommitAndReloadEmptyClass
 	
 	"1.1 - Commit a new version of the package, containing an empty class."
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	Object
 		subclass: #IcebergEmptyTestClass
 		instanceVariableNames: '' 
@@ -16,7 +16,7 @@ testCommitAndReloadEmptyClass
 	Smalltalk at: #IcebergEmptyTestClass ifPresent: [ self fail: 'IcebergEmptyTestClass class was not correctly removed from system.' ].
 
 	"2 - Reload the package"
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 
 	"3 - Test class should be here"
 	self shouldnt: [ Smalltalk at: #IcebergEmptyTestClass ] raise: Error

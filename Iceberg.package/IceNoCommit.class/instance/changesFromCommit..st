@@ -1,4 +1,4 @@
 API-changes
 changesFromCommit: anIceNoCommit 
 	
-	^ anIceNoCommit changesToNoCommit: self
+	^ anIceNoCommit changesFromNoCommit: self

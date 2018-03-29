@@ -16,5 +16,5 @@ testCheckoutOlderCommitLeavesRepositoryInDetachedMode
 		inPackage: packageName1 asSymbol.
 	repository commitWithMessage: message.
 	
-	repository branch newCommitWalk commits second checkout.
+	repository branch newCommitWalk commits second checkoutAllPackages.
 	self assert: repository head isDetached

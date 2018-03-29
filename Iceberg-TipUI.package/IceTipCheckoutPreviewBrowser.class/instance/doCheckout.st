@@ -1,5 +1,3 @@
 actions
 doCheckout
-	self model 
-		checkoutWithStrategy: self selectedCheckoutStrategy
-		then: [ self window delete ]
+	self model executeCheckoutActionAndThen: [ self window delete ]

@@ -1,4 +1,4 @@
 accessing
 referenceCommits
 	
-	^ mergeCommits
+	^ self workingCopy referenceCommit

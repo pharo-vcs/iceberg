@@ -2,7 +2,7 @@ tests - loading
 testLoadSinglePackage
 	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
 	
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	
 	self assert: (RPackageOrganizer default includesPackageNamed: packageName).
 	

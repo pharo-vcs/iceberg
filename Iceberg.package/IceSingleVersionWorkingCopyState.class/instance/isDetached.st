@@ -1,4 +1,4 @@
 testing
 isDetached
 	
-	^ referenceCommit ~= repository head commit
+	^ self referenceCommit ~= repository head commit

@@ -1,8 +1,8 @@
 scenarios
 scenarioTwoDirtyPackages
 	| testClass newClass |
-	repository checkoutPackageNamed: packageName.
-	repository checkoutPackageNamed: otherPackageName.
+	repository loadPackageNamed: packageName.
+	repository loadPackageNamed: otherPackageName.
 
 	testClass := Smalltalk at: #Test.
 	testClass compile: ('newMethod').

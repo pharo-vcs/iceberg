@@ -1,1 +1,0 @@
-I represent a package that was loaded from a other source like monticello.

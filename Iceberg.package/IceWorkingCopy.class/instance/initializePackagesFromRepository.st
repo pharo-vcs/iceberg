@@ -1,6 +1,9 @@
 initialization
 initializePackagesFromRepository
-	
-	| loadedPackages |
-	loadedPackages := self repository packages select: [ :each | each isLoaded ].
-	loadedPackages do: [ :each | self basicAddPackage: each ]
+	"If no reference commit was configured, we adopt the head commit"
+	| commitToAdopt |
+	commitToAdopt := referenceCommit isNoCommit
+		ifTrue: [ self repository headCommit ]
+		ifFalse: [ referenceCommit ].
+	commitToAdopt packages do: [ :each | self basicAddPackage: each ].
+	self adoptCommit: commitToAdopt.

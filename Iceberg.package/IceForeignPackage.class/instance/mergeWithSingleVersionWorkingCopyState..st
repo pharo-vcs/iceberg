@@ -1,6 +1,0 @@
-merging
-mergeWithSingleVersionWorkingCopyState: anIceSingleVersionWorkingCopyState 
-	
-	^ IceUnknownCommitWorkingCopyState
-		on: anIceSingleVersionWorkingCopyState referenceCommits
-		repository: anIceSingleVersionWorkingCopyState repository

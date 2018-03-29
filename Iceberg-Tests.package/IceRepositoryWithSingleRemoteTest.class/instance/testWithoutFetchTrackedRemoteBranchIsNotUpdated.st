@@ -4,7 +4,7 @@ testWithoutFetchTrackedRemoteBranchIsNotUpdated
 	| newCommit |
 	repository fetch.
 	
-	remoteRepository checkout.
+	remoteRepository checkoutAllPackages.
 	remoteRepository workingCopy addPackageNamed: 'AnotherPackage'.
 	newCommit := remoteRepository commitWithMessage: 'Another commit message'.
 	

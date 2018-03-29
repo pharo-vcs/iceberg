@@ -20,7 +20,7 @@ testCheckoutCommitInstallsCodeInImage
 	self denyPackageExists: packageName1.
 	self denyPackageExists: packageName2.
 	
-	repository branch commit checkout.
+	repository branch commit checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertClassExists: #IceAnotherGeneratedClassForTesting.
 	self assertPackageExists: packageName1.

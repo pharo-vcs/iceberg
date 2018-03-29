@@ -6,7 +6,7 @@ testCreateBranch
 	self assert: repository outgoingCommits isEmpty.
 
 	"Exercise"
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	repository createBranch: 'createdBranch'.
 
 	"Assert"

@@ -1,4 +1,4 @@
 API-changes
 changesTo: aCommitish
 
-	self subclassResponsibility
+	^ self commit changesTo: aCommitish

@@ -7,5 +7,3 @@ unloadPackage: aPackage
 	
 	package classes do: [ :each | ringEnvironment removeBehavior: each ].
 	ringEnvironment removePackage: package.
-	loadedPackageVersions removeKey: aPackage name.
-	dirtyPackages remove: aPackage name ifAbsent: [ "Well..." ].

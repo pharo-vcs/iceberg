@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "EstebanLorenzano 4/7/2017 12:36",
 	"super" : "IcePlugin",
-	"category" : "Iceberg-Plugin-General",
+	"category" : "Iceberg-Plugin-Metacello",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

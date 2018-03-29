@@ -18,5 +18,5 @@ commitChanges: aDiff withMessage: message
 
 	newCommit := self repository commitIndexWithMessage: message andParents: (self workingCopyState referenceCommits reject: [ :each | each isNoCommit ]).
 	self adoptCommit: newCommit.
-	self unmarkDirtyPackages.
+	self refreshDirtyPackages.
 	^ newCommit

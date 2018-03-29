@@ -4,7 +4,7 @@ scenarioTwoLoadedPackagesOneOutdated
 
 	"1 - Commit a new version of some package"
 	| versionNumber commit |
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	versionNumber := self currentVersionNumber.
 
 	self saveNewVersion.
@@ -16,8 +16,8 @@ scenarioTwoLoadedPackagesOneOutdated
 
 	"3 - Checkout and load the previous version"
 	commit := repository branch commit parent.
-	commit checkoutPackageNamed: packageName.
-	commit checkoutPackageNamed: otherPackageName.
+	commit loadPackageNamed: packageName.
+	commit loadPackageNamed: otherPackageName.
 
 	self assert: self currentVersionNumber equals: versionNumber.
 	

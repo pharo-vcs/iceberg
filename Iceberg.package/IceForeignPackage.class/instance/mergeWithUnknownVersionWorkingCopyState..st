@@ -1,4 +1,0 @@
-merging
-mergeWithUnknownVersionWorkingCopyState: anIceUnknownCommitWorkingCopyState 
-	
-	^ anIceUnknownCommitWorkingCopyState

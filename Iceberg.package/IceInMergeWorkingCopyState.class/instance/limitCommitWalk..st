@@ -1,4 +1,4 @@
 merging
 limitCommitWalk: aCommitWalk
 
-	mergeCommits do: [ :each | each limitCommitWalk: aCommitWalk ]
+	self referenceCommits do: [ :each | each limitCommitWalk: aCommitWalk ]

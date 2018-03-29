@@ -1,3 +1,4 @@
 accessing
 referenceCommit
-	^ referenceCommit
+	
+	^ repository workingCopy referenceCommit

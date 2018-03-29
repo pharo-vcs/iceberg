@@ -1,4 +1,0 @@
-accessing
-currentCommit
-	
-	^ package currentCommit

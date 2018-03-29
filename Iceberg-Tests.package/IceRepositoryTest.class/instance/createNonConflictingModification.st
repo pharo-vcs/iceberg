@@ -5,7 +5,7 @@ createNonConflictingModification
 	| testClass nextVersionNumber | 
 	
 	"1 - Ensure the package is loaded"
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 
 	"2 - Add a non conflicting method"
 	testClass := Smalltalk at: #Test.

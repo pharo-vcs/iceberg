@@ -14,6 +14,6 @@ testCheckoutCodeRepositoryInstallsCodeInImage
 	repository unload.
 	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
 	
-	repository checkout.
+	repository head checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: packageName.

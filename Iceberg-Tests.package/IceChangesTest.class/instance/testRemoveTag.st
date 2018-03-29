@@ -3,7 +3,7 @@ testRemoveTag
 	| package tag packageChangeSet |
 	
 	"Prepare"
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	package := RPackageOrganizer default packageNamed: packageName.
 	tag := package addClassTag: 'NewTag'.
 	Object subclass: #ForTestRemoveTag  instanceVariableNames: '' classVariableNames: '' category: tag categoryName.
