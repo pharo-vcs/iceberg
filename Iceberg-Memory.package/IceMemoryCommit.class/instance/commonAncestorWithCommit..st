@@ -1,5 +1,5 @@
 ancestry
-commonAncestorWith: anIceMemoryCommit 
+commonAncestorWithCommit: anIceMemoryCommit 
 	
 	| ancestor ancestorInfo |
 	ancestorInfo := mcCommit info commonAncestorWith: anIceMemoryCommit mcCommit info.

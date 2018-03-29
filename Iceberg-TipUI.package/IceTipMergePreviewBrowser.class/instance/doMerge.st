@@ -1,5 +1,4 @@
 actions
 doMerge
-	self mergeType 
-		mergeOn: self model
-		then: [ self window delete ]
+
+	self model executeMergeActionAndThen: [ self window delete ]

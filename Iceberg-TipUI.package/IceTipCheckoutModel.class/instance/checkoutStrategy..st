@@ -1,0 +1,3 @@
+accessing
+checkoutStrategy: anIceCheckoutAllPackages 
+	checkoutStrategy := anIceCheckoutAllPackages
