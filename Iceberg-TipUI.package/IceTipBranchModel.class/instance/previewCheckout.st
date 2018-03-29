@@ -4,4 +4,4 @@ previewCheckout
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
 	<noCache>
 
-	(IceTipCheckoutPreviewBrowser on: self) openWithSpec
+	(IceTipCheckoutPreviewBrowser onBranch: self) openWithSpec

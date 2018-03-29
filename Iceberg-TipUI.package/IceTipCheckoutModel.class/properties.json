@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipModel",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commitish",
+		"diffModel",
+		"checkoutStrategy",
+		"checkoutStrategies"
+	],
+	"name" : "IceTipCheckoutModel",
+	"type" : "normal"
+}

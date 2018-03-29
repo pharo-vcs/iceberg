@@ -2,9 +2,7 @@
 	"commentStamp" : "EstebanLorenzano 3/26/2018 18:41",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
-	"classinstvars" : [
-		"uniqueInstance"
-	],
+	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],

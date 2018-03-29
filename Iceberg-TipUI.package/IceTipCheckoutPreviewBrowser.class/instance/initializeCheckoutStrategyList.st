@@ -7,5 +7,4 @@ initializeCheckoutStrategyList
 		displayBlock: [ :each | each description ].
 
 	checkoutStrategyList whenSelectedItemChanged: [ :aStrategy | 
-		selectedCheckoutStrategy := aStrategy  ].
-	selectedCheckoutStrategy := checkoutStrategies first
+		self model checkoutStrategy: aStrategy ]

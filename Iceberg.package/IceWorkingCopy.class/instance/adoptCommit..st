@@ -3,6 +3,7 @@ adoptCommit: aCommit
 
 	| diff |
 	self referenceCommit: aCommit.
+
 	diff := IceDiff new
 		sourceVersion: self;
 		targetVersion: aCommit;

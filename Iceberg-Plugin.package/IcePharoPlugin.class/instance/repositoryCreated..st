@@ -1,4 +1,4 @@
 accessing
 repositoryCreated: aRepository
 
-	(aRepository lookupCommit: SystemVersion current commitHash) adopt
+	aRepository workingCopy referenceCommit: (aRepository lookupCommit: SystemVersion current commitHash)

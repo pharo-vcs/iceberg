@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"committish",
+		"diff"
+	],
 	"name" : "IceCheckoutAlreadyLoadedPackages",
 	"type" : "normal"
 }

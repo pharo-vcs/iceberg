@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.
 	
-	diffPanel := self instantiate: IceTipDiffPanel on: self model diffFromHead.
+	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
 	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
 	
