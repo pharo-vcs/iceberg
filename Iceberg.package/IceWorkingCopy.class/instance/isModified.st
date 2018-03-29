@@ -1,4 +1,4 @@
 API-changes
 isModified
 	
-	^ self modifiedPackages notEmpty
+	^ self loadedPackages anySatisfy: [ :e | e isDirty ]

@@ -1,0 +1,4 @@
+class initialization
+handleMethodChange: aMethodChange
+
+	self handlePackagesChange: aMethodChange packagesAffected

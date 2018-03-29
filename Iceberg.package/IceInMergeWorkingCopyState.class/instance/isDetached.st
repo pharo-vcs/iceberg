@@ -1,4 +1,4 @@
 testing
 isDetached
 
-	^ mergeCommits first ~= self repository headCommit
+	^ self referenceCommits first ~= self repository headCommit

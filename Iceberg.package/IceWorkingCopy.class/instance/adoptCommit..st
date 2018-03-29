@@ -1,4 +1,4 @@
-private-commits
+accessing
 adoptCommit: aCommit
 
 	self referenceCommit: aCommit

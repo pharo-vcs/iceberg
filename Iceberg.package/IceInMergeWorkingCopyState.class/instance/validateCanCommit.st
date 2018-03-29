@@ -1,5 +1,5 @@
 validating
 validateCanCommit
 	
-	mergeCommits first = repository head commit
+	self workingCopy referenceCommit first = repository head commit
 		ifFalse: [ IceWorkingCopyDesyncronized signal ]

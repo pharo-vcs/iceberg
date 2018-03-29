@@ -1,4 +1,4 @@
-private-commits
+accessing
 referenceCommit: aCommit
 
-	self loadedPackages do: [ :each | self updatePackage: each toCommit: aCommit ]
+	referenceCommit := aCommit
