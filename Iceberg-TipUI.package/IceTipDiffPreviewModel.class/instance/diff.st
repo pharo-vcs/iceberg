@@ -5,6 +5,6 @@ diff
 		UIManager default 
 			informUser: 'Calculating diff'
 			during: [ diff := self calculateDiff ].
-			diffModel := IceTipStaticDiffModel
+			diffModel := IceTipCommitDiffModel
 					repositoryModel: self repositoryModel 
 					on: diff ]
