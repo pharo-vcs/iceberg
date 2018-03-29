@@ -4,7 +4,5 @@ basicRefresh
 	changeList widget 
 		in: [ :this |
 			this selectRowIndexes: #(). 
-			this dataSource 
-				rootForItems: self model treeRoots;
-				expandAll ];
+			self resetDataSource: this dataSource ];
 		refresh.

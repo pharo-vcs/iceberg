@@ -1,3 +1,3 @@
 accessing
 refresh
-	diffPanel refresh.
+	diffPanel refresh
