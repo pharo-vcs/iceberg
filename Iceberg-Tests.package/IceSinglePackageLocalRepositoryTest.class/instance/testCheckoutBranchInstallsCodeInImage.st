@@ -14,6 +14,6 @@ testCheckoutBranchInstallsCodeInImage
 	repository unload.
 	self denyPackageExists: packageName.
 	
-	repository branch checkout.
+	repository branch checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: packageName.

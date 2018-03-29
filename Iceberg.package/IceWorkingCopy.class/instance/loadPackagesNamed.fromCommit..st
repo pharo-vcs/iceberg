@@ -1,5 +1,5 @@
 API-loading
-checkoutPackagesNamed: aCollection fromCommit: aCommit
+loadPackagesNamed: aCollection fromCommit: aCommit
 	
 	| loader |
 	loader := MCVersionLoader new.

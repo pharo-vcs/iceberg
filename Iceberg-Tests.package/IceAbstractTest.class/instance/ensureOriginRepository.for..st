@@ -4,7 +4,7 @@ ensureOriginRepository: anOrigin for: aProjectName
 	originDirectory := FileLocator temp asFileReference / 'pharo' / 'iceberg' / aProjectName.
 	originDirectory exists ifFalse: [ 
 		originDirectory parent ensureCreateDirectory.
-		IceGitCommand 
+		IceGitCommand
 			in: originDirectory parent  
 			execute: { 
 				'clone'. 

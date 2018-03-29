@@ -1,4 +1,4 @@
-API-changes
+private-changes
 changesFromCommit: anIceCommit 
 	
 	^ (self referenceCommit changesFromCommit: anIceCommit),

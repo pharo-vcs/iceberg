@@ -20,7 +20,7 @@ testCheckoutCodeRepositoryInstallsCodeInImage
 	self denyPackageExists: packageName1.
 	self denyPackageExists: packageName2.
 	
-	repository checkout.
+	repository checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertClassExists: #IceAnotherGeneratedClassForTesting.
 	self assertPackageExists: packageName1.

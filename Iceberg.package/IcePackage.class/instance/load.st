@@ -1,4 +1,4 @@
 loading
 load
 	
-	self repository workingCopy checkoutPackageNamed: self name
+	self repository workingCopy loadPackageNamed: self name

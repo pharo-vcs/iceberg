@@ -1,5 +1,4 @@
 private-monticello
-loadChangesInWorkingCopy: aMerge
+loadChangesInWorkingCopy: aTree
 
-	aMerge mergeTree
-		accept: (IceRingWorkingCopyPatcherVisitor workingCopy: self).
+	aTree accept: (IceRingWorkingCopyPatcherVisitor workingCopy: self).

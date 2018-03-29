@@ -1,7 +1,7 @@
 tests
 testGetSnapshot
 	| snapshot def |
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 	snapshot := (repository packageNamed: packageName) mcSnapshot.
 	
 	def := snapshot definitions detect: [ :dep | dep class = MCOrganizationDefinition ].

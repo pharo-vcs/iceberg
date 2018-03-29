@@ -1,4 +1,4 @@
 private-changes
-changesToNoCommit: anIceNoCommit 
+changesFromNoCommit: anIceNoCommit 
 
 	^ self packages collect: [ :each | IceMemoryChange on: each ]

@@ -1,7 +1,7 @@
 tests - commit
 testSaveSinglePackage
 	| loadedVersion loadedVersionNumber |
-	repository checkoutPackageNamed: packageName.
+	repository loadPackageNamed: packageName.
 
 	loadedVersion := (repository packageNamed: packageName) loadedVersion.
 	loadedVersionNumber := (Smalltalk at: #Test) new versionNumber.

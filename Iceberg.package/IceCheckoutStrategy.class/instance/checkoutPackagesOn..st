@@ -1,3 +1,0 @@
-accessing
-checkoutPackagesOn: aWorkingCopy
-	self subclassResponsibility

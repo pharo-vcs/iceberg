@@ -1,6 +1,7 @@
 checkout
 checkoutOn: anIceWorkingCopy 
 	
-	diff accept: (IceWorkingCopyPatcherVisitor on: anIceWorkingCopy repository).
+	anIceWorkingCopy loadChangesInWorkingCopy: self diff.
+	self repository setHead: committish.
 	anIceWorkingCopy referenceCommit: committish commit.
 	anIceWorkingCopy markAllPackagesAsClean.

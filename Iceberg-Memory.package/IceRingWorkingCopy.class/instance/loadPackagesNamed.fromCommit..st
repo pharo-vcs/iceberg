@@ -1,5 +1,5 @@
 private-monticello
-checkoutPackagesNamed: packageNames fromCommit: aCommit
+loadPackagesNamed: packageNames fromCommit: aCommit
 	
 	packageNames do: [ :packageName | | package snapshot |
 		package := self packageNamed: packageName.
