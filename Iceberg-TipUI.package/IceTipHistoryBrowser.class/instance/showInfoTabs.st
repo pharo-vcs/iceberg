@@ -6,8 +6,8 @@ showInfoTabs
 		self removeAllCommitPanelTabs.
 		commitTabPanel 
 			addTab: infoTab;
-			addTab: diffFromHeadTab;
-			addTab: diffFromAncestorTab ]. 
+			addTab: headTabContainer tab;
+			addTab: ancestorTabContainer tab ]. 
 	
 	self refreshCommitInfo.
 	"refresh tab headers"
