@@ -1,5 +1,7 @@
 initialization
 initializePackagesFromRepository
 	
-	referenceCommit := self repository headCommit.
-	referenceCommit packages do: [ :each | self basicAddPackage: each ].
+	| commitToAdopt |
+	commitToAdopt := self repository headCommit.
+	commitToAdopt packages do: [ :each | self basicAddPackage: each ].
+	self adoptCommit: commitToAdopt.

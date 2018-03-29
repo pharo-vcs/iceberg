@@ -1,5 +1,5 @@
 visiting
 visitRemoval: anIceRemoval 
 
-	anIceRemoval definition asMCDefinition load.
+	anIceRemoval definition asMCDefinition ifNotNil: #load.
 	self visitChildrenOf: currentNode

@@ -1,4 +1,12 @@
 accessing
 adoptCommit: aCommit
 
-	self referenceCommit: aCommit
+	| diff |
+	self referenceCommit: aCommit.
+	diff := IceDiff new
+		sourceVersion: self;
+		targetVersion: aCommit;
+		buildFull.
+	
+	self loadedPackages do: [ :each |
+		each beDirty: (diff includesPackageNamed: each name) ].
