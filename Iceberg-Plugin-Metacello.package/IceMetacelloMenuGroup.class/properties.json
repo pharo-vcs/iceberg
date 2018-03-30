@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "CmdMenuGroup",
+	"category" : "Iceberg-Plugin-Metacello",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetacelloMenuGroup",
+	"type" : "normal"
+}

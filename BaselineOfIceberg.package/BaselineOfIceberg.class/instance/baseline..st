@@ -16,8 +16,10 @@ baseline: spec
 		spec
 			"iceberg"
 			package: 'Iceberg';
-			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg') ];
-			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin' 'Iceberg-UI') ];
+			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ];
+			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Iceberg-UI' 'Commander') ];
