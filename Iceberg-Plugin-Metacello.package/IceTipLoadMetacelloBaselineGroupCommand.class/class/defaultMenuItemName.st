@@ -1,0 +1,3 @@
+accessing
+defaultMenuItemName
+	^ 'Install baseline...'

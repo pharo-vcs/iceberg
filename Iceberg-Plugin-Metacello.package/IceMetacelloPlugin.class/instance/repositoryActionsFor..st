@@ -1,6 +1,6 @@
 accessing
 repositoryActionsFor: aRepository 
-	^ ((aRepository packages
+	^ ((aRepository workingCopy packages
 		select: [ :each | each name beginsWith: 'BaselineOf' ])
 		sorted: [ :a :b | a name < b name ])
 		inject: OrderedCollection new

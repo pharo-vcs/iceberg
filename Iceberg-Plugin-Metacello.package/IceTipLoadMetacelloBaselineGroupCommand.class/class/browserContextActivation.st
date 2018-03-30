@@ -4,5 +4,5 @@ browserContextActivation
 	
 	^ CmdContextMenuCommandActivation 
 			byItemOf: IceMetacelloMenuGroup
-			order: 1
+			order: 20
 			for: IceTipWorkingCopyContext
