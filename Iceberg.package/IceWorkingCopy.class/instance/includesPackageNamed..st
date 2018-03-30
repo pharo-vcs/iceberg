@@ -1,6 +1,5 @@
 API-packages
 includesPackageNamed: aString 
-	
-	^ ((self packagesDictionary includesKey: aString)
-		and: [ (self packageNamed: aString) isLoaded ])
+	"true if is in image or is in commit"
+	^ (self includesInWorkingCopyPackageNamed: aString)
 			or: [ self referenceCommit includesPackageNamed: aString ]

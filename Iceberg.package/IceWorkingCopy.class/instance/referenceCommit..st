@@ -1,4 +1,5 @@
 accessing
 referenceCommit: aCommit
 
-	referenceCommit := aCommit
+	referenceCommit := aCommit.
+	self refreshPackages
