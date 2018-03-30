@@ -4,7 +4,7 @@ diff
 	^ diffModel ifNil: [ | diff |
 		UIManager default 
 			informUser: 'Calculating diff'
-			during: [ diff := commitish entity diffTo: self repository workingCopy ].
+			during: [ diff := self calculateDiff ].
 			diffModel := IceTipCommitDiffModel
 					repositoryModel: self repositoryModel 
 					on: diff ]

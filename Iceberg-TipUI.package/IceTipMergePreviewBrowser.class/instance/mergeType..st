@@ -1,3 +1,4 @@
 accessing
 mergeType: anObject
-	mergeType := anObject
+	
+	self model mergeType: anObject

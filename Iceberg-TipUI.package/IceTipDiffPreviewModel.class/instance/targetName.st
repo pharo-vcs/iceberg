@@ -1,4 +1,4 @@
 accessing
-checkoutTargetName
+targetName
 	
 	^ commitish name

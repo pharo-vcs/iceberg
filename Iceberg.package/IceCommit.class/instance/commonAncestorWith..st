@@ -1,4 +1,4 @@
 API-history
-commonAncestorWith: aCommit
+commonAncestorWith: aCommitish
 	
-	self subclassResponsibility
+	^ aCommitish commonAncestorWithCommit: self

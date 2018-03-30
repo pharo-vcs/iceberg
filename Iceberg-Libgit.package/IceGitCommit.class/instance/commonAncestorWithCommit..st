@@ -1,5 +1,5 @@
 ancestry
-commonAncestorWith: anIceGitCommit 
+commonAncestorWithCommit: anIceGitCommit 
 	
 	self repository withRepoDo: [ :repo | | mergeBaseId |
 		mergeBaseId := [(repo 
