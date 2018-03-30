@@ -1,5 +1,6 @@
 actions
 addPackages: aCollection
+
 	IceTipStandardAction new 
 		repository: self entity;
 		message: 'Adding packages';

@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "IceTipComposablePresenter",
+	"commentStamp" : "EstebanLorenzano 3/30/2018 13:51",
+	"super" : "IceTipDialog",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],

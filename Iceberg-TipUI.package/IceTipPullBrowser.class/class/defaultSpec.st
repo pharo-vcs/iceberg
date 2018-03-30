@@ -15,4 +15,4 @@ defaultSpec
 					row newColumn: [ :column |
 						column 
 							add: #commitsPanel withSpec: #panelSpec;
-							add: #actionPanel height: IceTipActionPanel defaultHeight ] ] ]
+							add: #actionPanel height: self actionPanelHeight ] ] ]

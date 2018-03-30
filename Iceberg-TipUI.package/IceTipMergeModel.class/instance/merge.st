@@ -1,4 +1,3 @@
 actions
 merge
-	
-	commitish entity switchAndMerge
+	commitish entity switchAndMergeWorkingCopy

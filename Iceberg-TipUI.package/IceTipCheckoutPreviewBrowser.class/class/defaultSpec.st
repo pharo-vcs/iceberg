@@ -12,4 +12,4 @@ defaultSpec
 						newColumn: #checkoutStrategyList ]
 					height: self inputTextHeight;
 				newRow: #diffPanel;
-				newRow: #actionPanel height: IceTipActionPanel defaultHeight ]
+				newRow: #actionPanel height: self actionPanelHeight ]

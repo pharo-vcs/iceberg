@@ -15,15 +15,15 @@ branchModelsByGroup
 	(IceTipTreeRepositoryGroup on: self)
 		name: 'Remotes';
 		icon: #remote asIcon;
-		children: (((branches 
-			select: [ :each | each entity isRemote ]) 
-			groupedBy: [ :each | each entity remoteName ]) 
-			associations 
-			collect: [ :eachGroup | | remote remoteModel |
-				remote := self entity remoteNamed: eachGroup key.
-				remoteModel := (IceTipRemoteModel repositoryModel: self on: remote) beCached.
-				(IceTipTreeRemote on: remoteModel)
-					name: eachGroup key;
-					children: (eachGroup value collect: [ :each | IceTipTreeBranch on: each ]);
-					yourself ]);
-		yourself }
+		children: (self entity remotes collect: [ :eachRemote | | remoteModel |
+			remoteModel := (IceTipRemoteModel repositoryModel: self on: eachRemote) beCached.
+			(IceTipTreeRemote on: remoteModel)
+				name: remoteModel name;
+				children: (branches 
+					select: [ :each | 
+						each entity isRemote 
+						and: [ each entity remoteName = eachRemote name ] ]
+					thenCollect: [ :each | IceTipTreeBranch on: each ]);
+				yourself	]);
+		yourself.
+	}

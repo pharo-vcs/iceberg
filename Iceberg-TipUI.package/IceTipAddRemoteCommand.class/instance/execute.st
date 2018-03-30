@@ -1,3 +1,3 @@
 execution
 execute
-	self halt
+	(IceTipAddRemoteDialog on: self repositoryModel) openDialogWithSpec

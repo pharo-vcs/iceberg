@@ -1,15 +1,17 @@
 {
-	"commentStamp" : "EstebanLorenzano 3/17/2018 10:25",
+	"commentStamp" : "EstebanLorenzano 3/30/2018 13:51",
 	"super" : "IceTipDialog",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"typeList",
-		"type",
-		"contentPanel"
+		"model",
+		"nameLabel",
+		"urlLabel",
+		"urlText",
+		"nameText"
 	],
-	"name" : "IceTipOptionDialog",
+	"name" : "IceTipAddRemoteDialog",
 	"type" : "normal"
 }
