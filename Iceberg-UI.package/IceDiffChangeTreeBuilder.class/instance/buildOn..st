@@ -11,6 +11,7 @@ buildOn: aPresenter
 		addSelectionAction: self browseAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
+		addSelectionAction: self revertChangesRecursivelyAction;
 		onChangeOfPort: #entity act: [ :presentation | 
 			self diff ifNotNil: [  
 				self diff announcer 

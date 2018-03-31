@@ -1,6 +1,6 @@
 actions
-revertChange: anIceMethodChange
+revertChange: anIceChange
 	| loader |
 	loader := MCPackageLoader new.
-	anIceMethodChange operation inverse applyTo: loader.
-	loader load.
+	anIceChange operation ifNotNil: [ :operation | operation inverse applyTo: loader ].
+	loader load
