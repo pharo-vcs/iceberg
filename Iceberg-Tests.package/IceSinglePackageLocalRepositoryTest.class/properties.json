@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceTestCase",
-	"category" : "Iceberg-Tests-Core",
+	"category" : "Iceberg-Tests-Common",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
