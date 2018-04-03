@@ -1,6 +1,6 @@
 private-changes
-changesFromCommit: anIceCommit 
-	
-	^ (self referenceCommit changesFromCommit: anIceCommit),
-		(self modifiedPackages collect: [ :each | 
-			IceImageChange package: each ])
+changesFromCommit: anIceCommit
+	"Image changes should be taken into account before changes in the repository"
+	^ (self modifiedPackages collect: [ :each | 
+			IceImageChange package: each ]) asArray,
+				(self referenceCommit changesFromCommit: anIceCommit) asArray
