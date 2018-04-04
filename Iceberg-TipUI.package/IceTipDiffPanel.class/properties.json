@@ -8,8 +8,7 @@
 	"instvars" : [
 		"model",
 		"changeList",
-		"diffPanel",
-		"swapSides"
+		"diffPanel"
 	],
 	"name" : "IceTipDiffPanel",
 	"type" : "normal"
