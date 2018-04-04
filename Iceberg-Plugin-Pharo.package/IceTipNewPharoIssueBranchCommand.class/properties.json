@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IcePlugin",
-	"category" : "Iceberg-Plugin-Pharo-Core",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-Plugin-Pharo-FogBugz",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IcePharoPlugin",
+	"name" : "IceTipNewPharoIssueBranchCommand",
 	"type" : "normal"
 }
