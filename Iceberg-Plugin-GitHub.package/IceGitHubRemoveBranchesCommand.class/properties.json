@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"remote",
 		"branches",
 		"branchesByName"
 	],

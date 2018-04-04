@@ -5,7 +5,7 @@ execute
 		during: [ self cacheAllBranches ].
 	IceGitHubSelectListModel new 
 		setModal: true;
-		title: ('Select branches to remove on remote {1}' format: {self remote remoteName});
+		title: ('Select branches to remove on remote {1}' format: {self remote name});
 		selectLabel: 'Remove branches';
 		items: self remoteBranches;
 		displayBlock: [ :each | 
