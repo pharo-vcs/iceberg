@@ -6,4 +6,5 @@ createBranch: aString inCommit: anIceGitCommit
 			createBranch: aString 
 			targetId: (LGitId fromHexString: anIceGitCommit gitRef)
 			force: false.
-		repo setHead: newBranch ]
+		repo setHead: newBranch.
+		^ self branchNamed: aString ]

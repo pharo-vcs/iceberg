@@ -9,7 +9,9 @@
 		"currentBranchLabel",
 		"branchLabel",
 		"branchInputText",
-		"spacePanel"
+		"spacePanel",
+		"branchCommitish",
+		"callback"
 	],
 	"name" : "IceTipCheckoutNewBranchPanel",
 	"type" : "normal"

@@ -1,4 +1,8 @@
 actions
 doAccept
+	| newBranch |
 	self validate.
-	self model checkoutNewBranchNamed: self branchName
+	newBranch := self model
+		checkoutNewBranchNamed: self branchName
+		inCommit: (branchCommitish ifNil: [ self model entity workingCopy referenceCommit ]).
+	callback ifNotNil: [ callback value: newBranch ]
