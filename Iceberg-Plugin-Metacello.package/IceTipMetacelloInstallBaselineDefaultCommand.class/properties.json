@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 4/4/2018 17:31",
+	"super" : "IceTipMetacelloInstallBaselineCommand",
+	"category" : "Iceberg-Plugin-Metacello",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipMetacelloInstallBaselineDefaultCommand",
+	"type" : "normal"
+}

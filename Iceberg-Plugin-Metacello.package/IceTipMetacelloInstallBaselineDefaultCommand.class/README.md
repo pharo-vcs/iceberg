@@ -1,0 +1,1 @@
+I'm a command to install a baseline (default group)

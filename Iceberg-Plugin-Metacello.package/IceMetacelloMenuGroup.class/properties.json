@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 4/4/2018 15:56",
 	"super" : "CmdMenuGroup",
 	"category" : "Iceberg-Plugin-Metacello",
 	"classinstvars" : [ ],

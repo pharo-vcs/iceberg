@@ -1,4 +1,4 @@
 accessing
 order
-	"Idea to put extra group to the end of menu"
-	^ SmallInteger maxVal - 199
+	"groups are 9000 - 9999"
+	^ 9090

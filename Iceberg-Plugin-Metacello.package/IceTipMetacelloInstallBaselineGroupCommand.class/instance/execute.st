@@ -9,7 +9,7 @@ execute
 	result ifNil: [ ^ self ].
 	
 	self 
-		installBaseline: self packageModel entity
+		installBaseline: self package
 		groups: ((result substrings: ',') 
 			collect: #trimmed 
 			as: Array)
