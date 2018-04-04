@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "Object",
+	"super" : "IceTipCommand",
 	"category" : "Iceberg-Plugin-GitHub-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
