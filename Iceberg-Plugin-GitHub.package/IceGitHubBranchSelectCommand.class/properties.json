@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "IceGitHubCommand",
 	"category" : "Iceberg-Plugin-GitHub-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "IceGitHubNewPullRequestCommand",
+	"instvars" : [
+		"remote"
+	],
+	"name" : "IceGitHubBranchSelectCommand",
 	"type" : "normal"
 }

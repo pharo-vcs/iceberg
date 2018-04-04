@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository",
 		"credentials"
 	],
 	"name" : "IceGitHubCommand",

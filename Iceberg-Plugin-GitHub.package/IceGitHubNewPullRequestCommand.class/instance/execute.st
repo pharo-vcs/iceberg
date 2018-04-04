@@ -5,7 +5,7 @@ execute
 	(IceGitHubCreatePullRequestModel 
 		repository: self repository 
 		credentials: self credentials
-		headRemote: self remote)
+		headRemote: nil)
 		setModal: true; 
 		onAccept: [ :pullRequest | 
 			[ 
