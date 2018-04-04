@@ -1,0 +1,1 @@
+I am a menu item that renders only a line to separate plugins from normal actions.
