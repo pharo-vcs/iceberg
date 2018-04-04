@@ -1,0 +1,5 @@
+merge-cases
+testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead
+
+	super testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead.
+	self assertIndexIsClean.

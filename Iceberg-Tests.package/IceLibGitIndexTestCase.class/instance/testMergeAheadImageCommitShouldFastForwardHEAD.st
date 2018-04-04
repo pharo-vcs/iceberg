@@ -1,0 +1,5 @@
+merge-cases
+testMergeAheadImageCommitShouldFastForwardHEAD
+
+	super testMergeAheadImageCommitShouldFastForwardHEAD.
+	self assertIndexIsClean.

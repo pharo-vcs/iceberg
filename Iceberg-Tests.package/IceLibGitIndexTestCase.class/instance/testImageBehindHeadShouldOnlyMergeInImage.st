@@ -1,0 +1,5 @@
+merge-cases
+testImageBehindHeadShouldOnlyMergeInImage
+
+	super testImageBehindHeadShouldOnlyMergeInImage.
+	self assertIndexIsClean.

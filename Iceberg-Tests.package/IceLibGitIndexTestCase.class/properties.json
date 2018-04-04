@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceGitMergeTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceLibGitIndexTestCase",
+	"type" : "normal"
+}
