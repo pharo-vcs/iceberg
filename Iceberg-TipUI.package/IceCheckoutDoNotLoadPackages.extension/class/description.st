@@ -1,3 +1,3 @@
 *Iceberg-TipUI
 description
-	^ 'DO NOT CHECKOUT ANY PACKAGES. FOR EXPERTS ONLY.'
+	^ 'DO NOT CHECKOUT any packages, I will load them manually (for experts only)'
