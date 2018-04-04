@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IcePlugin",
+	"super" : "CmdMenuGroup",
 	"category" : "Iceberg-Plugin-Pharo-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IcePharoPlugin",
+	"name" : "IcePharoMenuGroup",
 	"type" : "normal"
 }

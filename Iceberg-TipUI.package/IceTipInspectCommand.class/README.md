@@ -1,0 +1,1 @@
+I am a command implementing the inspect option. I have several context activations to be able to inspect different objects in Iceberg's UI
