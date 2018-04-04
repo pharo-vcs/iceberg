@@ -5,8 +5,8 @@ selectionChanged: ann
 		ifNotEmpty: [ :indexes | 
 			element := changeList widget dataSource realElementAt: indexes first.
 			self 
-				diffContentsLeft:  element value leftContents
-				right: element value rightContents ] 
+				diffContentsLeft:  element value rightContents
+				right: element value leftContents ] 
 		ifEmpty: [ 
 			self resetDiffContents ].
 	

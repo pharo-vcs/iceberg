@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceTipGitProviderRepositoryPanel",
-	"category" : "Iceberg-TipUI-View-RepositoryType",
+	"category" : "Iceberg-Plugin-Bitbucket",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
