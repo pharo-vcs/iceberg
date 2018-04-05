@@ -3,7 +3,7 @@ initializeWidgets
 	super initializeWidgets.	
 	
 	sidebarTree := self newOutline.
-	historyPanel := self instantiate: IceTipHistoryBrowser on: self model branchModel.
+	historyPanel := self instantiate: IceTipHistoryBrowser on: self model headModel.
 	historyPanel beForMerge.
 	
 	self initializeSidebarTree.
