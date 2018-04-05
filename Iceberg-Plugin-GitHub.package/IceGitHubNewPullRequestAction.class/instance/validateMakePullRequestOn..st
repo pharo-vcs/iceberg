@@ -5,7 +5,7 @@ validateMakePullRequestOn: aRepository
 	status := OrderedCollection new: 2.
 	aRepository isModified 
 		ifTrue: [ status add: 'Uncommited changes' ].
-	(aRepository outgoingCommitsTo: aRepository pushRemote) 
+	(aRepository outgoingCommitsTo: remote) 
 		ifNotEmpty: [ :commits | '{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
 	
