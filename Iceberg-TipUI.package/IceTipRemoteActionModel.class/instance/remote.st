@@ -1,3 +1,4 @@
 accessing
 remote
-	^ remote
+	^ remote ifNil: [ 
+		remote := self entity remotes first ]
