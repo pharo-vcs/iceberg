@@ -11,7 +11,7 @@ commit: anIceGitCommit
 		self = repository head
 			ifTrue: [ repo
 					checkout_treeish: gitcommit
-					opts: ((LGitCheckoutOptions defaults
+					opts: (LGitCheckoutOptions defaults
 						checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force;
-						yourself)) ].	
+						yourself) ].	
 	 ].
