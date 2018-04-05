@@ -4,9 +4,9 @@ detailedInfo
 	| originInfo pullRemoteInfo pushRemoteInfo |
 	originInfo := [self repository origin detailedInfo ]
 		on: IceRemoteNotFoundError do: [ #() ].
-	pullRemoteInfo := [ { 'Pulling from' -> (self repository pullRemote name) } ]
+	pullRemoteInfo := [ { 'Pulling from' -> (self repository upstream name) } ]
 	 on: IceRemoteNotFoundError do: [ #() ].
-	pushRemoteInfo := [ { 'Pushing to' -> (self repository pullRemote name) } ]
+	pushRemoteInfo := [ { 'Pushing to' -> (self repository upstream name) } ]
 	 on: IceRemoteNotFoundError do: [ #() ].
 	^ 	(originInfo,
 		{ 'Location' -> self repository location pathString },

@@ -1,4 +1,4 @@
 API-packages
 includesPackageNamed: aString
 	
-	^ self subclassResponsibility
+	^ false

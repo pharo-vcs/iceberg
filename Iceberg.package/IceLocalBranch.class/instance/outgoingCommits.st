@@ -1,4 +1,5 @@
 API-remotes
 outgoingCommits
 	
-	^ self outgoingCommitsTo: repository pushRemote
+	self hasUpstream ifFalse: [ ^ #() ].
+	^ self outgoingCommitsTo: self upstream remote

@@ -9,9 +9,6 @@
 	],
 	"instvars" : [
 		"name",
-		"announcer",
-		"pullRemote",
-		"pushRemote",
 		"workingCopy",
 		"index"
 	],

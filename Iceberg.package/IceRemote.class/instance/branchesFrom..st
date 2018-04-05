@@ -1,4 +1,4 @@
-as yet unclassified
+accesing
 branchesFrom: aRepository
 	"I return all the branches of my remote from a repository"
 
