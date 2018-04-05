@@ -1,4 +1,4 @@
 actions
 merge
 
-	commitish entity merge
+	mergeType mergeOn: commitish then: [  ].
