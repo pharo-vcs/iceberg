@@ -1,5 +1,5 @@
 validating
-validateCanPushOn: aRemote
+validateCanPushTo: aRemote
 	| commits |
 	
 	"I need to perform a fetch to have access to latest commits, because there is no 
