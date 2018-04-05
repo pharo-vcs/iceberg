@@ -1,10 +1,8 @@
 class initialization
 handlePackagesChange: packages
 
-	IceRepository registry do: [ :repository | | dirtyPackages |
-		dirtyPackages := packages
-			select: [ :package | repository workingCopy includesPackageNamed: package name ]
-			thenCollect: #name.
-		dirtyPackages ifNotEmpty: [ 
-			dirtyPackages do: [ :each |repository notifyPackageModified: each ].
-			Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]
+	IceRepository registry do: [ :repository | | changed |
+		changed := packages anySatisfy: [ :each | 
+			repository notifyPackageModified: each ].
+		changed ifTrue: [ 
+			Iceberg announcer announce: (IceRepositoryModified for: repository) ]]

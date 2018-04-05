@@ -1,3 +1,5 @@
 visiting
 visitRemoval: anIceRemoval 
-	self shouldBeImplemented.
+	
+	anIceRemoval definition asMCDefinition ifNotNil: #unload.
+	self visitChildrenOf: currentNode
