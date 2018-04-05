@@ -1,4 +1,4 @@
-execute
+accessing
 execute
 	^ IceGitHubRemoveBranchesAction new
 		repository: self repository;

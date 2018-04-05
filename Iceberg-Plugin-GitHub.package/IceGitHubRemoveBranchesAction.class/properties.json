@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "<historical>",
-	"super" : "IceGitHubBranchSelectCommand",
+	"commentStamp" : "PabloTesone 4/5/2018 16:24",
+	"super" : "IceGitHubAction",
 	"category" : "Iceberg-Plugin-GitHub-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -9,6 +9,6 @@
 		"branches",
 		"branchesByName"
 	],
-	"name" : "IceGitHubRemoveBranchesCommand",
+	"name" : "IceGitHubRemoveBranchesAction",
 	"type" : "normal"
 }
