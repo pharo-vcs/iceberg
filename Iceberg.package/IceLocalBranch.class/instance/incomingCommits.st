@@ -1,4 +1,5 @@
 API-remotes
 incomingCommits
 	
-	^ self incomingCommitsFrom: repository pullRemote
+	self hasUpstream ifFalse: [ ^ #() ].
+	^ self incomingCommitsFrom: self upstream remote

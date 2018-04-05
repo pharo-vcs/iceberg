@@ -5,4 +5,4 @@ checkout
 		committish: self commitish;
 		diff: diffModel entity.
 
-	self repository checkout: checkoutStrategy
+	self commitish checkout: checkoutStrategy

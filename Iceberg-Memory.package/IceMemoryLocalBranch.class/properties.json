@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"commit"
+		"commit",
+		"upstream"
 	],
 	"name" : "IceMemoryLocalBranch",
 	"type" : "normal"

@@ -1,0 +1,3 @@
+testing
+actsOnRemote: aRemoteModel
+	^ true

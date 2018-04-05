@@ -1,4 +1,4 @@
 accessing
 order
-	"groups are 9000 - 9999"
-	^ 9090
+	"Plugins are SmallInteger maxVal - 2000 .. SmallInteger maxVal"
+	^ SmallInteger maxVal - 1500

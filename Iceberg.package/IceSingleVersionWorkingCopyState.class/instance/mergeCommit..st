@@ -7,18 +7,10 @@ mergeCommit: mergeCommit
 	"
 	| imageCommit headCommit leftCommit commitToAdvance merge |
 	
-	self workingCopy isModified ifTrue: [ self halt ].
+	mergeCommit validateCanMerge.
 	
 	imageCommit := self referenceCommit.
-	headCommit := self repository headCommit.
-	
-	{ mergeCommit . imageCommit . headCommit } asSet size > 2
-		ifTrue: [ 
-			IceMergeAborted signal: ('Cannot perform a tri-merge. You are trying to merge {1} into {2}, but the image is in {3}. Please, procceed to load either {1} or {2} in your image to merge.'
-				format: { 
-					mergeCommit description.
-					self repository head description.
-					imageCommit description }) ].
+	headCommit := self repository headCommit.	
 	
 	"We check which is the commit we have to mege mergeCommit against"
 	leftCommit := imageCommit = mergeCommit

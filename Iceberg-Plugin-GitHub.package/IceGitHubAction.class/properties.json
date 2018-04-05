@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "PabloTesone 4/5/2018 16:21",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"credentials",
+		"remote"
+	],
+	"name" : "IceGitHubAction",
+	"type" : "normal"
+}

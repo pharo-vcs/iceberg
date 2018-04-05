@@ -1,4 +1,4 @@
 API-remotes
 pull
 	
-	self pullFrom: self pullRemote
+	self pullFrom: self upstream remote

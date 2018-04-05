@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "IceGitHubBranchSelectCommand",
-	"category" : "Iceberg-Plugin-GitHub-Model",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

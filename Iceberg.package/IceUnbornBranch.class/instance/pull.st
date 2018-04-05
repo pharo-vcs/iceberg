@@ -1,4 +1,4 @@
 API-remotes
 pull
 	
-	self pullFrom: repository pullRemote
+	self pullFrom: repository origin

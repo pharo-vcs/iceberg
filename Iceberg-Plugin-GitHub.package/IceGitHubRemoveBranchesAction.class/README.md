@@ -1,0 +1,1 @@
+I'm an action to remove branches from remotes.

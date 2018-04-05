@@ -1,7 +1,7 @@
 actions
 pushTo: aRemote 
 	
-	self validateCanPushOn: aRemote.
+	self validateCanPushTo: aRemote.
 	self withRepoDo: [ :repo |
 		| gitRemote reference remoteBranchName |
 		

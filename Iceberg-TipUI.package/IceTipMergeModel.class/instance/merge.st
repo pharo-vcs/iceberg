@@ -1,3 +1,4 @@
 actions
 merge
-	commitish entity switchAndMergeWorkingCopy
+
+	mergeType mergeOn: commitish then: [  ].
