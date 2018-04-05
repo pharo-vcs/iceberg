@@ -12,7 +12,6 @@ basicExecute
 				self repositoryModel
 					updateLocation: dialog location 
 					subdirectory: dialog subdirectory.
-				Iceberg announcer announce: (IceRepositoryModified for: self repository).
 				true ]
 			on: AssertionFailure 
 			do: [ :e | 
