@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"item"
+		"item",
+		"announcer"
 	],
 	"name" : "IceTipRevertChangeCommand",
 	"type" : "normal"
