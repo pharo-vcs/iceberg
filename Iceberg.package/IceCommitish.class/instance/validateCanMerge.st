@@ -5,7 +5,7 @@ validateCanMerge
 	self repository isModified
 		ifTrue: [ IceMergeAborted signal: 'Cannot merge when there is a dirty working copy. Please commit before merging.' ].
 	
-	imageCommit := self repository referenceCommit.
+	imageCommit := self repository workingCopy referenceCommit.
 	headCommit := self repository headCommit.
 	mergeCommit := self commit.
 	
