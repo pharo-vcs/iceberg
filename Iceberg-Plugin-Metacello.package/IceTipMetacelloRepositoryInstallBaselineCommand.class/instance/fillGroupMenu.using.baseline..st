@@ -1,10 +1,11 @@
 context menu
-fillGroupMenu: aMenu using: aCommandActivator baseline: baselinePackage
-	| concreteCommand activator |
+fillGroupMenu: aMenu using: aCommandActivator baseline: aPackage
+	| concreteCommand |
 	
-	concreteCommand := self newBaselineGroupCommand: baselinePackage.
-	activator := aCommandActivator newForCommand: concreteCommand.
-	aMenu 	
-		add: ('Install baseline of {1}...' format: { self nameOfBaseline: baselinePackage })
-		target: activator 
-		selector: #executeCommand
+	concreteCommand := self newBaselineGroupCommand: aPackage.
+	self 
+		fillMenu: aMenu
+		title:  ('Install baseline of {1}...' format: { self nameOfBaseline: aPackage })
+		command: concreteCommand 
+		activator: aCommandActivator
+		baseline: aPackage
