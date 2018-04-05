@@ -1,4 +1,6 @@
 private-changes
 loadChangesInWorkingCopy: aTree
 	
-	aTree accept: (IceWorkingCopyPatcherVisitor on: self repository)
+	self ignoreNotificationsDuring: [
+		aTree accept: (IceWorkingCopyPatcherVisitor on: self repository)
+	]
