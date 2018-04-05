@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"remote"
-	],
+	"instvars" : [ ],
 	"name" : "IceRemoteBranch",
 	"type" : "normal"
 }

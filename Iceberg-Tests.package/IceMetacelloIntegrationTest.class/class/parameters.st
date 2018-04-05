@@ -1,5 +1,0 @@
-configurations
-parameters
-	^ { 
-		self remoteTypeConfiguration
-	}

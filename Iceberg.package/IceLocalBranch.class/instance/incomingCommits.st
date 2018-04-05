@@ -1,4 +1,4 @@
 API-remotes
 incomingCommits
 	
-	^ self incomingCommitsFrom: repository pullRemote
+	^ self incomingCommitsFrom: self upstream remote

@@ -1,1 +1,0 @@
-If enabled, metacello integration allows Metacello to load packages using iceberg. This test verifies several ways of doing that.

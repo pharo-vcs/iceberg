@@ -1,4 +1,4 @@
 API-remotes
 hasIncomingCommits
 	
-	^ self branch hasIncomingCommitsFrom: self pullRemote
+	^ self branch hasIncomingCommits

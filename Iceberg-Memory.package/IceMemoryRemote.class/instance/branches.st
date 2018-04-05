@@ -10,5 +10,6 @@ branches
 					repository: localRepository;
 					mcCommit: latestVersion;
 					yourself);
+				remote: self;
 				yourself)						
 			yourself ]

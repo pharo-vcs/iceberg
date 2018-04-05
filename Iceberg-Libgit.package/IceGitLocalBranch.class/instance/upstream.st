@@ -1,6 +1,4 @@
 private-tracking
 upstream
 	
-	^ repository pullRemote
-		remoteBranchNamed: self name
-		ifAbsent: [ nil ]
+	^ self upstreamIfNone: [ IceUpstreamNotConfigured signal ]

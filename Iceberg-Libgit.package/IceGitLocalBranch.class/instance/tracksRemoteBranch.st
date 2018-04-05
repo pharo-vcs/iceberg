@@ -1,4 +1,4 @@
 tracking
 tracksRemoteBranch
 	
-	^ self upstream notNil
+	^ self hasUpstream

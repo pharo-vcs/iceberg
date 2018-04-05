@@ -11,5 +11,6 @@ remoteBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock
 					repository: localRepository;
 					mcCommit: latestVersion;
 					yourself);
+				remote: self;
 				yourself) ]
 		ifAbsent: absentBlock

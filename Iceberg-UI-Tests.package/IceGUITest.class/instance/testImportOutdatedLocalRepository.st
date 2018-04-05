@@ -3,4 +3,4 @@ testImportOutdatedLocalRepository
 	self scenarioOutdatedLocalRepository.
 	self 
 		assert: (IceRepositoryModel modelFor: repository) status asString
-		equals: '1 incoming'
+		equals: 'Uncommited changes, 1 incoming'
