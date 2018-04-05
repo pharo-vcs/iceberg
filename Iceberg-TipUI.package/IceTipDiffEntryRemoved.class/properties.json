@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "EstebanLorenzano 4/5/2018 15:07",
+	"commentStamp" : "EstebanLorenzano 4/5/2018 14:49",
 	"super" : "IceTipAnnouncement",
 	"category" : "Iceberg-TipUI-Announcements",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository"
+		"entry"
 	],
-	"name" : "IceTipDiffRefreshed",
+	"name" : "IceTipDiffEntryRemoved",
 	"type" : "normal"
 }
