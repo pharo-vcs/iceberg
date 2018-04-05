@@ -3,6 +3,8 @@ initializeWidgets
 	super initializeWidgets.
 	
 	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
+	diffPanel leftLabel: 'Repository'.
+	diffPanel rightLabel: 'Working Copy'.
 	
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
