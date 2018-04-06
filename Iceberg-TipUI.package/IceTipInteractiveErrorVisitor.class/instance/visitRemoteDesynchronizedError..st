@@ -13,7 +13,7 @@ You need to pull remote changes before continue and push your changes.' format: 
 	continue ifFalse: [ ^ self ].	
 
 	command := IcePullRemoteCommand new
-		repository: self model entity;
+		repository: self repository;
 		remote: anError remote;
 		yourself.
 

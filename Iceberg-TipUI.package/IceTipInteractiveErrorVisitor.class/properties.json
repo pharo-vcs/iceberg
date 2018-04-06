@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"model"
+		"repository"
 	],
 	"name" : "IceTipInteractiveErrorVisitor",
 	"type" : "normal"
