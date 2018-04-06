@@ -1,3 +1,8 @@
 accessing
 help
-	^ 'Clone again a repository. Notice that doing this can lead you to another situation that needs repair (like a detached status)'
+	^ 'Clone again the repository into a new location.
+
+This situation happens when iceberg cannot find the repository in disk.
+
+This action will very probably let you in a detached status.
+You will need to re-synchronize your repository with another repair action.'

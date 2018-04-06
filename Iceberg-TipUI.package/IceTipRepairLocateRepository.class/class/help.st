@@ -1,3 +1,8 @@
 accessing
 help
-	^ 'Locate this repository sources in your file system. Notice that doing this can lead you to another situation that needs repair (like a detached status)'
+	^ 'Locate this repository in your file system.
+
+This situation happens when iceberg cannot find the repository in disk.
+
+This action will very probably let you in a detached status.
+You will need to re-synchronize your repository with another repair action.'
