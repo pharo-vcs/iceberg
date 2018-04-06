@@ -60,8 +60,7 @@ baseline: spec
 			group: 'development' with: #(default allTests) ].
 
 	spec for: #'pharo6.x' do: [	
+		self spec70: spec.
 		spec
-			baseline: 'Spec70Compatibility' with: [ 
-				spec repository: 'github://pharo-contributions/Spec70Compatibility' ];
 			package: 'Iceberg-Pharo6';
 			package: 'Iceberg-UI' with: [ spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ]
