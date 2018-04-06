@@ -2,7 +2,7 @@ credentials
 ensureCredentials
 	| provider newCredentials |
 
-	provider := IceCredentialsProvider default.
+	provider := IceGitHubCredentialsProvider new. 
 	newCredentials := IcePlaintextCredentials new.
 	provider providePlaintextCredentialsTo: newCredentials.
 	^ newCredentials

@@ -1,12 +1,10 @@
 private
 obtainCredentials
-	| newCredentials provider |
+	| provider |
 	
 	"I try to get the configured credentials, if there is no, I will not attempt to get some.
 	Use #ensureCredentials when really need to login."
 	
-	provider := IceCredentialsProvider default.
-	provider plaintextCredentials isPresent ifFalse: [^ nil ].
-	newCredentials := IcePlaintextCredentials new.
-	provider provideConfiguredPlaintextCredentialsTo: newCredentials.
-	^ newCredentials
+	provider := IceGitHubCredentialsProvider new.
+	provider credentials isPresent ifFalse: [^ nil ].
+	^ provider credentials.

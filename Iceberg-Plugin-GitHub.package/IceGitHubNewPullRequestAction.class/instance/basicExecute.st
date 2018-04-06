@@ -1,7 +1,7 @@
 executing
 basicExecute
 
-	IceGitHubAPI ensureCredentials.
+	credentials := IceGitHubAPI ensureCredentials.
 
 	remote ifNil: [  
 		remote := self repository branch hasUpstream

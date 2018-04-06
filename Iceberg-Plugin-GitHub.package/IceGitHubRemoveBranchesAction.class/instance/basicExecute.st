@@ -1,7 +1,7 @@
 execute
 basicExecute 
 
-	IceGitHubAPI ensureCredentials.
+	credentials := IceGitHubAPI ensureCredentials.
 
 	UIManager default 
 		informUser: ('Retrieving branch information from {1}' format: { self remote url })

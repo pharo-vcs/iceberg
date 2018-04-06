@@ -1,6 +1,6 @@
 executing
 basicExecute
-	IceGitHubAPI ensureCredentials.
+	credentials := IceGitHubAPI ensureCredentials.
 
 	UIManager default 
 		informUser: ('Retrieving pull requests from {1}' format: { self remote })  
