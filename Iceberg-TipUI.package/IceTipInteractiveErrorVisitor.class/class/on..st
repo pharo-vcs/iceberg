@@ -1,3 +1,3 @@
 instance creation
 on: aModel
-	^ self new model: aModel
+	^ self new repository: aModel
