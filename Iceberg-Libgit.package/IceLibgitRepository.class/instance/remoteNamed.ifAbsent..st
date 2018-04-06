@@ -1,11 +1,9 @@
 remotes
-remoteNamed: aName ifAbsent: aBlockClosure 
-	
+remoteNamed: aName ifAbsent: aBlockClosure
 	| gitRemote |
-	[ self withRepoDo: [ :repo | 
-		gitRemote := (LGitRemote of: repo named: aName) lookup.
-		^ (IceGitRemote name: gitRemote remoteName url: gitRemote url)
-				localRepository: self;
-				yourself ]]
-			on: LGitObjectNotInitialized
-			do: [ ^ aBlockClosure value ]
+	[ gitRemote := (LGitRemote of: self repositoryHandle named: aName) lookup.
+	^ (IceGitRemote name: gitRemote remoteName url: gitRemote url)
+		localRepository: self;
+		yourself ]
+		on: LGitObjectNotInitialized
+		do: [ ^ aBlockClosure value ]

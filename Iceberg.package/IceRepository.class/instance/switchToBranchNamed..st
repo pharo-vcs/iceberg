@@ -1,4 +1,6 @@
 API-branches
 switchToBranchNamed: aString
 	
-	(self branchNamed: aString) switch
+	^ (self branchNamed: aString)
+		switch;
+		yourself

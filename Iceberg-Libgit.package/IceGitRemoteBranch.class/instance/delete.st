@@ -1,7 +1,5 @@
 API-branches
 delete
-
-	repository withRepoDo: [ :repo | | found |
-		found := repo lookupRemoteBranch: self name ifAbsent: [ nil ].
-		repo deleteBranch: found.
-	].
+	| found |
+	found := self repositoryHandle lookupRemoteBranch: self name ifAbsent: [ nil ].
+	self repositoryHandle deleteBranch: found

@@ -1,7 +1,6 @@
 accessing
 commit
-	self repository withRepoDo: [ :repo | 
-			| gitCommit gitId |
-			gitId := (repo lookupRemoteBranch: self name) targetId.
-			gitCommit := LGitCommit of: repo fromId: gitId.
-			^ self repository commitFromGitCommit: gitCommit ]
+	| gitCommit gitId |
+	gitId := (self repositoryHandle lookupRemoteBranch: self name) targetId.
+	gitCommit := LGitCommit of: self repositoryHandle fromId: gitId.
+	^ self repository commitFromGitCommit: gitCommit

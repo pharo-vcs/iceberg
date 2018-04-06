@@ -1,7 +1,4 @@
 accessing
-mergeBaseBetween: aCommitId and: anotherCommitId 
-	self withRepoDo: [ :repo |
-		^ (repo 
-				mergeBaseBetween: (LGitId fromHexString: aCommitId) 
-				and: (LGitId fromHexString: anotherCommitId)) 
-				hexString ]
+mergeBaseBetween: aCommitId and: anotherCommitId
+	^ (self repositoryHandle mergeBaseBetween: (LGitId fromHexString: aCommitId) and: (LGitId fromHexString: anotherCommitId))
+		hexString

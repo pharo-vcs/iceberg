@@ -7,4 +7,4 @@ name
 		
 	We parse that content to get the branch name"
 
-	^ (repository location / '.git' / 'HEAD') contents copyAfterLast: $/
+	^ ((repository location / '.git' / 'HEAD') contents copyAfterLast: $/) trimBoth

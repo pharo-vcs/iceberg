@@ -1,12 +1,5 @@
 branches
-branchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock 
-	
+branchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock
 	| found |
-
-	self withRepoDo: [ :repo |
-		found := repo lookupLocalBranch: aString ifAbsent: [ nil ]
-	].
-
-	^ found
-			ifNil: absentBlock
-			ifNotNil: [ presentBlock value: (self basicNewBranchNamed: aString) ]
+	found := self repositoryHandle lookupLocalBranch: aString ifAbsent: [ nil ].
+	^ found ifNil: absentBlock ifNotNil: [ presentBlock value: (self basicNewBranchNamed: aString) ]
