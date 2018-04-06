@@ -6,7 +6,8 @@ newRepository
 	UIManager default 
 		informUser: 'Configuring Remotes...'
 		during: [ | githubRepository |
-			githubRepository := IceGitHubAPI new getRepository: self userName project: self projectName.
+			githubRepository := self getGitHubRepository.
+			githubRepository ifNil: [ ^ repository ].
 			(githubRepository at: #fork)
 				ifTrue: [ | parent remote |
 					parent := githubRepository at: #parent.
