@@ -1,3 +1,3 @@
-accessing
+initialization
 initialExtent
-	^ 700@500
+	^ 1000@500
