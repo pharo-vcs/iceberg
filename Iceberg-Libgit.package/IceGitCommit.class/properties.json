@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceCommit",
-	"category" : "Iceberg-Libgit",
+	"category" : "Iceberg-Libgit-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

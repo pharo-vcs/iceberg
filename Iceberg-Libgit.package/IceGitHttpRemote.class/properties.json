@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "TorstenBergmann 2/23/2017 10:33",
 	"super" : "IceGitNetworkRemote",
-	"category" : "Iceberg-Libgit",
+	"category" : "Iceberg-Libgit-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceRemoteBranch",
-	"category" : "Iceberg-Libgit",
+	"category" : "Iceberg-Libgit-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
