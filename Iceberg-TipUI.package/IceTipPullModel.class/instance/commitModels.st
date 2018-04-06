@@ -1,6 +1,6 @@
 accessing
 commitModels
-	^ (self entity incomingCommitsFrom: self remote)
+	^ (self entity branch incomingCommitsFrom: self remote)
 		collect: [ :each | 
 			(IceTipCommitModel 
 				repositoryModel: self repositoryModel 

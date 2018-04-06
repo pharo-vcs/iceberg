@@ -1,4 +1,0 @@
-accessing
-limitCommitWalk: aCommitWalk
-
-	"Nothing"
