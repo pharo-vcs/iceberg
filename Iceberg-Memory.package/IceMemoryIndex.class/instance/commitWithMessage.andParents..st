@@ -12,7 +12,7 @@ commitWithMessage: message andParents: parentCommits
 			ifNone: [ headCommit mcCommit dependencies detect: [ :mcVersionInfo | mcVersionInfo package name = packageName ] ] ].
 
 	newCommit := repository
-		commitPackage: (MCPackage named: (head isUnbornBranch ifFalse: [ head name ] ifTrue: [ head nameForFirstCommit ]))
+		commitPackage: (MCPackage named: head name)
 		author: 'Lala?'
 		message: message
 		ancestors: (parentCommits collect: [:each | each mcCommit info ])
@@ -29,7 +29,7 @@ commitWithMessage: message andParents: parentCommits
 	iceCommit mcCommit: newCommit.
 	
 	head isUnbornBranch ifTrue: [
-		repository switchToBranchNamed: head nameForFirstCommit onCommit: iceCommit.
+		repository switchToBranchNamed: head name onCommit: iceCommit.
 	] ifFalse: [
 		head commit: iceCommit.
 	].	

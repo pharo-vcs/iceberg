@@ -12,5 +12,5 @@ pullFrom: aRemote
 	
 	| remoteBranch |
 	repository fetch.
-	remoteBranch := aRemote remoteBranchNamed: self nameForFirstCommit.
-	repository createBranch: self nameForFirstCommit inCommit: remoteBranch commit.
+	remoteBranch := aRemote remoteBranchNamed: self name.
+	repository createBranch: self name inCommit: remoteBranch commit.

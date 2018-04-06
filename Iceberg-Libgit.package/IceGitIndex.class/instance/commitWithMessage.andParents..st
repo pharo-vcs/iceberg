@@ -18,7 +18,7 @@ commitWithMessage: message andParents: parentCommits
 			but we have to remember it to notify the frontend."
 			updateReference: ([ repo head name ] 
 				on: LGit_GIT_EUNBORNBRANCH
-				do: [ 'refs/heads/', repository branch nameForFirstCommit ]);
+				do: [ 'refs/heads/', repository branch name ]);
 			author: signature;
 			committer: signature;
 			writeCommit;
