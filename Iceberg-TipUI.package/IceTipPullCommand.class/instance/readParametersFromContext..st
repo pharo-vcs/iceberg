@@ -1,5 +1,5 @@
 execution
 readParametersFromContext: aToolContext
 	super readParametersFromContext: aToolContext.
-	self repositoryModel ifNotNil: [ :model | 
-		self badge: model numberOfIncomingCommits ]
+	(self repositoryModel isNotNil and: [self repositoryModel isMissing not]) ifTrue: [
+		self badge: self repositoryModel numberOfIncomingCommits ]
