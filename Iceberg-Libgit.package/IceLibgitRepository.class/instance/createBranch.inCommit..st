@@ -1,10 +1,12 @@
 actions
 createBranch: aString inCommit: anIceGitCommit 
 
-	self withRepoDo: [ :repo | | newBranch |
-		newBranch := repo 
+	self withRepoDo: [ :repo |
+		repo 
 			createBranch: aString 
 			targetId: (LGitId fromHexString: anIceGitCommit gitRef)
 			force: false.
-		repo setHead: newBranch.
-		^ self branchNamed: aString ]
+		^ (self branchNamed: aString)
+			switch;
+			yourself
+	]
