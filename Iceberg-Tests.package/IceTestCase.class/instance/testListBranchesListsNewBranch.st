@@ -2,6 +2,8 @@ tests-branch
 testListBranchesListsNewBranch
 
 	| branches branchName |
+	repository head isUnbornBranch ifTrue: [ ^ self skip ].
+	
 	branchName := 'new'.
 	repository createBranch: branchName.
 	branches := repository allBranches.

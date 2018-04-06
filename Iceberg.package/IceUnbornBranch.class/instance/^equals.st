@@ -1,0 +1,4 @@
+comparing
+= anotherBranch
+
+	^ anotherBranch isUnbornBranch
