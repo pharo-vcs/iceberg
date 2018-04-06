@@ -13,7 +13,7 @@ You need to solve this problem before you continue, please choose one of the str
 		title: 'Loaded code out of sync!'.
 	solveStrategy ifNil: [ ^ self ].
 	(command := solveStrategy new) 
-		repository: self model;
+		repository: self repository;
 		execute.
 	command isSuccess 
 		ifTrue: [ anError retry ]
