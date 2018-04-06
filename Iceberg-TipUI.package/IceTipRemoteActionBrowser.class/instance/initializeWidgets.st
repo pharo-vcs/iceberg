@@ -14,4 +14,6 @@ initializeWidgets
 	self focusOrder 
 		add: self commitsPanel;
 		add: self actionPanel;
-		add: self remoteList
+		add: self remoteList.
+		
+	remoteList setSelectedItem: self model remoteModel
