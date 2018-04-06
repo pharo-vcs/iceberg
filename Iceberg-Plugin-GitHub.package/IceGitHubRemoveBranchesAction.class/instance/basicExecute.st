@@ -1,8 +1,12 @@
 execute
 basicExecute 
+
+	credentials := IceGitHubAPI ensureCredentials.
+
 	UIManager default 
 		informUser: ('Retrieving branch information from {1}' format: { self remote url })
 		during: [ self cacheAllBranches ].
+
 	IceGitHubSelectListModel new 
 		setModal: true;
 		title: ('Select branches to remove on remote {1}' format: {self remote name});

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub-Authentication",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"Credentials"
+	],
+	"instvars" : [ ],
+	"name" : "IceGitHubCredentialsProvider",
+	"type" : "normal"
+}

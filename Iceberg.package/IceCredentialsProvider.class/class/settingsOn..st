@@ -42,12 +42,12 @@ settingsOn: aBuilder
 			(aBuilder setting: #username)
 				target: self;
 				targetSelector: #plaintextCredentials;
-				label: 'Github username';
-				description: 'Your github username'.
+				label: 'Git Plain Text Username';
+				description: 'Your Git username'.
 
 			(aBuilder setting: #password)
 				target: self;
 				targetSelector: #plaintextCredentials;
 				type: #Password;
-				label: 'Your github password, if you want Iceberg to remember it, but be aware that this does not pretend to be safe.'.
+				label: 'Your Git password, if you want Iceberg to remember it, but be aware that this does not pretend to be safe.'.
 		]

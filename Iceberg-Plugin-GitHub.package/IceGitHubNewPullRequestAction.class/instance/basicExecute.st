@@ -1,6 +1,8 @@
 executing
 basicExecute
 
+	credentials := IceGitHubAPI ensureCredentials.
+
 	remote ifNil: [  
 		remote := self repository branch hasUpstream
 			ifTrue: [ self repository branch upstream remote ]
@@ -8,7 +10,7 @@ basicExecute
 	].
 
 	(self validateMakePullRequestOn: self repository) ifFalse: [ ^ #() ].
-	
+		
 	(IceGitHubCreatePullRequestModel 
 		repository: self repository 
 		credentials: self credentials
