@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"iconPanel",
+		"confirmLabel",
+		"removeFileSystemCheckbox"
+	],
+	"name" : "IceTipRemoveRepositoryDialog",
+	"type" : "normal"
+}

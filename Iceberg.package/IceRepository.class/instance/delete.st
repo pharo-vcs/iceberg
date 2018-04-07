@@ -1,3 +1,3 @@
 API-registry
 delete
-	self forget.
+	self forget
