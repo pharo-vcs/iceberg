@@ -47,7 +47,9 @@ baseline: spec
 				'Iceberg-UI' 
 				'Iceberg-TipUI'
 				'Iceberg-Plugin' 
-				'Iceberg-Plugin-GitHub');
+				'Iceberg-Plugin-Metacello'
+				'Iceberg-Plugin-GitHub'
+				'Iceberg-Plugin-Pharo');
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit' 
