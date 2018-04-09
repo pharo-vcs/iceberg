@@ -2,7 +2,7 @@ accessing
 lookupHead
 	| head |
 	self repositoryHandle isUnborn
-		ifTrue: [ ^ IceUnbornBranch inRepository: self ].
+		ifTrue: [ ^ IceGitUnbornBranch inRepository: self ].
 	head := self repositoryHandle head.
 	^ head isBranch
 		ifTrue: [ self basicNewBranchNamed: head name ]

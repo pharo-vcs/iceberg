@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceUnbornBranch",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMemoryUnbornBranch",
+	"type" : "normal"
+}

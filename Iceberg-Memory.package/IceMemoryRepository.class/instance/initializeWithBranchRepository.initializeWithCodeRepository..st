@@ -3,4 +3,4 @@ initializeWithBranchRepository: aRepository initializeWithCodeRepository: anothe
 
 	branchRepository := aRepository.
 	codeRepository := anotherRepository.
-	self setHead: (IceUnbornBranch inRepository: self).
+	self setHead: (IceMemoryUnbornBranch inRepository: self).
