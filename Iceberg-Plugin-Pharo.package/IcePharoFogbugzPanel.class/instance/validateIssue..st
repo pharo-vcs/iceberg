@@ -2,6 +2,7 @@ private
 validateIssue: aString
 	| number |
 
+	fetched := false.
 	aString size = 5 ifFalse: [ ^ self ].
 	aString isAllDigits ifFalse: [ ^ self ].
 	number := aString asNumber.
@@ -12,6 +13,5 @@ validateIssue: aString
 			[ 	"Fork to allow UI to continue"
 				issue downloadTitle.
 				UIManager default defer: [ 
-					self updateText: (self sanitizeTitle: issue title).
-					self createButton enabled: true ] ] fork ]
+					self updateText: (self sanitizeTitle: issue title) ] ] fork ]
 	
