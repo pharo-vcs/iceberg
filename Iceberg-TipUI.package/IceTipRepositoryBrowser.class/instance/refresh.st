@@ -1,5 +1,6 @@
-initialization
+accessing
 refresh
+	self rebuildToolbar.
     self sidebarTree widget 
         in: [ :this | 
             this selectRowIndexes: #(). 
