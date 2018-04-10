@@ -5,6 +5,7 @@ installBaseline: icePackage groups: anArray
 		message: ('Installing baseline {1} of {2}' format: { 
 			icePackage name allButFirst: self class baselinePrefix size. 
 			self repositoryModel name });
+		onSuccessRepositoryModified;
 		execute: [ 
 			Iceberg announcer 
 				suspendAllForRepository: self repositoryModel entity
