@@ -1,3 +1,5 @@
 accessing
 projectPath
-	^ self owner, '/', self projectName
+	^ self owner
+		ifNil: [ self projectName ]
+		ifNotNil: [ :ownerName | ownerName , '/' , self projectName ]
