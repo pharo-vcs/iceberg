@@ -5,3 +5,4 @@ SystemOrganization addCategory: #'Iceberg-Tests-Common'!
 SystemOrganization addCategory: #'Iceberg-Tests-Core-Remotes'!
 SystemOrganization addCategory: #'Iceberg-Tests-Git'!
 SystemOrganization addCategory: #'Iceberg-Tests-Memory'!
+SystemOrganization addCategory: #'Iceberg-Tests-MetacelloIntegration'!
