@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 4/10/2018 14:30",
+	"super" : "GLMAnnouncer",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"suspendedConditions"
+	],
+	"name" : "IceAnnouncer",
+	"type" : "normal"
+}

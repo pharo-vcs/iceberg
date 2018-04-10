@@ -8,4 +8,5 @@ reload
 		onSuccessRepositoryModified;
 		execute: [ 
 			Iceberg announcer 
-				suspendAllWhile: [ self entity reload ] ]
+				suspendAllForRepository: self entity repository 
+				while: [ self entity reload ] ]

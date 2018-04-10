@@ -1,3 +1,3 @@
 accessing
 announcer
-	^ icebergAnnouncer ifNil: [ icebergAnnouncer := GLMAnnouncer new ]
+	^ icebergAnnouncer ifNil: [ icebergAnnouncer := IceAnnouncer new ]

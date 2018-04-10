@@ -1,4 +1,4 @@
-class initialization
+event handling
 handlePackagesChange: packages
 
 	IceRepository registry do: [ :repository | | changed |
