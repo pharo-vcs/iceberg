@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"projectLocation",
+		"subdirectoryLabel",
+		"subdirectoryInputText"
+	],
+	"name" : "IceTipEditRepositoryDialog",
+	"type" : "normal"
+}

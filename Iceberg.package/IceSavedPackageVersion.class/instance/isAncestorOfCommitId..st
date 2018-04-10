@@ -1,3 +1,3 @@
 comparing
 isAncestorOfCommitId: anotherCommitId
-	^ self commit isAncestorOf: (self repository commitAt: anotherCommitId)
+	^ self commit isAncestorOf: (self repository lookupCommit: anotherCommitId)

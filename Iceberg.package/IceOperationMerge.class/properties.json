@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 3/13/2018 13:35",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"chosen"
+	],
+	"name" : "IceOperationMerge",
+	"type" : "normal"
+}

@@ -1,3 +1,4 @@
-*Iceberg-Changes
+API-changes
 diffTo: aCommitish
-	^ IceDiff from: self to: aCommitish 
+
+	^ IceDiff from: self to: aCommitish

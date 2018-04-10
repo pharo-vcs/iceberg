@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GLMCompositePresentation",
+	"category" : "Iceberg-SmartUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedElements"
+	],
+	"name" : "IceSmartWorkingCopyModifiedBrowser",
+	"type" : "normal"
+}

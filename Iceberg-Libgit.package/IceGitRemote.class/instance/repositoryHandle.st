@@ -1,0 +1,4 @@
+accessing
+repositoryHandle
+
+	^ localRepository repositoryHandle

@@ -1,3 +1,3 @@
 actions remotes
-fetchRemote: aRemote 
-	self repository fetchFrom: aRemote
+fetchRemote: aRemoteModel
+	aRemoteModel remote fetch

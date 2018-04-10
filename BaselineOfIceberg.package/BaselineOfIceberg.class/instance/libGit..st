@@ -4,7 +4,7 @@ libgit: spec
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.0.5';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.2.0';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'

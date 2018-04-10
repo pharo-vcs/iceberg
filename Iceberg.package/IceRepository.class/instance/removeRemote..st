@@ -1,4 +1,9 @@
-accessing remotes
+API-remotes
 removeRemote: aRemote
-	self backend removeRemote: aRemote.
-	self detachRemote: aRemote
+	
+	(self hasRemoteNamed: aRemote name)
+		ifFalse: [ IceRemoteNotFoundError new
+			remoteName: aRemote name;
+			signal ].
+		
+	self doRemoveRemote: aRemote

@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractTestCase",
+	"category" : "Iceberg-Tests-Common",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteRepository",
+		"remoteBranchName",
+		"packageName",
+		"remote"
+	],
+	"name" : "IceRepositoryWithSingleRemoteAndMergeConflictTest",
+	"type" : "normal"
+}

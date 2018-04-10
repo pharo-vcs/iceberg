@@ -1,0 +1,3 @@
+accessing
+branchName
+	^ entity branchName

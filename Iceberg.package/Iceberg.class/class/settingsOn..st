@@ -19,9 +19,9 @@ settingsOn: aBuilder
 							'HTTPS (https://github.com/<username>/<project>.git)' -> #httpsUrl
 						}.
 				].
-			(aBuilder setting: #showSystemRepositories) 
+			"(aBuilder setting: #showSystemRepositories) 
 				order: 0.2;
 				label: 'Include system repositories by default';
 				description: 'If checked then system repositories (like ''pharo'') will be shown in repositories list by default';
-				target: self.
+				target: self."
 		]

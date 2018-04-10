@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepositoryWithSingleRemoteTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteFileUrl",
+		"projectName"
+	],
+	"name" : "IceGitRepositoryWithSingleRemoteTest",
+	"type" : "normal"
+}

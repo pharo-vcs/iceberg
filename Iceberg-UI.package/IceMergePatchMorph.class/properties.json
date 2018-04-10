@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "PSMCMergePatchMorph",
+	"category" : "Iceberg-UI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMergePatchMorph",
+	"type" : "normal"
+}

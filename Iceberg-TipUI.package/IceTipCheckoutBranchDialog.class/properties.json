@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/19/2018 12:46",
+	"super" : "IceTipOptionDialog",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"types"
+	],
+	"name" : "IceTipCheckoutBranchDialog",
+	"type" : "normal"
+}

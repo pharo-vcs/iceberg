@@ -15,14 +15,16 @@ scenarioOutdatedLocalRepository
 	"Prepare 2 - Load project using metacello"
 	self disablingMetacelloIntegrationDo: [
 		Metacello new
-		  baseline: 'PharoGitTest';
-		  repository: 'github://pharo-vcs/pharo-git-test:forBecomeWriteable';
-		  load
+			baseline: 'PharoGitTest';
+			repository: 'github://pharo-vcs/pharo-git-test:forBecomeWriteable';
+			onConflict: [:ex | ex allow];
+			load
 	].
 
 	"Excercise"
 	repository := IceRepositoryCreator new
-		url: self scpOriginUrl;
 		location: self absoluteLocation;
-		branchName: 'forBecomeWritable';
-		createRepository
+		commitishName: 'forBecomeWriteable';
+		createRepository.
+		
+	repository workingCopy adoptCommit: repository headCommit.

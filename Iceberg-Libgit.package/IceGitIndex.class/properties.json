@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceIndex",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"modifiedFilePaths"
+	],
+	"name" : "IceGitIndex",
+	"type" : "normal"
+}

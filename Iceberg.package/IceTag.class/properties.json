@@ -7,7 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"name",
-		"repository",
 		"commit"
 	],
 	"name" : "IceTag",

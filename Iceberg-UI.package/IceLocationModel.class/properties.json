@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "ComposableModel",
+	"super" : "ComposablePresenter",
 	"category" : "Iceberg-UI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -11,7 +11,8 @@
 		"chooseButton",
 		"label",
 		"chooseTitle",
-		"chooseBlock"
+		"chooseBlock",
+		"keptLocation"
 	],
 	"name" : "IceLocationModel",
 	"type" : "normal"

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 1/16/2018 11:53",
+	"super" : "Object",
+	"category" : "Iceberg-WorkingCopy",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceWorkingCopyState",
+	"type" : "normal"
+}

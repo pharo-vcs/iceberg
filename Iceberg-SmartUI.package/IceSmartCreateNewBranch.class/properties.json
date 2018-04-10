@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceSmartAction",
+	"category" : "Iceberg-SmartUI-ModelActions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceSmartCreateNewBranch",
+	"type" : "normal"
+}

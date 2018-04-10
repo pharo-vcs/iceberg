@@ -1,0 +1,3 @@
+accessing
+defaultToolbarItemName
+	^ self class defaultToolbarItemName

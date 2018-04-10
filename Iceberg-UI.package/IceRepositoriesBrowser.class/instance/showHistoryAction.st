@@ -4,5 +4,5 @@ showHistoryAction
 		selectionAction: #browseHistory;
 		selectionCondition: #isOperative;
 		icon: #glamorousBrowse asIcon;
-		showTitle: 'Show history...';
+		showTitle: 'Show history';
 		shortcut: $h

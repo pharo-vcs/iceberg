@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/22/2018 15:03",
+	"super" : "IceTipBrowser",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedModel",
+		"commitList",
+		"commitTabPanel",
+		"infoTab",
+		"emptyTab",
+		"headTabContainer",
+		"ancestorTabContainer",
+		"headTab",
+		"ancestorTab"
+	],
+	"name" : "IceTipHistoryBrowser",
+	"type" : "normal"
+}

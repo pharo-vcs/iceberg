@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 1/29/2018 15:09",
+	"super" : "IcePlugin",
+	"category" : "Iceberg-Plugin-Debugging",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceDebuggingPlugin",
+	"type" : "normal"
+}

@@ -1,6 +1,7 @@
 instance creation
-named: branchName inRepository: repo
-	^ self 
-		named: branchName
-		local: (self isRemoteBranchName: branchName) not
-		inRepository: repo
+named: aName inRepository: aRepository
+
+	| branch |
+	branch := super inRepository: aRepository.
+	branch name: aName.
+	^ branch

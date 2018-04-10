@@ -1,0 +1,3 @@
+settings
+sharedRepositoriesLocationString
+	^ self sharedRepositoriesLocation fullName

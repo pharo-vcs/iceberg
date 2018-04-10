@@ -1,3 +1,6 @@
-private
+API-history
 lookupCommit: commitId
-	^ self backend lookupCommit: commitId
+
+	^ self
+		lookupCommit: commitId
+		ifAbsent: [ IceUnknownCommit new id: commitId; yourself ]

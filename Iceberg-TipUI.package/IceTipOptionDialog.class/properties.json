@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/17/2018 10:25",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"typeList",
+		"type",
+		"contentPanel"
+	],
+	"name" : "IceTipOptionDialog",
+	"type" : "normal"
+}

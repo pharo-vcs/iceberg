@@ -1,0 +1,4 @@
+running
+isAbstract
+
+	^ self == IceNewRepositoryTest

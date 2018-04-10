@@ -1,3 +1,3 @@
 accessing
 descriptionTextForRemote: aRemote
-	^ aRemote remoteName
+	^ aRemote name

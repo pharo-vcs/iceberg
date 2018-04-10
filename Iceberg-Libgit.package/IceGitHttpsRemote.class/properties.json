@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "NicoPasserini 11/18/2016 12:39",
+	"super" : "IceGitHttpRemote",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitHttpsRemote",
+	"type" : "normal"
+}

@@ -1,4 +1,4 @@
-repository handling
+API-registry
 forget
-	(self class unregisterRepository: self ifAbsent: [ nil ])
-		ifNotNil: [ Iceberg announcer announce: (IceRepositoryForgotten repository: self) ]
+	self class unregisterRepository: self ifAbsent: [ ^ nil ].
+	Iceberg announcer announce: (IceRepositoryForgotten repository: self)

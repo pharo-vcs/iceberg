@@ -1,0 +1,4 @@
+tracking
+tracksRemoteBranch
+	
+	^ self hasUpstream

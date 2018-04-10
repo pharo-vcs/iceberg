@@ -1,0 +1,4 @@
+testing
+canBeExecutedInContext: aToolContext
+
+	^ true

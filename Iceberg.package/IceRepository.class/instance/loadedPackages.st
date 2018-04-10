@@ -1,3 +1,5 @@
-working copies
+API-packages
 loadedPackages
-	^ self savedPackages select: #isLoaded
+	"Lists all loaded packages"
+
+	^ self workingCopy loadedPackages

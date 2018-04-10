@@ -61,27 +61,40 @@ Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceber
 ```Smalltalk
 MetacelloPharoPlatform select.
 #(
-	'BaselineOfTonel'
-	'BaselineOfLibGit'
-	'BaselineOfIceberg'
-	'Iceberg-UI' 
-	'Iceberg-Plugin-GitHub' 
-	'Iceberg-Plugin' 
-	'Iceberg-Metacello-Integration' 
-	'Iceberg-Libgit-Tonel' 
-	'Iceberg-Libgit-Filetree' 
-	'Iceberg-Libgit' 
-	'Iceberg' 
-	'Iceberg-Pharo6' 
-	'LibGit-Core'
-	'MonticelloTonel-Tests'
-	'MonticelloTonel-Core'
-	'MonticelloTonel-FileSystem' ) 
+    'BaselineOfTonel'
+    'BaselineOfLibGit'
+    'BaselineOfIceberg'
+    'MonticelloTonel-Core'
+    'MonticelloTonel-FileSystem'
+    'MonticelloTonel-Tests'
+    'Iceberg-UI' 
+    'Iceberg-Plugin-GitHub' 
+    'Iceberg-Plugin' 
+    'Iceberg-Metacello-Integration' 
+    'Iceberg-Libgit-Tonel' 
+    'Iceberg-Libgit-Filetree' 
+    'Iceberg-Libgit' 
+    'Iceberg-Tests'
+    'Iceberg-Memory'
+    'Iceberg-UI-Tests'
+    'Iceberg-Core' 
+    'Iceberg-Changes' 
+    'Iceberg-Adapters' 
+    'Iceberg'
+    'Iceberg-GitCommand'
+    'Iceberg-SmartUI'
+	'Iceberg-Pharo6'
+    'LibGit-Core') 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
+
+"update icons (iceberg needs some new)"
+ThemeIcons current: ThemeIcons loadDefault.
+"load iceberg"
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6.8';
+  	repository: 'github://pharo-vcs/iceberg:v0.7';
   	load.
+
 ```
 
 *NOTE: you need to update iceberg in a NEW image, otherwise there will be obsolete repositories around.*

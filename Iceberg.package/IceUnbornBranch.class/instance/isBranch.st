@@ -1,0 +1,4 @@
+testing
+isBranch
+	
+	^ true

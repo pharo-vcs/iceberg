@@ -8,9 +8,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"entity",
-		"outgoingCommits",
-		"incomingCommits"
+		"entity"
 	],
 	"name" : "IceAbstractModel",
 	"type" : "normal"

@@ -2,8 +2,8 @@ tests
 testCanHandleUnixPath
 	"git clone existing-repo tmp-repo produces a url = /..../existing-repo remote"
 	| url |
-	self assert: (IceFileRemote canHandleUrl: '/Users/pharo/some-repo-name').
-	url := IceFileRemote new
+	self assert: (IceGitFileRemote canHandleUrl: '/Users/pharo/some-repo-name').
+	url := IceGitFileRemote new
 				url: '/Users/pharo/some-repo-name';
 				parseUrl.
 	self assert: url projectName equals: 'some-repo-name'.

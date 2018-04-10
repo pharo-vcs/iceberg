@@ -1,4 +1,4 @@
-accessing
+private-changes
 changedPackagesTo: aCommitish
 	"This method will implement a double dispatch, since the strategies to resolve deltas 
 	 change if you are comparing: 

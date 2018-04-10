@@ -1,0 +1,4 @@
+testing
+isEmpty
+	
+	^ tree isEmpty

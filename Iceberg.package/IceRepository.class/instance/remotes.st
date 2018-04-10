@@ -1,4 +1,4 @@
-accessing remotes
+API-remotes
 remotes
-	self isValid ifFalse: [ ^ #() ].
-	^ self backend remotes 
+	
+	self subclassResponsibility

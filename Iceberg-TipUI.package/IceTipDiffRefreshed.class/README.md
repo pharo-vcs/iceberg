@@ -1,0 +1,1 @@
+I announce when a diff has been refreshed.

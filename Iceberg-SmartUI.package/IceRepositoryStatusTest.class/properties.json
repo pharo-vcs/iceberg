@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Iceberg-SmartUI-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectName",
+		"repositoriesToClean",
+		"packageName",
+		"repository"
+	],
+	"name" : "IceRepositoryStatusTest",
+	"type" : "normal"
+}

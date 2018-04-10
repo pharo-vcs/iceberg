@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 2/16/2018 18:40",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"package"
+	],
+	"name" : "IceImageChange",
+	"type" : "normal"
+}

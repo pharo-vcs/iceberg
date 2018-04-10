@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 1/2/2018 11:46",
+	"super" : "IceRepositoryStatus",
+	"category" : "Iceberg-SmartUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNotLoaded",
+	"type" : "normal"
+}

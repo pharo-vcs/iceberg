@@ -1,0 +1,5 @@
+merge-cases
+testMergeImageReferenceCommitInHistoryShouldDoNothing
+
+	super testMergeImageReferenceCommitInHistoryShouldDoNothing.
+	self assertIndexIsClean.

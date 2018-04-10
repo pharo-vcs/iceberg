@@ -1,3 +1,3 @@
-*Iceberg-Core
-asIcebergObjectInRepository: backend
-	^ backend iceCommitFrom: self
+*Iceberg
+asIcebergObjectInRepository: iceRepository
+	^ iceRepository commitFromGitCommit: self

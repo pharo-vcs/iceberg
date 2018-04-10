@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "DiffPresenter",
+	"category" : "Iceberg-TipUI-Spec",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SwappedColorDiffPresenter",
+	"type" : "normal"
+}

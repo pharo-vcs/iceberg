@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 7/12/2016 11:29",
 	"super" : "Object",
-	"category" : "Iceberg-Libgit",
+	"category" : "Iceberg-Libgit-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

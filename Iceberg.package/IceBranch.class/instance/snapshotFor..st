@@ -1,3 +1,4 @@
-querying
-snapshotFor: package
-	^ self lastCommit snapshotFor: package
+private-monticello
+snapshotFor: anIceSavedPackage 
+	
+	^ self commit snapshotFor: anIceSavedPackage

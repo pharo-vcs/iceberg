@@ -1,0 +1,1 @@
+I'm a general command to install metacello baselines.

@@ -1,3 +1,3 @@
 accessing
 branches
-	^ self repository allBranches
+	^ self repository localBranches

@@ -1,3 +1,3 @@
 configurations
 repositoryBackendConfiguration
-	^ IceTestParameter withOptions: TIceRepositoryBackend traitUsers
+	^ IceTestParameter withOptions: {1}

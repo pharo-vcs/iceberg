@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceLocalBranch",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commit",
+		"upstream"
+	],
+	"name" : "IceMemoryLocalBranch",
+	"type" : "normal"
+}

@@ -1,5 +1,6 @@
 auxiliar
 createTestRepository: aRemoteRepository
-	^ IceRepositoryCreator new
-	 	url: aRemoteRepository;
-		createRepository.
+	
+	^ self
+		createTestRepository: aRemoteRepository
+		in: UUID new asString asFileReference

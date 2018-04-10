@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/18/2018 16:01",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"acceptBlock"
+	],
+	"name" : "IceTipBranchPanel",
+	"type" : "normal"
+}

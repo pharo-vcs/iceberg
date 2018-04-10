@@ -1,5 +1,5 @@
 actions
 reloadAllLoadedPackages
-	self repository savedPackages 
+	self repository packages 
 		select: #isLoaded 
 		thenDo: [ :each | each reload ].

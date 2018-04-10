@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipGitProviderRepositoryPanel",
+	"category" : "Iceberg-Plugin-Bitbucket",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipBitbucketRepositoryPanel",
+	"type" : "normal"
+}

@@ -1,5 +1,5 @@
-commits
+API-remotes
 incomingCommits
-	^ self upstream
-		ifNotNil: [ self upstream commitsNotIn: self ]
-		ifNil: [ #() ]
+	
+	self hasUpstream ifFalse: [ ^ #() ].
+	^ self incomingCommitsFrom: self upstream remote

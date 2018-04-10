@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceDefinition",
+	"category" : "Iceberg-Tests-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTestDefinition",
+	"type" : "normal"
+}

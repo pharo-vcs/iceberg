@@ -1,3 +1,0 @@
-history
-lastStoredRun
-	^ ((Dictionary new) add: (#timeStamp->(DateAndTime basicNew instVarAt: 1 put: 1123; instVarAt: 2 put: (Duration seconds: 3600 nanoSeconds: 0); instVarAt: 3 put: 2457733; instVarAt: 4 put: 315041000; yourself)); add: (#passed->((Set new) add: #testAllBranches; add: #testBranches; add: #testBranchIncludesCommit; add: #testBranchName; yourself)); add: (#failures->((Set new))); add: (#errors->((Set new))); yourself)

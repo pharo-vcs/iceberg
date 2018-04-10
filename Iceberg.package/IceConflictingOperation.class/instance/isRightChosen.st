@@ -1,0 +1,4 @@
+resolution
+isRightChosen
+	
+	^ chosen = rightOperation

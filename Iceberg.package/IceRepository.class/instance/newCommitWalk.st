@@ -1,3 +1,4 @@
-commits
+API-history
 newCommitWalk
-	^ self backend newCommitWalk
+	
+	self subclassResponsibility

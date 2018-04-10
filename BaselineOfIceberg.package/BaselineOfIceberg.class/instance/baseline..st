@@ -7,15 +7,24 @@ baseline: spec
 		
 		self tonel: spec.
 		self libgit: spec.
+		self commander: spec.
+		
+		spec
+			baseline: 'Ring2' 
+			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
 		
 		spec
 			"iceberg"
 			package: 'Iceberg';
-			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg') ];
-			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin' 'Iceberg-UI') ];
+			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ];
+			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg') ];
-			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Iceberg-UI' 'Commander') ];
+			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
+			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-UI' 'Iceberg-Tests')];
 			"libgit"
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
@@ -36,8 +45,11 @@ baseline: spec
 				minimal 
 				'Iceberg-Metacello-Integration' 
 				'Iceberg-UI' 
+				'Iceberg-TipUI'
 				'Iceberg-Plugin' 
-				'Iceberg-Plugin-GitHub');
+				'Iceberg-Plugin-Metacello'
+				'Iceberg-Plugin-GitHub'
+				'Iceberg-Plugin-Pharo');
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit' 
@@ -50,6 +62,10 @@ baseline: spec
 			group: 'development' with: #(default allTests) ].
 
 	spec for: #'pharo6.x' do: [	
-		spec 
+		self spec70: spec.
+		spec
 			package: 'Iceberg-Pharo6';
-			package: 'Iceberg-UI' with: [ spec requires: #('Iceberg-Pharo6') ] ]
+			package: 'Iceberg-UI' with: [ 
+				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ];
+			package: 'Iceberg-TipUI' with: [ 
+				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ]

@@ -1,0 +1,5 @@
+tests-checkout
+testCheckoutCodeRepositoryInstallsPackageInImage
+
+	repository checkoutAllPackages.
+	self assertPackageExists: packageName

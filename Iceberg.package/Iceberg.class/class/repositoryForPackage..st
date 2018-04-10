@@ -3,7 +3,7 @@ repositoryForPackage: anRPackage
 	| existingRepositories possibleRepositoryTypes |
 	
 	existingRepositories := (MCWorkingCopy forPackage: anRPackage mcPackage) repositoryGroup repositories.
-	possibleRepositoryTypes := TIceRepositoryBackend traitUsers, 
+	possibleRepositoryTypes := IceRepository allSubclasses, 
 		{ IceMetacelloRepositoryAdapter. 
 		  MCGitHubRepository }.
 	

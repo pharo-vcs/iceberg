@@ -3,5 +3,6 @@ pullFromAction
 	^ GLMGenericAction new
 		selectionAction: #pullFrom;
 		selectionCondition: #isOperative;
-		showTitle: 'Pull from...'; 
+		showTitle: 'Pull from...';
+		category: 'Remotes';
 		yourself

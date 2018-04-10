@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "GuillermoPolito 3/12/2018 17:59",
+	"super" : "IceCodeDefinition",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"isMeta",
+		"mcDefinition"
+	],
+	"name" : "IceMethodContainerDefinition",
+	"type" : "normal"
+}

@@ -1,8 +1,8 @@
 tests
 testCanHandleGitUrl
 	| url |
-	self assert: (IceGitRemote canHandleUrl: 'git://github.com/pharo-vcs/iceberg.git').
-	url := IceGitRemote new
+	self assert: (IceGitSshRemote canHandleUrl: 'git://github.com/pharo-vcs/iceberg.git').
+	url := IceGitSshRemote new
 				url: 'git://github.com/pharo-vcs/iceberg.git';
 				parseUrl.
 	self assert: url projectName equals: 'iceberg'.

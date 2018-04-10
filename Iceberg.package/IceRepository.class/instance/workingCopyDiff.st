@@ -1,3 +1,4 @@
 *Iceberg-Changes
 workingCopyDiff
-	^ IceDiff forRepository: self
+	
+	^ self workingCopyDiffToCommit: self head

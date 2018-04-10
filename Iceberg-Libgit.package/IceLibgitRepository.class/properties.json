@@ -1,0 +1,22 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepository",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"DefaultBackendType",
+		"DefaultCodeSubdirectory",
+		"DefaultFileFormatType",
+		"ShareRepositoriesBetweenImages",
+		"SharedRepositoriesLocation"
+	],
+	"instvars" : [
+		"location",
+		"subdirectory",
+		"commitCache",
+		"handle"
+	],
+	"name" : "IceLibgitRepository",
+	"type" : "normal"
+}

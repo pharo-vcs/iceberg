@@ -2,21 +2,16 @@ building
 buildOn: aPresenter
 	^ aPresenter cherryPickTree
 		allExpanded;
-		children: #elements;
+		children: #children;
 		icon: #icon;
 		format: #description;
-		display: [ self elements ];
+		display: [ self changes ];
 		allSelected;
 		onChangeOfCherryPick: [ :presentation | self selectedCherryPick: presentation cherryPick ];
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
 		addSelectionAction: self browseAction;
+		addSelectionAction: self inspectAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
-		onChangeOfPort: #entity act: [ :presentation | 
-			self diff ifNotNil: [
-				self diff announcer 
-					when: IceChangeSetChanged
-					send: #execute:
-					to: (IceChangesTreeResetSelectionHelper for: presentation) ] ];
 		yourself

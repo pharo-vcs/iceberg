@@ -1,3 +1,4 @@
-actions
+API-remotes
 fetch
-	self fetchFrom: self pullRemote
+	"Fetch all commits and branches from all remotes"
+	self remotes do: [ :each | each fetch ]

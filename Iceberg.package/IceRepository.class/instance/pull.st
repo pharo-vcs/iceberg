@@ -1,3 +1,5 @@
-actions
+API-remotes
 pull
-	self pullFrom: self pullRemote
+	"Fetch new commits corresponding to the current branch from the default pull remote.
+	Then merge the remote branch with the current branch."
+	self branch pull

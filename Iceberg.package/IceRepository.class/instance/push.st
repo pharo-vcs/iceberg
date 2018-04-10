@@ -1,3 +1,5 @@
-actions
+API-remotes
 push
-	self pushTo: self pushRemote
+	"Push current commits to the default push remote"
+	
+	self branch push

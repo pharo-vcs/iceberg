@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 4/9/2018 14:24",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"tab"
+	],
+	"name" : "IceTipHistoryDiffUpdater",
+	"type" : "normal"
+}

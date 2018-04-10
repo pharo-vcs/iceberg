@@ -6,5 +6,5 @@ pushToAction
 		selectionCondition: #isOperative;
 		"icon: GLMUIThemeExtraIcons glamorousRightSide;"
 		showTitle: 'Push to...';
+		category: 'Remotes';
 		yourself
-

@@ -1,0 +1,4 @@
+resolution
+selectRight
+	
+	chosen := rightOperation

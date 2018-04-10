@@ -1,0 +1,3 @@
+private
+refreshDiffFromAncestor
+	ancestorTabContainer updateContentsOn: selectedModel

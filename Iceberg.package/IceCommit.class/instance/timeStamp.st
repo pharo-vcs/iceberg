@@ -1,0 +1,4 @@
+accessing
+timeStamp
+	
+	self subclassResponsibility

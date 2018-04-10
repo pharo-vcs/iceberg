@@ -1,4 +1,5 @@
-accessing
+API-packages
 modifiedPackages
-	^ self loadedPackages 
-		select: [ :package | package workingCopy needsSaving ]
+	"Lists all modified packages currently loaded in the image"
+
+	^ self workingCopy modifiedPackages

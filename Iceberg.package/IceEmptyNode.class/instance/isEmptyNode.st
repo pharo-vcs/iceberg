@@ -1,0 +1,4 @@
+testing
+isEmptyNode
+	
+	^ true

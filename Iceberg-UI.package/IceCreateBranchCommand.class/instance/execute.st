@@ -6,5 +6,5 @@ execute
 		initialAnswer: ''
 		title: 'Create new branch'.
 	selection isEmptyOrNil ifTrue: [ ^ self ].
-	self repository createBranchFromReference: selection.
+	self repository createBranch: selection.
 	self beSuccess

@@ -1,0 +1,4 @@
+building
+title
+
+	^ model shortDescription

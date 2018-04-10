@@ -5,6 +5,7 @@ highlight: aString
 		text := Text fromString: aString.
 
 		self repository isMissing ifTrue: [ ^ text allBold; makeAllColor: self colorError ].
+		self repository isDetached ifTrue: [ ^ text allBold; makeAllColor: self colorError ].
 		self isLoaded ifFalse: [ ^ text makeAllColor: self colorNotLoaded ].
 
 		modified := entity isModified.

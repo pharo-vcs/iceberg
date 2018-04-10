@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 1/16/2018 11:28",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commit",
+		"definition"
+	],
+	"name" : "IceLogVersion",
+	"type" : "normal"
+}

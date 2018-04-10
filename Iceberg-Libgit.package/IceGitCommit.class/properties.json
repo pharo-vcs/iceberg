@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCommit",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"id",
+		"author",
+		"datetime",
+		"ancestorIds",
+		"comment",
+		"packageNamesCache"
+	],
+	"name" : "IceGitCommit",
+	"type" : "normal"
+}

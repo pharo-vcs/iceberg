@@ -1,0 +1,1 @@
+I'm a command to open the package manager browser for a project.

@@ -1,4 +1,4 @@
 *Iceberg-UI
 openIceberg
 	<shortcut>
-	^ KMKeymap shortcut: PharoShortcuts current openIcebergShortcut action: [ IceRepositoriesBrowser  open ]
+	^ KMKeymap shortcut: PharoShortcuts current openIcebergShortcut action: [ IceTipRepositoriesBrowser new openWithSpec ]

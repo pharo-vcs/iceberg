@@ -1,0 +1,4 @@
+fetching
+fetch
+	
+	self subclassResponsibility

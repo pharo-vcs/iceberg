@@ -1,0 +1,3 @@
+accessing
+selectedCheckoutStrategy
+	^ selectedCheckoutStrategy

@@ -1,0 +1,5 @@
+tests
+testWorkingCopyHasSingleCommit
+ 
+	repository workingCopy initializePackagesFromRepository.
+	self assert: repository workingCopy hasSingleCommit

@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "EstebanLorenzano 4/9/2018 12:53",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"changeList",
+		"diffPanel"
+	],
+	"name" : "IceTipDiffPanel",
+	"type" : "normal"
+}

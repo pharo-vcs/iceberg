@@ -7,14 +7,30 @@ composeCommitsIn: composite
 			evaluated: [:commit | 
 				commit datetime asLocalStringYMDHM asText 
 					in: [ :text | 
-						commit isLoaded 
+						commit isMerged
 							ifTrue: [ text ] 
 							ifFalse: [ text allBold ] ] ] 
 			width: 120;
-		column: 'Id' evaluated: #shortId width: 50;
-		column: 'User' evaluated: #username width: 120;
-		column: 'Parents' evaluated: [ :commit | ', ' join: (commit parents collect: #shortId) ] width: 100;
-		column: 'Comment' evaluated: #comment width: 300;
+		column: 'Id' evaluated: [ :commit |
+			commit shortId asText in: [ :text | 
+						commit isMerged
+							ifTrue: [ text ] 
+							ifFalse: [ text allBold ] ] ] width: 50;
+		column: 'Author' evaluated: [ :commit |
+			commit author asText in: [ :text | 
+						commit isMerged
+							ifTrue: [ text ] 
+							ifFalse: [ text allBold ] ] ] width: 120;
+		column: 'Parents' evaluated: [ :commit |
+			(', ' join: commit ancestors) asText in: [ :text | 
+						commit isMerged
+							ifTrue: [ text ] 
+							ifFalse: [ text allBold ] ] ] width: 100;
+		column: 'Comment' evaluated: [ :commit |
+			commit comment asText in: [ :text | 
+						commit isMerged
+							ifTrue: [ text ] 
+							ifFalse: [ text allBold ] ] ] width: 300;
 		
 		addSelectionAction: self inspectAction;
 		addSelectionAction: self mergeIntoCurrentBranchAction;

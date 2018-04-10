@@ -3,10 +3,10 @@ scenarioForSwitchBranches
 	"Create a new version of a package in another branch, then remove all code from the image."
 
 	"1 - Commit a new version in a branch"
-	repository loadPackage: packageName.
+	repository loadPackageNamed: packageName.
 	repository createBranch: 'forTestingCheckout'.
 	self theTestClass compile: 'methodInBranch'.
-	repository commitPackagesWithMessage: 'New method in branch'.
+	repository commitWithMessage: 'New method in branch'.
 
 	"2 - Remove all code from the image"
 	self removeTestPackages.

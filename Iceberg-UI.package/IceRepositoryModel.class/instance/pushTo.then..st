@@ -12,4 +12,4 @@ pushTo: aRemote then: aBlock
 			self repository pushTo: aRemote. 
 			aBlock value ] ] 
 	on: IceRemoteDesynchronized , IceMergeAborted
-	do: [ :e | e acceptError: (IceInteractiveErrorVisitor repository: self repository) ]
+	do: [ :e | e acceptError: (IceInteractiveErrorVisitor on: self repository) ]

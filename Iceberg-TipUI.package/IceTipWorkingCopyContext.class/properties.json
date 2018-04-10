@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipContext",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageModel"
+	],
+	"name" : "IceTipWorkingCopyContext",
+	"type" : "normal"
+}

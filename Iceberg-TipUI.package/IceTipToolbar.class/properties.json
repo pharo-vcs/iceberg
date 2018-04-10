@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/6/2018 10:57",
+	"super" : "IceTipItemBar",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"toolbarItemFont",
+		"displayMode"
+	],
+	"name" : "IceTipToolbar",
+	"type" : "normal"
+}

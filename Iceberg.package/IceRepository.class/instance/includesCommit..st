@@ -1,4 +1,4 @@
-commits
+API-history
 includesCommit: anIceCommit
-	^ [ self commitAt: anIceCommit id. true ] 
+	^ [ self lookupCommit: anIceCommit id. true ] 
 		on: LGit_GIT_ENOTFOUND do: [ false ]

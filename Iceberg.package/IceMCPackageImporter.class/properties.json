@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "GuillermoPolito 3/12/2018 18:37",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageName",
+		"version",
+		"package"
+	],
+	"name" : "IceMCPackageImporter",
+	"type" : "normal"
+}

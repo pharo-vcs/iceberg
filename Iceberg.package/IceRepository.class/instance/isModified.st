@@ -1,3 +1,5 @@
-querying
+API-packages
 isModified
-	^ self loadedPackages anySatisfy: #isModified
+	"Returns true if a package in the working copy has modifications"
+	
+	^ self workingCopy isModified

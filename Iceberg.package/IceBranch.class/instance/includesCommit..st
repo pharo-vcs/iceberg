@@ -1,3 +1,4 @@
-commits
-includesCommit: commit
-	^ self lastCommit isDescendantOf: commit
+API-history
+includesCommit: aCommit
+	
+	^ self newCommitWalk includesCommit: aCommit

@@ -1,0 +1,3 @@
+testing
+canActivateCommand: aCommandClass
+	^ false

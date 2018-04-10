@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "NicoPasserini 9/26/2016 11:11",
-	"super" : "IceAbstractVersion",
+	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -9,7 +9,8 @@
 		"entry",
 		"info",
 		"commit",
-		"originatingCommit"
+		"originatingCommit",
+		"package"
 	],
 	"name" : "IceSavedPackageVersion",
 	"type" : "normal"

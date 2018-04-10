@@ -3,8 +3,8 @@ scenarioTwoLoadedPackagesOneOutdated
 	"In this scenario we have two packages loaded and one is outdated."
 
 	"1 - Commit a new version of some package"
-	| versionNumber |
-	repository loadPackage: packageName.
+	| versionNumber commit |
+	repository loadPackageNamed: packageName.
 	versionNumber := self currentVersionNumber.
 
 	self saveNewVersion.
@@ -15,11 +15,11 @@ scenarioTwoLoadedPackagesOneOutdated
 	Smalltalk at: #Test ifPresent: [ self fail: 'Test class was not correctly removed from system.' ].
 
 	"3 - Checkout and load the previous version"
-	repository checkoutBranch: 'master^1'.
-	repository loadPackage: packageName.
-	repository loadPackage: otherPackageName.
+	commit := repository branch commit parent.
+	commit loadPackageNamed: packageName.
+	commit loadPackageNamed: otherPackageName.
 
 	self assert: self currentVersionNumber equals: versionNumber.
 	
 	"4 - Checkout (but not load) the latest version"
-	repository checkoutBranch: 'master'.
+	repository switchToBranchNamed: 'master'.

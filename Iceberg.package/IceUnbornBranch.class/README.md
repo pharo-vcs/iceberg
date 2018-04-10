@@ -1,1 +1,1 @@
-I represent the "HEAD commit" of a new repository, i.e. one without any branches or commits. Once you commit on me, your repository will have just one commit and one branch named 'master'.
+I am an unborn branch. I exist only on a new repository that has no commits inside. I manage the special case of a first repository commit and branch creation.

@@ -1,6 +1,7 @@
-Models a remote tracking branch.
+I am a remote tracked branch. I am a copy to a branch that exists in a remote. I can thus only synchronize myself with the external repository through fetches and with the local branches.
 
-Please note that a "remote tracking" branch is in fact in the local repository, but it is not intended to work on it, but just to mirror a branch in a remote repository. You can not really checkout this branch, neither commit on it, it is read only.
+  branch fetch.
+  branch fetchFrom:.
 
-When cheking out a branch, if it is a remote tracking branch, a local branch will be created.
-
+  branch outgoingCommits.
+  branch hasOutgoingCommits.

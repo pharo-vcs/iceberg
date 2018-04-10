@@ -2,19 +2,15 @@ building
 buildOn: aPresenter
 	^ aPresenter fastTree
 		allExpanded;
-		children: #elements;
+		children: #children;
 		icon: #icon;
 		format: #description;
-		display: [ self elements ];
+		display: [ self changes ];
 		updateOn: IceChangeSetChanged from: #announcer;
 		addAction: self refreshTreeAction;
+		addSelectionAction: self inspectAction;
 		addSelectionAction: self browseAction;
 		addSelectionAction: self browseReferencesAction;
 		addSelectionAction: self revertChangeAction;
-		onChangeOfPort: #entity act: [ :presentation | 
-			self diff ifNotNil: [  
-				self diff announcer 
-					when: IceChangeSetChanged 
-					send: #execute:
-					to: (IceChangesTreeResetSelectionHelper for: presentation) ] ];
+		addSelectionAction: self installAction;
 		yourself
