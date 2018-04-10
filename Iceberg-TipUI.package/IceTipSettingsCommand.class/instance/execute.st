@@ -3,7 +3,9 @@ execute
 	| browser window path |
 	
 	browser := SettingBrowser new 
-		changePackageSet: { (RPackageOrganizer default packageNamed: 'Iceberg') };
+		changePackageSet: { 
+			#'Iceberg' asPackage.
+			#'Iceberg-Libgit' asPackage };
 		yourself.
 		 
 	window := browser open.
