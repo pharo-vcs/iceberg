@@ -1,5 +1,5 @@
 tests
-testInstallingAMetacelloBaselineFromBranchCreatesAnIcebergRepository
+installBaseline
 
 	Metacello new
 		baseline: 'PharoGitTest';
@@ -7,6 +7,3 @@ testInstallingAMetacelloBaselineFromBranchCreatesAnIcebergRepository
 		onUpgrade: [ :e | e useIncoming ];
 		onConflict: [ :ex | ex allow ];
 		load.
-	repository := IceRepository registry
-		detect: [ :e | e name = 'pharo-git-test' ]
-		ifNone: [ self fail ].

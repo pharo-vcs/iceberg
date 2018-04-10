@@ -3,8 +3,8 @@ tearDown
 
 	repository ifNotNil: [ :each |
 		repository unload.
-		each location ensureDeleteAll.
 		each forget.
+		each location ensureDeleteAll.
 		(IceMetacelloRepositoryAdapter for: each) unregister ].
 
 	(IceRepository registry 
@@ -12,7 +12,9 @@ tearDown
 		do: [ :repo | 
 			repository unload.
 			repo forget.
-			repo location ensureDeleteAll ].
+			repo location ensureDeleteAll.
+			(IceMetacelloRepositoryAdapter for: repo) unregister ].
+		
 
 	"Cleanup Metacello registry to avoid conflicts"		
 	(MetacelloProjectRegistration registry baselineRegistry

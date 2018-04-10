@@ -1,0 +1,4 @@
+tests
+installBaseline
+
+	self subclassResponsibility
