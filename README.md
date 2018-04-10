@@ -101,4 +101,4 @@ Metacello new
 *NOTE: you need to update iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## 5 minutes tutorial
-*(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)
+*(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
