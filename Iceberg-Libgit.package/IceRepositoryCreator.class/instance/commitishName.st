@@ -1,3 +1,3 @@
 accessing
-branchName
+commitishName
 	^ branchName

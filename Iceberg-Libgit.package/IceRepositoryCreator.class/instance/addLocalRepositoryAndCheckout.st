@@ -4,5 +4,5 @@ addLocalRepositoryAndCheckout
 	repository := self addLocalRepository.
 	repository fetchFrom: (repository remotes 
 		detect:[ :each | each referencesSameRemoteLocationAs: self remoteToUse ]).
-	repository switchToBranchNamed: self branchName.
+	repository switchToCommitishNamed: self commitishName.
 	^ repository

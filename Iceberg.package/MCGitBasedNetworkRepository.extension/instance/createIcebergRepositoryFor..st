@@ -1,11 +1,11 @@
-*Iceberg-Adapters
+*Iceberg
 createIcebergRepositoryFor: remoteUrl
 	| builder repository |
 	
 	builder := IceRepositoryCreator new 
 		url: remoteUrl;
 		subdirectory: repoPath;
-		branchName: self projectVersion;
+		commitishName: self projectVersion;
 		yourself.
 
 	[ repository := builder createRepository ]
