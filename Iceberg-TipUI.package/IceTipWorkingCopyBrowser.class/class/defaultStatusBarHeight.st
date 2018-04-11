@@ -1,3 +1,3 @@
 specs
 defaultStatusBarHeight
-	^ 25
+	^ IceTipStatusBar defaultHeight
