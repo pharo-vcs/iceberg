@@ -1,3 +1,3 @@
 tests
-testCanHandleGitoliteProtocol2
-	self assert: (IceScpRemote canHandleUrl: self gitoliteUrl2)
+testCanHandleGitoliteProtocol2		
+	self assert: (IceGitScpRemote canHandleUrl: self gitoliteUrl2)
