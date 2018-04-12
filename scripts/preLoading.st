@@ -1,3 +1,6 @@
+"Shutdown Libgit"
+LGitLibrary shutDown: true.
+
 "Remove iceberg from system (so I can reload it)"
 MetacelloPharoPlatform select.
 #(
