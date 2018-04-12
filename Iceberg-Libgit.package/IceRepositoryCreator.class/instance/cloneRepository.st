@@ -7,6 +7,7 @@ cloneRepository
 		subdirectory: self subdirectory.
 	self commitishName 
 		ifNotNil: [ repository switchToCommitishNamed: self commitishName ].
+	repository pluginManager repositoryWillBeCreated: repository.	
 	repository workingCopy initializePackagesFromRepository.
-	repository pluginManager repositoryCreated: repository.
+	repository pluginManager repositoryWasCreated: repository.
 	^ repository
