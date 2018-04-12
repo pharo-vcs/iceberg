@@ -1,3 +1,0 @@
-accessing
-defaultHeight
-	^ 25
