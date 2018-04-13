@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "ComposableModel",
+	"super" : "IceTipCheckoutNewBranchPanel",
 	"category" : "Iceberg-Plugin-Pharo-FogBugz",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -8,10 +8,9 @@
 	"instvars" : [
 		"issueNumberText",
 		"issueText",
-		"createButton",
 		"issue",
-		"acceptBlock"
+		"fetched"
 	],
-	"name" : "IcePharoFogbugzModel",
+	"name" : "IcePharoFogbugzPanel",
 	"type" : "normal"
 }
