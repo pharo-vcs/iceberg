@@ -13,7 +13,9 @@ setUp
 
 	remote := self newRemoteNamed: 'origin'.
 	
-	remoteBranchName := 'master'.
+	remoteRepository checkoutBranch: self remoteBranchName.
 	remoteRepository workingCopy addPackageNamed: packageName.
 	remoteRepository commitWithMessage: 'Initial commit'.
+	
+	repository checkoutBranch: self remoteBranchName.
 	repository addRemote: remote.

@@ -1,6 +1,6 @@
 API-actions
 checkout
 		
-	repository checkout: (IceCheckoutAlreadyLoadedPackages new
+	self checkout: (IceCheckoutAlreadyLoadedPackages new
 		committish: self;
 		yourself)
