@@ -1,4 +1,4 @@
 accessing
 name
 
-	^ 'master'
+	^ name

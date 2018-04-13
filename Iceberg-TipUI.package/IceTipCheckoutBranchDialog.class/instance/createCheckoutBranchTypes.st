@@ -13,7 +13,8 @@ createCheckoutBranchTypes
 		(IceTipCheckoutBranchPanel on: each)
 			title: each name;
 			icon: #remote asIcon;
-			yourself ]).
+			yourself ]),
+	(self model entity pluginManager checkoutBranchPanelsOnModel: self model).
 	
 	"Doing this because I can trigger the accept inside the panels."
 	allTypes do: [ :each | each onAccept: [ self window delete ] ].

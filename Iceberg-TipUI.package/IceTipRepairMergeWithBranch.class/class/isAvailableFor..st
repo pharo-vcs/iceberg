@@ -3,5 +3,7 @@ isAvailableFor: aRepository
 	"matches if: 
 		- workingCopy is detached
 		- HEAD is NOT detached"
-	^ (aRepository workingCopy isDetached) 
-		and: [ aRepository head isDetached not ]
+		
+	^ aRepository isMissing not 
+		and:[ aRepository workingCopy isDetached  
+		and: [ aRepository head isDetached not ] ]

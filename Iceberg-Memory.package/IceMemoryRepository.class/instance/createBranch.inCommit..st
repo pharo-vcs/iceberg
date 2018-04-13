@@ -2,6 +2,10 @@ branches
 createBranch: branchName inCommit: aCommit
 
 	| newBranchCommit iceCommit |
+
+	(self head isUnbornBranch and: [ aCommit isNoCommit ])
+		ifTrue: [ ^ head := IceMemoryUnbornBranch inRepository: self named: branchName ].
+
 	(self hasBranchNamed: branchName)
 		ifTrue: [ IceBranchAlreadyExists new
 			branchName: branchName;

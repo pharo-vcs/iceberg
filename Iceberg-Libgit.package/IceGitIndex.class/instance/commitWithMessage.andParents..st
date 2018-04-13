@@ -18,7 +18,7 @@ commitWithMessage: message andParents: parentCommits
 			updateReference:
 			([ self repositoryHandle head name ]
 				on: LGit_GIT_EUNBORNBRANCH
-				do: [ 'refs/heads/' , repository branch name ]);
+				do: [ repository branch gitRef ]);
 		author: signature;
 		committer: signature;
 		writeCommit;
