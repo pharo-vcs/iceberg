@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceAbstractTestCase",
+	"super" : "IceParameterizedTestCase",
 	"category" : "Iceberg-Tests-MetacelloIntegration",
 	"classinstvars" : [ ],
 	"pools" : [ ],

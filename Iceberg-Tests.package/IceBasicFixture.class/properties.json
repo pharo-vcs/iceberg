@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"factory",
+		"projectName",
+		"packageName1",
+		"packageName2",
+		"repository",
+		"remoteFileUrl",
+		"remoteRepository"
+	],
+	"name" : "IceBasicFixture",
+	"type" : "normal"
+}

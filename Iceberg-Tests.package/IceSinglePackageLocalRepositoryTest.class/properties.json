@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"packageName"
-	],
+	"instvars" : [ ],
 	"name" : "IceSinglePackageLocalRepositoryTest",
 	"type" : "normal"
 }

@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"location",
-		"remoteFileUrl"
-	],
+	"instvars" : [ ],
 	"name" : "IceNewGitRepositoryTest",
 	"type" : "normal"
 }

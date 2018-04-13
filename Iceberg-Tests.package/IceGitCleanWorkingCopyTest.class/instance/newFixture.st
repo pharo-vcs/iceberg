@@ -1,0 +1,3 @@
+running
+newFixture
+	^ IceCleanWorkingCopyFixture inGit

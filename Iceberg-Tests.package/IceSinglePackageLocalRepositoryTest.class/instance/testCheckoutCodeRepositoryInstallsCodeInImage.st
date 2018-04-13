@@ -7,13 +7,13 @@ testCheckoutCodeRepositoryInstallsCodeInImage
 	"This is a Ring working copy"
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' 
-		inPackage: packageName asSymbol.
+		inPackage: self packageName1 asSymbol.
 	
 	repository commitWithMessage: message.
 	
 	repository unload.
-	self deny: (RPackageOrganizer default includesPackageNamed: packageName).
+	self deny: (RPackageOrganizer default includesPackageNamed: self packageName1).
 	
 	repository head checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
-	self assertPackageExists: packageName.
+	self assertPackageExists: self packageName1.

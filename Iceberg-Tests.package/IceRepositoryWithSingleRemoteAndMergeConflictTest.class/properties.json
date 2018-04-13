@@ -5,12 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"remoteRepository",
-		"remoteBranchName",
-		"packageName",
-		"remote"
-	],
+	"instvars" : [ ],
 	"name" : "IceRepositoryWithSingleRemoteAndMergeConflictTest",
 	"type" : "normal"
 }

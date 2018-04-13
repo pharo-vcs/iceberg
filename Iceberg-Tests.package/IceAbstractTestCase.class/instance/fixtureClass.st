@@ -1,0 +1,4 @@
+running
+fixtureClass
+
+	self subclassResponsibility
