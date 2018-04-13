@@ -1,4 +1,4 @@
 running
 newFixture
 	^ IceWithRemoteFixture inGit
-		remoteBranchName: 'newBranch'
+		remoteBranchName: 'feature/master'

@@ -1,3 +1,3 @@
 accessing
 remoteBranchName
-	^ remoteBranchName
+	^ remoteBranchName ifNil: [ remoteBranchName  := 'master' ]

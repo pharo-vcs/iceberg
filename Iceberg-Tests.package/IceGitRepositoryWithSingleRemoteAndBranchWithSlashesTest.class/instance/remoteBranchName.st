@@ -1,4 +1,0 @@
-running
-remoteBranchName
-
-	^ 'feature/master'

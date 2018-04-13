@@ -1,4 +1,0 @@
-tests-checkout
-remoteBranchName
-
-	^ 'newBranch'
