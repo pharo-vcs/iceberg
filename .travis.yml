@@ -9,13 +9,6 @@ smalltalk:
 - Pharo-7.0
 
 before_install:
-# Installing the dependency until it is included in the VM
-- openssl aes-256-cbc -K $encrypted_3ff905aeb922_key -iv $encrypted_3ff905aeb922_iv -in iceberg_test.key.enc -out iceberg_test.key -d
-- chmod 600 iceberg_test.key
-- mv iceberg_test.key ~/.ssh/id_rsa
-# Forcing the known host to have the github.com
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
-- ssh-add ~/.ssh/id_rsa
-- cat ~/.ssh/known_hosts
 - ssh -T git@github.com || echo "Ok"
