@@ -5,13 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"remoteRepository",
-		"remoteBranchName",
-		"packageName",
-		"remote",
-		"remoteBranchNameWithSlashes"
-	],
+	"instvars" : [ ],
 	"name" : "IceRepositoryWithSingleRemoteTest",
 	"type" : "normal"
 }

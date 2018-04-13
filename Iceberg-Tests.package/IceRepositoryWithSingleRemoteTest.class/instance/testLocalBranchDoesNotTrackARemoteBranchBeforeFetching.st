@@ -2,7 +2,7 @@ tests-checkout
 testLocalBranchDoesNotTrackARemoteBranchBeforeFetching
 
 	"We commit to force the creation of the local branch"
-	repository workingCopy addPackageNamed: packageName.
-	repository commitWithMessage: 'Initial commit'.
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository commitWithMessage: 'Initial commit'.
 		
-	self deny: (repository branchNamed: self remoteBranchName) tracksRemoteBranch.
+	self deny: (self repository branchNamed: self remoteBranchName) tracksRemoteBranch.

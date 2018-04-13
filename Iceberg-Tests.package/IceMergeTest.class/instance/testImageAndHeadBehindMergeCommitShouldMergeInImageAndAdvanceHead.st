@@ -17,26 +17,26 @@ testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead
 	
 	(arrows meaning parent)
 	"
-	| referenceCommit headCommit mergeCommit |
+	| headCommit mergeCommit |
 	
-	repository workingCopy addPackageNamed: packageName1.
-	repository workingCopy addPackageNamed: packageName2.
-	headCommit := repository commitWithMessage: 'First commit'.
+	self workingCopy addPackageNamed: self packageName1.
+	self workingCopy addPackageNamed: self packageName2.
+	headCommit := self repository commitWithMessage: 'First commit'.
 
-	repository workingCopy
+	self workingCopy
 		createClass: 'IceGeneratedClassForTesting'
-		inPackage: packageName1 asSymbol.
-	mergeCommit := mergeCommit := repository commitWithMessage: 'Change 1'.
+		inPackage: self packageName1 asSymbol.
+	mergeCommit := mergeCommit := self repository commitWithMessage: 'Change 1'.
 	
-	((repository branchNamed: 'master') commit: headCommit) checkout.
+	((self repository branchNamed: 'master') commit: headCommit) checkout.
 
-	self assert: repository headCommit equals: headCommit.
+	self assert: self repository headCommit equals: headCommit.
 	self assert: mergeCommit parent equals: headCommit.
-	self assert: mergeCommit parent equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: mergeCommit parent equals: self workingCopy referenceCommit.
+	self assert: self workingCopy isModified not.
 	
-	repository workingCopy mergeCommit: mergeCommit.
+	self workingCopy mergeCommit: mergeCommit.
 	
-	self assert: repository headCommit equals: mergeCommit.
-	self assert: repository workingCopy referenceCommit equals: mergeCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: self repository headCommit equals: mergeCommit.
+	self assert: self workingCopy referenceCommit equals: mergeCommit.
+	self assert: self workingCopy isModified not.

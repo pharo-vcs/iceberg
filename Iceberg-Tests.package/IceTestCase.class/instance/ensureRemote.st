@@ -1,4 +1,0 @@
-running
-ensureRemote
-	
-	self subclassResponsibility

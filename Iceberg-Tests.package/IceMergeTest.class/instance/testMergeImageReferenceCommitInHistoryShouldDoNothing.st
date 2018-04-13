@@ -19,13 +19,13 @@ testMergeImageReferenceCommitInHistoryShouldDoNothing
 	"
 	| headCommit mergeCommit |
 	
-	repository workingCopy addPackageNamed: packageName1.
-	repository workingCopy addPackageNamed: packageName2.
+	repository workingCopy addPackageNamed: self packageName1.
+	repository workingCopy addPackageNamed: self packageName2.
 	mergeCommit := repository commitWithMessage: 'First commit'.
 
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
-		inPackage: packageName1 asSymbol.
+		inPackage: self packageName1 asSymbol.
 	headCommit := repository commitWithMessage: 'Change 1'.
 	
 	mergeCommit checkout.

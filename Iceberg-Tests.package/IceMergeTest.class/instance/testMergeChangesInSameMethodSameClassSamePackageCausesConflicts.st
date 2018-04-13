@@ -3,11 +3,11 @@ testMergeChangesInSameMethodSameClassSamePackageCausesConflicts
 
 	"This is a Ring working copy"
 	| initialCommit change1Commit change2Commit |
-	repository workingCopy addPackageNamed: packageName1.
-	repository workingCopy addPackageNamed: packageName2.
+	repository workingCopy addPackageNamed: self packageName1.
+	repository workingCopy addPackageNamed: self packageName2.
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
-		inPackage: packageName1 asSymbol.
+		inPackage: self packageName1 asSymbol.
 	repository workingCopy
 		createMethod: 'test ^ 1' inClass: 'IceGeneratedClassForTesting' asSymbol.
 	initialCommit := repository commitWithMessage: 'First commit'.

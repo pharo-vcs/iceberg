@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCleanWorkingCopyTest",
+	"category" : "Iceberg-Tests-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceInMemoryCleanWorkingCopyTest",
+	"type" : "normal"
+}

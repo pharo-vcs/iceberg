@@ -4,4 +4,4 @@ testListPackagesListExistingPackage
 	| packages |
 	packages := repository workingCopy packageNames.
 	self assert: packages size equals: 1.
-	self assert: packages first equals: packageName
+	self assert: packages first equals: self packageName1

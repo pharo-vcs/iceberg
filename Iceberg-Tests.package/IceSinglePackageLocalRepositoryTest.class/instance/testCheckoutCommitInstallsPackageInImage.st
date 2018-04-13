@@ -2,4 +2,4 @@ tests-checkout
 testCheckoutCommitInstallsPackageInImage
 
 	repository branch commit checkout.
-	self assertPackageExists: packageName.
+	self assertPackageExists: self packageName1.

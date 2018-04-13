@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCleanWorkingCopyTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageName",
+		"projectName"
+	],
+	"name" : "IceGitCleanWorkingCopyTest",
+	"type" : "normal"
+}

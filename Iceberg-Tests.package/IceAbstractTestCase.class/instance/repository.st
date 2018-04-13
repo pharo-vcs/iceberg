@@ -1,0 +1,4 @@
+accessing
+repository
+
+	^ fixture repository

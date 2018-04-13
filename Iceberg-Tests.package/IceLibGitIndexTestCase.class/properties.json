@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceGitMergeTest",
+	"super" : "IceMergeTest",
 	"category" : "Iceberg-Tests-Git",
 	"classinstvars" : [ ],
 	"pools" : [ ],
