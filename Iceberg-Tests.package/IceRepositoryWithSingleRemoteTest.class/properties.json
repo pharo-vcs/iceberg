@@ -9,7 +9,8 @@
 		"remoteRepository",
 		"remoteBranchName",
 		"packageName",
-		"remote"
+		"remote",
+		"remoteBranchNameWithSlashes"
 	],
 	"name" : "IceRepositoryWithSingleRemoteTest",
 	"type" : "normal"

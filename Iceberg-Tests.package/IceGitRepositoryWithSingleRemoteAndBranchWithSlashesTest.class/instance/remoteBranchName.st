@@ -1,0 +1,4 @@
+running
+remoteBranchName
+
+	^ 'feature/master'

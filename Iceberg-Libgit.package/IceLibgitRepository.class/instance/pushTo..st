@@ -24,4 +24,4 @@ pushTo: aRemote
 						yourself) ].
 
 	"Since the push created the branch in the remote, we can now add an upstream to this branch."
-	reference upstream ifNil: [ reference setUpstream: aRemote name , '/' , reference basename ]
+	reference upstream ifNil: [ reference setUpstream: aRemote name , '/' , self head name ]

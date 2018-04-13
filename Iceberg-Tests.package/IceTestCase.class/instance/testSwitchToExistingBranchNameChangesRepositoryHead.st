@@ -1,5 +1,5 @@
 tests-branch
-testSwitchToExistingBranchNameChangsRepositoryHead
+testSwitchToExistingBranchNameChangesRepositoryHead
 
 	| branchName newBranch masterBranch |
 	repository head isUnbornBranch ifTrue: [ ^ self skip ].

@@ -1,0 +1,4 @@
+tests-checkout
+remoteBranchName
+
+	^ 'newBranch'

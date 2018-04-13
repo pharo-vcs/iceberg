@@ -1,7 +1,7 @@
 test-support
 ensureRemote
 	
-	remoteFileUrl asFileReference exists ifTrue: [ ^ self ].
+	remoteRepository ifNotNil: [ ^ self ].
 	remoteRepository := IceRepositoryCreator new 
 			location: remoteFileUrl asFileReference;
 			createNewRepositoryNamed: remoteFileUrl segments last.

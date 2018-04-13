@@ -5,4 +5,4 @@ testLocalBranchDoesNotTrackARemoteBranchBeforeFetching
 	repository workingCopy addPackageNamed: packageName.
 	repository commitWithMessage: 'Initial commit'.
 		
-	self deny: (repository branchNamed: remoteBranchName) tracksRemoteBranch.
+	self deny: (repository branchNamed: self remoteBranchName) tracksRemoteBranch.
