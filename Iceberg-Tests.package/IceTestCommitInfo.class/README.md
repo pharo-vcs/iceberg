@@ -1,1 +1,0 @@
-Contains some info of a git commit useful to validate the history of commits created by a test.
