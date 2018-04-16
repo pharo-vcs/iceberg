@@ -93,6 +93,7 @@ ThemeIcons current: ThemeIcons loadDefault.
 Metacello new
   	baseline: 'Iceberg';
   	repository: 'github://pharo-vcs/iceberg:v0.7.1';
+	onWarningLog;
   	load.
 "Re-initialize libgit2"
 (Smalltalk at: #LGitLibrary) initialize.
