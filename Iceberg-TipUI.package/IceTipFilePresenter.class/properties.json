@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "IceLocationModel",
-	"category" : "Iceberg-UI-View",
+	"super" : "IceTipLocationPresenter",
+	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceDirectoryModel",
+	"name" : "IceTipFilePresenter",
 	"type" : "normal"
 }

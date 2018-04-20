@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	localDirectoryLocation := self instantiate: IceDirectoryModel.
+	localDirectoryLocation := self instantiate: IceTipDirectoryPresenter.
 	localDirectoryLocation 
 		onChoose: [ self guessSubDirectory ];
 		label: 'Local directory';
