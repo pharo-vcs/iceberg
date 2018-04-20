@@ -4,6 +4,6 @@ defaultSpec
 	^ SpecLayout composed
 		newRow: [ :row | 
 			row 
-				add: #locationLabel width: 100; 
+				add: #locationLabel width: self labelWidth; 
 			 	add: #locationInput; 
 				add: #chooseButton width: self iconWidth ]

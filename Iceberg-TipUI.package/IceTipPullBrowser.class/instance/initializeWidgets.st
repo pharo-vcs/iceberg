@@ -1,4 +1,4 @@
 initialization
 initializeWidgets
 	super initializeWidgets.
-	remoteLabel label: 'Pull from remote:'.
+	remotePanel label: 'Pull from remote:'.

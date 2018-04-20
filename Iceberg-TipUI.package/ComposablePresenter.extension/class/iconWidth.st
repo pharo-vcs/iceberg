@@ -1,3 +1,3 @@
-accessing
+*Iceberg-TipUI
 iconWidth
 	^ 24

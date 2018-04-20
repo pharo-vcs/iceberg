@@ -10,7 +10,8 @@
 		"nameLabel",
 		"urlLabel",
 		"urlText",
-		"nameText"
+		"nameText",
+		"acceptBlock"
 	],
 	"name" : "IceTipAddRemoteDialog",
 	"type" : "normal"
