@@ -4,10 +4,9 @@ buildFull
 	| leftTree rightTree |
 	leftTree := IceNode value: IceRootDefinition new.
 	rightTree := IceNode value: IceRootDefinition new.
-	
+		
 	"Image changes should be processed before commit changes to take into account changes in the image"
-	(source loadedPackages collect: [ :package | IceImageChange package: package ]) asArray,
-		(source referenceCommit changesTo: target)
+	self imageChanges , (source referenceCommit changesTo: target)
 			do: [ :change | 
 			change accept: (IceChangeImporter new
 				version: source;
@@ -19,6 +18,6 @@ buildFull
 				version: target;
 				diff: self;
 				parentNode: rightTree;
-				yourself) ].
+				yourself) ] displayingProgress: [ :change | change displayingProgressString ].
 
 	tree := self diff: leftTree with: rightTree
