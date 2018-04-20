@@ -6,12 +6,10 @@ validateIssue: aString
 	aString size = 5 ifFalse: [ ^ self ].
 	aString isAllDigits ifFalse: [ ^ self ].
 	number := aString asNumber.
+	(issue isNil or: [ issue number ~= number ]) ifFalse: [ ^ self ].
 	
-	(issue isNil or: [ issue number ~= number ])
-		ifTrue: [ 
-			issue := PharoIssue number: number.
-			[ 	"Fork to allow UI to continue"
-				issue downloadTitle.
-				UIManager default defer: [ 
-					self updateText: (self sanitizeTitle: issue title) ] ] fork ]
-	
+	issue := PharoIssue number: number.
+	[ 	"Fork to allow UI to continue"
+		issue downloadTitle.
+		UIManager default defer: [ 
+			self updateText: (self sanitizeTitle: issue title) ] ] fork

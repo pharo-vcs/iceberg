@@ -1,6 +1,6 @@
 testing
 toolbarWorkingCopyActivation
-	<classAnnotation>
+	"<classAnnotation>"
 	
 	^ IceTipToolbarActivation 
 		byRootGroupItemFor: IceTipWorkingCopyContext
