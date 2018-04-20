@@ -1,6 +1,7 @@
 drawing
 drawBadgeOn: aCanvas
 	| badgeString badgeBounds textBounds textWidth textHeight width |
+	
 	badgeString := self badge asString.
 	textWidth := self badgeFont widthOfString: badgeString.
 	textHeight := self badgeFont height.
