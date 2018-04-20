@@ -3,7 +3,7 @@ initializeWidgets
 	branchesList := self newTreeTable.
 	branchNameText := self newTextInput 
 		autoAccept: true;
-		ghostText: 'Branch...'.
+		ghostText: 'e.g., Branch...'.
 	
 	self initializeBranchesList.
 	self initializeBranchNameText.

@@ -6,11 +6,11 @@ initializeWidgets
 	userNameLabel := self newLabel label: self providerName, ' username'.
 	userNameInputText := self newTextInput
 		autoAccept: true;
-		ghostText: 'JohnDoe'.
+		ghostText: 'e.g., JohnDoe'.
 	projectNameLabel := self newLabel label: self providerName, ' project'.
 	projectNameInputText := self newTextInput
 		autoAccept: true;
-		ghostText: 'MyProject'.
+		ghostText: 'e.g., MyProject'.
 	
 	userNameInputText 	whenTextChanged: [ :text | 
 		projectLocation appendPath: self projectAsPathToAppend ].
