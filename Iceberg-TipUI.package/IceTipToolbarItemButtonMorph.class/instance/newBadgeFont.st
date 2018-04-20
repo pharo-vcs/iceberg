@@ -1,7 +1,8 @@
 drawing
 newBadgeFont
 	| baseBadgeFont |
-	baseBadgeFont := Smalltalk ui theme buttonFont.
- 	^ LogicalFont 
+	baseBadgeFont := StandardFonts codeFont.
+ 	^ (LogicalFont 
 		familyName: baseBadgeFont familyName 
-		pointSize: baseBadgeFont pointSize - 3
+		pointSize: baseBadgeFont pointSize - 3)
+			weightValue: 700

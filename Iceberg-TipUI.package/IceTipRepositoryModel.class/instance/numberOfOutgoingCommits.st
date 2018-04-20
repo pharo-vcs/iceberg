@@ -1,4 +1,9 @@
 accessing
 numberOfOutgoingCommits
-	^ [ self outgoingCommits size ]
+	^ [ | size |
+		self entity branch hasUpstream ifFalse: [ ^ '*' ].
+		size := self outgoingCommits size.
+		size > 100
+			ifTrue: [ '99+' ]
+			ifFalse: [ size asString ] ]
 		on: IceNotInBranch do: [ :e | 0 ]
