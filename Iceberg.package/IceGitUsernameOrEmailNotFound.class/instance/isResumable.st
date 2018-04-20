@@ -1,0 +1,4 @@
+visiting
+isResumable
+
+	^ true

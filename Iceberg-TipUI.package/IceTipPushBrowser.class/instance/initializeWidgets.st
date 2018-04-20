@@ -1,5 +1,4 @@
 initialization
 initializeWidgets
 	super initializeWidgets.
-	remoteLabel label: 'Push to remote:'.
-	
+	remotePanel label: 'Push to remote:'
