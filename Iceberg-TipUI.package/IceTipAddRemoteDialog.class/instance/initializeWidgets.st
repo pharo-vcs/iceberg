@@ -2,11 +2,11 @@ initialization
 initializeWidgets
 	nameLabel := self newLabel label: 'Remote name'. 
 	nameText := self newTextInput 
-		ghostText: 'user-remote'; 
+		ghostText: 'e.g., user-remote'; 
 		autoAccept: true.
 	urlLabel := self newLabel label: 'Remote URL'.
 	urlText := self newTextInput 
-		ghostText: 'git@github.com:user/project.git'; 
+		ghostText: 'e.g., git@github.com:user/project.git'; 
 		autoAccept: true.
 	
 	self focusOrder 
