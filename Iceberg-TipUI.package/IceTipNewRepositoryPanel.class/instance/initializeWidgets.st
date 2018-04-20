@@ -5,7 +5,7 @@ initializeWidgets
 	
 	projectNameLabel := self newLabel label: 'Project name'.
 	projectNameInputText := self newTextInput 
-		ghostText: 'e.g., MyProject';
+		ghostText: 'MyProject';
 		autoAccept: true.
 	
 	projectNameInputText 	whenTextChanged: [ :text | 

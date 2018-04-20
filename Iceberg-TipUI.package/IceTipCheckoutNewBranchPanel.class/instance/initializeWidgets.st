@@ -4,7 +4,7 @@ initializeWidgets
 	branchLabel := self newLabel label: 'New branch'.
 	branchInputText := self newTextInput 
 		autoAccept: true;
-		ghostText: 'e.g., feature/what'.
+		ghostText: 'a-branch-name'.
 		
 	spacePanel := PanelMorph new asSpecAdapter. 
 	
