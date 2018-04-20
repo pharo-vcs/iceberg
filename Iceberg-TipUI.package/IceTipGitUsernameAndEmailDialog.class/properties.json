@@ -11,8 +11,8 @@
 		"emailLabel",
 		"emailInput",
 		"globalCheckbox",
-		"acceptButton",
-		"acceptBlock"
+		"model",
+		"acceptCallback"
 	],
 	"name" : "IceTipGitUsernameAndEmailDialog",
 	"type" : "normal"

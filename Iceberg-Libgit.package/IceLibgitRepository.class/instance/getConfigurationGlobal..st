@@ -5,4 +5,4 @@ getConfigurationGlobal: aBoolean
 	config := handle config.
 	^ aBoolean
 		ifTrue: [ config openGlobal ]
-		ifFalse: [ handle ]
+		ifFalse: [ config ]
