@@ -1,4 +1,4 @@
 execution
 execute
 
-	(IcePharoFogbugzPanel on: repositoryModel entity) openWithSpec
+	(IcePharoFogbugzPanel on: repositoryModel entity) openDialogWithSpec
