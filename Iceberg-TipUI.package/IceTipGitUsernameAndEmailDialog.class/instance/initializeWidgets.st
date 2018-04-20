@@ -10,14 +10,8 @@ initializeWidgets
 		autoAccept: true.
 	globalCheckbox := self newCheckBox
 		label: 'Save properties as global?';
-		state: false.
-	acceptButton := self newButton
-		label: 'Set properties';
-		action: [ self accept ];
-		yourself.	
-			
+		state: false.			
 	self focusOrder
 		add: nameInput;
 		add: emailInput;
-		add: globalCheckbox;
-		add: acceptButton
+		add: globalCheckbox

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "ComposableModel",
-	"category" : "Iceberg-UI-View",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -11,9 +11,9 @@
 		"emailLabel",
 		"emailInput",
 		"globalCheckbox",
-		"acceptButton",
-		"acceptBlock"
+		"model",
+		"acceptCallback"
 	],
-	"name" : "IceAskForUsernameAndEmailModel",
+	"name" : "IceTipGitUsernameAndEmailDialog",
 	"type" : "normal"
 }

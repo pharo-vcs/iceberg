@@ -3,7 +3,7 @@ commitWithMessage: message andParents: parentCommits
 	| signature commitId indexTreeId |
 	self addToGitIndex.
 	[ signature := self repositoryHandle defaultSignature ]
-		on: LGit_GIT_ENOTFOUND
+		on: LGit_GIT_ENOTFOUND, LGit_GIT_ERROR
 		do: [ :e | IceGitUsernameOrEmailNotFound guessKind: e ifNot: [ e pass ] ].
 	indexTreeId := self repositoryHandle index writeTreeAndReturnOid.
 	commitId := (LGitCommitBuilder of: self repositoryHandle)
