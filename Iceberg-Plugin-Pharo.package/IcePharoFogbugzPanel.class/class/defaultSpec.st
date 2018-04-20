@@ -7,12 +7,8 @@ defaultSpec
 				newRow: #currentBranchLabel height: self inputTextHeight;
 				newRow: [ :row | 
 					row
-						newColumn: #branchLabel width: self labelWidth;
-						newColumn: #issueNumberText ]
-					height: self inputTextHeight;
-				newRow: [ :row |
-					row 
-						newColumn: #issueLabel width: self labelWidth;
-						newColumn: #issueText ] 
+						add: #branchLabel width: self labelWidth;
+						add: #issueNumberText width: 50;
+						add: #issueText ]
 					height: self inputTextHeight;
 				newRow: #spacePanel ]
