@@ -1,11 +1,5 @@
 events
 repositoryWillBeCreated: aRepository
-	
-	UIManager default 
-		informUser: 'Fetching incomming commits'
-		during: [ 
-			aRepository remotes 
-				detect: [ :each | each projectName = 'pharo-project' ] 
-				ifFound: [ :each | each fetch ] ].
-	
-	aRepository workingCopy referenceCommit: (aRepository lookupCommit: SystemVersion current commitHash)	
+
+	self fetchIfNeeded: aRepository.
+	aRepository workingCopy referenceCommit: (aRepository lookupCommit: SystemVersion current commitHash)
