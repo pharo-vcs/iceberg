@@ -1,4 +1,4 @@
-*Iceberg-Adapters
+*Iceberg
 getOrCreateIcebergRepository
 	| remoteUrl remote |
 
@@ -6,4 +6,4 @@ getOrCreateIcebergRepository
 	remote := IceGitRemote url: remoteUrl.
 	^ IceRepository registry 
 		detect: [ :repo | repo origin referencesSameRemoteLocationAs: remote ]
-		ifNone: [ self createIcebergRepositoryFor: remoteUrl ]
+		ifNone: [ self createIcebergRepositoryWithFallbackFor: remote url: remoteUrl ]
