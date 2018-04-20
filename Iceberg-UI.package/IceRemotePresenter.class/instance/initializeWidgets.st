@@ -1,9 +1,9 @@
 initialization
 initializeWidgets
 	nameLabel := self newLabel. 
-	namePanel := self newTextInput ghostText: 'user-remote'; autoAccept: true.
+	namePanel := self newTextInput ghostText: 'e.g., user-remote'; autoAccept: true.
 	urlLabel := self newLabel.
-	urlPanel := self newTextInput ghostText: 'git@github.com:user/project.git'; autoAccept: true.
+	urlPanel := self newTextInput ghostText: 'e.g., git@github.com:user/project.git'; autoAccept: true.
 	addButton := self newButton.
 	
 	nameLabel label: 'Remote name'.
