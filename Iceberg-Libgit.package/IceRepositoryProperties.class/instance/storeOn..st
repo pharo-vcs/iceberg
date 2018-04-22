@@ -1,6 +1,6 @@
 accessing
 storeOn: aRepository
-	(self fileFor: aRepository)
+	(self propertiesFileReferenceInRepository: aRepository)
 		ensureDelete;
 		writeStreamDo: [ :stream | 
 			(STONWriter on: stream) 

@@ -1,4 +1,4 @@
 accessing
-fileFor: aRepository
-	"I keep .properties at the root"
+propertiesFileReferenceInRepository: aRepository
+	
 	^ aRepository codeDirectory / self class propertiesFileName

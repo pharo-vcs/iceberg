@@ -1,0 +1,12 @@
+instance creation
+fromCommitish: aCommitish
+	| ref properties repository dir |
+	repository := aCommitish repository.
+	dir := repository subdirectory isEmptyOrNil
+		ifTrue: [ aCommitish fileSystem ]
+		ifFalse: [ aCommitish fileSystem / repository subdirectory ].
+	ref := dir / self propertiesFileName.
+	properties := ref exists 
+		ifTrue: [ ref readStreamDo: [ :stream | STON fromStream: stream ] ]
+		ifFalse: [ Dictionary new ].
+	^ self fromDictionary: properties
