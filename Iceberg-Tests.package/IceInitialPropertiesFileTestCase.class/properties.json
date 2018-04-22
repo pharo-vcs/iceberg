@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceParameterizedTestCase",
+	"category" : "Iceberg-Tests-Formats",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceInitialPropertiesFileTestCase",
+	"type" : "normal"
+}

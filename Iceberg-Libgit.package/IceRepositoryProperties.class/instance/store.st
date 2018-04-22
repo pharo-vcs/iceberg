@@ -7,4 +7,4 @@ store
 				prettyPrint: true;
 				newLine: OSPlatform current lineEnding;
 				nextPut: self properties  ].
-	repository index addPath: (self propertiesFileReference relativeTo: repository location)
+	repository index addPath: self propertiesPath
