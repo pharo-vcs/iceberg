@@ -9,4 +9,6 @@ fromCommitish: aCommitish
 	properties := ref exists 
 		ifTrue: [ ref readStreamDo: [ :stream | STON fromStream: stream ] ]
 		ifFalse: [ Dictionary new ].
-	^ self fromDictionary: properties
+	^ (self fromDictionary: properties)
+		repository: repository;
+		yourself
