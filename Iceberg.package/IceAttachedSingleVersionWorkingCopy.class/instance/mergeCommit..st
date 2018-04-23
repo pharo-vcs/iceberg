@@ -10,11 +10,7 @@ mergeCommit: mergeCommit
 
 	"at begining of this, there is a possibility that imageCommit needs to be 'fixed' to use."
 	imageCommit := self referenceCommit.
-	imageCommit isUnknownCommit ifTrue: [ 
-		imageCommit := imageCommit resolveCommitOnWorkingCopy: self repository workingCopy ].
-	
 	mergeCommit validateCanMerge.
-	
 	headCommit := self repository headCommit.	
 	
 	"We check which is the commit we have to mege mergeCommit against"

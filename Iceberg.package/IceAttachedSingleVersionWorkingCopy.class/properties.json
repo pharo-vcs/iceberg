@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceSingleVersionWorkingCopyState",
+	"name" : "IceAttachedSingleVersionWorkingCopy",
 	"type" : "normal"
 }

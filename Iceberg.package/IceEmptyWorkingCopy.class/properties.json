@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceEmptyWorkingCopyState",
+	"name" : "IceEmptyWorkingCopy",
 	"type" : "normal"
 }
