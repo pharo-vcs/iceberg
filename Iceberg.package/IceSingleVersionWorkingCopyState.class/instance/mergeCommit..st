@@ -53,6 +53,7 @@ mergeCommit: mergeCommit
 	commitToAdvance := (headCommit isAncestorOf: mergeCommit)
 		ifTrue: [ 
 			"Fast-forward"
+				self repository index updateDiskWorkingCopy: merge.
 			self workingCopy adoptCommit: mergeCommit.
 			mergeCommit ]
 		ifFalse: [

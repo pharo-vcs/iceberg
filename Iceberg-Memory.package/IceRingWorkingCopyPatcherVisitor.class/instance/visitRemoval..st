@@ -1,4 +1,5 @@
 visiting
 visitRemoval: anIceRemoval 
 	
-	anIceRemoval definition removeFrom: self
+	anIceRemoval definition removeFrom: self.
+	self visitChildrenOf: currentNode	

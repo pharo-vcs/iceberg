@@ -9,10 +9,10 @@ commitChanges: aDiff withMessage: message
 	
 	| newCommit |
 	self validateCanCommit.
-	
-	aDiff tree accept: (IceIndexUpdateVisitor new
-		index: self repository index;
-		diff: aDiff).
+		
+	self repository index
+		updateDiskWorkingCopy: aDiff;
+		updateIndex: aDiff.
 
 	repository index isEmpty ifTrue: [ IceNothingToCommit signal ].
 
