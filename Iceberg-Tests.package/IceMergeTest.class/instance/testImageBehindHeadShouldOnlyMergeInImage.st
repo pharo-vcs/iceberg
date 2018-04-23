@@ -28,16 +28,16 @@ testImageBehindHeadShouldOnlyMergeInImage
 		inPackage: self packageName1 asSymbol.
 	headCommit := mergeCommit := repository commitWithMessage: 'Change 1'.
 	
-	referenceCommit checkout.
-	(repository branchNamed: 'master') switch.
+	referenceCommit adopt.
 
 	self assert: repository headCommit equals: headCommit.
 	self assert: headCommit equals: mergeCommit.
 	self assert: headCommit parent equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
 	
-	repository workingCopy mergeCommit: mergeCommit.
+	"Experimental issue. If we merge and we have dirty package we should just resume"
+	[repository workingCopy mergeCommit: mergeCommit]
+		on: Warning
+		do: #resume.
 	
 	self assert: repository headCommit equals: headCommit.
 	self assert: headCommit equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.

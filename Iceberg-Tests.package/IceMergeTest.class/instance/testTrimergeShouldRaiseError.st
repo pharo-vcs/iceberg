@@ -1,6 +1,5 @@
 merge-cases
 testTrimergeShouldRaiseError
-
 	"If the image, HEAD and merge commit are three different commits, we should avoid merging.
 	
 	(c3)  -  HEAD commit
@@ -17,33 +16,27 @@ testTrimergeShouldRaiseError
 	
 	(arrows meaning parent)
 	"
+
 	| referenceCommit headCommit mergeCommit |
-	
 	repository workingCopy addPackageNamed: self packageName1.
 	repository workingCopy addPackageNamed: self packageName2.
 	referenceCommit := repository commitWithMessage: 'First commit'.
-
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
 	mergeCommit := repository commitWithMessage: 'Change 1'.
-	
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting2'
 		inPackage: self packageName1 asSymbol.
 	headCommit := repository commitWithMessage: 'Change 2'.
-	
-	referenceCommit checkout.
-	headCommit switch.
-
+	referenceCommit adopt.
 	self assert: headCommit parent equals: mergeCommit.
 	self assert: mergeCommit parent equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
-	
 	self
-		should: [ repository workingCopy mergeCommit: mergeCommit ]
+		should: [ "Experimental issue. If we merge and we have dirty package we should just resume"
+			[ repository workingCopy mergeCommit: mergeCommit ]
+				on: Warning
+				do: #resume ]
 		raise: IceMergeAborted.
-	
 	self assert: headCommit parent equals: mergeCommit.
-	self assert: mergeCommit parent equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: mergeCommit parent equals: repository workingCopy referenceCommit

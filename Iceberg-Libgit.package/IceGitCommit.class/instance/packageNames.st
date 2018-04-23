@@ -2,4 +2,4 @@ accessing
 packageNames
 	
 	^ packageNamesCache ifNil: [ 
-		packageNamesCache := super packageNames ].
+		packageNamesCache := self fetchPackageNames ].

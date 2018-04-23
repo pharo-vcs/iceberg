@@ -19,7 +19,8 @@ testMergeChangesInSameMethodSameClassSamePackageCausesConflicts
 
 	repository unload.
 	repository createBranch: 'change2' inCommit: initialCommit.
-	repository head checkout.
+
+	repository head checkout: IceCheckoutAllPackages new.
 	repository workingCopy
 		createMethod: 'test ^ 3' inClass: 'IceGeneratedClassForTesting' asSymbol.
 	change2Commit := repository commitWithMessage: 'Change 2'.

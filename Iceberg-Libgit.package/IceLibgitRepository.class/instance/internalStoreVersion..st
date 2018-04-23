@@ -1,5 +1,5 @@
 actions
 internalStoreVersion: aMCVersion 
-	self writerClass 
+	self writerClass
 		forInternalStoreFileOut: aMCVersion 
 		on: self

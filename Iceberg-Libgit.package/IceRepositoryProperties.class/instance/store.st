@@ -1,9 +1,10 @@
 accessing
-storeOn: aRepository
-	(self fileFor: aRepository)
+store
+	self propertiesFileReference
 		ensureDelete;
 		writeStreamDo: [ :stream | 
 			(STONWriter on: stream) 
 				prettyPrint: true;
 				newLine: OSPlatform current lineEnding;
-				nextPut: self properties  ]
+				nextPut: self properties  ].
+	repository index addPath: self propertiesPath

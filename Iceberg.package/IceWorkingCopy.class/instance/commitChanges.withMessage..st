@@ -8,13 +8,13 @@ commitChanges: aDiff withMessage: message
  - the working copy reference commit is the same commit as #headCommit"
 	
 	| newCommit |
-	
-	aDiff isEmpty ifTrue: [ IceNothingToCommit signal ].
 	self validateCanCommit.
 	
 	aDiff tree accept: (IceIndexUpdateVisitor new
 		index: self repository index;
 		diff: aDiff).
+
+	repository index isEmpty ifTrue: [ IceNothingToCommit signal ].
 
 	newCommit := self repository commitIndexWithMessage: message andParents: (self workingCopyState referenceCommits reject: [ :each | each isNoCommit ]).
 	self referenceCommit: newCommit.

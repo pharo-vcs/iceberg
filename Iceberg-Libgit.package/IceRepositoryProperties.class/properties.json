@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"properties"
+		"properties",
+		"repository"
 	],
 	"name" : "IceRepositoryProperties",
 	"type" : "normal"
