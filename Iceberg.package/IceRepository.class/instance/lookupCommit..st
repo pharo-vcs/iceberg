@@ -3,4 +3,6 @@ lookupCommit: commitId
 
 	^ self
 		lookupCommit: commitId
-		ifAbsent: [ IceUnknownCommit new id: commitId; yourself ]
+		ifAbsent: [ IceUnknownCommit new 
+				repository: self;
+				id: commitId; yourself ]
