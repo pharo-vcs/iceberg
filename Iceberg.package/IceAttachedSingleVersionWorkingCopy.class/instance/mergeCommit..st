@@ -48,7 +48,8 @@ mergeCommit: mergeCommit
 	 - the current branch"
 	commitToAdvance := (headCommit isAncestorOf: mergeCommit)
 		ifTrue: [ 
-			"Fast-forward"
+			"Fast-forward. There is no need to update the working copy in disk.
+			Changing the commit in the branch below will checkout the commit in disk."
 			self workingCopy adoptCommit: mergeCommit.
 			mergeCommit ]
 		ifFalse: [
