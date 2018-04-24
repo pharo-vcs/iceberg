@@ -8,7 +8,7 @@ commitWithMessage: message andParents: parentCommits
 	indexTreeId := self repositoryHandle index writeTreeAndReturnOid.
 	commitId := (LGitCommitBuilder of: self repositoryHandle)
 		tree: (LGitTree of: self repositoryHandle fromId: indexTreeId);
-		message: message withUnixLineEndings utf8Encoded;
+		message: message withUnixLineEndings utf8Encoded asString "FFI is expecting an string";
 		parents:
 			(self repositoryHandle isUnborn
 				ifTrue: [ #() ]
