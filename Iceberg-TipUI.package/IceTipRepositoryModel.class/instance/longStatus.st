@@ -1,8 +1,10 @@
 accessing
 longStatus
-	
+
+	(entity isMissing and: [ entity location isNil ])
+		ifTrue: [ ^ 'Not configured git repository. Please clone the repository or change the repository location to an existing location' ].
 	entity isMissing 
-		ifTrue: [ ^ 'Cannot find a git repository at {1}. Please clone the repository again or change the repository location to an existing location' format: { self repository location } ].
+		ifTrue: [ ^ 'Cannot find a git repository at {1}. Please clone the repository again or change the repository location to an existing location' format: { entity location } ].
 	entity isCodeMissing
 		ifTrue: [ ^ 'Cannot find any code in directory {1}. Please clone the repository again, change the repository location to an existing location or change the code subdirectory to a correct value' format: { self repository codeDirectory } ].
 		
