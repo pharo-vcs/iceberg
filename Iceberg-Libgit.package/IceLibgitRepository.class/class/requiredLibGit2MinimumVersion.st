@@ -1,4 +1,4 @@
-utils
+utilities
 requiredLibGit2MinimumVersion
 	^ IceSemanticVersion 
 		major: 0 

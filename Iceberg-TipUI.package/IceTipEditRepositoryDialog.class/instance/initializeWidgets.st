@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	projectLocation := self instantiate: IceDirectoryModel.
+	projectLocation := self instantiate: IceTipDirectoryPresenter.
 	projectLocation 
 		label: 'Local directory';
 		chooseTitle: 'Choose local repository';
@@ -8,7 +8,7 @@ initializeWidgets
 		
 	subdirectoryLabel := self newLabel label: 'Source directory'.
 	subdirectoryInputText := self newTextInput 
-		ghostText: 'src';		
+		ghostText: 'e.g., src';		
 		autoAccept: true.
 	subdirectoryInputText text: self repository subdirectory.
 		

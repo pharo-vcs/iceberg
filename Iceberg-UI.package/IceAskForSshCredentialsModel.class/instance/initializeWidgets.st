@@ -3,12 +3,12 @@ initializeWidgets
 	usernameLabel := self newLabel label: 'SSH Username: '.
 	usernameInput := self newTextInput autoAccept: true.
 	
-	publicKeyLocation := self instantiate: IceFileModel.
+	publicKeyLocation := self instantiate: IceTipFilePresenter.
 	publicKeyLocation 
 		label: 'Public SSH Key: ';
 		chooseTitle: 'Public SSH Key (id_rsa.pub)'.
 
-	privateKeyLocation := self instantiate: IceFileModel.
+	privateKeyLocation := self instantiate: IceTipFilePresenter.
 	privateKeyLocation 
 		label: 'Private SSH Key: ';
 		chooseTitle: 'Private SSH Key (id_rsa)'.

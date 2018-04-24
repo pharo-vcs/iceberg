@@ -9,7 +9,8 @@
 		"optionsList",
 		"detailPanel",
 		"model",
-		"selectedOption"
+		"selectedOption",
+		"reasonPanel"
 	],
 	"name" : "IceTipRepairRepositoryDialog",
 	"type" : "normal"

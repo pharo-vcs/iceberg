@@ -17,9 +17,9 @@ tearDown
 		
 
 	"Cleanup Metacello registry to avoid conflicts"		
-	(MetacelloProjectRegistration registry baselineRegistry
-		detect: [ :registration | registration projectName = 'PharoGitTest' ])
-			unregisterProject.
+	MetacelloProjectRegistration registry baselineRegistry
+		detect: [ :registration | registration projectName = 'PharoGitTest' ]
+		ifFound: [ :registration | registration unregisterProject ].
 
 	super tearDown.
 

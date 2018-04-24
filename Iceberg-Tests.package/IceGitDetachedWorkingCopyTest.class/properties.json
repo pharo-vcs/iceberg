@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceDetachedWorkingCopyTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitDetachedWorkingCopyTest",
+	"type" : "normal"
+}

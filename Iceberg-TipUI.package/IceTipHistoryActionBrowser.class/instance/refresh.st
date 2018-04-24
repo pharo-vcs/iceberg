@@ -1,3 +1,3 @@
 accessing
 refresh
-	commitsPanel refresh
+	self refreshCommits.

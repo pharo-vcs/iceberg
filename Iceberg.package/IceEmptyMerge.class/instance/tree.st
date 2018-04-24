@@ -1,0 +1,4 @@
+accessing
+tree
+	
+	^ self mergeTree

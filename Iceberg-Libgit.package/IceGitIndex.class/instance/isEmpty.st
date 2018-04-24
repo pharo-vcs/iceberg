@@ -1,0 +1,4 @@
+testing
+isEmpty
+	
+	^ modifiedFilePaths isEmpty

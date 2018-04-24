@@ -1,4 +1,4 @@
 API-actions
 switch
 
-	^ repository setHead: self
+	self checkout: IceCheckoutDoNotLoadPackages new

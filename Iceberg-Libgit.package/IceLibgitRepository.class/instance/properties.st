@@ -1,3 +1,3 @@
 accessing
 properties
-	^ IceRepositoryProperties on: self
+	^ IceRepositoryProperties fromCommitish: self workingCopy

@@ -1,6 +1,6 @@
 initialization
 initializeProjectLocation
-	projectLocation := self instantiate: IceDirectoryModel.
+	projectLocation := self instantiate: IceTipDirectoryPresenter.
 	projectLocation 
 		label: 'Local directory';
 		chooseTitle: 'Choose local repository';

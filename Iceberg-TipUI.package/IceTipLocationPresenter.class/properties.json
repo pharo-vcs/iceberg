@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"locationLabel",
+		"locationInput",
+		"chooseButton",
+		"label",
+		"chooseTitle",
+		"chooseBlock",
+		"keptLocation"
+	],
+	"name" : "IceTipLocationPresenter",
+	"type" : "normal"
+}

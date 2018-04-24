@@ -3,7 +3,7 @@ initializeWidgets
 	packagesList := self newTreeTable.
 	packageNameText := self newTextInput 
 		autoAccept: true;
-		ghostText: 'Package...'.
+		ghostText: 'e.g., Collections'.
 	
 	self initializePackagesList.
 	self initializePackageNameText.

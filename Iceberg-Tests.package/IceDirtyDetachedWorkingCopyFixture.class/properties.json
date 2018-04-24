@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceDetachedWorkingCopyFixture",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceDirtyDetachedWorkingCopyFixture",
+	"type" : "normal"
+}

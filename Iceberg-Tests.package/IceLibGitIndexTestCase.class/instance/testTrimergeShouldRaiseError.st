@@ -1,4 +1,4 @@
-merge-cases
+tests
 testTrimergeShouldRaiseError
 
 	super testTrimergeShouldRaiseError.

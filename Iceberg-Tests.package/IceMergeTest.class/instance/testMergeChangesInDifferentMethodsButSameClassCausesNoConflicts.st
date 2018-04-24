@@ -3,11 +3,11 @@ testMergeChangesInDifferentMethodsButSameClassCausesNoConflicts
 
 	"This is a Ring working copy"
 	| initialCommit change1Commit change2Commit |
-	repository workingCopy addPackageNamed: packageName1.
-	repository workingCopy addPackageNamed: packageName2.
+	repository workingCopy addPackageNamed: self packageName1.
+	repository workingCopy addPackageNamed: self packageName2.
 	repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
-		inPackage: packageName1 asSymbol.
+		inPackage: self packageName1 asSymbol.
 	initialCommit := repository commitWithMessage: 'First commit'.
 
 	repository createBranch: 'change1' inCommit: initialCommit.
@@ -17,7 +17,7 @@ testMergeChangesInDifferentMethodsButSameClassCausesNoConflicts
 
 	repository unload.
 	repository createBranch: 'change2' inCommit: initialCommit.
-	repository head checkout.
+	repository head checkout: IceCheckoutAllPackages new.
 	repository workingCopy
 		createMethod: 'test2 ^ 2' inClass: 'IceGeneratedClassForTesting' asSymbol.
 	change2Commit := repository commitWithMessage: 'Change 2'.

@@ -1,0 +1,3 @@
+running
+newFixture
+	^ IceWithRemoteFixture inMemory

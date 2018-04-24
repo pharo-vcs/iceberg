@@ -1,0 +1,4 @@
+testing
+isDetached
+	
+	^ true

@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"remoteFileUrl",
-		"projectName"
-	],
+	"instvars" : [ ],
 	"name" : "IceGitRepositoryWithSingleRemoteTest",
 	"type" : "normal"
 }

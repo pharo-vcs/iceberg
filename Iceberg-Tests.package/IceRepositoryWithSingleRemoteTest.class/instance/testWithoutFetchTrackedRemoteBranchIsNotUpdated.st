@@ -2,10 +2,10 @@ tests-fetch
 testWithoutFetchTrackedRemoteBranchIsNotUpdated
 
 	| newCommit |
-	repository fetch.
+	self repository fetch.
 	
-	remoteRepository checkoutAllPackages.
-	remoteRepository workingCopy addPackageNamed: 'AnotherPackage'.
-	newCommit := remoteRepository commitWithMessage: 'Another commit message'.
+	self remoteRepository checkoutAllPackages.
+	self remoteRepository workingCopy addPackageNamed: 'AnotherPackage'.
+	newCommit := self remoteRepository commitWithMessage: 'Another commit message'.
 	
-	self assert: repository remoteTrackedBranches anyOne commit equals: newCommit ancestors anyOne
+	self assert: self repository remoteTrackedBranches anyOne commit equals: newCommit ancestors anyOne

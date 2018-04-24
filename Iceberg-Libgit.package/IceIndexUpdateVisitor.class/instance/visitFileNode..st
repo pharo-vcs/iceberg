@@ -1,4 +1,4 @@
 visiting
 visitFileNode: anIceFileDefinition 
 	
-	index storeFileDefinition: anIceFileDefinition
+	index addPath: anIceFileDefinition path

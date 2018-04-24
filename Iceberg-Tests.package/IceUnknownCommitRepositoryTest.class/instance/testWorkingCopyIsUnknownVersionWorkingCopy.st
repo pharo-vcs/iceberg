@@ -1,0 +1,4 @@
+running
+testWorkingCopyIsUnknownVersionWorkingCopy
+
+	self assert: repository workingCopy workingCopyState isUnknownCommitState

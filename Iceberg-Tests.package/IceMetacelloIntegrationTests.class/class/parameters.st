@@ -1,0 +1,4 @@
+testing
+parameters
+
+	^ { self remoteTypeConfiguration }

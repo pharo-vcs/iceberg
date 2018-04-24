@@ -1,6 +1,5 @@
 events
 repositoryWillBeCreated: aRepository
-	
-	UIManager default 
-		informUser: 'Fetching incomming commits'
-		during: [ aRepository fetch ]
+
+	self fetchIfNeeded: aRepository.
+	aRepository workingCopy referenceCommit: (aRepository lookupCommit: SystemVersion current commitHash)

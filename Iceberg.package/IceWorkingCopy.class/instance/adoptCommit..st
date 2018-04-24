@@ -8,6 +8,6 @@ adoptCommit: aCommit
 		sourceVersion: self;
 		targetVersion: aCommit;
 		buildFull.
-	
+
 	self loadedPackages do: [ :each |
 		each beDirty: (diff includesPackageNamed: each name) ].

@@ -6,11 +6,7 @@ defaultSpec
 		newColumn: [ :mainColumn |
 			mainColumn
 				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: [ :row |
-					row 
-						newColumn: #remoteLabel width: 100;
-						newColumn: #remoteList ]
-					height: self inputTextHeight;
+				newRow: #remotePanel height: self inputTextHeight;
 				newRow: [ :row |
 					row newColumn: [ :column |
 						column 

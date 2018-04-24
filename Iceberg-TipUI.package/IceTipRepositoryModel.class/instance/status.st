@@ -4,14 +4,15 @@ status
 		| status incoming outgoing | 
 
 		self verifyDirectoryStructureIfMissing: [ :message | ^ message ].
-		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 		
 		entity workingCopy workingCopyState isUnknownCommitState 
-			ifTrue: [ ^ self toErrorMessage: entity workingCopy workingCopyState description ].
+			ifTrue: [ ^ self toErrorMessage: entity workingCopy workingCopyState description ].	
 		entity workingCopy isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached Working Copy' ].
 		entity head isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached HEAD' ].
+
+		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
 		entity isModified ifTrue: [ status add: 'Uncommited changes' ].

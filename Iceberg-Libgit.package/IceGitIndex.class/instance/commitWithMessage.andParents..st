@@ -3,12 +3,12 @@ commitWithMessage: message andParents: parentCommits
 	| signature commitId indexTreeId |
 	self addToGitIndex.
 	[ signature := self repositoryHandle defaultSignature ]
-		on: LGit_GIT_ENOTFOUND
+		on: LGit_GIT_ENOTFOUND, LGit_GIT_ERROR
 		do: [ :e | IceGitUsernameOrEmailNotFound guessKind: e ifNot: [ e pass ] ].
 	indexTreeId := self repositoryHandle index writeTreeAndReturnOid.
 	commitId := (LGitCommitBuilder of: self repositoryHandle)
 		tree: (LGitTree of: self repositoryHandle fromId: indexTreeId);
-		message: message withUnixLineEndings utf8Encoded;
+		message: message withUnixLineEndings utf8Encoded asString "FFI is expecting an string";
 		parents:
 			(self repositoryHandle isUnborn
 				ifTrue: [ #() ]
@@ -18,7 +18,7 @@ commitWithMessage: message andParents: parentCommits
 			updateReference:
 			([ self repositoryHandle head name ]
 				on: LGit_GIT_EUNBORNBRANCH
-				do: [ 'refs/heads/' , repository branch name ]);
+				do: [ repository branch gitRef ]);
 		author: signature;
 		committer: signature;
 		writeCommit;

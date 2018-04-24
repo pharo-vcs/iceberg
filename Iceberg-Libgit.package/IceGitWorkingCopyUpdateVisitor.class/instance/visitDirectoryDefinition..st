@@ -1,0 +1,3 @@
+visiting
+visitDirectoryDefinition: anIceDirectoryDefinition 
+	self visitChildrenOf: currentNode

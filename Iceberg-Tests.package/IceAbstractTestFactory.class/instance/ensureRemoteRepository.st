@@ -1,0 +1,4 @@
+accessing
+ensureRemoteRepository
+	
+	self subclassResponsibility
