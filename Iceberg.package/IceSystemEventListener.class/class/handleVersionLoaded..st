@@ -6,6 +6,10 @@ handleVersionLoaded: ann
 	| package |
 	"this is ugly, but since I do not have a package I need to look for it"
 	package := RPackageOrganizer default packageMatchingExtensionName: ann label.
+	
+	"The package can be nil".
+	package ifNil: [ ^self ].
+
 	"now we can verify its status"
 	IceRepository registry
 		do: [ :each | 
