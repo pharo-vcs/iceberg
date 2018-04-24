@@ -6,9 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"repository",
 		"diff",
 		"index"
 	],
-	"name" : "IceIndexUpdateVisitor",
+	"name" : "IceGitWorkingCopyUpdateVisitor",
 	"type" : "normal"
 }
