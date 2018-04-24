@@ -1,9 +1,15 @@
 initialization
 initializeWidgets
-
 	super initializeWidgets.
-	issueNumberText := self newTextInput autoAccept: true.
-	issueText := self newTextInput autoAccept: true.
+	
+	branchLabel label: 'FogBugz issue'.
+	issueNumberText := self newTextInput 
+		ghostText: 'e.g., 12345';
+		autoAccept: true.
+	issueLabel := self newLabel label: 'Title'.
+	issueText := self newTextInput 
+		ghostText: 'e.g., a-fogbugz-issue';
+		autoAccept: true.
 	
 	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
 	issueText whenBuiltDo: [ :w | 

@@ -1,4 +1,4 @@
-private
+accessing
 validate
 	
 	self
