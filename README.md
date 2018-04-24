@@ -86,13 +86,12 @@ MetacelloPharoPlatform select.
     'Iceberg-Pharo6'
     'LibGit-Core') 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
-
 "update icons (iceberg needs some new)"
 ThemeIcons current: ThemeIcons loadDefault.
 "load iceberg"
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.7.1';
+  	repository: 'github://pharo-vcs/iceberg:v0.7.?';
 	onWarningLog;
   	load.
 "Re-initialize libgit2"
