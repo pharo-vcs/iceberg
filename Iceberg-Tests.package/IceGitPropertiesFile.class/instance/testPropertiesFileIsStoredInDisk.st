@@ -2,9 +2,9 @@ tests
 testPropertiesFileIsStoredInDisk
 
 	| ston |
-	repository properties
+	self repository properties
 		at: #bla put: #blo;
 		store.
 		
-	ston := (STON fromStream: (repository codeDirectory / '.properties') readStream).
+	ston := (STON fromStream: (self repository codeDirectory / '.properties') readStream).
 	self assert: (ston at: #bla) equals: #blo

@@ -2,6 +2,6 @@ tests-branch
 testNewBranchReferencesCurrentCommitAtBranchTime
 
 	| commitAtBranchTime createdBranch |
-	commitAtBranchTime := repository head commit.
-	createdBranch := repository createBranch: 'new'.
+	commitAtBranchTime := self repository head commit.
+	createdBranch := self repository createBranch: 'new'.
 	self assert: createdBranch commit equals: commitAtBranchTime

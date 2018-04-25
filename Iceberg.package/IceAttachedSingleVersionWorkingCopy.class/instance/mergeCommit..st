@@ -7,7 +7,6 @@ mergeCommit: mergeCommit
 	"
 	| imageCommit headCommit leftCommit commitToAdvance merge |
 	
-
 	"at begining of this, there is a possibility that imageCommit needs to be 'fixed' to use."
 	imageCommit := self referenceCommit.
 	mergeCommit validateCanMerge.

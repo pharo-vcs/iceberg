@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository",
 		"fixture"
 	],
 	"name" : "IceAbstractTestCase",

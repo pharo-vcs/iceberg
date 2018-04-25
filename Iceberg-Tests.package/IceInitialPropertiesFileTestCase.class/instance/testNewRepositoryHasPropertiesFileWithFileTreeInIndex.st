@@ -4,7 +4,7 @@ testNewRepositoryHasPropertiesFileWithFileTreeInIndex
 	format := IceLibgitRepository defaultFileFormatType.
 	[ | fixture |
 	IceLibgitRepository defaultFileFormatType: IceLibgitFiletreeWriter name.
-	fixture := IceBasicFixture inGit.
+	fixture := IceBasicRepositoryFixture inGit.
 	fixture setUp.
 	self assert: fixture repository properties writerClass equals: IceLibgitFiletreeWriter.
 	self assert: (fixture repository index includes: fixture repository properties propertiesPath) ]

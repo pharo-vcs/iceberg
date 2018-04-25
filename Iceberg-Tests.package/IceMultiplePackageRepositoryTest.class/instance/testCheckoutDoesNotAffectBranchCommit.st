@@ -6,14 +6,14 @@ testCheckoutDoesNotAffectBranchCommit
 	"Create new commit for this test"
 	message := 'Added IceGeneratedClassForTesting'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self  repository workingCopy
 		createClass: 'IceAnotherGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
-	repository commitWithMessage: message.
+	self  repository commitWithMessage: message.
 	
 	"Then create the new branch at this point"
-	commitAtBranchTime := repository head commit.
-	createdBranch := repository createBranch: 'new'.
+	commitAtBranchTime := self  repository head commit.
+	createdBranch := self  repository createBranch: 'new'.
 	
 	"And test"
 	commitAtBranchTime ancestors first checkout.

@@ -1,4 +1,4 @@
 tests-changes
 testNoChangesInImageMakesChangesEmpty
 
-	self assert: repository workingCopyDiff isEmpty
+	self assert: self repository workingCopyDiff isEmpty

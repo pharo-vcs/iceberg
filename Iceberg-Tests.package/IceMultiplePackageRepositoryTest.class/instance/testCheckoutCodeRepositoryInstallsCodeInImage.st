@@ -4,23 +4,23 @@ testCheckoutCodeRepositoryInstallsCodeInImage
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
-	repository commitWithMessage: message.
+	self repository commitWithMessage: message.
 
 	message := 'Added IceAnotherGeneratedClassForTesting'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceAnotherGeneratedClassForTesting' 
 		inPackage: self packageName2 asSymbol.
-	repository commitWithMessage: message.
+	self repository commitWithMessage: message.
 	
-	repository unload.
+	self repository unload.
 	self denyPackageExists: self packageName1.
 	self denyPackageExists: self packageName2.
 	
-	repository checkoutAllPackages.
+	self repository checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertClassExists: #IceAnotherGeneratedClassForTesting.
 	self assertPackageExists: self packageName1.

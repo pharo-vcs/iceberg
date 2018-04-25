@@ -1,6 +1,6 @@
 running
 testFetchFixesUnknownCommit
 
-	repository fetch.
-	self deny: repository workingCopy referenceCommit isUnknownCommit.
-	self assert: repository workingCopy workingCopyState isSingleCommitState
+	self repository fetch.
+	self deny: self repository workingCopy referenceCommit isUnknownCommit.
+	self assert: self repository workingCopy workingCopyState isSingleCommitState

@@ -1,5 +1,5 @@
 tests
 testWorkingCopyIsNotUnknownCommot
  	
-	repository workingCopy initializePackagesFromRepository.
-	self deny: repository workingCopy hasUnknownCommit
+	self repository workingCopy initializePackagesFromRepository.
+	self deny: self repository workingCopy hasUnknownCommit

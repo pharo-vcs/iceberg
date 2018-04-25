@@ -1,4 +1,4 @@
 assertions
 denyPackageExists: aString 
 	
-	self deny: (repository workingCopy environment ask includesPackageNamed: aString)
+	self deny: (self repository workingCopy environment ask includesPackageNamed: aString)

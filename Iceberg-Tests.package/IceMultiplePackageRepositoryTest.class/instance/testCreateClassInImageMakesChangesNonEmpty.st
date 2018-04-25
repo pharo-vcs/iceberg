@@ -2,7 +2,7 @@ tests-changes
 testCreateClassInImageMakesChangesNonEmpty
 
 	"This is a Ring working copy"
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceAnotherGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
-	self deny: repository workingCopyDiff isEmpty
+	self deny: self repository workingCopyDiff isEmpty
