@@ -1,4 +1,4 @@
-tests
+merge-conflicts
 testFastForwardApplyChangesCorrectly
 
 	"This is a Ring working copy"

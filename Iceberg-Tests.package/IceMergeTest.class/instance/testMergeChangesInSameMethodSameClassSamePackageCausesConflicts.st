@@ -1,4 +1,4 @@
-tests
+merge-conflicts
 testMergeChangesInSameMethodSameClassSamePackageCausesConflicts
 
 	"This is a Ring working copy"
