@@ -2,27 +2,27 @@ merge-operations
 testMergeNonFastForwardClassRemovalIsAppliedToWorkingCopy
 
 	| headCommit mergeCommit |
-	repository workingCopy addPackageNamed: self packageName1.
-	repository workingCopy
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
 
-	headCommit := repository commitWithMessage: 'First commit'.
+	headCommit := self repository commitWithMessage: 'First commit'.
 
-	repository workingCopy removeClassNamed: 'IceGeneratedClassForTesting'.
-	mergeCommit := repository commitWithMessage: 'Removal 1'.
+	self repository workingCopy removeClassNamed: 'IceGeneratedClassForTesting'.
+	mergeCommit := self repository commitWithMessage: 'Removal 1'.
 
-	repository branch commit: headCommit.
-	repository branch checkout.
+	self repository branch commit: headCommit.
+	self repository branch checkout.
 	self assertClassExists: 'IceGeneratedClassForTesting'.
 	
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting2'
 		inPackage: self packageName1 asSymbol.
 
-	repository commitWithMessage: 'Other commit'.
+	self repository commitWithMessage: 'Other commit'.
 
-	repository workingCopy mergeCommit: mergeCommit.
+	self repository workingCopy mergeCommit: mergeCommit.
 
 	self assertClassExists: 'IceGeneratedClassForTesting2'.
 	self denyClassExists: 'IceGeneratedClassForTesting'.
