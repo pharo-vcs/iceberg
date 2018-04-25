@@ -1,3 +1,3 @@
 accessing
 workingCopy: anIceRingWorkingCopy 
-	workingCopy := anIceRingWorkingCopy
+	workingCopy := anIceRingWorkingCopy 

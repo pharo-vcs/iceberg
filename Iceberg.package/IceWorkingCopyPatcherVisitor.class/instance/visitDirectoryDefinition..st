@@ -1,4 +1,4 @@
 visiting
-visitDirectoryDefinition: anIceDirectoryDefinition 
-	
-	"Ignore directories. They are not loaded in the image"
+visitDirectoryDefinition: anIceDirectoryDefinition
+
+	self visitChildrenOf: currentNode
