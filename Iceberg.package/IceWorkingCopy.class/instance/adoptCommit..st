@@ -2,6 +2,9 @@ accessing
 adoptCommit: aCommit
 
 	| diff |
+	self referenceCommit = aCommit
+		ifTrue: [ ^ self ].
+	
 	self referenceCommit: aCommit.
 
 	diff := IceDiff new
