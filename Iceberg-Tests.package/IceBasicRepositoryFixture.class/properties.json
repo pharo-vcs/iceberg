@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceNotYetClonedRepositoryFixture",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceBasicRepositoryFixture",
+	"type" : "normal"
+}

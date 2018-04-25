@@ -1,4 +1,4 @@
 running
 testReferenceCommitIsUnknown
 
-	self assert: repository workingCopy referenceCommit isUnknownCommit
+	self assert: self repository workingCopy referenceCommit isUnknownCommit

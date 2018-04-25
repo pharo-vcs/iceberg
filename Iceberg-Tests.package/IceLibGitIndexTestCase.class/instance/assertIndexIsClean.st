@@ -2,8 +2,8 @@ running
 assertIndexIsClean
 
 	| diff |
-	diff := (LGitDiff of: repository repositoryHandle)
-		diffTree: repository head commit libgitCommit tree toIndex: repository repositoryHandle index;
+	diff := (LGitDiff of: self repository repositoryHandle)
+		diffTree: self repository head commit libgitCommit tree toIndex: self repository repositoryHandle index;
 		yourself.
 
 	self assert: diff numberOfDeltas equals: 0

@@ -1,4 +1,4 @@
 running
 testRepositoryIsMissing
 
-	self assert: repository isMissing
+	self assert: self repository isMissing

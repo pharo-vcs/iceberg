@@ -2,14 +2,14 @@ tests-branch
 testSwitchToExistingBranchNameChangesRepositoryHead
 
 	| branchName newBranch masterBranch |
-	repository head isUnbornBranch ifTrue: [ ^ self skip ].
+	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
 	
 	branchName := 'new'.
-	newBranch := repository createBranch: branchName.
-	self assert: newBranch equals: repository head.
+	newBranch := self repository createBranch: branchName.
+	self assert: newBranch equals: self repository head.
 	
-	masterBranch := repository switchToBranchNamed: 'master'.
-	self assert: masterBranch equals: repository head.
+	masterBranch := self repository switchToBranchNamed: 'master'.
+	self assert: masterBranch equals: self repository head.
 	
 	newBranch switch.
-	self assert: newBranch equals: repository head.
+	self assert: newBranch equals: self repository head.

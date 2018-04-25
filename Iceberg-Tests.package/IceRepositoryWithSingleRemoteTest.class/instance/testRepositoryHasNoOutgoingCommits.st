@@ -1,4 +1,4 @@
 tests-push
 testRepositoryHasNoOutgoingCommits
 
-	self deny: repository hasOutgoingCommits
+	self deny: self repository hasOutgoingCommits

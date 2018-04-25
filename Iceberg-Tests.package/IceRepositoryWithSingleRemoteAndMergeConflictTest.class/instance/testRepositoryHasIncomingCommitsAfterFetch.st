@@ -1,6 +1,6 @@
 tests
 testRepositoryHasIncomingCommitsAfterFetch
 
-	repository fetch.
-	repository branch setUpstreamRemote: self remote.
-	self assert: repository hasIncomingCommits
+	self repository fetch.
+	self repository branch setUpstreamRemote: self remote.
+	self assert: self repository hasIncomingCommits

@@ -1,4 +1,4 @@
 tests-branch
 testSwitchToUnexistingBranchRaisesError
 
-	self should: [repository switchToBranchNamed: 'nonexisting'] raise: IceBranchNotFound
+	self should: [self repository switchToBranchNamed: 'nonexisting'] raise: IceBranchNotFound

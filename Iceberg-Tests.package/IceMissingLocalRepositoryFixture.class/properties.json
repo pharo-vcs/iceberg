@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"location"
-	],
+	"instvars" : [ ],
 	"name" : "IceMissingLocalRepositoryFixture",
 	"type" : "normal"
 }

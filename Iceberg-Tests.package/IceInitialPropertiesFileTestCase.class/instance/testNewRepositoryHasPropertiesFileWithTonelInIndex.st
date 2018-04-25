@@ -4,7 +4,7 @@ testNewRepositoryHasPropertiesFileWithTonelInIndex
 	format := IceLibgitRepository defaultFileFormatType.
 	[ | fixture |
 	IceLibgitRepository defaultFileFormatType: IceLibgitTonelWriter name.
-	fixture := IceBasicFixture inGit.
+	fixture := IceBasicRepositoryFixture inGit.
 	fixture setUp.
 	self assert: fixture repository properties writerClass equals: IceLibgitTonelWriter.
 	self assert: (fixture repository index includes: fixture repository properties propertiesPath) ]

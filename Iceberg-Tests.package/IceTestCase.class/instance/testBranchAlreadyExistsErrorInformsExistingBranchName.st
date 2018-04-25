@@ -2,10 +2,10 @@ tests-branch
 testBranchAlreadyExistsErrorInformsExistingBranchName
 	
 	| branchName |
-	repository head isUnbornBranch ifTrue: [ ^ self skip ].
+	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
 	
 	branchName := 'master'.
-	[ repository createBranch: branchName.
+	[ self repository createBranch: branchName.
 	  self fail ]
 		on: IceBranchAlreadyExists
 	 	do: [ :error | self assert: error branchName equals: branchName ]

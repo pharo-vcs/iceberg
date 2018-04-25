@@ -1,4 +1,4 @@
 tests
 testRepositoryHasNoOutgoingCommitsIfNoFetch
 
-	self deny: repository hasOutgoingCommits
+	self deny: self repository hasOutgoingCommits

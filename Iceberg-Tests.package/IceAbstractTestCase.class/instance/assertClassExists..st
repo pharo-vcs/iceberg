@@ -1,4 +1,4 @@
 assertions
 assertClassExists: aString 
 	
-	self assert: (repository workingCopy environment ask includesClassNamed: aString)
+	self assert: (self repository workingCopy environment ask includesClassNamed: aString)

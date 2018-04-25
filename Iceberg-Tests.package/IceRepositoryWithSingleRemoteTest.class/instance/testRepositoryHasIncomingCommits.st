@@ -1,4 +1,4 @@
 tests-push
 testRepositoryHasIncomingCommits
 
-	self assert: repository hasIncomingCommits
+	self assert: self repository hasIncomingCommits

@@ -3,7 +3,7 @@ testBranchWithSlashesNotFoundErrorInformsNotFoundBranchName
 
 	| branchName |
 	branchName := 'feature/nonexisting'.
-	[ repository switchToBranchNamed: branchName.
+	[ self repository switchToBranchNamed: branchName.
 	  self fail ]
 		on: IceBranchNotFound
 	 	do: [ :error | self assert: error branchName equals: branchName ]
