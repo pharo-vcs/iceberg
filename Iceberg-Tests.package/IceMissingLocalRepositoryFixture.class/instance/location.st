@@ -1,0 +1,4 @@
+initialization
+location
+
+	^ location
