@@ -2,7 +2,7 @@ tests-queries
 testListBranchCommitsListsCommitsInBranch
 
 	| branches commits |
-	branches := repository allBranches.
+	branches := self repository allBranches.
 	commits := branches first commits.
 
 	self assert: commits size equals: self expectedCommitsInNewBranch.

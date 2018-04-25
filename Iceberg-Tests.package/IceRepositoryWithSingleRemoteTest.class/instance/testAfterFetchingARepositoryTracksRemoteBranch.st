@@ -1,5 +1,5 @@
 tests-fetch
 testAfterFetchingARepositoryTracksRemoteBranch
 
-	repository fetch.
-	self assert: repository remoteTrackedBranches notEmpty
+	self repository fetch.
+	self assert: self repository remoteTrackedBranches notEmpty

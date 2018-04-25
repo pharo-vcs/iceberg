@@ -1,13 +1,17 @@
 private actions
 cloneRepository
-	| repository |
+	IceGitClone new
+		location: self locationToUse;
+		url: self remoteToUse url;
+		clone.
 	
-	repository := self remoteToUse
-		cloneIn: self locationToUse
+	self repository
+		location: self locationToUse;
 		subdirectory: self subdirectory.
+		
 	self commitishName 
-		ifNotNil: [ repository switchToCommitishNamed: self commitishName ].
-	repository pluginManager repositoryWillBeCreated: repository.	
-	repository workingCopy initializePackagesFromRepository.
-	repository pluginManager repositoryWasCreated: repository.
-	^ repository
+		ifNotNil: [ self repository switchToCommitishNamed: self commitishName ].
+	self repository pluginManager repositoryWillBeCreated: self repository.	
+	self repository workingCopy initializePackagesFromRepository.
+	self repository pluginManager repositoryWasCreated: self repository.
+	^ self repository

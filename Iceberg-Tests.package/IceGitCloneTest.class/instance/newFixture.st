@@ -1,0 +1,4 @@
+running
+newFixture
+
+	^ IceNotYetClonedRepositoryFixture inGit

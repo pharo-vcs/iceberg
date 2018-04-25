@@ -10,10 +10,9 @@
 		"projectName",
 		"packageName1",
 		"packageName2",
-		"repository",
 		"remoteFileUrl",
 		"remoteRepository"
 	],
-	"name" : "IceBasicFixture",
+	"name" : "IceNotYetClonedRepositoryFixture",
 	"type" : "normal"
 }

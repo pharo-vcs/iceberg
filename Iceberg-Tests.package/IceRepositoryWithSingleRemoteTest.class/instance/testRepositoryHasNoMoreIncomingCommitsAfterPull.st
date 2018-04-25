@@ -1,5 +1,5 @@
 tests-push
 testRepositoryHasNoMoreIncomingCommitsAfterPull
 
-	repository pull.
-	self deny: repository hasIncomingCommits
+	self repository pull.
+	self deny: self repository hasIncomingCommits

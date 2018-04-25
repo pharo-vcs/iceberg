@@ -1,10 +1,9 @@
 private actions
 addLocalRepository
-	| repository |
-	repository := IceLibgitRepository new
+	self repository
 		location: self locationToUse;
 		subdirectory: self subdirectory.
-	repository pluginManager repositoryWillBeCreated: repository.	
-	repository workingCopy initializePackagesFromRepository.
-	repository pluginManager repositoryWasCreated: repository.
-	^ repository	
+	self repository pluginManager repositoryWillBeCreated: self repository.	
+	self repository workingCopy initializePackagesFromRepository.
+	self repository pluginManager repositoryWasCreated: self repository.
+	^ self repository	

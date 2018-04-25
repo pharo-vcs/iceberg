@@ -1,6 +1,6 @@
 tests-commit
 testDetachedHeadCannotCommit
 
-	repository branch commit checkout.
-	self assert: repository head isDetached.
-	self should: [repository validateCanCommit] raise: IceWorkingCopyDesyncronized.
+	self repository branch commit checkout.
+	self assert: self repository head isDetached.
+	self should: [self repository validateCanCommit] raise: IceWorkingCopyDesyncronized.

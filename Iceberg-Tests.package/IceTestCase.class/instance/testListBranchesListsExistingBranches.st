@@ -2,6 +2,6 @@ tests-branch
 testListBranchesListsExistingBranches
 
 	| branches |
-	branches := repository allBranches.
+	branches := self repository allBranches.
 	self assert: branches size = 1.
 	self assert: branches first name equals: 'master'

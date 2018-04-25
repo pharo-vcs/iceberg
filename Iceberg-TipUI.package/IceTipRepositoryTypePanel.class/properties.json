@@ -11,7 +11,8 @@
 		"subdirectoryInputText",
 		"remoteLabel",
 		"remoteInputText",
-		"spacePanel"
+		"spacePanel",
+		"repository"
 	],
 	"name" : "IceTipRepositoryTypePanel",
 	"type" : "normal"

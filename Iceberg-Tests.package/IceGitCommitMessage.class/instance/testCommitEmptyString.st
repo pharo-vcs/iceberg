@@ -1,5 +1,5 @@
 tests
 testCommitEmptyString	
-	repository commitWithMessage: ''.
+	self repository commitWithMessage: ''.
 	
-	self assert: repository head commit comment isEmpty.
+	self assert: self repository head commit comment isEmpty.

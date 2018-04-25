@@ -1,4 +1,4 @@
 tests
 testCommitNullString	
-	self should: [repository commitWithMessage: nil] raise: Error.
+	self should: [self repository commitWithMessage: nil] raise: Error.
 	

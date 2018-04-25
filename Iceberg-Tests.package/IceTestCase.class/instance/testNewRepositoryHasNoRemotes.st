@@ -1,4 +1,4 @@
 tests-remotes
 testNewRepositoryHasNoRemotes
 
-	self assert: repository remotes isEmpty
+	self assert: self repository remotes isEmpty

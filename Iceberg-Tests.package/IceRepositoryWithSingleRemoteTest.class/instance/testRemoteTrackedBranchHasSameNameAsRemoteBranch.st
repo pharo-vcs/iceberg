@@ -1,5 +1,5 @@
 tests-fetch
 testRemoteTrackedBranchHasSameNameAsRemoteBranch
 
-	repository fetch.
-	self assert: repository remoteTrackedBranches anyOne shortname equals: self remoteBranchName
+	self repository fetch.
+	self assert: self repository remoteTrackedBranches anyOne shortname equals: self remoteBranchName

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCleanWorkingCopyFixture",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMissingLocalRepositoryFixture",
+	"type" : "normal"
+}

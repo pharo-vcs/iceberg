@@ -3,6 +3,6 @@ testAddNewRemoteListsRemote
 
 	| remote |
 	remote := self newRemoteNamed: 'origin'.
-	repository addRemote: remote.
+	self repository addRemote: remote.
 	
-	self assert: (repository remotes includes: remote).
+	self assert: (self repository remotes includes: remote).

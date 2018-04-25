@@ -2,13 +2,13 @@ tests-commit
 testCommitWithDetachedHeadRaisesException
 
 	| message |
-	repository branch commit checkout.
-	self assert: repository head isDetached.
+	self repository branch commit checkout.
+	self assert: self repository head isDetached.
 	
 	message := 'Added IceGeneratedClassForTesting'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
 			
-	self should: [repository commitWithMessage: message] raise: IceWorkingCopyDesyncronized.
+	self should: [self repository commitWithMessage: message] raise: IceWorkingCopyDesyncronized.
