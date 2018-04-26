@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"repository",
+		"conflictingRepository"
+	],
 	"name" : "IceMetacelloIntegrationTests",
 	"type" : "normal"
 }

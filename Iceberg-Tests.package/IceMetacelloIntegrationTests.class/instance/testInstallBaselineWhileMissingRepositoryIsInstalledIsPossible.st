@@ -1,5 +1,8 @@
 tests
-testNewRepositoryPackagesAreClean
+testInstallBaselineWhileMissingRepositoryIsInstalledIsPossible
+
+	self createConflictingRepository.
+	conflictingRepository location: nil.
 
 	self installBaseline.
 	repository := IceRepository registry
