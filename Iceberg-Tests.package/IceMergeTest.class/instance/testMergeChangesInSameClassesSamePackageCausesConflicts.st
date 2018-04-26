@@ -14,7 +14,7 @@ testMergeChangesInSameClassesSamePackageCausesConflicts
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol
-		superclass: 'ASuperclass'.
+		with: [ :class | class superclass name: 'ASuperclass' ].
 	change1Commit := self repository commitWithMessage: 'Change 1'.
 
 	self repository unload.
@@ -23,7 +23,7 @@ testMergeChangesInSameClassesSamePackageCausesConflicts
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol
-		superclass: 'ADifferentSuperclass'.
+		with: [ :class | class superclass name: 'ADifferentSuperclass' ].
 	change2Commit := self repository commitWithMessage: 'Change 2'.
 	
 	(self repository branchNamed: 'change1') checkout.

@@ -4,4 +4,4 @@ createClass: className inPackage: packageName
 	self
 		createClass: className
 		inPackage: packageName
-		superclass: 'Object'
+		with: [ :class | class superclass name: 'Object' ]
