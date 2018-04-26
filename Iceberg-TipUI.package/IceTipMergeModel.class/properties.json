@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"mergeType"
+		"mergeType",
+		"mergeAction"
 	],
 	"name" : "IceTipMergeModel",
 	"type" : "normal"

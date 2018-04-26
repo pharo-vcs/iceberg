@@ -45,7 +45,7 @@ testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage
 	self assert: self repository headCommit equals: headCommit.
 	self assert: self repository headCommit parent equals: mergeBaseCommit.
 	self assert: mergeCommit parent equals: mergeBaseCommit.
-	self assert: self repository workingCopy isModified not.
+	self deny: self repository workingCopy isModified.
 	
 	self repository workingCopy mergeCommit: mergeCommit.
 	
@@ -53,4 +53,4 @@ testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage
 	self assert: self repository workingCopy referenceCommit equals: self repository headCommit.
 	self assert: self repository headCommit ancestors size equals: 2.
 	self assert: (self repository headCommit ancestors includes: mergeCommit).
-	self assert: self repository workingCopy isModified not.
+	self deny: self repository workingCopy isModified.

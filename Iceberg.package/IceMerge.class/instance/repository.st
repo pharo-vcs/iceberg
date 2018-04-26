@@ -1,4 +1,4 @@
 accessing
 repository
 	
-	^ source repository
+	^ repository

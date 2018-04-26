@@ -1,7 +1,7 @@
 enumerating
 collect: aBlock
-	
-	parent := self class value: (aBlock value: self value).
+	| newNode |
+	newNode := self class value: (aBlock value: self value).
 	self nodesDo: [ :e |
-		parent addNode: (e collect: aBlock) ].
-	^ parent
+		newNode addNode: (e collect: aBlock) ].
+	^ newNode

@@ -4,5 +4,5 @@ testMergeTwoEqualRemovalsIsNoModification
 	| rightTree leftTree mergedTree |
 	leftTree := rightTree := IceNode value: (IceRemoval definition: IceTestDefinition new).
 	
-	mergedTree := IceMerge new merge: leftTree with: rightTree.
+	mergedTree := IceMerge new merge: leftTree into: rightTree.
 	self assert: mergedTree isEmpty.

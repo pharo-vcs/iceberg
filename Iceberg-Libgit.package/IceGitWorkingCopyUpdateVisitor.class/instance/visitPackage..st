@@ -6,7 +6,7 @@ visitPackage: anIcePackageDefinition
 	
 	| mcPackage snapshot patcher version |
 	mcPackage := MCPackage named: anIcePackageDefinition name.
-	
+
 	"Take a snapshot of the package from the version we want to apply our changes on (usually the commit in disk) and apply them to it.
 	This will create a snapshot with only the selected changes"
 	snapshot := [diff targetVersion snapshotFor: anIcePackageDefinition]

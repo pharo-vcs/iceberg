@@ -1,3 +1,3 @@
 accessing
 tree
-	^ self diff tree
+	^ self diff treeToShow
