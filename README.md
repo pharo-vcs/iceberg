@@ -99,6 +99,12 @@ Metacello new
   	load.
 "Re-initialize libgit2"
 (Smalltalk at: #LGitLibrary) initialize.
+
+"In some case Pharo/Calypso can have a problem with Obsolete classes. If you encounter this problem just execute this command and retry your action:
+
+Smalltalk compilerClass recompileAll
+
+"
 ```
 
 *NOTE: you need to update iceberg in a NEW image, otherwise there will be obsolete repositories around.*
