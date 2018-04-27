@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceGitCommitMessage",
+	"name" : "IceGitPropertiesFileTest",
 	"type" : "normal"
 }

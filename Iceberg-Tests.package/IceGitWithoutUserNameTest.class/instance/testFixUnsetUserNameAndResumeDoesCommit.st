@@ -1,7 +1,7 @@
 tests
 testFixUnsetUserNameAndResumeDoesCommit
 	| before after |
-	(self repository getConfigurationGlobal: false) unset: 'user.mail'.
+	(self repository getConfigurationGlobal: false) unset: 'user.name'.
 	self repository workingCopy addPackageNamed: 'AnotherPackage'.
 	before := self repository headCommit.
 	[ after := self repository commitWithMessage: 'Another commit message'.
