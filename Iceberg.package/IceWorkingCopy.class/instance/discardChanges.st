@@ -4,6 +4,6 @@ discardChanges
 	| diff |
 	diff := IceDiff
 		from: self
-		to: repository head.
+		to: self referenceCommit.
 	diff accept: (IceRevertVisitor repository: repository).
 	self markAllPackagesAsClean
