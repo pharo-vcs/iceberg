@@ -6,8 +6,8 @@ calculateChanges
 	mergeTree ifNotNil: [ ^ self ].
 
 	commonAncestor := (self leftCommit commonAncestorWith: mergeCommit) ifNil: [ IceNoCommit new ].
-	sourceDiff := IceDiff from: self sourceVersion to: commonAncestor.
-	targetDiff := IceDiff from: self targetVersion to: commonAncestor.
+	sourceDiff := self sourceVersion diffTo: commonAncestor.
+	targetDiff := self targetVersion diffTo: commonAncestor.
 
 	mergeTree := self merge: sourceDiff tree
 		into: targetDiff tree.
