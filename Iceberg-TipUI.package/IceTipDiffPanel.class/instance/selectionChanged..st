@@ -1,7 +1,7 @@
 event handling
 selectionChanged: ann
 	| element |
-	ann newSelectedRowIndexes
+	(ann newSelectedRowIndexes reject: [ :each | each = 0 ])
 		ifNotEmpty: [ :indexes | 
 			element := changeList widget dataSource realElementAt: indexes first.
 			self 
