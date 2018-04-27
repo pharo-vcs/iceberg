@@ -3,7 +3,6 @@ visitPackage: anIcePackageDefinition
 	
 	"I am a package, I have to export my changes using the repository format.
 	Thus, I cut here the recursion on my children, I have to do the recursion myself"
-	
 	| mcPackage snapshot patcher version |
 	mcPackage := MCPackage named: anIcePackageDefinition name.
 

@@ -1,10 +1,10 @@
 tests
-testCommitWithoutUserMailDoesNotThrowsException
+testCommitWithoutUserMailThrowsException
 
 	(self repository getConfigurationGlobal: false)
-		unset: 'user.mail'.
+		unset: 'user.email'.
 		
 	self repository workingCopy addPackageNamed: 'AnotherPackage'.
 	self
-		shouldnt: [self repository commitWithMessage: 'Another commit message']
+		should: [self repository commitWithMessage: 'Another commit message']
 		raise: IceGitUsernameOrEmailNotFound

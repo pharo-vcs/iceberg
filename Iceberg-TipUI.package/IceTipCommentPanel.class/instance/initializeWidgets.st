@@ -19,6 +19,6 @@ initializeWidgets
 		yourself).
 		
 	self focusOrder
-		add: pushCheckbox;
 		add: commentText;
-		add: commitButton 
+		add: commitButton;
+		add: pushCheckbox
