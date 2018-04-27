@@ -1,5 +1,5 @@
 tests
-testCommitWithEmptyUserMailDoesThrowException
+testCommitWithEmptyUserMailThrowsException
 
 	(self repository getConfigurationGlobal: false)
 		email: ''.
