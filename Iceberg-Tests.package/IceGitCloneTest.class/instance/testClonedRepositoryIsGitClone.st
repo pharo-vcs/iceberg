@@ -6,6 +6,6 @@ testClonedRepositoryIsGitClone
 	IceGitClone new
 		location: fixture location;
 		url: fixture factory defaultRemoteUrl;
-		clone.
+		execute.
 		
 	self assert: (fixture location / '.git') exists

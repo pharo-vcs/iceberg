@@ -1,4 +1,4 @@
-accessing
+comparing
 = aTestDefinition
 	
 	^ super = aTestDefinition

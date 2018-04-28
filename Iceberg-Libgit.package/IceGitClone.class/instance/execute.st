@@ -1,5 +1,5 @@
 actions
-clone
+execute
 
 	| repo cloneOptions |
 	location exists ifTrue: [IceCloneLocationAlreadyExists signalFor: self].

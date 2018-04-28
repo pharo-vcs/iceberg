@@ -3,7 +3,7 @@ cloneRepository
 	IceGitClone new
 		location: self locationToUse;
 		url: self remoteToUse url;
-		clone.
+		execute.
 	
 	self repository
 		location: self locationToUse;

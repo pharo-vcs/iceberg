@@ -11,4 +11,4 @@ testLocationAlreadyExistsThrowsException
 				url: fixture factory defaultRemoteUrl;
 				yourself. 
 				
-	self should: [ action clone ] raise: IceCloneLocationAlreadyExists
+	self should: [ action execute ] raise: IceCloneLocationAlreadyExists

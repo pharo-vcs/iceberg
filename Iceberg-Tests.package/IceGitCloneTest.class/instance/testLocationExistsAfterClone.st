@@ -6,6 +6,6 @@ testLocationExistsAfterClone
 	IceGitClone new
 		location: fixture location;
 		url: fixture factory defaultRemoteUrl;
-		clone.
+		execute.
 		
 	self assert: fixture location exists
