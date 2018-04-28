@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 11/9/2017 10:21",
+	"super" : "IceErrorVisitor",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceInteractiveErrorVisitor",
+	"type" : "normal"
+}

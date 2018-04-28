@@ -1,3 +1,0 @@
-accessing
-status
-	^ self subclassResponsibility
