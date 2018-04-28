@@ -1,3 +1,9 @@
 accessing
 remoteUrl
-	^ 'git@bitbucket.org:{1}/{2}.git' format: { self userName. self projectName }
+	
+	| builder |
+	builder := IceUrlBuilder new
+		protocol: self selectedProtocol new;
+		username: self userName project: self projectName.
+	self configureBuilder: builder.
+	^ builder buildUrl
