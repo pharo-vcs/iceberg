@@ -13,9 +13,9 @@ smalltalk:
 
 matrix:
   allow_failures:
-  - Pharo-6.1
-  - Pharo-64-7.0
-  - Pharo-64-6.1
+  - smalltalk: Pharo-6.1
+  - smalltalk: Pharo-64-7.0
+  - smalltalk: Pharo-64-6.1
 
 before_install:
 - eval "$(ssh-agent)"
