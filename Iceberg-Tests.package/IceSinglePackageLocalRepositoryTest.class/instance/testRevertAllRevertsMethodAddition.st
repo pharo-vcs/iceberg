@@ -1,5 +1,5 @@
-tests-reverse
-testRevertMethodAddition
+tests-revert
+testRevertAllRevertsMethodAddition
 
 	| className |
 	className := 'IceGeneratedClassForTesting'.

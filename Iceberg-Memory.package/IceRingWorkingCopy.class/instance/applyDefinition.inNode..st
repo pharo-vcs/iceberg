@@ -1,6 +1,6 @@
 private-impacting-changes
-applyDefinition: anIceDefinition 
+applyDefinition: anIceDefinition inNode: aNode
 
 	| visitor |
 	visitor := IceRingWorkingCopyChangerVisitor on: self.
-	anIceDefinition accept: visitor.
+	aNode accept: visitor.

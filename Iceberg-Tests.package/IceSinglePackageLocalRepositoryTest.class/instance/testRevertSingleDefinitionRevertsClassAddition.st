@@ -1,5 +1,5 @@
-tests-reverse
-testRevertClassAddition
+tests-revert
+testRevertSingleDefinitionRevertsClassAddition
 
 	| className |
 	className := 'IceGeneratedClassForTesting'.
@@ -10,5 +10,5 @@ testRevertClassAddition
 		inPackage: self packageName1 asSymbol.
 
 	self assertClassExists: className.
-	self workingCopy discardChanges.
+	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className).
 	self denyClassExists: className.

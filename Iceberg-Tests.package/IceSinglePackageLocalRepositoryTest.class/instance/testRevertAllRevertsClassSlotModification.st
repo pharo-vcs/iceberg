@@ -1,5 +1,5 @@
-tests-reverse
-testRevertClassSlotModification
+tests-revert
+testRevertAllRevertsClassSlotModification
 
 	| className class |
 	className := 'IceGeneratedClassForTesting'.

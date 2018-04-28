@@ -1,5 +1,4 @@
 visiting
 visitMethodNode: anIceMethodDefinition 
-	
-	1halt.
-	repository workingCopy applyDefinition: anIceMethodDefinition
+
+	repository workingCopy applyDefinition: anIceMethodDefinition inNode: currentNode

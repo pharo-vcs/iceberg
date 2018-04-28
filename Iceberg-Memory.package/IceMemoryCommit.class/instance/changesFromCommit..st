@@ -1,5 +1,5 @@
 private-changes
 changesFromCommit: anIceCommit 
 
-	^ anIceCommit packages, self packages
+	^ (anIceCommit changedPackagesToCommitInfo: self)
 		collect: [ :package | IceMemoryChange on: package ]

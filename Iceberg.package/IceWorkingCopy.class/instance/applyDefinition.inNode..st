@@ -1,5 +1,5 @@
 private-monticello
-applyDefinition: anIceDefinition 
+applyDefinition: anIceDefinition inNode: aNode
 
 	| loader |
 	loader := MCPackageLoader new.

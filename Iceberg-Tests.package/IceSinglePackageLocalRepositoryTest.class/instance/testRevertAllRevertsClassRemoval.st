@@ -1,5 +1,5 @@
-tests-reverse
-testRevertMethodRemoval
+tests-revert
+testRevertAllRevertsClassRemoval
 
 	| className |
 	className := 'IceGeneratedClassForTesting'.
@@ -9,14 +9,11 @@ testRevertMethodRemoval
 		createClass: className
 		inPackage: self packageName1 asSymbol.
 
-	self repository workingCopy
-		createMethod: 'method' inClass: className.
-
 	self repository commitWithMessage: 'Added class'.
 
 	self repository workingCopy
-		removeMethod: 'method' fromClass: className.
+		removeClassNamed: className.
 
-	self denyMethodExists: 'method' inClass: className.
+	self denyClassExists: className.
 	self workingCopy discardChanges.
-	self assertMethodExists: 'method' inClass: className.
+	self assertClassExists: className.

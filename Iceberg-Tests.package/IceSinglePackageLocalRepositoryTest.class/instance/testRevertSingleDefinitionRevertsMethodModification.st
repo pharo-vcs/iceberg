@@ -1,5 +1,5 @@
-tests-reverse
-testRevertMethodModification
+tests-revert
+testRevertSingleDefinitionRevertsMethodModification
 
 	| className |
 	className := 'IceGeneratedClassForTesting'.
@@ -21,7 +21,7 @@ testRevertMethodModification
 	self
 		assert: ((self repository workingCopy environment ask behaviorNamed: className) methodNamed: 'method') sourceCode
 		equals: 'method ^ 42'.
-	self workingCopy discardChanges.
+	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className / 'method').
 	self assertMethodExists: 'method' inClass: className.
 	self
 		assert: ((self repository workingCopy environment ask behaviorNamed: className) methodNamed: 'method') sourceCode
