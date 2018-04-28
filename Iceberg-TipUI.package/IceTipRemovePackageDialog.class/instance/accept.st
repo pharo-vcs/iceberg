@@ -1,5 +1,7 @@
 actions
 accept
-	self removeFileSystemCheckbox state 
-		ifTrue: [ self model delete ]
-		ifFalse: [ self model forget ]
+	1halt.
+	self removeFromRepositoryCheckbox state
+		ifTrue: [ self model entity removeFromDiskForce: true ].
+	self unloadFromImageCheckbox state
+		ifTrue: [ self model unload ].
