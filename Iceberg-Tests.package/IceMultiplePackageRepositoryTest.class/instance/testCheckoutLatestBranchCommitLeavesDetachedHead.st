@@ -1,5 +1,5 @@
 tests-checkout
 testCheckoutLatestBranchCommitLeavesDetachedHead
 
-	repository branch commit checkoutAllPackages.
-	self assert: repository head isDetached.
+	self  repository branch commit checkoutAllPackages.
+	self assert: self  repository head isDetached.

@@ -19,25 +19,25 @@ testImageBehindHeadShouldOnlyMergeInImage
 	"
 	| referenceCommit headCommit mergeCommit |
 	
-	repository workingCopy addPackageNamed: self packageName1.
-	repository workingCopy addPackageNamed: self packageName2.
-	referenceCommit := repository commitWithMessage: 'First commit'.
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy addPackageNamed: self packageName2.
+	referenceCommit := self repository commitWithMessage: 'First commit'.
 
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
-	headCommit := mergeCommit := repository commitWithMessage: 'Change 1'.
+	headCommit := mergeCommit := self repository commitWithMessage: 'Change 1'.
 	
 	referenceCommit adopt.
 
-	self assert: repository headCommit equals: headCommit.
+	self assert: self repository headCommit equals: headCommit.
 	self assert: headCommit equals: mergeCommit.
-	self assert: headCommit parent equals: repository workingCopy referenceCommit.
+	self assert: headCommit parent equals: self repository workingCopy referenceCommit.
 	
 	"Experimental issue. If we merge and we have dirty package we should just resume"
-	[repository workingCopy mergeCommit: mergeCommit]
+	[self repository workingCopy mergeCommit: mergeCommit]
 		on: Warning
 		do: #resume.
 	
-	self assert: repository headCommit equals: headCommit.
-	self assert: headCommit equals: repository workingCopy referenceCommit.
+	self assert: self repository headCommit equals: headCommit.
+	self assert: headCommit equals: self repository workingCopy referenceCommit.

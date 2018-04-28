@@ -4,17 +4,17 @@ testCheckoutOlderCommitLeavesRepositoryInDetachedMode
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self  repository workingCopy
 		createClass: 'IceAnotherGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
-	repository commitWithMessage: message.
+	self  repository commitWithMessage: message.
 	
 	message := 'Added IceAnotherClass'.
 	"This is a Ring working copy"
-	repository workingCopy
+	self  repository workingCopy
 		createClass: 'IceAnotherClass' 
 		inPackage: self packageName1 asSymbol.
-	repository commitWithMessage: message.
+	self  repository commitWithMessage: message.
 	
-	repository branch newCommitWalk commits second checkoutAllPackages.
-	self assert: repository head isDetached
+	self  repository branch newCommitWalk commits second checkoutAllPackages.
+	self assert: self  repository head isDetached

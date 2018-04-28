@@ -1,4 +1,4 @@
 assertions
 assertPackageExists: aString 
 	
-	self assert: (repository workingCopy environment ask includesPackageNamed: aString)
+	self assert: (self repository workingCopy environment ask includesPackageNamed: aString)

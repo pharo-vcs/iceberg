@@ -1,6 +1,7 @@
 tests
 testNewRepositoryPackagesAreClean
 
+	self installBaseline.
 	repository := IceRepository registry
 		detect: [ :e | e name = 'pharo-git-test' ].
 		

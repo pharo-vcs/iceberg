@@ -1,4 +1,4 @@
 tests-changes
 testNoChangesInImageMakesNoModifications
 
-	self deny: repository isModified
+	self deny: self repository isModified

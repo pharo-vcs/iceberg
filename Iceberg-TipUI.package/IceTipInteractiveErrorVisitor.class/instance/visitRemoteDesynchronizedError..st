@@ -10,7 +10,8 @@ You need to pull remote changes before continue and push your changes.' format: 
 		falseChoice: 'Cancel'
 		cancelChoice: nil
 		default: false.	
-	continue ifFalse: [ ^ self ].	
+	(continue isNil or: [continue not])
+		ifTrue: [ ^ self ].	
 
 	command := IcePullRemoteCommand new
 		repository: self repository;

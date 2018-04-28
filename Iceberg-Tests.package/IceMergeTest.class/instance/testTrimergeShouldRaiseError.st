@@ -18,25 +18,25 @@ testTrimergeShouldRaiseError
 	"
 
 	| referenceCommit headCommit mergeCommit |
-	repository workingCopy addPackageNamed: self packageName1.
-	repository workingCopy addPackageNamed: self packageName2.
-	referenceCommit := repository commitWithMessage: 'First commit'.
-	repository workingCopy
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy addPackageNamed: self packageName2.
+	referenceCommit := self repository commitWithMessage: 'First commit'.
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
-	mergeCommit := repository commitWithMessage: 'Change 1'.
-	repository workingCopy
+	mergeCommit := self repository commitWithMessage: 'Change 1'.
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting2'
 		inPackage: self packageName1 asSymbol.
-	headCommit := repository commitWithMessage: 'Change 2'.
+	headCommit := self repository commitWithMessage: 'Change 2'.
 	referenceCommit adopt.
 	self assert: headCommit parent equals: mergeCommit.
-	self assert: mergeCommit parent equals: repository workingCopy referenceCommit.
+	self assert: mergeCommit parent equals: self repository workingCopy referenceCommit.
 	self
 		should: [ "Experimental issue. If we merge and we have dirty package we should just resume"
-			[ repository workingCopy mergeCommit: mergeCommit ]
+			[ self repository workingCopy mergeCommit: mergeCommit ]
 				on: Warning
 				do: #resume ]
 		raise: IceMergeAborted.
 	self assert: headCommit parent equals: mergeCommit.
-	self assert: mergeCommit parent equals: repository workingCopy referenceCommit
+	self assert: mergeCommit parent equals: self repository workingCopy referenceCommit

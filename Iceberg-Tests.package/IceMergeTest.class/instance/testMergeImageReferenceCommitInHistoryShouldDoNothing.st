@@ -19,23 +19,23 @@ testMergeImageReferenceCommitInHistoryShouldDoNothing
 	"
 	| headCommit mergeCommit |
 	
-	repository workingCopy addPackageNamed: self packageName1.
-	repository workingCopy addPackageNamed: self packageName2.
-	mergeCommit := repository commitWithMessage: 'First commit'.
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy addPackageNamed: self packageName2.
+	mergeCommit := self repository commitWithMessage: 'First commit'.
 
-	repository workingCopy
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
-	headCommit := repository commitWithMessage: 'Change 1'.
+	headCommit := self repository commitWithMessage: 'Change 1'.
 	
 	mergeCommit checkout.
 
-	self assert: headCommit parent equals: repository workingCopy referenceCommit.
-	self assert: mergeCommit equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: headCommit parent equals: self repository workingCopy referenceCommit.
+	self assert: mergeCommit equals: self repository workingCopy referenceCommit.
+	self assert: self repository workingCopy isModified not.
 	
-	repository workingCopy mergeCommit: mergeCommit.
+	self repository workingCopy mergeCommit: mergeCommit.
 	
-	self assert: headCommit parent equals: repository workingCopy referenceCommit.
-	self assert: mergeCommit equals: repository workingCopy referenceCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: headCommit parent equals: self repository workingCopy referenceCommit.
+	self assert: mergeCommit equals: self repository workingCopy referenceCommit.
+	self assert: self repository workingCopy isModified not.

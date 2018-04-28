@@ -1,5 +1,5 @@
 tests
 testWorkingStateIncludesPackage1CurrentCommit
  	
-	repository workingCopy initializePackagesFromRepository.
-	self assert: (repository workingCopy workingCopyState includesCommit: self commit1).
+	self repository workingCopy initializePackagesFromRepository.
+	self assert: (self repository workingCopy workingCopyState includesCommit: self commit1).

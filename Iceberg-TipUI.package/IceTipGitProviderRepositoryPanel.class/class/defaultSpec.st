@@ -22,4 +22,9 @@ defaultSpec
 							add: #subdirectoryLabel width: self labelWidth;
 							add: #subdirectoryInputText ]
 					height: self inputTextHeight;
+				newRow: [ :row | 
+						row 
+							add: #protocolLabel width: self labelWidth;
+							add: #protocolDropList ]
+					height: self inputTextHeight;
 				newRow: #spacePanel ]

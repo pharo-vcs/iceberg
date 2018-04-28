@@ -1,5 +1,5 @@
 tests-checkout
 testCheckoutRepositoryDoesNotLeaveDetachedHead
 
-	repository checkoutAllPackages.
-	self deny: repository head isDetached
+	self  repository checkoutAllPackages.
+	self deny: self  repository head isDetached

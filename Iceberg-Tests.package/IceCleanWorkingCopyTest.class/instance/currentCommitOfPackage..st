@@ -1,4 +1,4 @@
 helpers
 currentCommitOfPackage: aPackageName
 
-	^ (repository workingCopy packageNamed: aPackageName) currentCommit
+	^ (self repository workingCopy packageNamed: aPackageName) currentCommit

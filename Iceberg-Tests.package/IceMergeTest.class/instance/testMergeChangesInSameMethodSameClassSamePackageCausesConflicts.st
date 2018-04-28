@@ -1,29 +1,29 @@
-tests
+merge-conflicts
 testMergeChangesInSameMethodSameClassSamePackageCausesConflicts
 
 	"This is a Ring working copy"
 	| initialCommit change1Commit change2Commit |
-	repository workingCopy addPackageNamed: self packageName1.
-	repository workingCopy addPackageNamed: self packageName2.
-	repository workingCopy
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy addPackageNamed: self packageName2.
+	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
 		inPackage: self packageName1 asSymbol.
-	repository workingCopy
+	self repository workingCopy
 		createMethod: 'test ^ 1' inClass: 'IceGeneratedClassForTesting' asSymbol.
-	initialCommit := repository commitWithMessage: 'First commit'.
+	initialCommit := self repository commitWithMessage: 'First commit'.
 
-	repository createBranch: 'change1' inCommit: initialCommit.
-	repository workingCopy
+	self repository createBranch: 'change1' inCommit: initialCommit.
+	self repository workingCopy
 		createMethod: 'test ^ 2' inClass: 'IceGeneratedClassForTesting' asSymbol.
-	change1Commit := repository commitWithMessage: 'Change 1'.
+	change1Commit := self repository commitWithMessage: 'Change 1'.
 
-	repository unload.
-	repository createBranch: 'change2' inCommit: initialCommit.
+	self repository unload.
+	self repository createBranch: 'change2' inCommit: initialCommit.
 
-	repository head checkout: IceCheckoutAllPackages new.
-	repository workingCopy
+	self repository head checkout: IceCheckoutAllPackages new.
+	self repository workingCopy
 		createMethod: 'test ^ 3' inClass: 'IceGeneratedClassForTesting' asSymbol.
-	change2Commit := repository commitWithMessage: 'Change 2'.
+	change2Commit := self repository commitWithMessage: 'Change 2'.
 	
-	(repository branchNamed: 'change1') checkout.
-	self should: [repository workingCopy mergeCommit: change2Commit] raise: IceMergeResolutionRequest
+	(self repository branchNamed: 'change1') checkout.
+	self should: [self repository workingCopy mergeCommit: change2Commit] raise: IceMergeResolutionRequest

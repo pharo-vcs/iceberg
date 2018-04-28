@@ -33,28 +33,28 @@ testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAnd
 	mergeBaseCommit := self repository commitWithMessage: 'First commit'.
 
 	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting'
+		createClass: 'IceClassInHead'
 		inPackage: self packageName1 asSymbol.
 	headCommit := self repository commitWithMessage: 'Change 1'.
 	
 	((self repository branchNamed: 'master') commit: mergeBaseCommit) checkout.
 
 	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting2'
+		createClass: 'IceClassToMerge'
 		inPackage: self packageName1 asSymbol.
 	mergeCommit := self repository commitWithMessage: 'Change 2'.
-	(repository branchNamed: 'master') commit: headCommit.
+	(self repository branchNamed: 'master') commit: headCommit.
 
-	self assert: repository workingCopy referenceCommit equals: mergeCommit.
-	self assert: repository headCommit equals: headCommit.
-	self assert: repository headCommit parent equals: mergeBaseCommit.
+	self assert: self repository workingCopy referenceCommit equals: mergeCommit.
+	self assert: self repository headCommit equals: headCommit.
+	self assert: self repository headCommit parent equals: mergeBaseCommit.
 	self assert: mergeCommit parent equals: mergeBaseCommit.
-	self assert: repository workingCopy isModified not.
+	self assert: self repository workingCopy isModified not.
 	
-	repository workingCopy mergeCommit: mergeCommit.
+	self repository workingCopy mergeCommit: mergeCommit.
 	
-	self assert: repository headCommit parent equals: headCommit.
-	self assert: repository workingCopy referenceCommit equals: repository headCommit.
-	self assert: repository headCommit ancestors size equals: 2.
-	self assert: (repository headCommit ancestors includes: mergeCommit).
-	self assert: repository workingCopy isModified not.
+	self assert: self repository headCommit parent equals: headCommit.
+	self assert: self repository workingCopy referenceCommit equals: self repository headCommit.
+	self assert: self repository headCommit ancestors size equals: 2.
+	self assert: (self repository headCommit ancestors includes: mergeCommit).
+	self assert: self repository workingCopy isModified not.

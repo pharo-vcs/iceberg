@@ -1,9 +1,9 @@
 *Iceberg
 getOrCreateIcebergRepository
-	| remoteUrl remote |
-
+	| remoteUrl |
 	remoteUrl := self perform: Iceberg remoteTypeSelector.
-	remote := IceGitRemote url: remoteUrl.
 	^ IceRepository registry 
-		detect: [ :repo | repo origin referencesSameRemoteLocationAs: remote ]
-		ifNone: [ self createIcebergRepositoryWithFallbackFor: remote url: remoteUrl ]
+		detect: [ :repo | repo isCloneOfUrl: remoteUrl ]
+		ifNone: [ | remote |
+			remote := IceGitRemote url: remoteUrl.
+			self createIcebergRepositoryWithFallbackFor: remote url: remoteUrl ]

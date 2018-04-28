@@ -13,7 +13,7 @@ initializeWidgets
 		self addShortcutsTo: ann widget textArea ].
 			
 	self whenBuiltDo: [ :ann |  self addShortcutsTo: ann widget ].
-	
+
 	self focusOrder 
-		add: diffPanel;
-		add: commentPanel
+		add: commentPanel;
+		add: diffPanel

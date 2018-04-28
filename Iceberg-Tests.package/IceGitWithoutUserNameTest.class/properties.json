@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractTestCase",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"username",
+		"email"
+	],
+	"name" : "IceGitWithoutUserNameTest",
+	"type" : "normal"
+}

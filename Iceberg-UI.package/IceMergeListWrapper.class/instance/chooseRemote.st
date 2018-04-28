@@ -1,4 +1,4 @@
 resolution
 chooseRemote
 	
-	^ item value selectRight
+	^ item value selectLeft

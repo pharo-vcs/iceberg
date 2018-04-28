@@ -10,7 +10,8 @@
 		"url",
 		"remote",
 		"branchName",
-		"subdirectory"
+		"subdirectory",
+		"repository"
 	],
 	"name" : "IceRepositoryCreator",
 	"type" : "normal"
