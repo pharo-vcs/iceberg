@@ -1,7 +1,6 @@
 actions
 accept
-	1halt.
 	self removeFromRepositoryCheckbox state
-		ifTrue: [ self model entity removeFromDiskForce: true ].
+		ifTrue: [ self model entity remove ].
 	self unloadFromImageCheckbox state
 		ifTrue: [ self model unload ].
