@@ -1,4 +1,4 @@
-private-impacting changes
+private-impacting-changes
 removeMethod: anIceMethodDefinition 
 	
-	self subclassResponsibility
+	anIceMethodDefinition asMCDefinition unload
