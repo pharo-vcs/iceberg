@@ -1,6 +1,6 @@
 initialization
-initializeWidgets
-	currentBranchLabel := self newLabel label: ('Current branch: ', self model branchName).
+initializeWidgetsContents
+	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel label: 'Pharo issue Number'.
 	issueNumberText := self newTextInput
 		ghostText: 'e.g., 12345';
@@ -15,8 +15,4 @@ initializeWidgets
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ].
-	
-	self focusOrder
-		add: issueNumberText;
-		add: issueText
+	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ]
