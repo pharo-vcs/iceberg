@@ -1,23 +1,22 @@
 initialization
 initializeWidgets
-	super initializeWidgets.
-	
-	branchLabel label: 'FogBugz issue'.
-	issueNumberText := self newTextInput 
+	currentBranchLabel := self newLabel label: ('Current branch: ', self model branchName).
+	branchLabel := self newLabel label: 'Pharo issue Number'.
+	issueNumberText := self newTextInput
 		ghostText: 'e.g., 12345';
 		autoAccept: true.
 	issueLabel := self newLabel label: 'Title'.
-	issueText := self newTextInput 
+	issueText := self newTextInput
 		ghostText: 'e.g., a-fogbugz-issue';
 		autoAccept: true.
-	
-	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
-	issueText whenBuiltDo: [ :w | 
-		w widget wrapFlag: false.
-		w widget enabled: false ]. 
-	issueNumberText textHolder 
-		whenChangedDo: [ :text | self validateIssue: text ].
 		
+	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ].
+	issueText
+		whenBuiltDo: [ :w | 
+			w widget wrapFlag: false.
+			w widget enabled: false ].
+	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ].
+	
 	self focusOrder
 		add: issueNumberText;
 		add: issueText
