@@ -4,7 +4,7 @@ execute
 	| repo cloneOptions |
 	location exists ifTrue: [IceCloneLocationAlreadyExists signalFor: self].
 	
-	location ensureCreateDirectory.
+	[location ensureCreateDirectory.
 	
 	repo := LGitRepository on: location.
 	cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
@@ -14,4 +14,6 @@ execute
 
 	(LGitRemote of: repo named: 'origin')
 		lookup;
-		setUrl: url.
+		setUrl: url.] on: Error do: [ :error |
+			location exists ifTrue: [ location ensureDeleteAll ].
+			error pass ]
