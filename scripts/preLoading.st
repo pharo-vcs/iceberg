@@ -27,6 +27,7 @@ MetacelloPharoPlatform select.
     'Iceberg-TipUI'
     'Iceberg-UI'
     'Iceberg-UI-Tests'
+    'Iceberg-Pharo6'
     
     'LibGit-Core'
     'LibGit-FileSystem'
