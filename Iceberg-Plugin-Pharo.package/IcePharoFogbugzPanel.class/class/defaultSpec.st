@@ -14,5 +14,4 @@ defaultSpec
 					row 
 						newColumn: #issueLabel width: self labelWidth;
 						newColumn: #issueText ] 
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+					height: self inputTextHeight ]
