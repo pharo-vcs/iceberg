@@ -1,0 +1,4 @@
+testing
+isGit
+	
+	^ factory isGit

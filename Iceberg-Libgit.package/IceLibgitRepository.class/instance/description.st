@@ -1,6 +1,6 @@
 printing
 description
 	^ [ super description ] on: Error do: [ 
-		location isNil
+		self location isNil
 			ifTrue: [ 'Not specified location' ]
-			ifFalse: [ 'Bad location: ', location path pathString ] ]
+			ifFalse: [ 'Bad location: ', self location path pathString ] ]
