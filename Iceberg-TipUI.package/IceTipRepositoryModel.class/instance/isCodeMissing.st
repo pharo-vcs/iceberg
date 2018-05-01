@@ -1,0 +1,3 @@
+testing
+isCodeMissing
+	^ entity isCodeMissing
