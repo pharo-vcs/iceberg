@@ -1,0 +1,3 @@
+accessing
+commitId
+	^ repositoryModel commitId
