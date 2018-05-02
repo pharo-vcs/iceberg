@@ -1,4 +1,5 @@
 initialization
 initializeFocusOrder
 	self focusOrder
-		add: issueNumberText
+		add: issueNumberText;
+		add: issueText
