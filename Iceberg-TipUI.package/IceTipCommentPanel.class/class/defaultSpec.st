@@ -6,4 +6,4 @@ defaultSpec
 			column 
 				newRow: #pushCheckbox height: self inputTextHeight;
 				newRow: #commentText;
-				newRow: #actionPanel height: self actionPanelHeight ]
+				newRow: #actionPanel height: self iceActionPanelHeight ]

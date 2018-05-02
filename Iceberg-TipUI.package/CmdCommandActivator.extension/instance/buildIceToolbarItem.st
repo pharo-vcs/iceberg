@@ -1,5 +1,5 @@
 *Iceberg-TipUI
-buildToolbarItem
+buildIceToolbarItem
 	| item |
 
 	item := (IceTipToolbarItem new

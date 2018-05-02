@@ -5,12 +5,12 @@ addRow: labelId value: valueId isLast: isLast to: column
 			column 
 				newRow: [ :row | 
 					row 
-						newColumn: labelId width: self labelWidth; 
+						newColumn: labelId width: self iceLabelWidth; 
 						newColumn: valueId ] ]
 		ifFalse: [  
 			column 
 				newRow: [ :row | 
 						row 
-							newColumn: labelId width: self labelWidth; 
+							newColumn: labelId width: self iceLabelWidth; 
 							newColumn: valueId ]
 				height: self rowHeight ]

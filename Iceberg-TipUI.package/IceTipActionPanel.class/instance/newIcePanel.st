@@ -1,5 +1,5 @@
 initialization
-newPanel
-	^ super newPanel
+newIcePanel
+	^ super newIcePanel
 		in: [ :this | this widget listDirection: #rightToLeft];
 		yourself

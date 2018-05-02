@@ -1,3 +1,3 @@
 accessing
-labelWidth
+iceLabelWidth
 	^ labelWidth ifNil: [ self class defaultLabelWidth ]

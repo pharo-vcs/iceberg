@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	super initializeWidgets.
-	packageList := self newTable.
+	packageList := self newIceTable.
 	statusBar := self instantiate: IceTipStatusBar.
 
 	self initializePackageList.

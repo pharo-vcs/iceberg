@@ -1,3 +1,3 @@
 accessing
-labelWidth
+iceLabelWidth
 	^ 130

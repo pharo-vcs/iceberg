@@ -1,3 +1,3 @@
 *Iceberg-TipUI
-newActionPanel
+newIceActionPanel
 	^ self instantiate: IceTipActionPanel

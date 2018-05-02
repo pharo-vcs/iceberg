@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	branchesList := self newTable.
+	branchesList := self newIceTable.
 	self initializeBranchesList.
 	
 	self focusOrder 

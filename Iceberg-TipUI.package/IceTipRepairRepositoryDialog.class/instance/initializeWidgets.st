@@ -1,8 +1,8 @@
 initialization
 initializeWidgets
-	reasonPanel := self newPanel.
-	optionsList := self newTable.
-	detailPanel := self newPanel.
+	reasonPanel := self newIcePanel.
+	optionsList := self newIceTable.
+	detailPanel := self newIcePanel.
 	
 	self initializeReasonPanel.
 	self initializeOptionsList.

@@ -1,3 +1,3 @@
 *Iceberg-TipUI
-labelWidth
+iceLabelWidth
 	^ 100

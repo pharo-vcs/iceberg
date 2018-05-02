@@ -1,3 +1,3 @@
 *Iceberg-TipUI
-newToolbar
+newIceToolbar
 	^ self instantiate: IceTipToolbar

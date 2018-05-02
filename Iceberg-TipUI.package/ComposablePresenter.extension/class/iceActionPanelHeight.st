@@ -1,3 +1,3 @@
 *Iceberg-TipUI
-actionPanelHeight
+iceActionPanelHeight
 	^ IceTipActionPanel defaultHeight

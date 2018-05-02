@@ -1,5 +1,5 @@
 *Iceberg-TipUI
-newPanel
+newIcePanel
 	^ PanelMorph new 
 		changeTableLayout;
 		hResizing: #spaceFill;

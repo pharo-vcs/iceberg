@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	iconPanel := self newPanel.
+	iconPanel := self newIcePanel.
 	iconPanel widget addMorph: #question asIcon asMorph.
 	
 	confirmLabel := self newLabel 

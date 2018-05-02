@@ -1,3 +1,3 @@
 *Iceberg-TipUI
-iconWidth
+iceIconWidth
 	^ 24

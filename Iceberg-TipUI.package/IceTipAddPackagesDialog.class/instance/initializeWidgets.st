@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	packagesList := self newTreeTable.
+	packagesList := self newIceTreeTable.
 	packageNameText := self newTextInput 
 		autoAccept: true;
 		ghostText: 'e.g., Collections'.

@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	contentPanel := self emptyPanel asSpecAdapter.
-	typeList := self newTable.
+	typeList := self newIceTable.
 	self initializeTypeList.
 			
 	self whenBuiltDo: [ :ann |
