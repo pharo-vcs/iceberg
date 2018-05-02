@@ -1,4 +1,4 @@
-accessing
+API-accessing
 locationIfPresent: aBlock ifAbsent: absentBlock
 
 	self location ifNil: [ ^ absentBlock value ].

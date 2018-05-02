@@ -1,0 +1,4 @@
+tests
+testMethodAccessHandleThroughAccessor
+
+	^ self testDefinedRepositoryAccessor allBranches

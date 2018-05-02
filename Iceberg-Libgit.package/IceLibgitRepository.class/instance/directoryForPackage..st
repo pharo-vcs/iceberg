@@ -1,4 +1,4 @@
-private
+API-packages
 directoryForPackage: mcPackage
 	| package |
 	package := self packageNamed: mcPackage name.

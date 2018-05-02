@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 5/2/2018 11:30",
+	"super" : "ReAbstractRule",
+	"category" : "Iceberg-ArchitecturalRules",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceShouldHandleLibgitErrors",
+	"type" : "normal"
+}

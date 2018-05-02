@@ -1,4 +1,4 @@
-as yet unclassified
+API-packages
 directoryPathStringForPackage: aMCPackage 
 
 	^ self subdirectory isEmptyOrNil 

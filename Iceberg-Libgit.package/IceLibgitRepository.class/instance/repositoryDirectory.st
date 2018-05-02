@@ -1,3 +1,3 @@
-accessing
+API-accessing
 repositoryDirectory
 	^ self location

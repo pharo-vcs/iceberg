@@ -1,5 +1,6 @@
-accessing remotes
+private-remotes
 doRemoveRemote: aRemote
-	(LGitRemote of: self repositoryHandle named: aRemote name)
-		lookup;
-		delete
+	self handleLibgitError: [
+		(LGitRemote of: self repositoryHandle named: aRemote name)
+			lookup;
+			delete ]
