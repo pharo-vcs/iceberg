@@ -1,11 +1,18 @@
 test-modifications
 testMergeTwoModificationsToDifferentDefinitionsIsConflict
 
-	| rightTree leftTree mergedTree |
-	leftTree := IceNode value: (IceNoModification definition: (IceTestDefinition named: 'left')).
-	rightTree := IceNode value: (IceModification left: (IceTestDefinition named: 'right') right: (IceTestDefinition named: 'left')).
+	| rightTree leftTree mergedTree conflictOperation |
+	leftTree := self buildTestTreeWithOperation: (IceNoModification definition: ((IceTestDefinition named: 'common')
+		contents: 'old')).
+	rightTree := self buildTestTreeWithOperation: (IceModification
+		left: ((IceTestDefinition named: 'common')
+			contents: 'new')
+		right: ((IceTestDefinition named: 'common')
+			contents: 'old')).
 	
-	mergedTree := IceMerge new merge: leftTree with: rightTree.
-	self assert: mergedTree value isConflict not.
-	self assert: mergedTree value leftContents equals: 'right'.
-	self assert: mergedTree value rightContents equals: 'left'.
+	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	
+	conflictOperation := (mergedTree / 'common') value.
+	self assert: conflictOperation isConflict not.
+	self assert: conflictOperation leftContents equals: 'new'.
+	self assert: conflictOperation rightContents equals: 'old'.

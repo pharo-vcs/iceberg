@@ -1,0 +1,3 @@
+enumerating
+collectWithPath: aBlockClosure 
+	^ self

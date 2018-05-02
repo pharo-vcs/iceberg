@@ -7,28 +7,34 @@ MetacelloPharoPlatform select.
     'BaselineOfTonel'
     'BaselineOfLibGit'
     'BaselineOfIceberg'
-   
     'MonticelloTonel-Core'
     'MonticelloTonel-FileSystem'
     'MonticelloTonel-Tests'
-
+    'Iceberg-UI' 
+    'Iceberg-TipUI'
+    'Iceberg-Plugin-Pharo' 
+    'Iceberg-Plugin-Metacello' 
+    'Iceberg-Plugin-GitHub' 
+    'Iceberg-Plugin' 
+    'Iceberg-Metacello-Integration' 
+    'Iceberg-Libgit-Tonel' 
+    'Iceberg-Libgit-Filetree' 
+    'Iceberg-Libgit' 
+    'Iceberg-Tests'
+    'Iceberg-Memory'
+    'Iceberg-UI-Tests'
+    'Iceberg-Core' 
+    'Iceberg-Changes' 
+    'Iceberg-Adapters' 
     'Iceberg'
-	'Iceberg-GitCommand'
-	'Iceberg-Libgit'
-	'Iceberg-Libgit-Filetree'
-	'Iceberg-Libgit-Tonel'
-	'Iceberg-Memory'
-	'Iceberg-Metacello-Integration'
-	'Iceberg-Plugin'
-	'Iceberg-Plugin-GitHub'
-	'Iceberg-Plugin-Metacello'
-	'Iceberg-Plugin-Pharo'
-	'Iceberg-Tests'
-	'Iceberg-TipUI'
-	'Iceberg-UI'
-	'Iceberg-UI-Tests'
-    
-    'LibGit-Core'
-	'LibGit-FileSystem'
-	'LibGit-Tests') 
-do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
+    'Iceberg-GitCommand'
+    'Iceberg-SmartUI'
+    'Iceberg-Pharo6'
+    'LibGit-Core') 
+do: [ :each |
+    (each asPackageIfAbsent: [ 
+        (each , ' not found') logCr.
+        nil ])
+            ifNotNil: [ :package |
+                ('Removing ', each) logCr.
+                package removeFromSystem ] ].

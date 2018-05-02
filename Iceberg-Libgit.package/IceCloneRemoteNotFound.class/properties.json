@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCloneError",
+	"category" : "Iceberg-Libgit-Exceptions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceCloneRemoteNotFound",
+	"type" : "normal"
+}

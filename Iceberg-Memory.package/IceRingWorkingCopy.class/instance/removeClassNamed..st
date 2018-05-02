@@ -1,7 +1,7 @@
-utilities
+private-impacting-changes
 removeClassNamed: aString 
 	
-	| class method |
+	| class |
 	class := ringEnvironment ask classNamed: aString.
-	method := ringEnvironment removeBehavior: class.
+	ringEnvironment removeBehavior: class.
 	self markAsDirtyPackageNamed: class package name.

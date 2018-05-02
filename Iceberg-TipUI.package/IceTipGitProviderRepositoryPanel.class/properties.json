@@ -9,7 +9,9 @@
 		"userNameLabel",
 		"userNameInputText",
 		"projectNameLabel",
-		"projectNameInputText"
+		"projectNameInputText",
+		"protocolDropList",
+		"protocolLabel"
 	],
 	"name" : "IceTipGitProviderRepositoryPanel",
 	"type" : "normal"

@@ -1,4 +1,4 @@
 assertions
 denyClassExists: aString 
 	
-	self deny: (repository workingCopy environment ask includesClassNamed: aString)
+	self deny: (self repository workingCopy environment ask includesClassNamed: aString)

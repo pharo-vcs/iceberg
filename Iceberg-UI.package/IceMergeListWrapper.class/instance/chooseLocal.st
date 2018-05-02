@@ -1,4 +1,4 @@
 resolution
 chooseLocal
 	
-	^ item value selectLeft
+	^ item value selectRight

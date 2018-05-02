@@ -1,11 +1,15 @@
 test-additions
 testMergeConflictingAdditions
 
-	| rightTree leftTree mergedTree |
-	leftTree := IceNode value: (IceAddition definition: (IceTestDefinition named: 'left1')).
-	rightTree := IceNode value: (IceAddition definition: (IceTestDefinition named: 'left2')).
+	| rightTree leftTree mergedTree conflictOperation |
+	leftTree := self buildTestTreeWithOperation: (IceAddition definition: ((IceTestDefinition named: 'common')
+		contents: 'new1')).
+	rightTree := self buildTestTreeWithOperation: (IceAddition definition: ((IceTestDefinition named: 'common')
+		contents: 'new2')).
 	
-	mergedTree := IceMerge new merge: leftTree with: rightTree.
-	self assert: mergedTree value isConflict.
-	self assert: mergedTree value leftContents equals: 'left1'.
-	self assert: mergedTree value rightContents equals: 'left2'.
+	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	
+	conflictOperation := (mergedTree / 'common') value.
+	self assert: conflictOperation isConflict.
+	self assert: conflictOperation leftContents equals: 'new1'.
+	self assert: conflictOperation rightContents equals: 'new2'.

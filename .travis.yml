@@ -7,8 +7,15 @@ os:
 
 smalltalk:
 - Pharo-7.0
+- Pharo64-7.0
+- Pharo-6.1
+- Pharo64-6.1
+
+matrix:
+  allow_failures:
+  - smalltalk: Pharo64-7.0
+  - smalltalk: Pharo64-6.1
 
 before_install:
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
-- ssh -T git@github.com || echo "Ok"

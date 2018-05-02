@@ -1,5 +1,6 @@
 accessing
 allPathSegments
 
-	self parent ifNil: [ ^ #() ].
+	self isRoot ifTrue: [ ^ #() ].
+	self parent isRoot ifTrue: [ ^ { self key } ].
 	^ self parent allPathSegments copyWith: self key

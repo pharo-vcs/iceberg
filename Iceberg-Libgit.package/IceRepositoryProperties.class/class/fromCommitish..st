@@ -6,8 +6,8 @@ fromCommitish: aCommitish
 		ifTrue: [ aCommitish fileSystem ]
 		ifFalse: [ aCommitish fileSystem / repository subdirectory ].
 	ref := dir / self propertiesFileName.
-	properties := ref exists 
-		ifTrue: [ ref readStreamDo: [ :stream | STON fromStream: stream ] ]
+	properties := ref exists
+		ifTrue: [ self readPropertiesFrom: ref ]
 		ifFalse: [ Dictionary new ].
 	^ (self fromDictionary: properties)
 		repository: repository;

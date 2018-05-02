@@ -7,4 +7,6 @@ visitClassDefinition: anIceClassDefinition
 	workingCopy
 		createClass: anIceClassDefinition name
 		inPackage: package name
-		superclass: anIceClassDefinition asMCDefinition superclassName.
+		with: [ :class | 
+			class superclass name: anIceClassDefinition asMCDefinition superclassName.
+			class instanceVariables: anIceClassDefinition asMCDefinition instVarNames ].

@@ -4,3 +4,6 @@ LGitLibrary uniqueInstance shutdownLibGit2 asString.
 
 "Enable metacello integration by default"
 Iceberg enableMetacelloIntegration: true.
+
+"Cleanup some global variables that seem dirty on CI updates"
+IceLibgitRepository defaultFileFormatType: nil.

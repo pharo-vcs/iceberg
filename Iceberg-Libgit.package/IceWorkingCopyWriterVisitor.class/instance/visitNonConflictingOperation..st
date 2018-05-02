@@ -1,4 +1,0 @@
-visiting
-visitNonConflictingOperation: anIceNonConflictingOperation
-	
-	anIceNonConflictingOperation chosenOperation accept: self

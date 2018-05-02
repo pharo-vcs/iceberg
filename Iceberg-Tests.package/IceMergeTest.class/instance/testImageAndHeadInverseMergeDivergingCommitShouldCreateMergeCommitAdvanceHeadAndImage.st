@@ -33,14 +33,14 @@ testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAnd
 	mergeBaseCommit := self repository commitWithMessage: 'First commit'.
 
 	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting'
+		createClass: 'IceClassInHead'
 		inPackage: self packageName1 asSymbol.
 	headCommit := self repository commitWithMessage: 'Change 1'.
 	
 	((self repository branchNamed: 'master') commit: mergeBaseCommit) checkout.
 
 	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting2'
+		createClass: 'IceClassToMerge'
 		inPackage: self packageName1 asSymbol.
 	mergeCommit := self repository commitWithMessage: 'Change 2'.
 	(self repository branchNamed: 'master') commit: headCommit.

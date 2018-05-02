@@ -6,9 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"source",
-		"target",
-		"mergeTree"
+		"mergeTree",
+		"repository",
+		"mergeCommit",
+		"imageCommit",
+		"changesToWorkingCopyTree"
 	],
 	"name" : "IceMerge",
 	"type" : "normal"

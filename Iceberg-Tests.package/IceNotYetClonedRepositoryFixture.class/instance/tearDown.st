@@ -1,4 +1,4 @@
 running
 tearDown
 
-	self location ensureDeleteAll.
+	self location ifNotNil: #ensureDeleteAll.

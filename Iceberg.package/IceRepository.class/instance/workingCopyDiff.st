@@ -1,4 +1,4 @@
-*Iceberg-Changes
+as yet unclassified
 workingCopyDiff
 	
-	^ self workingCopyDiffToCommit: self head
+	^ self workingCopy diffToReferenceCommit

@@ -1,0 +1,4 @@
+actions
+calculateDiff
+
+	^ self mergeAction
