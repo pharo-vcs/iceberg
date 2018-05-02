@@ -6,7 +6,6 @@ basicExecute
 		during: [ 
 			self repository
 				commitChanges: (diff copyWithOnly: items)
-				withMessage: message.
-			self isPublish ifTrue: [ self repository push ] ].
+				withMessage: message ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 	

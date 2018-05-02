@@ -5,12 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"diff",
-		"items",
-		"message",
-		"publish"
-	],
-	"name" : "IceTipCommitAction",
+	"instvars" : [ ],
+	"name" : "IceTipPushAction",
 	"type" : "normal"
 }

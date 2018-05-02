@@ -1,3 +1,7 @@
 visiting
 visitGenericError: anError
-	anError pass
+
+	IceGenericError new
+		messageText: anError messageText;
+		wrappedException: anError;
+		signal
