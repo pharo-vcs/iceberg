@@ -1,4 +1,4 @@
 acccessing-ui
 checkoutBranchPanelsOnModel: anIceTipCachedModel 
 	
-	^ { IcePharoFogbugzPanel on: anIceTipCachedModel }
+	^ { IcePharoNewBranchFromIssuePanel on: anIceTipCachedModel }

@@ -17,9 +17,4 @@ defaultSpec
 							add: #subdirectoryLabel width: self labelWidth;
 							add: #subdirectoryInputText ]
 					height: self inputTextHeight;
-"				newRow: [ :row | 
-						row 
-							add: #remoteLabel width: self labelWidth;
-							add: #remoteInputText ]
-					height: self inputTextHeight;"
 				newRow: #spacePanel ]

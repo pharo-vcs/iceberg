@@ -1,5 +1,6 @@
 initialization
 initializeWidgetsContents
+	spacePanel := PanelMorph new asSpecAdapter.
 	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel label: 'Pharo issue Number'.
 	issueNumberText := self newTextInput

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "IceTipCheckoutNewBranchPanel",
-	"category" : "Iceberg-Plugin-Pharo-FogBugz",
+	"category" : "Iceberg-Plugin-Pharo-Manuscript",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -12,6 +12,6 @@
 		"issue",
 		"fetched"
 	],
-	"name" : "IcePharoFogbugzPanel",
+	"name" : "IcePharoNewBranchFromIssuePanel",
 	"type" : "normal"
 }

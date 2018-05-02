@@ -1,3 +1,3 @@
 SystemOrganization addCategory: #'Iceberg-Plugin-Pharo'!
 SystemOrganization addCategory: #'Iceberg-Plugin-Pharo-Core'!
-SystemOrganization addCategory: #'Iceberg-Plugin-Pharo-FogBugz'!
+SystemOrganization addCategory: #'Iceberg-Plugin-Pharo-Manuscript'!

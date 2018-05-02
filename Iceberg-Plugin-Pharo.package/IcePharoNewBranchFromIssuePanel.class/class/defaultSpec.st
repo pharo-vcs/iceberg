@@ -1,6 +1,7 @@
 specs
 defaultSpec
 	<spec: #default>
+
 	^ SpecLayout composed
 		newColumn: [ :col | 
 			col
@@ -14,4 +15,5 @@ defaultSpec
 					row 
 						newColumn: #issueLabel width: self labelWidth;
 						newColumn: #issueText ] 
-					height: self inputTextHeight ]
+					height: self inputTextHeight;
+				newRow: #spacePanel ]
