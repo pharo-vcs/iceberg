@@ -11,17 +11,18 @@ handleVersionLoaded: ann
 	package ifNil: [ ^self ].
 
 	"now we can verify its status"
-	IceRepository registry
-		do: [ :each | 
-			(each includesPackageNamed: package name)
-				ifTrue: [ | icePackage isDirty |
-					icePackage := each packageNamed: package name.
-					"Ugly hack. Should enhance for next version"
-					self flag: #enhance.
-					isDirty := each workingCopy referenceCommit isUnknownCommit
-						ifTrue: [ true ]
-						ifFalse: [ | diff |
-							diff := each workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
-							diff includesPackageNamed: each name ].
-					icePackage beDirty: isDirty.
-					Iceberg announcer announce: (IceRepositoryModified for: each) ] ]
+	RPackageSet withoutCacheDo: [
+		IceRepository registry
+			do: [ :each | 
+				(each includesPackageNamed: package name)
+					ifTrue: [ | icePackage isDirty |
+						icePackage := each packageNamed: package name.
+						"Ugly hack. Should enhance for next version"
+						self flag: #enhance.
+						isDirty := each workingCopy referenceCommit isUnknownCommit
+							ifTrue: [ true ]
+							ifFalse: [ | diff |
+								diff := each workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
+								diff includesPackageNamed: package name ].
+						icePackage beDirty: isDirty.
+						Iceberg announcer announce: (IceRepositoryModified for: each) ] ]]

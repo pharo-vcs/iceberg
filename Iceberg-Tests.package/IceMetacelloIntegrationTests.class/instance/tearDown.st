@@ -11,7 +11,7 @@ tearDown
 		select: [:repo | 
 			repo isMissing not and: [ repo origin url endsWith: 'pharo-git-test.git' ]])
 		do: [ :repo | 
-			repository unload.
+			repo unload.
 			repo forget.
 			repo location ensureDeleteAll.
 			(IceMetacelloRepositoryAdapter for: repo) unregister ].
