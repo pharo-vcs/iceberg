@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipStatusBarItem",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model"
+	],
+	"name" : "IceTipBranchWithCommitStatusBarItem",
+	"type" : "normal"
+}
