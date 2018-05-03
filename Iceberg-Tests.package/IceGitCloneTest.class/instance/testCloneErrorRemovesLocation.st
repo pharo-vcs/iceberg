@@ -6,6 +6,6 @@ testCloneErrorRemovesLocation
 	self should: [IceGitClone new
 		location: fixture location;
 		url: 'bad url';
-		execute] raise: LGit_GIT_ERROR.
+		execute] raise: IceGenericError.
 		
 	self deny: fixture location exists
