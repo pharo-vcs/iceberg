@@ -4,4 +4,4 @@ addItemsFromContext: aContext
 	
 	menu := CmdMenu activatedBy: IceTipToolbarActivation.
 	menu buildInContext: aContext.
-	menu buildToolbarOn: self
+	menu buildIceToolbarOn: self

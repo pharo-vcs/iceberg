@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "LabelMorph",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"onClickBlock"
+	],
+	"name" : "IceTipURLLabelMorph",
+	"type" : "normal"
+}

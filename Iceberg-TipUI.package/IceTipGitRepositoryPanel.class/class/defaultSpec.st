@@ -7,14 +7,14 @@ defaultSpec
 			col
 				newRow: [ :row | 
 						row 
-							add: #remoteLabel width: self labelWidth;
+							add: #remoteLabel width: self iceLabelWidth;
 							add: #remoteInputText ]
 					height: self inputTextHeight;
 				newRow: #projectLocation
 					height: self inputTextHeight;
 				newRow: [ :row | 
 						row 
-							add: #subdirectoryLabel width: self labelWidth;
+							add: #subdirectoryLabel width: self iceLabelWidth;
 							add: #subdirectoryInputText ]
 					height: self inputTextHeight;
 				newRow: #spacePanel ]

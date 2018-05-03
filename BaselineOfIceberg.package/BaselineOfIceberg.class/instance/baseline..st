@@ -64,6 +64,8 @@ baseline: spec
 	spec for: #'pharo6.x' do: [	
 		self spec70: spec.
 		spec
+			package: 'Iceberg' with: [ 
+				spec requires: #( 'Iceberg-Pharo6' ) ];
 			package: 'Iceberg-Pharo6';
 			package: 'Iceberg-UI' with: [ 
 				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ];

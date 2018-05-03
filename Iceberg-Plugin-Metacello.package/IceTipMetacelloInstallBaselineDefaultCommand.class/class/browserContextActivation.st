@@ -3,6 +3,6 @@ browserContextActivation
 	<classAnnotation>
 	
 	^ CmdContextMenuCommandActivation 
-			byItemOf: IceMetacelloMenuGroup
+			byItemOf: IceTipMetacelloMenuGroup
 			order: 10
 			for: IceTipWorkingCopyContext

@@ -1,4 +1,4 @@
 initialization
 initializeSpacePanel
 	"just to gain space"
-	spacePanel := self newPanel. 
+	spacePanel := self newIcePanel. 

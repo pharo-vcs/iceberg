@@ -2,7 +2,7 @@ initialization
 initializeWidgets
 	super initializeWidgets.
 	
-	repositoryList := self newTable.
+	repositoryList := self newIceTable.
 	repositoryList widget
 		onAnnouncement: FTStrongSelectionChanged 
 		send: #repositoryStrongSelection: 

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "PabloTesone 5/1/2018 12:36",
+	"super" : "IceTipRepairAction",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipRepairCreateSubdirectory",
+	"type" : "normal"
+}

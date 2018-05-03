@@ -1,4 +1,4 @@
-accessing
+API-accessing
 commitishNamed: aName
 	"Resolve a name in the form of:
 	  - a commit hash

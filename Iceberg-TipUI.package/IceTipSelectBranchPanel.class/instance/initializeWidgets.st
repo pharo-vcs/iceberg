@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	branchesList := self newTreeTable.
+	branchesList := self newIceTreeTable.
 	branchNameText := self newTextInput 
 		autoAccept: true;
 		ghostText: 'e.g., Branch...'.

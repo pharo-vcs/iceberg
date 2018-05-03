@@ -1,0 +1,4 @@
+tests
+testMethodAccessHandleDirectly
+
+	^ handle allBranches

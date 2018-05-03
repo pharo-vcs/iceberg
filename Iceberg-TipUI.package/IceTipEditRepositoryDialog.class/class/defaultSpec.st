@@ -8,6 +8,6 @@ defaultSpec
 				newRow: #projectLocation height: self inputTextHeight;
 				newRow: [:row | 
 					row 
-						newColumn: #subdirectoryLabel width: self labelWidth;
+						newColumn: #subdirectoryLabel width: self iceLabelWidth;
 						newColumn: #subdirectoryInputText ]
 				height: self inputTextHeight ]

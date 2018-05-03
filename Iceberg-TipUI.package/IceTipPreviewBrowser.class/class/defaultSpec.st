@@ -10,4 +10,4 @@ defaultSpec
 					row newColumn: [ :column |
 						column 
 							add: #diffPanel;
-							add: #actionPanel height: self actionPanelHeight ] ] ]
+							add: #actionPanel height: self iceActionPanelHeight ] ] ]

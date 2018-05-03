@@ -3,8 +3,8 @@ basicSelectionChanged: aType
 	type := aType.
 	aType 
 		ifNotNil: [ 	
-			self replacePanelWith: type.
-			self title: type title ]
+			self title: type title.
+			self replacePanelWith: type ]
 		ifNil: [ 
 			self removeAllPanels.
 			self title: self class title ]

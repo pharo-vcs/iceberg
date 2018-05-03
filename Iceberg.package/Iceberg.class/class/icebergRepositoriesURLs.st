@@ -1,4 +1,4 @@
-*Iceberg-Adapters
+as yet unclassified
 icebergRepositoriesURLs
 	^ {
 		'git@github.com:pharo-vcs/iceberg.git'. 

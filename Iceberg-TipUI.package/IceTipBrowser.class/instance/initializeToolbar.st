@@ -1,4 +1,4 @@
 initialization
 initializeToolbar
-	toolbar := self newToolbar.
+	toolbar := self newIceToolbar.
 	self rebuildToolbar

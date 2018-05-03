@@ -1,4 +1,4 @@
-as yet unclassified
+API-accessing
 obtainRepositoryName
 	
 	^ self location basename

@@ -1,5 +1,6 @@
 visiting
 visitERROR: anError
+
 	(anError object = LGitErrorTypeEnum giterr_ssh)
 		ifTrue: [ anError resignalAs: IceAuthenticationError new ].
 	"user errors needs to be handled differently, since they do not have an 

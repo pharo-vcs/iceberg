@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	panel := self newPanel.
+	panel := self newIcePanel.
 	panel widget addMorphBack: (actionMorphPanel := PanelMorph new 
 		changeTableLayout;
 		listDirection: #rightToLeft;

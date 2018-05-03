@@ -1,3 +1,3 @@
-as yet unclassified
+API-properties
 readerClass
 	^ self properties readerClass

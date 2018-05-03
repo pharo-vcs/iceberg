@@ -1,4 +1,4 @@
-factory
+private-commits
 commitFromGitCommit: aLGitCommit 
 	
 	^ self commitCache at: aLGitCommit id hexString ifAbsentPut: [ 

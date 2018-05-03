@@ -1,4 +1,4 @@
-accessing
+API-accessing
 packageEntries
 	self codeDirectory exists ifFalse: [ ^ #() ].
 	^ self codeDirectory entries 

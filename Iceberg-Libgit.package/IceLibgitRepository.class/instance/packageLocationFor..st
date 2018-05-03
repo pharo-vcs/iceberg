@@ -1,4 +1,4 @@
-as yet unclassified
+API-packages
 packageLocationFor: anIceSavedPackage
 	| packageLocation directoryName |
 	 

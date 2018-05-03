@@ -1,4 +1,4 @@
-as yet unclassified
+private-monticello
 mcVersionFor: iceVersion
 	[ | commit |
 	commit := iceVersion commit libgitCommit.

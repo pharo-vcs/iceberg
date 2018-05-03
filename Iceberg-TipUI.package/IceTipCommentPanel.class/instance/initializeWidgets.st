@@ -11,7 +11,7 @@ initializeWidgets
 	commentText := self newText
 		autoAccept: true;
 		whenBuiltDo: [ :ann |  ann widget withGhostText: 'A comment for your commit' ].
-	actionPanel := self newActionPanel.
+	actionPanel := self newIceActionPanel.
 	actionPanel addAction: (commitButton := self newButton 
 		label: 'Commit';
 		icon: #smallOk asIcon;

@@ -13,7 +13,6 @@ smalltalk:
 
 matrix:
   allow_failures:
-  - smalltalk: Pharo-6.1
   - smalltalk: Pharo64-7.0
   - smalltalk: Pharo64-6.1
 

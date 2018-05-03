@@ -1,9 +1,8 @@
 initialization
 initializeStatusBar
 	statusBar 
-		addItem: (IceTipStatusBarTargetItem new
-			target: self model;
-			contents: #branchName;
+		addItem: (IceTipBranchWithCommitStatusBarItem new
+			model: self model;
 			yourself);
 		addItem: (IceTipStatusBarTargetItem new 
 			bePositionRight;

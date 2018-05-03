@@ -5,6 +5,6 @@ defaultSpec
 	^ SpecLayout composed
 		newRow: [ :row | 
 			row 
-				add: #remoteLabel width: self labelWidth; 
+				add: #remoteLabel width: self iceLabelWidth; 
 			 	add: #remoteList; 
-				add: #addButton width: self iconWidth ]
+				add: #addButton width: self iceIconWidth ]
