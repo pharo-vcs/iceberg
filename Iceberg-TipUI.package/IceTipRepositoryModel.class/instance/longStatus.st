@@ -6,7 +6,7 @@ longStatus
 	entity isMissing 
 		ifTrue: [ ^ 'Cannot find a git repository at {1}. Please clone the repository again or change the repository location to an existing location' format: { entity location } ].
 	entity isCodeMissing
-		ifTrue: [ ^ 'Cannot find any code in directory {1}. Please clone the repository again, change the repository location to an existing location or change the code subdirectory to a correct value' format: { self repository codeDirectory } ].
+		ifTrue: [ ^ 'Cannot find any code in directory {1}. Please clone the repository again, change the repository location to an existing location or change the code subdirectory to a correct value' format: { entity codeDirectory } ].
 		
 	entity workingCopy workingCopyState isUnknownCommitState 
 		ifTrue: [ ^ 'This repository was created from commit {1} but the commit is not in your disk repository. You may fetch the correct commit from a remote repository or discard the code in your image and load what is in the repository.' format: { entity workingCopy referenceCommit shortId } ].	

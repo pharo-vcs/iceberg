@@ -1,3 +1,3 @@
 testing
 isRepositoryMissing
-	^ self repositoryModel isMissing
+	^ self repositoryModel isMissing or: [ self repositoryModel isCodeMissing ]
