@@ -1,0 +1,4 @@
+accessing
+isAbstract
+
+	^ self == IceTipMetacelloInstallBaselineCommand
