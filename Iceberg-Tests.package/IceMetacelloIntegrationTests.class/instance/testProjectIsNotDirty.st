@@ -6,7 +6,6 @@ testProjectIsNotDirty
 		ifTrue: [ ^ self skip ].
 	
 	self installBaseline.
-	repository := IceRepository registry
-		detect: [ :e | e name = 'pharo-git-test' ].
+	repository := self repositoryForTest.
 		
 	self deny: repository isModified

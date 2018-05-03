@@ -1,8 +1,9 @@
 private actions
 addLocalRepositoryAndCheckout
-	| repository |
-	repository := self addLocalRepository.
-	repository fetchFrom: (repository remotes 
-		detect:[ :each | each referencesSameRemoteLocationAs: self remoteToUse ]).
-	repository switchToCommitishNamed: self commitishName.
-	^ repository
+	| localRepository |
+	localRepository := self addLocalRepository.
+	localRepository remotes 
+		detect:[ :each | each referencesSameRemoteLocationAs: self remoteToUse ]
+		ifFound: [ :found | localRepository fetchFrom: found ].
+	localRepository switchToCommitishNamed: self commitishName.
+	^ localRepository

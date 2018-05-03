@@ -1,4 +1,6 @@
 accessing
 newProjectRegistration
 
-	^ builder commitishName
+	^ IceMetacelloProjectRegistration new
+		version: builder commitishName;
+		yourself

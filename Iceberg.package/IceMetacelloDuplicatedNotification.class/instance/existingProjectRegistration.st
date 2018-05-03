@@ -1,7 +1,10 @@
 accessing
 existingProjectRegistration
 
-	^ (IceLibgitRepository new
+	| repository |
+	repository := IceLibgitRepository new
 		location: builder locationToUse;
-		subdirectory: builder subdirectory;
-		head) description.
+		subdirectory: builder subdirectory.
+	^ IceMetacelloProjectRegistration new
+		version: repository head description;
+		yourself
