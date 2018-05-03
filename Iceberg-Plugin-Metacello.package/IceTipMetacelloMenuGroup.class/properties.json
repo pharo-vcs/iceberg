@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceMetacelloMenuGroup",
+	"name" : "IceTipMetacelloMenuGroup",
 	"type" : "normal"
 }
