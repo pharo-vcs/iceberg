@@ -1,3 +1,3 @@
 activation
 defaultMenuItemName
-	^ 'Copy SHA'
+	^ 'Copy commit id'

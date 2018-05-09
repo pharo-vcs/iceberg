@@ -1,0 +1,7 @@
+{
+	"commentStamp" : "CyrilFerlicot 5/9/2018 16:25",
+	"classinstvars" : [ ],
+	"category" : "Iceberg-TipUI-Model",
+	"instvars" : [ ],
+	"name" : "TIceCopyCommitId"
+}
