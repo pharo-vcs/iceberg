@@ -1,6 +1,6 @@
 accessing
 info
-	^ { 'Commit:' -> ('[', self entity shortId, '] ', self entity id).
+	^ { 'Commit:' -> ('[', self shortId, '] ', self id).
 		 'Parents:' -> (self entity ancestors collect: #shortId) asCommaString.
 		 'Author:' -> (self entity author).
 		 'Date:' -> (self entity timeStamp asStringYMDHM).
