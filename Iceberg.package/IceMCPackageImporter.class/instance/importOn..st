@@ -7,7 +7,7 @@ importOn: aNode
 	(version includesPackageNamed: self packageName)
 		ifFalse: [ ^ self ].
 	
-	packageNode := aNode addChild: (IcePackageDefinition named: self packageName).
+	packageNode := aNode addChild: (IcePackageDefinition named: self packageName path: aNode path).
 	snapshot := self snapshot.
 	snapshot definitions do: [ :e | 
 		e accept: (IceMCDefinitionImporter new

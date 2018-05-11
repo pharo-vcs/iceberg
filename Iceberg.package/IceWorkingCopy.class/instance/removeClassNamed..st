@@ -1,4 +1,4 @@
-private-impacting-changes
+private-impacting changes
 removeClassNamed: aString 
 	
 	"Impact the system.

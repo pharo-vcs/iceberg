@@ -1,0 +1,4 @@
+operations
+removePackage: anIcePackageDefinition
+	
+	repository workingCopy removePackage: anIcePackageDefinition

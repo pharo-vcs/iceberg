@@ -1,4 +1,4 @@
-private-impacting-changes
+private-impacting changes
 impactPackageChanges: anIcePackageDefinition currentNode: currentNode
 
 	| visitor |
@@ -9,7 +9,7 @@ impactPackageChanges: anIcePackageDefinition currentNode: currentNode
 			ifFound: [ :package | 
 				(self environment ensurePackageNamed: package name)
 					addClassTag: categoryName ]
-			ifNone: [ self environment ensurePackageNamed: categoryName ] ].
+			ifNone: [ self basicAddPackage: (IcePackage named: categoryName repository: repository) ] ].
 	
 	visitor := IceRingWorkingCopyChangerVisitor on: self.
 	currentNode childrenDo: [ :each | each accept: visitor ]	

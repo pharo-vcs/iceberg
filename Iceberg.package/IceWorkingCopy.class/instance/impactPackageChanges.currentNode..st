@@ -1,4 +1,4 @@
-private-impacting-changes
+private-impacting changes
 impactPackageChanges: anIcePackageDefinition currentNode: currentNode
 	| loader |
 	
