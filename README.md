@@ -5,7 +5,8 @@ Please be aware this is still an experimental tool, so you have to be careful. B
 
 To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
 
-[![Appveyor] (https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg)]
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg?svg=true)](https://ci.appveyor.com/project/pharo-vcs/iceberg)  
+
 
 ## FAQ
 
