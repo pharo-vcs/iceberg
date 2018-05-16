@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "NicoPasserini 9/2/2016 15:26",
+	"super" : "GLMCompositePresentation",
+	"category" : "Iceberg-Plugin-GitHub-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTool",
+	"type" : "normal"
+}

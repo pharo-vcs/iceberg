@@ -1,4 +1,4 @@
-utility
+utilities
 uuidFromSHA: cid
 	"Return an adequate uuid from a git commit ID. Copied from GitFileTree."
 

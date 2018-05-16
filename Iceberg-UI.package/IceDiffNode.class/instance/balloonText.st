@@ -1,4 +1,0 @@
-morph-compatibility
-balloonText
-	
-	^ nil

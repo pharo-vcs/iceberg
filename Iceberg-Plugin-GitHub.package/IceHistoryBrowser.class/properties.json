@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "NicoPasserini 8/23/2016 14:34",
+	"super" : "IceAbstractCommitBrowser",
+	"category" : "Iceberg-Plugin-GitHub-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceHistoryBrowser",
+	"type" : "normal"
+}
