@@ -1,3 +1,0 @@
-action
-compareCurrentToMe
-	self repository compareCurrentBranchWithBranch: self branch

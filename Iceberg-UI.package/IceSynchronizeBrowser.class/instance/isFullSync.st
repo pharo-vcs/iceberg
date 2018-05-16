@@ -1,3 +1,0 @@
-testing
-isFullSync
-	^ fullSync
