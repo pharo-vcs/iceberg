@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 11/17/2017 07:57",
+	"super" : "IceRepositoryCommand",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote"
+	],
+	"name" : "IcePullRemoteCommand",
+	"type" : "normal"
+}

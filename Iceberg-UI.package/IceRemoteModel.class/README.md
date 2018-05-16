@@ -1,1 +1,0 @@
-I am a UI model for remote interaction.
