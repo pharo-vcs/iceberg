@@ -1,5 +1,9 @@
 API-remotes
 pullFrom: aRemote
 	
+	| remoteBranch |
 	aRemote fetchBranch: self.
-	self repository workingCopy mergeCommit: (aRemote remoteBranchNamed: self name) commit.
+	remoteBranch := aRemote
+		remoteBranchNamed: self name
+		ifAbsent: [ ^ self ].
+	self repository workingCopy mergeCommit: remoteBranch commit.
