@@ -1,4 +1,4 @@
 patching
 removeFrom: aPatcher
 	
-	self subclassResponsibility
+	aPatcher removeClass: self
