@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "EstebanLorenzano 5/8/2017 13:57",
 	"super" : "GLMDiffPresentation",
-	"category" : "Iceberg-UI-Utils",
+	"category" : "Iceberg-Plugin-GitHub-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

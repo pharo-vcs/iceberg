@@ -32,6 +32,4 @@ composeCommitsIn: composite
 							ifTrue: [ text ] 
 							ifFalse: [ text allBold ] ] ] width: 300;
 		
-		addSelectionAction: self inspectAction;
-		addSelectionAction: self mergeIntoCurrentBranchAction;
-		addSelectionAction: self mergeIntoAction.
+		addSelectionAction: self inspectAction
