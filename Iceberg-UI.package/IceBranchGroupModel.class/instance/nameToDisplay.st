@@ -1,3 +1,0 @@
-accessing
-nameToDisplay
-	^ self groupName
