@@ -1,4 +1,0 @@
-building
-title
-
-	^ model shortDescription

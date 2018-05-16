@@ -1,4 +1,0 @@
-testing
-isCleanWorkingCopy
-	
-	^ true
