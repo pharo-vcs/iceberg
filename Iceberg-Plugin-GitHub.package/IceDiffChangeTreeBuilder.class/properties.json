@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "EstebanLorenzano 9/21/2017 12:55",
 	"super" : "Object",
-	"category" : "Iceberg-UI-View",
+	"category" : "Iceberg-Plugin-GitHub-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
