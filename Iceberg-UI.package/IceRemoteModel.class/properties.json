@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "PabloTesone 1/5/2018 16:34",
+	"super" : "IceAbstractModel",
+	"category" : "Iceberg-UI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceRemoteModel",
+	"type" : "normal"
+}

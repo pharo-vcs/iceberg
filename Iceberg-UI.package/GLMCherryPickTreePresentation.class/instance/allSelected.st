@@ -1,0 +1,3 @@
+accessing
+allSelected
+	allSelected := true

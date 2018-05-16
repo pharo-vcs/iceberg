@@ -1,0 +1,3 @@
+actions
+synchronize
+	IceSynchronizeBrowser synchronize: self repository

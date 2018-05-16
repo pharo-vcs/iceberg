@@ -1,0 +1,1 @@
+I'm an abstract model (in the MVC spirit) to access Iceberg entities from the UI.
