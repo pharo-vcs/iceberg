@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 9/2/2016 15:26",
 	"super" : "GLMCompositePresentation",
-	"category" : "Iceberg-UI-View",
+	"category" : "Iceberg-Plugin-GitHub-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
