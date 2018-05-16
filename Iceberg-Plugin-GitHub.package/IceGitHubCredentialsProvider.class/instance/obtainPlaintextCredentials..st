@@ -3,7 +3,7 @@ obtainPlaintextCredentials: response
 	| model cancelled |
 	
 	cancelled := false.
-	((model := IceAskForPlaintextCredentialsModel new)
+	((model := IceGitHubAskForPlaintextCredentialsModel new)
 		title: 'Login to GitHub')
 		openDialogWithSpec
 		okAction: [
