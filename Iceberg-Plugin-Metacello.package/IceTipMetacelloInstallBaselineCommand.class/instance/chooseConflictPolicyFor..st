@@ -1,5 +1,5 @@
 private
-chooseUpgradePolicyFor: aMetacelloUpgradeRequest
+chooseConflictPolicyFor: aMetacelloUpgradeRequest
  
 	^ UIManager default 
 		chooseFrom: {
@@ -8,5 +8,5 @@ chooseUpgradePolicyFor: aMetacelloUpgradeRequest
 		values: { 
 			#useIncoming. 
 			#useLoaded }
-		message: ('There is already a project "{1}" in this installation.' format: { aMetacelloUpgradeRequest projectName })
-		title: 'Duplicated project!'.
+		message: ('There are conflicting versions of project "{1}".' format: { aMetacelloUpgradeRequest projectName })
+		title: 'Conflicting project versions'.
