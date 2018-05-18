@@ -1,3 +1,0 @@
-patches
-repositoryProperties
-	^ self defaultRepositoryProperties

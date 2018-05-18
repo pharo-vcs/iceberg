@@ -1,4 +1,0 @@
-initialization
-initializePresenter
-
-	"WHAT"

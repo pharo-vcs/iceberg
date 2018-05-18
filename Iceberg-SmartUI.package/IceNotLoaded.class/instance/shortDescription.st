@@ -1,4 +1,0 @@
-descriptions
-shortDescription
-	
-	^ 'Not loaded'
