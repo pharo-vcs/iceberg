@@ -1,5 +1,7 @@
 {
-	"name" : "TIceCopyCommitId",
 	"commentStamp" : "CyrilFerlicot 5/9/2018 16:25",
-	"category" : "Iceberg-TipUI-Model"
+	"classinstvars" : [ ],
+	"category" : "Iceberg-TipUI-Model",
+	"instvars" : [ ],
+	"name" : "TIceCopyCommitId"
 }
