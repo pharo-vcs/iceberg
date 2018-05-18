@@ -1,4 +1,4 @@
 operations
 removePackage: aDefinition
 	
-	(repository location resolvePath: aDefinition path) ensureDelete
+	(repository location resolvePath: aDefinition path) ensureDeleteAll
