@@ -1,7 +1,7 @@
 tests
 testCreateDirectoryWithPackage
 
-	| tree srcDirectory importer child |
+	| tree importer child |
 	tree := IceNode new.
 	child := tree addChild: (IceDirectoryDefinition named: 'src').
 	importer := IceMCPackageImporter new

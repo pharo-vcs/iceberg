@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"packageName",
-		"projectName"
-	],
+	"instvars" : [ ],
 	"name" : "IceGitCleanWorkingCopyTest",
 	"type" : "normal"
 }
