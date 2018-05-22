@@ -1,7 +1,6 @@
 SystemOrganization addCategory: #'Iceberg-TipUI'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Announcements'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Commands'!
-SystemOrganization addCategory: #'Iceberg-TipUI-Merge'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Model'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Spec'!
 SystemOrganization addCategory: #'Iceberg-TipUI-Spec-ItemBar'!
@@ -11,4 +10,5 @@ SystemOrganization addCategory: #'Iceberg-TipUI-View-Branch'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-NOTUSED'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-RepositoryType'!
+tion addCategory: #'Iceberg-TipUI-View-RepositoryType'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-Versions'!
