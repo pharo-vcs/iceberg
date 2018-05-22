@@ -1,8 +1,7 @@
 helpers
 removeMethod: selector fromClass: aClassName
 
-	| class method |
+	| class |
 	class := ringEnvironment ensureClassNamed: aClassName.
-	method := class localMethodNamed: selector ifAbsent: [ ^ NotFound signalFor: selector ].
-	class removeLocalMethod: method.
+	self basicRemoveMethod: selector fromClass: aClassName.
 	self markAsDirtyPackageNamed: class package name.
