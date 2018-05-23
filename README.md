@@ -111,3 +111,5 @@ Smalltalk compilerClass recompileAll
 
 ## 5 minutes tutorial
 *(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
+
+Have a look at the videos [https://github.com/pharo-vcs/iceberg/wiki/Contribute-to-Pharo-with-Iceberg-0.7.3]
