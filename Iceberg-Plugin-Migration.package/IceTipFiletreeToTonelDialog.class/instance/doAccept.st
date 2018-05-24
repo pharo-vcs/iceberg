@@ -5,6 +5,6 @@ doAccept
 	oldBranch := self repository branch.
 	self migrateSources.
 	newBranch := self repository branch.	
-	oldBranch checkout: IceCheckoutDoNotLoadPackages new.
 	self mergeWithMasterCheckbox state ifTrue: [ 
+		oldBranch checkout: IceCheckoutDoNotLoadPackages new.
 		newBranch merge ]

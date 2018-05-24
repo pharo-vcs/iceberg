@@ -3,7 +3,7 @@ obtainBranchName
 	| baseName suffix count |
 	
 	count := 0. 	
-	baseName := 'convert-sources-to-tonel'.
+	baseName := self class branchBaseName.
 	suffix := ''.
 	[ true ] whileTrue: [ 
 		self repository 

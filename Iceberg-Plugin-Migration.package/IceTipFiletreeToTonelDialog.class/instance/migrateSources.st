@@ -1,18 +1,7 @@
 actions
 migrateSources
-	| locationDir subDir sourceDir subDirWithDelim commit filetreeFiles |
+	|  commit filetreeFiles |
 	
-	locationDir := self repository location. 	
-	subDir := self repository subdirectory.
-
-	sourceDir := locationDir.
-	subDir 
-		ifNotNil: [
-			subDirWithDelim := subDir, '/'. 
-			sourceDir := sourceDir / subDir ]
-		ifNil: [
-			subDirWithDelim := '' ].
-
 	"branch if you want to perform the migration on separated place (you 
 	can later do a PR)"
 	self repository createBranch: self branchName.
@@ -28,12 +17,12 @@ migrateSources
 		repository: self repository;
 		properties: { #format -> #tonel } asDictionary; 
 		store.
-	self repository addFilesToIndex: { (subDirWithDelim, '.properties').}.
+	self repository addFilesToIndex: { (self codeDirectoryWithDelim, '.properties').}.
 	"remove .filetree remaining"
-	filetreeFiles := sourceDir allChildrenMatching: '.filetree'.
+	filetreeFiles := self codeDirectory allChildrenMatching: '.filetree'.
 	filetreeFiles do: #ensureDelete.
 	self repository addFilesToIndex: (filetreeFiles collect: [ :each | 
-		((each relativeTo: locationDir) printWithDelimiter: $/) ]).
+		((each relativeTo: self codeDirectory) printWithDelimiter: $/) ]).
 
 	"commit"
 	self repository 
