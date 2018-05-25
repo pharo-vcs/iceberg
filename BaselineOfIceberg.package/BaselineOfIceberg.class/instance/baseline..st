@@ -20,11 +20,13 @@ baseline: spec
 			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
+			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
 			"libgit"
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
@@ -56,7 +58,8 @@ baseline: spec
 			group: 'allTests' with: #(
 				'Iceberg-Tests' 
 				'LibGit-Tests' 
-				'Iceberg-UI-Tests' );
+				'Iceberg-UI-Tests'
+				'Iceberg-Plugin-Migration-Tests' );
 			group: 'development' with: #(default allTests) ].
 
 	spec for: #'pharo6.x' do: [	

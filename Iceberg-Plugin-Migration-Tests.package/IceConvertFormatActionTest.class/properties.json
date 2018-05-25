@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "IceAbstractTestCase",
-	"category" : "Iceberg-Plugin-Migration",
+	"category" : "Iceberg-Plugin-Migration-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
