@@ -1,4 +1,4 @@
-actions
+private
 migratePackage: each commit: commit
 	| filetreePackage srcDir subDirWithDelim |
 	

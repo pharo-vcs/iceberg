@@ -1,6 +1,6 @@
-actions
+private
 migrateSources
-	|  commit filetreeFiles |
+	| commit |
 	
 	"branch if you want to perform the migration on separated place (you 
 	can later do a PR)"
@@ -15,15 +15,11 @@ migrateSources
 	"add .properties"
 	IceRepositoryProperties new 
 		repository: self repository;
-		properties: { #format -> #tonel } asDictionary; 
+		properties: { #format -> self format } asDictionary; 
 		store.
 	self repository addFilesToIndex: { (self codeDirectoryWithDelim, '.properties').}.
-	"remove .filetree remaining"
-	filetreeFiles := self codeDirectory allChildrenMatching: '.filetree'.
-	filetreeFiles do: #ensureDelete.
-	self repository addFilesToIndex: (filetreeFiles collect: [ :each | 
-		((each relativeTo: self codeDirectory) printWithDelimiter: $/) ]).
-
+	self format = #filetree ifTrue: [ 
+		self removeFiletreeRemnants ].
 	"commit"
 	self repository 
 		commitIndexWithMessage: 'sources migrated' 
