@@ -8,7 +8,7 @@ settingsOn: aBuilder
 				target: self;
 				order: 0.1;
 				label: 'Enable Metacello integration';
-				description: 'If selected, Metacello github// repositories will be loaded using iceberg';
+				description: 'If selected, Metacello github:// repositories will be loaded using iceberg';
 "				icon: (Smalltalk ui icons iconNamed: #smallConfigurationIcon);"
 				with: [ 
 					(aBuilder pickOne: #remoteTypeSelector)
