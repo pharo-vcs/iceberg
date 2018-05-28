@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "EstebanLorenzano 5/23/2018 15:56",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-Plugin-Migration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"iconPanel",
+		"confirmLabel",
+		"mergeWithMasterCheckbox",
+		"branchName",
+		"repository"
+	],
+	"name" : "IceTipFiletreeToTonelDialog",
+	"type" : "normal"
+}
