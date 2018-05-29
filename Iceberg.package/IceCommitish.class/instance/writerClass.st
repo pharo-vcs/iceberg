@@ -1,3 +1,4 @@
-accessing
+API-properties
 writerClass
-	^ self commit writerClass
+
+	^ self properties writerClass

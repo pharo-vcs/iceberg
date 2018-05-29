@@ -1,4 +1,8 @@
 testing
 canBeExecutedInContext: aToolContext
-	self flag: #todo. "Demeters law"
-	^ aToolContext repositoryModel entity writerClass id = #filetree
+
+	| repository |
+	repository := aToolContext repositoryModel entity.
+	^ repository isMissing not 
+		and: [ repository workingCopy isDetached not
+			and: [ repository workingCopy writerClass id = #filetree ] ]

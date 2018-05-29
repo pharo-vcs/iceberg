@@ -1,4 +1,4 @@
 accessing
 at: aKey
 
-	^ properties at: aKey
+	^ self properties at: aKey

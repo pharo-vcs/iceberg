@@ -1,6 +1,6 @@
 accessing
 writerClass
-	^ properties 
+	^ self properties 
 		at: 'format' 
 		ifPresent: [ :v | TIceRepositoryWriter users detect: [ :each | each id = v  ] ]
 		ifAbsent: [ 
