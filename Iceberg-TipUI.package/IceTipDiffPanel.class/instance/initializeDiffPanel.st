@@ -1,3 +1,3 @@
 initialization
 initializeDiffPanel
-	diffPanel showOptions: false.
+	diffPanel showOptions: false

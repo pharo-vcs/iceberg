@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipBrowser",
+	"category" : "Iceberg-TipUI-View-Versions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commitList",
+		"commitTabPanel",
+		"selectedModel",
+		"infoTab",
+		"emptyTab",
+		"diffTab"
+	],
+	"name" : "IceTipVersionBrowser",
+	"type" : "normal"
+}

@@ -1,0 +1,3 @@
+initialization
+initializeToolbar
+	"no toolbar"
