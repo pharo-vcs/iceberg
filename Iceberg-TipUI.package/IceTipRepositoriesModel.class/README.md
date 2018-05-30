@@ -1,0 +1,1 @@
+I'm a model to provide access to all repositories registered.

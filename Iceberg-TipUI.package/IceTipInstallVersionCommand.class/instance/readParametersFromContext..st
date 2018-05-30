@@ -1,4 +1,5 @@
 execution
 readParametersFromContext: aToolContext
 	super readParametersFromContext: aToolContext.
-	selectedCommit := aToolContext selectedCommit
+	version := aToolContext version.
+	

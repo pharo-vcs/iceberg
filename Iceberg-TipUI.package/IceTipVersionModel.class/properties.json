@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "EstebanLorenzano 5/30/2018 14:28",
 	"super" : "IceTipCommitModel",
-	"category" : "Iceberg-TipUI-View-Versions",
+	"category" : "Iceberg-TipUI-Model",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
