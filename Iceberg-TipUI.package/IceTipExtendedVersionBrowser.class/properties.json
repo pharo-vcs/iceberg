@@ -1,15 +1,11 @@
 {
-	"commentStamp" : "GuillermoPolito 5/16/2018 16:59",
-	"super" : "GLMCompositePresentation",
+	"commentStamp" : "EstebanLorenzano 5/30/2018 15:44",
+	"super" : "IceTipVersionHistoryBrowser",
 	"category" : "Iceberg-TipUI-View-Versions",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"repository",
-		"method",
-		"history"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipExtendedVersionBrowser",
 	"type" : "normal"
 }

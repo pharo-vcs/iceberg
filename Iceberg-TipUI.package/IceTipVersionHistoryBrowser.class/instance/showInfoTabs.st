@@ -6,10 +6,11 @@ showInfoTabs
 	(commitTabPanel tabs includes: infoTab) ifFalse: [
 		self removeAllCommitPanelTabs.
 		commitTabPanel 
-			addTab: infoTab;
+			addTab: infoTab ;
 			addTab: diffTab ]. 
 	
 	self refreshCommitInfo.
 	self refreshDiffLabel.
 	"Refresh selected tab contents"
-	commitTabPanel selectedTab ifNotNil: #tabSelected
+	
+	commitTabPanel selectedTab ifNotNil: #tabSelected.
