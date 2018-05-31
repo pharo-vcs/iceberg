@@ -13,7 +13,7 @@ migrateSources
 			commit: commit ].
 
 	"add .properties"
-	IceRepositoryProperties new
+	IceRepositoryProperties new 
 		repository: self repository;
 		properties: { #format -> self format } asDictionary; 
 		store.
@@ -22,5 +22,5 @@ migrateSources
 		self removeFiletreeRemnants ].
 	"commit"
 	self repository 
-		commitIndexWithMessage: '[Iceberg Migration Plugin] Sources automatically migrated from Filetree to Tonel'
+		commitIndexWithMessage: 'sources migrated' 
 		andParents: { commit }.
