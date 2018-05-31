@@ -1,4 +1,4 @@
-private
+accessing
 parseUrl
 	| znUrl |
 	znUrl := ZnUrl fromString: url.

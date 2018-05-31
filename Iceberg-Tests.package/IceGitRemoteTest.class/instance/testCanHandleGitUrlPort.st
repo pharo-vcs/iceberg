@@ -7,5 +7,5 @@ testCanHandleGitUrlPort
 				parseUrl.
 	self assert: url projectName equals: 'iceberg'.
 	self assert: url owner equals: 'pharo-vcs'.
-	self assert: url port equals: 9418.
+	self assert: url port equals: 8080.
 	self assert: url path equals: OrderedCollection new.
