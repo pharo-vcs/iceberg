@@ -9,7 +9,7 @@ parseUrl
 	"We now parse alternate ssh urls like lars@myserver.example.com:repos/myrepo.git"
 	urlStream := url readStream.
 	user := urlStream upTo: $@.
-	host := urlStream upTo: $:.
+	host := (urlStream upTo: $:) ifEmpty: [ nil ].
 	restSegments := urlStream upToEnd substrings: '/'.
 	
 	path := restSegments size >= 2
@@ -17,7 +17,7 @@ parseUrl
 		ifFalse: [ #() ].
 	owner := restSegments size > 1
 		ifTrue: [ restSegments at: (restSegments size - 1) ]
-		ifFalse: [ '' ].
-		
+		ifFalse: [ nil ].
+
 	restSegments isEmpty ifTrue: [ IceWrongUrl signal: 'Remote repository scheme not supported: ', url ].
 	projectName := self stripPossibleExtension: (restSegments last)
