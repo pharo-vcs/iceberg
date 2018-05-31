@@ -3,7 +3,7 @@ baseline: spec
 	<baseline>
 	
 	spec for: #common do: [ 
-		spec postLoadDoIt: #resetKMRepository.
+		spec postLoadDoIt: #postLoad.
 		
 		self tonel: spec.
 		self libgit: spec.
