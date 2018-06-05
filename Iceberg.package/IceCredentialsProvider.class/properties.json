@@ -5,13 +5,12 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
-		"PlaintextCredentials",
 		"ProviderType",
-		"SshCredentials",
 		"UseCustomSsh"
 	],
 	"instvars" : [
-		"tries"
+		"tries",
+		"remoteURL"
 	],
 	"name" : "IceCredentialsProvider",
 	"type" : "normal"

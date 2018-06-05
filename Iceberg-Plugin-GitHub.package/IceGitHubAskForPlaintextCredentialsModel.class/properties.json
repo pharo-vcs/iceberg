@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "NicoPasserini 11/15/2016 15:25",
-	"super" : "ComposableModel",
+	"super" : "ComposablePresenter",
 	"category" : "Iceberg-Plugin-GitHub-View",
 	"classinstvars" : [ ],
 	"pools" : [ ],

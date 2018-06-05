@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Security",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"plainCredentials",
+		"sshCredentials"
+	],
+	"name" : "IceCredentialStore",
+	"type" : "normal"
+}

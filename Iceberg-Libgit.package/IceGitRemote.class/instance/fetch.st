@@ -4,7 +4,7 @@ fetch
 	localRepository handleLibgitError: [
 		[ (LGitRemote of: self repositoryHandle named: self name)
 			lookup;
-			fetchWithCredentials: IceCredentialsProvider default ]
+			fetchWithCredentials: (IceCredentialsProvider defaultForRemoteURL: self url) ]
 			on: LGitAbstractError
 			do: [ :e | e acceptError: IceLibgitErrorVisitor new ].
 		
