@@ -3,5 +3,8 @@ okAction
 
 	| cred |
 	cred := self credentials.
-	credentialStore storeCredential: cred forUrl: remoteUrl asString.
+	self storeCredentials ifTrue: [credentialStore storeCredential: cred forUrl: remoteUrl asString].
+	
+	accepted := true.
+
 	^ cred.

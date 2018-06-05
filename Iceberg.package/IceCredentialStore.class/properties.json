@@ -4,7 +4,9 @@
 	"category" : "Iceberg-Security",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"CurrentStore"
+	],
 	"instvars" : [
 		"plainCredentials",
 		"sshCredentials"

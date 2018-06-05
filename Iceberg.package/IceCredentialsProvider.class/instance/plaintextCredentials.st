@@ -1,3 +1,3 @@
 accessing
 plaintextCredentials
-	^ IceCredentialStore current plaintextCredentialForUrl: remoteURL.
+	^ self credentialStore plaintextCredentialForUrl: remoteURL.
