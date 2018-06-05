@@ -7,12 +7,12 @@ createCheckoutBranchTypes
 		IceTipCheckoutNewBranchPanel on: self model. "New branch"
 	 	(IceTipCheckoutBranchPanel on: self model) 
 			title: 'Local';
-			icon: #branch asIcon;
+			icon: (self iconNamed: #branch);
 			yourself }, 
 	(self model remoteModels collect: [ :each | 
 		(IceTipCheckoutBranchPanel on: each)
 			title: each name;
-			icon: #remote asIcon;
+			icon: (self iconNamed: #remote);
 			yourself ]),
 	(self model entity pluginManager checkoutBranchPanelsOnModel: self model).
 	

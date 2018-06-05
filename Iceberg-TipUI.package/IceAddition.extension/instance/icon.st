@@ -1,4 +1,4 @@
 *Iceberg-TipUI
 icon
 	
-	^ #changeAdd asIcon
+	^ self iconNamed: #changeAdd

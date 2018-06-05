@@ -14,7 +14,7 @@ initializeWidgets
 	actionPanel := self newIceActionPanel.
 	actionPanel addAction: (commitButton := self newButton 
 		label: 'Commit';
-		icon: #smallOk asIcon;
+		icon: (self iconNamed: #smallOk);
 		help: ('Commit your changes to {1}' format: { self repositoryName });
 		yourself).
 		

@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #branch asIcon
+	^ self iconNamed: #branch

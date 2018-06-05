@@ -2,6 +2,6 @@ private factory
 newInfoTab
 	^ self newTab 
 		label: 'Info';
-		icon: #smallQuestion asIcon;
+		icon: (self iconNamed: #smallQuestion);
 		closeable: false;
 		yourself

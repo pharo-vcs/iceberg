@@ -5,6 +5,6 @@ revertChangeAction
 			self entity revertChange: presentation selection.
 			presentation update. ];
 		condition: [ self entity canRevertChanges ];
-		icon: #glamorousUndo asIcon;
+		icon: (self iconNamed: #glamorousUndo);
 		title: 'Revert change'; 
 		showTitle
