@@ -2,7 +2,7 @@ private factory
 newEmptyTab
 	^ self newTab 
 		label: 'Info';
-		icon: #smallQuestion asIcon;
+		icon: (self iconNamed: #smallQuestion);
 		closeable: false;
 		contents: '(No commit selected)' asMorph;
 		yourself

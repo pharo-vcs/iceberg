@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #git asIcon
+	^ self iconNamed: #git
