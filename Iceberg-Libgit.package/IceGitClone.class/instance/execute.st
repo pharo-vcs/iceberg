@@ -7,7 +7,7 @@ execute
 	[location ensureCreateDirectory.
 	
 	repo := LGitRepository on: location.
-	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteURL: url).
+	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
 	cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force.
 
 	repo clone: url options: cloneOptions.

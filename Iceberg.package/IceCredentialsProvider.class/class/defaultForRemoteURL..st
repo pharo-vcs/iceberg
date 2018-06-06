@@ -1,5 +1,5 @@
 instance creation
-defaultForRemoteURL: aRemote
+defaultForRemoteUrl: url
 	^ self providerType new
-		remoteURL: aRemote;
+		remote: (IceGitRemote url: url);
 		yourself

@@ -11,6 +11,6 @@ fetchBranch: aBranch
 						aBranch name}).
 		(remote := LGitRemote of: self repositoryHandle named: self name)
 			lookup;
-			fetchWithCredentials: (IceCredentialsProvider defaultForRemoteURL: remote url) refSpec: refSpec ]
+			fetchWithCredentials: (IceCredentialsProvider defaultForRemote: remote) refSpec: refSpec ]
 			on: LGitAbstractError
 			do: [ :e | e acceptError: IceLibgitErrorVisitor new ] ]

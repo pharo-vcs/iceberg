@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"storeCheckbox",
-		"remoteUrl",
 		"credentialStore",
-		"accepted"
+		"accepted",
+		"remoteHostname"
 	],
 	"name" : "IceTipAbstractAskCredentialsModel",
 	"type" : "normal"

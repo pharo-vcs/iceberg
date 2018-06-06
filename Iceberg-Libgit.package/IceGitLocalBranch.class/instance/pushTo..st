@@ -11,7 +11,7 @@ pushTo: aRemote
 					yourself)
 			pushOptions:
 				(LGitPushOptions defaults
-					callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemoteURL: aRemote url));
+					callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote));
 					yourself) ]
 			on: LGit_GIT_ENONFASTFORWARD
 			do: [ :e | 

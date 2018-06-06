@@ -4,7 +4,7 @@ obtainPlaintextCredentials: credentialsToReturn
 	| returnedCred |
 	returnedCred := IceTipAskForPlaintextCredentialsModel new
 		credentialStore: self credentialStore;
-		remoteUrl: remoteURL;
+		remoteHostname: remote host;
 		open.
 		
 	

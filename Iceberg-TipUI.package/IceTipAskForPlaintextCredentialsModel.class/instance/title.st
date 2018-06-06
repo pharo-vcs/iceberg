@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Please log in to ' , remoteUrl host
+	^ 'Please log in to ' , remoteHostname

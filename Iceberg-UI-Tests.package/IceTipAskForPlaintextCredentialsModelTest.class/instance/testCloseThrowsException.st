@@ -1,7 +1,7 @@
 tests - cancel
 testCloseThrowsException
 
-	dialog remoteUrl: 'https://github.com/aaa/bbb'. 
+	dialog remoteHostname: 'github.com'. 
 	dialog openNonModal. 
 	
 	self should: [ dialog window close ] raise: LGitNoCredentialsProvided

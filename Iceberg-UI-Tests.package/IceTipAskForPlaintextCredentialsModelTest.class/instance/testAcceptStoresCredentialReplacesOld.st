@@ -6,9 +6,9 @@ testAcceptStoresCredentialReplacesOld
 	orig := IcePlaintextCredentials new.
 	orig username: 'aUsername'.
 	orig password: 'aPassword'.
-	store storeCredential: orig forUrl: 'https://github.com'.
+	dialog remoteHostname: 'github.com'. 
 	
-	dialog remoteUrl: 'https://github.com/aaa/bbb'. 
+	dialog remoteHostname: 'github.com'. 
 	dialog openNonModal. 
 	
 	dialog passwordInput text: 'aaa'.
@@ -18,6 +18,6 @@ testAcceptStoresCredentialReplacesOld
 	
 	dialog window toolbar okAction value.	
 
-	cred := store plaintextCredentialForUrl: 'https://github.com'.
+	cred := store plaintextCredentialForUrl: 'github.com'.
 	self assert: cred username equals: 'bbb'.
 	self assert: cred password equals: 'aaa'.		

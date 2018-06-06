@@ -1,6 +1,3 @@
 accessing
 current
-	^ CurrentStore
-		ifNil: [ CurrentStore := self new
-				tryToLoad;
-				yourself ]
+	^ CurrentStore ifNil: [ CurrentStore := self new ]

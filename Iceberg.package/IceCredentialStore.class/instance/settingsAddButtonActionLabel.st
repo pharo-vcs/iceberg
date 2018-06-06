@@ -1,0 +1,4 @@
+settings
+settingsAddButtonActionLabel
+	
+	^ 'Add Host'

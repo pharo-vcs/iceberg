@@ -2,7 +2,7 @@ tests - storing
 testAcceptDoNotStoresCredential
 
 	| cred |
-	dialog remoteUrl: 'https://github.com/aaa/bbb'. 
+	dialog remoteHostname: 'github.com'. 
 	dialog openNonModal. 
 	
 	dialog passwordInput text: 'aaa'.

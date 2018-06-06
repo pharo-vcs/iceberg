@@ -7,9 +7,9 @@ testLookupHostname
 	orig username: 'aUsername'.
 	orig password: 'aPassword'.
 
-	store storeCredential: orig forUrl: 'https://github.com'.
+	store storeCredential: orig forHostname: 'github.com'.
 	
-	cred := store plaintextCredentialForUrl: 'https://github.com/blah/blah'.
+	cred := store plaintextCredentialForUrl: 'github.com'.
 	
 	self assert: cred username equals: 'aUsername'.
 	self assert: cred password equals: 'aPassword'.

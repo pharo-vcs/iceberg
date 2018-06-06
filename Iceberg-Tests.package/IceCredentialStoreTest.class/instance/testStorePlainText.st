@@ -7,7 +7,7 @@ testStorePlainText
 	orig username: 'aUsername'.
 	orig password: 'aPassword'.
 
-	store storeCredential: orig forUrl: 'https://github.com/blah/blah'.
+	store storeCredential: orig forHostname: 'https://github.com/blah/blah'.
 	
 	cred := store plaintextCredentialForUrl: 'https://github.com/blah/blah'.
 	

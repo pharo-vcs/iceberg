@@ -1,3 +1,3 @@
 accessing
 sshCredentials
-	^ IceCredentialStore current sshCredentialForUrl: remoteURL.
+	^ IceCredentialStore current sshCredentialForUrl: remote host.
