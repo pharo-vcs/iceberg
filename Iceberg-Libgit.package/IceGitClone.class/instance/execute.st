@@ -2,7 +2,8 @@ actions
 execute
 
 	| repo cloneOptions |
-	location exists ifTrue: [IceCloneLocationAlreadyExists signalFor: self].
+	location exists
+		ifTrue: [ IceCloneLocationAlreadyExists signalFor: location ].
 	
 	[location ensureCreateDirectory.
 	
@@ -18,4 +19,4 @@ execute
 		
 	] on: LGitCallReturnHandler do: [ :error |
 		location exists ifTrue: [ location ensureDeleteAll ].
-		error acceptError: IceLibgitErrorVisitor new ].
+		error acceptError: (IceLibgitErrorVisitor onContext: self) ].
