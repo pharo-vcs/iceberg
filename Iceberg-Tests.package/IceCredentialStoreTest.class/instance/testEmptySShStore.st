@@ -2,7 +2,7 @@ tests
 testEmptySShStore
 
 	| cred |
-	cred := store sshCredentialForUrl: 'git@github.com:tesonep/blah.git'.
+	cred := store sshCredentialForHostname: 'github.com'.
 	
 	self assert: cred username equals: IceSshCredentials defaultUsername.
 	self assert: cred publicKey equals: IceSshCredentials defaultPublicKey.

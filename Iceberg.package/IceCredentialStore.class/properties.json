@@ -5,11 +5,13 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
-		"CurrentStore"
+		"CurrentStore",
+		"StoreFile"
 	],
 	"instvars" : [
 		"plainCredentials",
-		"sshCredentials"
+		"sshCredentials",
+		"storeFile"
 	],
 	"name" : "IceCredentialStore",
 	"type" : "normal"

@@ -7,9 +7,9 @@ testStorePlainText
 	orig username: 'aUsername'.
 	orig password: 'aPassword'.
 
-	store storeCredential: orig forHostname: 'https://github.com/blah/blah'.
+	store storeCredential: orig forHostname: 'github.com'.
 	
-	cred := store plaintextCredentialForUrl: 'https://github.com/blah/blah'.
+	cred := store plaintextCredentialForHostname: 'github.com'.
 	
 	self assert: cred username equals: 'aUsername'.
 	self assert: cred password equals: 'aPassword'.

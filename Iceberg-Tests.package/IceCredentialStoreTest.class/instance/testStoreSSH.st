@@ -9,9 +9,9 @@ testStoreSSH
 	orig publicKey: 'aPublicKey.id'.
 	orig privateKey: 'aPrivateKey.id'.
 
-	store storeCredential: orig forHostname: 'git@github.com:tesonep/blah.git'.
+	store storeCredential: orig forHostname: 'github.com'.
 	
-	cred := store sshCredentialForUrl: 'git@github.com:tesonep/blah.git'.
+	cred := store sshCredentialForHostname: 'github.com'.
 	
 	self assert: cred username equals: 'aUsername'.
 	self assert: cred publicKey equals: 'aPublicKey.id'.

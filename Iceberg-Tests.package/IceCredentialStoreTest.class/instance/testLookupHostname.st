@@ -9,7 +9,7 @@ testLookupHostname
 
 	store storeCredential: orig forHostname: 'github.com'.
 	
-	cred := store plaintextCredentialForUrl: 'github.com'.
+	cred := store plaintextCredentialForHostname: 'github.com'.
 	
 	self assert: cred username equals: 'aUsername'.
 	self assert: cred password equals: 'aPassword'.

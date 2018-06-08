@@ -1,4 +1,4 @@
 API -  accessing
-plaintextCredentialForUrl: aHostname
+plaintextCredentialForHostname: aHostname
  
 	^ self lookup: aHostname in: plainCredentials ifAbsent: [ IcePlaintextCredentials new ]

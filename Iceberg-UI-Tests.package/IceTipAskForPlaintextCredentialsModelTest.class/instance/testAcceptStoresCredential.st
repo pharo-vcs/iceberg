@@ -12,6 +12,6 @@ testAcceptStoresCredential
 	
 	dialog window toolbar okAction value.	
 
-	cred := store plaintextCredentialForUrl: 'github.com'.
+	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: 'bbb'.
 	self assert: cred password equals: 'aaa'.		

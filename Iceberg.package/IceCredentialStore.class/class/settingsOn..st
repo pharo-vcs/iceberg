@@ -8,5 +8,10 @@ settingsOn: aBuilder
 		noOrdering;
 		target: self current;
 		label: 'Plain Text Credentials';
-		dialog: [ self current settingsAddButton ];
-		with: [ self current fillSettingsInGroup: aBuilder ].	
+		with: [
+			(aBuilder setting: #storeFile)
+				target: self;
+				type: #FilePathEncoder;
+				label: 'Location of credentials store';
+				description: 'The location of the credential store. The password are stored in plain... yet'.
+		].	

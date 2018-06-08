@@ -1,4 +1,4 @@
 API -  accessing
-sshCredentialForUrl: aHostname
+sshCredentialForHostname: aHostname
  
 	^ self lookup: aHostname in: sshCredentials ifAbsent: [ self defaultSSHCredential ].
