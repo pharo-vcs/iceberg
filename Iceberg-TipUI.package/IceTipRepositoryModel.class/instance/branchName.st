@@ -1,7 +1,9 @@
 accessing
 branchName
+	| head |
 	self entity isMissing ifTrue: [ ^ self class unknownBranchLabel ].
-	 
-	^ [ self entity branch name ]
-		on: IceNotInBranch 
-		do: [ :e | 'Detached' ]
+	
+	head := self entity head.
+	^ head isDetached
+		ifTrue: [ 'Detached at {1}' format: { self shortCommitId } ]
+		ifFalse: [ head name ]
