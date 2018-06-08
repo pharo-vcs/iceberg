@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #smallUpdate asIcon
+	^ self iconNamed: #smallUpdate

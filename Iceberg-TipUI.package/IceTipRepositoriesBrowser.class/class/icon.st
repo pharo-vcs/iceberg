@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #komitterSmalltalkhubRemote asIcon
+	^ self iconNamed: #komitterSmalltalkhubRemote

@@ -2,6 +2,6 @@ private factory
 newDiffTab
 	^ self newTab 
 		label: 'Diff';
-		icon: #diff asIcon;
+		icon: (self iconNamed: #diff);
 		closeable: false;
 		yourself

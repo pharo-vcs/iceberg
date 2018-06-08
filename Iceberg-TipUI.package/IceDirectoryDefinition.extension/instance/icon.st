@@ -1,3 +1,3 @@
 *Iceberg-TipUI
 icon
-	^ #emptyPackage asIcon
+	^ self iconNamed: #emptyPackage

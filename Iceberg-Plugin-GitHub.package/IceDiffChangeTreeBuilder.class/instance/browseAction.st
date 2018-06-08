@@ -2,10 +2,10 @@ actions
 browseAction
 	^ GLMGenericAction new
 		action: [ :presentation | presentation selection browse ];
-		condition: [ :presentation :entity | 
+		condition: [ :presentation :ent | 
 			presentation selection notNil 
 				and: [ presentation selection canBeBrowsed ]];
-		icon: #nautilus asIcon;
+		icon: (self iconNamed: #nautilus);
 		shortcut: $b;
 		title: 'Browse'; 
 		showTitle

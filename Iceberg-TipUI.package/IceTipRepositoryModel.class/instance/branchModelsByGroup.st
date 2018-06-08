@@ -6,7 +6,7 @@ branchModelsByGroup
 	"Branches group"
 	(IceTipTreeRepositoryGroup on: self)
 		name: 'Branches';
-		icon: #branch asIcon;
+		icon: (self iconNamed: #branch);
 		children: (branches
 			select: [ :each | each entity isLocal ]
 			thenCollect: [ :each | IceTipTreeBranch on: each ]);
@@ -14,7 +14,7 @@ branchModelsByGroup
 	"Remotes group"
 	(IceTipTreeRepositoryGroup on: self)
 		name: 'Remotes';
-		icon: #remote asIcon;
+		icon: (self iconNamed: #remote);
 		children: (self entity remotes collect: [ :eachRemote | | remoteModel |
 			remoteModel := (IceTipRemoteModel repositoryModel: self on: eachRemote) beCached.
 			(IceTipTreeRemote on: remoteModel)
