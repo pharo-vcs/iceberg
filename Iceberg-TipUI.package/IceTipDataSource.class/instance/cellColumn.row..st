@@ -9,6 +9,6 @@ cellColumn: column row: rowIndex
 		yourself.		
 	(column readIcon: item) 
 		ifNotNil: [ :icon | cell addMorphBack: icon asMorph ]. 
-	cell addMorphBack: (column read: item) asMorph asReadOnlyMorph.
+	cell addMorphBack: (column read: item) asMorph.
 
 	^ cell
