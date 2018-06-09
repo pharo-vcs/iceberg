@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 6/9/2018 10:02",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedCommitish"
+	],
+	"name" : "IceTipCreateTagCommand",
+	"type" : "normal"
+}
