@@ -1,5 +1,5 @@
 accessing
-branchModelsByGroup
+repositoryModelsByGroup
 	| branches tags |
 	branches := self allBranchModels.
 	tags := self tagModels.
