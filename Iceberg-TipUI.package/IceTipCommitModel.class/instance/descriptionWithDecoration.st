@@ -1,7 +1,7 @@
 accessing
 descriptionWithDecoration
-	| tags |
-	tags := (', ' join: self entity tagNames) asText allBold makeAllColor: Color gray.
-	tags ifNotEmpty: [ tags := tags , ' ' ].
-	tags append: self entity comment asText.
-	^ tags
+	| text |
+	text := (', ' join: self entity tagNames) asText allBold makeAllColor: Color gray.
+	text ifNotEmpty: [ text := text , ' ' ].
+	text append: self entity comment asText.
+	^ text
