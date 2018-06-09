@@ -16,7 +16,7 @@ repositoryModelsByGroup
 	(IceTipTreeRepositoryGroup on: self)
 		name: 'Tags';
 		icon: (self iconNamed: #glamorousBookmark);
-		children: (tags collect: [ :each | IceTipTreeItem on: each ]);
+		children: (tags collect: [ :each | IceTipTreeTag on: each ]);
 		yourself.
 	"Remotes group"
 	(IceTipTreeRepositoryGroup on: self)
