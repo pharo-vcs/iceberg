@@ -1,7 +1,8 @@
 accessing
 branchModelsByGroup
-	| branches |
+	| branches tags |
 	branches := self allBranchModels.
+	tags := self tagModels.
 	^ { 
 	"Branches group"
 	(IceTipTreeRepositoryGroup on: self)
@@ -10,6 +11,12 @@ branchModelsByGroup
 		children: (branches
 			select: [ :each | each entity isLocal ]
 			thenCollect: [ :each | IceTipTreeBranch on: each ]);
+		yourself.
+	"Tags group"
+	(IceTipTreeRepositoryGroup on: self)
+		name: 'Tags';
+		icon: (self iconNamed: #glamorousBookmark);
+		children: (tags collect: [ :each | IceTipTreeItem on: each ]);
 		yourself.
 	"Remotes group"
 	(IceTipTreeRepositoryGroup on: self)
