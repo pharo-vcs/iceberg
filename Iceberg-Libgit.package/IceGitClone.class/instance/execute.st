@@ -17,6 +17,6 @@ execute
 		lookup;
 		setUrl: url.
 		
-	] on: LGitCallReturnHandler do: [ :error |
+	] on: LGitCallReturnHandler , IceWrongUrl do: [ :error |
 		location exists ifTrue: [ location ensureDeleteAll ].
 		error acceptError: (IceLibgitErrorVisitor onContext: self) ].
