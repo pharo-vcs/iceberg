@@ -1,4 +1,4 @@
-tests-branch
+tests-tags
 testListTagsListsNewTag
 
 	| tags tagName |

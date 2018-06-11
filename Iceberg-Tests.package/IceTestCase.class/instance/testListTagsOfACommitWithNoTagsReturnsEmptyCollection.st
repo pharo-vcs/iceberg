@@ -1,4 +1,4 @@
-tests-branch
+tests-tags
 testListTagsOfACommitWithNoTagsReturnsEmptyCollection
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].

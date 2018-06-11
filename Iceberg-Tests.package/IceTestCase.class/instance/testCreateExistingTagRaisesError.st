@@ -1,4 +1,4 @@
-tests-branch
+tests-tags
 testCreateExistingTagRaisesError
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
