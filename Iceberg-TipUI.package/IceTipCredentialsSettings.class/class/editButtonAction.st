@@ -1,3 +1,3 @@
 settings
 editButtonAction
-	IceTipCredentialsBrowser new openWithSpec.
+	IceTipCredentialsStoreBrowser new openWithSpec.

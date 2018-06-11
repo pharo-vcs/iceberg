@@ -3,5 +3,5 @@ browserShortcutActivation
 	<classAnnotation>
 	
 	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipCredentialsContext
+		byRootGroupItemFor: IceTipCredentialsStoreContext
 		order: 100

@@ -6,10 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"credential",
 		"store",
 		"tool"
 	],
-	"name" : "IceTipAbstractCredentialCommand",
+	"name" : "IceTipAbstractCredentialStoreCommand",
 	"type" : "normal"
 }

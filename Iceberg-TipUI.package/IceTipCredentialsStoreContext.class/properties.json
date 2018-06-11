@@ -1,14 +1,13 @@
 {
-	"commentStamp" : "",
-	"super" : "IceTipCommand",
+	"commentStamp" : "PabloTesone 6/11/2018 13:16",
+	"super" : "CmdToolContext",
 	"category" : "Iceberg-TipUI-Credentials",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"store",
-		"tool"
+		"store"
 	],
-	"name" : "IceTipAbstractCredentialsCommand",
+	"name" : "IceTipCredentialsStoreContext",
 	"type" : "normal"
 }

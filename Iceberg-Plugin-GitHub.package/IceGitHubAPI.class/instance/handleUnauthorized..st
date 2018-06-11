@@ -9,7 +9,7 @@ handleUnauthorized: aZnResponse
 	newCredentials := IcePlaintextCredentials new.
 	
 	"Ignoring if you press cancel"
-	(IceCredentialsProvider defaultForRemote: (IceSimpleRemote for: 'github.com'))
+	(IceCredentialsProvider defaultForHost: 'github.com')
 		obtainPlaintextCredentials: newCredentials.
 		
 	IceAuthenticationError signal: 'Retry to use the new credentials'

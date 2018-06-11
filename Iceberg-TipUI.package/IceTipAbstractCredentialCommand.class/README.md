@@ -1,0 +1,1 @@
+I am the common class of all the commands over an specific credential.

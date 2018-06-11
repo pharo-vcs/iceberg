@@ -1,0 +1,1 @@
+I am the abstract class of all the general commands in the credentials list.
