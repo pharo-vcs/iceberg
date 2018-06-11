@@ -3,4 +3,4 @@ removeClassNamed: aString
 	
 	"Impact the system.
 	This should be enhanced"
-	(Smalltalk globals at: aString) removeFromSystem
+	(Smalltalk globals at: aString ifAbsent: [ ^ self ]) removeFromSystem

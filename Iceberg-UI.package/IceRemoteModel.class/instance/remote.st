@@ -1,4 +1,0 @@
-accessing
-remote
-
-	^ self entity

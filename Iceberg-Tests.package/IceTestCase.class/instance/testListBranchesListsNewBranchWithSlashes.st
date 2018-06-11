@@ -8,7 +8,7 @@ testListBranchesListsNewBranchWithSlashes
 	self repository createBranch: branchName.
 	branches := self repository allBranches.
 	
-	self assert: branches size = 2.
+	self assert: branches size equals: 2.
 	branches
 		detect: [ :branch | branch name = branchName ]
 		ifNone: [ self fail ]

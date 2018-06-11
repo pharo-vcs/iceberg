@@ -1,4 +1,0 @@
-printing
-shortDescription
-	
-	self subclassResponsibility

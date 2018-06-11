@@ -1,4 +1,4 @@
-initialization
+running
 setUp
 
 	| head |

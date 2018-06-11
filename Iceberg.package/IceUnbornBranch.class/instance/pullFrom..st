@@ -7,10 +7,10 @@ pullFrom: aRemote
 	  - create a local branch tracking a remote branch with the same name
 	  - pull from that branch
 	
-	If there is no branch in the remote repository with the same name, fail.
+	If there is no branch in the remote repository with the same name, do nothing.
 	"
 	
 	| remoteBranch |
 	repository fetch.
-	remoteBranch := aRemote remoteBranchNamed: self name.
+	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ ^ self ].
 	repository createBranch: self name inCommit: remoteBranch commit.

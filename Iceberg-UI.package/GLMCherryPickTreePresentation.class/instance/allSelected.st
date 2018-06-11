@@ -1,3 +1,0 @@
-accessing
-allSelected
-	allSelected := true

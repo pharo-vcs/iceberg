@@ -1,3 +1,4 @@
 visiting
 visitGenericError: anError
-	anError pass
+	
+	(IceTipErrorDialog on: anError) openDialogWithSpec

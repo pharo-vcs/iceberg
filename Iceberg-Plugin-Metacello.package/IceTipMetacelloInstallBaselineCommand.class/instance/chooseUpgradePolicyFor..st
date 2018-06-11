@@ -8,5 +8,5 @@ chooseUpgradePolicyFor: aMetacelloUpgradeRequest
 		values: { 
 			#useIncoming. 
 			#useLoaded }
-		message: ('There is already a project "{1}" in this image.' format: { aMetacelloUpgradeRequest projectName })
+		message: ('There is already a project "{1}" in this installation.' format: { aMetacelloUpgradeRequest projectName })
 		title: 'Duplicated project!'.

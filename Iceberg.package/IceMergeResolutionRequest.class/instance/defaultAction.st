@@ -2,7 +2,7 @@ exceptiondescription
 defaultAction
 
 	| window mergeMorph |
-	mergeMorph := (IceMergeMorph forMerger: merge).
+	mergeMorph := (IceTipMergeMorph forMerger: merge).
 
 	mergeMorph
 		fromDescription: merge sourceDescription;

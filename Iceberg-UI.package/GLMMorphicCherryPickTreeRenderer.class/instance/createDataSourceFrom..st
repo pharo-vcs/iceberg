@@ -1,3 +1,0 @@
-initialization
-createDataSourceFrom: aPresentation
-	^ GLMCherryPickTreeDataSource new

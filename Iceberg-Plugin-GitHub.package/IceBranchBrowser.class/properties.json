@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "IceHistoryBrowser",
+	"category" : "Iceberg-Plugin-GitHub-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceBranchBrowser",
+	"type" : "normal"
+}

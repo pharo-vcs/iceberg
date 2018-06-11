@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 5/16/2018 15:58",
+	"super" : "ListItemWrapper",
+	"category" : "Iceberg-TipUI-Merge",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMergeListWrapper",
+	"type" : "normal"
+}

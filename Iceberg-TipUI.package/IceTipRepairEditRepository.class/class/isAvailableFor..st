@@ -1,4 +1,4 @@
 testing
 isAvailableFor: aRepository
 
-	^ aRepository isCodeMissing
+	^ aRepository isMissing not and: [aRepository isCodeMissing]

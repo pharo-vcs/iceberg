@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-Migration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository",
+		"branchName",
+		"format",
+		"mergeWithCurrentBranch"
+	],
+	"name" : "IceConvertFormatAction",
+	"type" : "normal"
+}

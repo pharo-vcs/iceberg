@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "asd 5/22/2018 12:29",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"exception",
+		"errorLabel",
+		"iconPanel"
+	],
+	"name" : "IceTipErrorDialog",
+	"type" : "normal"
+}

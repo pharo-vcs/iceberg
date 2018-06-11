@@ -1,0 +1,3 @@
+running
+newFixture
+	^ IceBasicRepositoryFixture inGit

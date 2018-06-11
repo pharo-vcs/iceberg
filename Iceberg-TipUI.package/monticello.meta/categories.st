@@ -10,3 +10,4 @@ SystemOrganization addCategory: #'Iceberg-TipUI-View-Branch'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-NOTUSED'!
 SystemOrganization addCategory: #'Iceberg-TipUI-View-RepositoryType'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-Versions'!
