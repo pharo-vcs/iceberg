@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #refresh asIcon
+	^ self iconNamed: #refresh

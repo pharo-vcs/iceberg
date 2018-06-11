@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 5/30/2018 14:28",
+	"super" : "IceTipCommitModel",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commitModels"
+	],
+	"name" : "IceTipVersionModel",
+	"type" : "normal"
+}

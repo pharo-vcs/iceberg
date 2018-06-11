@@ -1,4 +1,4 @@
 API-remotes
 pushTo: aRemote	
 	
-	self subclassResponsibility
+	self branch pushTo: aRemote

@@ -1,5 +1,5 @@
 instance creation
 repository: aRepository method: aMethod
-	^ self basicNew 
-		initializeRepository: aRepository method: aMethod;
-		yourself
+	"This method needs to be deprecated"
+	
+	^ self onRepository: aRepository method: aMethod

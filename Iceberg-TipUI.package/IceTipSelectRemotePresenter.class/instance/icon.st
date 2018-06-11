@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #add asIcon
+	^ self iconNamed: #add

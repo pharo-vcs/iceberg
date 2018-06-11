@@ -1,0 +1,4 @@
+testing
+isOkEnabled
+	
+	self subclassResponsibility

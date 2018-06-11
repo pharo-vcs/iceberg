@@ -1,4 +1,4 @@
 private
 iconForMergeable: mergeable
-	mergeable = true ifTrue: [ ^ #smallOk asIcon ].
-	^ #smallCancel asIcon
+	mergeable = true ifTrue: [ ^ self iconNamed: #smallOk ].
+	^ self iconNamed: #smallCancel

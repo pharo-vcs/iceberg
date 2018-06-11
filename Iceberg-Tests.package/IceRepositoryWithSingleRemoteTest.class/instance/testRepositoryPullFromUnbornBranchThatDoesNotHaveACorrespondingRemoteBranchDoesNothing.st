@@ -1,4 +1,4 @@
-tests-push
+tests-pull
 testRepositoryPullFromUnbornBranchThatDoesNotHaveACorrespondingRemoteBranchDoesNothing
 
 	| prePullCommit |

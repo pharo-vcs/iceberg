@@ -1,0 +1,3 @@
+accessing
+selectedCommit
+	^ self item

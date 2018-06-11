@@ -1,3 +1,3 @@
 querying
 commit
-	^ commit ifNil: [ commit := self repository newCommitWalk fromTag: self; firstCommit ]
+	^ commit ifNil: [ commit := self repository peelTag: self ]

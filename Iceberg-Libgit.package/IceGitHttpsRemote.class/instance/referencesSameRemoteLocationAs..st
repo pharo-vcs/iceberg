@@ -1,4 +1,4 @@
 testing
 referencesSameRemoteLocationAs: aRemote
 	^ (super referencesSameRemoteLocationAs: aRemote)
-		or: [ self url sameAs: aRemote httpsUrl ] 
+		or: [ (self url withoutSuffix: '.git') sameAs: (aRemote httpsUrl withoutSuffix: '.git') ] 

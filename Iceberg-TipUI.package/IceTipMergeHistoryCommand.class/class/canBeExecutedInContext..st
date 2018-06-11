@@ -1,3 +1,3 @@
 testing
 canBeExecutedInContext: aToolContext
-	^ aToolContext item entity hasMultipleAncestors
+	^ aToolContext selectedCommit hasMultipleAncestors

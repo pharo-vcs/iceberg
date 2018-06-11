@@ -1,3 +1,3 @@
 accessing
 windowIcon
-	^ #komitterSmalltalkhubRemote asIcon
+	^ self iconNamed: #komitterSmalltalkhubRemote

@@ -1,0 +1,1 @@
+I'm a model for IceCommit entries. 

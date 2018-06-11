@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #bitbucket asIcon
+	^ self iconNamed: #bitbucket

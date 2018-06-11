@@ -1,3 +1,5 @@
 accessing
 publicKey: anObject
-	publicKey := anObject
+	publicKey := anObject.
+	
+	self storeIfDefault.

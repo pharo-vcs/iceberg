@@ -1,0 +1,3 @@
+*Iceberg-TipUI
+editModelClass
+	^ IceTipEditSSHCredentialsModel
