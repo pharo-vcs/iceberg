@@ -10,7 +10,8 @@
 		"codeRepository",
 		"head",
 		"remotes",
-		"remoteBranchRepository"
+		"remoteBranchRepository",
+		"tagDictionary"
 	],
 	"name" : "IceMemoryRepository",
 	"type" : "normal"

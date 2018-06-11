@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceError",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tagName"
+	],
+	"name" : "IceTagNotFound",
+	"type" : "normal"
+}
