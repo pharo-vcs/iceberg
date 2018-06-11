@@ -1,6 +1,6 @@
 private
 toggleSelectionOf: item
-	(self isSelected: item) 
-		ifTrue: [ selectedItems remove: item ]
-		ifFalse: [ selectedItems add: item ].
+	(self isSelected: item)
+		ifTrue: [ self remove: item ]
+		ifFalse: [ self add: item ].
 	self tableRefresh
