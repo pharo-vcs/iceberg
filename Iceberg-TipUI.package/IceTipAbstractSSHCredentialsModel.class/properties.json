@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipAbstractAskCredentialsModel",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"usernameInput",
+		"usernameLabel",
+		"publicKeyInput",
+		"privateKeyInput",
+		"passphraseInput",
+		"passphraseLabel",
+		"tool"
+	],
+	"name" : "IceTipAbstractSSHCredentialsModel",
+	"type" : "normal"
+}

@@ -1,8 +1,6 @@
 execution
 execute
-
-	credential editModelClass new
-		credentials: credential;
+	IceTipAddSSHCredentialsModel new
 		credentialStore: store;
 		tool: tool;
 		openNonModal.

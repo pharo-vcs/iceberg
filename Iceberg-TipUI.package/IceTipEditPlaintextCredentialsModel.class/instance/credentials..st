@@ -1,5 +1,5 @@
 accessing
-credential: aPlainTextCredential 
+credentials: aPlainTextCredential 
 
 	credential := aPlainTextCredential.
 	
