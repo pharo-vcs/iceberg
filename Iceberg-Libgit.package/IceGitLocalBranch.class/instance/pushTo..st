@@ -11,7 +11,7 @@ pushTo: aRemote
 						yourself)
 				pushOptions:
 					(LGitPushOptions defaults
-						callbacks: (LGitRemoteCallbacks withProvider: IceCredentialsProvider default);
+						callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote));
 						yourself).
 
 			"Push tags!"
@@ -25,7 +25,7 @@ pushTo: aRemote
 								yourself)
 						pushOptions:
 							(LGitPushOptions defaults
-								callbacks: (LGitRemoteCallbacks withProvider: IceCredentialsProvider default);
+								callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote));
 								yourself) ] ]
 				on: LGit_GIT_ENONFASTFORWARD
 				do: [ :e | 

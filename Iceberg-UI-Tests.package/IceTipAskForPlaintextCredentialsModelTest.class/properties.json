@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Iceberg-UI-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"store",
+		"dialog"
+	],
+	"name" : "IceTipAskForPlaintextCredentialsModelTest",
+	"type" : "normal"
+}

@@ -1,0 +1,1 @@
+I implement the dialog to add plaintext credentials.

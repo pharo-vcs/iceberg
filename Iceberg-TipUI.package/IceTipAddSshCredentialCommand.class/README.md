@@ -1,0 +1,1 @@
+I add a new IceSshCredentials to the store

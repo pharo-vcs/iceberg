@@ -1,3 +1,3 @@
 accessing
 plaintextCredentials
-	^ self class plaintextCredentials
+	^ self credentialStore plaintextCredentialForHostname: remote host.

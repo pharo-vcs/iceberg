@@ -1,0 +1,4 @@
+actions
+cancelAction
+	
+	LGitNoCredentialsProvided signal

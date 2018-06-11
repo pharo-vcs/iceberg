@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "NicoPasserini 11/22/2016 14:34",
-	"super" : "Object",
+	"super" : "IceAbstractCredentials",
 	"category" : "Iceberg-Security",
 	"classinstvars" : [ ],
 	"pools" : [ ],

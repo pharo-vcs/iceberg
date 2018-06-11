@@ -8,7 +8,7 @@ execute
 	[location ensureCreateDirectory.
 	
 	repo := LGitRepository on: location.
-	cloneOptions := LGitCloneOptions withCredentialsProvider: IceCredentialsProvider default.
+	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
 	cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force.
 
 	repo clone: url options: cloneOptions.
@@ -17,6 +17,6 @@ execute
 		lookup;
 		setUrl: url.
 		
-	] on: LGitCallReturnHandler do: [ :error |
+	] on: LGitCallReturnHandler , IceWrongUrl do: [ :error |
 		location exists ifTrue: [ location ensureDeleteAll ].
 		error acceptError: (IceLibgitErrorVisitor onContext: self) ].

@@ -1,0 +1,4 @@
+accessing
+defaultMenuIconName
+
+	^ #remove
