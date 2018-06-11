@@ -1,5 +1,9 @@
 API-registry
 checkForRegistryConflicts
+	
+	"If the repository has no location, do not check for conflicts."
+	self location ifNil: [ ^ self ].
+	
 	self class registry 
 		detect: [ :repo | repo location = self location ]
 		ifFound: [ :repo | self origin = repo origin
