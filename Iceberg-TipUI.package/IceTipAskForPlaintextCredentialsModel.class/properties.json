@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTipAbstractAskCredentialsModel",
+	"super" : "IceTipAbstractPlaintextCredentialsModel",
 	"category" : "Iceberg-TipUI-Credentials",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"usernameLabel",
-		"usernameInput",
-		"passwordLabel",
-		"passwordInput"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipAskForPlaintextCredentialsModel",
 	"type" : "normal"
 }

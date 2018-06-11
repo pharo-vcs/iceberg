@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"store",
+		"tool"
+	],
+	"name" : "IceTipAbstractCredentialsCommand",
+	"type" : "normal"
+}

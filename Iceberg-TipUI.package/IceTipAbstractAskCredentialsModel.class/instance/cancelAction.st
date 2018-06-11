@@ -1,4 +1,3 @@
 actions
 cancelAction
-	
-	LGitNoCredentialsProvided signal
+	^ self subclassResponsibility 

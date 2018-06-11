@@ -5,7 +5,8 @@ saveIntoStore
 	
 	self flag: #implementAnEncryptedVersion.
 	
-	storeFile ifNotNil: [  
-		serializer := FLSerializer on: storeFile resolve binaryWriteStream.
-		serializer serialize: {plainCredentials. sshCredentials}.
+	storeFile ifNotNil: [  	
+		storeFile resolve binaryWriteStreamDo: [ :stream | 
+			serializer := FLSerializer on:  stream.
+			serializer serialize: {plainCredentials. sshCredentials}]
 	]

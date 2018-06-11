@@ -1,0 +1,3 @@
+settings
+editButtonAction
+	IceTipCredentialsBrowser new openWithSpec.

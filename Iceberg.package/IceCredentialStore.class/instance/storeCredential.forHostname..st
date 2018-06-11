@@ -1,5 +1,6 @@
 API -  accessing
 storeCredential: credential forHostname: aHostname
  
-	credential storeInto: self forUrl: aHostname.
+	self loadFromStore.
+	credential storeInto: self forHostname: aHostname.
 	self saveIntoStore

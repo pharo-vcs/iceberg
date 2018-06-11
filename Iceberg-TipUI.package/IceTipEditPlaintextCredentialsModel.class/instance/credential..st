@@ -1,0 +1,8 @@
+accessing
+credential: aPlainTextCredential 
+
+	credential := aPlainTextCredential.
+	
+	self usernameInput text: credential username.
+	self passwordInput text: credential password.
+	
