@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #gitlab asIcon
+	^ self iconNamed: #gitlab

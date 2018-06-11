@@ -6,6 +6,6 @@ refreshAction
 				informUser: 'Refreshing pull request list' 
 				during: [ self refreshPullRequests ].
 			presentation update ];
-		icon: #refresh asIcon;
+		icon: (self iconNamed: #refresh);
 		title: 'Refresh'; 
 		showTitle

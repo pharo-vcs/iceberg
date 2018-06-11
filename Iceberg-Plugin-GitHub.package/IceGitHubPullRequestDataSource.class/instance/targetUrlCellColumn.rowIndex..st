@@ -8,7 +8,7 @@ targetUrlCellColumn: column rowIndex: rowIndex
 				target: self;
 				actionSelector: #copyToClipboard:;
 				arguments: { url };
-				labelGraphic: (#smallCopy asIcon scaledToSize: 12@12);
+				labelGraphic: ((self iconNamed: #smallCopy) scaledToSize: 12@12);
 				color: Color transparent;
 				helpText: ('Copy url {1} to clipboard' format: { url });
 				borderWidth: 0;

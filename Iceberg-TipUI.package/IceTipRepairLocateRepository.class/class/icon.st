@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #glamorousFolder asIcon
+	^ self iconNamed: #glamorousFolder

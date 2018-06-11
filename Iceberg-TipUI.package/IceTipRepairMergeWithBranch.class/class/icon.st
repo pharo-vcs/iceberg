@@ -1,3 +1,3 @@
 accessing
 icon
-	^ #merge asIcon
+	^ self iconNamed: #merge

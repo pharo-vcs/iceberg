@@ -1,3 +1,3 @@
 *Iceberg-TipUI
 icon
-	^ #book asIcon
+	^ self iconNamed: #book

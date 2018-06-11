@@ -1,3 +1,3 @@
-scripting opening
+showing
 open
-	self openOn: Object new
+	self openWithSpec

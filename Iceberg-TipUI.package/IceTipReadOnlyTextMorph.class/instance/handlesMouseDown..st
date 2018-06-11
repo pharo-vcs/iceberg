@@ -1,0 +1,3 @@
+initialization
+handlesMouseDown: evt
+	^ false

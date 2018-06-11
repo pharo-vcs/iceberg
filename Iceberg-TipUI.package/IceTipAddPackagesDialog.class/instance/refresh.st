@@ -4,6 +4,6 @@ refresh
 		in: [ :this | 
 			this selectRowIndexes: #(). 
 			this dataSource 
-				rootForItems: self model branchModelsByGroup;
+				rootForItems: self model repositoryModelsByGroup;
 				expandAll ];
 		refresh.

@@ -1,0 +1,3 @@
+testing
+actsOnTag: aRemoteModel
+	^ true

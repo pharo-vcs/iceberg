@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "GuillermoPolito 6/8/2018 09:46",
 	"super" : "Object",
 	"category" : "Iceberg-Libgit-Exceptions",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"context"
+	],
 	"name" : "IceLibgitErrorVisitor",
 	"type" : "normal"
 }

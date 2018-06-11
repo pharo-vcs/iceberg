@@ -4,7 +4,7 @@ initializePackagesList
 	
 	dataSource := self newPackagesListDataSource.
 	packagesList widget
-		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | #package asIcon ]);
+		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | self iconNamed: #package ]);
 		dataSource: dataSource;
 		useFunction: IceTipLinkFilterFunction do: [ :function | 
 			function 

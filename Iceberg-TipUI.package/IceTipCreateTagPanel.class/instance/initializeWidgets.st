@@ -1,0 +1,4 @@
+initialization
+initializeWidgets
+	self initializeWidgetsContents.
+	self initializeFocusOrder

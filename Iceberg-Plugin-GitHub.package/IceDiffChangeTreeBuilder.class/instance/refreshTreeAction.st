@@ -4,6 +4,6 @@ refreshTreeAction
 		action: [ :presentation |
 			self entity rebuild.
 			presentation update ];
-		icon: #glamorousRefresh asIcon;
+		icon: (self iconNamed: #glamorousRefresh);
 		shortcut: $r;
 		title: 'Refresh tree'; showTitle

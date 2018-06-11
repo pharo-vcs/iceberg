@@ -6,7 +6,7 @@ fetch
 			lookup;
 			fetchWithCredentials: IceCredentialsProvider default ]
 			on: LGitAbstractError
-			do: [ :e | e acceptError: IceLibgitErrorVisitor new ].
+			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ].
 		
 		"Call post fetch to fix unknown commits"
 		localRepository postFetch ]

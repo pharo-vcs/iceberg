@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "GuillermoPolito 6/9/2018 10:11",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"spacePanel",
+		"callback",
+		"tagNameInputText",
+		"commitishToTag",
+		"currentCommitishLabel",
+		"tagNameLabel",
+		"acceptBlock"
+	],
+	"name" : "IceTipCreateTagPanel",
+	"type" : "normal"
+}

@@ -9,7 +9,7 @@ initializeRepositoryList
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Branch';
-			action: #branchNameWithCommitId;
+			action: #branchName;
 			width: 150;
 			yourself);
 		addColumn: (IceTipTableColumn new 

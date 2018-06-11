@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	iconPanel := self newIcePanel.
-	iconPanel widget addMorph: #question asIcon asMorph.
+	iconPanel widget addMorph: (self iconNamed: #question) asMorph.
 	
 	confirmLabel := self newIceReadOnlyText. 
 	confirmLabel widget contentsWrapped: (self class confirmMessage 

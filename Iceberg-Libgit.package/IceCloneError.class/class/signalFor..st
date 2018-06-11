@@ -1,5 +1,4 @@
 signalling
-signalFor: aCloneOperation
-	^ self new
-		cloneOperation: aCloneOperation;
-		signal.
+signalFor: anObject
+
+	^ self subclassResponsibility

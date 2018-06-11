@@ -13,4 +13,4 @@ fetchBranch: aBranch
 			lookup;
 			fetchWithCredentials: IceCredentialsProvider default refSpec: refSpec ]
 			on: LGitAbstractError
-			do: [ :e | e acceptError: IceLibgitErrorVisitor new ] ]
+			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ] ]
