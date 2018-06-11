@@ -1,0 +1,3 @@
+initialization
+initializeFocusOrder
+	self focusOrder add: self tagNameInputText

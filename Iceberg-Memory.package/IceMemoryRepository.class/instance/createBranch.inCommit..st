@@ -24,4 +24,6 @@ createBranch: branchName inCommit: aCommit
 	iceCommit repository: self.
 	iceCommit mcCommit: newBranchCommit.
 	
-	^ head := self newBranchNamed: branchName commit: iceCommit
+	^ (self newBranchNamed: branchName commit: iceCommit)
+		switch;
+		yourself

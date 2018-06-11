@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 6/11/2018 11:45",
+	"super" : "IceTipReadOnlyTextMorph",
+	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipLabelMorph",
+	"type" : "normal"
+}
