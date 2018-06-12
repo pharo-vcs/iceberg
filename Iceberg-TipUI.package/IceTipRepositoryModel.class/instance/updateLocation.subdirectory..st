@@ -6,6 +6,6 @@ updateLocation: aReference subdirectory: aString
 		location: aReference;
 		subdirectory: aString.
 	"force refresh packages"
-	self entity workingCopy refreshPackages.
+	self entity workingCopy refreshProject.
 	
 	Iceberg announcer announce: (IceRepositoryModified for: self entity)

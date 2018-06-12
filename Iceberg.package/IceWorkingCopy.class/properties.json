@@ -9,7 +9,8 @@
 		"repository",
 		"packages",
 		"referenceCommit",
-		"shouldIgnoreNotifications"
+		"shouldIgnoreNotifications",
+		"project"
 	],
 	"name" : "IceWorkingCopy",
 	"type" : "normal"
