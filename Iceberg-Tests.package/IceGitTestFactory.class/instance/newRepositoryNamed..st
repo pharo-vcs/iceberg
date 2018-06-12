@@ -13,5 +13,5 @@ newRepositoryNamed: projectName
 		IceGitCommand in: repository location execute: { 'config'. '--global'. 'user.name'.  '"Iceberg CI"' }
 	].
 
-	repository workingCopy: (IceRingWorkingCopy repository: repository).
+	repository workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
 	^ repository

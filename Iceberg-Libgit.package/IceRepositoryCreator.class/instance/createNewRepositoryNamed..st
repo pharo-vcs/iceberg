@@ -1,6 +1,6 @@
 actions
 createNewRepositoryNamed: aString
-	| locationToUse repository |
+	| locationToUse |
 	
 	self validate.
 
@@ -19,7 +19,8 @@ createNewRepositoryNamed: aString
 		subdirectory: self subdirectory;
 		init;
 		yourself.
-		
+	
+	self addProjectFileTo: repository.
 	self addPropertiesFileTo: repository.
 
 	^ repository

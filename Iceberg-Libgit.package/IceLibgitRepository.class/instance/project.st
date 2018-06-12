@@ -1,4 +1,4 @@
 API-project
 project
 	
-	^ self headCommit project
+	^ self workingCopy project

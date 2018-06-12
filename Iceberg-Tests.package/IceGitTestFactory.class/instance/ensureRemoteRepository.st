@@ -8,5 +8,5 @@ ensureRemoteRepository
 		ifFalse: [ IceRepositoryCreator new
 				location: self remoteFileUrl asFileReference;
 				createNewRepositoryNamed: self remoteFileUrl segments last ].
-	remoteRepository workingCopy: (IceRingWorkingCopy repository: remoteRepository).
+	remoteRepository workingCopy: (IceRingWorkingCopy fromWorkingCopy: remoteRepository workingCopy).
 	^ remoteRepository

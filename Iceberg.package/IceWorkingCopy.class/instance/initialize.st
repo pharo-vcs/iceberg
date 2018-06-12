@@ -6,4 +6,4 @@ initialize
 	
 	packages := Dictionary new.
 	referenceCommit := IceNoCommit repository: repository.
-	project := referenceCommit project
+	self project: referenceCommit project

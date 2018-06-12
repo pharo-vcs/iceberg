@@ -9,8 +9,8 @@ commitChanges: aDiff withMessage: message
 	
 	| newCommit |
 	self validateCanCommit.
-		
 	self repository index
+		updateProject: self project;
 		updateDiskWorkingCopy: aDiff;
 		updateIndex: aDiff.
 

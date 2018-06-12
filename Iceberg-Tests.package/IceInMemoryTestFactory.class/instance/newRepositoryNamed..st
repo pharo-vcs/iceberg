@@ -3,5 +3,5 @@ newRepositoryNamed: projectName
 
 	| repository |
 	repository := IceMemoryRepository new.
-	repository workingCopy: (IceRingWorkingCopy repository: repository).
+	repository workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
 	^ repository
