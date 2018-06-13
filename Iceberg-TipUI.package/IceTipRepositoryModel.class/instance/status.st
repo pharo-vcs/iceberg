@@ -9,8 +9,11 @@ status
 			ifTrue: [ ^ self toErrorMessage: entity workingCopy workingCopyState description ].	
 		entity workingCopy isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached Working Copy' ].
-		entity head isDetached 
+		entity head isDetached
 			ifTrue: [ ^ self toErrorMessage: 'Detached HEAD' ].
+
+		entity workingCopy project isUnbornProject
+			ifTrue: [ ^ self toErrorMessage: 'No Project Found' ].	
 
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
