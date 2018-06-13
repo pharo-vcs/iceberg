@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipRepairAction",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipRepairProject",
+	"type" : "normal"
+}

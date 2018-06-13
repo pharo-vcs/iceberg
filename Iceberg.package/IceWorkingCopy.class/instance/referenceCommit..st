@@ -5,4 +5,4 @@ referenceCommit: aCommit
 		ifTrue: [ ^ self ].
 
 	referenceCommit := aCommit.
-	self refreshProject
+	self refreshProjectFromRepository
