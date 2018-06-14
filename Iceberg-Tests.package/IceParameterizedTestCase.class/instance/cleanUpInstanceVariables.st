@@ -1,7 +1,7 @@
 private
 cleanUpInstanceVariables
 	| instanceVariablesNames |
-	instanceVariablesNames := #('testSeletor' 'testParameters').
+	instanceVariablesNames := #('testSelector' 'testParameters').
 	self class allInstVarNames
 		do: [ :name | 
 			(instanceVariablesNames includes: name)

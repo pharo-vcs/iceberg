@@ -1,5 +1,7 @@
 accessing
 refreshProjectFromRepository
 
-	project := referenceCommit project.
+	project := (referenceCommit isCollection
+		ifTrue: [ referenceCommit first ]
+		ifFalse: [ referenceCommit ]) project.
 	self refreshProject

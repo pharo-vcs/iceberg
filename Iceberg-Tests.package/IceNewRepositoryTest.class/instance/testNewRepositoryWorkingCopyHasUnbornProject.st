@@ -1,4 +1,0 @@
-tests
-testNewRepositoryWorkingCopyHasUnbornProject
-
-	self assert: self repository workingCopy project isUnbornProject

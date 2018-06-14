@@ -3,8 +3,8 @@ refreshPackages
 	| commitPackages |
 	
 	commitPackages := self referenceCommit isCollection
-		ifTrue: [ self referenceCommit flatCollect: #packages ]
-		ifFalse: [ self referenceCommit packages ].
+		ifTrue: [ self referenceCommit flatCollect: [ :each | self project packagesFrom: each ] ]
+		ifFalse: [ self project packagesFrom: self referenceCommit ].
 
 	"remove packages that are not there anymore"
 	(self packages \ commitPackages) do: [ :each | self basicRemovePackage: each ].

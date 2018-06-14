@@ -3,7 +3,6 @@ basicExecute
 	| dialog |
 	dialog := IceTipLocalRepositoryPanel new
 		location: (self repository location ifNil: [ self defaultLocation ]);
-		subdirectory: self repository subdirectory;
 		yourself.
 	dialog openDialogWithSpec 
 		okAction: [ 
