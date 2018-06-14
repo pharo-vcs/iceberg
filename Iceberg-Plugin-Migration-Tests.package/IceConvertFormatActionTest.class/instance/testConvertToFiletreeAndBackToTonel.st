@@ -13,7 +13,7 @@ testConvertToFiletreeAndBackToTonel
 	self 
 		assert: self repository writerClass 
 		equals: IceLibgitTonelWriter.
-		
+	
 	IceConvertFormatAction new
 		repository: self repository;
 		branchName: 'migrate-to-filetree';
