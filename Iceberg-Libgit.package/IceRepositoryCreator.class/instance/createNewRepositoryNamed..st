@@ -16,7 +16,6 @@ createNewRepositoryNamed: aString
 	repository := IceLibgitRepository new
 		name: aString;
 		location: locationToUse;
-		subdirectory: self subdirectory;
 		init;
 		yourself.
 	

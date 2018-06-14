@@ -4,6 +4,6 @@ fromCommitish: anIceCommitish
 	(anIceCommitish fileSystem / '.project') exists
 		ifFalse: [ ^ IceUnbornProject onRepository: anIceCommitish repository ].
 
-	^ self new
-		commitish: anIceCommitish;
-		yourself
+	^ self
+		fromFileReference: (anIceCommitish fileSystem / '.project')
+		inRepository: anIceCommitish repository

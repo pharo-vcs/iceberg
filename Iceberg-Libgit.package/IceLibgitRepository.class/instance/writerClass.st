@@ -1,3 +1,3 @@
 API-accessing
 writerClass
-	^ self properties writerClass
+	^ self project writerClass

@@ -2,6 +2,6 @@ private
 addProjectFileTo: aRepository
 	
 	| newProject |
-	newProject := IceProject new.
+	newProject := IceProject onRepository: aRepository.
 	newProject sourceDirectory: self subdirectory.
 	aRepository workingCopy project: newProject.

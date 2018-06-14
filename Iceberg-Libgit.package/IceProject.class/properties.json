@@ -8,7 +8,8 @@
 	"instvars" : [
 		"commitish",
 		"properties",
-		"repository"
+		"repository",
+		"fileFormat"
 	],
 	"name" : "IceProject",
 	"type" : "normal"
