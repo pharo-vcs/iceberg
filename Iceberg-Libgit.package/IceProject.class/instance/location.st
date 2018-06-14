@@ -1,4 +1,0 @@
-accessing
-location
-	
-	^ repository location

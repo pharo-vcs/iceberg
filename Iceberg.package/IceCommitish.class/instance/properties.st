@@ -1,4 +1,4 @@
 API-properties
 properties
 
-	^ IceRepositoryProperties new
+	^ self subclassResponsibility

@@ -1,5 +1,3 @@
 private
-addPropertiesFileTo: repository
-	repository properties
-		at: #format put: self formatToUse;
-		store
+addPropertiesFileTo: aRepository
+	aRepository project fileFormat: self formatToUse

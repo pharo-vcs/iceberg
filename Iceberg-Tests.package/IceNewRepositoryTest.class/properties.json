@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTestCase",
+	"super" : "IceBornRepositoryTest",
 	"category" : "Iceberg-Tests-Common",
 	"classinstvars" : [ ],
 	"pools" : [ ],

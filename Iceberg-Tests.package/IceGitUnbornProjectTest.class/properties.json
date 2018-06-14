@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceTestCase",
+	"super" : "IceAbstractRepositoryTest",
 	"category" : "Iceberg-Tests-Git",
 	"classinstvars" : [ ],
 	"pools" : [ ],

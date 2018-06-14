@@ -1,0 +1,4 @@
+accessing
+defaultFileFormat
+	
+	^ IceLibgitRepository defaultFileFormat

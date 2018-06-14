@@ -13,7 +13,11 @@
 		"sourceDirectoryLabel",
 		"sourceDirectoryTree",
 		"sourceDirectorySelectionLabel",
-		"selectedDirectoryPath"
+		"selectedDirectoryPath",
+		"formatList",
+		"formatLabel",
+		"formats",
+		"defaultFormat"
 	],
 	"name" : "IceTipEditProjectDialog",
 	"type" : "normal"

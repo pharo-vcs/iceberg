@@ -18,4 +18,9 @@ defaultSpec
 					row
 						newColumn: [ :column | "empty" ] width: 100;
 						add: #sourceDirectorySelectionLabel ]
+					height: self inputTextHeight;
+				newRow: [ :row | 
+					row
+						add: #formatLabel width: 100;
+						add: #formatList ]
 					height: self inputTextHeight ]

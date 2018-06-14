@@ -1,8 +1,7 @@
 tests
 testCommitSavesPropertiesFile
 	self repository properties
-		at: #bla put: #blo;
-		store.
+		at: #bla put: #blo.
 	
 	self repository commitWithMessage: 'add properties'.
 		

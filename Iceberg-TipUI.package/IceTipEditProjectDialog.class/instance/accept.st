@@ -8,6 +8,7 @@ accept
 		execute: [ 
 			"Update the project"
 			model sourceDirectory: self selectedDirectoryPath pathString.
+			model fileFormat: self selectedFileFormat.
 			"Set the project in the repository"
 			model repository workingCopy project: model ].
 

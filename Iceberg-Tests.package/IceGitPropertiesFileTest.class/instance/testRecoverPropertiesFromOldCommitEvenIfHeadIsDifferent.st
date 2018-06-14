@@ -1,23 +1,16 @@
 tests
 testRecoverPropertiesFromOldCommitEvenIfHeadIsDifferent
 	self repository properties
-		at: #bla put: #old;
-		store.
-	
+		at: #bla put: #old.
 	self repository commitWithMessage: 'add properties'.
 	
-	"Write to disk without commit"
 	self repository properties
-		at: #bla put: #headBla;
-		store.
-		
+		at: #bla put: #headBla.
 	self repository commitWithMessage: 'change properties'.
 	
-	"Write to disk without commit"
 	self repository properties
-		at: #bla put: #inDisk;
-		store.
+		at: #bla put: #inMemory.
 	
-	self assert: (self repository properties at: #bla) equals: #inDisk.
+	self assert: (self repository properties at: #bla) equals: #inMemory.
 	self assert: (self repository head properties at: #bla) equals: #headBla.
 	self assert: (self repository head commit parent properties at: #bla) equals: #old.

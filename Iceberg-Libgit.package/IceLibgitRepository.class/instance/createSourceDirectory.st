@@ -3,5 +3,5 @@ createSourceDirectory
 	(location / self subdirectory) ensureCreateDirectory.
 	
 	self properties
-		at: #format put: self class defaultFileFormat id;
+		fileFormat: self class defaultFileFormat;
 		store	
