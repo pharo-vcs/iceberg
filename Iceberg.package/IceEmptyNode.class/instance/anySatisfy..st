@@ -1,0 +1,4 @@
+enumerating
+anySatisfy: aBlockClosure 
+	
+	^ false

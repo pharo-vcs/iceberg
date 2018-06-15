@@ -1,0 +1,4 @@
+comparing
+= aMemoryProject
+
+	^ aMemoryProject isMemoryProject

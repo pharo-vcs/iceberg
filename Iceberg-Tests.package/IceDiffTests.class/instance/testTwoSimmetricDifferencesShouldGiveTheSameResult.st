@@ -12,11 +12,11 @@ testTwoSimmetricDifferencesShouldGiveTheSameResult
 	
 	left := IceNode new.
 	leftSrc := left addChild: (IceDirectoryDefinition named: 'src').
-	leftSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: leftFileRef).
+	leftSrc addChild: (IceFileDefinition named: 'Readme.md' path: (RelativePath with: 'Readme.md') fileReference: leftFileRef).
 	
 	right := IceNode new.
 	rightSrc := right addChild: (IceDirectoryDefinition named: 'src').
-	rightSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: rightFileRef).
+	rightSrc addChild: (IceFileDefinition named: 'Readme.md' path: (RelativePath with: 'Readme.md') fileReference: rightFileRef).
 
 	diff1 := IceDiff new diff: left with: right.
 	diff2 := IceDiff new diff: left with: right.

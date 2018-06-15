@@ -1,4 +1,4 @@
 accessing
 projectFileReference
 
-	^ commitish fileSystem / '.project'.
+	^ self projectFileIn: commitish

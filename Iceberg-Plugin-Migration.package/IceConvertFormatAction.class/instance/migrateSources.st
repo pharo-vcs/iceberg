@@ -11,10 +11,13 @@ migrateSources
 		self 
 			migratePackage: each 
 			commit: commit ].
-	self repository project
-		fileFormatId: self format;
-		storeIn: repository workingCopy.
-	self repository addFileToIndex: self repository project propertiesFilePath.
+
+	(self repository project propertiesFileIn: repository workingCopy)
+		binaryWriteStreamDo: [ :stream |
+			stream nextPutAll: (self repository project
+				fileFormatId: self format;
+				repositoryProperties) contentsString ].
+	self repository addFileToIndex: self repository project propertiesFilePath.	
 	
 	self format = #filetree ifTrue: [ 
 		self removeFiletreeRemnants ].

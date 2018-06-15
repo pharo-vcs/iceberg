@@ -5,6 +5,5 @@ testPropertiesFileIsStoredInMemory
 	self repository properties
 		at: #bla put: #blo.
 		
-	ston := (STON fromStream: (self repository codeDirectory / '.properties') readStream).
-	self deny: (ston includesKey: #bla) equals: #blo.
+	self deny: (self repository codeDirectory / '.properties') exists.
 	self assert: (self repository properties at: #bla) equals: #blo
