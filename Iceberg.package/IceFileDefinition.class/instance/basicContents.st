@@ -1,0 +1,4 @@
+comparing
+basicContents
+
+	^ contents

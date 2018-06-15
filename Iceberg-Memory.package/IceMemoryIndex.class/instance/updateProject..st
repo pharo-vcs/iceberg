@@ -1,4 +1,4 @@
 as yet unclassified
 updateProject: anIceUnbornProject 
 	
-	"Nothing for now"
+	"Nothing for now"	1halt.

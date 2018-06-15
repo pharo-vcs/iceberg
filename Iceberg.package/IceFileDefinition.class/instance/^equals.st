@@ -1,4 +1,4 @@
 comparing
 = anotherDefinition
 
-	^ super = anotherDefinition and: [ self binaryContents = anotherDefinition binaryContents ]
+	^ super = anotherDefinition and: [ contents = anotherDefinition basicContents ]

@@ -6,5 +6,4 @@ newRepository
 			^ IceRepositoryCreator new
 				repository: repository;
 				location: self location;
-				subdirectory: self subdirectory;
 				createRepository ]

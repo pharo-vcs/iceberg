@@ -8,5 +8,4 @@ initializeWidgets
 	self projectLocation appendPath: (self extractProjectName: text) ].
 	
 	self focusOrder 
-		add: self remoteInputText;
-		add: self subdirectoryInputText		
+		add: self remoteInputText	

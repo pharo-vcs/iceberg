@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
 	super initializeWidgets.
-	"self initializeRemoteURL."
+	self initializeSourceDirectory.
 	
 	projectNameLabel := self newLabel label: 'Project name'.
 	projectNameInputText := self newTextInput 

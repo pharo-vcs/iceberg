@@ -7,7 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"projectNameLabel",
-		"projectNameInputText"
+		"projectNameInputText",
+		"subdirectoryLabel",
+		"subdirectoryInputText"
 	],
 	"name" : "IceTipNewRepositoryPanel",
 	"type" : "normal"

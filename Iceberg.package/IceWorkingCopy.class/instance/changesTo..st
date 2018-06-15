@@ -1,8 +1,14 @@
 API-changes
 changesTo: aCommitish
 
-	| removedPackages |
+	| removedPackages changes |
+	changes := Set new.
+	
+	changes addAll: (aCommitish changesFromCommit: self referenceCommit).
 	removedPackages := aCommitish packages \ self packages.
-	^ (aCommitish changesFromCommit: self referenceCommit),
-		((self modifiedPackages, removedPackages) collect: [ :each | 
-			IceImageChange package: each ])
+	changes addAll: (((self modifiedPackages, removedPackages) collect: [ :each | 
+			IceImageChange package: each ])).
+		
+	self project = aCommitish project
+		ifFalse: [ changes add: IceProjectChange new ].
+	^ changes

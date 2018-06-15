@@ -1,3 +1,3 @@
-accessing ui
+accessing
 subdirectoryLabel: anObject
 	subdirectoryLabel := anObject

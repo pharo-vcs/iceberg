@@ -10,6 +10,6 @@ sourceDirectorySelectionChanged: selectedIndexes
 		ifNotEmpty: [ | selection |
 			selection := self sourceDirectoryTree widget dataSource elementAt: selectedIndexes first.
 			selectedDirectory := selection data.
-			selectedDirectoryPath := selectedDirectory relativeTo: self model location.
+			selectedDirectoryPath := selectedDirectory relativeTo: self model fileSystem.
 			formatList setSelectedItem: (self guessFormatFromDirectory: selectedDirectory) ].
 	sourceDirectorySelectionLabel label: selectedDirectoryPath pathString.

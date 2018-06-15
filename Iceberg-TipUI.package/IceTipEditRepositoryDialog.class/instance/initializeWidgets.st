@@ -13,5 +13,4 @@ initializeWidgets
 	subdirectoryInputText text: self repository subdirectory.
 		
 	self focusOrder 
-		add: self projectLocation;
-		add: self subdirectoryInputText
+		add: self projectLocation

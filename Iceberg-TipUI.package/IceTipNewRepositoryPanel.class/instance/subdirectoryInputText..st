@@ -1,3 +1,3 @@
-accessing ui
+accessing
 subdirectoryInputText: anObject
 	subdirectoryInputText := anObject

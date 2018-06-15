@@ -7,8 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"projectLocation",
-		"subdirectoryLabel",
-		"subdirectoryInputText",
 		"remoteLabel",
 		"remoteInputText",
 		"spacePanel",
