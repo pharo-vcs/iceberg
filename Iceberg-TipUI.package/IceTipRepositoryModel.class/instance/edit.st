@@ -2,5 +2,4 @@ actions
 edit
 	<noCache>
 	
-	(IceTipEditRepositoryDialog on: self) openDialogWithSpec
-		
+	(IceTipEditProjectDialog on: self entity project) openDialogWithSpec
