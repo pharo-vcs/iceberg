@@ -1,4 +1,4 @@
 accessing
 fileFormatId: aFileFormat
 
-	self repository properties fileFormatId: aFileFormat
+	self repositoryProperties fileFormatId: aFileFormat

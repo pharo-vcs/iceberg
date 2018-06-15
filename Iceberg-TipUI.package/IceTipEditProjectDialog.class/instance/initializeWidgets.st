@@ -3,10 +3,8 @@ initializeWidgets
 	nameLabel := self newLabel label: 'Project Name'.
 	nameInput := self newLabel label: self model name.
 	
-	sourceDirectoryLabel := self newLabel label: 'Source directory'.
+	sourceDirectoryLabel := self newLabel label: 'Directory'.
 	sourceDirectoryTree := self newIceTreeTable.
-	
-	sourceDirectorySelectionLabel := self newLabel label: ''.
 	
 	formatLabel := self newLabel label: 'Format'.
 	formatList := self newDropList.

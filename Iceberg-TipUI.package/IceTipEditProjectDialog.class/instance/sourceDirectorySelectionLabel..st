@@ -1,3 +1,0 @@
-accessing
-sourceDirectorySelectionLabel: anObject
-	sourceDirectorySelectionLabel := anObject

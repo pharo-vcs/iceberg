@@ -6,21 +6,20 @@ defaultSpec
 			col
 				newRow: [ :row | 
 					row
-						add: #nameLabel width: 100;
-						add: #nameInput ]
+						newColumn: #nameLabel width: self iceLabelWidth;
+						newColumn: #nameInput ]
 					height: self inputTextHeight;
 				newRow: [ :row | 
 					row
-						add: #sourceDirectoryLabel width: 100;
-						add: #sourceDirectoryTree ]
-					height: 300;
+						newColumn: [ :column |
+							column
+								add: #sourceDirectoryLabel height: self inputTextHeight;
+								newRow: [ :emptyRow | "Fill space"  ] ] width: self iceLabelWidth;
+						newColumn: #sourceDirectoryTree ]
+					height: 200;
 				newRow: [ :row | 
 					row
-						newColumn: [ :column | "empty" ] width: 100;
-						add: #sourceDirectorySelectionLabel ]
+						newColumn: #formatLabel width: self iceLabelWidth;
+						newColumn: #formatList ]
 					height: self inputTextHeight;
-				newRow: [ :row | 
-					row
-						add: #formatLabel width: 100;
-						add: #formatList ]
-					height: self inputTextHeight ]
+				newRow: [ :emptyRow | "Fill space" ] ]

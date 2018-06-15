@@ -12,4 +12,3 @@ sourceDirectorySelectionChanged: selectedIndexes
 			selectedDirectory := selection data.
 			selectedDirectoryPath := selectedDirectory relativeTo: self model fileSystem.
 			formatList setSelectedItem: (self guessFormatFromDirectory: selectedDirectory) ].
-	sourceDirectorySelectionLabel label: selectedDirectoryPath pathString.
