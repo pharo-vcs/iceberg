@@ -1,7 +1,6 @@
 initialization
 initializeWidgets
 	self initializeProjectLocation.
-	self initializeSourceDirectory.
 	self initializeSpacePanel.
 	userNameLabel := self newLabel label: 'Owner name'.
 	userNameInputText := self newTextInput
@@ -29,5 +28,4 @@ initializeWidgets
 		add: self userNameInputText;
 		add: self projectNameInputText;
 		add: self projectLocation;
-		add: self subdirectoryInputText;
 		add: self protocolDropList

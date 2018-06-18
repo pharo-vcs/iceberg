@@ -14,6 +14,9 @@ status
 		entity head isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached HEAD' ].
 
+		entity workingCopy project isUnbornProject
+			ifTrue: [ ^ self toErrorMessage: 'No Project Found' ].
+
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.

@@ -12,7 +12,6 @@
 	],
 	"instvars" : [
 		"location",
-		"subdirectory",
 		"commitCache",
 		"handle"
 	],
