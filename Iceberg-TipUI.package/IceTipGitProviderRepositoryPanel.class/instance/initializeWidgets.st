@@ -1,12 +1,13 @@
 initialization
 initializeWidgets
 	self initializeProjectLocation.
+	self initializeSourceDirectory.
 	self initializeSpacePanel.
-	userNameLabel := self newLabel label: self providerName, ' username'.
+	userNameLabel := self newLabel label: 'Owner name'.
 	userNameInputText := self newTextInput
 		autoAccept: true;
 		ghostText: 'e.g., JohnDoe'.
-	projectNameLabel := self newLabel label: self providerName, ' project'.
+	projectNameLabel := self newLabel label: 'Project name'.
 	projectNameInputText := self newTextInput
 		autoAccept: true;
 		ghostText: 'e.g., MyProject'.
@@ -28,4 +29,5 @@ initializeWidgets
 		add: self userNameInputText;
 		add: self projectNameInputText;
 		add: self projectLocation;
+		add: self subdirectoryInputText;
 		add: self protocolDropList

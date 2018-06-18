@@ -5,7 +5,6 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
-		"DefaultBackendType",
 		"DefaultCodeSubdirectory",
 		"DefaultFileFormatType",
 		"ShareRepositoriesBetweenImages",
@@ -13,6 +12,7 @@
 	],
 	"instvars" : [
 		"location",
+		"subdirectory",
 		"commitCache",
 		"handle"
 	],
