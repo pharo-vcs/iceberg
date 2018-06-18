@@ -8,7 +8,9 @@ status
 		entity workingCopy workingCopyState isUnknownCommitState 
 			ifTrue: [ ^ self toErrorMessage: entity workingCopy workingCopyState description ].	
 		entity workingCopy isDetached 
-			ifTrue: [ ^ self toErrorMessage: 'Detached Working Copy' ].
+			ifTrue: [  ^ self toErrorMessage: 'Detached Working Copy' ].
+		(entity head isDetached and: [ entity head tags notEmpty ])
+			ifTrue: [ ^ self toWarningMessage: 'Detached HEAD' ].
 		entity head isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached HEAD' ].
 
