@@ -2,6 +2,6 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation 
+	^ CmdContextMenuActivation 
 		byRootGroupItemOrder: 10000 "put it at the end"
 		for: IceTipRepositoryListContext

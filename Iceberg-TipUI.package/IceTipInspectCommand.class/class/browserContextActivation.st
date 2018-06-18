@@ -2,6 +2,6 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: CmdExtraMenuGroup
 		for: IceTipWorkingCopyContext

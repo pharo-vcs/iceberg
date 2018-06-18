@@ -2,7 +2,7 @@ activation
 browserRepositoryListActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: CmdExtraMenuGroup
 		order: 10000
 		for: IceTipRepositoryListContext
