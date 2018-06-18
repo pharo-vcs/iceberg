@@ -11,5 +11,6 @@ plaintextCredentials: anIcePlaintextCredentials
 			host: ''github.com'';
 			yourself).
 
-	However this modification will break with older versions of Iceberg ( < 1.1.0 ).	
-	'
+	However this modification will break with older versions of Iceberg ( < 1.1.0 ).
+	
+	This method does nothing for compatibility.'
