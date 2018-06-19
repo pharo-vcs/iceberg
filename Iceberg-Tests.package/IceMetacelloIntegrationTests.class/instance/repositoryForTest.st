@@ -1,4 +1,4 @@
 tests
 repositoryForTest
 
-	^ IceRepository registry detect: [ :e | e name = 'pharo-git-test' ]
+	^ IceRepository registry detect: [ :e | e name = self repositoryName ]

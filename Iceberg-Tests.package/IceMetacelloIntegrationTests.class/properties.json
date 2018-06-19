@@ -4,7 +4,9 @@
 	"category" : "Iceberg-Tests-MetacelloIntegration",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"CommitishToUse"
+	],
 	"instvars" : [
 		"repository",
 		"conflictingRepository"

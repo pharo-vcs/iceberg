@@ -1,4 +1,3 @@
 testing
 isAbstract
-
-	^ self == IceMetacelloIntegrationTests
+	^ self name = #IceMetacelloIntegrationTests
