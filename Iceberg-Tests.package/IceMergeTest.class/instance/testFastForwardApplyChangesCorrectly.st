@@ -2,9 +2,10 @@ merge-conflicts
 testFastForwardApplyChangesCorrectly
 
 	"This is a Ring working copy"
-	| initialCommit change1Commit |
-	
-	self repository subdirectory: 'src'.
+	| initialCommit change1Commit newProject |
+	newProject := IceProject onRepository: self repository.
+	newProject sourceDirectory: 'src'.
+	self repository workingCopy project: newProject.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol.
 	initialCommit := self repository commitWithMessage: 'First commit'.

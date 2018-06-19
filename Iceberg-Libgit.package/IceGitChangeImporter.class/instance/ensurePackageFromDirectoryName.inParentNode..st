@@ -3,7 +3,7 @@ ensurePackageFromDirectoryName: aString inParentNode: aParentNode
 	
 	| importer packageName package |
 	
-	packageName := diff sourceVersion writerClass packageNameFromDirectoryName: aString.
+	packageName := version writerClass packageNameFromDirectoryName: aString.
 	
 	"Package already exists"
 	(aParentNode includesKey: packageName)

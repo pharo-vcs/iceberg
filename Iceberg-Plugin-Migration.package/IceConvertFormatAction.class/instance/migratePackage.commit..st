@@ -5,8 +5,8 @@ migratePackage: each commit: commit
 	srcDir := self codeDirectory.
 	subDirWithDelim := self codeDirectoryWithDelim.
 	
-	TonelWriter fileOut: (commit versionFor: each) on: srcDir.
-	filetreePackage := IceLibgitFiletreeWriter directoryNameFor: each.
+	self writerClass forInternalStoreFileOut: (commit versionFor: each) mcVersion on: repository.
+	filetreePackage := commit writerClass directoryNameFor: each.
 	(srcDir / filetreePackage) ensureDeleteAll.
 	self repository addFilesToIndex: { 
 		subDirWithDelim, (IceLibgitTonelWriter directoryNameFor: each).

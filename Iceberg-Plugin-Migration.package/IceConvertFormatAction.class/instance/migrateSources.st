@@ -12,14 +12,16 @@ migrateSources
 			migratePackage: each 
 			commit: commit ].
 
-	"add .properties"
-	IceRepositoryProperties new 
-		repository: self repository;
-		properties: { #format -> self format } asDictionary; 
-		store.
-	self repository addFilesToIndex: { (self codeDirectoryWithDelim, '.properties').}.
+	(self repository project propertiesFileIn: repository workingCopy)
+		binaryWriteStreamDo: [ :stream |
+			stream nextPutAll: (self repository project
+				fileFormatId: self format;
+				repositoryProperties) contentsString ].
+	self repository addFileToIndex: self repository project propertiesFilePath.	
+	
 	self format = #filetree ifTrue: [ 
 		self removeFiletreeRemnants ].
+	
 	"commit"
 	self repository 
 		commitIndexWithMessage: 'sources migrated' 

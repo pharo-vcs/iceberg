@@ -11,10 +11,10 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDir
 	rightFileRef writeStreamDo: [ :str | str nextPutAll: 'right' ].
 	
 	left := IceNode new.
-	left addChild: (IceFileDefinition named: 'src' fileReference: leftFileRef).
+	left addChild: (IceFileDefinition named: 'src' path: (RelativePath with: 'src') fileReference: leftFileRef).
 	
 	right := IceNode new.
-	right addChild: (IceFileDefinition named: 'src' fileReference: rightFileRef).
+	right addChild: (IceFileDefinition named: 'src' path: (RelativePath with: 'src') fileReference: rightFileRef).
 
 	diff := IceDiff new diff: left with: right.
 

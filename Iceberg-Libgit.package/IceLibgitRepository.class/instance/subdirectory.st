@@ -1,3 +1,3 @@
 API-accessing
 subdirectory
-	^ subdirectory
+	^ self project sourceDirectory

@@ -1,0 +1,4 @@
+running
+newFixture
+
+	^ IceUnbornProjectFixture inGit

@@ -1,3 +1,3 @@
 accessing
 formatToUse 
-	^ IceLibgitRepository defaultFileFormat id
+	^ IceLibgitRepository defaultFileFormat

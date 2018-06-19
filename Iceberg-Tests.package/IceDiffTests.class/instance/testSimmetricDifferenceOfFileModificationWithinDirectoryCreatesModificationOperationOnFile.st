@@ -12,14 +12,14 @@ testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOpera
 	
 	left := IceNode new.
 	leftSrc := left addChild: (IceDirectoryDefinition named: 'src').
-	leftSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: leftFileRef).
+	leftSrc addChild: (IceFileDefinition named: 'Readme.md' path: (RelativePath with: 'Readme.md') fileReference: leftFileRef).
 	
 	right := IceNode new.
 	rightSrc := right addChild: (IceDirectoryDefinition named: 'src').
-	rightSrc addChild: (IceFileDefinition named: 'Readme.md' fileReference: rightFileRef).
+	rightSrc addChild: (IceFileDefinition named: 'Readme.md' path: (RelativePath with: 'Readme.md') fileReference: rightFileRef).
 
 	diff := IceDiff new diff: left with: right.
 	
 	self assert: (diff / 'src' / 'Readme.md') value isModification.
-	self assert: (diff / 'src' / 'Readme.md') value leftDefinition fileReference contents equals: 'left'.
-	self assert: (diff / 'src' / 'Readme.md') value rightDefinition fileReference contents equals: 'right'.
+	self assert: (diff / 'src' / 'Readme.md') value leftDefinition contents equals: 'left'.
+	self assert: (diff / 'src' / 'Readme.md') value rightDefinition contents equals: 'right'.

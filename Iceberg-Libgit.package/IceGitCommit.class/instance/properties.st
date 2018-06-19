@@ -1,4 +1,4 @@
 API-properties
 properties
 	
-	^ IceRepositoryProperties fromCommitish: self
+	^ self project repositoryProperties

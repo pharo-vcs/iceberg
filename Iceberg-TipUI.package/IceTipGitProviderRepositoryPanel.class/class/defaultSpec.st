@@ -19,11 +19,6 @@ defaultSpec
 					height: self inputTextHeight;
 				newRow: [ :row | 
 						row 
-							add: #subdirectoryLabel width: self iceLabelWidth;
-							add: #subdirectoryInputText ]
-					height: self inputTextHeight;
-				newRow: [ :row | 
-						row 
 							add: #protocolLabel width: self iceLabelWidth;
 							add: #protocolDropList ]
 					height: self inputTextHeight;

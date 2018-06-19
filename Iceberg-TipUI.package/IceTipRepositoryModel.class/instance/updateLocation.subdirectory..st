@@ -2,10 +2,10 @@ actions
 updateLocation: aReference subdirectory: aString
 	
 	"change location"
-	self entity 
+	self entity
 		location: aReference;
 		subdirectory: aString.
 	"force refresh packages"
-	self entity workingCopy refreshPackages.
+	self entity workingCopy project: self entity project.
 	
 	Iceberg announcer announce: (IceRepositoryModified for: self entity)

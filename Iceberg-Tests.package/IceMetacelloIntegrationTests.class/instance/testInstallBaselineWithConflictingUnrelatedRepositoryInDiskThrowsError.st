@@ -7,4 +7,4 @@ testInstallBaselineWithConflictingUnrelatedRepositoryInDiskThrowsError
 	
 	self createConflictingRepositoryIn: IceLibgitRepository localRepositoriesLocation/'pharo-vcs/pharo-git-test'.
 
-	self should: [ self installBaseline ] raise: IceGenericError
+	self should: [ self installBaseline ] raise: IceMetacelloDuplicatedNotification

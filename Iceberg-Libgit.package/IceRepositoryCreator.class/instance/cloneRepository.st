@@ -5,9 +5,7 @@ cloneRepository
 		url: self remoteToUse url;
 		execute.
 	
-	self repository
-		location: self locationToUse;
-		subdirectory: self subdirectory.
+	self repository location: self locationToUse.
 		
 	self commitishName 
 		ifNotNil: [ self repository switchToCommitishNamed: self commitishName ].

@@ -1,6 +1,6 @@
-as yet unclassified
+instance-creation
 repository: repository
 	^ self basicNew 
 		repository: repository; 
-		initialize; 
+		initialize;
 		yourself

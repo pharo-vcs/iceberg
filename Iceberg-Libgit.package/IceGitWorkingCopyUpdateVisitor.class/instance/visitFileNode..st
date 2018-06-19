@@ -1,7 +1,10 @@
 visiting
 visitFileNode: anIceFileDefinition 
 	
-	(repository location resolve: anIceFileDefinition path)
+	| reference |
+	reference := repository location resolve: anIceFileDefinition path.
+	reference parent ensureCreateDirectory.
+	reference
 		ensureDelete;
 		binaryWriteStreamDo: [ :writeStream |
-			writeStream nextPutAll: anIceFileDefinition binaryContents ].
+			writeStream nextPutAll: anIceFileDefinition contents ].

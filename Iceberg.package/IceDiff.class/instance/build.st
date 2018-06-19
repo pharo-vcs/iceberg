@@ -4,7 +4,7 @@ build
 	| leftTree rightTree |
 	leftTree := IceNode value: IceRootDefinition new.
 	rightTree := IceNode value: IceRootDefinition new.
-	
+
 	(source changesTo: target) do: [ :change | 
 		change accept: (IceChangeImporter new
 			version: source;

@@ -1,3 +1,4 @@
 API-accessing
 subdirectory: aString 
-	subdirectory := aString
+	
+	self project sourceDirectory: aString
