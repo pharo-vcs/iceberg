@@ -1,4 +1,4 @@
 testing
 commitishToUse
 
-	^ CommitishToUse
+	^ CommitishToUse ifNil: [ '' ]

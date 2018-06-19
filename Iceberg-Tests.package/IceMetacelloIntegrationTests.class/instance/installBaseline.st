@@ -3,5 +3,5 @@ installBaseline
 
 	Metacello new
 		baseline: 'PharoGitTest';
-		repository: (self repository , CommitishToUse);
+		repository: (self repository , self class commitishToUse);
 		load.
