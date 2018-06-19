@@ -1,7 +1,6 @@
-tests-branch
+tests-project
 testRepositoryHasProjectFile
 
-	fixture isUnbornProjectFixture ifTrue: [ ^ self skip ].
 	fixture factory isGit ifFalse: [ ^ self skip ].
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
 	
