@@ -1,0 +1,4 @@
+configuring
+expectedFileFormat
+
+	^ IceLibgitFiletreeWriter

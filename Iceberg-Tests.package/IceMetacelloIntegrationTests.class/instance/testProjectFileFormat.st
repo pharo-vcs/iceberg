@@ -1,5 +1,5 @@
 tests
-testProjectHasDescriptor
+testProjectFileFormat
 
 	"Avoid this test if on ssh on the CI"
 	(self isTestingSSH and: [ self isCI ])
@@ -8,4 +8,4 @@ testProjectHasDescriptor
 	self installBaseline.
 	repository := self repositoryForTest.
 
-	self assert: repository project isUnbornProject equals: self hasProject not.
+	self assert: repository project fileFormat equals: self expectedFileFormat.

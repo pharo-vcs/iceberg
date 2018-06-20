@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceMetacelloIntegrationWithProjectNorSrcDir",
+	"name" : "IceMetacelloIntegrationWithProjectAndNoSrcDir",
 	"type" : "normal"
 }
