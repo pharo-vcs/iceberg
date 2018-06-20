@@ -3,7 +3,7 @@ testInstallBaselineWhenNoSSHIsAvailableUsesHTTPS
 
 	"This test is meant to run in the CI using SSH, when SSH is not available.
 	Other configurations make no sense for this test"
-	self isTestingSSH ifFalse: [ ^ self skip ].
+	self isTestingSSH ifTrue: [ ^ self skip ].
 
 	self installBaseline.
 	repository := self repositoryForTest.
