@@ -1,4 +1,4 @@
 API-changes
 isModified
 	
-	^ self loadedPackages anySatisfy: [ :e | e isDirty ]
+	^ self project isDirty or:[self loadedPackages anySatisfy: [ :e | e isDirty ]]

@@ -7,5 +7,5 @@ testProjectDirtiness
 	
 	self installBaseline.
 	repository := self repositoryForTest.
-		
+	
 	self assert: repository isModified equals: self shouldBeDirty
