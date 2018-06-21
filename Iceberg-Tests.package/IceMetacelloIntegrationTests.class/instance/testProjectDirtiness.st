@@ -1,5 +1,5 @@
 tests
-testProjectIsNotDirty
+testProjectDirtiness
 
 	"Avoid this test if on ssh on the CI"
 	(self isTestingSSH and: [ self isCI ])
@@ -8,4 +8,4 @@ testProjectIsNotDirty
 	self installBaseline.
 	repository := self repositoryForTest.
 		
-	self deny: repository isModified
+	self assert: repository isModified equals: self shouldBeDirty
