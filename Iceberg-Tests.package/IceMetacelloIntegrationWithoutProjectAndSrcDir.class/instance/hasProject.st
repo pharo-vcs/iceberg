@@ -1,4 +1,4 @@
 configuring
 hasProject
 	
-	^ false
+	^ true
