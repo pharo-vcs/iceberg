@@ -11,5 +11,5 @@ doEnsureProject
 	self repository workingCopy project:
 			((IceProject onRepository: self repository)
 				fileFormat: fileFormat;
-				sourceDirectory: subdirectory;
+				sourceDirectory: self subdirectory;
 				yourself)
