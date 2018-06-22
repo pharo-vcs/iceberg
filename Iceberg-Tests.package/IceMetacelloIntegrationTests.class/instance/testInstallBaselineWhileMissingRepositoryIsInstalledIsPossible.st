@@ -11,4 +11,4 @@ testInstallBaselineWhileMissingRepositoryIsInstalledIsPossible
 	self installBaseline.
 	repository := self repositoryForTest.
 		
-	self assert: (repository workingCopy loadedPackages allSatisfy: [ :each | each isClean ]) not equals: self shouldBeDirty
+	self assert: repository workingCopy isModified equals: self shouldBeDirty
