@@ -8,4 +8,4 @@ testNewRepositoryPackagesAreClean
 	self installBaseline.
 	repository := self repositoryForTest.
 		
-	self assert: (repository workingCopy loadedPackages allSatisfy: [ :each | each isClean ]) equals: self shouldBeDirty not
+	self assert: repository workingCopy isModified equals: self shouldBeDirty
