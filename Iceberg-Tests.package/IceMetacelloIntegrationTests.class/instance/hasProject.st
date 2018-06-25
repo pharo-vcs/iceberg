@@ -1,0 +1,4 @@
+configuring
+hasProject
+	
+	^ self subclassResponsibility

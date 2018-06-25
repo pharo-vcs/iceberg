@@ -1,4 +1,4 @@
 accessing
 fileSystem
 	
-	^ repository location
+	^ repository location ifNil: [ FileSystem memory root ]

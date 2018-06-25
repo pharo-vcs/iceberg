@@ -1,4 +1,7 @@
 tests
 installBaseline
 
-	self subclassResponsibility
+	Metacello new
+		baseline: 'PharoGitTest';
+		repository: (self repository , self class commitishToUse);
+		load.

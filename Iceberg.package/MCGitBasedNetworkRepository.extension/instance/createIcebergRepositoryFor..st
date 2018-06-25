@@ -6,6 +6,7 @@ createIcebergRepositoryFor: remoteUrl
 		url: remoteUrl;
 		subdirectory: repoPath;
 		commitishName: self projectVersion;
+		ensureProjectFile;
 		yourself.
 
 	[ repository := builder createRepository ]

@@ -14,7 +14,7 @@ tearDown
 
 	"Remove temporary repository just in case"
 	'temp/test' asFileReference ensureDeleteAll.
-	(IceLibgitRepository localRepositoriesLocation/'pharo-vcs/pharo-git-test') ensureDeleteAll.
+	(IceLibgitRepository localRepositoriesLocation/'pharo-vcs'/self repositoryName) ensureDeleteAll.
 
 	super tearDown.
 

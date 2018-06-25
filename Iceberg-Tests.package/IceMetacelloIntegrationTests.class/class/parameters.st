@@ -1,4 +1,5 @@
 testing
 parameters
 
-	^ { self remoteTypeConfiguration }
+	^ { self remoteTypeConfiguration. 
+		 self commitishConfiguration }

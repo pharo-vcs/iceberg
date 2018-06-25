@@ -1,0 +1,4 @@
+configuring
+repositoryName
+	
+	^ self subclassResponsibility

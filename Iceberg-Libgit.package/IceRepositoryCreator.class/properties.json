@@ -11,7 +11,8 @@
 		"remote",
 		"branchName",
 		"subdirectory",
-		"repository"
+		"repository",
+		"ensureProjectFile"
 	],
 	"name" : "IceRepositoryCreator",
 	"type" : "normal"
