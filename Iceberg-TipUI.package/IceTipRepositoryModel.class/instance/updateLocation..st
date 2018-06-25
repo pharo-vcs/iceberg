@@ -1,10 +1,8 @@
 actions
-updateLocation: aReference subdirectory: aString
+updateLocation: aReference
 	
 	"change location"
-	self entity
-		location: aReference;
-		subdirectory: aString.
+	self entity location: aReference.
 	"force refresh packages"
 	self entity workingCopy project: self entity project.
 	
