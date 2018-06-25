@@ -17,7 +17,8 @@
 		"formatList",
 		"formatLabel",
 		"formats",
-		"defaultFormat"
+		"defaultFormat",
+		"useSourceFolder"
 	],
 	"name" : "IceTipEditProjectDialog",
 	"type" : "normal"
