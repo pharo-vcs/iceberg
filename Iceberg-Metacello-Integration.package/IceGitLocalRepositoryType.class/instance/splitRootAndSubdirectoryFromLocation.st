@@ -1,17 +1,17 @@
 private
 splitRootAndSubdirectoryFromLocation
 	| root subDir |
-
 	(self location beginsWith: (self class type, '://'))
 		ifFalse: [ self error: 'Invalid URL (It should be ', self class type, '://...)' ].
 	root := (self location allButFirst: self class type size + 3) asFileReference.
 	subDir := #().
-	[ root isNil or: [ self isGitRoot: root ] ] 
+	[ root isRoot or: [ self isGitRoot: root ] ] 
 	whileFalse: [ 
 		(root asAbsolute = FileSystem workingDirectory)
 			ifFalse: [ subDir := subDir copyWithFirst: root basename ].
 		root := root parent ].
-	root ifNil: [ self error: 'I can''t find a .git/config file.' ].
+	1halt.
+	root isRoot ifTrue: [ self error: 'I can''t find a .git/config file.' ].
 	
 	^ { 
 		root. "a FileReference"
