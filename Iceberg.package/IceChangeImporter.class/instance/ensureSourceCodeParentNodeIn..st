@@ -1,5 +1,5 @@
 private
-ensureSourceCodeDirectoryIn: aNode
+ensureSourceCodeParentNodeIn: aNode
 	| codeSubdirectoryPathString |
 	codeSubdirectoryPathString := diff repository subdirectoryPath pathString.
 	(codeSubdirectoryPathString isEmpty)
