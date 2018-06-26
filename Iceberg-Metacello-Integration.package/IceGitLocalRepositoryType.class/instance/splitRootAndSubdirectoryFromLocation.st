@@ -10,7 +10,6 @@ splitRootAndSubdirectoryFromLocation
 		(root asAbsolute = FileSystem workingDirectory)
 			ifFalse: [ subDir := subDir copyWithFirst: root basename ].
 		root := root parent ].
-	1halt.
 	root isRoot ifTrue: [ self error: 'I can''t find a .git/config file.' ].
 	
 	^ { 

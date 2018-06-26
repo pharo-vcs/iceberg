@@ -2,10 +2,12 @@ accessing
 bootstrapWithCommitId: commitId packageList: packageNameList
 
 	| commit repository |
-	commit := (IceUnknownCommit new
-			id: commitId;
- 			yourself).
-	repository := IceLibgitRepository new
+	repository := IceLibgitRepository new.
+	commit := IceUnknownCommit new
+		id: commitId;
+		repository: repository;
+ 		yourself.
+	repository
 		name: 'iceberg';
 		workingCopy: (IceWorkingCopy new
 		referenceCommit: commit

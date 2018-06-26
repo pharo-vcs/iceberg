@@ -1,6 +1,6 @@
 private requesting
 delete: aString 
-	^ self jsonContentsWithValidationDo: [
+	^ self contentsWithValidationDo: [
 		(self newRequestTo: aString)
 			delete;
 			response ]
