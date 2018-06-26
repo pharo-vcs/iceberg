@@ -19,11 +19,13 @@ initializeWidgets
 	privateKeyInput := IceTipFilePresenter new 
 		label: 'Private Key';
 		onChoose: [ self updateOkButton ];
+		chooseTitle: 'Select Private Key';
 		whenTextChanged: [ self updateOkButton ];
 		yourself.
 		
 	publicKeyInput := IceTipFilePresenter new 
 		label: 'Public Key';
 		onChoose: [ self updateOkButton ];
+		chooseTitle: 'Select Public Key';
 		whenTextChanged: [ self updateOkButton ];		
 		yourself.	
