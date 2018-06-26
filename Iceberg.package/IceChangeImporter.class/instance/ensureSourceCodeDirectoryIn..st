@@ -1,11 +1,11 @@
 private
 ensureSourceCodeDirectoryIn: aNode
-	| codeSubdirectoryName |
-	codeSubdirectoryName := diff repository subdirectory.
-	(codeSubdirectoryName isEmpty or: [ codeSubdirectoryName = '.' ])
+	| codeSubdirectoryPathString |
+	codeSubdirectoryPathString := diff repository subdirectoryPath pathString.
+	(codeSubdirectoryPathString isEmpty)
 		ifTrue: [  ^ aNode ].
 	
-	aNode childAt: codeSubdirectoryName ifPresent: [ :node |
+	aNode childAt: codeSubdirectoryPathString ifPresent: [ :node |
 		self assert: node value isDirectoryDefinition.
 		^ node ].
-	^ aNode addChild: (IceDirectoryDefinition named: codeSubdirectoryName)
+	^ aNode addChild: (IceDirectoryDefinition named: codeSubdirectoryPathString)
