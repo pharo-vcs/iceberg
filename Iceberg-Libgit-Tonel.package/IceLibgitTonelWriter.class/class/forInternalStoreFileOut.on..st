@@ -2,4 +2,4 @@ writing
 forInternalStoreFileOut: aMCVersion on: aRepository
 	self forInternalStore 
 		fileOut: aMCVersion
-		on: aRepository codeDirectory
+		on: aRepository subdirectoryReference

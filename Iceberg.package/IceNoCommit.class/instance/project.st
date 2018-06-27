@@ -1,4 +1,4 @@
 API-project
 project
 	
-	^ IceProject fromCommitish: self
+	^ repository newProjectFromCommit: self

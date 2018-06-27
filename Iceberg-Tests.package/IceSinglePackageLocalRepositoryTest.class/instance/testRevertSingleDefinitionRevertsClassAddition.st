@@ -10,5 +10,5 @@ testRevertSingleDefinitionRevertsClassAddition
 		inPackage: self packageName1 asSymbol.
 
 	self assertClassExists: className.
-	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className).
+	self workingCopy discardChanges: (self repository workingCopyDiff codeSubdirectoryNode / self packageName1 / className).
 	self denyClassExists: className.
