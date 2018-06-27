@@ -15,5 +15,5 @@ testRevertSingleDefinitionRevertsClassRemoval
 		removeClassNamed: className.
 
 	self denyClassExists: className.
-	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className).
+	self workingCopy discardChanges: (self repository workingCopyDiff codeSubdirectoryNode / self packageName1 / className).
 	self assertClassExists: className.

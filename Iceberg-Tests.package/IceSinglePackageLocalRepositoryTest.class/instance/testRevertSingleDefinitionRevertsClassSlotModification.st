@@ -19,6 +19,6 @@ testRevertSingleDefinitionRevertsClassSlotModification
 
 	self assert: ((self repository workingCopy
 		environment ask behaviorNamed: className) instVarNames includes: #slot).
-	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className).
+	self workingCopy discardChanges: (self repository workingCopyDiff codeSubdirectoryNode / self packageName1 / className).
 	self deny: ((self repository workingCopy
 		environment ask behaviorNamed: className) instVarNames includes: #slot).

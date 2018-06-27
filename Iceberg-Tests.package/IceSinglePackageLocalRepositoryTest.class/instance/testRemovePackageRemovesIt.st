@@ -5,4 +5,4 @@ testRemovePackageRemovesIt
 	package := self repository workingCopy packageNamed: self packageName1.
 	package remove.
 	
-	self assert: (self repository workingCopyDiff tree / self packageName1) value isRemoval
+	self assert: (self repository workingCopyDiff codeSubdirectoryNode / self packageName1) value isRemoval

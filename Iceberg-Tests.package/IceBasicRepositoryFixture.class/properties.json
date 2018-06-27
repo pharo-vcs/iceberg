@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository"
+		"repository",
+		"subdirectory"
 	],
 	"name" : "IceBasicRepositoryFixture",
 	"type" : "normal"

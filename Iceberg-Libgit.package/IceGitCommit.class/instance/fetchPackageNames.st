@@ -3,9 +3,7 @@ fetchPackageNames
 
 	| writerClass dir |
 	writerClass := self writerClass.
-	dir := repository subdirectory isEmptyOrNil
-		ifTrue: [ self fileSystem ]
-		ifFalse: [ self fileSystem / repository subdirectory ].
+	dir := self fileSystem resolve: (self project sourceDirectory).
 		
 	dir exists ifFalse: [ ^ #() ].
 	

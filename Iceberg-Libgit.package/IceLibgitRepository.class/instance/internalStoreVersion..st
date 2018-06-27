@@ -1,5 +1,5 @@
 private-commits
-internalStoreVersion: aMCVersion 
+internalStoreVersion: aMCVersion
 	self writerClass
 		forInternalStoreFileOut: aMCVersion 
 		on: self

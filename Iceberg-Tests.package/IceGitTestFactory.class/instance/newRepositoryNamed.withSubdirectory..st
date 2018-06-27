@@ -1,10 +1,11 @@
 initialization
-newRepositoryNamed: projectName
+newRepositoryNamed: projectName withSubdirectory: aSubdirectory
 
 	| repository |
 	(self location / projectName) ensureDeleteAll.
 	repository := IceRepositoryCreator new 
 			location: self location / projectName;
+			subdirectory: aSubdirectory;
 			createNewRepositoryNamed: projectName.
 			
 	(OSEnvironment default at: 'CI' ifAbsent: []) = 'true' ifTrue: [	
