@@ -8,5 +8,5 @@ SmalltalkCISpec {
       #platforms : [ #pharo ],
       #load : [ 'development' ]
      }
-  ],  #testing : {    #exclude : {      #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]    }  }
+  ],  #testing : {    #include : {        #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]    }  }
 }
