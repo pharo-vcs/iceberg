@@ -6,4 +6,4 @@ initialize
 	
 	repositoryProperties properties
 		at: #format
-		ifAbsent: [ 	repositoryProperties fileFormat: self defaultFileFormat ]
+		ifAbsent: [ 	repositoryProperties fileFormat: self backwardsCompatibleFormat ]

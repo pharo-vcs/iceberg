@@ -9,7 +9,7 @@ cloneRepository
 	self commitishName 
 		ifNotNil: [ self repository switchToCommitishNamed: self commitishName ].
 	self repository pluginManager repositoryWillBeCreated: self repository.	
-	
+
 	self doEnsureProject.
 	self repository workingCopy initializePackagesFromRepository.
 		
