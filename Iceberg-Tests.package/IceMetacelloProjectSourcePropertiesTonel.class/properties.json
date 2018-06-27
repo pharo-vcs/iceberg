@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceMetacelloIntegrationTests",
+	"category" : "Iceberg-Tests-MetacelloIntegration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetacelloProjectSourcePropertiesTonel",
+	"type" : "normal"
+}
