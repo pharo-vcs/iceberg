@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipEditSSHCredentialsModel",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipAskSSHCredentialsModel",
+	"type" : "normal"
+}

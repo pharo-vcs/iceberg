@@ -4,7 +4,11 @@ okAction
 		username: self username;
 		publicKey: self publicKey;
 		privateKey: self privateKey;
-		keyPassphrase: self passphrase.
+		keyPassphrase: self passphrase.		
 		
 	credentialStore storeCredential: self credentials.
-	tool refresh
+	tool ifNotNil: #refresh.
+	
+	accepted := true.
+	
+	^ self credentials.
