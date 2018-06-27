@@ -1,7 +1,7 @@
 actions
 execute
 
-	| repo cloneOptions |
+	| repo cloneOptions checkoutOptions callbacks |
 	location exists
 		ifTrue: [ IceCloneLocationAlreadyExists signalFor: location ].
 	
@@ -9,7 +9,14 @@ execute
 	
 	repo := LGitRepository on: location.
 	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
-	cloneOptions checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force.
+
+	"Keeping references, because if not the GC take them."
+	checkoutOptions := cloneOptions checkoutOptions.
+	callbacks := cloneOptions fetchOptions callbacks.
+	callbacks transferProgress: IceGitTransferProgress new.
+	
+	checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force.
+	checkoutOptions progressCallback: IceGitCheckoutProgress new.
 
 	repo clone: url options: cloneOptions.
 

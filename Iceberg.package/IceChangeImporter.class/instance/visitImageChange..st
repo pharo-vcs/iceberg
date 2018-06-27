@@ -6,4 +6,4 @@ visitImageChange: anIceImageChange
 		package: anIceImageChange package;
 		version: version;
 		yourself.
-	^ importer importOn: (self ensureSourceCodeDirectoryIn: parentNode)
+	^ importer importOn: (self ensureSourceCodeParentNodeIn: parentNode)

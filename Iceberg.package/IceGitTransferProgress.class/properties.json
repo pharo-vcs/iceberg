@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "LGitTransferProgressCallback",
+	"category" : "Iceberg-Progress",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"job"
+	],
+	"name" : "IceGitTransferProgress",
+	"type" : "normal"
+}

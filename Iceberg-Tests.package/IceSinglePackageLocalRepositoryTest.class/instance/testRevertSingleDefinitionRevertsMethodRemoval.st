@@ -18,5 +18,5 @@ testRevertSingleDefinitionRevertsMethodRemoval
 		removeMethod: 'method' fromClass: className.
 
 	self denyMethodExists: 'method' inClass: className.
-	self workingCopy discardChanges: (self repository workingCopyDiff tree / self packageName1 / className / 'method').
+	self workingCopy discardChanges: (self repository workingCopyDiff codeSubdirectoryNode / self packageName1 / className / 'method').
 	self assertMethodExists: 'method' inClass: className.

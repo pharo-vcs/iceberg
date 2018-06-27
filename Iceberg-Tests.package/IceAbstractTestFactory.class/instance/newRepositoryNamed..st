@@ -1,4 +1,4 @@
 initialization
 newRepositoryNamed: projectName
 
-	self subclassResponsibility
+	^ self newRepositoryNamed: projectName withSubdirectory: ''

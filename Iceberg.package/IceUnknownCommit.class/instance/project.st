@@ -1,4 +1,4 @@
 API-project
 project
-	
-	^ self basicProject
+
+	^ repository newUnbornProject

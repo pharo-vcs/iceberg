@@ -1,9 +1,13 @@
 API-remotes
 pushTo: aRemote
+
 	repository
 		handleLibgitError: [ | gitRemote |
 			gitRemote := (LGitRemote of: self repositoryHandle named: aRemote name) lookup.
-			[ gitRemote
+			[ 
+			 | pushProgress |
+			 pushProgress := IcePushTransferProgress new.
+			 gitRemote
 				pushWithRefSpec:
 					(LGitRefSpec new
 						source: self fullname;
@@ -11,12 +15,15 @@ pushTo: aRemote
 						yourself)
 				pushOptions:
 					(LGitPushOptions defaults
-						callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote));
+						callbacks: ((LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
+											pushTransferProgress: pushProgress; 
+											yourself );
 						yourself).
 
 			"Push tags!"
 			self tags
-				do: [ :tag | 
+				do: [ :tag |
+					| tagProgress | 
 					gitRemote
 						pushWithRefSpec:
 							(LGitRefSpec new
@@ -25,7 +32,9 @@ pushTo: aRemote
 								yourself)
 						pushOptions:
 							(LGitPushOptions defaults
-								callbacks: (LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote));
+								callbacks: ((LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote))
+													pushTransferProgress: pushProgress;
+													yourself);
 								yourself) ] ]
 				on: LGit_GIT_ENONFASTFORWARD
 				do: [ :e | 

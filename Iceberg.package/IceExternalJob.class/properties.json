@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Progress",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"title",
+		"started",
+		"min",
+		"max",
+		"current"
+	],
+	"name" : "IceExternalJob",
+	"type" : "normal"
+}
