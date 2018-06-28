@@ -1,4 +1,4 @@
 API-properties
 properties
-
-	^ self subclassResponsibility
+	
+	^ self project repositoryProperties

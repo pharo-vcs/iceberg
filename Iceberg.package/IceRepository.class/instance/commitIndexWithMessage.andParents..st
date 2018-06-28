@@ -7,4 +7,6 @@ commitIndexWithMessage: message andParents: parentCommitishList
 	| newCommit |
 	newCommit := index commitWithMessage: message andParents: parentCommitishList.
 	index := self newIndex.
+	self workingCopy referenceCommit: newCommit.
+	self workingCopy refreshDirtyPackages.
 	^ newCommit

@@ -15,7 +15,7 @@ commitChanges: aDiff withMessage: message
 
 	repository index isEmpty ifTrue: [ IceNothingToCommit signal ].
 
-	newCommit := self repository commitIndexWithMessage: message andParents: (self workingCopyState referenceCommits reject: [ :each | each isNoCommit ]).
-	self referenceCommit: newCommit.
-	self refreshDirtyPackages.
+	newCommit := self repository
+		commitIndexWithMessage: message
+		andParents: (self workingCopyState referenceCommits reject: [ :each | each isNoCommit ]).
 	^ newCommit
