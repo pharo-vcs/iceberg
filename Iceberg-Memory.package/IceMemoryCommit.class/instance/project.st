@@ -1,4 +1,4 @@
 API-project
 project
 	
-	^ IceMemoryProject onRepository: self repository
+	^ self basicProject
