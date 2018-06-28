@@ -1,4 +1,4 @@
 API-loading
 unloadPackage: aPackage
 
-	aPackage mcWorkingCopy unload
+	aPackage mcWorkingCopy ifNotNil: #unload
