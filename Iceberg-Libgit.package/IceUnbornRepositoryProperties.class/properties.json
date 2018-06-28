@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepositoryProperties",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceUnbornRepositoryProperties",
+	"type" : "normal"
+}

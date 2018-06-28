@@ -1,5 +1,5 @@
 instance creation
 fromDictionary: aDictionary
-	^ super new
+	^ self new
 		properties: aDictionary;
 		yourself

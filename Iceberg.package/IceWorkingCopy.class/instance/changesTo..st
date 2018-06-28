@@ -9,6 +9,6 @@ changesTo: aCommitish
 	changes addAll: (((self modifiedPackages, removedPackages) collect: [ :each | 
 			IceImageChange package: each ])).
 		
-	self project = aCommitish project
-		ifFalse: [ changes add: IceProjectChange new ].
+	self project isDirty
+		ifTrue: [ changes add: IceProjectChange new ].
 	^ changes
