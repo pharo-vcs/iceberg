@@ -19,7 +19,7 @@ migrateSources
 				repositoryProperties) contentsString ].
 	self repository addFileToIndex: self repository project propertiesFilePath.	
 	
-	self format = #filetree ifTrue: [ 
+	self format = #filetree ifFalse: [ 
 		self removeFiletreeRemnants ].
 	
 	"commit"
