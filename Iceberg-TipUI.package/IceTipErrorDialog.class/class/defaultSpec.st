@@ -6,4 +6,4 @@ defaultSpec
 		newRow: [ :row |
 			row 
 				newColumn: #iconPanel width: 40;
-				newColumn: #errorLabel ] height: self inputTextHeight
+				newColumn: #errorLabel ]

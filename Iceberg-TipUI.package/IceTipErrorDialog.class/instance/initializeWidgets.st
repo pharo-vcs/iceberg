@@ -5,3 +5,6 @@ initializeWidgets
 	
 	errorLabel := self newIceReadOnlyText.
 	errorLabel widget contentsWrapped: exception messageText.
+	errorLabel widget
+		hResizing: #spaceFill;
+		vResizing: #spaceFill.
