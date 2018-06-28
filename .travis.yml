@@ -11,6 +11,15 @@ smalltalk:
 - Pharo-6.1
 - Pharo64-6.1
 
+env:
+  matrix:
+    - CI_FILE=.smalltalk.ston
+    - CI_FILE=.smalltalk.metacellotests.ston
+
 before_install:
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+script:
+- travis_wait 120 sleep infinity &
+- $SMALLTALK_CI_HOME/run.sh ${CI_FILE}

@@ -25,6 +25,7 @@ baseline: spec
 			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
+			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
 			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
 			"libgit"
@@ -58,6 +59,7 @@ baseline: spec
 				'Iceberg-Libgit-Filetree');
 			group: 'allTests' with: #(
 				'Iceberg-Tests' 
+				'Iceberg-Tests-MetacelloIntegration'
 				'LibGit-Tests' 
 				'Iceberg-UI-Tests'
 				'Iceberg-Plugin-Migration-Tests' );

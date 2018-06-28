@@ -1,3 +1,6 @@
 testing
 isDirty
-	^ repository workingCopy referenceCommit project ~= self
+
+	"Compare against the project extracted from the commit.
+	If the commit has no project, it will be an unborn project."
+	^ repository workingCopy referenceCommit basicProject ~= self

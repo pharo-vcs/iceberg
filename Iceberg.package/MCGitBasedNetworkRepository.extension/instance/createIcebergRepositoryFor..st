@@ -1,7 +1,6 @@
 *Iceberg
 createIcebergRepositoryFor: remoteUrl
 	| builder repository |
-	
 	builder := IceRepositoryCreator new 
 		url: remoteUrl;
 		subdirectory: repoPath;

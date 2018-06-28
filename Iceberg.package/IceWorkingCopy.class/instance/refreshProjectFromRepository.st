@@ -5,5 +5,4 @@ refreshProjectFromRepository
 		ifTrue: [ referenceCommit first ]
 		ifFalse: [ referenceCommit ]) project.
 	self refreshProject.
-	
 	^ project
