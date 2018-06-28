@@ -1,4 +1,4 @@
 accessing
 sourceDirectoryReference
 	
-	^ commitish fileSystem resolve: (RelativePath with: self sourceDirectory)
+	^ commitish fileSystem resolve: self sourceDirectoryPath
