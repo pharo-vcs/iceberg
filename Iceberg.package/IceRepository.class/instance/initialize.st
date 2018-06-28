@@ -1,5 +1,9 @@
 initialization
 initialize
 	super initialize.
-	workingCopy := IceWorkingCopy repository: self.
+
+	workingCopy := IceWorkingCopy basicNew.
+	workingCopy repository: self.
+	workingCopy initialize.
+	
 	index := self newIndex.

@@ -1,9 +1,7 @@
 initialize
 initialize
 	super initialize.
-	
-	repositoryProperties := IceRepositoryProperties fromFileReference: self propertiesFileReference.
-	
+	repositoryProperties := self readProperties.
 	repositoryProperties properties
 		at: #format
 		ifAbsent: [ 	repositoryProperties fileFormat: self backwardsCompatibleFormat ]

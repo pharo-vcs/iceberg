@@ -1,7 +1,6 @@
 private-packages
 refreshPackages
 	| commitPackages |
-	
 	commitPackages := self referenceCommit isCollection
 		ifTrue: [ self referenceCommit flatCollect: [ :each | self project packagesFrom: each ] ]
 		ifFalse: [ self project packagesFrom: self referenceCommit ].

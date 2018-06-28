@@ -1,0 +1,4 @@
+initialize
+readProperties
+
+	^ IceRepositoryProperties fromFileReference: self propertiesFileReference

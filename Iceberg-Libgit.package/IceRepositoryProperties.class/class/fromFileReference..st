@@ -2,6 +2,5 @@ instance creation
 fromFileReference: aFileReference
 
 	aFileReference exists
-		ifFalse: [ ^ IceUnbornRepositoryProperties empty ].
-
+		ifFalse: [ ^ self empty ].
 	^ self fromDictionary: (self readPropertiesFrom: aFileReference)

@@ -1,4 +1,4 @@
 API-project
 newProjectFromCommit: aCommit
 
-	self subclassResponsibility
+	^ IceProject fromCommitish: aCommit

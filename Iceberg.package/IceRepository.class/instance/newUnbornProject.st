@@ -1,4 +1,4 @@
 API-project
 newUnbornProject
 	
-	self subclassResponsibility
+	^ IceUnbornProject onRepository: self

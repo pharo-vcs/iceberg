@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository"
+		"repository",
+		"commitish"
 	],
 	"name" : "IceMemoryProject",
 	"type" : "normal"

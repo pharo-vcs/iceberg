@@ -1,4 +1,4 @@
 API-project
 project
 	
-	^ repository newProjectFromCommit: self
+	^ self basicProject
