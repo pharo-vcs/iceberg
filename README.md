@@ -3,8 +3,7 @@ Iceberg is a set of tools that allows one to handle git repositories directly fr
 
 Please be aware that this is still an experimental tool, so you have to be careful. But we already have a few early adopters, so you are invited to try it and provide feedback.
 
-To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
-
+To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg and Git nomenclature](docs/Iceberg-glossary.md) 
 [![Travis Build Status](https://travis-ci.org/pharo-vcs/iceberg.svg?branch=master)](https://travis-ci.org/pharo-vcs/iceberg)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg?svg=true)](https://ci.appveyor.com/project/pharo-vcs/iceberg)  
 
@@ -48,7 +47,7 @@ IceCredentialsProvider sshCredentials
 - Latest Pharo 6.1+ image.
 - Pharo VM for Pharo 6.1+.
 
-You can get both by downloading it from the [Pharo](http://pharo.org) site or in the command line with [zeroconf](get.pharo.org): 
+You can get both by downloading it from the [Pharo](http://pharo.org) site or in the command line with [zeroconf](http://get.pharo.org): 
 
 ```Shell
 wget -O- get.pharo.org | bash
@@ -116,4 +115,4 @@ Smalltalk compilerClass recompileAll
 ## 5 minutes tutorial
 *(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
 
-Have a look at the videos [https://github.com/pharo-vcs/iceberg/wiki/Contribute-to-Pharo-with-Iceberg-0.7.3]
+Have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3]
