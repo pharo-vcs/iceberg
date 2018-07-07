@@ -21,13 +21,13 @@ matrix:
     - os: osx
       env: JOB=sync-wiki
     - os: linux
-      smalltalk: Pharo-70
+      smalltalk: Pharo-7.0
       env: JOB=sync-wiki
     - os: linux
-      smalltalk: Pharo-61
+      smalltalk: Pharo-6.1
       env: JOB=sync-wiki
     - os: linux
-      smalltalk: Pharo64-61
+      smalltalk: Pharo64-6.1
       env: JOB=sync-wiki
       
 
