@@ -11,6 +11,16 @@ smalltalk:
 - Pharo-6.1
 - Pharo64-6.1
 
+
+env:
+  matrix:
+  - JOB=test
+  - JOB=sync-wiki
+
 before_install:
-- eval "$(ssh-agent)"
-- ssh-keyscan github.com >> ~/.ssh/known_hosts
+  - eval "$(ssh-agent)"
+  - ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+script:
+  - if [[ ${JOB} == "test" ]]; then "$SMALLTALK_CI_HOME/run.sh"; fi
+  - if [[ ${JOB} == "sync-wiki" ]]; then ./scripts/sync-wiki.sh; fi
