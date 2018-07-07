@@ -11,6 +11,33 @@ smalltalk:
 - Pharo-6.1
 - Pharo64-6.1
 
+env:
+  matrix:
+  - JOB=test
+  - JOB=sync-wiki
+  global:
+    secure: nHF2v5jtQZkIeJlnd8rSxyuF/wQ9AzR4yMxFBhzInbmEi7NH6pkWaOfJIL0aCbdLVRJ6ImUzmVWaIHKUwU4I4sF2l1rU+sa0Rox44YI+VtNcSVk54s1Me/kXKDzaGDoPGVJd0nWWEPvgk31WRPboLxP+A4imk6EePmwcub2TpdqoJeg58kDafQfZ4I3bb09Uo0c1RQzeGqLtLlfG+OunfswCUfn0MMEGS8ZURDoDeQV4Ic65wdHNr110PT5zkx/iOl4QBMT6uFf83FdOe8rul1Toh5DXNwbfyhrr7H7yow/Lp8dqsiytEKbXxcatSev4BzoBZ2BtTjssprPCUROmAWiddQgE469NO8eDjxkrNUPKh4mfIL14jlA5tGqu1NyUr0JLNoNvV5T/74hA539latwjZ7kVyO2PxREOEIVYys9cfQTrF2CFdOpAHJT5befqb+gj5SdEttKaQ0KwABv9Tgr/SjBxzjQYY6RTNwpzY/UD83DKw4m2DMfydERiKPTmNu2Eq0QD6YbyrXaX0xI4+vjqSUxraV+BYhxs08kMgXaFLf+puxFJKp6emQqHq4NPpMcb0VHKVfGEjO2hCsyG9n+7tWvDwfY9qFb4ksXRcpyhuZifs2XLAuOI6VDK8toyJPMK8tC7oLc4iE8aLEHAtBMrRjq1oVoIP6ywiAn+E4M=
+
+matrix:
+  exclude:
+  - os: osx
+    env: JOB=sync-wiki
+  - os: linux
+    smalltalk: Pharo-7.0
+    env: JOB=sync-wiki
+  - os: linux
+    smalltalk: Pharo-6.1
+    env: JOB=sync-wiki
+  - os: linux
+    smalltalk: Pharo64-6.1
+    env: JOB=sync-wiki
+
 before_install:
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Test on all platforms, sync wiki only once (see exclude matrix above) if master branch and !PR
+script:
+- if [[ ${JOB} == "test" ]]; then "$SMALLTALK_CI_HOME/run.sh"; fi
+- if [[ ${JOB} == "sync-wiki" ]] && [[ ${TRAVIS_BRANCH} == "master" ]] && [[ ${TRAVIS_PULL_REQUEST}
+  == "false" ]]; then ./scripts/sync-wiki.sh; fi
