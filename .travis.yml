@@ -11,11 +11,26 @@ smalltalk:
 - Pharo-6.1
 - Pharo64-6.1
 
-
 env:
-  matrix:
   - JOB=test
   - JOB=sync-wiki
+
+#Exclude all jobs but one so sync-wiki is executed only once
+matrix:
+  exclude:
+    - os: osx
+      env: JOB=sync-wiki
+    - os: linux
+      smalltalk: Pharo-70
+      env: JOB=sync-wiki
+    - os: linux
+      smalltalk: Pharo-61
+      env: JOB=sync-wiki
+    - os: linux
+      smalltalk: Pharo64-61
+      env: JOB=sync-wiki
+      
+
 
 before_install:
   - eval "$(ssh-agent)"
