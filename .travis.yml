@@ -23,4 +23,4 @@ before_install:
 
 script:
   - if [[ ${JOB} == "test" ]]; then "$SMALLTALK_CI_HOME/run.sh"; fi
-  - if [[ ${JOB} == "sync-wiki" ]]; then ./scripts/sync-wiki.sh; fi
+  - if [[ ${JOB} == "sync-wiki" && ${TRAVIS_BRANCH} == "master" ]]; then ./scripts/sync-wiki.sh; fi
