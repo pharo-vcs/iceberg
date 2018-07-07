@@ -13,7 +13,7 @@ __root="$(cd "$(dirname "${__dir}")" && pwd)"
 # Get the current commit message to use it in the sync commit
 COMMIT_MESSAGE=`git log --format="Sync %h: %B" -n 1`
 
-git clone https://github.com/pharo-vcs/iceberg.wiki.git
+git clone https://$GH_TOKEN@github.com/pharo-vcs/iceberg.wiki.git
 
 # Cleanup the wiki repository so removed files get removed and copy new files
 cd iceberg.wiki
