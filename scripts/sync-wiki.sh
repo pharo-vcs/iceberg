@@ -8,11 +8,19 @@ set -o nounset
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-__root="$(cd "$(dirname "${__dir}")/.." && pwd)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)"
 
-COMMIT_MESSAGE=`git log --format=%B -n 1`
+# Get the current commit message to use it in the sync commit
+COMMIT_MESSAGE=`git log --format="Sync %h: %B" -n 1`
+
 git clone https://github.com/pharo-vcs/iceberg.wiki.git
-cp -r "${__root}/docs/*" iceberg.wiki
+
+# Cleanup the wiki repository so removed files get removed and copy new files
 cd iceberg.wiki
+rm -rf !(.git)
+cp -a "${__root}/docs/." iceberg.wiki
+
+# GOGOGO
+git add *
 git commit -m "${COMMIT_MESSAGE}"
 git push
