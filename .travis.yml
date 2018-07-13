@@ -29,3 +29,5 @@ script:
 - travis_wait 120 sleep infinity &
 - if [ $CI_FILE != ".updatingIceberg.ston" ]; then
   $SMALLTALK_CI_HOME/run.sh ${CI_FILE} ; fi
+- if [ $CI_FILE != ".updatingIceberg.ston" ]; then
+  scripts/testUpdateIceberg.sh ; fi
