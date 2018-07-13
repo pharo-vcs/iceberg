@@ -18,7 +18,7 @@ env:
 
 matrix:
   include:
-    - CI_FILE=.updatingIceberg.ston
+    - env: CI_FILE=.updatingIceberg.ston
       smalltalk: Pharo-7.0
 
 before_install:
