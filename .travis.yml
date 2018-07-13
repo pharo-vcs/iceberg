@@ -16,6 +16,11 @@ env:
     - CI_FILE=.smalltalk.ston
     - CI_FILE=.smalltalk.metacellotests.ston
 
+matrix:
+  include:
+    - smalltalk_config: updatingIceberg.ston
+      smalltalk: Pharo-7.0
+
 before_install:
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
