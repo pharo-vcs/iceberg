@@ -22,4 +22,5 @@ before_install:
 
 script:
 - travis_wait 120 sleep infinity &
-- $SMALLTALK_CI_HOME/run.sh ${CI_FILE}
+- if [ $CI_FILE -ne ".updatingIceberg.ston" ]; then
+  $SMALLTALK_CI_HOME/run.sh ${CI_FILE} ; fi
