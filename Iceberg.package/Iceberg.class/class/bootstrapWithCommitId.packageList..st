@@ -7,11 +7,9 @@ bootstrapWithCommitId: commitId packageList: packageNameList
 		id: commitId;
 		repository: repository;
  		yourself.
-	repository
-		name: 'iceberg';
-		workingCopy: (IceWorkingCopy new
-		referenceCommit: commit
-		yourself).
+		
+	repository name: 'iceberg'.
+	repository workingCopy referenceCommit: commit.
 	commit repository: repository.
 	
 	packageNameList do: [ :each |
