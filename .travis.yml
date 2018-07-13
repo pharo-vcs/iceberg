@@ -18,7 +18,7 @@ env:
 
 matrix:
   include:
-    - smalltalk_config: updatingIceberg.ston
+    - CI_FILE=.updatingIceberg.ston
       smalltalk: Pharo-7.0
 
 before_install:
@@ -27,5 +27,5 @@ before_install:
 
 script:
 - travis_wait 120 sleep infinity &
-- if [ $CI_FILE -ne ".updatingIceberg.ston" ]; then
+- if [ $CI_FILE != ".updatingIceberg.ston" ]; then
   $SMALLTALK_CI_HOME/run.sh ${CI_FILE} ; fi
