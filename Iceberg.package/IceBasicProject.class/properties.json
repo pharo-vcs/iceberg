@@ -1,12 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "IceAbstractProject",
 	"category" : "Iceberg-Project",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"commitish",
 		"properties",
 		"repository",
 		"repositoryProperties"

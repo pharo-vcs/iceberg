@@ -1,4 +1,4 @@
 API-project
 basicProject
 
-	^ IceBasicProject fromCommitish: self
+	^ IceProjectReader readProjectFrom: self

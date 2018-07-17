@@ -2,7 +2,7 @@ writing
 addProjectFileToChangeBuilder: anIceChangeImporter 
 	
 	| projectFileName |
-	self isUnbornProject ifTrue: [ ^ self ].
+	self isUnborn ifTrue: [ ^ self ].
 	
 	self assert: self projectFilePath size = 1.
 	projectFileName := self projectFilePath segments first.

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 7/17/2018 11:52",
+	"super" : "IceAbstractProject",
+	"category" : "Iceberg-Project",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceInvalidProject",
+	"type" : "normal"
+}

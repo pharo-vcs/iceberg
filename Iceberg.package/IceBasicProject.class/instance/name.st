@@ -1,4 +1,4 @@
 accessing
 name
 	
-	^ repository name
+	^ self repository name

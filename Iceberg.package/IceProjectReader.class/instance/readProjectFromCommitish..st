@@ -1,7 +1,4 @@
-testing
-readProjectFromCommitish: anIceCommitish
-
-	^ IceUnbornProject
-		onProperties: Dictionary new
-		commitish: anIceCommitish
-		inRepository: anIceCommitish repository
+reading
+readProjectFromCommitish: aCommitish
+	"Return a project object read from the commitish"
+	self subclassResponsibility

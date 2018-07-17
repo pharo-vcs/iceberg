@@ -1,4 +1,4 @@
 comparing
 hash
 
-	^ commitish hash + repository hash
+	^ commitish hash

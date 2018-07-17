@@ -1,4 +1,4 @@
 testing
-isUnbornProject
+isUnborn
 	
 	^ true
