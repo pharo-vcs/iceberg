@@ -1,6 +1,6 @@
 tests
 testConvertToFiletree
-	self repository project fileFormat: IceLibgitTonelWriter.
+	self repository properties fileFormat: IceLibgitTonelWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'
