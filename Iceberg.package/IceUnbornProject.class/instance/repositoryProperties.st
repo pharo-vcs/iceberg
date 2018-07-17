@@ -1,0 +1,4 @@
+accessing
+repositoryProperties
+	
+	^ IceRepositoryProperties empty
