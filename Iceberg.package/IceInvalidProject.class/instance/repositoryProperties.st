@@ -1,4 +1,0 @@
-API-properties
-repositoryProperties
-		1halt.
-	^ self readProperties
