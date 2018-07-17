@@ -1,0 +1,1 @@
+I create unborn projects from a commitish if it is HEAD and it does not have a '.project' file.
