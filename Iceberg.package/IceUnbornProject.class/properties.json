@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "IceProject",
+	"super" : "IceBasicProject",
 	"category" : "Iceberg-Project",
 	"classinstvars" : [ ],
 	"pools" : [ ],

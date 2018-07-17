@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "GuillermoPolito 7/17/2018 11:18",
+	"commentStamp" : "GuillermoPolito 7/17/2018 11:09",
 	"super" : "Object",
 	"category" : "Iceberg-Project",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceProjectChange",
+	"name" : "IceBasicProjectReader",
 	"type" : "normal"
 }

@@ -11,6 +11,6 @@
 		"repository",
 		"repositoryProperties"
 	],
-	"name" : "IceProject",
+	"name" : "IceBasicProject",
 	"type" : "normal"
 }

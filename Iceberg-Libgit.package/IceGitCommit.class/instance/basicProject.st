@@ -1,4 +1,4 @@
 API-project
 basicProject
 
-	^ IceProject fromCommitish: self
+	^ IceBasicProject fromCommitish: self

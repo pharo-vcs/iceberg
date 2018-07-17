@@ -1,4 +1,4 @@
 API-project
 newProjectFromCommit: aCommit
 
-	^ IceProject fromCommitish: aCommit
+	^ IceBasicProject fromCommitish: aCommit
