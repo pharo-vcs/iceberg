@@ -1,4 +1,4 @@
 API-properties
 writerClass
-
-	^ self properties writerClass
+	
+	^ self commit writerClass

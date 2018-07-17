@@ -1,9 +1,14 @@
 accessing
 refreshProjectFromRepository
 
-	project := (referenceCommit isCollection
+	| commitToCheck |
+	commitToCheck := referenceCommit isCollection
 		ifTrue: [ referenceCommit first ]
-		ifFalse: [ referenceCommit ]) basicProject.
+		ifFalse: [ referenceCommit ].
+
+	properties := commitToCheck properties.
+
+	project := commitToCheck project.
 	project commitish: self.
 	self refreshProject.
 	^ project

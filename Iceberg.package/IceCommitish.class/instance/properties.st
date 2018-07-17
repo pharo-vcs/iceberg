@@ -1,4 +1,4 @@
 API-properties
 properties
 	
-	^ self project repositoryProperties
+	^ IceRepositoryProperties fromFileReferenceDirectory: self project sourceDirectoryReference
