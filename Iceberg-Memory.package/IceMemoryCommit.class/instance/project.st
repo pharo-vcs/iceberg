@@ -1,4 +1,4 @@
 API-project
 project
 	
-	^ IceMemoryProject onRepository: self repository
+	^ IceMemoryProject onRepository: self repository commitish: self
