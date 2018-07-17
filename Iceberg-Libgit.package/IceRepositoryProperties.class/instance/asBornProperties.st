@@ -1,0 +1,4 @@
+converting
+asBornProperties
+	
+	^ self

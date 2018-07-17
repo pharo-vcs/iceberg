@@ -6,7 +6,7 @@ refreshProjectFromRepository
 		ifTrue: [ referenceCommit first ]
 		ifFalse: [ referenceCommit ].
 
-	properties := commitToCheck properties.
+	properties := commitToCheck properties asBornProperties.
 
 	project := commitToCheck project.
 	project commitish: self.

@@ -1,7 +1,7 @@
 initialize
 initialize
 	super initialize.
-	repositoryProperties := self readProperties.
+"	repositoryProperties := self readProperties.
 	repositoryProperties properties
 		at: #format
-		ifAbsent: [ 	repositoryProperties fileFormat: self backwardsCompatibleFormat ]
+		ifAbsent: [ 	repositoryProperties fileFormat: self backwardsCompatibleFormat ]"

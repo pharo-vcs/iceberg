@@ -1,4 +1,5 @@
 API-properties
 readProperties
 
-	^ IceRepositoryProperties fromFileReference: self propertiesFileReference
+	1halt.
+	^ IceRepositoryProperties fromFileReference: self propertiesFileReference repository: self repository

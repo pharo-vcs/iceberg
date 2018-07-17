@@ -12,6 +12,7 @@ migrateSources
 			migratePackage: each 
 			commit: commit ].
 
+	1halt.
 	(self repository project propertiesFileIn: repository workingCopy)
 		binaryWriteStreamDo: [ :stream |
 			stream nextPutAll: (self repository project

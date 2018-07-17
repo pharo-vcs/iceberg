@@ -1,3 +1,3 @@
 private
 addPropertiesFileTo: aRepository
-	aRepository project fileFormat: self formatToUse
+	aRepository properties fileFormat: self formatToUse
