@@ -16,10 +16,18 @@ env:
     - CI_FILE=.smalltalk.ston
     - CI_FILE=.smalltalk.metacellotests.ston
 
+matrix:
+  include:
+    - env: CI_FILE=.updatingIceberg.ston
+      smalltalk: Pharo-7.0
+
 before_install:
 - eval "$(ssh-agent)"
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 script:
 - travis_wait 120 sleep infinity &
-- $SMALLTALK_CI_HOME/run.sh ${CI_FILE}
+- if [ $CI_FILE != ".updatingIceberg.ston" ]; then
+  $SMALLTALK_CI_HOME/run.sh ${CI_FILE} ; fi
+- if [ $CI_FILE == ".updatingIceberg.ston" ]; then
+  scripts/testUpdateIceberg.sh ; fi
