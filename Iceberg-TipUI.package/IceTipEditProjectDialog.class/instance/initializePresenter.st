@@ -18,6 +18,6 @@ initializePresenter
 	self formatList
 		items: self formats;
 		displayBlock: [ :each | each description ];
-		setSelectedItem: model fileFormat.
+		setSelectedItem: model repositoryProperties fileFormat.
 		
 	useSourceFolder state: model sourceDirectory isNotEmpty.
