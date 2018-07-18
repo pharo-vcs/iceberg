@@ -21,5 +21,6 @@ createNewRepositoryNamed: aString
 	
 	self addProjectFileTo: repository.
 	self addPropertiesFileTo: repository.
+	repository workingCopy refreshProject.
 
 	^ repository

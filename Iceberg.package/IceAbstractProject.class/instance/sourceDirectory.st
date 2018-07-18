@@ -1,0 +1,4 @@
+accessing
+sourceDirectory
+	
+	^ self subclassResponsibility

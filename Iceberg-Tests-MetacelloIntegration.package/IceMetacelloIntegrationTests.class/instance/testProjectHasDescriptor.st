@@ -8,4 +8,4 @@ testProjectHasDescriptor
 	self installBaseline.
 	repository := self repositoryForTest.
 
-	self assert: repository project isUnbornProject equals: self hasProject not.
+	self assert: repository project isUnborn equals: self hasProject not.

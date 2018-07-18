@@ -1,4 +1,4 @@
 API-project
 newUnbornProject
 	
-	^ IceMemoryProject onRepository: self
+	^ IceMemoryProject onRepository: self commitish: workingCopy referenceCommit

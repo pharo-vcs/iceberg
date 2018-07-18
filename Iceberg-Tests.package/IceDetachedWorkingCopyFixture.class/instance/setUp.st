@@ -8,7 +8,7 @@ setUp
 
 	repository workingCopy createClass: 'AClass' inPackage: packageName1.
 	repository commitWithMessage: 'Second commit'.
-	
+
 	head:= repository headCommit.
 	head parent checkout.
 	repository setHead: head.

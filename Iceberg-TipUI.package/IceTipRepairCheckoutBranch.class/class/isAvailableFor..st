@@ -4,7 +4,7 @@ isAvailableFor: aRepository
 		- workingCopy is detached
 		- HEAD is detached"
 	
-	^ aRepository project isUnbornProject
+	^ aRepository project isUnborn
 		or: [ aRepository isMissing not
 			and: [ 
 				aRepository workingCopy isDetached 

@@ -1,7 +1,7 @@
 tests
 testCommitNewProjectFindsPropertiesFile
 
-	self repository workingCopy project: (IceProject onRepository: self repository withSourceDirectory: fixture subdirectory).
+	self repository workingCopy project: (IceBasicProject onRepository: self repository withSourceDirectory: fixture subdirectory).
 	self repository commitWithMessage: 'Create project file'.
-
-	self assert: (self repository headCommit fileSystem resolve: self repository project propertiesFilePath) exists
+	
+	self assert: (self repository headCommit fileSystem resolve: self repository properties propertiesFilePath) exists

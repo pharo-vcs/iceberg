@@ -1,6 +1,6 @@
 tests
 testConvertToTonelRemovesFiletreeMetadataFile
-	self repository project fileFormat: IceLibgitFiletreeWriter.
+	self repository properties fileFormat: IceLibgitFiletreeWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting'

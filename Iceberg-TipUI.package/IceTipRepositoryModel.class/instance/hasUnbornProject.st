@@ -1,3 +1,3 @@
 testing
 hasUnbornProject
-	^ self entity workingCopy project isUnbornProject
+	^ self entity workingCopy project isUnborn

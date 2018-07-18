@@ -5,5 +5,6 @@ initialize
 	shouldIgnoreNotifications := false.
 	
 	packages := Dictionary new.
-	referenceCommit := IceNoCommit repository: repository.
-	project := referenceCommit project
+	referenceCommit := repository newNoCommit.
+	project := referenceCommit project.
+	properties := referenceCommit properties asBornProperties

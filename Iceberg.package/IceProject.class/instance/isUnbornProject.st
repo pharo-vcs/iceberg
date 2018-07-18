@@ -1,4 +1,0 @@
-testing
-isUnbornProject
-
-	^ false

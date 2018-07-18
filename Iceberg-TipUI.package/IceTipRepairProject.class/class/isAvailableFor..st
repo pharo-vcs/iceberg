@@ -7,4 +7,4 @@ isAvailableFor: aRepository
 	^ aRepository isMissing not  
 		and: [  aRepository workingCopy isDetached not
 			and: [ aRepository head isDetached not
-				and: [ aRepository workingCopy project isUnbornProject ] ] ]
+				and: [ aRepository workingCopy project isUnborn ] ] ]
