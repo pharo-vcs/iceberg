@@ -3,4 +3,4 @@ asBornProperties
 	
 	^ IceRepositoryProperties
 		fromDictionary: properties
-		repository: repository
+		commitish: commitish

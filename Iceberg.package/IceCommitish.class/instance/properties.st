@@ -2,4 +2,4 @@ API-properties
 properties
 	^ IceRepositoryProperties
 		fromFileReferenceDirectory: self project sourceDirectoryReference
-		repository: self repository
+		commitish: self
