@@ -19,3 +19,8 @@ Solution: This is called "squashing" in git parlance. There are a few ways to do
 Problem: I was playing around on the command line and messed up my local clone. I want to wipe the changes clean to match the remote
 
 Solution: `git reset --hard origin/master` ([via SO](https://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-just-like-remote-repository-head))
+
+## Changing the Author of the Last Commit
+Problem: I merged an MCZ of which I was not the author, and would like to preserve proper authorship in git.
+
+Solution: `git commit --amend --author="John Doe <john@doe.org>"` ([via Tower](https://www.git-tower.com/learn/git/faq/change-author-name-email))
