@@ -4,7 +4,7 @@ writerClass
 		at: 'format' 
 		ifPresent: [ :v | TIceRepositoryWriter users detect: [ :each | each id = v  ] ]
 		ifAbsent: [ 
-			commitish project isUnborn
+			commitish project isInvalid
 				ifFalse: [ IceLibgitRepository defaultFileFormat ]
 				ifTrue: [ TIceRepositoryWriter users
 					detect: #isLegacyDefault

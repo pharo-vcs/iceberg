@@ -1,5 +1,5 @@
 testing
 canReadProjectFromCommitish: aCommitish
 	
-	^ aCommitish commit = aCommitish repository workingCopy referenceCommit
+	^ aCommitish isWorkingCopy
 		and: [ (aCommitish fileSystem / '.project') exists not ]

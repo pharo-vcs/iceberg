@@ -8,4 +8,5 @@ testProjectCurrentCommitAfterChangeIsUnborn
 		inPackage: self packageName1 asSymbol.
 	self repository commitWithMessage: 'Another Invalid project commit'.
 
-	self assert: self repository headCommit project isUnborn
+	self assert: self repository workingCopy project isUnborn.
+	self assert: self repository headCommit project isInvalid.
