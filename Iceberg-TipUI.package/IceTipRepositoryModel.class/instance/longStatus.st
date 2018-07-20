@@ -13,7 +13,7 @@ longStatus
 	entity head isDetached 
 		ifTrue: [ ^ 'The repository is in detached head state in commit {1}. You may checkout a branch to continue.' format: { entity headCommit shortId } ].
 
-	entity workingCopy project isUnbornProject
+	entity workingCopy project isUnborn
 		ifTrue: [ ^ 'Cannot find a project in your repository. Please edit your repository meta-data to indicate the source code directory or change a location to a valid iceberg repository' ].
 
 

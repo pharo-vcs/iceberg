@@ -1,3 +1,3 @@
 API-accessing
 properties
-	^ self project repositoryProperties
+	^ self workingCopy repositoryProperties

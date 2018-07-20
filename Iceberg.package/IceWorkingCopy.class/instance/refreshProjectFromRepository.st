@@ -1,9 +1,16 @@
 accessing
 refreshProjectFromRepository
 
-	project := (referenceCommit isCollection
+	| commitToCheck maybeProject |
+	commitToCheck := referenceCommit isCollection
 		ifTrue: [ referenceCommit first ]
-		ifFalse: [ referenceCommit ]) basicProject.
-	project commitish: self.
+		ifFalse: [ referenceCommit ].
+
+	maybeProject := commitToCheck project.
+	maybeProject isInvalid ifTrue: [ 
+		maybeProject := IceUnbornProject onCommitish: commitToCheck ].
+	self basicSetProject: maybeProject.
+	
+	properties := commitToCheck properties asBornProperties.
 	self refreshProject.
 	^ project

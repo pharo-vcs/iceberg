@@ -1,4 +1,4 @@
 executing
 basicExecute
-	(IceTipEditProjectDialog on: (IceProject onRepository: self repositoryModel entity)) 
+	(IceTipEditProjectDialog on: (IceBasicProject onRepository: self repositoryModel entity)) 
 		openDialogWithSpec

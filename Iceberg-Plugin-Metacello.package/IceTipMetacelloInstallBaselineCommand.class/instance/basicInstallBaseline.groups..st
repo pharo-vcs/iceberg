@@ -2,7 +2,7 @@ private
 basicInstallBaseline: icePackage groups: anArray
 	| packageDir baselineName |
 
-	packageDir := icePackage location parent fullName.
+	packageDir := (icePackage repository location / icePackage repository project sourceDirectory / icePackage directoryName) fullName.
 	baselineName := icePackage name allButFirst: self class baselinePrefix size.
 	Metacello new
 		repository: 'gitlocal://', packageDir;

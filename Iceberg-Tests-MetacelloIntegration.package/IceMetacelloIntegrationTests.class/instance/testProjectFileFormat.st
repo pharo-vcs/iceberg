@@ -8,4 +8,4 @@ testProjectFileFormat
 	self installBaseline.
 	repository := self repositoryForTest.
 
-	self assert: repository project fileFormat equals: self expectedFileFormat.
+	self assert: repository properties fileFormat equals: self expectedFileFormat.

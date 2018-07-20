@@ -1,5 +1,5 @@
 API-project
 project: anIceProject
 
-	project := anIceProject.
+	self basicSetProject: anIceProject.
 	self refreshProject.

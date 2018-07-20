@@ -14,7 +14,7 @@ status
 		entity head isDetached 
 			ifTrue: [ ^ self toErrorMessage: 'Detached HEAD' ].
 
-		entity workingCopy project isUnbornProject
+		entity workingCopy project isUnborn
 			ifTrue: [ ^ self toErrorMessage: 'No Project Found' ].
 
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].

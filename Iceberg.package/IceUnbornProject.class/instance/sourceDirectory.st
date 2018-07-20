@@ -2,8 +2,6 @@ accessing
 sourceDirectory
 
 	"Tricky method.
-	If there is no project meta-data, we should try to use the projec configured by the user.
-	In case this project is **that one**, return the empty source directory"
-	^ commitish isWorkingCopy
-		ifTrue: [ '' ]
-		ifFalse: [ commitish project sourceDirectory ]
+	If we are in an unborn project, it means the user has not configured meta-data on it yet.
+	In that case, return the empty source directory"
+	^ ''

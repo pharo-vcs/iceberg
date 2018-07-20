@@ -3,6 +3,10 @@ importOn: aNode
 	
 	| currentSegment |
 	currentSegment := path segments first.
+	
+	"Do not import if the file does not exist in git"
+	(version fileSystem resolve: (aNode path / currentSegment)) exists
+		ifFalse: [ ^ self ].
 
 	"If I represent a package, let's do it and do nothing else.
 	This could be optimized to add the exact methods and avoid MC diff afterwards"

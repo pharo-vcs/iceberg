@@ -6,7 +6,7 @@ buildFull
 	rightTree := IceNode value: IceRootDefinition new.
 		
 	"Image changes should be processed before commit changes to take into account changes in the image"
-	self imageChanges , (source referenceCommit changesTo: target)
+	self imageChanges , (source referenceCommit changesTo: target) asArray
 			do: [ :change | 
 			change accept: (IceChangeImporter new
 				version: source;

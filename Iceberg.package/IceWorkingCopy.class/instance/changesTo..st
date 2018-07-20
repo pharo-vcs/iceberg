@@ -11,4 +11,6 @@ changesTo: aCommitish
 		
 	self project isDirty
 		ifTrue: [ changes add: IceProjectChange new ].
+	self repositoryProperties isDirty
+		ifTrue: [ changes add: IceCypressPropertiesChange new ].
 	^ changes

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 7/17/2018 11:04",
+	"super" : "Object",
+	"category" : "Iceberg-Project",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceProjectReader",
+	"type" : "normal"
+}

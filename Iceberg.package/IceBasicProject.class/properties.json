@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractProject",
+	"category" : "Iceberg-Project",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"properties",
+		"repository",
+		"repositoryProperties"
+	],
+	"name" : "IceBasicProject",
+	"type" : "normal"
+}

@@ -2,7 +2,6 @@
 visitGitChange: anIceGitChange 
 
 	| importer |
-	
 	importer := IceGitChangeImporter new
 		path: anIceGitChange path;
 		diff: diff;

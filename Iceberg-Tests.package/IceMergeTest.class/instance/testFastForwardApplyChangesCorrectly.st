@@ -3,7 +3,7 @@ testFastForwardApplyChangesCorrectly
 
 	"This is a Ring working copy"
 	| initialCommit change1Commit newProject |
-	newProject := IceProject onRepository: self repository.
+	newProject := IceBasicProject onRepository: self repository.
 	newProject sourceDirectory: 'src'.
 	self repository workingCopy project: newProject.
 	self repository workingCopy addPackageNamed: self packageName1.
