@@ -1,5 +1,6 @@
 accessing
 packageNames
 	
-	^ packageNamesCache ifNil: [ 
-		packageNamesCache := self fetchPackageNames ].
+	^ self repository commitsInPackageCache
+		at: self
+		ifAbsentPut: [ self fetchPackageNames ]

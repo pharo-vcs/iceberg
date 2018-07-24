@@ -13,7 +13,8 @@
 	"instvars" : [
 		"location",
 		"commitCache",
-		"handle"
+		"handle",
+		"commitsInPackageCache"
 	],
 	"name" : "IceLibgitRepository",
 	"type" : "normal"
