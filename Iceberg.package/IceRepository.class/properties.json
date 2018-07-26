@@ -10,7 +10,8 @@
 	"instvars" : [
 		"name",
 		"workingCopy",
-		"index"
+		"index",
+		"commitsInPackageCache"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"
