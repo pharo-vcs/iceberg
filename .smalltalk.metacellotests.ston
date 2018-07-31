@@ -10,8 +10,6 @@ SmalltalkCISpec {
      }
   ],
   #testing : {
-     #include : {
         #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]
-    }
   }
 }
