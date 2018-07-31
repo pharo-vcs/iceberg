@@ -7,5 +7,4 @@ initializeDirectoryTree
 		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | self iconNamed: #package ]);
 		dataSource: dataSource;
 		onAnnouncement: FTSelectionChanged do: [ :announcement | 
-			self sourceDirectorySelectionChanged: announcement newSelectedRowIndexes.
-			useSourceFolder state: true ]
+			self sourceDirectorySelectionChanged: announcement newSelectedRowIndexes ]
