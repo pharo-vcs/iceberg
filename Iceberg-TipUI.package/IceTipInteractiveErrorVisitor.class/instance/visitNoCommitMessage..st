@@ -7,7 +7,8 @@ visitNoCommitMessage: aWarning
 		label: 'Warning!'  
 		trueChoice: 'Commit' 
 		falseChoice: 'Cancel'
-		cancelChoice: nil 
+		cancelChoice: nil
 		default: false.
-		
+	
+	proceed ifNil: [ ^ self ].
 	proceed ifTrue: [ aWarning resume ]
