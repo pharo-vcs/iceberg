@@ -5,6 +5,7 @@ doEnsureProject
 	self repository project isUnborn ifFalse: [ ^ self ].
 
 	self repository workingCopy project: (IceBasicProject onRepository: self repository withSourceDirectory: self subdirectory).
+	self repository workingCopy refreshRepositoryProperties.
 	
 	"If the properties file has no format, set it the default legacy format"
 	self repository workingCopy properties properties
