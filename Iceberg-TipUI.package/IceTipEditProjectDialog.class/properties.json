@@ -12,13 +12,11 @@
 		"acceptCallback",
 		"sourceDirectoryLabel",
 		"sourceDirectoryTree",
-		"sourceDirectorySelectionLabel",
 		"selectedDirectoryPath",
 		"formatList",
 		"formatLabel",
 		"formats",
-		"defaultFormat",
-		"useSourceFolder"
+		"defaultFormat"
 	],
 	"name" : "IceTipEditProjectDialog",
 	"type" : "normal"

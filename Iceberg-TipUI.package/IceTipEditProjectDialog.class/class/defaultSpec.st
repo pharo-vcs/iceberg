@@ -17,10 +17,6 @@ defaultSpec
 								newRow: [ :emptyRow | "Fill space"  ] ] width: self iceLabelWidth;
 						newColumn: #sourceDirectoryTree ]
 					height: 200;
-				newRow: [ :row |
-					row newColumn: [ :emptyColumn | "Fill space" ] width: self iceLabelWidth. 
-					row newColumn: #useSourceFolder ]
-					height: self inputTextHeight;					
 				newRow: [ :row | 
 					row
 						newColumn: #formatLabel width: self iceLabelWidth;
