@@ -7,9 +7,8 @@ refreshProjectFromRepository
 		ifFalse: [ referenceCommit ].
 
 	maybeProject := commitToCheck project.
-	maybeProject isInvalid ifTrue: [ 
-		maybeProject := IceUnbornProject onCommitish: commitToCheck ].
-	self basicSetProject: maybeProject.
+	maybeProject isInvalid ifFalse: [ 
+		self basicSetProject: maybeProject ].
 	
 	properties := commitToCheck properties asBornProperties.
 	self refreshProject.
