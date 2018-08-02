@@ -48,3 +48,5 @@ Metacello new
     baseline: 'Iceberg';
     repository: 'filetree://./';
     load.
+
+BaselineOfIDE new addPharoProjectToIceberg
