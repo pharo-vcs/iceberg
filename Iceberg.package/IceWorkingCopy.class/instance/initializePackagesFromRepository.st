@@ -5,5 +5,4 @@ initializePackagesFromRepository
 	commitToAdopt := referenceCommit isNoCommit
 		ifTrue: [ self repository headCommit ]
 		ifFalse: [ referenceCommit ].
-	commitToAdopt packages do: [ :each | self basicAddPackage: each ].
 	self adoptCommit: commitToAdopt.
