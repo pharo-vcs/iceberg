@@ -1,6 +1,8 @@
 tests
 testConvertEmptyRepositoryToFiletree
 
+	self commitProjectFile.
+
 	IceConvertFormatAction new
 		repository: self repository;
 		branchName: 'migrate-to-filetree';

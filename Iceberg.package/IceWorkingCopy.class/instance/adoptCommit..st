@@ -10,5 +10,5 @@ adoptCommit: aCommit
 	
 	"If both commits are from a different class but still have the same ID, we do not need to force the calculation of dirty packages.
 	This is required for the case when a working copy existed with an unknown comit but it was not linked to a repository"
-	(oldCommit id = aCommit id)
+	(oldCommit isNoCommit not and: [ oldCommit id = aCommit id ])
 		ifFalse: [ self forceCalculateDirtyPackages. ]
