@@ -49,4 +49,4 @@ Metacello new
     repository: 'filetree://./';
     load.
 
-BaselineOfIDE new addPharoProjectToIceberg
+IcePharoPlugin new addPharoProjectToIceberg
