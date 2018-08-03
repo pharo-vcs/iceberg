@@ -12,4 +12,6 @@ doEnsureProject
 		at: #format
 		ifAbsent: [ 	self repository workingCopy properties fileFormat: (TIceRepositoryWriter users
 			detect: #isLegacyDefault
-			ifNone: [ Smalltalk at: #IceLibgitFiletreeWriter ]) ]
+			ifNone: [ Smalltalk at: #IceLibgitFiletreeWriter ]) ].
+		
+	self repository workingCopy refreshPackages.

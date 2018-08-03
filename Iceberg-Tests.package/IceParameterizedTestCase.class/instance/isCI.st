@@ -1,4 +1,3 @@
 running
 isCI
-
-	^ (OSEnvironment default at: 'CI' ifAbsent: []) = 'true'
+	^ (OSEnvironment current at: 'CI' ifAbsent: [  ]) = 'true'
