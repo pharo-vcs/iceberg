@@ -3,8 +3,7 @@ Iceberg is a set of tools that allows one to handle git repositories directly fr
 
 Please be aware that this is still an experimental tool, so you have to be careful. But we already have a few early adopters, so you are invited to try it and provide feedback.
 
-To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
-
+To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg and Git nomenclature](docs/Iceberg-glossary.md) 
 [![Travis Build Status](https://travis-ci.org/pharo-vcs/iceberg.svg?branch=master)](https://travis-ci.org/pharo-vcs/iceberg)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg?svg=true)](https://ci.appveyor.com/project/pharo-vcs/iceberg)  
 
@@ -34,6 +33,9 @@ default (this **will** be the default on Pharo7). The easiest way to get this VM
 ***Q.** I'm using Iceberg on Windows - whilst trying to clone a repository I get the error "LGit_GIT_ERROR: error authenticating: failed connecting agent".*  
 **A.** Prompting for credentials currently doesn't work on Windows (we can't use ssh-agent).  You need to setup authentication using SSH keys.  Something like this:
 
+***Q.** I'm using 2FA on github and when I try to to create a PR from Iceberg, I'm asked a login/passwd. I try to login but it doesn't work.*
+**A.** There is no support for 2FA in Iceberg for the moment. Please create a personal Access Tokens to replace your password in order to avoid this problem: https://github.com/settings/tokens
+
 ```Smalltalk
 IceCredentialsProvider useCustomSsh: true.
 IceCredentialsProvider sshCredentials
@@ -48,7 +50,7 @@ IceCredentialsProvider sshCredentials
 - Latest Pharo 6.1+ image.
 - Pharo VM for Pharo 6.1+.
 
-You can get both by downloading it from the [Pharo](http://pharo.org) site or in the command line with [zeroconf](get.pharo.org): 
+You can get both by downloading it from the [Pharo](http://pharo.org) site or in the command line with [zeroconf](http://get.pharo.org): 
 
 ```Shell
 wget -O- get.pharo.org | bash
@@ -116,4 +118,4 @@ Smalltalk compilerClass recompileAll
 ## 5 minutes tutorial
 *(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
 
-Have a look at the videos [https://github.com/pharo-vcs/iceberg/wiki/Contribute-to-Pharo-with-Iceberg-0.7.3]
+Have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3]
