@@ -21,7 +21,7 @@ env:
 
 matrix:
   include:
-    - env: JOB=test CI_FILE=.updatingIceberg.ston
+    - env: JOB=update
       smalltalk: Pharo-7.0
     - env: JOB=sync-wiki
     
@@ -32,5 +32,5 @@ before_install:
 script:
 - travis_wait 120 sleep infinity &
 - if [[ ${JOB} == "test" ]]; then $SMALLTALK_CI_HOME/run.sh ${CI_FILE}; fi
-- if [[ ${CI_FILE} == ".updatingIceberg.ston" ]]; then scripts/testUpdateIceberg.sh ; fi
+- if [[ ${JOB} == "update" ]]; then scripts/testUpdateIceberg.sh ; fi
 - if [[ ${JOB} == "sync-wiki" ]] && [[ ${TRAVIS_BRANCH} == "master" ]] && [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then ./scripts/sync-wiki.sh; fi
