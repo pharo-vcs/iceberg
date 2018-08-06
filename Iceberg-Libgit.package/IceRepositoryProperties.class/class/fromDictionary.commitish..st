@@ -4,4 +4,5 @@ fromDictionary: aDictionary commitish: aCommitish
 		repository: aCommitish repository;
 		commitish: aCommitish;
 		properties: aDictionary;
+		ensureDefaultProperties;
 		yourself
