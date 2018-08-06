@@ -1,0 +1,4 @@
+accessing
+beAnonymous
+
+	isAnonymous := true
