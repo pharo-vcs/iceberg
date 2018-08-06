@@ -4,7 +4,8 @@ isAvailableFor: aRepository
 		- workingCopy is detached
 		- HEAD is detached"
 	
-	^ aRepository isMissing not 
-		and: [ 
-			aRepository workingCopy isDetached 
-			or: [ aRepository head isDetached ] ]
+	aRepository isMissing ifTrue: [ ^ false ].
+	aRepository workingCopy referenceCommit isUnknownCommit ifTrue: [ ^ false ].
+	aRepository workingCopy referenceCommit isNoCommit ifTrue: [ ^ false ].
+	
+	^ aRepository workingCopy isDetached or: [ aRepository head isDetached ]
