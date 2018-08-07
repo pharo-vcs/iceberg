@@ -12,6 +12,7 @@ mcRepository
 			(IceRepositoryCreator new 
 				location: tuple first;
 				subdirectory: tuple second;
+				ensureProjectFile;
 				createRepository)
 				register ].
 			
