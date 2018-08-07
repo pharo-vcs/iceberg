@@ -32,10 +32,6 @@ default (this **will** be the default on Pharo7). The easiest way to get this VM
 
 ***Q.** I'm using Iceberg on Windows - whilst trying to clone a repository I get the error "LGit_GIT_ERROR: error authenticating: failed connecting agent".*  
 **A.** Prompting for credentials currently doesn't work on Windows (we can't use ssh-agent).  You need to setup authentication using SSH keys.  Something like this:
-
-***Q.** I'm using 2FA on github and when I try to to create a PR from Iceberg, I'm asked a login/passwd. I try to login but it doesn't work.*
-**A.** There is no support for 2FA in Iceberg for the moment. Please create a personal Access Tokens to replace your password in order to avoid this problem: https://github.com/settings/tokens
-
 ```Smalltalk
 IceCredentialsProvider useCustomSsh: true.
 IceCredentialsProvider sshCredentials
@@ -44,6 +40,9 @@ IceCredentialsProvider sshCredentials
 ```
 
 (Your key should not have a passphrase)
+
+***Q.** I'm using 2FA on github and when I try to to create a PR from Iceberg, I'm asked a login/passwd. I try to login but it doesn't work.*
+**A.** There is no support for 2FA in Iceberg for the moment. Please create a personal Access Tokens to replace your password in order to avoid this problem: https://github.com/settings/tokens
 
 ## Installation (for development)
 ### Prerequisites
