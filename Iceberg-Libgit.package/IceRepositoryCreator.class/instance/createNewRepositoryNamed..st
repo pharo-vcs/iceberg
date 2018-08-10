@@ -11,7 +11,7 @@ createNewRepositoryNamed: aString
 		
 	locationToUse ensureCreateDirectory.
 	self subdirectory  
-		ifNotEmpty: [ (locationToUse / self subdirectory) ensureCreateDirectory ].
+		ifNotEmpty: [ (locationToUse resolve: self subdirectory) ensureCreateDirectory ].
 
 	repository := IceLibgitRepository new
 		name: aString;
