@@ -17,5 +17,5 @@ updateHead
 				setMergeStateBetweenCommits:
 					{self leftCommit.
 					mergeCommit}.
-			repository workingCopy commitChanges: self withMessage: 'Merge ' , mergeCommit id asString ].
+			repository workingCopy commitChanges: self withMessage: 'Merge ' , mergeCommit id asString force: true ].
 	repository branch commit: commitToAdvance
