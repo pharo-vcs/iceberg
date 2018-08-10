@@ -1,3 +1,3 @@
 specs
 title
-	^ 'Add local repository'
+	^ 'Import from existing clone'
