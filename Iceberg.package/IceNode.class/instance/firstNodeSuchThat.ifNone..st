@@ -9,6 +9,9 @@ firstNodeSuchThat: conditionBlock ifNone: noneBlock
 		ifFound: [ :found | ^ found ].
 	
 	^ self parent
-		nextChildNodeStartingFrom: self
-		suchThat: conditionBlock
-		ifNone: noneBlock
+		ifNil: noneBlock
+		ifNotNil: [
+			self parent
+				nextChildNodeStartingFrom: self
+				suchThat: conditionBlock
+				ifNone: noneBlock ]
