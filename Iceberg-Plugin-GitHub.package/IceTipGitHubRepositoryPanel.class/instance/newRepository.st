@@ -11,7 +11,7 @@ newRepository
 			(githubRepository at: #fork)
 				ifTrue: [ | parent remote |
 					parent := githubRepository at: #parent.
-					remote := IceGitRemote name: ((parent at: #owner) at: #login) url: (parent at: #'ssh_url').
+					remote := IceGitRemote name: ((parent at: #owner) at: #login) url: (parent at: self selectedProtocol githubRequestUrlKey).
 					newRepository addRemote: remote.
 					remote fetch. ] ].
 	^ newRepository
