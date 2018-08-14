@@ -6,6 +6,7 @@ withMetacelloLoadSessionDo: aBlock
 	context := IceMetacelloLoadSessionContext value 
 		ifNil: [ IceMetacelloLoadSession new ].
 
+	"pass it"
 	IceMetacelloLoadSessionContext
 		value: context 
 		during: aBlock
