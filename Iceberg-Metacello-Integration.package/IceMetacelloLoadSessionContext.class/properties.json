@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "DynamicVariable",
+	"category" : "Iceberg-Metacello-Integration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetacelloLoadSessionContext",
+	"type" : "normal"
+}

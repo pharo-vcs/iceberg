@@ -1,12 +1,18 @@
 private
 chooseUpgradePolicyFor: aMetacelloUpgradeRequest
- 
-	^ UIManager default 
-		chooseFrom: {
-			'Use INCOMING version {1}' format: { aMetacelloUpgradeRequest newProjectRegistration printString }. 
-			'Use LOADED version {1}' format: { aMetacelloUpgradeRequest existingProjectRegistration printString } }
-		values: { 
-			#useIncoming. 
-			#useLoaded }
-		message: ('There is already a project "{1}" in this installation.' format: { aMetacelloUpgradeRequest projectName })
-		title: 'Duplicated project!'.
+	| projectName optionA optionB context |
+
+	context := IceMetacelloLoadSessionContext value.
+	projectName := aMetacelloUpgradeRequest projectName.
+	optionA := aMetacelloUpgradeRequest newProjectRegistration printString.
+	optionB := aMetacelloUpgradeRequest existingProjectRegistration printString.
+	
+	^ context 
+		recordChoiceProject: projectName 
+		optionA: optionA 
+		optionB: optionB
+		ifAbsentAnswer: [ 				
+			self 
+				chooseUpgradePolicyProject: projectName 
+				optionA: optionA 
+				optionB: optionB ]
