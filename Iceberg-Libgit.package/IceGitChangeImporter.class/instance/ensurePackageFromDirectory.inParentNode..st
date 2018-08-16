@@ -1,9 +1,9 @@
 building
-ensurePackageFromDirectoryName: aString inParentNode: aParentNode
+ensurePackageFromDirectory: aFileReference inParentNode: aParentNode
 	
 	| importer packageName package |
 	
-	packageName := version writerClass packageNameFromDirectoryName: aString.
+	packageName := version writerClass packageNameFromDirectory: aFileReference.
 	
 	"Package already exists"
 	(aParentNode includesKey: packageName)

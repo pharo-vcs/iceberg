@@ -1,0 +1,3 @@
+accessing
+packageNameFromDirectory: aFileReference
+	^ aFileReference basenameWithoutExtension

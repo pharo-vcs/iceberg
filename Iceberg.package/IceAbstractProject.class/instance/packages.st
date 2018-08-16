@@ -7,7 +7,7 @@ packages
 		sourceFileReference exists ifFalse: [ ^ #() ].
 		
 		^ sourceFileReference children
-			select: [ :each | writerClass isValidPackageName: each basename ]
+			select: [ :each | writerClass isValidPackage: each ]
 			thenCollect: [ :each | | packageName |
-				packageName := writerClass packageNameFromDirectoryName: each basename.
+				packageName := writerClass packageNameFromDirectory: each.
 				IcePackage named: packageName repository: self repository ] ]
