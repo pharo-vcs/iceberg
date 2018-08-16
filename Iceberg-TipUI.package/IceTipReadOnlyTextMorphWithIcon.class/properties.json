@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"iconWidget",
+		"textWidget"
+	],
+	"name" : "IceTipReadOnlyTextMorphWithIcon",
+	"type" : "normal"
+}
