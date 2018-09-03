@@ -2,9 +2,8 @@ private-changes
 loadChangesInWorkingCopy: aTree
 	
 	| visitor |
-	visitor := IceWorkingCopyPatcherVisitor on: self repository.
-	aTree accept: visitor.
+	visitor := IceRingWorkingCopyChangerVisitor on: self.
 	
 	self ignoreNotificationsDuring: [
-		visitor load.
+		aTree accept: visitor.
 	]

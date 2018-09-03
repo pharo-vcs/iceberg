@@ -1,6 +1,9 @@
 visiting
 visitPackage: anIcePackageDefinition
-
-	self repository workingCopy
-		impactPackageChanges: anIcePackageDefinition
-		currentNode: currentNode
+	
+	(self repository packageNamed: anIcePackageDefinition name) isLoaded
+		ifFalse: [ ^ self ].
+	
+	currentNode accept: (IceMCSnapshotPatchVisitor new
+		patcher: loader;
+		yourself).
