@@ -9,4 +9,5 @@ createClass: className inPackage: packageName with: aBlock
 	
 	aBlock value: class.
 	
+	(self includesPackageNamed: packageName) ifFalse: [ ^ self ].
 	self markAsDirtyPackageNamed: package name
