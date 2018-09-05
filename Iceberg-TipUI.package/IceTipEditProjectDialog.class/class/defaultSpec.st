@@ -22,4 +22,7 @@ defaultSpec
 						newColumn: #formatLabel width: self iceLabelWidth;
 						newColumn: #formatList ]
 					height: self inputTextHeight;
-				newRow: [ :emptyRow | "Fill space" ] ]
+				newRow: [ :row | 
+					row newColumn: [ :emptyCol ] width: self iceLabelWidth - 40.
+					row add: #messagePanel ];	
+				newRow: [ :emptyRow | "Fill space" ] height: 1 ]

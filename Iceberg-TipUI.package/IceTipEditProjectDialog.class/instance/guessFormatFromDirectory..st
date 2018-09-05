@@ -8,10 +8,10 @@ guessFormatFromDirectory: aFileReference
 	
 	"Filetree must have precedence as it has the most restrictive name convention (directories ending with .package)"
 	((formats includes: IceLibgitFiletreeWriter)
-		and: [ IceLibgitFiletreeWriter isValidPackageName: guineaPig basename ])
+		and: [ IceLibgitFiletreeWriter isValidPackage: guineaPig ])
 			ifTrue: [ ^ IceLibgitFiletreeWriter ].
 	
 	"Otherwise go with the entire list"
 	^ formats
-		detect: [ :each | each isValidPackageName: guineaPig basename ]
+		detect: [ :each | each isValidPackage: guineaPig ]
 		ifNone: [ ^ defaultFormat ].

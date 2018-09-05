@@ -16,7 +16,8 @@
 		"formatList",
 		"formatLabel",
 		"formats",
-		"defaultFormat"
+		"defaultFormat",
+		"messagePanel"
 	],
 	"name" : "IceTipEditProjectDialog",
 	"type" : "normal"
