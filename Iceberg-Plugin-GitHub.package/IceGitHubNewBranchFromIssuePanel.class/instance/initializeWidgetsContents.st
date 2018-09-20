@@ -1,7 +1,11 @@
 initialization
 initializeWidgetsContents
 	spacePanel := PanelMorph new asSpecAdapter.
+	
 	self initializeCurrentBranchLabel.
+	
+	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self model.
+	
 	branchLabel := self newLabel label: 'GitHub issue Number'.
 	issueNumberText := self newTextInput
 		ghostText: 'e.g., 123';

@@ -6,6 +6,7 @@ defaultSpec
 		newColumn: [ :col | 
 			col
 				newRow: #currentBranchLabel height: self inputTextHeight;
+				newRow: #remotePanel height: self inputTextHeight;
 				newRow: [ :row | 
 					row
 						newColumn: #branchLabel width: self iceLabelWidth;
