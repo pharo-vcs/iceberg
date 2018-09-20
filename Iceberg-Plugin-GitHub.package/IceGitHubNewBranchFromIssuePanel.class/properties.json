@@ -11,7 +11,8 @@
 		"issueLabel",
 		"issueText",
 		"issue",
-		"fetched"
+		"fetched",
+		"selectRemoteModel"
 	],
 	"name" : "IceGitHubNewBranchFromIssuePanel",
 	"type" : "normal"

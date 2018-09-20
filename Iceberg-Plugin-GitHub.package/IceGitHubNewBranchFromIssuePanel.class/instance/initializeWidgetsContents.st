@@ -4,7 +4,7 @@ initializeWidgetsContents
 	
 	self initializeCurrentBranchLabel.
 	
-	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self model.
+	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self selectRemoteModel.
 	
 	branchLabel := self newLabel label: 'GitHub issue Number'.
 	issueNumberText := self newTextInput
