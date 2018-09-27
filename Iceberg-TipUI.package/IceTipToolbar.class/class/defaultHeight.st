@@ -1,3 +1,3 @@
 accessing
 defaultHeight
-	^ self defaultMode height
+	^ self defaultMode height * World displayScaleFactor
