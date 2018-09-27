@@ -1,3 +1,3 @@
 accessing
 defaultActionWidth
-	^ 100
+	^ 100 * World displayScaleFactor
