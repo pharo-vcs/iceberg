@@ -6,12 +6,12 @@ defaultSpec
 			col
 				newRow: [ :row | 
 					row
-						add: #nameLabel width: 100;
+						add: #nameLabel width: 100 * World displayScaleFactor;
 						add: #nameInput ]
 					height: self inputTextHeight;
 				newRow: [ :row | 
 					row
-						add: #emailLabel width: 100;
+						add: #emailLabel width: 100 * World displayScaleFactor;
 						add: #emailInput ]
 					height: self inputTextHeight;
 				add: #globalCheckbox height: self inputTextHeight ]
