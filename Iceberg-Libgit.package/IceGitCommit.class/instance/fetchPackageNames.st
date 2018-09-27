@@ -8,5 +8,5 @@ fetchPackageNames
 	dir exists ifFalse: [ ^ #() ].
 	
 	^ dir children
-		select: [ :each | writerClass isValidPackageFileReference: each ]
-		thenCollect: [ :each | writerClass packageNameFromDirectoryName: each basename ]
+		select: [ :each | writerClass isValidPackage: each ]
+		thenCollect: [ :each | writerClass packageNameFromDirectory: each ]

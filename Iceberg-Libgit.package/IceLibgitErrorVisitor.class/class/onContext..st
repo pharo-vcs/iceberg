@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 onContext: aContext
 
 	^ self new

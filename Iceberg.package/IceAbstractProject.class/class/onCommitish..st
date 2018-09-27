@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 onCommitish: anIceCommitish
 	
 	^ self new

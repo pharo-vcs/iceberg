@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 commit: anIceCommit history: aHistory
 	
 	^ self new

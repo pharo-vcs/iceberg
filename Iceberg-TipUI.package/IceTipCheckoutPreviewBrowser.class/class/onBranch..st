@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 onBranch: aBranch
 
 	^ self on: (IceTipCheckoutModel new
