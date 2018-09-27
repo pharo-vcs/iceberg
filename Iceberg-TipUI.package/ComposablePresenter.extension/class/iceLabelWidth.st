@@ -1,3 +1,3 @@
 *Iceberg-TipUI
 iceLabelWidth
-	^ 100
+	^ 100 * World displayScaleFactor
