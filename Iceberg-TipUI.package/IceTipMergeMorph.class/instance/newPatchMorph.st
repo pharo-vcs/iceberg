@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 newPatchMorph
 	"Answer a new patch morph."
 

@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 readProjectFrom: anIceCommitish
 
 	| readers |

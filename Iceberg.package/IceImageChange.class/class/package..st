@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 package: anIcePackage 
 	
 	^ self new

@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 from: sourceCommitish to: targetCommitish
 	
 	^ self new

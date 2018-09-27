@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 repository: repository
 	^ self basicNew 
 		repository: repository; 
