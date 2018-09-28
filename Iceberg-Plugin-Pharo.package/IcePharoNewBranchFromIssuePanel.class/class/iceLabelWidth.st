@@ -1,3 +1,3 @@
 accessing
 iceLabelWidth
-	^ 130
+	^ 130 * World displayScaleFactor

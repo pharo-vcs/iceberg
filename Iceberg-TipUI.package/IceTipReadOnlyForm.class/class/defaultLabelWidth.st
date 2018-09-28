@@ -1,3 +1,3 @@
 accessing
 defaultLabelWidth
-	^ 100
+	^ 100 * World displayScaleFactor
