@@ -1,3 +1,3 @@
 accessing
 defaultMenuItemName
-	^ 'Unload and remove from repository'
+	^ 'Unload and/or remove from repository'
