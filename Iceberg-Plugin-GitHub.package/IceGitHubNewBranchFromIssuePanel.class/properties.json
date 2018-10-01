@@ -12,7 +12,8 @@
 		"issueText",
 		"issue",
 		"fetched",
-		"selectRemoteModel"
+		"selectRemoteModel",
+		"currentWaitingProcess"
 	],
 	"name" : "IceGitHubNewBranchFromIssuePanel",
 	"type" : "normal"
