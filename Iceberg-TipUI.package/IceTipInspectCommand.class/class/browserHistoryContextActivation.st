@@ -2,6 +2,6 @@ activation
 browserHistoryContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: CmdExtraMenuGroup
 		for: IceTipHistoryContext

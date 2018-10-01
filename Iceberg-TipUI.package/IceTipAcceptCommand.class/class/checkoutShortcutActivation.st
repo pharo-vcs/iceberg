@@ -2,4 +2,4 @@ activation
 checkoutShortcutActivation
 	<classAnnotation>
 	
-	^ CmdShortcutCommandActivation by: $s meta for: IceTipBranchContext
+	^ CmdShortcutActivation by: $s meta for: IceTipBranchContext

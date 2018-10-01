@@ -2,4 +2,4 @@ activation
 commitShortcutActivation
 	<classAnnotation>
 	
-	^ CmdShortcutCommandActivation by: $s meta for: IceTipCommitContext
+	^ CmdShortcutActivation by: $s meta for: IceTipCommitContext

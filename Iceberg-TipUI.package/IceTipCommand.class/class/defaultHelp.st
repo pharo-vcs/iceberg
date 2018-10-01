@@ -1,3 +1,3 @@
 accessing
 defaultHelp
-	^ nil
+	^ self subclassResponsibility

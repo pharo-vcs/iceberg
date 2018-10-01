@@ -2,6 +2,6 @@ activation
 browserHistoryContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byRootGroupItemOrder: 20
 		for: IceTipHistoryContext
