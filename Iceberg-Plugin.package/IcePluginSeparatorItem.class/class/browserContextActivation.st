@@ -2,6 +2,6 @@ testing
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 			byRootGroupItemOrder: SmallInteger maxVal - 2000
 			for: IceTipRepositoryListContext

@@ -1,1 +1,1 @@
-I'm a command that acts in on projects. 
+I'm a the abstract superclass of commands that act on repositories. 

@@ -2,7 +2,7 @@ testing
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation 
+	^ CmdContextMenuActivation 
 			byItemOf: IcePharoMenuGroup
 			order: 20
 			for: IceTipRepositoryListContext

@@ -2,7 +2,7 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation 
+	^ CmdContextMenuActivation 
 			byItemOf: IceTipMetacelloMenuGroup
 			order: 20
 			for: IceTipWorkingCopyContext

@@ -1,0 +1,1 @@
+Command that opens a dialog to add a/many package/s into the selected repository.
