@@ -1,0 +1,1 @@
+Command that checks out the selected branch
