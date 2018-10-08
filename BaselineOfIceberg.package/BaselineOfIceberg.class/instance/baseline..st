@@ -8,6 +8,7 @@ baseline: spec
 		self tonel: spec.
 		self libgit: spec.
 		self commander: spec.
+		self smartTest: spec.
 		
 		spec
 			baseline: 'Ring2' 
@@ -63,7 +64,7 @@ baseline: spec
 				'LibGit-Tests' 
 				'Iceberg-UI-Tests'
 				'Iceberg-Plugin-Migration-Tests' );
-			group: 'development' with: #(default allTests) ].
+			group: 'development' with: #(default allTests 	SmartTest) ].
 
 	spec for: #'pharo6.x' do: [	
 		self spec70: spec.
