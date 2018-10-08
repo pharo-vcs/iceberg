@@ -19,7 +19,7 @@ testConvertToFiletreeDoesNotCorruptPropertiesFile
 		execute.
 	
 	self
-		assert: (self repository workingCopy fileSystem / '.properties') contents
-		equals: '{
+		assert: (STON fromString: (self repository workingCopy fileSystem / '.properties') contents)
+		equals: (STON fromString: '{
 	#format : #filetree
-}'
+}')
