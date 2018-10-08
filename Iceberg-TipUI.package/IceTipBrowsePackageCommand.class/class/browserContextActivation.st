@@ -2,4 +2,4 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation byRootGroupItemOrder: 10 for: IceTipWorkingCopyContext
+	^ CmdContextMenuActivation byRootGroupItemOrder: 10 for: IceTipWorkingCopyContext

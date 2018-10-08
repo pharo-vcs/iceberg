@@ -2,6 +2,6 @@ activation
 browserVersionHistoryContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byRootGroupItemOrder: 1
 		for: IceTipVersionHistoryContext

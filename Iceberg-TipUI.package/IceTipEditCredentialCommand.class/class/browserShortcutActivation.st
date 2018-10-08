@@ -2,4 +2,4 @@ accessing
 browserShortcutActivation
 	<classAnnotation>
 
-	^ CmdShortcutCommandActivation by: $e meta for: IceTipCredentialContext
+	^ CmdShortcutActivation by: $e meta for: IceTipCredentialContext
