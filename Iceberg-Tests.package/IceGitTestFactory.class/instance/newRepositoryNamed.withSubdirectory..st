@@ -6,13 +6,13 @@ newRepositoryNamed: projectName withSubdirectory: aSubdirectory
 		location: self location / projectName;
 		subdirectory: aSubdirectory;
 		createNewRepositoryNamed: projectName.
-	(OSEnvironment current at: 'CI' ifAbsent: [  ]) = 'true'
+	(OSEnvironment current at: 'CI' ifAbsent: [  ]) asLowercase = 'true'
 		ifTrue: [ Transcript
 				show: 'Setting user information for CI';
 				cr.
 			IceGitCommand
 				in: repository location
-				execute: {'config' . '--global' . 'user.email' . '"npasserini@gmail.com"'}.
+				execute: {'config' . '--global' . 'user.email' . '"iceberg@pharo.org"'}.
 			IceGitCommand
 				in: repository location
 				execute: {'config' . '--global' . 'user.name' . '"Iceberg CI"'} ].
