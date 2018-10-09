@@ -13,6 +13,7 @@ migrateSources
 			commit: commit ].
 
 	(self repository workingCopy fileSystem resolve: self repository properties propertiesFilePath)
+		ensureDelete;
 		binaryWriteStreamDo: [ :stream |
 			stream nextPutAll: (self repository properties
 				fileFormatId: self format;
