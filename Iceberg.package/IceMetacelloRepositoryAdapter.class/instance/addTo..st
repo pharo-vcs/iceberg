@@ -1,4 +1,3 @@
 accessing
 addTo: aMCRepositoryGroup 
-	"1halt."
-	"^ aMCRepositoryGroup addBasicRepository: self"
+	"Do nothing, we do not need to register the repository into the monticello registry"
