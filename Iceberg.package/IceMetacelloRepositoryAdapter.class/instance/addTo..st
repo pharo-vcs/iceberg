@@ -1,3 +1,4 @@
 accessing
 addTo: aMCRepositoryGroup 
-	^ aMCRepositoryGroup addBasicRepository: self
+	"1halt."
+	"^ aMCRepositoryGroup addBasicRepository: self"
