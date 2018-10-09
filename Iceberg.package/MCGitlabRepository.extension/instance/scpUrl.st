@@ -1,3 +1,3 @@
-*Iceberg-Adapters
+*Iceberg
 scpUrl
-	^ 'git@gitlab.com:', projectPath, '.git'
+	^ 'git@<1s>:<2s>.git' expandMacrosWith: self hostname with: projectPath
