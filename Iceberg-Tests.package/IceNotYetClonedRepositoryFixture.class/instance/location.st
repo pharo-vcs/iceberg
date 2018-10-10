@@ -1,4 +1,4 @@
 initialization
 location
 	
-	^ FileLocator imageDirectory / 'test'
+	^ FileLocator imageDirectory / 'test' / UUID new asString
