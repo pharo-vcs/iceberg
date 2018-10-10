@@ -19,5 +19,6 @@ validateIssue: aString
 			UIManager default defer: [ 
 				self updateText: (self sanitizeTitle: (issue at: 'title')) ] ]
 		on: IceGitHubError do: [ :e | 
-			e messageText = 'Not Found' ifFalse: [ 
-				e pass ] ] ]
+			e messageText = 'Not Found' ifFalse: [ e pass ].
+			 UIManager default defer: [ 
+				self updateText: self class unknownTitle ] ] ]
