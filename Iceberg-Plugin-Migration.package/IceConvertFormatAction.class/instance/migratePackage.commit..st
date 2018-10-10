@@ -1,13 +1,17 @@
 private
-migratePackage: each commit: commit
-	| filetreePackage srcDir subDirWithDelim |
+migratePackage: packageName commit: commit
+	| filetreePackage srcDir subDirWithDelim mcVersion |
 	
 	srcDir := self codeDirectory.
 	subDirWithDelim := self codeDirectoryWithDelim.
 	
-	self writerClass forInternalStoreFileOut: (commit versionFor: each) mcVersion on: repository.
-	filetreePackage := commit writerClass directoryNameFor: each.
+	mcVersion := (commit versionFor: packageName) mcVersion.
+	mcVersion := self ensureMCVersionWithClassOrganisation: mcVersion.
+	self writerClass 
+		forInternalStoreFileOut: mcVersion 
+		on: repository.
+	filetreePackage := commit writerClass directoryNameFor: packageName.
 	(srcDir / filetreePackage) ensureDeleteAll.
 	self repository addFilesToIndex: { 
-		subDirWithDelim, (IceLibgitTonelWriter directoryNameFor: each).
-		subDirWithDelim, (IceLibgitFiletreeWriter directoryNameFor: each) }
+		subDirWithDelim, (IceLibgitTonelWriter directoryNameFor: packageName).
+		subDirWithDelim, (IceLibgitFiletreeWriter directoryNameFor: packageName) }

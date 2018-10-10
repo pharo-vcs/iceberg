@@ -2,6 +2,6 @@ activation
 branchListContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: CmdExtraMenuGroup
 		for: IceTipRepositoryContext

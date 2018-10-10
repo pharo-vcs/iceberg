@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 named: aString path: aPath fileReference: aFileReference
 	^ self
 		named: aString

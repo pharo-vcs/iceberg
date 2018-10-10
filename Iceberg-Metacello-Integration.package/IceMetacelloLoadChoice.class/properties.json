@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "EstebanLorenzano 8/14/2018 11:04",
+	"super" : "Object",
+	"category" : "Iceberg-Metacello-Integration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectName",
+		"optionA",
+		"optionB",
+		"choosen"
+	],
+	"name" : "IceMetacelloLoadChoice",
+	"type" : "normal"
+}

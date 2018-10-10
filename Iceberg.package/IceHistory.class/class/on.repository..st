@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 on: commitish repository: anIceRepository
 	
 	^ self new

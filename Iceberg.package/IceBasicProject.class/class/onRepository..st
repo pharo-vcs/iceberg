@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 onRepository: aRepository
 	
 	^ self basicNew

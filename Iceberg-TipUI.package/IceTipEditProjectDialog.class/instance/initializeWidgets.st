@@ -11,6 +11,8 @@ initializeWidgets
 	formatLabel := self newLabel label: 'Format'.
 	formatList := self newDropList.
 
+	self initializeMessagePanel.
+
 	self initializeDirectoryTree.
 	self focusOrder
 		add: nameInput;

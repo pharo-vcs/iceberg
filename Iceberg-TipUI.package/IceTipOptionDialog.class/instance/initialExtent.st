@@ -1,3 +1,3 @@
 accessing
 initialExtent
-	^ 600@300
+	^ (600@300) scaledByDisplayScaleFactor

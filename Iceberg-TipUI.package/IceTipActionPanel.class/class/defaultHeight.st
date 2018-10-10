@@ -1,3 +1,3 @@
 accessing
 defaultHeight
-	^ 25
+	^ 25 * World displayScaleFactor

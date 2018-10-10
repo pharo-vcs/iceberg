@@ -2,6 +2,6 @@ activation
 browserRepositoryListActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: IceGitHubMenuGroup
 		for: IceTipRepositoryContext

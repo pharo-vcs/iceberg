@@ -8,7 +8,7 @@ defaultSpec
 				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
 				newRow: [ :row |
 					row 
-						newColumn: #checkoutStrategyLabel width: 100;
+						newColumn: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
 						newColumn: #checkoutStrategyList ]
 					height: self inputTextHeight;
 				newRow: #diffPanel;

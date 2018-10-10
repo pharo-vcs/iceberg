@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 named: aString isMeta: isMeta
 	
 	^ self new

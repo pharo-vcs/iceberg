@@ -2,4 +2,4 @@ activation
 browserContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation byRootGroupItemFor: IceTipDiffContext
+	^ CmdContextMenuActivation byRootGroupItemFor: IceTipDiffContext

@@ -6,12 +6,12 @@ initializeCredentialsList
 		addColumn: (IceTipTableColumn new 
 			id: 'Host';
 			action: #hostDescription;
-			width: 100;
+			width: 100 * World displayScaleFactor;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Type';
 			action: #type;
-			width: 75;
+			width: 75 * World displayScaleFactor;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Description';

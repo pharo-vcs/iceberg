@@ -4,4 +4,4 @@ initialExtent
 		self class inputTextHeight * 5
 		+ self class buttonHeight 
 		+ 50
-		))
+		)) scaledByDisplayScaleFactor
