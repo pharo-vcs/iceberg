@@ -11,6 +11,8 @@ latestTagPartsIn: tagNames
 			parts := ((latestTag beginsWith: prefix)
 				ifTrue: [ #('v') ]
 				ifFalse: [ #('') ])
-				, ((((latestTag withoutPrefix: prefix) copyUpTo: $-) splitOn: '.') collect: #asNumber).
+				,
+					((((latestTag withoutPrefix: prefix) copyUpTo: $-) splitOn: '.')
+						collect: [ :each | NumberParser parse: each onError: [ 0 ] ]).
 			parts := parts , (#(0 0 0) first: 4 - parts size) ].
 	^ parts
