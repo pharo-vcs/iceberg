@@ -5,4 +5,6 @@ initializeWidgetsContents
 	tagNameInputText := self newTextInput
 		autoAccept: true;
 		ghostText: 'e.g., v[X].[Y].[Z]'.
+	self initializeNextTagPanel.
+	self initializeExistingTagsList.
 	spacePanel := PanelMorph new asSpecAdapter

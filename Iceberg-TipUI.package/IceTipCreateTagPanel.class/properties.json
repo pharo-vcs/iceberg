@@ -12,7 +12,11 @@
 		"commitishToTag",
 		"currentCommitishLabel",
 		"tagNameLabel",
-		"acceptBlock"
+		"acceptBlock",
+		"existingTagsList",
+		"majorButton",
+		"minorButton",
+		"patchButton"
 	],
 	"name" : "IceTipCreateTagPanel",
 	"type" : "normal"
