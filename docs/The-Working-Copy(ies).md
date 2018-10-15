@@ -4,8 +4,8 @@ Well, this is not really necessary for iceberg to work. Iceberg could just write
 The reason for this working copy to be there is just to try to be less alien.
 Having the disk working copy allows people to still have a way to:
   - edit non-smalltalk files from the command like
-  - use the non command line as a last ressource if something goes wrong with your Pharo image
-  - use external tools to manage the repository (sourcetree, git kraken, whatever you're confortable with)
+  - use the non command line as a last resource if something goes wrong with your Pharo image
+  - use external tools to manage the repository (sourcetree, git kraken, whatever you're comfortable with)
 
 The idea is that Iceberg will try to keep your disk working copy in sync with your repository HEAD.
 It will take care of transparently synchronizing your disk working copy when:
@@ -26,6 +26,6 @@ The thing is that this is much more difficult than it sounds:
  - What happens if you share your repository between several images?
  - Or if suddenly you change your branch from the command line to something completely different?
 
-Several of these usecases don't even make sense. So we preferred to choose the path of "make it explicit".
+Several of these use cases don't even make sense. So we preferred to choose the path of "make it explicit".
 Of course, we could do better, we are open to discuss any improvements.
 Just take into account that Iceberg did not come from an egg :) we have thought about many possible scenarios and discussed with a lot of people before.
