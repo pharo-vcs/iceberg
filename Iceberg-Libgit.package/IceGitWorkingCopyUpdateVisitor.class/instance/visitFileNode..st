@@ -7,4 +7,4 @@ visitFileNode: anIceFileDefinition
 	reference
 		ensureDelete;
 		binaryWriteStreamDo: [ :writeStream |
-			writeStream nextPutAll: anIceFileDefinition contents ].
+			writeStream nextPutAll: anIceFileDefinition basicContents ].
