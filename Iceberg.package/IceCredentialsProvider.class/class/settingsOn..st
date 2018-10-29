@@ -28,5 +28,6 @@ settingsOn: aBuilder
 				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_rsa'.
 			(aBuilder setting: #keyPassphrase)
 				target: self;
+				type: #Password;
 				targetSelector: #sshCredentials;
 				label: 'Passphrase of your SSH key' ]
