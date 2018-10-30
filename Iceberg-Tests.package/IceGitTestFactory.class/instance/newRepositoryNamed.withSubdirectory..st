@@ -6,7 +6,7 @@ newRepositoryNamed: projectName withSubdirectory: aSubdirectory
 		location: self location / projectName;
 		subdirectory: aSubdirectory;
 		createNewRepositoryNamed: projectName.
-	(OSEnvironment current at: 'CI' ifAbsent: [  ]) asLowercase = 'true'
+	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true'
 		ifTrue: [ Transcript
 				show: 'Setting user information for CI';
 				cr.
