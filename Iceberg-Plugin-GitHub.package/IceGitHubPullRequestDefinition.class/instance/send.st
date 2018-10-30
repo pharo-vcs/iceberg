@@ -9,7 +9,7 @@ send
 		'body' -> self body.
 	} asDictionary.
 	
-	IceGitHubAPI new 
+	^ IceGitHubAPI new 
 		credentials: self credentials;
 		addPullRequest: self baseRemote owner 
 			project: self baseRemote projectBasename 
