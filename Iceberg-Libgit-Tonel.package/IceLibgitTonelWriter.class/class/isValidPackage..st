@@ -1,10 +1,6 @@
 testing
 isValidPackage: aFileReference 
 	
-	| aBasename |
-	aBasename := aFileReference basename.
-		
-	^ (aBasename first isLetter
-		and: [ aBasename first isUppercase ])
+	^ aFileReference basename first isLetter
 		and: [ aFileReference isDirectory
 		and: [ (aFileReference / 'package.st') exists ] ]
