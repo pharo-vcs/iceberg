@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "IceBranchBrowser",
-	"category" : "Iceberg-Plugin-GitHub-View",
+	"super" : "GLMCompositePresentation",
+	"category" : "Iceberg-Plugin-GitHub-Old",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
