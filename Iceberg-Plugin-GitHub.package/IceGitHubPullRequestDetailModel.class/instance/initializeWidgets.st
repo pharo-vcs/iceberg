@@ -7,21 +7,11 @@ initializeWidgets
 	mergeableLabel := self newLabel label: 'Mergeable'.
 	statusLabel := self newLabel label: 'Status'.
 
-	urlText := self newTextInput 
-		enabled: false;
-		text: self pullRequest url.
-	authorText  := self newTextInput 
-		enabled: false;
-		text: self pullRequest author.
-	fromText  := self newTextInput 
-		enabled: false;
-		text: self pullRequest headLabel.
-	toText  := self newTextInput 
-		enabled: false;
-		text: self pullRequest baseLabel.
+	urlText := self newTextInput enabled: false.
+	authorText  := self newTextInput enabled: false.
+	fromText  := self newTextInput enabled: false.
+	toText  := self newTextInput enabled: false.
 	mergeablePanel := self newMergeablePanel.
 	statusPanel := self newStatusPanel.
 	checksTable := self newChecksTable.
-	bodyText := self newText 
-		enabled: false;
-		text: self pullRequest body.
+	bodyText := self newText enabled: false.
