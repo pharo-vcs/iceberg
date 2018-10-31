@@ -1,6 +1,6 @@
 initialization
 initializeWidgets
-	listPanel := self instantiate: FastTableModel.
+	listPanel := self instantiate: FastTablePresenter.
 	listPanel icons: [ :each | self createCheckboxFor: each ].
 	selectButton := self newButton.
 	

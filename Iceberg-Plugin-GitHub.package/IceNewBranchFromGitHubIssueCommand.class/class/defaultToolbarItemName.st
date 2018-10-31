@@ -1,0 +1,3 @@
+testing
+defaultToolbarItemName
+	^ 'New issue'

@@ -1,3 +1,3 @@
-*Iceberg-Adapters
+*Iceberg
 httpsUrl
-	^ 'https://gitlab.com/', projectPath, '.git'
+	^ 'https://<1s>/<2s>.git' expandMacrosWith: self hostname with: projectPath

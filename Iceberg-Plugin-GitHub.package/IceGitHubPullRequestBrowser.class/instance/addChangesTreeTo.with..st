@@ -2,8 +2,13 @@ building
 addChangesTreeTo: a with: commitInfo
 	(IceDiffChangeTreeBuilder new
 		entity: commitInfo;
-		diff: (commitInfo ifNotNil: [ 
-			commitInfo diffTo: (self mergeBaseCommitFor: commitInfo) ]);
-		buildOn: a)
-		title: 'Changes vs. destination' .
-	super addChangesTreeTo: a with: commitInfo
+		diff: (commitInfo ifNotNil: [ commitInfo diffTo: (self mergeBaseCommitFor: commitInfo) ]);
+		buildOn: a) title: 'Changes vs. destination'.
+	(IceDiffChangeTreeBuilder new
+		entity: commitInfo;
+		diff: (commitInfo ifNotNil: [ commitInfo diffFromHead ]);
+		buildOn: a) title: 'Changes since selection'.
+	(IceDiffChangeTreeBuilder new
+		entity: commitInfo;
+		diff: (commitInfo ifNotNil: [ commitInfo diffToParent ]);
+		buildOn: a) title: 'Changes vs. parent'

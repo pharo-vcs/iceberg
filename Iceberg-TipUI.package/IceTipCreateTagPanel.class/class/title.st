@@ -1,3 +1,3 @@
 specs
 title
-	^ 'New branch'
+	^ 'New tag'
