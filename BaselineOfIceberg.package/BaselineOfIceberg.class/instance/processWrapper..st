@@ -4,5 +4,5 @@ processWrapper: spec
 		configuration: 'ProcessWrapper' 
 		with: [ 
 			spec
-				versionString: #stable;
-				repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main' ]				
+				versionString: '1.2';
+				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]				

@@ -11,7 +11,8 @@
 		"packageName1",
 		"packageName2",
 		"remoteFileUrl",
-		"remoteRepository"
+		"remoteRepository",
+		"location"
 	],
 	"name" : "IceNotYetClonedRepositoryFixture",
 	"type" : "normal"

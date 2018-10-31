@@ -1,3 +1,3 @@
 running
 isCI
-	^ (OSEnvironment current at: 'CI' ifAbsent: [  ]) = 'true'
+	^ (OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true'

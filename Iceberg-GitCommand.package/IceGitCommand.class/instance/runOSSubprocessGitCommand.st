@@ -14,4 +14,4 @@ runOSSubprocessGitCommand
 			onExitDo: [ :cmd :outString :errString | 
 			cmd isSuccess
 				ifTrue: [ ^ outString ]
-				ifFalse: [ MCFileTreeGitError new signal: 'Git error: ' , (errString ifEmpty: outString) ] ]
+				ifFalse: [ Error new signal: 'Git error: ' , (errString ifEmpty: outString) ] ]
