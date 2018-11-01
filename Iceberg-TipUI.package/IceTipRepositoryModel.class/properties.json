@@ -1,11 +1,11 @@
 {
-	"classtraitcomposition" : "TIceCopyCommitId classTrait",
+	"classtraitcomposition" : "TIceCopyCommitId classTrait + TWithBranchModel classTrait",
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "IceTipRepositoryModel",
 	"commentStamp" : "EstebanLorenzano 5/30/2018 14:33",
 	"super" : "IceTipEntityModel",
-	"traitcomposition" : "TIceCopyCommitId",
+	"traitcomposition" : "TIceCopyCommitId + TWithBranchModel",
 	"type" : "normal",
 	"classinstvars" : [ ],
 	"pools" : [ ],
