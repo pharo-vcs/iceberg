@@ -1,4 +1,3 @@
 *Iceberg-TipUI
 icon
-
-	^ Smalltalk ui icons iconNamed: #class
+	^ self iconNamed: #class

@@ -1,3 +1,3 @@
 testing
 defaultMenuIconName
-	^ #branch
+	^ #github
