@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "PackageManifest",
-	"category" : "Iceberg-Libgit-Filetree",
+	"category" : "Iceberg-Libgit-Filetree-Manifest",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

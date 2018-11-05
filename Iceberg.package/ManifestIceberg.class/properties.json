@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "PackageManifest",
-	"category" : "Iceberg",
+	"category" : "Iceberg-Manifest",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
