@@ -1,3 +1,3 @@
 accessing
 commitId
-	^ self entity headCommit id
+	^ [ self entity headCommit id ] on: Error do: [ nil ].
