@@ -1,4 +1,3 @@
 accessing
 icon
-
-	^ (Smalltalk ui icons iconNamed: #pharo) scaledToSize: 16@16
+	^ (self iconNamed: #pharo) scaledToSize: 16 @ 16
