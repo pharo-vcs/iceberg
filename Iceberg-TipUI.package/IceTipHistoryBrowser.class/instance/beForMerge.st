@@ -1,4 +1,4 @@
 accessing
 beForMerge
-	headTabContainer := IceTipHistoryDiffToHead model: self model tab: headTab.
-	ancestorTabContainer := IceTipHistoryDiffToAncestor model: self model tab: ancestorTab.	
+	headTabContainer := IceTipHistoryDiffToHead tab: headTab.
+	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorTab.	
