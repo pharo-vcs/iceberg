@@ -12,12 +12,6 @@ repositoryModelsByGroup
 			select: [ :each | each entity isLocal ]
 			thenCollect: [ :each | IceTipTreeBranch on: each ]);
 		yourself.
-	"Tags group"
-	(IceTipTreeRepositoryGroup on: self)
-		name: 'Tags';
-		icon: (self iconNamed: #glamorousBookmark);
-		children: (tags collect: [ :each | IceTipTreeTag on: each ]);
-		yourself.
 	"Remotes group"
 	(IceTipTreeRepositoryGroup on: self)
 		name: 'Remotes';
@@ -32,5 +26,11 @@ repositoryModelsByGroup
 						and: [ each entity remoteName = eachRemote name ] ]
 					thenCollect: [ :each | IceTipTreeBranch on: each ]);
 				yourself	]);
+		yourself.
+	"Tags group"
+	(IceTipTreeRepositoryGroup on: self)
+		name: 'Tags';
+		icon: (self iconNamed: #glamorousBookmark);
+		children: (tags collect: [ :each | IceTipTreeTag on: each ]);
 		yourself.
 	}
