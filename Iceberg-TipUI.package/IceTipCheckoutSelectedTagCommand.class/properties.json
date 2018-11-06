@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "ChristopheDemarey 11/6/2018 15:20",
+	"super" : "IceTipRepositoryCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tagModel"
+	],
+	"name" : "IceTipCheckoutSelectedTagCommand",
+	"type" : "normal"
+}
