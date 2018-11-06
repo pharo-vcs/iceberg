@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "CyrilFerlicot 10/31/2018 15:09",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tool"
+	],
+	"name" : "IceTipRefreshPullRequestsCommand",
+	"type" : "normal"
+}

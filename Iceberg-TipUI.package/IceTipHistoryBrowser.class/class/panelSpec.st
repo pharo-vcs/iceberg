@@ -7,4 +7,4 @@ panelSpec
 			column 
 				newRow: #commitList;
 				addHSplitter;
-				newRow: #commitTabPanel ]
+				newRow: #commitInfoTabs ]
