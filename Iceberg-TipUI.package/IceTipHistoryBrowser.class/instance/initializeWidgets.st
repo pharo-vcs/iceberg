@@ -2,10 +2,9 @@ initialization
 initializeWidgets
 	super initializeWidgets.	
 	commitList := self newIceTable.
-	commitTabPanel := self newTabManager.
+	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
 	self initializeCommitList.
-	self initializeCommitPanel.
 	
 	commitList widget 
 		onAnnouncement: FTSelectionChanged 
@@ -14,6 +13,6 @@ initializeWidgets
 	
 	self focusOrder 
 		add: commitList;
-		add: commitTabPanel.
+		add: commitInfoTabs.
 		
 	self refresh

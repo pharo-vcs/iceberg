@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "CyrilFerlicot 10/31/2018 15:13",
+	"super" : "IceTipBrowser",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote",
+		"pullRequests",
+		"details"
+	],
+	"name" : "IceTipGitHubPullRequestListBrowser",
+	"type" : "normal"
+}
