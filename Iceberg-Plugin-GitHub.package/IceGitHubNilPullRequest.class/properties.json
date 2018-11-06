@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "CyrilFerlicot 10/31/2018 15:13",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub-Utils",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitHubNilPullRequest",
+	"type" : "normal"
+}

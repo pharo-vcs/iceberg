@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "CyrilFerlicot 11/6/2018 11:20",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repositoryModel",
+		"pullRequest",
+		"commitLabel",
+		"commits",
+		"diff",
+		"mergeButton",
+		"acceptButton",
+		"rejectButton"
+	],
+	"name" : "IceGitHubTipPullRequestBrowser",
+	"type" : "normal"
+}
