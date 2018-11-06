@@ -1,5 +1,5 @@
 instance creation
 tab: aTab
-	^ self new 
+	^ self new
 		tab: aTab;
 		yourself
