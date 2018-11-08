@@ -1,6 +1,6 @@
 private factory
 newSidebarTreeDataSource
-	^ IceTipTreeDataSource new 
+	^ IceTipTreeOutlineDataSource new 
 		tool: self;
 		rootForItems: self model repositoryModelsByGroup;
 		childrenBlock: [ :each | each children ];
