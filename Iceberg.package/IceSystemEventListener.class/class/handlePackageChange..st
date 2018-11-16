@@ -1,0 +1,4 @@
+event handling
+handlePackageChange: aPackageChange
+
+	self handlePackagesChange: aPackageChange packagesAffected

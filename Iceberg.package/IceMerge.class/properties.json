@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "GuillermoPolito 3/13/2018 13:15",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mergeTree",
+		"repository",
+		"mergeCommit",
+		"imageCommit",
+		"changesToWorkingCopyTree"
+	],
+	"name" : "IceMerge",
+	"type" : "normal"
+}

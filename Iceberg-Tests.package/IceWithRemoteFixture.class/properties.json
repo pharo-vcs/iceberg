@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceBasicRepositoryFixture",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remote",
+		"remoteBranchName"
+	],
+	"name" : "IceWithRemoteFixture",
+	"type" : "normal"
+}

@@ -1,0 +1,5 @@
+tests
+testMergeCommitInHistoryShouldDoNothing
+
+	super testMergeCommitInHistoryShouldDoNothing.
+	self assertIndexIsClean.

@@ -1,0 +1,5 @@
+tests
+testDefinedRepositoryAccessor
+
+	<repositoryHandleAccessor>
+	^ handle

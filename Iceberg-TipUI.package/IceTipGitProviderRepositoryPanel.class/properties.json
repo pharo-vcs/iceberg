@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipGitRepositoryPanel",
+	"category" : "Iceberg-TipUI-View-RepositoryType",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"userNameLabel",
+		"userNameInputText",
+		"projectNameLabel",
+		"projectNameInputText",
+		"protocolDropList",
+		"protocolLabel"
+	],
+	"name" : "IceTipGitProviderRepositoryPanel",
+	"type" : "normal"
+}

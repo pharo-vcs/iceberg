@@ -1,0 +1,3 @@
+actions
+doAccept
+	self subclassResponsibility

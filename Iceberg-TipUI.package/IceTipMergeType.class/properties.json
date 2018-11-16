@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/22/2018 16:23",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [
+		"uniqueInstance"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipMergeType",
+	"type" : "normal"
+}

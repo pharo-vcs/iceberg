@@ -1,0 +1,7 @@
+{
+	"commentStamp" : "EstebanLorenzano 9/5/2017 17:52",
+	"classinstvars" : [ ],
+	"category" : "Iceberg-Libgit-Writing",
+	"instvars" : [ ],
+	"name" : "TIceRepositoryReader"
+}

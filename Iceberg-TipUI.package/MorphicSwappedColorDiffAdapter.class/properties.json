@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MorphicDiffAdapter",
+	"category" : "Iceberg-TipUI-Spec",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MorphicSwappedColorDiffAdapter",
+	"type" : "normal"
+}

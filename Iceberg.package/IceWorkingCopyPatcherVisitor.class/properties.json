@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 3/13/2018 16:41",
+	"super" : "IceTreeVisitor",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceWorkingCopyPatcherVisitor",
+	"type" : "normal"
+}

@@ -1,5 +1,9 @@
-commits
-incomingCommitsFrom: aRemote 
-	^ (self upstreamFor: aRemote) 
-		ifNotNil: [ :remoteUpstream | remoteUpstream commitsNotIn: self ]
-		ifNil: [ #() ]
+API-remotes
+incomingCommitsFrom: aRemote
+	
+	| remoteBranch |
+
+	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ ^ #() ].
+	^ remoteBranch newCommitWalk
+		uptoCommit: self commit;
+		commits

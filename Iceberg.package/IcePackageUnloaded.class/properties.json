@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "EstebanLorenzano 9/21/2017 11:55",
-	"super" : "Announcement",
+	"super" : "IceAnnouncement",
 	"category" : "Iceberg-Announcements",
 	"classinstvars" : [ ],
 	"pools" : [ ],

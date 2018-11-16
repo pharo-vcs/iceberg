@@ -1,7 +1,7 @@
 accessing
 remote
 	| remote |
-	remote := IceRemote 
+	remote := IceGitRemote 
 		name: self author
 		url: (((self jsonAt: #head) at: #repo) at: #ssh_url).
 	^ self repository remotes 

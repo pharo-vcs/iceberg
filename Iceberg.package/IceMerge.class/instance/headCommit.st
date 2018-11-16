@@ -1,0 +1,3 @@
+accessing
+headCommit
+	^ repository headCommit

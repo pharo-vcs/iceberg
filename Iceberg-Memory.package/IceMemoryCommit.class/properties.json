@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 4/9/2018 15:44",
+	"super" : "IceCommit",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mcCommit"
+	],
+	"name" : "IceMemoryCommit",
+	"type" : "normal"
+}

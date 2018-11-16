@@ -1,0 +1,4 @@
+configuring
+hasProject
+	
+	^ true

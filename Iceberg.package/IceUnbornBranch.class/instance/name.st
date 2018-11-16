@@ -1,3 +1,4 @@
 accessing
 name
-	^ '<New branch>'
+
+	self subclassResponsibility

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/5/2018 10:15",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"proxy",
+		"objects"
+	],
+	"name" : "IceTipCache",
+	"type" : "normal"
+}

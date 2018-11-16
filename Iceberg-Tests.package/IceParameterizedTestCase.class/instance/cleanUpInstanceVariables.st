@@ -1,5 +1,8 @@
 private
 cleanUpInstanceVariables
-	self class allInstVarNames do: [ :name |
-		(name = 'testSelector' or: [name = 'testParameters']) ifFalse: [
-			self instVarNamed: name put: nil ] ]
+	| instanceVariablesNames |
+	instanceVariablesNames := #('testSelector' 'testParameters').
+	self class allInstVarNames
+		do: [ :name | 
+			(instanceVariablesNames includes: name)
+				ifFalse: [ self instVarNamed: name put: nil ] ]

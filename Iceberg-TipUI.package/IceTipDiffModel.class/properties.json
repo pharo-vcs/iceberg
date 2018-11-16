@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/5/2018 13:22",
+	"super" : "IceTipEntityModel",
+	"category" : "Iceberg-TipUI-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"diff"
+	],
+	"name" : "IceTipDiffModel",
+	"type" : "normal"
+}

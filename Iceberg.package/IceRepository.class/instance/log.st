@@ -1,3 +1,3 @@
 accessing
 log
-	^ IceLibgitFiletreeLog for: self
+	^ self subclassResponsibility

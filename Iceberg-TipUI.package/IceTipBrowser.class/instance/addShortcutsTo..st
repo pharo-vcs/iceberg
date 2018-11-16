@@ -1,0 +1,3 @@
+initialization
+addShortcutsTo: aWidget
+	self enableCommanderShortcutsIn: aWidget

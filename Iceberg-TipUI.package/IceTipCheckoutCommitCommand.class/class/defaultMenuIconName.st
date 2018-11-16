@@ -1,0 +1,3 @@
+activation
+defaultMenuIconName
+	^ #refresh

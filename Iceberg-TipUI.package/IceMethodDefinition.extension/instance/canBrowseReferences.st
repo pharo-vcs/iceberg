@@ -1,0 +1,4 @@
+*Iceberg-TipUI
+canBrowseReferences
+	
+	^ false

@@ -1,14 +1,15 @@
 {
-	"commentStamp" : "NicoPasserini 11/17/2016 12:30",
+	"commentStamp" : "GuillermoPolito 1/15/2018 18:20",
 	"super" : "Object",
-	"category" : "Iceberg-Core-Remotes",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"url",
 		"projectName",
-		"remoteName"
+		"name",
+		"localRepository"
 	],
 	"name" : "IceRemote",
 	"type" : "normal"

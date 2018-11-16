@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/8/2018 14:01",
+	"super" : "IceTipRepositoryCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"badge"
+	],
+	"name" : "IceTipRemoteActionCommand",
+	"type" : "normal"
+}

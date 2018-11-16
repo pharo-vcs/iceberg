@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractCommitWalk",
+	"category" : "Iceberg-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"startingPoint",
+		"queue"
+	],
+	"name" : "IceMemoryCommitWalk",
+	"type" : "normal"
+}

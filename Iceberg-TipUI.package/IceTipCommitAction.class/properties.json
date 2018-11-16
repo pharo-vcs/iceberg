@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "GuillermoPolito 5/2/2018 17:53",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"diff",
+		"items",
+		"message",
+		"publish"
+	],
+	"name" : "IceTipCommitAction",
+	"type" : "normal"
+}

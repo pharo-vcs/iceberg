@@ -1,14 +1,11 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "Object",
-	"category" : "Iceberg-Plugin-GitHub-Model",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"repository",
-		"credentials"
-	],
+	"instvars" : [ ],
 	"name" : "IceGitHubCommand",
 	"type" : "normal"
 }

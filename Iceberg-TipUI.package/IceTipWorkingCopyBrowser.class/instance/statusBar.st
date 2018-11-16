@@ -1,0 +1,3 @@
+accessing ui
+statusBar
+	^ statusBar

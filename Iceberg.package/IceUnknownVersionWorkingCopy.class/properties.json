@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceWorkingCopyState",
+	"category" : "Iceberg-WorkingCopy",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceUnknownVersionWorkingCopy",
+	"type" : "normal"
+}

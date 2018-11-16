@@ -1,0 +1,3 @@
+accessing
+canBeExecutedInContext: aToolContext
+	^ true

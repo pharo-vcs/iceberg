@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 1/16/2018 11:43",
+	"super" : "IceCommitish",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNoCommit",
+	"type" : "normal"
+}

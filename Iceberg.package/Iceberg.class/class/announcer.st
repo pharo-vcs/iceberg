@@ -1,3 +1,3 @@
 accessing
 announcer
-	^ icebergAnnouncer ifNil: [ icebergAnnouncer := Announcer new ]
+	^ icebergAnnouncer ifNil: [ icebergAnnouncer := IceAnnouncer new ]

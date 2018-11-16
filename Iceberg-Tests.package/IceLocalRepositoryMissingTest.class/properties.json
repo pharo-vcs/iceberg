@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractTestCase",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceLocalRepositoryMissingTest",
+	"type" : "normal"
+}

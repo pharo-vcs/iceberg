@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/16/2018 10:34",
+	"super" : "FTColumn",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"action",
+		"icon"
+	],
+	"name" : "IceTipTableColumn",
+	"type" : "normal"
+}

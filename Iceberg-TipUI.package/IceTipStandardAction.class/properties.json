@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/27/2018 08:54",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"message",
+		"successAnnounceBlock",
+		"actionBlock"
+	],
+	"name" : "IceTipStandardAction",
+	"type" : "normal"
+}

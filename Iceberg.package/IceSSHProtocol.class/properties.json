@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceUrlProtocol",
+	"category" : "Iceberg-Url",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceSSHProtocol",
+	"type" : "normal"
+}

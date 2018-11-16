@@ -1,0 +1,4 @@
+accessing
+rightContents
+	
+	^ definition contents

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceNewRepositoryTest",
+	"category" : "Iceberg-Tests-Git",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceNewGitRepositoryTest",
+	"type" : "normal"
+}

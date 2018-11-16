@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 9/21/2017 12:55",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub-Old",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"entity",
+		"diff"
+	],
+	"name" : "IceDiffChangeTreeBuilder",
+	"type" : "normal"
+}

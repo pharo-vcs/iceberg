@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "NicoPasserini 9/21/2016 14:26",
 	"super" : "IceAbstractCommitWalk",
-	"category" : "Iceberg-Libgit",
+	"category" : "Iceberg-Libgit-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,0 +1,3 @@
+activation
+defaultMenuItemName
+	^ 'Branch...'

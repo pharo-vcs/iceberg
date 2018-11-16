@@ -1,0 +1,15 @@
+SystemOrganization addCategory: #'Iceberg-TipUI'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Announcements'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Commands'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Credentials'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Merge'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Model'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Settings'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Spec'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Spec-ItemBar'!
+SystemOrganization addCategory: #'Iceberg-TipUI-Spec-ReadOnlyForm'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-Branch'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-DataSource'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-RepositoryType'!
+SystemOrganization addCategory: #'Iceberg-TipUI-View-Versions'!

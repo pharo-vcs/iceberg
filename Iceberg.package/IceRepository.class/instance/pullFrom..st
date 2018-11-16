@@ -1,10 +1,5 @@
-actions
+API-remotes
 pullFrom: aRemote
-	| currentCommit |
-	
-	self validateCanPull.
-	
-	currentCommit := self loadedCode referenceCommit.
-	self backend pullFrom: aRemote.
-	self refreshTo: self headCommit.
-	(self headCommit changedPackagesTo: currentCommit) do: #loadLatest
+	"Fetch new commits corresponding to the remote.
+	Then merge the remote branch with the current branch."
+	self branch pullFrom: aRemote

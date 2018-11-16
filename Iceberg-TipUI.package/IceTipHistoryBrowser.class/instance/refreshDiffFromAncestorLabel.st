@@ -1,0 +1,3 @@
+private
+refreshDiffFromAncestorLabel
+	ancestorTabContainer updateLabelOn: selectedModel

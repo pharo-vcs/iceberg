@@ -1,3 +1,0 @@
-accessing
-defaultCodeSubdirectory
-	^ IceRepository defaultCodeSubdirectory

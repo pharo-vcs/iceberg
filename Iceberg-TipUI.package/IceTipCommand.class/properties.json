@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/6/2018 21:21",
+	"super" : "CmdCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repositoryModel"
+	],
+	"name" : "IceTipCommand",
+	"type" : "normal"
+}

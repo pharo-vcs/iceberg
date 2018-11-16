@@ -1,7 +1,9 @@
 initialization
 initialize
 	super initialize.
-	system := false. "by default, this is not a system repository"
-	commitDictionary := Dictionary new.
-	self initializeAnnouncer.
-	loadedCode := IceLoadedCode repository: self.
+
+	workingCopy := IceWorkingCopy basicNew.
+	workingCopy repository: self.
+	workingCopy initialize.
+	
+	index := self newIndex.

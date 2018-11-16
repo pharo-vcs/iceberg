@@ -1,27 +1,17 @@
 {
-	"commentStamp" : "NicoPasserini 10/25/2016 15:10",
+	"commentStamp" : "GuillermoPolito 1/15/2018 18:13",
 	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
-		"DefaultBackendType",
-		"DefaultCodeSubdirectory",
-		"DefaultFileFormatType",
-		"Registry",
-		"ShareRepositoriesBetweenImages",
-		"SharedRepositoriesLocation"
+		"Registry"
 	],
 	"instvars" : [
 		"name",
-		"announcer",
-		"backend",
-		"pullRemote",
-		"pushRemote",
-		"savedPackages",
-		"commitDictionary",
-		"loadedCode",
-		"system"
+		"workingCopy",
+		"index",
+		"commitsInPackageCache"
 	],
 	"name" : "IceRepository",
 	"type" : "normal"

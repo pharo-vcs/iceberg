@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "EstebanLorenzano 3/29/2017 17:32",
+	"commentStamp" : "GuillermoPolito 1/15/2018 18:20",
 	"super" : "IceRemote",
-	"category" : "Iceberg-Core-Remotes",
+	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

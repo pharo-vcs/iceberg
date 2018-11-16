@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "GuillermoPolito 1/29/2018 11:45",
+	"super" : "Object",
+	"category" : "Iceberg-Changes",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"iceCommit",
+		"history"
+	],
+	"name" : "IceHistoryCommit",
+	"type" : "normal"
+}

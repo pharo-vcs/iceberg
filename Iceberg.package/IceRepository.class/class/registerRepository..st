@@ -1,3 +1,5 @@
 registry
 registerRepository: aRepository
-	^ self registry add: aRepository
+	
+	self registry add: aRepository.
+	^ aRepository

@@ -1,0 +1,4 @@
+testing
+isFileDefinition
+	
+	^ false

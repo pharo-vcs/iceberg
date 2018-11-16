@@ -1,7 +1,7 @@
 private
 iconForStatus: status
-	status = 'success' ifTrue: [ ^ #testGreen asIcon ].
-	status = 'failure' ifTrue: [ ^ #testRed asIcon ].
-	status = 'pending' ifTrue: [ ^ #testYellow asIcon ].
+	status = 'success' ifTrue: [ ^ self iconNamed: #testGreen ].
+	status = 'failure' ifTrue: [ ^ self iconNamed: #testRed ].
+	status = 'pending' ifTrue: [ ^ self iconNamed: #testYellow ].
 	
-	^ #testNotRun asIcon
+	^ self iconNamed: #testNotRun

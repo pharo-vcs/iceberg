@@ -1,0 +1,3 @@
+accessing
+leftContents
+	self subclassResponsibility

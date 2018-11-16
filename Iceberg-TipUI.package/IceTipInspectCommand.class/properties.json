@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GuillermoPolito 4/4/2018 14:32",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"item"
+	],
+	"name" : "IceTipInspectCommand",
+	"type" : "normal"
+}

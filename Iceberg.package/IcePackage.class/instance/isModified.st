@@ -1,0 +1,4 @@
+testing
+isModified
+	
+	^ self isDirty

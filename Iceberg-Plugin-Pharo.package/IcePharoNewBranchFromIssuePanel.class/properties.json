@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "IceTipCheckoutNewBranchPanel",
+	"category" : "Iceberg-Plugin-Pharo-Manuscript",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"issueNumberText",
+		"issueLabel",
+		"issueText",
+		"issue",
+		"fetched"
+	],
+	"name" : "IcePharoNewBranchFromIssuePanel",
+	"type" : "normal"
+}

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 2/16/2018 12:15",
+	"super" : "IceTipRepositoryTypePanel",
+	"category" : "Iceberg-TipUI-View-RepositoryType",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipGitRepositoryPanel",
+	"type" : "normal"
+}

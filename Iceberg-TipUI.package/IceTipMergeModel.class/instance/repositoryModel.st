@@ -1,0 +1,3 @@
+accessing
+repositoryModel
+	^ commitish repositoryModel

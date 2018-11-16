@@ -1,0 +1,1 @@
+I am an importer of MCPackages into an IceNode. I am created from a version and a node. I calculate the snapshot of that definition and import all those definitions into my node, delegating to a IceMCDefinitionImporter.

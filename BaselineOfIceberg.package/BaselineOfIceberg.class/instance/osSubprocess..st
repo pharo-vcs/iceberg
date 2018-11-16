@@ -1,8 +1,5 @@
 baseline
 osSubprocess: spec
 	spec 
-		configuration: 'OSSubprocess' 
-		with: [ 
-			spec
-				versionString: #stable;
-				repository: 'github://marianopeck/OSSubprocess/repository' ]
+		baseline: 'OSSubprocess' 
+		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]

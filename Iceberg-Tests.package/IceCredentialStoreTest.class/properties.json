@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Iceberg-Tests-Security",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"store",
+		"file",
+		"dir"
+	],
+	"name" : "IceCredentialStoreTest",
+	"type" : "normal"
+}

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceBasicRepositoryFixture",
+	"category" : "Iceberg-Tests-Common-Fixtures",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMultiplePackageFixture",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "TIceCopyCommitId classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipRepositoryModel",
+	"commentStamp" : "EstebanLorenzano 5/30/2018 14:33",
+	"super" : "IceTipEntityModel",
+	"traitcomposition" : "TIceCopyCommitId",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-TipUI-Model"
+}

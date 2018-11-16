@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteLabel",
+		"remoteList",
+		"addButton",
+		"model"
+	],
+	"name" : "IceTipSelectRemotePresenter",
+	"type" : "normal"
+}

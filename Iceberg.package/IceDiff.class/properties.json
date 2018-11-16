@@ -1,14 +1,15 @@
 {
-	"commentStamp" : "NicoPasserini 5/12/2016 17:10",
-	"super" : "IceAbstractDiff",
+	"commentStamp" : "GuillermoPolito 3/12/2018 18:18",
+	"super" : "Object",
 	"category" : "Iceberg-Changes",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository",
-		"theirVersion",
-		"myVersion"
+		"tree",
+		"source",
+		"target",
+		"writerClass"
 	],
 	"name" : "IceDiff",
 	"type" : "normal"

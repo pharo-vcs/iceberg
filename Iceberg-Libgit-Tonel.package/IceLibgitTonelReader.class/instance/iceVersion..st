@@ -1,5 +1,9 @@
 accessing
 iceVersion: anObject
+	| repository packageDirectoryName |
 	iceVersion := anObject.
-	self packageDirectory: iceVersion package directoryPathString
+	repository := iceVersion commit repository.
+	package := iceVersion package.
 	
+	packageDirectoryName := iceVersion commit writerClass directoryNameFor: package.
+	self packageDirectory: (repository subdirectoryPath / packageDirectoryName) pathString

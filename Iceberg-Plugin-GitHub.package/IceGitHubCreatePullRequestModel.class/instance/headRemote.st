@@ -1,3 +1,3 @@
 accessing
 headRemote 
-	^ headRemote  ifNil: [ self repository pushRemote ]
+	^ headRemote ifNil: [ self repository head upstream remote ]

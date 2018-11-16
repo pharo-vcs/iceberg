@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceError",
+	"category" : "Iceberg-Errors",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remoteName"
+	],
+	"name" : "IceRemoteAlreadyExistsError",
+	"type" : "normal"
+}

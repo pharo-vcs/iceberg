@@ -1,0 +1,4 @@
+accessing
+leftContents
+	
+	^ leftOperation leftContents

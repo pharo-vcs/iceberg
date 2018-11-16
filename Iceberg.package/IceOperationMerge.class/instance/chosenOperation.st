@@ -1,0 +1,4 @@
+accessing
+chosenOperation
+	
+	self subclassResponsibility

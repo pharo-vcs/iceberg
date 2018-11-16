@@ -1,3 +1,4 @@
 testing
 canRevertChanges
-	^ self myVersion canRevertChanges 
+	
+	^ source canRevertChanges

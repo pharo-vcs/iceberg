@@ -1,0 +1,3 @@
+accessing
+newRepository
+	^ self subclassResponsibility

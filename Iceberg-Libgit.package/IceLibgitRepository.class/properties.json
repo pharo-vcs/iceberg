@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "GuillermoPolito 5/2/2018 13:14",
+	"super" : "IceRepository",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"DefaultCodeSubdirectory",
+		"DefaultFileFormatType",
+		"ShareRepositoriesBetweenImages",
+		"SharedRepositoriesLocation"
+	],
+	"instvars" : [
+		"location",
+		"commitCache",
+		"handle"
+	],
+	"name" : "IceLibgitRepository",
+	"type" : "normal"
+}

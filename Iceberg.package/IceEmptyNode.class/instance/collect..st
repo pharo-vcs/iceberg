@@ -1,0 +1,4 @@
+enumerating
+collect: aBlockClosure 
+
+	^ self

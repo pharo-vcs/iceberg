@@ -1,0 +1,1 @@
+I an a commander command that will be activated on any commitish or repository and ask the selected item to create a tag on itself.

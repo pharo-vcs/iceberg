@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/26/2018 18:41",
+	"super" : "Object",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"committish",
+		"diff"
+	],
+	"name" : "IceCheckoutStrategy",
+	"type" : "normal"
+}

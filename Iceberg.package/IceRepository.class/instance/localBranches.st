@@ -1,4 +1,5 @@
-querying
+API-branches
 localBranches
-	^ self backend localBranchNames collect: [ :branchName | 
-		IceLocalBranch named: branchName inRepository: self ]
+	"Lists local branches"
+	
+	self subclassResponsibility

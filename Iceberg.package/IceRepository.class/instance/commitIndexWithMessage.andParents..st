@@ -1,17 +1,12 @@
-actions
+API-commit
 commitIndexWithMessage: message andParents: parentCommitishList
-	| packages newCommit |
-
-	newCommit := self backend
-		commitIndexWithMessage: message 
-		andParents: parentCommitishList.
-	newCommit repository: self.
+	"Low level.
 	
-	packages := parentCommitishList 
-		inject: Set new 
-		into: [ :all :each | all addAll: (each diffTo: newCommit) changedPackages; yourself ].
+	Commit what is saved in the index"
 	
-	self loadedCode 
-		commited: newCommit changingPackages: packages.
-	
+	| newCommit |
+	newCommit := index commitWithMessage: message andParents: parentCommitishList.
+	index := self newIndex.
+	self workingCopy referenceCommit: newCommit.
+	self workingCopy refreshDirtyPackages.
 	^ newCommit

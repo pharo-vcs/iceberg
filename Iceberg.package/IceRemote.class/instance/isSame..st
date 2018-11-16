@@ -1,4 +1,4 @@
 testing
 isSame: aRemote
 	^ (self referencesSameRemoteLocationAs: aRemote)
-		and: [ self remoteName = aRemote remoteName ]
+		and: [ self name = aRemote name ]

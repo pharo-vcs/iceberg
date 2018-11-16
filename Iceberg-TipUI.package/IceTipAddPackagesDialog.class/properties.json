@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/30/2018 13:51",
+	"super" : "IceTipDialog",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"packagesList",
+		"packageNameText"
+	],
+	"name" : "IceTipAddPackagesDialog",
+	"type" : "normal"
+}

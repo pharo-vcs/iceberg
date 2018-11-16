@@ -1,0 +1,3 @@
+*Iceberg-TipUI
+isRoot
+	^ true

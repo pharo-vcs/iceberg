@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTreeVisitor",
+	"category" : "Iceberg-Libgit-Commit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"diff",
+		"index"
+	],
+	"name" : "IceIndexUpdateVisitor",
+	"type" : "normal"
+}

@@ -1,4 +1,4 @@
-accessing remotes
+API-remotes
 origin
-	^ self basicOrigin 
-		ifNil: [ IceUndefinedRemote new ]
+
+	self subclassResponsibility

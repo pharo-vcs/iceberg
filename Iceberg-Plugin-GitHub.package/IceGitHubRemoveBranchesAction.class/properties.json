@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "PabloTesone 4/5/2018 16:24",
+	"super" : "IceGitHubAction",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"branches",
+		"branchesByName"
+	],
+	"name" : "IceGitHubRemoveBranchesAction",
+	"type" : "normal"
+}

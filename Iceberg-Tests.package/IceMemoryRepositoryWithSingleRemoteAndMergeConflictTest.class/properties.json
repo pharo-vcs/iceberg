@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRepositoryWithSingleRemoteAndMergeConflictTest",
+	"category" : "Iceberg-Tests-Memory",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMemoryRepositoryWithSingleRemoteAndMergeConflictTest",
+	"type" : "normal"
+}

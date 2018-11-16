@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceCheckoutStrategy",
+	"category" : "Iceberg-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceCheckoutDoNotLoadPackages",
+	"type" : "normal"
+}

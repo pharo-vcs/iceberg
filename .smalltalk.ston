@@ -1,10 +1,17 @@
 SmalltalkCISpec {
+  #name: 'Iceberg',
+  #preLoading: 'scripts/preLoading.st',
+  #postLoading: 'scripts/postLoading.st',
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Iceberg',
       #platforms : [ #pharo ],
-	  #useLatestMetacello : true,
       #load : [ 'development' ]
      }
-  ]
+  ],
+  #testing : {
+     #exclude : {
+        #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]
+    }
+  }
 }

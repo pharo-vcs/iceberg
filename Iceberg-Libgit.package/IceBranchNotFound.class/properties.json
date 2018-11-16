@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceError",
+	"category" : "Iceberg-Libgit-Exceptions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"branchName"
+	],
+	"name" : "IceBranchNotFound",
+	"type" : "normal"
+}

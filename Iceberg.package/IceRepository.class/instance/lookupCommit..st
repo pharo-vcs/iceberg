@@ -1,5 +1,8 @@
-private
+API-history
 lookupCommit: commitId
-	^ self backend newCommitWalk 
-		fromCommitId: commitId; 
-		firstCommit
+
+	^ self
+		lookupCommit: commitId
+		ifAbsent: [ IceUnknownCommit new 
+				repository: self;
+				id: commitId; yourself ]

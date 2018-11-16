@@ -1,3 +1,7 @@
 *Iceberg-Changes
 fullWorkingCopyDiff
-	^ IceFullDiff forRepository: self
+	^ IceDiff new
+		source: self workingCopy;
+		target: self head;
+		buildFull;
+		yourself

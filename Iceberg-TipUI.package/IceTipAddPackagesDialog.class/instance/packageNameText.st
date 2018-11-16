@@ -1,0 +1,3 @@
+accessing
+packageNameText
+	^ packageNameText

@@ -1,4 +1,6 @@
-querying
+API-remotes
 incomingCommits
-	self pullRemote ifNil: [ ^ #() ].
-	^ self incomingCommitsFrom: self pullRemote
+	
+	(self head isDetached)
+		ifTrue: [ ^ #() ].
+	^ self branch incomingCommits

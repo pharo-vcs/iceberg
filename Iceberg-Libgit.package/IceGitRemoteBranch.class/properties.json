@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceRemoteBranch",
+	"category" : "Iceberg-Libgit-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitRemoteBranch",
+	"type" : "normal"
+}

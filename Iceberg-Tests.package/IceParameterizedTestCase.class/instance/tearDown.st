@@ -1,7 +1,9 @@
 running
 tearDown
-	self testParameters do: [ :parameter |
-		[ parameter deactivate ] on: Error do: [ :error | error logCr ] ].
-	IceRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages
-	
-	
+	self parameters
+		do: [ :parameter | 
+			[ parameter deactivate ]
+				on: Error
+				do: [ :error | error logCr ] ].
+	IceLibgitRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages.
+	super tearDown

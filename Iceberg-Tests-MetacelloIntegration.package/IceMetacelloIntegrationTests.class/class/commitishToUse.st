@@ -1,0 +1,4 @@
+testing
+commitishToUse
+
+	^ CommitishToUse ifNil: [ '' ]

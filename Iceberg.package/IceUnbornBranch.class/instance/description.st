@@ -1,3 +1,4 @@
-accessing
+printing
 description
+	
 	^ self name

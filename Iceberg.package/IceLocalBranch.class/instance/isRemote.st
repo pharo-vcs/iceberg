@@ -1,0 +1,4 @@
+testing
+isRemote
+
+	^ false

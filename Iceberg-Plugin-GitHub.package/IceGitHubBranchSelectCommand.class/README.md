@@ -1,0 +1,1 @@
+This command represent the commands with submenus to select remotes

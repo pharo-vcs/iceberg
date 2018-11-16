@@ -1,0 +1,1 @@
+I'm a base model to present diffs.

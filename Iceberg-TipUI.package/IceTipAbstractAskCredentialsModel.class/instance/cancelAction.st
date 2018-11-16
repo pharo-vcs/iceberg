@@ -1,0 +1,3 @@
+actions
+cancelAction
+	^ self subclassResponsibility 

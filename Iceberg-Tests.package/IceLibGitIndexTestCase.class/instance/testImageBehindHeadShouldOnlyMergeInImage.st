@@ -1,0 +1,5 @@
+tests
+testImageBehindHeadShouldOnlyMergeInImage
+
+	super testImageBehindHeadShouldOnlyMergeInImage.
+	self assertIndexIsClean.

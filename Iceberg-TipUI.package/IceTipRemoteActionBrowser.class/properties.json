@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipHistoryActionBrowser",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"remotePanel"
+	],
+	"name" : "IceTipRemoteActionBrowser",
+	"type" : "normal"
+}

@@ -1,231 +1,120 @@
 # Git integration for Pharo
-Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image. Right now we support only git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
+Iceberg is a set of tools that allows one to handle git repositories directly from a Pharo image. Right now we only support git, but Iceberg is designed to allow other code versioning systems in the future. The final aim of Iceberg is to become the default repository manager for Pharo-core, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
-Please be aware this is still an experimental tool, so you have to be careful. But we have already a few early adopters, so you are invited to try it and provide feedback.
+Please be aware that this is still an experimental tool, so you have to be careful. But we already have a few early adopters, so you are invited to try it and provide feedback.
 
-To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg](../../wiki/Iceberg-glossary) and [Git](../../wiki/Some-keys-to-understand-Git-nomenclature) terminology.
+To better understand Iceberg (or even this documentation), I recommend to read the wiki pages which explain (parts of) the [Iceberg and Git nomenclature](docs/Iceberg-glossary.md) 
+[![Travis Build Status](https://travis-ci.org/pharo-vcs/iceberg.svg?branch=master)](https://travis-ci.org/pharo-vcs/iceberg)
+[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg?svg=true)](https://ci.appveyor.com/project/pharo-vcs/iceberg)  
+
 
 ## FAQ
 
-***Q.** Image seems freeze when doing a clone of a repository.*  
-**A.** This is because operation is taking time and Iceberg still does not shows feedback properly. You just need to be patient :)  
+***Q.** The Image seems to freeze when doing a clone of a repository.*  
+**A.** This is because the operation is taking time and Iceberg still does not show feedback properly. You just need to be patient :)  
 
-***Q.** Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS protocol to do the clone.*  
-**A.** There is a known bug around HTTPS and the get of credentials. We will fix this, but while waiting for the fix, you can workaround the problem by:  
+***Q.** The Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS as the protocol when doing the clone.*  
+**A.** There is a known bug around HTTPS and getting the credentials. We will fix this, but while waiting for the fix, you can work around the problem by:  
 - Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
-- Just using SSH protocol (but that option is not so easy on Windows).  
+- Just using the SSH protocol instead (but that option is not as easy on Windows).  
 
-***Q.** I installed iceberg and try to clone a project, but I'm getting "LGit_GIT_ERROR no ssh-agent suitable credentials found" error message.*  
-**A.** For the moment, iceberg SSH support for iceberg just handles SSH/ssh-agent. You can fix this problem two ways:  
-- In command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
-- Go to iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add there the path to your `id_rsa.pub` and `id_rsa` files.  
+***Q.** I installed Iceberg and try to clone a project, but I'm getting the error message "LGit_GIT_ERROR no ssh-agent suitable credentials found".*  
+**A.** Currently Iceberg SSH support just handles SSH/ssh-agent. You can fix this problem in two ways:  
+- In the command line, run this: `ssh-add ~/.ssh/id_rsa` (macOS users may prefer to execute this: `ssh-add -K ~/.ssh/id_rsa`)
+- Go to Iceberg settings `System Settings/Tools/Software Configuration Management/Iceberg/Use custom SSH keys` and add the path to your `id_rsa.pub` and `id_rsa` files there.  
 
-***Q.** I'm on linux and when I want to commit I have this message: "LGit_GIT_ERROR: no error message set by libgit2."*  
+***Q.** I'm on Linux and when I want to commit I get the message "LGit_GIT_ERROR: no error message set by libgit2."*  
 **A.** Iceberg for Pharo6 on Linux requires a different version of the VM than the one that is provided by 
-default (this **will** be the default on Pharo7). To get this VM, the easiest way is to execute `curl get.pharo.org/vmT60 | bash`.  
+default (this **will** be the default on Pharo7). The easiest way to get this VM is to execute `curl get.pharo.org/vmT60 | bash`.  
 
-***Q.** I'm using a server with an alternate SSH port and I'm receiving "connection timeout" when I'm trying to clone.*  
-**A.** You need to use an different url format than default one (the one that is proposed in most sites). You need an url as this one: ` ssh://git@url:port/team/project.git`  
+***Q.** I'm using a server with a different SSH port and I'm getting a "connection timeout" when I'm trying to clone.*  
+**A.** You need to use a different URL format than the default (the one that is proposed on most sites). You need a URL that looks like this template: ` ssh://git@url:port/team/project.git`.
+
+***Q.** I'm using Iceberg on Windows - whilst trying to clone a repository I get the error "LGit_GIT_ERROR: error authenticating: failed connecting agent".*  
+**A.** Prompting for credentials currently doesn't work on Windows (we can't use ssh-agent).  You need to setup authentication using SSH keys.  Something like this:
+```Smalltalk
+IceCredentialsProvider useCustomSsh: true.
+IceCredentialsProvider sshCredentials
+	publicKey: 'c:\path\to\ssh\id_rsa.pub';
+	privateKey: 'c:\path\to\ssh\id_rsa'
+```
+
+(Your key should not have a passphrase)
+
+***Q.** I'm using 2FA on github and when I try to to create a PR from Iceberg, I'm asked a login/passwd. I try to login but it doesn't work.*
+**A.** There is no support for 2FA in Iceberg for the moment. Please create a personal Access Tokens to replace your password in order to avoid this problem: https://github.com/settings/tokens
 
 ## Installation (for development)
 ### Prerequisites
 - Latest Pharo 6.1+ image.
 - Pharo VM for Pharo 6.1+.
 
-You can get both downloading it from [Pharo](http://pharo.org) site or in command-line with [zeroconf](get.pharo.org): 
+You can get both by downloading it from the [Pharo](http://pharo.org) site or in the command line with [zeroconf](http://get.pharo.org): 
 
 ```Shell
 wget -O- get.pharo.org | bash
 ```
 
 ### Install Iceberg
-Since Pharo 6.0, iceberg is included in the image, so you probably will need to update more than install (see below).
+Since Pharo 6.0, Iceberg is included in the Image, so you probably will need to update rather than install (see below).
 
 ### Update Iceberg
-Pharo 7.0a comes with latest stable Iceberg version, to update just clone iceberg in your repo and then pull changes.
+Pharo 7.0a comes with the latest stable Iceberg version. To update it, just clone Iceberg into your repo and then pull the changes.
 
-#### For Pharo 6
-Since we are including tonel file format, we need to adapt also Metacello to process it, so you will need to update it too.
+#### For Pharo 6.1
 
 ```Smalltalk
-"Restore defaults"
-Iceberg enableMetacelloIntegration: false.
-MetacelloPharo30Platform select.
-
-"Update metacello" 
-Metacello new
-  baseline: 'Metacello';
-  repository: 'github://metacello/metacello:Pharo6.1/repository';
-  onConflict: [:e | e useIncoming ];
-  get;
-  load.
-
-"Update iceberg"
- #(
-	'Iceberg-UI' 
-	'Iceberg-Plugin-GitHub' 
-	'Iceberg-Plugin' 
-	'Iceberg-Metacello-Integration' 
-	'Iceberg-Libgit-Tonel' 
-	'Iceberg-Libgit-Filetree' 
-	'Iceberg-Libgit' 
-	'Iceberg' 
-	'LibGit-Core') 
+MetacelloPharoPlatform select.
+#(
+    'BaselineOfTonel'
+    'BaselineOfLibGit'
+    'BaselineOfIceberg'
+    'MonticelloTonel-Core'
+    'MonticelloTonel-FileSystem'
+    'MonticelloTonel-Tests'
+    'Iceberg-UI' 
+    'Iceberg-TipUI'
+    'Iceberg-Plugin-Pharo' 
+    'Iceberg-Plugin-Metacello' 
+    'Iceberg-Plugin-GitHub' 
+    'Iceberg-Plugin' 
+    'Iceberg-Metacello-Integration' 
+    'Iceberg-Libgit-Tonel' 
+    'Iceberg-Libgit-Filetree' 
+    'Iceberg-Libgit' 
+    'Iceberg-Tests'
+    'Iceberg-Memory'
+    'Iceberg-UI-Tests'
+    'Iceberg-Core' 
+    'Iceberg-Changes' 
+    'Iceberg-Adapters' 
+    'Iceberg'
+    'Iceberg-GitCommand'
+    'Iceberg-SmartUI'
+    'Iceberg-Pharo6'
+    'LibGit-Core') 
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
+"update icons (iceberg needs some new)"
+ThemeIcons current: ThemeIcons loadDefault.
+"load iceberg"
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v0.6';
+  	repository: 'github://pharo-vcs/iceberg:v1.?';
+	onWarningLog;
   	load.
+"Re-initialize libgit2"
+(Smalltalk at: #LGitLibrary) initialize.
+
+"In some case Pharo/Calypso can have a problem with Obsolete classes. If you encounter this problem just execute this command and retry your action:
+
+Smalltalk compilerClass recompileAll
+
+"
 ```
 
-*NOTE: you need to update iceberg in a NEW image, otherwise there will be obsolete repositories around.*
+*NOTE: you need to update Iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## 5 minutes tutorial
-### Clone a repository
-- Before using Iceberg you should have a git repository. If you do not have one, you can *create* or *fork* one on Github.
+*(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
 
-  > Please ensure that your repository is not empty (see [#127](https://github.com/pharo-vcs/iceberg/issues/127)). If you are creating one on Github you just selecting the option 'Initialize this repository with a README' will do the trick.
-
-- Open the *Repositories Browser*, you can find on Pharo menu under 'Tools' or just type 'Iceberg' in Spotter. Normally you will see something like this:
-
-  ![image](https://cloud.githubusercontent.com/assets/513630/25996638/9316c4fe-3718-11e7-91a6-dd2e1e5168bd.png)
-
-  But if it is the first time you use Iceberg you might be looking at an empty list. 
-
-  So let's add a repository.
-
-- The easiest way to create a new repository is by clicking on 'Clone repository'. You will see this dialog:
-
-  ![image](https://cloud.githubusercontent.com/assets/513630/25996645/9a441b3c-3718-11e7-95ea-8e7c71b91ece.png)
-
-  - Remote URL: This is the url we should use to clone your github project, it should be something like `git@github.com:pharo-vcs/iceberg.git` or `https://github.com/pharo-vcs/iceberg.git` (**IMPORTANT:** HTTPS is not recommended for the moment, since it has problems with getting credentials. See [FAQ](#FAQ) section).
-
-    > **Tip:** If you do not know it, you can get it from github, look for the green "Clone or Download" button.
-
-  - Local directory: You can just leave the default location for a start.
-
-  - Code subdirectory: You should provide the name of a subdirectory inside of your repository inside which your code lies. Usual options are `src`, `mc` or `repository`. Leaving it empty means that the code is in the root of your repository, this is a valid choice too.
-
-  - Click on 'Create repository', then you should see a new entry in the repositories browser.
-
-### Add packages to your repository
-- If your repository is new, you should add some packages to it.
-  - First create a Pharo package in the usual way, it should have at least one class, and the class should have at least one method.
-  - Then open the repositories browser, select your repository and click on the "Packages" tab.
-  - Click on 'Add package' and select a package.
-
-### Your first commit
-- After adding a package or modifying some code in one of the packages known to your repository, you are ready to *commit* your changes.
-  - Open the Repositories Browser
-  - You should see that your repository name is highlighted in green, and its status changed to 'Uncommited changes'.
-  - From the contextual menu of your repository, select the 'Synchronize Repository' option. (Or you can also double-click on your repository). You should see something like this:
-
-    ![image](https://cloud.githubusercontent.com/assets/513630/25996648/9cf5d442-3718-11e7-9f4d-fdb598c51f1e.png)
-
-    On the top-left panel, you will see all changes to the packages stored in the repository, by selecting a method on the changes tree you will see the differences in the bottom panel.
-
-  - From the contextual menu of the tree, you can also *revert* a change, or *browse* the changed method/class.
-  - If you make more changes after opening the synchronize view, you have to click on *Refresh tree* to see the new changes.
-  - After you are comfortable with your you can commit.
-    - First enter a suitable message in the top right panel, under 'Commit changes'.
-    - Then click on the 'Commit' button.
-
-  - You can choose to just *commit* your changes or *commit and push*. There will be buttons available for both options.
-
-## Usage
-### Repositories Browser
-The main entry point to Iceberg is the *Repositories Browser*. After installing Iceberg you will see a new entry on Pharo menu, below 'Tools' submenu, called Iceberg, which will open the browser.
-
-This tool shows you all known Iceberg repositories, allowing you to clone new repositories, import existing local repositories or forget repositories.  
-It it is the main entrance point to every action to a repository, such as
-- *Synchronize* a repository (see 'Synchronize Repository' section).
-- Browse repository history (see 'Browse history' section).
-- Switch between branches or create new branches.
-- In absence of local changes or conflicts, you also can pull/push from the pop up menu.
-
-You can find a more detailed description of the Repositories Browser in its [wiki page](../../wiki/Repositories-Browser)
-
-### Synchronize repository
-The *Synchronizer window* allows to manage the code in a repository. The synchronization process involves three steps and the synchronizer window has one tab for each of them.
-
-#### 1. Commit your changes
-The first step is save the changes in the image onto your local repository, creating a new *commit*. This view will allow you to browse the changes you have made, and create a new commit. One such commit can (and probably will) include newer versions for several packages in the same repository (even when currently Iceberg will create a new commit for each package).
-
-Right now Iceberg commits all the changes you have made to the packages in the selected repository, in the future we will add *cherry-picking* functionality.
-
-#### 2. Update
-After your changes are saved to your local repository, you should update your repository with eventual commits coming from remote repository(ies), and possibly merge those changes with your own work, before being able to share your code with others.
-
-If you are familiar with git you probably know several ways to do this, including operations such as *fetch*, *pull*, *merge*, *rebase*, and others. Iceberg will download (*fetch*) the new commits automatically, show the changes between them and your current working copy and allow you to decide which of them you want to load in your image.
-
-Right now Iceberg has no capabilities to resolve merging conflicts between the incomming changes and your own changes. (We partially rely on git automatic merge capabilities, and in case that is not enough you can revert to classical Pharo merge tools, because Iceberg exposes Monticello-compatible package versions.
-
-#### 3. Publish
-Once your local repository contains updated and merged commits, you can *push* them to the remote repository.
-
-Right now this is ths simplest of the three views, you can only push all of your commits to the remote repository (no *cherry-picking* of commits) and browsing the changes at this stage is still not implemented.
-
-## Iceberg API
-### Creating and retreiving repositories.
-Example:
-```Smalltalk
-myRepository := IceRepositoryCreator new 
-	url: 'git@github.com:pharo-vcs/pharo-git-test.git';
-	createRepository.
-```
-
-### Local storage of a repository
-When the repository gets first used, it will create a local clone in your disk.
-> By default clones are created in ./iceberg-cache directory, but the idea is that you should not care about it.
-> In the future we would like to avoid having local working copies on disk.
-
-If you prefere to do clones at specific locations, you can provide a directory:
-```Smalltalk
-myRepository := IceRepositoryCreator new
-	url: 'git@github.com:pharo-vcs/iceberg.git';
-	location: aFileReference; "... absolute or relative path"
-	createRepository.
-```
-
-Or, if you already have a local repository, you can avoid setting the origin, it will be inferred for you.
-```Smalltalk
-myRepository := IceRepositoryCreator new 
-	location: aFileReference; "... absolute or relative path"
-	createRepository.
-```
-
-If a local repository already exists at the same location we will get all necessary information from it (for example: remote origin and current checked out branch).
-
-### Manage branches
-By default repositories will checkout the 'master' branch. If you need to work with another branch you can do:
-```Smalltalk
-myRepository checkoutBranch: 'anotherBranch'
-```
-
-If you want to create a new branch it is slight different:
-```Smalltalk
-myRepository createBranch: 'newBranchName'
-```
-
-### Load a package from a repository
-```Smalltalk
-  myRepo loadPackage: 'Package-Name'
-```
-
-### Update packages
-- `myRepository pull` will update all the packages in the repo (that have already been loaded).
-- To update an individual package you can write: `myRepository updatePackage: 'Some-Package-Name'`
-
-### Commit your changes
-After making some changes, you can use the IceSynchronizer to commit them:
-```Smalltalk
-  IceSynchronizer new
-    changeSet: (IceWorkingCopyDiff forRepository: myRepository);
-    openWithSpec.
-```
-
-From this window you can see the changes you are about to commit, and commit.
-> Tip: Ctrl/Cmd + s on the commit message textarea will also commit.
-
-Currently it is not possible to cherry pick your commits, all changes in the
-repository will be commited.
+Have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3]

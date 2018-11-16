@@ -2,8 +2,8 @@ printing
 printOn: aStream
 	super printOn: aStream.
 
-	self testParameters ifNotEmpty: [
+	self parameters ifNotEmpty: [
 		aStream nextPut: $(.
-		aStream nextPutAll: (', ' join: (self testParameters collect: #shortName)).
+		aStream nextPutAll: (', ' join: (self parameters collect: #shortName)).
 		aStream nextPut: $)
 	]

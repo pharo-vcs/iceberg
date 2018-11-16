@@ -1,0 +1,3 @@
+settings
+shareRepositoriesBetweenImages: anObject
+	ShareRepositoriesBetweenImages := anObject

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "CyrilFerlicot 8/24/2017 23:21",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"first",
+		"last"
+	],
+	"name" : "IceSortingStrategy",
+	"type" : "normal"
+}

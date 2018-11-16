@@ -1,0 +1,15 @@
+{
+	"classtraitcomposition" : "TIceCopyCommitId classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedCommit"
+	],
+	"name" : "IceTipCopyCommitSHACommand",
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"traitcomposition" : "TIceCopyCommitId",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Iceberg-TipUI-Commands"
+}

@@ -1,3 +1,6 @@
-testing
+API-branches
 hasLocalBranchNamed: aString
-	^ self backend localBranchNames includes: aString
+	
+	^ self branchNamed: aString
+		ifPresent: [ :branch | true ]
+		ifAbsent: [ false ]

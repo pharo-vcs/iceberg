@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/19/2018 13:32",
+	"super" : "IceTipExistingBranchPanel",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mergeType"
+	],
+	"name" : "IceTipMergeBranchPanel",
+	"type" : "normal"
+}

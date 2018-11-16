@@ -1,0 +1,4 @@
+tests
+testMethodAccessHandleDirectlyWithErrorHandler
+
+	self handleLibgitError: [handle allBranches]

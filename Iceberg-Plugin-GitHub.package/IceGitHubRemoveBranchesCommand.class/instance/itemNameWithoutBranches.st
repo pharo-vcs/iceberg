@@ -1,0 +1,3 @@
+accessing
+itemNameWithoutBranches
+	^ 'Remove Branches...'

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IcePlugin",
+	"category" : "Iceberg-Plugin-Pharo-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IcePharoPlugin",
+	"type" : "normal"
+}

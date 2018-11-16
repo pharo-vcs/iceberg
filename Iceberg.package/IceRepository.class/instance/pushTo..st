@@ -1,7 +1,4 @@
-actions
+API-remotes
 pushTo: aRemote	
-	self validateCanPushOn: aRemote.
-
-	self backend pushTo: aRemote.
-	self refresh.
-	self announcer announce: IcePushed new
+	
+	self branch pushTo: aRemote

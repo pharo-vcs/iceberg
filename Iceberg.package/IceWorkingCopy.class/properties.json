@@ -1,13 +1,18 @@
 {
-	"commentStamp" : "NicoPasserini 9/16/2016 14:13",
-	"super" : "IceCommitish",
+	"commentStamp" : "GuillermoPolito 1/16/2018 11:44",
+	"super" : "Object",
 	"category" : "Iceberg-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"Instance"
+	"classvars" : [ ],
+	"instvars" : [
+		"repository",
+		"packages",
+		"referenceCommit",
+		"shouldIgnoreNotifications",
+		"project",
+		"properties"
 	],
-	"instvars" : [ ],
 	"name" : "IceWorkingCopy",
 	"type" : "normal"
 }

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceAbstractTestCase",
+	"category" : "Iceberg-Tests-Common",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceUnknownCommitRepositoryTest",
+	"type" : "normal"
+}

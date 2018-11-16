@@ -1,0 +1,4 @@
+validating
+validateCanCommit
+	
+	self subclassResponsibility

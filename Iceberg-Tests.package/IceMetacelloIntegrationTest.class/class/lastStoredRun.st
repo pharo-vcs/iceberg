@@ -1,3 +1,0 @@
-history
-lastStoredRun
-	^ ((Dictionary new) add: (#timeStamp->(DateAndTime basicNew instVarAt: 1 put: 55758; instVarAt: 2 put: (Duration seconds: 3600 nanoSeconds: 0); instVarAt: 3 put: 2457732; instVarAt: 4 put: 290691000; yourself)); add: (#passed->((Set new) add: #testMetacelloIntegration; add: #testBecomeWriteable; add: #testMetacelloIntegrationForTags; yourself)); add: (#failures->((Set new))); add: (#errors->((Set new) add: #testBecomeWriteable; yourself)); yourself)

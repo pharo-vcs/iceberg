@@ -1,0 +1,3 @@
+private
+refreshDiffFromHeadLabel
+	headTabContainer updateLabelOn: selectedModel

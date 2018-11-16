@@ -1,3 +1,3 @@
-accessing
+private
 providerType
-	^ ProviderType ifNil: [ ProviderType := IceCredentialsProvider ]
+	^ ProviderType ifNil: [ ProviderType := self defaultCredentialProviderClass ]

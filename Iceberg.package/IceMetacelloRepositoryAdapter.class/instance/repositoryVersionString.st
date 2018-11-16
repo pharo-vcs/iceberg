@@ -1,3 +1,3 @@
 querying
 repositoryVersionString
-	^ self repository headCommit id
+	^ self repository workingCopy referenceCommit id

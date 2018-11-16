@@ -1,0 +1,3 @@
+validating
+validateCanCommit
+	self validateMessageNotEmpty

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GuillermoPolito 5/16/2018 15:57",
+	"super" : "PSMCMergeMorph",
+	"category" : "Iceberg-TipUI-Merge",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipMergeMorph",
+	"type" : "normal"
+}

@@ -1,0 +1,3 @@
+visiting
+visitMissingCredentialsError: anError
+	self visitGenericError: anError

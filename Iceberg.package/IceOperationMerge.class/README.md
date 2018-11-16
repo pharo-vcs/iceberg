@@ -1,0 +1,1 @@
+I represent a merge between two operations. I know if I'm a conflict or not, if I have changes, and the user can use me to resolve a conflict.

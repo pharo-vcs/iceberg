@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/6/2018 11:06",
+	"super" : "Object",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"label",
+		"icon",
+		"action",
+		"help",
+		"position",
+		"badge"
+	],
+	"name" : "IceTipToolbarItem",
+	"type" : "normal"
+}

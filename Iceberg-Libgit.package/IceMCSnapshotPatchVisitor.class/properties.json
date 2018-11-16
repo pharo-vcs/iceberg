@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTreeVisitor",
+	"category" : "Iceberg-Libgit-Commit",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"patcher"
+	],
+	"name" : "IceMCSnapshotPatchVisitor",
+	"type" : "normal"
+}

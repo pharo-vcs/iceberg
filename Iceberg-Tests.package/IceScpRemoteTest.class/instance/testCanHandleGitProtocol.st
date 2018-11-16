@@ -1,4 +1,4 @@
 tests
 testCanHandleGitProtocol
 
-	self assert: (IceScpRemote canHandleUrl: 'git@github.com:owner/repo.git')
+	self assert: (IceGitScpRemote canHandleUrl: 'git@github.com:owner/repo.git')

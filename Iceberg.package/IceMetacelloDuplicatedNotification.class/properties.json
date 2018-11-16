@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MetacelloAllowProjectUpgrade",
+	"category" : "Iceberg-Adapters",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"builder"
+	],
+	"name" : "IceMetacelloDuplicatedNotification",
+	"type" : "normal"
+}

@@ -1,0 +1,3 @@
+resolution
+isRightChosen
+	self subclassResponsibility

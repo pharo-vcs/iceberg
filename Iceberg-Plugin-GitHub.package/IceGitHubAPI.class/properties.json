@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"credentials"
+		"credentials",
+		"isAnonymous"
 	],
 	"name" : "IceGitHubAPI",
 	"type" : "normal"

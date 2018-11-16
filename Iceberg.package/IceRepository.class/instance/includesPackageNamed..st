@@ -1,3 +1,5 @@
-testing
+API-packages
 includesPackageNamed: aString
-	^ self savedPackagesDictionary includesKey: aString
+	"Returns true if the given package name belongs to a package loaded in the image"
+	
+	^ self workingCopy includesPackageNamed: aString

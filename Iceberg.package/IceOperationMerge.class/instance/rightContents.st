@@ -1,0 +1,3 @@
+accessing
+rightContents
+	self subclassResponsibility

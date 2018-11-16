@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/18/2018 16:01",
+	"super" : "IceTipBranchPanel",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"currentBranchLabel",
+		"branchLabel",
+		"branchInputText",
+		"spacePanel",
+		"branchCommitish",
+		"callback"
+	],
+	"name" : "IceTipCheckoutNewBranchPanel",
+	"type" : "normal"
+}

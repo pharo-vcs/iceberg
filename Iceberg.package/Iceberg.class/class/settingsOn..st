@@ -8,7 +8,7 @@ settingsOn: aBuilder
 				target: self;
 				order: 0.1;
 				label: 'Enable Metacello integration';
-				description: 'If selected, Metacello github// repositories will be loaded using iceberg';
+				description: 'If selected, Metacello github:// repositories will be loaded using iceberg';
 "				icon: (Smalltalk ui icons iconNamed: #smallConfigurationIcon);"
 				with: [ 
 					(aBuilder pickOne: #remoteTypeSelector)
@@ -19,9 +19,9 @@ settingsOn: aBuilder
 							'HTTPS (https://github.com/<username>/<project>.git)' -> #httpsUrl
 						}.
 				].
-			(aBuilder setting: #showSystemRepositories) 
+			"(aBuilder setting: #showSystemRepositories) 
 				order: 0.2;
 				label: 'Include system repositories by default';
 				description: 'If checked then system repositories (like ''pharo'') will be shown in repositories list by default';
-				target: self.
+				target: self."
 		]

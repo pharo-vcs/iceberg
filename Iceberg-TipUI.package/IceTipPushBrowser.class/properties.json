@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/5/2018 10:45",
+	"super" : "IceTipRemoteActionBrowser",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipPushBrowser",
+	"type" : "normal"
+}

@@ -1,0 +1,3 @@
+specs
+defaultStatusBarHeight
+	^ 25

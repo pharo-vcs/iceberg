@@ -1,1 +1,0 @@
-I define a browser that can be embeded into other components.

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "EstebanLorenzano 3/6/2018 11:04",
+	"super" : "PluggableButtonMorph",
+	"category" : "Iceberg-TipUI-Spec-ItemBar",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"badgeFont",
+		"badgeSelector"
+	],
+	"name" : "IceTipToolbarItemButtonMorph",
+	"type" : "normal"
+}

@@ -1,0 +1,4 @@
+initialization
+initializeWidgets
+	self initializeProjectLocation.
+	self initializeSpacePanel

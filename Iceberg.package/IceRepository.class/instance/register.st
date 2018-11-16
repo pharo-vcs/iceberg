@@ -1,4 +1,4 @@
-repository handling
+API-registry
 register
 	self checkForRegistryConflicts.
 	self class registerRepository: self.
