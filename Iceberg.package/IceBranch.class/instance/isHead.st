@@ -1,3 +1,3 @@
 testing
 isHead
-	^ self repository branch = self
+	^ self repository head = self

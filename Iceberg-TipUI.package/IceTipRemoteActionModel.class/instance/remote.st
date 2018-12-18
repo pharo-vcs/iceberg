@@ -1,7 +1,7 @@
 accessing
 remote
-	^ remote ifNil: [ | branch |
-		branch := self repositoryModel entity branch.
-		remote := branch hasUpstream
-				ifTrue: [ branch upstream remote ]
+	^ remote ifNil: [ | head |
+		head := self repositoryModel entity head.
+		remote := (head isBranch and: [ head hasUpstream ])
+				ifTrue: [ head upstream remote ]
 				ifFalse: [ self remoteModels first entity ] ]
