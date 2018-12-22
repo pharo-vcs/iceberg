@@ -8,4 +8,4 @@ defaultSpec
 				newRow: #toolbar height: IceTipToolbar defaultHeight;
 				newRow: #commitList;
 				addHSplitter;
-				newRow: #commitTabPanel ]
+				newRow: #commitInfoTabs ]

@@ -1,4 +1,5 @@
 event handling
 handleClassChange: aClassChange
 
-	self handlePackagesChange: aClassChange packagesAffected
+	"We should take care not only about the class package but also the package of the methods extending that class."
+	self handlePackagesChange: aClassChange classAffected packages

@@ -1,3 +1,3 @@
 api
 initialExtent
-	^ 500@300
+	^ (500@300) scaledByDisplayScaleFactor

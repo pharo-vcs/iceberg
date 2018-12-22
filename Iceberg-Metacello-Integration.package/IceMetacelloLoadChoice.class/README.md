@@ -1,0 +1,2 @@
+I'm a recorded choice when installing a metacello baseline/configuration.
+A choice is created whenever there is a conflict between two project versions (loaded and incomming). Due the nature of Matacello, this choice can be asked several times... A choice keeps track of what user selected to avoid asking him every time.

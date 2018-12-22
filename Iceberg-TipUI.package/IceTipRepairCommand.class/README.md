@@ -1,0 +1,1 @@
+Command that opens the repair window on a repository

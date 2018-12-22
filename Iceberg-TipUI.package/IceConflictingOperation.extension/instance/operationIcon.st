@@ -1,4 +1,3 @@
 *Iceberg-TipUI
 operationIcon
-	
-	^ Smalltalk ui icons iconNamed: #changeUpdate
+	^ self iconNamed: #changeUpdate

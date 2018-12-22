@@ -2,6 +2,6 @@ accessing
 repositoryListContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation 
+	^ CmdContextMenuActivation 
 		byRootGroupItemOrder: 210
 		for: IceTipRepositoryListContext

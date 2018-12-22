@@ -1,3 +1,3 @@
 accessing
 defaultRowHeight
-	^ 25
+	^ 25 * World displayScaleFactor

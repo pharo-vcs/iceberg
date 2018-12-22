@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"branches",
-		"branchesByName"
-	],
+	"instvars" : [ ],
 	"name" : "IceGitHubRemoveBranchesCommand",
 	"type" : "normal"
 }

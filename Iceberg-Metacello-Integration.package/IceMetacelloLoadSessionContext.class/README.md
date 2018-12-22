@@ -1,0 +1,1 @@
+I'm a dynamic variable to keep a load session.

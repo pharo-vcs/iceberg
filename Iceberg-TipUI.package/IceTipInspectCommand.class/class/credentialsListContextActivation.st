@@ -2,6 +2,6 @@ activation
 credentialsListContextActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation
+	^ CmdContextMenuActivation
 		byItemOf: CmdExtraMenuGroup
 		for: IceTipCredentialContext

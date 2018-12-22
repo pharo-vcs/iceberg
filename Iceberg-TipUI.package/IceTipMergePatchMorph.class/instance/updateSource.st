@@ -14,8 +14,8 @@ updateSource
 				to: '']
 		ifFalse: [
 			self diffMorph
-				from: sel rightContents
-				to: sel leftContents
+				from: sel rightContents asText
+				to: sel leftContents asText
 				contextClass: sel contextClass ].
 
 	(sel isNil or: [sel isConflict not]) ifTrue: [^self].

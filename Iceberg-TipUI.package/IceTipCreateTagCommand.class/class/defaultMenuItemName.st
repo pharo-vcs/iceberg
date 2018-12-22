@@ -1,3 +1,3 @@
 activation
 defaultMenuItemName
-	^ 'Create Tag'
+	^ 'Create tag'

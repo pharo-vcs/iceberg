@@ -4,7 +4,7 @@ initializeWidgets
 	locationInput := self newTextInput autoAccept: true.
 	chooseButton := self newButton icon: self icon.
 	
-	locationInput whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
+	locationInput whenBuiltDo: [ :w | "w widget beNotWrapped" ]. 
 	chooseButton action: [ self choose ].
 	
 	self focusOrder add: locationInput

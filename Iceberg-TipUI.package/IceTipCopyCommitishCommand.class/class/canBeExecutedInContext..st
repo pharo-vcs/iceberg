@@ -1,3 +1,3 @@
 testing
 canBeExecutedInContext: aToolContext
-	^ aToolContext item shortCommitId isNotNil
+	^ aToolContext item commitId isNotNil

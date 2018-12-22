@@ -9,7 +9,6 @@
 		"selectedItems",
 		"listPanel",
 		"selectButton",
-		"title",
 		"acceptBlock"
 	],
 	"name" : "IceGitHubSelectListModel",

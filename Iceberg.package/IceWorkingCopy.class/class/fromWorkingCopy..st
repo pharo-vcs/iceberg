@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 fromWorkingCopy: aWorkingCopy
 	^ self basicNew 
 		repository: aWorkingCopy repository; 

@@ -12,4 +12,6 @@ addFilesToIndex: aCollection
 						"self assert: (self location resolve: each) exists."
 						each asFileReference path pathString ]
 					as: Array).
-		gitIndex writeToDisk]
+		gitIndex
+			writeToDisk;
+			free ]

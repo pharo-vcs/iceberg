@@ -1,3 +1,3 @@
 *Iceberg-TipUI
 iceIconWidth
-	^ 24
+	^ 24 * World displayScaleFactor

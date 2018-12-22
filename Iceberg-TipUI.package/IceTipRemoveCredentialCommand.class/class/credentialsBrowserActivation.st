@@ -2,5 +2,5 @@ accessing
 credentialsBrowserActivation
 	<classAnnotation>
 	
-	^ CmdContextMenuCommandActivation 
+	^ CmdContextMenuActivation 
 		byRootGroupItemOrder: 20 for: IceTipCredentialContext

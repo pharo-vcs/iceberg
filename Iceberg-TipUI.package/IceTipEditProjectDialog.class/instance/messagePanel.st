@@ -1,0 +1,4 @@
+initialization
+messagePanel
+
+	^ messagePanel

@@ -1,4 +1,4 @@
 acccessing-ui
-checkoutBranchPanelsOnModel: anIceTipCachedModel 
+checkoutBranchPanelsOnModel: aRepositoryModel 
 	
-	^ { IcePharoNewBranchFromIssuePanel on: anIceTipCachedModel }
+	^ { IcePharoNewBranchFromIssuePanel on: aRepositoryModel }

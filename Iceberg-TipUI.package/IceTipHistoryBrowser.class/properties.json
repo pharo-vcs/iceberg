@@ -6,15 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"selectedModel",
 		"commitList",
-		"commitTabPanel",
-		"infoTab",
-		"emptyTab",
-		"headTabContainer",
-		"ancestorTabContainer",
-		"headTab",
-		"ancestorTab"
+		"commitInfoTabs"
 	],
 	"name" : "IceTipHistoryBrowser",
 	"type" : "normal"

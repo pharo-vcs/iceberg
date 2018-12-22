@@ -1,1 +1,0 @@
-I'm an abstract browser to define presentations that show one or more commits (infos and diffs).

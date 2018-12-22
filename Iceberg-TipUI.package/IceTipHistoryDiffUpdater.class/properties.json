@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"model",
 		"tab"
 	],
 	"name" : "IceTipHistoryDiffUpdater",

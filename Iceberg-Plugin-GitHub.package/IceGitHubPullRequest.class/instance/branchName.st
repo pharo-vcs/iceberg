@@ -1,3 +1,3 @@
 accessing
 branchName
-	^ self branch basename
+	^ self branch name

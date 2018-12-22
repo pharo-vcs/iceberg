@@ -1,4 +1,4 @@
-instance-creation
+instance creation
 onProperties: properties commitish: aCommitish
 	
 	^ self basicNew
