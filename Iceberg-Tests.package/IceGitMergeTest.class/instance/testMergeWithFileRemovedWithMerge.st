@@ -17,7 +17,7 @@ testMergeWithFileRemovedWithMerge
 	branchMaster checkout.
 	otherFileRef := self repository location / 'other-test-to-remove.txt'.
 	otherFileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
-	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository index addPath: (otherFileRef relativeTo: self repository location).
 	self repository commitWithMessage: 'commit 2nd file'.	
 	
 	branchRemove merge.

@@ -14,15 +14,14 @@ runProcessWrapperGitCommand
 	(Smalltalk at: #ProcessWrapper ifAbsent: [ self error: 'Please load ProcessWrapper' ])
 		ifNotNil: [ :pW | 
 			| cmd |
-			cmd := pW new
-				useStdout;
-				useStderr;
-				startWithCommand:
+			cmd := pW new.
+			cmd useStdout.
+			cmd useStderr.
+			self assert: (cmd startWithCommand:
 					self gitCommand , ' -C "'
 						,
 							(MCFileTreeFileUtils current directoryPathString: self directory)
-						, '" ' , aCommandString;
-				yourself.
+						, '" ' , aCommandString).
 			cmd waitForExit.
 			self assert: cmd isRunning not.
 			r := cmd upToEnd.
@@ -33,6 +32,6 @@ runProcessWrapperGitCommand
 					errorString := cmd errorUpToEnd.
 					errorString notEmpty
 						ifTrue:
-							[ MCFileTreeGitError new signal: 'Git error: ' , errorString ].
+							[ Error signal: 'Git error: ' , errorString ].
 					r := '' ] ].
 	^ r

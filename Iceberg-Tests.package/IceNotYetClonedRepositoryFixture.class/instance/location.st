@@ -1,4 +1,4 @@
 initialization
 location
 	
-	^ FileLocator imageDirectory / 'test'
+	^ location

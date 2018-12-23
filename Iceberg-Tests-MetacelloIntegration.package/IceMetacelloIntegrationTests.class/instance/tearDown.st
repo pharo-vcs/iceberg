@@ -4,8 +4,7 @@ tearDown
 	(self repositoriesForTest, { conflictingRepository }) do: [ :each | each ifNotNil: [ :repo |
 		repo unload.
 		repo forget.
-		repo location ifNotNil: #ensureDeleteAll.
-		(IceMetacelloRepositoryAdapter for: repo) unregister ] ].		
+		repo location ifNotNil: #ensureDeleteAll ] ].
 
 	"Cleanup Metacello registry to avoid conflicts"		
 	MetacelloProjectRegistration registry baselineRegistry

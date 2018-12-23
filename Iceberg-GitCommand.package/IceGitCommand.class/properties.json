@@ -1,15 +1,14 @@
 {
-	"category" : "Iceberg-GitCommand",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "NicoPasserini 5/24/2016 11:11",
+	"super" : "Object",
+	"category" : "Iceberg-GitCommand",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"directory",
-		"command" ],
+		"command"
+	],
 	"name" : "IceGitCommand",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

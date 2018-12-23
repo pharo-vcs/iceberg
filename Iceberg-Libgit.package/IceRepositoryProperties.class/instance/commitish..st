@@ -1,5 +1,4 @@
 accessing
 commitish: anObject
-
-1haltIf: [ anObject isNil ].
+	self assert: anObject isNotNil.
 	commitish := anObject
