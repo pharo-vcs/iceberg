@@ -100,11 +100,15 @@ do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 "update icons (iceberg needs some new)"
 ThemeIcons current: ThemeIcons loadDefault.
 "load iceberg"
+
 Metacello new
   	baseline: 'Iceberg';
   	repository: 'github://pharo-vcs/iceberg:v1.?';
 	onWarningLog;
   	load.
+	
+
+	
 "Re-initialize libgit2"
 (Smalltalk at: #LGitLibrary) initialize.
 
@@ -115,6 +119,13 @@ Smalltalk compilerClass recompileAll
 "
 ```
 
+If you get a API rate limit exceeded error from github, like "Error accessing tags for github project: 'pharo-vcs/iceberg' -> 'API rate limit exceeded for...." then you can replace the metacello statement above with:
+```
+Metacello new
+        githubUser: 'pharo-vcs' project: 'Iceberg' commitish: 'v1.?' path: '';
+        baseline: 'Iceberg';
+        load.
+```
 *NOTE: you need to update Iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## 5 minutes tutorial
