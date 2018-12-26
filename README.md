@@ -44,6 +44,9 @@ IceCredentialsProvider sshCredentials
 ***Q.** I'm using 2FA on github and when I try to to create a PR from Iceberg, I'm asked a login/passwd. I try to login but it doesn't work.*
 **A.** There is no support for 2FA in Iceberg for the moment. Please create a personal Access Tokens to replace your password in order to avoid this problem: https://github.com/settings/tokens
 
+***Q.** I'm on Windows and I got an error saying it cannot "stat file" when trying to clone a repo or load a Metecello configuration.*  
+**A.** This is a known error in Windows with it's support paths, it fails when a path gets bigger then 256 characters. So if you clone a >256 char path git repo using Iceberg, this error will prompt. This happens too if you load a Metecello configuration that creates git repos with long paths. So if you use PharoLauncher be aware that it stores images on the User/Documents/Pharo/Images by default, and then Iceberg will store git repos loaded from Metacello inside another deeper sub-path structure, chances are that you will get this problem. Even enabling long paths support on Windows 10 won't work because Libgit haven't implemented support for this yet ([https://github.com/libgit2/libgit2/issues/3053]) and it isn't likely to be fixed soon. So the solution is to avoid long paths by either choosing a shallow path structure to clone your project through Iceberg and/or by changing the location where PharoLauncher store images to a shallow path.
+
 ## Installation (for development)
 ### Prerequisites
 - Latest Pharo 6.1+ image.
