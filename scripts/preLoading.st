@@ -50,3 +50,9 @@ Metacello new
   baseline: 'Tonel';
   repository: 'github://pharo-vcs/tonel:v1.0.11';
   load.
+
+Metacello new
+    baseline: 'Metacello';
+    repository: 'github://metacello/metacello:pharo-6.1_dev/repository';
+    onConflict: [ :ex | ex allow ];
+    load.
