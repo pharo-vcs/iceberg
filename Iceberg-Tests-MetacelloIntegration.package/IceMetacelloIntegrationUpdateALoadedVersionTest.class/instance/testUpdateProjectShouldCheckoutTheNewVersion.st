@@ -12,6 +12,7 @@ testUpdateProjectShouldCheckoutTheNewVersion
 	Metacello new
 		baseline: 'PharoGitTest';
 		repository:'github://pharo-vcs/test-project-source-properties-tonel:1.2.3';
+		onConflictUseIncoming;
 		load.
 		
 	self assert: self repositoryForTest head description equals: '1.2.3'.
