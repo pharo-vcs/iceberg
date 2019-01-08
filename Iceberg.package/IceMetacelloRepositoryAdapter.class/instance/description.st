@@ -1,3 +1,4 @@
 accessing
 description
-	^ self repository description
+		
+	^ self repository origin url, '[', projectVersion, ']'

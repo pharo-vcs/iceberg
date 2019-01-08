@@ -1,6 +1,7 @@
 *Iceberg
 getOrCreateIcebergRepository
 	| remoteUrl |
+	
 	remoteUrl := self perform: Iceberg remoteTypeSelector.
 	^ IceRepository registry 
 		detect: [ :repo | repo isCloneOfUrl: remoteUrl ]
