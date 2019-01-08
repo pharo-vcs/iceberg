@@ -3,7 +3,7 @@ mcRepository
 	| baseRepo |
 	
 	self guessRegisteredRepository
-		ifNotNil: [ :repo | ^ repo metacelloAdapter ].
+		ifNotNil: [ :repo | ^ repo metacelloAdapter: self projectVersion ].
 		
 	baseRepo := self mcRepositoryClass location: self location.
 	^ (Iceberg icebergRepositoriesURLs includes: baseRepo scpUrl)
@@ -12,5 +12,5 @@ mcRepository
 			see https://github.com/pharo-vcs/iceberg/issues/168"
 			baseRepo ]
 		ifFalse: [  
-			baseRepo getOrCreateIcebergRepository metacelloAdapter ]
+			baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion ]
 		

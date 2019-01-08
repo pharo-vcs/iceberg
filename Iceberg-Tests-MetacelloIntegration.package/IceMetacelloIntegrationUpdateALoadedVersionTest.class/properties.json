@@ -4,10 +4,8 @@
 	"category" : "Iceberg-Tests-MetacelloIntegration",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"CommitishToUse"
-	],
+	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "IceMetacelloIntegrationTests",
+	"name" : "IceMetacelloIntegrationUpdateALoadedVersionTest",
 	"type" : "normal"
 }

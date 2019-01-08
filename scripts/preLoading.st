@@ -43,3 +43,16 @@ do: [ :each |
             ifNotNil: [ :package |
                 ('Removing ', each) logCr.
                 package removeFromSystem ] ].
+
+"Loading Tonel before trying to load Iceberg.
+This is required to load iceberg packages and dependencies in Tonel format"
+Metacello new
+  baseline: 'Tonel';
+  repository: 'github://pharo-vcs/tonel:v1.0.12';
+  load.
+
+Metacello new
+    baseline: 'Metacello';
+    repository: 'github://metacello/metacello:pharo-6.1_dev/repository';
+    onConflict: [ :ex | ex allow ];
+    load.

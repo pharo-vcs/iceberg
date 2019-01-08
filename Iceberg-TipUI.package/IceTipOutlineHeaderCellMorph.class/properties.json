@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "CyrilFerlicot 11/8/2018 12:00",
+	"super" : "FTCellMorph",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"dataSource",
+		"item"
+	],
+	"name" : "IceTipOutlineHeaderCellMorph",
+	"type" : "normal"
+}

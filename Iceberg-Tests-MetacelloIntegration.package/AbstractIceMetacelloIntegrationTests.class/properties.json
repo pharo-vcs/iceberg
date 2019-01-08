@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceParameterizedTestCase",
+	"category" : "Iceberg-Tests-MetacelloIntegration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository",
+		"conflictingRepository"
+	],
+	"name" : "AbstractIceMetacelloIntegrationTests",
+	"type" : "normal"
+}

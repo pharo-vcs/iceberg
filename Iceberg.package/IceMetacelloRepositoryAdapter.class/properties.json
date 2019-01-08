@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"repository"
+		"repository",
+		"projectVersion"
 	],
 	"name" : "IceMetacelloRepositoryAdapter",
 	"type" : "normal"
