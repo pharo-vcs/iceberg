@@ -16,4 +16,4 @@ mcRepository
 				createRepository)
 				register ].
 			
-	^ repository metacelloAdapter
+	^ repository metacelloAdapter: repository head description.
