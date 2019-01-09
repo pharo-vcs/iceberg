@@ -99,8 +99,22 @@ MetacelloPharoPlatform select.
 do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
 "update icons (iceberg needs some new)"
 ThemeIcons current: ThemeIcons loadDefault.
-"load iceberg"
 
+"Loading Tonel before trying to load Iceberg.
+This is required to load iceberg packages and dependencies in Tonel format"
+Metacello new
+  baseline: 'Tonel';
+  repository: 'github://pharo-vcs/tonel:v1.0.12';
+  load.
+
+"Updating Metacello"
+Metacello new
+    baseline: 'Metacello';
+    repository: 'github://metacello/metacello:pharo-6.1_dev/repository';
+    onConflict: [ :ex | ex allow ];
+    load.
+
+"load iceberg"
 Metacello new
   	baseline: 'Iceberg';
   	repository: 'github://pharo-vcs/iceberg:v1.?';
