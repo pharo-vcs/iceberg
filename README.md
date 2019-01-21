@@ -143,6 +143,5 @@ Metacello new
 *NOTE: you need to update Iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## 5 minutes tutorial
-*(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
 
-Have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3]
+Check the 5 minutes tutorial in our wiki, or have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3].
