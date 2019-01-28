@@ -2,13 +2,9 @@ specs
 defaultSpec
 	<spec: #default>
 	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #remotePanel height: self inputTextHeight;
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							add: #commitsPanel withSpec: #panelSpec;
-							add: #actionPanel height: self iceActionPanelHeight ] ] ]
+	^ SpecBoxLayout newVertical 
+		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add: #remotePanel withConstraints: [ :c | c height: self inputTextHeight ];
+		add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
+		add: #actionPanel withConstraints: [ :c | c height: self iceActionPanelHeight ];
+		yourself
