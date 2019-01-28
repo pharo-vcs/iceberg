@@ -1,5 +1,5 @@
 private
 refreshCommitTabPanel
-	selectedModel 
-		ifNotNil: [ self showInfoTabs ]
-		ifNil: [ self showEmptyTab ]
+	
+	selectedModel ifNil: [ ^ self ].
+	commitPanel resetAllPageContents

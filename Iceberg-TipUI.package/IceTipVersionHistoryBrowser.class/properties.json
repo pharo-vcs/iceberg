@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "EstebanLorenzano 5/30/2018 14:25",
+	"commentStamp" : "EstebanLorenzano 1/28/2019 23:34",
 	"super" : "IceTipBrowser",
 	"category" : "Iceberg-TipUI-View-Versions",
 	"classinstvars" : [ ],
@@ -7,11 +7,10 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"commitList",
-		"commitTabPanel",
 		"selectedModel",
-		"infoTab",
-		"emptyTab",
-		"diffTab"
+		"infoPage",
+		"diffPage",
+		"commitPanel"
 	],
 	"name" : "IceTipVersionHistoryBrowser",
 	"type" : "normal"

@@ -1,3 +1,8 @@
 accessing
 refresh
-	selectedModel ifNotNil: [ self showInfoTabs ] ifNil: [ self showEmptyTab ]
+	
+	selectedModel ifNil: [ ^ self ].
+	
+	headPage title: (headTabContainer labelFor: selectedModel).
+	ancestorPage title: (ancestorTabContainer labelFor: selectedModel).
+	notebookPanel resetAllPageContents

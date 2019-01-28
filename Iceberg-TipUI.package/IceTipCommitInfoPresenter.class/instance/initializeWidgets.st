@@ -1,7 +1,7 @@
 initialization
 initializeWidgets
-	commitTabPanel := self newTabManager.
-	
+
+	notebookPanel := self newNotebook.
 	self initializeCommitPanel.
 	
-	self focusOrder add: commitTabPanel
+	self focusOrder add: notebookPanel

@@ -2,10 +2,10 @@ specs
 defaultSpec
 	<spec: #default>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #commitList;
-				addHSplitter;
-				newRow: #commitInfoTabs ]
+	^ SpecBoxLayout newVertical 
+		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add: (SpecPanedLayout newVertical
+			add: #commitList;
+			add: #commitInfoTabs;
+			yourself);
+		yourself

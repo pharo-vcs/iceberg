@@ -1,3 +1,3 @@
-model access
+initialization
 setModelBeforeInitialization: anObject
 	model := anObject

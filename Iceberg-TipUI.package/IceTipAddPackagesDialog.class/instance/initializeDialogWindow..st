@@ -1,6 +1,7 @@
 initialization
 initializeDialogWindow: aWindow
-	super initializeDialogWindow: aWindow.
-	acceptButton
-		disable;
-		label: 'Add'
+
+	acceptButton := aWindow 
+		addButton: 'Add' 
+		do: [ :presenter | self accept. presenter close ].
+	acceptButton disable

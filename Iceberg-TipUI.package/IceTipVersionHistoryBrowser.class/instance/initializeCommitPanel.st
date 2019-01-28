@@ -2,9 +2,9 @@ initialization
 initializeCommitPanel
 	"This will be initialised in fact on the first refresh"
 
-	commitTabPanel
-		addTab: (infoTab := self newInfoTab);
-		addTab: (diffTab := self newDiffTab 
+	commitPanel
+		addPage: (infoPage := self newInfoPage);
+		addPage: (diffPage := self newDiffPage 
 			label: 'Diff from ancestor';
-			whenTabSelected: [ self refreshDiff ];
+			presenterProvider: [ self diff ];
 			yourself)

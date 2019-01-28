@@ -2,9 +2,7 @@ specs
 panelSpec
 	<spec>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #commitList;
-				addHSplitter;
-				newRow: #commitInfoTabs ]
+	^ SpecPanedLayout newVertical
+		add: #commitList;
+		add: #commitInfoTabs;
+		yourself

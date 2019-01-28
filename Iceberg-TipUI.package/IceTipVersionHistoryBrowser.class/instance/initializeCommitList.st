@@ -1,6 +1,7 @@
 initialization
 initializeCommitList
-	commitList widget 
+
+	commitList widget
 		beResizable;
 		addColumn: (IceTipTableColumn new 
 			id: 'Timestamp';

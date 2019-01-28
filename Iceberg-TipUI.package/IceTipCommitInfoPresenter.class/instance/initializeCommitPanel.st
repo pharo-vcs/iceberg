@@ -2,16 +2,13 @@ initialization
 initializeCommitPanel
 	"This will be initialised in fact on the first refresh"
 
-	commitTabPanel
-		addTab: (infoTab := self newInfoTab);
-		addTab: (headTab := self newDiffTab 
-			label: 'Diff from HEAD';
-			whenTabSelected: [ self refreshDiffFromHead ];
+	notebookPanel
+		addPage: (infoPage := self newInfoPage);
+		addPage: (headPage := self newDiffPage 
+			title: 'Diff from HEAD';
+			presenterProvider: [ self diffFromHead ];
 			yourself);
-		addTab: (ancestorTab := self newDiffTab 
-			label: 'Diff from ancestor';
-			whenTabSelected: [ self refreshDiffFromAncestor ];
-			yourself).
-		
-	headTabContainer tab: headTab.
-	ancestorTabContainer tab: ancestorTab
+		addPage: (ancestorPage := self newDiffPage 
+			title: 'Diff from ancestor';
+			presenterProvider: [ self diffFromAncestor ];
+			yourself)

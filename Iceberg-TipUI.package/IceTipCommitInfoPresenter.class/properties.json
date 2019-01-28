@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "CyrilFerlicot 11/6/2018 11:23",
+	"commentStamp" : "EstebanLorenzano 1/29/2019 00:11",
 	"super" : "ComposablePresenter",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],
@@ -8,13 +8,12 @@
 	"instvars" : [
 		"model",
 		"selectedModel",
-		"commitTabPanel",
-		"infoTab",
-		"emptyTab",
 		"headTabContainer",
 		"ancestorTabContainer",
-		"headTab",
-		"ancestorTab"
+		"notebookPanel",
+		"infoPage",
+		"headPage",
+		"ancestorPage"
 	],
 	"name" : "IceTipCommitInfoPresenter",
 	"type" : "normal"

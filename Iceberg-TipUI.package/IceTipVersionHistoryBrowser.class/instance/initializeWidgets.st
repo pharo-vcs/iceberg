@@ -1,8 +1,9 @@
 initialization
 initializeWidgets
+
 	super initializeWidgets.	
 	commitList := self newIceTable.
-	commitTabPanel := self newTabManager.
+	commitPanel := self newNotebook.
 	
 	self initializeCommitList.
 	self initializeCommitPanel.
@@ -14,6 +15,6 @@ initializeWidgets
 	
 	self focusOrder 
 		add: commitList;
-		add: commitTabPanel.
+		add: commitPanel.
 		
 	self refresh

@@ -1,6 +1,7 @@
 specs
 defaultSpec
 	<spec: #default>
-	^ SpecLayout composed
-		add: #commitTabPanel;
+	
+	^ SpecBoxLayout newVertical
+		add: #notebookPanel;
 		yourself

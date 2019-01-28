@@ -1,4 +1,5 @@
 accessing
 beForCommit
-	headTabContainer := IceTipHistoryDiffFromHead tab: headTab.
-	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorTab
+
+	headTabContainer := IceTipHistoryDiffFromHead tab: headPage.
+	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorPage
