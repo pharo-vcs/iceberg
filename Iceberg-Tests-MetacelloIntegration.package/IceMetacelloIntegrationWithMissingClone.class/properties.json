@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "AbstractIceMetacelloIntegrationTests",
+	"category" : "Iceberg-Tests-MetacelloIntegration",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceMetacelloIntegrationWithMissingClone",
+	"type" : "normal"
+}
