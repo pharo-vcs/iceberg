@@ -5,6 +5,6 @@ initializeCommitPanel
 	commitPanel
 		addPage: (infoPage := self newInfoPage);
 		addPage: (diffPage := self newDiffPage 
-			label: 'Diff from ancestor';
+			title: 'Diff from ancestor';
 			presenterProvider: [ self diff ];
 			yourself)
