@@ -1,5 +1,6 @@
 private factory
 newChangeTreeDataSource
+
 	^ IceTipTreeSelectingDataSource new
 		tool: self;
 		rootForItems: self model treeRoots;
