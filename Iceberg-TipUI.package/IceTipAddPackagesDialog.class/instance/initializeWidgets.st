@@ -1,13 +1,13 @@
 initialization
 initializeWidgets
+
 	packagesList := self newIceTreeTable.
-	packageNameText := self newTextInput 
+	packageNameText := self newTextInput
 		autoAccept: true;
-		ghostText: 'e.g., Collections'.
-	
+		placeholder: 'e.g., Collections'.
 	self initializePackagesList.
 	self initializePackageNameText.
-	
-	self focusOrder 
+
+	self focusOrder
 		add: self packagesList;
 		add: self packageNameText
