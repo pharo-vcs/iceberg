@@ -2,9 +2,6 @@ validating
 validateCanMerge
 
 	| imageCommit headCommit mergeCommit |
-	self repository isModified
-		ifTrue: [ Warning signal: 'Experimental Feature: merge when there is a dirty working copy. Could cause a loss of your local changes. Please commit before merge.' ].
-	
 	imageCommit := self repository workingCopy referenceCommit.
 	headCommit := self repository headCommit.
 	mergeCommit := self commit.
