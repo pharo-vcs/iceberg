@@ -9,7 +9,6 @@
 		"entry",
 		"info",
 		"commit",
-		"originatingCommit",
 		"package"
 	],
 	"name" : "IceSavedPackageVersion",

@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"startingPoint",
 		"queue"
 	],
 	"name" : "IceMemoryCommitWalk",

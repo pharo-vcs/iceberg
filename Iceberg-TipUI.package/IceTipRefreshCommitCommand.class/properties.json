@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"tool",
 		"announcer"
 	],
 	"name" : "IceTipRefreshCommitCommand",

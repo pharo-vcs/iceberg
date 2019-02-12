@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"projects"
-	],
+	"instvars" : [ ],
 	"name" : "IceTipRepositoriesModel",
 	"type" : "normal"
 }

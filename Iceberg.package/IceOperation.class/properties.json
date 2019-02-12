@@ -6,8 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"diff",
-		"modifiedNode",
 		"definition"
 	],
 	"name" : "IceOperation",

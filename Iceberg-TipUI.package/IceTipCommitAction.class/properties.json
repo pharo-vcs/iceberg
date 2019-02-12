@@ -8,8 +8,7 @@
 	"instvars" : [
 		"diff",
 		"items",
-		"message",
-		"publish"
+		"message"
 	],
 	"name" : "IceTipCommitAction",
 	"type" : "normal"
