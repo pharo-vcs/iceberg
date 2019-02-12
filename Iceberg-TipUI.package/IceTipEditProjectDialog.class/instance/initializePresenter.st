@@ -24,4 +24,4 @@ initializePresenter
 	currentNode
 		ifNotNil: [ | index |
 			index := self sourceDirectoryTree widget dataSource indexOfElementMatching: [ :elem | elem = currentNode data ].
-			self sourceDirectoryTree widget selectRowIndex: index ].
+			self sourceDirectoryTree widget selectIndex: index ].

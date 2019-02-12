@@ -72,4 +72,10 @@ baseline: spec
 				spec requires: #( 'Iceberg-Pharo6' ) ];
 			package: 'Iceberg-Pharo6';
 			package: 'Iceberg-TipUI' with: [ 
-				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ]
+				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ].
+
+	spec for: #( #'pharo6.x' #'pharo7.x') do: [	
+		spec
+			package: 'Iceberg-Pharo7';
+			package: 'Iceberg-TipUI' with: [ 
+				spec requires: #('Iceberg-Pharo7') ] ]

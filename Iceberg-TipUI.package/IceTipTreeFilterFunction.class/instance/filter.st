@@ -5,7 +5,7 @@ filter
 	table dataSource: (pattern 
 		ifNotEmpty: [ initialDataSource newDataSourceMatching: (filterClass pattern: pattern) ]
 		ifEmpty: [ initialDataSource ]).
-	table selectRowIndexes: #().
+	table deselectAll.
 	table dataSource expandAll.
 
 	self isExplicite

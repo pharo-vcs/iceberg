@@ -18,6 +18,6 @@ initializeCredentialsList
 			action: #description;
 			yourself);		
 		dataSource: self newCredentialsDataSource;
-		selectRowIndex: 1;
+		selectFirst;
 		enableFilter: IceTipRepositoryFilter;			
 		explicitFunction

@@ -13,4 +13,4 @@ initializeCommitsTable
 		addColumn: (IceTipTableColumn id: 'Author' action: [ :commit | textStylingBlock value: commit author value: commit ] width: 120 * World displayScaleFactor);
 		addColumn: (IceTipTableColumn id: 'Comment' action: [ :commit | textStylingBlock value: commit comment value: commit ] width: 300 * World displayScaleFactor);
 		dataSource: self newCommitsDataSource;
-		selectRowIndex: 1
+		selectFirst

@@ -4,7 +4,7 @@ refresh
 	self resetDiffContents.
 	changeList widget 
 		in: [ :this |
-			this basicSelectRowIndexes: #(). 
+			this basicSelectIndexes: #(). 
 			this dataSource 
 				rootForItems: self model treeRoots;
 				selectAll;

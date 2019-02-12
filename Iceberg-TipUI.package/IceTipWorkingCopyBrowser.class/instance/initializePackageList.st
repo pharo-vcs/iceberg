@@ -11,6 +11,6 @@ initializePackageList
 			action: #statusWithDecoration;
 			yourself);		
 		dataSource: self newPackagesDataSource;
-		selectRowIndex: 1;
+		selectFirst;
 		enableFilter: IceTipPackageFilter;			
 		explicitFunction

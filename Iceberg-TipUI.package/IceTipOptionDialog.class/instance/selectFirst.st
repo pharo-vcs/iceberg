@@ -1,4 +1,4 @@
 private
 selectFirst
-	typeList widget selectRowIndex: 1.
-	self basicSelectionChanged: self allTypes first 	
+	typeList widget selectFirst.
+	self basicSelectionChanged: self allTypes first

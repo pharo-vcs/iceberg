@@ -22,4 +22,4 @@ initializeCommitList
 			action: #descriptionWithDecoration;
 			yourself);
 		dataSource: self newCommitsDataSource;
-		selectRowIndex: 1
+		selectFirst

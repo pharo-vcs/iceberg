@@ -1,5 +1,5 @@
 *Iceberg-TipUI
 selectFirstVisibleRow
-	^ self selectRowIndex: (container exposedRows
+	^ self selectIndex: (container exposedRows 
 		ifNotEmpty: [ :rows | rows keys first ]
-		ifEmpty: [ 0 ]).
+		ifEmpty: [ 0 ])

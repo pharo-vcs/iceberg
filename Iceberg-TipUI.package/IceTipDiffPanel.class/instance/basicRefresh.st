@@ -3,6 +3,6 @@ basicRefresh
 	self resetDiffContents.
 	changeList widget 
 		in: [ :this |
-			this selectRowIndexes: #(). 
+			this deselectAll. 
 			self resetDataSource: this dataSource ];
 		refresh.

@@ -2,7 +2,7 @@ accessing
 refresh
 	packagesList widget 
 		in: [ :this | 
-			this selectRowIndexes: #(). 
+			this deselectAll.
 			this dataSource 
 				rootForItems: self model repositoryModelsByGroup;
 				expandAll ];

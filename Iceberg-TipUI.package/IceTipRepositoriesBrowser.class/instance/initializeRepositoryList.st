@@ -17,6 +17,6 @@ initializeRepositoryList
 			action: #status;
 			yourself);		
 		dataSource: self newRepositoriesDataSource;
-		selectRowIndex: 1;
+		selectFirst;
 		enableFilter: IceTipRepositoryFilter;			
 		explicitFunction

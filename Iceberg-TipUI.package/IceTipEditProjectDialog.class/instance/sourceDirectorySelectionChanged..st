@@ -6,7 +6,7 @@ sourceDirectorySelectionChanged: selectedIndexes
 		ifEmpty: [ 
 			"If the user does not select any directory, we choose the root and we use the default format"
 			selectedDirectoryPath := RelativePath new.
-			self sourceDirectoryTree widget selectRowIndex: 1.
+			self sourceDirectoryTree widget selectFirst.
 			selection := self sourceDirectoryTree widget dataSource rootItem children first.
 			selectedDirectory := self sourceDirectoryTree widget dataSource rootItem children first data.
 		] ifNotEmpty: [
