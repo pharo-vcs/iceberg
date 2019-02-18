@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "CmdMenuGroup",
-	"category" : "Iceberg-Plugin-Pharo-Core",
+	"category" : "Iceberg-Plugin-Pharo-Manuscript",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

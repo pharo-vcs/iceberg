@@ -32,6 +32,7 @@ baseline: spec
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
 			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
+			
 			"for testing"
 			for: #MacOS do: [ 
 				self osSubprocess: spec.
@@ -50,8 +51,8 @@ baseline: spec
 				'Iceberg-Plugin' 
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
-        'Iceberg-Plugin-Pharo'
-        'Iceberg-Plugin-Migration');
+				'Iceberg-Plugin-Pharo'
+				'Iceberg-Plugin-Migration');
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit' 
@@ -72,4 +73,8 @@ baseline: spec
 				spec requires: #( 'Iceberg-Pharo6' ) ];
 			package: 'Iceberg-Pharo6';
 			package: 'Iceberg-TipUI' with: [ 
-				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ]
+				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ].
+
+	spec for: #'pharo7.x' do: [	
+		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
+		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
