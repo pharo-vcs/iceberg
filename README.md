@@ -67,6 +67,12 @@ Pharo 7.0a comes with the latest stable Iceberg version. To update it, just clon
 #### For Pharo 6.1
 
 ```Smalltalk
+"Unregister all iceberg repository adapters since we are going to unload all code related to it.
+Otherwise obsolete instances will stay".
+IceMetacelloRepositoryAdapter allInstances do: #unregister.
+Smalltalk globals at: #IceSystemEventListener ifPresent: #unregisterSystemAnnouncements.
+
+
 MetacelloPharoPlatform select.
 #(
     'BaselineOfTonel'
