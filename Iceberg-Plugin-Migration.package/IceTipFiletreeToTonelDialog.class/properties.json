@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"model",
 		"iconPanel",
 		"confirmLabel",
 		"mergeWithMasterCheckbox",

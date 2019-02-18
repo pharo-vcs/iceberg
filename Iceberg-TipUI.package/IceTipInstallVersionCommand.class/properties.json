@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"selectedCommit",
 		"version"
 	],
 	"name" : "IceTipInstallVersionCommand",

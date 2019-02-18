@@ -6,9 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"properties",
-		"repository",
-		"repositoryProperties"
+		"properties"
 	],
 	"name" : "IceBasicProject",
 	"type" : "normal"
