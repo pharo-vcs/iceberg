@@ -123,7 +123,7 @@ Metacello new
 "load iceberg"
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v1.?';
+  	repository: 'github://pharo-vcs/iceberg:v1.5.?';
 	onWarningLog;
   	load.
 	
