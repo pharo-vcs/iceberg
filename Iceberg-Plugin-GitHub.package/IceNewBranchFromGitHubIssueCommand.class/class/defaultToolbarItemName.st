@@ -1,3 +1,0 @@
-testing
-defaultToolbarItemName
-	^ 'New issue'

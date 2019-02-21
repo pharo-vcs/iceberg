@@ -1,4 +1,0 @@
-accessing
-leftDefinition
-
-	^ definition

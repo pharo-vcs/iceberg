@@ -1,3 +1,0 @@
-accessing
-commits
-	^ commits

@@ -1,1 +1,0 @@
-I resolve Github repositories

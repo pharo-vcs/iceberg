@@ -1,1 +1,0 @@
-I am an addition in a tree. I contain the definition I'm adding. I know what is the icon for addition and how to calculate a conflict with other operations.

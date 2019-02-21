@@ -1,4 +1,0 @@
-accessing
-rightContents
-	
-	^ operation rightContents

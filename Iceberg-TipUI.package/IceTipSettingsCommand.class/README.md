@@ -1,1 +1,0 @@
-Command that opens the settings on a repository

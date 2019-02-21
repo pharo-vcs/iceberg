@@ -1,4 +1,0 @@
-running
-isUnbornProjectFixture
-
-	^ true

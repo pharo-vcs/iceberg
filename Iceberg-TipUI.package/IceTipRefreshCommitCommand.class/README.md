@@ -1,1 +1,0 @@
-Command that launches a refresh of the commit tree during commit

@@ -1,4 +1,0 @@
-accessing
-beAnonymous
-
-	isAnonymous := true

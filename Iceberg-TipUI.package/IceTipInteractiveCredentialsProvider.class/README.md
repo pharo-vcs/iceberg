@@ -1,1 +1,0 @@
-I am a credential provider that requires the missing plaintext credential to the user.

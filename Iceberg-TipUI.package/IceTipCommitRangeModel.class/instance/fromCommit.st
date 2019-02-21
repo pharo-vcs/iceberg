@@ -1,3 +1,0 @@
-accessing
-fromCommit
-	^ self entity

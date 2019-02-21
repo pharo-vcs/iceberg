@@ -1,1 +1,0 @@
-I am a removal in a tree. I contain the definition I'm removing. I know what is the icon for removal and how to calculate a conflict with other operations.

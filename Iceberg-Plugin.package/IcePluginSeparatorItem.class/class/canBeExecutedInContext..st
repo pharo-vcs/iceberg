@@ -1,4 +1,0 @@
-testing
-canBeExecutedInContext: aToolContext
-
-	^ true

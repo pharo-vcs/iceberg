@@ -1,3 +1,0 @@
-accessing
-credentialStore
-	^ IceCredentialStore current

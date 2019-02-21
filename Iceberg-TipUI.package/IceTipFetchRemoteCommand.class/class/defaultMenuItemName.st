@@ -1,3 +1,0 @@
-accessing
-defaultMenuItemName
-	^ 'Fetch remote'

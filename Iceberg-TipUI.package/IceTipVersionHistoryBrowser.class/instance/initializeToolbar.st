@@ -1,3 +1,0 @@
-initialization
-initializeToolbar
-	"no toolbar"

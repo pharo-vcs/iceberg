@@ -1,3 +1,0 @@
-rules
-libgitRepositoryHandleAccessors
-	self shouldBeImplemented.

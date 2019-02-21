@@ -1,3 +1,0 @@
-validating
-validateCanCommit
-	self validateMessageNotEmpty

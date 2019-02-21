@@ -1,4 +1,0 @@
-accessing
-remoteName
-	
-	^ remote name

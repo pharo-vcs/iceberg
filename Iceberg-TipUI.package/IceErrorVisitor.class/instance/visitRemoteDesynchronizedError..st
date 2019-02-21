@@ -1,3 +1,0 @@
-visiting
-visitRemoteDesynchronizedError: anError
-	self visitGenericError: anError

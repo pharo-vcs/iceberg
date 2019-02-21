@@ -1,3 +1,0 @@
-accessing
-passphrase
-	^ passphraseInput text

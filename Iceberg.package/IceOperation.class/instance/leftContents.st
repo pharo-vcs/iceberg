@@ -1,4 +1,0 @@
-accessing
-leftContents
-	
-	self subclassResponsibility

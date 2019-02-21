@@ -1,3 +1,0 @@
-visiting
-visitShouldCommitBeforePullError: anError
-	self visitGenericError: anError

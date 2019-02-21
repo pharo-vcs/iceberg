@@ -1,3 +1,0 @@
-visiting
-visitRemoteAlreadyExistError: anError
-	self visitGenericError: anError

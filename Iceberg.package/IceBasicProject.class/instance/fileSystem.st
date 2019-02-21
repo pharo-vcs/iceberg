@@ -1,4 +1,0 @@
-accessing
-fileSystem
-	
-	^ commitish fileSystem

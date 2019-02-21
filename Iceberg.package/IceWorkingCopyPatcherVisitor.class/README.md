@@ -1,1 +1,0 @@
-I visit a tree of changes and apply those changes to the working copy.

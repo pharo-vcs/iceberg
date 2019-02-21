@@ -1,3 +1,0 @@
-settings
-editButtonAction
-	IceTipCredentialsStoreBrowser new openWithSpec.

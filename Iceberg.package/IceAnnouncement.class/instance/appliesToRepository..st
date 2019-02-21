@@ -1,3 +1,0 @@
-testing
-appliesToRepository: aRepository
-	^ false

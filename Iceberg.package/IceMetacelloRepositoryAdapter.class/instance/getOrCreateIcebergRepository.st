@@ -1,4 +1,0 @@
-accessing
-getOrCreateIcebergRepository
-
-	^ self repository

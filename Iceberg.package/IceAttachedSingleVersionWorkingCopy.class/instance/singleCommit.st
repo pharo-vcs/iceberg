@@ -1,4 +1,0 @@
-accessing
-singleCommit
-	
-	^ self referenceCommit
