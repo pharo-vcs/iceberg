@@ -117,7 +117,7 @@ IceBasicProject >> hash [
 	^ commitish hash
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 IceBasicProject >> initialize [
 	super initialize.
 "	repositoryProperties := self readProperties.

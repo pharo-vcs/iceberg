@@ -73,7 +73,7 @@ IcePackage >> hash [
 	^ self name hash
 ]
 
-{ #category : #loading }
+{ #category : #initialization }
 IcePackage >> initialize [
 	super initialize.
 	isDirty := false

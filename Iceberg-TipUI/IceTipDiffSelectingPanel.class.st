@@ -20,7 +20,7 @@ IceTipDiffSelectingPanel >> entryRemoved: ann [
 	self refresh
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 IceTipDiffSelectingPanel >> initialize [
 	super initialize.
 	self subscribeToAnnouncements

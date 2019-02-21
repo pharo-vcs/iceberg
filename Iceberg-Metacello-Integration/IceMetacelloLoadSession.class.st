@@ -13,7 +13,7 @@ Class {
 	#category : 'Iceberg-Metacello-Integration'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 IceMetacelloLoadSession >> initialize [
 
 	super initialize.

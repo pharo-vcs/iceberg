@@ -140,7 +140,7 @@ IceLibgitTreeBuilder >> initialTree [
 
 ]
 
-{ #category : #initializing }
+{ #category : #initialization }
 IceLibgitTreeBuilder >> initialize [
 	super initialize.
 	hasChanges := false.
