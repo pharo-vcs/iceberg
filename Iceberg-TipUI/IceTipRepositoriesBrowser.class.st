@@ -69,14 +69,14 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 			width: 200;
 			yourself);
 		addColumn: (IceTipTableColumn new 
-			id: 'Branch';
-			action: #branchName;
+			id: 'Status';
+			action: #status;
 			width: 150;
 			yourself);
 		addColumn: (IceTipTableColumn new 
-			id: 'Status';
-			action: #status;
-			yourself);		
+			id: 'Branch';
+			action: #branchName;
+			yourself);
 		dataSource: self newRepositoriesDataSource;
 		selectRowIndex: 1;
 		enableFilter: IceTipRepositoryFilter;			
