@@ -149,6 +149,12 @@ IceTipBranchModel >> repositoryName [
 	^ self repositoryModel name
 ]
 
+{ #category : #'API-commits' }
+IceTipBranchModel >> resetToCommit: anIceTipCachedModel [ 
+	
+	entity resetToCommit: anIceTipCachedModel entity
+]
+
 { #category : #accessing }
 IceTipBranchModel >> shortDescriptionWithDecoration [
 	^ self addDecorationTo: (self entity isRemote 

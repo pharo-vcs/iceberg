@@ -396,3 +396,57 @@ IceMultiplePackageRepositoryTest >> testNoChangesInImageMakesNoModifications [
 
 	self deny: self repository isModified
 ]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCodeInImage [
+
+	| message commitToReset |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+
+	commitToReset := self repository branch commit parent.
+	self repository branch resetToCommit: commitToReset.
+	
+	self assert: (self repository workingCopy environment ask includesClassNamed: 'IceGeneratedClassForTesting')
+]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCommit [
+
+	| message commitToReset workingCopyCommitBeforeReset |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+	workingCopyCommitBeforeReset := self repository workingCopy referenceCommit.
+	commitToReset := self repository branch commit parent.
+	self repository branch resetToCommit: commitToReset.
+	
+	self assert: self repository workingCopy referenceCommit equals: workingCopyCommitBeforeReset 
+]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testResetBranchRestoresBranchCommit [
+
+	| message commitToReset |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+
+	commitToReset := self repository branch commit parent.
+	self repository branch resetToCommit: commitToReset.
+	
+	self assert: self repository branch commit equals: commitToReset
+]
