@@ -1,3 +1,0 @@
-accessing
-unknownBranchLabel
-	^ 'Unknown'

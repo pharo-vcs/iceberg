@@ -1,4 +1,0 @@
-accessing
-repository
-	
-	^ iceCommit repository

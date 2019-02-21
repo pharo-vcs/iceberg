@@ -1,1 +1,0 @@
-Command that removes a package from the repository, without removing it from the system.

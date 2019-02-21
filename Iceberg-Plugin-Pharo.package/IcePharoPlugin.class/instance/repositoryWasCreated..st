@@ -1,2 +1,0 @@
-events
-repositoryWasCreated: aRepository

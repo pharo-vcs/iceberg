@@ -1,1 +1,0 @@
-I am the browser used to show a credentials store.

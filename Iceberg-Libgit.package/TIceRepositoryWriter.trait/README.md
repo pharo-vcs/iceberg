@@ -1,1 +1,0 @@
-I indicate when a class is writer for iceberg 

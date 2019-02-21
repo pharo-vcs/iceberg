@@ -1,4 +1,0 @@
-resolution
-selectLeft
-	
-	chosen := leftOperation

@@ -1,3 +1,0 @@
-accessing ui
-remotePanel
-	^ remotePanel

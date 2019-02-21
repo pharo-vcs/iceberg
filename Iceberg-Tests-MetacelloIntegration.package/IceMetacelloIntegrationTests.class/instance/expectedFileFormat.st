@@ -1,4 +1,0 @@
-configuring
-expectedFileFormat
-	
-	^ self subclassResponsibility

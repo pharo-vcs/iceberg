@@ -1,3 +1,0 @@
-accessing
-defaultToolbarItemName
-	^ self defaultMenuItemName

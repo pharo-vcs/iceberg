@@ -1,4 +1,0 @@
-enumerating
-anySatisfy: aBlockClosure 
-	
-	^ false

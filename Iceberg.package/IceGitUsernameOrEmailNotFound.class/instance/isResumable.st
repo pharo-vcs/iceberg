@@ -1,4 +1,0 @@
-visiting
-isResumable
-
-	^ true

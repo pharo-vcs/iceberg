@@ -1,1 +1,0 @@
-I announce when a package has been loaded.

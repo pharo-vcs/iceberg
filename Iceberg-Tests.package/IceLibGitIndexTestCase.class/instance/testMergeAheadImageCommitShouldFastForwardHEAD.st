@@ -1,5 +1,0 @@
-tests
-testMergeAheadImageCommitShouldFastForwardHEAD
-
-	super testMergeAheadImageCommitShouldFastForwardHEAD.
-	self assertIndexIsClean.

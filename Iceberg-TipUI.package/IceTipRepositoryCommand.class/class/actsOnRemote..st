@@ -1,3 +1,0 @@
-testing
-actsOnRemote: aRemoteModel
-	^ false

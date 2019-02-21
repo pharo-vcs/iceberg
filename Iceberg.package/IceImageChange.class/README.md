@@ -1,1 +1,0 @@
-I represent a change coming from the image (in contrast to a change coming from git). I know the changed file and I can be visited to define the create a more detailed diff.

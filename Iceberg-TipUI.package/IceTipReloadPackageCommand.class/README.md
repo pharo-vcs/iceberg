@@ -1,1 +1,0 @@
-Command that reloads the code of an already loaded package, discarding all changes done in the meantime that were not committed.

@@ -1,4 +1,0 @@
-accessing
-description
-	
-	^ value description

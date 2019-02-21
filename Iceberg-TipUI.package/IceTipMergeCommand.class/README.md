@@ -1,1 +1,0 @@
-Command that opens a dialog to select a branch to merge in the current merge

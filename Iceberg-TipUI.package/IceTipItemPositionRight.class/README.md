@@ -1,1 +1,0 @@
-I place item buttons at right.

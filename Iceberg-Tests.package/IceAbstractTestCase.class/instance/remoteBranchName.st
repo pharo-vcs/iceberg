@@ -1,4 +1,0 @@
-accessing
-remoteBranchName
-	
-	^ fixture remoteBranchName
