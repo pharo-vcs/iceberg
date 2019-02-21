@@ -26,7 +26,7 @@ Class {
 	#category : 'Iceberg-Core'
 }
 
-{ #category : #accessing }
+{ #category : #'API-commits' }
 IceLocalBranch >> commit: anIceCommit [
 	
 	self subclassResponsibility
@@ -177,6 +177,17 @@ IceLocalBranch >> reducedOutgoingCommitsWhenNoRemote [
 	^ self newCommitWalk
 		maxNumber: 20;
 		commits
+]
+
+{ #category : #'API-commits' }
+IceLocalBranch >> resetToCommit: anIceGitCommit [
+	"Equivalent to a `git reset --hard` but not touching the image"
+	"1) Change the current commit of this branch
+	 2) Check it out in disk if it is current branch
+	 3) Clean index
+	It does not checkout any code in the image.
+	Instead, it should make a diff and mark differences"
+	self commit: anIceGitCommit
 ]
 
 { #category : #'API-remotes' }
