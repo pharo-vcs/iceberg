@@ -1,3 +1,3 @@
 accessing
 title
-	^ 'Merge ', super title asLowercase
+	^ 'Select branch to merge into ' , self model branchName

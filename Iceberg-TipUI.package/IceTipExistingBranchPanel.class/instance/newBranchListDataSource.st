@@ -1,6 +1,6 @@
 initialization
 newBranchListDataSource
-	^ IceTipDataSource new 
+	^ IceTipDataSource new
 		tool: self;
-		elements: self model branchModels;
-		yourself.
+		elements: self branchModels;
+		yourself

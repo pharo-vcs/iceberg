@@ -6,6 +6,7 @@ createMergeBranchTypes
 	allTypes :=  { 
 	 	(IceTipMergeBranchPanel on: self model) 
 			title: 'Local';
+			withoutHead;
 			icon: (self iconNamed: #branch);
 			yourself }, 
 	(self model remoteModels collect: [ :each | 
