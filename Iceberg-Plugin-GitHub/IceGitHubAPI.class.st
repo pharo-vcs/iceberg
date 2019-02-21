@@ -214,7 +214,7 @@ IceGitHubAPI >> handleUnauthorized: aZnResponse [
 	
 ]
 
-{ #category : #'private requesting' }
+{ #category : #initialization }
 IceGitHubAPI >> initialize [
 
 	super initialize.

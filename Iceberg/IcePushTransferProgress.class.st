@@ -23,7 +23,7 @@ IcePushTransferProgress >> block [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IcePushTransferProgress >> initialize [
 	super initialize.
 	

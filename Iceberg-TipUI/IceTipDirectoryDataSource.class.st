@@ -27,7 +27,7 @@ IceTipDirectoryDataSource >> iconFor: aDirectory [
 	^ self iconNamed: #emptyPackage
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipDirectoryDataSource >> initialize [
 
 	super initialize.

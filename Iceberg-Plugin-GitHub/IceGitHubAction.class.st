@@ -35,7 +35,7 @@ IceGitHubAction >> github [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : #initialization }
 IceGitHubAction >> initialize [
 	retries := 3
 ]

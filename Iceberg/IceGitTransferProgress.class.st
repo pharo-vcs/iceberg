@@ -25,7 +25,7 @@ IceGitTransferProgress >> block [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceGitTransferProgress >> initialize [
 	super initialize.
 	
