@@ -9,6 +9,12 @@ Class {
 	#category : 'Iceberg-TipUI-Model'
 }
 
+{ #category : #'API-commits' }
+IceTipCommitModel >> adopt [
+	
+	self entity adopt
+]
+
 { #category : #accessing }
 IceTipCommitModel >> ancestorShortId [
 	^ self entity ancestors first shortId

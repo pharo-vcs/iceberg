@@ -10,6 +10,75 @@ IceMultiplePackageRepositoryTest class >> isAbstract [
 	^ self == IceMultiplePackageRepositoryTest
 ]
 
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testAdoptCommitChangesWorkingCopyCommit [
+
+	| message commitToAdopt |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+	commitToAdopt := self repository branch commit parent.
+	commitToAdopt adopt.
+	
+	self assert: self repository workingCopy referenceCommit equals: commitToAdopt
+]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeBranchCommit [
+
+	| message commitToAdopt branchCommitBeforeAdopt |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+	branchCommitBeforeAdopt := self repository branch commit.
+	commitToAdopt := branchCommitBeforeAdopt parent.
+	commitToAdopt adopt.
+	
+	self assert: self repository branch commit equals: branchCommitBeforeAdopt 
+]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeCheckedOutCodeInImage [
+
+	| message commitToAdopt |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+	commitToAdopt := self repository branch commit parent.
+	commitToAdopt adopt.
+	
+	self assert: (self repository workingCopy environment ask includesClassNamed: 'IceGeneratedClassForTesting')
+]
+
+{ #category : #'tests-commit' }
+IceMultiplePackageRepositoryTest >> testAdoptCommitMarksPackagesAsDirty [
+
+	| message commitToAdopt |
+	message := 'Added IceGeneratedClassForTesting'.
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository commitWithMessage: message.
+
+	commitToAdopt := self repository branch commit parent.
+	commitToAdopt adopt.
+	
+	self assert: (self repository workingCopy packageNamed: self packageName1 asSymbol) isDirty
+]
+
 { #category : #'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutBranchDoesNotLeaveDetachedHead [
 
