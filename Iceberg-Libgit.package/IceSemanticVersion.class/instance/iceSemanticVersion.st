@@ -1,3 +1,0 @@
-converting
-iceSemanticVersion
-	^ self

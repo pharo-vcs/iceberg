@@ -1,4 +1,0 @@
-configuring
-shouldBeDirty
-	
-	^ false

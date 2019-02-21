@@ -1,4 +1,0 @@
-resolution
-isLeftChosen
-	
-	^ chosen = operation

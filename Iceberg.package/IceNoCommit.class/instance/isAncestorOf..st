@@ -1,4 +1,0 @@
-testing
-isAncestorOf: aCommit
-
-	^ false

@@ -1,4 +1,0 @@
-testing
-canRevertChanges
-	
-	^ iceCommit canRevertChanges

@@ -1,4 +1,0 @@
-accessing
-datetime
-	
-	^ iceCommit datetime

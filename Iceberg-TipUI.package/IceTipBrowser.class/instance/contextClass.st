@@ -1,3 +1,0 @@
-accessing
-contextClass
-	^ self subclassResponsibility

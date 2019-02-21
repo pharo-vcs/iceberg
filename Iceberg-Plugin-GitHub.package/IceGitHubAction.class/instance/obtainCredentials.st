@@ -1,3 +1,0 @@
-private
-obtainCredentials
-	^ IceGitHubAPI obtainCredentials

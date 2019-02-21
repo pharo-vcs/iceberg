@@ -1,3 +1,0 @@
-actions
-accept
-	^ self doCommit

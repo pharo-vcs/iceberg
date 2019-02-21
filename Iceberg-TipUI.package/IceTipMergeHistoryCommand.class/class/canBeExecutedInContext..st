@@ -1,3 +1,0 @@
-testing
-canBeExecutedInContext: aToolContext
-	^ aToolContext selectedCommit hasMultipleAncestors

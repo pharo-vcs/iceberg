@@ -1,1 +1,0 @@
-Command that checks out the selected tag

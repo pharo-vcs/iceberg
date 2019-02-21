@@ -1,1 +1,0 @@
-I indicate there are conflicts when I try to checkout so I can't perform the operation.

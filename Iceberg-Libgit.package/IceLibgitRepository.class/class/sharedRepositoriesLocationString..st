@@ -1,3 +1,0 @@
-settings
-sharedRepositoriesLocationString: aString
-	SharedRepositoriesLocation := aString asFileReference

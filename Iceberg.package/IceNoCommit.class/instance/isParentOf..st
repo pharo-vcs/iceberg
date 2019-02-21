@@ -1,4 +1,0 @@
-testing
-isParentOf: aCommit
-	
-	^ false

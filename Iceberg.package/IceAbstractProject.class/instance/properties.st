@@ -1,4 +1,0 @@
-accessing
-properties
-
-	^ Dictionary new

@@ -1,3 +1,0 @@
-accessing
-defaultMenuItemName
-	^ 'Merge branch'

@@ -1,4 +1,0 @@
-accessing
-rightDefinition
-	
-	^ oldNode

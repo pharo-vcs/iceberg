@@ -1,4 +1,0 @@
-loading
-beClean
-
-	isDirty := false

@@ -1,3 +1,0 @@
-API-properties
-properties
-	^ properties

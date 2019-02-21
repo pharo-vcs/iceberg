@@ -1,1 +1,0 @@
-I reprensent a non-conflict between two operations that can be solved automatically. The user can still override the automatic choice using #selectLeft and #selectRight.

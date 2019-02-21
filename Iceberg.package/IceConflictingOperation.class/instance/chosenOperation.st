@@ -1,4 +1,0 @@
-resolution
-chosenOperation
-
-	^ chosen

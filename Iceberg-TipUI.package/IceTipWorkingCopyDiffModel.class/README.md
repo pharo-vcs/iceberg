@@ -1,1 +1,0 @@
-I'm a diff model that represents a diff between the HEAD commit and the image working copy.

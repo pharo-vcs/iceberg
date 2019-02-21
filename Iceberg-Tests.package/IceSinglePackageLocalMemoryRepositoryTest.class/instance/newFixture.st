@@ -1,3 +1,0 @@
-running
-newFixture
-	^ IceSinglePackageFixture inMemory

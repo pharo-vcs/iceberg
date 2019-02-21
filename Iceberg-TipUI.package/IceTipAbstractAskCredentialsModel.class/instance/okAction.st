@@ -1,3 +1,0 @@
-actions
-okAction
-	^ self subclassResponsibility 

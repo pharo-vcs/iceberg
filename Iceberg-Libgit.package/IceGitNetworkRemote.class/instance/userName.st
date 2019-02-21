@@ -1,4 +1,0 @@
-accessing
-userName
-	^user ifNil: [ '' ]
-	

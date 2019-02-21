@@ -1,4 +1,0 @@
-accessing
-trackedBranch
-	
-	self subclassResponsibility

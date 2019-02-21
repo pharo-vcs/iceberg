@@ -1,1 +1,0 @@
-I'm a command to perform a fetch operation on selected project.

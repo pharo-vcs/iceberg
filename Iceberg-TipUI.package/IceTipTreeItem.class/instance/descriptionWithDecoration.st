@@ -1,3 +1,0 @@
-accessing
-descriptionWithDecoration
-	^ self model descriptionWithDecoration

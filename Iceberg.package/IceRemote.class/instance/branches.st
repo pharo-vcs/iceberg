@@ -1,4 +1,0 @@
-branches
-branches
-	
-	self subclassResponsibility

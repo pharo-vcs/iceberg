@@ -1,4 +1,0 @@
-accessing
-prefix
-
-	^ 'refs/remotes/'
