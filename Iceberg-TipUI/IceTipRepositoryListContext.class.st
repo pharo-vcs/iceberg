@@ -5,7 +5,7 @@ I'm to be used with project lists.
 Class {
 	#name : #IceTipRepositoryListContext,
 	#superclass : #IceTipContext,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

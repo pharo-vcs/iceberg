@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'badge'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #testing }

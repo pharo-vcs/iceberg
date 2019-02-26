@@ -33,7 +33,7 @@ Class {
 		'selectedItems',
 		'onSelectionChangedBlock'
 	],
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #private }

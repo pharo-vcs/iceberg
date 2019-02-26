@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipVersionHistoryContext,
 	#superclass : #IceTipHistoryContext,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

@@ -5,7 +5,7 @@ I open a push view window.
 Class {
 	#name : #IceTipPushCommand,
 	#superclass : #IceTipRemoteActionCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

@@ -13,7 +13,7 @@ Class {
 		'accepted',
 		'remoteHostname'
 	],
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }

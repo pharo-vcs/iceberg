@@ -6,7 +6,7 @@ Class {
 	#superclass : #IceTipEntityModel,
 	#traits : 'TIceCopyCommitId + TWithBranchModel',
 	#classTraits : 'TIceCopyCommitId classTrait + TWithBranchModel classTrait',
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

@@ -15,7 +15,7 @@ Class {
 		'defaultFormat',
 		'messagePanel'
 	],
-	#category : 'Iceberg-TipUI-View-Project'
+	#category : #'Iceberg-TipUI-View-Project'
 }
 
 { #category : #specs }

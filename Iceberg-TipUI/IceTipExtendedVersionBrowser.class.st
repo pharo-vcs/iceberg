@@ -4,7 +4,7 @@ DEPRECATED: Replace it with its ancestor.
 Class {
 	#name : #IceTipExtendedVersionBrowser,
 	#superclass : #IceTipVersionHistoryBrowser,
-	#category : 'Iceberg-TipUI-View-Versions'
+	#category : #'Iceberg-TipUI-View-Versions'
 }
 
 { #category : #deprecation }

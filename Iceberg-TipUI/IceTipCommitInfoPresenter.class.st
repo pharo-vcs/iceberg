@@ -20,7 +20,7 @@ Class {
 		'headTab',
 		'ancestorTab'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

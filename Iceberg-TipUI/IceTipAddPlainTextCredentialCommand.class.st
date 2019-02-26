@@ -4,7 +4,7 @@ I create a new plaintext credential on the credential store.
 Class {
 	#name : #IceTipAddPlainTextCredentialCommand,
 	#superclass : #IceTipAbstractCredentialStoreCommand,
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #activation }

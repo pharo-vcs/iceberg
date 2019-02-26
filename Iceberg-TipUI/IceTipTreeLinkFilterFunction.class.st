@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'textField'
 	],
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #private }

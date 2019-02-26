@@ -12,7 +12,7 @@ Class {
 		'help',
 		'position'
 	],
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

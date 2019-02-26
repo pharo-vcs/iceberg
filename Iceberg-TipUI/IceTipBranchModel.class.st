@@ -4,7 +4,7 @@ I expose data of a branch.
 Class {
 	#name : #IceTipBranchModel,
 	#superclass : #IceTipCommitishModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #private }

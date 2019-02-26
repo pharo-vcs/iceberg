@@ -4,7 +4,7 @@ Command that opens the settings on a repository
 Class {
 	#name : #IceTipSettingsCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

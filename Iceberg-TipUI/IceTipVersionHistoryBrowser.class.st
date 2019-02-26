@@ -14,7 +14,7 @@ Class {
 		'emptyTab',
 		'diffTab'
 	],
-	#category : 'Iceberg-TipUI-View-Versions'
+	#category : #'Iceberg-TipUI-View-Versions'
 }
 
 { #category : #specs }

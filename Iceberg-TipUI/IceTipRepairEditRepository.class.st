@@ -7,7 +7,7 @@ I'm active when:
 Class {
 	#name : #IceTipRepairEditRepository,
 	#superclass : #IceTipRepairAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

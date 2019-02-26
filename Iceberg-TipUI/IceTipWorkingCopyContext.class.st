@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'packageModel'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

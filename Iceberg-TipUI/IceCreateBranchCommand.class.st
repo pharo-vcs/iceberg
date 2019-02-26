@@ -5,7 +5,7 @@ this is usefull in the case of commiting changes in unsync repositories (so you 
 Class {
 	#name : #IceCreateBranchCommand,
 	#superclass : #IceRepositoryCommand,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #execute }
