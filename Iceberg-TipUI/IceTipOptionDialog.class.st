@@ -179,8 +179,8 @@ IceTipOptionDialog >> replacePanelWith: aType [
 
 { #category : #private }
 IceTipOptionDialog >> selectFirst [
-	typeList widget selectRowIndex: 1.
-	self basicSelectionChanged: self allTypes first 	
+	typeList widget selectIndex: 1.
+	self basicSelectionChanged: self allTypes first
 ]
 
 { #category : #accessing }
@@ -190,9 +190,12 @@ IceTipOptionDialog >> selectedType [
 
 { #category : #private }
 IceTipOptionDialog >> selectionChanged: ann [
-	self basicSelectionChanged: (ann newSelectedRowIndexes
-		ifNotEmpty: [ :indexes |	self typeList widget dataSource realElementAt: indexes first ]
-		ifEmpty: [ nil ])
+	self
+		basicSelectionChanged:
+			(ann newSelectedIndexes
+				ifNotEmpty:
+					[ :indexes | self typeList widget dataSource realElementAt: indexes first ]
+				ifEmpty: [ nil ])
 ]
 
 { #category : #'accessing ui' }
