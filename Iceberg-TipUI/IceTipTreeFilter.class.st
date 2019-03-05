@@ -7,7 +7,7 @@ To work, the elements of the tree I use need to be instances of the IceTipTreeNo
 Class {
 	#name : #IceTipTreeFilter,
 	#superclass : #IceTipFilter,
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #execution }

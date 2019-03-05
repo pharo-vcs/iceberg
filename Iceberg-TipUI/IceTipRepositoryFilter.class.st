@@ -6,7 +6,7 @@ currently I'm used to add filters in IceTipRepositoriesBrowser.
 Class {
 	#name : #IceTipRepositoryFilter,
 	#superclass : #IceTipFilter,
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #testing }

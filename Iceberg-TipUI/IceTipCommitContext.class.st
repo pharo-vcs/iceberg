@@ -1,5 +1,5 @@
 Class {
 	#name : #IceTipCommitContext,
 	#superclass : #IceTipContext,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }

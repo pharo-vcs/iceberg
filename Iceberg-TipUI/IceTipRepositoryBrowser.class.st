@@ -9,7 +9,7 @@ Class {
 		'sidebarTree',
 		'historyPanel'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

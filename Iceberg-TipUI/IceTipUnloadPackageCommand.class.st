@@ -4,7 +4,7 @@ Command to unload a package from the system, keeping it in the repository
 Class {
 	#name : #IceTipUnloadPackageCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

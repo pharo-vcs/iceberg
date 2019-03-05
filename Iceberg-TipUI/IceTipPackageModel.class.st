@@ -4,7 +4,7 @@ I'm a model for IcePackage entries.
 Class {
 	#name : #IceTipPackageModel,
 	#superclass : #IceTipEntityModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #actions }

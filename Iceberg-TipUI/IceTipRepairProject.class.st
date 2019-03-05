@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipRepairProject,
 	#superclass : #IceTipRepairAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

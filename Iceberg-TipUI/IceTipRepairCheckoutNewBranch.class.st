@@ -9,7 +9,7 @@ I'm active when:
 Class {
 	#name : #IceTipRepairCheckoutNewBranch,
 	#superclass : #IceTipRepairAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

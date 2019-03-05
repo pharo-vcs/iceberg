@@ -6,7 +6,7 @@ are wrapped in FTBasicItem.
 Class {
 	#name : #IceTipTreeSearchStrategy,
 	#superclass : #FTVisibleItemsStrategy,
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }

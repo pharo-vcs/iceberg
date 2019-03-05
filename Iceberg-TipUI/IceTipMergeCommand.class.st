@@ -4,7 +4,7 @@ Command that opens a dialog to select a branch to merge in the current merge
 Class {
 	#name : #IceTipMergeCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

@@ -4,7 +4,7 @@ I open a the commit window, with all latest changes.
 Class {
 	#name : #IceTipCommitCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

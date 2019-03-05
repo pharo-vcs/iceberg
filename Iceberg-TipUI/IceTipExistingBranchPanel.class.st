@@ -10,7 +10,7 @@ Class {
 		'title',
 		'icon'
 	],
-	#category : 'Iceberg-TipUI-View-Branch'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #specs }

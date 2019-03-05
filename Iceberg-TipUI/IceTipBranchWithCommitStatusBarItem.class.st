@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #factory }

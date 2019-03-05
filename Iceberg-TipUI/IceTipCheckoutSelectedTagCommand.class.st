@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'tagModel'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #testing }

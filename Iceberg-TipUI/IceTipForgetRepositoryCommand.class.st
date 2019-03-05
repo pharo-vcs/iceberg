@@ -5,7 +5,7 @@ I also add the possibility of remove the repository from file system.
 Class {
 	#name : #IceTipForgetRepositoryCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

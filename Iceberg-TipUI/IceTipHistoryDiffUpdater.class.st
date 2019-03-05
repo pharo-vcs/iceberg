@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'tab'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #'instance creation' }

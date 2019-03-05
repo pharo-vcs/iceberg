@@ -14,7 +14,7 @@ Class {
 		'changeList',
 		'diffPanel'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

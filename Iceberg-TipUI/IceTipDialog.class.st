@@ -9,7 +9,7 @@ Class {
 		'acceptButton',
 		'cancelButton'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #actions }

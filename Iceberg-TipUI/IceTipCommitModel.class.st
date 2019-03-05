@@ -6,7 +6,7 @@ Class {
 	#superclass : #IceTipCommitishModel,
 	#traits : 'TIceCopyCommitId',
 	#classTraits : 'TIceCopyCommitId classTrait',
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #'API-commits' }

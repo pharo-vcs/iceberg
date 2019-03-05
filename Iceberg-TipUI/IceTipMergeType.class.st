@@ -10,7 +10,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'Iceberg-TipUI-View-Branch'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #accessing }

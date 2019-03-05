@@ -4,7 +4,7 @@ Command that reloads the code of an already loaded package, discarding all chang
 Class {
 	#name : #IceTipReloadPackageCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

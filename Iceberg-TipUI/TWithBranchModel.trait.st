@@ -1,6 +1,6 @@
 Trait {
 	#name : #TWithBranchModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #branches }

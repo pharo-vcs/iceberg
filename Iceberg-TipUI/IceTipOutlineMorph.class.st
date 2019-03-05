@@ -8,7 +8,7 @@ I'm a morph to display outlines (with outline datasources).
 Class {
 	#name : #IceTipOutlineMorph,
 	#superclass : #FTTableMorph,
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }

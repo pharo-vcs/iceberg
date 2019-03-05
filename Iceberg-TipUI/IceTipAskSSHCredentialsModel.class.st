@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipAskSSHCredentialsModel,
 	#superclass : #IceTipEditSSHCredentialsModel,
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }

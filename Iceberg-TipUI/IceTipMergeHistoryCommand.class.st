@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'commitModel'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

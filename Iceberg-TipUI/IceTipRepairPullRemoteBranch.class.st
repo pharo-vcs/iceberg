@@ -7,7 +7,7 @@ matches if:
 Class {
 	#name : #IceTipRepairPullRemoteBranch,
 	#superclass : #IceTipRepairAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ I perform a push.
 Class {
 	#name : #IceTipPushAction,
 	#superclass : #IceTipAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #executing }
