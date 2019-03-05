@@ -4,7 +4,7 @@ Command that opens a dialog to add a remote to a repository.
 Class {
 	#name : #IceTipAddRemoteCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

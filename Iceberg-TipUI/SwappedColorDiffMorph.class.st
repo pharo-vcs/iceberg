@@ -5,7 +5,7 @@ I swap colors for the original diff morph, so the additions are green and remova
 Class {
 	#name : #SwappedColorDiffMorph,
 	#superclass : #DiffMorph,
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #'accessing colors' }

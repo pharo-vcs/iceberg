@@ -11,7 +11,7 @@ Class {
 		'minor',
 		'patch'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #'instance creation' }

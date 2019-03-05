@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'branchName'
 	],
-	#category : 'Iceberg-Libgit-Exceptions'
+	#category : #'Iceberg-Libgit-Exceptions'
 }
 
 { #category : #accessing }

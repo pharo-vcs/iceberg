@@ -4,7 +4,10 @@ I'm a base model to present diffs.
 Class {
 	#name : #IceTipDiffModel,
 	#superclass : #IceTipEntityModel,
-	#category : 'Iceberg-TipUI-Model'
+	#instVars : [
+		'diff'
+	],
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #'instance creation' }

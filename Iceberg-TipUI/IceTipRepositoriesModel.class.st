@@ -4,7 +4,10 @@ I'm a model to provide access to all repositories registered.
 Class {
 	#name : #IceTipRepositoriesModel,
 	#superclass : #IceTipModel,
-	#category : 'Iceberg-TipUI-Model'
+	#instVars : [
+		'projects'
+	],
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

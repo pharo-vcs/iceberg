@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'textField'
 	],
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #private }
@@ -34,7 +34,7 @@ IceTipLinkFilterFunction >> textField [
 { #category : #accessing }
 IceTipLinkFilterFunction >> textField: aTextPresenter [
 	textField := aTextPresenter.
-	textField whenTextChanged: [ :ann | self textUpdated: ann ]
+	textField whenTextChangedDo: [ :ann | self textUpdated: ann ]
 ]
 
 { #category : #accessing }

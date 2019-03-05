@@ -7,7 +7,7 @@ I reuse IceTipMetacelloInstalllBaselineDefaultCommand and IceTipMetacelloInstall
 Class {
 	#name : #IceTipMetacelloRepositoryInstallBaselineCommand,
 	#superclass : #IceTipCommand,
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
 
 { #category : #accessing }

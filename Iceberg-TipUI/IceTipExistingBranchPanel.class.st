@@ -10,7 +10,7 @@ Class {
 		'title',
 		'icon'
 	],
-	#category : 'Iceberg-TipUI-View-Branch'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #specs }
@@ -89,10 +89,10 @@ IceTipExistingBranchPanel >> initializeWidgets [
 
 { #category : #initialization }
 IceTipExistingBranchPanel >> newBranchListDataSource [
-	^ IceTipDataSource new
+	^ IceTipDataSource new 
 		tool: self;
-		elements: self branchModels;
-		yourself
+		elements: self model branchModels;
+		yourself.
 ]
 
 { #category : #accessing }

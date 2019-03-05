@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'patcher'
 	],
-	#category : 'Iceberg-Libgit-Commit'
+	#category : #'Iceberg-Libgit-Commit'
 }
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #SwappedColorDiffPresenter,
 	#superclass : #DiffPresenter,
-	#category : 'Iceberg-TipUI-Spec'
+	#category : #'Iceberg-TipUI-Spec'
 }
 
 { #category : #specs }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'branchModel'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #testing }

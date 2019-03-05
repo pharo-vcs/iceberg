@@ -5,7 +5,7 @@ Repositories needs to have a valid url (one that can be parsed by IceRemote) and
 Class {
 	#name : #IceTipGitRepositoryPanel,
 	#superclass : #IceTipRepositoryTypePanel,
-	#category : 'Iceberg-TipUI-View-RepositoryType'
+	#category : #'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }
@@ -50,13 +50,12 @@ IceTipGitRepositoryPanel >> extractProjectName: aString [
 IceTipGitRepositoryPanel >> initializeWidgets [
 	super initializeWidgets.
 	self initializeRemoteURL.
-	self remoteInputText ghostText: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
-	
-	self remoteInputText 	whenTextChanged: [ :text |
-		self projectLocation appendPath: (self extractProjectName: text) ].
-	
-	self focusOrder 
-		add: self remoteInputText	
+	self remoteInputText
+		placeholder: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
+	self remoteInputText
+		whenTextChanged:
+			[ :text | self projectLocation appendPath: (self extractProjectName: text) ].
+	self focusOrder add: self remoteInputText
 ]
 
 { #category : #accessing }

@@ -20,7 +20,7 @@ Class {
 		'minorButton',
 		'patchButton'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

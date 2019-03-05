@@ -14,7 +14,7 @@ Class {
 		'model',
 		'toolbar'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #initialization }

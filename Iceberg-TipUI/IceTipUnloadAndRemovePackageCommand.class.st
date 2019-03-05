@@ -9,7 +9,7 @@ Right now this is only shown for loaded packages.
 Class {
 	#name : #IceTipUnloadAndRemovePackageCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

@@ -4,7 +4,7 @@ I implement display mode ""icons and labels""
 Class {
 	#name : #IceTipToolbarDisplayModeIconAndLabel,
 	#superclass : #IceTipToolbarDisplayMode,
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #configuring }

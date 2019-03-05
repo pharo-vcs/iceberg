@@ -5,7 +5,7 @@ I have items inside, but the items itself can be anything you want (text, icons,
 Class {
 	#name : #IceTipStatusBar,
 	#superclass : #IceTipItemBar,
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

@@ -19,7 +19,7 @@ Class {
 		'organisation',
 		'projectName'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #'instance creation' }

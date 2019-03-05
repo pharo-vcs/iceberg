@@ -4,7 +4,7 @@ Command that browses the selected package as it is loaded in the image.
 Class {
 	#name : #IceTipBrowsePackageCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

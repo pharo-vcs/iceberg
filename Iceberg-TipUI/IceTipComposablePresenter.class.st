@@ -4,7 +4,7 @@ I'm a generic presenter of IceTip UI elements.
 Class {
 	#name : #IceTipComposablePresenter,
 	#superclass : #ComposablePresenter,
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }

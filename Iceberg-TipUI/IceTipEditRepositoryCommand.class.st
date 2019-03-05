@@ -4,7 +4,7 @@ Command that opens a dialog to edit a repository meta-data
 Class {
 	#name : #IceTipEditRepositoryCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

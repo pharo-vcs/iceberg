@@ -14,7 +14,7 @@ Class {
 		'changeList',
 		'diffPanel'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }
@@ -143,6 +143,7 @@ IceTipDiffPanel >> leftLabel: aString [
 
 { #category : #accessing }
 IceTipDiffPanel >> model [
+
 	^ model
 ]
 
@@ -205,16 +206,13 @@ IceTipDiffPanel >> rightLabel: aString [
 { #category : #'event handling' }
 IceTipDiffPanel >> selectionChanged: ann [
 	| element |
-	(ann newSelectedRowIndexes reject: [ :each | each = 0 ])
+	(ann newSelectedIndexes reject: [ :each | each = 0 ])
 		ifNotEmpty: [ :indexes | 
 			element := changeList widget dataSource realElementAt: indexes first.
-			self 
-				diffContentsLeft:  element value rightContents
-				right: element value leftContents ] 
-		ifEmpty: [ 
-			self resetDiffContents ].
-	
-	
+			self
+				diffContentsLeft: element value rightContents
+				right: element value leftContents ]
+		ifEmpty: [ self resetDiffContents ]
 ]
 
 { #category : #initialization }

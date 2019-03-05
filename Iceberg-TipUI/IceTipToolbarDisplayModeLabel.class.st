@@ -4,7 +4,7 @@ I implement display mode ""just labels""
 Class {
 	#name : #IceTipToolbarDisplayModeLabel,
 	#superclass : #IceTipToolbarDisplayMode,
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #configuring }

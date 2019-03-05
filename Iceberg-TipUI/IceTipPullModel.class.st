@@ -4,7 +4,7 @@ I'm a model to present pull commits and operations.
 Class {
 	#name : #IceTipPullModel,
 	#superclass : #IceTipRemoteActionModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

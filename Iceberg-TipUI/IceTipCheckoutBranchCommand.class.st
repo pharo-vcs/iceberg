@@ -4,7 +4,7 @@ Command that opens a dialog to checkout a (new or already existing) branch.
 Class {
 	#name : #IceTipCheckoutBranchCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

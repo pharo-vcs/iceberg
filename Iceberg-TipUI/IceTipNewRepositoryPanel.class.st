@@ -13,7 +13,7 @@ Class {
 		'subdirectoryLabel',
 		'subdirectoryInputText'
 	],
-	#category : 'Iceberg-TipUI-View-RepositoryType'
+	#category : #'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }
@@ -56,10 +56,9 @@ IceTipNewRepositoryPanel class >> title [
 { #category : #initialization }
 IceTipNewRepositoryPanel >> initializeSourceDirectory [
 	subdirectoryLabel := self newLabel label: 'Source directory'.
-	subdirectoryInputText := self newTextInput 
-		ghostText: 'e.g., src';
+	subdirectoryInputText := self newTextInput
+		placeholder: 'e.g., src';
 		autoAccept: true.
-		
 	subdirectoryInputText text: self defaultSubdirectory
 ]
 
@@ -67,16 +66,13 @@ IceTipNewRepositoryPanel >> initializeSourceDirectory [
 IceTipNewRepositoryPanel >> initializeWidgets [
 	super initializeWidgets.
 	self initializeSourceDirectory.
-	
 	projectNameLabel := self newLabel label: 'Project name'.
-	projectNameInputText := self newTextInput 
-		ghostText: 'e.g., MyProject';
+	projectNameInputText := self newTextInput
+		placeholder: 'e.g., MyProject';
 		autoAccept: true.
-	
-	projectNameInputText 	whenTextChanged: [ :text | 
-		projectLocation appendPath: text ].
-	
-	self focusOrder 
+	projectNameInputText
+		whenTextChanged: [ :text | projectLocation appendPath: text ].
+	self focusOrder
 		add: self projectNameInputText;
 		add: self projectLocation;
 		add: self subdirectoryInputText;

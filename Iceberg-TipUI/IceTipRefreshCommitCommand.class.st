@@ -5,9 +5,10 @@ Class {
 	#name : #IceTipRefreshCommitCommand,
 	#superclass : #IceTipCommand,
 	#instVars : [
+		'tool',
 		'announcer'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

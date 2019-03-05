@@ -22,6 +22,9 @@ IMPORTANT IMPLEMENTATION NOTE. For optimization purposes, a commit caches the na
 Class {
 	#name : #IceCommit,
 	#superclass : #IceCommitish,
+	#instVars : [
+		'packageCache'
+	],
 	#category : 'Iceberg-Core'
 }
 

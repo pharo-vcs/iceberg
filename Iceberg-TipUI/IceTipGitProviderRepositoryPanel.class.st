@@ -9,7 +9,7 @@ Class {
 		'protocolDropList',
 		'protocolLabel'
 	],
-	#category : 'Iceberg-TipUI-View-RepositoryType'
+	#category : #'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }
@@ -62,26 +62,22 @@ IceTipGitProviderRepositoryPanel >> initializeWidgets [
 	userNameLabel := self newLabel label: 'Owner name'.
 	userNameInputText := self newTextInput
 		autoAccept: true;
-		ghostText: 'e.g., JohnDoe'.
+		placeholder: 'e.g., JohnDoe'.
 	projectNameLabel := self newLabel label: 'Project name'.
 	projectNameInputText := self newTextInput
 		autoAccept: true;
-		ghostText: 'e.g., MyProject'.
-
+		placeholder: 'e.g., MyProject'.
 	protocolLabel := self newLabel label: 'Protocol'.
 	protocolDropList := self newDropList.
-	
-	userNameInputText 	whenTextChanged: [ :text | 
-		projectLocation appendPath: self projectAsPathToAppend ].
-	projectNameInputText whenTextChanged: [ :text |
-		projectLocation appendPath: self projectAsPathToAppend ].
-
+	userNameInputText
+		whenTextChanged: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
+	projectNameInputText
+		whenTextChanged: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
 	protocolDropList
 		items: IceUrlProtocol allSubclasses;
 		displayBlock: [ :each | each description ];
 		setSelectedItem: IceUrlProtocol defaultProtocol.
-	
-	self focusOrder 
+	self focusOrder
 		add: self userNameInputText;
 		add: self projectNameInputText;
 		add: self projectLocation;

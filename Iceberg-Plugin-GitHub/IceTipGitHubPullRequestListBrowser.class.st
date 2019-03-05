@@ -21,7 +21,7 @@ Class {
 		'pullRequests',
 		'details'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }

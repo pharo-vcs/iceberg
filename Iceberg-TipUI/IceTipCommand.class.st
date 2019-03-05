@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'repositoryModel'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

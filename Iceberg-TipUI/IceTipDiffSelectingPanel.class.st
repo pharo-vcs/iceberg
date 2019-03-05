@@ -12,7 +12,7 @@ also #elements answer should be a collection of elements that also understand el
 Class {
 	#name : #IceTipDiffSelectingPanel,
 	#superclass : #IceTipDiffPanel,
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #private }
@@ -28,6 +28,7 @@ IceTipDiffSelectingPanel >> initialize [
 
 { #category : #'private factory' }
 IceTipDiffSelectingPanel >> newChangeTreeDataSource [
+
 	^ IceTipTreeSelectingDataSource new
 		tool: self;
 		rootForItems: self model treeRoots;

@@ -2,6 +2,7 @@ Class {
 	#name : #IceMemoryCommitWalk,
 	#superclass : #IceAbstractCommitWalk,
 	#instVars : [
+		'startingPoint',
 		'queue'
 	],
 	#category : 'Iceberg-Memory'

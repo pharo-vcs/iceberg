@@ -14,7 +14,7 @@ Class {
 		'headBranchName',
 		'body'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #accessing }

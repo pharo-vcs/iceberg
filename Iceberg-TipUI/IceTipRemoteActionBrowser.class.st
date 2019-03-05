@@ -4,23 +4,18 @@ Class {
 	#instVars : [
 		'remotePanel'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }
 IceTipRemoteActionBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-				newRow: #remotePanel height: self inputTextHeight;
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							add: #commitsPanel withSpec: #panelSpec;
-							add: #actionPanel height: self iceActionPanelHeight ] ] ]
+	^ SpecBoxLayout newVertical 
+		add: #remotePanel withConstraints: [ :c | c height: self inputTextHeight ];
+		add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
+		add: #actionPanel withConstraints: [ :c | c height: self iceActionPanelHeight ];
+		yourself
 ]
 
 { #category : #'instance creation' }

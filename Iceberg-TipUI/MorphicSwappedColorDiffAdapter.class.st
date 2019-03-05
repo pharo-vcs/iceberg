@@ -1,7 +1,7 @@
 Class {
 	#name : #MorphicSwappedColorDiffAdapter,
 	#superclass : #MorphicDiffAdapter,
-	#category : 'Iceberg-TipUI-Spec'
+	#category : #'Iceberg-TipUI-Spec'
 }
 
 { #category : #factory }

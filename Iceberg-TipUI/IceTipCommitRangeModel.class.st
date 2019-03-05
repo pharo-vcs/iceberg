@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'toCommit'
 	],
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

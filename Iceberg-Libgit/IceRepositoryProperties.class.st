@@ -14,7 +14,7 @@ Class {
 		'repository',
 		'commitish'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #'instance creation' }

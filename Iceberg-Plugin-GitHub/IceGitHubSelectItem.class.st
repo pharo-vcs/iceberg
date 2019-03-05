@@ -8,7 +8,7 @@ Class {
 		'list',
 		'item'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #'instance creation' }

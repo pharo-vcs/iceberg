@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'path'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #testing }

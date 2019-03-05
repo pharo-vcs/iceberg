@@ -33,6 +33,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'parent',
+		'cachedChanges',
 		'childrenDictionary',
 		'value'
 	],

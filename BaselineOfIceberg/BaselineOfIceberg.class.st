@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfIceberg
+	#category : 'BaselineOfIceberg'
 }
 
 { #category : #baseline }
