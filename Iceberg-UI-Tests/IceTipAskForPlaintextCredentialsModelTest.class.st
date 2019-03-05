@@ -64,23 +64,23 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptEnabledAndDisabled [
 	dialog openNonModal.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	self assert: dialog window toolbar okButton isEnabled.
+	self assert: dialog okButton isEnabled.
 	dialog passwordInput text: ''.
 	dialog usernameInput text: 'bbb'.
-	self deny: dialog window toolbar okButton isEnabled.
+	self deny: dialog okButton isEnabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: ''.
-	self deny: dialog window toolbar okButton enabled.
+	self deny: dialog okButton isEnabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	self assert: dialog window toolbar okButton enabled
+	self assert: dialog okButton isEnabled
 ]
 
 { #category : #tests }
 IceTipAskForPlaintextCredentialsModelTest >> testAcceptIsBlockedInTheBeginning [
 	dialog remoteHostname: 'github.com'.
 	dialog openNonModal.
-	self deny: dialog window toolbar okButton isEnabled
+	self deny: dialog okButton isEnabled
 ]
 
 { #category : #'tests - storing' }
