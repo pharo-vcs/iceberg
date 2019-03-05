@@ -55,6 +55,8 @@ IceRingWorkingCopyChangerVisitor >> visitAddition: anIceAddition [
 IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [ 
 	
 	| package |
+	anIceClassDefinition isMeta ifTrue: [ ^ self ].
+	
 	package := workingCopy packages detect: [ :icePackage | 
 		anIceClassDefinition asMCDefinition category beginsWith: icePackage name ].
 	workingCopy
