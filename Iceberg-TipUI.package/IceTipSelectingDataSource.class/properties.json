@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "CyrilFerlicot 6/11/2018 15:23",
+	"commentStamp" : "",
 	"super" : "IceTipDataSource",
 	"category" : "Iceberg-TipUI-View-DataSource",
 	"classinstvars" : [ ],

@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "IceTipDialog",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],

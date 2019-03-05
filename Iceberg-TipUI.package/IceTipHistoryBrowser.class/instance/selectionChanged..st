@@ -1,6 +1,8 @@
 event handling
 selectionChanged: ann
-	
-	commitInfoTabs selectedModel: (ann newSelectedRowIndexes 
-		ifNotEmpty: [ :indexes | self commitList widget dataSource elementAt: indexes first ] 
-		ifEmpty: [ nil ])
+	commitInfoTabs
+		selectedModel:
+			(ann newSelectedIndexes
+				ifNotEmpty:
+					[ :indexes | self commitList widget dataSource elementAt: indexes first ]
+				ifEmpty: [ nil ])

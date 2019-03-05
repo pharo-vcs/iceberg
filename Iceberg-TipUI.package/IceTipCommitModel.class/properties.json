@@ -3,7 +3,7 @@
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "IceTipCommitModel",
-	"commentStamp" : "EstebanLorenzano 5/30/2018 14:43",
+	"commentStamp" : "",
 	"super" : "IceTipCommitishModel",
 	"traitcomposition" : "TIceCopyCommitId",
 	"type" : "normal",

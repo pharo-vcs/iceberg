@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "ComposablePresenter",
 	"category" : "Iceberg-TipUI-View",
 	"classinstvars" : [ ],

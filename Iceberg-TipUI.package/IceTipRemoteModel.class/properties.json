@@ -3,7 +3,7 @@
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "IceTipRemoteModel",
-	"commentStamp" : "EstebanLorenzano 5/30/2018 14:33",
+	"commentStamp" : "",
 	"super" : "IceTipEntityModel",
 	"traitcomposition" : "TWithBranchModel",
 	"type" : "normal",

@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "EstebanLorenzano 3/6/2018 11:04",
+	"commentStamp" : "",
 	"super" : "PluggableButtonMorph",
 	"category" : "Iceberg-TipUI-Spec-ItemBar",
 	"classinstvars" : [ ],
