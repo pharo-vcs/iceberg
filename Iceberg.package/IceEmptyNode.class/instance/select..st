@@ -1,4 +1,0 @@
-enumerating
-select: aBlockClosure 
-	
-	^ self

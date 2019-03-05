@@ -1,3 +1,0 @@
-morphic-compatibility
-contextClass
-	self subclassResponsibility

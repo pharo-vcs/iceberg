@@ -1,1 +1,0 @@
-I'm a generic model for Iceberg entities (tipically, repositories, commits, packages, etc., etc., etc.) 

@@ -1,1 +1,0 @@
-I'm a spec model to present a detailed view of a Pull Request.

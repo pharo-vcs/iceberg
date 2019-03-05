@@ -1,3 +1,0 @@
-accessing
-credentials
-	^ self subclassResponsibility 

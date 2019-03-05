@@ -1,1 +1,0 @@
-I remove a credential from the credential store.

@@ -1,1 +1,0 @@
-Command that opens a window showing the history of the selected merged branch.

@@ -1,3 +1,0 @@
-initialization
-putFocusOrder
-	^ self subclassResponsibility 

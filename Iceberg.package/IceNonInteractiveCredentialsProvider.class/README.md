@@ -1,1 +1,0 @@
-A credentials provider that retrieves defaults or throws exceptions (but do not interacts with the user)

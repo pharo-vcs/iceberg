@@ -1,1 +1,0 @@
-I'm a simple action bar to be used as footer of certain panels (see IceTipCommentPanel as example)

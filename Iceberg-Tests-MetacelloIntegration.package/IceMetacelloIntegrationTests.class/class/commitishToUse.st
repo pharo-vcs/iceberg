@@ -1,4 +1,0 @@
-testing
-commitishToUse
-
-	^ CommitishToUse ifNil: [ '' ]

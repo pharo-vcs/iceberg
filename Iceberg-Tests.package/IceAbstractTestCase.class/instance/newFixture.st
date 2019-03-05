@@ -1,4 +1,0 @@
-running
-newFixture
-
-	self subclassResponsibility

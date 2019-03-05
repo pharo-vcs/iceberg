@@ -1,1 +1,0 @@
-Abstract class representing commands to be applied on top of packages.

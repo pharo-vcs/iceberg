@@ -1,3 +1,0 @@
-accessing
-refreshCommits
-	commitsPanel refresh

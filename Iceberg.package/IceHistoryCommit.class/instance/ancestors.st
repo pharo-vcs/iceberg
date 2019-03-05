@@ -1,4 +1,0 @@
-accessing
-ancestors
-	
-	^ iceCommit ancestorIds

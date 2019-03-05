@@ -1,4 +1,0 @@
-API-properties
-repositoryProperties
-	
-	^ properties

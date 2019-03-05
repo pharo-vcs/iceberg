@@ -1,4 +1,0 @@
-testing
-readOnlyVersion
-
-	^ self

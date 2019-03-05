@@ -1,3 +1,0 @@
-accessing
-beForMerge
-	self commitInfoTabs beForMerge

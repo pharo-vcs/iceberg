@@ -1,4 +1,0 @@
-initialization
-setModelBeforeInitialization: aDomainObject
-
-	self exception: aDomainObject

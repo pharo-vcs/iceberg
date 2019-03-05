@@ -1,1 +1,0 @@
-I'm a panel to peform the checkout of an existing branch.

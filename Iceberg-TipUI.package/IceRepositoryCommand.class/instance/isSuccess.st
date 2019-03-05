@@ -1,3 +1,0 @@
-testing
-isSuccess
-	^ success
