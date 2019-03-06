@@ -150,4 +150,4 @@ Metacello new
 
 ## 5 minutes tutorial
 
-Check the 5 minutes tutorial in our wiki, or have a look at the videos [https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo].
+Check the 5 minutes tutorial in our wiki, or have a look at the videos [https://github.com/pharo-vcs/iceberg/wiki/Tutorial].
