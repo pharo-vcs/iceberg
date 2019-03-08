@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'item'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ I represent the group in the menu that holds the Github Plugin options
 Class {
 	#name : #IceGitHubMenuGroup,
 	#superclass : #CmdMenuGroup,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }

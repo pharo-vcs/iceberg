@@ -4,7 +4,7 @@ I'm an action to create a new pull request.
 Class {
 	#name : #IceGitHubNewPullRequestAction,
 	#superclass : #IceGitHubAction,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #private }

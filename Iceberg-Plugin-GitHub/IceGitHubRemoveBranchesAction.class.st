@@ -8,7 +8,7 @@ Class {
 		'branches',
 		'branchesByName'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #execute }
