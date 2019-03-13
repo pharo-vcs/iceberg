@@ -7,6 +7,7 @@ migratePackage: packageName commit: commit
 	
 	mcVersion := (commit versionFor: packageName) mcVersion.
 	mcVersion := self ensureMCVersionWithClassOrganisation: mcVersion.
+	mcVersion := self ensureMCClassOrganisationHasCorrectStructure: mcVersion.
 	self writerClass 
 		forInternalStoreFileOut: mcVersion 
 		on: repository.
