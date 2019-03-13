@@ -1,3 +1,0 @@
-accessing
-removeFromRepositoryCheckbox: anObject
-	removeFromRepositoryCheckbox := anObject

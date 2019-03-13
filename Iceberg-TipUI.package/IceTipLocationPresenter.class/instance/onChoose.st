@@ -1,3 +1,0 @@
-hook
-onChoose
-	^ chooseBlock

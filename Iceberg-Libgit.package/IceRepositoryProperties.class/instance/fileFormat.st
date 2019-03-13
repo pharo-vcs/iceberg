@@ -1,3 +1,0 @@
-accessing
-fileFormat
-	^ self writerClass

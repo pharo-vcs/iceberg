@@ -1,5 +1,0 @@
-tests
-testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage
-
-	super testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage.
-	self assertIndexIsClean.

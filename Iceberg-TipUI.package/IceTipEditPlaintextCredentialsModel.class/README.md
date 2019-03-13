@@ -1,1 +1,0 @@
-I implement the dialog to edit plaintext credentials.

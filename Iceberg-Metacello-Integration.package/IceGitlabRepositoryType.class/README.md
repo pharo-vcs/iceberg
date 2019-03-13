@@ -1,1 +1,0 @@
-I resolve Gilab repositories

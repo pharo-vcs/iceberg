@@ -1,4 +1,0 @@
-display
-description
-	
-	^ 'Nothing loaded'

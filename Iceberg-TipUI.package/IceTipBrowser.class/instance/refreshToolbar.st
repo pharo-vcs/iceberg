@@ -1,3 +1,0 @@
-accessing
-refreshToolbar
-	toolbar refresh

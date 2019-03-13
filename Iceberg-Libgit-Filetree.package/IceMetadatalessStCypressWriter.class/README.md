@@ -1,1 +1,0 @@
-I can write filetree metadataless versions of a snapshot.

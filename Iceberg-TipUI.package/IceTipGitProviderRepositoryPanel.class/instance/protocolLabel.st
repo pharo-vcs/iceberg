@@ -1,3 +1,0 @@
-accessing
-protocolLabel
-	^ protocolLabel

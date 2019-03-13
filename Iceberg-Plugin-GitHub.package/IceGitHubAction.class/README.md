@@ -1,1 +1,0 @@
-I represent a common behavior for the actions of the GithubPlugin

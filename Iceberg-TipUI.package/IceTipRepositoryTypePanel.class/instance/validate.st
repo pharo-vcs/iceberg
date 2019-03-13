@@ -1,3 +1,0 @@
-accessing
-validate
-	^ self subclassResponsibility

@@ -1,1 +1,0 @@
-I'm a model to present push commits and operations.

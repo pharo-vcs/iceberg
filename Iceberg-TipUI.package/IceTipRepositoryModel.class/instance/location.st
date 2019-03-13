@@ -1,4 +1,0 @@
-accessing
-location
-	
-	^ entity location

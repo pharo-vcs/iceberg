@@ -1,1 +1,0 @@
-I'm a generic presenter of IceTip UI elements.

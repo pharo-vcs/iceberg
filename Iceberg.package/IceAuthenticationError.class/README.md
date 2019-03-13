@@ -1,1 +1,0 @@
-I indicate when an error trying to authenticate occurs (tipically, when cloning without credentials)

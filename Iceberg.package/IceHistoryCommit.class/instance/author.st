@@ -1,4 +1,0 @@
-accessing
-author
-	
-	^ iceCommit author

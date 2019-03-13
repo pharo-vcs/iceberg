@@ -1,4 +1,0 @@
-API-registry
-checkForRegistryConflicts
-
-	self subclassResponsibility

@@ -1,3 +1,0 @@
-accessing
-commitModels
-	self subclassResponsibility

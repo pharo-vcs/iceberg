@@ -1,3 +1,0 @@
-private
-resetDiff
-	diff := nil

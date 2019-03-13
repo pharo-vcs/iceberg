@@ -1,1 +1,0 @@
-Command that opens a dialog to add a remote to a repository.

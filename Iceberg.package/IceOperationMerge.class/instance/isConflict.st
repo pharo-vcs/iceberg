@@ -1,3 +1,0 @@
-testing
-isConflict
-	self subclassResponsibility

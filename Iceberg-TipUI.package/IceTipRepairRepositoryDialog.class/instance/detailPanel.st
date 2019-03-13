@@ -1,3 +1,0 @@
-accessing ui
-detailPanel
-	^ detailPanel

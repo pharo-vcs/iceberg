@@ -1,1 +1,0 @@
-I announce when a repository has been created.

@@ -1,1 +1,0 @@
-I'm a dialog to collect data about a pull request rejection.

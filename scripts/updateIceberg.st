@@ -4,6 +4,7 @@ LGitLibrary shutDown: true.
 "Unregister all iceberg repository adapters since we are going to unload all code related to it.
 Otherwise obsolete instances will stay".
 IceMetacelloRepositoryAdapter allInstances do: #unregister.
+Smalltalk globals at: #IceSystemEventListener ifPresent: #unregisterSystemAnnouncements.
 
 "Remove iceberg from system (so I can reload it)"
 MetacelloPharoPlatform select.
@@ -48,7 +49,7 @@ do: [ :each |
 This is required to load iceberg packages and dependencies in Tonel format"
 Metacello new
   baseline: 'Tonel';
-  repository: 'github://pharo-vcs/tonel:v1.0.12';
+  repository: 'github://pharo-vcs/tonel:v1.0.13';
   load.
 
 "Updating Metacello"

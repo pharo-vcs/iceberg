@@ -1,3 +1,0 @@
-resolution
-selectLeft
-	self subclassResponsibility

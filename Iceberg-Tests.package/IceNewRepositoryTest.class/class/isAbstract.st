@@ -1,4 +1,0 @@
-running
-isAbstract
-
-	^ self == IceNewRepositoryTest

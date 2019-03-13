@@ -1,3 +1,0 @@
-configuring
-expectedFileFormat
-	^ IceLibgitTonelWriter

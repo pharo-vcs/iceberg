@@ -1,2 +1,0 @@
-I indicate when a remote is desyncronized. 
-It means the version I have in the working copy (not the image) is different to the version I have in the remote (then I need to pull/branch/whatever before commiting).

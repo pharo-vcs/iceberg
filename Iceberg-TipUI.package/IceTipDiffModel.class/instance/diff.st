@@ -1,3 +1,0 @@
-accessing
-diff
-	^ self subclassResponsibility

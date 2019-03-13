@@ -1,1 +1,0 @@
-I implement a basic tree visitor for Iceberg trees implemented through IceNode

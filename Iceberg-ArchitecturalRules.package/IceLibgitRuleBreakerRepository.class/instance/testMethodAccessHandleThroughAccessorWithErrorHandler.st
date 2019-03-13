@@ -1,4 +1,0 @@
-tests
-testMethodAccessHandleThroughAccessorWithErrorHandler
-
-	self handleLibgitError: [ self testDefinedRepositoryAccessor allBranches]
