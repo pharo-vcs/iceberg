@@ -1,14 +1,13 @@
 {
 	"commentStamp" : "HolgerHansPeterFreyther 3/23/2019 14:32",
-	"super" : "IceAbstractCredentials",
+	"super" : "IcePlaintextCredentials",
 	"category" : "Iceberg-Security",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"username",
-		"password"
+		"token"
 	],
-	"name" : "IcePlaintextCredentials",
+	"name" : "IcePlaintextOtpCredentials",
 	"type" : "normal"
 }

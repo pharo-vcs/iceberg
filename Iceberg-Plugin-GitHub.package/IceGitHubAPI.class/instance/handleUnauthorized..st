@@ -2,15 +2,18 @@ responses
 handleUnauthorized: aZnResponse 
 	"If we are in unauthorized we require the correct credentials."
 	
-	| newCredentials |
+	| newCredentials githubOtp |
 	aZnResponse isSuccess ifTrue: [ ^ self ].
 	aZnResponse status ~= 401 ifTrue: [ ^ self ].
-	
-	newCredentials := IcePlaintextCredentials new.
+
+	"Does this require two factor authentication now?"
+	githubOtp := aZnResponse headers at: 'X-Github-Otp' ifAbsent: [ nil ].
+	newCredentials := githubOtp = 'required; app'
+		ifTrue: [ IcePlaintextOtpCredentials new ]
+		ifFalse: [ IcePlaintextCredentials new ].
 	
 	"Ignoring if you press cancel"
 	(IceCredentialsProvider defaultForHost: 'github.com')
-		obtainPlaintextCredentials: newCredentials.
-		
+		obtainCredentials: newCredentials.
 	IceAuthenticationError signal: 'Retry to use the new credentials'
 	

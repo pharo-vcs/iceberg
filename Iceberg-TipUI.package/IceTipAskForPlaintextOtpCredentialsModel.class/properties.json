@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipAskForPlaintextCredentialsModel",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"tokenLabel",
+		"tokenInput"
+	],
+	"name" : "IceTipAskForPlaintextOtpCredentialsModel",
+	"type" : "normal"
+}

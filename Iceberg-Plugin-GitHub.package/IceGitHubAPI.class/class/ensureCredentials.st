@@ -1,8 +1,6 @@
 credentials
 ensureCredentials
-	| provider newCredentials |
+	| provider |
 
 	provider := IceCredentialsProvider defaultForHost: 'github.com'. 
-	newCredentials := IcePlaintextCredentials new.
-	provider providePlaintextCredentialsTo: newCredentials.
-	^ newCredentials
+	^ provider providePlaintextCredentials.
