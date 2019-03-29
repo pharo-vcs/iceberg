@@ -1,4 +1,0 @@
-comparing
-= aNoCommit
-
-	^ aNoCommit isNoCommit

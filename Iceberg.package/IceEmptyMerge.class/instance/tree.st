@@ -1,4 +1,0 @@
-accessing
-tree
-	
-	^ self mergeTree

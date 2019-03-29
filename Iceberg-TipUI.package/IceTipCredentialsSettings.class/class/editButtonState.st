@@ -1,3 +1,0 @@
-settings
-editButtonState
-	^ true

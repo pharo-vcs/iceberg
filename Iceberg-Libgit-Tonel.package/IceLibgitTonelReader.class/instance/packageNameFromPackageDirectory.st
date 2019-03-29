@@ -1,3 +1,0 @@
-private
-packageNameFromPackageDirectory
-	^ iceVersion packageName

@@ -1,3 +1,0 @@
-testing
-actsOnTag: aTagModel
-	^ false

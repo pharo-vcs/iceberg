@@ -1,1 +1,0 @@
-I'm a filter function that links with a text presenter. 

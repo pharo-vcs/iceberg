@@ -1,3 +1,0 @@
-accessing
-contextSelection 
-	^ self selectedPackage

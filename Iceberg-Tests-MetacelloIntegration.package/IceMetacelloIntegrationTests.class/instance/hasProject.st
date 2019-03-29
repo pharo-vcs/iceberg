@@ -1,4 +1,0 @@
-configuring
-hasProject
-	
-	^ self subclassResponsibility

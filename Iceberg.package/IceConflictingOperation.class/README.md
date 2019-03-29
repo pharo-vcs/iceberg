@@ -1,1 +1,0 @@
-I reprensent a conflict between two operations that can be solved by using #selectLeft and #selectRight.

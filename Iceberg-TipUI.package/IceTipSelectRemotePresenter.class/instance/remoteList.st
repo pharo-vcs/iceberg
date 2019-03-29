@@ -1,3 +1,0 @@
-accessing ui
-remoteList
-	^ remoteList

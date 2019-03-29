@@ -1,4 +1,0 @@
-resolution
-clearSelection
-	
-	chosen := nil

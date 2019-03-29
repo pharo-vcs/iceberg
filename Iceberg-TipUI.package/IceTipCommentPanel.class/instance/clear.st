@@ -1,3 +1,0 @@
-accessing
-clear
-	commentText text: ''

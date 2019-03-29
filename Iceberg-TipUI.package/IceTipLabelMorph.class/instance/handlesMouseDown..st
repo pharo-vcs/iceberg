@@ -1,3 +1,0 @@
-initialization
-handlesMouseDown: evt
-	^ false

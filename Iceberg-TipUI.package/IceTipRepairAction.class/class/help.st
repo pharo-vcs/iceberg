@@ -1,3 +1,0 @@
-accessing
-help
-	^ self subclassResponsibility

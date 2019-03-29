@@ -1,3 +1,0 @@
-accessing
-mergeablePanel
-	^ mergeablePanel

@@ -1,3 +1,0 @@
-accessing
-direct
-	^ IceTipDirectMergeType uniqueInstance

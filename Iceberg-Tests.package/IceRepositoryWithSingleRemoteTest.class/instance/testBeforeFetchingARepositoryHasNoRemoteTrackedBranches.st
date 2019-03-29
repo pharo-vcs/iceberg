@@ -1,4 +1,0 @@
-tests-fetch
-testBeforeFetchingARepositoryHasNoRemoteTrackedBranches
-
-	self assert: self repository remoteTrackedBranches isEmpty

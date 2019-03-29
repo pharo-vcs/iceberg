@@ -1,3 +1,0 @@
-private
-refreshDiffFromHead
-	headTabContainer updateContentsOn: selectedModel

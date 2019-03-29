@@ -1,3 +1,0 @@
-accessing
-itemNameWithoutBranches
-	^ 'Remove Branches...'
