@@ -8,7 +8,7 @@ Class {
 		'name',
 		'owner'
 	],
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #accessing }

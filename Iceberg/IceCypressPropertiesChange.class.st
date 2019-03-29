@@ -1,7 +1,7 @@
 Class {
 	#name : #IceCypressPropertiesChange,
 	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

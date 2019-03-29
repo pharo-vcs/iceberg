@@ -7,7 +7,7 @@ I'm implemented as class side methods to avoid memory leaks and problems when un
 Class {
 	#name : #IceSystemEventListener,
 	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'event handling' }

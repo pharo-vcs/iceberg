@@ -4,7 +4,7 @@ I'm an error to be sent when the error that comes from external library can be g
 Class {
 	#name : #IceGitUsernameOrEmailNotFound,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #accessing }

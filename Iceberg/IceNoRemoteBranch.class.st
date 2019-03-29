@@ -4,5 +4,5 @@ The operation you tried (for example push) requires that your branch has a confi
 Class {
 	#name : #IceNoRemoteBranch,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }

@@ -4,7 +4,7 @@ I am a no modification in a tree. I am useful to represent a container (that did
 Class {
 	#name : #IceNoModification,
 	#superclass : #IceOperation,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

@@ -4,5 +4,5 @@ When trying to create a repository I found another one with a conflicting locati
 Class {
 	#name : #IceDuplicatedRepository,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }

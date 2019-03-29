@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'contents'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

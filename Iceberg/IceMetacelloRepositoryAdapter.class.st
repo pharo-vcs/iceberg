@@ -8,7 +8,7 @@ Class {
 		'repository',
 		'projectVersion'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }

@@ -1,5 +1,5 @@
 Class {
 	#name : #IceUpstreamNotConfigured,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }

@@ -151,7 +151,7 @@ Class {
 	#classVars : [
 		'Registry'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #testing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #IceHttpsProtocol,
 	#superclass : #IceUrlProtocol,
-	#category : 'Iceberg-Url'
+	#category : #'Iceberg-Url'
 }
 
 { #category : #accessing }
