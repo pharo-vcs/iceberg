@@ -31,7 +31,7 @@ IceSinglePackageLocalRepositoryTest >> testAddClassInstanceVariableIsExportedInC
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
 ]
@@ -88,7 +88,7 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassSideMakesChangesContainCla
 	diff := self repository workingCopyDiff.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
 ]
@@ -123,7 +123,7 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExpor
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
 ]
@@ -361,7 +361,7 @@ IceSinglePackageLocalRepositoryTest >> testCreateClassInImageMakesChangesContain
 
 	diff := self repository workingCopyDiff.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 2 "Class and Metaclass".
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value isAddition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition name equals: #IceGeneratedClassForTesting.

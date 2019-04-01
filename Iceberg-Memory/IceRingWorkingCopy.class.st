@@ -37,8 +37,7 @@ IceRingWorkingCopy >> createClass: className inPackage: packageName with: aBlock
 	| package class |
 	package := ringEnvironment ensurePackageNamed: packageName.
 	class := ringEnvironment ensureClassNamed: className.
-	class package: package.
-	"class tagWith: packageName."
+	class instanceSide package: package.
 	
 	aBlock value: class.
 	

@@ -9,7 +9,7 @@ Class {
 		'items',
 		'message'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #executing }

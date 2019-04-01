@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'version'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }
