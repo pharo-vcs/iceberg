@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitLocalBranch,
 	#superclass : #IceLocalBranch,
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #'private-pushing' }

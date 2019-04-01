@@ -5,7 +5,7 @@ Class {
 		'location',
 		'url'
 	],
-	#category : 'Iceberg-Libgit-GitActions'
+	#category : #'Iceberg-Libgit-GitActions'
 }
 
 { #category : #actions }

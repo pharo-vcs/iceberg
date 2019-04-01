@@ -6,7 +6,7 @@ Class {
 		'diff',
 		'version'
 	],
-	#category : 'Iceberg-Libgit-Changes'
+	#category : #'Iceberg-Libgit-Changes'
 }
 
 { #category : #accessing }

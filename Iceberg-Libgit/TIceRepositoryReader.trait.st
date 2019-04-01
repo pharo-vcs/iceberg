@@ -3,7 +3,7 @@ I indicate when a clas is reader for iceberg
 "
 Trait {
 	#name : #TIceRepositoryReader,
-	#category : 'Iceberg-Libgit-Writing'
+	#category : #'Iceberg-Libgit-Writing'
 }
 
 { #category : #accessing }

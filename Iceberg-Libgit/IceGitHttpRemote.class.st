@@ -6,7 +6,7 @@ A remote repository created out of a HTTP  url, such as 'http://localhost/owner/
 Class {
 	#name : #IceGitHttpRemote,
 	#superclass : #IceGitNetworkRemote,
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #testing }

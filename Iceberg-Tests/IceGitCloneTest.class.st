@@ -76,8 +76,8 @@ IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self isCI ifTrue: [ self skip ].
 
-	self should: [ "IceGitClone new
+	self should: [ IceGitClone new
 				location: fixture location;
 				url: 'https://github.com/doesNotExists/repo.git';
-				execute" ] raise: IceCloneRemoteNotFound
+				execute ] raise: IceCloneRemoteNotFound
 ]

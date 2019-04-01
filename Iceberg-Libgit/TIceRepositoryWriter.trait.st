@@ -3,7 +3,7 @@ I indicate when a class is writer for iceberg
 "
 Trait {
 	#name : #TIceRepositoryWriter,
-	#category : 'Iceberg-Libgit-Writing'
+	#category : #'Iceberg-Libgit-Writing'
 }
 
 { #category : #accessing }

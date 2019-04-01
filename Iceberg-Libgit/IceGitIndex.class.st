@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'modifiedFilePaths'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #adding }

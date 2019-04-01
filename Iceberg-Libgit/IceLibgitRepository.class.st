@@ -18,7 +18,7 @@ Class {
 		'ShareRepositoriesBetweenImages',
 		'SharedRepositoriesLocation'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #settings }
