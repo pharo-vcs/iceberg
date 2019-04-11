@@ -1,3 +1,0 @@
-executing
-basicExecute
-	self subclassResponsibility

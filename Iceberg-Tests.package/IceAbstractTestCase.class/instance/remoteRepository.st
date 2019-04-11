@@ -1,4 +1,0 @@
-accessing
-remoteRepository
-	
-	^ fixture remoteRepository

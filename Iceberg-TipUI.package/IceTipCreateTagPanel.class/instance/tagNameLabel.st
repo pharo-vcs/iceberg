@@ -1,3 +1,0 @@
-accessing
-tagNameLabel
-	^ tagNameLabel

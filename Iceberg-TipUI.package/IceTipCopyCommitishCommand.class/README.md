@@ -1,1 +1,0 @@
-Command that copies the selected entity short commit ID to the clipboard

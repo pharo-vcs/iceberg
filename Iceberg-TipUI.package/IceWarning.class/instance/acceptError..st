@@ -1,3 +1,0 @@
-visiting
-acceptError: aVisitor
-	self subclassResponsibility

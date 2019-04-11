@@ -1,4 +1,0 @@
-accessing
-path
-
-	^ RelativePath new

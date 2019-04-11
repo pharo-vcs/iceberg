@@ -1,4 +1,0 @@
-accessing
-targetName
-	
-	^ commitish name

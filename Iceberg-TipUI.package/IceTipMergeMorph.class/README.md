@@ -1,1 +1,0 @@
-I redefine PSMCMergeMorph to be able to use an IceMergePatchMorph as patch morph

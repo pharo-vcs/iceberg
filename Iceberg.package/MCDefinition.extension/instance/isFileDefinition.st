@@ -1,4 +1,0 @@
-*Iceberg-changes
-isFileDefinition
-	
-	^ false

@@ -1,3 +1,0 @@
-accessing
-packageModel
-	^ packageModel

@@ -1,4 +1,0 @@
-testing
-isGit
-	
-	self subclassResponsibility

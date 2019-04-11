@@ -1,1 +1,0 @@
-I am an unborn branch. I exist only on a new repository that has no commits inside. I manage the special case of a first repository commit and branch creation.

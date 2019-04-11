@@ -1,1 +1,0 @@
-I implement display mode "icons and labels"

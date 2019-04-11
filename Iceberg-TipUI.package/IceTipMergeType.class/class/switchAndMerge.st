@@ -1,3 +1,0 @@
-accessing
-switchAndMerge
-	^ IceTipSwitchAndMergeType uniqueInstance

@@ -1,3 +1,0 @@
-specs
-title
-	^ 'Diff'

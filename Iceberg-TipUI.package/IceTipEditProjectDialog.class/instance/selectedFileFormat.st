@@ -1,4 +1,0 @@
-actions
-selectedFileFormat
-	
-	^ formatList selectedItem

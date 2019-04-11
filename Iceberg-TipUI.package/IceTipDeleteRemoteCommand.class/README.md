@@ -1,1 +1,0 @@
-Command that deletes the selected remote

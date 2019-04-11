@@ -1,3 +1,0 @@
-private
-defaultLocation
-	^ IceLibgitRepository repositoriesLocation pathString

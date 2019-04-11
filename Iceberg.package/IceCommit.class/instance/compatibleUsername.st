@@ -1,4 +1,0 @@
-private-monticello
-compatibleUsername
-	
-	^ 'CompatibleUserName'

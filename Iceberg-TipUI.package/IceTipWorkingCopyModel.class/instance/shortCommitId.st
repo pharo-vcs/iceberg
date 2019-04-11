@@ -1,3 +1,0 @@
-accessing
-shortCommitId
-	^ repositoryModel shortCommitId

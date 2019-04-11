@@ -1,3 +1,0 @@
-executing
-defaultSubdirectory
-	^ IceLibgitRepository defaultCodeSubdirectory

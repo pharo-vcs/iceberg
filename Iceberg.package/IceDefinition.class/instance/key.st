@@ -1,4 +1,0 @@
-accessing
-key
-	
-	^ name

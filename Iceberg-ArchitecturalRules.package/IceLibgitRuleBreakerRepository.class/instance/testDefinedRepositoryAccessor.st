@@ -1,5 +1,0 @@
-tests
-testDefinedRepositoryAccessor
-
-	<repositoryHandleAccessor>
-	^ handle

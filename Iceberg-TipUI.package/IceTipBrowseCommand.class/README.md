@@ -1,1 +1,0 @@
-I'm a command to "browse" a change definition (method, class or package).

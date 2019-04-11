@@ -1,3 +1,0 @@
-style
-normalFillStyle
-	^ Color transparent

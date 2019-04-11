@@ -1,1 +1,0 @@
-I'm a context for the history browser (IceHistoryBrowser)

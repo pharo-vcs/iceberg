@@ -1,3 +1,0 @@
-accessing
-providerName
-	self subclassResponsibility

@@ -1,1 +1,0 @@
-Command that opens a dialog to edit a repository meta-data

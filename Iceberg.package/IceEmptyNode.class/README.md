@@ -1,1 +1,0 @@
-I am a null object representing an empty node of a tree. I'm used together with IceNode.

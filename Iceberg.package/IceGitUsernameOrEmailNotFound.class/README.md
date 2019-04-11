@@ -1,1 +1,0 @@
-I'm an error to be sent when the error that comes from external library can be guessed to be the absense of user.name and user.email properties.

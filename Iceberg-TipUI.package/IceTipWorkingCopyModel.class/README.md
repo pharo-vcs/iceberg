@@ -1,1 +1,0 @@
-I'm a model to for IceWorkingCopy entries.

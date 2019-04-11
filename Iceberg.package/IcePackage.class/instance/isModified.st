@@ -1,4 +1,0 @@
-testing
-isModified
-	
-	^ self isDirty

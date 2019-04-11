@@ -1,4 +1,0 @@
-testing
-hasUpstream
-	
-	^ entity hasUpstream

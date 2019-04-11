@@ -1,4 +1,0 @@
-testing
-isOkEnabled
-	
-	self subclassResponsibility

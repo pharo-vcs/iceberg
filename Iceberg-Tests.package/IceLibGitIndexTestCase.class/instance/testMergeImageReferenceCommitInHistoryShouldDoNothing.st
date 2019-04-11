@@ -1,5 +1,0 @@
-tests
-testMergeImageReferenceCommitInHistoryShouldDoNothing
-
-	super testMergeImageReferenceCommitInHistoryShouldDoNothing.
-	self assertIndexIsClean.

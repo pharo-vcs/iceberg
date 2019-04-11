@@ -1,3 +1,0 @@
-accessing
-hostInput
-	^ hostInput
