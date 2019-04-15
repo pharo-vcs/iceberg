@@ -1,16 +1,18 @@
 initialization
 initializePackageList
-	packageList widget 
+	packageList widget
 		beResizable;
-		addColumn: (IceTipTableColumn new 
-			id: 'Name';
-			action: #descriptionWithDecoration;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Status';
-			action: #statusWithDecoration;
-			yourself);		
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Name';
+				action: #descriptionWithDecoration;
+				yourself);
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Status';
+				action: #statusWithDecoration;
+				yourself);
 		dataSource: self newPackagesDataSource;
-		selectRowIndex: 1;
-		enableFilter: IceTipPackageFilter;			
+		selectIndex: 1;
+		enableFilter: IceTipPackageFilter;
 		explicitFunction

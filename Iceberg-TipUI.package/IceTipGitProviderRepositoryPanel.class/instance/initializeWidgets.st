@@ -13,13 +13,13 @@ initializeWidgets
 	protocolLabel := self newLabel label: 'Protocol'.
 	protocolDropList := self newDropList.
 	userNameInputText
-		whenTextChanged: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
+		whenTextChangedDo: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
 	projectNameInputText
-		whenTextChanged: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
+		whenTextChangedDo: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
 	protocolDropList
 		items: IceUrlProtocol allSubclasses;
 		displayBlock: [ :each | each description ];
-		setSelectedItem: IceUrlProtocol defaultProtocol.
+		selectedItem: IceUrlProtocol defaultProtocol.
 	self focusOrder
 		add: self userNameInputText;
 		add: self projectNameInputText;

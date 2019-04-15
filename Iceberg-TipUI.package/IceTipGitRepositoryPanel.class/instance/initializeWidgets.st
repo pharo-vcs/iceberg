@@ -5,6 +5,6 @@ initializeWidgets
 	self remoteInputText
 		placeholder: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
 	self remoteInputText
-		whenTextChanged:
+		whenTextChangedDo:
 			[ :text | self projectLocation appendPath: (self extractProjectName: text) ].
 	self focusOrder add: self remoteInputText

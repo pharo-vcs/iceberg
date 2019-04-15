@@ -1,5 +1,5 @@
 private
 selectedItem
-	^ self table selectedRowIndexes 
+	^ self table selectedIndexes
 		ifNotEmpty: [ :indexes | self elementAt: indexes first ]
 		ifEmpty: [ nil ]

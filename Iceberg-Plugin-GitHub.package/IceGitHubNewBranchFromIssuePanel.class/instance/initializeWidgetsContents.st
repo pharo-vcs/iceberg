@@ -6,7 +6,7 @@ initializeWidgetsContents
 		instantiate: IceTipSelectRemotePresenter
 		on: self selectRemoteModel.
 	remotePanel remoteList
-		whenSelectedItemChanged: [ :remoteModel | self useRemote: remoteModel ].
+		whenSelectedItemChangedDo: [ :remoteModel | self useRemote: remoteModel ].
 	branchLabel := self newLabel label: 'Issue number:'.
 	issueNumberText := self newTextInput
 		placeholder: 'e.g., 123';
