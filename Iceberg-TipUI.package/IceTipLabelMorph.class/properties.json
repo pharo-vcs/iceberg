@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "GuillermoPolito 6/11/2018 11:45",
+	"commentStamp" : "",
 	"super" : "IceTipReadOnlyTextMorph",
 	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
 	"classinstvars" : [ ],

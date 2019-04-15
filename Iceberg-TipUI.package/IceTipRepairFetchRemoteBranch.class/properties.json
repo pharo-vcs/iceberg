@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "EstebanLorenzano 4/13/2018 09:19",
+	"commentStamp" : "",
 	"super" : "IceTipRepairAction",
 	"category" : "Iceberg-TipUI-Commands",
 	"classinstvars" : [ ],
