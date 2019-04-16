@@ -4,7 +4,7 @@ I'm an error that happens when credentials are bad.
 Class {
 	#name : #IceGitHubBadCredentialsError,
 	#superclass : #IceGitHubError,
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #testing }

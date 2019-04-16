@@ -9,7 +9,7 @@ Class {
 		'credentials',
 		'isAnonymous'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #credentials }

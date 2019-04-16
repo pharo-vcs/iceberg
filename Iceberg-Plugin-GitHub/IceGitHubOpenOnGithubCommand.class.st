@@ -7,7 +7,7 @@ I am a command opening the repository page of the remote on GitHub if possible.
 Class {
 	#name : #IceGitHubOpenOnGithubCommand,
 	#superclass : #IceGitHubBranchSelectCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #activation }

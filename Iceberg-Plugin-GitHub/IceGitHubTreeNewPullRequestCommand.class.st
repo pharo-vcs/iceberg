@@ -4,7 +4,7 @@ I'm a command to create a Pull Request
 Class {
 	#name : #IceGitHubTreeNewPullRequestCommand,
 	#superclass : #IceGitHubTreeCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }

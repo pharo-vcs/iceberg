@@ -7,7 +7,7 @@ I am a nil PR that can be used when the user has no PR to see.
 Class {
 	#name : #IceGitHubNilPullRequest,
 	#superclass : #Object,
-	#category : 'Iceberg-Plugin-GitHub-Utils'
+	#category : #'Iceberg-Plugin-GitHub-Utils'
 }
 
 { #category : #accessing }

@@ -26,7 +26,7 @@ Class {
 		'baseBranches',
 		'headRemote'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }

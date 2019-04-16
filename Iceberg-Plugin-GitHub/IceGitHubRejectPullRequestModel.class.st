@@ -10,7 +10,7 @@ Class {
 		'acceptButton',
 		'acceptBlock'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #accessing }

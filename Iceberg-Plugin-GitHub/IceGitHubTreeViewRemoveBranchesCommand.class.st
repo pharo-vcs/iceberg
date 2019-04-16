@@ -4,7 +4,7 @@ I'm a command to remove branches from remotes.
 Class {
 	#name : #IceGitHubTreeViewRemoveBranchesCommand,
 	#superclass : #IceGitHubTreeCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }
