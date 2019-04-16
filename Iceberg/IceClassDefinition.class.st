@@ -42,6 +42,24 @@ IceClassDefinition >> addToPatcher: aMCPatcher [
 	aMCPatcher addDefinition: self asMCDefinition
 ]
 
+{ #category : #converting }
+IceClassDefinition >> asMCDefinitionWithoutMetaSide [
+	
+	^ MCClassDefinition
+		name: mcDefinition className
+		superclassName: mcDefinition superclassName
+		traitComposition: mcDefinition traitCompositionString
+		classTraitComposition: mcDefinition classTraitCompositionString
+		category: mcDefinition category
+		instVarNames: mcDefinition instanceVariablesString
+		classVarNames: mcDefinition classVariablesString
+		poolDictionaryNames: mcDefinition poolDictionaries
+		classInstVarNames: #()
+		type: mcDefinition type
+		comment: mcDefinition comment
+		commentStamp: mcDefinition commentStamp
+]
+
 { #category : #testing }
 IceClassDefinition >> isClassDefinition [
 	
@@ -51,8 +69,12 @@ IceClassDefinition >> isClassDefinition [
 { #category : #patching }
 IceClassDefinition >> removeFromPatcher: aMCPatcher [ 
 	
-	"We should not handle metaclasses. They will be removed automatically if the instance side is removed"
-	isMeta ifTrue: [ ^ true ].
+	"If the meta side is removed, we should modify the class definition to not include the meta-parts such as class-instance-variables"
+	isMeta ifTrue: [ 
+		^ aMCPatcher
+			modifyDefinition: self asMCDefinition
+			to: self asMCDefinitionWithoutMetaSide
+	].
 	
 	aMCPatcher removeDefinition: self asMCDefinition 
 ]

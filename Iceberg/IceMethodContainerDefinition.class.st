@@ -32,6 +32,12 @@ IceMethodContainerDefinition >> asMCDefinition [
 	^ mcDefinition
 ]
 
+{ #category : #converting }
+IceMethodContainerDefinition >> asMCDefinitionWithoutMetaSide [
+	
+	self subclassResponsibility
+]
+
 { #category : #accessing }
 IceMethodContainerDefinition >> contents [
 	mcDefinition ifNil: [ ^ '' ].
