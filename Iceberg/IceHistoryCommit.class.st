@@ -10,7 +10,7 @@ Class {
 		'iceCommit',
 		'history'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

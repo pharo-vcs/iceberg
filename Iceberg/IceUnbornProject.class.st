@@ -1,7 +1,7 @@
 Class {
 	#name : #IceUnbornProject,
 	#superclass : #IceAbstractProject,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #testing }

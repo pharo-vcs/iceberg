@@ -9,7 +9,7 @@ See my superclasses for more information.
 Class {
 	#name : #IceExtensionDefinition,
 	#superclass : #IceMethodContainerDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #comparing }

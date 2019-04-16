@@ -5,7 +5,7 @@ I create an IceBasicProject in case a .project file is found, or an IceUnbornPro
 Class {
 	#name : #IceBasicProjectReader,
 	#superclass : #IceProjectReader,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #testing }

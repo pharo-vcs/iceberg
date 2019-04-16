@@ -4,7 +4,7 @@ I am a null object representing the absence of a merge. I am used when no merge 
 Class {
 	#name : #IceEmptyMerge,
 	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #accessing }

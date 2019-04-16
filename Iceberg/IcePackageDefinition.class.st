@@ -13,7 +13,7 @@ Class {
 		'categories',
 		'path'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

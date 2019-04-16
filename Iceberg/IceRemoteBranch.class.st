@@ -10,7 +10,7 @@ I am a remote tracked branch. I am a copy to a branch that exists in a remote. I
 Class {
 	#name : #IceRemoteBranch,
 	#superclass : #IceBranch,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #comparing }

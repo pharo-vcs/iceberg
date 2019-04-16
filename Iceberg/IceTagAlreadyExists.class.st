@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'tagName'
 	],
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #accessing }

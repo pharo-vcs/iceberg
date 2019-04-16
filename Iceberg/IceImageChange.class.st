@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'package'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

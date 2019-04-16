@@ -9,7 +9,7 @@ Then, a reader must implement:
 Class {
 	#name : #IceProjectReader,
 	#superclass : #Object,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #'accessing' }

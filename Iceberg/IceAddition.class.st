@@ -4,7 +4,7 @@ I am an addition in a tree. I contain the definition I'm adding. I know what is 
 Class {
 	#name : #IceAddition,
 	#superclass : #IceOperation,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

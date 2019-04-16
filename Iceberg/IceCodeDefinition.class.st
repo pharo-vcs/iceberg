@@ -6,7 +6,7 @@ See my sub/superclasses for more information.
 Class {
 	#name : #IceCodeDefinition,
 	#superclass : #IceDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'as yet unclassified' }

@@ -4,7 +4,7 @@ I represent the fact that the project changed. I'm using during the double-dispa
 Class {
 	#name : #IceProjectChange,
 	#superclass : #Object,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #visiting }

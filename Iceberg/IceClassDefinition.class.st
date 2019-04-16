@@ -8,7 +8,7 @@ See my superclasses for more information.
 Class {
 	#name : #IceClassDefinition,
 	#superclass : #IceMethodContainerDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
@@ -40,14 +40,6 @@ IceClassDefinition >> addToPatcher: aMCPatcher [
 	
 	"We should only be in this case if there is not instace-side changes."
 	aMCPatcher addDefinition: self asMCDefinition
-]
-
-{ #category : #accessing }
-IceClassDefinition >> contents [
-	mcDefinition ifNil: [ ^ '' ].
-	^ self isMeta
-		ifFalse: [ mcDefinition fullDefinitionString ]
-		ifTrue: [ mcDefinition classDefinitionString ]
 ]
 
 { #category : #testing }
