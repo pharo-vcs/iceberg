@@ -4,7 +4,7 @@ I create unborn projects from a commitish if it is HEAD and it does not have a '
 Class {
 	#name : #IceUnbornProjectReader,
 	#superclass : #IceProjectReader,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #testing }

@@ -36,7 +36,7 @@ Class {
 		'childrenDictionary',
 		'value'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

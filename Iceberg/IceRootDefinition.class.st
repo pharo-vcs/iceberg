@@ -6,7 +6,7 @@ See my superclasses for more information.
 Class {
 	#name : #IceRootDefinition,
 	#superclass : #IceDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

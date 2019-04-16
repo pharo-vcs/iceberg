@@ -4,7 +4,7 @@ I am a removal in a tree. I contain the definition I'm removing. I know what is 
 Class {
 	#name : #IceRemoval,
 	#superclass : #IceOperation,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

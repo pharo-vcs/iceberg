@@ -19,7 +19,7 @@ Class {
 		'CurrentStore',
 		'StoreFile'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #accessing }

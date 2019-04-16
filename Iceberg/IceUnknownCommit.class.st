@@ -8,7 +8,7 @@ Class {
 		'id',
 		'datetime'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'API-working copy' }

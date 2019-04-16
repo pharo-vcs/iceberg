@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'host'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #'instance creation' }

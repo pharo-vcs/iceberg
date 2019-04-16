@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'merge'
 	],
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #exceptiondescription }

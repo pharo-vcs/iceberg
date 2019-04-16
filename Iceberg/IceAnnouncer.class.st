@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'suspendedConditions'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #initialization }

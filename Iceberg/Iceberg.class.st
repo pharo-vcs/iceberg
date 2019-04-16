@@ -25,7 +25,7 @@ Class {
 	#classInstVars : [
 		'icebergAnnouncer'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }

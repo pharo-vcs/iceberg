@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-WorkingCopy'
+	#category : #'Iceberg-WorkingCopy'
 }
 
 { #category : #'as yet unclassified' }

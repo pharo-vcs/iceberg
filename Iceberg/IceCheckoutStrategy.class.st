@@ -11,7 +11,7 @@ Class {
 		'committish',
 		'diff'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }

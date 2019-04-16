@@ -4,7 +4,7 @@ I indicate when an error trying to authenticate occurs (tipically, when cloning 
 Class {
 	#name : #IceAuthenticationError,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #visiting }
