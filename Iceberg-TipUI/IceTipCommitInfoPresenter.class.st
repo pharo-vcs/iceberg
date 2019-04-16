@@ -16,7 +16,7 @@ Class {
 		'headPage',
 		'ancestorPage'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

@@ -14,7 +14,7 @@ Class {
 		'isMeta',
 		'mcDefinition'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -34,10 +34,9 @@ IceMethodContainerDefinition >> asMCDefinition [
 
 { #category : #accessing }
 IceMethodContainerDefinition >> contents [
-	
 	mcDefinition ifNil: [ ^ '' ].
 	^ self isMeta
-		ifFalse: [ mcDefinition definitionString ]
+		ifFalse: [ mcDefinition fullDefinitionString ]
 		ifTrue: [ mcDefinition classDefinitionString ]
 ]
 

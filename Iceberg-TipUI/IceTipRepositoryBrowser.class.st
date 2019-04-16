@@ -79,7 +79,7 @@ IceTipRepositoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
 	
 	sidebarTree := self newIceOutline.
-	historyPanel := self instantiate: IceTipHistoryBrowser on: self model headModel.
+	historyPanel := self instantiate: IceTipHiedraHistoryBrowser on: self model headModel.
 	historyPanel beForMerge.
 	
 	self initializeSidebarTree.

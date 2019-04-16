@@ -81,6 +81,10 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 	 actual code. This is a HACK, but it will fix #577"
 	(anError object value = LGitReturnCodeEnum git_euser value)
 		ifTrue: [ self visitEUSER: anError  ].
+	
+	anError messageText trimmed = 'Unexpected HTTP status code: 404'
+		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
+
 	self visitGenericError: anError
 ]
 

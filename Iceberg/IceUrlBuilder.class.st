@@ -6,7 +6,7 @@ Class {
 		'protocol',
 		'path'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }

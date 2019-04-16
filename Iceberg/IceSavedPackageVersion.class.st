@@ -17,7 +17,7 @@ Class {
 		'originatingCommit',
 		'package'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }

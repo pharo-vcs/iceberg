@@ -8,7 +8,7 @@ Class {
 		'packageNode',
 		'snapshot'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

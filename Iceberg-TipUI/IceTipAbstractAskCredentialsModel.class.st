@@ -6,7 +6,7 @@ There are subclasses to each of the actions and the types of keys.
 "
 Class {
 	#name : #IceTipAbstractAskCredentialsModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #IceTipDialog,
 	#instVars : [
 		'storeCheckbox',
 		'credentialStore',
@@ -15,6 +15,17 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
+
+{ #category : #specs }
+IceTipAbstractAskCredentialsModel class >> title [
+	^ 'Default Title'
+]
+
+{ #category : #accessing }
+IceTipAbstractAskCredentialsModel >> acceptButton [
+	
+	^ acceptButton
+]
 
 { #category : #actions }
 IceTipAbstractAskCredentialsModel >> cancelAction [
@@ -40,6 +51,20 @@ IceTipAbstractAskCredentialsModel >> credentials [
 IceTipAbstractAskCredentialsModel >> initialize [
 	super initialize.
 	accepted := false
+]
+
+{ #category : #accessing }
+IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aWindow [
+
+	super initializeDialogWindow: aWindow.
+	aWindow title: self title.
+
+	acceptButton action: [ self okAction ].
+	cancelButton action: [ self cancelAction ].
+	self updateOkButton.
+	
+	aWindow whenClosedDo: [ self closeAction ].
+	aWindow centered
 ]
 
 { #category : #initialization }
@@ -121,8 +146,7 @@ IceTipAbstractAskCredentialsModel >> storeCredentials [
 ]
 
 { #category : #updating }
-IceTipAbstractAskCredentialsModel >> updateOkButton [
-	
+IceTipAbstractAskCredentialsModel >> updateOkButton [	
 	self window ifNil: [ ^ self ].	
 	self okButton enabled: self isOkEnabled
 ]

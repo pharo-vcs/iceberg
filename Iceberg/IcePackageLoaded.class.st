@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'loadedVersion'
 	],
-	#category : 'Iceberg-Announcements'
+	#category : #'Iceberg-Announcements'
 }
 
 { #category : #'instance creation' }

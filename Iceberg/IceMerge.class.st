@@ -21,7 +21,7 @@ Class {
 		'imageCommit',
 		'changesToWorkingCopyTree'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #executing }

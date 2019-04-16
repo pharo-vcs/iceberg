@@ -13,7 +13,7 @@ Class {
 		'diffPage',
 		'commitPanel'
 	],
-	#category : 'Iceberg-TipUI-View-Versions'
+	#category : #'Iceberg-TipUI-View-Versions'
 }
 
 { #category : #specs }

@@ -5,7 +5,7 @@ It means the version I have in the image is different to the version I have in t
 Class {
 	#name : #IceWorkingCopyDesyncronized,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #visiting }

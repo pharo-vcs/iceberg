@@ -4,6 +4,9 @@ I'm a diff model that represents a diff between the HEAD commit and the image wo
 Class {
 	#name : #IceTipWorkingCopyDiffModel,
 	#superclass : #IceTipDiffModel,
+	#instVars : [
+		'diff'
+	],
 	#category : #'Iceberg-TipUI-Model'
 }
 

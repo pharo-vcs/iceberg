@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'backend'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }

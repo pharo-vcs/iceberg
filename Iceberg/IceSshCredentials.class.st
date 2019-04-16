@@ -10,7 +10,7 @@ Class {
 		'privateKey',
 		'keyPassphrase'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #accessing }

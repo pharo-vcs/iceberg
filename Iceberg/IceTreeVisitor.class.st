@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'currentNode'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

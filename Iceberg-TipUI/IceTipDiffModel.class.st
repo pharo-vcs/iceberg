@@ -4,9 +4,6 @@ I'm a base model to present diffs.
 Class {
 	#name : #IceTipDiffModel,
 	#superclass : #IceTipEntityModel,
-	#instVars : [
-		'diff'
-	],
 	#category : #'Iceberg-TipUI-Model'
 }
 

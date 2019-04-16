@@ -4,7 +4,7 @@ I am a null object representing an empty node of a tree. I'm used together with 
 Class {
 	#name : #IceEmptyNode,
 	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

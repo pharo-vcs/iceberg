@@ -67,7 +67,7 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 ]
 
 { #category : #api }
-IceGitHubNewBranchFromIssuePanel >> extent [
+IceGitHubNewBranchFromIssuePanel >> initialExtent [
 	^ 800@175
 ]
 

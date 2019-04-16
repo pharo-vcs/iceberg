@@ -9,7 +9,7 @@ Class {
 		'version',
 		'package'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #importing }

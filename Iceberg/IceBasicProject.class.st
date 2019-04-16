@@ -6,7 +6,7 @@ Class {
 		'repository',
 		'repositoryProperties'
 	],
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
 
 { #category : #'instance creation' }

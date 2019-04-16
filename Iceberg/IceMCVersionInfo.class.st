@@ -8,7 +8,7 @@ Class {
 		'commit',
 		'package'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }
