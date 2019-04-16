@@ -83,9 +83,12 @@ IceTipErrorDialog >> initialExtent [
 { #category : #initialization }
 IceTipErrorDialog >> initializeDialogWindow: aWindow [
 
-	super initializeDialogWindow: aWindow.
-	acceptButton label: 'Debug'.
-	cancelButton label: 'Ignore'.
+	aWindow 
+		addButton: 'Debug' 
+		do: [ :presenter | self accept. presenter close ].
+	aWindow 
+		addButton: 'Ignore' 
+		do: [ :presenter | presenter close ].
 ]
 
 { #category : #initialization }

@@ -5,8 +5,7 @@ Class {
 	#name : #IceTipHistoryContext,
 	#superclass : #IceTipContext,
 	#instVars : [
-		'item',
-		'selectedBranch'
+		'item'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }

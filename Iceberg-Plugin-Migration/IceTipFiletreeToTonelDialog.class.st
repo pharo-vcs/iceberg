@@ -6,6 +6,7 @@ Class {
 	#name : #IceTipFiletreeToTonelDialog,
 	#superclass : #IceTipDialog,
 	#instVars : [
+		'model',
 		'iconPanel',
 		'confirmLabel',
 		'mergeWithMasterCheckbox',

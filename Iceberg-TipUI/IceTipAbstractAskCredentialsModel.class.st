@@ -97,6 +97,12 @@ IceTipAbstractAskCredentialsModel >> okAction [
 	^ self subclassResponsibility 
 ]
 
+{ #category : #updating }
+IceTipAbstractAskCredentialsModel >> okButton [
+
+	^ self window buttons first
+]
+
 { #category : #'API - opening' }
 IceTipAbstractAskCredentialsModel >> open [
 	self
@@ -140,8 +146,7 @@ IceTipAbstractAskCredentialsModel >> storeCredentials [
 ]
 
 { #category : #updating }
-IceTipAbstractAskCredentialsModel >> updateOkButton [
-	
-	acceptButton ifNil: [ ^ self ].
-	acceptButton enabled: (self isOkEnabled)
+IceTipAbstractAskCredentialsModel >> updateOkButton [	
+	self window ifNil: [ ^ self ].	
+	self okButton enabled: self isOkEnabled
 ]

@@ -6,6 +6,7 @@ Class {
 	#name : #IceTipInstallVersionCommand,
 	#superclass : #IceTipCommand,
 	#instVars : [
+		'selectedCommit',
 		'version'
 	],
 	#category : #'Iceberg-TipUI-Commands'

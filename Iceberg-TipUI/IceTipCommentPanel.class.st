@@ -11,7 +11,8 @@ Class {
 		'actionPanel',
 		'pushCheckbox',
 		'commitButton',
-		'messageText'
+		'messageText',
+		'message'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
