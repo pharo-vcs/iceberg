@@ -54,17 +54,25 @@ IceTipAbstractAskCredentialsModel >> initialize [
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aWindow [
+IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
+	super initializeDialogWindow: aDialogWindowPresenter.
+	aDialogWindowPresenter title: self title.
 
-	super initializeDialogWindow: aWindow.
-	aWindow title: self title.
+	acceptButton := aDialogWindowPresenter
+		addButton: 'Ok' do: [ :presenter | 
+			presenter triggerOkAction.
+			presenter close ].
+	cancelButton := aDialogWindowPresenter
+		addButton: 'Cancel' do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ].
 
 	acceptButton action: [ self okAction ].
 	cancelButton action: [ self cancelAction ].
 	self updateOkButton.
 	
-	aWindow whenClosedDo: [ self closeAction ].
-	aWindow centered
+	aDialogWindowPresenter whenClosedDo: [ self closeAction ].
+	aDialogWindowPresenter centered
 ]
 
 { #category : #initialization }
@@ -81,9 +89,6 @@ IceTipAbstractAskCredentialsModel >> initializeWidgets [
 		label: 'Do you want this credentials to be stored for future use?';
 		help: 'Please note that storing your credentials is handy but unsafe';
 		state: true.
-	
-	self whenWindowChanged: [ self updateOkButton ].
-
 ]
 
 { #category : #testing }

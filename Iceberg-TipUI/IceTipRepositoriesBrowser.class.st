@@ -61,25 +61,28 @@ IceTipRepositoriesBrowser >> initialize [
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
-	repositoryList widget 
+	repositoryList widget
 		beResizable;
-		addColumn: (IceTipTableColumn new 
-			id: 'Name';
-			action: #descriptionWithDecoration;
-			width: 200;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Status';
-			action: #status;
-			width: 150;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Branch';
-			action: #branchName;
-			yourself);
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Name';
+				action: #descriptionWithDecoration;
+				width: 200;
+				yourself);
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Status';
+				action: #status;
+				width: 150;
+				yourself);
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Branch';
+				action: #branchName;
+				yourself);
 		dataSource: self newRepositoriesDataSource;
-		selectRowIndex: 1;
-		enableFilter: IceTipRepositoryFilter;			
+		selectIndex: 1;
+		enableFilter: IceTipRepositoryFilter;
 		explicitFunction
 ]
 
@@ -133,11 +136,12 @@ IceTipRepositoriesBrowser >> repositoryList: anObject [
 { #category : #private }
 IceTipRepositoriesBrowser >> repositorySelected [
 	| selectedIndex |
-	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	selectedIndex := repositoryList widget selectedRowIndex.
-	selectedIndex = 0 ifTrue: [ ^ nil ].	
-	^ repositoryList widget dataSource 
-		elementAt: selectedIndex 
+	self flag: #todo.	"This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	selectedIndex := repositoryList widget selectedIndex.
+	selectedIndex = 0
+		ifTrue: [ ^ nil ].
+	^ repositoryList widget dataSource
+		elementAt: selectedIndex
 		ifAbsent: [ nil ]
 ]
 

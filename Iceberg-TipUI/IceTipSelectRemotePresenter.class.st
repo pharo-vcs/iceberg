@@ -56,7 +56,7 @@ IceTipSelectRemotePresenter >> initializeWidgets [
 		displayBlock: [ :each | each descriptionWithDecoration ].
 	addButton := self newButton icon: self icon.
 	addButton action: [ self addRemote ].
-	remoteList selectedItem: self model remoteModel.
+	remoteList setSelectedItem: self model remoteModel.
 	self focusOrder add: remoteList
 ]
 
