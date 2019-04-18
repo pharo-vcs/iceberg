@@ -39,6 +39,12 @@ IceRingWorkingCopyChangerVisitor >> removeFile: anIceFileDefinition [
 		ensureDelete
 ]
 
+{ #category : #actions }
+IceRingWorkingCopyChangerVisitor >> removeFileReferenceInPath: aRelativePath [ 
+	
+	(workingCopy fileSystem resolve: aRelativePath) ensureDelete
+]
+
 { #category : #patching }
 IceRingWorkingCopyChangerVisitor >> removeMethod: anIceMethodDefinition [ 
 	

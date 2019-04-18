@@ -26,6 +26,12 @@ IceGitWorkingCopyUpdateVisitor >> removeFile: anIceFileDefinition [
 		ensureDelete
 ]
 
+{ #category : #actions }
+IceGitWorkingCopyUpdateVisitor >> removeFileReferenceInPath: aPath [
+	
+	(repository workingCopy fileSystem resolve: aPath) ensureDeleteAll
+]
+
 { #category : #operations }
 IceGitWorkingCopyUpdateVisitor >> removePackage: aDefinition [
 	

@@ -17,8 +17,7 @@ Class {
 { #category : #'instance creation' }
 IceFileDefinition class >> named: aString path: aPath contents: contents [
 	
-	^ (self named: aString)
-		path: aPath;
+	^ (self named: aString path: aPath)
 		basicContents: contents
 		yourself
 ]

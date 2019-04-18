@@ -15,6 +15,14 @@ Class {
 	#category : #'Iceberg-Changes'
 }
 
+{ #category : #'instance creation' }
+IceFileSystemDefinition class >> named: aString path: aPath [
+	
+	^ (self named: aString)
+		path: aPath
+		yourself
+]
+
 { #category : #accessing }
 IceFileSystemDefinition >> fileReference [
 
@@ -34,11 +42,12 @@ IceFileSystemDefinition >> path [
 
 { #category : #accessing }
 IceFileSystemDefinition >> path: anObject [
+self haltIf: [ anObject == nil ].
 	path := anObject
 ]
 
 { #category : #visiting }
 IceFileSystemDefinition >> removeFrom: aVisitor [
 	
-	aVisitor remoteFileReferenceInPath: self path
+	aVisitor removeFileReferenceInPath: self path
 ]
