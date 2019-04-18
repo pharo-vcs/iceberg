@@ -74,6 +74,15 @@ IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [
 ]
 
 { #category : #visiting }
+IceRingWorkingCopyChangerVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
+]
+
+{ #category : #visiting }
 IceRingWorkingCopyChangerVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	
 	"Do nothing for a ring working copy."

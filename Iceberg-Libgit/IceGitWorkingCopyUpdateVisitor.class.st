@@ -50,6 +50,15 @@ IceGitWorkingCopyUpdateVisitor >> visitAddition: anIceAddition [
 ]
 
 { #category : #visiting }
+IceGitWorkingCopyUpdateVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
+]
+
+{ #category : #visiting }
 IceGitWorkingCopyUpdateVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	self visitChildrenOf: currentNode
 ]
