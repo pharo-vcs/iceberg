@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "IceGitHubError",
 	"category" : "Iceberg-Plugin-GitHub-Model",
 	"classinstvars" : [ ],
