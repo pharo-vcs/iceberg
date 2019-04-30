@@ -1,5 +1,6 @@
 initialization
 initializePresenter
+
 	super initializePresenter.
 	self titlePanel text: self branch shortname.
 	self headForkList

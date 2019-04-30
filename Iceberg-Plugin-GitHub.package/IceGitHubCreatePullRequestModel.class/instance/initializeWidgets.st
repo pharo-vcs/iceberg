@@ -1,5 +1,6 @@
 initialization
 initializeWidgets
+
 	titleLabel := self newLabel.
 	titlePanel := self newTextInput autoAccept: true.
 	headLabel := self newLabel.
@@ -10,14 +11,11 @@ initializeWidgets
 	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
 	bodyPanel := self newText autoAccept: true.
-	addButton := self newButton.
 		
 	titleLabel label: 'Title'.
 	headLabel label: 'From (Head)'.
 	baseLabel label: 'To (Base)'.
 	bodyLabel label: 'Comment'.
-	addButton label: 'Create pull request'.
-	addButton action: [ self accept ].
 	
 	self focusOrder 
 		add: titlePanel;
@@ -25,5 +23,4 @@ initializeWidgets
 		add: headBranchList;
 		add: baseForkList;
 		add: baseBranchList;
-		add: bodyPanel;
-		add: addButton
+		add: bodyPanel

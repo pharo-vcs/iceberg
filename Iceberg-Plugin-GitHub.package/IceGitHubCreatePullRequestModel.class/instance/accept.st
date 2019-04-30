@@ -10,4 +10,4 @@ accept
 	acceptBlock ifNotNil: [ 
 		acceptBlock cull: self createPullRequest ].
 	
-	self window delete
+	self window close

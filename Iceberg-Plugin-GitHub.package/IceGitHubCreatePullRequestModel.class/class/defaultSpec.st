@@ -2,26 +2,9 @@ specs
 defaultSpec 
 	<spec>
 
-	^ SpecLayout composed
-		newColumn: [ :col |
-			col 
-				newRow: [:row | row add: #titleLabel width: 80 * World displayScaleFactor; add: #titlePanel ] height: 25 * World displayScaleFactor;
-				newRow: [:row | 
-					row 
-						newColumn: #headLabel width: 80 * World displayScaleFactor;
-						newColumn: [ :col2 | 
-							col2 newRow: [ :row2 | 
-								row2
-									add: #headForkList;
-									add: #headBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | 
-					row 
-						newColumn: #baseLabel width: 80 * World displayScaleFactor;
-						newColumn: [ :col2 |
-							col2 newRow: [ :row2 |
-								row2 
-									add: #baseForkList;
-									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ];
-				add: #addButton height: self buttonHeight  ];
+	^ SpecGridLayout new
+		add: #titleLabel at: 1@1; 	add: #titlePanel at: 2@1 		span: 2@1;
+		add: #headLabel at: 1@2; 	add: #headForkList at: 2@2; 	add: #headBranchList at: 3@2;
+		add: #baseLabel at: 1@3; 	add: #baseForkList at: 2@3; 	add: #baseBranchList at: 3@3;
+		add: #bodyLabel at: 1@4; 	add: #bodyPanel at: 2@4 			span: 2@4;
 		yourself
