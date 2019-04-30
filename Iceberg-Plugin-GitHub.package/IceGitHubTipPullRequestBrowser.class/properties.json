@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "CyrilFerlicot 11/6/2018 11:20",
+	"commentStamp" : "",
 	"super" : "ComposablePresenter",
 	"category" : "Iceberg-Plugin-GitHub-View",
 	"classinstvars" : [ ],

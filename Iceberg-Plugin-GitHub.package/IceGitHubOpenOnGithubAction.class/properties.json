@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "CyrilFerlicot 10/30/2018 10:58",
+	"commentStamp" : "",
 	"super" : "IceGitHubAction",
 	"category" : "Iceberg-Plugin-GitHub-Commands",
 	"classinstvars" : [ ],

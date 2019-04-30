@@ -4,18 +4,18 @@ initializePresenter
 	self titlePanel text: self branch shortname.
 	self headForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner, '/', each projectName ];
-		setSelectedItem: self headRemote.
-	self headBranchList 
+		displayBlock: [ :each | each owner , '/' , each projectName ];
+		selectedItem: self headRemote.
+	self headBranchList
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self defaultHeadBranchName.
+		selectedItem: self defaultHeadBranchName.
 	self baseForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner, '/', each projectName ];
-		setSelectedItem: self baseRemote.
-	self baseBranchList 
+		displayBlock: [ :each | each owner , '/' , each projectName ];
+		selectedItem: self baseRemote.
+	self baseBranchList
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self defaultBaseBranchName.
+		selectedItem: self defaultBaseBranchName.
 	self bodyPanel text: self obtainLastCommitMessage

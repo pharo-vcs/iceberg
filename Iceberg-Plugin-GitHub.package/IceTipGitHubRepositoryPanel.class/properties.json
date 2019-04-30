@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "GuillermoPolito 4/28/2018 10:07",
+	"commentStamp" : "",
 	"super" : "IceTipGitProviderRepositoryPanel",
 	"category" : "Iceberg-Plugin-GitHub-View",
 	"classinstvars" : [ ],

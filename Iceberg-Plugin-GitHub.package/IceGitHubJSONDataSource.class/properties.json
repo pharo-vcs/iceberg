@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "FTSimpleDataSource",
 	"category" : "Iceberg-Plugin-GitHub-Utils",
 	"classinstvars" : [ ],
