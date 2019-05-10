@@ -33,7 +33,7 @@ IceTipAbstractPlaintextCredentialsModel >> initializeWidgets [
 		yourself.
 	passwordLabel := self newLabel label: 'Password: '.
 	passwordInput := self newTextInput
-		beInvisible;
+		bePassword;
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself

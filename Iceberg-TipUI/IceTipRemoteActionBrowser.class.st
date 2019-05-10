@@ -30,7 +30,7 @@ IceTipRemoteActionBrowser >> initializeWidgets [
 		instantiate: IceTipSelectRemotePresenter
 		on: self model.
 	remotePanel remoteList
-		whenSelectedItemChanged: [ :remoteModel | self moveToRemote: remoteModel ].
+		whenSelectedItemChangedDo: [ :remoteModel | self moveToRemote: remoteModel ].
 	self focusOrder
 		add: self commitsPanel;
 		add: self actionPanel;
