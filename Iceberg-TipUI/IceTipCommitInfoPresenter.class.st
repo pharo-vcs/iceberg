@@ -49,16 +49,6 @@ IceTipCommitInfoPresenter >> commitInfo [
 	^ IceTipReadOnlyForm items: selectedModel info
 ]
 
-{ #category : #accessing }
-IceTipCommitInfoPresenter >> commitTabPanel [
-	^ commitTabPanel
-]
-
-{ #category : #accessing }
-IceTipCommitInfoPresenter >> commitTabPanel: anObject [
-	commitTabPanel := anObject
-]
-
 { #category : #private }
 IceTipCommitInfoPresenter >> diffFromAncestor [
 	
@@ -167,11 +157,6 @@ IceTipCommitInfoPresenter >> refresh [
 ]
 
 { #category : #private }
-IceTipCommitInfoPresenter >> refreshCommitInfo [
-	infoTab contents: (selectedModel info ifNotNil: [ (IceTipReadOnlyForm items: selectedModel info) buildWithSpec ])
-]
-
-{ #category : #private }
 IceTipCommitInfoPresenter >> refreshDiffFromAncestor [
 	ancestorTabContainer updateContentsOn: selectedModel
 ]
@@ -191,11 +176,6 @@ IceTipCommitInfoPresenter >> refreshDiffFromHeadLabel [
 	headTabContainer updateLabelOn: selectedModel
 ]
 
-{ #category : #private }
-IceTipCommitInfoPresenter >> removeAllCommitPanelTabs [
-	commitTabPanel tabs copy do: [ :each | commitTabPanel removeTab: each ]
-]
-
 { #category : #accessing }
 IceTipCommitInfoPresenter >> selectedModel: aModel [
 
@@ -206,32 +186,4 @@ IceTipCommitInfoPresenter >> selectedModel: aModel [
 { #category : #initialization }
 IceTipCommitInfoPresenter >> setModelBeforeInitialization: anObject [
 	model := anObject
-]
-
-{ #category : #private }
-IceTipCommitInfoPresenter >> showEmptyTab [
-	emptyTab ifNil: [ emptyTab := self newEmptyTab ].
-	self removeAllCommitPanelTabs.
-	commitTabPanel addTab: emptyTab.
-]
-
-{ #category : #private }
-IceTipCommitInfoPresenter >> showInfoTabs [
-	"This is just an optimisation to not refresh always. This way it will happen 
-	 just if we come from a 'non-selection'"
-	(commitTabPanel tabs includes: infoTab) ifFalse: [
-		self removeAllCommitPanelTabs.
-		commitTabPanel 
-			addTab: infoTab;
-			addTab: headTabContainer tab;
-			addTab: ancestorTabContainer tab ]. 
-	
-	self refreshCommitInfo.
-	"refresh tab headers"
-	self refreshDiffFromHeadLabel.
-	self refreshDiffFromAncestorLabel.
-	"Refresh selected tab contents"
-	commitTabPanel selectedTab ifNotNil: #tabSelected.
-
-	
 ]

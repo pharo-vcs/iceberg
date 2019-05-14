@@ -21,18 +21,6 @@ IceTipHistoryContext >> item: anObject [
 ]
 
 { #category : #accessing }
-IceTipHistoryContext >> readContextParametersFromModel: aModel [
-	super readContextParametersFromModel: aModel.
-	"This model should be always an IceTipBranchModel"
-	selectedBranch := aModel.
-]
-
-{ #category : #accessing }
-IceTipHistoryContext >> selectedBranch [
-	^ selectedBranch
-]
-
-{ #category : #accessing }
 IceTipHistoryContext >> selectedCommit [
 	^ self item
 ]

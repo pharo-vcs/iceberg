@@ -198,7 +198,6 @@ IceGitCommit >> repositoryHandle [
 { #category : #'API-packages' }
 IceGitCommit >> resetPackageCache [
 	
-	packageCache := nil.
 	packageNamesCache := nil.
 ]
 

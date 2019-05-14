@@ -46,16 +46,6 @@ IceTipVersionHistoryBrowser >> commitList: anObject [
 	commitList := anObject
 ]
 
-{ #category : #'accessing ui' }
-IceTipVersionHistoryBrowser >> commitTabPanel [
-	^ commitTabPanel
-]
-
-{ #category : #'accessing ui' }
-IceTipVersionHistoryBrowser >> commitTabPanel: anObject [
-	commitTabPanel := anObject
-]
-
 { #category : #accessing }
 IceTipVersionHistoryBrowser >> contextClass [
 	"I want to inherit same activations as in a regular history browser, but commit comes from a 
@@ -250,12 +240,6 @@ IceTipVersionHistoryBrowser >> refresh [
 ]
 
 { #category : #private }
-IceTipVersionHistoryBrowser >> refreshCommitInfo [
-	infoTab contents: (selectedModel info ifNotNil: [ 
-		(IceTipReadOnlyForm items: selectedModel info) buildWithSpec ])
-]
-
-{ #category : #private }
 IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 	
 	selectedModel ifNil: [ ^ self ].
@@ -267,33 +251,6 @@ IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 	commitPanel resetAllPageContents
 ]
 
-{ #category : #private }
-IceTipVersionHistoryBrowser >> refreshDiff [
-	selectedModel ifNil: [ ^ self ].
-	
-	diffTab contents: (self 
-		newDiffPanelLeft: ((self model commitModelAfter: selectedModel) 
-			ifNotNil: #source
-			ifNil: [ '' ] )
-		right: selectedModel source)
-]
-
-{ #category : #private }
-IceTipVersionHistoryBrowser >> refreshDiffLabel [
-	
-	diffTab label: ('{1} to {2}' format: { 
-		(self model commitModelAfter: selectedModel) 
-			ifNotNil: #shortId
-			ifNil: [ 'origin' ].
-		selectedModel shortId })
-]
-
-{ #category : #private }
-IceTipVersionHistoryBrowser >> removeAllCommitPanelTabs [
-	commitTabPanel tabs copy 
-		do: [ :each | commitTabPanel removeTab: each ]
-]
-
 { #category : #'event handling' }
 IceTipVersionHistoryBrowser >> selectionChanged: ann [
 
@@ -301,31 +258,6 @@ IceTipVersionHistoryBrowser >> selectionChanged: ann [
 		ifNotEmpty: [ :indexes |(self commitList widget dataSource elementAt: indexes first) ]
 		ifEmpty: [ nil ].
 	self refreshCommitTabPanel
-]
-
-{ #category : #private }
-IceTipVersionHistoryBrowser >> showEmptyTab [
-	emptyTab ifNil: [ emptyTab := self newEmptyTab ].
-	self removeAllCommitPanelTabs.
-	commitTabPanel addTab: emptyTab.
-]
-
-{ #category : #private }
-IceTipVersionHistoryBrowser >> showInfoTabs [
-	"This is just an optimisation to not refresh always. This way it will happen 
-	 just if we come from a 'non-selection'"
-	
-	(commitTabPanel tabs includes: infoTab) ifFalse: [
-		self removeAllCommitPanelTabs.
-		commitTabPanel 
-			addTab: infoTab ;
-			addTab: diffTab ]. 
-	
-	self refreshCommitInfo.
-	self refreshDiffLabel.
-	"Refresh selected tab contents"
-	
-	commitTabPanel selectedTab ifNotNil: #tabSelected.
 ]
 
 { #category : #accessing }
