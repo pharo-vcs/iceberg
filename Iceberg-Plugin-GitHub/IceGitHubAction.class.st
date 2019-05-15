@@ -9,7 +9,7 @@ Class {
 		'remote',
 		'retries'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }

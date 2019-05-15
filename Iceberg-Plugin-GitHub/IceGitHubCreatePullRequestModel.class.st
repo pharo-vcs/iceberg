@@ -26,7 +26,7 @@ Class {
 		'baseBranches',
 		'headRemote'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -53,8 +53,7 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 								row2 
 									add: #baseForkList;
 									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ];
-				add: #addButton height: self buttonHeight  ];
+				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ] ];
 		yourself
 ]
 
@@ -287,25 +286,33 @@ IceGitHubCreatePullRequestModel >> initialExtent [
 ]
 
 { #category : #initialization }
+IceGitHubCreatePullRequestModel >> initializeDialogWindow: aWindow [
+
+	aWindow
+		addButton: 'Create pull request'
+		do: [ self accept ]
+]
+
+{ #category : #initialization }
 IceGitHubCreatePullRequestModel >> initializePresenter [
 	super initializePresenter.
 	self titlePanel text: self branch shortname.
 	self headForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner, '/', each projectName ];
-		setSelectedItem: self headRemote.
-	self headBranchList 
+		displayBlock: [ :each | each owner , '/' , each projectName ];
+		selectedItem: self headRemote.
+	self headBranchList
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self defaultHeadBranchName.
+		selectedItem: self defaultHeadBranchName.
 	self baseForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner, '/', each projectName ];
-		setSelectedItem: self baseRemote.
-	self baseBranchList 
+		displayBlock: [ :each | each owner , '/' , each projectName ];
+		selectedItem: self baseRemote.
+	self baseBranchList
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		setSelectedItem: self defaultBaseBranchName.
+		selectedItem: self defaultBaseBranchName.
 	self bodyPanel text: self obtainLastCommitMessage
 ]
 
@@ -329,14 +336,11 @@ IceGitHubCreatePullRequestModel >> initializeWidgets [
 	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
 	bodyPanel := self newText autoAccept: true.
-	addButton := self newButton.
 		
 	titleLabel label: 'Title'.
 	headLabel label: 'From (Head)'.
 	baseLabel label: 'To (Base)'.
 	bodyLabel label: 'Comment'.
-	addButton label: 'Create pull request'.
-	addButton action: [ self accept ].
 	
 	self focusOrder 
 		add: titlePanel;

@@ -78,6 +78,6 @@ IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self should: [ IceGitClone new
 				location: fixture location;
-				url: 'git@github.com:doesNotExists/repo.git';
+				url: 'https://github.com/nonexistantuser/doesNotExists/repo.git';
 				execute ] raise: IceCloneRemoteNotFound
 ]

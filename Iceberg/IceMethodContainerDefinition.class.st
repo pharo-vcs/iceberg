@@ -32,12 +32,17 @@ IceMethodContainerDefinition >> asMCDefinition [
 	^ mcDefinition
 ]
 
+{ #category : #converting }
+IceMethodContainerDefinition >> asMCDefinitionWithoutMetaSide [
+	
+	self subclassResponsibility
+]
+
 { #category : #accessing }
 IceMethodContainerDefinition >> contents [
-	
 	mcDefinition ifNil: [ ^ '' ].
 	^ self isMeta
-		ifFalse: [ mcDefinition definitionString ]
+		ifFalse: [ mcDefinition fullDefinitionString ]
 		ifTrue: [ mcDefinition classDefinitionString ]
 ]
 

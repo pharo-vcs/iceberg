@@ -16,15 +16,14 @@ Class {
 IceTipRepositoryBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: [ :row |
-					row 
-						add: #sidebarTree right: 0.7;
-						addVSplitter;
-						add: #historyPanel withSpec: #panelSpec left: 0.3 ] ]
+	^ SpecBoxLayout newVertical
+		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add: (SpecPanedLayout newHorizontal
+			position: 30 percent; 
+			add: #sidebarTree;
+			add: #historyPanel withConstraints:[ :c | c spec: #panelSpec ];
+			yourself);
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -80,7 +79,7 @@ IceTipRepositoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
 	
 	sidebarTree := self newIceOutline.
-	historyPanel := self instantiate: IceTipHistoryBrowser on: self model headModel.
+	historyPanel := self instantiate: IceTipHiedraHistoryBrowser on: self model headModel.
 	historyPanel beForMerge.
 	
 	self initializeSidebarTree.
@@ -136,12 +135,10 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
 	| index branch |
-
 	branch := self model headModel.
-	index := (sidebarTree widget dataSource 
-		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ]).
-	sidebarTree widget selectRowIndex: index.
-	
+	index := sidebarTree widget dataSource
+		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ].
+	sidebarTree widget selectIndex: index
 ]
 
 { #category : #accessing }

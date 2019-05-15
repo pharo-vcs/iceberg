@@ -20,8 +20,9 @@ IceTipDialog >> accept [
 { #category : #accessing }
 IceTipDialog >> initializeDialogWindow: aWindow [
 	
-	acceptButton := aWindow toolbar okButton.
-	cancelButton := aWindow toolbar cancelButton.
+	aWindow 
+		addButton: 'Accept' 
+		do: [ :presenter | self accept. presenter close ] 
 ]
 
 { #category : #accessing }

@@ -32,7 +32,8 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptCreatesCredential [
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
 	
-	cred := dialog window toolbar okAction value.	
+	dialog window toolbar okButton performAction.
+	cred := dialog credentials.
 
 	self assert: cred username equals: 'bbb'.
 	self assert: cred password equals: 'aaa'.	
@@ -50,7 +51,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptDoNotStoresCredential [
 	
 	dialog storeCheckbox state: false.
 	
-	dialog window toolbar okAction value.
+	dialog window toolbar okButton performAction.
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: ''.
@@ -59,39 +60,27 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptDoNotStoresCredential [
 
 { #category : #tests }
 IceTipAskForPlaintextCredentialsModelTest >> testAcceptEnabledAndDisabled [
-
-	dialog remoteHostname: 'github.com'. 
-	dialog openNonModal. 
-	
+	dialog remoteHostname: 'github.com'.
+	dialog openNonModal.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	
-	self assert: dialog window toolbar okButton enabled.
-	
+	self assert: dialog okButton isEnabled.
 	dialog passwordInput text: ''.
 	dialog usernameInput text: 'bbb'.
-
-	self deny: dialog window toolbar okButton enabled.
-
+	self deny: dialog okButton isEnabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: ''.
-
-	self deny: dialog window toolbar okButton enabled.
-
+	self deny: dialog okButton isEnabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	
-	self assert: dialog window toolbar okButton enabled.
-
+	self assert: dialog okButton isEnabled
 ]
 
 { #category : #tests }
 IceTipAskForPlaintextCredentialsModelTest >> testAcceptIsBlockedInTheBeginning [
-
-	dialog remoteHostname: 'github.com'. 
-	dialog openNonModal. 
-	
-	self deny: dialog window toolbar okButton enabled.
+	dialog remoteHostname: 'github.com'.
+	dialog openNonModal.
+	self deny: dialog okButton isEnabled
 ]
 
 { #category : #'tests - storing' }
@@ -106,7 +95,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptStoresCredential [
 	
 	dialog storeCheckbox state: true.
 	
-	dialog window toolbar okAction value.	
+	dialog window toolbar okButton performAction.	
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: 'bbb'.
@@ -131,7 +120,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptStoresCredentialReplacesO
 	
 	dialog storeCheckbox state: true.
 	
-	dialog window toolbar okAction value.	
+	dialog window toolbar okButton performAction.	
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: 'bbb'.

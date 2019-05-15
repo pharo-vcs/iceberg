@@ -26,6 +26,12 @@ IceGitWorkingCopyUpdateVisitor >> removeFile: anIceFileDefinition [
 		ensureDelete
 ]
 
+{ #category : #actions }
+IceGitWorkingCopyUpdateVisitor >> removeFileReferenceInPath: aPath [
+	
+	(repository workingCopy fileSystem resolve: aPath) ensureDeleteAll
+]
+
 { #category : #operations }
 IceGitWorkingCopyUpdateVisitor >> removePackage: aDefinition [
 	
@@ -41,6 +47,15 @@ IceGitWorkingCopyUpdateVisitor >> repository: anIceLibgitRepository [
 IceGitWorkingCopyUpdateVisitor >> visitAddition: anIceAddition [ 
 	
 	anIceAddition definition accept: self
+]
+
+{ #category : #visiting }
+IceGitWorkingCopyUpdateVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
 ]
 
 { #category : #visiting }

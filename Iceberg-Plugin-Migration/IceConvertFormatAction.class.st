@@ -33,6 +33,25 @@ IceConvertFormatAction >> codeDirectoryWithDelim [
 ]
 
 { #category : #private }
+IceConvertFormatAction >> ensureMCClassOrganisationHasCorrectStructure: mcVersion [
+ 	| organisation |
+
+   	organisation := mcVersion snapshot definitions 
+ 		detect: [ :each | each isOrganizationDefinition ].
+
+   	(organisation categories size = 1) ifFalse: [ | baseCategory |
+ 		baseCategory := self 
+ 			obtainCommonCategory: organisation categories first 
+ 			from: organisation categories.
+ 		baseCategory ifEmpty: [ 
+ 			self error: 'I didn''t find a base category, something is wrong with the package definition' ].
+ 		baseCategory = organisation categories first ifFalse: [ 
+ 			organisation categories: (organisation categories copyWithFirst: baseCategory) ] ].
+
+   	^ mcVersion  
+]
+
+{ #category : #private }
 IceConvertFormatAction >> ensureMCVersionWithClassOrganisation: mcVersion [
 	"if a package does not has class organisation (happens when package is composed 
 	 only for extensions, we need to ensure it has one, otherwise package creation will 
@@ -91,6 +110,7 @@ IceConvertFormatAction >> migratePackage: packageName commit: commit [
 	
 	mcVersion := (commit versionFor: packageName) mcVersion.
 	mcVersion := self ensureMCVersionWithClassOrganisation: mcVersion.
+	mcVersion := self ensureMCClassOrganisationHasCorrectStructure: mcVersion.
 	self writerClass 
 		forInternalStoreFileOut: mcVersion 
 		on: repository.
@@ -130,6 +150,17 @@ IceConvertFormatAction >> migrateSources [
 	self repository 
 		commitIndexWithMessage: 'sources migrated' 
 		andParents: { commit }.
+]
+
+{ #category : #private }
+IceConvertFormatAction >> obtainCommonCategory: aString from: aCollection [
+
+   	^ (aCollection allSatisfy: [ :each | each beginsWith: aString ])
+ 		ifTrue: [ aString ]
+ 		ifFalse: [ 
+ 			(aString includes: $-) 
+ 				ifTrue: [ self obtainCommonCategory: (aString copyUpToLast: $-) from: aCollection ]
+ 				ifFalse: [ '' ] ] 
 ]
 
 { #category : #private }

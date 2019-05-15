@@ -39,6 +39,12 @@ IceRingWorkingCopyChangerVisitor >> removeFile: anIceFileDefinition [
 		ensureDelete
 ]
 
+{ #category : #actions }
+IceRingWorkingCopyChangerVisitor >> removeFileReferenceInPath: aRelativePath [ 
+	
+	(workingCopy fileSystem resolve: aRelativePath) ensureDelete
+]
+
 { #category : #patching }
 IceRingWorkingCopyChangerVisitor >> removeMethod: anIceMethodDefinition [ 
 	
@@ -55,6 +61,8 @@ IceRingWorkingCopyChangerVisitor >> visitAddition: anIceAddition [
 IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [ 
 	
 	| package |
+	anIceClassDefinition isMeta ifTrue: [ ^ self ].
+	
 	package := workingCopy packages detect: [ :icePackage | 
 		anIceClassDefinition asMCDefinition category beginsWith: icePackage name ].
 	workingCopy
@@ -63,6 +71,15 @@ IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [
 		with: [ :class | 
 			class superclass name: anIceClassDefinition asMCDefinition superclassName.
 			class instanceVariables: anIceClassDefinition asMCDefinition instVarNames ].
+]
+
+{ #category : #visiting }
+IceRingWorkingCopyChangerVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
 ]
 
 { #category : #visiting }

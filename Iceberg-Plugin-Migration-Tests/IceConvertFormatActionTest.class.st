@@ -198,3 +198,86 @@ IceConvertFormatActionTest >> testConvertToTonelRemovesFiletreeMetadataFile [
 	
 	self deny: (self repository subdirectoryReference / '.filetree') exists
 ]
+
+{ #category : #tests }
+IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageName [
+
+   	self repository properties fileFormat: IceLibgitFiletreeWriter.
+ 	self repository workingCopy addPackageNamed: self packageName1.
+ 	self repository workingCopy
+ 		createClass: 'IceGeneratedClassForTesting'
+ 		inPackage: self packageName1 asSymbol
+ 		with: [ :class | 
+ 			class superclass name: 'Object'.
+ 			class category: self packageName1, '-Tagged' ].
+ 	self repository commitWithMessage: 'First commit'.
+
+   	self 
+ 		assert: self repository writerClass 
+ 		equals: IceLibgitFiletreeWriter.
+
+   	IceConvertFormatAction new
+ 		repository: self repository;
+ 		branchName: 'migrate-to-filetree';
+ 		mergeWithCurrentBranch: true;
+ 		format: #tonel;
+ 		execute.
+
+   	self
+ 		assert: self repository writerClass
+ 		equals: IceLibgitTonelWriter.
+
+   	self assert: (self repository headCommit packageNames includes: self packageName1).
+ 	self deny: (self repository headCommit packageNames includes: (self packageName1, '-Tagged')) 
+]
+
+{ #category : #tests }
+IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageNameWhenMethodExtensions [
+
+   	self repository properties fileFormat: IceLibgitFiletreeWriter.
+ 	self repository workingCopy addPackageNamed: self packageName1.
+ 	self repository workingCopy
+ 		createMethod: 'test ^ 42'
+ 		tagged: 'Tagged'
+ 		extendingClass: #Object 
+ 		inPackage: self packageName1.
+ 	self repository commitWithMessage: 'First commit'.
+ 	self repository workingCopy
+ 		unloadPackageNamed: self packageName1.
+
+   	self 
+ 		assert: self repository writerClass 
+ 		equals: IceLibgitFiletreeWriter.
+
+   	IceConvertFormatAction new
+ 		repository: self repository;
+ 		branchName: 'migrate-to-filetree';
+ 		mergeWithCurrentBranch: true;
+ 		format: #tonel;
+ 		execute.
+
+   	self
+ 		assert: self repository writerClass
+ 		equals: IceLibgitTonelWriter.
+
+   	self assert: (self repository headCommit packageNames includes: self packageName1).
+ 	self deny: (self repository headCommit packageNames includes: (self packageName1, '-Tagged')) 
+]
+
+{ #category : #tests }
+IceConvertFormatActionTest >> testObtainCommonCategoryFrom [
+ 	| action categories |
+
+   	action := IceConvertFormatAction new.
+ 	categories := #('Seaside-Tests-Component-Stubs' 'Seaside-Tests-Component-Base').
+
+   	self
+ 		assert: (action obtainCommonCategory: 'Seaside-Tests-Component-Stubs' from: categories)
+ 		equals: 'Seaside-Tests-Component'.
+ 	self
+ 		assert: (action obtainCommonCategory: 'Seaside-Tests' from: categories)
+ 		equals: 'Seaside-Tests'.
+ 	self
+ 		assert: (action obtainCommonCategory: 'NONE' from: categories)
+ 		equals: ''  
+]

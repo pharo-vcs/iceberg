@@ -6,7 +6,7 @@ There are subclasses to each of the actions and the types of keys.
 "
 Class {
 	#name : #IceTipAbstractAskCredentialsModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #IceTipDialog,
 	#instVars : [
 		'storeCheckbox',
 		'credentialStore',
@@ -15,6 +15,17 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
+
+{ #category : #specs }
+IceTipAbstractAskCredentialsModel class >> title [
+	^ 'Default Title'
+]
+
+{ #category : #accessing }
+IceTipAbstractAskCredentialsModel >> acceptButton [
+	
+	^ acceptButton
+]
 
 { #category : #actions }
 IceTipAbstractAskCredentialsModel >> cancelAction [
@@ -42,6 +53,28 @@ IceTipAbstractAskCredentialsModel >> initialize [
 	accepted := false
 ]
 
+{ #category : #accessing }
+IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
+	super initializeDialogWindow: aDialogWindowPresenter.
+	aDialogWindowPresenter title: self title.
+
+	acceptButton := aDialogWindowPresenter
+		addButton: 'Ok' do: [ :presenter | 
+			presenter triggerOkAction.
+			presenter close ].
+	cancelButton := aDialogWindowPresenter
+		addButton: 'Cancel' do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ].
+
+	acceptButton action: [ self okAction ].
+	cancelButton action: [ self cancelAction ].
+	self updateOkButton.
+	
+	aDialogWindowPresenter whenClosedDo: [ self closeAction ].
+	aDialogWindowPresenter centered
+]
+
 { #category : #initialization }
 IceTipAbstractAskCredentialsModel >> initializePresenter [
 
@@ -56,9 +89,6 @@ IceTipAbstractAskCredentialsModel >> initializeWidgets [
 		label: 'Do you want this credentials to be stored for future use?';
 		help: 'Please note that storing your credentials is handy but unsafe';
 		state: true.
-	
-	self whenWindowChanged: [ self updateOkButton ].
-
 ]
 
 { #category : #testing }
@@ -70,6 +100,12 @@ IceTipAbstractAskCredentialsModel >> isOkEnabled [
 { #category : #actions }
 IceTipAbstractAskCredentialsModel >> okAction [
 	^ self subclassResponsibility 
+]
+
+{ #category : #updating }
+IceTipAbstractAskCredentialsModel >> okButton [
+
+	^ self window buttons first
 ]
 
 { #category : #'API - opening' }
@@ -115,10 +151,7 @@ IceTipAbstractAskCredentialsModel >> storeCredentials [
 ]
 
 { #category : #updating }
-IceTipAbstractAskCredentialsModel >> updateOkButton [
-	
-	self window ifNil: [ ^ self ].
-	self window toolbar ifNil: [ ^ self ].
-	
-	self window toolbar okButton enabled: (self isOkEnabled)
+IceTipAbstractAskCredentialsModel >> updateOkButton [	
+	self window ifNil: [ ^ self ].	
+	self okButton enabled: self isOkEnabled
 ]

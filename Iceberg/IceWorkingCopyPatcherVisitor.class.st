@@ -29,12 +29,6 @@ IceWorkingCopyPatcherVisitor >> load [
 	loader load
 ]
 
-{ #category : #visiting }
-IceWorkingCopyPatcherVisitor >> remoteFileReferenceInPath: anUndefinedObject [ 
-	
-	"I do not remove nothing from the file in the image"
-]
-
 { #category : #actions }
 IceWorkingCopyPatcherVisitor >> removeClass: anIceClassDefinition [ 
 	
@@ -43,6 +37,12 @@ IceWorkingCopyPatcherVisitor >> removeClass: anIceClassDefinition [
 
 { #category : #removing }
 IceWorkingCopyPatcherVisitor >> removeFile: anIceFileDefinition [ 
+	"I do not remove nothing from the file in the image"
+]
+
+{ #category : #visiting }
+IceWorkingCopyPatcherVisitor >> removeFileReferenceInPath: anUndefinedObject [ 
+	
 	"I do not remove nothing from the file in the image"
 ]
 

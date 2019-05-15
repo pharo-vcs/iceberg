@@ -58,19 +58,21 @@ IceTipWorkingCopyBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePackageList [
-	packageList widget 
+	packageList widget
 		beResizable;
-		addColumn: (IceTipTableColumn new 
-			id: 'Name';
-			action: #descriptionWithDecoration;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Status';
-			action: #statusWithDecoration;
-			yourself);		
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Name';
+				action: #descriptionWithDecoration;
+				yourself);
+		addColumn:
+			(IceTipTableColumn new
+				id: 'Status';
+				action: #statusWithDecoration;
+				yourself);
 		dataSource: self newPackagesDataSource;
-		selectRowIndex: 1;
-		enableFilter: IceTipPackageFilter;			
+		selectIndex: 1;
+		enableFilter: IceTipPackageFilter;
 		explicitFunction
 ]
 
@@ -128,10 +130,12 @@ IceTipWorkingCopyBrowser >> packageList: anObject [
 IceTipWorkingCopyBrowser >> packageSelected [
 	| index dataSource |
 	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := packageList widget selectedRowIndex.
-	index = 0 ifTrue: [ ^ nil ].
+	index := packageList widget selectedIndex.
+	index = 0
+		ifTrue: [ ^ nil ].
 	dataSource := packageList widget dataSource.
-	dataSource hasElements ifFalse: [ ^ nil ].
+	dataSource hasElements
+		ifFalse: [ ^ nil ].
 	^ dataSource elementAt: index
 ]
 

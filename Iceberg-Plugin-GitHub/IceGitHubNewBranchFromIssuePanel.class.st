@@ -17,7 +17,7 @@ Class {
 		'selectRemoteModel',
 		'currentWaitingProcess'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -67,7 +67,7 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 ]
 
 { #category : #api }
-IceGitHubNewBranchFromIssuePanel >> extent [
+IceGitHubNewBranchFromIssuePanel >> initialExtent [
 	^ 800@175
 ]
 
@@ -90,28 +90,27 @@ IceGitHubNewBranchFromIssuePanel >> initializeFocusOrder [
 { #category : #initialization }
 IceGitHubNewBranchFromIssuePanel >> initializeWidgetsContents [
 	spacePanel := PanelMorph new asSpecAdapter.
-	
 	self initializeCurrentBranchLabel.
-	
-	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self selectRemoteModel.
-	remotePanel remoteList whenSelectedItemChanged: [ :remoteModel | 
-		self useRemote: remoteModel  ].
-
+	remotePanel := self
+		instantiate: IceTipSelectRemotePresenter
+		on: self selectRemoteModel.
+	remotePanel remoteList
+		whenSelectedItemChangedDo: [ :remoteModel | self useRemote: remoteModel ].
 	branchLabel := self newLabel label: 'Issue number:'.
 	issueNumberText := self newTextInput
-		ghostText: 'e.g., 123';
+		placeholder: 'e.g., 123';
 		autoAccept: true.
 	issueLabel := self newLabel label: 'Title:'.
 	issueText := self newTextInput
-		ghostText: 'e.g., 123-github-issue';
+		placeholder: 'e.g., 123-github-issue';
 		autoAccept: true.
-		
 	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ].
 	issueText
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ]
+	issueNumberText textHolder
+		whenChangedDo: [ :text | self validateIssue: text ]
 ]
 
 { #category : #'accessing ui' }

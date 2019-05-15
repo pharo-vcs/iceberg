@@ -6,7 +6,7 @@ See IceGitHubPullRequestDetailModel
 Class {
 	#name : #IceGitHubPullRequestDataSource,
 	#superclass : #IceGitHubJSONDataSource,
-	#category : 'Iceberg-Plugin-GitHub-Utils'
+	#category : #'Iceberg-Plugin-GitHub-Utils'
 }
 
 { #category : #accessing }

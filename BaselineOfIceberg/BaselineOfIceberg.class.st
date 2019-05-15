@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfIceberg
+	#category : 'BaselineOfIceberg'
 }
 
 { #category : #baseline }
@@ -92,7 +92,7 @@ BaselineOfIceberg >> commander: spec [
 		baseline: 'Commander' 
 		with: [ 
 			spec 
-				repository: 'github://pharo-ide/Commander:v0.7.2/src';
+				repository: 'github://pharo-ide/Commander:v0.8.0/src';
 				loads: #('Core' 'AllActivators' 'Commander-SpecSupport') ]
 ]
 
@@ -187,5 +187,5 @@ BaselineOfIceberg >> spec70: spec [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.13' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.14' ]
 ]
