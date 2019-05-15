@@ -4,7 +4,7 @@ Base class for all errors in Iceberg.
 Class {
 	#name : #IceError,
 	#superclass : #Error,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #visiting }

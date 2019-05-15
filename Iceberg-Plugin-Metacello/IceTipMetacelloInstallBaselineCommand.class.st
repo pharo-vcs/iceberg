@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'package'
 	],
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
 
 { #category : #accessing }

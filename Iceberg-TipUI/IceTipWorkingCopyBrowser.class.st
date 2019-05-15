@@ -11,7 +11,7 @@ Class {
 		'packageList',
 		'statusBar'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }
@@ -127,7 +127,7 @@ IceTipWorkingCopyBrowser >> packageList: anObject [
 { #category : #private }
 IceTipWorkingCopyBrowser >> packageSelected [
 	| index dataSource |
-	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
 	index := packageList widget selectedRowIndex.
 	index = 0 ifTrue: [ ^ nil ].
 	dataSource := packageList widget dataSource.

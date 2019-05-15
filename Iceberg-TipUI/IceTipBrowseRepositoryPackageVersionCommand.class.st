@@ -6,7 +6,7 @@ The current implementation relies on a monticello MCSnapshotBrowser
 Class {
 	#name : #IceTipBrowseRepositoryPackageVersionCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

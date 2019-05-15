@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'repositoryList'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }
@@ -133,7 +133,7 @@ IceTipRepositoriesBrowser >> repositoryList: anObject [
 { #category : #private }
 IceTipRepositoriesBrowser >> repositorySelected [
 	| selectedIndex |
-	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
 	selectedIndex := repositoryList widget selectedRowIndex.
 	selectedIndex = 0 ifTrue: [ ^ nil ].	
 	^ repositoryList widget dataSource 

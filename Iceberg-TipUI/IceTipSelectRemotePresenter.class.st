@@ -7,7 +7,7 @@ Class {
 		'addButton',
 		'model'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

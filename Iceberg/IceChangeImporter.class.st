@@ -13,7 +13,7 @@ Class {
 		'diff',
 		'version'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #importing }

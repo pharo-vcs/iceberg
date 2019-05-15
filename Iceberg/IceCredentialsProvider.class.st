@@ -14,7 +14,7 @@ Class {
 		'ProviderType',
 		'UseCustomSsh'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #private }

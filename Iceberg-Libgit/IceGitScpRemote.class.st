@@ -6,7 +6,7 @@ A remote repository created out of a SCP url, such as 'git@github.com:npasserini
 Class {
 	#name : #IceGitScpRemote,
 	#superclass : #IceGitNetworkRemote,
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #testing }

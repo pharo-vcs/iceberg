@@ -8,7 +8,7 @@ Class {
 		'hostLabel',
 		'hostInput'
 	],
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #specs }

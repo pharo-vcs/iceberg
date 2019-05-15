@@ -8,7 +8,7 @@ Class {
 		'revwalk',
 		'lgitRepository'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #walking }

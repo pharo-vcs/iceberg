@@ -5,7 +5,7 @@ This is a resumable error because user may want to do it anyway.
 Class {
 	#name : #IceShouldCommitBeforePull,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #visiting }

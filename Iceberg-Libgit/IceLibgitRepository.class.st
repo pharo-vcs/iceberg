@@ -18,7 +18,7 @@ Class {
 		'ShareRepositoriesBetweenImages',
 		'SharedRepositoriesLocation'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #settings }
@@ -544,7 +544,7 @@ IceLibgitRepository >> isPackageExported: anIceSavedPackage [
 
 { #category : #testing }
 IceLibgitRepository >> isValid [
-	self flag: #todo. "Make this tests more solid"
+	self flag: #pharoTodo. "Make this tests more solid"
 	^ self isMissing not
 ]
 

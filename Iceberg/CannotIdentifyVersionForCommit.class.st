@@ -6,5 +6,5 @@ This should not happen if the repository is consistent.
 Class {
 	#name : #CannotIdentifyVersionForCommit,
 	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }

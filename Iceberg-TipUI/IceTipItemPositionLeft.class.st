@@ -5,7 +5,7 @@ I am the default behaviour.
 Class {
 	#name : #IceTipItemPositionLeft,
 	#superclass : #IceTipItemPosition,
-	#category : 'Iceberg-TipUI-Spec-ItemBar'
+	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

@@ -9,13 +9,13 @@ Class {
 	#instVars : [
 		'tool'
 	],
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }
 IceTipDataSource >> actionColumn: column [
 	"If columns has actions associated, execute them"
-	self flag: #todo.
+	self flag: #pharoTodo.
 	self tableRefresh
 ]
 

@@ -10,7 +10,7 @@ Class {
 		'realObject',
 		'cache'
 	],
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #'instance creation' }
@@ -51,7 +51,7 @@ IceTipCachedModel >> initializeObject: anObject [
 
 { #category : #accessing }
 IceTipCachedModel >> name [
-	self flag: #pharo6. "in pharo6 there is still Object>>#name so this request will 
+	self flag: #pharoFixMe. "in pharo6 there is still Object>>#name so this request will 
 	not be redirected as expected (so we'll do it explicitly)"
 	^ self realObject name
 ]

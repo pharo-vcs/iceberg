@@ -6,7 +6,7 @@ Class {
 		'diff',
 		'index'
 	],
-	#category : 'Iceberg-Libgit-Commit'
+	#category : #'Iceberg-Libgit-Commit'
 }
 
 { #category : #accessing }

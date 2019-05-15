@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'remoteUrl'
 	],
-	#category : 'Iceberg-Libgit-Exceptions'
+	#category : #'Iceberg-Libgit-Exceptions'
 }
 
 { #category : #signalling }

@@ -4,7 +4,7 @@ Command that loads the current non-loaded selected package
 Class {
 	#name : #IceTipLoadPackageCommand,
 	#superclass : #IceTipPackageCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

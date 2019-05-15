@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipBranchFilter,
 	#superclass : #IceTipTreeFilter,
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #testing }

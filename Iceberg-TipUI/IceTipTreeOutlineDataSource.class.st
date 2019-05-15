@@ -9,7 +9,7 @@ My roots are displayed as section and not as part of the tree.
 Class {
 	#name : #IceTipTreeOutlineDataSource,
 	#superclass : #IceTipTreeDataSource,
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #'instance creation' }

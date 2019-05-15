@@ -1,7 +1,7 @@
 Class {
 	#name : #IceUnbornRepositoryProperties,
 	#superclass : #IceRepositoryProperties,
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #testing }

@@ -8,7 +8,7 @@ Class {
 		'ancestorIds',
 		'comment'
 	],
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #comparing }

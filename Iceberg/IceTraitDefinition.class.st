@@ -8,7 +8,7 @@ See my superclasses for more information.
 Class {
 	#name : #IceTraitDefinition,
 	#superclass : #IceMethodContainerDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

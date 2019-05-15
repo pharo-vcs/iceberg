@@ -4,7 +4,7 @@ Command that opens the repair window on a repository
 Class {
 	#name : #IceTipRepairCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'chosen'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }

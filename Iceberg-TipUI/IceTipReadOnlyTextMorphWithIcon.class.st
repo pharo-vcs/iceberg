@@ -5,7 +5,7 @@ Class {
 		'iconWidget',
 		'textWidget'
 	],
-	#category : 'Iceberg-TipUI-Spec-ReadOnlyForm'
+	#category : #'Iceberg-TipUI-Spec-ReadOnlyForm'
 }
 
 { #category : #specs }

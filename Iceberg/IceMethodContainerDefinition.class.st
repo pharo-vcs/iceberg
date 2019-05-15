@@ -14,7 +14,7 @@ Class {
 		'isMeta',
 		'mcDefinition'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

@@ -7,7 +7,7 @@ This is useful to use in components where I do not want to allow edition, but I 
 Class {
 	#name : #IceTipReadOnlyTextMorph,
 	#superclass : #TextMorph,
-	#category : 'Iceberg-TipUI-Spec-ReadOnlyForm'
+	#category : #'Iceberg-TipUI-Spec-ReadOnlyForm'
 }
 
 { #category : #'event handling' }

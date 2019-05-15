@@ -4,7 +4,7 @@ I'm the common group for metacello extensions.
 Class {
 	#name : #IceTipMetacelloMenuGroup,
 	#superclass : #CmdMenuGroup,
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
 
 { #category : #accessing }

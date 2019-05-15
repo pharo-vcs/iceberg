@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'store'
 	],
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #accessing }

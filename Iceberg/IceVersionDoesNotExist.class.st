@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'version'
 	],
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #accessing }

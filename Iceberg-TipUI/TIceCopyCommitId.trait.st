@@ -6,7 +6,7 @@ I am a simple Trait allowing to copy a commit ID to the clipboard without duplic
 "
 Trait {
 	#name : #TIceCopyCommitId,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #copying }

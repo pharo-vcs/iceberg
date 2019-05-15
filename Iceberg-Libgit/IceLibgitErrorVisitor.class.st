@@ -13,7 +13,7 @@ Class {
 	#instVars : [
 		'context'
 	],
-	#category : 'Iceberg-Libgit-Exceptions'
+	#category : #'Iceberg-Libgit-Exceptions'
 }
 
 { #category : #'instance creation' }

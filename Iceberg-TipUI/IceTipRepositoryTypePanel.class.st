@@ -12,7 +12,7 @@ Class {
 		'spacePanel',
 		'repository'
 	],
-	#category : 'Iceberg-TipUI-View-RepositoryType'
+	#category : #'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #accessing }

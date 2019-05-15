@@ -8,7 +8,7 @@ I'm active when:
 Class {
 	#name : #IceTipRepairDiscardAndLoad,
 	#superclass : #IceTipRepairAction,
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

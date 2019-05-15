@@ -5,7 +5,7 @@ I can provide #commitModels which changes depending on concrete model.
 Class {
 	#name : #IceTipCommitishModel,
 	#superclass : #IceTipEntityModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

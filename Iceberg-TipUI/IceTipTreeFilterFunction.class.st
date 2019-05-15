@@ -5,7 +5,7 @@ Of course, I'm to be used when searching tree structures.
 Class {
 	#name : #IceTipTreeFilterFunction,
 	#superclass : #FTFilterFunction,
-	#category : 'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #updating }

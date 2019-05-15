@@ -6,7 +6,7 @@ A remote repository created out of a HTTPS  url, such as 'https://github.com/npa
 Class {
 	#name : #IceGitHttpsRemote,
 	#superclass : #IceGitHttpRemote,
-	#category : 'Iceberg-Libgit-Core'
+	#category : #'Iceberg-Libgit-Core'
 }
 
 { #category : #defaults }

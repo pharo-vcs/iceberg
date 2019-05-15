@@ -22,7 +22,7 @@ IMPORTANT IMPLEMENTATION NOTE. For optimization purposes, a commit caches the na
 Class {
 	#name : #IceCommit,
 	#superclass : #IceCommitish,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'API-working copy' }
@@ -64,7 +64,7 @@ IceCommit >> changedPackagesToWorkingCopy: left [
 	 - the algorithm is in only one place
 	 - exploit polymorphism
 	"
-	self flag: #refactor.
+	self flag: #pharoTodo. "Refactor"
 	
 	leftPackageNames := left packageNames.
 	rightPackageNames := self packageNames.
@@ -230,7 +230,7 @@ IceCommit >> isUnknownCommit [
 
 { #category : #'private-monticello' }
 IceCommit >> mcPackageSnapshotsOfPackages: aCollection [
-	self flag: #todo. "I'm not sure I need to answer an empty snapshot. 
+	self flag: #pharoTodo. "I'm not sure I need to answer an empty snapshot. 
 	if there is no mcVersion it likely means the package was removed and an empty snapshow will 
 	keep it there."
 	^ aCollection

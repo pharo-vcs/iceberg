@@ -5,7 +5,7 @@ I represent a diff between two concrete commits.
 Class {
 	#name : #IceTipCommitDiffModel,
 	#superclass : #IceTipDiffModel,
-	#category : 'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Model'
 }
 
 { #category : #accessing }

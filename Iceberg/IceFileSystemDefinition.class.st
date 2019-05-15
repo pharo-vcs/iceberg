@@ -12,7 +12,7 @@ Class {
 		'path',
 		'fileReference'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #accessing }

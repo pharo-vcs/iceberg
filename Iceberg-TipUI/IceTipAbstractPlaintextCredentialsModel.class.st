@@ -11,7 +11,7 @@ Class {
 		'passwordLabel',
 		'passwordInput'
 	],
-	#category : 'Iceberg-TipUI-Credentials'
+	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #accessing }

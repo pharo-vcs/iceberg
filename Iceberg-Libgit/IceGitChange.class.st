@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'filePathString'
 	],
-	#category : 'Iceberg-Libgit-Changes'
+	#category : #'Iceberg-Libgit-Changes'
 }
 
 { #category : #accessing }
