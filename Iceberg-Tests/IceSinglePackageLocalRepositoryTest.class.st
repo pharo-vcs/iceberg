@@ -573,6 +573,33 @@ IceSinglePackageLocalRepositoryTest >> testRemoveClassInstanceVariableIsExported
 ]
 
 { #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testRemoveClassWithClassMethodIsExportedInCommit [
+
+	| diff |
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createMethod: 'foo' inClass: 'IceGeneratedClassForTesting class'.
+
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy removeClassNamed: 'IceGeneratedClassForTesting'.
+	
+	self repository commitWithMessage: 'Remove class'.
+	
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	
+	"2 children removed, class side and instance side"
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 2.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value isRemoval.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class' / 'foo') value definition isMethodDefinition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class' / 'foo') value isRemoval.
+]
+
+{ #category : #'tests-changes' }
 IceSinglePackageLocalRepositoryTest >> testRemoveExtensionMethodDoesNotRemoveExtendedClass [
 
 	| commitWithExtension commitWithoutExtension |

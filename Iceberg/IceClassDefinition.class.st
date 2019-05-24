@@ -70,6 +70,8 @@ IceClassDefinition >> isClassDefinition [
 IceClassDefinition >> removeFromPatcher: aMCPatcher [ 
 	
 	"If the meta side is removed, we should modify the class definition to not include the meta-parts such as class-instance-variables"
+	self asMCDefinition ifNil: [ ^ self ].
+	
 	isMeta ifTrue: [ 
 		^ aMCPatcher
 			modifyDefinition: self asMCDefinition
