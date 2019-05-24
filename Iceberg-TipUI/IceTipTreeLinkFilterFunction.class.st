@@ -19,7 +19,7 @@ IceTipTreeLinkFilterFunction >> showFilterFieldFromKeystrokeEvent: anEvent [
 	text := anEvent keyCharacter asString.
 	self textField takeKeyboardFocus.
 	self textField text: self textField text, text.
-	self flag: #hack. "I'm going directly to the widget because I need 
+	self flag: #pharoFixMe. "Hack - I'm going directly to the widget because I need 
 	control over the internals to position the cursor."
 	self textField textArea cursorEnd: anEvent
 ]

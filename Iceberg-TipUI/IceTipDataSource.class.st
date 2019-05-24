@@ -15,7 +15,7 @@ Class {
 { #category : #accessing }
 IceTipDataSource >> actionColumn: column [
 	"If columns has actions associated, execute them"
-	self flag: #todo.
+	self flag: #pharoTodo.
 	self tableRefresh
 ]
 

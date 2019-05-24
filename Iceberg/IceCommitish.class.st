@@ -236,7 +236,7 @@ IceCommitish >> switch [
 { #category : #'API-actions' }
 IceCommitish >> switchAndMergeWorkingCopy [
 	self switch.
-	self flag: #todo. "Demeters law"
+	self flag: #pharoTodo. "Demeters law"
 	self repository workingCopy referenceCommit merge.
 	self commit merge
 ]

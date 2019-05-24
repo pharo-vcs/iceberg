@@ -27,7 +27,7 @@ IceTipMetacelloRepositoryInstallBaselineCommand class >> browserContextActivatio
 
 { #category : #testing }
 IceTipMetacelloRepositoryInstallBaselineCommand class >> canBeExecutedInContext: aToolContext [
-	self flag: #todo. "Demeters law"
+	self flag: #pharoTodo. "Demeters law"
 	^ aToolContext repositoryModel entity workingCopy packages
 		anySatisfy: [ :each | each name beginsWith: self baselinePrefix ]
 ]

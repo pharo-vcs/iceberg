@@ -129,7 +129,7 @@ IceTipWorkingCopyBrowser >> packageList: anObject [
 { #category : #private }
 IceTipWorkingCopyBrowser >> packageSelected [
 	| index dataSource |
-	self flag: #todo.	"This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
 	index := packageList widget selectedIndex.
 	index = 0
 		ifTrue: [ ^ nil ].

@@ -58,8 +58,7 @@ IceSystemEventListener class >> handleVersionLoaded: ann [
 				(each includesPackageNamed: package name)
 					ifTrue: [ | icePackage isDirty |
 						icePackage := each packageNamed: package name.
-						"Ugly hack. Should enhance for next version"
-						self flag: #enhance.
+						self flag: #pharoTodo. "Ugly hack. Should enhance for next version"
 						isDirty := each workingCopy referenceCommit isUnknownCommit
 							ifTrue: [ true ]
 							ifFalse: [ | diff |
