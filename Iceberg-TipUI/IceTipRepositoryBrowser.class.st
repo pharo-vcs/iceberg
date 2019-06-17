@@ -40,12 +40,10 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 	| selection |
-	
-	ann newSelectedRowIndexes 
-		ifNotEmpty: [ :indexes |
+	ann newSelectedIndexes
+		ifNotEmpty: [ :indexes | 
 			selection := sidebarTree widget dataSource elementAt: indexes first.
-			(selection depth = 0 or: [ selection hasChildren ]) 
-				ifTrue: [ ^ self "just refresh on leafs" ].
+			(selection depth = 0 or: [ selection hasChildren ]) ifTrue: [ ^ self	"just refresh on leafs" ].
 			historyPanel model: selection data model ]
 ]
 
@@ -116,13 +114,13 @@ IceTipRepositoryBrowser >> newSidebarTreeDataSource [
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
 	self rebuildToolbar.
-    self sidebarTree widget 
-        in: [ :this | 
-            this selectRowIndexes: #(). 
-            this dataSource 
-                rootForItems: self model repositoryModelsByGroup;
-                expandRoots ];
-        refresh.
+	self sidebarTree widget
+		in: [ :this | 
+			this selectIndexes: #().
+			this dataSource
+				rootForItems: self model repositoryModelsByGroup;
+				expandRoots ];
+		refresh
 ]
 
 { #category : #'private factory' }
@@ -136,12 +134,9 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
 	| index branch |
-
 	branch := self model headModel.
-	index := (sidebarTree widget dataSource 
-		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ]).
-	sidebarTree widget selectRowIndex: index.
-	
+	index := sidebarTree widget dataSource indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ].
+	sidebarTree widget selectIndex: index
 ]
 
 { #category : #accessing }

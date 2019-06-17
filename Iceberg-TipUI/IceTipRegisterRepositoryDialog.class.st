@@ -55,7 +55,7 @@ IceTipRegisterRepositoryDialog >> doEdit: aRepository [
 
 { #category : #testing }
 IceTipRegisterRepositoryDialog >> isEditing [ 
-	^ repository isNil not
+	^ repository isNotNil
 ]
 
 { #category : #events }

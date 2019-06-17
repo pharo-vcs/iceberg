@@ -72,8 +72,7 @@ IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 		items: checkoutStrategies;
 		displayBlock: [ :each | each description ].
 
-	checkoutStrategyList whenSelectedItemChanged: [ :aStrategy | 
-		self model checkoutStrategy: aStrategy ]
+	checkoutStrategyList whenSelectedItemChangedDo: [ :aStrategy | self model checkoutStrategy: aStrategy ]
 ]
 
 { #category : #initialization }

@@ -46,13 +46,8 @@ IceTipOptionDialog >> allTypes [
 { #category : #private }
 IceTipOptionDialog >> basicSelectionChanged: aType [
 	type := aType.
-	aType 
-		ifNotNil: [ 	
-			self title: type title.
-			self replacePanelWith: type ]
-		ifNil: [ 
-			self removeAllPanels.
-			self title: self class title ]
+	aType ifNotNil: [ self replacePanelWith: type ] ifNil: [ self removeAllPanels ].
+	self updateTitle
 ]
 
 { #category : #'accessing ui' }
@@ -179,8 +174,8 @@ IceTipOptionDialog >> replacePanelWith: aType [
 
 { #category : #private }
 IceTipOptionDialog >> selectFirst [
-	typeList widget selectRowIndex: 1.
-	self basicSelectionChanged: self allTypes first 	
+	typeList widget selectIndex: 1.
+	self basicSelectionChanged: self allTypes first
 ]
 
 { #category : #accessing }
@@ -190,9 +185,12 @@ IceTipOptionDialog >> selectedType [
 
 { #category : #private }
 IceTipOptionDialog >> selectionChanged: ann [
-	self basicSelectionChanged: (ann newSelectedRowIndexes
-		ifNotEmpty: [ :indexes |	self typeList widget dataSource realElementAt: indexes first ]
-		ifEmpty: [ nil ])
+	self basicSelectionChanged: (ann newSelectedIndexes ifNotEmpty: [ :indexes | self typeList widget dataSource realElementAt: indexes first ] ifEmpty: [ nil ])
+]
+
+{ #category : #accessing }
+IceTipOptionDialog >> title [
+	^ type ifNotNil: #title ifNil: [ self class title ]
 ]
 
 { #category : #'accessing ui' }
@@ -203,4 +201,9 @@ IceTipOptionDialog >> typeList [
 { #category : #'accessing ui' }
 IceTipOptionDialog >> typeList: anObject [
 	typeList := anObject
+]
+
+{ #category : #private }
+IceTipOptionDialog >> updateTitle [
+	self withWindowDo: [ :window | window title: self title ]
 ]
