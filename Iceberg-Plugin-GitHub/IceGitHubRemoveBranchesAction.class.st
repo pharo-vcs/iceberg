@@ -21,7 +21,6 @@ IceGitHubRemoveBranchesAction >> basicExecute [
 		during: [ self cacheAllBranches ].
 
 	IceGitHubSelectListModel new 
-		setModal: true;
 		title: ('Select branches to remove on remote {1}' format: {self remote name});
 		selectLabel: 'Remove branches';
 		items: self remoteBranches;
@@ -30,7 +29,7 @@ IceGitHubRemoveBranchesAction >> basicExecute [
 				each at: 'name'. 
 				self timeSinceLastCommit: each } ];
 		onAccept: [ :selection | self removeBranches: selection ];
-		openWithSpec
+		openModalWithSpec
 ]
 
 { #category : #private }

@@ -30,7 +30,6 @@ IceGitHubNewPullRequestAction >> basicExecute [
 		repository: self repository
 		credentials: self credentials
 		headRemote: remote)
-		setModal: true;
 		onAccept: [ :pullRequest | 
 			[ | pullRequestDatas url |
 			pullRequestDatas := pullRequest send.
@@ -40,7 +39,7 @@ IceGitHubNewPullRequestAction >> basicExecute [
 				actionOnClick: [ self class environment at: #WebBrowser ifPresent: [ :webBrowser | webBrowser openOn: url ] ifAbsent: [ self inform: ('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' format: { url }) ]  ] ]
 				on: IceGitHubError
 				do: [ :e | self reportError: e ] ];
-		openWithSpec
+		openModalWithSpec
 ]
 
 { #category : #private }
