@@ -60,6 +60,12 @@ IceTipBrowser >> initializeWidgets [
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]
 ]
 
+{ #category : #initialization }
+IceTipBrowser >> initializeWindow: aWindowPresenter [
+	super initializeWindow: aWindowPresenter.
+	aWindowPresenter windowIcon: (self iconNamed: #komitterSmalltalkhubRemote)
+]
+
 { #category : #accessing }
 IceTipBrowser >> model [
 	^ model
@@ -115,9 +121,4 @@ IceTipBrowser >> toolbar [
 { #category : #'accessing ui' }
 IceTipBrowser >> toolbar: anObject [
 	toolbar := anObject
-]
-
-{ #category : #accessing }
-IceTipBrowser >> windowIcon [
-	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
