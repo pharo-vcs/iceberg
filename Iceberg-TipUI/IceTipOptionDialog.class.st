@@ -87,7 +87,7 @@ IceTipOptionDialog >> giveFocusToNextFrom: aModel [
 
 { #category : #accessing }
 IceTipOptionDialog >> initialExtent [
-	^ (600@300) scaledByDisplayScaleFactor
+	^ (600@400) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }

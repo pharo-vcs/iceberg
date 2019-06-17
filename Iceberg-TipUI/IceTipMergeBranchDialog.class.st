@@ -68,11 +68,6 @@ IceTipMergeBranchDialog >> doAccept [
 ]
 
 { #category : #accessing }
-IceTipMergeBranchDialog >> initialExtent [
-	^ (600@400) scaledByDisplayScaleFactor
-]
-
-{ #category : #accessing }
 IceTipMergeBranchDialog >> model [
 	^ model
 ]

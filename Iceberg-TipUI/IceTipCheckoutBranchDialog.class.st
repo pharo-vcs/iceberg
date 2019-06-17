@@ -63,11 +63,6 @@ IceTipCheckoutBranchDialog >> doAccept [
 ]
 
 { #category : #accessing }
-IceTipCheckoutBranchDialog >> initialExtent [
-	^ (600@400) scaledByDisplayScaleFactor
-]
-
-{ #category : #accessing }
 IceTipCheckoutBranchDialog >> model [
 	^ model
 ]

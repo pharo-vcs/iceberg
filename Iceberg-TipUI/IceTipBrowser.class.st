@@ -63,7 +63,10 @@ IceTipBrowser >> initializeWidgets [
 { #category : #initialization }
 IceTipBrowser >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
-	aWindowPresenter windowIcon: (self iconNamed: #komitterSmalltalkhubRemote)
+	aWindowPresenter
+		windowIcon: (self iconNamed: #komitterSmalltalkhubRemote);
+		initialExtent: self initialExtent;
+		title: self title
 ]
 
 { #category : #accessing }
