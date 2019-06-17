@@ -53,8 +53,7 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 								row2 
 									add: #baseForkList;
 									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ];
-				add: #addButton height: self buttonHeight  ];
+				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ] ];
 		yourself
 ]
 
@@ -90,16 +89,6 @@ IceGitHubCreatePullRequestModel >> accept [
 		acceptBlock cull: self createPullRequest ].
 	
 	self window delete
-]
-
-{ #category : #'accessing ui' }
-IceGitHubCreatePullRequestModel >> addButton [
-	^ addButton
-]
-
-{ #category : #'accessing ui' }
-IceGitHubCreatePullRequestModel >> addButton: anObject [
-	addButton := anObject
 ]
 
 { #category : #accessing }
@@ -287,6 +276,19 @@ IceGitHubCreatePullRequestModel >> initialExtent [
 ]
 
 { #category : #initialization }
+IceGitHubCreatePullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
+	aDialogWindowPresenter
+		addButton: 'Create pull request'
+			do: [ :presenter | 
+			self accept.
+			presenter close ];
+		addButton: 'Cancel'
+			do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ]
+]
+
+{ #category : #initialization }
 IceGitHubCreatePullRequestModel >> initializePresenter [
 	super initializePresenter.
 	self titlePanel text: self branch shortname.
@@ -329,14 +331,11 @@ IceGitHubCreatePullRequestModel >> initializeWidgets [
 	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
 	bodyPanel := self newText autoAccept: true.
-	addButton := self newButton.
 		
 	titleLabel label: 'Title'.
 	headLabel label: 'From (Head)'.
 	baseLabel label: 'To (Base)'.
 	bodyLabel label: 'Comment'.
-	addButton label: 'Create pull request'.
-	addButton action: [ self accept ].
 	
 	self focusOrder 
 		add: titlePanel;
@@ -344,8 +343,7 @@ IceGitHubCreatePullRequestModel >> initializeWidgets [
 		add: headBranchList;
 		add: baseForkList;
 		add: baseBranchList;
-		add: bodyPanel;
-		add: addButton
+		add: bodyPanel
 ]
 
 { #category : #private }
