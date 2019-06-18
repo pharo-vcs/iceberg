@@ -46,13 +46,8 @@ IceTipOptionDialog >> allTypes [
 { #category : #private }
 IceTipOptionDialog >> basicSelectionChanged: aType [
 	type := aType.
-	aType 
-		ifNotNil: [ 	
-			self title: type title.
-			self replacePanelWith: type ]
-		ifNil: [ 
-			self removeAllPanels.
-			self title: self class title ]
+	aType ifNotNil: [ self replacePanelWith: type ] ifNil: [ self removeAllPanels ].
+	self updateTitle
 ]
 
 { #category : #'accessing ui' }
@@ -92,7 +87,7 @@ IceTipOptionDialog >> giveFocusToNextFrom: aModel [
 
 { #category : #accessing }
 IceTipOptionDialog >> initialExtent [
-	^ (600@300) scaledByDisplayScaleFactor
+	^ (600@400) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -198,6 +193,11 @@ IceTipOptionDialog >> selectionChanged: ann [
 				ifEmpty: [ nil ])
 ]
 
+{ #category : #accessing }
+IceTipOptionDialog >> title [
+	^ type ifNotNil: #title ifNil: [ self class title ]
+]
+
 { #category : #'accessing ui' }
 IceTipOptionDialog >> typeList [
 	^ typeList
@@ -206,4 +206,9 @@ IceTipOptionDialog >> typeList [
 { #category : #'accessing ui' }
 IceTipOptionDialog >> typeList: anObject [
 	typeList := anObject
+]
+
+{ #category : #actions }
+IceTipOptionDialog >> updateTitle [
+	self withWindowDo: [ :window | window title: self title ]
 ]

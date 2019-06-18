@@ -16,7 +16,6 @@ Class {
 		'baseBranchList',
 		'bodyLabel',
 		'bodyPanel',
-		'addButton',
 		'acceptBlock',
 		'availableRemotes',
 		'availableBranchNames',
@@ -89,16 +88,6 @@ IceGitHubCreatePullRequestModel >> accept [
 		acceptBlock cull: self createPullRequest ].
 	
 	self window delete
-]
-
-{ #category : #'accessing ui' }
-IceGitHubCreatePullRequestModel >> addButton [
-	^ addButton
-]
-
-{ #category : #'accessing ui' }
-IceGitHubCreatePullRequestModel >> addButton: anObject [
-	addButton := anObject
 ]
 
 { #category : #accessing }
@@ -286,11 +275,13 @@ IceGitHubCreatePullRequestModel >> initialExtent [
 ]
 
 { #category : #initialization }
-IceGitHubCreatePullRequestModel >> initializeDialogWindow: aWindow [
-
-	aWindow
-		addButton: 'Create pull request'
-		do: [ self accept ]
+IceGitHubCreatePullRequestModel >> initializeDialogWindow: aDialogPresenter [
+	aDialogPresenter
+		addButton: 'Create pull request' do: [ self accept ];
+		addButton: 'Cancel'
+			do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ]
 ]
 
 { #category : #initialization }
@@ -348,8 +339,7 @@ IceGitHubCreatePullRequestModel >> initializeWidgets [
 		add: headBranchList;
 		add: baseForkList;
 		add: baseBranchList;
-		add: bodyPanel;
-		add: addButton
+		add: bodyPanel
 ]
 
 { #category : #private }
