@@ -109,7 +109,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.5.6';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.5.7';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
