@@ -17,12 +17,18 @@ IceTipDialog >> accept [
 	"override this if you want a dialog"
 ]
 
-{ #category : #accessing }
-IceTipDialog >> initializeDialogWindow: aWindow [
-	
-	aWindow 
-		addButton: 'Accept' 
-		do: [ :presenter | self accept. presenter close ] 
+{ #category : #initialization }
+IceTipDialog >> initializeDialogWindow: aDialogPresenter [
+	aDialogPresenter
+		addButton: 'Accept'
+			do: [ :presenter | 
+			self accept.
+			presenter close ];
+		addButton: 'Cancel'
+			do: [ :presenter | 
+			presenter
+				triggerCancelAction;
+				close ]
 ]
 
 { #category : #accessing }

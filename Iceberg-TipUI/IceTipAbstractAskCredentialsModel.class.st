@@ -53,7 +53,7 @@ IceTipAbstractAskCredentialsModel >> initialize [
 	accepted := false
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 	super initializeDialogWindow: aDialogWindowPresenter.
 	aDialogWindowPresenter title: self title.

@@ -83,11 +83,18 @@ IceTipAddPackagesDialog >> contextSelection [
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializeDialogWindow: aWindow [
-
-	acceptButton := aWindow 
-		addButton: 'Add' 
-		do: [ :presenter | self accept. presenter close ].
-	acceptButton disable
+	acceptButton := aWindow
+		addButton: 'Add'
+		do: [ :presenter | 
+			self accept.
+			presenter close ].
+	acceptButton disable.
+	aWindow
+		addButton: 'Cancel'
+		do: [ :presenter | 
+			presenter
+				triggerCancelAction;
+				close ]
 ]
 
 { #category : #initialization }
