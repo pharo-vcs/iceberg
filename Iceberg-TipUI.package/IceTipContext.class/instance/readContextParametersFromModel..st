@@ -1,3 +1,0 @@
-accessing
-readContextParametersFromModel: aModel
-	self repositoryModel: aModel repositoryModel

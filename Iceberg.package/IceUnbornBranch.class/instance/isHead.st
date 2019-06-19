@@ -1,4 +1,0 @@
-testing
-isHead
-	
-	^ true

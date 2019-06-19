@@ -67,6 +67,12 @@ Pharo 7.0a comes with the latest stable Iceberg version. To update it, just clon
 #### For Pharo 6.1
 
 ```Smalltalk
+"Unregister all iceberg repository adapters since we are going to unload all code related to it.
+Otherwise obsolete instances will stay".
+IceMetacelloRepositoryAdapter allInstances do: #unregister.
+Smalltalk globals at: #IceSystemEventListener ifPresent: #unregisterSystemAnnouncements.
+
+
 MetacelloPharoPlatform select.
 #(
     'BaselineOfTonel'
@@ -117,7 +123,7 @@ Metacello new
 "load iceberg"
 Metacello new
   	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v1.?';
+  	repository: 'github://pharo-vcs/iceberg:v1.5.?';
 	onWarningLog;
   	load.
 	
@@ -143,6 +149,5 @@ Metacello new
 *NOTE: you need to update Iceberg in a NEW image, otherwise there will be obsolete repositories around.*
 
 ## 5 minutes tutorial
-*(the 5 minutes tutorial is no longer valid for this version, we are working on an updated version)*
 
-Have a look at the videos [https://github.com/pharo-vcs/iceberg/tree/master/docs/Contribute-to-Pharo-with-Iceberg-0.7.3]
+Check the 5 minutes tutorial in our wiki, or have a look at the videos [https://github.com/pharo-vcs/iceberg/wiki/Tutorial].

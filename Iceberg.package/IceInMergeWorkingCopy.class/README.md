@@ -1,1 +1,0 @@
-I am a working copy whose packages are all in merge status in the same commits.

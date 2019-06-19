@@ -1,3 +1,0 @@
-accessing
-beSwitchAndMerge
-	self mergeType: IceTipMergeType switchAndMerge

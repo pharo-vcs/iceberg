@@ -1,4 +1,0 @@
-initialization
-tearDownWithRepository: aRepository
-		
-	"Nothing"

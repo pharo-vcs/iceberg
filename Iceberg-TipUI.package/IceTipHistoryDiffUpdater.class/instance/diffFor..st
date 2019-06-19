@@ -1,3 +1,0 @@
-accessing
-diffFor: aCommitModel
-	self subclassResponsibility

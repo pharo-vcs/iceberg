@@ -1,3 +1,0 @@
-testing
-actsOnBranch: anIceTipTreeBranch 
-	^ false.

@@ -1,1 +1,0 @@
-I resolve Bitbucket repositories

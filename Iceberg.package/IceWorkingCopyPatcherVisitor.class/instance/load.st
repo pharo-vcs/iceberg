@@ -1,3 +1,0 @@
-loading
-load
-	loader load

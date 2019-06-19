@@ -1,3 +1,0 @@
-accessing ui
-mergeWithMasterCheckbox
-	^ mergeWithMasterCheckbox

@@ -1,1 +1,0 @@
-I represent the common behavior of all iceberg credentials.

@@ -1,4 +1,0 @@
-testing
-canRevertChanges
-	
-	^ source canRevertChanges

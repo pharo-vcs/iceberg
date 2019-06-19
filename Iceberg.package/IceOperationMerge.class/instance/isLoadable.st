@@ -1,3 +1,0 @@
-morphic-compatibility
-isLoadable
-	^ false

@@ -1,4 +1,0 @@
-accessing
-repository
-	
-	^ diff repository

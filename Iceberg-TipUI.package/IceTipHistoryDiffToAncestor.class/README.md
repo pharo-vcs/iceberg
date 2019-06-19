@@ -1,1 +1,0 @@
-I keep a diff from a commit to his mail parent.

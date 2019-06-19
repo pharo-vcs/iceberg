@@ -1,1 +1,0 @@
-Command that browses the selected package as it is loaded in the image.

@@ -1,3 +1,0 @@
-private
-obtainPlaintextCredentials: response
-	self subclassResponsibility

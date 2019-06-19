@@ -1,4 +1,0 @@
-comparing
-= another
-	
-	self subclassResponsibility

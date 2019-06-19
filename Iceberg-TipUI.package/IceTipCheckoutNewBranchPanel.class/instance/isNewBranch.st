@@ -1,3 +1,0 @@
-testing
-isNewBranch
-	^ true

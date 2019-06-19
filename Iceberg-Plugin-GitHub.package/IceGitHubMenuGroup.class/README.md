@@ -1,1 +1,0 @@
-I represent the group in the menu that holds the Github Plugin options

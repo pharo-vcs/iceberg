@@ -1,4 +1,0 @@
-accessing
-rightContents
-	
-	^ definition contents

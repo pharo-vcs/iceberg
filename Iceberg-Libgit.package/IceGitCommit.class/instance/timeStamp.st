@@ -1,3 +1,0 @@
-accessing
-timeStamp
-	^ self datetime

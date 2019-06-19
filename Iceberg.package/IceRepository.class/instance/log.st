@@ -1,3 +1,0 @@
-accessing
-log
-	^ self subclassResponsibility
