@@ -51,8 +51,8 @@ IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 		traitComposition: mcDefinition traitCompositionString
 		classTraitComposition: mcDefinition classTraitCompositionString
 		category: mcDefinition category
-		instVarNames: mcDefinition instanceVariablesString
-		classVarNames: mcDefinition classVariablesString
+		instVarNames: mcDefinition instVarNames
+		classVarNames: mcDefinition classVarNames
 		poolDictionaryNames: mcDefinition poolDictionaries
 		classInstVarNames: #()
 		type: mcDefinition type
