@@ -45,3 +45,13 @@ MCGitBasedNetworkRepository >> getOrCreateIcebergRepository [
 			remote := IceGitRemote url: remoteUrl.
 			self createIcebergRepositoryWithFallbackFor: remote url: remoteUrl ]
 ]
+
+{ #category : #'*Iceberg' }
+MCGitBasedNetworkRepository >> httpUrl [
+	^ self httpsUrl copyReplaceAll: 'https://' with: 'http://'
+]
+
+{ #category : #'*Iceberg' }
+MCGitBasedNetworkRepository >> httpsUrl [
+	self subclassResponsibility
+]
