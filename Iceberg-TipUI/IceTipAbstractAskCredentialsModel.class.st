@@ -55,7 +55,7 @@ IceTipAbstractAskCredentialsModel >> initialize [
 
 { #category : #accessing }
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
-	super initializeDialogWindow: aDialogWindowPresenter.
+
 	aDialogWindowPresenter title: self title.
 
 	acceptButton := aDialogWindowPresenter

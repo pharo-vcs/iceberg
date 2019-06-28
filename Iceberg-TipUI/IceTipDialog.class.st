@@ -18,14 +18,6 @@ IceTipDialog >> accept [
 ]
 
 { #category : #accessing }
-IceTipDialog >> initializeDialogWindow: aWindow [
-	
-	aWindow 
-		addButton: 'Accept' 
-		do: [ :presenter | self accept. presenter close ] 
-]
-
-{ #category : #accessing }
 IceTipDialog >> openDialogWithSpec [
 	^ super openDialogWithSpec
 		okAction: [ self accept ];
