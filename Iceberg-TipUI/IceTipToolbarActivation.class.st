@@ -32,5 +32,5 @@ IceTipToolbarActivation >> position: aPosition [
 
 { #category : #accessing }
 IceTipToolbarActivation >> toolbarName [
-	^ self commandClass defaultToolbarItemName
+	^ self menuItemName
 ]
