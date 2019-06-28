@@ -55,22 +55,20 @@ IceTipAbstractAskCredentialsModel >> initialize [
 
 { #category : #accessing }
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
-
 	aDialogWindowPresenter title: self title.
-
 	acceptButton := aDialogWindowPresenter
-		addButton: 'Ok' do: [ :presenter | 
+		addButton: 'Ok'
+		do: [ :presenter | 
 			presenter triggerOkAction.
+			self okAction.
 			presenter close ].
 	cancelButton := aDialogWindowPresenter
-		addButton: 'Cancel' do: [ :presenter | 
+		addButton: 'Cancel'
+		do: [ :presenter | 
 			presenter triggerCancelAction.
+			self cancelAction.
 			presenter close ].
-
-	acceptButton action: [ self okAction ].
-	cancelButton action: [ self cancelAction ].
 	self updateOkButton.
-	
 	aDialogWindowPresenter whenClosedDo: [ self closeAction ].
 	aDialogWindowPresenter centered
 ]
