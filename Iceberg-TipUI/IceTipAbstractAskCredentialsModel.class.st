@@ -103,7 +103,7 @@ IceTipAbstractAskCredentialsModel >> okAction [
 { #category : #updating }
 IceTipAbstractAskCredentialsModel >> okButton [
 
-	^ self window buttons first
+	^ acceptButton 
 ]
 
 { #category : #'API - opening' }
