@@ -66,7 +66,8 @@ IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresen
 	aDialogWindowPresenter title: self title.
 	
 	acceptButton := aDialogWindowPresenter buttons detect: [ :button | button label = 'Accept' ].
-	acceptButton action: [ self okAction ].
+	acceptButton action: [ 
+		self okAction ].
 	self updateOkButton.
 	
 	aDialogWindowPresenter whenClosedDo: [ self closeAction ].
