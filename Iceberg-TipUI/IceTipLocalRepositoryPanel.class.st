@@ -5,7 +5,7 @@ I will define a repository that already exists.
 Class {
 	#name : #IceTipLocalRepositoryPanel,
 	#superclass : #IceTipRepositoryTypePanel,
-	#category : #'Iceberg-TipUI-View-RepositoryType'
+	#category : 'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }

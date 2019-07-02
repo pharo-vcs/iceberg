@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'target'
 	],
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

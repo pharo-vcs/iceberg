@@ -4,7 +4,7 @@ I place item buttons at right.
 Class {
 	#name : #IceTipItemPositionRight,
 	#superclass : #IceTipItemPosition,
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

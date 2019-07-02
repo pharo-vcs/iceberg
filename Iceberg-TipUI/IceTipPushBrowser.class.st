@@ -5,7 +5,7 @@ I perform a push of outgoing commits.
 Class {
 	#name : #IceTipPushBrowser,
 	#superclass : #IceTipRemoteActionBrowser,
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #'instance creation' }

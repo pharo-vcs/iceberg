@@ -13,7 +13,7 @@ Class {
 		'subdirectoryLabel',
 		'subdirectoryInputText'
 	],
-	#category : #'Iceberg-TipUI-View-RepositoryType'
+	#category : 'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }

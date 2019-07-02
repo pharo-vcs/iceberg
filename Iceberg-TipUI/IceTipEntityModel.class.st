@@ -8,7 +8,7 @@ Class {
 		'entity',
 		'repositoryModel'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #'instance creation' }

@@ -5,7 +5,7 @@ Class {
 		'mergeType',
 		'mergeAction'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #actions }

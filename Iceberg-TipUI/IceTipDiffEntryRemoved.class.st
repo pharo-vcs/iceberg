@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'entry'
 	],
-	#category : #'Iceberg-TipUI-Announcements'
+	#category : 'Iceberg-TipUI-Announcements'
 }
 
 { #category : #'instance creation' }

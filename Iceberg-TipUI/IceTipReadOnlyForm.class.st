@@ -23,7 +23,7 @@ Class {
 		'labelWidth',
 		'rowHeight'
 	],
-	#category : #'Iceberg-TipUI-Spec-ReadOnlyForm'
+	#category : 'Iceberg-TipUI-Spec-ReadOnlyForm'
 }
 
 { #category : #accessing }

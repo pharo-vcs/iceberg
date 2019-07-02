@@ -8,7 +8,7 @@ Notice that doing this can lead you to another situation that needs repair (like
 Class {
 	#name : #IceTipRepairLocateRepository,
 	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

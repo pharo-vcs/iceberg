@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'tool'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }

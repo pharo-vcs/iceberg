@@ -5,5 +5,5 @@ I'm a general announcement for Tip UI events.
 Class {
 	#name : #IceTipAnnouncement,
 	#superclass : #IceAnnouncement,
-	#category : #'Iceberg-TipUI-Announcements'
+	#category : 'Iceberg-TipUI-Announcements'
 }

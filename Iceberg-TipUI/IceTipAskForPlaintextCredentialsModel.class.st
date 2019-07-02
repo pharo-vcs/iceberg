@@ -5,7 +5,7 @@ This dialog is used when the IceTipInteractiveCredentialsProvider needs to ask a
 Class {
 	#name : #IceTipAskForPlaintextCredentialsModel,
 	#superclass : #IceTipAbstractPlaintextCredentialsModel,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #specs }

@@ -4,7 +4,7 @@ I'm a command to perform a fetch operation on all registered projects.
 Class {
 	#name : #IceTipFetchAllProjectCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

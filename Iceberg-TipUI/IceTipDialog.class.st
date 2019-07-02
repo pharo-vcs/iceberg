@@ -9,7 +9,7 @@ Class {
 		'acceptButton',
 		'cancelButton'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #actions }
@@ -19,10 +19,16 @@ IceTipDialog >> accept [
 
 { #category : #accessing }
 IceTipDialog >> initializeDialogWindow: aWindow [
-	
-	aWindow 
-		addButton: 'Accept' 
-		do: [ :presenter | self accept. presenter close ] 
+
+	aWindow
+
+		addButton: 'Cancel'
+		do: [ :presenter | presenter triggerCancelAction.
+			presenter close ];
+		
+		addButton: 'Accept'
+		do: [ :presenter | self accept.presenter close ].
+
 ]
 
 { #category : #accessing }

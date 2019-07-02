@@ -13,7 +13,7 @@ Class {
 		'model',
 		'acceptCallback'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

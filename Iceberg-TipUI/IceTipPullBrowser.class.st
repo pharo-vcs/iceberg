@@ -5,7 +5,7 @@ I perform a pull of incoming commits.
 Class {
 	#name : #IceTipPullBrowser,
 	#superclass : #IceTipRemoteActionBrowser,
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

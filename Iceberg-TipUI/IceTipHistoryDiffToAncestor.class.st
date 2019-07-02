@@ -4,7 +4,7 @@ I keep a diff from a commit to his mail parent.
 Class {
 	#name : #IceTipHistoryDiffToAncestor,
 	#superclass : #IceTipHistoryDiffUpdater,
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }

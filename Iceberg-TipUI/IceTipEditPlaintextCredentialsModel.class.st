@@ -8,7 +8,7 @@ Class {
 		'tool',
 		'credential'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #specs }

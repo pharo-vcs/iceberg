@@ -9,7 +9,7 @@ Class {
 		'hostInput',
 		'tool'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #specs }

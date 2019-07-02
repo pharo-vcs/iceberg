@@ -4,7 +4,7 @@ I'm a leaf element of a tree.
 Class {
 	#name : #IceTipTreeItem,
 	#superclass : #IceTipTreeNode,
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }

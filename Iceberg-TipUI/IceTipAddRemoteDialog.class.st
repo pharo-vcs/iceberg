@@ -12,7 +12,7 @@ Class {
 		'nameText',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

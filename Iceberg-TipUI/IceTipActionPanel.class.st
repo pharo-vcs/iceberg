@@ -10,7 +10,7 @@ Class {
 		'actionMorphPanel',
 		'actionWidth'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ I am a credential provider that requires the missing plaintext credential to the
 Class {
 	#name : #IceTipInteractiveCredentialsProvider,
 	#superclass : #IceCredentialsProvider,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #private }

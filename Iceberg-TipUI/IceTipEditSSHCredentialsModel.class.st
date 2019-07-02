@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'credentials'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #specs }

@@ -10,7 +10,7 @@ This strategy is used to re-attach image when it is detached from current develo
 Class {
 	#name : #IceTipSwitchAndMergeType,
 	#superclass : #IceTipMergeType,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #executing }

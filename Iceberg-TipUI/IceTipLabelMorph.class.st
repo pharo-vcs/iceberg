@@ -4,7 +4,7 @@ I am a non-editable, non-selectable text morph.
 Class {
 	#name : #IceTipLabelMorph,
 	#superclass : #IceTipReadOnlyTextMorph,
-	#category : #'Iceberg-TipUI-Spec-ReadOnlyForm'
+	#category : 'Iceberg-TipUI-Spec-ReadOnlyForm'
 }
 
 { #category : #initialization }

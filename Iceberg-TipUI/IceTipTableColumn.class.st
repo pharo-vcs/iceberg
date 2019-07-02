@@ -9,7 +9,7 @@ Class {
 		'action',
 		'icon'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #'instance creation' }

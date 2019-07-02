@@ -4,7 +4,7 @@ I remove a credential from the credential store.
 Class {
 	#name : #IceTipRemoveCredentialCommand,
 	#superclass : #IceTipAbstractCredentialCommand,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #accessing }

@@ -9,7 +9,7 @@ This is the default merge mechanism (what users do most of the time)
 Class {
 	#name : #IceTipDirectMergeType,
 	#superclass : #IceTipMergeType,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #executing }

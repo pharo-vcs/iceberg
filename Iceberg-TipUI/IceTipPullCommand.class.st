@@ -5,7 +5,7 @@ I open a pull view window.
 Class {
 	#name : #IceTipPullCommand,
 	#superclass : #IceTipRemoteActionCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

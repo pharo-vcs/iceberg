@@ -6,7 +6,7 @@ Check #editModelClass in IceSshCredentials and IcePlaintextCredentials
 Class {
 	#name : #IceTipEditCredentialCommand,
 	#superclass : #IceTipAbstractCredentialCommand,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #accessing }

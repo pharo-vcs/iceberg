@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipDirectoryDataSource,
 	#superclass : #IceTipTreeDataSource,
-	#category : #'Iceberg-TipUI-View-Project'
+	#category : 'Iceberg-TipUI-View-Project'
 }
 
 { #category : #accessing }

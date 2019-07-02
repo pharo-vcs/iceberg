@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'onClickBlock'
 	],
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #initialization }

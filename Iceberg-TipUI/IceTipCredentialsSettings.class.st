@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipCredentialsSettings,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Settings'
+	#category : 'Iceberg-TipUI-Settings'
 }
 
 { #category : #settings }

@@ -14,7 +14,7 @@ Class {
 		'passphraseLabel',
 		'tool'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #initialization }

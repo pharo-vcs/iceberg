@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'selectedItems'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #private }

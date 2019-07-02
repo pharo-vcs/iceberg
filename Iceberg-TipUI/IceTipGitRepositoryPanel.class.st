@@ -5,7 +5,7 @@ Repositories needs to have a valid url (one that can be parsed by IceRemote) and
 Class {
 	#name : #IceTipGitRepositoryPanel,
 	#superclass : #IceTipRepositoryTypePanel,
-	#category : #'Iceberg-TipUI-View-RepositoryType'
+	#category : 'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }

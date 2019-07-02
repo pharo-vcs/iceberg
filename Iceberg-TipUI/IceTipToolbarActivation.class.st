@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'position'
 	],
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #'instance creation' }

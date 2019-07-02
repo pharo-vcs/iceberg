@@ -5,7 +5,7 @@ I will open a dialog to take the new possible repository (from available options
 Class {
 	#name : #IceTipAddRepositoryCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

@@ -10,7 +10,7 @@ Class {
 		'name',
 		'children'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #'instance creation' }

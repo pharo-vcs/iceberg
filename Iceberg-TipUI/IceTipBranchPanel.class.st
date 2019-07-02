@@ -9,7 +9,7 @@ Class {
 		'model',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #accessing }

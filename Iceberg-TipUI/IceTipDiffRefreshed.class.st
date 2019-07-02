@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-Announcements'
+	#category : 'Iceberg-TipUI-Announcements'
 }
 
 { #category : #'instance creation' }

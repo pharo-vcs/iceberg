@@ -6,7 +6,7 @@ Class {
 	#name : #IceTipWeakValueHolder,
 	#superclass : #Object,
 	#type : #weak,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #'instance creation' }

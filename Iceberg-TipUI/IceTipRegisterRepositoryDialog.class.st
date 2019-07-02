@@ -14,7 +14,7 @@ Class {
 		'repository',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-TipUI-View-RepositoryType'
+	#category : 'Iceberg-TipUI-View-RepositoryType'
 }
 
 { #category : #specs }

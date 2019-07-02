@@ -11,7 +11,7 @@ Class {
 		'proxy',
 		'objects'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #'instance creation' }

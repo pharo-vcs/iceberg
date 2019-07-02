@@ -19,7 +19,7 @@ Class {
 		'toolbarItemFont',
 		'displayMode'
 	],
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

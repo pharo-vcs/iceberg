@@ -4,7 +4,7 @@ I add a new IceSshCredentials to the store
 Class {
 	#name : #IceTipAddSshCredentialCommand,
 	#superclass : #IceTipAbstractCredentialStoreCommand,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #activation }

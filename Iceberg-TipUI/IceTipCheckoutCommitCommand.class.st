@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'selectedCommit'
 	],
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

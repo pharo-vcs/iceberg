@@ -7,7 +7,7 @@ Class {
 		'confirmLabel',
 		'removeFileSystemCheckbox'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }

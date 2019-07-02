@@ -14,7 +14,7 @@ Class {
 		'messageText',
 		'message'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

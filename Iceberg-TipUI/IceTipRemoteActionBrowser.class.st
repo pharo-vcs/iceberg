@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'remotePanel'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

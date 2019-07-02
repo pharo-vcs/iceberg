@@ -4,7 +4,7 @@ I implement display mode ""just icons""
 Class {
 	#name : #IceTipToolbarDisplayModeIcon,
 	#superclass : #IceTipToolbarDisplayMode,
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #configuring }

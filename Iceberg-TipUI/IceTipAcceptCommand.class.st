@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'browser'
 	],
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #activation }

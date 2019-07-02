@@ -9,7 +9,7 @@ Class {
 		'actionPanel',
 		'button'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #actions }

@@ -11,7 +11,7 @@ Class {
 		'packageList',
 		'statusBar'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

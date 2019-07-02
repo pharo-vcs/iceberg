@@ -6,7 +6,7 @@ Models can be cached using #beCached.
 Class {
 	#name : #IceTipModel,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #converting }

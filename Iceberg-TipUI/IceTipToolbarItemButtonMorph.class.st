@@ -13,7 +13,7 @@ Class {
 		'badgeFont',
 		'badgeSelector'
 	],
-	#category : #'Iceberg-TipUI-Spec-ItemBar'
+	#category : 'Iceberg-TipUI-Spec-ItemBar'
 }
 
 { #category : #accessing }

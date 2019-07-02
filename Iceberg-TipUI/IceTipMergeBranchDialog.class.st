@@ -10,7 +10,7 @@ Class {
 		'model',
 		'types'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #'instance creation' }

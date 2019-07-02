@@ -14,7 +14,7 @@ Class {
 		'chooseBlock',
 		'keptLocation'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }

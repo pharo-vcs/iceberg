@@ -4,7 +4,7 @@ I'm a command to open the package manager browser for a project.
 Class {
 	#name : #IceTipManagePackagesCommand,
 	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }

@@ -9,7 +9,7 @@ Class {
 		'formatBlock',
 		'iconBlock'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : 'Iceberg-TipUI-View-DataSource'
 }
 
 { #category : #accessing }
