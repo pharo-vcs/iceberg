@@ -27,6 +27,13 @@ IceTipAbstractAskCredentialsModel >> acceptButton [
 	^ acceptButton
 ]
 
+{ #category : #'as yet unclassified' }
+IceTipAbstractAskCredentialsModel >> beAccepted [
+	"comment stating purpose of instance-side message"
+	"scope: class-variables  &  instance-variables"	
+	accepted := true
+]
+
 { #category : #actions }
 IceTipAbstractAskCredentialsModel >> cancelAction [
 	^ self subclassResponsibility 
@@ -57,18 +64,9 @@ IceTipAbstractAskCredentialsModel >> initialize [
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 	super initializeDialogWindow: aDialogWindowPresenter.
 	aDialogWindowPresenter title: self title.
-
-	acceptButton := aDialogWindowPresenter
-		addButton: 'Ok' do: [ :presenter | 
-			presenter triggerOkAction.
-			presenter close ].
-	cancelButton := aDialogWindowPresenter
-		addButton: 'Cancel' do: [ :presenter | 
-			presenter triggerCancelAction.
-			presenter close ].
-
+	
+	acceptButton := aDialogWindowPresenter buttons detect: [ :button | button label = 'Accept' ].
 	acceptButton action: [ self okAction ].
-	cancelButton action: [ self cancelAction ].
 	self updateOkButton.
 	
 	aDialogWindowPresenter whenClosedDo: [ self closeAction ].

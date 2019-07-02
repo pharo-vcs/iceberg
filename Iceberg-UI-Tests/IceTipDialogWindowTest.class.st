@@ -19,3 +19,15 @@ IceTipDialogWindowTest >> testHasCancelButton [
 	self assert: (dialogWindow buttons anySatisfy: [:button | button label='Cancel']).
 
 ]
+
+{ #category : #tests }
+IceTipDialogWindowTest >> testHasOnlyOneCancelButton [
+	| remoteHostName |
+	remoteHostName := 'Github'.
+	dialogWindow := IceTipAskForPlaintextCredentialsModel new 
+		remoteHostname: remoteHostName;
+		beAccepted ;
+		openDialogWithSpec.
+	self assert: (dialogWindow buttons select: [:button | button label='Cancel']) size equals: 1.
+
+]
