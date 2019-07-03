@@ -109,8 +109,7 @@ IceGitHubNewBranchFromIssuePanel >> initializeWidgetsContents [
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder
-		whenChangedDo: [ :text | self validateIssue: text ]
+	issueNumberText whenTextChangedDo: [ :text | self validateIssue: text ]
 ]
 
 { #category : #'accessing ui' }
