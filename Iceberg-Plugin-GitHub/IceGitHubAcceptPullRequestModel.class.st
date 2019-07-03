@@ -21,16 +21,31 @@ IceGitHubAcceptPullRequestModel class >> availableTypes [
 ]
 
 { #category : #specs }
-IceGitHubAcceptPullRequestModel class >> defaultSpec [ 
+IceGitHubAcceptPullRequestModel class >> defaultSpec [
 	<spec>
-
-	^ SpecLayout composed
-		newColumn: [ :col |
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #messageLabel
+					withConstraints: [ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #messageText;
+				yourself );
+		add:
+			(SpBoxLayout newHorizontal
+				add: #typeLabel
+					withConstraints: [ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #typeList;
+				yourself )
+			withConstraints: [ :constraints | constraints width: 25 * self currentWorld displayScaleFactor ];
+		add: #acceptButton
+			withConstraints: [ :constraints | constraints height: self buttonHeight ];
+		"		newColumn: [ :col |
 			col 
 				newRow: [:row | row add: #messageLabel width: 80 * World displayScaleFactor; add: #messageText ];
 				newRow: [:row | row add: #typeLabel width: 80 * World displayScaleFactor; add: #typeList ] height: 25 * World displayScaleFactor;
-				add: #acceptButton height: self buttonHeight  ];
-		yourself
+				add: #acceptButton height: self buttonHeight  ];"
+			"		yourself"
+			yourself
 ]
 
 { #category : #accessing }
