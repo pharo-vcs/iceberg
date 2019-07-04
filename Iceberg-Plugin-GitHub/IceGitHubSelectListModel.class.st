@@ -3,7 +3,7 @@ I'm a dialog to select a list of anything (used by branches now).
 "
 Class {
 	#name : #IceGitHubSelectListModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'selectedItems',
 		'listPanel',
@@ -26,11 +26,10 @@ IceGitHubSelectListModel class >> defaultExtent [
 { #category : #specs }
 IceGitHubSelectListModel class >> defaultSpec [
 	<spec>
-	^ SpecLayout composed
-		newColumn:[ :col | 
-			col  
-				newRow: #listPanel;
-				newRow: #selectButton height: self buttonHeight ];
+	^ SpBoxLayout newVertical
+		add: #listPanel;
+		add: #selectButton
+			withConstraints: [ :constraints | constraints height: self buttonHeight ];
 		yourself
 ]
 
@@ -44,14 +43,6 @@ IceGitHubSelectListModel >> confirmSelection [
 	acceptBlock ifNotNil: [ 
 		acceptBlock value: selectedItems ].
 	self window delete
-]
-
-{ #category : #'private factory' }
-IceGitHubSelectListModel >> createCheckboxFor: anObject [
-	^ CheckboxMorph 
-		on: (IceGitHubSelectItem list: selectedItems item: anObject) 
-		selected: #value 
-		changeSelected: #value:
 ]
 
 { #category : #api }
@@ -68,20 +59,23 @@ IceGitHubSelectListModel >> initialExtent [
 IceGitHubSelectListModel >> initialize [
 	selectedItems := Set new.
 	super initialize.
-	self title: self class title
 ]
 
 { #category : #initialization }
 IceGitHubSelectListModel >> initializeWidgets [
-	listPanel := self instantiate: FastTablePresenter.
-	listPanel icons: [ :each | self createCheckboxFor: each ].
+	listPanel := self newTable.
 	selectButton := self newButton.
-	
-	selectButton 
+	listPanel
+		addColumn:
+			((SpCheckBoxTableColumn
+				evaluated: [ :eachLine | selectedItems includes: eachLine ])
+				onActivation: [ :eachLine | selectedItems remove: eachLine ];
+				onDesactivation: [ :eachLine | selectedItems add: eachLine ]);
+		addColumn: (SpStringTableColumn evaluated: [ :eachLine | eachLine halt ]).
+	selectButton
 		label: self class buttonLabel;
 		action: [ self confirmSelection ].
-	
-	self focusOrder 
+	self focusOrder
 		add: listPanel;
 		add: selectButton
 ]
