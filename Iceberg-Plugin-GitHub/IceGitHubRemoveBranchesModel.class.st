@@ -71,15 +71,18 @@ IceGitHubRemoveBranchesModel >> initializeWidgets [
 	listPanel
 		addColumn:
 			((SpCheckBoxTableColumn
-				evaluated: [ :eachLine | selectedItems includes: eachLine ])
-				onActivation: [ :eachLine | selectedItems add: eachLine ];
-				onDesactivation: [ :eachLine | selectedItems remove: eachLine ];
+				evaluated: [ :branch | selectedItems includes: branch ])
+				onActivation: [ :branch | selectedItems add: branch ];
+				onDesactivation: [ :branch | selectedItems remove: branch ];
 				width: 20 * self currentWorld displayScaleFactor;
 				yourself);
-		addColumn: (SpStringTableColumn evaluated: [ :eachLine | eachLine at: 'name' ]);
+		addColumn:
+			((SpStringTableColumn evaluated: [ :branch | branch at: 'name' ])
+				width: 350 * self currentWorld displayScaleFactor;
+				yourself);
 		addColumn:
 			(SpStringTableColumn
-				evaluated: [ :eachLine | self timeSinceLastCommit: eachLine ]).
+				evaluated: [ :branch | self timeSinceLastCommit: branch ]).
 	selectButton
 		label: self class buttonLabel;
 		action: [ self confirmSelection ].
