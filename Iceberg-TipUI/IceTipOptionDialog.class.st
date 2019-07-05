@@ -8,7 +8,7 @@ This is useful to keep a variable number of options.
 "
 Class {
 	#name : #IceTipOptionDialog,
-	#superclass : #IceTipDialog,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'typeList',
 		'type',
@@ -20,12 +20,10 @@ Class {
 { #category : #specs }
 IceTipOptionDialog class >> defaultSpec [
 	<spec>
-	
-	^ SpecLayout composed
-		newRow: [ :row | 
-			row
-				newColumn: #typeList width: 180 * World displayScaleFactor;
-				newColumn: #contentPanel ]
+	^ SpBoxLayout newHorizontal
+		add: #typeList withConstraints: [:constraints | constraints width: 180];
+		add: #contentPanel;
+		yourself
 ]
 
 { #category : #actions }
@@ -97,44 +95,18 @@ IceTipOptionDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipOptionDialog >> initializeTypeList [
-	typeList widget 
-		addColumn: (IceTipTableColumn newAction: #title icon: #icon);
-		dataSource: self newTypeListDataSource;
-		onAnnouncement: FTSelectionChanged send: #selectionChanged: to: self.
+	typeList
+		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
+		addColumn: (SpStringTableColumn evaluated: #title);
+		items: self allTypes
 ]
 
 { #category : #initialization }
 IceTipOptionDialog >> initializeWidgets [
-	contentPanel := self emptyPanel asSpecAdapter.
-	typeList := self newIceTable.
+	contentPanel := self newNullPresenter.
+	typeList := self newTable.
 	self initializeTypeList.
-			
-	self whenBuiltDo: [ :ann |
-		self addShortcutsTo: ann widget.
-		self selectFirst ].
-
-	self eventKeyStrokesForNextFocus do: [:each |
-		typeList widget bindKeyCombination: each toAction: [ self giveFocusToNextFrom: typeList ] ].
-	self eventKeyStrokesForPreviousFocus do: [:each |
-		typeList widget bindKeyCombination: each toAction: [ self giveFocusToPreviousFrom: typeList ] ].
-		
-	self refreshFocusOrder.
-]
-
-{ #category : #'private factory' }
-IceTipOptionDialog >> newTypeListDataSource [
-	^ IceTipDataSource new 
-		tool: self;
-		elements: self allTypes;
-		yourself.
-		
-	"^ IceTipTreeOutlineDataSource new 
-		tool: self;
-		rootForItems: self allTypes;
-		childrenBlock: [ :each | #() ];
-		format: [ :each | each title ];
-		icon: [ :each | each icon ];
-		yourself"
+	 self whenBuiltDo: [ :ann | self selectFirst ]
 ]
 
 { #category : #focus }
@@ -158,28 +130,17 @@ IceTipOptionDialog >> removeAllPanels [
 
 { #category : #private }
 IceTipOptionDialog >> replacePanelWith: aType [
-	| panelMorph specPanel |
-	
-	panelMorph := self contentPanel morph.
-	panelMorph removeAllMorphs.
-	
-	aType ifNil: [ ^ self ].
-	specPanel := aType buildWithSpec.
-	panelMorph 
-		addMorph: specPanel
-		fullFrame: LayoutFrame identity.
-
-	self eventKeyStrokesForNextFocus do: [:each |
-		aType bindKeyCombination: each toAction: [ self giveFocusToNextFrom: specPanel ] ].
-	self eventKeyStrokesForPreviousFocus do: [:each |
-		aType bindKeyCombination: each toAction: [ self giveFocusToPreviousFrom: specPanel ] ].
-
-	self refreshFocusOrder
+	contentPanel = aType
+		ifTrue: [ ^ self ].
+	contentPanel := aType.
+	contentPanel owner: self.
+	self needRebuild: false.
+	self buildWithSpec
 ]
 
 { #category : #private }
 IceTipOptionDialog >> selectFirst [
-	typeList widget selectIndex: 1.
+	typeList adapter selectIndex: 1.
 	self basicSelectionChanged: self allTypes first
 ]
 

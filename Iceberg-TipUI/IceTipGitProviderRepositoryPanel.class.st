@@ -57,8 +57,7 @@ IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 
 { #category : #initialization }
 IceTipGitProviderRepositoryPanel >> initializeWidgets [
-	self initializeProjectLocation.
-	self initializeSpacePanel.
+	super initializeWidgets .
 	userNameLabel := self newLabel label: 'Owner name'.
 	userNameInputText := self newTextInput
 		autoAccept: true;
