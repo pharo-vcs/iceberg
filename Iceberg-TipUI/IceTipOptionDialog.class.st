@@ -95,6 +95,12 @@ IceTipOptionDialog >> initialExtent [
 ]
 
 { #category : #initialization }
+IceTipOptionDialog >> initializeDialogWindow: aPresenter [
+	super initializeDialogWindow: aPresenter .
+	aPresenter okAction: [ self doAccept ]
+]
+
+{ #category : #initialization }
 IceTipOptionDialog >> initializeTypeList [
 	typeList
 		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
