@@ -99,7 +99,7 @@ IceTipOptionDialog >> initializeTypeList [
 	typeList
 		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
 		addColumn: (SpStringTableColumn evaluated: #title);
-		whenSelectionChangedDo: [ :selection | self replacePanelWith: selection selectedItem ];
+		whenSelectionChangedDo: [ :selection | self basicSelectionChanged: selection selectedItem ]; "replacePanelWith: selection selectedItem" 
 		items: self allTypes
 ]
 
