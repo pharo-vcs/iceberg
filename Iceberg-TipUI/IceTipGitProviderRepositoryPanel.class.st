@@ -15,28 +15,28 @@ Class {
 { #category : #specs }
 IceTipGitProviderRepositoryPanel class >> defaultSpec [
 	<spec: #default>
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #userNameLabel width: self labelWidth;
+				add: #userNameInputText;
+								yourself)
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #projectNameLabel width: self labelWidth;
+				add: #projectNameInputText;
+								yourself)
 
-	^ SpecLayout composed 
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-						row 
-							add: #userNameLabel width: self iceLabelWidth;
-							add: #userNameInputText ]
-					height: self inputTextHeight;
-				newRow: [ :row | 
-						row 
-							add: #projectNameLabel width: self iceLabelWidth;
-							add: #projectNameInputText ]
-					height: self inputTextHeight;
-				newRow: #projectLocation
-					height: self inputTextHeight;
-				newRow: [ :row | 
-						row 
-							add: #protocolLabel width: self iceLabelWidth;
-							add: #protocolDropList ]
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+			height: self inputTextHeight;
+		add: #projectLocation height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #protocolLabel width: self labelWidth;
+				add: #protocolDropList;
+								yourself)
+			height: self inputTextHeight;
+		yourself
 ]
 
 { #category : #testing }

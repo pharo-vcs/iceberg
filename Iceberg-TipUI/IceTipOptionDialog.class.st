@@ -12,7 +12,8 @@ Class {
 	#instVars : [
 		'typeList',
 		'type',
-		'contentPanel'
+		'contentPanel',
+		'firstTimeBuild'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -98,15 +99,17 @@ IceTipOptionDialog >> initializeTypeList [
 	typeList
 		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
 		addColumn: (SpStringTableColumn evaluated: #title);
+		whenSelectionChangedDo: [ :selection | self replacePanelWith: selection selectedItem ];
 		items: self allTypes
 ]
 
 { #category : #initialization }
 IceTipOptionDialog >> initializeWidgets [
+	firstTimeBuild := true.
 	contentPanel := self newNullPresenter.
 	typeList := self newTable.
 	self initializeTypeList.
-	 self whenBuiltDo: [ :ann | self selectFirst ]
+	self whenBuiltDo: [ :ann | firstTimeBuild ifTrue: [self selectFirst. firstTimeBuild :=false. ]]
 ]
 
 { #category : #focus }
