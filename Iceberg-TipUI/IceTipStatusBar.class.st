@@ -16,9 +16,9 @@ IceTipStatusBar class >> defaultItemSeparation [
 { #category : #specs }
 IceTipStatusBar class >> defaultSpec [
 	<spec: #default>
-
-	^ SpecLayout composed
-		newRow: #panel
+	^  SpBoxLayout newVertical
+		add: #panel;
+		yourself
 ]
 
 { #category : #'private dispatch' }

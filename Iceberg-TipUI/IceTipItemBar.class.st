@@ -4,7 +4,7 @@ I can be extended to implement toolbars and statusbars.
 "
 Class {
 	#name : #IceTipItemBar,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'panel',
 		'leftPanel',
@@ -22,13 +22,13 @@ IceTipItemBar >> addItem: aToolbarItem [
 ]
 
 { #category : #'private dispatch' }
-IceTipItemBar >> addItemLeft: aButton [
-	self leftPanel addMorphBack: aButton
+IceTipItemBar >> addItemLeft: aButtonPresenter [
+	self leftPanel add: aButtonPresenter 
 ]
 
 { #category : #'private dispatch' }
-IceTipItemBar >> addItemRight: aButton [
-	self rightPanel addMorphBack: aButton
+IceTipItemBar >> addItemRight: aButtonPresenter [
+	self rightPanel add: aButtonPresenter.
 ]
 
 { #category : #accessing }
@@ -71,8 +71,9 @@ IceTipItemBar >> initializeWidgets [
 { #category : #accessing }
 IceTipItemBar >> items: aCollection [
 	"We expect a collection to be made of specs"
+
 	items := aCollection asOrderedCollection.
-	self refresh
+	self update.
 ]
 
 { #category : #'private accessing' }

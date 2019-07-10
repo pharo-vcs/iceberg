@@ -45,9 +45,10 @@ IceTipToolbar class >> defaultMode [
 { #category : #specs }
 IceTipToolbar class >> defaultSpec [
 	<spec: #default>
-
-	^ SpecLayout composed
-		newRow: #panel
+	^ SpBoxLayout newHorizontal
+		add: #leftPanel;
+		add: #rightPanel;
+		yourself
 ]
 
 { #category : #accessing }
