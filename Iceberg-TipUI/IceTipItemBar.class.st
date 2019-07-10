@@ -49,22 +49,10 @@ IceTipItemBar >> initialize [
 
 { #category : #initialization }
 IceTipItemBar >> initializeWidgets [
-	leftPanel := self newPanelMorph.
-	rightPanel := self newPanelMorph
-		listDirection: #rightToLeft;
-		hResizing: #spaceFill.
 
-	panel := PanelMorph new 
-		changeTableLayout;
-		listDirection: #leftToRight;
-		hResizing: #spaceFill;
-		vResizing: #spaceFill;
-		color: self color;
-		asSpecAdapter.
-		
-	panel widget 
-		addMorphBack: leftPanel;
-		addMorphBack: rightPanel
+	leftPanel := self newButtonBar placeAtStart.
+	rightPanel := self newButtonBar placeAtEnd
+
 
 ]
 

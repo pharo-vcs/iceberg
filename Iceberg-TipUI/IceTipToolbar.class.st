@@ -82,12 +82,12 @@ IceTipToolbar >> newToolbarItemFont [
 
 { #category : #accessing }
 IceTipToolbar >> refresh [
-	self leftPanel removeAllMorphs.
-	self rightPanel removeAllMorphs.
-	items do: [ :each |  
-		each position 
-			addItem: (each newToolbarButtonOn: self) 
-			into: self ]
+
+	self leftPanel items: #().
+	self rightPanel items: #().
+	items
+		do:
+			[ :each | each position addItem: (each newToolbarButtonOn: self) into: self ]
 ]
 
 { #category : #accessing }
