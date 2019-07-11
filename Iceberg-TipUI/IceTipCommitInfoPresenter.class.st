@@ -5,7 +5,7 @@ I'm usually used as part of an IceTipHistoryBrowser.
 "
 Class {
 	#name : #IceTipCommitInfoPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'model',
 		'selectedModel',
@@ -23,7 +23,7 @@ Class {
 IceTipCommitInfoPresenter class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecBoxLayout newVertical
+	^ SpBoxLayout newVertical
 		add: #notebookPanel;
 		yourself
 ]

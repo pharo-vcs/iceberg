@@ -32,7 +32,7 @@ IceTipHistoryBrowser class >> defaultSpec [
 IceTipHistoryBrowser class >> panelSpec [
 	<spec>
 	
-	^ SpecPanedLayout newVertical
+	^ SpPanedLayout newVertical
 		add: #commitList;
 		add: #commitInfoTabs;
 		yourself
@@ -95,7 +95,7 @@ IceTipHistoryBrowser >> initializeCommitList [
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				title: 'Description';
 				yourself);
-"		dataSource: self newCommitsDataSource;"
+				whenSelectionChangedDo: [ :selection | commitInfoTabs selectedModel: ( selection selectedItem)];
 		selectIndex: 1
 ]
 
@@ -107,16 +107,10 @@ IceTipHistoryBrowser >> initializeWidgets [
 	
 	self initializeCommitList.
 	
-	"commitList widget 
-		onAnnouncement: FTSelectionChanged 
-		send: #selectionChanged:
-		to: self.
-	"
 	self focusOrder 
 		add: commitList;
 		add: commitInfoTabs.
-		
-	"self refresh"
+	self refresh 
 ]
 
 { #category : #accessing }
@@ -144,9 +138,7 @@ IceTipHistoryBrowser >> newContextWithSelection: anObject [
 IceTipHistoryBrowser >> refresh [
 	| commitModels |
 	commitModels := self model commitModels.
-	commitList widget
-		in: [ :this | this dataSource elements: commitModels ];
-		refresh.
+	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 

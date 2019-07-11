@@ -16,9 +16,9 @@ Class {
 IceTipRepositoryBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecBoxLayout newVertical
+	^ SpBoxLayout newVertical
 		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
-		add: (SpecPanedLayout newHorizontal
+		add: (SpPanedLayout newHorizontal
 			position: 30 percent; 
 			add: #sidebarTree;
 			add: #historyPanel withConstraints:[ :c | c spec: #panelSpec ];
@@ -69,24 +69,23 @@ IceTipRepositoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeSidebarTree [
-	sidebarTree widget dataSource: self newSidebarTreeDataSource.
-	self selectCurrentBranch.
+	sidebarTree roots: self newSidebarTreeDataSource rootItem children.
+"	self selectCurrentBranch"
 ]
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
-	
-	sidebarTree := self newIceOutline.
-	historyPanel := self instantiate: IceTipHiedraHistoryBrowser on: self model headModel.
+	sidebarTree := self newTreeTable.
+	historyPanel := self instantiate: IceTipHistoryBrowser on: self model headModel.
 	historyPanel beForMerge.
 	
 	self initializeSidebarTree.
-	sidebarTree widget
+"	sidebarTree widget
 		onAnnouncement: FTSelectionChanged 
 		send: #commitishSelected: 
 		to: self. 
-	
+"	
 	self focusOrder 
 		add: historyPanel;
 		add: sidebarTree
@@ -135,7 +134,7 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 IceTipRepositoryBrowser >> selectCurrentBranch [
 	| index branch |
 	branch := self model headModel.
-	index := sidebarTree widget dataSource
+	index := sidebarTree adapter dataSource
 		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ].
 	sidebarTree widget selectIndex: index
 ]

@@ -63,6 +63,7 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 	items := self newRepositoriesDataSource.
 	repositoryList
 		showColumnHeaders;
+		beResizable;
 		addColumn:
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				width: 200;
