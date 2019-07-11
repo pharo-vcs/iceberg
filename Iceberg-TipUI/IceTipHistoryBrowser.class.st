@@ -17,13 +17,14 @@ Class {
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecBoxLayout newVertical 
-		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
-		add: (SpecPanedLayout newVertical
-			add: #commitList;
-			add: #commitInfoTabs;
-			yourself);
+	^ SpBoxLayout newVertical
+		add: #toolbar
+			withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add:
+			(SpPanedLayout newVertical
+				add: #commitList;
+				add: #commitInfoTabs;
+				yourself);
 		yourself
 ]
 
@@ -74,53 +75,48 @@ IceTipHistoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
-	commitList widget
-		beResizable;
+	commitList 
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Timestamp';
-				action: [ :each | each timeStamp asLocalStringYMDHM ];
+			((SpStringTableColumn evaluated: [:each | each timeStamp asLocalStringYMDHM ])
+				title: 'Timestamp';
 				width: 110 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Commit';
-				action: #shortId;
+		((SpStringTableColumn evaluated: #shortId)
+				title: 'Commit';
 				width: 60 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Author';
-				action: #author;
+			((SpStringTableColumn evaluated: #author)
+				title: 'Author';
 				width: 150 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Description';
-				action: #descriptionWithDecoration;
+			((SpStringTableColumn evaluated: #descriptionWithDecoration)
+				title: 'Description';
 				yourself);
-		dataSource: self newCommitsDataSource;
+"		dataSource: self newCommitsDataSource;"
 		selectIndex: 1
 ]
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
-	commitList := self newIceTable.
+	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
 	self initializeCommitList.
 	
-	commitList widget 
+	"commitList widget 
 		onAnnouncement: FTSelectionChanged 
 		send: #selectionChanged:
 		to: self.
-	
+	"
 	self focusOrder 
 		add: commitList;
 		add: commitInfoTabs.
 		
-	self refresh
+	"self refresh"
 ]
 
 { #category : #accessing }
