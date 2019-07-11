@@ -119,9 +119,7 @@ IceTipRepositoriesBrowser >> newRepositoriesDataSource [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList adapter
-		in: [ :this | this dataSource elements: self model repositories ];
-		refresh
+	repositoryList items: self model repositories
 ]
 
 { #category : #accessing }
