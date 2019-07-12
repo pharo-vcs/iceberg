@@ -143,9 +143,13 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
-	| index branch |
-"	branch := self model headModel.
-	sidebarTree selection selectPath: branch "
+	| branch |
+	branch := self model headModel entity.
+	
+	branch isBranch ifFalse: [ ^ self ].
+	
+	"We know that the current branch is a local one, so we build the path from 1 (for local branch) and the index of the current branch."
+	sidebarTree selection selectPath: { 1. self model branches indexOf: branch}
 ]
 
 { #category : #accessing }
