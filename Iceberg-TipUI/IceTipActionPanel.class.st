@@ -3,7 +3,7 @@ I'm a simple action bar to be used as footer of certain panels (see IceTipCommen
 "
 Class {
 	#name : #IceTipActionPanel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'panel',
 		'actions',
@@ -26,8 +26,8 @@ IceTipActionPanel class >> defaultHeight [
 { #category : #specs }
 IceTipActionPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpecLayout composed
-		newRow: #panel
+	^ SpBoxLayout newVertical 
+		add: #panel
 ]
 
 { #category : #accessing }

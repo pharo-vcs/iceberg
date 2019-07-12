@@ -11,10 +11,10 @@ Class {
 IceTipRemoteActionBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecBoxLayout newVertical 
+	^ SpBoxLayout newVertical 
 		add: #remotePanel withConstraints: [ :c | c height: self inputTextHeight ];
 		add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
-		add: #actionPanel withConstraints: [ :c | c height: self iceActionPanelHeight ];
+		add: #actionButtonBar withConstraints: [ :c | c height: self buttonHeight ];
 		yourself
 ]
 
@@ -33,7 +33,7 @@ IceTipRemoteActionBrowser >> initializeWidgets [
 		whenSelectedItemChangedDo: [ :remoteModel | self moveToRemote: remoteModel ].
 	self focusOrder
 		add: self commitsPanel;
-		add: self actionPanel;
+		add: self actionButtonBar;
 		add: self remotePanel
 ]
 
