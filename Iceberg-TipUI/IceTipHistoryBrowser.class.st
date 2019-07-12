@@ -76,6 +76,7 @@ IceTipHistoryBrowser >> initialExtent [
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
 	commitList 
+	beResizable ;
 		addColumn:
 			((SpStringTableColumn evaluated: [:each | each timeStamp asLocalStringYMDHM ])
 				title: 'Timestamp';

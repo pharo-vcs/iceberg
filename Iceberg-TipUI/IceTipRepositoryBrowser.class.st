@@ -38,13 +38,8 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
-	| selection |
-	ann newSelectedIndexes
-		ifNotEmpty: [ :indexes | 
-			selection := sidebarTree widget dataSource elementAt: indexes first.
-			(selection depth = 0 or: [ selection hasChildren ])
-				ifTrue: [ ^ self	"just refresh on leafs" ].
-			historyPanel model: selection data model ]
+	historyPanel model: ann
+
 ]
 
 { #category : #accessing }
@@ -69,8 +64,24 @@ IceTipRepositoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeSidebarTree [
-	sidebarTree roots: self newSidebarTreeDataSource rootItem children.
-"	self selectCurrentBranch"
+	sidebarTree 
+			addColumn:
+			(SpCompositeTableColumn new
+				addColumn:
+					(SpImageTableColumn new
+						width: 20;
+						evaluated: #icon;
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: #name;
+						yourself);
+				yourself);
+		children: [ :each | each children];
+		roots: self model repositoryModelsByGroup;
+		whenSelectionChangedDo: [ :selection | (selection selectedItem class superclass = IceTipTreeItem) ifTrue: [self commitishSelected: selection selectedItem]  ] .
+	self selectCurrentBranch
+	
 ]
 
 { #category : #initialization }
@@ -113,7 +124,7 @@ IceTipRepositoryBrowser >> newSidebarTreeDataSource [
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
 	self rebuildToolbar.
-	self sidebarTree widget
+	self sidebarTree adapter
 		in: [ :this | 
 			this selectIndexes: #().
 			this dataSource
@@ -133,10 +144,8 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
 	| index branch |
-	branch := self model headModel.
-	index := sidebarTree adapter dataSource
-		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ].
-	sidebarTree widget selectIndex: index
+"	branch := self model headModel.
+	sidebarTree selection selectPath: branch "
 ]
 
 { #category : #accessing }
