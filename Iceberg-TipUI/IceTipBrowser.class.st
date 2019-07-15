@@ -101,7 +101,7 @@ IceTipBrowser >> newContextWithSelection: anObject [
 
 { #category : #accessing }
 IceTipBrowser >> rebuildToolbar [
-	toolbar items: #().
+	toolbar removeAll.
 	toolbar addItemsFromContext: self newContext
 ]
 

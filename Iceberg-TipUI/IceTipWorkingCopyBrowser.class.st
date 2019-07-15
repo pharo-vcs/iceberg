@@ -66,21 +66,22 @@ IceTipWorkingCopyBrowser >> initializePackageList [
 		   title: 'Status';
 			yourself);
 		items: self model packageModels;
-		selectIndex: 1
-"		enableFilter: IceTipPackageFilter;
-		explicitFunction"
+		selectIndex: 1;
+		contextMenu: [ self buildMenu ].
+
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializeStatusBar [
 	statusBar 
-		addItem: (IceTipBranchWithCommitStatusBarItem new
+"		addItem: (IceTipBranchWithCommitStatusBarItem new
 			model: self model;
 			yourself);
-		addItem: (IceTipStatusBarTargetItem new 
+"		addItem: (IceTipStatusBarTargetItem new 
 			bePositionRight;
 			target: self model;
-			contents: #status;
+			contentsBlock: #status;
+			helpBlock: #status;
 			yourself)
 ]
 
@@ -115,15 +116,7 @@ IceTipWorkingCopyBrowser >> packageList: anObject [
 
 { #category : #private }
 IceTipWorkingCopyBrowser >> packageSelected [
-	| index dataSource |
-	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := packageList widget selectedIndex.
-	index = 0
-		ifTrue: [ ^ nil ].
-	dataSource := packageList widget dataSource.
-	dataSource hasElements
-		ifFalse: [ ^ nil ].
-	^ dataSource elementAt: index
+	^ packageList selection selectedItem
 ]
 
 { #category : #accessing }
