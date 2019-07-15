@@ -22,12 +22,6 @@ IceTipBranchWithCommitStatusBarItem >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #adding }
-IceTipBranchWithCommitStatusBarItem >> newElementOn: anIceTipStatusBar [ 
-
-	self flag: #todo
-]
-
 { #category : #factory }
 IceTipBranchWithCommitStatusBarItem >> newStatusBarItemOn: aStatusBar [
 	self model shortCommitId ifNil: [ ^ self model branchName asMorph ].
