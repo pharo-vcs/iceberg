@@ -5,7 +5,7 @@ Class {
 		'presenter',
 		'repo2'
 	],
-	#category : #'Iceberg-UI-Tests'
+	#category : #'Iceberg-UI-Tests-Browsers'
 }
 
 { #category : #running }
