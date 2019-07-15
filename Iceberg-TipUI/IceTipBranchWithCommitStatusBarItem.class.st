@@ -24,7 +24,8 @@ IceTipBranchWithCommitStatusBarItem >> model: anObject [
 
 { #category : #adding }
 IceTipBranchWithCommitStatusBarItem >> newElementOn: anIceTipStatusBar [ 
-	self shouldBeImplemented.
+
+	self flag: #todo
 ]
 
 { #category : #factory }

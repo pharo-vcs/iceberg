@@ -124,13 +124,9 @@ IceTipRepositoryBrowser >> newSidebarTreeDataSource [
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
 	self rebuildToolbar.
-	self sidebarTree adapter
-		in: [ :this | 
-			this selectIndexes: #().
-			this dataSource
-				rootForItems: self model repositoryModelsByGroup;
-				expandRoots ];
-		refresh
+	self sidebarTree selection unselectAll.
+	self sidebarTree roots: self model repositoryModelsByGroup.
+
 ]
 
 { #category : #'private factory' }

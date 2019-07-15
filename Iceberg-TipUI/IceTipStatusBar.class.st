@@ -15,12 +15,12 @@ IceTipStatusBar class >> defaultItemSeparation [
 
 { #category : #'private dispatch' }
 IceTipStatusBar >> addItemLeft: aMorph [
-	self leftPanel addMorphBack: (self prepareItemToAdd: aMorph)
+	"self leftPanel addMorphBack: (self prepareItemToAdd: aMorph)"
 ]
 
 { #category : #'private dispatch' }
 IceTipStatusBar >> addItemRight: aMorph [
-	self rightPanel addMorphBack: (self prepareItemToAdd: aMorph)
+"	self rightPanel addMorphBack: (self prepareItemToAdd: aMorph)"
 ]
 
 { #category : #private }

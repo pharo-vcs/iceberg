@@ -24,6 +24,12 @@ IceTipStatusBarTargetItem >> help [
 	^ super help ifNotNil: [ :sel | self target perform: sel ]
 ]
 
+{ #category : #adding }
+IceTipStatusBarTargetItem >> newElementOn: anIceTipStatusBar [ 
+	
+	
+]
+
 { #category : #accessing }
 IceTipStatusBarTargetItem >> target [
 	^ target

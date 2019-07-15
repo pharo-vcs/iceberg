@@ -41,6 +41,21 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 		action: [ self new openWithSpec ]
 ]
 
+{ #category : #'instance creation' }
+IceTipRepositoriesBrowser class >> new [
+	
+	^ self newOnRepositories: IceRepository registry
+]
+
+{ #category : #'instance creation' }
+IceTipRepositoriesBrowser class >> newOnRepositories: aCollection [ 
+
+	^ self basicNew
+		model: (IceTipRepositoriesModel new repositories: aCollection; yourself);
+		initialize;
+		yourself
+]
+
 { #category : #accessing }
 IceTipRepositoriesBrowser >> contextClass [
 	^ IceTipRepositoryListContext
@@ -49,12 +64,6 @@ IceTipRepositoriesBrowser >> contextClass [
 { #category : #'private factory' }
 IceTipRepositoriesBrowser >> createCommandContext [
 	^ self newContextWithSelection: self repositorySelected
-]
-
-{ #category : #initialization }
-IceTipRepositoriesBrowser >> initialize [
-	self model: IceTipRepositoriesModel new.
-	super initialize
 ]
 
 { #category : #initialization }
