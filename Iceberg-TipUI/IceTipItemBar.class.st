@@ -15,6 +15,15 @@ Class {
 	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
+{ #category : #specs }
+IceTipItemBar class >> defaultSpec [
+	<spec: #default>
+	^ SpBoxLayout newHorizontal
+		add: #leftPanel;
+		add: #rightPanel;
+		yourself
+]
+
 { #category : #accessing }
 IceTipItemBar >> addItem: aToolbarItem [
 	items add: aToolbarItem.
@@ -94,6 +103,16 @@ IceTipItemBar >> panel [
 { #category : #'accessing ui' }
 IceTipItemBar >> panel: anObject [
 	panel := anObject
+]
+
+{ #category : #accessing }
+IceTipItemBar >> refresh [
+
+	self leftPanel items: #().
+	self rightPanel items: #().
+	items
+		do:
+			[ :each | each position addItem: (each newElementOn: self) into: self ]
 ]
 
 { #category : #'private accessing' }

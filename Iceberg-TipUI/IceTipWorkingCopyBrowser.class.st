@@ -18,12 +18,11 @@ Class {
 IceTipWorkingCopyBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #packageList;
-				newRow: #statusBar height: self defaultStatusBarHeight ]
+	^ SpBoxLayout newVertical 
+			add: #toolbar height: IceTipToolbar defaultHeight;
+			add: #packageList;
+			add: #statusBar height: self defaultStatusBarHeight;
+			yourself 
 ]
 
 { #category : #specs }
@@ -58,22 +57,18 @@ IceTipWorkingCopyBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePackageList [
-	packageList widget
+	packageList
 		beResizable;
-		addColumn:
-			(IceTipTableColumn new
-				id: 'Name';
-				action: #descriptionWithDecoration;
-				yourself);
-		addColumn:
-			(IceTipTableColumn new
-				id: 'Status';
-				action: #statusWithDecoration;
-				yourself);
-		dataSource: self newPackagesDataSource;
-		selectIndex: 1;
-		enableFilter: IceTipPackageFilter;
-		explicitFunction
+		addColumn: ((SpStringTableColumn evaluated: #descriptionWithDecoration) 
+		   title: 'Name';
+			yourself);
+		addColumn: ((SpStringTableColumn evaluated: #statusWithDecoration) 
+		   title: 'Status';
+			yourself);
+		items: self model packageModels;
+		selectIndex: 1
+"		enableFilter: IceTipPackageFilter;
+		explicitFunction"
 ]
 
 { #category : #initialization }
@@ -92,7 +87,7 @@ IceTipWorkingCopyBrowser >> initializeStatusBar [
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializeWidgets [
 	super initializeWidgets.
-	packageList := self newIceTable.
+	packageList := self newTable.
 	statusBar := self instantiate: IceTipStatusBar.
 
 	self initializePackageList.
@@ -105,14 +100,6 @@ IceTipWorkingCopyBrowser >> initializeWidgets [
 IceTipWorkingCopyBrowser >> newContextWithSelection: anObject [ 
 	^ self newContext 
 		packageModel: anObject;
-		yourself
-]
-
-{ #category : #'private factory' }
-IceTipWorkingCopyBrowser >> newPackagesDataSource [
-	^ IceTipDataSource new
-		tool: self;
-		elements: self model packageModels;
 		yourself
 ]
 
@@ -142,9 +129,7 @@ IceTipWorkingCopyBrowser >> packageSelected [
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
 	self rebuildToolbar. 
-	packageList widget 
-		in: [ :this | this dataSource elements: self model packageModels ];
-		refresh.
+	packageList items: self model packageModels.
 	statusBar refresh
 ]
 

@@ -80,6 +80,8 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 				yourself);
 		items: items;
 		selectIndex: 1;
+		activateOnDoubleClick;
+		whenActivatedDo: [ self repositoryStrongSelection: self repositorySelected  ];
 		contextMenu: [ self buildMenu ].
 ]
 
@@ -90,15 +92,6 @@ IceTipRepositoriesBrowser >> initializeWidgets [
 	self initializeRepositoryList.
 	self focusOrder add: repositoryList.	
 	
-	"
-	repositoryList := self newIceTable.
-	repositoryList widget
-		onAnnouncement: FTStrongSelectionChanged 
-		send: #repositoryStrongSelection: 
-		to: self.
-
-	
-"
 ]
 
 { #category : #'private factory' }
@@ -120,7 +113,7 @@ IceTipRepositoriesBrowser >> newRepositoriesDataSource [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self model repositories
+	"repositoryList items: self model repositories"
 ]
 
 { #category : #accessing }
@@ -139,11 +132,12 @@ IceTipRepositoriesBrowser >> repositorySelected [
 ]
 
 { #category : #private }
-IceTipRepositoriesBrowser >> repositoryStrongSelection: ann [
-	| selection context |
-	selection := repositoryList widget dataSource
-		elementAt: ann selectedIndex.
+IceTipRepositoriesBrowser >> repositoryStrongSelection: selection [
+	
+	| context |
+	
 	context := self newContextWithSelection: selection.
+	
 	IceTipCommandStrongSelectionActivation
 		activateAllInContext: context
 		by: [ :each | each executeCommand ]

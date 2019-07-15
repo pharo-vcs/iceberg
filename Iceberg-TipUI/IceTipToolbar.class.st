@@ -42,15 +42,6 @@ IceTipToolbar class >> defaultMode [
 	^ IceTipToolbarDisplayMode default
 ]
 
-{ #category : #specs }
-IceTipToolbar class >> defaultSpec [
-	<spec: #default>
-	^ SpBoxLayout newHorizontal
-		add: #leftPanel;
-		add: #rightPanel;
-		yourself
-]
-
 { #category : #accessing }
 IceTipToolbar >> addItemsFromContext: aContext [
 	| menu |
@@ -78,16 +69,6 @@ IceTipToolbar >> newToolbarItemFont [
 	^ LogicalFont 
 		familyName: buttonFont familyName 
 		pointSize: buttonFont pointSize - 3
-]
-
-{ #category : #accessing }
-IceTipToolbar >> refresh [
-
-	self leftPanel items: #().
-	self rightPanel items: #().
-	items
-		do:
-			[ :each | each position addItem: (each newToolbarButtonOn: self) into: self ]
 ]
 
 { #category : #accessing }

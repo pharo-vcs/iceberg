@@ -13,14 +13,6 @@ IceTipStatusBar class >> defaultItemSeparation [
 	^ 0
 ]
 
-{ #category : #specs }
-IceTipStatusBar class >> defaultSpec [
-	<spec: #default>
-	^  SpBoxLayout newVertical
-		add: #panel;
-		yourself
-]
-
 { #category : #'private dispatch' }
 IceTipStatusBar >> addItemLeft: aMorph [
 	self leftPanel addMorphBack: (self prepareItemToAdd: aMorph)
@@ -36,14 +28,4 @@ IceTipStatusBar >> prepareItemToAdd: aMorph [
 	^ aMorph
 		vResizing: #spaceFill;
 		yourself
-]
-
-{ #category : #accessing }
-IceTipStatusBar >> refresh [
-	leftPanel removeAllMorphs.
-	rightPanel removeAllMorphs.
-	items do: [ :each |
-		each position 
-			addItem: (each newStatusBarItemOn: self) 
-			into: self ]
 ]
