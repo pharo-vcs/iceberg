@@ -21,13 +21,13 @@ BaselineOfIceberg >> baseline: spec [
 		spec
 			"iceberg"
 			package: 'Iceberg';
-			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ];
+			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI') ];
 			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
-			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
@@ -82,6 +82,8 @@ BaselineOfIceberg >> baseline: spec [
 
 	spec for: #'pharo7.x' do: [	
 		self commander: spec.
+
+		spec package: 'Iceberg' with: [ spec requires: #( 'Commander' ) ].
 
 		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
 		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
