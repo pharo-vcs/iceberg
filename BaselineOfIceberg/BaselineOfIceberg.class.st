@@ -15,6 +15,10 @@ BaselineOfIceberg >> baseline: spec [
 		self libgit: spec.
 		
 		spec
+			baseline: 'Spec2' 
+			with: [ spec repository: 'github://pharo-spec/spec:master/src' ].		
+		
+		spec
 			baseline: 'Ring2' 
 			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
 		
