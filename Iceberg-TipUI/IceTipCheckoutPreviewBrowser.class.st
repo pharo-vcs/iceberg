@@ -17,18 +17,17 @@ Class {
 { #category : #specs }
 IceTipCheckoutPreviewBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-				newRow: [ :row |
-					row 
-						newColumn: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
-						newColumn: #checkoutStrategyList ]
-					height: self inputTextHeight;
-				newRow: #diffPanel;
-				newRow: #actionPanel height: self iceActionPanelHeight ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
+				add: #checkoutStrategyList;
+				yourself)
+			height: self inputTextHeight;
+		add: #diffPanel height: 300 ;
+		add: #actionPanel;
+		"newRow: #toolbar height: IceTipToolbar defaultHeight;"
+			yourself
 ]
 
 { #category : #'instance creation' }
@@ -64,6 +63,11 @@ IceTipCheckoutPreviewBrowser >> doCheckout [
 	self model executeCheckoutActionAndThen: [ self window delete ]
 ]
 
+{ #category : #accessing }
+IceTipCheckoutPreviewBrowser >> initialExtent [
+	^ (800 @ 400) scaledByDisplayScaleFactor
+]
+
 { #category : #initialization }
 IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 	| checkoutStrategies |
@@ -91,6 +95,16 @@ IceTipCheckoutPreviewBrowser >> initializeWidgets [
 		add: self actionPanel;
 		add: self checkoutStrategyList;
 		add: self diffPanel
+]
+
+{ #category : #initialization }
+IceTipCheckoutPreviewBrowser >> initializeWindow: aWindowPresenter [
+	aWindowPresenter
+		title: self title;
+		initialExtent: self initialExtent;
+		windowIcon: self windowIcon;
+		askOkToClose: self askOkToClose;
+		aboutText: self aboutText
 ]
 
 { #category : #'private factory' }
