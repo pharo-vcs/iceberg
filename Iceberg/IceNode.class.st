@@ -431,6 +431,12 @@ IceNode >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
+{ #category : #removing }
+IceNode >> removeChild: anIceNode [ 
+	
+	childrenDictionary removeKey: anIceNode key
+]
+
 { #category : #accessing }
 IceNode >> replace: oldNode with: newNode [
 	

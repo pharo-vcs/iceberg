@@ -83,6 +83,24 @@ IceCommitish >> checkoutWithStrategy: aCheckoutStrategy [
 	repository checkout: (aCheckoutStrategy commitish: self)
 ]
 
+{ #category : #'API-cherry-picking' }
+IceCommitish >> cherryPickFrom: anotherCommit [ 
+	
+	^ anotherCommit cherryPickTo: self
+]
+
+{ #category : #'cherry-picking' }
+IceCommitish >> cherryPickTo: anotherCommit [ 
+
+	| initialDiff extendedDiff |
+	initialDiff := self commit diffToParent.
+   extendedDiff := self diffTo: anotherCommit.
+
+	IceCherrypicker executeFrom: initialDiff to: extendedDiff.
+	
+	^ extendedDiff
+]
+
 { #category : #accessing }
 IceCommitish >> commit [
 	
@@ -111,6 +129,12 @@ IceCommitish >> commonAncestorWith: anIceWorkingCopy [
 IceCommitish >> diffTo: aCommitish [
 
 	^ IceDiff from: self to: aCommitish
+]
+
+{ #category : #'API-changes' }
+IceCommitish >> diffToParent [
+
+	^ self diffTo: self parent
 ]
 
 { #category : #'API-packages' }

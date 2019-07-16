@@ -321,6 +321,12 @@ IceRepository >> checkoutBranch: branchName [
 			self createBranch: branchName ]) checkout
 ]
 
+{ #category : #'API-cherry-picking' }
+IceRepository >> cherryPickFrom: anotherCommit [ 
+
+	^ self head cherryPickFrom: anotherCommit
+]
+
 { #category : #'API-history' }
 IceRepository >> commitAt: commitId [
 	

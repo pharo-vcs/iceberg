@@ -60,6 +60,19 @@ IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 		commentStamp: mcDefinition commentStamp
 ]
 
+{ #category : #accessing }
+IceClassDefinition >> basicName [
+	^ name
+]
+
+{ #category : #accessing }
+IceClassDefinition >> contents [
+	mcDefinition ifNil: [ ^ '' ].
+	^ self isMeta
+		ifFalse: [ mcDefinition fullDefinitionString ]
+		ifTrue: [ mcDefinition classDefinitionString ]
+]
+
 { #category : #testing }
 IceClassDefinition >> isClassDefinition [
 	
