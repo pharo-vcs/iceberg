@@ -91,8 +91,8 @@ IceTipCheckoutBranchDialog >> title [
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withOnlyNewBranch [
 	types := self allTypes select: #isNewBranch.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
+
 ]
 
 { #category : #accessing }

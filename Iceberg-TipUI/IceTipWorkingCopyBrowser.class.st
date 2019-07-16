@@ -67,6 +67,10 @@ IceTipWorkingCopyBrowser >> initializePackageList [
 			yourself);
 		items: self model packageModels;
 		selectIndex: 1;
+		itemFilterBlock: [ :anItem :aPattern | 
+			IceTipPackageFilter new 
+				pattern: aPattern;
+				matches: anItem ];
 		contextMenu: [ self buildMenu ].
 
 ]
