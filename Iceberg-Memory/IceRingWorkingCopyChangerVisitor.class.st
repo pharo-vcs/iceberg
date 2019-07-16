@@ -51,6 +51,12 @@ IceRingWorkingCopyChangerVisitor >> removeMethod: anIceMethodDefinition [
 	workingCopy removeMethod: anIceMethodDefinition selector fromClass: anIceMethodDefinition className.
 ]
 
+{ #category : #patching }
+IceRingWorkingCopyChangerVisitor >> removePackage: anIcePackageDefinition [
+	
+	workingCopy unloadPackage: anIcePackageDefinition
+]
+
 { #category : #visiting }
 IceRingWorkingCopyChangerVisitor >> visitAddition: anIceAddition [ 
 	anIceAddition definition accept: self.
