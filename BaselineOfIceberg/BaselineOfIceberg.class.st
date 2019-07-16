@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfIceberg'
+	#category : #BaselineOfIceberg
 }
 
 { #category : #baseline }
@@ -13,7 +13,6 @@ BaselineOfIceberg >> baseline: spec [
 		
 		self tonel: spec.
 		self libgit: spec.
-		self commander: spec.
 		
 		spec
 			baseline: 'Ring2' 
@@ -82,6 +81,8 @@ BaselineOfIceberg >> baseline: spec [
 				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ].
 
 	spec for: #'pharo7.x' do: [	
+		self commander: spec.
+
 		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
 		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
 ]
