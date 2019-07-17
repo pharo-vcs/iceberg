@@ -31,7 +31,7 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
-			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Spec2') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
