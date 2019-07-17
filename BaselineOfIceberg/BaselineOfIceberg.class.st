@@ -86,8 +86,8 @@ BaselineOfIceberg >> baseline: spec [
 
 	spec for: #'pharo7.x' do: [	
 		self commander: spec.
-
-		spec package: 'Iceberg' with: [ spec requires: #( 'Commander' ) ]]
+		spec package: 'Hiedra-Pharo7'.
+		spec package: 'Iceberg' with: [ spec requires: #( 'Hiedra-Pharo7' 'Commander' ) ]]
 ]
 
 { #category : #baseline }
