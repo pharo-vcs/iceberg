@@ -32,21 +32,20 @@ IceTipHistoryBrowserTest >> tearDown [
 
 { #category : #running }
 IceTipHistoryBrowserTest >> testCommitListDisplayData [
-|commit|
-	commit := (presenter commitList items at: 1) realObject .
+	| commit |
+	commit := (presenter commitList items at: 1) realObject.
 	self
 		assert: (presenter commitList valueAtColumn: 4 row: 1)
-		equals: 'Initial commit'.
-		self
+		equals: commit descriptionWithDecoration.
+	self
 		assert: (presenter commitList valueAtColumn: 3 row: 1)
 		equals: commit author.
-		self
+	self
 		assert: (presenter commitList valueAtColumn: 2 row: 1)
 		equals: commit shortId.
-				self
+	self
 		assert: (presenter commitList valueAtColumn: 1 row: 1)
-		equals: commit datetime asLocalStringYMDHM .
-		
+		equals: commit datetime asLocalStringYMDHM
 ]
 
 { #category : #running }

@@ -40,11 +40,9 @@ IceTipHistoryActionBrowser >> initialExtent [
 { #category : #initialization }
 IceTipHistoryActionBrowser >> initializeWidgets [
 	super initializeWidgets.
-	
 	commitsPanel := self instantiate: IceTipHistoryBrowser on: self model.
 	actionButtonBar := self newButtonBar.
 	actionButtonBar add: (button := self newActionButton).
-	
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]
 ]
 

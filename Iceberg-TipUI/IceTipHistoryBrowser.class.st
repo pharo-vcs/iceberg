@@ -155,7 +155,7 @@ IceTipHistoryBrowser >> selectionChanged: ann [
 
 { #category : #accessing }
 IceTipHistoryBrowser >> title [
-	^ self model  
-		ifNotNil: [ 'History of {1}' format: { self model name } ]
+	^ self model
+		ifNotNil: [ 'History of {1}' format: {self model repositoryName} ]
 		ifNil: [ 'History' ]
 ]
