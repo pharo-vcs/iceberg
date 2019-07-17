@@ -24,7 +24,7 @@ Class {
 		'nodeConnectionOffset',
 		'nodeRadio'
 	],
-	#category : #'Hiedra-UI'
+	#category : #'Hiedra-Pharo7-UI'
 }
 
 { #category : #rendering }

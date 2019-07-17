@@ -14,7 +14,7 @@ Class {
 		'pageSize',
 		'cellMorphByRowIndex'
 	],
-	#category : #'Hiedra-UI'
+	#category : #'Hiedra-Pharo7-UI'
 }
 
 { #category : #'system startup' }

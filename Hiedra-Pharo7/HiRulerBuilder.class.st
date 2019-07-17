@@ -11,7 +11,7 @@ Class {
 		'linksBlock',
 		'ruler'
 	],
-	#category : #'Hiedra-Model'
+	#category : #'Hiedra-Pharo7-Model'
 }
 
 { #category : #convenience }

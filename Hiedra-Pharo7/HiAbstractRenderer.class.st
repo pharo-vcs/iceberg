@@ -9,7 +9,7 @@ Class {
 		'ruler',
 		'rowsInterval'
 	],
-	#category : #'Hiedra-UI'
+	#category : #'Hiedra-Pharo7-UI'
 }
 
 { #category : #accessing }

@@ -43,7 +43,7 @@ Class {
 		'rowByValue',
 		'linksByRow'
 	],
-	#category : #'Hiedra-Model'
+	#category : #'Hiedra-Pharo7-Model'
 }
 
 { #category : #'instance creation' }

@@ -6,5 +6,5 @@ It uses Athens, and provides support for Morphic and Spec.
 Class {
 	#name : #ManifestHiedra,
 	#superclass : #PackageManifest,
-	#category : #'Hiedra-Manifest'
+	#category : #'Hiedra-Pharo7-Manifest'
 }
