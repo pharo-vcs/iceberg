@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'presenter'
 	],
-	#category : #'Iceberg-UI-Tests'
+	#category : #'Iceberg-UI-Tests-Browsers'
 }
 
 { #category : #testing }
