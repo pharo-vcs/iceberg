@@ -87,10 +87,7 @@ BaselineOfIceberg >> baseline: spec [
 	spec for: #'pharo7.x' do: [	
 		self commander: spec.
 
-		spec package: 'Iceberg' with: [ spec requires: #( 'Commander' ) ].
-
-		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
-		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
+		spec package: 'Iceberg' with: [ spec requires: #( 'Commander' ) ]]
 ]
 
 { #category : #baseline }
@@ -116,7 +113,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.5.7';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.5.8';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
