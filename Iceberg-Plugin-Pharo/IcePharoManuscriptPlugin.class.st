@@ -9,7 +9,7 @@ NOTE: In the future we can add other fogbugz elements (like list issues, etc.), 
 Class {
 	#name : #IcePharoManuscriptPlugin,
 	#superclass : #IcePlugin,
-	#category : 'Iceberg-Plugin-Pharo-Manuscript'
+	#category : #'Iceberg-Plugin-Pharo-Manuscript'
 }
 
 { #category : #testing }

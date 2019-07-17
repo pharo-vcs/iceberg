@@ -4,7 +4,7 @@ icon
 Class {
 	#name : #IceTipNewBranchFromIssueCommand,
 	#superclass : #IceTipCommand,
-	#category : 'Iceberg-Plugin-Pharo-Manuscript'
+	#category : #'Iceberg-Plugin-Pharo-Manuscript'
 }
 
 { #category : #testing }
