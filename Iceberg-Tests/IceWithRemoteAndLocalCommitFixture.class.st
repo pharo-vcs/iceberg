@@ -1,36 +1,36 @@
 Class {
-	#name : #IceWithRemoteFixture,
+	#name : #IceWithRemoteAndLocalCommitFixture,
 	#superclass : #IceBasicRepositoryFixture,
 	#instVars : [
 		'remote',
 		'remoteBranchName'
 	],
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#category : #'Iceberg-Tests-Common-Fixtures'
 }
 
 { #category : #accessing }
-IceWithRemoteFixture >> remote [
+IceWithRemoteAndLocalCommitFixture >> remote [
 	^ remote
 ]
 
 { #category : #accessing }
-IceWithRemoteFixture >> remoteBranchName [
+IceWithRemoteAndLocalCommitFixture >> remoteBranchName [
 	^ remoteBranchName ifNil: [ remoteBranchName  := 'master' ]
 ]
 
 { #category : #accessing }
-IceWithRemoteFixture >> remoteBranchName: aBranchName [
+IceWithRemoteAndLocalCommitFixture >> remoteBranchName: aBranchName [
 	
 	remoteBranchName := aBranchName
 ]
 
 { #category : #accessing }
-IceWithRemoteFixture >> remoteRepository [
+IceWithRemoteAndLocalCommitFixture >> remoteRepository [
 	^ remoteRepository
 ]
 
 { #category : #running }
-IceWithRemoteFixture >> setUp [
+IceWithRemoteAndLocalCommitFixture >> setUp [
 	super setUp.
 	remoteRepository := self ensureRemoteRepository.
 	remote := self
@@ -40,5 +40,10 @@ IceWithRemoteFixture >> setUp [
 	remoteRepository workingCopy addPackageNamed: self packageName1.
 	remoteRepository commitWithMessage: 'Initial commit'.
 	repository checkoutBranch: self remoteBranchName.
-	repository addRemote: remote
+	repository addRemote: remote.
+	
+	repository workingCopy addPackageNamed: self packageName2.
+	repository commitWithMessage: 'Initial local commit'.
+	
+	remote fetch
 ]
