@@ -13,6 +13,7 @@ MetacelloPharoPlatform select.
     'BaselineOfLibGit'
     'BaselineOfIceberg'
     'BaselineOfSpec2'
+    'BaselineOfCommander'
     'MonticelloTonel-Core'
     'MonticelloTonel-FileSystem'
     'MonticelloTonel-Tests'
