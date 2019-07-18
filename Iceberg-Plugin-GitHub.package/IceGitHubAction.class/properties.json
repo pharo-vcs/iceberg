@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipAction",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"credentials",
+		"remote",
+		"retries"
+	],
+	"name" : "IceGitHubAction",
+	"type" : "normal"
+}

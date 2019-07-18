@@ -3,7 +3,7 @@ I'm a dialog to ask for data relevant to create a pull request.
 "
 Class {
 	#name : #IceGitHubCreatePullRequestModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'repository',
 		'titleLabel',
@@ -30,31 +30,46 @@ Class {
 }
 
 { #category : #specs }
-IceGitHubCreatePullRequestModel class >> defaultSpec [ 
+IceGitHubCreatePullRequestModel class >> defaultSpec [
 	<spec>
-
-	^ SpecLayout composed
-		newColumn: [ :col |
-			col 
-				newRow: [:row | row add: #titleLabel width: 80 * World displayScaleFactor; add: #titlePanel ] height: 25 * World displayScaleFactor;
-				newRow: [:row | 
-					row 
-						newColumn: #headLabel width: 80 * World displayScaleFactor;
-						newColumn: [ :col2 | 
-							col2 newRow: [ :row2 | 
-								row2
-									add: #headForkList;
-									add: #headBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | 
-					row 
-						newColumn: #baseLabel width: 80 * World displayScaleFactor;
-						newColumn: [ :col2 |
-							col2 newRow: [ :row2 |
-								row2 
-									add: #baseForkList;
-									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ] ];
-		yourself
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #titleLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #titlePanel;
+				yourself)
+			withConstraints:
+				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+		add:
+			(SpBoxLayout newHorizontal
+				add: #headLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #headForkList;
+				add: #headBranchList;
+				yourself)
+			withConstraints:
+				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+		add:
+			(SpBoxLayout newHorizontal
+				add: #baseLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #baseForkList;
+				add: #baseBranchList;
+				yourself)
+			withConstraints:
+				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+		add:
+			(SpBoxLayout newHorizontal
+				add: #bodyLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #bodyPanel;
+				yourself );
+			yourself
 ]
 
 { #category : #'instance creation' }

@@ -16,9 +16,9 @@ Class {
 IceTipRepositoryBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecBoxLayout newVertical
+	^ SpBoxLayout newVertical
 		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
-		add: (SpecPanedLayout newHorizontal
+		add: (SpPanedLayout newHorizontal
 			position: 30 percent; 
 			add: #sidebarTree;
 			add: #historyPanel withConstraints:[ :c | c spec: #panelSpec ];
@@ -38,14 +38,8 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
-	| selection |
-	
-	ann newSelectedRowIndexes 
-		ifNotEmpty: [ :indexes |
-			selection := sidebarTree widget dataSource elementAt: indexes first.
-			(selection depth = 0 or: [ selection hasChildren ]) 
-				ifTrue: [ ^ self "just refresh on leafs" ].
-			historyPanel model: selection data model ]
+	historyPanel model: ann
+
 ]
 
 { #category : #accessing }
@@ -70,24 +64,39 @@ IceTipRepositoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeSidebarTree [
-	sidebarTree widget dataSource: self newSidebarTreeDataSource.
-	self selectCurrentBranch.
+	sidebarTree 
+			addColumn:
+			(SpCompositeTableColumn new
+				addColumn:
+					(SpImageTableColumn new
+						width: 20;
+						evaluated: #icon;
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: #name;
+						yourself);
+				yourself);
+		children: [ :each | each children];
+		roots: self model repositoryModelsByGroup;
+		whenSelectionChangedDo: [ :selection | (selection selectedItem class superclass = IceTipTreeItem) ifTrue: [self commitishSelected: selection selectedItem]  ] .
+	self selectCurrentBranch
+	
 ]
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
-	
-	sidebarTree := self newIceOutline.
+	sidebarTree := self newTreeTable.
 	historyPanel := self instantiate: IceTipHiedraHistoryBrowser on: self model headModel.
 	historyPanel beForMerge.
 	
 	self initializeSidebarTree.
-	sidebarTree widget
+"	sidebarTree widget
 		onAnnouncement: FTSelectionChanged 
 		send: #commitishSelected: 
 		to: self. 
-	
+"	
 	self focusOrder 
 		add: historyPanel;
 		add: sidebarTree
@@ -115,13 +124,9 @@ IceTipRepositoryBrowser >> newSidebarTreeDataSource [
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
 	self rebuildToolbar.
-    self sidebarTree widget 
-        in: [ :this | 
-            this selectRowIndexes: #(). 
-            this dataSource 
-                rootForItems: self model repositoryModelsByGroup;
-                expandRoots ];
-        refresh.
+	self sidebarTree selection unselectAll.
+	self sidebarTree roots: self model repositoryModelsByGroup.
+
 ]
 
 { #category : #'private factory' }
@@ -134,11 +139,13 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
-	| index branch |
-	branch := self model headModel.
-	index := sidebarTree widget dataSource
-		indexOfElementMatching: [ :each | each isLeaf and: [ each model name = branch name ] ].
-	sidebarTree widget selectIndex: index
+	| branch |
+	branch := self model headModel entity.
+	
+	branch isBranch ifFalse: [ ^ self ].
+	
+	"We know that the current branch is a local one, so we build the path from 1 (for local branch) and the index of the current branch."
+	sidebarTree selection selectPath: { 1. self model branches indexOf: branch}
 ]
 
 { #category : #accessing }

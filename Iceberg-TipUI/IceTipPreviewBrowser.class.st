@@ -16,16 +16,13 @@ Class {
 { #category : #specs }
 IceTipPreviewBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							add: #diffPanel;
-							add: #actionPanel height: self iceActionPanelHeight ] ] ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #diffPanel;
+				add: #actionPanel height: 25;
+				yourself);
+			yourself
 ]
 
 { #category : #'accessing ui' }
@@ -58,7 +55,7 @@ IceTipPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
 	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
-	actionPanel := self newIceActionPanel.
+	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
 	
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].

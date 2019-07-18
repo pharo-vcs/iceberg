@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "IceErrorVisitor",
+	"category" : "Iceberg-TipUI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repository"
+	],
+	"name" : "IceTipInteractiveErrorVisitor",
+	"type" : "normal"
+}

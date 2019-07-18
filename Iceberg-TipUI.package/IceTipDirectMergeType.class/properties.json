@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipMergeType",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipDirectMergeType",
+	"type" : "normal"
+}

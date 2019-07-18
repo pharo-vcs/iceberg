@@ -5,7 +5,7 @@ I'm usually used as part of an IceTipHistoryBrowser.
 "
 Class {
 	#name : #IceTipCommitInfoPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'model',
 		'selectedModel',
@@ -23,7 +23,7 @@ Class {
 IceTipCommitInfoPresenter class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecBoxLayout newVertical
+	^ SpBoxLayout newVertical
 		add: #notebookPanel;
 		yourself
 ]
@@ -97,7 +97,7 @@ IceTipCommitInfoPresenter >> initializeWidgets [
 { #category : #'private factory' }
 IceTipCommitInfoPresenter >> newDiffPage [
 
-	^ NotebookPage 
+	^ SpNotebookPage 
 		title: 'Diff'
 		icon: (self iconNamed: #diff)
 		provider: [ "It will be overriden" ]
@@ -131,7 +131,7 @@ IceTipCommitInfoPresenter >> newEmptyTab [
 { #category : #'private factory' }
 IceTipCommitInfoPresenter >> newInfoPage [
 
-	^ NotebookPage 
+	^ SpNotebookPage  
 		title: 'Info'
 		icon: (self iconNamed: #smallQuestion)
 		provider: [ self commitInfo ]

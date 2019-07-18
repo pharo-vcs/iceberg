@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TextMorph",
+	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipReadOnlyTextMorph",
+	"type" : "normal"
+}

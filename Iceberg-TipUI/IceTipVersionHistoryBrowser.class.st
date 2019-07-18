@@ -174,7 +174,7 @@ IceTipVersionHistoryBrowser >> newContextWithSelection: anObject [
 { #category : #'private factory' }
 IceTipVersionHistoryBrowser >> newDiffPage [
 
-	^ NotebookPage 
+	^ SpNotebookPage  
 		title: 'Diff'
 		icon: (self iconNamed: #diff)
 		provider: [ self diff ]
@@ -211,7 +211,7 @@ IceTipVersionHistoryBrowser >> newEmptyTab [
 { #category : #'private factory' }
 IceTipVersionHistoryBrowser >> newInfoPage [
 
-	^ NotebookPage 
+	^ SpNotebookPage  
 		title: 'Info'
 		icon: (self iconNamed: #smallQuestion)
 		provider: [ self info ]

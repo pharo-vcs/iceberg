@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipOptionDialog",
+	"category" : "Iceberg-TipUI-View-RepositoryType",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"types",
+		"repository",
+		"acceptBlock"
+	],
+	"name" : "IceTipRegisterRepositoryDialog",
+	"type" : "normal"
+}

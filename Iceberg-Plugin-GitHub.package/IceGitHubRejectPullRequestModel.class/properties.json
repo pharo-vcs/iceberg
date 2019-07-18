@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-Plugin-GitHub-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"messageLabel",
+		"messageText",
+		"acceptButton",
+		"acceptBlock"
+	],
+	"name" : "IceGitHubRejectPullRequestModel",
+	"type" : "normal"
+}

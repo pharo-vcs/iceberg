@@ -16,17 +16,14 @@ Class {
 { #category : #specs }
 IceTipCommitBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							newRow: #diffPanel top: 0.35;
-							addHSplitter;
-							newRow: #commentPanel bottom: 0.65 ] ] ]
+	^ SpBoxLayout newVertical
+		add: #toolbar height: IceTipToolbar defaultHeight;
+		add:
+			(SpPanedLayout newVertical
+				add: #diffPanel;
+				add: #commentPanel;
+				yourself);
+			yourself
 ]
 
 { #category : #'instance creation' }

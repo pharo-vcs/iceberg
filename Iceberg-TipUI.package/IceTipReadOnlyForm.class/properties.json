@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "DynamicComposablePresenter",
+	"category" : "Iceberg-TipUI-Spec-ReadOnlyForm",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"items",
+		"labelColor",
+		"labelWidth",
+		"rowHeight"
+	],
+	"name" : "IceTipReadOnlyForm",
+	"type" : "normal"
+}

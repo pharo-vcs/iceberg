@@ -11,13 +11,9 @@ Class {
 { #category : #specs }
 IceTipLocalRepositoryPanel class >> defaultSpec [
 	<spec: #default>
-
-	^ SpecLayout composed 
-		newColumn: [ :col | 
-			col
-				newRow: #projectLocation
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+	^ SpBoxLayout newVertical
+		add: #projectLocation height: self inputTextHeight;
+		yourself
 ]
 
 { #category : #accessing }
