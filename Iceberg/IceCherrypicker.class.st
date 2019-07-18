@@ -85,6 +85,16 @@ IceCherrypicker >> addTransitiveDependencies [
 			each addTransitiveDependenciesFrom: targetDiff to: self ] ]
 ]
 
+{ #category : #'as yet unclassified' }
+IceCherrypicker >> checkForConflicts [
+
+	| ancestor changesInTarget |
+	ancestor := targetDiff targetVersion commit commonAncestorWith: targetDiff sourceVersion commit.
+	changesInTarget := targetDiff targetVersion diffTo: ancestor. 
+	
+	targetDiff tree allChildrenDo: [ :child | changesInTarget childAt: child path ifPresent: [ :another | another halt ]  ]
+]
+
 { #category : #accessing }
 IceCherrypicker >> dependencies [
 	^ dependencies
@@ -101,6 +111,9 @@ IceCherrypicker >> execute [
 
 	"Transform the diff to hold the ETCS"
 	self pruneUndependedNodesInTargetDiff.
+
+	"Check for conflict"
+	self checkForConflicts.
 
 ]
 
