@@ -205,6 +205,12 @@ IceNode >> count: aBlockClosure [
 ]
 
 { #category : #accessing }
+IceNode >> definition [
+	
+	^ value definition
+]
+
+{ #category : #accessing }
 IceNode >> description [
 	
 	^ value description

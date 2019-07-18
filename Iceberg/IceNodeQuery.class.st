@@ -49,6 +49,12 @@ IceNodeQuery >> on: anIceNode [
 ]
 
 { #category : #building }
+IceNodeQuery >> selector: aSelector [ 
+	
+	selector := aSelector
+]
+
+{ #category : #building }
 IceNodeQuery >> traitName: aString [ 
 	
 	entityName := aString

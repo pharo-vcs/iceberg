@@ -14,6 +14,20 @@ IceMethodDependency >> = anObject [
 
 ]
 
+{ #category : #testing }
+IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [ 
+
+	super addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker.
+		
+	self referencedSelectors do: [ :aSelector | 
+		IceNodeQuery new
+			on: anIceDiff tree;
+			selector: aSelector;
+			execute;
+			ifFound: [ :aIceNode | anIceCherrypicker addMethodDependencyOf: aIceNode definition asMCDefinition ]].
+
+]
+
 { #category : #comparing }
 IceMethodDependency >> hash [
 
@@ -29,6 +43,11 @@ IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 ]
 
 { #category : #dependencies }
+IceMethodDependency >> methodAST [
+	^ RBParser parseMethod: definition source
+]
+
+{ #category : #dependencies }
 IceMethodDependency >> referencedClasses [
 
 	^ self referencedNames , {definition className}
@@ -36,9 +55,13 @@ IceMethodDependency >> referencedClasses [
 
 { #category : #dependencies }
 IceMethodDependency >> referencedNames [
+	^ (self methodAST allChildren select: #isVariable) collect: #name
+]
 
-	^ ((RBParser parseMethod: definition source) allChildren
-		select: #isVariable) collect: #name
+{ #category : #'computing - dependencies' }
+IceMethodDependency >> referencedSelectors [
+	
+	^ (self methodAST allChildren select: #isMessage) collect: #selector
 ]
 
 { #category : #dependencies }
