@@ -16,7 +16,7 @@ BaselineOfIceberg >> baseline: spec [
 		
 		spec
 			baseline: 'Spec2' 
-			with: [ spec repository: 'github://tesonep/spec:fixingBaseline/src' ].
+			with: [ spec repository: 'github://pharo-spec/spec:master/src' ].
 		
 		spec
 			baseline: 'Ring2' 
