@@ -7,6 +7,13 @@ Class {
 	#category : 'Iceberg-Memory'
 }
 
+{ #category : #helpers }
+IceRingWorkingCopy >> addClassVariable: aVariableName to: aClassName [
+	| class |
+	class := ringEnvironment ensureClassNamed: aClassName.
+	class addClassVariable: (RG2ClassVariableDefinition named: aVariableName asSymbol parent: class ).
+]
+
 { #category : #'private-impacting-changes' }
 IceRingWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 
