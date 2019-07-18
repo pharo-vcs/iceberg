@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View-RepositoryType",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"projectLocation",
+		"remoteLabel",
+		"remoteInputText",
+		"spacePanel",
+		"repository"
+	],
+	"name" : "IceTipRepositoryTypePanel",
+	"type" : "normal"
+}

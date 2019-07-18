@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"acceptButton",
+		"cancelButton"
+	],
+	"name" : "IceTipDialog",
+	"type" : "normal"
+}

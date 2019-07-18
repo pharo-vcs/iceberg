@@ -18,12 +18,11 @@ Class {
 IceTipWorkingCopyBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #packageList;
-				newRow: #statusBar height: self defaultStatusBarHeight ]
+	^ SpBoxLayout newVertical 
+			add: #toolbar height: IceTipToolbar defaultHeight;
+			add: #packageList;
+			add: #statusBar height: self defaultStatusBarHeight;
+			yourself 
 ]
 
 { #category : #specs }
@@ -58,41 +57,42 @@ IceTipWorkingCopyBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePackageList [
-	packageList widget
+	packageList
 		beResizable;
-		addColumn:
-			(IceTipTableColumn new
-				id: 'Name';
-				action: #descriptionWithDecoration;
-				yourself);
-		addColumn:
-			(IceTipTableColumn new
-				id: 'Status';
-				action: #statusWithDecoration;
-				yourself);
-		dataSource: self newPackagesDataSource;
+		addColumn: ((SpStringTableColumn evaluated: #descriptionWithDecoration) 
+		   title: 'Name';
+			yourself);
+		addColumn: ((SpStringTableColumn evaluated: #statusWithDecoration) 
+		   title: 'Status';
+			yourself);
+		items: self model packageModels;
 		selectIndex: 1;
-		enableFilter: IceTipPackageFilter;
-		explicitFunction
+		itemFilterBlock: [ :anItem :aPattern | 
+			IceTipPackageFilter new 
+				pattern: aPattern;
+				matches: anItem ];
+		contextMenu: [ self buildMenu ].
+
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializeStatusBar [
 	statusBar 
-		addItem: (IceTipBranchWithCommitStatusBarItem new
+"		addItem: (IceTipBranchWithCommitStatusBarItem new
 			model: self model;
 			yourself);
-		addItem: (IceTipStatusBarTargetItem new 
+"		addItem: (IceTipStatusBarTargetItem new 
 			bePositionRight;
 			target: self model;
-			contents: #status;
+			contentsBlock: #status;
+			helpBlock: #status;
 			yourself)
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializeWidgets [
 	super initializeWidgets.
-	packageList := self newIceTable.
+	packageList := self newTable.
 	statusBar := self instantiate: IceTipStatusBar.
 
 	self initializePackageList.
@@ -108,14 +108,6 @@ IceTipWorkingCopyBrowser >> newContextWithSelection: anObject [
 		yourself
 ]
 
-{ #category : #'private factory' }
-IceTipWorkingCopyBrowser >> newPackagesDataSource [
-	^ IceTipDataSource new
-		tool: self;
-		elements: self model packageModels;
-		yourself
-]
-
 { #category : #'accessing ui' }
 IceTipWorkingCopyBrowser >> packageList [
 	^ packageList
@@ -128,23 +120,13 @@ IceTipWorkingCopyBrowser >> packageList: anObject [
 
 { #category : #private }
 IceTipWorkingCopyBrowser >> packageSelected [
-	| index dataSource |
-	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := packageList widget selectedIndex.
-	index = 0
-		ifTrue: [ ^ nil ].
-	dataSource := packageList widget dataSource.
-	dataSource hasElements
-		ifFalse: [ ^ nil ].
-	^ dataSource elementAt: index
+	^ packageList selection selectedItem
 ]
 
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
 	self rebuildToolbar. 
-	packageList widget 
-		in: [ :this | this dataSource elements: self model packageModels ];
-		refresh.
+	packageList items: self model packageModels.
 	statusBar refresh
 ]
 

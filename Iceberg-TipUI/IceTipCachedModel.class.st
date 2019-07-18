@@ -18,6 +18,13 @@ IceTipCachedModel class >> for: anObject [
 	^ self basicNew initializeObject: anObject
 ]
 
+{ #category : #accessing }
+IceTipCachedModel >> = aObject [ 
+	self species ~= aObject species
+	ifTrue: [^ false].
+	^ self realObject = aObject realObject
+]
+
 { #category : #'reflective operations' }
 IceTipCachedModel >> doesNotUnderstand: aMessage [
 	aMessage selector isUnary
@@ -40,6 +47,11 @@ IceTipCachedModel >> forwardMessage: aMessage [
 	^ realObject 
 		perform: aMessage selector 
 		withArguments: aMessage arguments 
+]
+
+{ #category : #comparing }
+IceTipCachedModel >> hash [
+	^ self realObject hash
 ]
 
 { #category : #initialization }

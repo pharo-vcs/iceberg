@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"panel",
+		"actions",
+		"actionMorphPanel",
+		"actionWidth"
+	],
+	"name" : "IceTipActionPanel",
+	"type" : "normal"
+}

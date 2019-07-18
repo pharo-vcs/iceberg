@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipAbstractSSHCredentialsModel",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"hostLabel",
+		"hostInput"
+	],
+	"name" : "IceTipAddSSHCredentialsModel",
+	"type" : "normal"
+}

@@ -4,15 +4,15 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #IceTipComposablePresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',
-		'actionPanel',
 		'pushCheckbox',
 		'commitButton',
 		'messageText',
-		'message'
+		'message',
+		'actionButtonBar'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -20,12 +20,10 @@ Class {
 { #category : #specs }
 IceTipCommentPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpecLayout composed
-		newColumn: [ :column |
-			column 
-				newRow: #pushCheckbox height: self inputTextHeight;
-				newRow: #commentText;
-				newRow: #actionPanel height: self iceActionPanelHeight ]
+	^ SpBoxLayout newVertical
+		add: #pushCheckbox height: self inputTextHeight;
+		add: #commentText;
+		add: #actionButtonBar height: self buttonHeight
 ]
 
 { #category : #specs }
@@ -33,14 +31,9 @@ IceTipCommentPanel class >> title [
 	^ 'Comment'
 ]
 
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> actionPanel [
-	^ actionPanel
-]
-
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> actionPanel: anObject [
-	actionPanel := anObject
+{ #category : #accessing }
+IceTipCommentPanel >> actionButtonBar [
+	^actionButtonBar 
 ]
 
 { #category : #accessing }
@@ -76,24 +69,23 @@ IceTipCommentPanel >> initialize [
 
 { #category : #initialization }
 IceTipCommentPanel >> initializeWidgets [
-
 	pushCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
-		ifTrue: [ pushCheckbox label: ('Push changes to {1}' format: { self repositoryRemoteName }) ]
+		ifTrue: [ pushCheckbox
+				label: ('Push changes to {1}' format: {self repositoryRemoteName}) ]
 		ifFalse: [ pushCheckbox
-				label: ('Cannot push new branch automatically. Use the `Push` option');
+				label: 'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
-
 	commentText := self newText
 		autoAccept: true;
-		whenBuiltDo: [ :ann |  ann widget withGhostText: 'A comment for your commit' ].
-	actionPanel := self newIceActionPanel.
-	actionPanel addAction: (commitButton := self newButton 
-		label: 'Commit';
-		icon: (self iconNamed: #smallOk);
-		help: ('Commit your changes to {1}' format: { self repositoryName });
-		yourself).
-		
+		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
+	actionButtonBar  := self newButtonBar.
+	actionButtonBar add:
+			(commitButton := self newButton
+				label: 'Commit';
+				icon: (self iconNamed: #smallOk);
+				help: ('Commit your changes to {1}' format: {self repositoryName});
+				yourself).
 	self focusOrder
 		add: commentText;
 		add: commitButton;

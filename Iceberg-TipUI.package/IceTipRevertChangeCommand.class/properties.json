@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"item",
+		"announcer"
+	],
+	"name" : "IceTipRevertChangeCommand",
+	"type" : "normal"
+}
