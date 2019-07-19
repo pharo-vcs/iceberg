@@ -16,15 +16,6 @@ Class {
 	#category : #'Iceberg-Cherrypicking'
 }
 
-{ #category : #convenience }
-IceCherrypicker class >> executeFrom: initialDiff to: extendedDiff [
-
-	self new
-		sourceDiff: initialDiff;
-		targetDiff: extendedDiff;
-		execute
-]
-
 { #category : #dependencies }
 IceCherrypicker >> addClassDependencyOf: aMCClassDefinition [
 	
