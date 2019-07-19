@@ -23,7 +23,7 @@ IceLibgitTonelLog >> definitionFor: aMethod path: aPath commit: aCommit [
 		package: aMethod package mcPackage; 
 		packageDirectory: (self repository directoryPathStringForPackage: aMethod package);
 		definitions)
-		detect: [ :each | each isMethodDefinition and: [ each selector = aMethod selector  ] ]
+		detect: [ :each | each isMethodDefinition and: [ (each actualClass = aMethod methodClass) & (each selector = aMethod selector) ] ]
 		ifNone: [ 
 			 "not found, return 'NULL' object: compare will fail anyway"
 			MCMethodDefinition 
