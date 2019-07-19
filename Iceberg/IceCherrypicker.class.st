@@ -11,7 +11,9 @@ Class {
 	#instVars : [
 		'dependencies',
 		'sourceDiff',
-		'targetDiff'
+		'targetDiff',
+		'receiverToAncestorDiff',
+		'mergeTree'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -83,20 +85,19 @@ IceCherrypicker >> dependencies [
 
 { #category : #'execution - public' }
 IceCherrypicker >> execute [
-
 	"Obtain the initial change set (ICS)"
+
 	self addInitialDependencies.
 
 	"Obtain an estimated transitive change set (ETCS)"
-   self addTransitiveDependencies.
+	self addTransitiveDependencies.
 
 	"Transform the diff to hold the ETCS"
 	self pruneUndependedNodesInTargetDiff.
 
 	"Merge changes into the current branch."
 	self mergeWithCurrentBranch.
-
-	^targetDiff 
+	^ mergeTree
 ]
 
 { #category : #testing }
@@ -114,7 +115,9 @@ IceCherrypicker >> initialize [
 
 { #category : #operations }
 IceCherrypicker >> mergeWithCurrentBranch [
-	self shouldBeImplemented.
+	mergeTree  := IceTreeMerger new
+		merge: self targetDiff tree
+		into: self receiverToAncestorDiff tree
 ]
 
 { #category : #'execution - private' }
@@ -123,6 +126,16 @@ IceCherrypicker >> pruneUndependedNodesInTargetDiff [
 	IceCherrypickerDiffPruner new
 		cherrypicker: self;
 		applyTo: targetDiff
+]
+
+{ #category : #accessing }
+IceCherrypicker >> receiverToAncestorDiff [
+	^ receiverToAncestorDiff
+]
+
+{ #category : #accessing }
+IceCherrypicker >> receiverToAncestorDiff: anIceDiff [ 
+	receiverToAncestorDiff:= anIceDiff.
 ]
 
 { #category : #accessing }
