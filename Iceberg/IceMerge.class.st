@@ -35,7 +35,7 @@ IceMerge >> calculateChanges [
 	sourceDiff := self sourceVersion diffTo: commonAncestor.
 	targetDiff := self targetVersion diffTo: commonAncestor.
 
-	mergeTree := self merge: sourceDiff tree
+	mergeTree := IceTreeMerger new merge: sourceDiff tree
 		into: targetDiff tree.
 	
 	changesToWorkingCopyTree := self isInverseMerge 
@@ -136,16 +136,6 @@ IceMerge >> leftCommit [
 		ifTrue: [ self headCommit ]
 		ifFalse: [ self imageCommit ].
 
-]
-
-{ #category : #building }
-IceMerge >> merge: changeTree into: currentTree [
-
-	^ changeTree collectWithPath: [ :operation :path | 
-			currentTree 
-				resolve: path 
-				ifPresent: [ :currentOperation | operation mergeWithOperation: currentOperation ] 
-				ifAbsent: [ IceNonConflictingOperation operation: operation] ]
 ]
 
 { #category : #accessing }
