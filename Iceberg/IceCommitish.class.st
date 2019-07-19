@@ -92,13 +92,18 @@ IceCommitish >> cherryPickFrom: anotherCommit [
 { #category : #'cherry-picking' }
 IceCommitish >> cherryPickTo: anotherCommit [ 
 
-	| initialDiff extendedDiff |
-	initialDiff := self commit diffToParent.
-   extendedDiff := self diffTo: anotherCommit.
-
-	IceCherrypicker executeFrom: initialDiff to: extendedDiff.
+	| initialDiff extendedDiff commonAncestor |
 	
-	^ extendedDiff
+	initialDiff := self commit diffToParent.
+	commonAncestor := self commonAncestorWith: anotherCommit commit.
+   extendedDiff := self diffTo: commonAncestor.
+
+	^ IceCherrypicker new
+		sourceDiff: initialDiff;
+		targetDiff: extendedDiff;
+		execute.
+	
+
 ]
 
 { #category : #accessing }

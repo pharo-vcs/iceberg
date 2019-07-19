@@ -86,6 +86,11 @@ IceOperation >> isAddition [
 ]
 
 { #category : #testing }
+IceOperation >> isConflict [
+	^false.
+]
+
+{ #category : #testing }
 IceOperation >> isModification [
 	
 	^ false
