@@ -1,12 +1,12 @@
 Class {
-	#name : #CherryPickBrowser,
+	#name : #IceCherryPickBrowserTest,
 	#superclass : #IceCherryPickingTest,
 	#category : #'Iceberg-Tests-Cherrypicking'
 }
 
 { #category : #tests }
-CherryPickBrowser >> testWindowOnMethodConflict [
-	| commitToCherryPick diff mergeTree model presenter |
+IceCherryPickBrowserTest >> testWindowOnMethodConflict [
+	| commitToCherryPick mergeTree presenter |
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'

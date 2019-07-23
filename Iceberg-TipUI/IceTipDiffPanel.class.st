@@ -28,7 +28,7 @@ IceTipDiffPanel class >> defaultSpec [
 
 { #category : #'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
-	^ self on: (IceTipCommitDiffModel on: aDiff) beCached
+	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
 { #category : #specs }

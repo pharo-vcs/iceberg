@@ -21,3 +21,9 @@ IceTipCherrypickModel >> mergeTree [
 IceTipCherrypickModel >> mergeTree: aMergeTree [
 	mergeTree := aMergeTree 
 ]
+
+{ #category : #accessing }
+IceTipCherrypickModel >> treeToShow [
+" Return the tree to display in windows "
+	^ self mergeTree
+]
