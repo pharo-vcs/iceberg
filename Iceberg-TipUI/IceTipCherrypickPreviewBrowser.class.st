@@ -10,11 +10,11 @@ Class {
 
 { #category : #specs }
 IceTipCherrypickPreviewBrowser class >> defaultSpec [
-		<spec: #default>
+	<spec: #default>
 	^ SpBoxLayout newVertical
 		add: #diffPanel;
-		add: #buttonBar;
-		yourself 
+		add: #buttonBar height: self buttonHeight  ;
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -63,7 +63,8 @@ IceTipCherrypickPreviewBrowser >> doMerge [
 IceTipCherrypickPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
 
-	diffPanel := self instantiate: (IceTipDiffPanel onDiff: self model diff).
+	diffPanel := self
+		instantiate: (IceTipDiffSelectingPanel onDiff: self model diff).
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
@@ -85,17 +86,16 @@ IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 
 { #category : #'private factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
-	^ self newButton 
+	^ self newButton
 		label: 'Merge';
 		icon: (self iconNamed: #merge);
-		help: ('Merges {1} with your image''s version.' format: { self model targetName });
+		help:
+			('Merges into your Working Copy');
 		action: [ self doMerge ];
 		yourself
 ]
 
 { #category : #api }
 IceTipCherrypickPreviewBrowser >> title [
-	^ 'Preview merge of {1}/{2}' format: { 
-		self model repositoryName.
-		self model targetName }
+	^ 'Preview result of Cherrypick'
 ]

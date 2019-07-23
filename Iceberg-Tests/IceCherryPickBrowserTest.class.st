@@ -1,11 +1,11 @@
 Class {
-	#name : #CherryPickBrowser,
+	#name : #IceCherryPickBrowserTest,
 	#superclass : #IceCherryPickingTest,
 	#category : #'Iceberg-Tests-Cherrypicking'
 }
 
 { #category : #tests }
-CherryPickBrowser >> testWindowOnMethodConflict [
+IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 	| commitToCherryPick diff mergeTree model presenter |
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
@@ -33,5 +33,6 @@ CherryPickBrowser >> testWindowOnMethodConflict [
 	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
 
 	presenter := IceTipCherrypickPreviewBrowser onMergeTree: mergeTree.
-	presenter openWithSpec
+	presenter openWithSpec.
+	1 halt.
 ]
