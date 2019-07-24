@@ -17,11 +17,8 @@ Class {
 IceTipPreviewBrowser class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
 				add: #diffPanel;
 				add: #actionPanel height: 25;
-				yourself);
 			yourself
 ]
 
