@@ -1,16 +1,5 @@
-"
-I'm a diff panel that shows packages/classes/methods changed in a column and a diff in the other.
-I give users the possibility of select changes.  
-
-By default, all my elements are selected on opening.
-
-As my father, I receive a model that needs to understand #elements.
-also #elements answer should be a collection of elements that also understand elements.
-
-
-"
 Class {
-	#name : #IceTipDiffSelectingPanel,
+	#name : #IceTipMergeDiffSelectingPanel,
 	#superclass : #IceTipDiffPanel,
 	#instVars : [
 		'selectedItems'
@@ -19,7 +8,7 @@ Class {
 }
 
 { #category : #initialization }
-IceTipDiffSelectingPanel >> changeListColumn [
+IceTipMergeDiffSelectingPanel >> changeListColumn [
 	^ SpCompositeTableColumn new
 		addColumn:
 			(SpCheckBoxTableColumn new
@@ -41,7 +30,7 @@ IceTipDiffSelectingPanel >> changeListColumn [
 		addColumn:
 			(SpImageTableColumn new
 				width: 20;
-				evaluated: [ :each | each value icon ];
+				evaluated: [ :each | 1 halt. each value chosenOperation icon. ];
 				yourself);
 		addColumn:
 			(SpStringTableColumn new
@@ -51,12 +40,12 @@ IceTipDiffSelectingPanel >> changeListColumn [
 ]
 
 { #category : #private }
-IceTipDiffSelectingPanel >> entryRemoved: ann [
+IceTipMergeDiffSelectingPanel >> entryRemoved: ann [
 	self refresh
 ]
 
 { #category : #initialization }
-IceTipDiffSelectingPanel >> initialize [
+IceTipMergeDiffSelectingPanel >> initialize [
 	super initialize.
 	self subscribeToAnnouncements.
 	selectedItems := Set new.
@@ -67,7 +56,7 @@ IceTipDiffSelectingPanel >> initialize [
 ]
 
 { #category : #'private factory' }
-IceTipDiffSelectingPanel >> newChangeTreeDataSource [
+IceTipMergeDiffSelectingPanel >> newChangeTreeDataSource [
 
 	^ IceTipTreeSelectingDataSource new
 		tool: self;
@@ -80,7 +69,7 @@ IceTipDiffSelectingPanel >> newChangeTreeDataSource [
 ]
 
 { #category : #accessing }
-IceTipDiffSelectingPanel >> refresh [
+IceTipMergeDiffSelectingPanel >> refresh [
 	super refresh. self model treeRoots
 		do: [ :root | 
 			selectedItems add: root.
@@ -88,23 +77,23 @@ IceTipDiffSelectingPanel >> refresh [
 ]
 
 { #category : #'as yet unclassified' }
-IceTipDiffSelectingPanel >> refreshCheckbox [
+IceTipMergeDiffSelectingPanel >> refreshCheckbox [
 	 self basicRefresh
 ]
 
 { #category : #private }
-IceTipDiffSelectingPanel >> resetDataSource: aDataSource [
+IceTipMergeDiffSelectingPanel >> resetDataSource: aDataSource [
 	super resetDataSource: aDataSource.
 	aDataSource selectAll
 ]
 
 { #category : #accessing }
-IceTipDiffSelectingPanel >> selectedItems [
+IceTipMergeDiffSelectingPanel >> selectedItems [
 	^selectedItems
 ]
 
 { #category : #initialize }
-IceTipDiffSelectingPanel >> subscribeToAnnouncements [
+IceTipMergeDiffSelectingPanel >> subscribeToAnnouncements [
 	self announcer
 		when: IceTipDiffEntryRemoved 
 		send: #entryRemoved:

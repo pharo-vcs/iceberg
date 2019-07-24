@@ -6,7 +6,7 @@ Class {
 
 { #category : #tests }
 IceCherryPickBrowserTest >> testWindowOnMethodConflict [
-	| commitToCherryPick diff mergeTree model presenter |
+	| commitToCherryPick mergeTree presenter |
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
@@ -33,6 +33,5 @@ IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
 
 	presenter := IceTipCherrypickPreviewBrowser onMergeTree: mergeTree.
-	presenter openWithSpec.
-	1 halt.
+	presenter openWithSpec
 ]

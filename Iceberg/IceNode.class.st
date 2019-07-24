@@ -506,6 +506,12 @@ IceNode >> select: aBlock [
 	^ newNode
 ]
 
+{ #category : #enumerating }
+IceNode >> selfAndAllChildrenDo: aBlock [
+	aBlock value: self.
+	self allChildrenDo: aBlock
+]
+
 { #category : #evaluating }
 IceNode >> value [
 	
