@@ -111,16 +111,12 @@ IceTipDiffPanel >> diffPanel: anObject [
 
 { #category : #initialization }
 IceTipDiffPanel >> initializeChangeList [
-	| itemValue |
-	changeList 
+	changeList
 		addColumn: self changeListColumn;
 		children: [ :each | each children ];
 		roots: self model treeRoots;
 		"The inversion below allow to display change properly in the SpDiffPresenter"
-		whenSelectionChangedDo: [ itemValue:=changeList selectedItem value. itemValue ifNotNil: [ 
-				self
-				diffContentsLeft:  itemValue  rightContents
-				right: itemValue  leftContents ]].
+			whenSelectionChangedDo: [ self selectionChanged]
 ]
 
 { #category : #initialization }
@@ -216,6 +212,15 @@ IceTipDiffPanel >> rightLabel: aString [
 	"This allows us to be compatible with old pharo versions"
 	(diffPanel respondsTo: #leftLabel:) ifFalse: [ ^ self ].
 	diffPanel rightLabel: aString
+]
+
+{ #category : #'event handling' }
+IceTipDiffPanel >> selectionChanged [
+			 | itemValue |
+itemValue:=changeList selectedItem value. itemValue ifNotNil: [ 
+				self
+				diffContentsLeft:  itemValue  rightContents
+				right: itemValue  leftContents ]
 ]
 
 { #category : #'event handling' }
