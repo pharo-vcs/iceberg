@@ -27,17 +27,15 @@ IceTipDiffSelectingPanel >> changeListColumn [
 				evaluated: [ :item | selectedItems includes: item ];
 				onActivation: [ :item | 
 					selectedItems add: item.
-					item value selectLeft.
 					item children isEmptyOrNil
 						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
 							self refreshCheckbox ] ];
 				onDesactivation: [ :item | 
 					selectedItems remove: item.
-					item value selectRight.
 					item children isEmptyOrNil
 						ifFalse: [ item
 								allChildrenDo: [ :child | selectedItems remove: child ifAbsent: [  ] ].
-							self refreshCheckbox ] ]);
+							self refreshCheckbox. ] ]);
 		addColumn:
 			(SpImageTableColumn new
 				width: 20;
