@@ -33,5 +33,6 @@ IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
 
 	presenter := IceTipCherrypickPreviewBrowser onMergeTree: mergeTree.
-	presenter openWithSpec
+	presenter openWithSpec.
+
 ]

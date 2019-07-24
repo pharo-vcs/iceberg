@@ -64,7 +64,7 @@ IceTipCherrypickPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
 
 	diffPanel := self
-		instantiate: (IceTipDiffSelectingPanel onDiff: self model diff).
+		instantiate: (IceTipMergeDiffSelectingPanel onDiff: self model diff).
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
@@ -86,16 +86,16 @@ IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 
 { #category : #'private factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
-	| items root |
+	| root |
 	^ self newButton
 		label: 'Merge';
 		icon: (self iconNamed: #merge);
 		help: 'Merges into your Working Copy';
 		action: [
-			root := diffPanel model tree
+			root := diffPanel model tree.
 			root
 				selfAndAllChildrenDo: [ :child | child value: child value chosenOperation ].
-			1 halt ];
+				];
 		yourself
 ]
 

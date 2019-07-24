@@ -30,7 +30,7 @@ IceTipMergeDiffSelectingPanel >> changeListColumn [
 		addColumn:
 			(SpImageTableColumn new
 				width: 20;
-				evaluated: [ :each | 1 halt. each value chosenOperation icon. ];
+				evaluated: [ :each | each value chosenOperation icon. ];
 				yourself);
 		addColumn:
 			(SpStringTableColumn new
@@ -51,8 +51,7 @@ IceTipMergeDiffSelectingPanel >> initialize [
 	selectedItems := Set new.
 	self model treeRoots
 		do: [ :root | 
-			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child.]]
+			root selfAndAllChildrenDo: [ :child | selectedItems add: child. child value isConflict ifTrue: child value selectLeft ]]
 ]
 
 { #category : #'private factory' }
