@@ -83,7 +83,7 @@ IceTipMergeSelectingPanel >> initialize [
 	self model treeRoots
 		do: [ :root | 
 			root
-				selfAndAllChildrenDo:  [ :child | 
+				allNodesDo: [ :child | 
 					selectedItems add: child.
 					child value isConflict
 						ifTrue: child value selectLeft ] ]

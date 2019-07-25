@@ -18,12 +18,10 @@ IceTipCherrypickPreviewBrowser class >> defaultSpec [
 ]
 
 { #category : #'instance creation' }
-IceTipCherrypickPreviewBrowser class >> onMergeTree: aMergeTree [
+IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 	^ self
 		on:
-			(IceTipCherrypickModel new
-				mergeTree: aMergeTree;
-				yourself)
+			(IceTipCherrypickModel onCommitish: aCommitish)
 ]
 
 { #category : #initialization }
@@ -59,12 +57,17 @@ IceTipCherrypickPreviewBrowser >> doMerge [
 	self model executeMergeActionAndThen: [ self window delete ]
 ]
 
+{ #category : #accessing }
+IceTipCherrypickPreviewBrowser >> initialExtent [
+	^ (800 @ 600) scaledByDisplayScaleFactor
+]
+
 { #category : #initialization }
 IceTipCherrypickPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
 
 	diffPanel := self
-		instantiate: (IceTipMergeDiffSelectingPanel onDiff: self model diff).
+		instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
@@ -91,11 +94,11 @@ IceTipCherrypickPreviewBrowser >> newActionButton [
 		label: 'Merge';
 		icon: (self iconNamed: #merge);
 		help: 'Merges into your Working Copy';
-		action: [
-			root := diffPanel model tree.
-			root
-				selfAndAllChildrenDo: [ :child | child value: child value chosenOperation ].
-				];
+		action: [ root := diffPanel model tree.
+			root accept: IceMergeToChangeTreeVisitor new.
+			self model repository workingCopy loadChangesInWorkingCopy: root.
+			self window close.
+			 ];
 		yourself
 ]
 
