@@ -1,5 +1,5 @@
 Class {
-	#name : #IceTipMergeDiffSelectingPanel,
+	#name : #IceTipMergeSelectingPanel,
 	#superclass : #IceTipDiffPanel,
 	#instVars : [
 		'selectedItems',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #specs }
-IceTipMergeDiffSelectingPanel class >> defaultSpec [
+IceTipMergeSelectingPanel class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newHorizontal
 		add: #changeList width: 200;
@@ -21,8 +21,14 @@ IceTipMergeDiffSelectingPanel class >> defaultSpec [
 		yourself
 ]
 
+{ #category : #accessing }
+IceTipMergeSelectingPanel >> basicRefresh [
+	super basicRefresh.
+	self refreshCodePanel.
+]
+
 { #category : #initialization }
-IceTipMergeDiffSelectingPanel >> changeListColumn [
+IceTipMergeSelectingPanel >> changeListColumn [
 	^ SpCompositeTableColumn new
 		addColumn:
 			(SpCheckBoxTableColumn new
@@ -33,9 +39,7 @@ IceTipMergeDiffSelectingPanel >> changeListColumn [
 					item value selectLeft.
 					item children isEmptyOrNil
 						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
-							self basicRefresh ].
-					self
-						refreshCodePanel: item value chosenOperation definition contents ];
+							self basicRefresh ] ];
 				onDesactivation: [ :item | 
 					selectedItems remove: item.
 					item value selectRight.
@@ -43,7 +47,7 @@ IceTipMergeDiffSelectingPanel >> changeListColumn [
 						ifFalse: [ item
 								allChildrenDo: [ :child | selectedItems remove: child ifAbsent: [  ] ].
 							self basicRefresh ].
-					self refreshCodePanel: item value chosenOperation definition contents ]);
+					 ]);
 		addColumn:
 			(SpImageTableColumn new
 				width: 20;
@@ -57,44 +61,48 @@ IceTipMergeDiffSelectingPanel >> changeListColumn [
 ]
 
 { #category : #accessing }
-IceTipMergeDiffSelectingPanel >> codePanel [
+IceTipMergeSelectingPanel >> codePanel [
 	^codePanel 
 ]
 
 { #category : #accessing }
-IceTipMergeDiffSelectingPanel >> codePanel: aCodePresenter [
+IceTipMergeSelectingPanel >> codePanel: aCodePresenter [
 codePanel := aCodePresenter 
 ]
 
 { #category : #private }
-IceTipMergeDiffSelectingPanel >> entryRemoved: ann [
+IceTipMergeSelectingPanel >> entryRemoved: ann [
 	self refresh
 ]
 
 { #category : #initialization }
-IceTipMergeDiffSelectingPanel >> initialize [
+IceTipMergeSelectingPanel >> initialize [
 	super initialize.
 	self subscribeToAnnouncements.
 	selectedItems := Set new.
 	self model treeRoots
 		do: [ :root | 
-			root selfAndAllChildrenDo: [ :child | selectedItems add: child. child value isConflict ifTrue: child value selectLeft ]]
+			root
+				selfAndAllChildrenDo:  [ :child | 
+					selectedItems add: child.
+					child value isConflict
+						ifTrue: child value selectLeft ] ]
 ]
 
 { #category : #initialization }
-IceTipMergeDiffSelectingPanel >> initializeCodePanel [
+IceTipMergeSelectingPanel >> initializeCodePanel [
 codePanel text: ''.
 ]
 
 { #category : #initialization }
-IceTipMergeDiffSelectingPanel >> initializeWidgets [ 
+IceTipMergeSelectingPanel >> initializeWidgets [ 
 super initializeWidgets.
 codePanel := self newCode.
 self initializeCodePanel.
 ]
 
 { #category : #'private factory' }
-IceTipMergeDiffSelectingPanel >> newChangeTreeDataSource [
+IceTipMergeSelectingPanel >> newChangeTreeDataSource [
 
 	^ IceTipTreeSelectingDataSource new
 		tool: self;
@@ -107,43 +115,44 @@ IceTipMergeDiffSelectingPanel >> newChangeTreeDataSource [
 ]
 
 { #category : #accessing }
-IceTipMergeDiffSelectingPanel >> refresh [
-	super refresh. self model treeRoots
+IceTipMergeSelectingPanel >> refresh [
+	super refresh.
+	self model treeRoots
 		do: [ :root | 
 			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child ] ]
+			root allChildrenDo: [ :child | selectedItems add: child ] ];
+		refreshCodePanel 
 ]
 
 { #category : #'as yet unclassified' }
-IceTipMergeDiffSelectingPanel >> refreshCodePanel: text [
-	codePanel text: text
+IceTipMergeSelectingPanel >> refreshCodePanel [
+	| visitor mergeNode |
+	visitor := IceNodeCodeDisplayVistor onCodePresenter: codePanel.
+	mergeNode := changeList selectedItem value.
+	mergeNode
+		ifNil: [ codePanel text: '' ]
+		ifNotNil: [ mergeNode accept: visitor ]
 ]
 
 { #category : #private }
-IceTipMergeDiffSelectingPanel >> resetDataSource: aDataSource [
+IceTipMergeSelectingPanel >> resetDataSource: aDataSource [
 	super resetDataSource: aDataSource.
 	aDataSource selectAll
 ]
 
 { #category : #accessing }
-IceTipMergeDiffSelectingPanel >> selectedItems [
+IceTipMergeSelectingPanel >> selectedItems [
 	^selectedItems
 ]
 
 { #category : #'event handling' }
-IceTipMergeDiffSelectingPanel >> selectionChanged [
-	| itemValue definition |
+IceTipMergeSelectingPanel >> selectionChanged [
 	super selectionChanged.
-	itemValue := changeList selectedItem value.
-	itemValue
-		ifNotNil: [ definition := itemValue chosenOperation definition.
-						definition isMethodDefinition ifTrue: [	codePanel text: definition sourceCode ]
-						ifFalse: [ codePanel text: definition contents ]
-]
+	self refreshCodePanel.
 ]
 
 { #category : #initialize }
-IceTipMergeDiffSelectingPanel >> subscribeToAnnouncements [
+IceTipMergeSelectingPanel >> subscribeToAnnouncements [
 	self announcer
 		when: IceTipDiffEntryRemoved 
 		send: #entryRemoved:
