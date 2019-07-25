@@ -47,6 +47,11 @@ IceTipPreviewBrowser >> diffPanel: anObject [
 	diffPanel := anObject
 ]
 
+{ #category : #accessing }
+IceTipPreviewBrowser >> initialExtent [
+	^ (800 @ 400) scaledByDisplayScaleFactor
+]
+
 { #category : #initialization }
 IceTipPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
@@ -60,6 +65,16 @@ IceTipPreviewBrowser >> initializeWidgets [
 	self focusOrder 
 		add: self actionPanel;
 		add: self diffPanel
+]
+
+{ #category : #initialization }
+IceTipPreviewBrowser >> initializeWindow: aWindowPresenter [
+	aWindowPresenter
+		title: self title;
+		initialExtent: self initialExtent;
+		windowIcon: self windowIcon;
+		askOkToClose: self askOkToClose;
+		aboutText: self aboutText
 ]
 
 { #category : #'private factory' }
