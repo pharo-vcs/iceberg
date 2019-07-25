@@ -102,6 +102,12 @@ IceNode >> allChildrenDo: aBlockClosure [
 		e allChildrenDo: aBlockClosure ]
 ]
 
+{ #category : #enumerating }
+IceNode >> allNodesDo: aBlockClosure [
+	aBlockClosure  value: self.
+	self allChildrenDo: aBlockClosure 
+]
+
 { #category : #accessing }
 IceNode >> allPathSegments [
 
@@ -504,12 +510,6 @@ IceNode >> select: aBlock [
 	selectedChildren do: [ :e |
 		e addTo: newNode ].
 	^ newNode
-]
-
-{ #category : #enumerating }
-IceNode >> selfAndAllChildrenDo: aBlock [
-	aBlock value: self.
-	self allChildrenDo: aBlock
 ]
 
 { #category : #evaluating }
