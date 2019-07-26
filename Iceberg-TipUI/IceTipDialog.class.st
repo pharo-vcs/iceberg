@@ -4,7 +4,7 @@ I implement a default accept method that needs to be overriden my children and s
 "
 Class {
 	#name : #IceTipDialog,
-	#superclass : #IceTipComposablePresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'acceptButton',
 		'cancelButton'
@@ -17,17 +17,17 @@ IceTipDialog >> accept [
 	"override this if you want a dialog"
 ]
 
-{ #category : #accessing }
-IceTipDialog >> initializeDialogWindow: aWindow [
+{ #category : #actions }
+IceTipDialog >> cancel [
+	"override this if you want a dialog"
+
 	
-	aWindow 
-		addButton: 'Accept' 
-		do: [ :presenter | self accept. presenter close ] 
 ]
 
 { #category : #accessing }
 IceTipDialog >> openDialogWithSpec [
 	^ super openDialogWithSpec
-		okAction: [ self accept ];
+		okAction: [  self accept ];
+		cancelAction: [  self cancel ];
 		yourself
 ]

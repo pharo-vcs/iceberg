@@ -14,17 +14,35 @@ Class {
 { #category : #specs }
 IceTipAddSSHCredentialsModel class >> defaultSpec [
 	<spec: #default>
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #hostLabel width: self labelWidth;
+				add: #hostInput;
+				yourself)
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: self labelWidth;
+				add: #usernameInput;
+				yourself)
+			height: self inputTextHeight;
+		add: #publicKeyInput height: self inputTextHeight;
+		add: #privateKeyInput height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #passphraseLabel width: self labelWidth;
+				add: #passphraseInput;
+				yourself )
+			height: self inputTextHeight
+]
 
-	^ SpecLayout composed newColumn: [ :col |
-		col 
-		 	newRow: [:row | row add: #hostLabel width: self iceLabelWidth; add: #hostInput ] height: self inputTextHeight;
-		 	newRow: [:row | row add: #usernameLabel width: self iceLabelWidth; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #publicKeyInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #privateKeyInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passphraseLabel width: self iceLabelWidth; add: #passphraseInput ] height: self inputTextHeight;
-			newRow: [:row | ]
-	]
-
+{ #category : #actions }
+IceTipAddSSHCredentialsModel >> accept [
+	credentialStore
+		storeCredential: self credentials
+		forHostname: self host.
+	tool refresh
 ]
 
 { #category : #actions }
@@ -67,20 +85,11 @@ IceTipAddSSHCredentialsModel >> initialExtent [
 { #category : #initialization }
 IceTipAddSSHCredentialsModel >> initializeWidgets [
 	super initializeWidgets.
-	
 	hostLabel := self newLabel label: 'Host: '.
-	hostInput := self newTextInput 
+	hostInput := self newTextInput
 		autoAccept: true;
-		whenTextChanged: [ self updateOkButton ];
-		yourself.
-
-]
-
-{ #category : #actions }
-IceTipAddSSHCredentialsModel >> okAction [
-	
-	credentialStore storeCredential: self credentials forHostname: self host.
-	tool refresh.
+		whenTextChangedDo: [ self updateOkButton ];
+		yourself
 ]
 
 { #category : #initialization }

@@ -36,7 +36,8 @@ IceTipAbstractPlaintextCredentialsModel >> initializeWidgets [
 		bePassword;
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
-		yourself
+		yourself.
+	self putFocusOrder
 ]
 
 { #category : #testing }

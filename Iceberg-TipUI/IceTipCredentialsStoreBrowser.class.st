@@ -13,12 +13,10 @@ Class {
 { #category : #specs }
 IceTipCredentialsStoreBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #credentialsList ]
+	^ SpBoxLayout newVertical
+		add: #toolbar height: IceTipToolbar defaultHeight;
+		add: #credentialsList;
+		yourself 
 ]
 
 { #category : #accessing }

@@ -108,14 +108,15 @@ IceTipAddPackagesDialog >> initializePackageNameText [
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackagesList [
-	| dataSource |
-	
-	dataSource := self newPackagesListDataSource.
-	packagesList widget
-		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | self iconNamed: #package ]);
-		dataSource: dataSource;
-		useFunction: IceTipLinkFilterFunction do: [ :function | 
-			function 
+	packagesList
+		addColumn:
+			(SpStringTableColumn 
+				newAction: #name
+				icon: [ :each | self iconNamed: #package ]);
+	items: self model packages;
+		useFunction: IceTipLinkFilterFunction
+			do: [ :function | 
+			function
 				filterClass: IceTipPackageFilter;
 				textField: self packageNameText ];
 		bindKeyCombination: Character cr toAction: [ self accept ];
@@ -124,14 +125,12 @@ IceTipAddPackagesDialog >> initializePackagesList [
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializeWidgets [
-
-	packagesList := self newIceTreeTable.
+	packagesList := self newTreeTable.
 	packageNameText := self newTextInput
 		autoAccept: true;
 		placeholder: 'e.g., Collections'.
 	self initializePackagesList.
 	self initializePackageNameText.
-
 	self focusOrder
 		add: self packagesList;
 		add: self packageNameText

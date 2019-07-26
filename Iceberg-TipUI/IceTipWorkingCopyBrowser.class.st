@@ -59,20 +59,21 @@ IceTipWorkingCopyBrowser >> initialExtent [
 IceTipWorkingCopyBrowser >> initializePackageList [
 	packageList
 		beResizable;
-		addColumn: ((SpStringTableColumn evaluated: #descriptionWithDecoration) 
-		   title: 'Name';
-			yourself);
-		addColumn: ((SpStringTableColumn evaluated: #statusWithDecoration) 
-		   title: 'Status';
-			yourself);
+		addColumn:
+			((SpStringTableColumn evaluated: #descriptionWithDecoration)
+				title: 'Name';
+				yourself);
+		addColumn:
+			((SpStringTableColumn evaluated: #statusWithDecoration)
+				title: 'Status';
+				yourself);
 		items: self model packageModels;
 		selectIndex: 1;
-		itemFilterBlock: [ :anItem :aPattern | 
-			IceTipPackageFilter new 
+		itemFilter: [ :anItem :aPattern | 
+			IceTipPackageFilter new
 				pattern: aPattern;
 				matches: anItem ];
-		contextMenu: [ self buildMenu ].
-
+		contextMenu: [ self buildMenu ]
 ]
 
 { #category : #initialization }

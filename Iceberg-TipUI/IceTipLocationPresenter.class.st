@@ -171,6 +171,6 @@ IceTipLocationPresenter >> onChoose: aBlockClosure [
 ]
 
 { #category : #events }
-IceTipLocationPresenter >> whenTextChanged: aBlockClosure [ 
-	self locationInput whenTextChanged: aBlockClosure
+IceTipLocationPresenter >> whenTextChanged: aBlockClosure [
+	self locationInput whenTextChangedDo: aBlockClosure
 ]
