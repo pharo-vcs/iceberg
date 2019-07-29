@@ -20,12 +20,10 @@ Class {
 { #category : #specs }
 IceTipErrorDialog class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newRow: [ :row |
-			row 
-				newColumn: #iconPanel width: 40 * World displayScaleFactor;
-				newColumn: #errorLabel ]
+	^ SpBoxLayout newVertical
+		add: #iconPanel width: 40 * World displayScaleFactor;
+		add: #errorLabel;
+		yourself 
 ]
 
 { #category : #specs }
@@ -93,14 +91,15 @@ IceTipErrorDialog >> initializeDialogWindow: aWindow [
 
 { #category : #initialization }
 IceTipErrorDialog >> initializeWidgets [
+self flag: 'To-Test'.
 	iconPanel := self newIcePanel.
-	iconPanel widget addMorph: ((self iconNamed: #error) scaledToSize: 32@32) asMorph.
-	
+	iconPanel widget
+		addMorph: ((self iconNamed: #error) scaledToSize: 32 @ 32) asMorph.
 	errorLabel := self newIceReadOnlyText.
 	errorLabel widget contentsWrapped: exception messageText.
 	errorLabel widget
 		hResizing: #spaceFill;
-		vResizing: #spaceFill.
+		vResizing: #spaceFill
 ]
 
 { #category : #initialization }
