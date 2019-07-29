@@ -98,8 +98,7 @@ IceTipCheckoutBranchDialog >> withOnlyNewBranch [
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withTypes: aCollection [
 	types := aCollection.
-	typeList adapter dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
 ]
 
 { #category : #accessing }
