@@ -69,7 +69,7 @@ IceTipRepositoriesBrowser >> createCommandContext [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
 	| items |
-	items := self newRepositoriesDataSource.
+	items := self model repositories.
 	repositoryList
 		showColumnHeaders;
 		beResizable;
@@ -90,8 +90,8 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 		items: items;
 		selectIndex: 1;
 		activateOnDoubleClick;
-		whenActivatedDo: [ self repositoryStrongSelection: self repositorySelected  ];
-		contextMenu: [ self buildMenu ].
+		whenActivatedDo: [ self repositoryStrongSelection: self repositorySelected ];
+		contextMenu: [ self buildMenu ]
 ]
 
 { #category : #initialization }
@@ -110,19 +110,9 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 		yourself
 ]
 
-{ #category : #'private factory' }
-IceTipRepositoriesBrowser >> newRepositoriesDataSource [
-	| datasource |
-	datasource := IceTipDataSource new
-		tool: self;
-		elements: self model repositories;
-		yourself.
-	^ datasource elements 
-]
-
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self model repositories
+	repositoryList items: self model repositories.
 ]
 
 { #category : #accessing }
