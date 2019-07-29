@@ -91,14 +91,13 @@ IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 IceTipCherrypickPreviewBrowser >> newActionButton [
 	| root |
 	^ self newButton
-		label: 'Merge';
+		label: 'Apply';
 		icon: (self iconNamed: #merge);
-		help: 'Merges into your Working Copy';
+		help: 'Apply changes into your Working Copy';
 		action: [ root := diffPanel model tree.
 			root accept: IceMergeToChangeTreeVisitor new.
 			self model repository workingCopy loadChangesInWorkingCopy: root.
-			self window close.
-			 ];
+			self window close ];
 		yourself
 ]
 
