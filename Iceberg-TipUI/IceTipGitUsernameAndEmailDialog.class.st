@@ -102,14 +102,13 @@ IceTipGitUsernameAndEmailDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipGitUsernameAndEmailDialog >> initializeWidgets [
-self flag: 'To-Test'.
 	nameLabel := self newLabel label: 'user.name'.
 	nameInput := self newTextInput
-		ghostText: 'e.g., John Doe';
+		placeholder: 'e.g., John Doe';
 		autoAccept: true.
 	emailLabel := self newLabel label: 'user.email'.
 	emailInput := self newTextInput
-		ghostText: 'e.g., johndoe@mail.net';
+		placeholder: 'e.g., johndoe@mail.net';
 		autoAccept: true.
 	globalCheckbox := self newCheckBox
 		label: 'Save properties as global?';

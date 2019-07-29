@@ -91,7 +91,6 @@ IceTipAddPackagesDialog >> initializePackageNameText [
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackagesList [
-	self flag: 'Todo'. "Remettre en place des raccourcis"
 	packagesList
 		addColumn:
 			(SpCompositeTableColumn new
@@ -113,9 +112,6 @@ IceTipAddPackagesDialog >> initializePackagesList [
 						yourself);
 				yourself);
 		items: self allPackagesNotRegistered
-
-"			bindKeyCombination: Character cr toAction: [ self accept ]
-			onAnnouncement: FTStrongSelectionChanged do: [ self accept ]"
 ]
 
 { #category : #initialization }
