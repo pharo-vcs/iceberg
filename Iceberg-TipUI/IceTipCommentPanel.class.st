@@ -23,6 +23,7 @@ IceTipCommentPanel class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
 		add: #pushCheckbox height: self inputTextHeight;
+		add: #saveCheckbox height: self inputTextHeight;
 		add: #commentText;
 		add: #actionButtonBar height: self buttonHeight
 ]
