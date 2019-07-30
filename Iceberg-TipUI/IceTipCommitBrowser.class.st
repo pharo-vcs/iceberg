@@ -63,10 +63,11 @@ IceTipCommitBrowser >> diffPanel: anObject [
 
 { #category : #actions }
 IceTipCommitBrowser >> doCommit [
-	self 
-		doCommit: diffPanel selectedItems 
+	self
+		doCommit: diffPanel selectedItems
 		message: commentPanel message
 		pushing: commentPanel isPushing
+		saving: commentPanel isSaving 
 ]
 
 { #category : #actions }
@@ -81,6 +82,22 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: aBoolean 
 		then: [ self verifyNeedsRefreshOrClose.
 			aBoolean
 				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ] ]
+]
+
+{ #category : #actions }
+IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
+	self model
+		commit:
+			(IceTipCommitAction new
+				diff: self model workingCopyDiff;
+				items: aCollection;
+				message: aString;
+				yourself)
+		then: [ self verifyNeedsRefreshOrClose.
+			pushingBoolean
+				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
+			savingBoolean
+				ifTrue: [ Smalltalk saveSession ] ]
 ]
 
 { #category : #accessing }
