@@ -97,7 +97,8 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 			pushingBoolean
 				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
 			savingBoolean
-				ifTrue: [ Smalltalk saveSession ] ]
+				ifTrue: [ Smalltalk saveSession.
+					self inform: 'Image automatically saved' ] ]
 ]
 
 { #category : #accessing }
