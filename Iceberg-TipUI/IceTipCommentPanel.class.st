@@ -12,7 +12,8 @@ Class {
 		'commitButton',
 		'messageText',
 		'message',
-		'actionButtonBar'
+		'actionButtonBar',
+		'saveCheckbox'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -70,17 +71,26 @@ IceTipCommentPanel >> initialize [
 { #category : #initialization }
 IceTipCommentPanel >> initializeWidgets [
 	pushCheckbox := self newCheckBox.
+	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
 		ifTrue: [ pushCheckbox
-				label: ('Push changes to {1}' format: {self repositoryRemoteName}) ]
+				label: ('Push changes to {1}' format: {self repositoryRemoteName});
+				state: IceTipCommitSettings pushOnCommit;
+						whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ]
+				 ]
 		ifFalse: [ pushCheckbox
 				label: 'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
+	saveCheckbox
+		label: 'Save the image when commiting';
+		state: IceTipCommitSettings saveImageOnCommit;
+		whenChangedDo: [ :state | IceTipCommitSettings saveImageOnCommit: state ].
 	commentText := self newText
 		autoAccept: true;
 		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
-	actionButtonBar  := self newButtonBar.
-	actionButtonBar add:
+	actionButtonBar := self newButtonBar.
+	actionButtonBar
+		add:
 			(commitButton := self newButton
 				label: 'Commit';
 				icon: (self iconNamed: #smallOk);
@@ -95,6 +105,11 @@ IceTipCommentPanel >> initializeWidgets [
 { #category : #testing }
 IceTipCommentPanel >> isPushing [
 	^ self pushCheckbox state
+]
+
+{ #category : #testing }
+IceTipCommentPanel >> isSaving [
+	^ self saveCheckbox state
 ]
 
 { #category : #accessing }
@@ -139,6 +154,16 @@ IceTipCommentPanel >> repositoryName [
 { #category : #'private accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
 	^ self repositoryModel pushRemoteName
+]
+
+{ #category : #'accessing ui' }
+IceTipCommentPanel >> saveCheckbox [
+	^ saveCheckbox
+]
+
+{ #category : #'accessing ui' }
+IceTipCommentPanel >> saveCheckbox: anObject [
+	saveCheckbox := anObject
 ]
 
 { #category : #initialization }
