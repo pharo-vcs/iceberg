@@ -39,7 +39,7 @@ IceMerge >> calculateChanges [
 		into: targetDiff tree.
 	
 	changesToWorkingCopyTree := self isInverseMerge 
-		ifTrue: [  self merge: targetDiff tree into: sourceDiff tree ] 
+		ifTrue: [  IceTreeMerger new merge: targetDiff tree into: sourceDiff tree ] 
 		ifFalse: [ mergeTree  ]
 	 
 ]

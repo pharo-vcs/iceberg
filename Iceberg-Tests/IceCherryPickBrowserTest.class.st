@@ -6,7 +6,7 @@ Class {
 
 { #category : #tests }
 IceCherryPickBrowserTest >> testWindowOnMethodConflict [
-	| commitToCherryPick mergeTree presenter |
+	| commitToCherryPick presenter |
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
@@ -25,10 +25,10 @@ IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 		createMethod: 'm1 ^36'
 		inClass: 'TestClass2'.
 	self repository commitWithMessage: 'Adding the same method in master'.
-	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
 	presenter := IceTipCherrypickPreviewBrowser
 		onCommitish: commitToCherryPick.
 	presenter openWithSpec.
-(	self repository workingCopy environment ask classNamed: 'TestClass2') methods.
-	1 halt.
+	presenter doCherryPick.
+	self assert: 	(self repository workingCopy environment ask classNamed: 'TestClass2')
+		methods first sourceCode equals: 'm1 ^42'
 ]

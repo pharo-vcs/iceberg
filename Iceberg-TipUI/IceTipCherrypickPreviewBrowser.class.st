@@ -52,9 +52,12 @@ IceTipCherrypickPreviewBrowser >> diffPanel: anObject [
 ]
 
 { #category : #actions }
-IceTipCherrypickPreviewBrowser >> doMerge [
-
-	self model executeMergeActionAndThen: [ self window delete ]
+IceTipCherrypickPreviewBrowser >> doCherryPick [
+|root|
+	root := diffPanel model tree.
+			root accept: IceMergeToChangeTreeVisitor new.
+			self model repository workingCopy loadChangesInWorkingCopy: root.
+			self window close
 ]
 
 { #category : #accessing }
@@ -89,15 +92,12 @@ IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 
 { #category : #'private factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
-	| root |
+
 	^ self newButton
 		label: 'Apply';
 		icon: (self iconNamed: #merge);
 		help: 'Apply changes into your Working Copy';
-		action: [ root := diffPanel model tree.
-			root accept: IceMergeToChangeTreeVisitor new.
-			self model repository workingCopy loadChangesInWorkingCopy: root.
-			self window close ];
+		action: [ self doCherryPick ];
 		yourself
 ]
 
