@@ -36,6 +36,11 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
+{ #category : #accessing }
+IceTipRepositoryBrowser >> branchSelected [
+	^ sidebarTree selection selectedItem
+]
+
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 	historyPanel model: ann
@@ -45,6 +50,11 @@ IceTipRepositoryBrowser >> commitishSelected: ann [
 { #category : #accessing }
 IceTipRepositoryBrowser >> contextClass [
 	^ IceTipRepositoryContext
+]
+
+{ #category : #accessing }
+IceTipRepositoryBrowser >> createCommandContext [
+	^ self newContextWithSelection: self branchSelected
 ]
 
 { #category : #accessing }
@@ -64,8 +74,8 @@ IceTipRepositoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeSidebarTree [
-	sidebarTree 
-			addColumn:
+	sidebarTree
+		addColumn:
 			(SpCompositeTableColumn new
 				addColumn:
 					(SpImageTableColumn new
@@ -77,11 +87,13 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 						evaluated: #name;
 						yourself);
 				yourself);
-		children: [ :each | each children];
+		children: [ :each | each children ];
 		roots: self model repositoryModelsByGroup;
-		whenSelectionChangedDo: [ :selection | (selection selectedItem class superclass = IceTipTreeItem) ifTrue: [self commitishSelected: selection selectedItem]  ] .
+		whenSelectionChangedDo: [ :selection | 
+			selection selectedItem class superclass = IceTipTreeItem
+				ifTrue: [ self commitishSelected: selection selectedItem ] ];
+		contextMenu: [ self buildMenu ]  .
 	self selectCurrentBranch
-	
 ]
 
 { #category : #initialization }
