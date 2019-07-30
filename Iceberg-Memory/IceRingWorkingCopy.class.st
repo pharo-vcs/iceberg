@@ -7,6 +7,13 @@ Class {
 	#category : 'Iceberg-Memory'
 }
 
+{ #category : #helpers }
+IceRingWorkingCopy >> addClassVariable: aVariableName to: aClassName [
+	| class |
+	class := ringEnvironment ensureClassNamed: aClassName.
+	class addClassVariable: (RG2ClassVariableDefinition named: aVariableName asSymbol parent: class ).
+]
+
 { #category : #'private-impacting-changes' }
 IceRingWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 
@@ -70,6 +77,19 @@ IceRingWorkingCopy >> createMethod: source inClass: aClassName [
 	method sourceCode: source.
 	method package: class package.
 	self markAsDirtyPackageNamed: class package name.
+]
+
+{ #category : #helpers }
+IceRingWorkingCopy >> createMethod: source inClass: aClassName isMeta: aBoolean [
+	
+	| class method package |
+	class := ringEnvironment ensureClassNamed: aClassName.
+	package := class package.
+	aBoolean ifTrue: [ class := class classSide ].
+	method := class ensureLocalMethodNamed: (RBParser parseMethod: source) selector.
+	method sourceCode: source.
+	method package: package.
+	self markAsDirtyPackageNamed: package name.
 ]
 
 { #category : #helpers }

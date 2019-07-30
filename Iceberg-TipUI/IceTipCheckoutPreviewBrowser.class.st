@@ -63,11 +63,6 @@ IceTipCheckoutPreviewBrowser >> doCheckout [
 	self model executeCheckoutActionAndThen: [ self window delete ]
 ]
 
-{ #category : #accessing }
-IceTipCheckoutPreviewBrowser >> initialExtent [
-	^ (800 @ 400) scaledByDisplayScaleFactor
-]
-
 { #category : #initialization }
 IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 	| checkoutStrategies |
@@ -95,16 +90,6 @@ IceTipCheckoutPreviewBrowser >> initializeWidgets [
 		add: self actionPanel;
 		add: self checkoutStrategyList;
 		add: self diffPanel
-]
-
-{ #category : #initialization }
-IceTipCheckoutPreviewBrowser >> initializeWindow: aWindowPresenter [
-	aWindowPresenter
-		title: self title;
-		initialExtent: self initialExtent;
-		windowIcon: self windowIcon;
-		askOkToClose: self askOkToClose;
-		aboutText: self aboutText
 ]
 
 { #category : #'private factory' }

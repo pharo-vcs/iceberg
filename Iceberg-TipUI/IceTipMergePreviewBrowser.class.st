@@ -11,10 +11,10 @@ Class {
 
 { #category : #'instance creation' }
 IceTipMergePreviewBrowser class >> onBranch: aBranch [
-
 	^ self on: (IceTipMergeModel new
 		commitish: aBranch;
 		yourself)
+
 ]
 
 { #category : #actions }

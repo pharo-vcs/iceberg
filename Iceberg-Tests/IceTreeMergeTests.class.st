@@ -23,7 +23,7 @@ IceTreeMergeTests >> testConflictingModificationWithRemoval [
 			right: ((IceTestDefinition named: 'common')
 				contents: 'old')).
 	
-	mergedTree := IceMerge new merge: rightTree into: leftTree.
+	mergedTree := IceTreeMerger new merge: rightTree into: leftTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict.
@@ -40,7 +40,7 @@ IceTreeMergeTests >> testConflictingNoModificationWithRemoval [
 	rightTree := self buildTestTreeWithOperation: (IceNoModification definition: ((IceTestDefinition named: 'common')
 		contents: 'contents')).
 	
-	mergedTree := IceMerge new merge: rightTree into: leftTree.
+	mergedTree := IceTreeMerger new merge: rightTree into: leftTree.
 
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict.
@@ -60,7 +60,7 @@ IceTreeMergeTests >> testConflictingRemovalWithModification [
 		right: ((IceTestDefinition named: 'common')
 			contents: 'old')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict.
@@ -77,7 +77,7 @@ IceTreeMergeTests >> testConflictingRemovalWithNoModification [
 	rightTree := self buildTestTreeWithOperation: (IceNoModification definition: ((IceTestDefinition named: 'common')
 		contents: 'old')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict.
@@ -94,7 +94,7 @@ IceTreeMergeTests >> testMergeConflictingAdditions [
 	rightTree := self buildTestTreeWithOperation: (IceAddition definition: ((IceTestDefinition named: 'common')
 		contents: 'new2')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict.
@@ -107,7 +107,7 @@ IceTreeMergeTests >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
 
 	| rightTree leftTree mergedTree |
 	leftTree := rightTree := IceEmptyNode new.
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 
 	self assert: mergedTree isEmpty.
 ]
@@ -118,7 +118,7 @@ IceTreeMergeTests >> testMergeTwoEqualAdditionsIsNoModification [
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceAddition definition: (IceTestDefinition named: 'new')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	operation := (mergedTree / 'new') value.
 	
 	self assert: (mergedTree / 'new') isEmpty.
@@ -132,7 +132,7 @@ IceTreeMergeTests >> testMergeTwoEqualRemovalsIsNoModification [
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceRemoval definition: (IceTestDefinition named: 'old') ).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	operation := (mergedTree / 'old') value.
 	
 	self assert: (mergedTree / 'old') isEmpty.
@@ -151,7 +151,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsInverseIsCon
 		right: ((IceTestDefinition named: 'common')
 			contents: 'old')).
 	
-	mergedTree := IceMerge new merge: rightTree into: leftTree.
+	mergedTree := IceTreeMerger new merge: rightTree into: leftTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict not.
@@ -171,7 +171,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
 		right: ((IceTestDefinition named: 'common')
 			contents: 'old')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	
 	conflictOperation := (mergedTree / 'common') value.
 	self assert: conflictOperation isConflict not.
@@ -185,7 +185,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToTheSameDefinitionIsNoModificatio
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceModification left: (IceTestDefinition named: 'm1' contents: 'old') right: (IceTestDefinition named: 'm1' contents: 'new')).
 	
-	mergedTree := IceMerge new merge: leftTree into: rightTree.
+	mergedTree := IceTreeMerger new merge: leftTree into: rightTree.
 	operation := (mergedTree / 'm1') value.
 	
 	self assert: (mergedTree / 'm1') isEmpty.
