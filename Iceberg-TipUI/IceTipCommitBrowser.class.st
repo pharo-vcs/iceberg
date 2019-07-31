@@ -8,7 +8,8 @@ Class {
 	#superclass : #IceTipBrowser,
 	#instVars : [
 		'diffPanel',
-		'commentPanel'
+		'commentPanel',
+		'saveAction'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -97,13 +98,19 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 			pushingBoolean
 				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
 			savingBoolean
-				ifTrue: [ Smalltalk saveSession.
-					self inform: 'Image automatically saved' ] ]
+				ifTrue: [ saveAction execute ] ]
 ]
 
 { #category : #accessing }
 IceTipCommitBrowser >> initialExtent [
 	^ (800@600) scaledByDisplayScaleFactor
+]
+
+{ #category : #accessing }
+IceTipCommitBrowser >> initialize [ 
+
+	super initialize.
+	saveAction := IceTipSaveImageAction new
 ]
 
 { #category : #initialization }
@@ -138,6 +145,12 @@ IceTipCommitBrowser >> refreshWhenRepository: ann [
 		ifFalse: [ ^ self ].
 	self model reset.
 	self refresh
+]
+
+{ #category : #accessing }
+IceTipCommitBrowser >> saveAction: anAction [
+
+	saveAction := anAction
 ]
 
 { #category : #initialization }

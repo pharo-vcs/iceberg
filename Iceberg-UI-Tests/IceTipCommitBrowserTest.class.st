@@ -2,7 +2,8 @@ Class {
 	#name : #IceTipCommitBrowserTest,
 	#superclass : #IceAbstractTestCase,
 	#instVars : [
-		'presenter'
+		'presenter',
+		'saveMock'
 	],
 	#category : #'Iceberg-UI-Tests-Browsers'
 }
@@ -15,7 +16,6 @@ IceTipCommitBrowserTest class >> isAbstract [
 { #category : #running }
 IceTipCommitBrowserTest >> setUp [
 	super setUp.
-
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
@@ -24,10 +24,10 @@ IceTipCommitBrowserTest >> setUp [
 		createMethod: 'm1 ^42'
 		inClass: 'TestClass2'.
 	presenter := IceTipCommitBrowser onRepository: self repository.
+	saveMock := IceTipMockSaveImageAction new.
+	presenter saveAction: saveMock.
 	presenter openWithSpec.
-	presenter commentPanel commentText text: 'my super commit message'.
-
-
+	presenter commentPanel commentText text: 'my super commit message'
 ]
 
 { #category : #running }
@@ -58,9 +58,81 @@ IceTipCommitBrowserTest >> testHasDiffPanel [
 ]
 
 { #category : #tests }
+IceTipCommitBrowserTest >> testIsAutomaticallySavingWhenChecked [
+	| previousState saveAction |
+	previousState := presenter commentPanel isSaving.
+	presenter commentPanel saveCheckbox state: true.
+	saveAction := IceTipMockSaveImageAction new.
+	presenter saveAction: saveAction.
+	presenter doCommit.
+	self assert: saveAction timesExecuted equals: 1.
+	presenter commentPanel saveCheckbox state: previousState
+]
+
+{ #category : #tests }
+IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
+	| diffTree |
+
+	presenter doCommit.
+	diffTree := self workingCopy repository branch commit diffToParent	tree.
+	self assert: (diffTree / self packageName1) children size equals: 1.
+	self assert: (diffTree / self packageName1) value isNoModification.
+	self
+		assert: (diffTree / self packageName1 / 'TestClass2') value isAddition.
+	self
+		assert:
+			(diffTree / self packageName1 / 'TestClass2') value definition
+				isClassDefinition.
+	self
+		assert: (diffTree / self packageName1 / 'TestClass2') children size
+		equals: 1.
+	self
+		assert: (diffTree / self packageName1 / 'TestClass2' / 'm1') value isAddition.
+	self
+		assert:
+			(diffTree / self packageName1 / 'TestClass2' / 'm1') value definition
+				isMethodDefinition
+]
+
+{ #category : #tests }
 IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
 	presenter doCommit.
 	self
 		assert: self repository branch commit comment
 		equals: 'my super commit message'
+]
+
+{ #category : #tests }
+IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
+	| previousState saveAction |
+	previousState := presenter commentPanel isSaving.
+	presenter commentPanel saveCheckbox state: false.
+	saveAction := IceTipMockSaveImageAction new.
+	presenter saveAction: saveAction.
+	presenter doCommit.
+	self assert: saveAction timesExecuted equals: 0.
+	presenter commentPanel saveCheckbox state: previousState
+]
+
+{ #category : #tests }
+IceTipCommitBrowserTest >> testIsNotCommitingUncheckedItems [
+	| diffTree |
+	presenter diffPanel selectedItems
+		remove:
+			((presenter diffPanel selectedItems asOrderedCollection
+				select: [ :node | node value description = #m1 ]) at: 1 ).
+	presenter doCommit.
+	diffTree := self workingCopy repository branch commit diffToParent
+		tree.
+	self assert: (diffTree / self packageName1) children size equals: 1.
+	self assert: (diffTree / self packageName1) value isNoModification.
+	self
+		assert: (diffTree / self packageName1 / 'TestClass2') value isAddition.
+	self
+		assert:
+			(diffTree / self packageName1 / 'TestClass2') value definition
+				isClassDefinition.
+	self
+		assert: (diffTree / self packageName1 / 'TestClass2') children size
+		equals: 0
 ]

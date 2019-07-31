@@ -6,7 +6,7 @@ Class {
 
 { #category : #running }
 IceTipCommitBrowserTestWithoutRemoteSet >> newFixture [
-	^ IceBasicRepositoryFixture inGit
+	^ IceCleanWorkingCopyFixture inGit
 ]
 
 { #category : #tests }
