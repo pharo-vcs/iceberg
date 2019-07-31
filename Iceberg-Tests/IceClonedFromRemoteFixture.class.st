@@ -11,6 +11,11 @@ Class {
 }
 
 { #category : #accessing }
+IceClonedFromRemoteFixture >> pushRepository [
+	^ pushRepository
+]
+
+{ #category : #accessing }
 IceClonedFromRemoteFixture >> remote [
 	^ remote
 ]
