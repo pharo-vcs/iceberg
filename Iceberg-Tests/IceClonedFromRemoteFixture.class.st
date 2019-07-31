@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'remote',
 		'remoteBranchName',
-		'repository'
+		'repository',
+		'pushRepository'
 	],
 	#category : #'Iceberg-Tests-Common-Fixtures'
 }
@@ -39,24 +40,33 @@ IceClonedFromRemoteFixture >> repository [
 IceClonedFromRemoteFixture >> setUp [
 	super setUp.
 	remoteRepository := self ensureRemoteRepository.
-	remote := self
-		newRemoteNamed: 'origin'
-		toRepository: remoteRepository.
 	remoteRepository checkoutBranch: self remoteBranchName.
 	remoteRepository workingCopy addPackageNamed: self packageName1.
 	remoteRepository commitWithMessage: 'Initial commit'.
+
+	pushRepository := factory
+		newBareRepositoryNamed: 'pushRepository'
+		withSubdirectory: ''.
+
+	remote := self newRemoteNamed: 'origin' toRepository: pushRepository.
+	remoteRepository addRemote: remote.
+	remoteRepository pushTo: remote.
 	repository := IceRepositoryCreator new
 		location: self location;
 		remote: remote;
 		cloneRepository;
 		repository.
+	repository
+		workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
+	repository checkoutBranch: self remoteBranchName.
+
 	"IceGitClone new
 		location: self location;
 		url: self factory defaultRemoteUrl;
 		execute.
 	repository := IceRepositoryCreator new.
 	repository location: self location."
-	repository pull.
+	repository pull
 	"1 halt
 	repository checkoutBranch: self remoteBranchName.
 	repository addRemote: remote.
