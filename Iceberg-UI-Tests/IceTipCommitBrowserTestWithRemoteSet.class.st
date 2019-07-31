@@ -6,19 +6,20 @@ Class {
 
 { #category : #running }
 IceTipCommitBrowserTestWithRemoteSet >> newFixture [
-	^ IceWithRemoteAndLocalCommitAndUpstreamFixture inGit
+	^ IceClonedFromRemoteFixture inGit
 ]
 
 { #category : #tests }
 IceTipCommitBrowserTestWithRemoteSet >> testNotPushingAutomatically [
-	
+	1 halt.
 ]
 
 { #category : #tests }
 IceTipCommitBrowserTestWithRemoteSet >> testPushSettingCheckbox [
 	| previousState |
+
 	self
-		assert: presenter commentPanel isPushing 
+		assert: presenter commentPanel isPushing
 		equals: IceTipCommitSettings pushOnCommit.
 	previousState := presenter commentPanel isPushing.
 	presenter commentPanel pushCheckbox toggleState.
@@ -30,21 +31,11 @@ IceTipCommitBrowserTestWithRemoteSet >> testPushSettingCheckbox [
 
 { #category : #tests }
 IceTipCommitBrowserTestWithRemoteSet >> testPushingAutomatically [
-		| previousState |
+	| previousState |
 
-	self repository workingCopy addPackageNamed: self packageName1.
-	self repository workingCopy
-		createClass: 'TestClass2'
-		inPackage: self packageName1 asSymbol.
-	self repository workingCopy
-		createMethod: 'm1 ^42'
-		inClass: 'TestClass2'.
-
-	presenter := IceTipCommitBrowser onRepository: self repository.
-	presenter openWithSpec.
-	1 halt.
-		previousState := presenter commentPanel pushCheckbox state.
-		presenter commentPanel pushCheckbox state: true.
-		presenter commentPanel commentText: 'my super commit message'
-		presenter doCommit.
+	previousState := presenter commentPanel isPushing.
+	presenter commentPanel pushCheckbox state: true.
+	presenter doCommit.
+	presenter commentPanel pushCheckbox state: previousState.
+	1 halt
 ]

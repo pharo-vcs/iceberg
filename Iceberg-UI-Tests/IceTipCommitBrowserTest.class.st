@@ -15,8 +15,19 @@ IceTipCommitBrowserTest class >> isAbstract [
 { #category : #running }
 IceTipCommitBrowserTest >> setUp [
 	super setUp.
+
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy
+		createClass: 'TestClass2'
+		inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createMethod: 'm1 ^42'
+		inClass: 'TestClass2'.
 	presenter := IceTipCommitBrowser onRepository: self repository.
-	presenter openWithSpec
+	presenter openWithSpec.
+	presenter commentPanel commentText text: 'my super commit message'.
+
+
 ]
 
 { #category : #running }
@@ -44,4 +55,12 @@ IceTipCommitBrowserTest >> testHasCommentPanelWithSavingSettings [
 IceTipCommitBrowserTest >> testHasDiffPanel [
 	self
 		assert: presenter diffPanel class equals: IceTipDiffSelectingPanel 
+]
+
+{ #category : #tests }
+IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
+	presenter doCommit.
+	self
+		assert: self repository branch commit comment
+		equals: 'my super commit message'
 ]
