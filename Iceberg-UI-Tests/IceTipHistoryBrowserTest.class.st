@@ -9,7 +9,7 @@ Class {
 
 { #category : #running }
 IceTipHistoryBrowserTest >> newFixture [
-	^ IceClonedFromRemoteFixture inGit
+	^ IceWithRemoteAndLocalCommitFixture inGit
 ]
 
 { #category : #running }
