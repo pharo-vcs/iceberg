@@ -64,6 +64,11 @@ IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinit
 ]
 
 { #category : #visiting }
+IceCherrypickerInitialDependenciesCollector >> visitRemoval: anIceRemoval [
+	anIceRemoval definition accept: self
+]
+
+{ #category : #visiting }
 IceCherrypickerInitialDependenciesCollector >> visitTraitDefinition: anIceTraitDefinition [ 
 
 	cherrypicker addTraitDependencyOf: anIceTraitDefinition asMCDefinition.	

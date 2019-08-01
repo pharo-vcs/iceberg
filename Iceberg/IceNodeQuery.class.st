@@ -10,7 +10,7 @@ Class {
 		'selector',
 		'entityName'
 	],
-	#category : 'Iceberg-Cherrypicking'
+	#category : #'Iceberg-Cherrypicking'
 }
 
 { #category : #building }
@@ -90,6 +90,12 @@ IceNodeQuery >> visitModification: anIceModification [
 IceNodeQuery >> visitNoModification: anIceNoModification [
 
 	"Nothing with me. Just visit children"
+	self visitChildrenOf: currentNode
+]
+
+{ #category : #visiting }
+IceNodeQuery >> visitRemoval: anIceRemoval [
+	anIceRemoval definition accept: self.
 	self visitChildrenOf: currentNode
 ]
 

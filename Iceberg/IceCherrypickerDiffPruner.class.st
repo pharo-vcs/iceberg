@@ -54,3 +54,9 @@ IceCherrypickerDiffPruner >> visitNoModification: anIceNoModification [
 	self visitChildrenOf: currentNode.
 
 ]
+
+{ #category : #visiting }
+IceCherrypickerDiffPruner >> visitRemoval: anIceRemoval [
+	(cherrypicker includesDependencyTo: anIceRemoval definition)
+		ifFalse: [ nodesToRemove add: currentNode ]
+]
