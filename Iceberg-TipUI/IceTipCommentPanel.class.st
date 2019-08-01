@@ -13,7 +13,9 @@ Class {
 		'messageText',
 		'message',
 		'actionButtonBar',
-		'saveCheckbox'
+		'saveCheckbox',
+		'fixesField',
+		'fixesLabel'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -22,9 +24,19 @@ Class {
 IceTipCommentPanel class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
-		add: #pushCheckbox height: self inputTextHeight;
-		add: #saveCheckbox height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #pushCheckbox;
+				add: #saveCheckbox;
+				yourself)
+			height: self inputTextHeight;
 		add: #commentText;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #fixesLabel width: 40;
+				add: #fixesField;
+				yourself)
+			height: self inputTextHeight;
 		add: #actionButtonBar height: self buttonHeight
 ]
 
@@ -63,6 +75,16 @@ IceTipCommentPanel >> commitButton: anObject [
 	^ commitButton := anObject
 ]
 
+{ #category : #accessing }
+IceTipCommentPanel >> fixesField [
+	^fixesField 
+]
+
+{ #category : #accessing }
+IceTipCommentPanel >> fixesLabel [
+	^ fixesLabel
+]
+
 { #category : #initialization }
 IceTipCommentPanel >> initialize [
 	super initialize.
@@ -71,14 +93,15 @@ IceTipCommentPanel >> initialize [
 
 { #category : #initialization }
 IceTipCommentPanel >> initializeWidgets [
+	| fixesHelpString |
+
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
 		ifTrue: [ pushCheckbox
 				label: ('Push changes to {1}' format: {self repositoryRemoteName});
 				state: IceTipCommitSettings pushOnCommit;
-						whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ]
-				 ]
+				whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ] ]
 		ifFalse: [ pushCheckbox
 				label: 'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
@@ -86,9 +109,22 @@ IceTipCommentPanel >> initializeWidgets [
 		label: 'Save the image when commiting';
 		state: IceTipCommitSettings saveImageOnCommit;
 		whenChangedDo: [ :state | IceTipCommitSettings saveImageOnCommit: state ].
+
 	commentText := self newText
 		autoAccept: true;
 		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
+
+	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be commited or merged in the default branch'.
+	fixesLabel := self newLabel
+		label: 'Fixes #';
+		help: fixesHelpString.
+	fixesField := self newNumberInput
+		autoAccept: true;
+		help: fixesHelpString;
+		placeholder: 'issue number';
+		beInteger;
+		yourself.
+
 	actionButtonBar := self newButtonBar.
 	actionButtonBar
 		add:
@@ -100,7 +136,8 @@ IceTipCommentPanel >> initializeWidgets [
 	self focusOrder
 		add: commentText;
 		add: commitButton;
-		add: pushCheckbox
+		add: pushCheckbox;
+		add: saveCheckbox
 ]
 
 { #category : #testing }
@@ -115,6 +152,9 @@ IceTipCommentPanel >> isSaving [
 
 { #category : #accessing }
 IceTipCommentPanel >> message [
+|stream|
+	self fixesField text isAllDigits
+		ifTrue: [ 	stream := ReadWriteStream with: self commentText text asString. stream cr ; nextPutAll: 'Fixes #'; nextPutAll: self fixesField number asString . ^ stream contents  ].
 	^ self commentText text asString
 ]
 

@@ -37,6 +37,23 @@ IceTipCommitBrowserTest >> tearDown [
 ]
 
 { #category : #tests }
+IceTipCommitBrowserTest >> testFixesField [
+	self
+		assert: presenter commentPanel fixesField class
+		equals: SpNumberInputFieldPresenter.
+	self
+		assert: presenter commentPanel message
+		equals: 'my super commit message'.
+	presenter commentPanel fixesField number: 123456.
+	
+	self
+		assert: presenter commentPanel message
+		equals:
+			'my super commit message
+Fixes #123456'.
+]
+
+{ #category : #tests }
 IceTipCommitBrowserTest >> testHasCommentPanelWithSavingSettings [
 	| previousState |
 	self assert: presenter commentPanel class equals: IceTipCommentPanel.
