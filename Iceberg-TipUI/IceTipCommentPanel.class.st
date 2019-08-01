@@ -94,7 +94,6 @@ IceTipCommentPanel >> initialize [
 { #category : #initialization }
 IceTipCommentPanel >> initializeWidgets [
 	| fixesHelpString |
-
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
@@ -135,6 +134,7 @@ IceTipCommentPanel >> initializeWidgets [
 				yourself).
 	self focusOrder
 		add: commentText;
+		add: fixesField ;
 		add: commitButton;
 		add: pushCheckbox;
 		add: saveCheckbox
