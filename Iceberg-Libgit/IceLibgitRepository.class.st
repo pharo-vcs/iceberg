@@ -494,11 +494,16 @@ IceLibgitRepository >> iceCommitFrom: aGitCommit [
 
 { #category : #'private-initialization' }
 IceLibgitRepository >> init [
-	
 	"Initialize new repository. This is the equivalent to running in the command line:
 	  $ git init
 	"
-	(LGitRepository on: self location) init
+
+	self initBare: false
+]
+
+{ #category : #initialization }
+IceLibgitRepository >> initBare: isBare [
+	(LGitRepository on: self location) initBare: isBare
 ]
 
 { #category : #'private-commits' }

@@ -42,6 +42,12 @@ IceTipDiffPanel >> basicRefresh [
 	changeList roots: self model treeRoots.
 ]
 
+{ #category : #accessing }
+IceTipDiffPanel >> buildMenu [
+	^ (CmdContextMenuActivation
+		buildMenuInContext: self createCommandContext) asSpMenuPresenter
+]
+
 { #category : #'accessing ui' }
 IceTipDiffPanel >> changeList [
 	^ changeList
@@ -69,12 +75,7 @@ IceTipDiffPanel >> changeListColumn [
 
 { #category : #private }
 IceTipDiffPanel >> changeSelected [
-	| index |
-	self flag: #pharoTodo.	"This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := changeList widget selectedIndex.
-	index = 0
-		ifTrue: [ ^ nil ].
-	^ changeList widget dataSource realElementAt: index
+	^ changeList selectedItem
 ]
 
 { #category : #accessing }
@@ -116,7 +117,8 @@ IceTipDiffPanel >> initializeChangeList [
 		children: [ :each | each children ];
 		roots: self model treeRoots;
 		"The inversion below allow to display change properly in the SpDiffPresenter"
-			whenSelectionChangedDo: [ self selectionChanged]
+			whenSelectionChangedDo: [ self selectionChanged ];
+			contextMenu: [ self buildMenu ]
 ]
 
 { #category : #initialization }
