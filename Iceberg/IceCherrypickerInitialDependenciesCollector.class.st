@@ -23,9 +23,9 @@ IceCherrypickerInitialDependenciesCollector >> cherrypicker: anIceCherrypicker [
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [ 
-	
+IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [
 	anIceAddition definition accept: self.
+		self visitChildrenOf: currentNode
 ]
 
 { #category : #visiting }
@@ -36,6 +36,14 @@ IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassD
 		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition asMCDefinition ]
 ]
 
+{ #category : #'as yet unclassified' }
+IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceExtensionDefinition [
+	
+	anIceExtensionDefinition isMeta
+		ifTrue: [ self halt ]
+		ifFalse: [ cherrypicker addExtendedClassDependency: anIceExtensionDefinition className ]	
+]
+
 { #category : #visiting }
 IceCherrypickerInitialDependenciesCollector >> visitMethodNode: anIceMethodDefinition [ 
 	
@@ -44,10 +52,9 @@ IceCherrypickerInitialDependenciesCollector >> visitMethodNode: anIceMethodDefin
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitModification: anIceModification [ 
-	
+IceCherrypickerInitialDependenciesCollector >> visitModification: anIceModification [
 	anIceModification definition accept: self.
-
+		self visitChildrenOf: currentNode
 ]
 
 { #category : #visiting }
@@ -65,7 +72,8 @@ IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinit
 
 { #category : #visiting }
 IceCherrypickerInitialDependenciesCollector >> visitRemoval: anIceRemoval [
-	anIceRemoval definition accept: self
+	anIceRemoval definition accept: self.
+		self visitChildrenOf: currentNode
 ]
 
 { #category : #visiting }

@@ -26,6 +26,16 @@ IceCherrypicker >> addClassDependencyOf: aMCClassDefinition [
 				yourself)
 ]
 
+{ #category : #dependencies }
+IceCherrypicker >> addExtendedClassDependency: aClassName [ 
+
+	dependencies
+		add:
+			(IceExtendedClassDependency new
+				name: aClassName;
+				yourself)
+]
+
 { #category : #'execution - private' }
 IceCherrypicker >> addInitialDependencies [
 

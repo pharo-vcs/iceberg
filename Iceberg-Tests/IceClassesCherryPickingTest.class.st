@@ -187,6 +187,35 @@ IceClassesCherryPickingTest >> testAddClassUsingASharedPool [
 ]
 
 { #category : #tests }
+IceClassesCherryPickingTest >> testAddClassWithMethod [
+	| commitToCherryPick diff mergeTree |
+	self repository createBranch: 'b2'.
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy
+		createClass: 'TestClass2'
+		inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createMethod: 'm1 ^42'
+		inClass: 'TestClass2'.
+	self repository commitWithMessage: 'Adding Test Class With a Method'.
+	commitToCherryPick := self repository head.
+	self repository checkoutBranch: 'master'.
+	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
+	diff := mergeTree collect: [ :each | each chosenOperation ].
+
+	self assert: diff children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 1.
+	self
+		assert: (diff / self packageName1 / 'TestClass2') value isAddition;
+		assert:
+			(diff / self packageName1 / 'TestClass2') value definition
+				isClassDefinition;
+		assert: (diff / self packageName1 / 'TestClass2') children size
+			equals: 1;
+		assert: (diff / self packageName1 / 'TestClass2' / 'm1') value isAddition
+]
+
+{ #category : #tests }
 IceClassesCherryPickingTest >> testAddClassWithSuperclassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.

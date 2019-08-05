@@ -74,6 +74,11 @@ IceNodeQuery >> visitClassDefinition: anIceClassDefinition [
 ]
 
 { #category : #visiting }
+IceNodeQuery >> visitExtensionDefinition: anIceExtensionDefinition [ 
+	"self shouldBeImplemented."
+]
+
+{ #category : #visiting }
 IceNodeQuery >> visitMethodNode: anIceMethodDefinition [ 
 
 	anIceMethodDefinition asMCDefinition selector = selector ifTrue: [ results add: currentNode ].

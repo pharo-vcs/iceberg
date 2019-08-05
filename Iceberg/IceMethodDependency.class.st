@@ -4,7 +4,7 @@ I am a dependency to a method.
 Class {
 	#name : #IceMethodDependency,
 	#superclass : #IceDefinedDependency,
-	#category : 'Iceberg-Cherrypicking'
+	#category : #'Iceberg-Cherrypicking'
 }
 
 { #category : #comparing }
@@ -37,7 +37,7 @@ IceMethodDependency >> hash [
 { #category : #testing }
 IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 
-	^ 	anIceMethodDefinition asMCDefinition isMethodDefinition and: [ 
+	^ 	anIceMethodDefinition isMethodDefinition and: [ 
 		anIceMethodDefinition asMCDefinition className = definition className and: [ 
 		anIceMethodDefinition asMCDefinition selector = definition selector ] ]
 ]
