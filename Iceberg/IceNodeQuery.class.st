@@ -27,12 +27,8 @@ IceNodeQuery >> execute [
 
 { #category : #querying }
 IceNodeQuery >> ifFound: aBlockClosure [ 
-	
-	results size = 0 ifTrue: [ ^ self ].
-	
-	self assert: results size = 1.
-	
-	aBlockClosure value: results anyOne 
+
+	results do: aBlockClosure 
 ]
 
 { #category : #visiting }
@@ -46,6 +42,11 @@ IceNodeQuery >> initialize [
 IceNodeQuery >> on: anIceNode [ 
 	
 	root := anIceNode
+]
+
+{ #category : #building }
+IceNodeQuery >> packageName: aString [
+	entityName := aString
 ]
 
 { #category : #building }
@@ -100,9 +101,9 @@ IceNodeQuery >> visitNoModification: anIceNoModification [
 ]
 
 { #category : #visiting }
-IceNodeQuery >> visitPackage: anIcePackageDefinition [ 
-self flag: 'To verify'
-"	self shouldBeImplemented."
+IceNodeQuery >> visitPackage: anIcePackageDefinition [
+	anIcePackageDefinition name = entityName
+		ifTrue: [ results add: currentNode ]
 ]
 
 { #category : #visiting }

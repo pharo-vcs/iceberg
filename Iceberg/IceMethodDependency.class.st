@@ -9,29 +9,28 @@ Class {
 
 { #category : #comparing }
 IceMethodDependency >> = anObject [
-
-	^ super = anObject and: [definition selector = anObject definition selector]
-
+	^ super = anObject
+		and: [ definition asMCDefinition selector = anObject definition asMCDefinition selector ]
 ]
 
 { #category : #testing }
-IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [ 
-
+IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	super addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker.
-		
-	self referencedSelectors do: [ :aSelector | 
-		IceNodeQuery new
-			on: anIceDiff tree;
-			selector: aSelector;
-			execute;
-			ifFound: [ :aIceNode | anIceCherrypicker addMethodDependencyOf: aIceNode definition asMCDefinition ]].
 
+	self referencedSelectors
+		do: [ :aSelector | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				selector: aSelector;
+				execute;
+				ifFound: [ :anIceNode | 
+					anIceCherrypicker
+						addMethodDependencyOf: anIceNode definition ] ]
 ]
 
 { #category : #comparing }
 IceMethodDependency >> hash [
-
-	^ super hash bitXor: definition className hash
+	^ super hash bitXor: definition asMCDefinition className hash
 ]
 
 { #category : #testing }
@@ -44,7 +43,7 @@ IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 
 { #category : #dependencies }
 IceMethodDependency >> methodAST [
-	^ RBParser parseMethod: definition source
+	^ RBParser parseMethod: definition asMCDefinition source
 ]
 
 { #category : #dependencies }
@@ -56,6 +55,11 @@ IceMethodDependency >> referencedClasses [
 { #category : #dependencies }
 IceMethodDependency >> referencedNames [
 	^ (self methodAST allChildren select: #isVariable) collect: #name
+]
+
+{ #category : #'as yet unclassified' }
+IceMethodDependency >> referencedPackages [
+	^ { }
 ]
 
 { #category : #'computing - dependencies' }

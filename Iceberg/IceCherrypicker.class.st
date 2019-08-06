@@ -19,20 +19,25 @@ Class {
 }
 
 { #category : #dependencies }
-IceCherrypicker >> addClassDependencyOf: aMCClassDefinition [
-	
-	dependencies add: (IceClassDependency new
-				definition: aMCClassDefinition;
+IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
+	dependencies
+		add:
+			(IceClassDependency new
+				definition: aIceClassDefinition;
 				yourself)
 ]
 
-{ #category : #dependencies }
-IceCherrypicker >> addExtendedClassDependency: aClassName [ 
+{ #category : #'access options' }
+IceCherrypicker >> addDependency: anIceDependency [ 
+	self dependencies add: anIceDependency .
+]
 
+{ #category : #dependencies }
+IceCherrypicker >> addExtendedClassDependency: aIceExtensionDefinition [
 	dependencies
 		add:
 			(IceExtendedClassDependency new
-				name: aClassName;
+				definition: aIceExtensionDefinition;
 				yourself)
 ]
 
@@ -53,26 +58,27 @@ IceCherrypicker >> addMetaclassDependencyToClassNamed: aSymbol [
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addMethodDependencyOf: aMCMethodDefinition [ 
+IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [ 
 	
 	dependencies add: (IceMethodDependency new
-				definition: aMCMethodDefinition;
+				definition: aIceMethodDefinition;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addPackageDependencyOfPackageNamed: aString [
+IceCherrypicker >> addPackageDependencyOfPackageNamed: aIcePackageDefinition [
 
 	dependencies add: (IcePackageDependency new
-				name: aString;
+				definition: aIcePackageDefinition;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addTraitDependencyOf: aMCTraitDefinition [
-	
-	dependencies add: (IceTraitDependency new
-				definition: aMCTraitDefinition;
+IceCherrypicker >> addTraitDependencyOf: aIceTraitDefinition [
+	dependencies
+		add:
+			(IceTraitDependency new
+				definition: aIceTraitDefinition;
 				yourself)
 ]
 

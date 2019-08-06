@@ -6,7 +6,8 @@ Class {
 	#superclass : #IceDependency,
 	#instVars : [
 		'definition',
-		'aIceNode'
+		'aIceNode',
+		'execute'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -14,7 +15,6 @@ Class {
 { #category : #comparing }
 IceDefinedDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
-
 	self == anObject
 		ifTrue: [ ^ true ].
 	self species = anObject species
@@ -23,22 +23,37 @@ IceDefinedDependency >> = anObject [
 ]
 
 { #category : #dependencies }
-IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [ 
-	
-	self referencedClasses do: [ :aName | 
-		IceNodeQuery new
-			on: anIceDiff tree;
-			className: aName;
-			execute;
-			ifFound: [ :aIceNode | anIceCherrypicker addClassDependencyOf: aIceNode value definition asMCDefinition ]].
+IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
+	| asDependencyVisitor |
+	asDependencyVisitor := IceAsDependencyVisitor new.
 
-	self referencedTraits do: [ :aName | 
-		IceNodeQuery new
-			on: anIceDiff tree;
-			traitName: aName;
-			execute;
-			ifFound: [ :aIceNode | anIceCherrypicker addTraitDependencyOf: aIceNode value definition asMCDefinition ]].
+	self referencedClasses
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				className: aName;
+				execute;
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ].
 
+	self referencedTraits
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				traitName: aName;
+				execute;
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ].
+
+	self referencedPackages
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				packageName: aName;
+				execute;
+				ifFound: [ :iceNode | 
+					anIceCherrypicker
+						addDependency: (iceNode accept: asDependencyVisitor) ] ]
 ]
 
 { #category : #accessing }

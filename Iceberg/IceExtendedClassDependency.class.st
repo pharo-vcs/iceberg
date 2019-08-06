@@ -1,42 +1,38 @@
 Class {
 	#name : #IceExtendedClassDependency,
 	#superclass : #IceDefinedDependency,
-	#instVars : [
-		'name'
-	],
 	#category : #'Iceberg-Cherrypicking'
 }
 
 { #category : #comparing }
 IceExtendedClassDependency >> = anObject [
-self flag: 'comparaison de package origine et étendu ? '.
-	^ super = anObject and: [ self name = anObject name ]
+	^ super = anObject and: [ self definition name = anObject definition name ]
 ]
 
 { #category : #dependencies }
 IceExtendedClassDependency >> addTransitiveDependenciesFrom: anIceDiff to: aCheryPicker [
+self flag: 'to remove ?'.
 	super addTransitiveDependenciesFrom: anIceDiff  to: aCheryPicker.
-	1 halt.
+]
+
+{ #category : #comparing }
+IceExtendedClassDependency >> hash [
+	^ super hash bitXor: self definition name hash
 ]
 
 { #category : #adding }
-IceExtendedClassDependency >> isDependencyTo: aDefinition [
-	^ aDefinition name = self name.
-]
-
-{ #category : #accessing }
-IceExtendedClassDependency >> name [
-	^ name
-]
-
-{ #category : #accessing }
-IceExtendedClassDependency >> name: anObject [
-	name := anObject
+IceExtendedClassDependency >> isDependencyTo: anIceDefinition [
+	^ anIceDefinition name = self definition name
 ]
 
 { #category : #dependencies }
 IceExtendedClassDependency >> referencedClasses [
-	^ { name asSymbol }
+	^ {definition name asSymbol }
+]
+
+{ #category : #'as yet unclassified' }
+IceExtendedClassDependency >> referencedPackages [
+	^ {self definition packageName}
 ]
 
 { #category : #dependencies }
@@ -46,7 +42,6 @@ IceExtendedClassDependency >> referencedTraits [
 ]
 
 { #category : #visiting }
-IceExtendedClassDependency >> visitExtensionDefinition: anIceExtensionDefinition [ 
-
-	^ name = anIceExtensionDefinition className 
+IceExtendedClassDependency >> visitExtensionDefinition: anIceExtensionDefinition [
+	^ definition  name = anIceExtensionDefinition name
 ]

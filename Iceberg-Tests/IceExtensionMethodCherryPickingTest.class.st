@@ -167,7 +167,13 @@ IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInNonExistingCl
 	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
-	self assert: diff children size equals: 1.
+	self assert: diff children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 1.
+	self
+		assert: (diff / self packageName1 / 'TestClass2') value isAddition;
+		assert: (diff / self packageName1 / 'TestClass2') children size
+			equals: 0.
+
 	self assert: (diff / self packageName2) children size equals: 2.
 	self
 		assert: (diff / self packageName2 / 'TestClass') value isAddition;
@@ -179,7 +185,7 @@ IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInNonExistingCl
 			equals: 1.
 	self
 		assert: (diff / self packageName2 / 'TestClass' / 'm1') value isAddition;
-		assert: (diff / self packageName2 / 'TestClass2' / 'm2') value isAddition
+		assert: (diff / self packageName2 / 'TestClass2' / 'm2') value isAddition.
 ]
 
 { #category : #tests }

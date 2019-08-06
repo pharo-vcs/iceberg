@@ -21,6 +21,14 @@ IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
 				yourself
 ]
 
+{ #category : #'as yet unclassified' }
+IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [ 
+	
+	^ IcePackageDependency new
+				definition: anIcePackageDefinition;
+				yourself
+]
+
 { #category : #visiting }
 IceAsDependencyVisitor >> visitTraitDefinition: anIceTraitDefinition [ 
 ^ IceTraitDependency new

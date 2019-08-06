@@ -39,7 +39,7 @@ IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 3.
 
 	self
 		assert:
