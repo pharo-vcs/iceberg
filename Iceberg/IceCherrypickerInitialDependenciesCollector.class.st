@@ -41,7 +41,7 @@ IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceEx
 	
 	anIceExtensionDefinition isMeta
 		ifTrue: [ self halt ]
-		ifFalse: [ cherrypicker addExtendedClassDependency: anIceExtensionDefinition className ]	
+		ifFalse: [ cherrypicker addExtendedClassDependency: anIceExtensionDefinition name ]	
 ]
 
 { #category : #visiting }

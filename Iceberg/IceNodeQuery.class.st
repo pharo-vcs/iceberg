@@ -74,8 +74,9 @@ IceNodeQuery >> visitClassDefinition: anIceClassDefinition [
 ]
 
 { #category : #visiting }
-IceNodeQuery >> visitExtensionDefinition: anIceExtensionDefinition [ 
-	"self shouldBeImplemented."
+IceNodeQuery >> visitExtensionDefinition: anIceExtensionDefinition [
+	anIceExtensionDefinition name = entityName
+		ifTrue: [ results add: currentNode ].
 ]
 
 { #category : #visiting }
@@ -96,6 +97,12 @@ IceNodeQuery >> visitNoModification: anIceNoModification [
 
 	"Nothing with me. Just visit children"
 	self visitChildrenOf: currentNode
+]
+
+{ #category : #visiting }
+IceNodeQuery >> visitPackage: anIcePackageDefinition [ 
+self flag: 'To verify'
+"	self shouldBeImplemented."
 ]
 
 { #category : #visiting }

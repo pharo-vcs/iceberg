@@ -5,7 +5,8 @@ Class {
 	#name : #IceDefinedDependency,
 	#superclass : #IceDependency,
 	#instVars : [
-		'definition'
+		'definition',
+		'aIceNode'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -14,8 +15,10 @@ Class {
 IceDefinedDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
-	self == anObject ifTrue: [ ^ true ].
-	self species = anObject species ifFalse: [ ^ false ].
+	self == anObject
+		ifTrue: [ ^ true ].
+	self species = anObject species
+		ifFalse: [ ^ false ].
 	^ definition className = anObject definition className
 ]
 
@@ -53,12 +56,6 @@ IceDefinedDependency >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ definition className hash
-]
-
-{ #category : #testing }
-IceDefinedDependency >> isDependencyTo: aDefinition [ 
-	
-	^ aDefinition accept: self
 ]
 
 { #category : #dependencies }
