@@ -5,67 +5,6 @@ Class {
 }
 
 { #category : #tests }
-IceMethodCherryPickingTest >> testAddExtensionMethodInExistingClass [
-	| commitToCherryPick diff mergeTree |
-	self repository createBranch: 'b2'.
-	self repository workingCopy addPackageNamed: self packageName2.
-	self repository workingCopy
-		createMethod: 'm1 ^42'
-		extendingClass: 'TestClass'
-		inPackage: self packageName2.
-	self repository commitWithMessage: 'Adding extension method'.
-	commitToCherryPick := fixture repository head.
-
-	self repository checkoutBranch: 'master'.
-	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
-	diff := mergeTree collect: [ :each | each chosenOperation ].
-
-	self assert: diff children size equals: 1.
-	self
-		assert: (diff / self packageName2) children size
-		equals: 1.
-	self
-		assert:
-			(diff / self packageName2 / 'TestClass') value
-				isAddition.
-	self
-		assert:
-			(diff / self packageName2 / 'TestClass' / 'm1')
-				value isAddition
-]
-
-{ #category : #tests }
-IceMethodCherryPickingTest >> testAddExtensionMethodInExistingTrait [
-	| commitToCherryPick diff mergeTree |
-	self repository createBranch: 'b2'.
-	self repository workingCopy addPackageNamed: self packageName2.
-	self repository workingCopy
-		createMethod: 'm1 ^42'
-		extendingClass: 'TestTraitInitial'
-		inPackage: self packageName2.
-
-	self repository commitWithMessage: 'Adding extension method'.
-	commitToCherryPick := fixture repository head.
-
-	self repository checkoutBranch: 'master'.
-	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
-	diff := mergeTree collect: [ :each | each chosenOperation ].
-
-	self assert: diff children size equals: 1.
-	self
-		assert: (diff / self packageName2) children size
-		equals: 1.
-	self
-		assert:
-			(diff / self packageName2 / 'TestTraitInitial')
-				value isAddition.
-	self
-		assert:
-			(diff / self packageName2 / 'TestTraitInitial'
-				/ 'm1') value isAddition
-]
-
-{ #category : #tests }
 IceMethodCherryPickingTest >> testAddMethodInClassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -861,41 +800,6 @@ IceMethodCherryPickingTest >> testAddMethodWithTwoCommits [
 ]
 
 { #category : #tests }
-IceMethodCherryPickingTest >> testModifyExtensionMethodInExistingClass [
-	| commitToCherryPick diff mergeTree |
-	self repository workingCopy addPackageNamed: self packageName2.
-	self repository workingCopy
-		createMethod: 'm1 ^42'
-		extendingClass: 'TestClass'
-		inPackage: self packageName2.
-	self repository commitWithMessage: 'Adding extension method'.
-
-	self repository createBranch: 'b2'.
-	self repository workingCopy
-		removeMethod: 'm1'
-		extendingClass: 'TestClass'
-		fromPackage: self packageName2.
-	self repository workingCopy
-			createMethod: 'm1 ^36'
-		extendingClass: 'TestClass'
-		inPackage: self packageName2.
-	self repository commitWithMessage: 'Modify extension method'.
-
-	commitToCherryPick := fixture repository head.
-
-	self repository checkoutBranch: 'master'.
-
-	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
-	diff := mergeTree collect: [ :each | each chosenOperation ].
-
-	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName2) children size equals: 1.
-	self assert: (diff / self packageName2 / 'TestClass') value isNoModification.
-	self
-		assert: (diff / self packageName2 / 'TestClass' / 'm1') value isModification.
-]
-
-{ #category : #tests }
 IceMethodCherryPickingTest >> testRemoveClassWithMethods [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -929,39 +833,6 @@ IceMethodCherryPickingTest >> testRemoveClassWithMethods [
 		equals: 1.
 	self
 		assert: (diff / self packageName1 / 'TestClass2' / 'm1') value isRemoval
-]
-
-{ #category : #tests }
-IceMethodCherryPickingTest >> testRemoveExtensionMethodInExistingClass [
-	| commitToCherryPick diff mergeTree |
-	self repository workingCopy addPackageNamed: self packageName2.
-	self repository workingCopy
-		createMethod: 'm1 ^42'
-		extendingClass: 'TestClass'
-		inPackage: self packageName2.
-	self repository commitWithMessage: 'Adding extension method'.
-
-	self repository createBranch: 'b2'.
-	self repository workingCopy addPackageNamed: self packageName1.
-	self repository workingCopy
-		removeMethod: 'm1'
-		extendingClass: 'TestClass'
-		fromPackage: self packageName2.
-	self repository commitWithMessage: 'Remove extension method'.
-
-	commitToCherryPick := fixture repository head.
-
-	self repository checkoutBranch: 'master'.
-
-	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
-	diff := mergeTree collect: [ :each | each chosenOperation ].
-
-	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName2) children size equals: 1.
-	
-	self assert: (diff / self packageName2 / 'TestClass') value isRemoval.
-	self
-		assert: (diff / self packageName2 / 'TestClass' / 'm1') value isRemoval
 ]
 
 { #category : #tests }
