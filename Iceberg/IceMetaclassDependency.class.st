@@ -5,7 +5,7 @@ Class {
 	#name : #IceMetaclassDependency,
 	#superclass : #IceDependency,
 	#instVars : [
-		'name'
+		'definition'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -14,27 +14,23 @@ Class {
 IceMetaclassDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	IceNodeQuery new
 		on: anIceDiff tree;
-		className: name;
+		className: definition name;
 		execute;
-		ifFound: [ :anIceNode | 
-			anIceCherrypicker
-				addClassDependencyOf: anIceNode value definition]
+		ifFound:
+				[ :anIceNode | anIceCherrypicker addClassDependencyOf: anIceNode value definition ]
+]
+
+{ #category : #accessing }
+IceMetaclassDependency >> definition [
+	^ definition
+]
+
+{ #category : #accessing }
+IceMetaclassDependency >> definition: anIceClassDefinition [
+	definition:= anIceClassDefinition 
 ]
 
 { #category : #visiting }
 IceMetaclassDependency >> isDependencyTo: anIceClassDefinition [
-
-	^ anIceClassDefinition basicName = name
-]
-
-{ #category : #accessing }
-IceMetaclassDependency >> name [
-
-	^ name
-]
-
-{ #category : #accessing }
-IceMetaclassDependency >> name: aString [ 
-
-	name := aString
+	^ anIceClassDefinition basicName = definition basicName
 ]

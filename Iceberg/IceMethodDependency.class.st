@@ -23,9 +23,8 @@ IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherryp
 				on: anIceDiff tree;
 				selector: aSelector;
 				execute;
-				ifFound: [ :anIceNode | 
-					anIceCherrypicker
-						addMethodDependencyOf: anIceNode definition ] ]
+				ifFound:
+						[ :anIceNode | anIceCherrypicker addDependency: anIceNode definition ] ]
 ]
 
 { #category : #comparing }

@@ -50,10 +50,11 @@ IceCherrypicker >> addInitialDependencies [
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addMetaclassDependencyToClassNamed: aSymbol [
-	
-	dependencies add: (IceMetaclassDependency new
-				name: aSymbol;
+IceCherrypicker >> addMetaclassDependency: anIceClassDefinition [
+	dependencies
+		add:
+			(IceMetaclassDependency new
+				definition: anIceClassDefinition;
 				yourself)
 ]
 

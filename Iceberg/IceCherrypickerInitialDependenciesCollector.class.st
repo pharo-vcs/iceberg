@@ -32,9 +32,8 @@ IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [
 IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassDefinition [
 	anIceClassDefinition isMeta
 		ifTrue: [ cherrypicker
-				addMetaclassDependencyToClassNamed: anIceClassDefinition basicName ]
-		ifFalse: [ cherrypicker
-				addClassDependencyOf: anIceClassDefinition]
+				addMetaclassDependency: anIceClassDefinition ]
+		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition ]
 ]
 
 { #category : #'as yet unclassified' }
