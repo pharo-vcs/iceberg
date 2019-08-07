@@ -29,6 +29,14 @@ IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
 		yourself
 ]
 
+{ #category : #visiting }
+IceAsDependencyVisitor >> visitMethodNode: anIceMethodDefinition [ 
+	^ IceMethodDependency new
+	definition: anIceMethodDefinition ;
+	cherrypicker: cherrypicker ;
+	yourself 
+]
+
 { #category : #'as yet unclassified' }
 IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [
 	^ IcePackageDependency new

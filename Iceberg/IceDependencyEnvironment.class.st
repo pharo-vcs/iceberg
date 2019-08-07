@@ -26,13 +26,13 @@ IceDependencyEnvironment >> allSubclassesNamesOf: aName [
 ]
 
 { #category : #'as yet unclassified' }
-IceDependencyEnvironment >> allusedTraitsNamesOf: aName [ 
+IceDependencyEnvironment >> allUsingTraitNamed: aName [ 
 	| result |
-	result := self usedTraitsNamesOf: aName.
+	result := self usersOfTraitNamed: aName.
 	result ifEmpty: [ ^ result ].
 
 	^ result
-		, (result flatCollect: [ :e | self allusedTraitsNamesOf:  e ])
+		, (result flatCollect: [ :e | self allUsingTraitNamed:  e ])
 ]
 
 { #category : #querying }
@@ -67,8 +67,8 @@ IceDependencyEnvironment >> traits [
 ]
 
 { #category : #'as yet unclassified' }
-IceDependencyEnvironment >> usedTraitsNamesOf: aString [ 
+IceDependencyEnvironment >> usersOfTraitNamed: aName [ 
 	^ (self traits , self classes) 
-		select: [ :e | e traitComposition includesSubstring: aString ]
+		select: [ :e | e traitComposition includesSubstring: aName ]
 		thenCollect: [ :e | e className ]
 ]

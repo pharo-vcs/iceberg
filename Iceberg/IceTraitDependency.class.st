@@ -48,5 +48,5 @@ IceTraitDependency >> referencedTraits [
 { #category : #'as yet unclassified' }
 IceTraitDependency >> usedTraitsNames [
 	^ self cherrypicker environment
-		allusedTraitsNamesOf: self definition name
+		allUsingTraitNamed: self definition name
 ]
