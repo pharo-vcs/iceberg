@@ -33,14 +33,20 @@ IceTraitDependency >> referencedClasses [
 	^ {  }
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #dependencies }
 IceTraitDependency >> referencedPackages [
 	^ self definition asMCDefinition category
 ]
 
 { #category : #dependencies }
 IceTraitDependency >> referencedTraits [
-	^ ((RBParser
+	^ (((RBParser
 		parseExpression: definition asMCDefinition traitComposition)
-		allChildren select: #isVariable) collect: #name
+		allChildren select: #isVariable) collect: #name ) , self usedTraitsNames  
+]
+
+{ #category : #'as yet unclassified' }
+IceTraitDependency >> usedTraitsNames [
+	^ self cherrypicker environment
+		allusedTraitsNamesOf: self definition name
 ]

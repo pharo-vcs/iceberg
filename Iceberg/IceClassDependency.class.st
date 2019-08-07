@@ -22,18 +22,17 @@ IceClassDependency >> hash [
 
 { #category : #visiting }
 IceClassDependency >> isDependencyTo: aIceDefinition [
-self flag: 'Comparaison normale ?'.
-	^ aIceDefinition asMCDefinition className 
-		= definition asMCDefinition className.
+	^ aIceDefinition asMCDefinition className
+		= definition asMCDefinition className
 ]
 
 { #category : #dependencies }
 IceClassDependency >> referencedClasses [
-
-	^ {definition asMCDefinition superclassName} , self referencedSharedPool
+	^ {definition asMCDefinition superclassName} , self subclassNames
+		, self referencedSharedPool
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #dependencies }
 IceClassDependency >> referencedPackages [
 
 	^ self definition asMCDefinition category
@@ -48,4 +47,11 @@ IceClassDependency >> referencedSharedPool [
 IceClassDependency >> referencedTraits [
 	^ ((RBParser parseExpression: definition asMCDefinition traitComposition)
 		allChildren select: #isVariable) collect: #name
+]
+
+{ #category : #'as yet unclassified' }
+IceClassDependency >> subclassNames [
+
+	^ self cherrypicker environment
+		allSubclassesNamesOf: self definition name
 ]

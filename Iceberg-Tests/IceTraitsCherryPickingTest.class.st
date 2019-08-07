@@ -61,3 +61,42 @@ IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 				size
 		equals: 0
 ]
+
+{ #category : #tests }
+IceTraitsCherryPickingTest >> testRemoveTraitWithSubTrait [
+	| commitToCherryPick diff mergeTree |
+	self repository workingCopy
+		createTrait: 'TestSubTrait'
+		inPackage: self packageName1 asSymbol
+		with: [ :class |
+			| transformations composition |
+			composition := (RG2TraitCompositionDefinition parent: class).
+			transformations := RG2TraitCompositionVisitor new
+				parse: 'TestTraitInitial'
+				for: composition.
+
+			class traitComposition: composition.
+
+			transformations do: [ :each | composition addTransformation: each ]].
+	self repository
+		commitWithMessage: 'Adding subTrait of TestTraitInitial'.
+	self repository createBranch: 'b2'.
+
+	self repository workingCopy removeClassNamed: 'TestSubTrait'.
+	self repository commitWithMessage: 'Removing TestSubTrait'.
+
+	self repository workingCopy removeClassNamed: 'TestTraitInitial'.
+	self repository commitWithMessage: 'Removing TestSubTrait'.
+
+	commitToCherryPick := self repository head.
+	self repository checkoutBranch: 'master'.
+
+	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
+	diff := mergeTree collect: [ :each | each chosenOperation ].
+
+	self assert: diff children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 3.
+	self assert: (diff / self packageName1 / 'TestTraitInitial') value isRemoval.
+	self assert: (diff / self packageName1 / 'TestSubTrait') value isRemoval.
+	self assert: (diff / self packageName1 / 'TestSubTrait class') value isRemoval
+]

@@ -38,10 +38,7 @@ IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassD
 
 { #category : #'as yet unclassified' }
 IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceExtensionDefinition [
-	anIceExtensionDefinition isMeta
-		ifTrue: [ self halt ]
-		ifFalse: [ cherrypicker
-				addExtendedClassDependency: anIceExtensionDefinition]
+cherrypicker addExtendedClassDependency: anIceExtensionDefinition
 ]
 
 { #category : #visiting }
@@ -66,7 +63,7 @@ IceCherrypickerInitialDependenciesCollector >> visitNoModification: anIceNoModif
 { #category : #visiting }
 IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinition [
 	cherrypicker
-		addPackageDependencyOfPackageNamed: anIcePackageDefinition
+		addPackageDependency: anIcePackageDefinition
 ]
 
 { #category : #visiting }

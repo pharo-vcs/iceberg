@@ -26,6 +26,7 @@ IceDefinedDependency >> = anObject [
 IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	| asDependencyVisitor |
 	asDependencyVisitor := IceAsDependencyVisitor new.
+	asDependencyVisitor cherrypicker: anIceCherrypicker .
 
 	self referencedClasses
 		do: [ :aName | 
@@ -51,9 +52,8 @@ IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherry
 				on: anIceDiff tree;
 				packageName: aName;
 				execute;
-				ifFound: [ :iceNode | 
-					anIceCherrypicker
-						addDependency: (iceNode accept: asDependencyVisitor) ] ]
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ]
 ]
 
 { #category : #accessing }
@@ -77,6 +77,11 @@ IceDefinedDependency >> hash [
 IceDefinedDependency >> referencedClasses [
 
 	^ self subclassResponsibility 
+]
+
+{ #category : #dependencies }
+IceDefinedDependency >> referencedPackages [
+	^ self subclassResponsibility
 ]
 
 { #category : #dependencies }

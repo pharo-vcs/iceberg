@@ -48,6 +48,11 @@ IceTraitDefinition >> isTraitDefinition [
 	^ true
 ]
 
+{ #category : #accessing }
+IceTraitDefinition >> name [
+	^ name , (isMeta ifTrue: [ ' classTrait' ] ifFalse: [ '' ])
+]
+
 { #category : #patching }
 IceTraitDefinition >> removeFromPatcher: aMCPatcher [ 
 	

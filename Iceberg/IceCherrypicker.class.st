@@ -11,9 +11,10 @@ Class {
 	#instVars : [
 		'dependencies',
 		'sourceDiff',
-		'targetDiff',
 		'receiverToAncestorDiff',
-		'mergeTree'
+		'mergeTree',
+		'incomingChangesDiff',
+		'environment'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -24,6 +25,7 @@ IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
 		add:
 			(IceClassDependency new
 				definition: aIceClassDefinition;
+								cherrypicker: self;
 				yourself)
 ]
 
@@ -38,6 +40,7 @@ IceCherrypicker >> addExtendedClassDependency: aIceExtensionDefinition [
 		add:
 			(IceExtendedClassDependency new
 				definition: aIceExtensionDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
@@ -55,22 +58,27 @@ IceCherrypicker >> addMetaclassDependency: anIceClassDefinition [
 		add:
 			(IceMetaclassDependency new
 				definition: anIceClassDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [ 
-	
-	dependencies add: (IceMethodDependency new
+IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [
+	dependencies
+		add:
+			(IceMethodDependency new
 				definition: aIceMethodDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addPackageDependencyOfPackageNamed: aIcePackageDefinition [
-
-	dependencies add: (IcePackageDependency new
+IceCherrypicker >> addPackageDependency: aIcePackageDefinition [
+	dependencies
+		add:
+			(IcePackageDependency new
 				definition: aIcePackageDefinition;
+								cherrypicker: self;
 				yourself)
 ]
 
@@ -80,24 +88,34 @@ IceCherrypicker >> addTraitDependencyOf: aIceTraitDefinition [
 		add:
 			(IceTraitDependency new
 				definition: aIceTraitDefinition;
+								cherrypicker: self;
 				yourself)
 ]
 
 { #category : #'execution - private' }
 IceCherrypicker >> addTransitiveDependencies [
-
 	| originalDependencies |
 	originalDependencies := nil.
-	
-	[ 	originalDependencies ~= dependencies ] whileTrue: [
-		originalDependencies := dependencies copy.
-		originalDependencies do: [ :each |
-			each addTransitiveDependenciesFrom: targetDiff to: self ] ]
+
+	[ originalDependencies ~= dependencies ]
+		whileTrue: [ originalDependencies := dependencies copy.
+			originalDependencies
+				do: [ :each | each addTransitiveDependenciesFrom: incomingChangesDiff to: self ]]
 ]
 
 { #category : #accessing }
 IceCherrypicker >> dependencies [
 	^ dependencies
+]
+
+{ #category : #accessing }
+IceCherrypicker >> environment [
+	^ environment ifNil: [ environment := IceDependencyEnvironment on: receiverToAncestorDiff targetVersion  ]
+]
+
+{ #category : #accessing }
+IceCherrypicker >> environment: anObject [
+	environment:= anObject 
 ]
 
 { #category : #'execution - public' }
@@ -142,7 +160,7 @@ IceCherrypicker >> pruneUndependedNodesInTargetDiff [
 
 	IceCherrypickerDiffPruner new
 		cherrypicker: self;
-		applyTo: targetDiff
+		applyTo: incomingChangesDiff
 ]
 
 { #category : #accessing }
@@ -167,10 +185,10 @@ IceCherrypicker >> sourceDiff: anObject [
 
 { #category : #accessing }
 IceCherrypicker >> targetDiff [
-	^ targetDiff
+	^ incomingChangesDiff
 ]
 
 { #category : #accessing }
 IceCherrypicker >> targetDiff: anObject [
-	targetDiff := anObject
+	incomingChangesDiff := anObject
 ]

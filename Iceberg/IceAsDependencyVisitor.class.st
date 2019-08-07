@@ -2,37 +2,46 @@ Class {
 	#name : #IceAsDependencyVisitor,
 	#superclass : #Object,
 	#instVars : [
-		'currentNode'
+		'currentNode',
+		'cherrypicker'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
 
+{ #category : #accessing }
+IceAsDependencyVisitor >> cherrypicker: anIceCherrypicker [ 
+	cherrypicker := anIceCherrypicker
+]
+
 { #category : #visiting }
-IceAsDependencyVisitor >> visitClassDefinition: anIceClassDefinition [ 
-^ IceClassDependency new
+IceAsDependencyVisitor >> visitClassDefinition: anIceClassDefinition [
+	^ IceClassDependency new
 		definition: anIceClassDefinition;
+		cherrypicker: cherrypicker ;
 		yourself
 ]
 
 { #category : #visiting }
-IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [ 
+IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
 	^ IceExtendedClassDependency new
-				definition: anIceExtensionDefinition ;
-				yourself
+		definition: anIceExtensionDefinition;
+		cherrypicker: cherrypicker;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
-IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [ 
-	
+IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [
 	^ IcePackageDependency new
-				definition: anIcePackageDefinition;
-				yourself
+		definition: anIcePackageDefinition;
+		cherrypicker: cherrypicker;
+		yourself
 ]
 
 { #category : #visiting }
-IceAsDependencyVisitor >> visitTraitDefinition: anIceTraitDefinition [ 
-^ IceTraitDependency new
+IceAsDependencyVisitor >> visitTraitDefinition: anIceTraitDefinition [
+	^ IceTraitDependency new
 		definition: anIceTraitDefinition;
+		cherrypicker: cherrypicker;
 		yourself
 ]
 

@@ -9,12 +9,6 @@ IceExtendedClassDependency >> = anObject [
 	^ super = anObject and: [ self definition name = anObject definition name ]
 ]
 
-{ #category : #dependencies }
-IceExtendedClassDependency >> addTransitiveDependenciesFrom: anIceDiff to: aCheryPicker [
-self flag: 'to remove ?'.
-	super addTransitiveDependenciesFrom: anIceDiff  to: aCheryPicker.
-]
-
 { #category : #comparing }
 IceExtendedClassDependency >> hash [
 	^ super hash bitXor: self definition name hash
@@ -30,7 +24,7 @@ IceExtendedClassDependency >> referencedClasses [
 	^ {definition name asSymbol }
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #dependencies }
 IceExtendedClassDependency >> referencedPackages [
 	^ {self definition packageName}
 ]

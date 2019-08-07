@@ -56,7 +56,7 @@ IceMethodDependency >> referencedNames [
 	^ (self methodAST allChildren select: #isVariable) collect: #name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #dependencies }
 IceMethodDependency >> referencedPackages [
 	^ { }
 ]
