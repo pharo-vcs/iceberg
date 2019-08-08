@@ -93,10 +93,7 @@ IceTipExistingBranchPanel >> newBranchListDataSource [
 { #category : #accessing }
 IceTipExistingBranchPanel >> selectedBranch [
 	| index |
-	index := self branchesList widget selectedIndex.
-	^ index ~= 0
-		ifTrue: [ self branchesList widget dataSource elementAt: index ]
-		ifFalse: [ nil ]
+	^ self branchesList selection selectedItem
 ]
 
 { #category : #accessing }
