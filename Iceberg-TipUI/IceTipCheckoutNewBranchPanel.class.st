@@ -19,16 +19,13 @@ Class {
 IceTipCheckoutNewBranchPanel class >> defaultSpec [
 	<spec: #default>
 
-	^ SpecLayout composed 
-		newColumn: [ :col | 
-			col
-				newRow: #currentBranchLabel height: self inputTextHeight;
-				newRow: [ :row | 
-						row 
-							add: #branchLabel width: self iceLabelWidth;
-							add: #branchInputText ]
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+	^ SpBoxLayout newVertical 
+			add: #currentBranchLabel height: self inputTextHeight;
+			add: ( SpBoxLayout newHorizontal 
+							add: #branchLabel width: self labelWidth ;
+							add: #branchInputText ;
+							yourself )
+					height: self inputTextHeight
 ]
 
 { #category : #accessing }
@@ -120,7 +117,6 @@ IceTipCheckoutNewBranchPanel >> initializeWidgetsContents [
 	branchInputText := self newTextInput
 		autoAccept: true;
 		placeholder: 'e.g., feature/what'.
-	spacePanel := PanelMorph new asSpecAdapter
 ]
 
 { #category : #testing }
