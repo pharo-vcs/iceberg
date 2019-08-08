@@ -18,7 +18,7 @@ git clone https://$GH_TOKEN@github.com/pharo-vcs/iceberg.wiki.git
 # Cleanup the wiki repository so removed files get removed and copy new files
 cd iceberg.wiki
 find . -not -path "./.git/*" -not -path "./.git" -delete
-cp -a "${__root}/docs/." .
+cp -ar "${__root}/docs/." .
 
 # GOGOGO
 git add *
