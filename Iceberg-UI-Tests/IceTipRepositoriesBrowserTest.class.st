@@ -32,19 +32,19 @@ IceTipRepositoriesBrowserTest >> tearDown [
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> testHasAddButtonOnTheRight [
 
-	self assert: (presenter toolbar rightPanel items anySatisfy: [:aButton | aButton label = 'Add']).
+	self assert: (presenter toolbar rightItems anySatisfy: [:aButton | aButton label = 'Add']).
 ]
 
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> testHasFetchAllButtonOnTheLeft [
 
-	self assert: (presenter toolbar leftPanel items anySatisfy: [:aButton | aButton label = 'Fetch all']).
+	self assert: (presenter toolbar leftItems anySatisfy: [:aButton | aButton label = 'Fetch all']).
 ]
 
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> testHasSettingsButtonOnTheRight [
 
-	self assert: (presenter toolbar rightPanel items anySatisfy: [:aButton | aButton label = 'Settings']).
+	self assert: (presenter toolbar rightItems anySatisfy: [:aButton | aButton label = 'Settings']).
 ]
 
 { #category : #testing }

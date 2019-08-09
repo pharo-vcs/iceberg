@@ -26,7 +26,7 @@ IceTipRepositoryBrowserWithRemoteTest >> tearDown [
 IceTipRepositoryBrowserWithRemoteTest >> testHasFetchButtonOnTheLeft [
 	self
 		assert:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Fetch' ])
 ]
 
@@ -34,7 +34,7 @@ IceTipRepositoryBrowserWithRemoteTest >> testHasFetchButtonOnTheLeft [
 IceTipRepositoryBrowserWithRemoteTest >> testHasPullButtonOnTheLeft [
 	self
 		assert:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Pull' ])
 ]
 
@@ -42,6 +42,6 @@ IceTipRepositoryBrowserWithRemoteTest >> testHasPullButtonOnTheLeft [
 IceTipRepositoryBrowserWithRemoteTest >> testHasPushButtonOnTheLeft [
 	self
 		assert:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Push' ])
 ]

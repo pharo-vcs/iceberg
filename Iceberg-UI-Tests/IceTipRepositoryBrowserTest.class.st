@@ -17,7 +17,7 @@ IceTipRepositoryBrowserTest class >> isAbstract [
 IceTipRepositoryBrowserTest >> testHasAddRemoteButtonOnTheRight [
 	self
 		assert:
-			(presenter toolbar rightPanel items
+			(presenter toolbar rightItems
 				anySatisfy: [ :aButton | aButton label = 'Add remote' ])
 ]
 
@@ -25,7 +25,7 @@ IceTipRepositoryBrowserTest >> testHasAddRemoteButtonOnTheRight [
 IceTipRepositoryBrowserTest >> testHasBranchButtonOnTheLeft [
 	self
 		assert:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Branch' ])
 ]
 
@@ -46,6 +46,6 @@ IceTipRepositoryBrowserTest >> testHasHiedraHistoryBrowser [
 IceTipRepositoryBrowserTest >> testHasMergeButtonOnTheLeft [
 	self
 		assert:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Merge' ])
 ]

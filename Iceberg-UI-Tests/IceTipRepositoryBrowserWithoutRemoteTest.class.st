@@ -29,7 +29,7 @@ IceTipRepositoryBrowserWithoutRemoteTest >> tearDown [
 IceTipRepositoryBrowserWithoutRemoteTest >> testHasNoFetchButtonOnTheLeft [
 	self
 		deny:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Fetch' ])
 ]
 
@@ -37,7 +37,7 @@ IceTipRepositoryBrowserWithoutRemoteTest >> testHasNoFetchButtonOnTheLeft [
 IceTipRepositoryBrowserWithoutRemoteTest >> testHasNoPullButtonOnTheLeft [
 	self
 		deny:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems
 				anySatisfy: [ :aButton | aButton label = 'Pull' ])
 ]
 
@@ -45,6 +45,6 @@ IceTipRepositoryBrowserWithoutRemoteTest >> testHasNoPullButtonOnTheLeft [
 IceTipRepositoryBrowserWithoutRemoteTest >> testHasNoPushButtonOnTheLeft [
 	self
 		deny:
-			(presenter toolbar leftPanel items
+			(presenter toolbar leftItems 
 				anySatisfy: [ :aButton | aButton label = 'Push' ])
 ]
