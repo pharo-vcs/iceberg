@@ -4,3 +4,8 @@ Extension { #name : #MCClassTraitDefinition }
 MCClassTraitDefinition >> classCategory [
 	^ self category
 ]
+
+{ #category : #'*Iceberg-Core' }
+MCClassTraitDefinition >> traitComposition [
+	^ self classTraitComposition 
+]

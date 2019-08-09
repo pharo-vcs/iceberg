@@ -14,6 +14,14 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipHistoryBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	rootCommandGroup
+		register: ((CmCommandGroup named: 'commit commands') asSpecGroup
+			register: (IceTipCherryPickCommand forSpec context: presenterIntance )
+		)
+]
+
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
@@ -75,15 +83,16 @@ IceTipHistoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
-	commitList 
-	beResizable ;
+	commitList
+		beResizable;
 		addColumn:
-			((SpStringTableColumn evaluated: [:each | each timeStamp asLocalStringYMDHM ])
+			((SpStringTableColumn
+				evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
 				title: 'Timestamp';
 				width: 110 * World displayScaleFactor;
 				yourself);
 		addColumn:
-		((SpStringTableColumn evaluated: #shortId)
+			((SpStringTableColumn evaluated: #shortId)
 				title: 'Commit';
 				width: 60 * World displayScaleFactor;
 				yourself);
@@ -96,8 +105,10 @@ IceTipHistoryBrowser >> initializeCommitList [
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				title: 'Description';
 				yourself);
-				whenSelectionChangedDo: [ :selection | commitInfoTabs selectedModel: ( selection selectedItem)];
-		selectIndex: 1
+		whenSelectionChangedDo: [ commitInfoTabs selectedModel: self selectedCommit ];
+		selectIndex: 1;
+		contextMenu:
+				[ (self rootCommandsGroup / 'commit commands') beRoot asMenuPresenter ]
 ]
 
 { #category : #initialization }
@@ -141,6 +152,11 @@ IceTipHistoryBrowser >> refresh [
 	commitModels := self model commitModels.
 	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
+]
+
+{ #category : #accessing }
+IceTipHistoryBrowser >> selectedCommit [
+	^ commitList selection selectedItem
 ]
 
 { #category : #'event handling' }

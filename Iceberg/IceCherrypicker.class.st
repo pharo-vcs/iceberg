@@ -11,18 +11,36 @@ Class {
 	#instVars : [
 		'dependencies',
 		'sourceDiff',
-		'targetDiff',
 		'receiverToAncestorDiff',
-		'mergeTree'
+		'mergeTree',
+		'incomingChangesDiff',
+		'environment'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
 
 { #category : #dependencies }
-IceCherrypicker >> addClassDependencyOf: aMCClassDefinition [
-	
-	dependencies add: (IceClassDependency new
-				definition: aMCClassDefinition;
+IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
+	dependencies
+		add:
+			(IceClassDependency new
+				definition: aIceClassDefinition;
+								cherrypicker: self;
+				yourself)
+]
+
+{ #category : #'access options' }
+IceCherrypicker >> addDependency: anIceDependency [ 
+	self dependencies add: anIceDependency .
+]
+
+{ #category : #dependencies }
+IceCherrypicker >> addExtendedClassDependency: aIceExtensionDefinition [
+	dependencies
+		add:
+			(IceExtendedClassDependency new
+				definition: aIceExtensionDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
@@ -35,52 +53,69 @@ IceCherrypicker >> addInitialDependencies [
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addMetaclassDependencyToClassNamed: aSymbol [
-	
-	dependencies add: (IceMetaclassDependency new
-				name: aSymbol;
+IceCherrypicker >> addMetaclassDependency: anIceClassDefinition [
+	dependencies
+		add:
+			(IceMetaclassDependency new
+				definition: anIceClassDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addMethodDependencyOf: aMCMethodDefinition [ 
-	
-	dependencies add: (IceMethodDependency new
-				definition: aMCMethodDefinition;
+IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [
+	dependencies
+		add:
+			(IceMethodDependency new
+				definition: aIceMethodDefinition;
+				cherrypicker: self;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addPackageDependencyOfPackageNamed: aString [
-
-	dependencies add: (IcePackageDependency new
-				name: aString;
+IceCherrypicker >> addPackageDependency: aIcePackageDefinition [
+	dependencies
+		add:
+			(IcePackageDependency new
+				definition: aIcePackageDefinition;
+								cherrypicker: self;
 				yourself)
 ]
 
 { #category : #dependencies }
-IceCherrypicker >> addTraitDependencyOf: aMCTraitDefinition [
-	
-	dependencies add: (IceTraitDependency new
-				definition: aMCTraitDefinition;
+IceCherrypicker >> addTraitDependencyOf: aIceTraitDefinition [
+	dependencies
+		add:
+			(IceTraitDependency new
+				definition: aIceTraitDefinition;
+								cherrypicker: self;
 				yourself)
 ]
 
 { #category : #'execution - private' }
 IceCherrypicker >> addTransitiveDependencies [
-
 	| originalDependencies |
 	originalDependencies := nil.
-	
-	[ 	originalDependencies ~= dependencies ] whileTrue: [
-		originalDependencies := dependencies copy.
-		originalDependencies do: [ :each |
-			each addTransitiveDependenciesFrom: targetDiff to: self ] ]
+
+	[ originalDependencies ~= dependencies ]
+		whileTrue: [ originalDependencies := dependencies copy.
+			originalDependencies
+				do: [ :each | each addTransitiveDependenciesFrom: incomingChangesDiff to: self ]]
 ]
 
 { #category : #accessing }
 IceCherrypicker >> dependencies [
 	^ dependencies
+]
+
+{ #category : #accessing }
+IceCherrypicker >> environment [
+	^ environment ifNil: [ environment := IceDependencyEnvironment on: receiverToAncestorDiff targetVersion  ]
+]
+
+{ #category : #accessing }
+IceCherrypicker >> environment: anObject [
+	environment:= anObject 
 ]
 
 { #category : #'execution - public' }
@@ -125,7 +160,7 @@ IceCherrypicker >> pruneUndependedNodesInTargetDiff [
 
 	IceCherrypickerDiffPruner new
 		cherrypicker: self;
-		applyTo: targetDiff
+		applyTo: incomingChangesDiff
 ]
 
 { #category : #accessing }
@@ -150,10 +185,10 @@ IceCherrypicker >> sourceDiff: anObject [
 
 { #category : #accessing }
 IceCherrypicker >> targetDiff [
-	^ targetDiff
+	^ incomingChangesDiff
 ]
 
 { #category : #accessing }
 IceCherrypicker >> targetDiff: anObject [
-	targetDiff := anObject
+	incomingChangesDiff := anObject
 ]

@@ -5,7 +5,9 @@ Class {
 	#name : #IceDefinedDependency,
 	#superclass : #IceDependency,
 	#instVars : [
-		'definition'
+		'definition',
+		'aIceNode',
+		'execute'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }
@@ -13,29 +15,45 @@ Class {
 { #category : #comparing }
 IceDefinedDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
-
-	self == anObject ifTrue: [ ^ true ].
-	self species = anObject species ifFalse: [ ^ false ].
+	self == anObject
+		ifTrue: [ ^ true ].
+	self species = anObject species
+		ifFalse: [ ^ false ].
 	^ definition className = anObject definition className
 ]
 
 { #category : #dependencies }
-IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [ 
-	
-	self referencedClasses do: [ :aName | 
-		IceNodeQuery new
-			on: anIceDiff tree;
-			className: aName;
-			execute;
-			ifFound: [ :aIceNode | anIceCherrypicker addClassDependencyOf: aIceNode value definition asMCDefinition ]].
+IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
+	| asDependencyVisitor |
+	asDependencyVisitor := IceAsDependencyVisitor new.
+	asDependencyVisitor cherrypicker: anIceCherrypicker .
 
-	self referencedTraits do: [ :aName | 
-		IceNodeQuery new
-			on: anIceDiff tree;
-			traitName: aName;
-			execute;
-			ifFound: [ :aIceNode | anIceCherrypicker addTraitDependencyOf: aIceNode value definition asMCDefinition ]].
+	self referencedClasses
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				className: aName;
+				execute;
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ].
 
+	self referencedTraits
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				traitName: aName;
+				execute;
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ].
+
+	self referencedPackages
+		do: [ :aName | 
+			IceNodeQuery new
+				on: anIceDiff tree;
+				packageName: aName;
+				execute;
+				ifFound:
+						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ]
 ]
 
 { #category : #accessing }
@@ -55,16 +73,15 @@ IceDefinedDependency >> hash [
 	^ definition className hash
 ]
 
-{ #category : #testing }
-IceDefinedDependency >> isDependencyTo: aDefinition [ 
-	
-	^ aDefinition accept: self
-]
-
 { #category : #dependencies }
 IceDefinedDependency >> referencedClasses [
 
 	^ self subclassResponsibility 
+]
+
+{ #category : #dependencies }
+IceDefinedDependency >> referencedPackages [
+	^ self subclassResponsibility
 ]
 
 { #category : #dependencies }

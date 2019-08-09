@@ -175,6 +175,15 @@ IceOperation >> name [
 ]
 
 { #category : #accessing }
+IceOperation >> printOn: aStream [
+
+	super printOn: aStream .
+	aStream nextPutAll: '( ';
+	print: definition ;
+	nextPutAll: ' )'.
+]
+
+{ #category : #accessing }
 IceOperation >> rightContents [
 	
 	^ definition contents

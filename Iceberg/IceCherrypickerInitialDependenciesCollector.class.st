@@ -23,31 +23,34 @@ IceCherrypickerInitialDependenciesCollector >> cherrypicker: anIceCherrypicker [
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [ 
-	
+IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [
 	anIceAddition definition accept: self.
+		self visitChildrenOf: currentNode
 ]
 
 { #category : #visiting }
 IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassDefinition [
-
 	anIceClassDefinition isMeta
-		ifTrue: [ cherrypicker addMetaclassDependencyToClassNamed: anIceClassDefinition basicName ]
-		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition asMCDefinition ]
+		ifTrue: [ cherrypicker
+				addMetaclassDependency: anIceClassDefinition ]
+		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition ]
+]
+
+{ #category : #'as yet unclassified' }
+IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceExtensionDefinition [
+cherrypicker addExtendedClassDependency: anIceExtensionDefinition
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitMethodNode: anIceMethodDefinition [ 
-	
-	cherrypicker addMethodDependencyOf: anIceMethodDefinition asMCDefinition.	
-
+IceCherrypickerInitialDependenciesCollector >> visitMethodNode: anIceMethodDefinition [
+	cherrypicker
+		addMethodDependencyOf: anIceMethodDefinition
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitModification: anIceModification [ 
-	
+IceCherrypickerInitialDependenciesCollector >> visitModification: anIceModification [
 	anIceModification definition accept: self.
-
+		self visitChildrenOf: currentNode
 ]
 
 { #category : #visiting }
@@ -58,13 +61,19 @@ IceCherrypickerInitialDependenciesCollector >> visitNoModification: anIceNoModif
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinition [ 
-	
-	cherrypicker addPackageDependencyOfPackageNamed: anIcePackageDefinition name
+IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinition [
+	cherrypicker
+		addPackageDependency: anIcePackageDefinition
 ]
 
 { #category : #visiting }
-IceCherrypickerInitialDependenciesCollector >> visitTraitDefinition: anIceTraitDefinition [ 
+IceCherrypickerInitialDependenciesCollector >> visitRemoval: anIceRemoval [
+	anIceRemoval definition accept: self.
+		self visitChildrenOf: currentNode
+]
 
-	cherrypicker addTraitDependencyOf: anIceTraitDefinition asMCDefinition.	
+{ #category : #visiting }
+IceCherrypickerInitialDependenciesCollector >> visitTraitDefinition: anIceTraitDefinition [
+	cherrypicker
+		addTraitDependencyOf: anIceTraitDefinition
 ]

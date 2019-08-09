@@ -187,6 +187,35 @@ IceClassesCherryPickingTest >> testAddClassUsingASharedPool [
 ]
 
 { #category : #tests }
+IceClassesCherryPickingTest >> testAddClassWithMethod [
+	| commitToCherryPick diff mergeTree |
+	self repository createBranch: 'b2'.
+	self repository workingCopy addPackageNamed: self packageName1.
+	self repository workingCopy
+		createClass: 'TestClass2'
+		inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createMethod: 'm1 ^42'
+		inClass: 'TestClass2'.
+	self repository commitWithMessage: 'Adding Test Class With a Method'.
+	commitToCherryPick := self repository head.
+	self repository checkoutBranch: 'master'.
+	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
+	diff := mergeTree collect: [ :each | each chosenOperation ].
+
+	self assert: diff children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 1.
+	self
+		assert: (diff / self packageName1 / 'TestClass2') value isAddition;
+		assert:
+			(diff / self packageName1 / 'TestClass2') value definition
+				isClassDefinition;
+		assert: (diff / self packageName1 / 'TestClass2') children size
+			equals: 1;
+		assert: (diff / self packageName1 / 'TestClass2' / 'm1') value isAddition
+]
+
+{ #category : #tests }
 IceClassesCherryPickingTest >> testAddClassWithSuperclassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -292,4 +321,87 @@ IceClassesCherryPickingTest >> testModifyClassWithoutDependencies [
 		assert:
 			(diff / self packageName1 / 'TestClass') value
 				definition isClassDefinition
+]
+
+{ #category : #tests }
+IceClassesCherryPickingTest >> testRemoveClassWithSubclasses [
+	| commitToCherryPick diff mergeTree |
+
+
+	self repository workingCopy
+		createClass: 'TestSubclass'
+		inPackage: self packageName1 asSymbol
+		with:
+			[ :class | class superclass: (class environment ask behaviorNamed: #TestClass) ].
+	self repository commitWithMessage: 'Adding subclass of TestClass'.
+	
+	self repository createBranch: 'b2'.
+
+	self repository workingCopy
+		removeClassNamed: 'TestSubclass'.
+	self repository commitWithMessage: 'Removing TestSubclass'.
+	
+	self repository workingCopy
+		removeClassNamed: 'TestClass'.
+	self repository commitWithMessage: 'Removing TestClass'.
+	
+	commitToCherryPick := self repository head.
+
+	self repository checkoutBranch: 'master'.
+	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
+	diff := mergeTree collect: [ :each | each chosenOperation ].
+
+	self assert: diff children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 2.
+	self
+		assert: (diff / self packageName1 / 'TestClass') value isRemoval.
+	self
+		assert:
+			(diff / self packageName1 / 'TestSubclass') value isRemoval .
+]
+
+{ #category : #tests }
+IceClassesCherryPickingTest >> testRemoveClassWithSubclassesAndIntermediarySubclass [
+	| commitToCherryPick diff mergeTree |
+	self repository workingCopy
+		createClass: 'TestIntermediaryClass'
+		inPackage: self packageName1 asSymbol
+		with:
+			[ :class | class superclass: (class environment ask behaviorNamed: #TestClass) ].
+	self repository workingCopy
+		createClass: 'TestSubclass'
+		inPackage: self packageName1 asSymbol
+		with:
+			[ :class | class superclass: (class environment ask behaviorNamed: #TestIntermediaryClass) ].
+	
+	self repository commitWithMessage: 'Adding subclasses of TestClass'.
+
+	self repository createBranch: 'b2'.
+
+	self repository workingCopy removeClassNamed: 'TestIntermediaryClass'.
+	self repository workingCopy
+		createClass: 'TestIntermediaryClass'
+		inPackage: self packageName1 asSymbol
+		with:
+			[ :class | class superclass: (class environment ask behaviorNamed: #Object) ].
+	self repository commitWithMessage: 'Modify Intermediate'.
+
+
+	self repository workingCopy removeClassNamed: 'TestSubclass'.
+	self repository commitWithMessage: 'Removing TestSubclass'.
+
+	self repository workingCopy removeClassNamed: 'TestClass'.
+	self repository commitWithMessage: 'Removing TestClass'.
+
+	commitToCherryPick := self repository head.
+
+	self repository checkoutBranch: 'master'.
+	mergeTree := fixture repository cherryPickFrom: commitToCherryPick.
+	diff := mergeTree collect: [ :each | each chosenOperation ].
+
+	self assert: diff children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1 / 'TestClass') value isRemoval.
+	self
+		assert: (diff / self packageName1 / 'TestSubclass') value isRemoval
 ]

@@ -98,21 +98,18 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeWidgets [
-	super initializeWidgets.	
+	super initializeWidgets.
 	sidebarTree := self newTreeTable.
-	historyPanel := self instantiate: IceTipHiedraHistoryBrowser on: self model headModel.
+	historyPanel := self
+		instantiate: IceTipHiedraHistoryBrowser
+		on: self model headModel.
 	historyPanel beForMerge.
-	
+
 	self initializeSidebarTree.
-"	sidebarTree widget
-		onAnnouncement: FTSelectionChanged 
-		send: #commitishSelected: 
-		to: self. 
-"	
-	self focusOrder 
+	
+	self focusOrder
 		add: historyPanel;
 		add: sidebarTree
-		
 ]
 
 { #category : #accessing }
