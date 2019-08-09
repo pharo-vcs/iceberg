@@ -29,7 +29,7 @@ IceTipGitHubPullRequestListBrowser class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :mainColumn | 
 			mainColumn
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
+				newRow: #toolbar height: self toolbarHeight ;
 				newRow: #pullRequests height: 150;
 				addHSplitter;
 				newRow: #details ]
