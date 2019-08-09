@@ -113,7 +113,8 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 	1 halt.
-	repositoryList items: self model repositories.
+repositoryList items: {}.
+repositoryList items: self model repositories.
 ]
 
 { #category : #accessing }
