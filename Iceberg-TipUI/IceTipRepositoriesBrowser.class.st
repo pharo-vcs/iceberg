@@ -114,7 +114,7 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 IceTipRepositoriesBrowser >> refresh [
 	1 halt.
 repositoryList items: {}.
-repositoryList items: self model repositories.
+repositoryList items: (self model repositories do: [ :cachedRepo | cachedRepo reset ] ).
 ]
 
 { #category : #accessing }
