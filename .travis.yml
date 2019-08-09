@@ -33,4 +33,4 @@ script:
 - travis_wait 120 sleep infinity &
 - if [[ ${JOB} == "test" ]]; then $SMALLTALK_CI_HOME/run.sh ${CI_FILE}; fi
 - if [[ ${JOB} == "update" ]]; then scripts/testUpdateIceberg.sh ; fi
-- if [[ ${JOB} == "sync-wiki" ]] && [[ ${TRAVIS_BRANCH} == "master" ]] && [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then ./scripts/sync-wiki.sh; fi
+- if [[ ${JOB} == "sync-wiki" ]] && [[ ${TRAVIS_BRANCH} == "dev-1.0" ]] && [[ ${TRAVIS_PULL_REQUEST} == "false" ]]; then ./scripts/sync-wiki.sh; fi
