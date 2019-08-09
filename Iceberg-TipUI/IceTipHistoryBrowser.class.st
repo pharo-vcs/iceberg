@@ -122,7 +122,8 @@ IceTipHistoryBrowser >> initializeWidgets [
 	self focusOrder 
 		add: commitList;
 		add: commitInfoTabs.
-	self refresh 
+		
+	self refreshCommitList.
 ]
 
 { #category : #accessing }
@@ -148,6 +149,11 @@ IceTipHistoryBrowser >> newContextWithSelection: anObject [
 
 { #category : #accessing }
 IceTipHistoryBrowser >> refresh [
+	self refreshCommitList 
+]
+
+{ #category : #accessing }
+IceTipHistoryBrowser >> refreshCommitList [
 	| commitModels |
 	commitModels := self model commitModels.
 	commitList items: commitModels.

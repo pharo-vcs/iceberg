@@ -63,3 +63,27 @@ IceTipHiedraHistoryBrowser >> newCommitsDataSource [
 		elements: #(); "It will be set when refreshing"
 		yourself
 ]
+
+{ #category : #accessing }
+IceTipHiedraHistoryBrowser >> refresh [ 
+	self refreshHiedraColumn.
+		super refresh.
+]
+
+{ #category : #accessing }
+IceTipHiedraHistoryBrowser >> refreshHiedraColumn [
+	| ancestorIds |
+
+	ancestorIds := Dictionary new.
+	self model commitModels do: [ :aCommit |
+"		Note: Hiedra expects each ancestor id corresponds to a commit in elements."
+		ancestorIds
+			at: aCommit id
+			put: aCommit entity ancestorIds ].
+	hiedraColumnController reset.
+
+	hiedraColumnController ruler: (HiRulerBuilder
+		newRulerValues: (self model commitModels collect: #id) "Note: ids should keep the original order."
+		linksBlock: [ :id | ancestorIds at: id ]).
+
+]
