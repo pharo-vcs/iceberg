@@ -56,11 +56,6 @@ ComposablePresenter >> newIceTable [
 ]
 
 { #category : #'*Iceberg-TipUI' }
-ComposablePresenter >> newIceToolbar [
-	^ self instantiate: IceTipToolbar
-]
-
-{ #category : #'*Iceberg-TipUI' }
 ComposablePresenter >> newIceTreeTable [
 	"For the moment, this is the same as a table, but it will receive a tree datasource.
 	 But this needs to be a spec component"
