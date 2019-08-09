@@ -80,9 +80,9 @@ IceTipRepairRepositoryDialog >> initializeReasonPanel [
 { #category : #initialization }
 IceTipRepairRepositoryDialog >> initializeWidgets [
 self flag: 'To-do' "Make these spTextPresenter non editable.".
-	reasonPanel := self newText.
-	optionsList := self newTable.
-	detailPanel := self newText.
+	reasonPanel := self newText disable.
+	optionsList := self newTable disable.
+	detailPanel := self newText disable.
 	self initializeReasonPanel.
 	self initializeOptionsList.
 	self focusOrder add: self optionsList
