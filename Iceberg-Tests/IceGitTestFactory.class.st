@@ -57,9 +57,7 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 		subdirectory: aSubdirectory;
 		createNewRepositoryNamed: projectName.
 	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true'
-		ifTrue: [ Transcript
-				show: 'Setting user information for CI';
-				cr.
+		ifTrue: [
 			IceGitCommand
 				in: repository location
 				execute: {'config' . '--global' . 'user.email' . '"iceberg@pharo.org"'}.
