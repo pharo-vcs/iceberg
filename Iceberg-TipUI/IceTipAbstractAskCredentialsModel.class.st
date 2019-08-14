@@ -58,12 +58,7 @@ IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aWindow [
 
 	super initializeDialogWindow: aWindow.
 	aWindow title: self title.
-
-	acceptButton action: [ self okAction ].
-	cancelButton action: [ self cancelAction ].
-	self updateOkButton.
-	
-	aWindow whenClosedDo: [ self closeAction ].
+	self updateOkButton.	
 	aWindow centered
 ]
 
