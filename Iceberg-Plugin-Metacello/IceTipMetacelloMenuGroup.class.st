@@ -8,6 +8,14 @@ Class {
 }
 
 { #category : #accessing }
+IceTipMetacelloMenuGroup >> addItem: aMenuItem [
+
+	(aMenuItem name = 'IceTipMetacelloRepositoryInstallBaselineCommand') 
+		ifTrue: [ aMenuItem command fillContextMenu: self using: aMenuItem activator ]
+		ifFalse: [ super addItem: aMenuItem  ]
+]
+
+{ #category : #accessing }
 IceTipMetacelloMenuGroup >> description [
 
 	^ 'Metacello install operations'
