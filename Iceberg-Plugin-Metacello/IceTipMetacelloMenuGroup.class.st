@@ -10,9 +10,12 @@ Class {
 { #category : #accessing }
 IceTipMetacelloMenuGroup >> addItem: aMenuItem [
 
-	(aMenuItem name = 'IceTipMetacelloRepositoryInstallBaselineCommand') 
-		ifTrue: [ aMenuItem command fillContextMenu: self using: aMenuItem activator ]
-		ifFalse: [ super addItem: aMenuItem  ]
+		aMenuItem command fillContextMenu: self  using: aMenuItem activator
+]
+
+{ #category : #items }
+IceTipMetacelloMenuGroup >> basicAddItem: aCmdCommandMenuItem [ 
+	super addItem: aCmdCommandMenuItem 
 ]
 
 { #category : #accessing }

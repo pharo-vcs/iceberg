@@ -84,8 +84,11 @@ IceTipMetacelloRepositoryInstallBaselineCommand >> fillMenu: aMenu title: aStrin
 		| activator item |
 	activator := aCommandActivator newForCommand: aCommand.
 	item := CmdCommandMenuItem activatingBy: activator .
-"	aCommand setUpIconForMenuItem: (self iconNamed: 'smallLoadProject')."
-	aMenu addItem: item.
+	"we need to copy the activation strategy because it's where the name of the menu item is set and newForCommand is not creating a new activation Strategy"
+	activator activationStrategy: activator activationStrategy copy.
+	activator activationStrategy menuItemName: aString .
+	aMenu basicAddItem: item.
+
 ]
 
 { #category : #private }
