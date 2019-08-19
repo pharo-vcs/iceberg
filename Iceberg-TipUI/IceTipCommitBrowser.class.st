@@ -18,7 +18,7 @@ Class {
 IceTipCommitBrowser class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
-		add: #toolbar height: IceTipToolbar defaultHeight;
+		add: #toolbar expand: false fill: true padding: 0;
 		add:
 			(SpPanedLayout newVertical
 				add: #diffPanel;

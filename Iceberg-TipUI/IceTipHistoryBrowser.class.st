@@ -26,8 +26,7 @@ IceTipHistoryBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: 
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
-		add: #toolbar
-			withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add: #toolbar expand: false fill: true padding: 0;
 		add:
 			(SpPanedLayout newVertical
 				add: #commitList;

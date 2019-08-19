@@ -66,14 +66,9 @@ IceTipBrowser >> initialize [
 ]
 
 { #category : #initialization }
-IceTipBrowser >> initializeToolbar [
-	toolbar := self instantiate: IceTipToolbar.
-	self rebuildToolbar
-]
-
-{ #category : #initialization }
 IceTipBrowser >> initializeWidgets [
-	self initializeToolbar.
+	toolbar := self newToolBar .
+	self rebuildToolbar .
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]
 ]
 
@@ -101,8 +96,12 @@ IceTipBrowser >> newContextWithSelection: anObject [
 
 { #category : #accessing }
 IceTipBrowser >> rebuildToolbar [
-	toolbar removeAll.
-	toolbar addItemsFromContext: self newContext
+
+	|menu|
+	toolbar removeAllItems.
+	menu := CmdMenu activatedBy: IceTipToolbarActivation.
+	menu buildInContext: self newContext.
+	menu buildIceToolbarOn: toolbar .
 ]
 
 { #category : #accessing }

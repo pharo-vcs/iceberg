@@ -13,7 +13,7 @@ IceTipPullBrowser class >> defaultSpec [
 	<spec: #default>
 	
 	^ SpBoxLayout newVertical 
-		add: #toolbar withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
+		add: #toolbar expand: false fill: true padding: 0;
 		add: #remotePanel withConstraints: [ :c | c height: self inputTextHeight ];
 		add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
 		add: #actionButtonBar withConstraints: [ :c | c height: self buttonHeight ];
