@@ -8,6 +8,17 @@ Class {
 }
 
 { #category : #accessing }
+IceTipMetacelloMenuGroup >> addItem: aMenuItem [
+
+		aMenuItem command fillContextMenu: self  using: aMenuItem activator
+]
+
+{ #category : #items }
+IceTipMetacelloMenuGroup >> basicAddItem: aCmdCommandMenuItem [ 
+	super addItem: aCmdCommandMenuItem 
+]
+
+{ #category : #accessing }
 IceTipMetacelloMenuGroup >> description [
 
 	^ 'Metacello install operations'
