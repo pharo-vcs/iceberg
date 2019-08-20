@@ -20,7 +20,7 @@ Class {
 IceTipVersionHistoryBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecPanedLayout newVertical
+	^ SpPanedLayout newVertical
 		add: #commitList;
 		add: #commitPanel;
 		yourself
@@ -80,33 +80,33 @@ IceTipVersionHistoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipVersionHistoryBrowser >> initializeCommitList [
-	commitList widget
+	commitList
 		beResizable;
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Timestamp';
-				action: [ :each | each timeStamp asLocalStringYMDHM ];
+			(SpStringTableColumn new
+				title: 'Timestamp';
+				evaluated: [ :each | each timeStamp asLocalStringYMDHM ];
 				width: 110 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Commit';
-				action: #shortId;
+			(SpStringTableColumn new
+				title: 'Commit';
+				evaluated: #shortId;
 				width: 60 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Author';
-				action: #author;
+			(SpStringTableColumn new
+				title: 'Author';
+				evaluated: #author;
 				width: 150 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Description';
-				action: #descriptionWithDecoration;
+			(SpStringTableColumn new
+				title: 'Description';
+				evaluated: #descriptionWithDecoration;
 				yourself);
-		dataSource: self newCommitsDataSource;
-		selectIndex: 1
+		items: self model commitModels;
+		whenSelectionChangedDo: [ selectedModel := self selectedCommit. 	self refreshCommitTabPanel. ]
 ]
 
 { #category : #initialization }
@@ -130,17 +130,12 @@ IceTipVersionHistoryBrowser >> initializeToolbar [
 IceTipVersionHistoryBrowser >> initializeWidgets [
 
 	super initializeWidgets.	
-	commitList := self newIceTable.
+	commitList := self newTable.
 	commitPanel := self newNotebook.
 	
 	self initializeCommitList.
 	self initializeCommitPanel.
-	
-	commitList widget 
-		onAnnouncement: FTSelectionChanged 
-		send: #selectionChanged:
-		to: self.
-	
+
 	self focusOrder 
 		add: commitList;
 		add: commitPanel.
@@ -229,12 +224,10 @@ IceTipVersionHistoryBrowser >> newInfoTab [
 
 { #category : #accessing }
 IceTipVersionHistoryBrowser >> refresh [
-
-	commitList widget 
-		in: [ :this | this dataSource elements: self model commitModels ];
-		refresh.
-	selectedModel := self model commitModels 
-		ifNotEmpty: #first
+	selectedModel := self model commitModels
+		ifNotEmpty: [ :commitModels | 
+			commitList selectIndex: 1.
+			commitModels first ]
 		ifEmpty: [ nil ].
 	self refreshCommitTabPanel
 ]
@@ -251,13 +244,9 @@ IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 	commitPanel resetAllPageContents
 ]
 
-{ #category : #'event handling' }
-IceTipVersionHistoryBrowser >> selectionChanged: ann [
-
-	selectedModel := ann newSelectedRowIndexes 
-		ifNotEmpty: [ :indexes |(self commitList widget dataSource elementAt: indexes first) ]
-		ifEmpty: [ nil ].
-	self refreshCommitTabPanel
+{ #category : #'as yet unclassified' }
+IceTipVersionHistoryBrowser >> selectedCommit [
+	^ self commitList selection selectedItem
 ]
 
 { #category : #accessing }
