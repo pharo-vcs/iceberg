@@ -332,8 +332,9 @@ IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedPaths [
 			selectedDirectoryPath := RelativePath new.
 			selection := self sourceDirectoryTree roots first ]
 		ifNotEmpty: [ selection := self sourceDirectoryTree
-				itemAtPath: selectedPaths first ].
-	formatList selectedItem: (self guessFormatFromDirectory: selection)
+				itemAtPath: selectedPaths first. ].
+	formatList selectedItem: (self guessFormatFromDirectory: selection).
+	selectedDirectoryPath := selection relativeTo: self model fileSystem. 
 ]
 
 { #category : #accessing }
