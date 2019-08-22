@@ -15,7 +15,7 @@ IceGitHubOpenOnGithubCommand class >> browserRepositoryListActivation [
 	<classAnnotation>
 	
 	^ CmdContextMenuActivation
-		byItemOf: IceGitHubMenuGroup
+		byItemOf: IceGitHubOpenOnGithubMenuGroup 
 		for: IceTipRepositoryListContext
 ]
 

@@ -10,6 +10,12 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
+{ #category : #'as yet unclassified' }
+IceGitHubBranchSelectCommand >> askRemote [
+	^ repositoryModel remotes anyOne
+
+]
+
 { #category : #accessing }
 IceGitHubBranchSelectCommand >> defaultMenuItemName [
 	^ remote ifNotNil: [ remote name , ' (' , remote url , ')' ] ifNil: [ self itemNameWithoutBranches ]
@@ -18,16 +24,17 @@ IceGitHubBranchSelectCommand >> defaultMenuItemName [
 { #category : #'context menu' }
 IceGitHubBranchSelectCommand >> fillContextMenu: aMenu using: aCommandActivator [
 
-	| concreteScopeCommand switchActivator subMenu |
+	| item activator|
 
-	subMenu := MenuMorph new.
-	self repository remotes do: [ :each |  
-		concreteScopeCommand := self copy remote: each; yourself.
-		switchActivator := aCommandActivator newForCommand: concreteScopeCommand.
-		subMenu add: switchActivator menuItemName target: switchActivator selector: #executeCommand		
-	].
-	
-	aMenu add: self defaultMenuItemName subMenu: subMenu.
+	self repository remotes do: [ :eachRemote | 
+		"We need copies to allow to create multiple different MenuItem with different remotes"
+		activator := aCommandActivator copy.
+		activator command: activator command copy.
+		item := CmdCommandMenuItem activatingBy: activator.
+		activator setUpShortcutTipForMenuItem: item.
+		activator command remote: eachRemote.
+		aMenu basicAddItem: item	.
+		].
 ]
 
 { #category : #accessing }
@@ -37,7 +44,7 @@ IceGitHubBranchSelectCommand >> itemNameWithoutBranches [
 
 { #category : #accessing }
 IceGitHubBranchSelectCommand >> remote [
-	^ remote ifNil: [ remote := self askRemote ]
+	^ remote
 ]
 
 { #category : #accessing }

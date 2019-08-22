@@ -12,7 +12,7 @@ IceGitHubRemoveBranchesCommand class >> browserRepositoryListActivation [
 	<classAnnotation>
 	
 	^ CmdContextMenuActivation
-		byItemOf: IceGitHubMenuGroup
+		byItemOf: IceGitHubRemoveBranchesMenuGroup 
 		for: IceTipRepositoryListContext
 ]
 

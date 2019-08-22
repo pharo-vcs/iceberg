@@ -26,13 +26,11 @@ Class {
 
 { #category : #specs }
 IceTipGitHubPullRequestListBrowser class >> defaultSpec [
-	^ SpecLayout composed
-		newColumn: [ :mainColumn | 
-			mainColumn
-				newRow: #toolbar height: self toolbarHeight ;
-				newRow: #pullRequests height: 150;
-				addHSplitter;
-				newRow: #details ]
+	^ SpBoxLayout newVertical 
+		add: #toolbar expand: false fill: true padding: 0;
+		add: ( SpPanedLayout newVertical 
+			add: #pullRequests;
+			add: #details)
 ]
 
 { #category : #'instance creation' }
@@ -73,44 +71,44 @@ IceTipGitHubPullRequestListBrowser >> initialExtent [
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initializePresenter [
 	super initializePresenter.
-	self pullRequests widget onAnnouncement: FTSelectionChanged send: #uptadeSelectedPullRequest: to: self.
-	self pullRequests widget onAnnouncement: FTStrongSelectionChanged send: #strongSelection: to: self.
+"	self pullRequests widget onAnnouncement: FTSelectionChanged send: #uptadeSelectedPullRequest: to: self.
+	self pullRequests widget onAnnouncement: FTStrongSelectionChanged send: #strongSelection: to: self."
 ]
 
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
-	pullRequests widget
+	pullRequests
 		beResizable;
 		addColumn:
-			(IceTipTableColumn new
-				id: '#';
-				action: [ :pullRequest | pullRequest number asString ];
+			(SpStringTableColumn new
+				title: '#';
+				evaluated: [ :pullRequest | pullRequest number asString ];
 				width: 50 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'State';
-				action: #state;
+			(SpStringTableColumn new
+				title: 'State';
+				evaluated: #state;
 				width: 50 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Author';
-				action: #author;
+			(SpStringTableColumn new
+				title: 'Author';
+				evaluated: #author;
 				width: 120 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Title';
-				action: #title;
+			(SpStringTableColumn new
+				title: 'Title';
+				evaluated: #title;
 				yourself);
-		dataSource: self newPullRequestsDataSource
+		items: self fetchPullRequests
 ]
 
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initializeWidgets [
 	super initializeWidgets.
-	pullRequests := self newIceTable.
+	pullRequests := self newTable.
 	details := self instantiate: IceGitHubPullRequestDetailModel.
 	
 	self initializePullRequestsTable.
@@ -127,14 +125,6 @@ IceTipGitHubPullRequestListBrowser >> newContextWithSelection: anObject [
 		yourself
 ]
 
-{ #category : #initialization }
-IceTipGitHubPullRequestListBrowser >> newPullRequestsDataSource [
-	^ IceTipDataSource new 
-		tool: self;
-		elements: #();
-		yourself
-]
-
 { #category : #accessing }
 IceTipGitHubPullRequestListBrowser >> pullRequests [
 	^ pullRequests
@@ -148,15 +138,15 @@ IceTipGitHubPullRequestListBrowser >> pullRequests: anObject [
 { #category : #actions }
 IceTipGitHubPullRequestListBrowser >> refreshPullRequests [
 	| table |
-	table := self pullRequests widget.
-	table dataSource elements: self fetchPullRequests.
-	(table hasSelection not and: [ table dataSource hasElements ])
+	table := self pullRequests.
+	table items: self fetchPullRequests.
+	(table selection selectedItem isNil and: [ table items isNotEmpty ])
 		ifTrue: [ table selectIndex: 1 ]
 ]
 
 { #category : #accessing }
 IceTipGitHubPullRequestListBrowser >> remote [
-	^ remote
+	^ (remote ifNil: [ remote := self repository remotes first ])
 ]
 
 { #category : #accessing }

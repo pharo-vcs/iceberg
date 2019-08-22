@@ -12,7 +12,7 @@ IceGitHubViewPullRequestCommand class >> browserRepositoryListActivation [
 	<classAnnotation>
 	
 	^ CmdContextMenuActivation
-		byItemOf: IceGitHubMenuGroup
+		byItemOf: IceGitHubViewPullRequestMenuGroup 
 		for: IceTipRepositoryListContext
 ]
 

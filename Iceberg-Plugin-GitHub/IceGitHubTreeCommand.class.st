@@ -47,5 +47,5 @@ IceGitHubTreeCommand >> fillContextMenu: aMenu using: aCommandActivator [
 
 { #category : #accessing }
 IceGitHubTreeCommand >> remote [
-	^ remote
+	^ (remote ifNil: [ remote := repositoryModel halt ])
 ]
