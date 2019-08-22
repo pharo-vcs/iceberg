@@ -43,7 +43,7 @@ IceTipEditProjectDialogTest >> testCanChangeCodeDirectory [
 
 { #category : #tests }
 IceTipEditProjectDialogTest >> testCanChangeFormat [
- 	|format previousFormat newFormat|
+ 	| previousFormat newFormat|
 	previousFormat := 	dialog formatList selectedItem.
 	dialog formatList selectedItem: dialog formatList getList first model .
 	newFormat := dialog formatList selectedItem.
