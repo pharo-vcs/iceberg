@@ -61,9 +61,12 @@ IceTipAbstractAskCredentialsModel >> initialize [
 { #category : #accessing }
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 	super initializeDialogWindow: aDialogWindowPresenter.
-	aDialogWindowPresenter title: self title.
-	self updateOkButton.
-	
+	aDialogWindowPresenter
+		title: self title;
+		okAction: [ self accept ];
+		cancelAction: [ self cancelAction ];
+		whenClosedDo: [ self closeAction ].
+	self updateOkButton
 ]
 
 { #category : #initialization }
