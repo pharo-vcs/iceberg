@@ -65,7 +65,7 @@ IceTipGitHubPullRequestListBrowser >> fetchPullRequests [
 
 { #category : #api }
 IceTipGitHubPullRequestListBrowser >> initialExtent [
-	^ (700@700) scaledByDisplayScaleFactor
+	^ (700 @ 700) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -102,7 +102,10 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 				title: 'Title';
 				evaluated: #title;
 				yourself);
-		items: self fetchPullRequests
+		items: self fetchPullRequests;
+		whenSelectionChangedDo: [ :selection | 
+			[ :pullRequest | self details pullRequest: pullRequest ]
+				cull: selection selectedItem ]
 ]
 
 { #category : #initialization }

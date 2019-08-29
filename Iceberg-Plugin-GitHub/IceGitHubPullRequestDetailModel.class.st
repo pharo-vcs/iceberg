@@ -14,15 +14,25 @@ Class {
 		'toLabel',
 		'toText',
 		'mergeableLabel',
-		'mergeablePanel',
 		'statusLabel',
-		'statusPanel',
 		'checksTable',
 		'bodyText',
-		'pullRequest'
+		'pullRequest',
+		'mergeableMessage',
+		'mergeableIcon',
+		'statusMessage',
+		'statusIcon'
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
+
+{ #category : #commands }
+IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	rootCommandGroup
+		register: ((CmCommandGroup named: 'checks commands') asSpecGroup
+			register: (IceTipOpenCheckUrlCommand forSpec context: presenterIntance )
+		)
+]
 
 { #category : #specs }
 IceGitHubPullRequestDetailModel class >> defaultSpec [
@@ -34,49 +44,54 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 				add: #urlText;
-				yourself);
+				yourself)
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #authorLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 				add: #authorText;
-				yourself);
+				yourself)
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #fromLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 				add: #fromText;
-				yourself);
+				yourself)
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #toLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 				add: #toText;
-				yourself);
+				yourself)
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #mergeableLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #mergeablePanel;
+				add: #mergeableIcon width: self iconWidth ;
+				add: #mergeableMessage;
 				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #statusLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #statusPanel;
+				add: #statusIcon width: self iconWidth ;
+				add: #statusMessage;
 				yourself)
+			height: self inputTextHeight;
+			add: #checksTable;
+			add: #bodyText
 			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add: #checksTable;
-		add: #bodyText 					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 		yourself
 ]
 
@@ -157,6 +172,7 @@ IceGitHubPullRequestDetailModel >> iconForStatus: status [
 
 { #category : #initialization }
 IceGitHubPullRequestDetailModel >> initializeWidgets [
+
 	urlLabel := self newLabel label: 'Url'.
 	authorLabel := self newLabel label: 'Author'.
 	fromLabel := self newLabel label: 'From'.
@@ -164,14 +180,22 @@ IceGitHubPullRequestDetailModel >> initializeWidgets [
 	mergeableLabel := self newLabel label: 'Mergeable'.
 	statusLabel := self newLabel label: 'Status'.
 
-	urlText := self newTextInput enabled: false.
-	authorText  := self newTextInput enabled: false.
-	fromText  := self newTextInput enabled: false.
-	toText  := self newTextInput enabled: false.
-	mergeablePanel := self newMergeablePanel.
-	statusPanel := self newStatusPanel.
+	urlText := self newText enabled: false.
+	authorText  := self newText enabled: false.
+	fromText  := self newText enabled: false.
+	toText  := self newText enabled: false.
+
+	mergeableIcon := self newImage.
+	mergeableMessage := self newText disable.
+	statusIcon  := self newImage.
+	statusMessage := self newText disable .
 	checksTable := self newChecksTable.
 	bodyText := self newText enabled: false.
+]
+
+{ #category : #accessing }
+IceGitHubPullRequestDetailModel >> mergeableIcon: aImage [
+	mergeableIcon := aImage
 ]
 
 { #category : #'accessing ui' }
@@ -185,52 +209,39 @@ IceGitHubPullRequestDetailModel >> mergeableLabel: anObject [
 ]
 
 { #category : #accessing }
-IceGitHubPullRequestDetailModel >> mergeablePanel [
-	^ mergeablePanel
+IceGitHubPullRequestDetailModel >> mergeableMessage [
+	^ mergeableMessage
 ]
 
 { #category : #accessing }
-IceGitHubPullRequestDetailModel >> mergeablePanel: anObject [
-	mergeablePanel := anObject
+IceGitHubPullRequestDetailModel >> mergeableMessage: aString [
+	mergeableMessage := aString 
 ]
 
 { #category : #'private factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
-	^ FTTableMorph new 
-		addColumn: ((FTColumn id: #target_url) width: 18 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #state) width: 65 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #context) width: 100 * World displayScaleFactor);
-		addColumn: (FTColumn id: #description);
-		cellInset: 5 * World displayScaleFactor;
+	^ self newTable
+		addColumn:
+			(SpCompositeTableColumn new
+				title: 'state';
+				addColumn:
+					(SpImageTableColumn
+						evaluated: [ :aStatus | self iconForStatus: (aStatus at: 'state') ]);
+				addColumn: (SpStringTableColumn evaluated: [ :aStatus | aStatus at: 'state' ]);
+				width: 50 * World displayScaleFactor);
+		addColumn:
+			((SpStringTableColumn
+				title: 'context';
+				evaluated: [ :aStatus | aStatus at: 'context' ])
+				width: 120 * World displayScaleFactor);
+		addColumn:
+			(SpStringTableColumn
+				title: 'description';
+				evaluated: [ :aStatus | aStatus at: 'description' ]);
 		beResizable;
-		vResizing: #spaceFill;
-		hResizing: #spaceFill;
-		asSpecAdapter
-		
-]
-
-{ #category : #'private factory' }
-IceGitHubPullRequestDetailModel >> newMergeablePanel [
-	^ PanelMorph new 
-		color: Color transparent;
-		layoutPolicy: TableLayout new;
-		listDirection: #leftToRight;
-		cellInset: 5;
-		vResizing: #spaceFill;
-		hResizing: #spaceFill;
-		asSpecAdapter
-]
-
-{ #category : #'private factory' }
-IceGitHubPullRequestDetailModel >> newStatusPanel [
-	^ PanelMorph new 
-		color: Color transparent;
-		layoutPolicy: TableLayout new;
-		listDirection: #leftToRight;
-		cellInset: 5;
-		vResizing: #spaceFill;
-		hResizing: #spaceFill;
-		asSpecAdapter
+		showColumnHeaders;
+		contextMenu:
+				[ (self rootCommandsGroup / 'checks commands') beRoot asMenuPresenter ]
 ]
 
 { #category : #accessing }
@@ -253,26 +264,22 @@ IceGitHubPullRequestDetailModel >> pullRequest: aPullRequest [
 { #category : #private }
 IceGitHubPullRequestDetailModel >> retrieveDetail [
 	
-	self mergeablePanel widget addMorphBack: 'Loading...' asMorph.
+	self mergeableMessage text: (self mergeableMessage text , '  Loading...' ).
 	[ | detail mergeable |  
 		[  
 			detail := self pullRequest detail.
 			mergeable := detail at: #mergeable ]
 		on: Error do: [ :e | mergeable := nil ].
-		UIManager default defer: [ 
-			self mergeablePanel widget
-				removeAllMorphs;
-				addMorphBack: (self iconForMergeable: mergeable) asMorph;
-				addMorphBack: (self textForMergeable: mergeable) asMorph ]
-	] fork
+		mergeableMessage defer: [mergeableMessage text: (self textForMergeable: mergeable).].
+		mergeableIcon defer: [mergeableIcon image: ( self iconForMergeable: mergeable).].
+		] fork
 ]
 
 { #category : #private }
 IceGitHubPullRequestDetailModel >> retrieveStatuses [
-	self statusPanel widget addMorphBack: 'Loading...' asMorph.
-	[ 
-	| status generalStatus statuses |
-	
+"	self statusPanel widget addMorphBack: 'Loading...' asMorph."
+	self statusMessage text: (statusMessage text , '  Loading...').
+	[ | status generalStatus statuses |	
 	[
 		status := self pullRequest status.
 		generalStatus := status at: 'state'.
@@ -280,14 +287,20 @@ IceGitHubPullRequestDetailModel >> retrieveStatuses [
 	on: Error do: [ :e | 
 		generalStatus := 'Unknown'.
 		statuses := #() ].
-	
-	UIManager default defer: [ 
-		self statusPanel widget
-			removeAllMorphs;
-			addMorphBack: (self iconForStatus: generalStatus) asMorph;
-			addMorphBack: generalStatus asMorph.
-	 	self checksTable widget dataSource: (IceGitHubPullRequestDataSource elements: statuses) ]
+		statusMessage defer: [statusMessage text: (self textForMergeable: generalStatus).].
+		statusIcon defer: [statusIcon image: (self iconForStatus: generalStatus).].
+		checksTable defer: [ checksTable items:(statuses )]
 	] fork
+]
+
+{ #category : #'accessing ui' }
+IceGitHubPullRequestDetailModel >> statusIcon [
+	^ statusIcon
+]
+
+{ #category : #'accessing ui' }
+IceGitHubPullRequestDetailModel >> statusIcon: aImage [
+	statusIcon := aImage
 ]
 
 { #category : #'accessing ui' }
@@ -301,13 +314,13 @@ IceGitHubPullRequestDetailModel >> statusLabel: anObject [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> statusPanel [
-	^ statusPanel
+IceGitHubPullRequestDetailModel >> statusMessage [
+	^ statusMessage
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> statusPanel: anObject [
-	statusPanel := anObject
+IceGitHubPullRequestDetailModel >> statusMessage: aString [
+	statusMessage := aString 
 ]
 
 { #category : #private }
