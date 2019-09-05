@@ -18,7 +18,7 @@ Class {
 IceTipHistoryBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
 	rootCommandGroup
 		register: ((CmCommandGroup named: 'commit commands') asSpecGroup
-			register: (IceTipCherryPickCommand forSpec context: presenterIntance )
+			register: (IceTipCherrypickCommand forSpec context: presenterIntance )
 		)
 ]
 
