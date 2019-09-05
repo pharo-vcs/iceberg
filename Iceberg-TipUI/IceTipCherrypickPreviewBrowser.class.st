@@ -19,19 +19,17 @@ IceTipCherrypickPreviewBrowser class >> defaultSpec [
 
 { #category : #'instance creation' }
 IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
-	^ self
-		on:
-			(IceTipCherrypickModel onCommitish: aCommitish)
+	^ self on: (IceTipCherrypickModel onCommitish: aCommitish)
 ]
 
 { #category : #initialization }
 IceTipCherrypickPreviewBrowser >> buttonBar [
-^	buttonBar 
+	^ buttonBar
 ]
 
 { #category : #initialization }
 IceTipCherrypickPreviewBrowser >> buttonBar: aSpButtonBarPresenter [
-	buttonBar  := aSpButtonBarPresenter
+	buttonBar := aSpButtonBarPresenter
 ]
 
 { #category : #accessing }
@@ -53,11 +51,11 @@ IceTipCherrypickPreviewBrowser >> diffPanel: anObject [
 
 { #category : #actions }
 IceTipCherrypickPreviewBrowser >> doCherryPick [
-|root|
+	| root |
 	root := diffPanel model tree.
-			root accept: IceMergeToChangeTreeVisitor new.
-			self model repository workingCopy loadChangesInWorkingCopy: root.
-			self window close
+	root accept: IceMergeToChangeTreeVisitor new.
+	self model repository workingCopy loadChangesInWorkingCopy: root.
+	self window close
 ]
 
 { #category : #accessing }
@@ -86,13 +84,11 @@ IceTipCherrypickPreviewBrowser >> initializeWidgets [
 
 { #category : #accessing }
 IceTipCherrypickPreviewBrowser >> mergeType: anObject [
-	
 	self model mergeType: anObject
 ]
 
 { #category : #'private factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
-
 	^ self newButton
 		label: 'Apply';
 		icon: (self iconNamed: #merge);

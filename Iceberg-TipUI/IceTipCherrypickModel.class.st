@@ -3,7 +3,8 @@ Class {
 	#superclass : #IceTipModel,
 	#instVars : [
 		'mergeTree',
-		'commitish'
+		'source',
+		'target'
 	],
 	#category : #'Iceberg-TipUI-Model'
 }
@@ -17,18 +18,24 @@ IceTipCherrypickModel class >> onCommitish: aCommitish [
 
 { #category : #accessing }
 IceTipCherrypickModel >> commitish [
-	^commitish
+	^source
 ]
 
 { #category : #accessing }
 IceTipCherrypickModel >> commitish: aCommistish [
-	commitish := aCommistish.
-	mergeTree := commitish repository cherryPickFrom: aCommistish
+	self from: aCommistish to: aCommistish repository head
 ]
 
 { #category : #accessing }
 IceTipCherrypickModel >> diff [
 	^ self
+]
+
+{ #category : #accessing }
+IceTipCherrypickModel >> from: sourceCommitish to: targetCommitish [
+	source := sourceCommitish.
+	target := targetCommitish.
+	mergeTree := targetCommitish cherryPickFrom: sourceCommitish.
 ]
 
 { #category : #accessing }
@@ -38,7 +45,7 @@ IceTipCherrypickModel >> mergeTree [
 
 { #category : #accessing }
 IceTipCherrypickModel >> repository [
-	^commitish repository.
+	^source repository.
 ]
 
 { #category : #accessing }
