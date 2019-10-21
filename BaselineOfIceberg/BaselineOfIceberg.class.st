@@ -13,11 +13,6 @@ BaselineOfIceberg >> baseline: spec [
 		
 		self tonel: spec.
 		self libgit: spec.
-		
-		spec
-			baseline: 'Spec2' 
-			with: [ spec repository: 'github://pharo-spec/spec:master/src' ].
-		
 		spec
 			baseline: 'Ring2' 
 			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
@@ -31,7 +26,7 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
-			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Spec2') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
@@ -86,8 +81,10 @@ BaselineOfIceberg >> baseline: spec [
 
 	spec for: #'pharo7.x' do: [	
 		self commander: spec.
-		spec package: 'Hiedra-Pharo7'.
-		spec package: 'Iceberg' with: [ spec requires: #( 'Hiedra-Pharo7' 'Commander' ) ]]
+		spec package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ].
+		spec package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ].
+		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
+		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
 ]
 
 { #category : #baseline }

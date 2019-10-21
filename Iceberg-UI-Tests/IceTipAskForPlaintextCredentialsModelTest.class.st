@@ -5,7 +5,7 @@ Class {
 		'store',
 		'dialog'
 	],
-	#category : 'Iceberg-UI-Tests'
+	#category : #'Iceberg-UI-Tests'
 }
 
 { #category : #running }
@@ -20,6 +20,20 @@ IceTipAskForPlaintextCredentialsModelTest >> setUp [
 { #category : #running }
 IceTipAskForPlaintextCredentialsModelTest >> tearDown [
 	dialog ifNotNil: [ [dialog window close] on: LGitNoCredentialsProvided do: [  ] ].
+]
+
+{ #category : #tests }
+IceTipAskForPlaintextCredentialsModelTest >> testAcceptClosesWindow [
+
+	dialog remoteHostname: 'github.com'. 
+	dialog openNonModal. 
+	
+	dialog passwordInput text: 'aaa'.
+	dialog usernameInput text: 'bbb'.
+	
+	dialog window toolbar okButton performAction.
+
+	self assert: dialog window isClosed
 ]
 
 { #category : #tests }
@@ -64,23 +78,24 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptEnabledAndDisabled [
 	dialog openNonModal.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	self assert: dialog okButton isEnabled.
+	self assert: dialog acceptButton enabled.
 	dialog passwordInput text: ''.
 	dialog usernameInput text: 'bbb'.
-	self deny: dialog okButton isEnabled.
+	self deny: dialog acceptButton enabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: ''.
-	self deny: dialog okButton isEnabled.
+	self deny: dialog acceptButton enabled.
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
-	self assert: dialog okButton isEnabled
+	self assert: dialog acceptButton enabled
 ]
 
 { #category : #tests }
 IceTipAskForPlaintextCredentialsModelTest >> testAcceptIsBlockedInTheBeginning [
 	dialog remoteHostname: 'github.com'.
 	dialog openNonModal.
-	self deny: dialog okButton isEnabled
+
+  self deny: dialog acceptButton enabled
 ]
 
 { #category : #'tests - storing' }
