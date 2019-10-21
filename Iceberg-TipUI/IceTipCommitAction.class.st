@@ -7,8 +7,7 @@ Class {
 	#instVars : [
 		'diff',
 		'items',
-		'message',
-		'publish'
+		'message'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }

@@ -4,18 +4,14 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipComposablePresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',
+		'actionPanel',
 		'pushCheckbox',
 		'commitButton',
-		'messageText',
-		'message',
-		'actionButtonBar',
-		'saveCheckbox',
-		'fixesField',
-		'fixesLabel'
+		'messageText'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -23,21 +19,12 @@ Class {
 { #category : #specs }
 IceTipCommentPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #pushCheckbox;
-				add: #saveCheckbox;
-				yourself)
-			height: self inputTextHeight;
-		add: #commentText;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #fixesLabel width: 40;
-				add: #fixesField;
-				yourself)
-			height: self inputTextHeight;
-		add: #actionButtonBar height: self buttonHeight
+	^ SpecLayout composed
+		newColumn: [ :column |
+			column 
+				newRow: #pushCheckbox height: self inputTextHeight;
+				newRow: #commentText;
+				newRow: #actionPanel height: self iceActionPanelHeight ]
 ]
 
 { #category : #specs }
@@ -45,9 +32,14 @@ IceTipCommentPanel class >> title [
 	^ 'Comment'
 ]
 
-{ #category : #accessing }
-IceTipCommentPanel >> actionButtonBar [
-	^actionButtonBar 
+{ #category : #'accessing ui' }
+IceTipCommentPanel >> actionPanel [
+	^ actionPanel
+]
+
+{ #category : #'accessing ui' }
+IceTipCommentPanel >> actionPanel: anObject [
+	actionPanel := anObject
 ]
 
 { #category : #accessing }
@@ -75,16 +67,6 @@ IceTipCommentPanel >> commitButton: anObject [
 	^ commitButton := anObject
 ]
 
-{ #category : #accessing }
-IceTipCommentPanel >> fixesField [
-	^fixesField 
-]
-
-{ #category : #accessing }
-IceTipCommentPanel >> fixesLabel [
-	^ fixesLabel
-]
-
 { #category : #initialization }
 IceTipCommentPanel >> initialize [
 	super initialize.
@@ -93,51 +75,28 @@ IceTipCommentPanel >> initialize [
 
 { #category : #initialization }
 IceTipCommentPanel >> initializeWidgets [
-	| fixesHelpString |
+
 	pushCheckbox := self newCheckBox.
-	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
-		ifTrue: [ pushCheckbox
-				label: ('Push changes to {1}' format: {self repositoryRemoteName});
-				state: IceTipCommitSettings pushOnCommit;
-				whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ] ]
+		ifTrue: [ pushCheckbox label: ('Push changes to {1}' format: { self repositoryRemoteName }) ]
 		ifFalse: [ pushCheckbox
-				label: 'Cannot push new branch automatically. Use the `Push` option';
+				label: ('Cannot push new branch automatically. Use the `Push` option');
 				enabled: false ].
-	saveCheckbox
-		label: 'Save the image when commiting';
-		state: IceTipCommitSettings saveImageOnCommit;
-		whenChangedDo: [ :state | IceTipCommitSettings saveImageOnCommit: state ].
 
 	commentText := self newText
 		autoAccept: true;
-		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
-
-	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be commited or merged in the default branch'.
-	fixesLabel := self newLabel
-		label: 'Fixes #';
-		help: fixesHelpString.
-	fixesField := self newNumberInput
-		autoAccept: true;
-		help: fixesHelpString;
-		placeholder: 'issue number';
-		beInteger;
-		yourself.
-
-	actionButtonBar := self newButtonBar.
-	actionButtonBar
-		add:
-			(commitButton := self newButton
-				label: 'Commit';
-				icon: (self iconNamed: #smallOk);
-				help: ('Commit your changes to {1}' format: {self repositoryName});
-				yourself).
+		whenBuiltDo: [ :ann |  ann widget withGhostText: 'A comment for your commit' ].
+	actionPanel := self newIceActionPanel.
+	actionPanel addAction: (commitButton := self newButton 
+		label: 'Commit';
+		icon: (self iconNamed: #smallOk);
+		help: ('Commit your changes to {1}' format: { self repositoryName });
+		yourself).
+		
 	self focusOrder
 		add: commentText;
-		add: fixesField ;
 		add: commitButton;
-		add: pushCheckbox;
-		add: saveCheckbox
+		add: pushCheckbox
 ]
 
 { #category : #testing }
@@ -145,16 +104,8 @@ IceTipCommentPanel >> isPushing [
 	^ self pushCheckbox state
 ]
 
-{ #category : #testing }
-IceTipCommentPanel >> isSaving [
-	^ self saveCheckbox state
-]
-
 { #category : #accessing }
 IceTipCommentPanel >> message [
-|stream|
-	self fixesField text isAllDigits
-		ifTrue: [ 	stream := ReadWriteStream with: self commentText text asString. stream cr ; nextPutAll: 'Fixes #'; nextPutAll: self fixesField number asString . ^ stream contents  ].
 	^ self commentText text asString
 ]
 
@@ -195,16 +146,6 @@ IceTipCommentPanel >> repositoryName [
 { #category : #'private accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
 	^ self repositoryModel pushRemoteName
-]
-
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> saveCheckbox [
-	^ saveCheckbox
-]
-
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> saveCheckbox: anObject [
-	saveCheckbox := anObject
 ]
 
 { #category : #initialization }

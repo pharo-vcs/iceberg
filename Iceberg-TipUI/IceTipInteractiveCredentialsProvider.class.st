@@ -20,12 +20,14 @@ IceTipInteractiveCredentialsProvider class >> isDefault [
 
 { #category : #private }
 IceTipInteractiveCredentialsProvider >> obtainPlaintextCredentials: credentialsToReturn [
+
 	| returnedCred |
 	returnedCred := IceTipAskForPlaintextCredentialsModel new
 		credentialStore: self credentialStore;
 		remoteHostname: remote host;
-		openModalWithSpec;
-		credentials.
+		open.
+		
+	
 	credentialsToReturn readFrom: returnedCred
 ]
 

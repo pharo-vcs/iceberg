@@ -9,7 +9,7 @@ Some remarks about design:
 "
 Class {
 	#name : #IceTipBrowser,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'model',
 		'toolbar'
@@ -19,16 +19,7 @@ Class {
 
 { #category : #initialization }
 IceTipBrowser >> addShortcutsTo: aWidget [
-	| shortcuts |
-	shortcuts := CmdShortcutActivation registeredInstances
-		select: [ :each | each activeContext describes: self newContext ].
-	shortcuts do: [ :shortcut | self bindKeyCombination: shortcut keyCombination toAction: [ self executeShortcut: shortcut ] ]
-]
-
-{ #category : #accessing }
-IceTipBrowser >> buildMenu [ 
-	
-	^ (CmdContextMenuActivation buildMenuInContext: self createCommandContext) asSpMenuPresenter
+	self enableCommanderShortcutsIn: aWidget
 ]
 
 { #category : #accessing }
@@ -39,14 +30,6 @@ IceTipBrowser >> contextClass [
 { #category : #'private factory' }
 IceTipBrowser >> createCommandContext [
 	^ self newContext
-]
-
-{ #category : #'as yet unclassified' }
-IceTipBrowser >> executeShortcut: aCmdShortcutActivation [ 
-	| context |
-	context := self createCommandContext .
-	(	aCmdShortcutActivation commandClass canBeExecutedInContext: context) 
-			ifTrue: [ aCmdShortcutActivation commandClass new readParametersFromContext: context ; execute  ]
 ]
 
 { #category : #accessing }
@@ -67,7 +50,7 @@ IceTipBrowser >> initialize [
 
 { #category : #initialization }
 IceTipBrowser >> initializeToolbar [
-	toolbar := self instantiate: IceTipToolbar.
+	toolbar := self newIceToolbar.
 	self rebuildToolbar
 ]
 
@@ -101,7 +84,7 @@ IceTipBrowser >> newContextWithSelection: anObject [
 
 { #category : #accessing }
 IceTipBrowser >> rebuildToolbar [
-	toolbar removeAll.
+	toolbar items: #().
 	toolbar addItemsFromContext: self newContext
 ]
 

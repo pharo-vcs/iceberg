@@ -6,7 +6,7 @@ I'm done to be embedded in a dialog, so I implement doAccept to execute my actio
 "
 Class {
 	#name : #IceTipCreateTagPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipComposablePresenter,
 	#instVars : [
 		'spacePanel',
 		'callback',
@@ -26,24 +26,23 @@ Class {
 { #category : #specs }
 IceTipCreateTagPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #currentCommitishLabel height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #tagNameLabel width: self labelWidth ;
-				add: #tagNameInputText;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #majorButton;
-				add: #minorButton;
-				add: #patchButton;
-				yourself)
-			height: self inputTextHeight;
-		add: #existingTagsList height: self inputTextHeight * 3;
-		add: #spacePanel;
-		yourself 
+	^ SpecLayout composed
+		newColumn: [ :col | 
+			col
+				newRow: #currentCommitishLabel height: self inputTextHeight;
+				newRow: [ :row | 
+					row
+						add: #tagNameLabel width: self iceLabelWidth;
+						add: #tagNameInputText ]
+					height: self inputTextHeight;
+				newRow: [ :row | 
+					row
+						add: #majorButton;
+						add: #minorButton;
+						add: #patchButton ]
+					height: self inputTextHeight;
+				newRow: #existingTagsList height: self inputTextHeight * 3;
+				newRow: #spacePanel ]
 ]
 
 { #category : #accessing }
@@ -157,7 +156,7 @@ IceTipCreateTagPanel >> initializeWidgetsContents [
 	tagNameLabel := self newLabel label: 'New tag'.
 	tagNameInputText := self newTextInput
 		autoAccept: true;
-		placeholder: 'e.g., v[X].[Y].[Z]'.
+		ghostText: 'e.g., v[X].[Y].[Z]'.
 	self initializeNextTagPanel.
 	self initializeExistingTagsList.
 	spacePanel := PanelMorph new asSpecAdapter

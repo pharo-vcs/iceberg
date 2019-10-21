@@ -6,7 +6,6 @@ Class {
 	#name : #IceTipFiletreeToTonelDialog,
 	#superclass : #IceTipDialog,
 	#instVars : [
-		'model',
 		'iconPanel',
 		'confirmLabel',
 		'mergeWithMasterCheckbox',
@@ -33,14 +32,15 @@ ARE YOU SURE?'
 { #category : #specs }
 IceTipFiletreeToTonelDialog class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newHorizontal
-		add: #iconPanel width: 40 * World displayScaleFactor;
-		add:
-			(SpBoxLayout newVertical
-				add: #confirmLabel;
-				add: #mergeWithMasterCheckbox height: self inputTextHeight;
-				yourself );
-				yourself 
+	
+	^ SpecLayout composed 
+		newRow: [ :row |
+			row 
+				newColumn: #iconPanel width: 40 * World displayScaleFactor;
+				newColumn: [ :column |
+					column 
+						newRow: #confirmLabel;
+						newRow: #mergeWithMasterCheckbox height: self inputTextHeight] ]
 ]
 
 { #category : #specs }
@@ -106,17 +106,20 @@ IceTipFiletreeToTonelDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipFiletreeToTonelDialog >> initializeWidgets [
-	iconPanel := self newImage.
-	iconPanel image: (self iconNamed: #question).
-	confirmLabel := self newText.
-	confirmLabel text: (self class confirmMessage
-				format:
-					{self repository name.
-					self branchName}).
+	iconPanel := self newIcePanel.
+	iconPanel widget addMorph: (self iconNamed: #question) asMorph.
+	
+	confirmLabel := self newIceReadOnlyText. 
+	confirmLabel widget contentsWrapped: (self class confirmMessage 
+		format: { 
+			self repository name. 
+			self branchName }).
 	mergeWithMasterCheckbox := self newCheckBox
-		label: ('Merge with branch {1}' format: {self repository branchName});
+		label: ('Merge with branch {1}' format: { self repository branchName });
 		state: true.
-	self focusOrder add: mergeWithMasterCheckbox
+
+	self focusOrder 
+		add: mergeWithMasterCheckbox
 ]
 
 { #category : #'accessing ui' }

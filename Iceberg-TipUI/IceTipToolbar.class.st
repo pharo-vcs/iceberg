@@ -28,6 +28,11 @@ IceTipToolbar class >> defaultHeight [
 ]
 
 { #category : #accessing }
+IceTipToolbar class >> defaultItemSeparation [
+	^ 0
+]
+
+{ #category : #accessing }
 IceTipToolbar class >> defaultItemSize [
 	^ 50 * World displayScaleFactor
 ]
@@ -37,14 +42,12 @@ IceTipToolbar class >> defaultMode [
 	^ IceTipToolbarDisplayMode default
 ]
 
-{ #category : #'private dispatch' }
-IceTipToolbar >> addItemLeft: aButtonPresenter [
-	self leftPanel add: aButtonPresenter 
-]
+{ #category : #specs }
+IceTipToolbar class >> defaultSpec [
+	<spec: #default>
 
-{ #category : #'private dispatch' }
-IceTipToolbar >> addItemRight: aButtonPresenter [
-	self rightPanel add: aButtonPresenter.
+	^ SpecLayout composed
+		newRow: #panel
 ]
 
 { #category : #accessing }
@@ -67,15 +70,6 @@ IceTipToolbar >> displayMode: anObject [
 	displayMode := anObject
 ]
 
-{ #category : #initialization }
-IceTipToolbar >> initializeWidgets [
-
-	leftPanel := self newButtonBar placeAtStart.
-	rightPanel := self newButtonBar placeAtEnd
-
-
-]
-
 { #category : #'private factory' }
 IceTipToolbar >> newToolbarItemFont [
 	| buttonFont |
@@ -87,12 +81,12 @@ IceTipToolbar >> newToolbarItemFont [
 
 { #category : #accessing }
 IceTipToolbar >> refresh [
-
-	self leftPanel items: #().
-	self rightPanel items: #().
-	items
-		do:
-			[ :each | each position addItem: (each newElementOn: self) into: self ]
+	self leftPanel removeAllMorphs.
+	self rightPanel removeAllMorphs.
+	items do: [ :each |  
+		each position 
+			addItem: (each newToolbarButtonOn: self) 
+			into: self ]
 ]
 
 { #category : #accessing }

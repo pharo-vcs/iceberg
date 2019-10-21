@@ -10,7 +10,7 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 	 project with it"
 	| packageNames repository commit workingCopy |
 	
-	self flag: #pharoTodo. "Refactor into something better (a class and a hierarchy, so we can add 
+	self flag: #TODO. "Refactor into something better (a class and a hierarchy, so we can add 
 	other packages)"
 	
 	"extract package names from baselines"

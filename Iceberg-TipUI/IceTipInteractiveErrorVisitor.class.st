@@ -135,7 +135,7 @@ You need to pull remote changes before continue and push your changes.' format: 
 	[ command execute ]
 	on: IceMergeAborted, IceShouldCommitBeforePull
 	do: [ :e |
-		self flag: #pharoTodo. "Refactor this" 
+		self flag: #todo. "Refactor this" 
 		(e isKindOf: IceShouldCommitBeforePull)
 			ifTrue: [ e resume ]
 			ifFalse: [ e acceptError: self ] ].

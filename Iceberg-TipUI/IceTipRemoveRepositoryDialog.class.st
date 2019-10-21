@@ -18,18 +18,15 @@ IceTipRemoveRepositoryDialog class >> confirmMessage [
 { #category : #specs }
 IceTipRemoveRepositoryDialog class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical 
-		add:
-			(SpBoxLayout newHorizontal
-				add: #iconPanel width: 40 * World displayScaleFactor;
-				add:
-					(SpBoxLayout newVertical
-						add: #confirmLabel;
-						add: #removeFileSystemCheckbox height: self inputTextHeight;
-						yourself);
-				yourself);
-		yourself
-
+	
+	^ SpecLayout composed 
+		newRow: [ :row |
+			row 
+				newColumn: #iconPanel width: 40 * World displayScaleFactor;
+				newColumn: [ :column |
+					column 
+						newRow: #confirmLabel;
+						newRow: #removeFileSystemCheckbox height: self inputTextHeight ] ]
 ]
 
 { #category : #accessing }
@@ -80,13 +77,16 @@ IceTipRemoveRepositoryDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipRemoveRepositoryDialog >> initializeWidgets [
-	iconPanel := self newImage.
-	iconPanel image: (self iconNamed: #question).
-	confirmLabel := self newLabel
-		label: (self class confirmMessage format: {self model name}).
+	iconPanel := self newIcePanel.
+	iconPanel widget addMorph: (self iconNamed: #question) asMorph.
+	
+	confirmLabel := self newLabel 
+		label: (self class confirmMessage format: { self model name }).
 	removeFileSystemCheckbox := self newCheckBox
 		label: self class removeMessage.
-	self focusOrder add: self removeFileSystemCheckbox
+		
+	self focusOrder 
+		add: self removeFileSystemCheckbox
 ]
 
 { #category : #accessing }

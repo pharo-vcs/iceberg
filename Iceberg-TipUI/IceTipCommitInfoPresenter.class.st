@@ -1,20 +1,24 @@
 "
+Description
+--------------------
+
 I'm a panel to show the history of a commitish (usually a branch or a tag). I display infos on it and diffs.
 
 I'm usually used as part of an IceTipHistoryBrowser.
 "
 Class {
 	#name : #IceTipCommitInfoPresenter,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'model',
 		'selectedModel',
+		'commitTabPanel',
+		'infoTab',
+		'emptyTab',
 		'headTabContainer',
 		'ancestorTabContainer',
-		'notebookPanel',
-		'infoPage',
-		'headPage',
-		'ancestorPage'
+		'headTab',
+		'ancestorTab'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -22,45 +26,31 @@ Class {
 { #category : #specs }
 IceTipCommitInfoPresenter class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpBoxLayout newVertical
-		add: #notebookPanel;
+	^ SpecLayout composed
+		add: #commitTabPanel;
 		yourself
 ]
 
 { #category : #accessing }
 IceTipCommitInfoPresenter >> beForCommit [
-
-	headTabContainer := IceTipHistoryDiffFromHead tab: headPage.
-	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorPage
+	headTabContainer := IceTipHistoryDiffFromHead tab: headTab.
+	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorTab
 ]
 
 { #category : #accessing }
 IceTipCommitInfoPresenter >> beForMerge [
-
-	headTabContainer := IceTipHistoryDiffToHead tab: headPage.
-	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorPage
+	headTabContainer := IceTipHistoryDiffToHead tab: headTab.
+	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorTab
 ]
 
-{ #category : #private }
-IceTipCommitInfoPresenter >> commitInfo [
-
-	selectedModel ifNil: [ ^ self newEmpty ].
-	^ IceTipReadOnlyForm items: selectedModel info
+{ #category : #accessing }
+IceTipCommitInfoPresenter >> commitTabPanel [
+	^ commitTabPanel
 ]
 
-{ #category : #private }
-IceTipCommitInfoPresenter >> diffFromAncestor [
-	
-	selectedModel ifNil: [ ^ self newEmpty ].
-	^ IceTipDiffPanel on: (ancestorTabContainer diffFor: selectedModel)
-]
-
-{ #category : #private }
-IceTipCommitInfoPresenter >> diffFromHead [
-	
-	selectedModel ifNil: [ ^ self newEmpty ].
-	^ IceTipDiffPanel on: (headTabContainer diffFor: selectedModel)
+{ #category : #accessing }
+IceTipCommitInfoPresenter >> commitTabPanel: anObject [
+	commitTabPanel := anObject
 ]
 
 { #category : #initialization }
@@ -73,34 +63,28 @@ IceTipCommitInfoPresenter >> initialize [
 IceTipCommitInfoPresenter >> initializeCommitPanel [
 	"This will be initialised in fact on the first refresh"
 
-	notebookPanel
-		addPage: (infoPage := self newInfoPage);
-		addPage: (headPage := self newDiffPage 
-			title: 'Diff from HEAD';
-			presenterProvider: [ self diffFromHead ];
+	commitTabPanel
+		addTab: (infoTab := self newInfoTab);
+		addTab: (headTab := self newDiffTab 
+			label: 'Diff from HEAD';
+			whenTabSelected: [ self refreshDiffFromHead ];
 			yourself);
-		addPage: (ancestorPage := self newDiffPage 
-			title: 'Diff from ancestor';
-			presenterProvider: [ self diffFromAncestor ];
-			yourself)
+		addTab: (ancestorTab := self newDiffTab 
+			label: 'Diff from ancestor';
+			whenTabSelected: [ self refreshDiffFromAncestor ];
+			yourself).
+		
+	headTabContainer tab: headTab.
+	ancestorTabContainer tab: ancestorTab
 ]
 
 { #category : #initialization }
 IceTipCommitInfoPresenter >> initializeWidgets [
-
-	notebookPanel := self newNotebook.
+	commitTabPanel := self newTabManager.
+	
 	self initializeCommitPanel.
 	
-	self focusOrder add: notebookPanel
-]
-
-{ #category : #'private factory' }
-IceTipCommitInfoPresenter >> newDiffPage [
-
-	^ SpNotebookPage 
-		title: 'Diff'
-		icon: (self iconNamed: #diff)
-		provider: [ "It will be overriden" ]
+	self focusOrder add: commitTabPanel
 ]
 
 { #category : #'private factory' }
@@ -110,12 +94,6 @@ IceTipCommitInfoPresenter >> newDiffTab [
 		icon: (self iconNamed: #diff);
 		closeable: false;
 		yourself
-]
-
-{ #category : #'private factory' }
-IceTipCommitInfoPresenter >> newEmpty [
-
-	^ (self instantiate: LabelPresenter) label: '(No commit selected)'
 ]
 
 { #category : #'private factory' }
@@ -129,15 +107,6 @@ IceTipCommitInfoPresenter >> newEmptyTab [
 ]
 
 { #category : #'private factory' }
-IceTipCommitInfoPresenter >> newInfoPage [
-
-	^ SpNotebookPage  
-		title: 'Info'
-		icon: (self iconNamed: #smallQuestion)
-		provider: [ self commitInfo ]
-]
-
-{ #category : #'private factory' }
 IceTipCommitInfoPresenter >> newInfoTab [
 	^ self newTab 
 		label: 'Info';
@@ -148,12 +117,12 @@ IceTipCommitInfoPresenter >> newInfoTab [
 
 { #category : #accessing }
 IceTipCommitInfoPresenter >> refresh [
-	
-	selectedModel ifNil: [ ^ self ].
-	
-	headPage title: (headTabContainer labelFor: selectedModel).
-	ancestorPage title: (ancestorTabContainer labelFor: selectedModel).
-	notebookPanel resetAllPageContents
+	selectedModel ifNotNil: [ self showInfoTabs ] ifNil: [ self showEmptyTab ]
+]
+
+{ #category : #private }
+IceTipCommitInfoPresenter >> refreshCommitInfo [
+	infoTab contents: (selectedModel info ifNotNil: [ (IceTipReadOnlyForm items: selectedModel info) buildWithSpec ])
 ]
 
 { #category : #private }
@@ -176,14 +145,46 @@ IceTipCommitInfoPresenter >> refreshDiffFromHeadLabel [
 	headTabContainer updateLabelOn: selectedModel
 ]
 
+{ #category : #private }
+IceTipCommitInfoPresenter >> removeAllCommitPanelTabs [
+	commitTabPanel tabs copy do: [ :each | commitTabPanel removeTab: each ]
+]
+
 { #category : #accessing }
 IceTipCommitInfoPresenter >> selectedModel: aModel [
-
 	selectedModel := aModel.
 	self refresh
 ]
 
-{ #category : #initialization }
+{ #category : #'model access' }
 IceTipCommitInfoPresenter >> setModelBeforeInitialization: anObject [
 	model := anObject
+]
+
+{ #category : #private }
+IceTipCommitInfoPresenter >> showEmptyTab [
+	emptyTab ifNil: [ emptyTab := self newEmptyTab ].
+	self removeAllCommitPanelTabs.
+	commitTabPanel addTab: emptyTab.
+]
+
+{ #category : #private }
+IceTipCommitInfoPresenter >> showInfoTabs [
+	"This is just an optimisation to not refresh always. This way it will happen 
+	 just if we come from a 'non-selection'"
+	(commitTabPanel tabs includes: infoTab) ifFalse: [
+		self removeAllCommitPanelTabs.
+		commitTabPanel 
+			addTab: infoTab;
+			addTab: headTabContainer tab;
+			addTab: ancestorTabContainer tab ]. 
+	
+	self refreshCommitInfo.
+	"refresh tab headers"
+	self refreshDiffFromHeadLabel.
+	self refreshDiffFromAncestorLabel.
+	"Refresh selected tab contents"
+	commitTabPanel selectedTab ifNotNil: #tabSelected.
+
+	
 ]

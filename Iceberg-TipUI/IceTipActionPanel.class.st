@@ -3,13 +3,12 @@ I'm a simple action bar to be used as footer of certain panels (see IceTipCommen
 "
 Class {
 	#name : #IceTipActionPanel,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'panel',
 		'actions',
 		'actionMorphPanel',
-		'actionWidth',
-		'actionsButtonBar'
+		'actionWidth'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -27,9 +26,8 @@ IceTipActionPanel class >> defaultHeight [
 { #category : #specs }
 IceTipActionPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #actionsButtonBar height: self  buttonHeight ;
-		yourself
+	^ SpecLayout composed
+		newRow: #panel
 ]
 
 { #category : #accessing }
@@ -56,15 +54,13 @@ IceTipActionPanel >> initialize [
 
 { #category : #initialization }
 IceTipActionPanel >> initializeWidgets [
-	actionsButtonBar := self newButtonBar 
-	"
-		addMorphBack:
-			(actionMorphPanel := PanelMorph new
-				changeTableLayout;
-				listDirection: #rightToLeft;
-				hResizing: #shrinkWrap;
-				vResizing: #spaceFill;
-				yourself)"
+	panel := self newIcePanel.
+	panel widget addMorphBack: (actionMorphPanel := PanelMorph new 
+		changeTableLayout;
+		listDirection: #rightToLeft;
+		hResizing: #shrinkWrap;
+		vResizing: #spaceFill;
+		yourself)
 ]
 
 { #category : #initialization }
@@ -86,6 +82,10 @@ IceTipActionPanel >> panel: anObject [
 
 { #category : #initialization }
 IceTipActionPanel >> refresh [
-	actionsButtonBar items: OrderedCollection new .
-	actions do: [ :each | actionsButtonBar add: each ]
+	actionMorphPanel removeAllMorphs.
+	actions do: [ :each |
+		actionMorphPanel addMorphBack: (each buildWithSpec
+			hResizing: #rigid;
+			width: self actionWidth;
+			yourself) ]
 ]

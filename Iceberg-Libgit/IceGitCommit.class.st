@@ -6,8 +6,7 @@ Class {
 		'author',
 		'datetime',
 		'ancestorIds',
-		'comment',
-		'packageNamesCache'
+		'comment'
 	],
 	#category : #'Iceberg-Libgit-Core'
 }
@@ -193,12 +192,6 @@ IceGitCommit >> repositoryHandle [
 	
 	<repositoryHandleAccessor>
 	^ repository repositoryHandle
-]
-
-{ #category : #'API-packages' }
-IceGitCommit >> resetPackageCache [
-	
-	packageNamesCache := nil.
 ]
 
 { #category : #TOMOVE }

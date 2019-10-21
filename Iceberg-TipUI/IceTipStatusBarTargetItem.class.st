@@ -7,57 +7,21 @@ Class {
 	#name : #IceTipStatusBarTargetItem,
 	#superclass : #IceTipStatusBarItem,
 	#instVars : [
-		'target',
-		'helpBlock',
-		'contentsBlock'
+		'target'
 	],
 	#category : #'Iceberg-TipUI-Spec-ItemBar'
 }
 
-{ #category : #configuring }
-IceTipStatusBarTargetItem >> configurePresenter: aSpLabelPresenter [ 
-	
-	aSpLabelPresenter label: self contents.
-	aSpLabelPresenter help: self help.
-
-]
-
 { #category : #accessing }
 IceTipStatusBarTargetItem >> contents [
-
-	^ contentsBlock cull: target
-]
-
-{ #category : #accessing }
-IceTipStatusBarTargetItem >> contentsBlock [
-	^ contentsBlock
-]
-
-{ #category : #accessing }
-IceTipStatusBarTargetItem >> contentsBlock: anObject [
-	contentsBlock := anObject
+	"Contents will be a selector, here"
+	^ self target perform: super contents
 ]
 
 { #category : #accessing }
 IceTipStatusBarTargetItem >> help [
-
-	^ helpBlock cull: target 
-]
-
-{ #category : #accessing }
-IceTipStatusBarTargetItem >> helpBlock [
-	^ helpBlock
-]
-
-{ #category : #accessing }
-IceTipStatusBarTargetItem >> helpBlock: anObject [
-	helpBlock := anObject
-]
-
-{ #category : #configuring }
-IceTipStatusBarTargetItem >> presenterClass [
-	
-	^ SpLabelPresenter 
+	"help here will be a selector, here"
+	^ super help ifNotNil: [ :sel | self target perform: sel ]
 ]
 
 { #category : #accessing }

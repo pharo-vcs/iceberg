@@ -494,16 +494,11 @@ IceLibgitRepository >> iceCommitFrom: aGitCommit [
 
 { #category : #'private-initialization' }
 IceLibgitRepository >> init [
+	
 	"Initialize new repository. This is the equivalent to running in the command line:
 	  $ git init
 	"
-
-	self initBare: false
-]
-
-{ #category : #initialization }
-IceLibgitRepository >> initBare: isBare [
-	(LGitRepository on: self location) initBare: isBare
+	(LGitRepository on: self location) init
 ]
 
 { #category : #'private-commits' }
@@ -549,7 +544,7 @@ IceLibgitRepository >> isPackageExported: anIceSavedPackage [
 
 { #category : #testing }
 IceLibgitRepository >> isValid [
-	self flag: #pharoTodo. "Make this tests more solid"
+	self flag: #todo. "Make this tests more solid"
 	^ self isMissing not
 ]
 

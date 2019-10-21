@@ -12,6 +12,11 @@ Class {
 }
 
 { #category : #accessing }
+IceTipCommand class >> defaultHelp [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 IceTipCommand class >> defaultPosition [
 	^ #left
 ]

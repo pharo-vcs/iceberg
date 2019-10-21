@@ -16,10 +16,12 @@ Class {
 { #category : #specs }
 IceTipRepositoriesBrowser class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical 
-add: #toolbar height: IceTipToolbar defaultHeight;
-			add: #repositoryList;
-			yourself 
+	
+	^ SpecLayout composed 
+		newColumn: [ :column |
+			column 
+				newRow: #toolbar height: IceTipToolbar defaultHeight;
+				newRow: #repositoryList ]
 ]
 
 { #category : #accessing }
@@ -41,21 +43,6 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 		action: [ self new openWithSpec ]
 ]
 
-{ #category : #'instance creation' }
-IceTipRepositoriesBrowser class >> new [
-	
-	^ self newOnRepositories: IceRepository registry
-]
-
-{ #category : #'instance creation' }
-IceTipRepositoriesBrowser class >> newOnRepositories: aCollection [ 
-
-	^ self basicNew
-		model: (IceTipRepositoriesModel new repositories: aCollection; yourself);
-		initialize;
-		yourself
-]
-
 { #category : #accessing }
 IceTipRepositoriesBrowser >> contextClass [
 	^ IceTipRepositoryListContext
@@ -67,40 +54,51 @@ IceTipRepositoriesBrowser >> createCommandContext [
 ]
 
 { #category : #initialization }
+IceTipRepositoriesBrowser >> initialize [
+	self model: IceTipRepositoriesModel new.
+	super initialize
+]
+
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
-	| items |
-	items := self model repositories.
-	repositoryList
-		showColumnHeaders;
+	repositoryList widget
 		beResizable;
 		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
+			(IceTipTableColumn new
+				id: 'Name';
+				action: #descriptionWithDecoration;
 				width: 200;
-				title: self title;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #status)
+			(IceTipTableColumn new
+				id: 'Status';
+				action: #status;
 				width: 150;
-				title: #Status;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #branchName)
-				title: #Branch;
+			(IceTipTableColumn new
+				id: 'Branch';
+				action: #branchName;
 				yourself);
-		items: items;
+		dataSource: self newRepositoriesDataSource;
 		selectIndex: 1;
-		activateOnDoubleClick;
-		whenActivatedDo: [ self repositoryStrongSelection: self repositorySelected ];
-		contextMenu: [ self buildMenu ]
+		enableFilter: IceTipRepositoryFilter;
+		explicitFunction
 ]
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializeWidgets [
 	super initializeWidgets.
-	repositoryList := self newTable.
-	self initializeRepositoryList.
-	self focusOrder add: repositoryList.	
 	
+	repositoryList := self newIceTable.
+	repositoryList widget
+		onAnnouncement: FTStrongSelectionChanged 
+		send: #repositoryStrongSelection: 
+		to: self.
+
+	self initializeRepositoryList.
+	
+	self focusOrder add: repositoryList 
 ]
 
 { #category : #'private factory' }
@@ -110,9 +108,19 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 		yourself
 ]
 
+{ #category : #'private factory' }
+IceTipRepositoriesBrowser >> newRepositoriesDataSource [
+	^ IceTipDataSource new
+		tool: self;
+		elements: self model repositories;
+		yourself
+]
+
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self model repositories.
+	repositoryList widget 
+		in: [ :this | this dataSource elements: self model repositories ];
+		refresh
 ]
 
 { #category : #accessing }
@@ -127,16 +135,22 @@ IceTipRepositoriesBrowser >> repositoryList: anObject [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> repositorySelected [
-	^ repositoryList selection selectedItem
+	| selectedIndex |
+	self flag: #todo.	"This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	selectedIndex := repositoryList widget selectedIndex.
+	selectedIndex = 0
+		ifTrue: [ ^ nil ].
+	^ repositoryList widget dataSource
+		elementAt: selectedIndex
+		ifAbsent: [ nil ]
 ]
 
 { #category : #private }
-IceTipRepositoriesBrowser >> repositoryStrongSelection: selection [
-	
-	| context |
-	
+IceTipRepositoriesBrowser >> repositoryStrongSelection: ann [
+	| selection context |
+	selection := repositoryList widget dataSource
+		elementAt: ann selectedIndex.
 	context := self newContextWithSelection: selection.
-	
 	IceTipCommandStrongSelectionActivation
 		activateAllInContext: context
 		by: [ :each | each executeCommand ]

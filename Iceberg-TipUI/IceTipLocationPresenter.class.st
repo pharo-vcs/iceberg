@@ -4,7 +4,7 @@ I need to be included in other components (search references to my children for 
 "
 Class {
 	#name : #IceTipLocationPresenter,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'locationLabel',
 		'locationInput',
@@ -28,13 +28,14 @@ IceTipLocationPresenter class >> defaultLabel [
 ]
 
 { #category : #specs }
-IceTipLocationPresenter class >> defaultSpec [
+IceTipLocationPresenter class >> defaultSpec [ 
 	<spec>
-	^ SpBoxLayout newHorizontal
-		add: #locationLabel width: self labelWidth ;
-		add: #locationInput;
-		add: #chooseButton width: 24;
-		yourself.
+	^ SpecLayout composed
+		newRow: [ :row | 
+			row 
+				add: #locationLabel width: self iceLabelWidth; 
+			 	add: #locationInput; 
+				add: #chooseButton width: self iceIconWidth ]
 ]
 
 { #category : #accessing }
@@ -171,6 +172,6 @@ IceTipLocationPresenter >> onChoose: aBlockClosure [
 ]
 
 { #category : #events }
-IceTipLocationPresenter >> whenTextChanged: aBlockClosure [
-	self locationInput whenTextChangedDo: aBlockClosure
+IceTipLocationPresenter >> whenTextChanged: aBlockClosure [ 
+	self locationInput whenTextChanged: aBlockClosure
 ]

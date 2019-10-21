@@ -8,8 +8,7 @@ Class {
 	#superclass : #IceTipBrowser,
 	#instVars : [
 		'diffPanel',
-		'commentPanel',
-		'saveAction'
+		'commentPanel'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -17,14 +16,17 @@ Class {
 { #category : #specs }
 IceTipCommitBrowser class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #toolbar height: IceTipToolbar defaultHeight;
-		add:
-			(SpPanedLayout newVertical
-				add: #diffPanel;
-				add: #commentPanel;
-				yourself);
-			yourself
+	
+	^ SpecLayout composed
+		newColumn: [ :mainColumn |
+			mainColumn
+				newRow: #toolbar height: IceTipToolbar defaultHeight;
+				newRow: [ :row |
+					row newColumn: [ :column |
+						column 
+							newRow: #diffPanel top: 0.35;
+							addHSplitter;
+							newRow: #commentPanel bottom: 0.65 ] ] ]
 ]
 
 { #category : #'instance creation' }
@@ -64,11 +66,10 @@ IceTipCommitBrowser >> diffPanel: anObject [
 
 { #category : #actions }
 IceTipCommitBrowser >> doCommit [
-	self
-		doCommit: diffPanel selectedItems
+	self 
+		doCommit: diffPanel selectedItems 
 		message: commentPanel message
 		pushing: commentPanel isPushing
-		saving: commentPanel isSaving 
 ]
 
 { #category : #actions }
@@ -85,32 +86,9 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: aBoolean 
 				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ] ]
 ]
 
-{ #category : #actions }
-IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
-	self model
-		commit:
-			(IceTipCommitAction new
-				diff: self model workingCopyDiff;
-				items: aCollection;
-				message: aString;
-				yourself)
-		then: [ self verifyNeedsRefreshOrClose.
-			pushingBoolean
-				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
-			savingBoolean
-				ifTrue: [ saveAction execute ] ]
-]
-
 { #category : #accessing }
 IceTipCommitBrowser >> initialExtent [
 	^ (800@600) scaledByDisplayScaleFactor
-]
-
-{ #category : #accessing }
-IceTipCommitBrowser >> initialize [ 
-
-	super initialize.
-	saveAction := IceTipSaveImageAction new
 ]
 
 { #category : #initialization }
@@ -145,12 +123,6 @@ IceTipCommitBrowser >> refreshWhenRepository: ann [
 		ifFalse: [ ^ self ].
 	self model reset.
 	self refresh
-]
-
-{ #category : #accessing }
-IceTipCommitBrowser >> saveAction: anAction [
-
-	saveAction := anAction
 ]
 
 { #category : #initialization }

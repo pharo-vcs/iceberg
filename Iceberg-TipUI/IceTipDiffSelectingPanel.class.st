@@ -12,41 +12,8 @@ also #elements answer should be a collection of elements that also understand el
 Class {
 	#name : #IceTipDiffSelectingPanel,
 	#superclass : #IceTipDiffPanel,
-	#instVars : [
-		'selectedItems'
-	],
 	#category : #'Iceberg-TipUI-View'
 }
-
-{ #category : #initialization }
-IceTipDiffSelectingPanel >> changeListColumn [
-	^ SpCompositeTableColumn new
-		addColumn:
-			(SpCheckBoxTableColumn new
-				width: 20;
-				evaluated: [ :item | selectedItems includes: item ];
-				onActivation: [ :item | 
-					selectedItems add: item.
-					item children isEmptyOrNil
-						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
-							self refreshCheckbox ] ];
-				onDesactivation: [ :item | 
-					selectedItems remove: item.
-					item children isEmptyOrNil
-						ifFalse: [ item
-								allChildrenDo: [ :child | selectedItems remove: child ifAbsent: [  ] ].
-							self refreshCheckbox. ] ]);
-		addColumn:
-			(SpImageTableColumn new
-				width: 20;
-				evaluated: [ :each | each value icon ];
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				evaluated: [ :each | each definition name ];
-				yourself);
-		yourself
-]
 
 { #category : #private }
 IceTipDiffSelectingPanel >> entryRemoved: ann [
@@ -56,17 +23,11 @@ IceTipDiffSelectingPanel >> entryRemoved: ann [
 { #category : #initialization }
 IceTipDiffSelectingPanel >> initialize [
 	super initialize.
-	self subscribeToAnnouncements.
-	selectedItems := Set new.
-	self model treeRoots
-		do: [ :root | 
-			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child.]]
+	self subscribeToAnnouncements
 ]
 
 { #category : #'private factory' }
 IceTipDiffSelectingPanel >> newChangeTreeDataSource [
-
 	^ IceTipTreeSelectingDataSource new
 		tool: self;
 		rootForItems: self model treeRoots;
@@ -79,15 +40,16 @@ IceTipDiffSelectingPanel >> newChangeTreeDataSource [
 
 { #category : #accessing }
 IceTipDiffSelectingPanel >> refresh [
-	super refresh. self model treeRoots
-		do: [ :root | 
-			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child ] ]
-]
-
-{ #category : #'as yet unclassified' }
-IceTipDiffSelectingPanel >> refreshCheckbox [
-	 self basicRefresh
+	self model reset.
+	self resetDiffContents.
+	changeList widget 
+		in: [ :this |
+			this basicSelectRowIndexes: #(). 
+			this dataSource 
+				rootForItems: self model treeRoots;
+				selectAll;
+				expandAll ];
+		refresh
 ]
 
 { #category : #private }
@@ -98,7 +60,7 @@ IceTipDiffSelectingPanel >> resetDataSource: aDataSource [
 
 { #category : #accessing }
 IceTipDiffSelectingPanel >> selectedItems [
-	^selectedItems
+	^ changeList widget dataSource selectedItems
 ]
 
 { #category : #initialize }

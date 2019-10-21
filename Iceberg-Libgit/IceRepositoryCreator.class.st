@@ -17,8 +17,7 @@ Class {
 		'branchName',
 		'subdirectory',
 		'repository',
-		'ensureProjectFile',
-		'isBareRepository'
+		'ensureProjectFile'
 	],
 	#category : #'Iceberg-Libgit-Core'
 }
@@ -30,7 +29,7 @@ IceRepositoryCreator class >> defaultSubdirectory [
 
 { #category : #testing }
 IceRepositoryCreator class >> isGitRoot: aReference [
-	self flag: #pharoTodo. "This does not understand submodules"
+	self flag: #todo. "This does not understand submodules"
 	^ aReference isDirectory 
 		and: [ (aReference directoriesMatching: '.git') notEmpty
 		and: [ (aReference / '.git' / 'config') exists ] ]
@@ -79,12 +78,6 @@ IceRepositoryCreator >> addRemote: aString [
 	self remote: (IceGitRemote url: aString)
 ]
 
-{ #category : #initialization }
-IceRepositoryCreator >> beBare [
-
-	isBareRepository := true
-]
-
 { #category : #'private actions' }
 IceRepositoryCreator >> cloneRepository [
 	IceGitClone new
@@ -116,23 +109,29 @@ IceRepositoryCreator >> commitishName: aName [
 
 { #category : #actions }
 IceRepositoryCreator >> createNewRepositoryNamed: aString [
-	| locationToUse  |
+	| locationToUse |
+	
 	self validate.
+
 	locationToUse := self locationToUse.
-	(locationToUse exists and: [ locationToUse hasChildren ])
-		ifTrue: [ IceError
-				signal: ('{1} is not empty.' format: {locationToUse fullName}) ].
+	(locationToUse exists 
+		and: [ locationToUse hasChildren ])
+		ifTrue: [ IceError signal: ('{1} is not empty.' format: {locationToUse fullName}) ].
+		
 	locationToUse ensureCreateDirectory.
-	self subdirectory
+	self subdirectory  
 		ifNotEmpty: [ (locationToUse resolve: self subdirectory) ensureCreateDirectory ].
+
 	repository := IceLibgitRepository new
 		name: aString;
 		location: locationToUse;
-		initBare: isBareRepository;
+		init;
 		yourself.
+	
 	self addProjectFileTo: repository.
 	self addPropertiesFileTo: repository.
 	repository workingCopy refreshProject.
+
 	^ repository
 ]
 
@@ -190,8 +189,7 @@ IceRepositoryCreator >> formatToUse [
 { #category : #initialization }
 IceRepositoryCreator >> initialize [
 	super initialize.
-	ensureProjectFile := false.
-	isBareRepository := false
+	ensureProjectFile := false
 ]
 
 { #category : #'private testing' }

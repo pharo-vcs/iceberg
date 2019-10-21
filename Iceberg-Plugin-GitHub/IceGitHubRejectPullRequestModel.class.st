@@ -3,7 +3,7 @@ I'm a dialog to collect data about a pull request rejection.
 "
 Class {
 	#name : #IceGitHubRejectPullRequestModel,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',
@@ -19,27 +19,15 @@ IceGitHubRejectPullRequestModel class >> availableTypes [
 ]
 
 { #category : #specs }
-IceGitHubRejectPullRequestModel class >> defaultSpec [
+IceGitHubRejectPullRequestModel class >> defaultSpec [ 
 	<spec>
-	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #messageLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 currentWorld displayScaleFactor ];
-				add: #messageText;
-				yourself);
-		add: #acceptButton
-			withConstraints:
-			[ :constraints | "		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-					row
-						add: #messageLabel width: 80 * World displayScaleFactor;
-						add: #messageText ];
-				add: #acceptButton height: self buttonHeight ];
-" constraints height: self buttonHeight ]
-				yourself
+
+	^ SpecLayout composed
+		newColumn: [ :col |
+			col 
+				newRow: [:row | row add: #messageLabel width: 80 * World displayScaleFactor; add: #messageText ];
+				add: #acceptButton height: self buttonHeight  ];
+		yourself
 ]
 
 { #category : #accessing }

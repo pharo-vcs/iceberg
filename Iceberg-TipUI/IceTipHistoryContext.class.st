@@ -5,7 +5,8 @@ Class {
 	#name : #IceTipHistoryContext,
 	#superclass : #IceTipContext,
 	#instVars : [
-		'item'
+		'item',
+		'selectedBranch'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
@@ -18,6 +19,18 @@ IceTipHistoryContext >> item [
 { #category : #accessing }
 IceTipHistoryContext >> item: anObject [
 	item := anObject
+]
+
+{ #category : #accessing }
+IceTipHistoryContext >> readContextParametersFromModel: aModel [
+	super readContextParametersFromModel: aModel.
+	"This model should be always an IceTipBranchModel"
+	selectedBranch := aModel.
+]
+
+{ #category : #accessing }
+IceTipHistoryContext >> selectedBranch [
+	^ selectedBranch
 ]
 
 { #category : #accessing }

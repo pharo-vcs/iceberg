@@ -12,17 +12,25 @@ Class {
 }
 
 { #category : #execute }
-IceGitHubRemoveBranchesAction >> basicExecute [
+IceGitHubRemoveBranchesAction >> basicExecute [ 
+
 	credentials := IceGitHubAPI ensureCredentials.
-	UIManager default
-		informUser: ('Retrieving branch information from {1}' format: {self remote url})
+
+	UIManager default 
+		informUser: ('Retrieving branch information from {1}' format: { self remote url })
 		during: [ self cacheAllBranches ].
-	IceGitHubRemoveBranchesModel new
-		remote: remote;
+
+	IceGitHubSelectListModel new 
+		setModal: true;
+		title: ('Select branches to remove on remote {1}' format: {self remote name});
 		selectLabel: 'Remove branches';
-		items: branchesByName values ;
+		items: self remoteBranches;
+		displayBlock: [ :each | 
+			'{1} ({2})' format: { 
+				each at: 'name'. 
+				self timeSinceLastCommit: each } ];
 		onAccept: [ :selection | self removeBranches: selection ];
-		openDialogWithSpec
+		openWithSpec
 ]
 
 { #category : #private }
@@ -84,4 +92,13 @@ IceGitHubRemoveBranchesAction >> requestRemoteBranches [
 	^ IceGitHubAPI new
 		getBranches: self remote owner 
 		project: self remote projectBasename
+]
+
+{ #category : #private }
+IceGitHubRemoveBranchesAction >> timeSinceLastCommit: json [
+	| branchName branchJson lastCommitDate |
+	branchName := json at: 'name'.
+	branchJson := branchesByName at: branchName.
+	lastCommitDate := ((((branchJson at: 'commit') at: 'commit') at: 'author') at: 'date') asDateAndTime.
+	^ '{1} days' format: { (Date today - lastCommitDate) days }
 ]

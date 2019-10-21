@@ -19,13 +19,19 @@ Class {
 IceTipAddRemoteDialog class >> defaultSpec [ 
 	<spec>
 
-	^ SpBoxLayout newVertical 
-		add: ( SpBoxLayout newHorizontal  add: #nameLabel width: self labelWidth; 
-						add: #nameText )
+	^ SpecLayout composed
+		newColumn: [ :column |
+			column
+				newRow: [ :row | 
+					row 
+						newColumn: #nameLabel width: self iceLabelWidth; 
+						newColumn: #nameText ] 
 					height: self inputTextHeight;
-		add: (SpBoxLayout newHorizontal  add: #urlLabel width: self labelWidth; 
-						add: #urlText ) 
-					height: self inputTextHeight;
+				newRow: [ :row | 
+					row 
+						newColumn: #urlLabel width: self iceLabelWidth; 
+						newColumn: #urlText ] 
+					height: self inputTextHeight ];
 		yourself
 ]
 
@@ -54,15 +60,16 @@ IceTipAddRemoteDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipAddRemoteDialog >> initializeWidgets [
-	nameLabel := self newLabel label: 'Remote name'.
-	nameText := self newTextInput
-		placeholder: 'e.g., user-remote';
+	nameLabel := self newLabel label: 'Remote name'. 
+	nameText := self newTextInput 
+		ghostText: 'e.g., user-remote'; 
 		autoAccept: true.
 	urlLabel := self newLabel label: 'Remote URL'.
-	urlText := self newTextInput
-		placeholder: 'e.g., git@github.com:user/project.git';
+	urlText := self newTextInput 
+		ghostText: 'e.g., git@github.com:user/project.git'; 
 		autoAccept: true.
-	self focusOrder
+	
+	self focusOrder 
 		add: nameText;
 		add: urlText
 ]

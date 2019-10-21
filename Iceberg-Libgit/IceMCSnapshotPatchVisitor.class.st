@@ -18,7 +18,7 @@ IceMCSnapshotPatchVisitor >> visitAddition: anIceAddition [
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #visiting }
 IceMCSnapshotPatchVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
 	
 	anIceConflictingOperation isResolved

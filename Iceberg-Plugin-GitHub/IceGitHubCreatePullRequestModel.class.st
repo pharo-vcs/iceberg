@@ -3,7 +3,7 @@ I'm a dialog to ask for data relevant to create a pull request.
 "
 Class {
 	#name : #IceGitHubCreatePullRequestModel,
-	#superclass : #SpPresenter,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'repository',
 		'titleLabel',
@@ -30,46 +30,32 @@ Class {
 }
 
 { #category : #specs }
-IceGitHubCreatePullRequestModel class >> defaultSpec [
+IceGitHubCreatePullRequestModel class >> defaultSpec [ 
 	<spec>
-	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #titleLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #titlePanel;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newHorizontal
-				add: #headLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #headForkList;
-				add: #headBranchList;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newHorizontal
-				add: #baseLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #baseForkList;
-				add: #baseBranchList;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newHorizontal
-				add: #bodyLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #bodyPanel;
-				yourself );
-			yourself
+
+	^ SpecLayout composed
+		newColumn: [ :col |
+			col 
+				newRow: [:row | row add: #titleLabel width: 80 * World displayScaleFactor; add: #titlePanel ] height: 25 * World displayScaleFactor;
+				newRow: [:row | 
+					row 
+						newColumn: #headLabel width: 80 * World displayScaleFactor;
+						newColumn: [ :col2 | 
+							col2 newRow: [ :row2 | 
+								row2
+									add: #headForkList;
+									add: #headBranchList ] ] ] height: 25 * World displayScaleFactor;
+				newRow: [:row | 
+					row 
+						newColumn: #baseLabel width: 80 * World displayScaleFactor;
+						newColumn: [ :col2 |
+							col2 newRow: [ :row2 |
+								row2 
+									add: #baseForkList;
+									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
+				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ];
+				add: #addButton height: self buttonHeight  ];
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -301,33 +287,25 @@ IceGitHubCreatePullRequestModel >> initialExtent [
 ]
 
 { #category : #initialization }
-IceGitHubCreatePullRequestModel >> initializeDialogWindow: aWindow [
-
-	aWindow
-		addButton: 'Create pull request'
-		do: [ self accept ]
-]
-
-{ #category : #initialization }
 IceGitHubCreatePullRequestModel >> initializePresenter [
 	super initializePresenter.
 	self titlePanel text: self branch shortname.
 	self headForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner , '/' , each projectName ];
-		selectedItem: self headRemote.
-	self headBranchList
+		displayBlock: [ :each | each owner, '/', each projectName ];
+		setSelectedItem: self headRemote.
+	self headBranchList 
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		selectedItem: self defaultHeadBranchName.
+		setSelectedItem: self defaultHeadBranchName.
 	self baseForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner , '/' , each projectName ];
-		selectedItem: self baseRemote.
-	self baseBranchList
+		displayBlock: [ :each | each owner, '/', each projectName ];
+		setSelectedItem: self baseRemote.
+	self baseBranchList 
 		items: self availableBranchNames;
 		displayBlock: [ :each | each ];
-		selectedItem: self defaultBaseBranchName.
+		setSelectedItem: self defaultBaseBranchName.
 	self bodyPanel text: self obtainLastCommitMessage
 ]
 
@@ -351,11 +329,14 @@ IceGitHubCreatePullRequestModel >> initializeWidgets [
 	baseBranchList := self newDropList.
 	bodyLabel := self newLabel.
 	bodyPanel := self newText autoAccept: true.
+	addButton := self newButton.
 		
 	titleLabel label: 'Title'.
 	headLabel label: 'From (Head)'.
 	baseLabel label: 'To (Base)'.
 	bodyLabel label: 'Comment'.
+	addButton label: 'Create pull request'.
+	addButton action: [ self accept ].
 	
 	self focusOrder 
 		add: titlePanel;

@@ -17,25 +17,26 @@ Class {
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #toolbar
-			withConstraints: [ :c | c height: IceTipToolbar defaultHeight ];
-		add:
-			(SpPanedLayout newVertical
-				add: #commitList;
-				add: #commitInfoTabs;
-				yourself);
-		yourself
+	
+	^ SpecLayout composed 
+		newColumn: [ :column |
+			column 
+				newRow: #toolbar height: IceTipToolbar defaultHeight;
+				newRow: #commitList;
+				addHSplitter;
+				newRow: #commitInfoTabs ]
 ]
 
 { #category : #specs }
 IceTipHistoryBrowser class >> panelSpec [
 	<spec>
 	
-	^ SpPanedLayout newVertical
-		add: #commitList;
-		add: #commitInfoTabs;
-		yourself
+	^ SpecLayout composed 
+		newColumn: [ :column |
+			column 
+				newRow: #commitList;
+				addHSplitter;
+				newRow: #commitInfoTabs ]
 ]
 
 { #category : #accessing }
@@ -75,43 +76,53 @@ IceTipHistoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
-	commitList 
-	beResizable ;
+	commitList widget
+		beResizable;
 		addColumn:
-			((SpStringTableColumn evaluated: [:each | each timeStamp asLocalStringYMDHM ])
-				title: 'Timestamp';
+			(IceTipTableColumn new
+				id: 'Timestamp';
+				action: [ :each | each timeStamp asLocalStringYMDHM ];
 				width: 110 * World displayScaleFactor;
 				yourself);
 		addColumn:
-		((SpStringTableColumn evaluated: #shortId)
-				title: 'Commit';
+			(IceTipTableColumn new
+				id: 'Commit';
+				action: #shortId;
 				width: 60 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #author)
-				title: 'Author';
+			(IceTipTableColumn new
+				id: 'Author';
+				action: #author;
 				width: 150 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
-				title: 'Description';
+			(IceTipTableColumn new
+				id: 'Description';
+				action: #descriptionWithDecoration;
 				yourself);
-				whenSelectionChangedDo: [ :selection | commitInfoTabs selectedModel: ( selection selectedItem)];
+		dataSource: self newCommitsDataSource;
 		selectIndex: 1
 ]
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
-	commitList := self newTable.
+	commitList := self newIceTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
 	self initializeCommitList.
 	
+	commitList widget 
+		onAnnouncement: FTSelectionChanged 
+		send: #selectionChanged:
+		to: self.
+	
 	self focusOrder 
 		add: commitList;
 		add: commitInfoTabs.
-	self refresh 
+		
+	self refresh
 ]
 
 { #category : #accessing }
@@ -139,23 +150,20 @@ IceTipHistoryBrowser >> newContextWithSelection: anObject [
 IceTipHistoryBrowser >> refresh [
 	| commitModels |
 	commitModels := self model commitModels.
-	commitList items: commitModels.
+	commitList widget
+		in: [ :this | this dataSource elements: commitModels ];
+		refresh.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 
 { #category : #'event handling' }
 IceTipHistoryBrowser >> selectionChanged: ann [
-	commitInfoTabs
-		selectedModel:
-			(ann newSelectedIndexes
-				ifNotEmpty:
-					[ :indexes | self commitList widget dataSource elementAt: indexes first ]
-				ifEmpty: [ nil ])
+	commitInfoTabs selectedModel: (ann newSelectedRowIndexes ifNotEmpty: [ :indexes | self commitList widget dataSource elementAt: indexes first ] ifEmpty: [ nil ])
 ]
 
 { #category : #accessing }
 IceTipHistoryBrowser >> title [
-	^ self model
-		ifNotNil: [ 'History of {1}' format: {self model repositoryName} ]
+	^ self model  
+		ifNotNil: [ 'History of {1}' format: { self model name } ]
 		ifNil: [ 'History' ]
 ]

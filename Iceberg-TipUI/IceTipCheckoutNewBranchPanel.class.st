@@ -119,7 +119,7 @@ IceTipCheckoutNewBranchPanel >> initializeWidgetsContents [
 	branchLabel := self newLabel label: 'New branch'.
 	branchInputText := self newTextInput
 		autoAccept: true;
-		placeholder: 'e.g., feature/what'.
+		ghostText: 'e.g., feature/what'.
 	spacePanel := PanelMorph new asSpecAdapter
 ]
 
