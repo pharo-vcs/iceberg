@@ -7,33 +7,47 @@ In current implementation of Iceberg, I will be used mainly for the convenience 
 "
 Class {
 	#name : #IceAnnouncer,
-	#superclass : #GLMAnnouncer,
+	#superclass : #Announcer,
 	#instVars : [
-		'suspendedConditions'
+		'suspendedConditions',
+		'suspendAll'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
+
+{ #category : #announce }
+IceAnnouncer >> announce: anAnnouncement [
+
+	(self isAnnouncementSuspended: anAnnouncement) ifTrue: [ ^ anAnnouncement asAnnouncement ].
+	^ super announce: anAnnouncement
+]
 
 { #category : #initialization }
 IceAnnouncer >> initialize [
+
 	super initialize.
+	suspendAll := false.
 	suspendedConditions := OrderedCollection new: 5
 ]
 
 { #category : #testing }
 IceAnnouncer >> isAnnouncementSuspended: anAnnouncement [
-	^ (super isAnnouncementSuspended: anAnnouncement) 
-		or: [ self isMatchingAnnouncementSuspended: anAnnouncement ]
+
+	suspendAll ifTrue: [ ^ true ].
+	suspendedConditions ifEmpty: [ ^ false ].
+	^ suspendedConditions anySatisfy: [ :each | 
+		each value: anAnnouncement ]
 ]
 
 { #category : #testing }
-IceAnnouncer >> isMatchingAnnouncementSuspended: anAnnouncement [
-	suspendedConditions ifEmpty: [ ^ false ].
-	^ suspendedConditions anySatisfy: [ :each | each value: anAnnouncement ]
+IceAnnouncer >> isSuspended [
+
+	^ suspendAll
 ]
 
 { #category : #suspending }
 IceAnnouncer >> suspendAllForRepository: aRepository while: aBlock [
+
 	^ self 
 		suspendAllMatching: [ :ann | ann appliesToRepository: aRepository ] 
 		while: aBlock 
@@ -41,6 +55,17 @@ IceAnnouncer >> suspendAllForRepository: aRepository while: aBlock [
 
 { #category : #suspending }
 IceAnnouncer >> suspendAllMatching: matchBlock while: aBlock [
+
 	suspendedConditions add: matchBlock.
 	aBlock ensure: [ suspendedConditions remove: matchBlock ]
+]
+
+{ #category : #suspending }
+IceAnnouncer >> suspendAllWhile: aBlock [
+	| previousSuspensionState |
+	
+	previousSuspensionState := suspendAll.
+	suspendAll := true.
+	aBlock ensure: [ 
+		suspendAll := previousSuspensionState ]
 ]

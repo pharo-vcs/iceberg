@@ -18,7 +18,7 @@ IceMCVersionInfo class >> package: package message: commitMessage [
 ]
 
 { #category : #utilities }
-IceMCVersionInfo class >> uuidFromCommit: aCommit package: aPackage. [
+IceMCVersionInfo class >> uuidFromCommit: aCommit package: aPackage [.
 	^ self uuidFromSHA: (SHA1 new hashStream: (ReadStream on: aCommit id, aPackage name))
 
 ]
