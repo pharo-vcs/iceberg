@@ -8,16 +8,18 @@ Class {
 	#instVars : [
 		'location'
 	],
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration'
 }
 
 { #category : #accessing }
 IceMetacelloRepositoryType class >> allTypes [
-	^ self allSubclasses select: [ :each | each isAbstract not ]
+
+	^ self allSubclasses reject: [ :each | each isAbstract ]
 ]
 
 { #category : #testing }
 IceMetacelloRepositoryType class >> canHandleType: aType [ 
+
 	^ self allTypes
 		anySatisfy: [ :each | each isSuitableForType: aType ]  
 	
@@ -25,6 +27,7 @@ IceMetacelloRepositoryType class >> canHandleType: aType [
 
 { #category : #private }
 IceMetacelloRepositoryType class >> extractTypeOf: aString [ 
+
 	^ aString copyUpTo: $:
 ]
 
