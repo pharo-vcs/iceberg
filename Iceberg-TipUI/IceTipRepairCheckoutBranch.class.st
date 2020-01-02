@@ -14,13 +14,13 @@ Class {
 { #category : #accessing }
 IceTipRepairCheckoutBranch class >> help [
 	^ 'Discard all changes in your image and checkout an existing branch.
-This action will checkout the branch in the repository and align your image with your repository.
+This action will checkout the branch in the repository and synchronize your image with your repository.
 
 This situation happens because the code loaded in your image does not correspond with the status of your repository.
 
-Opens a preview window before doing any change.
+This action opens a preview window before doing any change.
 
-This operation will modify the state of your working copy in disk. All non-commited changes in your disk working copy that are not in the image will be lost. If you want to keep them, perform a commit from outside before.'
+This operation will modify the state of your working copy on disk. All non-commited changes in your disk working copy that are not in the image will be lost (this can happen if you edited the repository from outside). If you want to keep them, perform a commit from outside before.'
 ]
 
 { #category : #accessing }
@@ -45,7 +45,7 @@ IceTipRepairCheckoutBranch class >> order [
 
 { #category : #accessing }
 IceTipRepairCheckoutBranch class >> title [
-	^ 'Discard local changes and checkout an existing branch'
+	^ 'Checkout an existing branch discarding image changes'
 ]
 
 { #category : #executing }

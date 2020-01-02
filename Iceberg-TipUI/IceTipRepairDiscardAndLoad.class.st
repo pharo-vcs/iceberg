@@ -13,12 +13,15 @@ Class {
 
 { #category : #accessing }
 IceTipRepairDiscardAndLoad class >> help [
-	^ 'Discard all changes in your image and checkout the code in the repository.
-This action will align your image with your repository.
+	^ 'Discard all changes in your image and checkout the current commit (HEAD) in the repository.
 
-This situation happens because the code loaded in your image does not correspond with the status of your repository.
+This action will synchronize your image with the code in the repository.
 
-Opens a preview window before doing any change.'
+All the changes in the image that have not been commited will be lost.
+
+This situation happens because loaded code in your image is from a different commit than the current commit (HEAD) in the repository.
+
+Opens a preview window with the incoming changes before doing any change.'
 ]
 
 { #category : #accessing }
