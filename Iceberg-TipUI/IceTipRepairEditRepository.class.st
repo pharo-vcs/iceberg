@@ -14,7 +14,10 @@ Class {
 IceTipRepairEditRepository class >> help [
 	^ 'You can edit the repository to inform another subdirectory name. 
 Once the new subdirectory is updated, the packages in the repository are available.
-This action does not affect the changes in the disk working copy nor in the image.'
+This action does not affect the changes in the disk working copy nor in the image.
+
+This happens because the source code directory has been moved or renamed.
+'
 ]
 
 { #category : #accessing }
@@ -35,7 +38,7 @@ IceTipRepairEditRepository class >> order [
 
 { #category : #accessing }
 IceTipRepairEditRepository class >> title [
-	^ 'Edit the repository to change the code subdirectory'
+	^ 'Edit the repository to select the correct code subdirectory'
 ]
 
 { #category : #executing }

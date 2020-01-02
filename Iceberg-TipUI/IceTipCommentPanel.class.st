@@ -17,7 +17,7 @@ Class {
 		'fixesField',
 		'fixesLabel'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View'
 }
 
 { #category : #specs }

@@ -264,20 +264,22 @@ IceTipRepositoryModel >> location [
 IceTipRepositoryModel >> longStatus [
 
 	(entity isMissing and: [ entity location isNil ])
-		ifTrue: [ ^ 'Not configured git repository. Please clone the repository or change the repository location to an existing location' ].
+		ifTrue: [ ^ 'Iceberg does not find a git repository. Please clone the repository or change the repository location to an existing Git repository' ].
+
 	entity isMissing 
-		ifTrue: [ ^ 'Cannot find a git repository at {1}. Please clone the repository again or change the repository location to an existing location' format: { entity location } ].
+		ifTrue: [ ^ 'Iceberg does not find a git repository at {1}. Please clone the repository again or change the repository location to an existing Git repository' format: { entity location } ].
 				
 	entity workingCopy workingCopyState isUnknownCommitState 
-		ifTrue: [ ^ 'This repository was created from commit {1} but the commit is not in your disk repository. You may fetch the correct commit from a remote repository or discard the code in your image and load what is in the repository.' format: { entity workingCopy referenceCommit shortId } ].	
+		ifTrue: [ ^ 'This image has a loaded version of the code from commit {1}, but Iceberg does not find the commit in your local Git repository. You may fetch the correct commit from a remote repository or discard the code of your image and load the version that is in the repository.' format: { entity workingCopy referenceCommit shortId } ].
+			
 	entity workingCopy isDetached 
-		ifTrue: [ ^ 'The working copy commit {1} does not correspond with the repository commit {2}. You may synchronize them to continue: discard your image changes or change the repository to point to your commit.' format: { entity workingCopy referenceCommit shortId. entity headCommit shortId } ].
+		ifTrue: [ ^ 'The loaded code in the image starts from commit {1}. This commit does not correspond with the commit in the head of the current branch of the repository (Commit {2}). You need to synchronize them to continue. You need to discard your image changes or change the HEAD of the repository to point to the commit.' format: { entity workingCopy referenceCommit shortId. entity headCommit shortId } ].
+
 	entity head isDetached 
-		ifTrue: [ ^ 'The repository is in detached head state in commit {1}. You may checkout a branch to continue.' format: { entity headCommit shortId } ].
+		ifTrue: [ ^ 'The repository and the image are in the same commit {1}. However, the commit is not in an active branch. It is not possible to commit in a Git detached HEAD state. Create a new branch (by checkouting) or checkout an existing one.' format: { entity headCommit shortId } ].
 
 	entity workingCopy project isUnborn
-		ifTrue: [ ^ 'Cannot find a project in your repository. Please edit your repository meta-data to indicate the source code directory or change a location to a valid iceberg repository' ].
-
+		ifTrue: [ ^ 'Cannot find a project (meta-data and source directory) in your repository. Please edit your repository meta-data to indicate the source code directory or change the location to a valid iceberg repository' ].
 
 	^ 'Your repository seems ok. Please report a ticket in Iceberg''s issue tracker. If you can, please send us a backup of your image in this state for debugging.'
 ]
@@ -420,6 +422,12 @@ IceTipRepositoryModel >> status [
 	] 
 	on: Error do: [ :error | ^ self toErrorMessage: error description ]
 
+]
+
+{ #category : #accessing }
+IceTipRepositoryModel >> subdirectory [
+
+	^ self entity subdirectory
 ]
 
 { #category : #accessing }

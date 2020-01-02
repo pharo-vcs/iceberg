@@ -7,7 +7,7 @@ I'm a model for IceLogVersion entries.
 Class {
 	#name : #IceTipVersionModel,
 	#superclass : #IceTipCommitModel,
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #private }

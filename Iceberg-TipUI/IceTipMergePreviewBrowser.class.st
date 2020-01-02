@@ -6,7 +6,7 @@ I preview the changes that will be introduced in the image when a merge occurs.
 Class {
 	#name : #IceTipMergePreviewBrowser,
 	#superclass : #IceTipPreviewBrowser,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #'instance creation' }

@@ -17,8 +17,10 @@ IceTipRepairLocateRepository class >> help [
 
 This situation happens when iceberg cannot find the repository in disk.
 
-This action will very probably let you in a detached status.
-You will need to re-synchronize your repository with another repair action.'
+This action will very probably let you in a detached status, because this only changes the location of the repository, but it does not affect the current commit (HEAD) or the current branch.
+You will need to re-synchronize your repository with another repair action.
+
+This happens if the repository has been removed from the disk or the image was pointing to a repository in another machine (For example, when sharing images with other machines / people).'
 ]
 
 { #category : #accessing }
