@@ -63,9 +63,10 @@ IceTipDiffPanel >> changeList: anObject [
 { #category : #private }
 IceTipDiffPanel >> changeSelected [
 	| index |
-	self flag: #todo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := changeList widget selectedRowIndex.
-	index = 0 ifTrue: [ ^ nil ].
+	self flag: #todo.	"This should -maybe- be modeled better on a SpecTablePresenter ;)"
+	index := changeList widget selectedIndex.
+	index = 0
+		ifTrue: [ ^ nil ].
 	^ changeList widget dataSource realElementAt: index
 ]
 
@@ -205,16 +206,13 @@ IceTipDiffPanel >> rightLabel: aString [
 { #category : #'event handling' }
 IceTipDiffPanel >> selectionChanged: ann [
 	| element |
-	(ann newSelectedRowIndexes reject: [ :each | each = 0 ])
+	(ann newSelectedIndexes reject: [ :each | each = 0 ])
 		ifNotEmpty: [ :indexes | 
 			element := changeList widget dataSource realElementAt: indexes first.
-			self 
-				diffContentsLeft:  element value rightContents
-				right: element value leftContents ] 
-		ifEmpty: [ 
-			self resetDiffContents ].
-	
-	
+			self
+				diffContentsLeft: element value rightContents
+				right: element value leftContents ]
+		ifEmpty: [ self resetDiffContents ]
 ]
 
 { #category : #initialization }
