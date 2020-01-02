@@ -13,12 +13,12 @@ Class {
 
 { #category : #accessing }
 IceTipRepairMergeWithBranch class >> help [
-	^ 'You can checkout a new or existing branch and merge your image into it.
-This will not lose any change in the image but open a merge view is necessary.
+	^ 'This action checkouts an existing branch and loads the code in your image without discarding any change.
+This will not lose any change in the image but may lead to conflicts. If there are conflicts it opens a merge view.
 
-This situation happens because the code loaded in your image does not correspond with the status of your repository.
+This situation happens because loaded code in your image is from a different commit than the current commit (HEAD) in the repository.
 
-This operation will modify the state of your working copy in disk. All non-commited changes in your disk working copy that are not in the image will be lost. If you want to keep them, perform a commit from outside before.'
+This operation will modify the state of your working copy in disk, the checkouted branch will replace the disk working copy. All non-commited changes in your disk working copy will be lost. If you want to keep them, perform a commit from outside before.'
 ]
 
 { #category : #accessing }
@@ -46,7 +46,7 @@ IceTipRepairMergeWithBranch class >> order [
 
 { #category : #accessing }
 IceTipRepairMergeWithBranch class >> title [
-	^ 'Merge your image with an existing branch'
+	^ 'Checkout an existing branch and merge the changes into the image (without discarding image changes)'
 ]
 
 { #category : #executing }
