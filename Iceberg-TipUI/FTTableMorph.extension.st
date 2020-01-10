@@ -2,9 +2,11 @@ Extension { #name : #FTTableMorph }
 
 { #category : #'*Iceberg-TipUI' }
 FTTableMorph >> selectFirstVisibleRow [
-	^ self selectRowIndex: (container exposedRows
-		ifNotEmpty: [ :rows | rows keys first ]
-		ifEmpty: [ 0 ]).
+	^ self
+		selectIndex:
+			(container exposedRows
+				ifNotEmpty: [ :rows | rows keys first ]
+				ifEmpty: [ 0 ])
 ]
 
 { #category : #'*Iceberg-TipUI' }

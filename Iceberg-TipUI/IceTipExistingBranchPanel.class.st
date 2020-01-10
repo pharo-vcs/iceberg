@@ -69,13 +69,17 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 		dataSource: (dataSource := self newBranchListDataSource);
 		bindKeyCombination: Character cr toAction: [ self accept ];
 		onAnnouncement: FTStrongSelectionChanged do: [ self accept ].
-	
+
 	"
 	We would prefere to have this implementation but for now we have a bug with the caches because #branchModels return the same cache used by the datasource but not #defaultBranchSelection. If we correct that later we can clean the code bellow.
 	
 	self model defaultBranchSelection ifNotNil: [ :branchModel | branchesList widget selectRowIndex: (dataSource elements indexOf: branchModel) ]."
-	
-	self model branchModels detect: #isHead ifFound: [ :head | branchesList widget selectRowIndex: (dataSource elements indexOf: head) ] ifNone: [ self model hasBranches ifTrue: [ branchesList widget selectFirstVisibleRow ] ]
+	self model branchModels
+		detect: #isHead
+		ifFound:
+			[ :head | branchesList widget selectIndex: (dataSource elements indexOf: head) ]
+		ifNone: [ self model hasBranches
+				ifTrue: [ branchesList widget selectFirstVisibleRow ] ]
 ]
 
 { #category : #initialization }
@@ -98,9 +102,8 @@ IceTipExistingBranchPanel >> newBranchListDataSource [
 { #category : #accessing }
 IceTipExistingBranchPanel >> selectedBranch [
 	| index |
-	
-	index := self branchesList widget selectedRowIndex.
-	^ index ~= 0 
+	index := self branchesList widget selectedIndex.
+	^ index ~= 0
 		ifTrue: [ self branchesList widget dataSource elementAt: index ]
 		ifFalse: [ nil ]
 ]
