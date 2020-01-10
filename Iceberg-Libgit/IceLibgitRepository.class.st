@@ -141,6 +141,7 @@ IceLibgitRepository class >> settingsOn: aBuilder [
 			(aBuilder setting: #sharedRepositoriesLocationString)
 				target: self;
 				type: #Directory;
+				default: (FileLocator home / #iceberg) asFileReference;
 				label: 'Location for shared repositories';
 				description: 'A directory where you have your git repositories'.
 		].
