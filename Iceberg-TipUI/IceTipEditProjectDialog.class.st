@@ -91,6 +91,8 @@ IceTipEditProjectDialog >> addDirectory [
 		textEntry: 'Enter the new Directory name'
 		title: 'Create a directory'.
 	
+	newDirectoryName ifNil: [ ^ self ].
+	
 	newDirectory := (selectedDirectoryPath / newDirectoryName) asResolvedBy: self model fileSystem. 
 	
 	newDirectory exists 

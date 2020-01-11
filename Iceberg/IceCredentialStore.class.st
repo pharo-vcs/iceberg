@@ -19,7 +19,7 @@ Class {
 		'CurrentStore',
 		'StoreFile'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #accessing }
@@ -28,6 +28,11 @@ IceCredentialStore class >> current [
 		ifNil: [ CurrentStore := self new
 				storeFile: self storeFile;
 				yourself ]
+]
+
+{ #category : #accessing }
+IceCredentialStore class >> defaultCredentialsStoreFile [
+	^ FileLocator localDirectory / #iceberg / 'credentials.fuel'
 ]
 
 { #category : #accessing }
@@ -44,6 +49,7 @@ IceCredentialStore class >> settingsOn: aBuilder [
 			(aBuilder setting: #storeFile)
 				target: self;
 				type: #FilePathEncoder;
+				default: self defaultCredentialsStoreFile;
 				label: 'Location of credentials store';
 				description: 'The location of the credential store. The password are stored in plain... yet'.
 		].	
@@ -52,7 +58,8 @@ IceCredentialStore class >> settingsOn: aBuilder [
 
 { #category : #accessing }
 IceCredentialStore class >> storeFile [
-	^ StoreFile ifNil: [ StoreFile := FileLocator localDirectory / #iceberg / 'credentials.fuel' ]
+	^ StoreFile ifNil:
+		[ StoreFile := self defaultCredentialsStoreFile ]
 ]
 
 { #category : #accessing }
