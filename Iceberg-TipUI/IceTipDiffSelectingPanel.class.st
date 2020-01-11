@@ -15,9 +15,26 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #'as yet unclassified' }
+IceTipDiffSelectingPanel >> collapseAll [
+
+	changeList widget dataSource 
+		rootForItems: self model treeRoots;
+		selectAll
+]
+
 { #category : #private }
 IceTipDiffSelectingPanel >> entryRemoved: ann [
 	self refresh
+]
+
+{ #category : #'as yet unclassified' }
+IceTipDiffSelectingPanel >> expandAll [
+
+	changeList widget dataSource 
+		rootForItems: self model treeRoots;
+		expandAll;
+		selectAll
 ]
 
 { #category : #initialization }
