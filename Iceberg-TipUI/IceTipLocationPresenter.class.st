@@ -117,9 +117,24 @@ IceTipLocationPresenter >> label: aString [
 
 { #category : #accessing }
 IceTipLocationPresenter >> location [
-	^ locationInput text trim 
+	"This method return the location to use in the repository
+	If the location is relative to IceLibgitRepository >> #localRepositoriesLocation
+	It returns a FileLocator so the image can be moved or the directory renamed.
+	If the location is outside of the local repositories location it returns a file reference"
+
+	| fileReferenceLocation relativePath|
+
+	fileReferenceLocation := locationInput text trim
 		ifNotEmpty: [ :value | value asFileReference ]
-		ifEmpty: [ nil ]
+		ifEmpty: [ ^ nil ].
+
+	(fileReferenceLocation
+		isContainedBy: IceLibgitRepository localRepositoriesLocation)
+		ifFalse: [ ^ fileReferenceLocation ].
+
+	relativePath := IceLibgitRepository localRepositoriesLocation makeRelative: locationInput text trim asFileReference.
+	
+	^ IceLibgitRepository localRepositoriesLocation resolvePath: relativePath 
 ]
 
 { #category : #accessing }
