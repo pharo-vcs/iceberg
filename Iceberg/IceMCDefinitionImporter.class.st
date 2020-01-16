@@ -8,7 +8,7 @@ Class {
 		'packageNode',
 		'snapshot'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
@@ -26,17 +26,17 @@ IceMCDefinitionImporter >> ensureMethodOwnerNamed: ownerName isMeta: isMeta isTr
 ]
 
 { #category : #testing }
-IceMCDefinitionImporter >> isExtension: aString [ 
+IceMCDefinitionImporter >> isExtension: aName [
 	
-	snapshot definitionForMethodContainerNamed: aString ifAbsent: [ ^ true ].
+	snapshot classDefinitionNamed: aName ifAbsent:  [ ^ true ].
 	^ false
 ]
 
 { #category : #testing }
-IceMCDefinitionImporter >> isTrait: aString [ 
+IceMCDefinitionImporter >> isTrait: aName [ 
 	
 	| definition |
-	definition := snapshot definitionForMethodContainerNamed: aString ifAbsent: [ ^ false ].
+	definition := snapshot classDefinitionNamed: aName ifAbsent: [ ^ false ].
 	^ definition isTraitDefinition
 ]
 
