@@ -17,6 +17,8 @@ IceTipRepairCreateSubdirectory class >> help [
 The configured source directory does not exist in the repository. 
 It is possible that the directory has been deleted or never commited after creating the meta-data.
 
+Some modification
+
 This operation will modify the state of your working copy on disk. All non-commited changes in your disk working copy that are not in the image will be lost (this can happen if you edited the repository from outside). If you want to keep them, perform a commit from outside before.'
 ]
 
