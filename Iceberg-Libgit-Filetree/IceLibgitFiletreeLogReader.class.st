@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'fileName'
 	],
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree'
 }
 
 { #category : #'instance creation' }
@@ -30,16 +30,22 @@ IceLibgitFiletreeLogReader >> fileName: aString [
 
 { #category : #utilities }
 IceLibgitFiletreeLogReader >> loadDefinitions [
- 	| entry segments className classIsMeta |	
+ 	| entry segments className classIsMeta entryPath packageIndex |	
 	
 	definitions := OrderedCollection new.
 	
 	segments := (self fileName substrings: '/') allButLast asOrderedCollection.
 	classIsMeta := segments removeLast = 'class'.
 	className := segments last copyUpToLast: $..
-	
+	"entryPath is the relative path from the package to the method being loaded"
+	packageIndex := segments indexOf: packageDirectory filename.
+	entryPath := packageIndex > 0 ifTrue: 
+		[ entryPath := $/ join: (segments copyFrom: 1 to: packageIndex).
+		self fileName allButFirst: entryPath size ]
+	ifFalse:
+		[ self fileName allButFirst: packageDirectory filename size ].
 	entry := (packageDirectory 
-		entryByPath: (self fileName allButFirst: packageDirectory filename size)
+		entryByPath: entryPath
 		ifAbsent: [ ^ nil ]).
 	entry readStreamDo: [ :fileStream |
 		| category source timestamp selector |
