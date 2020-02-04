@@ -158,7 +158,12 @@ IceTipHistoryBrowser >> refresh [
 
 { #category : #'event handling' }
 IceTipHistoryBrowser >> selectionChanged: ann [
-	commitInfoTabs selectedModel: (ann newSelectedRowIndexes ifNotEmpty: [ :indexes | self commitList widget dataSource elementAt: indexes first ] ifEmpty: [ nil ])
+	commitInfoTabs
+		selectedModel:
+			(ann newSelectedIndexes
+				ifNotEmpty:
+					[ :indexes | self commitList widget dataSource elementAt: indexes first ]
+				ifEmpty: [ nil ])
 ]
 
 { #category : #accessing }
