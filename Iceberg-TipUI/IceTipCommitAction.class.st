@@ -9,7 +9,7 @@ Class {
 		'items',
 		'message'
 	],
-	#category : 'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #executing }
@@ -22,7 +22,7 @@ IceTipCommitAction >> basicExecute [
 				commitChanges: (diff copyWithOnly: items)
 				withMessage: message ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
-	
+	Iceberg announcer announce: (IceCommited for: self repository).
 ]
 
 { #category : #accessing }
