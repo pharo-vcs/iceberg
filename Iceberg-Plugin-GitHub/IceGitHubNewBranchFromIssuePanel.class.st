@@ -17,7 +17,7 @@ Class {
 		'selectRemoteModel',
 		'currentWaitingProcess'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -111,7 +111,7 @@ IceGitHubNewBranchFromIssuePanel >> initializeWidgetsContents [
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ]
+	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text asString ]
 ]
 
 { #category : #'accessing ui' }
