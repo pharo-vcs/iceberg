@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitTestFactory,
 	#superclass : #IceAbstractTestFactory,
-	#category : 'Iceberg-Tests-Git'
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #initialization }
@@ -72,7 +72,7 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 { #category : #initialization }
 IceGitTestFactory >> remoteFileUrl [
 	
-	^ (IceLibgitRepository repositoriesLocation / 'remote') asUrl.
+	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
 ]
 
 { #category : #initialization }
