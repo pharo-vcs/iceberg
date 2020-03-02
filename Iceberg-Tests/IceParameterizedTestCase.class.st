@@ -12,7 +12,7 @@ Class {
 		'testParameters',
 		'oldShareRepositoriesBetweenImages'
 	],
-	#category : 'Iceberg-Tests-Base'
+	#category : #'Iceberg-Tests-Base'
 }
 
 { #category : #'building suites' }
@@ -146,7 +146,7 @@ IceParameterizedTestCase >> tearDown [
 		do: [ :parameter | 
 			[ parameter deactivate ]
 				on: Error
-				do: [ :error | error logCr ] ].
+				do: [ :error | error traceCr ] ].
 	IceLibgitRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages.
 	super tearDown
 ]
