@@ -24,7 +24,7 @@ Class {
 
 { #category : #accessing }
 IceTipToolbar class >> defaultHeight [
-	^ self defaultMode height * World displayScaleFactor
+	^ self defaultMode height * self currentWorld displayScaleFactor
 ]
 
 { #category : #accessing }
@@ -34,7 +34,7 @@ IceTipToolbar class >> defaultItemSeparation [
 
 { #category : #accessing }
 IceTipToolbar class >> defaultItemSize [
-	^ 50 * World displayScaleFactor
+	^ 50 * self currentWorld displayScaleFactor
 ]
 
 { #category : #accessing }

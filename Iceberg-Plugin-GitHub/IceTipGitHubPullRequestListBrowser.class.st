@@ -21,7 +21,7 @@ Class {
 		'pullRequests',
 		'details'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -85,19 +85,19 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 			(IceTipTableColumn new
 				id: '#';
 				action: [ :pullRequest | pullRequest number asString ];
-				width: 50 * World displayScaleFactor;
+				width: 50 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			(IceTipTableColumn new
 				id: 'State';
 				action: #state;
-				width: 50 * World displayScaleFactor;
+				width: 50 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			(IceTipTableColumn new
 				id: 'Author';
 				action: #author;
-				width: 120 * World displayScaleFactor;
+				width: 120 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			(IceTipTableColumn new

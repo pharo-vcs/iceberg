@@ -21,7 +21,7 @@ Class {
 		'bodyText',
 		'pullRequest'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -31,12 +31,12 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :c |
 			c 
-				newRow: [:row | row add: #urlLabel width: 80 * World displayScaleFactor; add: #urlText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #authorLabel width: 80 * World displayScaleFactor; add: #authorText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #fromLabel width: 80 * World displayScaleFactor; add: #fromText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #toLabel width: 80 * World displayScaleFactor; add: #toText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #mergeableLabel width: 80 * World displayScaleFactor; add: #mergeablePanel ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #statusLabel width: 80 * World displayScaleFactor; add: #statusPanel ] height: 25 * World displayScaleFactor;
+				newRow: [:row | row add: #urlLabel width: 80 * self currentWorld displayScaleFactor; add: #urlText ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #authorLabel width: 80 * self currentWorld displayScaleFactor; add: #authorText ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #fromLabel width: 80 * self currentWorld displayScaleFactor; add: #fromText ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #toLabel width: 80 * self currentWorld displayScaleFactor; add: #toText ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #mergeableLabel width: 80 * self currentWorld displayScaleFactor; add: #mergeablePanel ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #statusLabel width: 80 * self currentWorld displayScaleFactor; add: #statusPanel ] height: 25 * self currentWorld displayScaleFactor;
 				newRow: [:row | row add: #checksTable ];
 				newRow: [:row | row add: #bodyText ] ];
 		yourself
@@ -159,11 +159,11 @@ IceGitHubPullRequestDetailModel >> mergeablePanel: anObject [
 { #category : #'private factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
 	^ FTTableMorph new 
-		addColumn: ((FTColumn id: #target_url) width: 18 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #state) width: 65 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #context) width: 100 * World displayScaleFactor);
+		addColumn: ((FTColumn id: #target_url) width: 18 * self currentWorld displayScaleFactor);
+		addColumn: ((FTColumn id: #state) width: 65 * self currentWorld displayScaleFactor);
+		addColumn: ((FTColumn id: #context) width: 100 * self currentWorld displayScaleFactor);
 		addColumn: (FTColumn id: #description);
-		cellInset: 5 * World displayScaleFactor;
+		cellInset: 5 * self currentWorld displayScaleFactor;
 		beResizable;
 		vResizing: #spaceFill;
 		hResizing: #spaceFill;

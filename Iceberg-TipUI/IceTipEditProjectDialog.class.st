@@ -40,7 +40,7 @@ IceTipEditProjectDialog class >> defaultSpec [
 								add: #sourceDirectoryLabel height: self inputTextHeight;
 								newRow: [ :emptyRow | "Fill space"  ] ] width: self iceLabelWidth;
 						newColumn: #sourceDirectoryTree ]
-					height: 200 * World displayScaleFactor;
+					height: 200 * self currentWorld displayScaleFactor;
 				newRow: [ :row | 
 					row
 						newColumn: #formatLabel width: self iceLabelWidth;

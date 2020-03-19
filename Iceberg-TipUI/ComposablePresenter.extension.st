@@ -7,12 +7,12 @@ ComposablePresenter class >> iceActionPanelHeight [
 
 { #category : #'*Iceberg-TipUI' }
 ComposablePresenter class >> iceIconWidth [
-	^ 24 * World displayScaleFactor
+	^ 24 * self currentWorld displayScaleFactor
 ]
 
 { #category : #'*Iceberg-TipUI' }
 ComposablePresenter class >> iceLabelWidth [
-	^ 100 * World displayScaleFactor
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #'*Iceberg-TipUI' }

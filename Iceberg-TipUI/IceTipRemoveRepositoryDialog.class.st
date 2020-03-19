@@ -22,7 +22,7 @@ IceTipRemoveRepositoryDialog class >> defaultSpec [
 	^ SpecLayout composed 
 		newRow: [ :row |
 			row 
-				newColumn: #iconPanel width: 40 * World displayScaleFactor;
+				newColumn: #iconPanel width: 40 * self currentWorld displayScaleFactor;
 				newColumn: [ :column |
 					column 
 						newRow: #confirmLabel;

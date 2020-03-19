@@ -14,8 +14,8 @@ IceTipAskForPlaintextCredentialsModel class >> defaultSpec [
 
 	^ SpecLayout composed newColumn: [ :col |
 		col 
-		 	newRow: [:row | row add: #usernameLabel width: 80 * World displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passwordLabel width: 80 * World displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
+		 	newRow: [:row | row add: #usernameLabel width: 80 * self currentWorld displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
+			newRow: [:row | row add: #passwordLabel width: 80 * self currentWorld displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
 			add: #storeCheckbox height: self inputTextHeight.
 	]
 

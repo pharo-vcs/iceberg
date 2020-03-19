@@ -18,7 +18,7 @@ IceTipRepairRepositoryDialog class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :column |
 			column 
-				newRow: #reasonPanel height: 70 * World displayScaleFactor;
+				newRow: #reasonPanel height: 70 * self currentWorld displayScaleFactor;
 				newRow: #optionsList;
 				newRow: #detailPanel ]
 ]

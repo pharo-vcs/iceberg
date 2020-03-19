@@ -96,7 +96,7 @@ IceTipAbstractAskCredentialsModel >> okAction [
 IceTipAbstractAskCredentialsModel >> open [
 	self
 		openNonModal
-		modalRelativeTo: World.
+		modalRelativeTo: self currentWorld.
 	
 	^ self credentials
 ]

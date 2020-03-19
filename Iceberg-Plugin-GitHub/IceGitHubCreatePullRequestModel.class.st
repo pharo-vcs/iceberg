@@ -26,7 +26,7 @@ Class {
 		'baseBranches',
 		'headRemote'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -36,24 +36,24 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :col |
 			col 
-				newRow: [:row | row add: #titleLabel width: 80 * World displayScaleFactor; add: #titlePanel ] height: 25 * World displayScaleFactor;
+				newRow: [:row | row add: #titleLabel width: 80 * self currentWorld displayScaleFactor; add: #titlePanel ] height: 25 * self currentWorld displayScaleFactor;
 				newRow: [:row | 
 					row 
-						newColumn: #headLabel width: 80 * World displayScaleFactor;
+						newColumn: #headLabel width: 80 * self currentWorld displayScaleFactor;
 						newColumn: [ :col2 | 
 							col2 newRow: [ :row2 | 
 								row2
 									add: #headForkList;
-									add: #headBranchList ] ] ] height: 25 * World displayScaleFactor;
+									add: #headBranchList ] ] ] height: 25 * self currentWorld displayScaleFactor;
 				newRow: [:row | 
 					row 
-						newColumn: #baseLabel width: 80 * World displayScaleFactor;
+						newColumn: #baseLabel width: 80 * self currentWorld displayScaleFactor;
 						newColumn: [ :col2 |
 							col2 newRow: [ :row2 |
 								row2 
 									add: #baseForkList;
-									add: #baseBranchList ] ] ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #bodyLabel width: 80 * World displayScaleFactor; add: #bodyPanel ];
+									add: #baseBranchList ] ] ] height: 25 * self currentWorld displayScaleFactor;
+				newRow: [:row | row add: #bodyLabel width: 80 * self currentWorld displayScaleFactor; add: #bodyPanel ];
 				add: #addButton height: self buttonHeight  ];
 		yourself
 ]

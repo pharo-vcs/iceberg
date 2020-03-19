@@ -78,17 +78,17 @@ IceTipVersionHistoryBrowser >> initializeCommitList [
 		addColumn: (IceTipTableColumn new 
 			id: 'Timestamp';
 			action: [ :each | each timeStamp asLocalStringYMDHM ];
-			width: 110 * World displayScaleFactor;
+			width: 110 * self currentWorld displayScaleFactor;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Commit';
 			action: #shortId;
-			width: 60 * World displayScaleFactor;
+			width: 60 * self currentWorld displayScaleFactor;
 			yourself);		
 		addColumn: (IceTipTableColumn new 
 			id: 'Author';
 			action: #author;
-			width: 150 * World displayScaleFactor;
+			width: 150 * self currentWorld displayScaleFactor;
 			yourself);		
 		addColumn: (IceTipTableColumn new 
 			id: 'Description';

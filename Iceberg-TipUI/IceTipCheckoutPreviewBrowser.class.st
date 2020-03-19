@@ -24,7 +24,7 @@ IceTipCheckoutPreviewBrowser class >> defaultSpec [
 				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
 				newRow: [ :row |
 					row 
-						newColumn: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
+						newColumn: #checkoutStrategyLabel width: 100 * self currentWorld displayScaleFactor;
 						newColumn: #checkoutStrategyList ]
 					height: self inputTextHeight;
 				newRow: #diffPanel;

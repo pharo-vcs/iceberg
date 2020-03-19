@@ -28,7 +28,7 @@ IceTipWorkingCopyBrowser class >> defaultSpec [
 
 { #category : #specs }
 IceTipWorkingCopyBrowser class >> defaultStatusBarHeight [
-	^ 25 * World displayScaleFactor
+	^ 25 * self currentWorld displayScaleFactor
 ]
 
 { #category : #'instance creation' }

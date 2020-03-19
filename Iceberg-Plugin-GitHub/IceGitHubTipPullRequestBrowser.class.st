@@ -20,7 +20,7 @@ Class {
 		'acceptButton',
 		'rejectButton'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #specs }
@@ -122,10 +122,10 @@ IceGitHubTipPullRequestBrowser >> initializeCommitsTable [
 	
 	commits widget
 		beResizable;
-		addColumn: (IceTipTableColumn id: 'Date & time' action: [ :commit | textStylingBlock value: commit datetime asLocalStringYMDHM value: commit ] width: 120 * World displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Id' action: [ :commit | textStylingBlock value: commit shortId value: commit ] width: 50 * World displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Author' action: [ :commit | textStylingBlock value: commit author value: commit ] width: 120 * World displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Comment' action: [ :commit | textStylingBlock value: commit comment value: commit ] width: 300 * World displayScaleFactor);
+		addColumn: (IceTipTableColumn id: 'Date & time' action: [ :commit | textStylingBlock value: commit datetime asLocalStringYMDHM value: commit ] width: 120 * self currentWorld displayScaleFactor);
+		addColumn: (IceTipTableColumn id: 'Id' action: [ :commit | textStylingBlock value: commit shortId value: commit ] width: 50 * self currentWorld displayScaleFactor);
+		addColumn: (IceTipTableColumn id: 'Author' action: [ :commit | textStylingBlock value: commit author value: commit ] width: 120 * self currentWorld displayScaleFactor);
+		addColumn: (IceTipTableColumn id: 'Comment' action: [ :commit | textStylingBlock value: commit comment value: commit ] width: 300 * self currentWorld displayScaleFactor);
 		dataSource: self newCommitsDataSource;
 		selectRowIndex: 1
 ]

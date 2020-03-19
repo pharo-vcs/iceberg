@@ -63,12 +63,12 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 		addColumn: (IceTipTableColumn new 
 			id: 'Host';
 			action: #hostDescription;
-			width: 100 * World displayScaleFactor;
+			width: 100 * self currentWorld displayScaleFactor;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Type';
 			action: #type;
-			width: 75 * World displayScaleFactor;
+			width: 75 * self currentWorld displayScaleFactor;
 			yourself);
 		addColumn: (IceTipTableColumn new 
 			id: 'Description';

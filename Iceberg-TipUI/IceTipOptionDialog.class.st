@@ -24,7 +24,7 @@ IceTipOptionDialog class >> defaultSpec [
 	^ SpecLayout composed
 		newRow: [ :row | 
 			row
-				newColumn: #typeList width: 180 * World displayScaleFactor;
+				newColumn: #typeList width: 180 * self currentWorld displayScaleFactor;
 				newColumn: #contentPanel ]
 ]
 

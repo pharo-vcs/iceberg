@@ -15,12 +15,12 @@ Class {
 
 { #category : #accessing }
 IceTipActionPanel class >> defaultActionWidth [
-	^ 100 * World displayScaleFactor
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #accessing }
 IceTipActionPanel class >> defaultHeight [
-	^ 25 * World displayScaleFactor
+	^ 25 * self currentWorld displayScaleFactor
 ]
 
 { #category : #specs }

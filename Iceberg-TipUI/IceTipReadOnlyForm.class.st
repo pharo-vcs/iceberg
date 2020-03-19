@@ -28,12 +28,12 @@ Class {
 
 { #category : #accessing }
 IceTipReadOnlyForm class >> defaultLabelWidth [
-	^ 100 * World displayScaleFactor
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #accessing }
 IceTipReadOnlyForm class >> defaultRowHeight [
-	^ 25 * World displayScaleFactor
+	^ 25 * self currentWorld displayScaleFactor
 ]
 
 { #category : #specs }

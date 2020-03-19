@@ -12,7 +12,7 @@ Class {
 		'acceptButton',
 		'acceptBlock'
 	],
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #accessing }
@@ -27,8 +27,8 @@ IceGitHubAcceptPullRequestModel class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :col |
 			col 
-				newRow: [:row | row add: #messageLabel width: 80 * World displayScaleFactor; add: #messageText ];
-				newRow: [:row | row add: #typeLabel width: 80 * World displayScaleFactor; add: #typeList ] height: 25 * World displayScaleFactor;
+				newRow: [:row | row add: #messageLabel width: 80 * self currentWorld displayScaleFactor; add: #messageText ];
+				newRow: [:row | row add: #typeLabel width: 80 * self currentWorld displayScaleFactor; add: #typeList ] height: 25 * self currentWorld displayScaleFactor;
 				add: #acceptButton height: self buttonHeight  ];
 		yourself
 ]
