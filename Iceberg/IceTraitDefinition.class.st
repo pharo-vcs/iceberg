@@ -8,8 +8,15 @@ See my superclasses for more information.
 Class {
 	#name : #IceTraitDefinition,
 	#superclass : #IceMethodContainerDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
+
+{ #category : #comparing }
+IceTraitDefinition >> = anotherDefinition [
+	
+	^ super = anotherDefinition
+		and: [ mcDefinition = anotherDefinition asMCDefinition ]
+]
 
 { #category : #visiting }
 IceTraitDefinition >> accept: aVisitor [
