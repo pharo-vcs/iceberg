@@ -1,7 +1,7 @@
 Class {
 	#name : #IceSinglePackageLocalRepositoryTest,
 	#superclass : #IceBornRepositoryTest,
-	#category : 'Iceberg-Tests-Common'
+	#category : #'Iceberg-Tests-Common'
 }
 
 { #category : #testing }
@@ -94,6 +94,101 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassSideMakesChangesContainCla
 ]
 
 { #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsCompositionIsExported [
+
+	| diff |
+	"This is a Ring working copy"
+
+	self repository workingCopy createTrait: 'T1' inPackage: self packageName1 asSymbol.
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
+				| composition transformations classSideComposition classSideTransformations| 
+				composition := RG2TraitCompositionDefinition parent: class.
+				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				class traitComposition: composition.
+				transformations do: [ :each |
+					composition addTransformation: each ].
+			
+				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
+				classSideTransformations := RG2TraitCompositionVisitor new 
+					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
+				class classSide traitComposition: classSideComposition.
+				classSideTransformations do: [ :each | 
+					classSideComposition addTransformation: each ]].
+		
+	self repository commitWithMessage: 'First class'.
+
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 3.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') 
+					value definition asMCDefinition hasClassTraitComposition.
+	self 
+			assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition asMCDefinition classTraitComposition 
+			equals: '(T1 classTrait - {#m1})'.
+
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsCompositionIsExportedInSecondCommit [
+
+	| diff |
+	"This is a Ring working copy"
+
+	self repository workingCopy createTrait: 'T1' inPackage: self packageName1 asSymbol.
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
+				| composition transformations classSideComposition classSideTransformations| 
+				composition := RG2TraitCompositionDefinition parent: class.
+				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				class traitComposition: composition.
+				transformations do: [ :each |
+					composition addTransformation: each ].
+			
+				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
+				classSideTransformations := RG2TraitCompositionVisitor new 
+					parse: 'T1 classTrait' for: classSideComposition.
+				class classSide traitComposition: classSideComposition.
+				classSideTransformations do: [ :each | 
+					classSideComposition addTransformation: each ]].
+		
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
+				| composition transformations classSideComposition classSideTransformations| 
+				composition := RG2TraitCompositionDefinition parent: class.
+				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				class traitComposition: composition.
+				transformations do: [ :each |
+					composition addTransformation: each ].
+			
+				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
+				classSideTransformations := RG2TraitCompositionVisitor new 
+					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
+				class classSide traitComposition: classSideComposition.
+				classSideTransformations do: [ :each | 
+					classSideComposition addTransformation: each ]].
+		
+	self repository commitWithMessage: 'Second commit'.
+
+
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') 
+					value definition asMCDefinition hasClassTraitComposition.
+	self 
+			assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition asMCDefinition classTraitComposition 
+			equals: '(T1 classTrait - {#m1})'.
+
+]
+
+{ #category : #'tests-changes' }
 IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExportedInCommit [
 
 	| diff |
@@ -168,6 +263,61 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExpor
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.	
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testChangeTraitWithClassSideTraitsCompositionIsExportedInSecondCommit [
+
+	| diff |
+	"This is a Ring working copy"
+
+	self repository workingCopy createTrait: 'T1' inPackage: self packageName1 asSymbol.
+
+	self repository workingCopy
+		createTrait: 'T2' inPackage: self packageName1 asSymbol with: [ :class | 
+				| composition transformations classSideComposition classSideTransformations| 
+				composition := RG2TraitCompositionDefinition parent: class.
+				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				class traitComposition: composition.
+				transformations do: [ :each |
+					composition addTransformation: each ].
+			
+				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
+				classSideTransformations := RG2TraitCompositionVisitor new 
+					parse: 'T1 classTrait' for: classSideComposition.
+				class classSide traitComposition: classSideComposition.
+				classSideTransformations do: [ :each | 
+					classSideComposition addTransformation: each ]].
+		
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy
+		createTrait: 'T2' inPackage: self packageName1 asSymbol with: [ :class | 
+				| composition transformations classSideComposition classSideTransformations| 
+				composition := RG2TraitCompositionDefinition parent: class.
+				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				class traitComposition: composition.
+				transformations do: [ :each |
+					composition addTransformation: each ].
+			
+				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
+				classSideTransformations := RG2TraitCompositionVisitor new 
+					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
+				class classSide traitComposition: classSideComposition.
+				classSideTransformations do: [ :each | 
+					classSideComposition addTransformation: each ]].
+
+	self repository commitWithMessage: 'Second commit'.
+
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'T2') value isModification.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'T2') 
+					value definition asMCDefinition hasClassTraitComposition.
+	self 
+			assert: (diff codeSubdirectoryNode / self packageName1 / 'T2') value definition asMCDefinition classTraitComposition 
+			equals: '(T1 classTrait - {#m1})'.
+
 ]
 
 { #category : #'tests-checkout' }
