@@ -74,7 +74,7 @@ IceTipNewRepositoryPanel >> initializeWidgets [
 		autoAccept: true.
 	
 	projectNameInputText 	whenTextChanged: [ :text | 
-		projectLocation appendPath: text ].
+		projectLocation appendPath: text asString ].
 	
 	self focusOrder 
 		add: self projectNameInputText;

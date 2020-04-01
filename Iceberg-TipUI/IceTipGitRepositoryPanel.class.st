@@ -53,7 +53,7 @@ IceTipGitRepositoryPanel >> initializeWidgets [
 	self remoteInputText ghostText: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
 	
 	self remoteInputText 	whenTextChanged: [ :text |
-		self projectLocation appendPath: (self extractProjectName: text) ].
+		self projectLocation appendPath: (self extractProjectName: text asString) ].
 	
 	self focusOrder 
 		add: self remoteInputText	
