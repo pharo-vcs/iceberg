@@ -303,7 +303,7 @@ IceLibgitRepository >> codeDirectory [
 { #category : #'private-commits' }
 IceLibgitRepository >> commitCache [
 	
-	^ commitCache ifNil: [ commitCache := LRUCache new maximumWeight: 30  ]
+	^ commitCache ifNil: [ commitCache := LRUCache new maximumWeight: 30; beThreadSafe  ]
 ]
 
 { #category : #'private-commits' }

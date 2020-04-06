@@ -151,7 +151,7 @@ Class {
 	#classVars : [
 		'Registry'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #testing }
@@ -381,7 +381,7 @@ IceRepository >> commitishNamed: aName [
 { #category : #'private-commits' }
 IceRepository >> commitsInPackageCache [
 
-	^ commitsInPackageCache ifNil: [ commitsInPackageCache := LRUCache new maximumWeight: 30  ]
+	^ commitsInPackageCache ifNil: [ commitsInPackageCache := LRUCache new maximumWeight: 30; beThreadSafe  ]
 ]
 
 { #category : #'private-commits' }
