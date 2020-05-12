@@ -53,7 +53,7 @@ IceLibgitErrorVisitor >> visitEEOF: aLGit_GIT_EEOF [
 { #category : #visiting }
 IceLibgitErrorVisitor >> visitEEXISTS: anError [
 
-	(anError messageText beginsWith: 'Failed to write reference ''refs/tags')
+	(anError messageText asLowercase beginsWith: 'failed to write reference ''refs/tags')
 		ifTrue: [ | refName messageStream|
 			messageStream := anError messageText readStream.
 			refName := messageStream
@@ -82,7 +82,12 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 	(anError object value = LGitReturnCodeEnum git_euser value)
 		ifTrue: [ self visitEUSER: anError  ].
 	
+	"Error in libgit before 1.0.0"
 	anError messageText trimmed = 'Unexpected HTTP status code: 404'
+		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
+
+	"Error in libgit 1.0.0"
+	anError messageText trimmed = 'request failed with status code: 404'
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 
 	self visitGenericError: anError
