@@ -110,8 +110,8 @@ IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: 
 			source: self fullname;
 			destination: self fullname;
 			yourself)
-		pushOptions: (self ffiLibrary uniqueInstance pushOptionsStructureClass defaults
-			callbacks: ((self ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
+		pushOptions: (gitRemote ffiLibrary uniqueInstance pushOptionsStructureClass defaults
+			callbacks: ((gitRemote ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
 				pushTransferProgress: pushProgress; 
 				yourself);
 			yourself)
