@@ -110,8 +110,8 @@ IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: 
 			source: self fullname;
 			destination: self fullname;
 			yourself)
-		pushOptions: (LGitPushOptions defaults
-			callbacks: ((LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
+		pushOptions: (self ffiLibrary uniqueInstance pushOptionsStructureClass defaults
+			callbacks: ((self ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
 				pushTransferProgress: pushProgress; 
 				yourself);
 			yourself)
@@ -125,8 +125,8 @@ IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progres
 			source: 'refs/tags/' , tag name;
 			destination: 'refs/tags/' , tag name;
 			yourself)
-		pushOptions: (LGitPushOptions defaults
-			callbacks: ((LGitRemoteCallbacks withProvider: (IceCredentialsProvider defaultForRemote: aRemote))
+		pushOptions: (self ffiLibrary uniqueInstance pushOptionsStructureClass defaults
+			callbacks: ((self ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote))
 				pushTransferProgress: pushProgress;
 				yourself);
 			yourself)
