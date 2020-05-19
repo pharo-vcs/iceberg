@@ -81,12 +81,12 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 	 actual code. This is a HACK, but it will fix #577"
 	(anError object value = LGitReturnCodeEnum git_euser value)
 		ifTrue: [ self visitEUSER: anError  ].
-	
-	"Error in libgit before 1.0.0"
-	anError messageText trimmed = 'Unexpected HTTP status code: 404'
+
+	"Error in libgit in non-windows"
+	anError messageText trimmed asLowercase = 'Unexpected HTTP status code: 404' asLowercase
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 
-	"Error in libgit 1.0.0"
+	"Error in libgit in windows"
 	anError messageText trimmed = 'request failed with status code: 404'
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 

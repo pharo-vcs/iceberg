@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitCloneTest,
 	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #running }
@@ -78,6 +78,6 @@ IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self should: [ IceGitClone new
 				location: fixture location;
-				url: 'https://github.com/doesNotExists/repo.git';
+				url: 'https://github.com/guillep/doesNotExist111.git';
 				execute ] raise: IceCloneRemoteNotFound
 ]
