@@ -100,6 +100,8 @@ IceLibgitErrorVisitor >> visitEUSER: anError [
 	 fit. :("
 	anError messageText = 'No ssh-agent suitable credentials found.'
 		ifTrue: [ anError resignalAs: IceAuthenticationError new ].
+	anError messageText asLowercase = 'Invalid username and/or password provided.' asLowercase
+		ifTrue: [ anError resignalAs: IceAuthenticationError new ].
 	self visitGenericError: anError
 ]
 
