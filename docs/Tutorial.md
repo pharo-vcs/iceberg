@@ -75,6 +75,6 @@ Sometimes you may need to adjust the Git config values for your repository. For 
   1. Choose __Extra -> Inspect...__  
      ![image](images/tutorial-repository-inspect.png)
   1. In the __Raw__ tab, select `handle` to get to the underlying __LGitRepository__ instance
-  1. In the __Raw__ tab of the __LGitRepository__, access the email setter by using `self config email: '<your email address>'` and then `CTRL-d` to execute  
+  1. In the __Raw__ tab of the __LGitRepository__, access the email setter by using `self config email: '<your email address>'` and then `CMD/CTRL-d` to execute  
      ![image](images/tutorial-config-set.png)  
      __LGitConfig__ also exposes __username__, which is not to be confused with the Github username, but is your friendly name for commit messages, like "Joel Wilson".
