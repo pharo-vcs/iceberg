@@ -4,7 +4,7 @@ I am a null object representing an empty node of a tree. I'm used together with 
 Class {
 	#name : #IceEmptyNode,
 	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
@@ -40,6 +40,12 @@ IceEmptyNode >> collect: aBlockClosure [
 { #category : #enumerating }
 IceEmptyNode >> collectWithPath: aBlockClosure [ 
 	^ self
+]
+
+{ #category : #enumerating }
+IceEmptyNode >> do: aBlock [
+
+	"Do nothing"
 ]
 
 { #category : #enumerating }
@@ -93,7 +99,7 @@ IceEmptyNode >> mergeWith: anotherNode onLeft: leftBlock onRight: rightBlock onM
 	^ anotherNode collect: rightBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceEmptyNode >> mergedTree [
 	self shouldBeImplemented.
 ]
