@@ -16,7 +16,7 @@ BaselineOfIceberg >> baseline: spec [
 		
 		spec
 			baseline: 'Ring2' 
-			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
+			with: [ spec repository: 'github://guillep/Ring2:2.0.0' ].
 		
 		spec
 			"iceberg"
@@ -111,7 +111,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v2.0.0';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v2.0.1';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
