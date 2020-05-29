@@ -9,6 +9,12 @@ Class {
 }
 
 { #category : #actions }
+IceTipMergeModel >> calculateDiff [
+
+	^ self mergeAction
+]
+
+{ #category : #actions }
 IceTipMergeModel >> executeMergeActionAndThen: aBlock [ 
 
 	<noCache>
