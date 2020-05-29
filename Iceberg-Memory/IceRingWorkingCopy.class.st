@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'ringEnvironment'
 	],
-	#category : 'Iceberg-Memory'
+	#category : #'Iceberg-Memory'
 }
 
 { #category : #'private-impacting-changes' }
@@ -132,7 +132,7 @@ IceRingWorkingCopy >> loadPackagesNamed: packageNames fromCommit: aCommit [
 			fromCommit: aCommit
 			package: package)
 				mcSnapshot.
-		snapshot importInto: ringEnvironment asPackageNamed: packageName.
+		snapshot ring2ImportInto: ringEnvironment asPackageNamed: packageName.
 		package beClean.
 	].
 	self referenceCommit: aCommit
