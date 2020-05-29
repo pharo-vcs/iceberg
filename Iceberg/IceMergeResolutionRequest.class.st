@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'merge'
 	],
-	#category : 'Iceberg-Errors'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #exceptiondescription }
@@ -21,7 +21,7 @@ IceMergeResolutionRequest >> defaultAction [
 		title: 'Merge';
 		yourself.
 
-	UIManager default openModal: window.
+	window openModal.
 	^ mergeMorph merged
 ]
 
