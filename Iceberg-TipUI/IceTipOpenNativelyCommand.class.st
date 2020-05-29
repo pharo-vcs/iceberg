@@ -47,7 +47,7 @@ IceTipOpenNativelyCommand >> execute [
 	self flag: #pharo8. "This condition can be removed once Iceberg will require Pharo 8+"
 	self class environment
 		at: #ManifestNativeBrowser
-		ifPresent: [ :class | location openInNativeBrowser ]
+		ifPresent: [ :class | location openInOSFileBrowser ]
 		ifAbsent: [ self inform: 'This action needs the Native-Browser project loaded in the image to work.' ]
 ]
 
