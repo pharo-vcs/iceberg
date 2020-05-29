@@ -5,7 +5,7 @@ Class {
 		'username',
 		'email'
 	],
-	#category : 'Iceberg-Tests-Git'
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #running }
@@ -156,4 +156,17 @@ IceGitWithoutUserNameTest >> testFixUnsetUserNameAndResumeDoesCommit [
 			(self repository getConfigurationGlobal: false) username: 'mock'.
 			error resume ].
 	self fail
+]
+
+{ #category : #tests }
+IceGitWithoutUserNameTest >> testUtf8Username [
+	| after utf8Username |
+	utf8Username := 'Yn-aë éé'.
+
+	(self repository getConfigurationGlobal: false) username: utf8Username.
+	self repository workingCopy addPackageNamed: 'AnotherPackage'.
+
+	after := self repository commitWithMessage: 'Another commit message'.
+	
+	self assert: after author equals: utf8Username
 ]
