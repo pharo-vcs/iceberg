@@ -10,10 +10,13 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'parentNode',
+		'sourceSnapshot',
+		'targetSnapshot',
 		'diff',
+		'operation',
 		'version'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #importing }
@@ -25,7 +28,7 @@ IceChangeImporter >> addFileNamed: aString path: aRelativePath contents: aByteAr
 	aRelativePath segments allButLastDo: [ :each | 
 		fileParentNode := (fileParentNode includesKey: each)
 			ifTrue: [ fileParentNode / each ]
-			ifFalse: [ fileParentNode addChild: (IceDirectoryDefinition named: each) ].
+			ifFalse: [ fileParentNode addChild: (IceDirectoryDefinition named: each path: aRelativePath parent) ].
 		self assert: fileParentNode value isDirectoryDefinition ].
 
 	fileParentNode addChild: (IceFileDefinition
@@ -54,7 +57,7 @@ IceChangeImporter >> ensureDirectoryNamed: aName inNode: aNode [
 	aNode childAt: aName ifPresent: [ :node |
 		self assert: node value isDirectoryDefinition.
 		^ node ].
-	^ aNode addChild: (IceDirectoryDefinition named: aName)
+	^ aNode addChild: (IceDirectoryDefinition named: aName path: aNode path / aName)
 ]
 
 { #category : #private }

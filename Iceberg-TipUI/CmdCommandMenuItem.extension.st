@@ -4,3 +4,9 @@ Extension { #name : #CmdCommandMenuItem }
 CmdCommandMenuItem >> buildIceToolbarItem [
 	^ activator buildIceToolbarItem
 ]
+
+{ #category : #'*Iceberg-TipUI' }
+CmdCommandMenuItem >> iceToolbarPosition [
+
+	^ activator activationStrategy position
+]

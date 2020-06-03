@@ -19,23 +19,21 @@ Class {
 { #category : #specs }
 IceTipNewRepositoryPanel class >> defaultSpec [
 	<spec: #default>
-
-	^ SpecLayout composed 
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-						row
-							add: #projectNameLabel width: self iceLabelWidth;
-							add: #projectNameInputText ]
-					height: self inputTextHeight;
-				newRow: #projectLocation
-					height: self inputTextHeight;
-				newRow: [ :row | 
-						row 
-							add: #subdirectoryLabel width: self iceLabelWidth;
-							add: #subdirectoryInputText ]
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #projectNameLabel width: self labelWidth;
+				add: #projectNameInputText;
+				yourself)
+			height: 30;
+		add: #projectLocation height: 30;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #subdirectoryLabel width: self labelWidth;
+				add: #subdirectoryInputText;
+				yourself)
+			height: 30;
+		yourself
 ]
 
 { #category : #accessing }
@@ -56,10 +54,9 @@ IceTipNewRepositoryPanel class >> title [
 { #category : #initialization }
 IceTipNewRepositoryPanel >> initializeSourceDirectory [
 	subdirectoryLabel := self newLabel label: 'Source directory'.
-	subdirectoryInputText := self newTextInput 
-		ghostText: 'e.g., src';
+	subdirectoryInputText := self newTextInput
+		placeholder: 'e.g., src';
 		autoAccept: true.
-		
 	subdirectoryInputText text: self defaultSubdirectory
 ]
 
@@ -67,16 +64,13 @@ IceTipNewRepositoryPanel >> initializeSourceDirectory [
 IceTipNewRepositoryPanel >> initializeWidgets [
 	super initializeWidgets.
 	self initializeSourceDirectory.
-	
 	projectNameLabel := self newLabel label: 'Project name'.
-	projectNameInputText := self newTextInput 
-		ghostText: 'e.g., MyProject';
+	projectNameInputText := self newTextInput
+		placeholder: 'e.g., MyProject';
 		autoAccept: true.
-	
-	projectNameInputText 	whenTextChanged: [ :text | 
-		projectLocation appendPath: text ].
-	
-	self focusOrder 
+	projectNameInputText
+		whenTextChangedDo: [ :text | projectLocation appendPath: text ].
+	self focusOrder
 		add: self projectNameInputText;
 		add: self projectLocation;
 		add: self subdirectoryInputText;

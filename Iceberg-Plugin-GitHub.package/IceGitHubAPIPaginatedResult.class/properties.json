@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Iceberg-Plugin-GitHub-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"api",
+		"request",
+		"result",
+		"nextPage"
+	],
+	"name" : "IceGitHubAPIPaginatedResult",
+	"type" : "normal"
+}

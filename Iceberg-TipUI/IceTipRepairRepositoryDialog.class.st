@@ -14,13 +14,11 @@ Class {
 { #category : #specs }
 IceTipRepairRepositoryDialog class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :column |
-			column 
-				newRow: #reasonPanel height: 70 * self currentWorld displayScaleFactor;
-				newRow: #optionsList;
-				newRow: #detailPanel ]
+	^ SpBoxLayout newVertical
+		add: #reasonPanel height: 70 * World displayScaleFactor;
+		add: #optionsList height: 100 * World displayScaleFactor;
+		add: #detailPanel;
+		yourself
 ]
 
 { #category : #'instance creation' }
@@ -56,36 +54,38 @@ IceTipRepairRepositoryDialog >> initialExtent [
 
 { #category : #initialization }
 IceTipRepairRepositoryDialog >> initializeOptionsList [
-	optionsList widget 
-		addColumn: (IceTipTableColumn newAction: #title icon: #icon);
-		dataSource: self newOptionsListDataSource;
-		bindKeyCombination: Character cr toAction: [ self accept ];
-		onAnnouncement: FTSelectionChanged send: #selectionChanged: to: self;
-		onAnnouncement: FTStrongSelectionChanged send: #accept to: self.
+	optionsList
+		addColumn:
+			(SpCompositeTableColumn new
+				addColumn:
+					(SpImageTableColumn new
+						width: 20;
+						evaluated: #icon;
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: #title;
+						yourself);
+				yourself);
+		items: self model availableRepairOptions;
+		whenSelectionChangedDo: [ :selection | self selectionChanged: selection selectedItem ] ;
+		bindKeyCombination: Character cr toAction: [ self accept ]
 ]
 
 { #category : #private }
 IceTipRepairRepositoryDialog >> initializeReasonPanel [
-	reasonPanel widget
-		addMorphBack:
-			(IceTipReadOnlyTextMorph new
-				hResizing: #spaceFill;
-				vResizing: #spaceFill;
-				contentsWrapped: self model longStatus;
-				yourself)
+	reasonPanel text: self model longStatus.
 ]
 
 { #category : #initialization }
 IceTipRepairRepositoryDialog >> initializeWidgets [
-	reasonPanel := self newIcePanel.
-	optionsList := self newIceTable.
-	detailPanel := self newIcePanel.
-	
+self flag: 'To-do' "Make these spTextPresenter non editable.".
+	reasonPanel := self newText disable.
+	optionsList := self newTable disable.
+	detailPanel := self newText disable.
 	self initializeReasonPanel.
 	self initializeOptionsList.
-	
-	self focusOrder 
-		add: self optionsList
+	self focusOrder add: self optionsList
 ]
 
 { #category : #accessing }
@@ -123,22 +123,14 @@ IceTipRepairRepositoryDialog >> reasonPanel: anObject [
 
 { #category : #private }
 IceTipRepairRepositoryDialog >> refreshDetailPanel [
-	detailPanel widget removeAllMorphs.
-	selectedOption ifNotNil: [ 
-		detailPanel widget 
-			addMorphBack: (IceTipReadOnlyTextMorph new 
-				hResizing: #spaceFill;
-				vResizing: #spaceFill;
-				contentsWrapped: selectedOption help;
-				yourself) ]
+	selectedOption
+		ifNotNil: [detailPanel text: selectedOption help;
+						yourself]
 ]
 
 { #category : #private }
-IceTipRepairRepositoryDialog >> selectionChanged: ann [
-	selectedOption := ann newSelectedIndexes
-		ifNotEmpty:
-			[ :indexes | self optionsList widget dataSource elementAt: indexes first ]
-		ifEmpty: [ nil ].
+IceTipRepairRepositoryDialog >> selectionChanged: selectedItem [
+	selectedOption := selectedItem.
 	self refreshDetailPanel
 ]
 

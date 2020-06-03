@@ -16,16 +16,10 @@ Class {
 { #category : #specs }
 IceTipPreviewBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							add: #diffPanel;
-							add: #actionPanel height: self iceActionPanelHeight ] ] ]
+	^ SpBoxLayout newVertical
+				add: #diffPanel;
+				add: #actionPanel height: 25;
+			yourself
 ]
 
 { #category : #'accessing ui' }
@@ -53,12 +47,17 @@ IceTipPreviewBrowser >> diffPanel: anObject [
 	diffPanel := anObject
 ]
 
+{ #category : #accessing }
+IceTipPreviewBrowser >> initialExtent [
+	^ (800 @ 400) scaledByDisplayScaleFactor
+]
+
 { #category : #initialization }
 IceTipPreviewBrowser >> initializeWidgets [
 	super initializeWidgets.
 	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
-	actionPanel := self newIceActionPanel.
+	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
 	
 	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
@@ -66,6 +65,16 @@ IceTipPreviewBrowser >> initializeWidgets [
 	self focusOrder 
 		add: self actionPanel;
 		add: self diffPanel
+]
+
+{ #category : #initialization }
+IceTipPreviewBrowser >> initializeWindow: aWindowPresenter [
+	aWindowPresenter
+		title: self title;
+		initialExtent: self initialExtent;
+		windowIcon: self windowIcon;
+		askOkToClose: self askOkToClose;
+		aboutText: self aboutText
 ]
 
 { #category : #'private factory' }

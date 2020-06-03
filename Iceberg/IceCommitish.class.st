@@ -30,7 +30,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -83,6 +83,31 @@ IceCommitish >> checkoutWithStrategy: aCheckoutStrategy [
 	repository checkout: (aCheckoutStrategy commitish: self)
 ]
 
+{ #category : #'API-cherry-picking' }
+IceCommitish >> cherryPickFrom: anotherCommit [ 
+	
+	^ anotherCommit cherryPickTo: self
+]
+
+{ #category : #'cherry-picking' }
+IceCommitish >> cherryPickTo: anotherCommit [ 
+
+	| initialDiff extendedDiff commonAncestor receiverDiff |
+	
+	initialDiff := self commit diffToParent.
+	commonAncestor := self commonAncestorWith: anotherCommit commit.
+   extendedDiff := self diffTo: commonAncestor.
+	receiverDiff := anotherCommit commit diffTo: commonAncestor.
+
+	^ IceCherrypicker new
+		sourceDiff: initialDiff;
+		targetDiff: extendedDiff;
+		receiverToAncestorDiff: receiverDiff;
+		execute.
+	
+
+]
+
 { #category : #accessing }
 IceCommitish >> commit [
 	
@@ -111,6 +136,12 @@ IceCommitish >> commonAncestorWith: anIceWorkingCopy [
 IceCommitish >> diffTo: aCommitish [
 
 	^ IceDiff from: self to: aCommitish
+]
+
+{ #category : #'API-changes' }
+IceCommitish >> diffToParent [
+
+	^ self diffTo: self parent
 ]
 
 { #category : #'API-packages' }
@@ -236,7 +267,7 @@ IceCommitish >> switch [
 { #category : #'API-actions' }
 IceCommitish >> switchAndMergeWorkingCopy [
 	self switch.
-	self flag: #todo. "Demeters law"
+	self flag: #pharoTodo. "Demeters law"
 	self repository workingCopy referenceCommit merge.
 	self commit merge
 ]

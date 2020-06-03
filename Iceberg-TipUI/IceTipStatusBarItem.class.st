@@ -8,8 +8,6 @@ Class {
 	#name : #IceTipStatusBarItem,
 	#superclass : #Object,
 	#instVars : [
-		'contents',
-		'help',
 		'position'
 	],
 	#category : #'Iceberg-TipUI-Spec-ItemBar'
@@ -23,31 +21,6 @@ IceTipStatusBarItem >> bePositionLeft [
 { #category : #accessing }
 IceTipStatusBarItem >> bePositionRight [
 	self position: IceTipItemPosition right
-]
-
-{ #category : #accessing }
-IceTipStatusBarItem >> contents [
-	^ contents
-]
-
-{ #category : #accessing }
-IceTipStatusBarItem >> contents: anObject [
-	contents := anObject
-]
-
-{ #category : #accessing }
-IceTipStatusBarItem >> help [
-	^ help
-]
-
-{ #category : #accessing }
-IceTipStatusBarItem >> help: anObject [
-	help := anObject
-]
-
-{ #category : #factory }
-IceTipStatusBarItem >> newStatusBarItemOn: aStatusBar [
-	^ self contents asMorph asReadOnlyMorph
 ]
 
 { #category : #accessing }

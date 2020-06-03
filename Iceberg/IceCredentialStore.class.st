@@ -101,7 +101,7 @@ IceCredentialStore >> isCurrent [
 IceCredentialStore >> loadFromStore [
 
 	| array |
-	self flag: #implementAnEncryptedVersion.
+	self flag: #pharoTodo. "implement an encrypted version"
 	
 	"If I don't have a store file I do nothing"
 	storeFile ifNil: [ ^ self ].
@@ -152,7 +152,7 @@ IceCredentialStore >> saveIntoStore [
 
 	| serializer |
 	
-	self flag: #implementAnEncryptedVersion.
+	self flag: #pharoTodo. "implement an encrypted version"
 		
 	storeFile ifNotNil: [  	
 		storeFile parent ensureCreateDirectory.	

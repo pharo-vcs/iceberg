@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipPreviewBrowser",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"checkoutStrategyLabel",
+		"checkoutStrategyList",
+		"selectedCheckoutStrategy"
+	],
+	"name" : "IceTipCheckoutPreviewBrowser",
+	"type" : "normal"
+}

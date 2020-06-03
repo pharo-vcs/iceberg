@@ -17,18 +17,17 @@ Class {
 { #category : #specs }
 IceTipCheckoutPreviewBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-				newRow: [ :row |
-					row 
-						newColumn: #checkoutStrategyLabel width: 100 * self currentWorld displayScaleFactor;
-						newColumn: #checkoutStrategyList ]
-					height: self inputTextHeight;
-				newRow: #diffPanel;
-				newRow: #actionPanel height: self iceActionPanelHeight ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
+				add: #checkoutStrategyList;
+				yourself)
+			height: self inputTextHeight;
+		add: #diffPanel height: 300 ;
+		add: #actionPanel;
+		"newRow: #toolbar height: IceTipToolbar defaultHeight;"
+			yourself
 ]
 
 { #category : #'instance creation' }
@@ -71,9 +70,8 @@ IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 	checkoutStrategyList
 		items: checkoutStrategies;
 		displayBlock: [ :each | each description ].
-
-	checkoutStrategyList whenSelectedItemChanged: [ :aStrategy | 
-		self model checkoutStrategy: aStrategy ]
+	checkoutStrategyList
+		whenSelectedItemChangedDo: [ :aStrategy | self model checkoutStrategy: aStrategy ]
 ]
 
 { #category : #initialization }

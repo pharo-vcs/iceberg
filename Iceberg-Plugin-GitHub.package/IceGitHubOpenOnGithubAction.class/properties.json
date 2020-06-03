@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceGitHubAction",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"organisation",
+		"projectName"
+	],
+	"name" : "IceGitHubOpenOnGithubAction",
+	"type" : "normal"
+}

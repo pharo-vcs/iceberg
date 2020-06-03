@@ -7,7 +7,7 @@ I reuse IceTipMetacelloInstalllBaselineDefaultCommand and IceTipMetacelloInstall
 Class {
 	#name : #IceTipMetacelloRepositoryInstallBaselineCommand,
 	#superclass : #IceTipCommand,
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
 
 { #category : #accessing }
@@ -27,7 +27,7 @@ IceTipMetacelloRepositoryInstallBaselineCommand class >> browserContextActivatio
 
 { #category : #testing }
 IceTipMetacelloRepositoryInstallBaselineCommand class >> canBeExecutedInContext: aToolContext [
-	self flag: #todo. "Demeters law"
+	self flag: #pharoTodo. "Demeters law"
 	^ aToolContext repositoryModel entity workingCopy packages
 		anySatisfy: [ :each | each name beginsWith: self baselinePrefix ]
 ]
@@ -81,16 +81,14 @@ IceTipMetacelloRepositoryInstallBaselineCommand >> fillGroupMenu: aMenu using: a
 
 { #category : #'context menu' }
 IceTipMetacelloRepositoryInstallBaselineCommand >> fillMenu: aMenu title: aString command: aCommand activator: aCommandActivator baseline: aPackage [
-	| activator item |
+		| activator item |
 	activator := aCommandActivator newForCommand: aCommand.
-	item := aMenu 	
-		add: aString
-		target: activator
-		selector: #executeCommand.
-		
-	aCommand setUpIconForMenuItem: item.
-	aCommand description 
-		ifNotNil: [ :d | item setBalloonText: d ]
+	item := CmdCommandMenuItem activatingBy: activator .
+	"we need to copy the activation strategy because it's where the name of the menu item is set and newForCommand is not creating a new activation Strategy"
+	activator activationStrategy: activator activationStrategy copy.
+	activator activationStrategy menuItemName: aString .
+	aMenu basicAddItem: item.
+
 ]
 
 { #category : #private }

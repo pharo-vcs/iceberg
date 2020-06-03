@@ -24,22 +24,19 @@ Class {
 IceGitHubNewBranchFromIssuePanel class >> defaultSpec [
 	<spec: #default>
 
-	^ SpecLayout composed
-		newColumn: [ :col | 
-			col
-				newRow: #currentBranchLabel height: self inputTextHeight;
-				newRow: #remotePanel height: self inputTextHeight;
-				newRow: [ :row | 
-					row
-						newColumn: #branchLabel width: self iceLabelWidth;
-						newColumn: #issueNumberText ]
+	^ SpBoxLayout newVertical 
+				add: #currentBranchLabel height: self inputTextHeight;
+				add: #remotePanel height: self inputTextHeight;
+				add: ( SpBoxLayout newHorizontal 
+						add: #branchLabel width: self labelWidth;
+						add: #issueNumberText;
+						yourself  )
 					height: self inputTextHeight;
-				newRow: [ :row |
-					row 
-						newColumn: #issueLabel width: self iceLabelWidth;
-						newColumn: #issueText ] 
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+				add:(  SpBoxLayout newHorizontal 
+						add: #issueLabel width: self labelWidth;
+						add: #issueText ;
+						yourself )
+					height: self inputTextHeight
 ]
 
 { #category : #accessing }
@@ -67,7 +64,7 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 ]
 
 { #category : #api }
-IceGitHubNewBranchFromIssuePanel >> extent [
+IceGitHubNewBranchFromIssuePanel >> initialExtent [
 	^ 800@175
 ]
 
@@ -90,28 +87,26 @@ IceGitHubNewBranchFromIssuePanel >> initializeFocusOrder [
 { #category : #initialization }
 IceGitHubNewBranchFromIssuePanel >> initializeWidgetsContents [
 	spacePanel := PanelMorph new asSpecAdapter.
-	
 	self initializeCurrentBranchLabel.
-	
-	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self selectRemoteModel.
-	remotePanel remoteList whenSelectedItemChanged: [ :remoteModel | 
-		self useRemote: remoteModel  ].
-
+	remotePanel := self
+		instantiate: IceTipSelectRemotePresenter
+		on: self selectRemoteModel.
+	remotePanel remoteList
+		whenSelectedItemChangedDo: [ :remoteModel | self useRemote: remoteModel ].
 	branchLabel := self newLabel label: 'Issue number:'.
 	issueNumberText := self newTextInput
-		ghostText: 'e.g., 123';
+		placeholder: 'e.g., 123';
 		autoAccept: true.
 	issueLabel := self newLabel label: 'Title:'.
 	issueText := self newTextInput
-		ghostText: 'e.g., 123-github-issue';
+		placeholder: 'e.g., 123-github-issue';
 		autoAccept: true.
-		
 	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ].
 	issueText
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text asString ]
+	issueNumberText whenTextChangedDo: [ :text | self validateIssue: text ]
 ]
 
 { #category : #'accessing ui' }

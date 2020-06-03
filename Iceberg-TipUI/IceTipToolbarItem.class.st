@@ -85,29 +85,15 @@ IceTipToolbarItem >> label: anObject [
 ]
 
 { #category : #factory }
-IceTipToolbarItem >> newToolbarButtonOn: aToolbar [
+IceTipToolbarItem >> newElementOn: aToolbar [
 	| button |
-	
-	button := (IceTipToolbarItemButtonMorph
-		on: self 
-			getState: nil 
-			action:  #execute)
-		helpText: self help;
-		font: aToolbar toolbarItemFont;
-		beIconTop;
-		hResizing: #rigid;
-		vResizing: #spaceFill;
-		borderWidth: 0;
-		borderColor: Color transparent;		
-		cellPositioning: #center;
-		width: aToolbar toolbarItemSize;
-		yourself.
-		
-	aToolbar displayMode 
-		configureButton: button 
-		item: self.
-
+	button := SpButtonPresenter new.
+	button
+		icon: self icon;
+		label: self label;
+		action: self action.
 	^ button
+
 ]
 
 { #category : #accessing }

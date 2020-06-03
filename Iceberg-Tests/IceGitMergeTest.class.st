@@ -10,6 +10,30 @@ IceGitMergeTest >> newFixture [
 ]
 
 { #category : #tests }
+IceGitMergeTest >> testConflictFile [
+	| fileRef branchMaster branchRemove |
+	
+	fileRef := self repository location / 'conflicting.txt'.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'first commit'.
+	branchMaster := self repository branch.
+
+	self repository checkoutBranch: 'second-branch'.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents from second branch' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'change from second branch'.
+	branchRemove := self repository branch.	
+	
+	branchMaster checkout.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents from first branch' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit from first branch'.	
+	
+	self should: [ branchRemove merge ] raise: IceMergeResolutionRequest
+]
+
+{ #category : #tests }
 IceGitMergeTest >> testMergeBinaryFileAdditionCreatesFileInWorkingCopy [
 	| fileRef branchMaster newBranch |
 
@@ -137,6 +161,86 @@ IceGitMergeTest >> testMergeTextFileAdditionCreatesFileInWorkingCopy [
 ]
 
 { #category : #tests }
+IceGitMergeTest >> testMergeWithDirectoryRemovedOnOneBranchButNotOtherCausesConflict [
+	| fileRef otherFileRef branchMaster branchRemove |
+	
+	fileRef := self repository location / 'directoryToRemove' / 'test-to-remove.txt'.
+	fileRef parent ensureCreateDirectory.
+	fileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'first commit'.
+	branchMaster := self repository branch.
+
+	self repository checkoutBranch: 'remove-branch'.
+	fileRef ensureDelete.
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit removed file'.
+	branchRemove := self repository branch.	
+	
+	branchMaster checkout.
+	otherFileRef := self repository location / 'directoryToRemove' / 'other-test-to-remove.txt'.
+	otherFileRef parent ensureCreateDirectory.
+	otherFileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
+	self repository index addPath: (otherFileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit 2nd file'.	
+
+	self should: [ branchRemove merge ] raise: IceMergeResolutionRequest
+]
+
+{ #category : #tests }
+IceGitMergeTest >> testMergeWithDirectoryRemovedWithFastForward [
+	| fileRef branchMaster branchRemove |
+	
+	fileRef := self repository location / 'directoryToRemove' / 'test-to-remove.txt'.
+	fileRef parent ensureCreateDirectory.
+	fileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
+	
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'first commit'.
+	branchMaster := self repository branch.
+
+	self repository checkoutBranch: 'remove-branch'.
+	fileRef ensureDelete.
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit removed file'.
+	branchRemove := self repository branch.	
+	
+	branchMaster checkout.
+	branchRemove merge.
+	
+	self deny: fileRef parent exists
+]
+
+{ #category : #tests }
+IceGitMergeTest >> testMergeWithDirectoryRemovedWithMerge [
+	| fileRef otherFileRef branchMaster branchRemove |
+	
+	fileRef := self repository location / 'directoryToRemove' / 'test-to-remove.txt'.
+	fileRef parent ensureCreateDirectory.
+	fileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'first commit'.
+	branchMaster := self repository branch.
+
+	self repository checkoutBranch: 'remove-branch'.
+	fileRef ensureDelete.
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit removed file'.
+	branchRemove := self repository branch.	
+	
+	branchMaster checkout.
+	otherFileRef := self repository location / 'other-test-to-remove.txt'.
+	otherFileRef writeStreamDo: [ :stream | stream << 'to-remove' ].
+	self repository index addPath: (otherFileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit 2nd file'.	
+	
+	branchRemove merge.
+	
+	self assert: otherFileRef exists.
+	self deny: fileRef parent exists.
+]
+
+{ #category : #tests }
 IceGitMergeTest >> testMergeWithEmptyIncomingCommitCreatesMergeCommit [
 	| incomingBranch |
 
@@ -234,4 +338,38 @@ IceGitMergeTest >> testMergeWithMissingProjectFile [
 	incomingBranch merge.
 		
 	self assert: self repository workingCopy referenceCommit comment equals: 'Merge ' , incomingBranch commit id
+]
+
+{ #category : #tests }
+IceGitMergeTest >> testResolveConflictInFileCreatesCorrectMergeCommit [
+	| fileRef branchMaster conflictingCommit baseCommit |
+	
+	fileRef := self repository location / 'conflicting.txt'.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'first commit'.
+	branchMaster := self repository branch.
+
+	self repository checkoutBranch: 'second-branch'.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents from second branch' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'change from second branch'.
+	conflictingCommit := self repository branch commit.
+	
+	branchMaster checkout.
+	fileRef writeStreamDo: [ :stream | stream << 'some contents from first branch' ].
+	self repository index addPath: (fileRef relativeTo: self repository location).
+	self repository commitWithMessage: 'commit from first branch'.
+	baseCommit := branchMaster commit.
+	
+	[ conflictingCommit merge ]
+		on: IceMergeResolutionRequest
+		do: [ :request | 
+			request merge conflictsDo: [ :c | c selectLeft ].
+			request resume: true ].
+		
+	self assert: (self repository headCommit ancestors includes: baseCommit).
+	self assert: (self repository headCommit ancestors includes: conflictingCommit).
+	
+	self assert: (self repository headCommit fileSystem / 'conflicting.txt') contents equals: 'some contents from second branch'
 ]

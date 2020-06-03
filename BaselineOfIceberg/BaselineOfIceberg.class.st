@@ -94,8 +94,8 @@ BaselineOfIceberg >> commander: spec [
 		baseline: 'Commander' 
 		with: [ 
 			spec 
-				repository: 'github://pharo-ide/Commander:v0.7.2/src';
-				loads: #('Core' 'AllActivators' 'Commander-SpecSupport') ]
+				repository: 'github://pharo-ide/Commander:v0.8.1/src';
+				loads: #('Core' 'AllActivators' 'Commander-SpecSupport' 'Commander-Spec2-Compatibility') ]
 ]
 
 { #category : #accessing }

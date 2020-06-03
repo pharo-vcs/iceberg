@@ -151,7 +151,7 @@ Class {
 	#classVars : [
 		'Registry'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #testing }
@@ -319,6 +319,12 @@ IceRepository >> checkoutBranch: branchName [
 		branchNamed: branchName
 		ifAbsent: [
 			self createBranch: branchName ]) checkout
+]
+
+{ #category : #'API-cherry-picking' }
+IceRepository >> cherryPickFrom: anotherCommit [ 
+
+	^ self head cherryPickFrom: anotherCommit
 ]
 
 { #category : #'API-history' }

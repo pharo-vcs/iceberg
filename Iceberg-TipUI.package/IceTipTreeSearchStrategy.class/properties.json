@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "FTVisibleItemsStrategy",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipTreeSearchStrategy",
+	"type" : "normal"
+}

@@ -29,7 +29,7 @@ IceTipGitHubPullRequestListBrowser class >> defaultSpec [
 	^ SpecLayout composed
 		newColumn: [ :mainColumn | 
 			mainColumn
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
+				newRow: #toolbar height: self toolbarHeight ;
 				newRow: #pullRequests height: 150;
 				addHSplitter;
 				newRow: #details ]
@@ -151,7 +151,7 @@ IceTipGitHubPullRequestListBrowser >> refreshPullRequests [
 	table := self pullRequests widget.
 	table dataSource elements: self fetchPullRequests.
 	(table hasSelection not and: [ table dataSource hasElements ])
-		ifTrue: [ table selectRowIndex: 1 ]
+		ifTrue: [ table selectIndex: 1 ]
 ]
 
 { #category : #accessing }
@@ -188,7 +188,12 @@ IceTipGitHubPullRequestListBrowser >> title [
 
 { #category : #'as yet unclassified' }
 IceTipGitHubPullRequestListBrowser >> uptadeSelectedPullRequest: anEvent [
-	self details pullRequest: (anEvent newSelectedRowIndexes ifNotEmpty: [ :indexes | self pullRequests widget dataSource elementAt: indexes first ] ifEmpty: [ IceGitHubNilPullRequest new ])
+	self details
+		pullRequest:
+			(anEvent newSelectedIndexes
+				ifNotEmpty:
+					[ :indexes | self pullRequests widget dataSource elementAt: indexes first ]
+				ifEmpty: [ IceGitHubNilPullRequest new ])
 ]
 
 { #category : #actions }

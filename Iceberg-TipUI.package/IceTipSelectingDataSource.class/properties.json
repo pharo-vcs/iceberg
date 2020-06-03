@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipDataSource",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedItems",
+		"onSelectionChangedBlock"
+	],
+	"name" : "IceTipSelectingDataSource",
+	"type" : "normal"
+}

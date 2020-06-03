@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipTreeNode",
+	"category" : "Iceberg-TipUI-View-DataSource",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipTreeItem",
+	"type" : "normal"
+}

@@ -4,7 +4,7 @@ My children will define different strategies to checkout (select an existing bra
 "
 Class {
 	#name : #IceTipBranchPanel,
-	#superclass : #IceTipComposablePresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'model',
 		'acceptBlock'

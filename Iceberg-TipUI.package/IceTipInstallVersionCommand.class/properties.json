@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selectedCommit",
+		"version"
+	],
+	"name" : "IceTipInstallVersionCommand",
+	"type" : "normal"
+}

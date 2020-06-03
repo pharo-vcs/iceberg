@@ -18,6 +18,13 @@ IceTipCachedModel class >> for: anObject [
 	^ self basicNew initializeObject: anObject
 ]
 
+{ #category : #accessing }
+IceTipCachedModel >> = aObject [ 
+	self species ~= aObject species
+	ifTrue: [^ false].
+	^ self realObject = aObject realObject
+]
+
 { #category : #'reflective operations' }
 IceTipCachedModel >> doesNotUnderstand: aMessage [
 	aMessage selector isUnary
@@ -42,6 +49,11 @@ IceTipCachedModel >> forwardMessage: aMessage [
 		withArguments: aMessage arguments 
 ]
 
+{ #category : #comparing }
+IceTipCachedModel >> hash [
+	^ self realObject hash
+]
+
 { #category : #initialization }
 IceTipCachedModel >> initializeObject: anObject [
 	realObject := anObject.
@@ -51,7 +63,7 @@ IceTipCachedModel >> initializeObject: anObject [
 
 { #category : #accessing }
 IceTipCachedModel >> name [
-	self flag: #pharo6. "in pharo6 there is still Object>>#name so this request will 
+	self flag: #pharoFixMe. "in pharo6 there is still Object>>#name so this request will 
 	not be redirected as expected (so we'll do it explicitly)"
 	^ self realObject name
 ]

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceGitHubTreeCommand",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceGitHubTreeViewPullRequestCommand",
+	"type" : "normal"
+}

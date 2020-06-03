@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'package'
 	],
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
 
 { #category : #accessing }
@@ -115,6 +115,17 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName
 			#useLoaded }
 		message: ('There is already a project "{1}" in this installation.' format: { projectName })
 		title: 'Duplicated project!'
+]
+
+{ #category : #accessing }
+IceTipMetacelloInstallBaselineCommand >> fillContextMenu: aMenu using: aCommandActivator [
+	| item |
+	
+	item := CmdCommandMenuItem activatingBy: aCommandActivator.
+
+	aCommandActivator setUpShortcutTipForMenuItem: item.
+	
+	aMenu basicAddItem: item.
 ]
 
 { #category : #private }

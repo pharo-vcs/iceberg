@@ -91,20 +91,18 @@ IceTipCheckoutBranchDialog >> title [
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withOnlyNewBranch [
 	types := self allTypes select: #isNewBranch.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
+
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withTypes: aCollection [
 	types := aCollection.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withoutNewBranch [
 	types := self allTypes reject: #isNewBranch.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
 ]

@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "ComposablePresenter",
+	"category" : "Iceberg-TipUI-Credentials",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"storeCheckbox",
+		"credentialStore",
+		"accepted",
+		"remoteHostname"
+	],
+	"name" : "IceTipAbstractAskCredentialsModel",
+	"type" : "normal"
+}

@@ -13,16 +13,16 @@ Class {
 
 { #category : #visiting }
 IceMCDefinitionImporter >> ensureMethodOwnerNamed: ownerName isMeta: isMeta isTrait: isTrait isExtension: isExtension [
-	
-	| newDefinition |	
+	| newDefinition |
 	newDefinition := isExtension
-		ifTrue: [ IceExtensionDefinition named: ownerName isMeta: isMeta ]
-		ifFalse: [ 
-			isTrait
+		ifTrue: [ IceExtensionDefinition named: ownerName isMeta: isMeta packageName: packageNode value name]
+		ifFalse: [ isTrait
 				ifFalse: [ IceClassDefinition named: ownerName isMeta: isMeta ]
 				ifTrue: [ IceTraitDefinition named: ownerName isMeta: isMeta ] ].
-	
-	^ packageNode childAt: newDefinition key ifAbsentPut: [ newDefinition ].
+
+	^ packageNode
+		childAt: newDefinition key
+		ifAbsentPut: [ newDefinition ]
 ]
 
 { #category : #testing }
@@ -61,14 +61,14 @@ IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [
 		isExtension: false.
 	classDefinitionNode value mcDefinition: aMCClassDefinition.
 	
-	"We also generate the definition for the metaclass (See visitMetaclassDefinition: comment)"
-	classDefinition := self
-		ensureMethodOwnerNamed: aMCClassDefinition className
-		isMeta: true
-		isTrait: false
-		isExtension: false.
-	classDefinition value mcDefinition: aMCClassDefinition.
-	
+	aMCClassDefinition classInstVarNames isEmpty ifFalse: [
+		"We also generate the definition for the metaclass (See visitMetaclassDefinition: comment)"
+		classDefinition := self
+			ensureMethodOwnerNamed: aMCClassDefinition className
+			isMeta: true
+			isTrait: false
+			isExtension: false.
+		classDefinition value mcDefinition: aMCClassDefinition ].
 	^ classDefinitionNode
 ]
 

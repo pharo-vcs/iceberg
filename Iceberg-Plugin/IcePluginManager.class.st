@@ -44,7 +44,7 @@ IcePluginManager >> checkoutBranchPanelsOnModel: aModel [
 ]
 
 { #category : #initialization }
-IcePluginManager >> initializeRepository: aRepository. [
+IcePluginManager >> initializeRepository: aRepository [.
 	self initialize.
 	plugins := self availablePluginsFor: aRepository
 ]

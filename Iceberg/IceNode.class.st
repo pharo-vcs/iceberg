@@ -33,10 +33,11 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'parent',
+		'cachedChanges',
 		'childrenDictionary',
 		'value'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -99,6 +100,12 @@ IceNode >> allChildrenDo: aBlockClosure [
 	self childrenDo: [ :e |
 		aBlockClosure value: e.
 		e allChildrenDo: aBlockClosure ]
+]
+
+{ #category : #enumerating }
+IceNode >> allNodesDo: aBlockClosure [
+	aBlockClosure  value: self.
+	self allChildrenDo: aBlockClosure 
 ]
 
 { #category : #accessing }
@@ -201,6 +208,12 @@ IceNode >> count: aBlockClosure [
 	
 	self childrenDo: [ :each | count := count + (each count: aBlockClosure) ].
 	^ count
+]
+
+{ #category : #accessing }
+IceNode >> definition [
+	
+	^ value definition
 ]
 
 { #category : #accessing }
@@ -428,6 +441,12 @@ IceNode >> printOn: aStream [
 		nextPutAll: 'IceNode(';
 		nextPutAll: self key asString;
 		nextPutAll: ')'
+]
+
+{ #category : #removing }
+IceNode >> removeChild: anIceNode [ 
+	
+	childrenDictionary removeKey: anIceNode key
 ]
 
 { #category : #accessing }

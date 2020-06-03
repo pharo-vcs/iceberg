@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "DiffMorph",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "SwappedColorDiffMorph",
+	"type" : "normal"
+}

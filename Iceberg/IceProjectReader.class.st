@@ -9,18 +9,21 @@ Then, a reader must implement:
 Class {
 	#name : #IceProjectReader,
 	#superclass : #Object,
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
+
+{ #category : #accessing }
+IceProjectReader class >> availableReaders [
+
+	^ (self allSubclasses
+		collect: [ :each | each new ])
+		sorted: [ :a :b | a priority < b priority ]
+]
 
 { #category : #'instance creation' }
 IceProjectReader class >> readProjectFrom: anIceCommitish [
 
-	| readers |
-	readers := (self allSubclasses
-		collect: [ :each | each new ])
-		sorted: [ :a :b | a priority < b priority ].
-	
-	^ (readers
+	^ (self availableReaders
 		detect: [ :any | any canReadProjectFromCommitish: anIceCommitish ])
 			readProjectFromCommitish: anIceCommitish
 ]

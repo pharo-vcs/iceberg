@@ -5,10 +5,11 @@ Class {
 	#name : #IceMCPackageImporter,
 	#superclass : #Object,
 	#instVars : [
+		'packageName',
 		'version',
 		'package'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #importing }

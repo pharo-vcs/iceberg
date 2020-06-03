@@ -1,7 +1,7 @@
 Class {
 	#name : #IceSinglePackageLocalRepositoryTest,
 	#superclass : #IceBornRepositoryTest,
-	#category : #'Iceberg-Tests-Common'
+	#category : 'Iceberg-Tests-Common'
 }
 
 { #category : #testing }
@@ -31,7 +31,7 @@ IceSinglePackageLocalRepositoryTest >> testAddClassInstanceVariableIsExportedInC
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
 ]
@@ -86,6 +86,65 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassSideMakesChangesContainCla
 		with: [ :class | class metaclass instanceVariables: #(someClassInstVar) ].
 
 	diff := self repository workingCopyDiff.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testChangeClassSideMakesIsExportedInCommit [
+
+	| diff |
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting'
+		inPackage: self packageName1 asSymbol
+		with: [ :class | class metaclass instanceVariables: #(someClassInstVar) ].
+
+	self repository commitWithMessage: 'Added class instance variable'.
+
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testChangeClassSideMakesIsExportedInCommitSecondVariable [
+
+	| diff |
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting'
+		inPackage: self packageName1 asSymbol
+		with: [ :class | class metaclass instanceVariables: #(someClassInstVar) ].
+
+	self repository commitWithMessage: 'Added class instance variable'.	
+
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting'
+		inPackage: self packageName1 asSymbol
+		with: [ :class | class metaclass instanceVariables: #(someClassInstVar anotherClassInstVar) ].
+
+	self repository commitWithMessage: 'Added another class instance variable'.
+
+	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
@@ -218,7 +277,7 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExpor
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
 ]
@@ -511,7 +570,7 @@ IceSinglePackageLocalRepositoryTest >> testCreateClassInImageMakesChangesContain
 
 	diff := self repository workingCopyDiff.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 2 "Class and Metaclass".
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1 "Class and Metaclass".
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value isAddition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition name equals: #IceGeneratedClassForTesting.
@@ -535,6 +594,24 @@ IceSinglePackageLocalRepositoryTest >> testCreateClassInImageMakesRespositoryMod
 		createClass: 'IceGeneratedClassForTesting' 
 		inPackage: self packageName1 asSymbol.
 	self assert: self repository isModified
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testCreateClassWithClassInstanceVariableInImageMakesChangesContainClassAndMetaclassDefinition [
+
+	| diff |
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol
+		with: [ :class | class metaclass instanceVariables: #(someClassInstVar) ].
+
+	diff := self repository workingCopyDiff.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 2 "Class and Metaclass".
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value isAddition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition isClassDefinition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value definition name equals: #IceGeneratedClassForTesting.
 ]
 
 { #category : #'tests-changes' }
@@ -640,9 +717,36 @@ IceSinglePackageLocalRepositoryTest >> testRemoveClassInstanceVariableIsExported
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
 	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isModification.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isRemoval.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition isClassDefinition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value definition name equals: #'IceGeneratedClassForTesting class'.
+]
+
+{ #category : #'tests-changes' }
+IceSinglePackageLocalRepositoryTest >> testRemoveClassWithClassMethodIsExportedInCommit [
+
+	| diff |
+	"This is a Ring working copy"
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting' 
+		inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createMethod: 'foo' inClass: 'IceGeneratedClassForTesting class'.
+
+	self repository commitWithMessage: 'First class'.
+
+	self repository workingCopy removeClassNamed: 'IceGeneratedClassForTesting'.
+	
+	self repository commitWithMessage: 'Remove class'.
+	
+	diff := self repository headCommit diffToParent.
+	self assert: diff codeSubdirectoryNode children size equals: 1.
+	
+	"2 children removed, class side and instance side"
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 2.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting') value isRemoval.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class' / 'foo') value definition isMethodDefinition.
+	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class' / 'foo') value isRemoval.
 ]
 
 { #category : #'tests-changes' }

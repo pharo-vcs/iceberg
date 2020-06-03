@@ -4,8 +4,19 @@ I'm the common group for metacello extensions.
 Class {
 	#name : #IceTipMetacelloMenuGroup,
 	#superclass : #CmdMenuGroup,
-	#category : 'Iceberg-Plugin-Metacello'
+	#category : #'Iceberg-Plugin-Metacello'
 }
+
+{ #category : #accessing }
+IceTipMetacelloMenuGroup >> addItem: aMenuItem [
+
+		aMenuItem command fillContextMenu: self  using: aMenuItem activator
+]
+
+{ #category : #items }
+IceTipMetacelloMenuGroup >> basicAddItem: aCmdCommandMenuItem [ 
+	super addItem: aCmdCommandMenuItem 
+]
 
 { #category : #accessing }
 IceTipMetacelloMenuGroup >> description [

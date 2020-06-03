@@ -12,17 +12,13 @@ Class {
 IceTipGitRepositoryPanel class >> defaultSpec [
 	<spec: #default>
 
-	^ SpecLayout composed 
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-						row 
-							add: #remoteLabel width: self iceLabelWidth;
-							add: #remoteInputText ]
-					height: self inputTextHeight;
-				newRow: #projectLocation
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+	^ SpBoxLayout newVertical
+		add: (SpBoxLayout newHorizontal 
+					add: #remoteLabel width: self labelWidth ;
+					add: #remoteInputText;
+					yourself ) height: self inputTextHeight;
+		add: #projectLocation 	height: self inputTextHeight;
+			yourself
 ]
 
 { #category : #accessing }
@@ -50,13 +46,12 @@ IceTipGitRepositoryPanel >> extractProjectName: aString [
 IceTipGitRepositoryPanel >> initializeWidgets [
 	super initializeWidgets.
 	self initializeRemoteURL.
-	self remoteInputText ghostText: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
-	
-	self remoteInputText 	whenTextChanged: [ :text |
-		self projectLocation appendPath: (self extractProjectName: text) ].
-	
-	self focusOrder 
-		add: self remoteInputText	
+	self remoteInputText
+		placeholder: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
+	self remoteInputText
+		whenTextChangedDo:
+			[ :text | self projectLocation appendPath: (self extractProjectName: text) ].
+	self focusOrder add: self remoteInputText
 ]
 
 { #category : #accessing }

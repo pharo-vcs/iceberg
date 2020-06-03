@@ -9,8 +9,20 @@ See my superclasses for more information.
 Class {
 	#name : #IceExtensionDefinition,
 	#superclass : #IceMethodContainerDefinition,
-	#category : 'Iceberg-Changes'
+	#instVars : [
+		'packageName'
+	],
+	#category : #'Iceberg-Changes'
 }
+
+{ #category : #'as yet unclassified' }
+IceExtensionDefinition class >> named: aString isMeta: isMeta packageName: aName [
+	^ self new
+		name: aString;
+		isMeta: isMeta;
+		packageName: aName;
+		yourself
+]
 
 { #category : #comparing }
 IceExtensionDefinition >> = otherExtension [
@@ -51,6 +63,16 @@ IceExtensionDefinition >> hash [
 IceExtensionDefinition >> isExtensionDefinition [
 	
 	^ true
+]
+
+{ #category : #accessing }
+IceExtensionDefinition >> packageName [
+	^ packageName
+]
+
+{ #category : #accessing }
+IceExtensionDefinition >> packageName: anObject [
+	packageName := anObject
 ]
 
 { #category : #patching }

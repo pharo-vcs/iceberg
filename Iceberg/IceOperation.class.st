@@ -5,9 +5,11 @@ Class {
 	#name : #IceOperation,
 	#superclass : #Object,
 	#instVars : [
+		'diff',
+		'modifiedNode',
 		'definition'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -84,7 +86,18 @@ IceOperation >> isAddition [
 ]
 
 { #category : #testing }
+IceOperation >> isConflict [
+	^false.
+]
+
+{ #category : #testing }
 IceOperation >> isModification [
+	
+	^ false
+]
+
+{ #category : #testing }
+IceOperation >> isNoModification [
 	
 	^ false
 ]
@@ -159,6 +172,15 @@ IceOperation >> mergeWithOperation: anOperation [
 IceOperation >> name [
 	
 	^ definition name
+]
+
+{ #category : #accessing }
+IceOperation >> printOn: aStream [
+
+	super printOn: aStream .
+	aStream nextPutAll: '( ';
+	print: definition ;
+	nextPutAll: ' )'.
 ]
 
 { #category : #accessing }

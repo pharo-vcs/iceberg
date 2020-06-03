@@ -4,12 +4,11 @@ I'm used as part of the creation dialog and to edit repository properties.
 "
 Class {
 	#name : #IceTipRepositoryTypePanel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'projectLocation',
 		'remoteLabel',
 		'remoteInputText',
-		'spacePanel',
 		'repository'
 	],
 	#category : #'Iceberg-TipUI-View-RepositoryType'
@@ -65,21 +64,15 @@ IceTipRepositoryTypePanel >> initializeProjectLocation [
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializeRemoteURL [
 	remoteLabel := self newLabel label: 'Remote URL'.
-	remoteInputText := self newTextInput 
-		ghostText: 'e.g., git@github.com:user/MyProject.git';	
+	remoteInputText := self newTextInput
+		placeholder: 'e.g., git@github.com:user/MyProject.git';
 		autoAccept: true
-]
-
-{ #category : #initialization }
-IceTipRepositoryTypePanel >> initializeSpacePanel [
-	"just to gain space"
-	spacePanel := self newIcePanel. 
 ]
 
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializeWidgets [
 	self initializeProjectLocation.
-	self initializeSpacePanel
+
 ]
 
 { #category : #testing }
@@ -131,16 +124,6 @@ IceTipRepositoryTypePanel >> remoteLabel: anObject [
 IceTipRepositoryTypePanel >> repository: aRepository [
 	"Used if editing an existing repository"
 	repository := aRepository
-]
-
-{ #category : #'accessing ui' }
-IceTipRepositoryTypePanel >> spacePanel [
-	^ spacePanel
-]
-
-{ #category : #'accessing ui' }
-IceTipRepositoryTypePanel >> spacePanel: anObject [
-	spacePanel := anObject
 ]
 
 { #category : #accessing }

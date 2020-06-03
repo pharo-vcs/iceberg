@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipBranchPanel",
+	"category" : "Iceberg-TipUI-View-Branch",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"branchesList",
+		"title",
+		"icon"
+	],
+	"name" : "IceTipExistingBranchPanel",
+	"type" : "normal"
+}

@@ -14,29 +14,35 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipHistoryBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	rootCommandGroup
+		register: ((CmCommandGroup named: 'commit commands') asSpecGroup
+			register: (IceTipCherryPickCommand forSpec context: presenterIntance )
+		)
+]
+
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #commitList;
-				addHSplitter;
-				newRow: #commitInfoTabs ]
+	^ SpBoxLayout newVertical
+		add: #toolbar expand: false fill: true padding: 0;
+		add:
+			(SpPanedLayout newVertical
+				add: #commitList;
+				add: #commitInfoTabs;
+				yourself);
+		yourself
 ]
 
 { #category : #specs }
 IceTipHistoryBrowser class >> panelSpec [
 	<spec>
 	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #commitList;
-				addHSplitter;
-				newRow: #commitInfoTabs ]
+	^ SpPanedLayout newVertical
+		add: #commitList;
+		add: #commitInfoTabs;
+		yourself
 ]
 
 { #category : #accessing }
@@ -76,53 +82,47 @@ IceTipHistoryBrowser >> initialExtent [
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
-	commitList widget
+	commitList
 		beResizable;
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Timestamp';
-				action: [ :each | each timeStamp asLocalStringYMDHM ];
-				width: 110 * self currentWorld displayScaleFactor;
+			((SpStringTableColumn
+				evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
+				title: 'Timestamp';
+				width: 110 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Commit';
-				action: #shortId;
-				width: 60 * self currentWorld displayScaleFactor;
+			((SpStringTableColumn evaluated: #shortId)
+				title: 'Commit';
+				width: 60 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Author';
-				action: #author;
-				width: 150 * self currentWorld displayScaleFactor;
+			((SpStringTableColumn evaluated: #author)
+				title: 'Author';
+				width: 150 * World displayScaleFactor;
 				yourself);
 		addColumn:
-			(IceTipTableColumn new
-				id: 'Description';
-				action: #descriptionWithDecoration;
+			((SpStringTableColumn evaluated: #descriptionWithDecoration)
+				title: 'Description';
 				yourself);
-		dataSource: self newCommitsDataSource;
-		selectIndex: 1
+		whenSelectionChangedDo: [ commitInfoTabs selectedModel: self selectedCommit ];
+		selectIndex: 1;
+		contextMenu:
+				[ (self rootCommandsGroup / 'commit commands') beRoot asMenuPresenter ]
 ]
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeWidgets [
 	super initializeWidgets.	
-	commitList := self newIceTable.
+	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
 	self initializeCommitList.
-	
-	commitList widget 
-		onAnnouncement: FTSelectionChanged 
-		send: #selectionChanged:
-		to: self.
 	
 	self focusOrder 
 		add: commitList;
 		add: commitInfoTabs.
 		
-	self refresh
+	self refreshCommitList.
 ]
 
 { #category : #accessing }
@@ -148,12 +148,20 @@ IceTipHistoryBrowser >> newContextWithSelection: anObject [
 
 { #category : #accessing }
 IceTipHistoryBrowser >> refresh [
+	self refreshCommitList 
+]
+
+{ #category : #accessing }
+IceTipHistoryBrowser >> refreshCommitList [
 	| commitModels |
 	commitModels := self model commitModels.
-	commitList widget
-		in: [ :this | this dataSource elements: commitModels ];
-		refresh.
+	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
+]
+
+{ #category : #accessing }
+IceTipHistoryBrowser >> selectedCommit [
+	^ commitList selection selectedItem
 ]
 
 { #category : #'event handling' }
@@ -168,7 +176,7 @@ IceTipHistoryBrowser >> selectionChanged: ann [
 
 { #category : #accessing }
 IceTipHistoryBrowser >> title [
-	^ self model  
-		ifNotNil: [ 'History of {1}' format: { self model name } ]
+	^ self model
+		ifNotNil: [ 'History of {1}' format: {self model repositoryName} ]
 		ifNil: [ 'History' ]
 ]

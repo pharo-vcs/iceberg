@@ -12,16 +12,12 @@ Class {
 IceTipPullBrowser class >> defaultSpec [
 	<spec: #default>
 	
-	^ SpecLayout composed
-		newColumn: [ :mainColumn |
-			mainColumn
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #remotePanel height: self inputTextHeight;
-				newRow: [ :row |
-					row newColumn: [ :column |
-						column 
-							add: #commitsPanel withSpec: #panelSpec;
-							add: #actionPanel height: self iceActionPanelHeight ] ] ]
+	^ SpBoxLayout newVertical 
+		add: #toolbar expand: false fill: true padding: 0;
+		add: #remotePanel withConstraints: [ :c | c height: self inputTextHeight ];
+		add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
+		add: #actionButtonBar withConstraints: [ :c | c height: self buttonHeight ];
+		yourself
 ]
 
 { #category : #'instance creation' }

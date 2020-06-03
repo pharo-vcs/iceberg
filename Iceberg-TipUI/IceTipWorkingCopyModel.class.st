@@ -82,12 +82,6 @@ IceTipWorkingCopyModel >> sortingStrategy [
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyModel >> sortingStrategyFirst: aSymbol [
-	"they can be #modified, #loaded, #none" 
-	self sortingStrategy first: aSymbol
-]
-
-{ #category : #accessing }
 IceTipWorkingCopyModel >> status [
 	^ self repositoryModel status
 ]

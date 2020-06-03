@@ -3,7 +3,7 @@ I'm a dialog for collecting data to accept a pull request.
 "
 Class {
 	#name : #IceGitHubAcceptPullRequestModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',
@@ -21,15 +21,26 @@ IceGitHubAcceptPullRequestModel class >> availableTypes [
 ]
 
 { #category : #specs }
-IceGitHubAcceptPullRequestModel class >> defaultSpec [ 
+IceGitHubAcceptPullRequestModel class >> defaultSpec [
 	<spec>
-
-	^ SpecLayout composed
-		newColumn: [ :col |
-			col 
-				newRow: [:row | row add: #messageLabel width: 80 * self currentWorld displayScaleFactor; add: #messageText ];
-				newRow: [:row | row add: #typeLabel width: 80 * self currentWorld displayScaleFactor; add: #typeList ] height: 25 * self currentWorld displayScaleFactor;
-				add: #acceptButton height: self buttonHeight  ];
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #messageLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #messageText;
+				yourself);
+		add:
+			(SpBoxLayout newHorizontal
+				add: #typeLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #typeList;
+				yourself)
+			withConstraints: [ :constraints | constraints width: 25 * self currentWorld displayScaleFactor ];
+		add: #acceptButton
+			withConstraints: [ :constraints | constraints height: self buttonHeight ];
 		yourself
 ]
 
@@ -76,10 +87,10 @@ IceGitHubAcceptPullRequestModel >> initialExtent [
 { #category : #initialization }
 IceGitHubAcceptPullRequestModel >> initializePresenter [
 	super initializePresenter.
-	self typeList 
+	self typeList
 		items: self class availableTypes;
-		displayBlock: [ :each | each  ];
-		setSelectedItem: self class defaultType
+		displayBlock: [ :each | each ];
+		selectedItem: self class defaultType
 ]
 
 { #category : #initialization }

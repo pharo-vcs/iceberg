@@ -92,7 +92,7 @@ Class {
 		'project',
 		'properties'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -539,7 +539,7 @@ IceWorkingCopy >> modifiedPackages [
 
 { #category : #'API-packages' }
 IceWorkingCopy >> notifyPackageModified: aString [ 
-	self flag: #todo. "we cannot use #includesPackageNamed: as is because it can happen 
+	self flag: #pharoTodo. "we cannot use #includesPackageNamed: as is because it can happen 
 	that a package is present in a commit but not in image yet?"
 	
 	self shouldIgnoreNotifications ifTrue: [ ^ false ].

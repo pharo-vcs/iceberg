@@ -8,7 +8,7 @@ Class {
 		'repository',
 		'projectVersion'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }
@@ -48,7 +48,7 @@ IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [
 { #category : #accessing }
 IceMetacelloRepositoryAdapter >> commitIdFor: aWorkingCopy ifFound: aBlock [
 
-	self flag: #todo. "Do nothing?"
+	self flag: #pharoTodo. "Do nothing?"
 ]
 
 { #category : #accessing }
