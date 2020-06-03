@@ -18,15 +18,6 @@ IceMCSnapshotPatchVisitor >> visitAddition: anIceAddition [
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #'as yet unclassified' }
-IceMCSnapshotPatchVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
-	
-	anIceConflictingOperation isResolved
-		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
-		
-	^ anIceConflictingOperation chosenOperation accept: self
-]
-
 { #category : #visiting }
 IceMCSnapshotPatchVisitor >> visitModification: anIceModification [
 

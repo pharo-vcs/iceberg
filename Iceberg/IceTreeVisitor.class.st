@@ -7,13 +7,22 @@ Class {
 	#instVars : [
 		'currentNode'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
 IceTreeVisitor >> visitChildrenOf: anIceNode [ 
 	
 	anIceNode childrenDo: [ :each | each accept: self ]
+]
+
+{ #category : #visiting }
+IceTreeVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
 ]
 
 { #category : #visiting }

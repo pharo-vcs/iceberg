@@ -23,11 +23,6 @@ IceMergeToChangeTreeVisitor >> visitClassDefinition: anIceClassDefinition [
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
-IceMergeToChangeTreeVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
-	anIceConflictingOperation chosenOperation accept: self.
-]
-
 { #category : #visting }
 IceMergeToChangeTreeVisitor >> visitNoModification: anIceNoModification [
 	anIceNoModification definition accept: self.

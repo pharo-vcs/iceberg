@@ -4,7 +4,7 @@ Extension { #name : #CmdCommandActivator }
 CmdCommandActivator >> buildIceToolbarItem [
 	| item |
 
-	item := (SpToolBarButton new
+	item := (SpToolBarButtonPresenter new
 		label: self activationStrategy toolbarName;
 		icon: self menuItemIcon;
 		help: self activationStrategy help;
