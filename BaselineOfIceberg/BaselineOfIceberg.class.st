@@ -71,31 +71,6 @@ BaselineOfIceberg >> baseline: spec [
 				'Iceberg-Plugin-Migration-Tests' );
 			group: 'development' with: #(default allTests) ].
 
-	spec for: #'pharo6.x' do: [	
-		self spec70: spec.
-		spec
-			package: 'Iceberg' with: [ 
-				spec requires: #( 'Iceberg-Pharo6' ) ];
-			package: 'Iceberg-Pharo6';
-			package: 'Iceberg-TipUI' with: [ 
-				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ].
-
-	spec for: #'pharo7.x' do: [	
-		self commander: spec.
-		spec package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ].
-		spec package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ].
-		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
-		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
-]
-
-{ #category : #baseline }
-BaselineOfIceberg >> commander: spec [
-	spec 
-		baseline: 'Commander' 
-		with: [ 
-			spec 
-				repository: 'github://pharo-ide/Commander:v0.8.1/src';
-				loads: #('Core' 'AllActivators' 'Commander-SpecSupport' 'Commander-Spec2-Compatibility') ]
 ]
 
 { #category : #accessing }
@@ -175,14 +150,6 @@ BaselineOfIceberg >> resetKMRepository [
 	Smalltalk 
 		at: #KMRepository 
 		ifPresent: [ :class | class reset ]
-]
-
-{ #category : #baseline }
-BaselineOfIceberg >> spec70: spec [
-	"for pharo6 compatibility"
-	spec
-		baseline: 'Spec70Compatibility' 
-		with: [ spec repository: 'github://pharo-contributions/Spec70Compatibility:v1.0.0/src' ]
 ]
 
 { #category : #baseline }
