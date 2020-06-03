@@ -20,7 +20,7 @@ IceTipCheckoutPreviewBrowser class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
-				add: #checkoutStrategyLabel width: 100 * World displayScaleFactor;
+				add: #checkoutStrategyLabel width: 100 * self currentWorld displayScaleFactor;
 				add: #checkoutStrategyList;
 				yourself)
 			height: self inputTextHeight;

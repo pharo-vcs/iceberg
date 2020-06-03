@@ -17,12 +17,12 @@ IceTipEditPlaintextCredentialsModel class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
-				add: #usernameLabel width: 80 * World displayScaleFactor;
+				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
 				add: #usernameInput;
 				yourself) height: self inputTextHeight ;
 		add:
 			(SpBoxLayout newHorizontal 
-				add: #passwordLabel width: 80 * World displayScaleFactor;
+				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
 				add: #passwordInput;
 				yourself) height: self inputTextHeight ;
 		yourself

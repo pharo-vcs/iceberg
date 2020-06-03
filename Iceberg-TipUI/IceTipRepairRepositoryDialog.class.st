@@ -15,8 +15,8 @@ Class {
 IceTipRepairRepositoryDialog class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
-		add: #reasonPanel height: 70 * World displayScaleFactor;
-		add: #optionsList height: 100 * World displayScaleFactor;
+		add: #reasonPanel height: 70 * self currentWorld displayScaleFactor;
+		add: #optionsList height: 100 * self currentWorld displayScaleFactor;
 		add: #detailPanel;
 		yourself
 ]

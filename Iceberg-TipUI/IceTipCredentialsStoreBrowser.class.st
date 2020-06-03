@@ -59,13 +59,13 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 			(SpStringTableColumn new
 				title: 'Host';
 				evaluated: #hostDescription;
-				width: 100 * World displayScaleFactor;
+				width: 100 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			(SpStringTableColumn new
 				title: 'Type';
 				evaluated: #type;
-				width: 75 * World displayScaleFactor;
+				width: 75 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			(SpStringTableColumn new

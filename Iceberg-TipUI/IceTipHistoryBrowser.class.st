@@ -88,17 +88,17 @@ IceTipHistoryBrowser >> initializeCommitList [
 			((SpStringTableColumn
 				evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
 				title: 'Timestamp';
-				width: 110 * World displayScaleFactor;
+				width: 110 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			((SpStringTableColumn evaluated: #shortId)
 				title: 'Commit';
-				width: 60 * World displayScaleFactor;
+				width: 60 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			((SpStringTableColumn evaluated: #author)
 				title: 'Author';
-				width: 150 * World displayScaleFactor;
+				width: 150 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)

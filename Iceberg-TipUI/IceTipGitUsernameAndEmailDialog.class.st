@@ -22,13 +22,13 @@ IceTipGitUsernameAndEmailDialog class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
-				add: #nameLabel width: 100 * World displayScaleFactor;
+				add: #nameLabel width: 100 * self currentWorld displayScaleFactor;
 				add: #nameInput;
 				yourself )
 			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
-				add: #emailLabel width: 100 * World displayScaleFactor;
+				add: #emailLabel width: 100 * self currentWorld displayScaleFactor;
 				add: #emailInput;
 								yourself )
 			height: self inputTextHeight;

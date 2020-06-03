@@ -21,7 +21,7 @@ Class {
 IceTipErrorDialog class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newHorizontal 
-		add: #iconPanel width: 40 * World displayScaleFactor;
+		add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
 		add: #errorLabel;
 		yourself
 ]
