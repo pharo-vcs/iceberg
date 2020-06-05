@@ -45,13 +45,9 @@ IceTipOptionDialog >> allTypes [
 { #category : #private }
 IceTipOptionDialog >> basicSelectionChanged: aType [
 	type := aType.
-	aType 
-		ifNotNil: [ 	
-			self window title: type title.
-			self replacePanelWith: type ]
-		ifNil: [ 
-			self removeAllPanels.
-			self window title: self class title ]
+	aType ifNotNil: [ 	
+		self window title: type title.
+		self replacePanelWith: type ]
 ]
 
 { #category : #'accessing ui' }
