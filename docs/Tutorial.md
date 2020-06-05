@@ -64,3 +64,17 @@ Both views are really similar: they list the commits to be pulled or pushed, and
 ![image](images/tutorial-push.png)
 
 Finally if you accept the dialog using the buttons "Pull" or "Push", they will take effect.
+
+
+### Setting Git config values
+
+Sometimes you may need to adjust the Git config values for your repository. For instance, to set your email address to your secure Github email address.  The procedure is currently a little buried and perhaps there will be a modal for this in the future.  You can do this from a command-line git tool outside of Pharo by going to the directory for the repo (in the `pharo-local/iceberg` directory of your image), but here is a method for doing it within Pharo.
+
+  1. Launch __Iceberg__
+  1. Right-click on the repository
+  1. Choose __Extra -> Inspect...__  
+     ![image](images/tutorial-repository-inspect.png)
+  1. In the __Raw__ tab, select `handle` to get to the underlying __LGitRepository__ instance
+  1. In the __Raw__ tab of the __LGitRepository__, access the email setter by using `self config email: '<your email address>'` and then `CMD/CTRL-d` to execute  
+     ![image](images/tutorial-config-set.png)  
+     __LGitConfig__ also exposes __username__, which is not to be confused with the Github username, but is your friendly name for commit messages, like "Joel Wilson".
