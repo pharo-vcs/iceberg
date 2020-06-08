@@ -63,10 +63,7 @@ IceGitNetworkRemote >> parseUrl [
 	host := znUrl host.
 	port := znUrl port ifNil: [self class defaultPort].
 
-	(znUrl segments isNil or: [ znUrl segments size < 2 ])
-		ifTrue: [ IceWrongUrl signal: 'Invalid URL: ', url  ].
-
-	path := znUrl segments allButLast: 2.
+	path := znUrl segments allButLast: (2 min: znUrl segments size).
 	
 	znUrl segments size >= 2
 		ifTrue: [ owner := (znUrl segments last: 2) first ].

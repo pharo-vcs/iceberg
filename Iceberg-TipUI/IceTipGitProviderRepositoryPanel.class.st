@@ -74,8 +74,8 @@ IceTipGitProviderRepositoryPanel >> initializeWidgets [
 		whenTextChangedDo: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
 	protocolDropList
 		items: IceUrlProtocol allSubclasses;
-		displayBlock: [ :each | each description ];
-		selectedItem: IceUrlProtocol defaultProtocol.
+		display: [ :each | each description ];
+		selectItem: IceUrlProtocol defaultProtocol.
 	self focusOrder
 		add: self userNameInputText;
 		add: self projectNameInputText;
