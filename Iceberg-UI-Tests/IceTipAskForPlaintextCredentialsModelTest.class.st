@@ -51,7 +51,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptDoNotStoresCredential [
 	
 	dialog storeCheckbox state: false.
 	
-	dialog window toolbar okButton performAction.
+	dialog window triggerOkAction.
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: ''.
@@ -95,7 +95,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptStoresCredential [
 	
 	dialog storeCheckbox state: true.
 	
-	dialog window toolbar okButton performAction.	
+	dialog window triggerOkAction.	
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: 'bbb'.
@@ -120,7 +120,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptStoresCredentialReplacesO
 	
 	dialog storeCheckbox state: true.
 	
-	dialog window toolbar okButton performAction.	
+	dialog window triggerOkAction.	
 
 	cred := store plaintextCredentialForHostname: 'github.com'.
 	self assert: cred username equals: 'bbb'.
@@ -133,7 +133,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testCancelThrowsException [
 	dialog remoteHostname: 'github.com'. 
 	dialog openNonModal. 
 	
-	self should: [ dialog window toolbar cancelButton performAction ] raise: LGitNoCredentialsProvided
+	self should: [ dialog window triggerCancelAction ] raise: LGitNoCredentialsProvided
 ]
 
 { #category : #'tests - cancel' }
