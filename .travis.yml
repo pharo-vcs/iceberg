@@ -6,8 +6,6 @@ os:
 - osx
 
 smalltalk:
-- Pharo32-8.0
-- Pharo64-8.0
 - Pharo32-9.0
 - Pharo64-9.0
 
