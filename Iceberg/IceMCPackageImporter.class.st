@@ -16,7 +16,6 @@ Class {
 IceMCPackageImporter >> importOn: aNode [
 	
 	| packageNode snapshot definition |
-	
 	"If the version does not include the package, we do not calculate a snapshot nor import it"
 	(version includesPackageNamed: self packageName)
 		ifFalse: [ ^ self ].

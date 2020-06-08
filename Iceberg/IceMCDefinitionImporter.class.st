@@ -61,7 +61,8 @@ IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [
 		isExtension: false.
 	classDefinitionNode value mcDefinition: aMCClassDefinition.
 	
-	aMCClassDefinition classInstVarNames isEmpty ifFalse: [
+	(aMCClassDefinition hasClassInstanceVariables
+		or: [aMCClassDefinition hasClassTraitComposition]) ifTrue: [
 		"We also generate the definition for the metaclass (See visitMetaclassDefinition: comment)"
 		classDefinition := self
 			ensureMethodOwnerNamed: aMCClassDefinition className
