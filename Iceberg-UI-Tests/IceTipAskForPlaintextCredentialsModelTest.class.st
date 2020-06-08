@@ -5,7 +5,7 @@ Class {
 		'store',
 		'dialog'
 	],
-	#category : 'Iceberg-UI-Tests'
+	#category : #'Iceberg-UI-Tests'
 }
 
 { #category : #running }
@@ -32,7 +32,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptCreatesCredential [
 	dialog passwordInput text: 'aaa'.
 	dialog usernameInput text: 'bbb'.
 	
-	dialog window toolbar okButton performAction.
+	dialog window triggerOkAction.
 	cred := dialog credentials.
 
 	self assert: cred username equals: 'bbb'.
