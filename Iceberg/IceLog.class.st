@@ -12,7 +12,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -39,12 +39,13 @@ IceLog >> basepathOf: aPath [
 
 { #category : #private }
 IceLog >> collectCommitsFor: aMethod path: aPath [
-	| commit pathSpec options commits |
+	| commit pathSpec options commits pathSpecArray |
 
 	commit := self repository headCommit.
 	pathSpec := LGitPathSpec withAll: { aPath }.
 	options := LGitDiffOptions defaults.
-	options pathspec: (LGitStringArray withAll: { aPath }).
+	pathSpecArray := LGitStringArray withAll: { aPath }.
+	options pathspec: pathSpecArray.
 
 	commits := OrderedCollection new.
 	self repository newCommitWalk 
