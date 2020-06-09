@@ -8,8 +8,14 @@ Class {
 }
 
 { #category : #private }
+IceNonInteractiveCredentialsProvider >> obtainCredentials: response [
+	"Maybe I can read a file here?"
+	LGitNoCredentialsProvided signal
+]
+
+{ #category : #private }
 IceNonInteractiveCredentialsProvider >> obtainPlaintextCredentials: response [
-	"Maybe I can read file here?"
+	"Maybe I can read a file here?"
 	LGitNoCredentialsProvided signal
 ]
 

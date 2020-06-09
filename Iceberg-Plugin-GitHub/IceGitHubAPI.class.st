@@ -9,17 +9,15 @@ Class {
 		'credentials',
 		'isAnonymous'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #credentials }
 IceGitHubAPI class >> ensureCredentials [
-	| provider newCredentials |
+	| provider |
 
 	provider := IceCredentialsProvider defaultForHost: 'github.com'. 
-	newCredentials := IcePlaintextCredentials new.
-	provider providePlaintextCredentialsTo: newCredentials.
-	^ newCredentials
+	^ provider providePlaintextCredentials.
 ]
 
 { #category : #utilities }
@@ -200,16 +198,19 @@ IceGitHubAPI >> getRepository: owner project: projectName [
 IceGitHubAPI >> handleUnauthorized: aZnResponse [ 
 	"If we are in unauthorized we require the correct credentials."
 	
-	| newCredentials |
+	| newCredentials githubOtp |
 	aZnResponse isSuccess ifTrue: [ ^ self ].
 	aZnResponse status ~= 401 ifTrue: [ ^ self ].
-	
-	newCredentials := IcePlaintextCredentials new.
+
+	"Does this require two factor authentication now?"
+	githubOtp := aZnResponse headers at: 'X-Github-Otp' ifAbsent: [ nil ].
+	newCredentials := githubOtp = 'required; app'
+		ifTrue: [ IcePlaintextOtpCredentials new ]
+		ifFalse: [ IcePlaintextCredentials new ].
 	
 	"Ignoring if you press cancel"
 	(IceCredentialsProvider defaultForHost: 'github.com')
-		obtainPlaintextCredentials: newCredentials.
-		
+		obtainCredentials: newCredentials.
 	IceAuthenticationError signal: 'Retry to use the new credentials'
 	
 ]

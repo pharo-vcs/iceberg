@@ -4,7 +4,7 @@ I am a credential provider that requires the missing plaintext credential to the
 Class {
 	#name : #IceTipInteractiveCredentialsProvider,
 	#superclass : #IceCredentialsProvider,
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials'
 }
 
 { #category : #private }
@@ -16,6 +16,18 @@ IceTipInteractiveCredentialsProvider class >> initialize [
 { #category : #private }
 IceTipInteractiveCredentialsProvider class >> isDefault [
 	^ true
+]
+
+{ #category : #private }
+IceTipInteractiveCredentialsProvider >> obtainCredentials: credentialsToReturn [
+
+	| returnedCred |
+	returnedCred := credentialsToReturn askForModelClass new
+		credentialStore: self credentialStore;
+		remoteHostname: remote host;
+		open.
+
+	credentialsToReturn readFrom: returnedCred
 ]
 
 { #category : #private }
