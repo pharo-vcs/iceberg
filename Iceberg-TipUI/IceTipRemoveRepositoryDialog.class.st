@@ -7,7 +7,7 @@ Class {
 		'confirmLabel',
 		'removeFileSystemCheckbox'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }
@@ -22,7 +22,7 @@ IceTipRemoveRepositoryDialog class >> defaultSpec [
 	^ SpecLayout composed 
 		newRow: [ :row |
 			row 
-				newColumn: #iconPanel width: World displayScaleFactor;
+				newColumn: #iconPanel width: self currentWorld displayScaleFactor;
 				newColumn: [ :column |
 					column 
 						newRow: #confirmLabel;
