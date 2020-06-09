@@ -10,7 +10,7 @@ Class {
 		'result',
 		'nextPage'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #'as yet unclassified' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitTestFactory,
 	#superclass : #IceAbstractTestFactory,
-	#category : 'Iceberg-Tests-Git'
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #initialization }
@@ -26,7 +26,8 @@ IceGitTestFactory >> ensureRemoteRepository [
 		ifFalse: [ IceRepositoryCreator new
 				location: self remoteFileUrl asFileReference;
 				createNewRepositoryNamed: self remoteFileUrl segments last ].
-	remoteRepository workingCopy: (IceRingWorkingCopy fromWorkingCopy: remoteRepository workingCopy).
+	remoteRepository
+		workingCopy: (IceRingWorkingCopy fromWorkingCopy: remoteRepository workingCopy).
 	^ remoteRepository
 ]
 
@@ -40,6 +41,32 @@ IceGitTestFactory >> isGit [
 IceGitTestFactory >> location [
 	
 	^ FileLocator imageDirectory / 'test'
+]
+
+{ #category : #initialization }
+IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubdirectory [
+	| repository |
+	(self location / projectName) ensureDeleteAll.
+	repository := IceRepositoryCreator new
+		location: self location / projectName;
+		subdirectory: aSubdirectory;
+		beBare;
+		createNewRepositoryNamed: projectName.
+
+	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase
+		= 'true'
+		ifTrue: [ Transcript
+				show: 'Setting user information for CI';
+				cr.
+			IceGitCommand
+				in: repository location
+				execute: {'config' . '--global' . 'user.email' . '"iceberg@pharo.org"'}.
+			IceGitCommand
+				in: repository location
+				execute: {'config' . '--global' . 'user.name' . '"Iceberg CI"'} ].
+	repository
+		workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
+	^ repository
 ]
 
 { #category : #initialization }
@@ -57,9 +84,7 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 		subdirectory: aSubdirectory;
 		createNewRepositoryNamed: projectName.
 	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true'
-		ifTrue: [ Transcript
-				show: 'Setting user information for CI';
-				cr.
+		ifTrue: [
 			IceGitCommand
 				in: repository location
 				execute: {'config' . '--global' . 'user.email' . '"iceberg@pharo.org"'}.
@@ -74,7 +99,7 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 { #category : #initialization }
 IceGitTestFactory >> remoteFileUrl [
 	
-	^ (IceLibgitRepository repositoriesLocation / 'remote') asUrl.
+	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
 ]
 
 { #category : #initialization }

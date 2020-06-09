@@ -8,7 +8,7 @@ Class {
 		'username',
 		'password'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security'
 }
 
 { #category : #printing }

@@ -14,7 +14,7 @@ Class {
 	#classVars : [
 		'LastCommitFound'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters'
 }
 
 { #category : #private }

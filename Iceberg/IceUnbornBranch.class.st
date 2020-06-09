@@ -4,7 +4,7 @@ I am an unborn branch. I exist only on a new repository that has no commits insi
 Class {
 	#name : #IceUnbornBranch,
 	#superclass : #IceCommitish,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #comparing }

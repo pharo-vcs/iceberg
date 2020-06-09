@@ -1,13 +1,31 @@
 Class {
 	#name : #IceGitCloneTest,
 	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#instVars : [
+		'oldProviderType'
+	],
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #running }
 IceGitCloneTest >> newFixture [
 
 	^ IceNotYetClonedRepositoryFixture inGit
+]
+
+{ #category : #tests }
+IceGitCloneTest >> setUp [
+
+	super setUp.
+	oldProviderType := IceCredentialsProvider providerType.
+	IceCredentialsProvider providerType: IceNonInteractiveCredentialsProvider.
+]
+
+{ #category : #tests }
+IceGitCloneTest >> tearDown [
+
+	IceCredentialsProvider providerType: oldProviderType.
+	super tearDown.
 ]
 
 { #category : #tests }
@@ -78,6 +96,6 @@ IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self should: [ IceGitClone new
 				location: fixture location;
-				url: 'https://github.com/nonexistantuser/doesNotExists/repo.git';
+				url: 'https://google.com/guillep/doesNotExist111.git';
 				execute ] raise: IceCloneRemoteNotFound
 ]

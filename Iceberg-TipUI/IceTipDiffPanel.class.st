@@ -8,7 +8,7 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : #IceTipDiffPanel,
-	#superclass : #IceTipComposablePresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'model',
 		'changeList',
@@ -20,18 +20,15 @@ Class {
 { #category : #specs }
 IceTipDiffPanel class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed
-		newRow: [ :row |
-			row 
-				newColumn: #changeList right: 0.7;
-				addVSplitter; 
-				newColumn: #diffPanel left: 0.3 ]
+	^ SpBoxLayout newHorizontal
+		add: #changeList width: 200;
+		add: #diffPanel;
+		yourself
 ]
 
 { #category : #'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
-	^ self on: (IceTipCommitDiffModel on: aDiff) beCached
+	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
 { #category : #specs }
@@ -42,11 +39,13 @@ IceTipDiffPanel class >> title [
 { #category : #accessing }
 IceTipDiffPanel >> basicRefresh [
 	self resetDiffContents.
-	changeList widget
-		in: [ :this | 
-			this selectIndexes: #().
-			self resetDataSource: this dataSource ];
-		refresh
+	changeList roots: self model treeRoots.
+]
+
+{ #category : #accessing }
+IceTipDiffPanel >> buildMenu [
+	^ (CmdContextMenuActivation
+		buildMenuInContext: self createCommandContext) asSpMenuPresenter
 ]
 
 { #category : #'accessing ui' }
@@ -59,13 +58,24 @@ IceTipDiffPanel >> changeList: anObject [
 	changeList := anObject
 ]
 
+{ #category : #initialization }
+IceTipDiffPanel >> changeListColumn [
+			^ SpCompositeTableColumn new
+				addColumn:
+					(SpImageTableColumn new
+						width: 20;
+						evaluated: [ :each | each value icon ];
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: [ :each | each definition name ];
+						yourself);
+				yourself
+]
+
 { #category : #private }
 IceTipDiffPanel >> changeSelected [
-	| index |
-	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := changeList widget selectedRowIndex.
-	index = 0 ifTrue: [ ^ nil ].
-	^ changeList widget dataSource realElementAt: index
+	^ changeList selectedItem
 ]
 
 { #category : #accessing }
@@ -102,10 +112,13 @@ IceTipDiffPanel >> diffPanel: anObject [
 
 { #category : #initialization }
 IceTipDiffPanel >> initializeChangeList [
-	| dataSource |
-	dataSource := self newChangeTreeDataSource.
-	changeList widget dataSource: dataSource.
-	dataSource expandAll
+	changeList
+		addColumn: self changeListColumn;
+		children: [ :each | each children ];
+		roots: self model treeRoots;
+		"The inversion below allow to display change properly in the SpDiffPresenter"
+			whenSelectionChangedDo: [ self selectionChanged ];
+			contextMenu: [ self buildMenu ]
 ]
 
 { #category : #initialization }
@@ -115,20 +128,20 @@ IceTipDiffPanel >> initializeDiffPanel [
 
 { #category : #initialization }
 IceTipDiffPanel >> initializeWidgets [
-	changeList := self newIceTable.
-	diffPanel := self instantiate: DiffPresenter.
-	
+	changeList := self newTreeTable.
+	diffPanel := self instantiate: SpDiffPresenter.
+
 	self initializeChangeList.
 	self initializeDiffPanel.
-	
-	changeList widget
-		onAnnouncement: FTSelectionChanged 
+
+"	changeList widget
+		onAnnouncement: FTSelectionChanged
 		send: #selectionChanged:
-		to: self.
-		
-	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
-	
-	self focusOrder 
+		to: self."
+
+"	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]."
+
+	self focusOrder
 		add: changeList;
 		add: diffPanel
 ]
@@ -181,6 +194,7 @@ IceTipDiffPanel >> newContextWithSelection: anObject [
 IceTipDiffPanel >> refresh [
 	self model reset.
 	self basicRefresh
+	
 ]
 
 { #category : #private }
@@ -200,6 +214,15 @@ IceTipDiffPanel >> rightLabel: aString [
 	"This allows us to be compatible with old pharo versions"
 	(diffPanel respondsTo: #leftLabel:) ifFalse: [ ^ self ].
 	diffPanel rightLabel: aString
+]
+
+{ #category : #'event handling' }
+IceTipDiffPanel >> selectionChanged [
+			 | itemValue |
+itemValue:=changeList selectedItem value. itemValue ifNotNil: [ 
+				self
+				diffContentsLeft:  itemValue  rightContents
+				right: itemValue  leftContents ]
 ]
 
 { #category : #'event handling' }

@@ -6,7 +6,7 @@ This is because an invalid project cannot be fixed since it is already in the hi
 Class {
 	#name : #IceInvalidProjectReader,
 	#superclass : #IceProjectReader,
-	#category : #'Iceberg-Project'
+	#category : 'Iceberg-Project'
 }
 
 { #category : #testing }

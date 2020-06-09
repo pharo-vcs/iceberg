@@ -19,16 +19,18 @@ IceTipRemovePackageDialog class >> confirmMessage [
 { #category : #specs }
 IceTipRemovePackageDialog class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newRow: [ :row |
-			row 
-				newColumn: #iconPanel width: 40 * World displayScaleFactor;
-				newColumn: [ :column |
-					column 
-						newRow: #confirmLabel;
-						newRow: #unloadFromImageCheckbox height: self inputTextHeight;
-						newRow: #removeFromRepositoryCheckbox height: self inputTextHeight ] ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
+				add:
+					(SpBoxLayout newVertical
+						add: #confirmLabel;
+						add: #unloadFromImageCheckbox height: self inputTextHeight;
+						add: #removeFromRepositoryCheckbox height: self inputTextHeight;
+						yourself);
+						yourself );
+						yourself 
 ]
 
 { #category : #specs }
@@ -66,17 +68,15 @@ IceTipRemovePackageDialog >> iconPanel: anObject [
 
 { #category : #accessing }
 IceTipRemovePackageDialog >> initialExtent [
-	^ (500@(
-		self class inputTextHeight * 2
-		+ self class buttonHeight 
-		+ 50 "Yes, a magic number"
-		)) scaledByDisplayScaleFactor
+	^ (500
+		@ (self class inputTextHeight * 2 + self class buttonHeight + 75))
+		scaledByDisplayScaleFactor	"Yes, a magic number"
 ]
 
 { #category : #initialization }
 IceTipRemovePackageDialog >> initializeWidgets [
-	iconPanel := self newIcePanel.
-	iconPanel widget addMorph: (self iconNamed: #question) asMorph.
+	iconPanel := self newImage.
+	iconPanel image: (self iconNamed: #question).
 	
 	confirmLabel := self newLabel 
 		label: (self class confirmMessage format: { self model name }).

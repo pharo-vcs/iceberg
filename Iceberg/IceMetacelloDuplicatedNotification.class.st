@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'builder'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters'
 }
 
 { #category : #accessing }

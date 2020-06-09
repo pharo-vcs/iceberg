@@ -13,7 +13,9 @@ Class {
 		'formatLabel',
 		'formats',
 		'defaultFormat',
-		'messagePanel'
+		'messagePanel',
+		'addDirectoryButton',
+		'removeDirectoryButton'
 	],
 	#category : #'Iceberg-TipUI-View-Project'
 }
@@ -27,7 +29,9 @@ IceTipEditProjectDialog class >> defaultSpec [
 				newRow: [ :row | 
 					row
 						newColumn: #nameLabel width: self iceLabelWidth;
-						newColumn: #nameInput ]
+						newColumn: #nameInput ;
+						newColumn: #addDirectoryButton width: (self iconNamed: #add) width + 10;
+						newColumn: #removeDirectoryButton width: (self iconNamed: #remove) width + 10]
 					height: self inputTextHeight;
 				newRow: [ :row | 
 					row
@@ -36,7 +40,7 @@ IceTipEditProjectDialog class >> defaultSpec [
 								add: #sourceDirectoryLabel height: self inputTextHeight;
 								newRow: [ :emptyRow | "Fill space"  ] ] width: self iceLabelWidth;
 						newColumn: #sourceDirectoryTree ]
-					height: 200 * World displayScaleFactor;
+					height: 200 * self currentWorld displayScaleFactor;
 				newRow: [ :row | 
 					row
 						newColumn: #formatLabel width: self iceLabelWidth;
@@ -76,6 +80,34 @@ IceTipEditProjectDialog >> accept [
 { #category : #accessing }
 IceTipEditProjectDialog >> acceptCallback [
 	^ acceptCallback
+]
+
+{ #category : #actions }
+IceTipEditProjectDialog >> addDirectory [
+
+	| newDirectoryName newDirectory |
+	
+	newDirectoryName := UIManager default
+		textEntry: 'Enter the new Directory name'
+		title: 'Create a directory'.
+	
+	newDirectoryName ifNil: [ ^ self ].
+	
+	newDirectory := (selectedDirectoryPath / newDirectoryName) asResolvedBy: self model fileSystem. 
+	
+	newDirectory exists 
+		ifFalse: [ newDirectory createDirectory ].
+	
+	"The FTTable lost the selection when the expansion is done"
+	sourceDirectoryTree widget dataSource updateData.
+	sourceDirectoryTree widget dataSource expandAll.
+	sourceDirectoryTree widget selectIndex: (sourceDirectoryTree widget dataSource indexOfElement: (selectedDirectoryPath asResolvedBy: self model fileSystem)).
+
+]
+
+{ #category : #accessing }
+IceTipEditProjectDialog >> addDirectoryButton [
+	^ addDirectoryButton
 ]
 
 { #category : #initialization }
@@ -164,14 +196,17 @@ IceTipEditProjectDialog >> initialize [
 
 { #category : #initialization }
 IceTipEditProjectDialog >> initializeDirectoryTree [
-		
 	| dataSource |
 	dataSource := self newDirectoryDataSource.
 	sourceDirectoryTree widget
-		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | self iconNamed: #package ]);
+		addColumn:
+			(IceTipTableColumn
+				newAction: #name
+				icon: [ :each | self iconNamed: #package ]);
 		dataSource: dataSource;
-		onAnnouncement: FTSelectionChanged do: [ :announcement | 
-			self sourceDirectorySelectionChanged: announcement newSelectedRowIndexes ]
+		onAnnouncement: FTSelectionChanged
+			do:
+				[ :announcement | self sourceDirectorySelectionChanged: announcement newSelectedIndexes ]
 ]
 
 { #category : #initialization }
@@ -192,14 +227,14 @@ IceTipEditProjectDialog >> initializeMessagePanel [
 IceTipEditProjectDialog >> initializePresenter [
 	| path currentNode |
 	super initializePresenter.
-
 	self formatList
 		items: self formats;
 		displayBlock: [ :each | each description ];
 		setSelectedItem: model repositoryProperties fileFormat.
-
-	path := (RelativePath with: model sourceDirectory) segments asOrderedCollection.
-	currentNode := self sourceDirectoryTree widget dataSource rootItem children first.
+	path := (RelativePath with: model sourceDirectory) segments
+		asOrderedCollection.
+	currentNode := self sourceDirectoryTree widget dataSource rootItem
+		children first.
 	currentNode expand.
 	[ path isEmpty ]
 		whileFalse: [ | currentSegment |
@@ -210,11 +245,11 @@ IceTipEditProjectDialog >> initializePresenter [
 					node expand.
 					node ]
 				ifNone: [ nil ] ].
-
 	currentNode
 		ifNotNil: [ | index |
-			index := self sourceDirectoryTree widget dataSource indexOfElementMatching: [ :elem | elem = currentNode data ].
-			self sourceDirectoryTree widget selectRowIndex: index ].
+			index := self sourceDirectoryTree widget dataSource
+				indexOfElementMatching: [ :elem | elem = currentNode data ].
+			self sourceDirectoryTree widget selectIndex: index ]
 ]
 
 { #category : #initialization }
@@ -229,6 +264,22 @@ IceTipEditProjectDialog >> initializeWidgets [
 	
 	formatLabel := self newLabel label: 'Format'.
 	formatList := self newDropList.
+	
+	addDirectoryButton := self newButton
+		label: '';
+		help: 'Create a new directory under the selected one';
+		iconName: #add;
+		enabled: false;
+		action: [ self addDirectory ];
+		yourself.
+
+	removeDirectoryButton := self newButton
+		label: '';
+		help: 'Removes the selected directory';
+		iconName: #remove;
+		enabled: false;
+		action: [ self removeDirectory ];
+		yourself.
 
 	self initializeMessagePanel.
 
@@ -285,6 +336,34 @@ IceTipEditProjectDialog >> onAccept: aBlockClosure [
 	acceptCallback := aBlockClosure
 ]
 
+{ #category : #actions }
+IceTipEditProjectDialog >> removeDirectory [
+
+	| toRemove |
+	
+	toRemove := selectedDirectoryPath asResolvedBy: self model fileSystem.
+
+	toRemove exists 
+		ifTrue: [ 
+			(UIManager default 
+				questionWithoutCancel: ('Are you sure to delete ''{1}''?' format: {toRemove basename})  
+				title: 'Remove directory')
+				ifFalse: [ ^ self].
+			toRemove ensureDelete ].
+	
+	"The FTTable lost the selection when the expansion is done"
+	sourceDirectoryTree widget dataSource updateData.
+	sourceDirectoryTree widget dataSource expandAll.
+	sourceDirectoryTree widget selectIndex: (sourceDirectoryTree widget dataSource indexOfElement: toRemove parent).
+
+]
+
+{ #category : #accessing }
+IceTipEditProjectDialog >> removeDirectoryButton [
+	
+	^ removeDirectoryButton
+]
+
 { #category : #initialization }
 IceTipEditProjectDialog >> selectedDirectoryPath [
 
@@ -324,12 +403,15 @@ IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedIndexes [
 			selection := self sourceDirectoryTree widget dataSource rootItem children first.
 			selectedDirectory := self sourceDirectoryTree widget dataSource rootItem children first data.
 		] ifNotEmpty: [
-			selection := self sourceDirectoryTree widget dataSource elementAt: selectedIndexes first.
+			[selection := self sourceDirectoryTree widget dataSource elementAt: selectedIndexes first] 
+				on:SubscriptOutOfBounds do:[ ^ self ].
 		].
 	
 	selectedDirectory := selection data.
 	selectedDirectoryPath := selectedDirectory relativeTo: self model fileSystem. 
 	formatList setSelectedItem: (self guessFormatFromDirectory: selectedDirectory).
+	
+	self updateRemoveAndAddButton.
 ]
 
 { #category : #accessing }
@@ -340,6 +422,13 @@ IceTipEditProjectDialog >> sourceDirectoryTree [
 { #category : #accessing }
 IceTipEditProjectDialog >> sourceDirectoryTree: anObject [
 	sourceDirectoryTree := anObject
+]
+
+{ #category : #events }
+IceTipEditProjectDialog >> updateRemoveAndAddButton [
+
+	addDirectoryButton enabled: selectedDirectoryPath isNotNil.
+	removeDirectoryButton enabled: selectedDirectoryPath isWorkingDirectory not
 ]
 
 { #category : #accessing }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'operation'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

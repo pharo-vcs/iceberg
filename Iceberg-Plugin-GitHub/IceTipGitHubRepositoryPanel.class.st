@@ -5,7 +5,7 @@ I'm a presenter to define a new remote repository from a github repository (owne
 Class {
 	#name : #IceTipGitHubRepositoryPanel,
 	#superclass : #IceTipGitProviderRepositoryPanel,
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #accessing }

@@ -8,6 +8,12 @@ Class {
 	#category : #'Iceberg-TipUI-Model'
 }
 
+{ #category : #accessing }
+IceTipCheckoutModel >> calculateDiff [
+
+	^ commitish entity diffTo: self repository workingCopy
+]
+
 { #category : #actions }
 IceTipCheckoutModel >> checkout [
 

@@ -8,7 +8,7 @@ Class {
 		'response',
 		'jsonContents'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #private }

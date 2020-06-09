@@ -15,20 +15,36 @@ Class {
 { #category : #specs }
 IceTipAddPlaintextCredentialsModel class >> defaultSpec [
 	<spec: #default>
-
-	^ SpecLayout composed newColumn: [ :col |
-		col 
-		 	newRow: [:row | row add: #hostLabel width: 80 * World displayScaleFactor; add: #hostInput ] height: self inputTextHeight;
-		 	newRow: [:row | row add: #usernameLabel width: 80 * World displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passwordLabel width: 80 * World displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
-			newRow: [:row | ]
-	]
-
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #hostLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #hostInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #usernameInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #passwordInput;
+				yourself )
+			height: self inputTextHeight;
+		yourself
 ]
 
 { #category : #testing }
-IceTipAddPlaintextCredentialsModel >> cancelAction [
-	"I do not produce any error"
+IceTipAddPlaintextCredentialsModel >> accept [
+	credentialStore
+		storeCredential: self credentials
+		forHostname: self host.
+	
+	accepted := true.
+	tool refresh
 ]
 
 { #category : #accessing }
@@ -53,28 +69,17 @@ IceTipAddPlaintextCredentialsModel >> initialExtent [
 
 { #category : #initialization }
 IceTipAddPlaintextCredentialsModel >> initializeWidgets [
-
 	super initializeWidgets.
-
 	hostLabel := self newLabel label: 'Host: '.
-	hostInput := self newTextInput 
+	hostInput := self newTextInput
 		autoAccept: true;
-		whenTextChanged: [ self updateOkButton ];
-		yourself.
-
-
+		whenTextChangedDo: [ self updateOkButton ];
+		yourself
 ]
 
 { #category : #testing }
 IceTipAddPlaintextCredentialsModel >> isOkEnabled [
 	^ super isOkEnabled and: [ self host isNotEmpty ]
-]
-
-{ #category : #testing }
-IceTipAddPlaintextCredentialsModel >> okAction [
-	
-	credentialStore storeCredential: self credentials forHostname: self host.
-	tool refresh.
 ]
 
 { #category : #initialization }

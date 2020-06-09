@@ -4,7 +4,7 @@ I'm a generic announcement to notify when the repository registry has changed.
 Class {
 	#name : #IceRepositoryRegistryAnnouncement,
 	#superclass : #IceRepositoryAnnouncement,
-	#category : #'Iceberg-Announcements'
+	#category : 'Iceberg-Announcements'
 }
 
 { #category : #'instance creation' }

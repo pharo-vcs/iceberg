@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'oldNode'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

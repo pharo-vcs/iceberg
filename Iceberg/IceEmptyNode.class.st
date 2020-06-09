@@ -43,6 +43,12 @@ IceEmptyNode >> collectWithPath: aBlockClosure [
 ]
 
 { #category : #enumerating }
+IceEmptyNode >> do: aBlock [
+
+	"Do nothing"
+]
+
+{ #category : #enumerating }
 IceEmptyNode >> firstNodeSuchThat: conditionBlock [ 
 	
 	^ self firstNodeSuchThat: conditionBlock ifNone: [ NotFound signalFor: conditionBlock ]
@@ -93,7 +99,7 @@ IceEmptyNode >> mergeWith: anotherNode onLeft: leftBlock onRight: rightBlock onM
 	^ anotherNode collect: rightBlock
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceEmptyNode >> mergedTree [
 	self shouldBeImplemented.
 ]

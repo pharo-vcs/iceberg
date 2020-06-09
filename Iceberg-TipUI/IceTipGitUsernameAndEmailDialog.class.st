@@ -19,20 +19,21 @@ Class {
 { #category : #specs }
 IceTipGitUsernameAndEmailDialog class >> defaultSpec [
 	<spec: #default>
-	^ SpecLayout composed
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-					row
-						add: #nameLabel width: 100 * World displayScaleFactor;
-						add: #nameInput ]
-					height: self inputTextHeight;
-				newRow: [ :row | 
-					row
-						add: #emailLabel width: 100 * World displayScaleFactor;
-						add: #emailInput ]
-					height: self inputTextHeight;
-				add: #globalCheckbox height: self inputTextHeight ]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #nameLabel width: 100 * self currentWorld displayScaleFactor;
+				add: #nameInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #emailLabel width: 100 * self currentWorld displayScaleFactor;
+				add: #emailInput;
+								yourself )
+			height: self inputTextHeight;
+		add: #globalCheckbox height: self inputTextHeight;
+		yourself
 ]
 
 { #category : #specs }
@@ -102,16 +103,16 @@ IceTipGitUsernameAndEmailDialog >> initialExtent [
 { #category : #initialization }
 IceTipGitUsernameAndEmailDialog >> initializeWidgets [
 	nameLabel := self newLabel label: 'user.name'.
-	nameInput := self newTextInput 
-		ghostText: 'e.g., John Doe';
+	nameInput := self newTextInput
+		placeholder: 'e.g., John Doe';
 		autoAccept: true.
 	emailLabel := self newLabel label: 'user.email'.
-	emailInput := self newTextInput 
-		ghostText: 'e.g., johndoe@mail.net';		
+	emailInput := self newTextInput
+		placeholder: 'e.g., johndoe@mail.net';
 		autoAccept: true.
 	globalCheckbox := self newCheckBox
 		label: 'Save properties as global?';
-		state: false.			
+		state: false.
 	self focusOrder
 		add: nameInput;
 		add: emailInput;

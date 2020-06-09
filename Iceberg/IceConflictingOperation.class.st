@@ -8,7 +8,7 @@ Class {
 		'leftOperation',
 		'rightOperation'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'remote'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #testing }

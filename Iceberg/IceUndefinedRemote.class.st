@@ -4,7 +4,7 @@ I am a null object representing a not found remote. I'm mainly used for polimorp
 Class {
 	#name : #IceUndefinedRemote,
 	#superclass : #IceRemote,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #testing }

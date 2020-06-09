@@ -75,7 +75,7 @@ IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 	((IceTipGitUsernameAndEmailDialog on: self repository)
 		onAccept: [ anError resume ];
 		openDialogWithSpec)
-			modalRelativeTo: World.
+			modalRelativeTo: self currentWorld.
 ]
 
 { #category : #visiting }

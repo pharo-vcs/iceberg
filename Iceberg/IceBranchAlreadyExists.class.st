@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'branchName'
 	],
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors'
 }
 
 { #category : #accessing }

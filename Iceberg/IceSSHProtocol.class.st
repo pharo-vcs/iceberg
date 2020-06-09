@@ -1,7 +1,7 @@
 Class {
 	#name : #IceSSHProtocol,
 	#superclass : #IceUrlProtocol,
-	#category : #'Iceberg-Url'
+	#category : 'Iceberg-Url'
 }
 
 { #category : #accessing }

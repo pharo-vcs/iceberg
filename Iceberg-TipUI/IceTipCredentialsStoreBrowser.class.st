@@ -13,17 +13,20 @@ Class {
 { #category : #specs }
 IceTipCredentialsStoreBrowser class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #toolbar height: IceTipToolbar defaultHeight;
-				newRow: #credentialsList ]
+	^ SpBoxLayout newVertical
+		add: #toolbar expand: false fill: true padding: 0;
+		add: #credentialsList;
+		yourself 
 ]
 
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> contextClass [
-	^ IceTipCredentialsStoreContext 
+	^ IceTipCredentialsStoreContext
+]
+
+{ #category : #'private factory' }
+IceTipCredentialsStoreBrowser >> createCommandContext [
+	^ self newContextWithSelection: self credentialSelected.
 ]
 
 { #category : #'private factory' }
@@ -33,13 +36,7 @@ IceTipCredentialsStoreBrowser >> createCommandContextForSelection: selectedItems
 
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> credentialSelected [
-	| index dataSource |
-	
-	index := credentialsList widget selectedRowIndex.
-	index = 0 ifTrue: [ ^ nil ].
-	dataSource := credentialsList widget dataSource.
-	dataSource hasElements ifFalse: [ ^ nil ].
-	^ dataSource elementAt: index
+^	credentialsList selection selectedItem
 ]
 
 { #category : #accessing }
@@ -57,37 +54,35 @@ IceTipCredentialsStoreBrowser >> initialize [
 
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initializeCredentialsList [
-
-	credentialsList widget 
-		beResizable;
-		addColumn: (IceTipTableColumn new 
-			id: 'Host';
-			action: #hostDescription;
-			width: 100 * World displayScaleFactor;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Type';
-			action: #type;
-			width: 75 * World displayScaleFactor;
-			yourself);
-		addColumn: (IceTipTableColumn new 
-			id: 'Description';
-			action: #description;
-			yourself);		
-		dataSource: self newCredentialsDataSource;
-		selectRowIndex: 1;
-		enableFilter: IceTipRepositoryFilter;			
-		explicitFunction
+	credentialsList
+		addColumn:
+			(SpStringTableColumn new
+				title: 'Host';
+				evaluated: #hostDescription;
+				width: 100 * self currentWorld displayScaleFactor;
+				yourself);
+		addColumn:
+			(SpStringTableColumn new
+				title: 'Type';
+				evaluated: #type;
+				width: 75 * self currentWorld displayScaleFactor;
+				yourself);
+		addColumn:
+			(SpStringTableColumn new
+				title: 'Description';
+				evaluated: #description;
+				yourself);
+		items: self model allCredentials;
+		selectIndex: 1;
+		contextMenu: [ self buildMenu]
 ]
 
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initializeWidgets [
 	super initializeWidgets.
-	
-	credentialsList := self newIceTable.
+	credentialsList := self newTable.
 	self initializeCredentialsList.
-	
-	self focusOrder add: credentialsList 
+	self focusOrder add: credentialsList
 ]
 
 { #category : #'private factory' }
@@ -100,20 +95,10 @@ IceTipCredentialsStoreBrowser >> newContextWithSelection: anObject [
 		yourself
 ]
 
-{ #category : #'private - datasource' }
-IceTipCredentialsStoreBrowser >> newCredentialsDataSource [
-	^ IceTipDataSource new
-		tool: self;
-		elements: self model allCredentials;
-		yourself
-]
-
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> refresh [
 
-	credentialsList widget
-		dataSource: self newCredentialsDataSource;
-		refresh
+	credentialsList items: self model allCredentials
 ]
 
 { #category : #api }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'remoteName'
 	],
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors'
 }
 
 { #category : #visiting }

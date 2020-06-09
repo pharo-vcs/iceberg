@@ -5,7 +5,7 @@ I fetch most of my properties from the current project that may be a project or 
 Class {
 	#name : #IceInvalidProject,
 	#superclass : #IceAbstractProject,
-	#category : #'Iceberg-Project'
+	#category : 'Iceberg-Project'
 }
 
 { #category : #testing }

@@ -18,7 +18,7 @@ IceGitClone >> execute [
 	[location ensureCreateDirectory.
 	
 	repo := LGitRepository on: location.
-	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
+	cloneOptions := repo cloneOptionsStructureClass withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
 
 	"Keeping references, because if not the GC take them."
 	checkoutOptions := cloneOptions checkoutOptions.

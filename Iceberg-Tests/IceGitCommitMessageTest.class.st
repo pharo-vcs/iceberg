@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitCommitMessageTest,
 	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#category : #'Iceberg-Tests-Git'
 }
 
 { #category : #running }
@@ -49,6 +49,7 @@ IceGitCommitMessageTest >> testDifferentSizes [
 	"We used to have a problem that in some messages (depending of padding) the $ was added at the end"
 	| msg |
 
+	self timeLimit: 1 minute.
 	msg := ''.
 	
 	1 to: 40 do: [ :size | 

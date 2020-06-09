@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipCommand",
+	"category" : "Iceberg-Plugin-GitHub-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"item",
+		"tool"
+	],
+	"name" : "IceTipGitHubOpenPullRequestBrowserCommand",
+	"type" : "normal"
+}

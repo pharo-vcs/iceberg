@@ -17,6 +17,15 @@ IceTreeVisitor >> visitChildrenOf: anIceNode [
 ]
 
 { #category : #visiting }
+IceTreeVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
+	
+	anIceConflictingOperation isResolved
+		ifFalse: [ self error: 'Cannot apply a non resolved conflict' ].
+		
+	^ anIceConflictingOperation chosenOperation accept: self
+]
+
+{ #category : #visiting }
 IceTreeVisitor >> visitEmptyNode: anIceEmptyNode [ 
 	
 	"Do nothing by default"

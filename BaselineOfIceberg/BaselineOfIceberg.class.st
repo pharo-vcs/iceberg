@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfIceberg'
+	#category : #BaselineOfIceberg
 }
 
 { #category : #baseline }
@@ -13,22 +13,21 @@ BaselineOfIceberg >> baseline: spec [
 		
 		self tonel: spec.
 		self libgit: spec.
-		self commander: spec.
 		
 		spec
 			baseline: 'Ring2' 
-			with: [ spec repository: 'github://pavel-krivanek/Ring2:mergeDev/src' ].
+			with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ].
 		
 		spec
 			"iceberg"
 			package: 'Iceberg';
-			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ];
+			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI') ];
 			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
-			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-GitCommand' 'Iceberg-Memory' 'Ring2') ];
 			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
@@ -82,6 +81,9 @@ BaselineOfIceberg >> baseline: spec [
 				spec requires: #('Spec70Compatibility' 'Iceberg-Pharo6') ] ].
 
 	spec for: #'pharo7.x' do: [	
+		self commander: spec.
+		spec package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg' 'Commander') ].
+		spec package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI' 'Commander') ].
 		spec package: 'Iceberg-Plugin-Pharo-Manuscript' with: [ spec requires: #( 'Iceberg-Plugin-Pharo') ].
 		spec group: 'default' with: #('Iceberg-Plugin-Pharo-Manuscript') ]
 ]
@@ -92,8 +94,8 @@ BaselineOfIceberg >> commander: spec [
 		baseline: 'Commander' 
 		with: [ 
 			spec 
-				repository: 'github://pharo-ide/Commander:v0.8.0/src';
-				loads: #('Core' 'AllActivators' 'Commander-SpecSupport') ]
+				repository: 'github://pharo-ide/Commander:v0.8.1/src';
+				loads: #('Core' 'AllActivators' 'Commander-SpecSupport' 'Commander-Spec2-Compatibility') ]
 ]
 
 { #category : #accessing }
@@ -109,7 +111,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v1.5.7';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v2.0.1';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
@@ -187,5 +189,5 @@ BaselineOfIceberg >> spec70: spec [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.14' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.17' ]
 ]

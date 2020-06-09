@@ -8,7 +8,7 @@ It just add options to easily handle the creation of branchs with the ""conventi
 Class {
 	#name : #IceGitHubPlugin,
 	#superclass : #IcePlugin,
-	#category : #'Iceberg-Plugin-GitHub-Core'
+	#category : 'Iceberg-Plugin-GitHub-Core'
 }
 
 { #category : #testing }

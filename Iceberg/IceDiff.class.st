@@ -26,7 +26,7 @@ Class {
 		'target',
 		'writerClass'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

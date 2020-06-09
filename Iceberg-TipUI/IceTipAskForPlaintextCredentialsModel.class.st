@@ -11,14 +11,30 @@ Class {
 { #category : #specs }
 IceTipAskForPlaintextCredentialsModel class >> defaultSpec [
 	<spec: #default>
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #usernameInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #passwordInput;
+				yourself )
+			height: self inputTextHeight;
+		add: #storeCheckbox height: self inputTextHeight
+]
 
-	^ SpecLayout composed newColumn: [ :col |
-		col 
-		 	newRow: [:row | row add: #usernameLabel width: 80 * World displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passwordLabel width: 80 * World displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
-			add: #storeCheckbox height: self inputTextHeight.
-	]
-
+{ #category : #actions }
+IceTipAskForPlaintextCredentialsModel >> accept [
+	| cred |
+	cred := self credentials.
+	self storeCredentials
+		ifTrue: [ credentialStore storeCredential: cred forHostname: remoteHostname ].
+	accepted := true.
+	^ cred
 ]
 
 { #category : #actions }
@@ -31,18 +47,6 @@ IceTipAskForPlaintextCredentialsModel >> cancelAction [
 { #category : #api }
 IceTipAskForPlaintextCredentialsModel >> initialExtent [
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
-]
-
-{ #category : #actions }
-IceTipAskForPlaintextCredentialsModel >> okAction [
-
-	| cred |
-	cred := self credentials.
-	self storeCredentials ifTrue: [credentialStore storeCredential: cred forHostname: remoteHostname ].
-	
-	accepted := true.
-
-	^ cred.
 ]
 
 { #category : #initialization }

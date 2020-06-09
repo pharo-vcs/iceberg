@@ -1,7 +1,7 @@
 Class {
 	#name : #IceNewBranchFromGitHubIssueCommand,
 	#superclass : #IceTipCommand,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #testing }

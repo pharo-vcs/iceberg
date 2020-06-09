@@ -15,9 +15,11 @@ Class {
 IceTipRepairCloneRepository class >> help [
 	^ 'Clone again the repository into a new location.
 
-This situation happens when iceberg cannot find the repository in disk.
+This situation happens when iceberg cannot find the repository on disk.
 
-This action will very probably let you in a detached status.
+The cloned repository will be in the commit of the remote. 
+This commit may be not the same commit that your image has.
+So, this action will very probably let you in a detached status.
 You will need to re-synchronize your repository with another repair action.'
 ]
 
@@ -40,7 +42,7 @@ IceTipRepairCloneRepository class >> order [
 
 { #category : #accessing }
 IceTipRepairCloneRepository class >> title [
-	^ 'Clone again this repository'
+	^ 'Clone again this repository in a new location'
 ]
 
 { #category : #executing }

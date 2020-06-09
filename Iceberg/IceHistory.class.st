@@ -16,7 +16,7 @@ Class {
 		'headHistory',
 		'repository'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

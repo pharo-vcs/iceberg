@@ -13,7 +13,7 @@ Class {
 		'repository',
 		'isDirty'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #'instance creation' }

@@ -229,9 +229,10 @@ IceGitHubAPI >> jsonContentsWithValidationDo: aBlock [
 
 { #category : #'private factory' }
 IceGitHubAPI >> newRequestTo: aString [
+
 	^ ZnClient new 
 		in: [ :this | 
-			isAnonymous ifFalse: [ 
+			(self credentials notNil and: [ isAnonymous not]) ifTrue: [ 
 				this
 					username: self credentials username 
 					password: self credentials password ] ]; 

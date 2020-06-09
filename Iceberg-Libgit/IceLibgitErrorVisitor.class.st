@@ -53,7 +53,7 @@ IceLibgitErrorVisitor >> visitEEOF: aLGit_GIT_EEOF [
 { #category : #visiting }
 IceLibgitErrorVisitor >> visitEEXISTS: anError [
 
-	(anError messageText beginsWith: 'Failed to write reference ''refs/tags')
+	(anError messageText asLowercase beginsWith: 'failed to write reference ''refs/tags')
 		ifTrue: [ | refName messageStream|
 			messageStream := anError messageText readStream.
 			refName := messageStream
@@ -81,8 +81,13 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 	 actual code. This is a HACK, but it will fix #577"
 	(anError object value = LGitReturnCodeEnum git_euser value)
 		ifTrue: [ self visitEUSER: anError  ].
-	
-	anError messageText trimmed = 'Unexpected HTTP status code: 404'
+
+	"Error in libgit in non-windows"
+	anError messageText trimmed asLowercase = 'Unexpected HTTP status code: 404' asLowercase
+		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
+
+	"Error in libgit in windows"
+	anError messageText trimmed = 'request failed with status code: 404'
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 
 	self visitGenericError: anError
@@ -94,6 +99,8 @@ IceLibgitErrorVisitor >> visitEUSER: anError [
 	 of messageText. String comparisson is not the thing in history, but for not it will 
 	 fit. :("
 	anError messageText = 'No ssh-agent suitable credentials found.'
+		ifTrue: [ anError resignalAs: IceAuthenticationError new ].
+	anError messageText asLowercase = 'Invalid username and/or password provided.' asLowercase
 		ifTrue: [ anError resignalAs: IceAuthenticationError new ].
 	self visitGenericError: anError
 ]

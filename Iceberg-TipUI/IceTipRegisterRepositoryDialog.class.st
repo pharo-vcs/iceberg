@@ -66,13 +66,12 @@ IceTipRegisterRepositoryDialog >> onAccept: aBlock [
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> withoutLocalRepository [
 	types := self allTypes reject: #isLocalRepository.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types.
+
 ]
 
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> withoutNewRepository [
 	types := self allTypes reject: #isNewRepository.
-	typeList widget dataSource elements: types.
-	typeList widget refresh
+	typeList items: types
 ]

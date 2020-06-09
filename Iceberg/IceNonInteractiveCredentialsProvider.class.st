@@ -4,7 +4,7 @@ A credentials provider that retrieves defaults or throws exceptions (but do not 
 Class {
 	#name : #IceNonInteractiveCredentialsProvider,
 	#superclass : #IceCredentialsProvider,
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security'
 }
 
 { #category : #private }

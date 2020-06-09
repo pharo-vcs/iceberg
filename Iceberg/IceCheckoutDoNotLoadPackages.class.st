@@ -1,7 +1,7 @@
 Class {
 	#name : #IceCheckoutDoNotLoadPackages,
 	#superclass : #IceCheckoutStrategy,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #accessing }

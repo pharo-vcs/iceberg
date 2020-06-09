@@ -1,7 +1,7 @@
 Class {
 	#name : #IceUnknownVersionWorkingCopy,
 	#superclass : #IceWorkingCopyState,
-	#category : #'Iceberg-WorkingCopy'
+	#category : 'Iceberg-WorkingCopy'
 }
 
 { #category : #testing }

@@ -14,14 +14,27 @@ Class {
 { #category : #specs }
 IceTipEditPlaintextCredentialsModel class >> defaultSpec [
 	<spec: #default>
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #usernameInput;
+				yourself) height: self inputTextHeight ;
+		add:
+			(SpBoxLayout newHorizontal 
+				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #passwordInput;
+				yourself) height: self inputTextHeight ;
+		yourself
+]
 
-	^ SpecLayout composed newColumn: [ :col |
-		col 
-		 	newRow: [:row | row add: #usernameLabel width: 80 * World displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passwordLabel width: 80 * World displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
-			newRow: [:row |]
-	]
-
+{ #category : #actions }
+IceTipEditPlaintextCredentialsModel >> accept [ 
+	self credentials
+		username: self username;
+		password: self password.
+	credentialStore storeCredential: self credentials.
+	tool refresh
 ]
 
 { #category : #actions }
@@ -47,22 +60,6 @@ IceTipEditPlaintextCredentialsModel >> credentials: aPlainTextCredential [
 { #category : #api }
 IceTipEditPlaintextCredentialsModel >> initialExtent [
 	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight)) scaledByDisplayScaleFactor
-]
-
-{ #category : #initialization }
-IceTipEditPlaintextCredentialsModel >> initializeWidgets [
-	super initializeWidgets.
-	passwordInput encrypted: false 
-]
-
-{ #category : #actions }
-IceTipEditPlaintextCredentialsModel >> okAction [
-	self credentials
-		username: self username;
-		password: self password.
-	
-	credentialStore storeCredential: self credentials.
-	tool refresh
 ]
 
 { #category : #initialization }

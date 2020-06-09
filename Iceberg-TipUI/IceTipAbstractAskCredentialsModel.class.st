@@ -21,6 +21,11 @@ IceTipAbstractAskCredentialsModel class >> title [
 	^ 'Default Title'
 ]
 
+{ #category : #actions }
+IceTipAbstractAskCredentialsModel >> accept [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 IceTipAbstractAskCredentialsModel >> acceptButton [
 	
@@ -57,22 +62,8 @@ IceTipAbstractAskCredentialsModel >> initialize [
 IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 	super initializeDialogWindow: aDialogWindowPresenter.
 	aDialogWindowPresenter title: self title.
-
-	acceptButton := aDialogWindowPresenter
-		addButton: 'Ok' do: [ :presenter | 
-			presenter triggerOkAction.
-			presenter close ].
-	cancelButton := aDialogWindowPresenter
-		addButton: 'Cancel' do: [ :presenter | 
-			presenter triggerCancelAction.
-			presenter close ].
-
-	acceptButton action: [ self okAction ].
-	cancelButton action: [ self cancelAction ].
 	self updateOkButton.
 	
-	aDialogWindowPresenter whenClosedDo: [ self closeAction ].
-	aDialogWindowPresenter centered
 ]
 
 { #category : #initialization }
@@ -84,22 +75,17 @@ IceTipAbstractAskCredentialsModel >> initializePresenter [
 
 { #category : #initialization }
 IceTipAbstractAskCredentialsModel >> initializeWidgets [
-	
 	storeCheckbox := self newCheckBox
 		label: 'Do you want this credentials to be stored for future use?';
 		help: 'Please note that storing your credentials is handy but unsafe';
 		state: true.
+
 ]
 
 { #category : #testing }
 IceTipAbstractAskCredentialsModel >> isOkEnabled [
 	
 	self subclassResponsibility
-]
-
-{ #category : #actions }
-IceTipAbstractAskCredentialsModel >> okAction [
-	^ self subclassResponsibility 
 ]
 
 { #category : #updating }
@@ -112,7 +98,7 @@ IceTipAbstractAskCredentialsModel >> okButton [
 IceTipAbstractAskCredentialsModel >> open [
 	self
 		openNonModal
-		modalRelativeTo: World.
+		modalRelativeTo: self currentWorld.
 	
 	^ self credentials
 ]
@@ -121,7 +107,7 @@ IceTipAbstractAskCredentialsModel >> open [
 IceTipAbstractAskCredentialsModel >> openNonModal [
 	^ self
 		openDialogWithSpec
-		okAction: [self okAction];
+		okAction: [self accept];
 		cancelAction: [self cancelAction];
 		whenClosedDo: [self closeAction];	
 		centered

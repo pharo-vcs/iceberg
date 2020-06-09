@@ -8,7 +8,7 @@ This strategy is still dangerous bacause packages installed may be incorrectly i
 Class {
 	#name : #IceCheckoutAlreadyLoadedPackages,
 	#superclass : #IceCheckoutStrategy,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #accessing }

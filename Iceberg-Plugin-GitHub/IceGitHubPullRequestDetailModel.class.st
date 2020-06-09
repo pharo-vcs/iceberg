@@ -3,7 +3,7 @@ I'm a spec model to present a detailed view of a Pull Request.
 "
 Class {
 	#name : #IceGitHubPullRequestDetailModel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'urlLabel',
 		'urlText',
@@ -25,20 +25,58 @@ Class {
 }
 
 { #category : #specs }
-IceGitHubPullRequestDetailModel class >> defaultSpec [ 
+IceGitHubPullRequestDetailModel class >> defaultSpec [
 	<spec>
-
-	^ SpecLayout composed
-		newColumn: [ :c |
-			c 
-				newRow: [:row | row add: #urlLabel width: 80 * World displayScaleFactor; add: #urlText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #authorLabel width: 80 * World displayScaleFactor; add: #authorText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #fromLabel width: 80 * World displayScaleFactor; add: #fromText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #toLabel width: 80 * World displayScaleFactor; add: #toText ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #mergeableLabel width: 80 * World displayScaleFactor; add: #mergeablePanel ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #statusLabel width: 80 * World displayScaleFactor; add: #statusPanel ] height: 25 * World displayScaleFactor;
-				newRow: [:row | row add: #checksTable ];
-				newRow: [:row | row add: #bodyText ] ];
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #urlLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #urlText;
+				yourself);
+		add:
+			(SpBoxLayout newHorizontal
+				add: #authorLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #authorText;
+				yourself);
+		add:
+			(SpBoxLayout newHorizontal
+				add: #fromLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #fromText;
+				yourself);
+		add:
+			(SpBoxLayout newHorizontal
+				add: #toLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #toText;
+				yourself);
+		add:
+			(SpBoxLayout newHorizontal
+				add: #mergeableLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #mergeablePanel;
+				yourself)
+			withConstraints:
+				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+		add:
+			(SpBoxLayout newHorizontal
+				add: #statusLabel
+					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				add: #statusPanel;
+				yourself)
+			withConstraints:
+				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
+		add: #checksTable;
+		add: #bodyText 					withConstraints:
+						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
 		yourself
 ]
 
@@ -159,11 +197,11 @@ IceGitHubPullRequestDetailModel >> mergeablePanel: anObject [
 { #category : #'private factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
 	^ FTTableMorph new 
-		addColumn: ((FTColumn id: #target_url) width: 18 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #state) width: 65 * World displayScaleFactor);
-		addColumn: ((FTColumn id: #context) width: 100 * World displayScaleFactor);
+		addColumn: ((FTColumn id: #target_url) width: 18 * self currentWorld displayScaleFactor);
+		addColumn: ((FTColumn id: #state) width: 65 * self currentWorld displayScaleFactor);
+		addColumn: ((FTColumn id: #context) width: 100 * self currentWorld displayScaleFactor);
 		addColumn: (FTColumn id: #description);
-		cellInset: 5 * World displayScaleFactor;
+		cellInset: 5 * self currentWorld displayScaleFactor;
 		beResizable;
 		vResizing: #spaceFill;
 		hResizing: #spaceFill;

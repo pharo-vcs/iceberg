@@ -3,31 +3,33 @@ I'm a simple action bar to be used as footer of certain panels (see IceTipCommen
 "
 Class {
 	#name : #IceTipActionPanel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'panel',
 		'actions',
 		'actionMorphPanel',
-		'actionWidth'
+		'actionWidth',
+		'actionsButtonBar'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #accessing }
 IceTipActionPanel class >> defaultActionWidth [
-	^ 100 * World displayScaleFactor
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #accessing }
 IceTipActionPanel class >> defaultHeight [
-	^ 25 * World displayScaleFactor
+	^ 25 * self currentWorld displayScaleFactor
 ]
 
 { #category : #specs }
 IceTipActionPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpecLayout composed
-		newRow: #panel
+	^ SpBoxLayout newVertical
+		add: #actionsButtonBar height: self  buttonHeight ;
+		yourself
 ]
 
 { #category : #accessing }
@@ -54,13 +56,15 @@ IceTipActionPanel >> initialize [
 
 { #category : #initialization }
 IceTipActionPanel >> initializeWidgets [
-	panel := self newIcePanel.
-	panel widget addMorphBack: (actionMorphPanel := PanelMorph new 
-		changeTableLayout;
-		listDirection: #rightToLeft;
-		hResizing: #shrinkWrap;
-		vResizing: #spaceFill;
-		yourself)
+	actionsButtonBar := self newButtonBar 
+	"
+		addMorphBack:
+			(actionMorphPanel := PanelMorph new
+				changeTableLayout;
+				listDirection: #rightToLeft;
+				hResizing: #shrinkWrap;
+				vResizing: #spaceFill;
+				yourself)"
 ]
 
 { #category : #initialization }
@@ -82,10 +86,6 @@ IceTipActionPanel >> panel: anObject [
 
 { #category : #initialization }
 IceTipActionPanel >> refresh [
-	actionMorphPanel removeAllMorphs.
-	actions do: [ :each |
-		actionMorphPanel addMorphBack: (each buildWithSpec
-			hResizing: #rigid;
-			width: self actionWidth;
-			yourself) ]
+	actionsButtonBar items: OrderedCollection new .
+	actions do: [ :each | actionsButtonBar add: each ]
 ]

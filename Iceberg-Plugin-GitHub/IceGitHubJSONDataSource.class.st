@@ -5,7 +5,7 @@ I'm intended to be used to show information from GitHub API, but I'm generic eno
 Class {
 	#name : #IceGitHubJSONDataSource,
 	#superclass : #FTSimpleDataSource,
-	#category : #'Iceberg-Plugin-GitHub-Utils'
+	#category : 'Iceberg-Plugin-GitHub-Utils'
 }
 
 { #category : #accessing }

@@ -12,6 +12,8 @@ MetacelloPharoPlatform select.
     'BaselineOfTonel'
     'BaselineOfLibGit'
     'BaselineOfIceberg'
+    'BaselineOfSpec2'
+    'BaselineOfCommander'
     'MonticelloTonel-Core'
     'MonticelloTonel-FileSystem'
     'MonticelloTonel-Tests'
@@ -39,10 +41,10 @@ MetacelloPharoPlatform select.
     'LibGit-Core') 
 do: [ :each |
     (each asPackageIfAbsent: [ 
-        (each , ' not found') logCr.
+        (each , ' not found') traceCr.
         nil ])
             ifNotNil: [ :package |
-                ('Removing ', each) logCr.
+                ('Removing ', each) traceCr.
                 package removeFromSystem ] ].
 
 "Loading Tonel before trying to load Iceberg.

@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors'
 }
 
 { #category : #exceptioninstantiator }

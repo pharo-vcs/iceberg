@@ -117,6 +117,17 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName
 		title: 'Duplicated project!'
 ]
 
+{ #category : #accessing }
+IceTipMetacelloInstallBaselineCommand >> fillContextMenu: aMenu using: aCommandActivator [
+	| item |
+	
+	item := CmdCommandMenuItem activatingBy: aCommandActivator.
+
+	aCommandActivator setUpShortcutTipForMenuItem: item.
+	
+	aMenu basicAddItem: item.
+]
+
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [ 
 	^ self installBaseline: icePackage groups: #()

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-Announcements'
+	#category : 'Iceberg-Announcements'
 }
 
 { #category : #'instance creation' }

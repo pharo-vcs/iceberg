@@ -11,7 +11,7 @@ Class {
 		'item',
 		'tool'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #activation }

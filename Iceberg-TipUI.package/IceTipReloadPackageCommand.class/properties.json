@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipPackageCommand",
+	"category" : "Iceberg-TipUI-Commands",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IceTipReloadPackageCommand",
+	"type" : "normal"
+}

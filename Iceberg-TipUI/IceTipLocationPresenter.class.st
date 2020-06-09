@@ -4,7 +4,7 @@ I need to be included in other components (search references to my children for 
 "
 Class {
 	#name : #IceTipLocationPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'locationLabel',
 		'locationInput',
@@ -28,14 +28,13 @@ IceTipLocationPresenter class >> defaultLabel [
 ]
 
 { #category : #specs }
-IceTipLocationPresenter class >> defaultSpec [ 
+IceTipLocationPresenter class >> defaultSpec [
 	<spec>
-	^ SpecLayout composed
-		newRow: [ :row | 
-			row 
-				add: #locationLabel width: self iceLabelWidth; 
-			 	add: #locationInput; 
-				add: #chooseButton width: self iceIconWidth ]
+	^ SpBoxLayout newHorizontal
+		add: #locationLabel width: self labelWidth ;
+		add: #locationInput;
+		add: #chooseButton width: 24;
+		yourself.
 ]
 
 { #category : #accessing }
@@ -117,9 +116,24 @@ IceTipLocationPresenter >> label: aString [
 
 { #category : #accessing }
 IceTipLocationPresenter >> location [
-	^ locationInput text trim 
+	"This method return the location to use in the repository
+	If the location is relative to IceLibgitRepository >> #localRepositoriesLocation
+	It returns a FileLocator so the image can be moved or the directory renamed.
+	If the location is outside of the local repositories location it returns a file reference"
+
+	| fileReferenceLocation relativePath|
+
+	fileReferenceLocation := locationInput text trim
 		ifNotEmpty: [ :value | value asFileReference ]
-		ifEmpty: [ nil ]
+		ifEmpty: [ ^ nil ].
+
+	(fileReferenceLocation
+		isContainedBy: IceLibgitRepository localRepositoriesLocation)
+		ifFalse: [ ^ fileReferenceLocation ].
+
+	relativePath := IceLibgitRepository localRepositoriesLocation makeRelative: locationInput text trim asFileReference.
+	
+	^ IceLibgitRepository localRepositoriesLocation resolvePath: relativePath 
 ]
 
 { #category : #accessing }
@@ -172,6 +186,6 @@ IceTipLocationPresenter >> onChoose: aBlockClosure [
 ]
 
 { #category : #events }
-IceTipLocationPresenter >> whenTextChanged: aBlockClosure [ 
-	self locationInput whenTextChanged: aBlockClosure
+IceTipLocationPresenter >> whenTextChanged: aBlockClosure [
+	self locationInput whenTextChangedDo: aBlockClosure
 ]

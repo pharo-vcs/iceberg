@@ -6,6 +6,11 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'Iceberg',
       #platforms : [ #pharo ],
+      #ignoreImage : true,
+      #load : [ 'default' ],
+      #onConflict : #useIncoming,
+      #onUpgrade : #useIncoming,
+      #onWarningLog : true,
       #load : [ 'development' ]
      }
   ],

@@ -4,7 +4,7 @@ I am a working copy whose packages are all in merge status in the same commits.
 Class {
 	#name : #IceInMergeWorkingCopy,
 	#superclass : #IceWorkingCopyState,
-	#category : #'Iceberg-WorkingCopy'
+	#category : 'Iceberg-WorkingCopy'
 }
 
 { #category : #display }

@@ -6,7 +6,7 @@ This strategy is very dangerous since it can introduce in image package versions
 Class {
 	#name : #IceCheckoutAllPackages,
 	#superclass : #IceCheckoutStrategy,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #accessing }

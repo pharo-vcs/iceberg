@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'job'
 	],
-	#category : #'Iceberg-Progress'
+	#category : 'Iceberg-Progress'
 }
 
 { #category : #accessing }

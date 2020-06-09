@@ -18,7 +18,7 @@ Class {
 		'name',
 		'localRepository'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #comparing }

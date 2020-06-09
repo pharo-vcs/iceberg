@@ -4,7 +4,7 @@ I'm a command to install a baseline (default group)
 Class {
 	#name : #IceTipMetacelloInstallBaselineDefaultCommand,
 	#superclass : #IceTipMetacelloInstallBaselineCommand,
-	#category : #'Iceberg-Plugin-Metacello'
+	#category : 'Iceberg-Plugin-Metacello'
 }
 
 { #category : #activation }

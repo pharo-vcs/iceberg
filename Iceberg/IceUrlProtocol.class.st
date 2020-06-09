@@ -1,7 +1,7 @@
 Class {
 	#name : #IceUrlProtocol,
 	#superclass : #Object,
-	#category : #'Iceberg-Url'
+	#category : 'Iceberg-Url'
 }
 
 { #category : #'as yet unclassified' }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'wrappedException'
 	],
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors'
 }
 
 { #category : #accessing }

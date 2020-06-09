@@ -1,7 +1,7 @@
 Class {
 	#name : #IcePharoMenuGroup,
 	#superclass : #CmdMenuGroup,
-	#category : 'Iceberg-Plugin-Pharo-Core'
+	#category : #'Iceberg-Plugin-Pharo-Core'
 }
 
 { #category : #accessing }

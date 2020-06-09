@@ -4,5 +4,5 @@ We can not parse the origin URL you have introduced. Maybe you made a typo, or m
 Class {
 	#name : #IceWrongUrl,
 	#superclass : #IceError,
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors'
 }

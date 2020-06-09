@@ -1,6 +1,6 @@
 Class {
 	#name : #IceTipSelectRemotePresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'remoteLabel',
 		'remoteList',
@@ -14,12 +14,10 @@ Class {
 IceTipSelectRemotePresenter class >> defaultSpec [ 
 	<spec>
 	
-	^ SpecLayout composed
-		newRow: [ :row | 
-			row 
-				add: #remoteLabel width: self iceLabelWidth; 
-			 	add: #remoteList; 
-				add: #addButton width: self iceIconWidth ]
+	^ SpBoxLayout newHorizontal 
+		add: #remoteLabel width: self labelWidth ; 
+	 	add: #remoteList; 
+		add: #addButton width: self iconWidth.
 ]
 
 { #category : #'accessing ui' }
@@ -53,10 +51,10 @@ IceTipSelectRemotePresenter >> initializeWidgets [
 	remoteList := self newDropList.
 	remoteList
 		items: self model remoteModels;
-		displayBlock: [ :each | each descriptionWithDecoration ].
+		display: [ :each | each descriptionWithDecoration ].
 	addButton := self newButton icon: self icon.
 	addButton action: [ self addRemote ].
-	remoteList selectedItem: self model remoteModel.
+	remoteList selectIndex: (self model remoteModels detectIndex: [:each | each realObject name = self model remoteModel name]).
 	self focusOrder add: remoteList
 ]
 

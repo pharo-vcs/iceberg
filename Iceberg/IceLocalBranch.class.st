@@ -23,7 +23,7 @@ A local branch can also pull from its tracked branch or pull from a given remote
 Class {
 	#name : #IceLocalBranch,
 	#superclass : #IceBranch,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #'API-commits' }

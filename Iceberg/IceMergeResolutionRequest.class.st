@@ -21,7 +21,7 @@ IceMergeResolutionRequest >> defaultAction [
 		title: 'Merge';
 		yourself.
 
-	UIManager default openModal: window.
+	window openModal.
 	^ mergeMorph merged
 ]
 

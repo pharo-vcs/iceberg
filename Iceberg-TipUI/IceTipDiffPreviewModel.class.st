@@ -11,7 +11,7 @@ Class {
 { #category : #accessing }
 IceTipDiffPreviewModel >> calculateDiff [
 
-	^ commitish entity diffTo: self repository workingCopy
+	self subclassResponsibility
 ]
 
 { #category : #accessing }

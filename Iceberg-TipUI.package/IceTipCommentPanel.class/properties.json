@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "IceTipComposablePresenter",
+	"category" : "Iceberg-TipUI-View",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"repositoryModel",
+		"commentText",
+		"actionPanel",
+		"pushCheckbox",
+		"commitButton",
+		"messageText",
+		"message"
+	],
+	"name" : "IceTipCommentPanel",
+	"type" : "normal"
+}

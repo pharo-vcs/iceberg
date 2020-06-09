@@ -9,7 +9,7 @@ Class {
 		'modifyingPackage',
 		'maxNumber'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }

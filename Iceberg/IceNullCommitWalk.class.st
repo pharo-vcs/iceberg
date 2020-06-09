@@ -1,7 +1,7 @@
 Class {
 	#name : #IceNullCommitWalk,
 	#superclass : #Object,
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core'
 }
 
 { #category : #accessing }

@@ -8,7 +8,7 @@ Class {
 		'max',
 		'current'
 	],
-	#category : #'Iceberg-Progress'
+	#category : 'Iceberg-Progress'
 }
 
 { #category : #events }

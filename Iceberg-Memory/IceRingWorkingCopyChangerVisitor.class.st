@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'workingCopy'
 	],
-	#category : 'Iceberg-Memory'
+	#category : #'Iceberg-Memory'
 }
 
 { #category : #'instance-creation' }
@@ -49,6 +49,12 @@ IceRingWorkingCopyChangerVisitor >> removeFileReferenceInPath: aRelativePath [
 IceRingWorkingCopyChangerVisitor >> removeMethod: anIceMethodDefinition [ 
 	
 	workingCopy removeMethod: anIceMethodDefinition selector fromClass: anIceMethodDefinition className.
+]
+
+{ #category : #patching }
+IceRingWorkingCopyChangerVisitor >> removePackage: anIcePackageDefinition [
+	
+	workingCopy unloadPackage: anIcePackageDefinition
 ]
 
 { #category : #visiting }
@@ -159,6 +165,31 @@ IceRingWorkingCopyChangerVisitor >> visitRemoval: anIceRemoval [
 	
 	anIceRemoval definition removeFrom: self.
 
+]
+
+{ #category : #visiting }
+IceRingWorkingCopyChangerVisitor >> visitTraitDefinition: anIceTraitDefinition [ 
+	|package|
+
+	anIceTraitDefinition isMeta 
+		ifTrue: [ ^ self ].
+		
+		package := workingCopy packages
+		detect: [ :icePackage | 
+			anIceTraitDefinition asMCDefinition category
+				beginsWith: icePackage name ].
+			
+	workingCopy 
+		createTrait: anIceTraitDefinition name
+		inPackage: package name
+	 	with: [ :trait |
+			| composition transformations |
+			composition := RG2TraitCompositionDefinition parent: trait.
+			transformations := RG2TraitCompositionVisitor new
+				parse: anIceTraitDefinition asMCDefinition traitComposition 
+				for: composition.
+			trait traitComposition: composition.
+			transformations do: [ :each | composition addTransformation: each ]  ]
 ]
 
 { #category : #accessing }

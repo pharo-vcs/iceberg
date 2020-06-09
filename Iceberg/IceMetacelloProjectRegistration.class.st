@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'version'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters'
 }
 
 { #category : #printing }

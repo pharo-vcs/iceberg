@@ -14,7 +14,7 @@ Class {
 		'protocol',
 		'sourceCode'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }

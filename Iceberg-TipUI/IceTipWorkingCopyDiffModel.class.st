@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'diff'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model'
 }
 
 { #category : #accesing }

@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'model',
 		'packagesList',
-		'packageNameText'
+		'packageNameText',
+		'selectedPackages'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -15,12 +16,9 @@ Class {
 { #category : #specs }
 IceTipAddPackagesDialog class >> defaultSpec [
 	<spec: #default>
-	
-	^ SpecLayout composed 
-		newColumn: [ :column |
-			column 
-				newRow: #packagesList;
-				newRow: #packageNameText height: self inputTextHeight ]
+	^ SpBoxLayout newVertical 
+				add: #packagesList;
+				add: #packageNameText height: self inputTextHeight
 ]
 
 { #category : #accessing }
@@ -40,17 +38,12 @@ IceTipAddPackagesDialog class >> title [
 
 { #category : #actions }
 IceTipAddPackagesDialog >> accept [
-	| items |
-	
 	"ensure window goes away (in case accept comes from a keybinding and not the ok button)"
-	self window delete. 
-	
-	items := self packagesList widget dataSource selectedItems.
-	items ifEmpty: [ 
-		UIManager default inform: 'No packages selected.'.
-		^ self ].
-	
-	self model addPackages: items
+	self window delete.
+	selectedPackages
+		ifEmpty: [ UIManager default inform: 'No packages selected.'.
+			^ self ].
+	self model addPackages: selectedPackages
 ]
 
 { #category : #initialization }
@@ -82,56 +75,60 @@ IceTipAddPackagesDialog >> contextSelection [
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> initializeDialogWindow: aWindow [
-
-	acceptButton := aWindow 
-		addButton: 'Add' 
-		do: [ :presenter | self accept. presenter close ].
-	acceptButton disable
-]
-
-{ #category : #initialization }
 IceTipAddPackagesDialog >> initializePackageNameText [
-	self packageNameText whenBuiltDo: [ :ann |
-		ann widget 
-			bindKeyCombination: Character enter asKeyCombination 
-				toAction: [ self accept ];
-			bindKeyCombination: Character arrowUp asKeyCombination 
-				toAction: [ 
-					self packagesList takeKeyboardFocus.
-					self packagesList widget selectLastVisibleRow ];
-			bindKeyCombination: Character arrowDown asKeyCombination 
-				toAction: [ 
-					self packagesList takeKeyboardFocus.
+	self packageNameText
+		whenBuiltDo: [ :ann | 
+			ann widget
+				bindKeyCombination: Character enter asKeyCombination
+					toAction: [ self accept ];
+				bindKeyCombination: Character arrowUp asKeyCombination
+					toAction: [ self packagesList takeKeyboardFocus.
+					self packagesList adapter selectLastVisibleRow ];
+				bindKeyCombination: Character arrowDown asKeyCombination
+					toAction: [ self packagesList takeKeyboardFocus.
 					self packagesList widget selectFirstVisibleRow ] ]
 ]
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackagesList [
-	| dataSource |
-	
-	dataSource := self newPackagesListDataSource.
-	packagesList widget
-		addColumn: (IceTipTableColumn newAction: #name icon: [ :each | self iconNamed: #package ]);
-		dataSource: dataSource;
-		useFunction: IceTipLinkFilterFunction do: [ :function | 
-			function 
-				filterClass: IceTipPackageFilter;
-				textField: self packageNameText ];
-		bindKeyCombination: Character cr toAction: [ self accept ];
-		onAnnouncement: FTStrongSelectionChanged do: [ self accept ]
+	packagesList
+		addColumn:
+			(SpCompositeTableColumn new
+				addColumn:
+					(SpCheckBoxTableColumn new
+						evaluated: [ :item | selectedPackages includes: item ];
+						onActivation: [ :item | selectedPackages add: item ];
+						onDesactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
+						width: 20 * self currentWorld displayScaleFactor;
+						yourself);
+				addColumn:
+					(SpImageTableColumn new
+						width: 20;
+						evaluated: [ :each | self iconNamed: #package ];
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: #name;
+						yourself);
+				yourself);
+		items: self allPackagesNotRegistered
 ]
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializeWidgets [
-
-	packagesList := self newIceTreeTable.
+	selectedPackages := OrderedCollection new.
+	packagesList := self newTable.
 	packageNameText := self newTextInput
+		placeholder: 'Enter a package name';
 		autoAccept: true;
-		placeholder: 'e.g., Collections'.
+		whenTextChangedDo: [ :text | 
+			packagesList
+				items:  (self allPackagesNotRegistered
+						select:
+							[ :currPackage | currPackage name asLowercase includesSubstring: text asString asLowercase ] )
+						] .
 	self initializePackagesList.
 	self initializePackageNameText.
-
 	self focusOrder
 		add: self packagesList;
 		add: self packageNameText
@@ -146,16 +143,6 @@ IceTipAddPackagesDialog >> model [
 IceTipAddPackagesDialog >> model: anObject [
 	model := anObject.
 	self refresh
-]
-
-{ #category : #'private factory' }
-IceTipAddPackagesDialog >> newPackagesListDataSource [
-	| dataSource |
-	^ (dataSource := IceTipSelectingDataSource new)
-		tool: self;
-		elements: self allPackagesNotRegistered;
-		onSelectionChangedBlock: [ :item :wasSelected | wasSelected ifTrue: [ acceptButton enable ] ifFalse: [ dataSource selectedItems ifEmpty: [ acceptButton disable ] ] ];
-		yourself
 ]
 
 { #category : #accessing }
@@ -205,7 +192,8 @@ IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> validate [
-	self 
-		assert: self selectedPackage isNotNil 
+self flag: #Todo .
+	self
+		assert: self selectedPackage isNotNil
 		description: 'Please select a branch to checkout.'
 ]

@@ -11,28 +11,25 @@ Class {
 		'issue',
 		'fetched'
 	],
-	#category : 'Iceberg-Plugin-Pharo-Manuscript'
+	#category : #'Iceberg-Plugin-Pharo-Manuscript'
 }
 
 { #category : #specs }
 IcePharoNewBranchFromIssuePanel class >> defaultSpec [
 	<spec: #default>
 
-	^ SpecLayout composed
-		newColumn: [ :col | 
-			col
-				newRow: #currentBranchLabel height: self inputTextHeight;
-				newRow: [ :row | 
-					row
-						newColumn: #branchLabel width: self iceLabelWidth;
-						newColumn: #issueNumberText ]
+	^ SpBoxLayout newVertical 
+				add: #currentBranchLabel height: self inputTextHeight;
+				add: ( SpBoxLayout newHorizontal 
+						add: #branchLabel width: self labelWidth;
+						add: #issueNumberText;
+						yourself  )
 					height: self inputTextHeight;
-				newRow: [ :row |
-					row 
-						newColumn: #issueLabel width: self iceLabelWidth;
-						newColumn: #issueText ] 
-					height: self inputTextHeight;
-				newRow: #spacePanel ]
+				add: ( SpBoxLayout  newHorizontal 
+						add: #issueLabel width: self labelWidth;
+						add: #issueText ;
+						yourself )
+					height: self inputTextHeight
 ]
 
 { #category : #accessing }
@@ -84,19 +81,19 @@ IcePharoNewBranchFromIssuePanel >> initializeWidgetsContents [
 	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel label: 'Pharo issue Number'.
 	issueNumberText := self newTextInput
-		ghostText: 'e.g., 12345';
+		placeholder: 'e.g., 12345';
 		autoAccept: true.
 	issueLabel := self newLabel label: 'Title'.
 	issueText := self newTextInput
-		ghostText: 'e.g., a-fogbugz-issue';
+		placeholder: 'e.g., a-fogbugz-issue';
 		autoAccept: true.
-		
 	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ].
 	issueText
 		whenBuiltDo: [ :w | 
 			w widget wrapFlag: false.
 			w widget enabled: false ].
-	issueNumberText textHolder whenChangedDo: [ :text | self validateIssue: text ]
+	issueNumberText textHolder
+		whenChangedDo: [ :text | self validateIssue: text ]
 ]
 
 { #category : #'accessing ui' }
