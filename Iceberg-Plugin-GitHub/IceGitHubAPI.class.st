@@ -9,7 +9,7 @@ Class {
 		'credentials',
 		'isAnonymous'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #credentials }
@@ -234,9 +234,7 @@ IceGitHubAPI >> newRequestTo: aString [
 	^ ZnClient new 
 		in: [ :this | 
 			(self credentials notNil and: [ isAnonymous not]) ifTrue: [ 
-				this
-					username: self credentials username 
-					password: self credentials password ] ]; 
+				self credentials applyToRequest: this ] ]; 
 		headerAt: 'Accept' put: 'application/vnd.github.v3+json';
 		url: 'https://api.github.com/', (aString first = $/
 			ifTrue: [ aString allButFirst ]
