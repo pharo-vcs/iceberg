@@ -49,15 +49,8 @@ do: [ :each |
 This is required to load iceberg packages and dependencies in Tonel format"
 Metacello new
   baseline: 'Tonel';
-  repository: 'github://pharo-vcs/tonel:v1.0.13';
+  repository: 'github://pharo-vcs/tonel:v1.0.17';
   load.
-
-"Updating Metacello"
-Metacello new
-    baseline: 'Metacello';
-    repository: 'github://metacello/metacello:pharo-6.1_dev/repository';
-    onConflict: [ :ex | ex allow ];
-    load.
 
 Metacello new
     baseline: 'Iceberg';
