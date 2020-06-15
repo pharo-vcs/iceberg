@@ -16,7 +16,7 @@ BaselineOfIceberg >> baseline: spec [
 		
 		spec
 			baseline: 'Ring2' 
-			with: [ spec repository: 'github://guillep/Ring2:2.0.0' ].
+			with: [ spec repository: 'github://guillep/Ring2:v2.0.0' ].
 		
 		spec
 			"iceberg"
