@@ -260,6 +260,12 @@ IceTipRepositoryModel >> isMissing [
 	^ self entity isMissing
 ]
 
+{ #category : #private }
+IceTipRepositoryModel >> localRepositoryMissingText [
+
+	^ self toErrorMessage: 'Local repository missing'
+]
+
 { #category : #accessing }
 IceTipRepositoryModel >> location [
 	
@@ -465,8 +471,7 @@ IceTipRepositoryModel >> updateLocation: aReference [
 
 { #category : #private }
 IceTipRepositoryModel >> verifyDirectoryStructureIfMissing: aBlock [
-	self entity isMissing 
-		ifTrue: [ ^ aBlock value: (self toErrorMessage: 'Local repository missing') ]
+	self entity isMissing ifTrue: [ ^ aBlock value: self localRepositoryMissingText ]
 ]
 
 { #category : #accessing }

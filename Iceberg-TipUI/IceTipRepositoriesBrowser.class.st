@@ -106,8 +106,8 @@ IceTipRepositoriesBrowser >> initializeWidgets [
 { #category : #testing }
 IceTipRepositoriesBrowser >> isShowingRepository: anIceLibgitRepository [
 
-	^ repositoryList items
-		anySatisfy: [ :aRepositoryModel | aRepositoryModel entity = anIceLibgitRepository ]
+	^ self repositoryModels anySatisfy: [ :aRepositoryModel |
+			aRepositoryModel entity = anIceLibgitRepository ]
 ]
 
 { #category : #'private factory' }
@@ -120,7 +120,7 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 
-	repositoryList items: (self model repositories do: [ :cachedRepo | cachedRepo reset ]).
+	repositoryList items: self model repositories.
 ]
 
 { #category : #accessing }
@@ -131,6 +131,12 @@ IceTipRepositoriesBrowser >> repositoryList [
 { #category : #accessing }
 IceTipRepositoriesBrowser >> repositoryList: anObject [
 	repositoryList := anObject
+]
+
+{ #category : #accessing }
+IceTipRepositoriesBrowser >> repositoryModels [
+	"Return the currently shown repository models"
+	^ repositoryList items
 ]
 
 { #category : #private }
