@@ -67,6 +67,13 @@ IceTipRepositoriesBrowser >> createCommandContext [
 ]
 
 { #category : #initialization }
+IceTipRepositoriesBrowser >> initialize [
+
+	model := IceTipRepositoriesModel new.
+	super initialize.
+]
+
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
 	| items |
 	items := self model repositories.
@@ -113,7 +120,7 @@ IceTipRepositoriesBrowser >> newContextWithSelection: anObject [
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 
-repositoryList items: (self model repositories do: [ :cachedRepo | cachedRepo reset ] ).
+	repositoryList items: (self model repositories do: [ :cachedRepo | cachedRepo reset ]).
 ]
 
 { #category : #accessing }

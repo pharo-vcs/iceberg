@@ -95,7 +95,7 @@ IceTipSelectRemotePresenter >> remoteList: anObject [
 
 { #category : #accessing }
 IceTipSelectRemotePresenter >> selectRemoteNamed: aString [
-	remoteList setSelectedItem: (self model remoteModels detect: [ :each | each name = aString ])
+	remoteList selectItem: (self model remoteModels detect: [ :each | each name = aString ])
 ]
 
 { #category : #initialization }
