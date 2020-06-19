@@ -5,7 +5,8 @@ Class {
 	#name : #IceTipRepositoriesModel,
 	#superclass : #IceTipModel,
 	#instVars : [
-		'repositories'
+		'repositories',
+		'repositoryProvider'
 	],
 	#category : #'Iceberg-TipUI-Model'
 }
@@ -13,11 +14,11 @@ Class {
 { #category : #accessing }
 IceTipRepositoriesModel >> repositories [
 	
-	^ repositories
+	^ repositoryProvider repositories collect: [ :each | (IceTipRepositoryModel on: each) beCached ]
 ]
 
 { #category : #accessing }
-IceTipRepositoriesModel >> repositories: aCollection [
+IceTipRepositoriesModel >> repositoryProvider: aProvider [
 
-	repositories := aCollection collect: [ :each | (IceTipRepositoryModel on: each) beCached ]
+	repositoryProvider := aProvider
 ]

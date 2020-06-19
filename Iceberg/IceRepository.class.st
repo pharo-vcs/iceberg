@@ -180,6 +180,12 @@ IceRepository class >> registry [
 ]
 
 { #category : #registry }
+IceRepository class >> repositories [
+	
+	^ self registry
+]
+
+{ #category : #registry }
 IceRepository class >> reset [
 	Registry := nil.
 	Iceberg announcer announce: IceRepositoryForgotten new.

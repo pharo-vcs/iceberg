@@ -44,14 +44,14 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 { #category : #'instance creation' }
 IceTipRepositoriesBrowser class >> new [
 	
-	^ self newOnRepositories: IceRepository registry
+	^ self newOnRepositoryProvider: IceRepository
 ]
 
 { #category : #'instance creation' }
-IceTipRepositoriesBrowser class >> newOnRepositories: aCollection [ 
+IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [ 
 
 	^ self basicNew
-		model: (IceTipRepositoriesModel new repositories: aCollection; yourself);
+		model: (IceTipRepositoriesModel new repositoryProvider: aProvider; yourself);
 		initialize;
 		yourself
 ]
@@ -101,6 +101,13 @@ IceTipRepositoriesBrowser >> initializeWidgets [
 	self initializeRepositoryList.
 	self focusOrder add: repositoryList.	
 	
+]
+
+{ #category : #testing }
+IceTipRepositoriesBrowser >> isShowingRepository: anIceLibgitRepository [
+
+	^ repositoryList items
+		anySatisfy: [ :aRepositoryModel | aRepositoryModel entity = anIceLibgitRepository ]
 ]
 
 { #category : #'private factory' }

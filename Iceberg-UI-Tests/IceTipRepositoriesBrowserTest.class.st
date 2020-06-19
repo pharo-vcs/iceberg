@@ -3,7 +3,8 @@ Class {
 	#superclass : #IceAbstractTestCase,
 	#instVars : [
 		'presenter',
-		'alphabeticallyFirstRepository'
+		'alphabeticallyFirstRepository',
+		'repositoryProvider'
 	],
 	#category : #'Iceberg-UI-Tests-Browsers'
 }
@@ -15,20 +16,62 @@ IceTipRepositoriesBrowserTest >> newFixture [
 ]
 
 { #category : #testing }
+IceTipRepositoriesBrowserTest >> newRepositoryNamed: aName [
+
+	^ fixture factory newRepositoryNamed: aName
+]
+
+{ #category : #testing }
 IceTipRepositoriesBrowserTest >> setUp [
 	| alphabeticallyLastRepository |
 	super setUp.
 	
-	alphabeticallyFirstRepository := fixture factory newRepositoryNamed: 'anotherOne'.
-	alphabeticallyLastRepository := fixture factory newRepositoryNamed: 'zzzz last'.
+	alphabeticallyFirstRepository := self newRepositoryNamed: 'anotherOne'.
+	alphabeticallyLastRepository := self newRepositoryNamed: 'zzzz last'.
 	
-	presenter := IceTipRepositoriesBrowser newOnRepositories: {self repository. alphabeticallyLastRepository . alphabeticallyFirstRepository}.
+	repositoryProvider := IceTipCollectionRepositoryProvider new collection: {
+		self repository. 
+		alphabeticallyLastRepository . 
+		alphabeticallyFirstRepository } asOrderedCollection.
+	presenter := IceTipRepositoriesBrowser newOnRepositoryProvider: repositoryProvider.
 	presenter openWithSpec.
 ]
 
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> tearDown [
 	presenter ifNotNil: [ presenter window close ]. super tearDown
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testAddRepositoryInModelWithoutRefreshDoesNotRefreshList [
+	
+	| previousList |
+	previousList := presenter repositoryList items.
+	
+	repositoryProvider addRepository: (self newRepositoryNamed: 'new repo').
+	
+	self assert: presenter repositoryList items equals: previousList.
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testAddRepositoryInModelWithoutRefreshDoesNotShowNewRepository [
+	
+	| newRepository |
+	newRepository := self newRepositoryNamed: 'new repo'.
+	repositoryProvider addRepository: newRepository.
+	
+	self deny: (presenter isShowingRepository: newRepository)
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testAddRepositoryThenRefreshShowsNewRepository [
+	
+	| newRepository |
+	newRepository := self newRepositoryNamed: 'new repo'.
+	repositoryProvider addRepository: newRepository.
+	presenter refresh.
+	
+	self assert: (presenter isShowingRepository: newRepository)
 ]
 
 { #category : #'tests - structural' }
