@@ -67,13 +67,6 @@ IceTipRepositoriesBrowser >> createCommandContext [
 ]
 
 { #category : #initialization }
-IceTipRepositoriesBrowser >> initialize [
-
-	model := IceTipRepositoriesModel new.
-	super initialize.
-]
-
-{ #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
 	| items |
 	items := self model repositories.
@@ -86,7 +79,7 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 				title: self title;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #status)
+			((SpStringTableColumn evaluated: #statusText)
 				width: 150;
 				title: #Status;
 				yourself);

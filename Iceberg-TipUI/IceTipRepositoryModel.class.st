@@ -425,6 +425,12 @@ IceTipRepositoryModel >> status [
 ]
 
 { #category : #accessing }
+IceTipRepositoryModel >> statusText [
+	
+	^ self status asText
+]
+
+{ #category : #accessing }
 IceTipRepositoryModel >> subdirectory [
 
 	^ self entity subdirectory
