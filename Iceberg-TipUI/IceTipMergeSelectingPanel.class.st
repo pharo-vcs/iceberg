@@ -134,12 +134,6 @@ IceTipMergeSelectingPanel >> refreshCodePanel [
 		ifNotNil: [ mergeNode accept: visitor ]
 ]
 
-{ #category : #private }
-IceTipMergeSelectingPanel >> resetDataSource: aDataSource [
-	super resetDataSource: aDataSource.
-	aDataSource selectAll
-]
-
 { #category : #accessing }
 IceTipMergeSelectingPanel >> selectedItems [
 	^selectedItems

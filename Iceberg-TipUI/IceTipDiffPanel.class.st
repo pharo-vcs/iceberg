@@ -198,13 +198,6 @@ IceTipDiffPanel >> refresh [
 ]
 
 { #category : #private }
-IceTipDiffPanel >> resetDataSource: aDataSource [
-	^ aDataSource 
-		rootForItems: self model treeRoots;
-		expandAll
-]
-
-{ #category : #private }
 IceTipDiffPanel >> resetDiffContents [
 	self diffContentsLeft: '' right: ''
 ]

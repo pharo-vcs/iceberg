@@ -48,26 +48,9 @@ IceTipDiffSelectingPanel >> changeListColumn [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
-IceTipDiffSelectingPanel >> collapseAll [
-
-	changeList widget dataSource 
-		rootForItems: self model treeRoots;
-		selectAll
-]
-
 { #category : #private }
 IceTipDiffSelectingPanel >> entryRemoved: ann [
 	self refresh
-]
-
-{ #category : #'as yet unclassified' }
-IceTipDiffSelectingPanel >> expandAll [
-
-	changeList widget dataSource 
-		rootForItems: self model treeRoots;
-		expandAll;
-		selectAll
 ]
 
 { #category : #initialization }
@@ -105,12 +88,6 @@ IceTipDiffSelectingPanel >> refresh [
 { #category : #'as yet unclassified' }
 IceTipDiffSelectingPanel >> refreshCheckbox [
 	 self basicRefresh
-]
-
-{ #category : #private }
-IceTipDiffSelectingPanel >> resetDataSource: aDataSource [
-	super resetDataSource: aDataSource.
-	aDataSource selectAll
 ]
 
 { #category : #accessing }
