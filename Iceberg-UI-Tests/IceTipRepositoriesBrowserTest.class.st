@@ -74,6 +74,106 @@ IceTipRepositoriesBrowserTest >> testAddRepositoryThenRefreshShowsNewRepository 
 	self assert: (presenter isShowingRepository: newRepository)
 ]
 
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryBranchThenRefreshDoesRefreshList [
+	
+	| firstRepository oldBranchName repositoryModel |	
+	firstRepository := repositoryProvider repositories first.
+
+	repositoryModel := presenter repositoryModels first.
+	oldBranchName := repositoryModel branchNameText.
+
+	"Make the repository missing by removing its underlying repository"
+	firstRepository createBranch: 'toto'.
+	presenter refresh.
+	repositoryModel := presenter repositoryModels first.
+	
+	self assert: repositoryModel branchNameText equals: 'toto' asText
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryBranchWithoutRefreshDoesNotRefreshList [
+	
+	| firstRepository oldBranchName repositoryModel |	
+	firstRepository := repositoryProvider repositories first.
+
+	repositoryModel := presenter repositoryModels first.
+	oldBranchName := repositoryModel branchNameText.
+
+	"Make the repository missing by removing its underlying repository"
+	firstRepository createBranch: 'toto'.	
+	repositoryModel := presenter repositoryModels first.
+	
+	self assert: repositoryModel branchNameText equals: oldBranchName
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryNameThenRefreshDoesRefreshList [
+	
+	| firstRepository oldName newName |	
+	firstRepository := repositoryProvider repositories first.
+	newName := 'newname'.
+	oldName := firstRepository name.
+
+	"Force the caching..."
+	presenter repositoryModels first name.
+
+	"Change the name then refresh."
+	firstRepository name: newName.	
+	presenter refresh.
+	
+	self assert: presenter repositoryModels first name equals: newName
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryNameWithoutRefreshDoesNotRefreshList [
+	
+	| firstRepository oldName |
+	firstRepository := repositoryProvider repositories first.
+	oldName := firstRepository name.
+	
+	"Force the caching..."
+	presenter repositoryModels first name.
+	
+	"Change the name. This should not change the model"
+	firstRepository name: 'newname'.
+	
+	self assert: presenter repositoryModels first name equals: oldName.
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryStatusThenRefreshDoesRefreshList [
+	
+	| firstRepository oldStatus repositoryModel |	
+	firstRepository := repositoryProvider repositories first.
+
+	repositoryModel := presenter repositoryModels first.
+	oldStatus := repositoryModel statusText.
+
+	"Make the repository missing by removing its underlying repository"
+	firstRepository repositoryDirectory ensureDeleteAll.	
+	presenter refresh.
+	repositoryModel := presenter repositoryModels first.
+	
+	self assert: repositoryModel statusText equals: repositoryModel localRepositoryMissingText
+]
+
+{ #category : #'tests - table' }
+IceTipRepositoriesBrowserTest >> testEditRepositoryStatusWithoutRefreshDoesNotRefreshList [
+	
+	| firstRepository oldBranchName repositoryModel |	
+	firstRepository := repositoryProvider repositories first.
+
+	repositoryModel := presenter repositoryModels first.
+	oldBranchName := repositoryModel statusText.
+
+	"Make the repository missing by removing its underlying repository"
+	firstRepository repositoryDirectory ensureDeleteAll.	
+	repositoryModel := presenter repositoryModels first.
+	
+	self assert: repositoryModel statusText equals: oldBranchName
+]
+
 { #category : #'tests - structural' }
 IceTipRepositoriesBrowserTest >> testHasAddButtonOnTheRight [
 
