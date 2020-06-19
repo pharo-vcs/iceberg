@@ -72,20 +72,6 @@ IceTipCommitBrowser >> doCommit [
 ]
 
 { #category : #actions }
-IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: aBoolean [
-	self model
-		commit:
-			(IceTipCommitAction new
-				diff: self model workingCopyDiff;
-				items: aCollection;
-				message: aString;
-				yourself)
-		then: [ self verifyNeedsRefreshOrClose.
-			aBoolean
-				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ] ]
-]
-
-{ #category : #actions }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
 	self model
 		commit:
@@ -123,11 +109,9 @@ IceTipCommitBrowser >> initializeWidgets [
 	
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
-	"a hack because text comment cannot react to cmd+s 'as usual'."
-	commentPanel commentText whenBuiltDo: [ :ann |  
-		self addShortcutsTo: ann widget textArea ].
-			
-	self whenBuiltDo: [ :ann |  self addShortcutsTo: ann widget ].
+	
+	self addShortcutsTo: commentPanel commentText.
+	self addShortcutsTo: self.
 
 	self focusOrder 
 		add: commentPanel;

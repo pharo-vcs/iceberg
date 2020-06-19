@@ -37,6 +37,21 @@ IceTipCommitBrowserTest >> tearDown [
 ]
 
 { #category : #tests }
+IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
+	
+	presenter commentPanel commentText adapter 
+		keyPressed: $s asciiValue 
+		shift: false 
+		meta: true
+		control: false
+		option: false. 
+
+	self
+		assert: self repository branch commit comment
+		equals: 'my super commit message'
+]
+
+{ #category : #tests }
 IceTipCommitBrowserTest >> testFixesField [
 	self
 		assert: presenter commentPanel fixesField class

@@ -60,7 +60,7 @@ IceTipPreviewBrowser >> initializeWidgets [
 	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
 	
-	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
+	self addShortcutsTo: self.
 	
 	self focusOrder 
 		add: self actionPanel;

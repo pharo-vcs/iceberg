@@ -74,7 +74,7 @@ IceTipCherrypickPreviewBrowser >> initializeWidgets [
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
-	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ].
+	self addShortcutsTo: self.
 
 	self focusOrder
 		add: self buttonBar;

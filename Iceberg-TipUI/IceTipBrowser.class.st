@@ -18,11 +18,14 @@ Class {
 }
 
 { #category : #initialization }
-IceTipBrowser >> addShortcutsTo: aWidget [
+IceTipBrowser >> addShortcutsTo: aPresenter [
 	| shortcuts |
 	shortcuts := CmdShortcutActivation registeredInstances
 		select: [ :each | each activeContext describes: self newContext ].
-	shortcuts do: [ :shortcut | self bindKeyCombination: shortcut keyCombination toAction: [ self executeShortcut: shortcut ] ]
+	shortcuts do: [ :shortcut | 
+		aPresenter
+			bindKeyCombination: shortcut keyCombination
+			toAction: [ self executeShortcut: shortcut ] ]
 ]
 
 { #category : #accessing }
@@ -69,7 +72,7 @@ IceTipBrowser >> initialize [
 IceTipBrowser >> initializeWidgets [
 	toolbar := self newToolBar .
 	self rebuildToolbar .
-	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]
+	self addShortcutsTo: self
 ]
 
 { #category : #accessing }
