@@ -61,13 +61,6 @@ IceTipCachedModel >> initializeObject: anObject [
 	self initialize
 ]
 
-{ #category : #accessing }
-IceTipCachedModel >> name [
-	self flag: #pharoFixMe. "in pharo6 there is still Object>>#name so this request will 
-	not be redirected as expected (so we'll do it explicitly)"
-	^ self realObject name
-]
-
 { #category : #printing }
 IceTipCachedModel >> printOn: aStream [
 	super printOn: aStream.
