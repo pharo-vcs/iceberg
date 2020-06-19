@@ -18,7 +18,7 @@ IceTipCheckoutBranchCommand class >> browserContextActivation [
 
 { #category : #testing }
 IceTipCheckoutBranchCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext isRepositoryOperational
+	^ aToolContext isRepositoryMissing not
 ]
 
 { #category : #accessing }

@@ -14,7 +14,7 @@ Class {
 		'ProviderType',
 		'UseCustomSsh'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security'
 }
 
 { #category : #private }
@@ -173,6 +173,11 @@ IceCredentialsProvider >> initialize [
 ]
 
 { #category : #private }
+IceCredentialsProvider >> obtainCredentials: response [
+	self subclassResponsibility
+]
+
+{ #category : #private }
 IceCredentialsProvider >> obtainPlaintextCredentials: response [
 	self subclassResponsibility
 ]
@@ -185,6 +190,13 @@ IceCredentialsProvider >> obtainSshCredentials: response [
 { #category : #accessing }
 IceCredentialsProvider >> plaintextCredentials [
 	^ self credentialStore plaintextCredentialForHostname: remote host.
+]
+
+{ #category : #actions }
+IceCredentialsProvider >> providePlaintextCredentials [
+	^self plaintextCredentials isPresent
+		ifTrue: [ self plaintextCredentials copy ]
+		ifFalse: [ self providePlaintextCredentialsTo: IcePlaintextCredentials new ].
 ]
 
 { #category : #actions }

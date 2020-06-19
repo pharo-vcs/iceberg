@@ -39,7 +39,8 @@ IceTipGitRepositoryPanel class >> title [
 { #category : #utilities }
 IceTipGitRepositoryPanel >> extractProjectName: aString [
 
-	^ (IceGitRemote url: aString) projectName
+	^ [(IceGitRemote url: aString) projectName]
+		on: IceWrongUrl do: [ 'invalid-url' ]
 ]
 
 { #category : #initialization }
