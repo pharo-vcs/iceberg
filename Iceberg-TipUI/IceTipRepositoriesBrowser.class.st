@@ -84,7 +84,7 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 				title: #Status;
 				yourself);
 		addColumn:
-			((SpStringTableColumn evaluated: #branchName)
+			((SpStringTableColumn evaluated: #branchNameText)
 				title: #Branch;
 				yourself);
 		items: items;

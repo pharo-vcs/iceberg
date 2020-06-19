@@ -80,6 +80,12 @@ IceTipRepositoryModel >> branchName [
 ]
 
 { #category : #accessing }
+IceTipRepositoryModel >> branchNameText [
+	
+	^ self branchName asText
+]
+
+{ #category : #accessing }
 IceTipRepositoryModel >> branches [
 	^ self entity localBranches
 ]

@@ -31,25 +31,25 @@ IceTipRepositoriesBrowserTest >> tearDown [
 	presenter ifNotNil: [ presenter window close ]. super tearDown
 ]
 
-{ #category : #testing }
+{ #category : #'tests - structural' }
 IceTipRepositoriesBrowserTest >> testHasAddButtonOnTheRight [
 
 	self assert: (presenter toolbar rightItems anySatisfy: [:aButton | aButton label = 'Add']).
 ]
 
-{ #category : #testing }
+{ #category : #'tests - structural' }
 IceTipRepositoriesBrowserTest >> testHasFetchAllButtonOnTheLeft [
 
 	self assert: (presenter toolbar leftItems anySatisfy: [:aButton | aButton label = 'Fetch all']).
 ]
 
-{ #category : #testing }
+{ #category : #'tests - structural' }
 IceTipRepositoriesBrowserTest >> testHasSettingsButtonOnTheRight [
 
 	self assert: (presenter toolbar rightItems anySatisfy: [:aButton | aButton label = 'Settings']).
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testInitialListShowsElementsInOriginalOrder [
 	
 	self
@@ -63,7 +63,7 @@ IceTipRepositoriesBrowserTest >> testInitialListShowsElementsInOriginalOrder [
 		equals: presenter repositoryList items third descriptionWithDecoration asString.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - context menu' }
 IceTipRepositoriesBrowserTest >> testListHasContextMenuHasPackagesOptionEnabled [
 	
 	| menu |
@@ -75,7 +75,7 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuHasPackagesOptionEnabled 
 	self assert: (menu defaultGroup menuItems at: 1) isEnabled
 ]
 
-{ #category : #testing }
+{ #category : #'tests - context menu' }
 IceTipRepositoriesBrowserTest >> testListHasContextMenuHasRepairRepositoryOptionDisabled [
 	
 	| menu |
@@ -87,7 +87,7 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuHasRepairRepositoryOption
 	self deny: (menu defaultGroup menuItems at: 2) isEnabled
 ]
 
-{ #category : #testing }
+{ #category : #'tests - context menu' }
 IceTipRepositoriesBrowserTest >> testListHasContextMenuOnSelection [
 
 	| menu |
@@ -98,15 +98,15 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuOnSelection [
 	self assert: menu defaultGroup menuItems isNotEmpty
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testListShowsNotLoadedProject [
 	
-	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne'.
-	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded'. 	
-	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master'. 
+	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne' asText.
+	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded' asText.
+	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master' asText.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testListShowsUpToDateProject [
 
 	self assert: (presenter repositoryList valueAtColumn: 1 row: 1) equals: 'test-project'.
@@ -114,28 +114,28 @@ IceTipRepositoriesBrowserTest >> testListShowsUpToDateProject [
 	self assert: (presenter repositoryList valueAtColumn: 3 row: 1) equals: 'master'. 
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingByBranchDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
 	presenter repositoryList clickOnColumnHeaderAt: 3
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingByNameDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
 	presenter repositoryList clickOnColumnHeaderAt: 1.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingByStatusDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
 	presenter repositoryList clickOnColumnHeaderAt: 2
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingDescendingByBranchDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -143,7 +143,7 @@ IceTipRepositoriesBrowserTest >> testSortingDescendingByBranchDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 3.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingDescendingByNameDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -151,7 +151,7 @@ IceTipRepositoriesBrowserTest >> testSortingDescendingByNameDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 1.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingDescendingByStatusDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -159,7 +159,7 @@ IceTipRepositoriesBrowserTest >> testSortingDescendingByStatusDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 2.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingOriginalByBranchDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -168,7 +168,7 @@ IceTipRepositoriesBrowserTest >> testSortingOriginalByBranchDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 3.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingOriginalByNameDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -177,7 +177,7 @@ IceTipRepositoriesBrowserTest >> testSortingOriginalByNameDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 1.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table sorting' }
 IceTipRepositoriesBrowserTest >> testSortingOriginalByStatusDoesNotFail [
 	
 	"Smoke test because there is no way to access the real shown elements for now"
@@ -186,7 +186,7 @@ IceTipRepositoriesBrowserTest >> testSortingOriginalByStatusDoesNotFail [
 	presenter repositoryList clickOnColumnHeaderAt: 2.
 ]
 
-{ #category : #testing }
+{ #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testTableHasTheCorrectColumns [
 
 	self assertCollection: (presenter repositoryList columns collect: #title) hasSameElements:  { 'Repositories'. 'Status'. 'Branch'}
