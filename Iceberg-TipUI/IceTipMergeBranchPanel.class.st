@@ -38,6 +38,6 @@ IceTipMergeBranchPanel >> mergeType: anObject [
 
 { #category : #accessing }
 IceTipMergeBranchPanel >> withoutHead [
-	self branchesList widget dataSource elements: (self branchModels reject: #isHead).
-	self branchesList widget selectFirstVisibleRow
+	self branchesList items: (self branchModels reject: #isHead).
+	self branchesList selectIndex: 1
 ]
