@@ -104,6 +104,12 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounc
 ]
 
 { #category : #'tests-fetch' }
+IceTipWorkingCopyBrowserWithRemoteTest >> testNonDirtyPackageIsNotDirtyInList [
+
+	self assert: (presenter packageList valueAtColumn: 1 row: 1) equals: self packageName1 asText.
+]
+
+{ #category : #'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testPullButtonHasNoBadgeBeforeFetching [
 
 	"If we don't fetch, the badge of the pull button should not be updated"	
