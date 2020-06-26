@@ -145,6 +145,12 @@ IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 	self model: (IceTipWorkingCopyModel on: aRepositoryModel)
 ]
 
+{ #category : #testing }
+IceTipWorkingCopyBrowser >> showsPackageNamed: aString [ 
+	
+	^ packageList items anySatisfy: [ :packageModel | packageModel name = aString ]
+]
+
 { #category : #'accessing ui' }
 IceTipWorkingCopyBrowser >> statusBar [
 	^ statusBar

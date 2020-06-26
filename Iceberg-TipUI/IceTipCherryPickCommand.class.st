@@ -15,8 +15,8 @@ IceTipCherryPickCommand >> execute [
 
 { #category : #hooks }
 IceTipCherryPickCommand >> initialize [
-    super initialize.
-    self
-        basicName: 'Cherrypick';
-        basicDescription: 'Cherrypick this commit and apply changes to the working copy'
+	super initialize.
+	self
+		name: 'Cherrypick';
+		description: 'Cherrypick this commit and apply changes to the working copy'
 ]
