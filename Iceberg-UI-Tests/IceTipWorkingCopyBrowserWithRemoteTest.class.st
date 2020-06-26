@@ -104,6 +104,26 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounc
 ]
 
 { #category : #'tests-fetch' }
+IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageNonDirtyInModelThenAnnounceMakesPackageDirtyInList [
+
+	"Add package directly in the model without notifying the UI"
+	remoteWorkingCopy := self repository workingCopy.
+	(remoteWorkingCopy packageNamed: self packageName1) beDirty.
+
+	"Then notify the UI with an announcement"
+	Iceberg announcer announce: (IceRepositoryModified for: self repository).	
+
+	"Mark package directly as non-dirty again in the model without notifying the UI"
+	remoteWorkingCopy := self repository workingCopy.
+	(remoteWorkingCopy packageNamed: self packageName1) beClean.
+
+	"Then notify the UI with an announcement"
+	Iceberg announcer announce: (IceRepositoryModified for: self repository).
+
+	self assert: (presenter packageList valueAtColumn: 1 row: 1) equals: self packageName1 asText.
+]
+
+{ #category : #'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testNonDirtyPackageIsNotDirtyInList [
 
 	self assert: (presenter packageList valueAtColumn: 1 row: 1) equals: self packageName1 asText.
