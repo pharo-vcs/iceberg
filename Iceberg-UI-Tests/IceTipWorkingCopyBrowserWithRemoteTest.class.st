@@ -91,6 +91,19 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testFetchButtonUpdatesPullBadge [
 ]
 
 { #category : #'tests-fetch' }
+IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounceMakesPackageDirtyInList [
+
+	"Add package directly in the model without notifying the UI"
+	remoteWorkingCopy := self repository workingCopy.
+	(remoteWorkingCopy packageNamed: self packageName1) beDirty.
+	
+	"Then notify the UI with an announcement"
+	Iceberg announcer announce: (IceRepositoryModified for: self repository).
+
+	self assert: (presenter packageList valueAtColumn: 1 row: 1) equals: ('*', self packageName1) asText.
+]
+
+{ #category : #'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testPullButtonHasNoBadgeBeforeFetching [
 
 	"If we don't fetch, the badge of the pull button should not be updated"	
