@@ -7,3 +7,5 @@ Iceberg enableMetacelloIntegration: true.
 
 "Cleanup some global variables that seem dirty on CI updates"
 IceLibgitRepository defaultFileFormatType: nil.
+
+IcePharoPlugin addPharoProjectToIceberg.

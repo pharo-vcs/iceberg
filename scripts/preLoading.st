@@ -12,8 +12,6 @@ MetacelloPharoPlatform select.
     'BaselineOfTonel'
     'BaselineOfLibGit'
     'BaselineOfIceberg'
-    'BaselineOfSpec2'
-    'BaselineOfCommander'
     'MonticelloTonel-Core'
     'MonticelloTonel-FileSystem'
     'MonticelloTonel-Tests'
@@ -38,7 +36,7 @@ MetacelloPharoPlatform select.
     'Iceberg-GitCommand'
     'Iceberg-SmartUI'
     'Iceberg-Pharo6'
-    'LibGit-Core') 
+    'LibGit-Core')
 do: [ :each |
     (each asPackageIfAbsent: [ 
         (each , ' not found') traceCr.
@@ -51,5 +49,5 @@ do: [ :each |
 This is required to load iceberg packages and dependencies in Tonel format"
 Metacello new
   baseline: 'Tonel';
-  repository: 'github://pharo-vcs/tonel:v1.0.12';
+  repository: 'github://pharo-vcs/tonel:v1.0.17';
   load.
