@@ -70,8 +70,8 @@ IceTipBrowser >> initialize [
 
 { #category : #initialization }
 IceTipBrowser >> initializeWidgets [
-	toolbar := self newToolBar .
-	self rebuildToolbar .
+	toolbar := self newToolbar.
+	self rebuildToolbar.
 	self addShortcutsTo: self
 ]
 
