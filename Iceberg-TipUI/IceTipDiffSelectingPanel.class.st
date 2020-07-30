@@ -30,7 +30,7 @@ IceTipDiffSelectingPanel >> changeListColumn [
 					item children isEmptyOrNil
 						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
 							self refreshCheckbox ] ];
-				onDesactivation: [ :item | 
+				onDeactivation: [ :item | 
 					selectedItems remove: item.
 					item children isEmptyOrNil
 						ifFalse: [ item

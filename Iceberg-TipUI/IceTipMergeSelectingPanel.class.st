@@ -40,7 +40,7 @@ IceTipMergeSelectingPanel >> changeListColumn [
 					item children isEmptyOrNil
 						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
 							self basicRefresh ] ];
-				onDesactivation: [ :item | 
+				onDeactivation: [ :item | 
 					selectedItems remove: item.
 					item value selectRight.
 					item children isEmptyOrNil

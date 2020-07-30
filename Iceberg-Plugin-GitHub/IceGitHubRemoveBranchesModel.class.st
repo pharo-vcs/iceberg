@@ -73,7 +73,7 @@ IceGitHubRemoveBranchesModel >> initializeWidgets [
 			((SpCheckBoxTableColumn
 				evaluated: [ :branch | selectedItems includes: branch ])
 				onActivation: [ :branch | selectedItems add: branch ];
-				onDesactivation: [ :branch | selectedItems remove: branch ];
+				onDeactivation: [ :branch | selectedItems remove: branch ];
 				width: 20 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:

@@ -98,7 +98,7 @@ IceTipAddPackagesDialog >> initializePackagesList [
 					(SpCheckBoxTableColumn new
 						evaluated: [ :item | selectedPackages includes: item ];
 						onActivation: [ :item | selectedPackages add: item ];
-						onDesactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
+						onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
 						width: 20 * self currentWorld displayScaleFactor;
 						yourself);
 				addColumn:
