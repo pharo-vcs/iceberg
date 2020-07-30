@@ -13,10 +13,7 @@ BaselineOfIceberg >> baseline: spec [
 		
 		self tonel: spec.
 		self libgit: spec.
-		
-		spec
-			baseline: 'Ring2' 
-			with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ].
+		self ring2: spec.
 		
 		spec
 			"iceberg"
@@ -150,6 +147,13 @@ BaselineOfIceberg >> resetKMRepository [
 	Smalltalk 
 		at: #KMRepository 
 		ifPresent: [ :class | class reset ]
+]
+
+{ #category : #baseline }
+BaselineOfIceberg >> ring2: spec [
+	spec
+		baseline: 'Ring2'
+		with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ]
 ]
 
 { #category : #baseline }
