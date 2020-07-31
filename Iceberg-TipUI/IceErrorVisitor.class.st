@@ -18,6 +18,11 @@ IceErrorVisitor >> visitCheckoutConflict: anError [
 ]
 
 { #category : #visiting }
+IceErrorVisitor >> visitCloneLocationAlreadyExists: anError [ 
+	self visitGenericError: anError
+]
+
+{ #category : #visiting }
 IceErrorVisitor >> visitCloneRemoteNotFound: anError [
 	self visitGenericError: anError
 ]
