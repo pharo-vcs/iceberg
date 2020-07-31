@@ -79,13 +79,14 @@ IceTipDiffSelectingPanel >> newChangeTreeDataSource [
 
 { #category : #accessing }
 IceTipDiffSelectingPanel >> refresh [
-	super refresh. self model treeRoots
+	super refresh.
+	self model treeRoots
 		do: [ :root | 
 			selectedItems add: root.
 			root allChildrenDo: [ :child | selectedItems add: child ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceTipDiffSelectingPanel >> refreshCheckbox [
 	 self basicRefresh
 ]

@@ -118,7 +118,10 @@ IceTipDiffPanel >> initializeChangeList [
 		roots: self model treeRoots;
 		"The inversion below allow to display change properly in the SpDiffPresenter"
 			whenSelectionChangedDo: [ self selectionChanged ];
-			contextMenu: [ self buildMenu ]
+			contextMenu: [ self buildMenu ].
+			
+	changeList whenBuiltDo: [ :ann |
+		ann widget dataSource expandAll ]
 ]
 
 { #category : #initialization }
@@ -211,11 +214,12 @@ IceTipDiffPanel >> rightLabel: aString [
 
 { #category : #'event handling' }
 IceTipDiffPanel >> selectionChanged [
-			 | itemValue |
-itemValue:=changeList selectedItem value. itemValue ifNotNil: [ 
-				self
-				diffContentsLeft:  itemValue  rightContents
-				right: itemValue  leftContents ]
+	| itemValue |
+	itemValue := changeList selectedItem value.
+	itemValue ifNotNil: [ 
+		self
+			diffContentsLeft: itemValue rightContents
+			right: itemValue leftContents ]
 ]
 
 { #category : #'event handling' }
