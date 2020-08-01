@@ -40,6 +40,9 @@ IceTipDiffPanel class >> title [
 IceTipDiffPanel >> basicRefresh [
 	self resetDiffContents.
 	changeList roots: self model treeRoots.
+
+	self flag: #fix. "Low level access"
+	changeList adapter widget dataSource expandAll
 ]
 
 { #category : #accessing }
@@ -120,8 +123,7 @@ IceTipDiffPanel >> initializeChangeList [
 			whenSelectionChangedDo: [ self selectionChanged ];
 			contextMenu: [ self buildMenu ].
 			
-	changeList whenBuiltDo: [ :ann |
-		ann widget dataSource expandAll ]
+	changeList whenBuiltDo: [ :ann | self basicRefresh ]
 ]
 
 { #category : #initialization }
