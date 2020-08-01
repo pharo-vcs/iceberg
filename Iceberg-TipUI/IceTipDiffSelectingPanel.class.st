@@ -64,19 +64,6 @@ IceTipDiffSelectingPanel >> initialize [
 			root allChildrenDo: [ :child | selectedItems add: child.]]
 ]
 
-{ #category : #'private factory' }
-IceTipDiffSelectingPanel >> newChangeTreeDataSource [
-
-	^ IceTipTreeSelectingDataSource new
-		tool: self;
-		rootForItems: self model treeRoots;
-		childrenBlock: [ :data | data children ];
-		icon: [ :each | each value icon ];
-		format: #description;
-		selectAll;
-		yourself
-]
-
 { #category : #accessing }
 IceTipDiffSelectingPanel >> refresh [
 	super refresh.

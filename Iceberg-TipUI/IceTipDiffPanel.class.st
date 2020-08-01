@@ -171,17 +171,6 @@ IceTipDiffPanel >> model: anObject [
 ]
 
 { #category : #'private factory' }
-IceTipDiffPanel >> newChangeTreeDataSource [
-	^ IceTipTreeDataSource new 
-		tool: self;
-		rootForItems: self model treeRoots;
-		childrenBlock: [ :data | data children ];
-		icon: [ :each | each value icon ];
-		format: #description;
-		yourself
-]
-
-{ #category : #'private factory' }
 IceTipDiffPanel >> newContext [
 	^ super newContext
 	repositoryModel: self model repositoryModel;
