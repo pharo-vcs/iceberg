@@ -7,7 +7,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'credentials',
-		'isAnonymous'
+		'isAnonymous',
+		'acceptMediaType'
 	],
 	#category : #'Iceberg-Plugin-GitHub-Model'
 }
@@ -67,6 +68,21 @@ IceGitHubAPI class >> obtainCredentials [
 	provider plaintextCredentials isPresent ifFalse: [^ nil ].
 	^ provider plaintextCredentials.
 
+]
+
+{ #category : #accessing }
+IceGitHubAPI >> acceptMediaType [
+
+	^ acceptMediaType ifNil: [ 
+		  acceptMediaType := 'application/vnd.github.v3+json' ]
+]
+
+{ #category : #accessing }
+IceGitHubAPI >> acceptMediaType: aString [
+	"Set the media type to use in the request.
+	See: https://developer.github.com/v3/media/"
+
+	acceptMediaType := aString
 ]
 
 { #category : #requesting }
@@ -235,7 +251,7 @@ IceGitHubAPI >> newRequestTo: aString [
 		in: [ :this | 
 			(self credentials notNil and: [ isAnonymous not]) ifTrue: [ 
 				self credentials applyToRequest: this ] ]; 
-		headerAt: 'Accept' put: 'application/vnd.github.v3+json';
+		headerAt: 'Accept' put: self acceptMediaType;
 		url: 'https://api.github.com/', (aString first = $/
 			ifTrue: [ aString allButFirst ]
 			ifFalse: [ aString ]);
