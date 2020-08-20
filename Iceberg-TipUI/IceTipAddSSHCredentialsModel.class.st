@@ -39,42 +39,14 @@ IceTipAddSSHCredentialsModel class >> defaultSpec [
 
 { #category : #actions }
 IceTipAddSSHCredentialsModel >> accept [
-	credentialStore
-		storeCredential: self credentials
-		forHostname: self host.
-	tool refresh
-]
 
-{ #category : #actions }
-IceTipAddSSHCredentialsModel >> cancelAction [
-	" I do nothing on cancel "
+	self acceptAddAction
 ]
 
 { #category : #accessing }
-IceTipAddSSHCredentialsModel >> credentials [
+IceTipAddSSHCredentialsModel >> hostnameFromInput [
 	
-	^ IceSshCredentials new
-		username: self username;
-		publicKey: self publicKey;
-		privateKey: self privateKey;
-		keyPassphrase: self passphrase;
-		yourself 
-]
-
-{ #category : #accessing }
-IceTipAddSSHCredentialsModel >> host [
-	
-	^ self hostInput text
-]
-
-{ #category : #accessing }
-IceTipAddSSHCredentialsModel >> hostInput [
-	^ hostInput
-]
-
-{ #category : #accessing }
-IceTipAddSSHCredentialsModel >> hostLabel [
-	^ hostLabel
+	^ hostInput text
 ]
 
 { #category : #api }
@@ -83,13 +55,24 @@ IceTipAddSSHCredentialsModel >> initialExtent [
 ]
 
 { #category : #initialization }
-IceTipAddSSHCredentialsModel >> initializeWidgets [
-	super initializeWidgets.
+IceTipAddSSHCredentialsModel >> initializePresenters [
+	super initializePresenters.
 	hostLabel := self newLabel label: 'Host: '.
 	hostInput := self newTextInput
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself
+]
+
+{ #category : #accessing }
+IceTipAddSSHCredentialsModel >> newCredentials [
+	
+	^ IceSshCredentials new
+		username: self username;
+		publicKey: self publicKey;
+		privateKey: self privateKey;
+		keyPassphrase: self passphrase;
+		yourself 
 ]
 
 { #category : #initialization }

@@ -314,20 +314,20 @@ IceGitHubCreatePullRequestModel >> initializePresenter [
 	self titlePanel text: self branch shortname.
 	self headForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner , '/' , each projectName ];
-		selectedItem: self headRemote.
+		display: [ :each | each owner , '/' , each projectName ];
+		selectItem: self headRemote.
 	self headBranchList
 		items: self availableBranchNames;
-		displayBlock: [ :each | each ];
-		selectedItem: self defaultHeadBranchName.
+		display: [ :each | each ];
+		selectItem: self defaultHeadBranchName.
 	self baseForkList
 		items: self availableRemotes;
-		displayBlock: [ :each | each owner , '/' , each projectName ];
-		selectedItem: self baseRemote.
+		display: [ :each | each owner , '/' , each projectName ];
+		selectItem: self baseRemote.
 	self baseBranchList
 		items: self availableBranchNames;
-		displayBlock: [ :each | each ];
-		selectedItem: self defaultBaseBranchName.
+		display: [ :each | each ];
+		selectItem: self defaultBaseBranchName.
 	self bodyPanel text: self obtainLastCommitMessage
 ]
 

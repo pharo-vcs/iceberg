@@ -110,7 +110,7 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initializeWidgets [
 	super initializeWidgets.
-	pullRequests := self newIceTable.
+	pullRequests := self newTable.
 	details := self instantiate: IceGitHubPullRequestDetailModel.
 	
 	self initializePullRequestsTable.

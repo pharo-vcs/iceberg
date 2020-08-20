@@ -4,9 +4,6 @@ I implement the dialog to edit SSH credentials.
 Class {
 	#name : #IceTipEditSSHCredentialsModel,
 	#superclass : #IceTipAbstractSSHCredentialsModel,
-	#instVars : [
-		'credentials'
-	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
@@ -25,34 +22,8 @@ IceTipEditSSHCredentialsModel class >> defaultSpec [
 
 { #category : #actions }
 IceTipEditSSHCredentialsModel >> accept [
-	self credentials
-		username: self username;
-		publicKey: self publicKey;
-		privateKey: self privateKey;
-		keyPassphrase: self passphrase.
-	credentialStore storeCredential: self credentials.
-	tool ifNotNil: #refresh.
-	accepted := true.
-	^ self credentials
-]
 
-{ #category : #actions }
-IceTipEditSSHCredentialsModel >> cancelAction [
-	"I do nothing"
-]
-
-{ #category : #accessing }
-IceTipEditSSHCredentialsModel >> credentials [
-	^ credentials
-]
-
-{ #category : #accessing }
-IceTipEditSSHCredentialsModel >> credentials: aValue [
-	credentials := aValue.
-	usernameInput text: credentials username.
-	passphraseInput text: credentials keyPassphrase.
-	privateKeyInput location: credentials privateKey.
-	publicKeyInput location: credentials publicKey
+	^ self acceptEditAction
 ]
 
 { #category : #api }
@@ -69,6 +40,24 @@ IceTipEditSSHCredentialsModel >> putFocusOrder [
 		add: privateKeyInput locationInput;
 		add: passphraseInput;
 		add: storeCheckbox
+]
+
+{ #category : #actions }
+IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
+
+	credentials
+		username: self username;
+		publicKey: self publicKey;
+		privateKey: self privateKey;
+		keyPassphrase: self passphrase
+]
+
+{ #category : #accessing }
+IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
+	usernameInput text: credentials username.
+	passphraseInput text: credentials keyPassphrase.
+	privateKeyInput location: credentials privateKey.
+	publicKeyInput location: credentials publicKey
 ]
 
 { #category : #api }

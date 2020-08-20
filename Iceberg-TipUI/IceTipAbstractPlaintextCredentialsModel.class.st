@@ -14,18 +14,9 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> credentials [
-	^ IcePlaintextCredentials new 
-		username: self username;
-		password: self password;
-		yourself.
-
-]
-
 { #category : #initialization }
-IceTipAbstractPlaintextCredentialsModel >> initializeWidgets [
-	super initializeWidgets.
+IceTipAbstractPlaintextCredentialsModel >> initializePresenters [
+	super initializePresenters.
 	usernameLabel := self newLabel label: 'Username: '.
 	usernameInput := self newTextInput
 		autoAccept: true;
@@ -37,13 +28,22 @@ IceTipAbstractPlaintextCredentialsModel >> initializeWidgets [
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	self putFocusOrder
+
 ]
 
 { #category : #testing }
 IceTipAbstractPlaintextCredentialsModel >> isOkEnabled [
-	
-	^ self username isNotEmpty and: [self password isNotEmpty]
+
+	^ self username isNotEmpty and: [ self password isNotEmpty ]
+]
+
+{ #category : #accessing }
+IceTipAbstractPlaintextCredentialsModel >> newCredentials [
+
+	^ IcePlaintextCredentials new
+		  username: self username;
+		  password: self password;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -52,26 +52,6 @@ IceTipAbstractPlaintextCredentialsModel >> password [
 ]
 
 { #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> passwordInput [
-	^ passwordInput
-]
-
-{ #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> passwordLabel [
-	^ passwordLabel
-]
-
-{ #category : #accessing }
 IceTipAbstractPlaintextCredentialsModel >> username [
 	^ usernameInput text
-]
-
-{ #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> usernameInput [
-	^ usernameInput
-]
-
-{ #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> usernameLabel [
-	^ usernameLabel
 ]

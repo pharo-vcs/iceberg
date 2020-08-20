@@ -4,7 +4,7 @@ I'm a command to show the pull request review browser.
 Class {
 	#name : #IceGitHubViewPullRequestCommand,
 	#superclass : #IceGitHubBranchSelectCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #activation }
@@ -19,6 +19,12 @@ IceGitHubViewPullRequestCommand class >> browserRepositoryListActivation [
 { #category : #activation }
 IceGitHubViewPullRequestCommand class >> defaultMenuItemName [
 	^ 'View Pull Request...'
+]
+
+{ #category : #private }
+IceGitHubViewPullRequestCommand >> askRemote: aRepository [
+
+	^ aRepository remotes anyOne
 ]
 
 { #category : #execute }

@@ -8,7 +8,7 @@ Class {
 		'username',
 		'password'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
 { #category : #printing }
@@ -46,12 +46,6 @@ IcePlaintextCredentials >> readFrom: credentials [
 IcePlaintextCredentials >> removeFrom: aStore [ 
 	
 	aStore removePlainTextCredential: self
-]
-
-{ #category : #'API - storing' }
-IcePlaintextCredentials >> storeInto: aCredentialStore forHostname: aHost [ 
-	host := aHost.
-	aCredentialStore storePlaintextCredential: self forHostname: aHost
 ]
 
 { #category : #accessing }

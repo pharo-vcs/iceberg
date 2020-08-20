@@ -6,8 +6,7 @@ Class {
 	#superclass : #IceTipAbstractPlaintextCredentialsModel,
 	#instVars : [
 		'hostLabel',
-		'hostInput',
-		'tool'
+		'hostInput'
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
@@ -39,27 +38,13 @@ IceTipAddPlaintextCredentialsModel class >> defaultSpec [
 
 { #category : #testing }
 IceTipAddPlaintextCredentialsModel >> accept [
-	credentialStore
-		storeCredential: self credentials
-		forHostname: self host.
-	
-	accepted := true.
-	tool refresh
+
+	self acceptAddAction
 ]
 
 { #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> host [
-	^ self hostInput text
-]
-
-{ #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> hostInput [
-	^ hostInput
-]
-
-{ #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> hostLabel [
-	^ hostLabel
+IceTipAddPlaintextCredentialsModel >> hostnameFromInput [
+	^ hostInput text
 ]
 
 { #category : #initialization }
@@ -68,8 +53,8 @@ IceTipAddPlaintextCredentialsModel >> initialExtent [
 ]
 
 { #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> initializeWidgets [
-	super initializeWidgets.
+IceTipAddPlaintextCredentialsModel >> initializePresenters [
+	super initializePresenters.
 	hostLabel := self newLabel label: 'Host: '.
 	hostInput := self newTextInput
 		autoAccept: true;
@@ -79,7 +64,7 @@ IceTipAddPlaintextCredentialsModel >> initializeWidgets [
 
 { #category : #testing }
 IceTipAddPlaintextCredentialsModel >> isOkEnabled [
-	^ super isOkEnabled and: [ self host isNotEmpty ]
+	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
 ]
 
 { #category : #initialization }
@@ -94,9 +79,4 @@ IceTipAddPlaintextCredentialsModel >> putFocusOrder [
 { #category : #accessing }
 IceTipAddPlaintextCredentialsModel >> title [
 	^ 'Add new Plain Text Credential'
-]
-
-{ #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> tool: anObject [ 
-	tool := anObject
 ]

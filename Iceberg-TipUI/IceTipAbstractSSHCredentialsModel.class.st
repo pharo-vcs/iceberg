@@ -11,15 +11,14 @@ Class {
 		'publicKeyInput',
 		'privateKeyInput',
 		'passphraseInput',
-		'passphraseLabel',
-		'tool'
+		'passphraseLabel'
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #initialization }
-IceTipAbstractSSHCredentialsModel >> initializeWidgets [
-	super initializeWidgets.
+IceTipAbstractSSHCredentialsModel >> initializePresenters [
+	super initializePresenters.
 	usernameLabel := self newLabel label: 'Username: '.
 	usernameInput := self newTextInput
 		text: 'git';
@@ -44,7 +43,7 @@ IceTipAbstractSSHCredentialsModel >> initializeWidgets [
 		chooseTitle: 'Select Public Key';
 		whenTextChanged: [ self updateOkButton ];
 		yourself.
-	self putFocusOrder
+
 ]
 
 { #category : #testing }
@@ -59,23 +58,8 @@ IceTipAbstractSSHCredentialsModel >> passphrase [
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> passphraseInput [
-	^ passphraseInput
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> passphraseLabel [
-	^ passphraseLabel
-]
-
-{ #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> privateKey [
 	^ privateKeyInput location ifNil: [ '' ] ifNotNil: [ :x | x pathString ]
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> privateKeyInput [
-	^ privateKeyInput
 ]
 
 { #category : #accessing }
@@ -84,26 +68,6 @@ IceTipAbstractSSHCredentialsModel >> publicKey [
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> publicKeyInput [
-	^ publicKeyInput
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> tool: aBrowser [ 
-	tool := aBrowser
-]
-
-{ #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> username [
 	^ usernameInput text
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> usernameInput [
-	^ usernameInput
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> usernameLabel [
-	^ usernameLabel
 ]

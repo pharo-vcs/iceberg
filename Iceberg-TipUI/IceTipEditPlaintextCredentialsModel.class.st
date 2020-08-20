@@ -4,10 +4,6 @@ I implement the dialog to edit plaintext credentials.
 Class {
 	#name : #IceTipEditPlaintextCredentialsModel,
 	#superclass : #IceTipAbstractPlaintextCredentialsModel,
-	#instVars : [
-		'tool',
-		'credential'
-	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
@@ -30,31 +26,8 @@ IceTipEditPlaintextCredentialsModel class >> defaultSpec [
 
 { #category : #actions }
 IceTipEditPlaintextCredentialsModel >> accept [ 
-	self credentials
-		username: self username;
-		password: self password.
-	credentialStore storeCredential: self credentials.
-	tool refresh
-]
-
-{ #category : #actions }
-IceTipEditPlaintextCredentialsModel >> cancelAction [
-	" I do not nothing "
-]
-
-{ #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> credentials [
-	^ credential
-]
-
-{ #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> credentials: aPlainTextCredential [ 
-
-	credential := aPlainTextCredential.
 	
-	self usernameInput text: credential username.
-	self passwordInput text: credential password.
-	
+	^ self acceptEditAction
 ]
 
 { #category : #api }
@@ -70,12 +43,23 @@ IceTipEditPlaintextCredentialsModel >> putFocusOrder [
 		add: passwordInput.
 ]
 
-{ #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> title [
-	^ 'Edit credential for ' , credential host
+{ #category : #actions }
+IceTipEditPlaintextCredentialsModel >> refreshCredentialsFromPresenter [
+
+	credentials
+		username: self username;
+		password: self password
 ]
 
 { #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> tool: aBrowser [ 
-	tool := aBrowser
+IceTipEditPlaintextCredentialsModel >> refreshPresenterFromCredentials [
+
+	usernameInput text: credentials username.
+	passwordInput text: credentials password
+]
+
+{ #category : #accessing }
+IceTipEditPlaintextCredentialsModel >> title [
+
+	^ 'Edit credential for ' , credentials host
 ]

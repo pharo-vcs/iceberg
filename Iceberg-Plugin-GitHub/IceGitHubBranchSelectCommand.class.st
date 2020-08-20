@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'remote'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }
@@ -37,7 +37,7 @@ IceGitHubBranchSelectCommand >> itemNameWithoutBranches [
 
 { #category : #accessing }
 IceGitHubBranchSelectCommand >> remote [
-	^ remote ifNil: [ remote := self askRemote ]
+	^ remote ifNil: [ remote := self askRemote: self repository ]
 ]
 
 { #category : #accessing }

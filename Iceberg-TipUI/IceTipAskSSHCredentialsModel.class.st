@@ -1,3 +1,6 @@
+"
+I am a dialog to ask for SSH credentials.
+"
 Class {
 	#name : #IceTipAskSSHCredentialsModel,
 	#superclass : #IceTipEditSSHCredentialsModel,
@@ -5,8 +8,13 @@ Class {
 }
 
 { #category : #actions }
+IceTipAskSSHCredentialsModel >> accept [
+
+	^ self acceptAskAction
+]
+
+{ #category : #actions }
 IceTipAskSSHCredentialsModel >> cancelAction [
-	accepted := true.
-	self window close.
-	LGitNoCredentialsProvided signal
+
+	self cancelAskAction
 ]

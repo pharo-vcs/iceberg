@@ -29,19 +29,14 @@ IceTipAskForPlaintextCredentialsModel class >> defaultSpec [
 
 { #category : #actions }
 IceTipAskForPlaintextCredentialsModel >> accept [
-	| cred |
-	cred := self credentials.
-	self storeCredentials
-		ifTrue: [ credentialStore storeCredential: cred forHostname: remoteHostname ].
-	accepted := true.
-	^ cred
+
+	^ self acceptAskAction
 ]
 
 { #category : #actions }
 IceTipAskForPlaintextCredentialsModel >> cancelAction [
-	accepted := true.
-	self window close.
-	LGitNoCredentialsProvided signal
+
+	self cancelAskAction
 ]
 
 { #category : #api }
@@ -59,5 +54,5 @@ IceTipAskForPlaintextCredentialsModel >> putFocusOrder [
 
 { #category : #accessing }
 IceTipAskForPlaintextCredentialsModel >> title [
-	^ 'Please log in to ' , remoteHostname
+	^ 'Please log in to ' , askingHostname
 ]
