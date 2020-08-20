@@ -20,8 +20,9 @@ Class {
 { #category : #specs }
 IceTipDiffPanel class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newHorizontal
-		add: #changeList width: 200;
+	^ SpPanedLayout newHorizontal
+		position: 25 percent;
+		add: #changeList;
 		add: #diffPanel;
 		yourself
 ]
