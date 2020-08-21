@@ -20,6 +20,11 @@ IceEmptyNode >> addTo: aTree [
 ]
 
 { #category : #enumerating }
+IceEmptyNode >> allChildrenDo: aBlockClosure [ 
+	"Nothing to do"
+]
+
+{ #category : #enumerating }
 IceEmptyNode >> anySatisfy: aBlockClosure [ 
 	
 	^ false

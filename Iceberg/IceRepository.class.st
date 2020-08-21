@@ -502,6 +502,11 @@ IceRepository >> hasIncomingCommitsFrom: aRemote [
 	^ self branch hasIncomingCommitsFrom: aRemote
 ]
 
+{ #category : #testing }
+IceRepository >> hasLoadedPackages [
+	^ self loadedPackages notEmpty
+]
+
 { #category : #'API-branches' }
 IceRepository >> hasLocalBraches [
 	^ self localBranches isNotEmpty
