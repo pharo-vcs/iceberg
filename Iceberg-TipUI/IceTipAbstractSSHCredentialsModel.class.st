@@ -4,7 +4,7 @@ My subclasses implements the specific behavior for each of the operations.
 "
 Class {
 	#name : #IceTipAbstractSSHCredentialsModel,
-	#superclass : #IceTipAbstractAskCredentialsModel,
+	#superclass : #IceTipAbstractCredentialsModel,
 	#instVars : [
 		'usernameInput',
 		'usernameLabel',

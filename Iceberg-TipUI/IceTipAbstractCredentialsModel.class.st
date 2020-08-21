@@ -5,7 +5,7 @@ to ask / add / edit credentials.
 There are subclasses to each of the actions and the types of keys.
 "
 Class {
-	#name : #IceTipAbstractAskCredentialsModel,
+	#name : #IceTipAbstractCredentialsModel,
 	#superclass : #IceTipDialog,
 	#instVars : [
 		'storeCheckbox',
@@ -19,17 +19,17 @@ Class {
 }
 
 { #category : #specs }
-IceTipAbstractAskCredentialsModel class >> title [
+IceTipAbstractCredentialsModel class >> title [
 	^ 'Default Title'
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> accept [
+IceTipAbstractCredentialsModel >> accept [
 	^ self subclassResponsibility
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> acceptAddAction [
+IceTipAbstractCredentialsModel >> acceptAddAction [
 
 	credentials := self newCredentials.
 
@@ -42,7 +42,7 @@ IceTipAbstractAskCredentialsModel >> acceptAddAction [
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> acceptAskAction [
+IceTipAbstractCredentialsModel >> acceptAskAction [
 
 	credentials := self newCredentials.
 
@@ -56,7 +56,7 @@ IceTipAbstractAskCredentialsModel >> acceptAskAction [
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> acceptEditAction [
+IceTipAbstractCredentialsModel >> acceptEditAction [
 
 	self refreshCredentialsFromPresenter.
 	credentialStore storeCredential: self credentials.
@@ -66,19 +66,19 @@ IceTipAbstractAskCredentialsModel >> acceptEditAction [
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> askingHostname: aString [
+IceTipAbstractCredentialsModel >> askingHostname: aString [
 
 	askingHostname := aString
 
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> cancelAction [
+IceTipAbstractCredentialsModel >> cancelAction [
 	"Action to execute on cancel."
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> cancelAskAction [
+IceTipAbstractCredentialsModel >> cancelAskAction [
 
 	accepted := true.
 	self window close.
@@ -86,47 +86,47 @@ IceTipAbstractAskCredentialsModel >> cancelAskAction [
 ]
 
 { #category : #actions }
-IceTipAbstractAskCredentialsModel >> closeAction [
+IceTipAbstractCredentialsModel >> closeAction [
 	accepted ifFalse: [ self cancelAction ]
 ]
 
 { #category : #initialization }
-IceTipAbstractAskCredentialsModel >> connectPresenters [
+IceTipAbstractCredentialsModel >> connectPresenters [
 	self putFocusOrder
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> credentialStore: aStore [ 
+IceTipAbstractCredentialsModel >> credentialStore: aStore [ 
 	credentialStore := aStore
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> credentials [
+IceTipAbstractCredentialsModel >> credentials [
 	^ credentials
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> credentials: anIceCredentials [
+IceTipAbstractCredentialsModel >> credentials: anIceCredentials [
 
 	credentials := anIceCredentials.
 	self refreshPresenterFromCredentials
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> hostnameFromInput [
+IceTipAbstractCredentialsModel >> hostnameFromInput [
 	"Answer the remoote hostname for the credentials."
 
 	^ self subclassResponsibility
 ]
 
 { #category : #initialization }
-IceTipAbstractAskCredentialsModel >> initialize [
+IceTipAbstractCredentialsModel >> initialize [
 	super initialize.
 	accepted := false
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
+IceTipAbstractCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	super initializeDialogWindow: aDialogWindowPresenter.
 	aDialogWindowPresenter title: self title.
@@ -134,7 +134,7 @@ IceTipAbstractAskCredentialsModel >> initializeDialogWindow: aDialogWindowPresen
 ]
 
 { #category : #initialization }
-IceTipAbstractAskCredentialsModel >> initializePresenters [
+IceTipAbstractCredentialsModel >> initializePresenters [
 	storeCheckbox := self newCheckBox
 		label: 'Do you want this credentials to be stored for future use?';
 		help: 'Please note that storing your credentials is handy but unsafe';
@@ -143,27 +143,27 @@ IceTipAbstractAskCredentialsModel >> initializePresenters [
 ]
 
 { #category : #testing }
-IceTipAbstractAskCredentialsModel >> isOkEnabled [
+IceTipAbstractCredentialsModel >> isOkEnabled [
 	"Determite if the user should be enabled to press on the accept button."
 	
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> newCredentials [
+IceTipAbstractCredentialsModel >> newCredentials [
 	"Answer a new instance of the credentials using the form inputs."
 
 	^ self subclassResponsibility
 ]
 
 { #category : #updating }
-IceTipAbstractAskCredentialsModel >> okButton [
+IceTipAbstractCredentialsModel >> okButton [
 
 	^ self window buttons first
 ]
 
 { #category : #'API - opening' }
-IceTipAbstractAskCredentialsModel >> open [
+IceTipAbstractCredentialsModel >> open [
 	self
 		openNonModal
 		modalRelativeTo: self currentWorld.
@@ -172,7 +172,7 @@ IceTipAbstractAskCredentialsModel >> open [
 ]
 
 { #category : #'API - opening' }
-IceTipAbstractAskCredentialsModel >> openNonModal [
+IceTipAbstractCredentialsModel >> openNonModal [
 
 	^ self openDialogWithSpec
 		  okAction: [ self accept ];
@@ -182,32 +182,32 @@ IceTipAbstractAskCredentialsModel >> openNonModal [
 ]
 
 { #category : #initialization }
-IceTipAbstractAskCredentialsModel >> putFocusOrder [
+IceTipAbstractCredentialsModel >> putFocusOrder [
 	^ self subclassResponsibility 
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> refreshCredentialsFromPresenter [
+IceTipAbstractCredentialsModel >> refreshCredentialsFromPresenter [
 	"Hook to update the credentials object from the presenter inputs."
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> refreshPresenterFromCredentials [
+IceTipAbstractCredentialsModel >> refreshPresenterFromCredentials [
 	"Hook to update the presenter input fields from the credentials object."
 ]
 
 { #category : #testing }
-IceTipAbstractAskCredentialsModel >> shouldStoreCredentials [
+IceTipAbstractCredentialsModel >> shouldStoreCredentials [
 	^ storeCheckbox state 
 ]
 
 { #category : #accessing }
-IceTipAbstractAskCredentialsModel >> tool: aBrowser [ 
+IceTipAbstractCredentialsModel >> tool: aBrowser [ 
 	tool := aBrowser
 ]
 
 { #category : #updating }
-IceTipAbstractAskCredentialsModel >> updateOkButton [	
+IceTipAbstractCredentialsModel >> updateOkButton [	
 	self window ifNil: [ ^ self ].	
 	self okButton enabled: self isOkEnabled
 ]

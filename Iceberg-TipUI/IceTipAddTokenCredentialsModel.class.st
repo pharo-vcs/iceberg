@@ -3,7 +3,7 @@ I am a dialog to add token credentials.
 "
 Class {
 	#name : #IceTipAddTokenCredentialsModel,
-	#superclass : #IceTipAbstractAskCredentialsModel,
+	#superclass : #IceTipAbstractCredentialsModel,
 	#instVars : [
 		'hostInput',
 		'tokenInput',
