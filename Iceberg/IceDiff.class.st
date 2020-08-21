@@ -24,9 +24,10 @@ Class {
 		'tree',
 		'source',
 		'target',
-		'writerClass'
+		'writerClass',
+		'mergedTree'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -48,11 +49,27 @@ IceDiff >> accept: aVisitor [
 { #category : #building }
 IceDiff >> build [
 
+	self buildForChanges: (source changesTo: target)
+]
+
+{ #category : #building }
+IceDiff >> buildForAllFiles [
+
+	| files changes |
+	files := (source fileSystem childNames, target fileSystem childNames) asSet.
+	changes := files collect: [ :each | IceGitChange on: each ].
+	
+	self buildForChanges: changes
+]
+
+{ #category : #building }
+IceDiff >> buildForChanges: aCollection [
+
 	| leftTree rightTree |
 	leftTree := IceNode value: IceRootDefinition new.
 	rightTree := IceNode value: IceRootDefinition new.
 
-	(source changesTo: target) do: [ :change | 
+	aCollection do: [ :change | 
 		change accept: (IceChangeImporter new
 			version: source;
 			diff: self;
@@ -63,59 +80,24 @@ IceDiff >> build [
 			version: target;
 			diff: self;
 			parentNode: rightTree;
-			yourself) ].
+			yourself) ] "displayingProgress: [ :change | change displayingProgressString ]".
 
-	tree := self diff: leftTree with: rightTree
+	mergedTree := self mergedTreeOf: leftTree with: rightTree.
+	tree := mergedTree select: [ :operation | operation hasChanges ].
 ]
 
 { #category : #building }
 IceDiff >> buildForPackages: aCollection [
 
-	| leftTree rightTree |
-
-	leftTree := IceNode value: IceRootDefinition new.
-	rightTree := IceNode value: IceRootDefinition new.
-	
-	(aCollection collect: [ :package | IceImageChange package: package ])
-		do: [ :change | 
-			change accept: (IceChangeImporter new
-				version: source;
-				diff: self;
-				parentNode: leftTree;
-				yourself).
-				
-			change accept: (IceChangeImporter new
-				version: target;
-				diff: self;
-				parentNode: rightTree;
-				yourself) ].
-
-	tree := self diff: leftTree with: rightTree
+	self buildForChanges: (aCollection collect: [ :package | IceImageChange package: package ])
 ]
 
 { #category : #building }
 IceDiff >> buildFull [
 
-	| leftTree rightTree |
-	leftTree := IceNode value: IceRootDefinition new.
-	rightTree := IceNode value: IceRootDefinition new.
-		
-	"Image changes should be processed before commit changes to take into account changes in the image"
-	self imageChanges , (source referenceCommit changesTo: target) asArray
-			do: [ :change | 
-			change accept: (IceChangeImporter new
-				version: source;
-				diff: self;
-				parentNode: leftTree;
-				yourself).
-				
-			change accept: (IceChangeImporter new
-				version: target;
-				diff: self;
-				parentNode: rightTree;
-				yourself) ] displayingProgress: [ :change | change displayingProgressString ].
-
-	tree := self diff: leftTree with: rightTree
+	"Image changes should be processed before commit changes
+	to take into account changes in the image"
+	self buildForChanges: self imageChanges, (source referenceCommit changesTo: target) asArray
 ]
 
 { #category : #testing }
@@ -155,17 +137,9 @@ IceDiff >> description [
 
 { #category : #operations }
 IceDiff >> diff: leftTree with: rightTree [
-	
-	| mergedTree |
-	mergedTree := leftTree
-		mergeWith: rightTree
-		onLeft: [ :definition | IceAddition definition: definition ]
-		onRight: [ :definition | IceRemoval definition: definition ]
-		onMerge: [ :left :right | (left = right)
-			ifTrue: [ IceNoModification definition: left ]
-			ifFalse: [ IceModification left: left right: right ] ].
 
-	^ mergedTree select: [ :operation | operation hasChanges ]
+	^ (self mergedTreeOf: leftTree with: rightTree)
+		select: [ :operation | operation hasChanges ]
 ]
 
 { #category : #accessing }
@@ -176,7 +150,14 @@ IceDiff >> diffTree: anIceTreeDiff [
 
 { #category : #building }
 IceDiff >> imageChanges [
-	^ (source loadedPackages collect: [ :package | IceImageChange package: package ]) asArray
+
+	^ self imageChangesForPackages: source loadedPackages
+]
+
+{ #category : #building }
+IceDiff >> imageChangesForPackages: aCollection [
+
+	^ aCollection collect: [ :package | IceImageChange package: package ] as: Array
 ]
 
 { #category : #testing }
@@ -204,6 +185,24 @@ IceDiff >> isEmpty [
 IceDiff >> isValidPackage: aFileReference [
 	
 	^ self writerClass isValidPackage: aFileReference
+]
+
+{ #category : #accessing }
+IceDiff >> mergedTree [
+	^ mergedTree
+]
+
+{ #category : #operations }
+IceDiff >> mergedTreeOf: leftTree with: rightTree [
+	
+	^ leftTree
+		mergeWith: rightTree
+		onLeft: [ :definition | IceAddition definition: definition ]
+		onRight: [ :definition | IceRemoval definition: definition ]
+		onMerge: [ :left :right |
+			left = right
+				ifTrue: [ IceNoModification definition: left ]
+				ifFalse: [ IceModification left: left right: right ] ]
 ]
 
 { #category : #converting }
