@@ -3,12 +3,17 @@ I represent the fact that the project changed. I'm using during the double-dispa
 "
 Class {
 	#name : #IceProjectChange,
-	#superclass : #Object,
-	#category : 'Iceberg-Project'
+	#superclass : #IceChange,
+	#category : #'Iceberg-Project'
 }
 
 { #category : #visiting }
 IceProjectChange >> accept: anIceChangeImporter [ 
 	
 	anIceChangeImporter visitProjectChange: self
+]
+
+{ #category : #displaying }
+IceProjectChange >> displayingProgressString [
+	^ 'Comparing Project change'
 ]

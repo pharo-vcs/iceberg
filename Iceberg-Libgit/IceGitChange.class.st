@@ -3,7 +3,7 @@ I represent a change coming from git (in contrast to a change coming from the im
 "
 Class {
 	#name : #IceGitChange,
-	#superclass : #Object,
+	#superclass : #IceChange,
 	#instVars : [
 		'filePathString'
 	],

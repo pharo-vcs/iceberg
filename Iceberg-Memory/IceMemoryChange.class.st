@@ -1,10 +1,10 @@
 Class {
 	#name : #IceMemoryChange,
-	#superclass : #Object,
+	#superclass : #IceChange,
 	#instVars : [
 		'package'
 	],
-	#category : 'Iceberg-Memory'
+	#category : #'Iceberg-Memory'
 }
 
 { #category : #'instance creation' }
