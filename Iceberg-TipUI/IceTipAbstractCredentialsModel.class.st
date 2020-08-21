@@ -202,6 +202,11 @@ IceTipAbstractCredentialsModel >> shouldStoreCredentials [
 ]
 
 { #category : #accessing }
+IceTipAbstractCredentialsModel >> storeCheckbox [
+	^ storeCheckbox
+]
+
+{ #category : #accessing }
 IceTipAbstractCredentialsModel >> tool: aBrowser [ 
 	tool := aBrowser
 ]

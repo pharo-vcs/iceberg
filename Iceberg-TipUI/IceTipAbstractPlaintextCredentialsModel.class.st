@@ -52,6 +52,16 @@ IceTipAbstractPlaintextCredentialsModel >> password [
 ]
 
 { #category : #accessing }
+IceTipAbstractPlaintextCredentialsModel >> passwordInput [
+	^ passwordInput
+]
+
+{ #category : #accessing }
 IceTipAbstractPlaintextCredentialsModel >> username [
 	^ usernameInput text
+]
+
+{ #category : #accessing }
+IceTipAbstractPlaintextCredentialsModel >> usernameInput [
+	^ usernameInput
 ]
