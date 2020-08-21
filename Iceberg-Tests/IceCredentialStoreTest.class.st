@@ -6,7 +6,7 @@ Class {
 		'file',
 		'dir'
 	],
-	#category : 'Iceberg-Tests-Security'
+	#category : #'Iceberg-Tests-Security'
 }
 
 { #category : #running }
@@ -239,4 +239,50 @@ IceCredentialStoreTest >> testStoreSSH [
 	self assert: cred publicKey equals: 'aPublicKey.id'.
 	self assert: cred privateKey equals: 'aPrivateKey.id'.
 	self assert: cred keyPassphrase equals: 'aPassword'.	
+]
+
+{ #category : #'tests - store' }
+IceCredentialStoreTest >> testStoreToken [
+
+	| original |
+	original := IceTokenCredentials new.
+	original token: self tokenForTesting.
+
+	store storeCredential: original forHostname: 'github.com'.
+	
+	self assert: (store allCredentials anySatisfy: [:each |
+		each class = IceTokenCredentials and: [
+		each host = 'github.com' and: [ 
+		each token = self tokenForTesting ] ] ]).
+
+]
+
+{ #category : #'tests - store' }
+IceCredentialStoreTest >> testStoreTokenSavingInFile [
+
+	| loaded original newStore |
+	original := IceTokenCredentials new.
+	original token: self tokenForTesting.
+
+	file := FileLocator temp / 'store.fuel'.
+	store storeFile: file.
+
+	store storeCredential: original forHostname: 'github.com'.
+	
+	newStore := IceCredentialStore new
+		storeFile: file;
+		loadFromStore;
+		yourself.
+		
+	self assert: (newStore allCredentials anySatisfy: [:each |
+		each class = IceTokenCredentials and: [
+		each host = 'github.com' and: [ 
+		each token = self tokenForTesting ] ] ]).
+
+]
+
+{ #category : #'tests - store' }
+IceCredentialStoreTest >> tokenForTesting [
+
+	^ 'e72e16c7e42f292c6912e7710c838347ae178b4a'
 ]
