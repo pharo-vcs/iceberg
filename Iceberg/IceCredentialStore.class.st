@@ -75,7 +75,7 @@ IceCredentialStore >> allCredentials [
 	^ plainCredentials values , sshCredentials values
 ]
 
-{ #category : #'API -  accessing' }
+{ #category : #'API - accessing' }
 IceCredentialStore >> defaultSSHCredential [
 	^ sshCredentials
 		at: #*
@@ -122,7 +122,7 @@ IceCredentialStore >> lookup: aHostName in: dict ifAbsent: aBlock [
 	^ dict at: aHostName ifAbsent: aBlock
 ]
 
-{ #category : #'API -  accessing' }
+{ #category : #'API - accessing' }
 IceCredentialStore >> plaintextCredentialForHostname: aHostname [
  
 	^ self lookup: aHostname in: plainCredentials ifAbsent: [ IcePlaintextCredentials new ]
@@ -163,13 +163,13 @@ IceCredentialStore >> saveIntoStore [
 	]
 ]
 
-{ #category : #'API -  accessing' }
+{ #category : #'API - accessing' }
 IceCredentialStore >> sshCredentialForHostname: aHostname [
  
 	^ self lookup: aHostname in: sshCredentials ifAbsent: [ self defaultSSHCredential ].
 ]
 
-{ #category : #'API -  accessing' }
+{ #category : #'API - accessing' }
 IceCredentialStore >> storeCredential: credential [
  
 	self loadFromStore.
@@ -177,7 +177,7 @@ IceCredentialStore >> storeCredential: credential [
 	self saveIntoStore
 ]
 
-{ #category : #'API -  accessing' }
+{ #category : #'API - accessing' }
 IceCredentialStore >> storeCredential: credential forHostname: aHostname [
  
 	self loadFromStore.
