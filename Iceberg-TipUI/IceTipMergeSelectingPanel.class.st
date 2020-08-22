@@ -81,7 +81,7 @@ IceTipMergeSelectingPanel >> initialize [
 	self subscribeToAnnouncements.
 	selectedItems := Set new.
 	self model treeRoots do: [ :root | 
-		root allNodesDo: [ :child | 
+		root withAllChildrenDo: [ :child | 
 				selectedItems add: child.
 				child value isConflict
 					ifTrue: [ child value selectLeft ] ] ]

@@ -30,7 +30,7 @@ Visiting API:
 "
 Class {
 	#name : #IceNode,
-	#superclass : #Object,
+	#superclass : #IceAbstractNode,
 	#instVars : [
 		'parent',
 		'cachedChanges',
@@ -89,30 +89,16 @@ IceNode >> addNode: aNode [
 ]
 
 { #category : #adding }
-IceNode >> addTo: aTree [
+IceNode >> addTo: anotherNode [
 	
-	aTree addNode: self
-]
-
-{ #category : #enumerating }
-IceNode >> allChildrenDo: aBlockClosure [ 
-	
-	self childrenDo: [ :e |
-		aBlockClosure value: e.
-		e allChildrenDo: aBlockClosure ]
-]
-
-{ #category : #enumerating }
-IceNode >> allNodesDo: aBlockClosure [
-	aBlockClosure  value: self.
-	self allChildrenDo: aBlockClosure 
+	anotherNode addNode: self
 ]
 
 { #category : #accessing }
 IceNode >> allPathSegments [
 
-	self isRoot ifTrue: [ ^ #() ].
-	self parent isRoot ifTrue: [ ^ { self key } ].
+	self hasParent ifFalse: [ ^ #() ].
+	self parent hasParent ifFalse: [ ^ { self key } ].
 	^ self parent allPathSegments copyWith: self key
 ]
 
@@ -157,14 +143,15 @@ IceNode >> basicEqualsTo: aNode [
 
 { #category : #accessing }
 IceNode >> childAt: aString ifAbsentPut: aBlock [
-	
-	^ childrenDictionary at: aString ifAbsent: [
-		self addChild: aBlock value ]
+
+	^ childrenDictionary
+		  at: aString
+		  ifAbsent: [ self addChild: aBlock value ]
 ]
 
 { #category : #accessing }
-IceNode >> childAt: aString ifPresent: aBlockClosure [ 
-	
+IceNode >> childAt: aString ifPresent: aBlockClosure [
+
 	^ childrenDictionary at: aString ifPresent: aBlockClosure
 ]
 
@@ -175,16 +162,10 @@ IceNode >> children [
 ]
 
 { #category : #enumerating }
-IceNode >> childrenDo: aBlockClosure [ 
-	
-	self children do: aBlockClosure
-]
-
-{ #category : #enumerating }
 IceNode >> collect: aBlock [
 	| newNode |
 	newNode := self class value: (aBlock value: self value).
-	self nodesDo: [ :e |
+	self childrenDo: [ :e |
 		newNode addNode: (e collect: aBlock) ].
 	^ newNode
 ]
@@ -193,8 +174,8 @@ IceNode >> collect: aBlock [
 IceNode >> collectWithPath: aBlock [
 	| newNode |
 	newNode := self class value: (aBlock value: self value value: self path).
-	self nodesDo: [ :e |
-		newNode addNode: (e collectWithPath: aBlock) ].
+	self childrenDo: [ :each |
+		newNode addNode: (each collectWithPath: aBlock) ].
 	^ newNode
 ]
 
@@ -235,12 +216,6 @@ IceNode >> do: aBlockClosure [
 ]
 
 { #category : #enumerating }
-IceNode >> firstNodeSuchThat: conditionBlock [
-	
-	^ self firstNodeSuchThat: conditionBlock ifNone: [ NotFound signalFor: conditionBlock ]
-]
-
-{ #category : #enumerating }
 IceNode >> firstNodeSuchThat: conditionBlock ifNone: noneBlock [
 	
 	(conditionBlock value: self)
@@ -263,6 +238,12 @@ IceNode >> firstNodeSuchThat: conditionBlock ifNone: noneBlock [
 IceNode >> hasChanges [
 	
 	^ value hasChanges or: [ self children anySatisfy: [ :child | child hasChanges ] ]
+]
+
+{ #category : #testing }
+IceNode >> hasParent [
+	
+	^ self parent notNil
 ]
 
 { #category : #comparing }
@@ -294,12 +275,6 @@ IceNode >> isEmpty [
 IceNode >> isEmptyNode [
 
 	^ false
-]
-
-{ #category : #testing }
-IceNode >> isRoot [
-	
-	^ self parent isNil
 ]
 
 { #category : #accessing }
@@ -404,18 +379,6 @@ IceNode >> nextNodeSuchThat: conditionBlock ifNone: noneBlock [
 		nextChildNodeStartingFrom: self
 		suchThat: conditionBlock
 		ifNone: noneBlock
-]
-
-{ #category : #enumerating }
-IceNode >> nodesDo: aBlockClosure [ 
-	
-	childrenDictionary valuesDo: aBlockClosure
-]
-
-{ #category : #testing }
-IceNode >> notEmpty [
-	
-	^ childrenDictionary notEmpty
 ]
 
 { #category : #accessing }

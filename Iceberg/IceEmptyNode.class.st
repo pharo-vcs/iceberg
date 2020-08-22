@@ -3,7 +3,7 @@ I am a null object representing an empty node of a tree. I'm used together with 
 "
 Class {
 	#name : #IceEmptyNode,
-	#superclass : #Object,
+	#superclass : #IceAbstractNode,
 	#category : #'Iceberg-Changes'
 }
 
@@ -14,14 +14,8 @@ IceEmptyNode >> accept: aVisitor [
 ]
 
 { #category : #adding }
-IceEmptyNode >> addTo: aTree [ 
-	
-	"I'm empty. I do not add myself to a tree"
-]
-
-{ #category : #enumerating }
-IceEmptyNode >> allChildrenDo: aBlockClosure [ 
-	"Nothing to do"
+IceEmptyNode >> addTo: anotherNode [ 
+	"I'm empty, so I do not add myself to a tree."
 ]
 
 { #category : #enumerating }
@@ -49,23 +43,15 @@ IceEmptyNode >> collectWithPath: aBlockClosure [
 
 { #category : #enumerating }
 IceEmptyNode >> do: aBlock [
-
 	"Do nothing"
-]
-
-{ #category : #enumerating }
-IceEmptyNode >> firstNodeSuchThat: conditionBlock [ 
-	
-	^ self firstNodeSuchThat: conditionBlock ifNone: [ NotFound signalFor: conditionBlock ]
 ]
 
 { #category : #enumerating }
 IceEmptyNode >> firstNodeSuchThat: conditionBlock ifNone: noneBlock [
 	
-	(conditionBlock value: self)
-		ifTrue: [ ^ self ].
-	
-	^ noneBlock value
+	^ (conditionBlock value: self)
+		ifTrue: [ self ]
+		ifFalse: noneBlock
 ]
 
 { #category : #testing }
@@ -92,33 +78,10 @@ IceEmptyNode >> isEmptyNode [
 	^ true
 ]
 
-{ #category : #operations }
-IceEmptyNode >> mergeInto: anIceClassNode [ 
-	
-	"Do nothing"
-]
-
 { #category : #merging }
 IceEmptyNode >> mergeWith: anotherNode onLeft: leftBlock onRight: rightBlock onMerge: mergeBlock [
 	
 	^ anotherNode collect: rightBlock
-]
-
-{ #category : #accessing }
-IceEmptyNode >> mergedTree [
-	self shouldBeImplemented.
-]
-
-{ #category : #accessing }
-IceEmptyNode >> name [
-	
-	^ 'Empty node'
-]
-
-{ #category : #testing }
-IceEmptyNode >> notEmpty [
-	
-	^ false
 ]
 
 { #category : #accessing }
