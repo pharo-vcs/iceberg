@@ -33,7 +33,6 @@ Class {
 	#superclass : #IceAbstractNode,
 	#instVars : [
 		'parent',
-		'cachedChanges',
 		'childrenDictionary',
 		'value'
 	],
