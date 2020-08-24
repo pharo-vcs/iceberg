@@ -96,9 +96,7 @@ IceNode >> addTo: anotherNode [
 { #category : #accessing }
 IceNode >> allPathSegments [
 
-	self hasParent ifFalse: [ ^ #() ].
-	self parent hasParent ifFalse: [ ^ { self key } ].
-	^ self parent allPathSegments copyWith: self key
+	^ self withAllParentNodes collect: [ :each | each key ]
 ]
 
 { #category : #enumerating }
@@ -484,4 +482,12 @@ IceNode >> value [
 IceNode >> value: aValue [
  
 	value := aValue
+]
+
+{ #category : #accessing }
+IceNode >> withAllParentNodes [
+
+	self hasParent ifFalse: [ ^ #() ].
+	self parent hasParent ifFalse: [ ^ { self } ].
+	^ self parent withAllParentNodes copyWith: self
 ]
