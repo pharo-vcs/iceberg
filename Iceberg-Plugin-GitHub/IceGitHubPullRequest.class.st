@@ -13,7 +13,7 @@ Class {
 		'detail',
 		'status'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
 { #category : #'instance creation' }
@@ -55,6 +55,11 @@ IceGitHubPullRequest >> author [
 ]
 
 { #category : #accessing }
+IceGitHubPullRequest >> baseCommit [
+	^ repository commitAt: self baseSHA
+]
+
+{ #category : #accessing }
 IceGitHubPullRequest >> baseLabel [
 	^ (self jsonAt: #base) at: #label
 ]
@@ -75,7 +80,7 @@ IceGitHubPullRequest >> branch [
 	^ branch ifNil: [
 		branch := (self repository
 			remoteNamed: self remote name )
-				remoteBranchNamed: ((self jsonAt: #head) at: #ref) ]
+				remoteBranchNamed: self headRef ]
 ]
 
 { #category : #accessing }
@@ -106,8 +111,18 @@ IceGitHubPullRequest >> headLabel [
 ]
 
 { #category : #accessing }
+IceGitHubPullRequest >> headRef [
+	^ (self jsonAt: #head) at: #ref
+]
+
+{ #category : #accessing }
 IceGitHubPullRequest >> headSHA [
 	^ (self jsonAt: #head) at: #sha
+]
+
+{ #category : #accessing }
+IceGitHubPullRequest >> htmlUrl [
+	^ self jsonAt: #html_url
 ]
 
 { #category : #initialization }
