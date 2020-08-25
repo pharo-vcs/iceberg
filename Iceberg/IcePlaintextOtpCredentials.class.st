@@ -7,20 +7,15 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : 'Iceberg-Security'
+	#category : #'Iceberg-Security'
 }
 
-{ #category : #'as yet unclassified' }
-IcePlaintextOtpCredentials >> askForModelClass [
-	^ IceTipAskForPlaintextOtpCredentialsModel 
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IcePlaintextOtpCredentials >> token [
 	^token
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IcePlaintextOtpCredentials >> token: aToken [
 	token := aToken
 ]
