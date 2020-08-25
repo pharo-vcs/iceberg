@@ -260,7 +260,7 @@ IceCredentialStoreTest >> testStoreToken [
 { #category : #'tests - store' }
 IceCredentialStoreTest >> testStoreTokenSavingInFile [
 
-	| loaded original newStore |
+	| original newStore |
 	original := IceTokenCredentials new.
 	original token: self tokenForTesting.
 
