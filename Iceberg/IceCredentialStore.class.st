@@ -44,7 +44,7 @@ IceCredentialStore class >> settingsOn: aBuilder [
 		name: #icebergCredentials;
 		noOrdering;
 		target: self current;
-		label: 'Plain Text Credentials';
+		label: 'Credentials';
 		with: [
 			(aBuilder setting: #storeFile)
 				target: self;
