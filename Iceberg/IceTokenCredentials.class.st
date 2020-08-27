@@ -31,6 +31,12 @@ IceTokenCredentials >> isPresent [
 	^ self token notEmpty
 ]
 
+{ #category : #removing }
+IceTokenCredentials >> removeFrom: anIceCredentialStore [ 
+
+	anIceCredentialStore removePlainTextCredential: self
+]
+
 { #category : #accessing }
 IceTokenCredentials >> token [
 
