@@ -11,14 +11,15 @@ Class {
 	#name : #IceTokenCredentials,
 	#superclass : #IceAbstractCredentials,
 	#instVars : [
-		'token'
+		'token',
+		'username'
 	],
 	#category : #'Iceberg-Security'
 }
 
 { #category : #printing }
 IceTokenCredentials >> description [
-	^ ''
+	^ 'User: ', username
 ]
 
 { #category : #printing }
@@ -29,6 +30,15 @@ IceTokenCredentials >> hostDescription [
 { #category : #accessing }
 IceTokenCredentials >> isPresent [
 	^ self token notEmpty
+]
+
+{ #category : #accessing }
+IceTokenCredentials >> password [
+	"For git operations in GitHub, the token can be used as password.
+	
+	See https://docs.github.com/en/enterprise/2.15/user/articles/creating-a-personal-access-token-for-the-command-line#using-a-token-on-the-command-line"
+
+	^ token
 ]
 
 { #category : #removing }
@@ -53,4 +63,14 @@ IceTokenCredentials >> token: aString [
 IceTokenCredentials >> type [
 
 	^ 'Token'
+]
+
+{ #category : #accessing }
+IceTokenCredentials >> username [
+	^ username
+]
+
+{ #category : #accessing }
+IceTokenCredentials >> username: aString [
+	username := aString
 ]

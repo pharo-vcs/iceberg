@@ -246,14 +246,17 @@ IceCredentialStoreTest >> testStoreToken [
 
 	| original |
 	original := IceTokenCredentials new.
-	original token: self tokenForTesting.
+	original
+		username: self usernameForTesting;
+		token: self tokenForTesting.
 
 	store storeCredential: original forHostname: 'github.com'.
 	
 	self assert: (store allCredentials anySatisfy: [:each |
 		each class = IceTokenCredentials and: [
-		each host = 'github.com' and: [ 
-		each token = self tokenForTesting ] ] ]).
+		each host = 'github.com' and: [
+		each username = self usernameForTesting and: [
+		each token = self tokenForTesting ] ] ] ]).
 
 ]
 
@@ -262,7 +265,9 @@ IceCredentialStoreTest >> testStoreTokenSavingInFile [
 
 	| original newStore |
 	original := IceTokenCredentials new.
-	original token: self tokenForTesting.
+	original
+		username: self usernameForTesting;
+		token: self tokenForTesting.
 
 	file := FileLocator temp / 'store.fuel'.
 	store storeFile: file.
@@ -276,8 +281,9 @@ IceCredentialStoreTest >> testStoreTokenSavingInFile [
 		
 	self assert: (newStore allCredentials anySatisfy: [:each |
 		each class = IceTokenCredentials and: [
-		each host = 'github.com' and: [ 
-		each token = self tokenForTesting ] ] ]).
+		each host = 'github.com' and: [
+		each username = self usernameForTesting and: [
+		each token = self tokenForTesting ] ] ] ]).
 
 ]
 
@@ -285,4 +291,10 @@ IceCredentialStoreTest >> testStoreTokenSavingInFile [
 IceCredentialStoreTest >> tokenForTesting [
 
 	^ 'e72e16c7e42f292c6912e7710c838347ae178b4a'
+]
+
+{ #category : #'tests - store' }
+IceCredentialStoreTest >> usernameForTesting [
+
+	^ 'aUsername'
 ]

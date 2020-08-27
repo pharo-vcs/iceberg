@@ -17,15 +17,19 @@ IceTipEditTokenCredentialsModel >> accept [
 IceTipEditTokenCredentialsModel >> refreshCredentialsFromPresenter [
 
 	credentials
+		username: self usernameFromInput;
 		token: self tokenFromInput;
 		host: self hostnameFromInput
+
 ]
 
 { #category : #accessing }
 IceTipEditTokenCredentialsModel >> refreshPresenterFromCredentials [
 
+	usernameInput text: credentials username.
 	tokenInput text: credentials token.
-	hostInput text: credentials host
+	hostInput text: credentials host.
+
 ]
 
 { #category : #TOREMOVE }

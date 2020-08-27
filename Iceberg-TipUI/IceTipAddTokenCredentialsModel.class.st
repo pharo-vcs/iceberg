@@ -8,7 +8,9 @@ Class {
 		'hostInput',
 		'tokenInput',
 		'tokenLabel',
-		'hostLabel'
+		'hostLabel',
+		'usernameInput',
+		'usernameLabel'
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
@@ -17,6 +19,12 @@ Class {
 IceTipAddTokenCredentialsModel class >> defaultSpec [
 	<spec: #default>
 	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: self labelWidth;
+				add: #usernameInput;
+				yourself)
+			height: self inputTextHeight;
 		add:
 			(SpBoxLayout newHorizontal
 				add: #hostLabel width: self labelWidth;
@@ -47,13 +55,18 @@ IceTipAddTokenCredentialsModel >> hostnameFromInput [
 { #category : #testing }
 IceTipAddTokenCredentialsModel >> initialExtent [
 
-	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight)) scaledByDisplayScaleFactor
+	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
 IceTipAddTokenCredentialsModel >> initializePresenters [
 
 	super initializePresenters.
+	usernameLabel := self newLabel label: 'Username: '.
+	usernameInput := self newTextInput
+		autoAccept: true;
+		whenTextChangedDo: [ self updateOkButton ];
+		yourself.
 	hostLabel := self newLabel label: 'Host: '.
 	hostInput := self newTextInput
 		placeholder: 'github.com';
@@ -71,13 +84,16 @@ IceTipAddTokenCredentialsModel >> initializePresenters [
 { #category : #testing }
 IceTipAddTokenCredentialsModel >> isOkEnabled [
 
-	^ self hostnameFromInput isNotEmpty and: [ self tokenFromInput isNotEmpty ]
+	^ self usernameFromInput isNotEmpty and: [ 
+		  self hostnameFromInput isNotEmpty and: [ 
+			  self tokenFromInput isNotEmpty ] ]
 ]
 
 { #category : #accessing }
 IceTipAddTokenCredentialsModel >> newCredentials [
 	
 	^ IceTokenCredentials new
+		username: self usernameFromInput;
 		token: self tokenFromInput;
 		host: self hostnameFromInput;
 		yourself 
@@ -87,6 +103,7 @@ IceTipAddTokenCredentialsModel >> newCredentials [
 IceTipAddTokenCredentialsModel >> putFocusOrder [
 
 	self focusOrder
+		add: usernameInput;
 		add: hostInput;
 		add: tokenInput
 ]
@@ -101,4 +118,10 @@ IceTipAddTokenCredentialsModel >> title [
 IceTipAddTokenCredentialsModel >> tokenFromInput [
 	
 	^ tokenInput text
+]
+
+{ #category : #accessing }
+IceTipAddTokenCredentialsModel >> usernameFromInput [
+	
+	^ usernameInput text
 ]
