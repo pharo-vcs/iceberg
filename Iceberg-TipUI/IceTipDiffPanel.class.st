@@ -53,6 +53,14 @@ IceTipDiffPanel >> buildMenu [
 		buildMenuInContext: self createCommandContext) asSpMenuPresenter
 ]
 
+{ #category : #initialization }
+IceTipDiffPanel >> changeDescriptionColumn [
+
+	^ SpStringTableColumn new
+		  evaluated: [ :each | each definition name ];
+		  yourself
+]
+
 { #category : #'accessing ui' }
 IceTipDiffPanel >> changeList [
 	^ changeList
@@ -65,17 +73,8 @@ IceTipDiffPanel >> changeList: anObject [
 
 { #category : #initialization }
 IceTipDiffPanel >> changeListColumn [
-			^ SpCompositeTableColumn new
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: [ :each | each value icon ];
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: [ :each | each definition name ];
-						yourself);
-				yourself
+
+	^ self subclassResponsibility
 ]
 
 { #category : #private }

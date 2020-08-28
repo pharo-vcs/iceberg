@@ -53,10 +53,7 @@ IceTipMergeSelectingPanel >> changeListColumn [
 				width: 20;
 				evaluated: [ :each | each value chosenOperation icon ];
 				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				evaluated: [ :each | each definition name ];
-				yourself);
+		addColumn: self changeDescriptionColumn;
 		yourself
 ]
 
