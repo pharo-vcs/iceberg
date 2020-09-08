@@ -74,7 +74,7 @@ IceTipDiffPanel >> changeList: anObject [
 { #category : #initialization }
 IceTipDiffPanel >> changeListColumn [
 
-	^ self subclassResponsibility
+	^ self changeDescriptionColumn
 ]
 
 { #category : #private }
