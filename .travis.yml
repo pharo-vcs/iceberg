@@ -22,7 +22,7 @@ env:
 matrix:
   include:
     - env: JOB=update
-      smalltalk: Pharo-9.0
+      smalltalk: Pharo64-8.0
     - env: JOB=sync-wiki
     
 before_install:
