@@ -14,11 +14,16 @@ When authentication fails in an operation, Iceberg shows a dialog asking for Pla
 
 ## Token Credentials
 
-Personal access tokens are an alternative to using passwords for authentication. This is important for GitHub users, since using passwords on API calls [is not supported anymore](https://developer.github.com/changes/2/#--deprecating-password-authentication). Following, we describe the steps to register for token in the image.
+Personal access tokens are an alternative to using passwords for authentication. This is important for GitHub users, since using passwords on API calls [is not supported anymore](https://developer.github.com/changes/2/#--deprecating-password-authentication). Following, we describe the steps to register for token in Iceberg.
 
-First, go to your GitHub account and create a Personal Access Token. You can [follow this guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) to do it. Include all "repo" and "user" permissions (scopes).
+First, create a Personal Access Token in your GitHub account. 
+You can [follow this guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) to do it.
+Include all "repo" and "user" permissions (scopes).
+You won't be able to read the token after the webpage is closed, to paste it in a safe place.
 
-Second, go to your Pharo image and open Iceberg -> Settings -> Edit credentials -> Add Token, as shown in the screenshot below. Normally, you should fill the 'Username' field with your email. Fill the Host field with 'github.com' to use the token for that server.
+Second, go to your Pharo image and open Iceberg -> Settings -> Edit credentials -> Add Token, as shown in the screenshot below. 
+Normally, you should fill the 'Username' field with your email. 
+Fill the Host field with 'github.com' to use the token for that server.
 
 ![image](images/token-credentials.png)
 
@@ -28,7 +33,7 @@ This wasn't tested on other servers, but it may work for git operations:
 
 ### Scripting
 
-Alternativelly, you can register your credential without using the GUI:
+Alternatively, you can register your credential without using the GUI:
 
 ```Smalltalk
 IceCredentialStore current
