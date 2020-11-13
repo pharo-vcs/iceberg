@@ -8,6 +8,7 @@ For the last 20 years, many different flavours of Smalltalk have used Monticello
 
 ## Useful Topics
 
+- [Authentication Credentials](Authentication-Credentials.md)
 - [Contributing to Iceberg](Contributing-to-Iceberg.md)
 - [How to Help](How-to-help-us,-What-you-could-contribute.md)
 - [Glossary](Iceberg-glossary.md)
