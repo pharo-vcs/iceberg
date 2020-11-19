@@ -131,11 +131,6 @@ IceTipBrowser >> toolbar [
 	^ toolbar
 ]
 
-{ #category : #'accessing ui' }
-IceTipBrowser >> toolbar: anObject [
-	toolbar := anObject
-]
-
 { #category : #accessing }
 IceTipBrowser >> windowIcon [
 	^ self iconNamed: #komitterSmalltalkhubRemote
