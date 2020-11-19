@@ -6,7 +6,7 @@ I show the packages managed by this repository and a series of actions to proper
 "
 Class {
 	#name : #IceTipWorkingCopyBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'packageList',
 		'statusBar'
@@ -19,20 +19,8 @@ IceTipWorkingCopyBrowser class >> defaultSpec [
 	<spec: #default>
 	
 	^ SpBoxLayout newVertical 
-		add: #toolbar expand: false fill: true padding: 0;
 			add: #packageList;
-			add: #statusBar height: self defaultStatusBarHeight;
 			yourself 
-]
-
-{ #category : #specs }
-IceTipWorkingCopyBrowser class >> defaultStatusBarHeight [
-	^ 25 * self currentWorld displayScaleFactor
-]
-
-{ #category : #'instance creation' }
-IceTipWorkingCopyBrowser class >> new [
-	self error: 'Use #for:'
 ]
 
 { #category : #'instance creation' }
@@ -42,21 +30,25 @@ IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> contextClass [
+
 	^ IceTipWorkingCopyContext
 ]
 
 { #category : #'private factory' }
 IceTipWorkingCopyBrowser >> createCommandContext [
+
 	^ self newContextWithSelection: self packageSelected
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyBrowser >> initialExtent [
-	^ (700@500) scaledByDisplayScaleFactor
+IceTipWorkingCopyBrowser >> initialExtentForWindow [
+
+	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePackageList [
+
 	packageList
 		beResizable;
 		addColumn:
@@ -74,74 +66,82 @@ IceTipWorkingCopyBrowser >> initializePackageList [
 				pattern: aPattern;
 				matches: anItem ];
 		contextMenu: [ self buildMenu ]
+
 ]
 
 { #category : #initialization }
-IceTipWorkingCopyBrowser >> initializeStatusBar [
-	statusBar 
-"		addItem: (IceTipBranchWithCommitStatusBarItem new
-			model: self model;
-			yourself);
-"		addItem: (IceTipStatusBarTargetItem new 
-			bePositionRight;
-			target: self model;
-			contentsBlock: #status;
-			helpBlock: #status;
-			yourself)
-]
+IceTipWorkingCopyBrowser >> initializePresenters [
 
-{ #category : #initialization }
-IceTipWorkingCopyBrowser >> initializeWidgets [
-	super initializeWidgets.
+	super initializePresenters.
 	packageList := self newTable.
-	statusBar := self instantiate: IceTipStatusBar.
+	statusBar := self newStatusBar.
 
 	self initializePackageList.
-	self initializeStatusBar.
-	
+	self rebuildStatusBar.
+
 	self focusOrder add: packageList
 ]
 
+{ #category : #initialization }
+IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
+	
+	super initializeWindow: aSpWindowPresenter.
+
+	aSpWindowPresenter
+		title: self titleForWindow;
+		statusBar: statusBar
+
+]
+
 { #category : #'private factory' }
-IceTipWorkingCopyBrowser >> newContextWithSelection: anObject [ 
-	^ self newContext 
-		packageModel: anObject;
-		yourself
+IceTipWorkingCopyBrowser >> newContextWithSelection: anObject [
+
+	^ self newContext
+		  packageModel: anObject;
+		  yourself
 ]
 
 { #category : #'accessing ui' }
 IceTipWorkingCopyBrowser >> packageList [
-	^ packageList
-]
 
-{ #category : #'accessing ui' }
-IceTipWorkingCopyBrowser >> packageList: anObject [
-	packageList := anObject
+	^ packageList
 ]
 
 { #category : #private }
 IceTipWorkingCopyBrowser >> packageSelected [
+
 	^ packageList selection selectedItem
 ]
 
 { #category : #accessing }
+IceTipWorkingCopyBrowser >> rebuildStatusBar [
+
+	statusBar pushMessage: self model status
+]
+
+{ #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
-	self rebuildToolbar. 
+
+	self rebuildToolbar.
+	self rebuildStatusBar.
 	packageList items: self model packageModels.
-	statusBar refresh
+	
 ]
 
 { #category : #private }
 IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
-	(ann repository isNil 
-		or: [ self model repositoryModel isModelOf: ann repository ])
-		ifFalse: [ ^ self ].
+
+	(ann repository isNil or: [ 
+		self model repositoryModel isModelOf: ann repository ]) ifFalse: [ 
+		^ self ].
 	self model reset.
 	self refresh
+
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
+
 	self model: (IceTipWorkingCopyModel on: aRepositoryModel)
 ]
 
@@ -151,26 +151,17 @@ IceTipWorkingCopyBrowser >> showsPackageNamed: aString [
 	^ packageList items anySatisfy: [ :packageModel | packageModel name = aString ]
 ]
 
-{ #category : #'accessing ui' }
-IceTipWorkingCopyBrowser >> statusBar [
-	^ statusBar
-]
-
-{ #category : #'accessing ui' }
-IceTipWorkingCopyBrowser >> statusBar: anObject [
-	statusBar := anObject
-]
-
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
-	Iceberg announcer weak 
-		when: IceRepositoryAnnouncement 
-		send: #refreshWhenRepository: 
-		to: self
 
+	Iceberg announcer weak
+		when: IceRepositoryAnnouncement
+		send: #refreshWhenRepository:
+		to: self
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyBrowser >> title [
+IceTipWorkingCopyBrowser >> titleForWindow [
+
 	^ 'Working copy of ', self model repositoryName
 ]
