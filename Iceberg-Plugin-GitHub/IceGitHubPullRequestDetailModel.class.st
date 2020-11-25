@@ -86,18 +86,8 @@ IceGitHubPullRequestDetailModel >> authorLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> authorLabel: anObject [
-	authorLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> authorText [
 	^ authorText
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> authorText: anObject [
-	authorText := anObject
 ]
 
 { #category : #'accessing ui' }
@@ -106,18 +96,8 @@ IceGitHubPullRequestDetailModel >> bodyText [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> bodyText: anObject [
-	bodyText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> checksTable [
 	^ checksTable
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> checksTable: anObject [
-	checksTable := anObject
 ]
 
 { #category : #'accessing ui' }
@@ -126,18 +106,8 @@ IceGitHubPullRequestDetailModel >> fromLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> fromLabel: anObject [
-	fromLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> fromText [
 	^ fromText
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> fromText: anObject [
-	fromText := anObject
 ]
 
 { #category : #private }
@@ -156,7 +126,8 @@ IceGitHubPullRequestDetailModel >> iconForStatus: status [
 ]
 
 { #category : #initialization }
-IceGitHubPullRequestDetailModel >> initializeWidgets [
+IceGitHubPullRequestDetailModel >> initializePresenters [
+
 	urlLabel := self newLabel label: 'Url'.
 	authorLabel := self newLabel label: 'Author'.
 	fromLabel := self newLabel label: 'From'.
@@ -180,18 +151,8 @@ IceGitHubPullRequestDetailModel >> mergeableLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> mergeableLabel: anObject [
-	mergeableLabel := anObject
-]
-
-{ #category : #accessing }
 IceGitHubPullRequestDetailModel >> mergeablePanel [
 	^ mergeablePanel
-]
-
-{ #category : #accessing }
-IceGitHubPullRequestDetailModel >> mergeablePanel: anObject [
-	mergeablePanel := anObject
 ]
 
 { #category : #'private factory' }
@@ -238,7 +199,7 @@ IceGitHubPullRequestDetailModel >> pullRequest [
 	^ pullRequest
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
 IceGitHubPullRequestDetailModel >> pullRequest: aPullRequest [
 	pullRequest := aPullRequest.
 	urlText text: self pullRequest url.
@@ -296,18 +257,8 @@ IceGitHubPullRequestDetailModel >> statusLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> statusLabel: anObject [
-	statusLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> statusPanel [
 	^ statusPanel
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> statusPanel: anObject [
-	statusPanel := anObject
 ]
 
 { #category : #private }
@@ -324,18 +275,8 @@ IceGitHubPullRequestDetailModel >> toLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> toLabel: anObject [
-	toLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> toText [
 	^ toText
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> toText: anObject [
-	toText := anObject
 ]
 
 { #category : #'accessing ui' }
@@ -344,16 +285,6 @@ IceGitHubPullRequestDetailModel >> urlLabel [
 ]
 
 { #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> urlLabel: anObject [
-	urlLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubPullRequestDetailModel >> urlText [
 	^ urlText
-]
-
-{ #category : #'accessing ui' }
-IceGitHubPullRequestDetailModel >> urlText: anObject [
-	urlText := anObject
 ]
