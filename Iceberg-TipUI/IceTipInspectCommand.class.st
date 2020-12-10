@@ -3,81 +3,42 @@ I am a command implementing the inspect option. I have several context activatio
 "
 Class {
 	#name : #IceTipInspectCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'item'
-	],
+	#superclass : #IceTipCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipInspectCommand class >> branchListContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipRepositoryContext
-]
-
-{ #category : #activation }
-IceTipInspectCommand class >> browserContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipWorkingCopyContext
-]
-
-{ #category : #activation }
-IceTipInspectCommand class >> browserHistoryContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipHistoryContext
-]
-
-{ #category : #activation }
-IceTipInspectCommand class >> browserRepositoryListActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipRepositoryListContext
-]
-
-{ #category : #activation }
-IceTipInspectCommand class >> credentialsListContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipCredentialContext
-]
-
 { #category : #accessing }
-IceTipInspectCommand class >> defaultHelp [
+IceTipInspectCommand class >> defaultDescription [
+
 	^ 'Inspect the selected element'
 ]
 
 { #category : #accessing }
-IceTipInspectCommand class >> defaultMenuIconName [
-	^ #glamorousInspect
-]
+IceTipInspectCommand class >> defaultName [
 
-{ #category : #accessing }
-IceTipInspectCommand class >> defaultMenuItemName [
 	^ 'Inspect...'
 ]
 
 { #category : #execution }
-IceTipInspectCommand >> execute [
-	item ifNil: [ ^ self ].
-	item entity inspect
+IceTipInspectCommand >> canBeExecuted [
+
+	^ self item notNil
 ]
 
 { #category : #execution }
-IceTipInspectCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	item := aToolContext item
+IceTipInspectCommand >> execute [
+
+	self item entity inspect
+]
+
+{ #category : #accessing }
+IceTipInspectCommand >> iconName [
+
+	^ #glamorousInspect
+]
+
+{ #category : #execution }
+IceTipInspectCommand >> item [
+
+	^ self context item
 ]

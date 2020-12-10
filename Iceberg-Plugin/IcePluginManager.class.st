@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'plugins'
 	],
-	#category : 'Iceberg-Plugin-Base'
+	#category : #'Iceberg-Plugin-Base'
 }
 
 { #category : #'instance creation' }
@@ -35,7 +35,7 @@ IcePluginManager >> availablePluginsFor: aRepository [
 		as: Array
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing-ui' }
 IcePluginManager >> checkoutBranchPanelsOnModel: aModel [ 
 
 	^ self plugins
@@ -52,6 +52,15 @@ IcePluginManager >> initializeRepository: aRepository [.
 { #category : #accessing }
 IcePluginManager >> plugins [ 
 	^ plugins
+]
+
+{ #category : #'accessing-ui' }
+IcePluginManager >> registerBrowserCommandsOn: aSpCommandGroup context: anIceTipWorkingCopyContext [
+
+	self plugins do: [ :each | 
+		each
+			registerBrowserCommandsOn: aSpCommandGroup
+			context: anIceTipWorkingCopyContext ]
 ]
 
 { #category : #events }

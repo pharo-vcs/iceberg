@@ -3,39 +3,37 @@ Command that loads the current non-loaded selected package
 "
 Class {
 	#name : #IceTipLoadPackageCommand,
-	#superclass : #IceTipPackageCommand,
+	#superclass : #IceTipPackageCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipLoadPackageCommand class >> browserContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation byRootGroupItemOrder: 40 for: IceTipWorkingCopyContext
-]
-
-{ #category : #testing }
-IceTipLoadPackageCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext packageModel isLoaded not
-]
-
 { #category : #accessing }
-IceTipLoadPackageCommand class >> defaultHelp [
+IceTipLoadPackageCommand class >> defaultDescription [
+
 	^ 'Load selected package in the image'
 ]
 
 { #category : #accessing }
-IceTipLoadPackageCommand class >> defaultMenuIconName [
-	^ #add
+IceTipLoadPackageCommand class >> defaultName [
+
+	^ 'Load'
 ]
 
-{ #category : #accessing }
-IceTipLoadPackageCommand class >> defaultMenuItemName [
-	^ 'Load'
+{ #category : #testing }
+IceTipLoadPackageCommand >> canBeExecuted [
+	^ self context packageModel isLoaded not
 ]
 
 { #category : #execution }
 IceTipLoadPackageCommand >> execute [
+
 	self packageModel load.
-	Iceberg announcer announce: (IceRepositoryModified for: self repositoryModel entity)
+	Iceberg announcer announce:
+		(IceRepositoryModified for: self repositoryModel entity)
+]
+
+{ #category : #accessing }
+IceTipLoadPackageCommand >> iconName [
+
+	^ #add
 ]

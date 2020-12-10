@@ -4,68 +4,46 @@ I open a pull view window.
 "
 Class {
 	#name : #IceTipPullCommand,
-	#superclass : #IceTipRemoteActionCommand,
+	#superclass : #IceTipRemoteActionCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipPullCommand class >> browserContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 120 
-		for: IceTipRepositoryListContext
-]
-
 { #category : #accessing }
-IceTipPullCommand class >> defaultHelp [
+IceTipPullCommand class >> defaultDescription [
+
 	^ 'Pulls into image all commits from your version to the origin remote HEAD'
 ]
 
 { #category : #accessing }
-IceTipPullCommand class >> defaultMenuIconName [
-	^ #down
-]
+IceTipPullCommand class >> defaultName [
 
-{ #category : #accessing }
-IceTipPullCommand class >> defaultMenuItemName [
 	^ 'Pull'
 ]
 
-{ #category : #activation }
-IceTipPullCommand class >> toolbarHistoryActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipHistoryContext
-]
+{ #category : #execution }
+IceTipPullCommand >> badge [
 
-{ #category : #activation }
-IceTipPullCommand class >> toolbarRepositoryActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipRepositoryContext
-		
-]
+	| result |
+	(self repositoryModel isNotNil and: [
+		self repositoryModel isMissing not]) ifTrue: [
+		result := self repositoryModel numberOfIncomingCommits.
+		"If zero, reset to nil to make it dissapear in Spec."
+		result isZero ifTrue: [ result := nil ] ].
 
-{ #category : #activation }
-IceTipPullCommand class >> toolbarWorkingCopyActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipWorkingCopyContext
-
+	^ result
 ]
 
 { #category : #execution }
 IceTipPullCommand >> execute [
+
 	self withErrorHandlingDo: [ 
 		self validateRemotesPresent.
 	 	(IceTipPullBrowser onRepositoryModel: self repositoryModel) openWithSpec ]
 
 ]
 
-{ #category : #execution }
-IceTipPullCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	(self repositoryModel isNotNil and: [self repositoryModel isMissing not]) ifTrue: [
-		self badge: self repositoryModel numberOfIncomingCommits ]
+{ #category : #accessing }
+IceTipPullCommand >> iconName [
+
+	^ #down
 ]

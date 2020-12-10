@@ -3,70 +3,43 @@ Command that opens a dialog to checkout a (new or already existing) branch.
 "
 Class {
 	#name : #IceTipCheckoutBranchCommand,
-	#superclass : #IceTipRepositoryCommand,
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipCheckoutBranchCommand class >> browserContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 200 
-		for: IceTipRepositoryListContext
-]
-
-{ #category : #testing }
-IceTipCheckoutBranchCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext isRepositoryMissing not
-]
-
 { #category : #accessing }
-IceTipCheckoutBranchCommand class >> defaultHelp [
+IceTipCheckoutBranchCommand class >> defaultDescription [
+
 	^ 'Checkout a new or existing branch.'
 ]
 
 { #category : #accessing }
-IceTipCheckoutBranchCommand class >> defaultMenuIconName [
-	^ #branch
-]
+IceTipCheckoutBranchCommand class >> defaultName [
 
-{ #category : #accessing }
-IceTipCheckoutBranchCommand class >> defaultMenuItemName [
 	^ 'Checkout branch'
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchCommand class >> defaultToolbarItemName [
+
 	^ 'Branch'
 ]
 
-{ #category : #activation }
-IceTipCheckoutBranchCommand class >> toolbarHistoryActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation byRootGroupItemFor: IceTipHistoryContext
-]
+{ #category : #testing }
+IceTipCheckoutBranchCommand >> canBeExecuted [
 
-{ #category : #activation }
-IceTipCheckoutBranchCommand class >> toolbarRepositoryActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipRepositoryContext
-		order: 1000
-]
-
-{ #category : #activation }
-IceTipCheckoutBranchCommand class >> toolbarWorkingCopyActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipWorkingCopyContext
-		order: 1000
+	^ self context isRepositoryMissing not
 ]
 
 { #category : #execution }
 IceTipCheckoutBranchCommand >> execute [
-	(IceTipCheckoutBranchDialog on: self repositoryModel) openDialogWithSpec
+
+	(IceTipCheckoutBranchDialog on: self repositoryModel)
+		openDialogWithSpec
+]
+
+{ #category : #accessing }
+IceTipCheckoutBranchCommand >> iconName [
+
+	^ #branch
 ]

@@ -63,12 +63,6 @@ IceTipGitHubPullRequestListBrowser >> contextClass [
 	^ IceTipPullRequestsListContext
 ]
 
-{ #category : #initialization }
-IceTipGitHubPullRequestListBrowser >> defaultKeyboardFocus [
-
-	^ pullRequests
-]
-
 { #category : #accessing }
 IceTipGitHubPullRequestListBrowser >> details [
 
@@ -133,6 +127,12 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 
 ]
 
+{ #category : #initialization }
+IceTipGitHubPullRequestListBrowser >> mainList [
+
+	^ pullRequests
+]
+
 { #category : #private }
 IceTipGitHubPullRequestListBrowser >> newContextWithSelection: anObject [
 
@@ -163,9 +163,9 @@ IceTipGitHubPullRequestListBrowser >> remote [
 ]
 
 { #category : #accessing }
-IceTipGitHubPullRequestListBrowser >> remote: anObject [
+IceTipGitHubPullRequestListBrowser >> remote: aRemote [
 
-	remote := anObject
+	remote := aRemote
 ]
 
 { #category : #accessing }

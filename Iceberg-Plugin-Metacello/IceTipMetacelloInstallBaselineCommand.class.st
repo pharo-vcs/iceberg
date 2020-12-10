@@ -3,17 +3,9 @@ I'm a general command to install metacello baselines.
 "
 Class {
 	#name : #IceTipMetacelloInstallBaselineCommand,
-	#superclass : #IceTipPackageCommand,
-	#instVars : [
-		'package'
-	],
+	#superclass : #IceTipPackageCommand2,
 	#category : #'Iceberg-Plugin-Metacello'
 }
-
-{ #category : #accessing }
-IceTipMetacelloInstallBaselineCommand class >> baselinePrefix [
-	^ 'BaselineOf'
-]
 
 { #category : #accessing }
 IceTipMetacelloInstallBaselineCommand class >> isAbstract [
@@ -22,24 +14,17 @@ IceTipMetacelloInstallBaselineCommand class >> isAbstract [
 ]
 
 { #category : #private }
-IceTipMetacelloInstallBaselineCommand >> allBaselines [
-	^ ((self workingCopy packages
-		select: [ :each | each name beginsWith: self class baselinePrefix ])
-		sorted: [ :a :b | a name < b name ])
-]
-
-{ #category : #private }
 IceTipMetacelloInstallBaselineCommand >> basicInstallBaseline: icePackage groups: anArray [
-	| packageDir baselineName sourceDirectory|
 
+	| packageDir sourceDirectory |
 	sourceDirectory := icePackage repository project sourceDirectory.
 	sourceDirectory ifEmpty: [ sourceDirectory := '.'].
 
 	packageDir := (icePackage repository location / sourceDirectory) fullName.
-	baselineName := icePackage name allButFirst: self class baselinePrefix size.
+
 	Metacello new
 		repository: 'gitlocal://', packageDir;
-		baseline: baselineName;
+		baseline: icePackage metacelloBaselineName;
 		onUpgrade: [ :e | | policy |
 			policy := self chooseUpgradePolicyFor: e.
 			policy ifNotNil: [ e perform: policy ] ];
@@ -49,16 +34,22 @@ IceTipMetacelloInstallBaselineCommand >> basicInstallBaseline: icePackage groups
 		load: anArray
 ]
 
+{ #category : #testing }
+IceTipMetacelloInstallBaselineCommand >> canBeExecuted [
+
+	^ self packageModel notNil and: [ self package isMetacelloBaseline ]
+]
+
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyFor: aMetacelloUpgradeRequest [
-	| projectName optionA optionB context |
 
-	context := IceMetacelloLoadSessionContext value.
+	| projectName optionA optionB sessionContext |
+	sessionContext := IceMetacelloLoadSessionContext value.
 	projectName := aMetacelloUpgradeRequest projectName.
 	optionA := aMetacelloUpgradeRequest newProjectRegistration printString.
 	optionB := aMetacelloUpgradeRequest existingProjectRegistration printString.
 	
-	^ context 
+	^ sessionContext 
 		recordChoiceProject: projectName 
 		optionA: optionA 
 		optionB: optionB
@@ -85,14 +76,14 @@ IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyProject: projectNam
 
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyFor: aMetacelloUpgradeRequest [
-	| projectName optionA optionB context |
+	| projectName optionA optionB sessionContext |
 
-	context := IceMetacelloLoadSessionContext value.
+	sessionContext := IceMetacelloLoadSessionContext value.
 	projectName := aMetacelloUpgradeRequest projectName.
 	optionA := aMetacelloUpgradeRequest newProjectRegistration printString.
 	optionB := aMetacelloUpgradeRequest existingProjectRegistration printString.
 	
-	^ context 
+	^ sessionContext 
 		recordChoiceProject: projectName 
 		optionA: optionA 
 		optionB: optionB
@@ -117,53 +108,29 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName
 		title: 'Duplicated project!'
 ]
 
-{ #category : #accessing }
-IceTipMetacelloInstallBaselineCommand >> fillContextMenu: aMenu using: aCommandActivator [
-	| item |
-	
-	item := CmdCommandMenuItem activatingBy: aCommandActivator.
+{ #category : #execution }
+IceTipMetacelloInstallBaselineCommand >> iconName [
 
-	aCommandActivator setUpShortcutTipForMenuItem: item.
-	
-	aMenu basicAddItem: item.
+	^ #smallLoadProject
 ]
 
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [ 
+
 	^ self installBaseline: icePackage groups: #()
 ]
 
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anArray [
+
 	IceTipStandardAction new
 		repository: self repositoryModel entity;
 		message: ('Installing baseline {1} of {2}' format: { 
-			icePackage name allButFirst: self class baselinePrefix size. 
+			icePackage metacelloBaselineName.
 			self repositoryModel name });
 		onSuccessRepositoryModified;
 		execute: [ 
 			Iceberg announcer 
 				suspendAllForRepository: self repositoryModel entity
 				while: [ self basicInstallBaseline: icePackage groups: anArray ] ]
-]
-
-{ #category : #accessing }
-IceTipMetacelloInstallBaselineCommand >> package [
-	^ package
-]
-
-{ #category : #accessing }
-IceTipMetacelloInstallBaselineCommand >> package: anIcePackage [
-	package := anIcePackage
-]
-
-{ #category : #execution }
-IceTipMetacelloInstallBaselineCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.	
-	package := self packageModel entity
-]
-
-{ #category : #accessing }
-IceTipMetacelloInstallBaselineCommand >> repositoryModel: aRepositoryModel [
-	repositoryModel := aRepositoryModel
 ]

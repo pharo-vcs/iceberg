@@ -34,6 +34,12 @@ IceTipContext >> isRepositoryOperational [
 ]
 
 { #category : #accessing }
+IceTipContext >> pluginManager [
+
+	^ self repositoryModel entity pluginManager
+]
+
+{ #category : #accessing }
 IceTipContext >> readContextParametersFromModel: aModel [
 	self repositoryModel: aModel repositoryModel
 ]

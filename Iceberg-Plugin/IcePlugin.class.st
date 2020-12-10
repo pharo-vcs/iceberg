@@ -8,7 +8,7 @@ I can define
 Class {
 	#name : #IcePlugin,
 	#superclass : #Object,
-	#category : 'Iceberg-Plugin-Base'
+	#category : #'Iceberg-Plugin-Base'
 }
 
 { #category : #'as yet unclassified' }
@@ -27,6 +27,11 @@ IcePlugin >> checkoutBranchPanelsOnModel: anIceTipCachedModel [
 
 	"Hook for subclasses"
 	^ #()
+]
+
+{ #category : #'accessing-ui' }
+IcePlugin >> registerBrowserCommandsOn: aSpCommandGroup context: anIceTipWorkingCopyContext [ 
+	self flag: #todo. "Comment"
 ]
 
 { #category : #events }

@@ -8,8 +8,9 @@ Class {
 	#name : #IceTipWorkingCopyBrowser,
 	#superclass : #IceTipBrowser2,
 	#instVars : [
-		'packageList',
-		'statusBar'
+		'statusBar',
+		'packagesTable',
+		'filterInput'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -19,67 +20,86 @@ IceTipWorkingCopyBrowser class >> defaultSpec [
 	<spec: #default>
 	
 	^ SpBoxLayout newVertical 
-			add: #packageList;
+			add: #packagesTable;
+			add: #filterInput expand: false;
 			yourself 
 ]
 
 { #category : #'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
+
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : #accessing }
+IceTipWorkingCopyBrowser >> allListItems [
+
+	^ self model packageModels
+]
+
+{ #category : #initialization }
+IceTipWorkingCopyBrowser >> connectPresenters [
+
+	filterInput
+		placeholder: 'Filter...';
+		whenTextChangedDo: [ :text | self refreshPackagesTable ]
+
+]
+
+{ #category : #commands }
 IceTipWorkingCopyBrowser >> contextClass [
 
 	^ IceTipWorkingCopyContext
 ]
 
-{ #category : #'private factory' }
-IceTipWorkingCopyBrowser >> createCommandContext [
+{ #category : #'accessing ui' }
+IceTipWorkingCopyBrowser >> filterInput [
 
-	^ self newContextWithSelection: self packageSelected
+	^ filterInput
 ]
 
-{ #category : #accessing }
+{ #category : #private }
+IceTipWorkingCopyBrowser >> filteredItemsFor: pattern [
+
+	^ self allListItems select: [ :each | 
+		  each name asLowercase includesSubstring: pattern asLowercase ]
+]
+
+{ #category : #initialization }
 IceTipWorkingCopyBrowser >> initialExtentForWindow [
 
 	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipWorkingCopyBrowser >> initializePackageList [
+IceTipWorkingCopyBrowser >> initializePackagesTable [
 
-	packageList
+	packagesTable
 		beResizable;
+		addColumn: 
+			(SpStringTableColumn
+				title: 'Name'
+				evaluated: #descriptionWithDecoration);
 		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
-				title: 'Name';
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #statusWithDecoration)
-				title: 'Status';
-				yourself);
-		items: self model packageModels;
+			(SpStringTableColumn
+				title: 'Status'
+				evaluated: #statusWithDecoration);
 		selectIndex: 1;
-		itemFilter: [ :anItem :aPattern | 
-			IceTipPackageFilter new
-				pattern: aPattern;
-				matches: anItem ];
-		contextMenu: [ self buildMenu ]
+		contextMenu: [ self newMenuForList ];
+		contextKeyBindings: self newKeyBindingsForList.
 
 ]
 
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePresenters [
 
-	super initializePresenters.
-	packageList := self newTable.
-	statusBar := self newStatusBar.
+	filterInput := self newTextInput.
+	packagesTable := self newTable.
+	self initializePackagesTable.
+	statusBar := self instantiate: IceTipWorkingCopyStatusBar.
 
-	self initializePackageList.
-	self rebuildStatusBar.
+	self refresh.
 
-	self focusOrder add: packageList
 ]
 
 { #category : #initialization }
@@ -88,44 +108,52 @@ IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
 	super initializeWindow: aSpWindowPresenter.
 
 	aSpWindowPresenter
-		title: self titleForWindow;
 		statusBar: statusBar
-
 ]
 
-{ #category : #'private factory' }
-IceTipWorkingCopyBrowser >> newContextWithSelection: anObject [
+{ #category : #'accessing ui' }
+IceTipWorkingCopyBrowser >> mainList [
+
+	^ packagesTable
+]
+
+{ #category : #commands }
+IceTipWorkingCopyBrowser >> newContextWithSelection: aPackage [
 
 	^ self newContext
-		  packageModel: anObject;
+		  packageModel: aPackage;
 		  yourself
 ]
 
 { #category : #'accessing ui' }
-IceTipWorkingCopyBrowser >> packageList [
+IceTipWorkingCopyBrowser >> packagesTable [
 
-	^ packageList
-]
-
-{ #category : #private }
-IceTipWorkingCopyBrowser >> packageSelected [
-
-	^ packageList selection selectedItem
-]
-
-{ #category : #accessing }
-IceTipWorkingCopyBrowser >> rebuildStatusBar [
-
-	statusBar pushMessage: self model status
+	^ packagesTable
 ]
 
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
 
-	self rebuildToolbar.
-	self rebuildStatusBar.
-	packageList items: self model packageModels.
-	
+	self flag: #todo. "Do we need to rebuild toolbar?"
+"	self rebuildToolbar."
+	self refreshStatusBar.
+	self refreshPackagesTable.
+
+]
+
+{ #category : #private }
+IceTipWorkingCopyBrowser >> refreshPackagesTable [
+
+	packagesTable items: (filterInput text
+		ifEmpty: [ self allListItems ]
+		ifNotEmpty: [ :pattern | self filteredItemsFor: pattern ])
+
+]
+
+{ #category : #private }
+IceTipWorkingCopyBrowser >> refreshStatusBar [
+
+	statusBar model: self model
 ]
 
 { #category : #private }
@@ -139,6 +167,40 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 
 ]
 
+{ #category : #commands }
+IceTipWorkingCopyBrowser >> registerCommandsForSelectionInto: aCommandGroup context: aContext [
+
+	{ 	IceTipBrowsePackageCommand.
+		IceTipBrowseRepositoryPackageVersionCommand.
+		IceTipLoadPackageCommand.
+		IceTipReloadPackageCommand.
+		IceTipUnloadPackageCommand.
+		IceTipUnloadAndRemovePackageCommand.
+		IceTipRemoveFromRepositoryPackageCommand }
+			do: [ :each |
+				aCommandGroup register: 
+					(each forSpecContext: aContext) ].
+
+]
+
+{ #category : #commands }
+IceTipWorkingCopyBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
+
+	{ 	IceTipCommitCommand.
+		IceTipPushCommand.
+		IceTipPullCommand.
+		IceTipFetchCommand.
+		IceTipCheckoutBranchCommand.
+		IceTipMergeCommand.
+		IceTipManageRepositoryCommand.
+		IceTipDiscardChangesCommand.
+		IceTipAddPackageCommand } 
+		do: [ :each |
+			aCommandGroup register: 
+				(each forSpecContext: aContext) ]
+
+]
+
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 
@@ -148,7 +210,7 @@ IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 { #category : #testing }
 IceTipWorkingCopyBrowser >> showsPackageNamed: aString [ 
 	
-	^ packageList items anySatisfy: [ :packageModel | packageModel name = aString ]
+	^ packagesTable items anySatisfy: [ :packageModel | packageModel name = aString ]
 ]
 
 { #category : #initialization }
@@ -160,7 +222,7 @@ IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipWorkingCopyBrowser >> titleForWindow [
 
 	^ 'Working copy of ', self model repositoryName

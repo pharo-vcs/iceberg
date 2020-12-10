@@ -13,7 +13,7 @@ Class {
 		'repository',
 		'isDirty'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -103,6 +103,12 @@ IcePackage >> isLoaded [
 	^ repository workingCopy isLoadedPackageNamed: self packageName
 ]
 
+{ #category : #'accessing-monticello' }
+IcePackage >> isMetacelloBaseline [
+	
+	^ self name beginsWith: self metacelloBaselinePrefix
+]
+
 { #category : #testing }
 IcePackage >> isModified [
 	
@@ -144,6 +150,18 @@ IcePackage >> mcWorkingCopy [
 
 	^ self isLoaded ifTrue: [
 		self mcPackage workingCopy ]
+]
+
+{ #category : #'accessing-monticello' }
+IcePackage >> metacelloBaselineName [
+
+	^ self name allButFirst: self metacelloBaselinePrefix size
+]
+
+{ #category : #'accessing-monticello' }
+IcePackage >> metacelloBaselinePrefix [
+	
+	^ 'BaselineOf'
 ]
 
 { #category : #accessing }

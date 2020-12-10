@@ -55,11 +55,6 @@ IceTipSpPresenter >> eventKeyStrokesForPreviousFocus [
 	^ { Character tab shift asKeyCombination }
 ]
 
-{ #category : #accessing }
-IceTipSpPresenter >> iconNamed: aSymbol [
-	^ self class iconNamed: aSymbol
-]
-
 { #category : #'private factory' }
 IceTipSpPresenter >> newContext [
 	^ self contextClass for: self

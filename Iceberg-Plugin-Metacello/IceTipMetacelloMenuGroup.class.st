@@ -3,35 +3,37 @@ I'm the common group for metacello extensions.
 "
 Class {
 	#name : #IceTipMetacelloMenuGroup,
-	#superclass : #CmdMenuGroup,
+	#superclass : #CmCommandGroup,
 	#category : #'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #accessing }
-IceTipMetacelloMenuGroup >> addItem: aMenuItem [
+{ #category : #convenience }
+IceTipMetacelloMenuGroup class >> commandsThatCanBeExecutedIn: aContext [
 
-		aMenuItem command fillContextMenu: self  using: aMenuItem activator
-]
-
-{ #category : #items }
-IceTipMetacelloMenuGroup >> basicAddItem: aCmdCommandMenuItem [ 
-	super addItem: aCmdCommandMenuItem 
+	^ {  IceTipMetacelloInstallBaselineDefaultCommand.
+		 IceTipMetacelloInstallBaselineGroupCommand }
+			 collect: [ :each | each forSpecContext: aContext ]
+			 thenSelect: [ :each | each canBeExecuted ]
 ]
 
 { #category : #accessing }
-IceTipMetacelloMenuGroup >> description [
+IceTipMetacelloMenuGroup class >> defaultDescription [
 
 	^ 'Metacello install operations'
 ]
 
 { #category : #accessing }
-IceTipMetacelloMenuGroup >> name [
+IceTipMetacelloMenuGroup class >> defaultName [
 
 	^ 'Metacello'
 ]
 
-{ #category : #accessing }
-IceTipMetacelloMenuGroup >> order [
-	"Plugins are SmallInteger maxVal - 2000 .. SmallInteger maxVal"
-	^ SmallInteger maxVal - 1000
+{ #category : #convenience }
+IceTipMetacelloMenuGroup class >> registerIfNotEmptyOn: aSpCommandGroup context: aContext [
+
+	(self commandsThatCanBeExecutedIn: aContext) ifNotEmpty: [ :commands | 
+		| newGroup |
+		newGroup := self new asSpecGroup.
+		commands do: [ :each | newGroup register: each ].
+		aSpCommandGroup register: newGroup ]
 ]

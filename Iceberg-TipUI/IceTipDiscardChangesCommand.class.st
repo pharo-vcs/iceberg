@@ -3,47 +3,45 @@ Command that discard all changes in the repository
 "
 Class {
 	#name : #IceTipDiscardChangesCommand,
-	#superclass : #IceTipRepositoryCommand,
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #testing }
-IceTipDiscardChangesCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext isRepositoryMissing not
-		and: [ aToolContext repositoryModel entity workingCopy referenceCommit isCollection not
-				and: [ aToolContext repositoryModel entity workingCopy referenceCommit isUnknownCommit not ] ]
-]
-
 { #category : #accessing }
-IceTipDiscardChangesCommand class >> defaultHelp [
+IceTipDiscardChangesCommand class >> defaultDescription [
+
 	^ 'Discard all changes in this working copy.'
 ]
 
 { #category : #accessing }
-IceTipDiscardChangesCommand class >> defaultMenuIconName [
-	^ #refresh
-]
+IceTipDiscardChangesCommand class >> defaultName [
 
-{ #category : #accessing }
-IceTipDiscardChangesCommand class >> defaultMenuItemName [
 	^ 'Discard all'
 ]
 
-{ #category : #accessing }
-IceTipDiscardChangesCommand class >> defaultPosition [
-	^ #right
-]
+{ #category : #testing }
+IceTipDiscardChangesCommand >> canBeExecuted [
 
-{ #category : #accessing }
-IceTipDiscardChangesCommand class >> toolbarWorkingCopyActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipWorkingCopyContext
-		order: 10
+	^ self context isRepositoryMissing not and: [ 
+		| aCommit |
+		aCommit := self context repositoryModel entity workingCopy referenceCommit.
+		aCommit isCollection not and: [ aCommit isUnknownCommit not ] ]
 ]
 
 { #category : #execution }
 IceTipDiscardChangesCommand >> execute [
+
 	self repositoryModel discardChanges
+]
+
+{ #category : #accessing }
+IceTipDiscardChangesCommand >> iconName [
+
+	^ #refresh
+]
+
+{ #category : #asserting }
+IceTipDiscardChangesCommand >> shouldBeDisplayedOnRightSideInToolbar [
+
+	^ true
 ]
