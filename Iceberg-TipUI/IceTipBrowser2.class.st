@@ -18,6 +18,17 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #initialization }
+IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
+
+	toolbar := self newToolbarForWindow.
+
+	self newCommandGroupForContext allCommands ifNotEmpty: [
+		aSpWindowPresenter toolbar: toolbar ].
+
+
+]
+
 { #category : #commands }
 IceTipBrowser2 >> contextClass [
 	"Answer the context class to be instantiated and read from my model. See #newContext."
@@ -53,8 +64,9 @@ IceTipBrowser2 >> initialize [
 { #category : #initialization }
 IceTipBrowser2 >> initializeWindow: aSpWindowPresenter [
 
+	self addToolbarIfNotEmptyIn: aSpWindowPresenter.
+
 	aSpWindowPresenter
-		toolbar: (toolbar := self newToolbarForWindow);
 		title: self titleForWindow;
 		windowIcon: self iconForWindow;
 		initialExtent: self initialExtentForWindow
