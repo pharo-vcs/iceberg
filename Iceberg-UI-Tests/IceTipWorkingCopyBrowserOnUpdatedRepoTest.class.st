@@ -14,7 +14,7 @@ IceTipWorkingCopyBrowserOnUpdatedRepoTest >> newFixture [
 IceTipWorkingCopyBrowserOnUpdatedRepoTest >> testStatusBarShowsStatusOfRepository [
 
 	self assert:
-		((presenter statusBar rightPanel presenters
+		((presenter statusBar presenters
 					select: [ :e | e class = SpLabelPresenter ])
 					anySatisfy: [ :aLabel | aLabel label = 'Up to date' ])
 ]

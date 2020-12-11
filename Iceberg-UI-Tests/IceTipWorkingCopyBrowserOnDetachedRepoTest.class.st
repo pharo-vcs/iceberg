@@ -24,7 +24,7 @@ IceTipWorkingCopyBrowserOnDetachedRepoTest >> testStatusBarShowsCommit [
 IceTipWorkingCopyBrowserOnDetachedRepoTest >> testStatusBarShowsStatusOfRepository [
 
 	self assert:
-		((presenter statusBar rightPanel presenters
+		((presenter statusBar presenters
 					select: [ :e | e class = SpLabelPresenter ])
 					anySatisfy: [ :aLabel | aLabel label = 'Detached Working Copy' ])
 ]

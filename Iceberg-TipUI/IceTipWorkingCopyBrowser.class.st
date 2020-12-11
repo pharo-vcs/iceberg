@@ -213,6 +213,12 @@ IceTipWorkingCopyBrowser >> showsPackageNamed: aString [
 	^ packagesTable items anySatisfy: [ :packageModel | packageModel name = aString ]
 ]
 
+{ #category : #'accessing ui' }
+IceTipWorkingCopyBrowser >> statusBar [
+
+	^ statusBar
+]
+
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 

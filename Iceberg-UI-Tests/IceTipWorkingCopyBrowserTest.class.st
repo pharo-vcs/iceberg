@@ -16,8 +16,8 @@ IceTipWorkingCopyBrowserTest class >> isAbstract [
 { #category : #tests }
 IceTipWorkingCopyBrowserTest >> contextMenuForIndex: index [
 
-	presenter packageList selectIndex: index.
-	^ presenter packageList contextMenu value.
+	presenter packagesTable selectIndex: index.
+	^ presenter packagesTable contextMenu value.
 ]
 
 { #category : #running }
@@ -58,5 +58,5 @@ IceTipWorkingCopyBrowserTest >> testPackageHasBrowseRepositoryVersionOption [
 { #category : #tests }
 IceTipWorkingCopyBrowserTest >> testPackageIsShownInList [
 
-	self assert: (presenter packageList items anySatisfy: [ :each | each name = self packageName1 ])
+	self assert: (presenter packagesTable items anySatisfy: [ :each | each name = self packageName1 ])
 ]
