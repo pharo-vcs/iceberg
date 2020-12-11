@@ -23,10 +23,7 @@ IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 
 	toolbar := self newToolbarForWindow.
 
-	self newCommandGroupForContext allCommands ifNotEmpty: [
-		aSpWindowPresenter toolbar: toolbar ].
-
-
+	toolbar isEmpty ifFalse: [ aSpWindowPresenter toolbar: toolbar ]
 ]
 
 { #category : #commands }
