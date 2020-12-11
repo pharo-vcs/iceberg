@@ -8,48 +8,38 @@ Class {
 }
 
 { #category : #accessing }
-IceTipRemoveCredentialCommand class >> browserShortcutActivation [
-	<classAnnotation>
-
-	^ CmdShortcutActivation by: $x meta for: IceTipCredentialContext
-]
-
-{ #category : #testing }
-IceTipRemoveCredentialCommand class >> canBeExecutedInContext: aCredentialContext [
-	
-	^ aCredentialContext credential isDefault not
-]
-
-{ #category : #accessing }
-IceTipRemoveCredentialCommand class >> credentialsBrowserActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 20 for: IceTipCredentialContext
-
-]
-
-{ #category : #accessing }
-IceTipRemoveCredentialCommand class >> defaultHelp [
+IceTipRemoveCredentialCommand class >> defaultDescription [
 
 	^ 'Removes the credential from the store'
 ]
 
 { #category : #accessing }
-IceTipRemoveCredentialCommand class >> defaultMenuIconName [
-
-	^ #remove
-]
-
-{ #category : #accessing }
-IceTipRemoveCredentialCommand class >> defaultMenuItemName [
+IceTipRemoveCredentialCommand class >> defaultName [
 
 	^ 'Remove'
+]
+
+{ #category : #testing }
+IceTipRemoveCredentialCommand >> canBeExecuted [
+
+	^ self context credential isDefault not
 ]
 
 { #category : #execution }
 IceTipRemoveCredentialCommand >> execute [
 	
-	store removeCredential: credential.
-	tool refresh.
+	self store removeCredential: self credential.
+	self tool refresh.
+]
+
+{ #category : #accessing }
+IceTipRemoveCredentialCommand >> iconName [
+
+	^ #remove
+]
+
+{ #category : #accessing }
+IceTipRemoveCredentialCommand >> shortcutKey [
+
+	^ $x meta
 ]

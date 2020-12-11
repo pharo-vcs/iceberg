@@ -68,7 +68,7 @@ IceTipCommand2 >> shortcutKey [
 
 ]
 
-{ #category : #asserting }
+{ #category : #testing }
 IceTipCommand2 >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ false

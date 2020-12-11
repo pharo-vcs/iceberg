@@ -7,39 +7,21 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #activation }
-IceTipAddSshCredentialCommand class >> browserShortcutActivation [
-	<classAnnotation>
-	
-	^ IceTipToolbarActivation 
-		byRootGroupItemFor: IceTipCredentialsStoreContext
-		order: 100
-]
-
 { #category : #accessing }
-IceTipAddSshCredentialCommand class >> defaultHelp [
+IceTipAddSshCredentialCommand class >> defaultDescription [
 	^ 'Add a SSH pair of credential'
 ]
 
 { #category : #accessing }
-IceTipAddSshCredentialCommand class >> defaultMenuIconName [
-	^ #add
-]
-
-{ #category : #accessing }
-IceTipAddSshCredentialCommand class >> defaultMenuItemName [
+IceTipAddSshCredentialCommand class >> defaultName [
 	^ 'SSH Pair'
-]
-
-{ #category : #accessing }
-IceTipAddSshCredentialCommand class >> defaultPosition [
-	^ #right
 ]
 
 { #category : #execution }
 IceTipAddSshCredentialCommand >> execute [
+
 	IceTipAddSSHCredentialsModel new
-		credentialStore: store;
-		tool: tool;
-		openNonModal.
+		credentialStore: self store;
+		tool: self tool;
+		openNonModal
 ]

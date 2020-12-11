@@ -37,7 +37,7 @@ IceTipAddPackageCommand >> shortcutKey [
 	^ $n meta
 ]
 
-{ #category : #asserting }
+{ #category : #testing }
 IceTipAddPackageCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

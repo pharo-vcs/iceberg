@@ -44,6 +44,14 @@ IceTipContext >> readContextParametersFromModel: aModel [
 	self repositoryModel: aModel repositoryModel
 ]
 
+{ #category : #commands }
+IceTipContext >> registerBrowserCommandsOn: aCommandGroup [
+
+	self pluginManager
+		registerBrowserCommandsOn: aCommandGroup
+		context: self
+]
+
 { #category : #accessing }
 IceTipContext >> repositoryModel [
 	^ repositoryModel

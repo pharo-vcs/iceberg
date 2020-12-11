@@ -101,7 +101,7 @@ IceTipBrowser2 >> newCommandGroupForContextWithSelection [
 	aContext := self newContextWithSelection.
 
 	self registerCommandsForSelectionInto: aCommandGroup context: aContext.
-	aContext pluginManager registerBrowserCommandsOn: aCommandGroup context: aContext.
+	aContext registerBrowserCommandsOn: aCommandGroup.
 	self registerInspectInto: aCommandGroup context: aContext.
 
 	aCommandGroup allCommands do: [ :each | each beHiddenWhenCantBeRun ].

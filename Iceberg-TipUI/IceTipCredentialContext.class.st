@@ -28,6 +28,11 @@ IceTipCredentialContext >> item [
 	^ IceTipEntityModel on: credential
 ]
 
+{ #category : #commands }
+IceTipCredentialContext >> registerBrowserCommandsOn: aSpCommandGroup [ 
+	"Nothing to add"
+]
+
 { #category : #accessing }
 IceTipCredentialContext >> repositoryModel [
 	^ nil

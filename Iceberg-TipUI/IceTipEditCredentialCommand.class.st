@@ -10,35 +10,13 @@ Class {
 }
 
 { #category : #accessing }
-IceTipEditCredentialCommand class >> browserShortcutActivation [
-	<classAnnotation>
-
-	^ CmdShortcutActivation by: $e meta for: IceTipCredentialContext
-]
-
-{ #category : #accessing }
-IceTipEditCredentialCommand class >> credentialsBrowserActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 20 for: IceTipCredentialContext
-
-]
-
-{ #category : #accessing }
-IceTipEditCredentialCommand class >> defaultHelp [
+IceTipEditCredentialCommand class >> defaultDescription [
 
 	^ 'Edits the credential from the store'
 ]
 
 { #category : #accessing }
-IceTipEditCredentialCommand class >> defaultMenuIconName [
-
-	^ #edit
-]
-
-{ #category : #accessing }
-IceTipEditCredentialCommand class >> defaultMenuItemName [
+IceTipEditCredentialCommand class >> defaultName [
 
 	^ 'Edit'
 ]
@@ -46,9 +24,21 @@ IceTipEditCredentialCommand class >> defaultMenuItemName [
 { #category : #execution }
 IceTipEditCredentialCommand >> execute [
 
-	credential editModelClass new
-		credentials: credential;
-		credentialStore: store;
-		tool: tool;
+	self credential editModelClass new
+		credentials: self credential;
+		credentialStore: self store;
+		tool: self tool;
 		openNonModal.
+]
+
+{ #category : #accessing }
+IceTipEditCredentialCommand >> iconName [
+
+	^ #edit
+]
+
+{ #category : #accessing }
+IceTipEditCredentialCommand >> shortcutKey [
+
+	^ $e meta
 ]

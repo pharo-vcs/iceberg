@@ -3,7 +3,7 @@ I am the browser used to show a credentials store.
 "
 Class {
 	#name : #IceTipCredentialsStoreBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'credentialsList'
 	],
@@ -13,34 +13,21 @@ Class {
 { #category : #specs }
 IceTipCredentialsStoreBrowser class >> defaultSpec [
 	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add: #toolbar expand: false fill: true padding: 0;
-		add: #credentialsList;
-		yourself 
+		  add: #credentialsList;
+		  yourself
 ]
 
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> contextClass [
+
 	^ IceTipCredentialsStoreContext
-]
-
-{ #category : #'private factory' }
-IceTipCredentialsStoreBrowser >> createCommandContext [
-	^ self newContextWithSelection: self credentialSelected.
-]
-
-{ #category : #'private factory' }
-IceTipCredentialsStoreBrowser >> createCommandContextForSelection: selectedItems [
-	^ self newContextWithSelection: selectedItems
-]
-
-{ #category : #accessing }
-IceTipCredentialsStoreBrowser >> credentialSelected [
-^	credentialsList selection selectedItem
 ]
 
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> credentialsList [
+
 	^ credentialsList
 ]
 
@@ -54,6 +41,7 @@ IceTipCredentialsStoreBrowser >> initialize [
 
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initializeCredentialsList [
+
 	credentialsList
 		addColumn:
 			(SpStringTableColumn new
@@ -62,27 +50,34 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 				width: 100 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
-			(SpStringTableColumn new
-				title: 'Type';
-				evaluated: #type;
+			((SpStringTableColumn
+				title: 'Type'
+				evaluated: #type)
 				width: 75 * self currentWorld displayScaleFactor;
 				yourself);
 		addColumn:
-			(SpStringTableColumn new
-				title: 'Description';
-				evaluated: #description;
-				yourself);
+			(SpStringTableColumn
+				title: 'Description'
+				evaluated: #description);
 		items: self model allCredentials;
 		selectIndex: 1;
-		contextMenu: [ self buildMenu]
+		contextMenu: [ self newMenuForList ];
+		contextKeyBindings: self newKeyBindingsForList.
+
 ]
 
 { #category : #initialization }
-IceTipCredentialsStoreBrowser >> initializeWidgets [
-	super initializeWidgets.
+IceTipCredentialsStoreBrowser >> initializePresenters [
+
 	credentialsList := self newTable.
 	self initializeCredentialsList.
-	self focusOrder add: credentialsList
+
+]
+
+{ #category : #accessing }
+IceTipCredentialsStoreBrowser >> mainList [
+
+	^ credentialsList
 ]
 
 { #category : #'private factory' }
@@ -101,9 +96,31 @@ IceTipCredentialsStoreBrowser >> refresh [
 	credentialsList items: self model allCredentials
 ]
 
+{ #category : #commands }
+IceTipCredentialsStoreBrowser >> registerCommandsForSelectionInto: aCommandGroup context: aContext [
+
+	{ 	IceTipEditCredentialCommand.
+		IceTipRemoveCredentialCommand }
+			do: [ :each |
+				aCommandGroup register: 
+					(each forSpecContext: aContext) ]
+
+]
+
+{ #category : #commands }
+IceTipCredentialsStoreBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
+
+	{	IceTipAddPlainTextCredentialCommand.
+		IceTipAddSshCredentialCommand.
+		IceTipAddTokenCredentialCommand }
+			do: [ :each |
+				aCommandGroup register: (each forSpecContext: aContext) ]
+]
+
 { #category : #api }
-IceTipCredentialsStoreBrowser >> title [
+IceTipCredentialsStoreBrowser >> titleForWindow [
+
 	^ model isCurrent
-		ifTrue: [ 'Current Iceberg credentials' ]
-		ifFalse: [ 'Credentials of ' , model printString ]
+		  ifTrue: [ 'Current Iceberg credentials' ]
+		  ifFalse: [ 'Credentials of ' , model printString ]
 ]

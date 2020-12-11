@@ -3,17 +3,30 @@ I am the abstract class of all the general commands in the credentials list.
 "
 Class {
 	#name : #IceTipAbstractCredentialStoreCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'store',
-		'tool'
-	],
+	#superclass : #IceTipCommand2,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
+{ #category : #initialization }
+IceTipAbstractCredentialStoreCommand >> iconName [
+
+	^ #add
+]
+
+{ #category : #testing }
+IceTipAbstractCredentialStoreCommand >> shouldBeDisplayedOnRightSideInToolbar [
+
+	^ true
+]
+
 { #category : #execution }
-IceTipAbstractCredentialStoreCommand >> readParametersFromContext: aToolContext [
-	
-	store := aToolContext store.
-	tool := aToolContext tool
+IceTipAbstractCredentialStoreCommand >> store [
+
+	^ self context store
+]
+
+{ #category : #execution }
+IceTipAbstractCredentialStoreCommand >> tool [
+
+	^ self context tool
 ]

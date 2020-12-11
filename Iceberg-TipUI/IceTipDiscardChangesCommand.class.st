@@ -40,7 +40,7 @@ IceTipDiscardChangesCommand >> iconName [
 	^ #refresh
 ]
 
-{ #category : #asserting }
+{ #category : #testing }
 IceTipDiscardChangesCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

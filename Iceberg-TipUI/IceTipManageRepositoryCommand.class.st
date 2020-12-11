@@ -50,7 +50,7 @@ IceTipManageRepositoryCommand >> shortcutKey [
 	^ $r meta
 ]
 
-{ #category : #asserting }
+{ #category : #testing }
 IceTipManageRepositoryCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true
