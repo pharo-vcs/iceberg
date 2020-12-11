@@ -1,6 +1,6 @@
 Extension { #name : #SpToolbarButtonPresenter }
 
-{ #category : #'*Iceberg-Spec2-Transition' }
+{ #category : #'*Iceberg-TipUI' }
 SpToolbarButtonPresenter >> hasBadge [
 	^ badge isNotNil
 ]
