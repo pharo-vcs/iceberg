@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-TipUI'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #'instance creation' }

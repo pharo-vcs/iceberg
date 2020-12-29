@@ -18,6 +18,66 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipBrowser2 class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup [
+
+	| generalCommandGroup selectionCommandGroup selectionExtraCommandGroup |
+	selectionCommandGroup :=
+		(CmCommandGroup named: self selectionCommandGroupName) asSpecGroup.
+	selectionExtraCommandGroup :=
+		(CmCommandGroup named: self selectionExtraCommandGroupName) asSpecGroup.
+	generalCommandGroup := 
+		(CmCommandGroup named: self generalCommandGroupName) asSpecGroup.
+
+	aCommandGroup
+		register: selectionCommandGroup;
+		register: generalCommandGroup.
+		
+	self
+		buildSelectionCommandGroupWith: presenter for: selectionCommandGroup;
+		buildSelectionExtraCommandGroupWith: presenter for: selectionExtraCommandGroup;
+		buildGeneralCommandGroupWith: presenter for: generalCommandGroup.
+
+	selectionCommandGroup register: selectionExtraCommandGroup.
+
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	self subclassResponsibility
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	self subclassResponsibility
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipInspectCommand forSpec
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> generalCommandGroupName [
+
+	^ 'General'
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> selectionCommandGroupName [
+
+	^ 'Selection'
+]
+
+{ #category : #commands }
+IceTipBrowser2 class >> selectionExtraCommandGroupName [
+
+	^ 'Extra'
+]
+
 { #category : #initialization }
 IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 
@@ -27,16 +87,32 @@ IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 ]
 
 { #category : #commands }
-IceTipBrowser2 >> contextClass [
-	"Answer the context class to be instantiated and read from my model. See #newContext."
+IceTipBrowser2 >> connectPresenters [
 
-	^ self subclassResponsibility
+	self mainList whenSelectionChangedDo: [
+		| rootGroup |
+		rootGroup := self rootCommandsGroup.
+		IceTipCleanCommandGroupVisitor new visit: rootGroup.
+
+		rootGroup installShortcutsIn: self.
+		
+		self mainList contextMenuFromCommandsGroup:
+			(rootGroup / self class selectionCommandGroupName)
+		].
+
+
 ]
 
 { #category : #initialization }
 IceTipBrowser2 >> defaultKeyboardFocus [
 
 	^ self mainList
+]
+
+{ #category : #testing }
+IceTipBrowser2 >> hasSelectedItem [
+	
+	^ self mainList selection isEmpty not
 ]
 
 { #category : #initialization }
@@ -89,77 +165,14 @@ IceTipBrowser2 >> model: anObject [
 ]
 
 { #category : #commands }
-IceTipBrowser2 >> newCommandGroupForContext [
-
-	| aContext aCommandGroup |
-	aCommandGroup := CmCommandGroup forSpec.
-	aContext := self newContext.
-
-	self registerToolbarCommandsInto: aCommandGroup context: aContext.
-	
-	^ aCommandGroup
-
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newCommandGroupForContextWithSelection [
-
-	| aContext aCommandGroup |
-	aCommandGroup := CmCommandGroup forSpec.
-	aCommandGroup beRoot.
-	aContext := self newContextWithSelection.
-
-	self registerCommandsForSelectionInto: aCommandGroup context: aContext.
-	aContext registerBrowserCommandsOn: aCommandGroup.
-	self registerInspectInto: aCommandGroup context: aContext.
-
-	aCommandGroup allCommands do: [ :each | each beHiddenWhenCantBeRun ].
-	
-	^ aCommandGroup
-
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newContext [
-	"Answer a context from my model."
-
-	^ (self contextClass for: self)
-		readContextParametersFromModel: self model;
-		yourself
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newContextWithSelection [
-
-	^ self newContextWithSelection: self selectedItem
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newContextWithSelection: anObject [
-	"Answer a context that, if corresponds, indicated the current selection (e.g. the item selected in a list or table in this presenter)."
-
-	^ self newContext
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newKeyBindingsForList [
-
-	^ self newCommandGroupForContextWithSelection asKMCategory
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> newMenuForList [
-
-	^ self newCommandGroupForContextWithSelection asMenuPresenter
-]
-
-{ #category : #commands }
 IceTipBrowser2 >> newToolbarForWindow [
 
-	^ self newCommandGroupForContext asToolbarPresenterWith: [ :presenter | 
-		  presenter
-			  displayMode: SpToolbarDisplayMode modeIconAndLabel;
-			  addStyle: 'stToolbar' ]
+	^ (self rootCommandsGroup / self class generalCommandGroupName)
+		  beRoot;
+		  asToolbarPresenterWith: [ :presenter | 
+			  presenter
+				  displayMode: SpToolbarDisplayMode modeIconAndLabel;
+				  addStyle: 'stToolbar' ]
 ]
 
 { #category : #accessing }
@@ -167,32 +180,16 @@ IceTipBrowser2 >> refresh [
 	"Update the UI elements given a possible update in the model."
 ]
 
-{ #category : #commands }
-IceTipBrowser2 >> registerCommandsForSelectionInto: aCommandGroup context: aContext [
-	"Register list context menu commands into the received CmCommandGroup."
+{ #category : #accessing }
+IceTipBrowser2 >> repositoryModel [
+	"Answer the IceTipRepositoryModel associated to this presenter."
 
-	^ self subclassResponsibility
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> registerInspectInto: aCommandGroup context: aContext [
-
-	aCommandGroup
-		register: ((CmCommandGroup named: 'Extra') asSpecGroup
-				register: (IceTipInspectCommand forSpecContext: aContext);
-				yourself)
-
-]
-
-{ #category : #commands }
-IceTipBrowser2 >> registerToolbarCommandsInto: aCommandGroup context: aContext [
-	"Register toolbar commands into the received CmCommandGroup."
-
-	^ self subclassResponsibility
+	^ self model repositoryModel
 ]
 
 { #category : #commands }
 IceTipBrowser2 >> selectedItem [
+	"Answer the object selected in the main list of this browser. The answer is nil when there isn't a selection."
 
 	^ self mainList selection selectedItem
 ]
@@ -211,7 +208,8 @@ IceTipBrowser2 >> subscribeToAnnouncements [
 IceTipBrowser2 >> titleForWindow [
 	"The title to use when the presenter is opened as a window."
 	
-	^ ''
+	^ self subclassResponsibility
+
 ]
 
 { #category : #'accessing ui' }

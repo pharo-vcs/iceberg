@@ -22,23 +22,17 @@ IceTipInspectCommand class >> defaultName [
 { #category : #execution }
 IceTipInspectCommand >> canBeExecuted [
 
-	^ self item notNil
+	^ self context hasSelectedItem
 ]
 
 { #category : #execution }
 IceTipInspectCommand >> execute [
 
-	self item entity inspect
+	self item inspect
 ]
 
 { #category : #accessing }
 IceTipInspectCommand >> iconName [
 
 	^ #glamorousInspect
-]
-
-{ #category : #execution }
-IceTipInspectCommand >> item [
-
-	^ self context item
 ]

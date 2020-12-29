@@ -49,18 +49,13 @@ IceTipGitHubPullRequestListBrowser class >> taskbarIcon [
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> connectPresenters [
 
+	super connectPresenters.
 	self pullRequests
 		activateOnDoubleClick;
 		whenActivatedDo: [ :selection | self strongSelection: selection ];
 		whenSelectionChangedDo: [ :selection |
 			self updateSelectedPullRequest: selection ].
 
-]
-
-{ #category : #accessing }
-IceTipGitHubPullRequestListBrowser >> contextClass [
-
-	^ IceTipPullRequestsListContext
 ]
 
 { #category : #accessing }
@@ -89,6 +84,7 @@ IceTipGitHubPullRequestListBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initializePresenters [
 
+	super initializePresenters.
 	pullRequests := self newTable.
 	details := self instantiate: IceGitHubPullRequestDetailModel.
 	
@@ -127,18 +123,10 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 
 ]
 
-{ #category : #initialization }
+{ #category : #'accessing ui' }
 IceTipGitHubPullRequestListBrowser >> mainList [
 
 	^ pullRequests
-]
-
-{ #category : #private }
-IceTipGitHubPullRequestListBrowser >> newContextWithSelection: anObject [
-
-	^ self newContext 
-		item: anObject;
-		yourself
 ]
 
 { #category : #accessing }
@@ -183,7 +171,7 @@ IceTipGitHubPullRequestListBrowser >> strongSelection: anEvent [
 { #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> titleForWindow [
 
-	^ 'Pull requests on {1} ({2})' format: { self remote name. self remote url}
+	^ 'Pull requests on {1} ({2})' format: { self remote name. self remote url }
 ]
 
 { #category : #private }

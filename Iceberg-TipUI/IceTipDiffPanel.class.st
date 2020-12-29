@@ -8,11 +8,11 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : #IceTipDiffPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'model',
-		'changeList',
-		'diffPanel'
+		'diffPanel',
+		'iceNodesTree'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
@@ -22,7 +22,7 @@ IceTipDiffPanel class >> defaultSpec [
 	<spec: #default>
 	^ SpPanedLayout newHorizontal
 		position: 25 percent;
-		add: #changeList;
+		add: #iceNodesTree;
 		add: #diffPanel;
 		yourself
 ]
@@ -39,18 +39,13 @@ IceTipDiffPanel class >> title [
 
 { #category : #accessing }
 IceTipDiffPanel >> basicRefresh [
+
 	self resetDiffContents.
-	changeList roots: self model treeRoots.
+	iceNodesTree roots: self model treeRoots.
 
 	self flag: #fix. "Low level access"
 	self defer: [
-		changeList adapter widget dataSource expandAll ]
-]
-
-{ #category : #accessing }
-IceTipDiffPanel >> buildMenu [
-	^ (CmdContextMenuActivation
-		buildMenuInContext: self createCommandContext) asSpMenuPresenter
+		iceNodesTree adapter widget dataSource expandAll ]
 ]
 
 { #category : #initialization }
@@ -61,35 +56,18 @@ IceTipDiffPanel >> changeDescriptionColumn [
 		  yourself
 ]
 
-{ #category : #'accessing ui' }
-IceTipDiffPanel >> changeList [
-	^ changeList
-]
-
-{ #category : #'accessing ui' }
-IceTipDiffPanel >> changeList: anObject [
-	changeList := anObject
-]
-
 { #category : #initialization }
 IceTipDiffPanel >> changeListColumn [
 
-	^ self changeDescriptionColumn
-]
+	^ SpCompositeTableColumn new
+		addColumn:
+			(SpImageTableColumn new
+				width: 20;
+				evaluated: [ :each | each value icon ];
+				yourself);
+		addColumn: self changeDescriptionColumn;
+		yourself
 
-{ #category : #private }
-IceTipDiffPanel >> changeSelected [
-	^ changeList selectedItem
-]
-
-{ #category : #accessing }
-IceTipDiffPanel >> contextClass [
-	^ IceTipDiffContext
-]
-
-{ #category : #accessing }
-IceTipDiffPanel >> contextSelection [ 
-	^ self changeSelected
 ]
 
 { #category : #private }
@@ -106,56 +84,49 @@ IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 
 { #category : #'accessing ui' }
 IceTipDiffPanel >> diffPanel [
+
 	^ diffPanel
 ]
 
 { #category : #'accessing ui' }
-IceTipDiffPanel >> diffPanel: anObject [
-	diffPanel := anObject
-]
+IceTipDiffPanel >> iceNodesTree [
 
-{ #category : #initialization }
-IceTipDiffPanel >> initializeChangeList [
-	changeList
-		addColumn: self changeListColumn;
-		children: [ :each | each children ];
-		roots: self model treeRoots;
-		"The inversion below allow to display change properly in the SpDiffPresenter"
-			whenSelectionChangedDo: [ self selectionChanged ];
-			contextMenu: [ self buildMenu ].
-			
-	changeList whenBuiltDo: [ :ann | self basicRefresh ]
+	^ iceNodesTree
 ]
 
 { #category : #initialization }
 IceTipDiffPanel >> initializeDiffPanel [
+
 	diffPanel showOptions: false
 ]
 
 { #category : #initialization }
-IceTipDiffPanel >> initializeWidgets [
-	changeList := self newTreeTable.
+IceTipDiffPanel >> initializePresenters [
+
+	super initializePresenters.
+	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.
 
-	self initializeChangeList.
+	self initializeTree.
 	self initializeDiffPanel.
 
-"	changeList widget
-		onAnnouncement: FTSelectionChanged
-		send: #selectionChanged:
-		to: self."
+	self basicRefresh
 
-"	self whenBuiltDo: [ :ann | self addShortcutsTo: ann widget ]."
+]
 
-	self focusOrder
-		add: changeList;
-		add: diffPanel
+{ #category : #initialization }
+IceTipDiffPanel >> initializeTree [
+
+	iceNodesTree
+		addColumn: self changeListColumn;
+		children: [ :each | each children ];
+		whenSelectionChangedDo: [ self selectionChanged ].
+
 ]
 
 { #category : #accessing }
-IceTipDiffPanel >> leftLabel: aString [ 
-	"This allows us to be compatible with old pharo versions"
-	(diffPanel respondsTo: #leftLabel:) ifFalse: [ ^ self ].
+IceTipDiffPanel >> leftLabel: aString [
+
 	diffPanel leftLabel: aString.
 ]
 
@@ -166,48 +137,36 @@ IceTipDiffPanel >> model [
 ]
 
 { #category : #accessing }
-IceTipDiffPanel >> model: anObject [
-	model := anObject.
-	self refresh
-]
-
-{ #category : #'private factory' }
-IceTipDiffPanel >> newContext [
-	^ super newContext
-	repositoryModel: self model repositoryModel;
-	yourself
-]
-
-{ #category : #'private factory' }
-IceTipDiffPanel >> newContextWithSelection: anObject [
-	^ self newContext
-	item: anObject;
-	yourself
-]
-
-{ #category : #accessing }
 IceTipDiffPanel >> refresh [
+
 	self model reset.
 	self basicRefresh
-	
+
 ]
 
 { #category : #private }
 IceTipDiffPanel >> resetDiffContents [
+
 	self diffContentsLeft: '' right: ''
 ]
 
 { #category : #accessing }
-IceTipDiffPanel >> rightLabel: aString [ 
-	"This allows us to be compatible with old pharo versions"
-	(diffPanel respondsTo: #leftLabel:) ifFalse: [ ^ self ].
+IceTipDiffPanel >> rightLabel: aString [
+
 	diffPanel rightLabel: aString
+]
+
+{ #category : #accessing }
+IceTipDiffPanel >> selectedItem [
+
+	^ iceNodesTree selectedItem
 ]
 
 { #category : #'event handling' }
 IceTipDiffPanel >> selectionChanged [
+
 	| itemValue |
-	itemValue := changeList selectedItem value.
+	itemValue := iceNodesTree selectedItem value.
 	itemValue ifNotNil: [ 
 		self
 			diffContentsLeft: itemValue rightContents
@@ -216,17 +175,21 @@ IceTipDiffPanel >> selectionChanged [
 
 { #category : #'event handling' }
 IceTipDiffPanel >> selectionChanged: ann [
+
 	| element |
+	self flag: #todo. "FIX low level accesds"
 	(ann newSelectedIndexes reject: [ :each | each = 0 ])
 		ifNotEmpty: [ :indexes | 
-			element := changeList widget dataSource realElementAt: indexes first.
+			element := iceNodesTree widget dataSource realElementAt: indexes first.
 			self
 				diffContentsLeft: element value rightContents
 				right: element value leftContents ]
 		ifEmpty: [ self resetDiffContents ]
+
 ]
 
 { #category : #initialization }
 IceTipDiffPanel >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]

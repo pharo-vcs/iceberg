@@ -79,12 +79,6 @@ IceTipOptionDialog >> emptyPanel [
 		yourself	
 ]
 
-{ #category : #initialization }
-IceTipOptionDialog >> giveFocusToNextFrom: aModel [
-
-	super giveFocusToNextFrom: aModel
-]
-
 { #category : #accessing }
 IceTipOptionDialog >> initialExtent [
 	^ (600@300) scaledByDisplayScaleFactor

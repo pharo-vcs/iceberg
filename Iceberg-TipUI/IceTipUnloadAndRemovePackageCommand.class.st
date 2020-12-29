@@ -8,7 +8,7 @@ Right now this is only shown for loaded packages.
 "
 Class {
 	#name : #IceTipUnloadAndRemovePackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -27,7 +27,7 @@ IceTipUnloadAndRemovePackageCommand class >> defaultName [
 { #category : #testing }
 IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 
-	^ self packageModel isLoaded
+	^ self isPackageLoaded
 ]
 
 { #category : #execution }

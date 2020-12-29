@@ -28,7 +28,7 @@ IceTipPushCommand >> badge [
 		self repositoryModel isMissing not]) ifTrue: [
 		result := self repositoryModel numberOfOutgoingCommits.
 		"If zero, reset to nil to make it dissapear in Spec."
-		result isZero ifTrue: [ result := nil ] ].
+		result = '0' ifTrue: [ result := nil ] ].
 
 	^ result
 

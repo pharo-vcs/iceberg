@@ -4,21 +4,33 @@ My children define the real behavior, and they need to implement #execute.
 "
 Class {
 	#name : #IceGitHubCommand,
-	#superclass : #IceTipCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#superclass : #IceTipCommand2,
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #testing }
-IceGitHubCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext repositoryModel entity remotes anySatisfy: [ :remote | remote url includesSubstring: 'github.com' ]
+IceGitHubCommand >> canBeExecuted [
+
+	^ self remote url includesSubstring: 'github.com'
 ]
 
-{ #category : #execute }
-IceGitHubCommand >> execute [ 
-	self subclassResponsibility
+{ #category : #accessing }
+IceGitHubCommand >> remote [
+
+	^ self context entity
+
+]
+
+{ #category : #accessing }
+IceGitHubCommand >> remoteModel [
+
+	^ self context
+
 ]
 
 { #category : #accessing }
 IceGitHubCommand >> repository [
-	^ repositoryModel entity
+
+	^ self remoteModel localRepository
+
 ]

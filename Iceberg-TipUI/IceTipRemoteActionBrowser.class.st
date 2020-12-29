@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	"No commands to add"
+]
+
 { #category : #specs }
 IceTipRemoteActionBrowser class >> defaultSpec [
 	<spec: #default>
@@ -30,15 +36,22 @@ IceTipRemoteActionBrowser >> initializePresenters [
 	remotePanel := self
 		instantiate: IceTipSelectRemotePresenter
 		on: self model.
+	remotePanel label: self labelForRemotePanel.
 	remotePanel remoteList
 		whenSelectedItemChangedDo: [ :remoteModel | self moveToRemote: remoteModel ].
 
 ]
 
+{ #category : #initialization }
+IceTipRemoteActionBrowser >> labelForRemotePanel [
+
+	^ self subclassResponsibility
+]
+
 { #category : #'accessing ui' }
 IceTipRemoteActionBrowser >> mainList [
 
-	^ commitsPanel
+	^ commitsPanel commitList
 ]
 
 { #category : #'accessing ui' }

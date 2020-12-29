@@ -13,28 +13,29 @@ Class {
 	#name : #IceTipDiffSelectingPanel,
 	#superclass : #IceTipDiffPanel,
 	#instVars : [
-		'selectedItems'
+		'checkedIceNodes'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #initialization }
 IceTipDiffSelectingPanel >> changeListColumn [
+
 	^ SpCompositeTableColumn new
 		addColumn:
 			(SpCheckBoxTableColumn new
 				width: 20;
-				evaluated: [ :item | selectedItems includes: item ];
-				onActivation: [ :item | 
-					selectedItems add: item.
-					item children isEmptyOrNil
-						ifFalse: [ item allChildrenDo: [ :child | selectedItems add: child ].
+				evaluated: [ :iceNode | checkedIceNodes includes: iceNode ];
+				onActivation: [ :iceNode | 
+					checkedIceNodes add: iceNode.
+					iceNode children isEmptyOrNil
+						ifFalse: [ iceNode allChildrenDo: [ :child | checkedIceNodes add: child ].
 							self refreshCheckbox ] ];
-				onDeactivation: [ :item | 
-					selectedItems remove: item.
-					item children isEmptyOrNil
-						ifFalse: [ item
-								allChildrenDo: [ :child | selectedItems remove: child ifAbsent: [  ] ].
+				onDeactivation: [ :iceNode | 
+					checkedIceNodes remove: iceNode.
+					iceNode children isEmptyOrNil
+						ifFalse: [ iceNode
+								allChildrenDo: [ :child | checkedIceNodes remove: child ifAbsent: [  ] ].
 							self refreshCheckbox. ] ]);
 		addColumn:
 			(SpImageTableColumn new
@@ -47,27 +48,30 @@ IceTipDiffSelectingPanel >> changeListColumn [
 
 { #category : #private }
 IceTipDiffSelectingPanel >> entryRemoved: ann [
+
 	self refresh
 ]
 
 { #category : #initialization }
 IceTipDiffSelectingPanel >> initialize [
+
 	super initialize.
 	self subscribeToAnnouncements.
-	selectedItems := Set new.
-	self model treeRoots
-		do: [ :root | 
-			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child.]]
+	checkedIceNodes := Set new.
+	self model treeRoots do: [ :root |
+		checkedIceNodes add: root.
+		root allChildrenDo: [ :child | checkedIceNodes add: child ] ]
+
 ]
 
 { #category : #accessing }
 IceTipDiffSelectingPanel >> refresh [
+
 	super refresh.
 	self model treeRoots
 		do: [ :root | 
-			selectedItems add: root.
-			root allChildrenDo: [ :child | selectedItems add: child ] ]
+			checkedIceNodes add: root.
+			root allChildrenDo: [ :child | checkedIceNodes add: child ] ]
 ]
 
 { #category : #accessing }
@@ -75,16 +79,18 @@ IceTipDiffSelectingPanel >> refreshCheckbox [
 	"Refresh after a checkbox state has changed. When a node with children changes this state, all children might change too. That's the reason of this special refresh. When a leave node changed such state, this refresh is redundant."
 
 	self flag: #fix. "Low level access"
-	changeList adapter widget refresh
+	iceNodesTree adapter widget refresh
 ]
 
 { #category : #accessing }
 IceTipDiffSelectingPanel >> selectedItems [
-	^selectedItems
+
+	^ checkedIceNodes
 ]
 
 { #category : #initialize }
 IceTipDiffSelectingPanel >> subscribeToAnnouncements [
+
 	self announcer
 		when: IceTipDiffEntryRemoved 
 		send: #entryRemoved:

@@ -5,7 +5,7 @@ I'm a browser to commit changes to a repository.
 "
 Class {
 	#name : #IceTipCommitBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'diffPanel',
 		'commentPanel',
@@ -14,65 +14,81 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipCommitBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipRefreshCommitCommand forSpec
+]
+
+{ #category : #commands }
+IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipBrowseCommand.
+		IceTipRevertChangeCommand }
+			do: [ :each |
+				aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipCommitBrowser class >> defaultSpec [
+
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #toolbar expand: false fill: true padding: 0;
-		add:
-			(SpPanedLayout newVertical
-				add: #diffPanel;
-				add: #commentPanel;
-				yourself);
-			yourself
+	^ SpPanedLayout newVertical
+		  add: #diffPanel;
+		  add: #commentPanel;
+		  yourself
 ]
 
 { #category : #'instance creation' }
 IceTipCommitBrowser class >> onRepository: aRepository [
+
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : #actions }
 IceTipCommitBrowser >> accept [
+
 	^ self doCommit
 ]
 
 { #category : #'accessing ui' }
 IceTipCommitBrowser >> commentPanel [
+
 	^ commentPanel
 ]
 
 { #category : #'accessing ui' }
-IceTipCommitBrowser >> commentPanel: anObject [
-	commentPanel := anObject
-]
+IceTipCommitBrowser >> commentPanel: aSpPresenter [
 
-{ #category : #accessing }
-IceTipCommitBrowser >> contextClass [
-	^ IceTipCommitContext
+	commentPanel := aSpPresenter
 ]
 
 { #category : #'accessing ui' }
 IceTipCommitBrowser >> diffPanel [
+
 	^ diffPanel
 ]
 
 { #category : #'accessing ui' }
-IceTipCommitBrowser >> diffPanel: anObject [
-	diffPanel := anObject
+IceTipCommitBrowser >> diffPanel: aSpPresenter [
+
+	diffPanel := aSpPresenter
 ]
 
 { #category : #actions }
 IceTipCommitBrowser >> doCommit [
+
 	self
 		doCommit: diffPanel selectedItems
 		message: commentPanel message
 		pushing: commentPanel isPushing
-		saving: commentPanel isSaving 
+		saving: commentPanel isSaving
 ]
 
 { #category : #actions }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
+
 	self model
 		commit:
 			(IceTipCommitAction new
@@ -88,7 +104,8 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 ]
 
 { #category : #accessing }
-IceTipCommitBrowser >> initialExtent [
+IceTipCommitBrowser >> initialExtentForWindow [
+
 	^ (800@600) scaledByDisplayScaleFactor
 ]
 
@@ -100,8 +117,9 @@ IceTipCommitBrowser >> initialize [
 ]
 
 { #category : #initialization }
-IceTipCommitBrowser >> initializeWidgets [
-	super initializeWidgets.
+IceTipCommitBrowser >> initializePresenters [
+
+	super initializePresenters.
 	
 	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
 	diffPanel leftLabel: 'Repository'.
@@ -110,21 +128,27 @@ IceTipCommitBrowser >> initializeWidgets [
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
 	
-	self addShortcutsTo: commentPanel commentText.
+"	self addShortcutsTo: commentPanel commentText.
 	self addShortcutsTo: self.
+"
+]
 
-	self focusOrder 
-		add: commentPanel;
-		add: diffPanel
+{ #category : #'accessing ui' }
+IceTipCommitBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ diffPanel iceNodesTree
 ]
 
 { #category : #accessing }
 IceTipCommitBrowser >> refresh [
+
 	diffPanel refresh
 ]
 
 { #category : #private }
 IceTipCommitBrowser >> refreshWhenRepository: ann [
+
 	(self model isModelOf: ann repository)
 		ifFalse: [ ^ self ].
 	self model reset.
@@ -139,17 +163,19 @@ IceTipCommitBrowser >> saveAction: anAction [
 
 { #category : #initialization }
 IceTipCommitBrowser >> subscribeToAnnouncements [
-	self announcer 
-		when: IceTipDiffRefreshed 
-		send: #refreshWhenRepository: 
+
+	self announcer
+		when: IceTipDiffRefreshed
+		send: #refreshWhenRepository:
 		to: self
 ]
 
 { #category : #accessing }
-IceTipCommitBrowser >> title [
+IceTipCommitBrowser >> titleForWindow [
+
 	^ 'Commit on {1} branch {2}' format: { 
-		self model name. 
-		self model branchName } 
+			  self model name.
+			  self model branchName }
 ]
 
 { #category : #private }

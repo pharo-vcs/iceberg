@@ -24,8 +24,8 @@ IceTipEditCredentialCommand class >> defaultName [
 { #category : #execution }
 IceTipEditCredentialCommand >> execute [
 
-	self credential editModelClass new
-		credentials: self credential;
+	self item editModelClass new
+		credentials: self item;
 		credentialStore: self store;
 		tool: self tool;
 		openNonModal.

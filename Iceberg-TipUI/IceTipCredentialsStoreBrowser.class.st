@@ -10,6 +10,26 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
+{ #category : #commands }
+IceTipCredentialsStoreBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	{	IceTipAddPlainTextCredentialCommand.
+		IceTipAddSshCredentialCommand.
+		IceTipAddTokenCredentialCommand }
+			do: [ :each |
+				aCommandGroup register: each forSpec ]
+]
+
+{ #category : #commands }
+IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipEditCredentialCommand.
+		IceTipRemoveCredentialCommand }
+			do: [ :each |
+				aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipCredentialsStoreBrowser class >> defaultSpec [
 	<spec: #default>
@@ -17,12 +37,6 @@ IceTipCredentialsStoreBrowser class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		  add: #credentialsList;
 		  yourself
-]
-
-{ #category : #accessing }
-IceTipCredentialsStoreBrowser >> contextClass [
-
-	^ IceTipCredentialsStoreContext
 ]
 
 { #category : #accessing }
@@ -58,12 +72,7 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 		addColumn:
 			(SpStringTableColumn
 				title: 'Description'
-				evaluated: #description);
-		items: self model allCredentials;
-		selectIndex: 1;
-		contextMenu: [ self newMenuForList ];
-		contextKeyBindings: self newKeyBindingsForList.
-
+				evaluated: #description)
 ]
 
 { #category : #initialization }
@@ -72,22 +81,13 @@ IceTipCredentialsStoreBrowser >> initializePresenters [
 	credentialsList := self newTable.
 	self initializeCredentialsList.
 
+	self refresh.
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipCredentialsStoreBrowser >> mainList [
 
 	^ credentialsList
-]
-
-{ #category : #'private factory' }
-IceTipCredentialsStoreBrowser >> newContextWithSelection: anObject [ 
-
-	^ IceTipCredentialContext new
-		store: model;
-		credential: anObject;
-		tool: self;
-		yourself
 ]
 
 { #category : #accessing }
@@ -96,25 +96,10 @@ IceTipCredentialsStoreBrowser >> refresh [
 	credentialsList items: self model allCredentials
 ]
 
-{ #category : #commands }
-IceTipCredentialsStoreBrowser >> registerCommandsForSelectionInto: aCommandGroup context: aContext [
+{ #category : #accessing }
+IceTipCredentialsStoreBrowser >> store [
 
-	{ 	IceTipEditCredentialCommand.
-		IceTipRemoveCredentialCommand }
-			do: [ :each |
-				aCommandGroup register: 
-					(each forSpecContext: aContext) ]
-
-]
-
-{ #category : #commands }
-IceTipCredentialsStoreBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
-
-	{	IceTipAddPlainTextCredentialCommand.
-		IceTipAddSshCredentialCommand.
-		IceTipAddTokenCredentialCommand }
-			do: [ :each |
-				aCommandGroup register: (each forSpecContext: aContext) ]
+	^ self model
 ]
 
 { #category : #api }

@@ -53,11 +53,6 @@ IceTipRepositoryBrowser >> contextClass [
 ]
 
 { #category : #accessing }
-IceTipRepositoryBrowser >> createCommandContext [
-	^ self newContextWithSelection: self branchSelected
-]
-
-{ #category : #accessing }
 IceTipRepositoryBrowser >> historyPanel [
 	^ historyPanel
 ]

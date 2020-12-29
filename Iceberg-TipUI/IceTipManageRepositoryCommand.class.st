@@ -29,7 +29,7 @@ IceTipManageRepositoryCommand class >> defaultToolbarItemName [
 { #category : #testing }
 IceTipManageRepositoryCommand >> canBeExecuted [
 
-	^ self context isRepositoryMissing not
+	^ self isRepositoryMissing not
 ]
 
 { #category : #execution }

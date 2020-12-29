@@ -3,7 +3,7 @@ Command that loads the current non-loaded selected package
 "
 Class {
 	#name : #IceTipLoadPackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -21,7 +21,8 @@ IceTipLoadPackageCommand class >> defaultName [
 
 { #category : #testing }
 IceTipLoadPackageCommand >> canBeExecuted [
-	^ self context packageModel isLoaded not
+
+	^ self isPackageLoaded not
 ]
 
 { #category : #execution }

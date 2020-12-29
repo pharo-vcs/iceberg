@@ -1,43 +1,36 @@
 Class {
 	#name : #IceTipCalculateDirtyPackagesCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#instVars : [
-		'item'
-	],
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipCalculateDirtyPackagesCommand class >> browserRepositoryListActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		for: IceTipRepositoryListContext
-]
-
 { #category : #accessing }
-IceTipCalculateDirtyPackagesCommand class >> defaultMenuIconName [
-	^ #repair
-]
+IceTipCalculateDirtyPackagesCommand class >> defaultName [
 
-{ #category : #accessing }
-IceTipCalculateDirtyPackagesCommand class >> defaultMenuItemName [
 	^ 'Recalculate dirty packages'
+]
+
+{ #category : #testing }
+IceTipCalculateDirtyPackagesCommand >> canBeExecuted [
+
+	^ self hasSelectedItem
+
 ]
 
 { #category : #execution }
 IceTipCalculateDirtyPackagesCommand >> execute [
-	item ifNil: [ ^ self ].
+
 	IceTipStandardAction new
-		repository: item entity;
+		repository: self item entity;
 		message: 'Recalculating Dirty Packages';
 		onSuccessRepositoryModified;
-		execute: [ item entity workingCopy forceCalculateDirtyPackages ]
+		execute: [
+			self item entity workingCopy forceCalculateDirtyPackages ]
+
 ]
 
-{ #category : #execution }
-IceTipCalculateDirtyPackagesCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	item := aToolContext item
+{ #category : #accessing }
+IceTipCalculateDirtyPackagesCommand >> iconName [
+
+	^ #repair
 ]

@@ -2,19 +2,19 @@
 I'm a command to show the pull request review browser.
 "
 Class {
-	#name : #IceGitHubTreeViewPullRequestCommand,
-	#superclass : #IceGitHubTreeCommand,
+	#name : #IceGitHubViewPullRequestsCommand,
+	#superclass : #IceGitHubRemoteCommand,
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #accessing }
-IceGitHubTreeViewPullRequestCommand class >> defaultName [
+IceGitHubViewPullRequestsCommand class >> defaultName [
 
-	^ 'View Pull Requests'
+	^ 'View Pull Request...'
 ]
 
 { #category : #execute }
-IceGitHubTreeViewPullRequestCommand >> execute [
+IceGitHubViewPullRequestsCommand >> execute [
 
 	^ IceGitHubViewPullRequestAction new
 		  repository: self repository;

@@ -10,17 +10,11 @@ Class {
 { #category : #accessing }
 IceTipAbstractCredentialCommand >> credential [
 
-	^ self context credential
+	^ self item
 ]
 
 { #category : #accessing }
 IceTipAbstractCredentialCommand >> store [
 
-	^ self context store
-]
-
-{ #category : #accessing }
-IceTipAbstractCredentialCommand >> tool [
-
-	^ self context tool
+	^ self context model
 ]

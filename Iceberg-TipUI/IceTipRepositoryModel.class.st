@@ -318,8 +318,8 @@ IceTipRepositoryModel >> numberOfOutgoingCommits [
 		size := self outgoingCommits size.
 		size > 100
 			ifTrue: [ '99+' ]
-			ifFalse: [ size ] ]
-		on: IceNotInBranch do: [ :e | 0 ]
+			ifFalse: [ size asString ] ]
+		on: IceNotInBranch do: [ :e | '0' ]
 ]
 
 { #category : #accessing }

@@ -15,8 +15,8 @@ IceTipRemoteActionCommand2 class >> isAbstract [
 { #category : #testing }
 IceTipRemoteActionCommand2 >> canBeExecuted [
 
-	^ self context isRepositoryOperational
-		and: [ self context repositoryModel hasRemotes ]
+	^ self isRepositoryOperational
+		and: [ self repositoryModel hasRemotes ]
 ]
 
 { #category : #validating }

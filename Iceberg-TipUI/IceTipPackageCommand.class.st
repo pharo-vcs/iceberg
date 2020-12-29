@@ -3,10 +3,7 @@ Abstract class representing commands to be applied on top of packages.
 "
 Class {
 	#name : #IceTipPackageCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'packageModel'
-	],
+	#superclass : #IceTipCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -16,13 +13,26 @@ IceTipPackageCommand class >> isAbstract [
 	^ self == IceTipPackageCommand
 ]
 
-{ #category : #accessing }
-IceTipPackageCommand >> packageModel [
-	^ packageModel
+{ #category : #testing }
+IceTipPackageCommand >> hasPackageModel [
+
+	^ self packageModel notNil
 ]
 
-{ #category : #execution }
-IceTipPackageCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.	
-	packageModel := aToolContext packageModel
+{ #category : #testing }
+IceTipPackageCommand >> isPackageLoaded [ 
+
+	^ self hasPackageModel and: [ self packageModel isLoaded ]
+]
+
+{ #category : #accessing }
+IceTipPackageCommand >> package [
+
+	^ self packageModel entity
+]
+
+{ #category : #accessing }
+IceTipPackageCommand >> packageModel [
+
+	^ self context packageModel
 ]

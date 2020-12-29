@@ -22,8 +22,8 @@ IceTipFetchCommand class >> defaultName [
 { #category : #testing }
 IceTipFetchCommand >> canBeExecuted [
 
-	^ self context isRepositoryMissing not and: [ 
-		  self context repositoryModel hasRemotes ]
+	^ self isRepositoryMissing not and: [ 
+		  self repositoryModel hasRemotes ]
 ]
 
 { #category : #execution }

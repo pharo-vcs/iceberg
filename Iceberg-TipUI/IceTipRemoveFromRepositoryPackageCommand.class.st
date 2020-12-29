@@ -3,7 +3,7 @@ Command that removes a package from the repository, without removing it from the
 "
 Class {
 	#name : #IceTipRemoveFromRepositoryPackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

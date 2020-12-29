@@ -4,48 +4,36 @@ I represent all the Github commands that work on a Tree item
 Class {
 	#name : #IceGitHubTreeCommand,
 	#superclass : #IceGitHubCommand,
-	#instVars : [
-		'remote'
-	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #testing }
-IceGitHubTreeCommand class >> actsOnBranch: anIceTipTreeBranch [ 
-	^ false.
+IceGitHubTreeCommand class >> actsOnBranch: anIceTipTreeBranch [
+
+	^ false
 ]
 
 { #category : #testing }
 IceGitHubTreeCommand class >> actsOnRemote: aRemoteModel [
+
 	^ true
 ]
 
 { #category : #testing }
 IceGitHubTreeCommand class >> actsOnTag: aRemoteModel [
+
 	^ false
 ]
 
-{ #category : #activation }
-IceGitHubTreeCommand class >> browserRepositoryListActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: IceGitHubMenuGroup
-		for: IceTipRepositoryContext
-]
-
 { #category : #testing }
-IceGitHubTreeCommand class >> canBeExecutedInContext: aToolContext [
-	^ (super canBeExecutedInContext: aToolContext) and: [ aToolContext item canActivateCommand: self ]
-]
+IceGitHubTreeCommand >> canBeExecuted [
 
-{ #category : #'context menu' }
-IceGitHubTreeCommand >> fillContextMenu: aMenu using: aCommandActivator [
-	super fillContextMenu: aMenu using: aCommandActivator.
-	remote := aCommandActivator context item model entity
+	^ super canBeExecuted and: [ 
+		  self item canActivateCommand: self ]
 ]
 
 { #category : #accessing }
 IceGitHubTreeCommand >> remote [
-	^ remote
+
+	^ self item model entity
 ]

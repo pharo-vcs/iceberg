@@ -39,5 +39,5 @@ IceTipRepositoryCommand >> announcer [
 { #category : #execution }
 IceTipRepositoryCommand >> readParametersFromContext: aToolContext [
 	super readParametersFromContext: aToolContext.
-	announcer := IceTipWeakValueHolder contents: aToolContext toolAnnouncer.
+	announcer := SpWeakValueHolder contents: aToolContext toolAnnouncer.
 ]

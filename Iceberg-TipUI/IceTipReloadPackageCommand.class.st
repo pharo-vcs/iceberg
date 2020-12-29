@@ -3,7 +3,7 @@ Command that reloads the code of an already loaded package, discarding all chang
 "
 Class {
 	#name : #IceTipReloadPackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -22,7 +22,7 @@ IceTipReloadPackageCommand class >> defaultName [
 { #category : #testing }
 IceTipReloadPackageCommand >> canBeExecuted [
 
-	^ self packageModel isLoaded
+	^ self isPackageLoaded
 ]
 
 { #category : #execution }

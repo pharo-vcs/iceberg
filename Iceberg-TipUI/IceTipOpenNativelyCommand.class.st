@@ -3,56 +3,39 @@ I am a command that, once executed, will open the native file browser on the dir
 "
 Class {
 	#name : #IceTipOpenNativelyCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'location'
-	],
-	#category : #'Iceberg-TipUI'
+	#superclass : #IceTipCommand2,
+	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipOpenNativelyCommand class >> browserRepositoryListActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: CmdExtraMenuGroup
-		order: 10000
-		for: IceTipRepositoryListContext
-]
-
-{ #category : #testing }
-IceTipOpenNativelyCommand class >> canBeExecutedInContext: aToolContext [
-	| location | 
-	location := aToolContext item location.
-	^ location isNotNil and: [ location exists ]
-]
-
 { #category : #accessing }
-IceTipOpenNativelyCommand class >> defaultHelp [
+IceTipOpenNativelyCommand class >> defaultDescription [
+
 	^ 'Open the native file browser on the local repository of this project.'
 ]
 
 { #category : #accessing }
-IceTipOpenNativelyCommand class >> defaultMenuIconName [
-	^ #smallWindow
+IceTipOpenNativelyCommand class >> defaultName [
+
+	^ 'Open in native file browser'
 ]
 
-{ #category : #accessing }
-IceTipOpenNativelyCommand class >> defaultMenuItemName [
-	^ 'Open in native file browser'
+{ #category : #testing }
+IceTipOpenNativelyCommand >> canBeExecuted [
+
+	| location |
+	self hasSelectedItem ifFalse: [ ^ false ].
+	location := self item location.
+	^ location isNotNil and: [ location exists ]
 ]
 
 { #category : #execution }
 IceTipOpenNativelyCommand >> execute [
-	self flag: #pharo8. "This condition can be removed once Iceberg will require Pharo 8+"
-	self class environment
-		at: #ManifestNativeBrowser
-		ifPresent: [ :class | location openInOSFileBrowser ]
-		ifAbsent: [ self inform: 'This action needs the Native-Browser project loaded in the image to work.' ]
+
+	self item location openInOSFileBrowser
 ]
 
-{ #category : #execution }
-IceTipOpenNativelyCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	location := aToolContext item location
+{ #category : #accessing }
+IceTipOpenNativelyCommand >> iconName [
+
+	^ #smallWindow
 ]

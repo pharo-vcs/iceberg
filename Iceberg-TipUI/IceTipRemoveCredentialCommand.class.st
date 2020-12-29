@@ -22,13 +22,13 @@ IceTipRemoveCredentialCommand class >> defaultName [
 { #category : #testing }
 IceTipRemoveCredentialCommand >> canBeExecuted [
 
-	^ self context credential isDefault not
+	^ self item isDefault not
 ]
 
 { #category : #execution }
 IceTipRemoveCredentialCommand >> execute [
 	
-	self store removeCredential: self credential.
+	self store removeCredential: self item.
 	self tool refresh.
 ]
 

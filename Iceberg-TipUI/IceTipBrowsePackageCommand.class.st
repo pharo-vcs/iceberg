@@ -3,7 +3,7 @@ Command that browses the selected package as it is loaded in the image.
 "
 Class {
 	#name : #IceTipBrowsePackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -22,7 +22,7 @@ IceTipBrowsePackageCommand class >> defaultName [
 { #category : #testing }
 IceTipBrowsePackageCommand >> canBeExecuted [
 
-	^ self packageModel isLoaded
+	^ self isPackageLoaded
 ]
 
 { #category : #execution }

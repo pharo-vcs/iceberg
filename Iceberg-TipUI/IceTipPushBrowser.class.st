@@ -8,6 +8,12 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipPushBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	"No commands to add."
+]
+
 { #category : #'instance creation' }
 IceTipPushBrowser class >> onRepositoryModel: aModel [
 
@@ -18,12 +24,6 @@ IceTipPushBrowser class >> onRepositoryModel: aModel [
 
 ]
 
-{ #category : #accessing }
-IceTipPushBrowser >> contextClass [
-
-	^ IceTipPushContext
-]
-
 { #category : #actions }
 IceTipPushBrowser >> doPush [
 
@@ -31,10 +31,9 @@ IceTipPushBrowser >> doPush [
 ]
 
 { #category : #initialization }
-IceTipPushBrowser >> initializePresenters [
+IceTipPushBrowser >> labelForRemotePanel [
 
-	super initializePresenters.
-	remotePanel label: 'Push to remote:'
+	^ 'Push to remote:'
 
 ]
 
@@ -48,12 +47,6 @@ IceTipPushBrowser >> newActionButton [
 		action: [ self doPush ];
 		yourself
 
-]
-
-{ #category : #commands }
-IceTipPushBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
-
-	"We don't have commands to register."
 ]
 
 { #category : #accessing }

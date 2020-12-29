@@ -3,29 +3,20 @@ I'm a command to create a Pull Request
 "
 Class {
 	#name : #IceGitHubNewPullRequestCommand,
-	#superclass : #IceGitHubCommand,
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#superclass : #IceGitHubRemoteCommand,
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #activation }
-IceGitHubNewPullRequestCommand class >> browserRepositoryListActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byItemOf: IceGitHubMenuGroup
-		for: IceTipRepositoryListContext
-]
+IceGitHubNewPullRequestCommand class >> defaultName [
 
-{ #category : #activation }
-IceGitHubNewPullRequestCommand class >> defaultMenuItemName [
 	^ 'Create Pull Request...'
 ]
 
 { #category : #execute }
-IceGitHubNewPullRequestCommand >> execute [ 
+IceGitHubNewPullRequestCommand >> execute [
 
 	^ IceGitHubNewPullRequestAction new
-		repository: self repository;
-		execute.
-
+		  repository: self repository;
+		  execute
 ]

@@ -29,11 +29,6 @@ IcePlugin >> checkoutBranchPanelsOnModel: anIceTipCachedModel [
 	^ #()
 ]
 
-{ #category : #'accessing-ui' }
-IcePlugin >> registerBrowserCommandsOn: aSpCommandGroup context: anIceTipWorkingCopyContext [ 
-	self flag: #todo. "Comment"
-]
-
 { #category : #events }
 IcePlugin >> repositoryWasCreated: aRepository [
 	"Hook. Allows plugins to do an action when a repository is created"

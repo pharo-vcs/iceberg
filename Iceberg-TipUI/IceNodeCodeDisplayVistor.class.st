@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'codePresenter'
 	],
-	#category : #'Iceberg-TipUI'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #'instance creation' }
@@ -20,39 +20,48 @@ IceNodeCodeDisplayVistor class >> onCodePresenter: aSpCodePresenter [
 
 { #category : #accessing }
 IceNodeCodeDisplayVistor >> codePresenter [
+
 	^ codePresenter
 ]
 
 { #category : #accessing }
-IceNodeCodeDisplayVistor >> codePresenter: aSpCodePresenter [.
-	codePresenter := aSpCodePresenter 
+IceNodeCodeDisplayVistor >> codePresenter: aSpCodePresenter [
+
+	codePresenter := aSpCodePresenter
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitClassDefinition: anIceClassDefinition [ 
+IceNodeCodeDisplayVistor >> visitClassDefinition: anIceClassDefinition [
+
 	codePresenter text: anIceClassDefinition contents.
 	codePresenter behavior: nil
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitConflictingOperation: anIceConflictingOperation [ 
-	anIceConflictingOperation chosenOperation definition accept: self.
+IceNodeCodeDisplayVistor >> visitConflictingOperation: anIceConflictingOperation [
+
+	anIceConflictingOperation chosenOperation definition accept: self
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitMethodNode: anIceMethodDefinition [ 
-	codePresenter text: anIceMethodDefinition sourceCode;
-	behavior: (anIceMethodDefinition className asClassIfAbsent: [ UndefinedObject  ] ). 
-	
+IceNodeCodeDisplayVistor >> visitMethodNode: anIceMethodDefinition [
+
+	codePresenter
+		text: anIceMethodDefinition sourceCode;
+		behavior:
+			(anIceMethodDefinition className asClassIfAbsent: [ 
+					 UndefinedObject ])
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
-	anIceNonConflictingOperation definition accept: self .
+IceNodeCodeDisplayVistor >> visitNonConflictingOperation: anIceNonConflictingOperation [
+
+	anIceNonConflictingOperation definition accept: self
 ]
 
 { #category : #visiting }
 IceNodeCodeDisplayVistor >> visitPackage: anIcePackageDefinition [
+
 	codePresenter
 		text: '';
 		behavior: nil

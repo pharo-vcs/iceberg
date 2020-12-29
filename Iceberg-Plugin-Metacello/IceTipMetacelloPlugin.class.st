@@ -11,11 +11,3 @@ Class {
 IceTipMetacelloPlugin class >> isAvailableFor: aRepository [
 	^ true
 ]
-
-{ #category : #'accessing-ui' }
-IceTipMetacelloPlugin >> registerBrowserCommandsOn: aSpCommandGroup context: aContext [
-
-	IceTipMetacelloMenuGroup
-		registerIfNotEmptyOn: aSpCommandGroup
-		context: aContext
-]

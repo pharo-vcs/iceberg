@@ -3,7 +3,7 @@ Command to unload a package from the system, keeping it in the repository
 "
 Class {
 	#name : #IceTipUnloadPackageCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -22,7 +22,7 @@ IceTipUnloadPackageCommand class >> defaultName [
 { #category : #testing }
 IceTipUnloadPackageCommand >> canBeExecuted [
 
-	^ self packageModel isLoaded
+	^ self isPackageLoaded
 ]
 
 { #category : #execution }

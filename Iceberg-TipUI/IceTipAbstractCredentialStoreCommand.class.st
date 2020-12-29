@@ -28,5 +28,5 @@ IceTipAbstractCredentialStoreCommand >> store [
 { #category : #execution }
 IceTipAbstractCredentialStoreCommand >> tool [
 
-	^ self context tool
+	^ super tool
 ]

@@ -6,20 +6,65 @@ IceTipRepositoriesBrowser new openWithSpec.
 "
 Class {
 	#name : #IceTipRepositoriesBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'repositoryList'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipRepositoriesBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipFetchAllProjectCommand.
+		IceTipAddRepositoryCommand.
+		IceTipSettingsCommand
+		} do: [ :each | 
+			aCommandGroup register: each forSpec ]
+
+]
+
+{ #category : #commands }
+IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{
+		IceTipRepairCommand.
+		IceTipManagePackagesCommand.
+		IceTipCommitCommand.
+		IceTipPullCommand.
+		IceTipPushCommand.
+		IceTipFetchCommand.
+		IceTipCheckoutBranchCommand.
+	 	IceTipCreateTagCommand.
+		IceTipMergeCommand.
+		IceTipManageRepositoryCommand.
+		IceTipEditRepositoryCommand.
+		IceTipForgetRepositoryCommand.
+		} do: [ :each |
+			aCommandGroup register: each forSpec ]
+
+]
+
+{ #category : #commands }
+IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+
+	super buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup.
+
+	{	IceTipCalculateDirtyPackagesCommand.
+		IceTipCopyCommitishCommand.
+		IceTipOpenNativelyCommand.
+		} do: [ :each |
+			aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipRepositoriesBrowser class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical 
-		add: #toolbar expand: false fill: true padding: 0;
-			add: #repositoryList;
-			yourself 
+
+	^ SpBoxLayout newVertical
+		  add: #repositoryList;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -56,27 +101,26 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		yourself
 ]
 
-{ #category : #accessing }
-IceTipRepositoriesBrowser >> contextClass [
-	^ IceTipRepositoryListContext
-]
+{ #category : #initialization }
+IceTipRepositoriesBrowser >> initializePresenters [
 
-{ #category : #'private factory' }
-IceTipRepositoriesBrowser >> createCommandContext [
-	^ self newContextWithSelection: self repositorySelected
+	super initializePresenters.
+	repositoryList := self newTable.
+	self initializeRepositoryList.
+
+	self refresh.
 ]
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializeRepositoryList [
-	| items |
-	items := self model repositories.
+
 	repositoryList
 		showColumnHeaders;
 		beResizable;
 		addColumn:
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				width: 200;
-				title: self title;
+				title: self titleForWindow;
 				yourself);
 		addColumn:
 			((SpStringTableColumn evaluated: #statusText)
@@ -87,83 +131,65 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 			((SpStringTableColumn evaluated: #branchNameText)
 				title: #Branch;
 				yourself);
-		items: items;
-		selectIndex: 1;
 		activateOnDoubleClick;
-		whenActivatedDo: [ self repositoryStrongSelection: self repositorySelected ];
-		contextMenu: [ self buildMenu ]
-]
-
-{ #category : #initialization }
-IceTipRepositoriesBrowser >> initializeWidgets [
-	super initializeWidgets.
-	repositoryList := self newTable.
-	self initializeRepositoryList.
-	self focusOrder add: repositoryList.	
-	
+		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
 
 { #category : #testing }
 IceTipRepositoriesBrowser >> isShowingRepository: anIceLibgitRepository [
 
-	^ self repositoryModels anySatisfy: [ :aRepositoryModel |
-			aRepositoryModel entity = anIceLibgitRepository ]
+	^ self repositoryModels anySatisfy: [ :aRepositoryModel | 
+		  aRepositoryModel entity = anIceLibgitRepository ]
 ]
 
-{ #category : #'private factory' }
-IceTipRepositoriesBrowser >> newContextWithSelection: anObject [ 
-	^ self newContext 
-		repositoryModel: anObject;
-		yourself
+{ #category : #'accessing ui' }
+IceTipRepositoriesBrowser >> mainList [
+
+	^ repositoryList
+]
+
+{ #category : #private }
+IceTipRepositoriesBrowser >> openManagePackagesWindow [
+
+	IceTipManagePackagesCommand new
+		context: self;
+		execute
 ]
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 
-	repositoryList items: self model repositories.
+	repositoryList items: self model repositories
 ]
 
 { #category : #accessing }
 IceTipRepositoriesBrowser >> repositoryList [
+
 	^ repositoryList
 ]
 
 { #category : #accessing }
-IceTipRepositoriesBrowser >> repositoryList: anObject [
-	repositoryList := anObject
+IceTipRepositoriesBrowser >> repositoryModel [
+	
+	^ self selectedItem
 ]
 
 { #category : #accessing }
 IceTipRepositoriesBrowser >> repositoryModels [
 	"Return the currently shown repository models"
+
 	^ repositoryList items
-]
 
-{ #category : #private }
-IceTipRepositoriesBrowser >> repositorySelected [
-	^ repositoryList selection selectedItem
-]
-
-{ #category : #private }
-IceTipRepositoriesBrowser >> repositoryStrongSelection: selection [
-	
-	| context |
-	
-	context := self newContextWithSelection: selection.
-	
-	IceTipCommandStrongSelectionActivation
-		activateAllInContext: context
-		by: [ :each | each executeCommand ]
 ]
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> subscribeToAnnouncements [
-	Iceberg announcer weak 
-		when: IceAnnouncement send: #refresh to: self.
 
+	Iceberg announcer weak when: IceAnnouncement send: #refresh to: self
 ]
 
 { #category : #accessing }
-IceTipRepositoriesBrowser >> title [
+IceTipRepositoriesBrowser >> titleForWindow [
+
 	^ 'Repositories'
 ]

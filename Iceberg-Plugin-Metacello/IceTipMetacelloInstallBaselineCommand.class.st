@@ -3,7 +3,7 @@ I'm a general command to install metacello baselines.
 "
 Class {
 	#name : #IceTipMetacelloInstallBaselineCommand,
-	#superclass : #IceTipPackageCommand2,
+	#superclass : #IceTipPackageCommand,
 	#category : #'Iceberg-Plugin-Metacello'
 }
 

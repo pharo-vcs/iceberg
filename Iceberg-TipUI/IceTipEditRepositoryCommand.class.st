@@ -3,40 +3,36 @@ Command that opens a dialog to edit a repository meta-data
 "
 Class {
 	#name : #IceTipEditRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand,
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipEditRepositoryCommand class >> browserContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 8000
-		for: IceTipRepositoryListContext
-]
-
-{ #category : #testing }
-IceTipEditRepositoryCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext isRepositoryOperational
-]
-
 { #category : #accessing }
-IceTipEditRepositoryCommand class >> defaultHelp [
+IceTipEditRepositoryCommand class >> defaultDescription [
+
 	^ 'Edit repository data'
 ]
 
 { #category : #accessing }
-IceTipEditRepositoryCommand class >> defaultMenuIconName [
-	^ #edit
+IceTipEditRepositoryCommand class >> defaultName [
+
+	^ 'Edit...'
 ]
 
-{ #category : #accessing }
-IceTipEditRepositoryCommand class >> defaultMenuItemName [
-	^ 'Edit...'
+{ #category : #testing }
+IceTipEditRepositoryCommand >> canBeExecuted [
+
+	^ self isRepositoryOperational
 ]
 
 { #category : #execution }
 IceTipEditRepositoryCommand >> execute [
+
 	self repositoryModel edit
+]
+
+{ #category : #accessing }
+IceTipEditRepositoryCommand >> iconName [
+
+	^ #edit
 ]

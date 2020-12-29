@@ -22,7 +22,7 @@ IceTipCommitCommand class >> defaultName [
 { #category : #testing }
 IceTipCommitCommand >> canBeExecuted [
 
-	^ self context isRepositoryOperational
+	^ self isRepositoryOperational
 ]
 
 { #category : #execution }

@@ -22,7 +22,7 @@ IceTipMergeCommand class >> defaultName [
 { #category : #testing }
 IceTipMergeCommand >> canBeExecuted [
 
-	^ self context isRepositoryOperational
+	^ self isRepositoryOperational
 ]
 
 { #category : #execution }

@@ -17,7 +17,7 @@ IceTipCommand2 class >> defaultToolbarItemName [
 { #category : #accessing }
 IceTipCommand2 >> application [
 
-	^ self context tool application
+	^ SpApplication defaultApplication
 ]
 
 { #category : #converting }
@@ -46,12 +46,62 @@ IceTipCommand2 >> badge [
 	^ nil
 ]
 
+{ #category : #testing }
+IceTipCommand2 >> hasRepository [
+
+	^ self repositoryModel notNil
+]
+
+{ #category : #testing }
+IceTipCommand2 >> hasSelectedItem [
+
+	^ self context selectedItem notNil
+]
+
+{ #category : #testing }
+IceTipCommand2 >> hasUnbornProject [
+	^ self repositoryModel hasUnbornProject
+]
+
 { #category : #accessing }
 IceTipCommand2 >> iconName [
 	"Answer the icon name (a Symbol) for this command."
 	
 	^ #blank
 
+]
+
+{ #category : #testing }
+IceTipCommand2 >> isRepositoryDetached [
+	^ self repositoryModel isNil 
+		or: [ self  repositoryModel isDetached ]
+]
+
+{ #category : #testing }
+IceTipCommand2 >> isRepositoryMissing [
+
+	^ self hasRepository and: [
+		self repositoryModel isMissing or: [
+			self repositoryModel isCodeMissing ] ]
+]
+
+{ #category : #testing }
+IceTipCommand2 >> isRepositoryOperational [
+	^ self isRepositoryMissing not 
+		and: [ self isRepositoryDetached not
+			and: [ self hasUnbornProject not ] ]
+]
+
+{ #category : #execution }
+IceTipCommand2 >> item [
+
+	^ self context selectedItem
+]
+
+{ #category : #accessing }
+IceTipCommand2 >> repository [
+
+	^ self repositoryModel entity
 ]
 
 { #category : #accessing }
@@ -72,6 +122,18 @@ IceTipCommand2 >> shortcutKey [
 IceTipCommand2 >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ false
+]
+
+{ #category : #accessing }
+IceTipCommand2 >> tool [
+
+	^ self context
+]
+
+{ #category : #accessing }
+IceTipCommand2 >> toolAnnouncer [
+
+	^ self tool announcer
 ]
 
 { #category : #accessing }

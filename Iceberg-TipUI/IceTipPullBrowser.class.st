@@ -8,6 +8,12 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipPullBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipFetchCommand forSpec
+]
+
 { #category : #'instance creation' }
 IceTipPullBrowser class >> onRepositoryModel: aModel [
 
@@ -18,12 +24,6 @@ IceTipPullBrowser class >> onRepositoryModel: aModel [
 
 ]
 
-{ #category : #accessing }
-IceTipPullBrowser >> contextClass [
-
-	^ IceTipPullContext
-]
-
 { #category : #actions }
 IceTipPullBrowser >> doPull [
 
@@ -31,10 +31,9 @@ IceTipPullBrowser >> doPull [
 ]
 
 { #category : #initialization }
-IceTipPullBrowser >> initializePresenters [
+IceTipPullBrowser >> labelForRemotePanel [
 
-	super initializePresenters.
-	remotePanel label: 'Pull from remote:'
+	^ 'Pull from remote:'
 ]
 
 { #category : #'private factory' }
@@ -47,12 +46,6 @@ IceTipPullBrowser >> newActionButton [
 		action: [ self doPull ];
 		yourself
 
-]
-
-{ #category : #commands }
-IceTipPullBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
-
-	aCommandGroup register: (IceTipFetchCommand forSpecContext: aContext)
 ]
 
 { #category : #accessing }

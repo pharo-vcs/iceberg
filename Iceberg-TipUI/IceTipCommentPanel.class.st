@@ -4,24 +4,24 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',
 		'pushCheckbox',
 		'commitButton',
-		'messageText',
 		'message',
 		'actionButtonBar',
 		'saveCheckbox',
 		'fixesField',
 		'fixesLabel'
 	],
-	#category : 'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #specs }
 IceTipCommentPanel class >> defaultSpec [
+
 	<spec: #default>
 	^ SpBoxLayout newVertical
 		add:
@@ -47,52 +47,43 @@ IceTipCommentPanel class >> title [
 
 { #category : #accessing }
 IceTipCommentPanel >> actionButtonBar [
-	^actionButtonBar 
+
+	^ actionButtonBar
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> clear [
+
 	commentText text: ''
 ]
 
 { #category : #'accessing ui' }
 IceTipCommentPanel >> commentText [
+
 	^ commentText
 ]
 
 { #category : #'accessing ui' }
-IceTipCommentPanel >> commentText: anObject [
-	commentText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipCommentPanel >> commitButton [
-	^ commitButton
-]
 
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> commitButton: anObject [
-	^ commitButton := anObject
+	^ commitButton
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> fixesField [
-	^fixesField 
+
+	^ fixesField
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> fixesLabel [
+
 	^ fixesLabel
 ]
 
 { #category : #initialization }
-IceTipCommentPanel >> initialize [
-	super initialize.
-	messageText := '' asText
-]
+IceTipCommentPanel >> initializePresenters [
 
-{ #category : #initialization }
-IceTipCommentPanel >> initializeWidgets [
 	| fixesHelpString |
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
@@ -132,34 +123,37 @@ IceTipCommentPanel >> initializeWidgets [
 				icon: (self iconNamed: #smallOk);
 				help: ('Commit your changes to {1}' format: {self repositoryName});
 				yourself).
-	self focusOrder
-		add: commentText;
-		add: fixesField ;
-		add: commitButton;
-		add: pushCheckbox;
-		add: saveCheckbox
+
 ]
 
 { #category : #testing }
 IceTipCommentPanel >> isPushing [
+
 	^ self pushCheckbox state
 ]
 
 { #category : #testing }
 IceTipCommentPanel >> isSaving [
+
 	^ self saveCheckbox state
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> message [
-|stream|
-	self fixesField text isAllDigits
-		ifTrue: [ 	stream := ReadWriteStream with: self commentText text asString. stream cr ; nextPutAll: 'Fixes #'; nextPutAll: self fixesField number asString . ^ stream contents  ].
-	^ self commentText text asString
+
+	self fixesField text isAllDigits ifFalse: [ 
+		^ self commentText text asString ].
+
+	^ String streamContents: [ :stream | 
+		  stream
+			  nextPutAll: self commentText text asString; cr;
+			  nextPutAll: 'Fixes #';
+			  nextPutAll: self fixesField number asString ]
 ]
 
 { #category : #events }
 IceTipCommentPanel >> onCommit: aBlock [
+
 	commitButton action: [ 
 		aBlock 
 			cull: self message
@@ -168,46 +162,43 @@ IceTipCommentPanel >> onCommit: aBlock [
 
 { #category : #'accessing ui' }
 IceTipCommentPanel >> pushCheckbox [
-	^ pushCheckbox
-]
 
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> pushCheckbox: anObject [
-	pushCheckbox := anObject
+	^ pushCheckbox
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> refresh [
+
 	commitButton help: ('Commit your changes to {1}' format: { self repositoryName }).
 	pushCheckbox label: ('Push changes to {1}' format: { self repositoryRemoteName })
 ]
 
 { #category : #accessing }
 IceTipCommentPanel >> repositoryModel [
+
 	^ repositoryModel
 ]
 
 { #category : #'private accessing' }
 IceTipCommentPanel >> repositoryName [
+
 	^ self repositoryModel name
 ]
 
 { #category : #'private accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
+
 	^ self repositoryModel pushRemoteName
 ]
 
 { #category : #'accessing ui' }
 IceTipCommentPanel >> saveCheckbox [
+
 	^ saveCheckbox
 ]
 
-{ #category : #'accessing ui' }
-IceTipCommentPanel >> saveCheckbox: anObject [
-	saveCheckbox := anObject
-]
-
 { #category : #initialization }
-IceTipCommentPanel >> setModelBeforeInitialization: anObject [ 
-	repositoryModel := anObject
+IceTipCommentPanel >> setModelBeforeInitialization: aRepositoryModel [
+
+	repositoryModel := aRepositoryModel
 ]

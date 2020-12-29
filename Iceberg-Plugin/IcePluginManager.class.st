@@ -54,15 +54,6 @@ IcePluginManager >> plugins [
 	^ plugins
 ]
 
-{ #category : #'accessing-ui' }
-IcePluginManager >> registerBrowserCommandsOn: aSpCommandGroup context: anIceTipWorkingCopyContext [
-
-	self plugins do: [ :each | 
-		each
-			registerBrowserCommandsOn: aSpCommandGroup
-			context: anIceTipWorkingCopyContext ]
-]
-
 { #category : #events }
 IcePluginManager >> repositoryWasCreated: aRepository [
 	^ self plugins do: [ :each | each repositoryWasCreated: aRepository ]

@@ -15,6 +15,37 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipCommitCommand.
+		IceTipPushCommand.
+		IceTipPullCommand.
+		IceTipFetchCommand.
+		IceTipCheckoutBranchCommand.
+		IceTipMergeCommand.
+		IceTipManageRepositoryCommand.
+		IceTipDiscardChangesCommand.
+		IceTipAddPackageCommand } 
+		do: [ :each |
+			aCommandGroup register: each forSpec ]
+
+]
+
+{ #category : #commands }
+IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipBrowsePackageCommand.
+		IceTipBrowseRepositoryPackageVersionCommand.
+		IceTipLoadPackageCommand.
+		IceTipReloadPackageCommand.
+		IceTipUnloadPackageCommand.
+		IceTipUnloadAndRemovePackageCommand.
+		IceTipRemoveFromRepositoryPackageCommand }
+			do: [ :each | aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipWorkingCopyBrowser class >> defaultSpec [
 	<spec: #default>
@@ -40,16 +71,11 @@ IceTipWorkingCopyBrowser >> allListItems [
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> connectPresenters [
 
+	super connectPresenters.
 	filterInput
 		placeholder: 'Filter...';
 		whenTextChangedDo: [ :text | self refreshPackagesTable ]
 
-]
-
-{ #category : #commands }
-IceTipWorkingCopyBrowser >> contextClass [
-
-	^ IceTipWorkingCopyContext
 ]
 
 { #category : #'accessing ui' }
@@ -83,11 +109,7 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 		addColumn:
 			(SpStringTableColumn
 				title: 'Status'
-				evaluated: #statusWithDecoration);
-		selectIndex: 1;
-		contextMenu: [ self newMenuForList ];
-		contextKeyBindings: self newKeyBindingsForList.
-
+				evaluated: #statusWithDecoration)
 ]
 
 { #category : #initialization }
@@ -117,12 +139,10 @@ IceTipWorkingCopyBrowser >> mainList [
 	^ packagesTable
 ]
 
-{ #category : #commands }
-IceTipWorkingCopyBrowser >> newContextWithSelection: aPackage [
-
-	^ self newContext
-		  packageModel: aPackage;
-		  yourself
+{ #category : #accessing }
+IceTipWorkingCopyBrowser >> packageModel [
+	
+	^ packagesTable selectedItem
 ]
 
 { #category : #'accessing ui' }
@@ -167,44 +187,10 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 
 ]
 
-{ #category : #commands }
-IceTipWorkingCopyBrowser >> registerCommandsForSelectionInto: aCommandGroup context: aContext [
-
-	{ 	IceTipBrowsePackageCommand.
-		IceTipBrowseRepositoryPackageVersionCommand.
-		IceTipLoadPackageCommand.
-		IceTipReloadPackageCommand.
-		IceTipUnloadPackageCommand.
-		IceTipUnloadAndRemovePackageCommand.
-		IceTipRemoveFromRepositoryPackageCommand }
-			do: [ :each |
-				aCommandGroup register: 
-					(each forSpecContext: aContext) ].
-
-]
-
-{ #category : #commands }
-IceTipWorkingCopyBrowser >> registerToolbarCommandsInto: aCommandGroup context: aContext [
-
-	{ 	IceTipCommitCommand.
-		IceTipPushCommand.
-		IceTipPullCommand.
-		IceTipFetchCommand.
-		IceTipCheckoutBranchCommand.
-		IceTipMergeCommand.
-		IceTipManageRepositoryCommand.
-		IceTipDiscardChangesCommand.
-		IceTipAddPackageCommand } 
-		do: [ :each |
-			aCommandGroup register: 
-				(each forSpecContext: aContext) ]
-
-]
-
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 
-	self model: (IceTipWorkingCopyModel on: aRepositoryModel)
+	self model: ( IceTipWorkingCopyModel on: aRepositoryModel )
 ]
 
 { #category : #testing }
