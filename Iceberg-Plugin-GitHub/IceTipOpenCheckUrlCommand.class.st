@@ -1,32 +1,37 @@
+"
+I'm a command to open in the native web browser the detail of a GitHub Pull Request check.
+
+"
 Class {
 	#name : #IceTipOpenCheckUrlCommand,
-	#superclass : #CmCommand,
+	#superclass : #IceTipCommand2,
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
+
+{ #category : #initialization }
+IceTipOpenCheckUrlCommand class >> defaultDescription [
+
+	^ 'Open a internet browser to look for the url of the check'
+]
+
+{ #category : #initialization }
+IceTipOpenCheckUrlCommand class >> defaultName [
+
+	^ 'Open url'
+]
 
 { #category : #executing }
 IceTipOpenCheckUrlCommand >> execute [
 	"Execute the actions that should be done by the command. 
 	This method expect that the context has been put in #context inst.var. if any context is relevant."
 
-	| url |
-	url := self context checksTable selection selectedItem 
-				at: 'target_url'.
-	self class environment
-		at: #WebBrowser
-		ifPresent: [ :webBrowser | webBrowser openOn: url ]
-		ifAbsent: [ 
-			self inform:
-				('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' 
-					 format: { url }) ]
+	WebBrowser openOn: self targetUrl
+
 ]
 
-{ #category : #initialization }
-IceTipOpenCheckUrlCommand >> initialize [
+{ #category : #accessing }
+IceTipOpenCheckUrlCommand >> targetUrl [
 
-	super initialize.
-	self
-		basicName: 'Open url';
-		basicDescription:
-			'Open a internet browser to look for the url of the check'
+	^ self context checksTable selection selectedItem at: 'target_url'
+
 ]
