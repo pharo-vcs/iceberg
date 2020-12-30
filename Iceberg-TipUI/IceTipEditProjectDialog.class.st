@@ -13,9 +13,8 @@ Class {
 		'formatLabel',
 		'formats',
 		'defaultFormat',
-		'messagePanel',
-		'addDirectoryButton',
-		'removeDirectoryButton'
+		'messageIcon',
+		'messageText'
 	],
 	#category : #'Iceberg-TipUI-View-Project'
 }
@@ -23,33 +22,27 @@ Class {
 { #category : #specs }
 IceTipEditProjectDialog class >> defaultSpec [
 	<spec: #default>
-	^ SpecLayout composed
-		newColumn: [ :col | 
-			col
-				newRow: [ :row | 
-					row
-						newColumn: #nameLabel width: self iceLabelWidth;
-						newColumn: #nameInput ;
-						newColumn: #addDirectoryButton width: (self iconNamed: #add) width + 10;
-						newColumn: #removeDirectoryButton width: (self iconNamed: #remove) width + 10]
+	^ SpBoxLayout newVertical 
+		add:  (SpBoxLayout newHorizontal 
+						add: #nameLabel width: self labelWidth;
+						add: #nameInput;
+						yourself  )
 					height: self inputTextHeight;
-				newRow: [ :row | 
-					row
-						newColumn: [ :column |
-							column
-								add: #sourceDirectoryLabel height: self inputTextHeight;
-								newRow: [ :emptyRow | "Fill space"  ] ] width: self iceLabelWidth;
-						newColumn: #sourceDirectoryTree ]
-					height: 200 * self currentWorld displayScaleFactor;
-				newRow: [ :row | 
-					row
-						newColumn: #formatLabel width: self iceLabelWidth;
-						newColumn: #formatList ]
+		add: (SpBoxLayout newHorizontal 
+								add: #sourceDirectoryLabel width: self labelWidth;
+						add: #sourceDirectoryTree;
+						yourself  )
+					height: 200 * World displayScaleFactor;
+		add: (SpBoxLayout newHorizontal 
+						add: #formatLabel width: self labelWidth;
+						add: #formatList;
+						yourself  )
 					height: self inputTextHeight;
-				newRow: [ :row | 
-					row newColumn: [ :emptyCol ] width: self iceLabelWidth - 40.
-					row add: #messagePanel ];	
-				newRow: [ :emptyRow | "Fill space" ] height: 1 ]
+		add: (SpBoxLayout newHorizontal 
+						add: #messageIcon width: self labelWidth;
+						add: #messageText;
+						yourself  );
+		yourself 
 ]
 
 { #category : #specs }
@@ -79,64 +72,58 @@ IceTipEditProjectDialog >> accept [
 
 { #category : #accessing }
 IceTipEditProjectDialog >> acceptCallback [
+
 	^ acceptCallback
 ]
 
-{ #category : #actions }
-IceTipEditProjectDialog >> addDirectory [
+{ #category : #initialization }
+IceTipEditProjectDialog >> connectPresenters [
 
-	| newDirectoryName newDirectory |
-	
-	newDirectoryName := UIManager default
-		textEntry: 'Enter the new Directory name'
-		title: 'Create a directory'.
-	
-	newDirectoryName ifNil: [ ^ self ].
-	
-	newDirectory := (selectedDirectoryPath / newDirectoryName) asResolvedBy: self model fileSystem. 
-	
-	newDirectory exists 
-		ifFalse: [ newDirectory createDirectory ].
-	
-	"The FTTable lost the selection when the expansion is done"
-	sourceDirectoryTree widget dataSource updateData.
-	sourceDirectoryTree widget dataSource expandAll.
-	sourceDirectoryTree widget selectIndex: (sourceDirectoryTree widget dataSource indexOfElement: (selectedDirectoryPath asResolvedBy: self model fileSystem)).
+	| path currentNode |
+	super connectPresenters.
+	self formatList
+		items: self formats;
+		display: [ :each | each description ];
+		selectItem: model repositoryProperties fileFormat.
+	path := (RelativePath with: model sourceDirectory) segments
+		asOrderedCollection.
+	currentNode := self sourceDirectoryTree roots first children first.
+	"	currentNode expand.
+	[ path isEmpty ]
+		whileFalse: [ | currentSegment |
+			currentSegment := path removeFirst.
+			currentNode := currentNode children
+				detect: [ :e | (e data basename ifEmpty: [ '/' ]) = currentSegment ]
+				ifFound: [ :node | 
+					node expand.
+					node ]
+				ifNone: [ nil ] ]
 
+	currentNode
+		ifNotNil: [ | index |
+			index := self sourceDirectoryTree widget dataSource indexOfElementMatching: [ :elem | elem = currentNode data ].
+			self sourceDirectoryTree widget selectRowIndex: index ]."
 ]
 
 { #category : #accessing }
-IceTipEditProjectDialog >> addDirectoryButton [
-	^ addDirectoryButton
-]
-
-{ #category : #initialization }
 IceTipEditProjectDialog >> defaultFormat [
 
 	^ defaultFormat
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipEditProjectDialog >> formatLabel [
+
 	^ formatLabel
 ]
 
-{ #category : #accessing }
-IceTipEditProjectDialog >> formatLabel: anObject [
-	formatLabel := anObject
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipEditProjectDialog >> formatList [
+
 	^ formatList
 ]
 
 { #category : #accessing }
-IceTipEditProjectDialog >> formatList: anObject [
-	formatList := anObject
-]
-
-{ #category : #initialization }
 IceTipEditProjectDialog >> formats [
 
 	^ formats
@@ -161,7 +148,7 @@ IceTipEditProjectDialog >> guessFormatFromDirectory: aFileReference [
 		ifNone: [ ^ defaultFormat ].
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
 IceTipEditProjectDialog >> hasToShowWarning [
 
 	^ model repository workingCopy packages isNotEmpty
@@ -170,17 +157,15 @@ IceTipEditProjectDialog >> hasToShowWarning [
 { #category : #api }
 IceTipEditProjectDialog >> initialExtent [
 
-	^ 
-	self hasToShowWarning 
-		ifTrue: [ (475@500) scaledByDisplayScaleFactor ]
+	^ self hasToShowWarning 
+		ifTrue: [ (475@525) scaledByDisplayScaleFactor ]
 		ifFalse: [  
 			(475@(
 				200 "Tree"
 				+ (self class inputTextHeight * 3)
 				+ self class buttonHeight 
-				+ 50 "Yes, a magic number"
+				+ 75 "Yes, a magic number"
 			)) scaledByDisplayScaleFactor]
-
 
 ]
 
@@ -196,138 +181,81 @@ IceTipEditProjectDialog >> initialize [
 
 { #category : #initialization }
 IceTipEditProjectDialog >> initializeDirectoryTree [
-	| dataSource |
-	dataSource := self newDirectoryDataSource.
-	sourceDirectoryTree widget
-		addColumn:
-			(IceTipTableColumn
-				newAction: #name
-				icon: [ :each | self iconNamed: #package ]);
-		dataSource: dataSource;
-		onAnnouncement: FTSelectionChanged
-			do:
-				[ :announcement | self sourceDirectorySelectionChanged: announcement newSelectedIndexes ]
+
+	sourceDirectoryTree
+		addColumn: (SpCompositeTableColumn new
+				 addColumn: (SpImageTableColumn new
+						  width: 20;
+						  evaluated: [ self iconNamed: #package ];
+						  yourself);
+				 addColumn: (SpStringTableColumn new
+						  evaluated: #basename;
+						  yourself));
+		roots: { self model fileSystem };
+		children: [ :each | each directories ];
+		whenSelectionChangedDo: [ :announcement | 
+			self sourceDirectorySelectionChanged: announcement selectedPaths ]
 ]
 
 { #category : #initialization }
 IceTipEditProjectDialog >> initializeMessagePanel [
 
-	self hasToShowWarning
-		ifTrue: [ 
-			messagePanel := self instantiate: IceTipReadOnlyTextMorphWithIcon.
-			messagePanel iconName: #warning.
-			messagePanel text: self warningMessage  ]
-		ifFalse: [ 
-			messagePanel := self newIcePanel.
-			messagePanel widget height: 1 ].
+	messageText := self newText.
+	messageIcon := self newImage.
+	messageText disable.
 
+	self hasToShowWarning ifTrue: [ 
+		messageIcon image: (self iconNamed: #warning).
+		messageText text: self warningMessage ]
 ]
 
 { #category : #initialization }
-IceTipEditProjectDialog >> initializePresenter [
-	| path currentNode |
-	super initializePresenter.
-	self formatList
-		items: self formats;
-		displayBlock: [ :each | each description ];
-		setSelectedItem: model repositoryProperties fileFormat.
-	path := (RelativePath with: model sourceDirectory) segments
-		asOrderedCollection.
-	currentNode := self sourceDirectoryTree widget dataSource rootItem
-		children first.
-	currentNode expand.
-	[ path isEmpty ]
-		whileFalse: [ | currentSegment |
-			currentSegment := path removeFirst.
-			currentNode := currentNode children
-				detect: [ :e | (e data basename ifEmpty: [ '/' ]) = currentSegment ]
-				ifFound: [ :node | 
-					node expand.
-					node ]
-				ifNone: [ nil ] ].
-	currentNode
-		ifNotNil: [ | index |
-			index := self sourceDirectoryTree widget dataSource
-				indexOfElementMatching: [ :elem | elem = currentNode data ].
-			self sourceDirectoryTree widget selectIndex: index ]
-]
+IceTipEditProjectDialog >> initializePresenters [
 
-{ #category : #initialization }
-IceTipEditProjectDialog >> initializeWidgets [
-	nameLabel := self newLabel label: 'Project Name'.
-	nameInput := self newLabel label: self model name.
+	nameLabel := self newLabel label: 'Project Name'; yourself.
+	nameInput := self newLabel label: self model name; yourself.
 	
 	sourceDirectoryLabel := self newLabel
 		label: 'Code directory';
 		yourself.
-	sourceDirectoryTree := self newIceTreeTable.
+	sourceDirectoryTree := self newTreeTable.
 	
-	formatLabel := self newLabel label: 'Format'.
+	formatLabel := self newLabel label: 'Format'; yourself.
 	formatList := self newDropList.
-	
-	addDirectoryButton := self newButton
-		label: '';
-		help: 'Create a new directory under the selected one';
-		iconName: #add;
-		enabled: false;
-		action: [ self addDirectory ];
-		yourself.
-
-	removeDirectoryButton := self newButton
-		label: '';
-		help: 'Removes the selected directory';
-		iconName: #remove;
-		enabled: false;
-		action: [ self removeDirectory ];
-		yourself.
 
 	self initializeMessagePanel.
-
 	self initializeDirectoryTree.
-	self focusOrder
-		add: nameInput;
-		add: sourceDirectoryTree;
-		add: formatList
+
 ]
 
-{ #category : #initialization }
-IceTipEditProjectDialog >> messagePanel [
+{ #category : #accessing }
+IceTipEditProjectDialog >> messageIcon [
 
-	^ messagePanel
+	^ messageIcon
+]
+
+{ #category : #accessing }
+IceTipEditProjectDialog >> messageText [ 
+
+	^ messageText 
 ]
 
 { #category : #accessing }
 IceTipEditProjectDialog >> model [
+
 	^ model
 ]
 
 { #category : #'accessing ui' }
 IceTipEditProjectDialog >> nameInput [
+
 	^ nameInput
 ]
 
 { #category : #'accessing ui' }
-IceTipEditProjectDialog >> nameInput: anObject [
-	nameInput := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipEditProjectDialog >> nameLabel [
+
 	^ nameLabel
-]
-
-{ #category : #'accessing ui' }
-IceTipEditProjectDialog >> nameLabel: anObject [
-	nameLabel := anObject
-]
-
-{ #category : #initialization }
-IceTipEditProjectDialog >> newDirectoryDataSource [
-
-	^ IceTipDirectoryDataSource new
-		tool: self;
-		directory: self model fileSystem;
-		yourself
 ]
 
 { #category : #events }
@@ -336,35 +264,7 @@ IceTipEditProjectDialog >> onAccept: aBlockClosure [
 	acceptCallback := aBlockClosure
 ]
 
-{ #category : #actions }
-IceTipEditProjectDialog >> removeDirectory [
-
-	| toRemove |
-	
-	toRemove := selectedDirectoryPath asResolvedBy: self model fileSystem.
-
-	toRemove exists 
-		ifTrue: [ 
-			(UIManager default 
-				questionWithoutCancel: ('Are you sure to delete ''{1}''?' format: {toRemove basename})  
-				title: 'Remove directory')
-				ifFalse: [ ^ self].
-			toRemove ensureDelete ].
-	
-	"The FTTable lost the selection when the expansion is done"
-	sourceDirectoryTree widget dataSource updateData.
-	sourceDirectoryTree widget dataSource expandAll.
-	sourceDirectoryTree widget selectIndex: (sourceDirectoryTree widget dataSource indexOfElement: toRemove parent).
-
-]
-
 { #category : #accessing }
-IceTipEditProjectDialog >> removeDirectoryButton [
-	
-	^ removeDirectoryButton
-]
-
-{ #category : #initialization }
 IceTipEditProjectDialog >> selectedDirectoryPath [
 
 	^ selectedDirectoryPath
@@ -377,66 +277,45 @@ IceTipEditProjectDialog >> selectedFileFormat [
 ]
 
 { #category : #events }
-IceTipEditProjectDialog >> setModelBeforeInitialization: anObject [ 
+IceTipEditProjectDialog >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipEditProjectDialog >> sourceDirectoryLabel [
+
 	^ sourceDirectoryLabel
 ]
 
 { #category : #accessing }
-IceTipEditProjectDialog >> sourceDirectoryLabel: anObject [
-	sourceDirectoryLabel := anObject
-]
+IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedPaths [
 
-{ #category : #initialization }
-IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedIndexes [
-
-	| selectedDirectory selection |
-	selectedIndexes
-		ifEmpty: [ 
-			"If the user does not select any directory, we choose the root and we use the default format"
+	| selection |
+	selectedPaths
+		ifEmpty:
+			[ "If the user does not select any directory, we choose the root and we use the default format"
 			selectedDirectoryPath := RelativePath new.
-			self sourceDirectoryTree widget selectRowIndex: 1.
-			selection := self sourceDirectoryTree widget dataSource rootItem children first.
-			selectedDirectory := self sourceDirectoryTree widget dataSource rootItem children first data.
-		] ifNotEmpty: [
-			[selection := self sourceDirectoryTree widget dataSource elementAt: selectedIndexes first] 
-				on:SubscriptOutOfBounds do:[ ^ self ].
-		].
-	
-	selectedDirectory := selection data.
-	selectedDirectoryPath := selectedDirectory relativeTo: self model fileSystem. 
-	formatList setSelectedItem: (self guessFormatFromDirectory: selectedDirectory).
-	
-	self updateRemoveAndAddButton.
+			selection := self sourceDirectoryTree roots first ]
+		ifNotEmpty: [ selection := self sourceDirectoryTree
+				itemAtPath: selectedPaths first. ].
+	formatList selectItem: (self guessFormatFromDirectory: selection).
+	selectedDirectoryPath := selection relativeTo: self model fileSystem. 
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipEditProjectDialog >> sourceDirectoryTree [
+
 	^ sourceDirectoryTree
 ]
 
 { #category : #accessing }
-IceTipEditProjectDialog >> sourceDirectoryTree: anObject [
-	sourceDirectoryTree := anObject
-]
-
-{ #category : #events }
-IceTipEditProjectDialog >> updateRemoveAndAddButton [
-
-	addDirectoryButton enabled: selectedDirectoryPath isNotNil.
-	removeDirectoryButton enabled: selectedDirectoryPath isWorkingDirectory not
-]
-
-{ #category : #accessing }
 IceTipEditProjectDialog >> username [
+
 	^ self nameInput text trimBoth
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
 IceTipEditProjectDialog >> warningMessage [
 
 	^ 'Be careful. You should choose the actual format of the current repository.
