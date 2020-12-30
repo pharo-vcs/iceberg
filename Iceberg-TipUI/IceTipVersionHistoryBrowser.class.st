@@ -5,7 +5,7 @@ I'm a browser and panel to show the version history of a method.
 "
 Class {
 	#name : #IceTipVersionHistoryBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'commitList',
 		'selectedModel',
@@ -39,11 +39,6 @@ IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 IceTipVersionHistoryBrowser >> commitList [
 
 	^ commitList
-]
-
-{ #category : #'accessing ui' }
-IceTipVersionHistoryBrowser >> commitList: anObject [
-	commitList := anObject
 ]
 
 { #category : #accessing }
