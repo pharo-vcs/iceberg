@@ -9,7 +9,7 @@ I display the list of commits of the PR for review, allow the user to merge the 
 "
 Class {
 	#name : #IceGitHubTipPullRequestBrowser,
-	#superclass : #ComposablePresenter,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'repositoryModel',
 		'pullRequest',
@@ -23,25 +23,34 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
+{ #category : #commands }
+IceGitHubTipPullRequestBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
+{ #category : #commands }
+IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
 { #category : #specs }
 IceGitHubTipPullRequestBrowser class >> defaultSpec [
-	^ SpecLayout composed
-		newColumn: [ :mainC | 
-			mainC
-				newRow: [ :row | 
-					row
-						newColumn: [ :column | 
-							column
-								newRow: #commitLabel height: self labelHeight;
-								newRow: #commits ] ];
-				addHSplitter;
-				newRow: [ :row | row add: #diff ];
-				newRow: [ :row | 
-					row
-						add: #mergeButton;
-						add: #acceptButton;
-						add: #rejectButton ] height: self toolbarHeight ];
-		yourself
+
+	^ SpBoxLayout newVertical
+		  add: #commitLabel height: self labelHeight;
+		  add: (SpPanedLayout newVertical
+				   add: #commits;
+				   add: #diff;
+				   yourself);
+		  add: (SpBoxLayout newHorizontal
+				   add: #mergeButton;
+				   add: #acceptButton;
+				   add: #rejectButton;
+				   yourself)
+		  height: self toolbarHeight;
+		  yourself
 ]
 
 { #category : #'instance creation' }
@@ -55,101 +64,115 @@ IceGitHubTipPullRequestBrowser class >> on: aModel pullRequest: aPullRequest [
 
 { #category : #accessing }
 IceGitHubTipPullRequestBrowser class >> taskbarIcon [
+
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> acceptButton [
-	^ acceptButton
-]
 
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> acceptButton: anObject [
-	acceptButton := anObject
+	^ acceptButton
 ]
 
 { #category : #actions }
 IceGitHubTipPullRequestBrowser >> acceptPullRequest [
+
 	IceGitHubAcceptPullRequestModel new
-		onAccept: [ :model | 
+		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
-			self pullRequest acceptMessage: model message type: model type ];
+			self pullRequest acceptMessage: aModel message type: aModel type ];
 		openWithSpec
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> commitLabel [
+
 	^ commitLabel
 ]
 
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> commitLabel: anObject [
-	commitLabel := anObject
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> commits [
+
 	^ commits
 ]
 
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> commits: anObject [
-	commits := anObject
-]
-
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> diff [
-	^ diff
-]
-
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> diff: anObject [
-	diff := anObject
-]
-
-{ #category : #api }
-IceGitHubTipPullRequestBrowser >> initialExtent [
-	^ (1050 @ 800) scaledByDisplayScaleFactor
-]
-
 { #category : #initialization }
-IceGitHubTipPullRequestBrowser >> initializeCommitsTable [
-	| textStylingBlock |
-	textStylingBlock := [ :string :commit | 
-	commit isMerged
-		ifTrue: [ string asText ]
-		ifFalse: [ string asText allBold ] ].
-	
-	commits widget
-		beResizable;
-		addColumn: (IceTipTableColumn id: 'Date & time' action: [ :commit | textStylingBlock value: commit datetime asLocalStringYMDHM value: commit ] width: 120 * self currentWorld displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Id' action: [ :commit | textStylingBlock value: commit shortId value: commit ] width: 50 * self currentWorld displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Author' action: [ :commit | textStylingBlock value: commit author value: commit ] width: 120 * self currentWorld displayScaleFactor);
-		addColumn: (IceTipTableColumn id: 'Comment' action: [ :commit | textStylingBlock value: commit comment value: commit ] width: 300 * self currentWorld displayScaleFactor);
-		dataSource: self newCommitsDataSource;
-		selectRowIndex: 1
-]
+IceGitHubTipPullRequestBrowser >> connectPresenters [
 
-{ #category : #initialization }
-IceGitHubTipPullRequestBrowser >> initializeDiff [
-	diff beForMerge.
-	diff selectedModel: self commits widget dataSource elements anyOne
-]
+	super connectPresenters.
+	self commits whenSelectionChangedDo: [ :selection | 
+		self uptadeSelectedCommit: selection selectedItem ].
 
-{ #category : #initialization }
-IceGitHubTipPullRequestBrowser >> initializePresenter [
-	super initializePresenter.
-	self commits widget onAnnouncement: FTSelectionChanged send: #uptadeSelectedCommit: to: self.
-	
 	mergeButton action: [ self mergePullRequestIntoImage ].
 	acceptButton action: [ self acceptPullRequest ].
 	rejectButton action: [ self rejectPullRequest ]
 ]
 
+{ #category : #'accessing ui' }
+IceGitHubTipPullRequestBrowser >> diff [
+
+	^ diff
+]
+
 { #category : #initialization }
-IceGitHubTipPullRequestBrowser >> initializeWidgets [
+IceGitHubTipPullRequestBrowser >> initialExtentForWindow [
+
+	^ (1050 @ 800) scaledByDisplayScaleFactor
+]
+
+{ #category : #initialization }
+IceGitHubTipPullRequestBrowser >> initializeCommitsTable [
+
+	| textStylingBlock |
+	textStylingBlock := [ :string :commit | 
+	                    commit isMerged
+		                    ifTrue: [ string asText ]
+		                    ifFalse: [ string asText allBold ] ].
+
+	commits
+		beResizable;
+		addColumn: (SpStringTableColumn new
+				 title: 'Date & time';
+				 evaluated: [ :commit | 
+					 textStylingBlock
+						 value: commit datetime asLocalStringYMDHM
+						 value: commit ];
+				 width: 120 * self currentWorld displayScaleFactor;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Id';
+				 evaluated: [ :commit | 
+					 textStylingBlock value: commit shortId value: commit ];
+				 width: 50 * self currentWorld displayScaleFactor;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Author';
+				 evaluated: [ :commit | 
+					 textStylingBlock value: commit author value: commit ];
+				 width: 120 * self currentWorld displayScaleFactor;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Comment';
+				 evaluated: [ :commit | 
+					 textStylingBlock value: commit comment value: commit ];
+				 width: 300 * self currentWorld displayScaleFactor;
+				 yourself).
+		
+	
+]
+
+{ #category : #initialization }
+IceGitHubTipPullRequestBrowser >> initializeDiff [
+
+	diff beForMerge.
+
+]
+
+{ #category : #initialization }
+IceGitHubTipPullRequestBrowser >> initializePresenters [
+
 	commitLabel := self newLabel.
-	commits := self newIceTable.
+	commits := self newTable.
 	diff := self instantiate: IceTipCommitInfoPresenter.
 	mergeButton := self newButton.
 	acceptButton := self newButton.
@@ -157,58 +180,36 @@ IceGitHubTipPullRequestBrowser >> initializeWidgets [
 	
 	commitLabel label: 'Commits'.
 	self initializeCommitsTable.
-	self initializeDiff.
+	diff beForMerge.
 	mergeButton label: 'Merge into image'.
 	acceptButton label: 'Accept pull request'.
 	rejectButton label: 'Reject pull request'.
-	
-	self focusOrder
-		add: commits;
-		add: diff;
-		add: mergeButton;
-		add: acceptButton;
-		add: rejectButton
+
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
+IceGitHubTipPullRequestBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ commits
+]
+
+{ #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> mergeButton [
-	^ mergeButton
-]
 
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> mergeButton: anObject [
-	mergeButton := anObject
+	^ mergeButton
 ]
 
 { #category : #actions }
 IceGitHubTipPullRequestBrowser >> mergePullRequestIntoImage [
-	(UIManager default confirm: ('I will create a new local branch named {1}. Should I continue?' format: { self pullRequest branchName })) ifFalse: [ ^ self ].
+
+	(UIManager default confirm:
+		 ('I will create a new local branch named {1}. Should I continue?' 
+			  format: { self pullRequest branchName })) ifFalse: [ ^ self ].
 
 	IceGitHubAPI ensureCredentials.
 
 	self pullRequest mergeIntoWorkingCopy
-]
-
-{ #category : #'instance creation' }
-IceGitHubTipPullRequestBrowser >> newCommitsDataSource [
-	| commitModels |
-	commitModels := self pullRequest commits collect: [ :each | (IceTipCommitModel repositoryModel: self repositoryModel on: each) beCached ].
-	^ IceTipDataSource new
-		tool: self;
-		elements: commitModels;
-		yourself
-]
-
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> newContext [
-	^ IceTipPullRequestsContext for: self
-]
-
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> newContextWithSelection: aCommitModel [
-	^ self newContext
-		item: aCommitModel;
-		yourself
 ]
 
 { #category : #accessing }
@@ -222,21 +223,28 @@ IceGitHubTipPullRequestBrowser >> pullRequest: anObject [
 ]
 
 { #category : #accessing }
+IceGitHubTipPullRequestBrowser >> refresh [
+
+	| commitModels |
+	commitModels := self pullRequest commits collect: [ :each | 
+		                (IceTipCommitModel
+			                 repositoryModel: self repositoryModel
+			                 on: each) beCached ].
+	commits items: commitModels
+]
+
+{ #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> rejectButton [
 	^ rejectButton
 ]
 
-{ #category : #accessing }
-IceGitHubTipPullRequestBrowser >> rejectButton: anObject [
-	rejectButton := anObject
-]
-
 { #category : #actions }
 IceGitHubTipPullRequestBrowser >> rejectPullRequest [
+
 	IceGitHubRejectPullRequestModel new
-		onAccept: [ :model | 
+		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
-			self pullRequest rejectMessage: model message ];
+			self pullRequest rejectMessage: aModel message ];
 		openWithSpec
 ]
 
@@ -250,17 +258,24 @@ IceGitHubTipPullRequestBrowser >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]
 
-{ #category : #'model access' }
+{ #category : #initialization }
 IceGitHubTipPullRequestBrowser >> setModelBeforeInitialization: aModel [
+
 	self repositoryModel: aModel
 ]
 
 { #category : #accessing }
-IceGitHubTipPullRequestBrowser >> title [
+IceGitHubTipPullRequestBrowser >> titleForWindow [
+
 	^ 'Browsing pull request: #{1} {2}' format: { self pullRequest number. self pullRequest title }
+
 ]
 
 { #category : #initialization }
 IceGitHubTipPullRequestBrowser >> uptadeSelectedCommit: anEvent [
-	self diff selectedModel: (anEvent newSelectedRowIndexes ifNotEmpty: [ :indexes | (self commits widget dataSource elementAt: indexes first)  ] ifEmpty: [ nil ])
+
+	self diff selectedModel: (anEvent newSelectedRowIndexes
+			 ifNotEmpty: [ :indexes | 
+			 self commits widget dataSource elementAt: indexes first ]
+			 ifEmpty: [ nil ])
 ]
