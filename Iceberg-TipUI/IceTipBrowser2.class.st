@@ -96,8 +96,10 @@ IceTipBrowser2 >> connectPresenters [
 
 		rootGroup installShortcutsIn: self.
 		
-		self mainList contextMenuFromCommandsGroup:
-			(rootGroup / self class selectionCommandGroupName)
+		rootGroup
+			commandOrGroupNamed: self class selectionCommandGroupName
+			ifFound: [ :subgroup |
+				self mainList contextMenuFromCommandsGroup: subgroup ]
 		].
 
 
