@@ -27,10 +27,3 @@ IceGitHubCommand >> remoteModel [
 	^ self context
 
 ]
-
-{ #category : #accessing }
-IceGitHubCommand >> repository [
-
-	^ self remoteModel localRepository
-
-]
