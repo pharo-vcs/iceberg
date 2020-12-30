@@ -24,6 +24,21 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
+{ #category : #commands }
+IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipRefreshPullRequestsCommand forSpec
+]
+
+{ #category : #commands }
+IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{ 	IceTipOpenGitHubPullRequestCommand }
+			do: [ :each |
+				aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipGitHubPullRequestListBrowser class >> defaultSpec [
 
