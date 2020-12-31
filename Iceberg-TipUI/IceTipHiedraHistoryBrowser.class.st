@@ -15,15 +15,16 @@ Class {
 IceTipHiedraHistoryBrowser >> initializeCommitList [
 	"Add the Hiedra column at the beginning. The Datasource has the logic to render it."
 
-
-	commitList addColumn:
-			(SpImageTableColumn new evaluated: [ :each | hiedraColumnController cellMorphAtRow: (commitList items indexOf: each) ];
+	commitList
+		addColumn:
+			(SpImageTableColumn new
+				evaluated: [ :each |
+					hiedraColumnController cellMorphAtRow: (commitList items indexOf: each) ];
 				title: ' ';
 				width: 80;
 				yourself).
 	super initializeCommitList.
 
-	
 ]
 
 { #category : #initialization }
@@ -51,23 +52,17 @@ IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
 ]
 
 { #category : #initialization }
-IceTipHiedraHistoryBrowser >> initializeWidgets [
-	super initializeWidgets .
+IceTipHiedraHistoryBrowser >> initializePresenters [
+
+	super initializePresenters.
 	self initializeHiedraColumn
 ]
 
-{ #category : #'private factory' }
-IceTipHiedraHistoryBrowser >> newCommitsDataSource [
-	^ IceTipHiedraDataSource new 
-		tool: self;
-		elements: #(); "It will be set when refreshing"
-		yourself
-]
-
 { #category : #accessing }
-IceTipHiedraHistoryBrowser >> refresh [ 
+IceTipHiedraHistoryBrowser >> refresh [
+
 	self refreshHiedraColumn.
-		super refresh.
+	super refresh
 ]
 
 { #category : #accessing }
@@ -76,7 +71,7 @@ IceTipHiedraHistoryBrowser >> refreshHiedraColumn [
 
 	ancestorIds := Dictionary new.
 	self model commitModels do: [ :aCommit |
-"		Note: Hiedra expects each ancestor id corresponds to a commit in elements."
+"		Note: Hiedra expects that each ancestor id corresponds to a commit in elements."
 		ancestorIds
 			at: aCommit id
 			put: aCommit entity ancestorIds ].

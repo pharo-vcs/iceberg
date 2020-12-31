@@ -6,7 +6,7 @@ I'm usually used as part of an IceTipRepositoryBrowser.
 "
 Class {
 	#name : #IceTipHistoryBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'commitList',
 		'commitInfoTabs'
@@ -15,24 +15,27 @@ Class {
 }
 
 { #category : #commands }
-IceTipHistoryBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
-	rootCommandGroup
-		register: ((CmCommandGroup named: 'commit commands') asSpecGroup
-			register: (IceTipCherryPickCommand forSpec context: presenterIntance )
-		)
+IceTipHistoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
+{ #category : #commands }
+IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipCherryPickCommand forSpec
+
 ]
 
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
 	<spec: #default>
-	^ SpBoxLayout newVertical
-		add: #toolbar expand: false fill: true padding: 0;
-		add:
-			(SpPanedLayout newVertical
-				add: #commitList;
-				add: #commitInfoTabs;
-				yourself);
-		yourself
+
+	^ SpPanedLayout newVertical
+		  add: #commitList;
+		  add: #commitInfoTabs;
+		  yourself
+
 ]
 
 { #category : #specs }
@@ -47,41 +50,31 @@ IceTipHistoryBrowser class >> panelSpec [
 
 { #category : #accessing }
 IceTipHistoryBrowser >> beForMerge [
+
 	self commitInfoTabs beForMerge
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipHistoryBrowser >> commitInfoTabs [
-	^ commitInfoTabs
-]
 
-{ #category : #accessing }
-IceTipHistoryBrowser >> commitInfoTabs: anObject [
-	commitInfoTabs := anObject
+	^ commitInfoTabs
 ]
 
 { #category : #'accessing ui' }
 IceTipHistoryBrowser >> commitList [
+
 	^ commitList
 ]
 
-{ #category : #'accessing ui' }
-IceTipHistoryBrowser >> commitList: anObject [
-	commitList := anObject
-]
+{ #category : #initialization }
+IceTipHistoryBrowser >> initialExtentForWindow [
 
-{ #category : #accessing }
-IceTipHistoryBrowser >> contextClass [
-	^ IceTipHistoryContext
-]
-
-{ #category : #accessing }
-IceTipHistoryBrowser >> initialExtent [
-	^ (700@700) scaledByDisplayScaleFactor
+	^ (700 @ 700) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializeCommitList [
+
 	commitList
 		beResizable;
 		addColumn:
@@ -104,79 +97,74 @@ IceTipHistoryBrowser >> initializeCommitList [
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				title: 'Description';
 				yourself);
-		whenSelectionChangedDo: [ commitInfoTabs selectedModel: self selectedCommit ];
-		selectIndex: 1;
-		contextMenu:
-				[ (self rootCommandsGroup / 'commit commands') beRoot asMenuPresenter ]
+		whenSelectionChangedDo: [ commitInfoTabs selectedModel: self selectedCommit ]
+
 ]
 
 { #category : #initialization }
-IceTipHistoryBrowser >> initializeWidgets [
-	super initializeWidgets.	
+IceTipHistoryBrowser >> initializePresenters [
+
+	super initializePresenters.	
 	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
 	self initializeCommitList.
-	
-	self focusOrder 
-		add: commitList;
-		add: commitInfoTabs.
 		
 	self refreshCommitList.
 ]
 
+{ #category : #'accessing ui' }
+IceTipHistoryBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ commitList
+]
+
 { #category : #accessing }
 IceTipHistoryBrowser >> model: anObject [
+
 	super model: anObject.
 	self refresh
 ]
 
-{ #category : #'private factory' }
-IceTipHistoryBrowser >> newCommitsDataSource [
-	^ IceTipDataSource new 
-		tool: self;
-		elements: #(); "It will be set when refreshing"
-		yourself
-]
-
-{ #category : #'private factory' }
-IceTipHistoryBrowser >> newContextWithSelection: anObject [
-	^ self newContext 
-		item: anObject;
-		yourself
-]
-
 { #category : #accessing }
 IceTipHistoryBrowser >> refresh [
-	self refreshCommitList 
+
+	self refreshCommitList
 ]
 
 { #category : #accessing }
 IceTipHistoryBrowser >> refreshCommitList [
+
 	| commitModels |
 	commitModels := self model commitModels.
 	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
+
 ]
 
 { #category : #accessing }
 IceTipHistoryBrowser >> selectedCommit [
+
 	^ commitList selection selectedItem
 ]
 
 { #category : #'event handling' }
 IceTipHistoryBrowser >> selectionChanged: ann [
-	commitInfoTabs
-		selectedModel:
-			(ann newSelectedIndexes
-				ifNotEmpty:
-					[ :indexes | self commitList widget dataSource elementAt: indexes first ]
-				ifEmpty: [ nil ])
+
+	commitInfoTabs selectedModel:
+		(ann newSelectedIndexes
+			 ifNotEmpty: [ :indexes | 
+				 self commitList widget dataSource elementAt: indexes first ]
+			 ifEmpty: [ nil ])
+
 ]
 
 { #category : #accessing }
-IceTipHistoryBrowser >> title [
+IceTipHistoryBrowser >> titleForWindow [
+
 	^ self model
 		ifNotNil: [ 'History of {1}' format: {self model repositoryName} ]
 		ifNil: [ 'History' ]
+
 ]
