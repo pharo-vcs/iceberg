@@ -18,7 +18,6 @@ Class {
 
 { #category : #specs }
 IceTipVersionHistoryBrowser class >> defaultSpec [
-	<spec: #default>
 	
 	^ SpPanedLayout newVertical
 		add: #commitList;

@@ -1,0 +1,38 @@
+"
+I'm a the abstract superclass of commands that act on repositories. 
+"
+Class {
+	#name : #IceTipRemotesTreeCommand,
+	#superclass : #IceTipCommand2,
+	#category : #'Iceberg-TipUI-Commands'
+}
+
+{ #category : #accessing }
+IceTipRemotesTreeCommand class >> isAbstract [
+
+	^ self == IceTipRemotesTreeCommand
+]
+
+{ #category : #testing }
+IceTipRemotesTreeCommand >> actsOnBranch: aBranchModel [
+
+	^ false
+]
+
+{ #category : #testing }
+IceTipRemotesTreeCommand >> actsOnRemote: aRemoteModel [
+
+	^ false
+]
+
+{ #category : #testing }
+IceTipRemotesTreeCommand >> actsOnTag: aTagModel [
+
+	^ false
+]
+
+{ #category : #execution }
+IceTipRemotesTreeCommand >> canBeExecuted [
+
+	^ self item canActivateCommand: self
+]

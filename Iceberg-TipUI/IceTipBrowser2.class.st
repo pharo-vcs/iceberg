@@ -81,6 +81,7 @@ IceTipBrowser2 class >> selectionExtraCommandGroupName [
 { #category : #initialization }
 IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 
+	aSpWindowPresenter ifNil: [ ^ self ].
 	toolbar := self newToolbarForWindow.
 
 	toolbar isEmpty ifFalse: [ aSpWindowPresenter toolbar: toolbar ]
@@ -175,6 +176,12 @@ IceTipBrowser2 >> newToolbarForWindow [
 			  presenter
 				  displayMode: SpToolbarDisplayMode modeIconAndLabel;
 				  addStyle: 'stToolbar' ]
+]
+
+{ #category : #initialization }
+IceTipBrowser2 >> rebuildToolbar [
+
+	self addToolbarIfNotEmptyIn: self window
 ]
 
 { #category : #accessing }

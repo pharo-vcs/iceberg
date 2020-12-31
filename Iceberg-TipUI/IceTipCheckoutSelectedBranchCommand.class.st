@@ -3,52 +3,35 @@ Command that checks out the selected branch
 "
 Class {
 	#name : #IceTipCheckoutSelectedBranchCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#instVars : [
-		'branchModel'
-	],
+	#superclass : #IceTipRemotesTreeCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #testing }
-IceTipCheckoutSelectedBranchCommand class >> actsOnBranch: aBranchModel [
-	^ true
-]
-
-{ #category : #execution }
-IceTipCheckoutSelectedBranchCommand class >> browserContextActivation [
-    <classAnnotation>
-    
-    ^ CmdContextMenuActivation byRootGroupItemOrder: 10 for: IceTipRepositoryContext
-]
-
-{ #category : #execution }
-IceTipCheckoutSelectedBranchCommand class >> canBeExecutedInContext: aToolContext [
-    ^ aToolContext item canActivateCommand: self
-]
-
 { #category : #accessing }
-IceTipCheckoutSelectedBranchCommand class >> defaultHelp [
+IceTipCheckoutSelectedBranchCommand class >> defaultDescription [
+
 	^ 'Checkout this branch'
 ]
 
 { #category : #accessing }
-IceTipCheckoutSelectedBranchCommand class >> defaultMenuIconName [
-	^ #branch
+IceTipCheckoutSelectedBranchCommand class >> defaultName [
+
+	^ 'Checkout branch'
 ]
 
-{ #category : #accessing }
-IceTipCheckoutSelectedBranchCommand class >> defaultMenuItemName [
-	^ 'Checkout branch'
+{ #category : #testing }
+IceTipCheckoutSelectedBranchCommand >> actsOnBranch: aBranchModel [
+
+	^ true
 ]
 
 { #category : #execution }
 IceTipCheckoutSelectedBranchCommand >> execute [
-	branchModel previewCheckout
+
+	self item previewCheckout
 ]
 
-{ #category : #execution }
-IceTipCheckoutSelectedBranchCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	branchModel := aToolContext item.
+{ #category : #accessing }
+IceTipCheckoutSelectedBranchCommand >> iconName [
+	^ #branch
 ]

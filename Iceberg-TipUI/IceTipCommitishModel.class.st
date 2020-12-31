@@ -19,6 +19,12 @@ IceTipCommitishModel >> commitModels [
 	self subclassResponsibility
 ]
 
+{ #category : #testing }
+IceTipCommitishModel >> isCommitish [
+
+	^ true
+]
+
 { #category : #accessing }
 IceTipCommitishModel >> shortCommitId [
 	

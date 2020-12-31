@@ -4,7 +4,7 @@ I will show remotes, branches, tags and all possible operations in low level rep
 "
 Class {
 	#name : #IceTipRepositoryBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'sidebarTree',
 		'historyPanel'
@@ -12,63 +12,86 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #commands }
+IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipAddRemoteCommand forSpec
+]
+
+{ #category : #commands }
+IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{
+		IceTipFetchRemoteCommand.
+		IceTipCheckoutSelectedBranchCommand.
+		IceTipDeleteBranchCommand.
+		IceTipDeleteTagCommand.
+		IceTipCheckoutSelectedTagCommand.
+		IceTipDeleteRemoteCommand
+		} do: [ :each |
+			aCommandGroup register: each forSpec ]
+
+]
+
 { #category : #specs }
 IceTipRepositoryBrowser class >> defaultSpec [
-	<spec: #default>
-	
-	^ SpBoxLayout newVertical
-		add: #toolbar expand: false fill: true padding: 0;
-		add: (SpPanedLayout newHorizontal
-			position: 30 percent; 
-			add: #sidebarTree;
-			add: #historyPanel withConstraints:[ :c | c spec: #panelSpec ];
-			yourself);
-		yourself
+
+	^ SpPanedLayout newHorizontal
+		  position: 30 percent;
+		  add: #sidebarTree;
+		  add: #historyPanel withConstraints: [ :c | c spec: #panelSpec ];
+		  yourself
+
 ]
 
 { #category : #'instance creation' }
 IceTipRepositoryBrowser class >> new [
-	self error: 'Use #for:'
+	self error: 'Use #onRepository:'
 ]
 
 { #category : #'instance creation' }
 IceTipRepositoryBrowser class >> onRepository: aRepository [
-	^ self on: (IceTipRepositoryModel on: aRepository)
-]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> branchSelected [
-	^ sidebarTree selection selectedItem
+	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
+
 	historyPanel model: ann
-
 ]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> contextClass [
-	^ IceTipRepositoryContext
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipRepositoryBrowser >> historyPanel [
+
 	^ historyPanel
 ]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> historyPanel: anObject [
-	historyPanel := anObject
+{ #category : #initialization }
+IceTipRepositoryBrowser >> initialExtentForWindow [
+
+	^ (1000 @ 700) scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> initialExtent [
-	^ (1000@700) scaledByDisplayScaleFactor
+{ #category : #initialization }
+IceTipRepositoryBrowser >> initializePresenters [
+
+	super initializePresenters.
+	sidebarTree := self newTreeTable.
+	historyPanel := self
+		instantiate: IceTipHiedraHistoryBrowser
+		on: self model headModel.
+	historyPanel beForMerge.
+
+	self initializeSidebarTree.
+
+	self refresh.
+
 ]
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializeSidebarTree [
+
 	sidebarTree
 		addColumn:
 			(SpCompositeTableColumn new
@@ -83,66 +106,39 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 						yourself);
 				yourself);
 		children: [ :each | each children ];
-		roots: self model repositoryModelsByGroup;
 		whenSelectionChangedDo: [ :selection | 
-			selection selectedItem class superclass = IceTipTreeItem
-				ifTrue: [ self commitishSelected: selection selectedItem ] ];
-		contextMenu: [ self buildMenu ]  .
-	self selectCurrentBranch
+			(selection isEmpty not and: [ selection selectedItem isCommitish ])
+				ifTrue: [ self commitishSelected: selection selectedItem ] ].
+
 ]
 
-{ #category : #initialization }
-IceTipRepositoryBrowser >> initializeWidgets [
-	super initializeWidgets.
-	sidebarTree := self newTreeTable.
-	historyPanel := self
-		instantiate: IceTipHiedraHistoryBrowser
-		on: self model headModel.
-	historyPanel beForMerge.
+{ #category : #'accessing ui' }
+IceTipRepositoryBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
 
-	self initializeSidebarTree.
-	
-	self focusOrder
-		add: historyPanel;
-		add: sidebarTree
-]
-
-{ #category : #accessing }
-IceTipRepositoryBrowser >> newContextWithSelection: anObject [
-    ^ self newContext 
-    item: anObject;
-    yourself
-]
-
-{ #category : #'private factory' }
-IceTipRepositoryBrowser >> newSidebarTreeDataSource [
-	^ IceTipTreeOutlineDataSource new 
-		tool: self;
-		rootForItems: self model repositoryModelsByGroup;
-		childrenBlock: [ :each | each children ];
-		icon: [ :each | each icon ];
-		format: #descriptionWithDecoration;
-		yourself
+	^ sidebarTree
 ]
 
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
+
 	self rebuildToolbar.
 	self sidebarTree selection unselectAll.
 	self sidebarTree roots: self model repositoryModelsByGroup.
-
+	self selectCurrentBranch
 ]
 
 { #category : #'private factory' }
 IceTipRepositoryBrowser >> refreshWhenRepository: ann [
-	(self model isModelOf: ann repository)
-		ifFalse: [ ^ self ].
-	self model reset.   
-	self refresh.
+
+	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
+	self model reset.
+	self refresh
 ]
 
 { #category : #initialization }
 IceTipRepositoryBrowser >> selectCurrentBranch [
+
 	| branch |
 	branch := self model headModel entity.
 	
@@ -150,27 +146,26 @@ IceTipRepositoryBrowser >> selectCurrentBranch [
 	
 	"We know that the current branch is a local one, so we build the path from 1 (for local branch) and the index of the current branch."
 	sidebarTree selection selectPath: { 1. self model branches indexOf: branch}
+
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipRepositoryBrowser >> sidebarTree [
-	^ sidebarTree
-]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> sidebarTree: anObject [
-	sidebarTree := anObject
+	^ sidebarTree
 ]
 
 { #category : #'private factory' }
 IceTipRepositoryBrowser >> subscribeToAnnouncements [
+
     Iceberg announcer weak 
         when: IceRepositoryAnnouncement 
         send: #refreshWhenRepository: 
         to: self
 ]
 
-{ #category : #accessing }
-IceTipRepositoryBrowser >> title [
-	^ 'Repository of ', self model name
+{ #category : #initialization }
+IceTipRepositoryBrowser >> titleForWindow [
+
+	^ 'Repository of ' , self model name
 ]

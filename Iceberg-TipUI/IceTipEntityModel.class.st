@@ -90,6 +90,12 @@ IceTipEntityModel >> initializeEntity: anObject [
 ]
 
 { #category : #testing }
+IceTipEntityModel >> isCommitish [
+	
+	^ false
+]
+
+{ #category : #testing }
 IceTipEntityModel >> isModelOf: anObject [
 	^ self entity = anObject
 ]

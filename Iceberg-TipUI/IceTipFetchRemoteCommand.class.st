@@ -3,54 +3,42 @@ Command that fetches from remote repositories
 "
 Class {
 	#name : #IceTipFetchRemoteCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#instVars : [
-		'remoteModel'
-	],
+	#superclass : #IceTipRemotesTreeCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #testing }
-IceTipFetchRemoteCommand class >> actsOnRemote: aRemoteModel [
-	^ true
-]
-
-{ #category : #activation }
-IceTipFetchRemoteCommand class >> browserContextActivation [
- 	<classAnnotation>
-    
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 10
-		for: IceTipRepositoryContext
-]
-
 { #category : #accessing }
-IceTipFetchRemoteCommand class >> canBeExecutedInContext: aToolContext [
-    ^ aToolContext item canActivateCommand: self
-]
+IceTipFetchRemoteCommand class >> defaultDescription [
 
-{ #category : #accessing }
-IceTipFetchRemoteCommand class >> defaultHelp [
 	^ 'Fetch commits from this remote'
 ]
 
 { #category : #accessing }
-IceTipFetchRemoteCommand class >> defaultMenuIconName [
-	^ #smallUpdate
+IceTipFetchRemoteCommand class >> defaultName [
+
+	^ 'Fetch remote'
 ]
 
-{ #category : #accessing }
-IceTipFetchRemoteCommand class >> defaultMenuItemName [
-	^ 'Fetch remote'
+{ #category : #testing }
+IceTipFetchRemoteCommand >> actsOnRemote: aRemoteModel [
+
+	^ true
 ]
 
 { #category : #execution }
 IceTipFetchRemoteCommand >> execute [
-	remoteModel fetch
+
+	self remoteModel fetch
+]
+
+{ #category : #accessing }
+IceTipFetchRemoteCommand >> iconName [
+
+	^ #smallUpdate
 ]
 
 { #category : #execution }
-IceTipFetchRemoteCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	remoteModel := aToolContext item.
+IceTipFetchRemoteCommand >> remoteModel [
+
+	^ self item
 ]

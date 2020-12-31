@@ -3,54 +3,42 @@ Command that deletes the selected tag
 "
 Class {
 	#name : #IceTipDeleteTagCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#instVars : [
-		'tagModel'
-	],
+	#superclass : #IceTipRemotesTreeCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #testing }
-IceTipDeleteTagCommand class >> actsOnTag: aRemoteModel [
-	^ true
-]
-
-{ #category : #execution }
-IceTipDeleteTagCommand class >> browserContextActivation [
-    <classAnnotation>
-    
-	^ CmdContextMenuActivation 
-		byRootGroupItemOrder: 100
-		for: IceTipRepositoryContext
-]
-
-{ #category : #execution }
-IceTipDeleteTagCommand class >> canBeExecutedInContext: aToolContext [
-    ^ aToolContext item canActivateCommand: self
-]
-
 { #category : #accessing }
-IceTipDeleteTagCommand class >> defaultHelp [
+IceTipDeleteTagCommand class >> defaultDescription [
+
 	^ 'Delete this tag for this repository'
 ]
 
 { #category : #accessing }
-IceTipDeleteTagCommand class >> defaultMenuIconName [
-	^ #delete
+IceTipDeleteTagCommand class >> defaultName [
+
+	^ 'Delete tag'
 ]
 
-{ #category : #accessing }
-IceTipDeleteTagCommand class >> defaultMenuItemName [
-	^ 'Delete tag'
+{ #category : #testing }
+IceTipDeleteTagCommand >> actsOnTag: aRemoteModel [
+
+	^ true
 ]
 
 { #category : #execution }
 IceTipDeleteTagCommand >> execute [
-	tagModel delete
+
+	self tagModel delete
+]
+
+{ #category : #accessing }
+IceTipDeleteTagCommand >> iconName [
+
+	^ #delete
 ]
 
 { #category : #execution }
-IceTipDeleteTagCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	tagModel := aToolContext item.
+IceTipDeleteTagCommand >> tagModel [
+
+	^ self item
 ]

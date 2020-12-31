@@ -3,45 +3,37 @@ Command that opens a window showing the history of the selected merged branch.
 "
 Class {
 	#name : #IceTipMergeHistoryCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#instVars : [
-		'commitModel'
-	],
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipMergeHistoryCommand class >> browserHistoryContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byRootGroupItemOrder: 100
-		for: IceTipHistoryContext
-]
-
-{ #category : #testing }
-IceTipMergeHistoryCommand class >> canBeExecutedInContext: aToolContext [
-	^ aToolContext selectedCommit hasMultipleAncestors
-]
-
 { #category : #accessing }
-IceTipMergeHistoryCommand class >> defaultHelp [
+IceTipMergeHistoryCommand class >> defaultDescription [
+
 	^ 'Show the merged history of the selected merge commit'
 ]
 
 { #category : #activation }
-IceTipMergeHistoryCommand class >> defaultMenuItemName [
+IceTipMergeHistoryCommand class >> defaultName [
+
 	^ 'Browse merge history'
+]
+
+{ #category : #testing }
+IceTipMergeHistoryCommand >> canBeExecuted [
+
+	^ self commitModel hasMultipleAncestors
+]
+
+{ #category : #execution }
+IceTipMergeHistoryCommand >> commitModel [
+
+	^ self context selectedCommit
 ]
 
 { #category : #execution }
 IceTipMergeHistoryCommand >> execute [
-	(IceTipHistoryBrowser on: commitModel mergeHistoryFromSecondAncestor) openWithSpec
-	
-]
 
-{ #category : #execution }
-IceTipMergeHistoryCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	commitModel := aToolContext item
+	(IceTipHistoryBrowser on:
+		 self commitModel mergeHistoryFromSecondAncestor) openWithSpec
 ]
