@@ -71,14 +71,14 @@ IceTipHiedraHistoryBrowser >> refreshHiedraColumn [
 
 	ancestorIds := Dictionary new.
 	self model commitModels do: [ :aCommit |
-"		Note: Hiedra expects that each ancestor id corresponds to a commit in elements."
 		ancestorIds
 			at: aCommit id
 			put: aCommit entity ancestorIds ].
 	hiedraColumnController reset.
 
+	"Note: ids should keep the original order to generate the ruler correctly."
 	hiedraColumnController ruler: (HiRulerBuilder
-		newRulerValues: (self model commitModels collect: #id) "Note: ids should keep the original order."
+		newRulerValues: (self model commitModels collect: #id) 
 		linksBlock: [ :id | ancestorIds at: id ]).
 
 ]

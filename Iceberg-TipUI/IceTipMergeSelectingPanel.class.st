@@ -93,22 +93,10 @@ IceTipMergeSelectingPanel >> initializeCodePanel [
 { #category : #initialization }
 IceTipMergeSelectingPanel >> initializePresenters [
 
-	super initializePresenters.
 	codePanel := self newCode.
-	self initializeCodePanel
-]
+	self initializeCodePanel.
+	super initializePresenters.
 
-{ #category : #'private factory' }
-IceTipMergeSelectingPanel >> newChangeTreeDataSource [
-
-	^ IceTipTreeSelectingDataSource new
-		tool: self;
-		rootForItems: self model treeRoots;
-		childrenBlock: [ :data | data children ];
-		icon: [ :each | each value icon ];
-		format: #description;
-		selectAll;
-		yourself
 ]
 
 { #category : #accessing }

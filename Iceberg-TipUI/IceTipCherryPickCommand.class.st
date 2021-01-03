@@ -16,19 +16,15 @@ IceTipCherryPickCommand class >> defaultName [
 	^ 'Cherrypick'
 ]
 
-{ #category : #hooks }
+{ #category : #execution }
 IceTipCherryPickCommand >> execute [
 
-	(IceTipCherrypickPreviewBrowser onCommitish:
-		 context selectedCommit realObject entity) openWithSpec
+	(IceTipCherrypickPreviewBrowser onCommitish: self selectedCommitish)
+		openWithSpec
 ]
 
-{ #category : #hooks }
-IceTipCherryPickCommand >> initialize [
+{ #category : #execution }
+IceTipCherryPickCommand >> selectedCommitish [
 
-	super initialize.
-	self
-		name: 'Cherrypick';
-		description:
-			'Cherrypick this commit and apply changes to the working copy'
+	^ self context selectedCommit realObject entity
 ]

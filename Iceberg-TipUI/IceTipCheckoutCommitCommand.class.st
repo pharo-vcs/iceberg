@@ -4,45 +4,37 @@ I will let your repository in detach mode!
 "
 Class {
 	#name : #IceTipCheckoutCommitCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'selectedCommit'
-	],
+	#superclass : #IceTipCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipCheckoutCommitCommand class >> browserHistoryContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byRootGroupItemOrder: 10
-		for: IceTipHistoryContext
-]
-
 { #category : #accessing }
-IceTipCheckoutCommitCommand class >> defaultHelp [
+IceTipCheckoutCommitCommand class >> defaultDescription [
+
 	^ 'Set the selected commit as current commit and load the code in the image'
 ]
 
 { #category : #activation }
-IceTipCheckoutCommitCommand class >> defaultMenuIconName [
-	^ #refresh
-]
+IceTipCheckoutCommitCommand class >> defaultName [
 
-{ #category : #activation }
-IceTipCheckoutCommitCommand class >> defaultMenuItemName [
 	^ 'Checkout'
 ]
 
 { #category : #execution }
 IceTipCheckoutCommitCommand >> execute [
-	
-	(IceTipCheckoutPreviewBrowser onBranch: selectedCommit) openWithSpec
+
+	(IceTipCheckoutPreviewBrowser onBranch: self selectedCommit)
+		openWithSpec
 ]
 
-{ #category : #execution }
-IceTipCheckoutCommitCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	selectedCommit := aToolContext selectedCommit
+{ #category : #accessing }
+IceTipCheckoutCommitCommand >> iconName [
+
+	^ #refresh
+]
+
+{ #category : #accessing }
+IceTipCheckoutCommitCommand >> selectedCommit [
+
+	^ self context selectedCommit
 ]

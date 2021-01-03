@@ -1,48 +1,50 @@
 Class {
 	#name : #IceTipResetBranchToThisCommitCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'selectedCommitish',
-		'selectedBranch'
-	],
+	#superclass : #IceTipRepositoryCommand2,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipResetBranchToThisCommitCommand class >> browserHistoryContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byRootGroupItemOrder: 10
-		for: IceTipHistoryContext
-]
-
 { #category : #accessing }
-IceTipResetBranchToThisCommitCommand class >> defaultHelp [
+IceTipResetBranchToThisCommitCommand class >> defaultDescription [
+
 	^ 'Resets the selected branch to the selected commit. It does not modify the working copy (!!).'
 ]
 
-{ #category : #activation }
-IceTipResetBranchToThisCommitCommand class >> defaultMenuIconName [
-	^ #bottom
-]
-
 { #category : #execution }
-IceTipResetBranchToThisCommitCommand >> defaultMenuItemName [
+IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
 
-	^ 'Reset ', selectedBranch name, ' to commit ', selectedCommitish shortId
+	^ 'Reset ', self selectedBranch name, ' to commit ', self selectedCommitish shortId
 ]
 
 { #category : #execution }
 IceTipResetBranchToThisCommitCommand >> execute [
 	
-	selectedBranch resetToCommit: selectedCommitish.
-	Iceberg announcer announce: (IceRepositoryModified for: self repositoryModel entity).
+	self selectedBranch resetToCommit: self selectedCommitish.
+	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 ]
 
-{ #category : #execution }
-IceTipResetBranchToThisCommitCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	selectedCommitish := aToolContext item.
-	selectedBranch := aToolContext selectedBranch.
+{ #category : #accessing }
+IceTipResetBranchToThisCommitCommand >> iconName [
+
+	^ #bottom
+]
+
+{ #category : #initialization }
+IceTipResetBranchToThisCommitCommand >> name [
+
+	^ self context
+		  ifNil: [ self className ]
+		  ifNotNil: [ self defaultNameFromContext ]
+]
+
+{ #category : #accessing }
+IceTipResetBranchToThisCommitCommand >> selectedBranch [
+
+	^ self context model
+]
+
+{ #category : #accessing }
+IceTipResetBranchToThisCommitCommand >> selectedCommitish [
+
+	^ self item
 ]

@@ -98,7 +98,7 @@ IceTipExistingBranchPanel >> newBranchListDataSource [
 
 { #category : #accessing }
 IceTipExistingBranchPanel >> selectedBranch [
-	| index |
+
 	^ self branchesList selection selectedItem
 ]
 
