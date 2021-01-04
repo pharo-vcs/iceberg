@@ -91,9 +91,9 @@ IceTipReadOnlyForm >> addWidgetsTo: column [
 					to: column ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 IceTipReadOnlyForm >> iceLabelWidth [
-	^ labelWidth ifNil: [ self class defaultLabelWidth ]
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #initialization }
