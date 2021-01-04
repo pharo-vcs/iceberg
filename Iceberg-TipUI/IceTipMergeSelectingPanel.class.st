@@ -114,7 +114,7 @@ IceTipMergeSelectingPanel >> refresh [
 IceTipMergeSelectingPanel >> refreshCodePanel [
 
 	| visitor mergeNode |
-	visitor := IceNodeCodeDisplayVistor onCodePresenter: codePanel.
+	visitor := IceNodeCodeDisplayVisitor onCodePresenter: codePanel.
 	mergeNode := iceNodesTree selectedItem value.
 	mergeNode
 		ifNil: [ codePanel text: '' ]

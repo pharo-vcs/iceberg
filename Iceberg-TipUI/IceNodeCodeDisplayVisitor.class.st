@@ -3,7 +3,7 @@ I am a IceNode (containing an IceOperationMerge) visitor meant to update a SpCod
  with the highlighted code.
 "
 Class {
-	#name : #IceNodeCodeDisplayVistor,
+	#name : #IceNodeCodeDisplayVisitor,
 	#superclass : #Object,
 	#instVars : [
 		'codePresenter'
@@ -12,39 +12,39 @@ Class {
 }
 
 { #category : #'instance creation' }
-IceNodeCodeDisplayVistor class >> onCodePresenter: aSpCodePresenter [
+IceNodeCodeDisplayVisitor class >> onCodePresenter: aSpCodePresenter [
 	^ self new
 		codePresenter: aSpCodePresenter ;
 		yourself
 ]
 
 { #category : #accessing }
-IceNodeCodeDisplayVistor >> codePresenter [
+IceNodeCodeDisplayVisitor >> codePresenter [
 
 	^ codePresenter
 ]
 
 { #category : #accessing }
-IceNodeCodeDisplayVistor >> codePresenter: aSpCodePresenter [
+IceNodeCodeDisplayVisitor >> codePresenter: aSpCodePresenter [
 
 	codePresenter := aSpCodePresenter
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitClassDefinition: anIceClassDefinition [
+IceNodeCodeDisplayVisitor >> visitClassDefinition: anIceClassDefinition [
 
 	codePresenter text: anIceClassDefinition contents.
 	codePresenter behavior: nil
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitConflictingOperation: anIceConflictingOperation [
+IceNodeCodeDisplayVisitor >> visitConflictingOperation: anIceConflictingOperation [
 
 	anIceConflictingOperation chosenOperation definition accept: self
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitMethodNode: anIceMethodDefinition [
+IceNodeCodeDisplayVisitor >> visitMethodNode: anIceMethodDefinition [
 
 	codePresenter
 		text: anIceMethodDefinition sourceCode;
@@ -54,13 +54,13 @@ IceNodeCodeDisplayVistor >> visitMethodNode: anIceMethodDefinition [
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitNonConflictingOperation: anIceNonConflictingOperation [
+IceNodeCodeDisplayVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [
 
 	anIceNonConflictingOperation definition accept: self
 ]
 
 { #category : #visiting }
-IceNodeCodeDisplayVistor >> visitPackage: anIcePackageDefinition [
+IceNodeCodeDisplayVisitor >> visitPackage: anIcePackageDefinition [
 
 	codePresenter
 		text: '';
