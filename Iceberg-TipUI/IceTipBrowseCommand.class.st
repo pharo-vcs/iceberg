@@ -4,9 +4,6 @@ I'm a command to ""browse"" a change definition (method, class or package).
 Class {
 	#name : #IceTipBrowseCommand,
 	#superclass : #IceTipCommand,
-	#instVars : [
-		'item'
-	],
 	#category : #'Iceberg-TipUI-Commands'
 }
 

@@ -16,7 +16,7 @@ IceTipReadOnlyForm new
 "
 Class {
 	#name : #IceTipReadOnlyForm,
-	#superclass : #DynamicComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'items',
 		'labelColor',
@@ -101,10 +101,6 @@ IceTipReadOnlyForm >> initialize [
 	items := OrderedDictionary new.
 	super initialize
 
-]
-
-{ #category : #initialization }
-IceTipReadOnlyForm >> initializeWidgets [
 ]
 
 { #category : #accessing }

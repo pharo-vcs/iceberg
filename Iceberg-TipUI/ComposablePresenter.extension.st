@@ -1,11 +1,6 @@
 Extension { #name : #ComposablePresenter }
 
 { #category : #'*Iceberg-TipUI' }
-ComposablePresenter class >> iceActionPanelHeight [
-	^ IceTipActionPanel defaultHeight
-]
-
-{ #category : #'*Iceberg-TipUI' }
 ComposablePresenter class >> iceIconWidth [
 	^ 24 * self currentWorld displayScaleFactor
 ]
@@ -13,11 +8,6 @@ ComposablePresenter class >> iceIconWidth [
 { #category : #'*Iceberg-TipUI' }
 ComposablePresenter class >> iceLabelWidth [
 	^ 100 * self currentWorld displayScaleFactor
-]
-
-{ #category : #'*Iceberg-TipUI' }
-ComposablePresenter >> newIceActionPanel [
-	^ self instantiate: IceTipActionPanel
 ]
 
 { #category : #'*Iceberg-TipUI' }

@@ -10,9 +10,10 @@ Class {
 
 { #category : #'as yet unclassified' }
 IceTipCherrypickModel class >> onCommitish: aCommitish [
-	^ (self new
-		commitish: aCommitish;
-		yourself)
+
+	^ self new
+		  commitish: aCommitish;
+		  yourself
 ]
 
 { #category : #accessing }

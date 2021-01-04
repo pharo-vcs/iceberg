@@ -88,14 +88,6 @@ IceTipExistingBranchPanel >> initializeWidgets [
 		add: self branchesList
 ]
 
-{ #category : #initialization }
-IceTipExistingBranchPanel >> newBranchListDataSource [
-	^ IceTipDataSource new 
-		tool: self;
-		elements: self model branchModels;
-		yourself.
-]
-
 { #category : #accessing }
 IceTipExistingBranchPanel >> selectedBranch [
 

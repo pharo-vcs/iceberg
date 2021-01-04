@@ -5,7 +5,6 @@ Class {
 	#name : #IceTipHiedraHistoryBrowser,
 	#superclass : #IceTipHistoryBrowser,
 	#instVars : [
-		'hiedraRulerBuilder',
 		'hiedraColumnController'
 	],
 	#category : #'Iceberg-TipUI-View'

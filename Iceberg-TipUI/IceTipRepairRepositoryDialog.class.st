@@ -93,14 +93,6 @@ IceTipRepairRepositoryDialog >> model [
 	^ model
 ]
 
-{ #category : #'private factory' }
-IceTipRepairRepositoryDialog >> newOptionsListDataSource [
-	^ IceTipDataSource new 
-		tool: self;
-		elements: self model availableRepairOptions;
-		yourself
-]
-
 { #category : #'accessing ui' }
 IceTipRepairRepositoryDialog >> optionsList [
 	^ optionsList
