@@ -4,47 +4,36 @@ This command takes the selected version and installs it (also called revert).
 "
 Class {
 	#name : #IceTipInstallVersionCommand,
-	#superclass : #IceTipCommand,
-	#instVars : [
-		'selectedCommit',
-		'version'
-	],
-	#category : 'Iceberg-TipUI-Commands'
+	#superclass : #IceTipCommand2,
+	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #activation }
-IceTipInstallVersionCommand class >> browserVersionHistoryContextActivation [
-	<classAnnotation>
-	
-	^ CmdContextMenuActivation
-		byRootGroupItemOrder: 1
-		for: IceTipVersionHistoryContext
-]
-
 { #category : #accessing }
-IceTipInstallVersionCommand class >> defaultHelp [
+IceTipInstallVersionCommand class >> defaultDescription [
+
 	^ 'Revert to the selected version'
 ]
 
-{ #category : #activation }
-IceTipInstallVersionCommand class >> defaultMenuIconName [
-	^ #smallRedo
-]
+{ #category : #accessing }
+IceTipInstallVersionCommand class >> defaultName [
 
-{ #category : #activation }
-IceTipInstallVersionCommand class >> defaultMenuItemName [
 	^ 'Install this version'
 ]
 
 { #category : #execution }
 IceTipInstallVersionCommand >> execute [
 	
-	version install
+	self version install
+]
+
+{ #category : #activation }
+IceTipInstallVersionCommand >> iconName [
+
+	^ #smallRedo
 ]
 
 { #category : #execution }
-IceTipInstallVersionCommand >> readParametersFromContext: aToolContext [
-	super readParametersFromContext: aToolContext.
-	version := aToolContext version.
-	
+IceTipInstallVersionCommand >> version [
+
+	^ self context version
 ]
