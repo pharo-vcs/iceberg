@@ -5,7 +5,7 @@ I will be active in repository list browser, when repository is in filetree form
 "
 Class {
 	#name : #IceFiletreeToTonelCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-Migration'
 }
 

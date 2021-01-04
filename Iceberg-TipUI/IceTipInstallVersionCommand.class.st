@@ -4,7 +4,7 @@ This command takes the selected version and installs it (also called revert).
 "
 Class {
 	#name : #IceTipInstallVersionCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

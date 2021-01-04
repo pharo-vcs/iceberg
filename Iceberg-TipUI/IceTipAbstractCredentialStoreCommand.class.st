@@ -3,7 +3,7 @@ I am the abstract class of all the general commands in the credentials list.
 "
 Class {
 	#name : #IceTipAbstractCredentialStoreCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 

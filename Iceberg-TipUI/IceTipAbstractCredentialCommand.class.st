@@ -3,7 +3,7 @@ I am the common class of all the commands over an specific credential.
 "
 Class {
 	#name : #IceTipAbstractCredentialCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 

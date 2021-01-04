@@ -3,7 +3,7 @@ Command that launches a refresh of the commit tree during commit
 "
 Class {
 	#name : #IceTipRefreshCommitCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

@@ -4,7 +4,7 @@ Then checkout the selected branch.
 "
 Class {
 	#name : #IceTipCheckoutNewBranchCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

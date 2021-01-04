@@ -3,7 +3,7 @@ Command that copies the selected entity short commit ID to the clipboard
 "
 Class {
 	#name : #IceTipCopyCommitishCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#instVars : [
 		'item'
 	],

@@ -3,7 +3,7 @@ I am a command that, once executed, will open the native file browser on the dir
 "
 Class {
 	#name : #IceTipOpenNativelyCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

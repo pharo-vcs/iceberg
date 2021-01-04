@@ -1,6 +1,6 @@
 Class {
 	#name : #IceGitHubNewBranchFromIssueCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 

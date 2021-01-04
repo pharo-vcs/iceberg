@@ -1,6 +1,6 @@
 Class {
 	#name : #IceTipCherryPickCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

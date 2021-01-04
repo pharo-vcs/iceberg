@@ -3,7 +3,7 @@ I'm a command to ""browse"" a change definition (method, class or package).
 "
 Class {
 	#name : #IceTipBrowseCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#instVars : [
 		'item'
 	],

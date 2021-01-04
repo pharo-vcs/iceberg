@@ -4,7 +4,7 @@ My children define the real behavior, and they need to implement #execute.
 "
 Class {
 	#name : #IceGitHubCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 

@@ -3,7 +3,7 @@ I'm a the abstract superclass of commands that act on repositories.
 "
 Class {
 	#name : #IceTipRepositoryCommand2,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#instVars : [
 		'announcer'
 	],

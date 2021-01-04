@@ -3,7 +3,7 @@ I am a command implementing the inspect option. I have several context activatio
 "
 Class {
 	#name : #IceTipInspectCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

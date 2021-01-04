@@ -4,7 +4,7 @@ I will let your repository in detach mode!
 "
 Class {
 	#name : #IceTipCheckoutCommitCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

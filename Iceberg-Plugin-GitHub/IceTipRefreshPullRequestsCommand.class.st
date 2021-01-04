@@ -6,7 +6,7 @@ I am a simple command to refresh the content of the github pull requests browser
 "
 Class {
 	#name : #IceTipRefreshPullRequestsCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 

@@ -4,7 +4,7 @@ I'm a command to open in the native web browser the detail of a GitHub Pull Requ
 "
 Class {
 	#name : #IceTipOpenCheckUrlCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 

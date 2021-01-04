@@ -2,26 +2,26 @@
 I'm the superclass of all commands of the IceTip UI.
 "
 Class {
-	#name : #IceTipCommand2,
+	#name : #IceTipCommand,
 	#superclass : #CmCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #accessing }
-IceTipCommand2 class >> defaultToolbarItemName [
+IceTipCommand class >> defaultToolbarItemName [
 
 	^ self defaultName
 
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> application [
+IceTipCommand >> application [
 
 	^ SpApplication defaultApplication
 ]
 
 { #category : #converting }
-IceTipCommand2 >> asSpecCommand [ 
+IceTipCommand >> asSpecCommand [ 
 
 	| spCommand |
 	spCommand := self decorateWith: IceTipSpCommand.
@@ -40,31 +40,31 @@ IceTipCommand2 >> asSpecCommand [
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> badge [
+IceTipCommand >> badge [
 	"Answer a number as extra information in the button. An answer of nil means no information."
 
 	^ nil
 ]
 
 { #category : #testing }
-IceTipCommand2 >> hasRepository [
+IceTipCommand >> hasRepository [
 
 	^ self repositoryModel notNil
 ]
 
 { #category : #testing }
-IceTipCommand2 >> hasSelectedItem [
+IceTipCommand >> hasSelectedItem [
 
 	^ self context selectedItem notNil
 ]
 
 { #category : #testing }
-IceTipCommand2 >> hasUnbornProject [
+IceTipCommand >> hasUnbornProject [
 	^ self repositoryModel hasUnbornProject
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> iconName [
+IceTipCommand >> iconName [
 	"Answer the icon name (a Symbol) for this command."
 	
 	^ #blank
@@ -72,13 +72,13 @@ IceTipCommand2 >> iconName [
 ]
 
 { #category : #testing }
-IceTipCommand2 >> isRepositoryDetached [
+IceTipCommand >> isRepositoryDetached [
 	^ self repositoryModel isNil 
 		or: [ self  repositoryModel isDetached ]
 ]
 
 { #category : #testing }
-IceTipCommand2 >> isRepositoryMissing [
+IceTipCommand >> isRepositoryMissing [
 
 	^ self hasRepository and: [
 		self repositoryModel isMissing or: [
@@ -86,32 +86,32 @@ IceTipCommand2 >> isRepositoryMissing [
 ]
 
 { #category : #testing }
-IceTipCommand2 >> isRepositoryOperational [
+IceTipCommand >> isRepositoryOperational [
 	^ self isRepositoryMissing not 
 		and: [ self isRepositoryDetached not
 			and: [ self hasUnbornProject not ] ]
 ]
 
 { #category : #execution }
-IceTipCommand2 >> item [
+IceTipCommand >> item [
 
 	^ self context selectedItem
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> repository [
+IceTipCommand >> repository [
 
 	^ self repositoryModel entity
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> repositoryModel [
+IceTipCommand >> repositoryModel [
 
 	^ self context repositoryModel
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> shortcutKey [
+IceTipCommand >> shortcutKey [
 	"Answer the key combination to execute this command. Answer nil if there isn't a key combination."
 	
 	^ nil
@@ -119,31 +119,31 @@ IceTipCommand2 >> shortcutKey [
 ]
 
 { #category : #testing }
-IceTipCommand2 >> shouldBeDisplayedOnRightSideInToolbar [
+IceTipCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ false
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> tool [
+IceTipCommand >> tool [
 
 	^ self context
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> toolAnnouncer [
+IceTipCommand >> toolAnnouncer [
 
 	^ self tool announcer
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> toolbarItemName [
+IceTipCommand >> toolbarItemName [
 	
 	^ self class defaultToolbarItemName
 ]
 
 { #category : #accessing }
-IceTipCommand2 >> withErrorHandlingDo: aBlock [
+IceTipCommand >> withErrorHandlingDo: aBlock [
 
 	aBlock
 		on: IceError

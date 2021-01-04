@@ -6,7 +6,7 @@ I am a simple command to open the PR review tool.
 "
 Class {
 	#name : #IceTipOpenGitHubPullRequestCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 

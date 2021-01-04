@@ -4,7 +4,7 @@ I'm a command to install a chunk of code from a commit (shown in a diff) into th
 "
 Class {
 	#name : #IceTipRevertChangeCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

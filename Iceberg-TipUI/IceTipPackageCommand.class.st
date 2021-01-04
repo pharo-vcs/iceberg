@@ -3,7 +3,7 @@ Abstract class representing commands to be applied on top of packages.
 "
 Class {
 	#name : #IceTipPackageCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

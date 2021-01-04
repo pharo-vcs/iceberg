@@ -3,7 +3,7 @@ I an a commander command that will be activated on any commitish or repository a
 "
 Class {
 	#name : #IceTipCreateTagCommand,
-	#superclass : #IceTipCommand2,
+	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
