@@ -1,6 +1,6 @@
 Class {
 	#name : #IceTipCherrypickPreviewBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'diffPanel',
 		'buttonBar'
@@ -8,13 +8,25 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
+{ #category : #commands }
+IceTipCherrypickPreviewBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
+{ #category : #commands }
+IceTipCherrypickPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
 { #category : #specs }
 IceTipCherrypickPreviewBrowser class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add: #diffPanel;
-		add: #buttonBar height: self buttonHeight  ;
-		yourself
+		  add: #diffPanel;
+		  add: #buttonBar height: self buttonHeight;
+		  yourself
 ]
 
 { #category : #'instance creation' }
@@ -24,64 +36,52 @@ IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 			(IceTipCherrypickModel onCommitish: aCommitish)
 ]
 
-{ #category : #initialization }
+{ #category : #'accessing ui' }
 IceTipCherrypickPreviewBrowser >> buttonBar [
-^	buttonBar 
+
+	^ buttonBar
 ]
 
-{ #category : #initialization }
-IceTipCherrypickPreviewBrowser >> buttonBar: aSpButtonBarPresenter [
-	buttonBar  := aSpButtonBarPresenter
-]
-
-{ #category : #accessing }
-IceTipCherrypickPreviewBrowser >> contextClass [
-	self
-		flag: 'Est-ce important si on a pas de menu commander ? comment ça marche ?'.
-		^IceTipCommitContext.
-]
-
-{ #category : #initialization }
+{ #category : #'accessing ui' }
 IceTipCherrypickPreviewBrowser >> diffPanel [
-	^diffPanel
-]
 
-{ #category : #initialization }
-IceTipCherrypickPreviewBrowser >> diffPanel: anObject [
-	diffPanel := anObject
+	^ diffPanel
 ]
 
 { #category : #actions }
 IceTipCherrypickPreviewBrowser >> doCherryPick [
-|root|
+
+	| root |
 	root := diffPanel model tree.
-			root accept: IceMergeToChangeTreeVisitor new.
-			self model repository workingCopy loadChangesInWorkingCopy: root.
-			self window close
+	root accept: IceMergeToChangeTreeVisitor new.
+	self model repository workingCopy loadChangesInWorkingCopy: root.
+	self window close
 ]
 
-{ #category : #accessing }
-IceTipCherrypickPreviewBrowser >> initialExtent [
+{ #category : #initialization }
+IceTipCherrypickPreviewBrowser >> initialExtentForWindow [
+
 	^ (800 @ 600) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipCherrypickPreviewBrowser >> initializeWidgets [
-	super initializeWidgets.
+IceTipCherrypickPreviewBrowser >> initializePresenters [
+	super initializePresenters.
 
 	diffPanel := self
 		instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
-	self addShortcutsTo: self.
-
-	self focusOrder
-		add: self buttonBar;
-		add: self diffPanel.
-
 	diffPanel leftLabel: 'Working Copy'.
 	diffPanel rightLabel: ' With Cherrypicked commit '
+]
+
+{ #category : #'accessing ui' }
+IceTipCherrypickPreviewBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ diffPanel iceNodesTree
 ]
 
 { #category : #accessing }
@@ -102,6 +102,7 @@ IceTipCherrypickPreviewBrowser >> newActionButton [
 ]
 
 { #category : #api }
-IceTipCherrypickPreviewBrowser >> title [
+IceTipCherrypickPreviewBrowser >> titleForWindow [
+
 	^ 'Preview result of Cherrypick'
 ]

@@ -4,7 +4,7 @@ Tipically, I'm using through my chldren, to do a checkout or merge.
 "
 Class {
 	#name : #IceTipPreviewBrowser,
-	#superclass : #IceTipBrowser,
+	#superclass : #IceTipBrowser2,
 	#instVars : [
 		'diffPanel',
 		'actionPanel',
@@ -12,6 +12,18 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-View-Branch'
 }
+
+{ #category : #commands }
+IceTipPreviewBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
+
+{ #category : #commands }
+IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	"Nothing to add"
+]
 
 { #category : #specs }
 IceTipPreviewBrowser class >> defaultSpec [
@@ -24,57 +36,48 @@ IceTipPreviewBrowser class >> defaultSpec [
 
 { #category : #'accessing ui' }
 IceTipPreviewBrowser >> actionPanel [
+
 	^ actionPanel
 ]
 
 { #category : #'accessing ui' }
-IceTipPreviewBrowser >> actionPanel: anObject [
-	actionPanel := anObject
-]
-
-{ #category : #accessing }
-IceTipPreviewBrowser >> contextClass [
-	^ IceTipBranchContext
-]
-
-{ #category : #'accessing ui' }
 IceTipPreviewBrowser >> diffPanel [
+
 	^ diffPanel
 ]
 
-{ #category : #'accessing ui' }
-IceTipPreviewBrowser >> diffPanel: anObject [
-	diffPanel := anObject
-]
-
 { #category : #accessing }
-IceTipPreviewBrowser >> initialExtent [
+IceTipPreviewBrowser >> initialExtentForWindow [
+
 	^ (800 @ 400) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipPreviewBrowser >> initializeWidgets [
-	super initializeWidgets.
+IceTipPreviewBrowser >> initializePresenters [
+
+	super initializePresenters.
 	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
 	actionPanel := self instantiate: IceTipActionPanel.
 	actionPanel addAction: (button := self newActionButton).
-	
-	self addShortcutsTo: self.
-	
-	self focusOrder 
-		add: self actionPanel;
-		add: self diffPanel
+
 ]
 
 { #category : #initialization }
 IceTipPreviewBrowser >> initializeWindow: aWindowPresenter [
+
+	super initializeWindow: aWindowPresenter.
+
 	aWindowPresenter
-		title: self title;
-		initialExtent: self initialExtent;
-		windowIcon: self windowIcon;
 		askOkToClose: self askOkToClose;
 		aboutText: self aboutText
+]
+
+{ #category : #'accessing ui' }
+IceTipPreviewBrowser >> mainList [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ diffPanel iceNodesTree
 ]
 
 { #category : #'private factory' }

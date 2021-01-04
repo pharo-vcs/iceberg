@@ -6,7 +6,7 @@ I preview the changes that will be introduced in the image when a merge occurs.
 Class {
 	#name : #IceTipMergePreviewBrowser,
 	#superclass : #IceTipPreviewBrowser,
-	#category : 'Iceberg-TipUI-View-Branch'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #'instance creation' }
@@ -20,15 +20,15 @@ IceTipMergePreviewBrowser class >> onBranch: aBranch [
 { #category : #actions }
 IceTipMergePreviewBrowser >> doMerge [
 
-	self model executeMergeActionAndThen: [ self window delete ]
+	self model executeMergeActionAndThen: [ self window close ]
 ]
 
 { #category : #initialization }
-IceTipMergePreviewBrowser >> initializeWidgets [ 
-	super initializeWidgets.
-	diffPanel leftLabel: 'Working Copy'.
-	diffPanel rightLabel: 'Merge with ' , model targetName.
+IceTipMergePreviewBrowser >> initializePresenters [
 
+	super initializePresenters.
+	diffPanel leftLabel: 'Working Copy'.
+	diffPanel rightLabel: 'Merge with ', model targetName
 ]
 
 { #category : #accessing }
@@ -39,6 +39,7 @@ IceTipMergePreviewBrowser >> mergeType: anObject [
 
 { #category : #'private factory' }
 IceTipMergePreviewBrowser >> newActionButton [
+
 	^ self newButton 
 		label: 'Merge';
 		icon: (self iconNamed: #merge);
@@ -48,7 +49,8 @@ IceTipMergePreviewBrowser >> newActionButton [
 ]
 
 { #category : #api }
-IceTipMergePreviewBrowser >> title [
+IceTipMergePreviewBrowser >> titleForWindow [
+
 	^ 'Preview merge of {1}/{2}' format: { 
 		self model repositoryName.
 		self model targetName }

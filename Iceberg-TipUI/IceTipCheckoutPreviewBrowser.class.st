@@ -40,61 +40,52 @@ IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 
 { #category : #'accessing ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyLabel [
+
 	^ checkoutStrategyLabel
 ]
 
 { #category : #'accessing ui' }
-IceTipCheckoutPreviewBrowser >> checkoutStrategyLabel: anObject [
-	checkoutStrategyLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
-	^ checkoutStrategyList
-]
 
-{ #category : #'accessing ui' }
-IceTipCheckoutPreviewBrowser >> checkoutStrategyList: anObject [
-	checkoutStrategyList := anObject
+	^ checkoutStrategyList
 ]
 
 { #category : #actions }
 IceTipCheckoutPreviewBrowser >> doCheckout [
-	self model executeCheckoutActionAndThen: [ self window delete ]
+
+	self model executeCheckoutActionAndThen: [ self window close ]
 ]
 
 { #category : #initialization }
 IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
+
 	| checkoutStrategies |
 	checkoutStrategies := self model checkoutStrategies.
 	checkoutStrategyList
 		items: checkoutStrategies;
 		display: [ :each | each description ].
-	checkoutStrategyList
-		whenSelectedItemChangedDo: [ :aStrategy | self model checkoutStrategy: aStrategy ]
+	checkoutStrategyList whenSelectedItemChangedDo: [ :aStrategy | 
+		self model checkoutStrategy: aStrategy ]
 ]
 
 { #category : #initialization }
-IceTipCheckoutPreviewBrowser >> initializeWidgets [
-	super initializeWidgets.
+IceTipCheckoutPreviewBrowser >> initializePresenters [
+
+	super initializePresenters.
+	diffPanel
+		leftLabel: 'Working Copy';
+		rightLabel: 'Checkout ' , model targetName.
 	
-	diffPanel leftLabel: 'Working Copy'.
-	diffPanel rightLabel: 'Checkout ' , model targetName.
-	
-	checkoutStrategyLabel := self newLabel label: 'How to checkout:'.
+	checkoutStrategyLabel := self newLabel label: 'How to checkout:'; yourself.
 	checkoutStrategyList := self newDropList.
 	self initializeCheckoutStrategyList.
-	
-	self focusOrder 
-		removeAll;
-		add: self actionPanel;
-		add: self checkoutStrategyList;
-		add: self diffPanel
+
 ]
 
 { #category : #'private factory' }
 IceTipCheckoutPreviewBrowser >> newActionButton [
-	^ self newButton 
+
+	^ self newButton
 		label: 'Checkout';
 		icon: (self iconNamed: #branch);
 		help: ('Checks out {1} into your image.' format: { self model targetName });
@@ -104,11 +95,13 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 
 { #category : #accessing }
 IceTipCheckoutPreviewBrowser >> selectedCheckoutStrategy [
+
 	^ selectedCheckoutStrategy
 ]
 
 { #category : #accessing }
-IceTipCheckoutPreviewBrowser >> title [
+IceTipCheckoutPreviewBrowser >> titleForWindow [
+
 	^ 'Preview checkout of {1}/{2}' format: { 
 		self model repositoryName.
 		self model targetName }
