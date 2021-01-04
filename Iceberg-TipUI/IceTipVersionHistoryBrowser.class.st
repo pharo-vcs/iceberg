@@ -181,7 +181,7 @@ IceTipVersionHistoryBrowser >> newInfoPage [
 IceTipVersionHistoryBrowser >> newVersionInfoPresenter [
 	
 	selectedModel ifNil: [ ^ self ].
-	^ IceTipReadOnlyForm items: selectedModel info
+	^ IceTipReadOnlyFormBuilder newBuiltFor: selectedModel info
 ]
 
 { #category : #accessing }
