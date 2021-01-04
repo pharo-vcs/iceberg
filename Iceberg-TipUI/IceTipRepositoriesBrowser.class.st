@@ -6,7 +6,7 @@ IceTipRepositoriesBrowser new openWithSpec.
 "
 Class {
 	#name : #IceTipRepositoriesBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'repositoryList'
 	],

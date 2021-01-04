@@ -3,7 +3,7 @@ I am the browser used to show a credentials store.
 "
 Class {
 	#name : #IceTipCredentialsStoreBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'credentialsList'
 	],

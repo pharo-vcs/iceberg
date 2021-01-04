@@ -4,7 +4,7 @@ I will show remotes, branches, tags and all possible operations in low level rep
 "
 Class {
 	#name : #IceTipRepositoryBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'sidebarTree',
 		'historyPanel'

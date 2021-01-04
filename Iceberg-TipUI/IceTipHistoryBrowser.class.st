@@ -6,7 +6,7 @@ I'm usually used as part of an IceTipRepositoryBrowser.
 "
 Class {
 	#name : #IceTipHistoryBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'commitList',
 		'commitInfoTabs'

@@ -4,7 +4,7 @@ Tipically, I'm using through my chldren, to do a checkout or merge.
 "
 Class {
 	#name : #IceTipPreviewBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'diffPanel',
 		'actionPanel',

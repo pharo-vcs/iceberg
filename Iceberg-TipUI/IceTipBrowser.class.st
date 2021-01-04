@@ -9,7 +9,7 @@ Some design remarks:
 * Browsers have a context menu on list or table items, that provide commands that are specific for the selection.
 "
 Class {
-	#name : #IceTipBrowser2,
+	#name : #IceTipBrowser,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'model',
@@ -19,7 +19,7 @@ Class {
 }
 
 { #category : #commands }
-IceTipBrowser2 class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup [
+IceTipBrowser class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup [
 
 	| generalCommandGroup selectionCommandGroup selectionExtraCommandGroup |
 	selectionCommandGroup :=
@@ -43,43 +43,43 @@ IceTipBrowser2 class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
+IceTipBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	self subclassResponsibility
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+IceTipBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	self subclassResponsibility
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+IceTipBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipInspectCommand forSpec
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> generalCommandGroupName [
+IceTipBrowser class >> generalCommandGroupName [
 
 	^ 'General'
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> selectionCommandGroupName [
+IceTipBrowser class >> selectionCommandGroupName [
 
 	^ 'Selection'
 ]
 
 { #category : #commands }
-IceTipBrowser2 class >> selectionExtraCommandGroupName [
+IceTipBrowser class >> selectionExtraCommandGroupName [
 
 	^ 'Extra'
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
+IceTipBrowser >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 
 	aSpWindowPresenter ifNil: [ ^ self ].
 	toolbar := self newToolbarForWindow.
@@ -88,7 +88,7 @@ IceTipBrowser2 >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 ]
 
 { #category : #commands }
-IceTipBrowser2 >> connectPresenters [
+IceTipBrowser >> connectPresenters [
 
 	self mainList whenSelectionChangedDo: [
 		| rootGroup |
@@ -107,38 +107,38 @@ IceTipBrowser2 >> connectPresenters [
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> defaultKeyboardFocus [
+IceTipBrowser >> defaultKeyboardFocus [
 
 	^ self mainList
 ]
 
 { #category : #testing }
-IceTipBrowser2 >> hasSelectedItem [
+IceTipBrowser >> hasSelectedItem [
 	
 	^ self mainList selection isEmpty not
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> iconForWindow [
+IceTipBrowser >> iconForWindow [
 
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> initialExtentForWindow [
+IceTipBrowser >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> initialize [
+IceTipBrowser >> initialize [
 
 	super initialize.
 	self subscribeToAnnouncements
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> initializeWindow: aSpWindowPresenter [
+IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
 	self addToolbarIfNotEmptyIn: aSpWindowPresenter.
 
@@ -149,26 +149,26 @@ IceTipBrowser2 >> initializeWindow: aSpWindowPresenter [
 ]
 
 { #category : #'accessing ui' }
-IceTipBrowser2 >> mainList [
+IceTipBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-IceTipBrowser2 >> model [
+IceTipBrowser >> model [
 
 	^ model
 ]
 
 { #category : #accessing }
-IceTipBrowser2 >> model: anObject [
+IceTipBrowser >> model: anObject [
 
 	model := anObject
 ]
 
 { #category : #commands }
-IceTipBrowser2 >> newToolbarForWindow [
+IceTipBrowser >> newToolbarForWindow [
 
 	^ (self rootCommandsGroup / self class generalCommandGroupName)
 		  beRoot;
@@ -179,42 +179,42 @@ IceTipBrowser2 >> newToolbarForWindow [
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> rebuildToolbar [
+IceTipBrowser >> rebuildToolbar [
 
 	self addToolbarIfNotEmptyIn: self window
 ]
 
 { #category : #accessing }
-IceTipBrowser2 >> refresh [
+IceTipBrowser >> refresh [
 	"Update the UI elements given a possible update in the model."
 ]
 
 { #category : #accessing }
-IceTipBrowser2 >> repositoryModel [
+IceTipBrowser >> repositoryModel [
 	"Answer the IceTipRepositoryModel associated to this presenter."
 
 	^ self model repositoryModel
 ]
 
 { #category : #commands }
-IceTipBrowser2 >> selectedItem [
+IceTipBrowser >> selectedItem [
 	"Answer the object selected in the main list of this browser. The answer is nil when there isn't a selection."
 
 	^ self mainList selection selectedItem
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> setModelBeforeInitialization: anObject [
+IceTipBrowser >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> subscribeToAnnouncements [
+IceTipBrowser >> subscribeToAnnouncements [
 ]
 
 { #category : #initialization }
-IceTipBrowser2 >> titleForWindow [
+IceTipBrowser >> titleForWindow [
 	"The title to use when the presenter is opened as a window."
 	
 	^ self subclassResponsibility
@@ -222,7 +222,7 @@ IceTipBrowser2 >> titleForWindow [
 ]
 
 { #category : #'accessing ui' }
-IceTipBrowser2 >> toolbar [
+IceTipBrowser >> toolbar [
 
 	^ toolbar
 ]

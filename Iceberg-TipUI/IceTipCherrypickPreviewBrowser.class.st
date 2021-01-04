@@ -1,6 +1,6 @@
 Class {
 	#name : #IceTipCherrypickPreviewBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'diffPanel',
 		'buttonBar'

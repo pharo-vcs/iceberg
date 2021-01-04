@@ -6,7 +6,7 @@ I show the packages managed by this repository and a series of actions to proper
 "
 Class {
 	#name : #IceTipWorkingCopyBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'statusBar',
 		'packagesTable',

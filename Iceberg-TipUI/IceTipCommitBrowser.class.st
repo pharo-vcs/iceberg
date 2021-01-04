@@ -5,7 +5,7 @@ I'm a browser to commit changes to a repository.
 "
 Class {
 	#name : #IceTipCommitBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'diffPanel',
 		'commentPanel',

@@ -9,7 +9,7 @@ For versions, I show the same commands of a regular history browser, but add som
 "
 Class {
 	#name : #IceTipVersionHistoryBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'commitList',
 		'selectedModel',

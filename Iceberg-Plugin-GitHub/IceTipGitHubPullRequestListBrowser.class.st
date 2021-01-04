@@ -15,7 +15,7 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #IceTipGitHubPullRequestListBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'remote',
 		'pullRequests',

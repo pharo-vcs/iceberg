@@ -9,7 +9,7 @@ I display the list of commits of the PR for review, allow the user to merge the 
 "
 Class {
 	#name : #IceGitHubTipPullRequestBrowser,
-	#superclass : #IceTipBrowser2,
+	#superclass : #IceTipBrowser,
 	#instVars : [
 		'repositoryModel',
 		'pullRequest',
