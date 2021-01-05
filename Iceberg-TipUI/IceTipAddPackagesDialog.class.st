@@ -46,15 +46,6 @@ IceTipAddPackagesDialog >> accept [
 	self model addPackages: selectedPackages
 ]
 
-{ #category : #initialization }
-IceTipAddPackagesDialog >> addShortcutsTo: aWidget [
-	super addShortcutsTo: aWidget.
-	aWidget 
-		bindKeyCombination: Character cr asKeyCombination 
-		toAction: [ self accept ].
-	
-]
-
 { #category : #accessing }
 IceTipAddPackagesDialog >> allPackages [
 	^ RPackageOrganizer default packages
@@ -67,11 +58,6 @@ IceTipAddPackagesDialog >> allPackagesNotRegistered [
 	| currentPackagesNames |
 	currentPackagesNames := self model packages collect: #packageName.
 	^ self allPackages reject: [ :rPackage | currentPackagesNames includes: rPackage name ]
-]
-
-{ #category : #accessing }
-IceTipAddPackagesDialog >> contextSelection [ 
-	^ self selectedPackage
 ]
 
 { #category : #initialization }

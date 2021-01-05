@@ -4,7 +4,7 @@ I am a morphic list wrapper that wraps iceberg diff tree nodes (potentially with
 Class {
 	#name : #IceMergeListWrapper,
 	#superclass : #ListItemWrapper,
-	#category : #'Iceberg-TipUI-Merge'
+	#category : #'Iceberg-TipUI-Morphic'
 }
 
 { #category : #comparing }

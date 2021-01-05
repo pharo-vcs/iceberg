@@ -10,7 +10,6 @@ Class {
 		'commentText',
 		'pushCheckbox',
 		'commitButton',
-		'message',
 		'actionButtonBar',
 		'saveCheckbox',
 		'fixesField',

@@ -154,8 +154,7 @@ IceTipWorkingCopyBrowser >> packagesTable [
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
 
-	self flag: #todo. "Do we need to rebuild toolbar?"
-"	self rebuildToolbar."
+	self rebuildToolbar.
 	self refreshStatusBar.
 	self refreshPackagesTable.
 

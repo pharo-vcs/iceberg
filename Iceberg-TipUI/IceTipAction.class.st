@@ -11,11 +11,6 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
-IceTipAction class >> iconNamed: aSymbol [
-	^ Smalltalk ui icons iconNamed: aSymbol
-]
-
 { #category : #executing }
 IceTipAction >> basicExecute [
 	self subclassResponsibility

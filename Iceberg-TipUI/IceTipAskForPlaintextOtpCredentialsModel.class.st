@@ -10,15 +10,27 @@ Class {
 
 { #category : #specs }
 IceTipAskForPlaintextOtpCredentialsModel class >> defaultSpec [
-	<spec: #default>
 
-	^ SpecLayout composed newColumn: [ :col |
-		col 
-		 	newRow: [:row | row add: #usernameLabel width: 80 * self currentWorld displayScaleFactor; add: #usernameInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #passwordLabel width: 80 * self currentWorld  displayScaleFactor; add: #passwordInput ] height: self inputTextHeight;
-			newRow: [:row | row add: #tokenLabel width: 80 * self currentWorld displayScaleFactor; add: #tokenInput ] height: self inputTextHeight;
-			add: #storeCheckbox height: self inputTextHeight.
-	]
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newHorizontal
+				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #usernameInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #passwordInput;
+				yourself )
+			height: self inputTextHeight;
+		add:
+			(SpBoxLayout newHorizontal
+				add: #tokenLabel width: 80 * self currentWorld displayScaleFactor;
+				add: #tokenInput;
+				yourself )
+			height: self inputTextHeight;
+		add: #storeCheckbox height: self inputTextHeight
 
 ]
 

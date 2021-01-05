@@ -4,9 +4,6 @@ I'm a the abstract superclass of commands that act on repositories.
 Class {
 	#name : #IceTipRepositoryCommand,
 	#superclass : #IceTipCommand,
-	#instVars : [
-		'announcer'
-	],
 	#category : #'Iceberg-TipUI-Commands'
 }
 

@@ -23,7 +23,7 @@ Class {
 		'rowHeight',
 		'items'
 	],
-	#category : #'Iceberg-TipUI-Spec-ReadOnlyForm'
+	#category : #'Iceberg-TipUI-Spec2'
 }
 
 { #category : #'instance creation' }

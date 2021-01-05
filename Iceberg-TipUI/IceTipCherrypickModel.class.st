@@ -8,7 +8,7 @@ Class {
 	#category : #'Iceberg-TipUI-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 IceTipCherrypickModel class >> onCommitish: aCommitish [
 
 	^ self new

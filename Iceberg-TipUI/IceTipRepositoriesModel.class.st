@@ -5,7 +5,6 @@ Class {
 	#name : #IceTipRepositoriesModel,
 	#superclass : #IceTipModel,
 	#instVars : [
-		'repositories',
 		'repositoryProvider'
 	],
 	#category : #'Iceberg-TipUI-Model'

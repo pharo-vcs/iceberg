@@ -4,7 +4,7 @@ I redefine part of monticello's PSMCMergePatchMorph to not require to rebuild a 
 Class {
 	#name : #IceTipMergePatchMorph,
 	#superclass : #PSMCMergePatchMorph,
-	#category : #'Iceberg-TipUI-Merge'
+	#category : #'Iceberg-TipUI-Morphic'
 }
 
 { #category : #accessing }

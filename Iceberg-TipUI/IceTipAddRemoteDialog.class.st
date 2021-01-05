@@ -16,17 +16,20 @@ Class {
 }
 
 { #category : #specs }
-IceTipAddRemoteDialog class >> defaultSpec [ 
-	<spec>
+IceTipAddRemoteDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical 
-		add: ( SpBoxLayout newHorizontal  add: #nameLabel width: self labelWidth; 
-						add: #nameText )
-					height: self inputTextHeight;
-		add: (SpBoxLayout newHorizontal  add: #urlLabel width: self labelWidth; 
-						add: #urlText ) 
-					height: self inputTextHeight;
-		yourself
+	^ SpBoxLayout newVertical
+		  add: (SpBoxLayout newHorizontal
+				   add: #nameLabel width: self labelWidth;
+				   add: #nameText;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: (SpBoxLayout newHorizontal
+				   add: #urlLabel width: self labelWidth;
+				   add: #urlText;
+				   yourself)
+		  height: self inputTextHeight;
+		  yourself
 ]
 
 { #category : #specs }

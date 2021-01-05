@@ -4,7 +4,7 @@ I redefine PSMCMergeMorph to be able to use an IceMergePatchMorph as patch morph
 Class {
 	#name : #IceTipMergeMorph,
 	#superclass : #PSMCMergeMorph,
-	#category : #'Iceberg-TipUI-Merge'
+	#category : #'Iceberg-TipUI-Morphic'
 }
 
 { #category : #accessing }
