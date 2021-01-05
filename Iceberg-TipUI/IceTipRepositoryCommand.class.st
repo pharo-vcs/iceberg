@@ -2,7 +2,7 @@
 I'm a the abstract superclass of commands that act on repositories.
 "
 Class {
-	#name : #IceTipRepositoryCommand2,
+	#name : #IceTipRepositoryCommand,
 	#superclass : #IceTipCommand,
 	#instVars : [
 		'announcer'
@@ -11,31 +11,31 @@ Class {
 }
 
 { #category : #accessing }
-IceTipRepositoryCommand2 class >> isAbstract [
+IceTipRepositoryCommand class >> isAbstract [
 
-	^ self == IceTipRepositoryCommand2
+	^ self == IceTipRepositoryCommand
 ]
 
 { #category : #testing }
-IceTipRepositoryCommand2 >> actsOnBranch: aBranchModel [
+IceTipRepositoryCommand >> actsOnBranch: aBranchModel [
 
 	^ false
 ]
 
 { #category : #testing }
-IceTipRepositoryCommand2 >> actsOnRemote: aRemoteModel [
+IceTipRepositoryCommand >> actsOnRemote: aRemoteModel [
 
 	^ false
 ]
 
 { #category : #testing }
-IceTipRepositoryCommand2 >> actsOnTag: aTagModel [
+IceTipRepositoryCommand >> actsOnTag: aTagModel [
 
 	^ false
 ]
 
 { #category : #accessing }
-IceTipRepositoryCommand2 >> announcer [
+IceTipRepositoryCommand >> announcer [
 
 	^ self context toolAnnouncer
 ]

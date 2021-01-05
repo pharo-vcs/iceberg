@@ -3,7 +3,7 @@ Command that discard all changes in the repository
 "
 Class {
 	#name : #IceTipDiscardChangesCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

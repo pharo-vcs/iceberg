@@ -3,7 +3,7 @@ I'm a the abstract superclass of commands that act on remotes.
 "
 Class {
 	#name : #IceTipRemoteActionCommand2,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

@@ -3,7 +3,7 @@ Command that opens the settings on a repository
 "
 Class {
 	#name : #IceTipSettingsCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

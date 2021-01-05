@@ -3,7 +3,7 @@ Command that opens the repair window on a repository
 "
 Class {
 	#name : #IceTipRepairCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

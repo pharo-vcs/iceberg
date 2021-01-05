@@ -3,7 +3,7 @@ Command that opens a window showing the history of the selected merged branch.
 "
 Class {
 	#name : #IceTipMergeHistoryCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

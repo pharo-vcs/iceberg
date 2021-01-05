@@ -1,6 +1,6 @@
 Class {
 	#name : #IceTipAdoptCommitCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

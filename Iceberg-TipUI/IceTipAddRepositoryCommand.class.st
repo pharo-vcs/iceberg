@@ -4,7 +4,7 @@ I will open a dialog to take the new possible repository (from available options
 "
 Class {
 	#name : #IceTipAddRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

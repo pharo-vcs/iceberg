@@ -3,7 +3,7 @@ I'm a command to open the package manager browser for a project.
 "
 Class {
 	#name : #IceTipManagePackagesCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

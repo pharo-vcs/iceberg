@@ -4,7 +4,7 @@ I'm a command to show the repository manager for a repository model.
 "
 Class {
 	#name : #IceTipManageRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

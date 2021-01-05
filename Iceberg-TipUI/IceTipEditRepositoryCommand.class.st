@@ -3,7 +3,7 @@ Command that opens a dialog to edit a repository meta-data
 "
 Class {
 	#name : #IceTipEditRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 

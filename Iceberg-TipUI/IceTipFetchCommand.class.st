@@ -3,7 +3,7 @@ I'm a command to perform a fetch operation on selected project.
 "
 Class {
 	#name : #IceTipFetchCommand,
-	#superclass : #IceTipRepositoryCommand2,
+	#superclass : #IceTipRepositoryCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
