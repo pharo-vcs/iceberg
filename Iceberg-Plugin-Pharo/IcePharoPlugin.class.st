@@ -1,49 +1,73 @@
 Class {
 	#name : #IcePharoPlugin,
 	#superclass : #IcePlugin,
-	#category : 'Iceberg-Plugin-Pharo-Core'
+	#category : #'Iceberg-Plugin-Pharo-Core'
 }
 
-{ #category : #events }
+{ #category : #adding }
 IcePharoPlugin class >> addPharoProjectToIceberg [
 	"It will take all packages corresponding to Pharo project and it will create an iceberg 
 	 project with it"
-	| packageNames repository commit workingCopy |
-	
-	self flag: #TODO. "Refactor into something better (a class and a hierarchy, so we can add 
-	other packages)"
-	
-	"extract package names from baselines"
-	packageNames := (#(
-		BaselineOfAthens
-		BaselineOfBasicTools
-		BaselineOfDisplay
-		BaselineOfFlashback
-		BaselineOfIDE
-		BaselineOfMonticello
-		BaselineOfMenuRegistration
-		BaselineOfMetacello
-		BaselineOfMorphic
-		BaselineOfMorphicCore 
-		BaselineOfPharo
-		BaselineOfPharoBootstrap
-		BaselineOfSUnit
-		BaselineOfShift 
-		BaselineOfSpec
-		BaselineOfTraits
-		BaselineOfUI    
-		BaselineOfUnifiedFFI ) 
-		collect: [ :each | (Smalltalk globals at: each) allPackageNames copyWith: each ]) 
-		flattened 
-		asSet.
+
+	self 
+		addProjectNamed: 'pharo' 
+		commit: SystemVersion current commitHash 
+		baselines: #(
+			BaselineOfAthens
+			BaselineOfBasicTools
+			BaselineOfDisplay
+			BaselineOfFlashback
+			BaselineOfIDE
+			BaselineOfMonticello
+			BaselineOfMenuRegistration
+			BaselineOfMetacello
+			BaselineOfMorphic
+			BaselineOfMorphicCore 
+			BaselineOfPharo
+			BaselineOfPharoBootstrap
+			BaselineOfSUnit
+			BaselineOfShift 
+			BaselineOfSpec
+			BaselineOfSpec2
+			BaselineOfNewTools
+			BaselineOfTraits
+			BaselineOfUI    
+			BaselineOfUnifiedFFI).
+
+	self 
+		addProjectNamed: 'pharo-spec2' 
+		baselines: #(BaselineOfSpec2).
 		
-	repository := IceLibgitRepository new
-		name: 'pharo';
+	self 
+		addProjectNamed: 'pharo-newtools' 
+		baselines: #(BaselineOfNewTools)	
+]
+
+{ #category : #adding }
+IcePharoPlugin class >> addProjectNamed: aName baselines: aCollection [
+
+	^ self 
+		addProjectNamed: aName 
+		commit: nil
+		baselines: aCollection
+]
+
+{ #category : #adding }
+IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCollection [
+	| repository commit workingCopy |
+
+	repository := IceLibgitRepository new 
+		name: aName;
 		yourself.
-	commit := (IceUnknownCommit new 
-			id: SystemVersion current commitHash;
-			repository: repository;
- 			yourself).
+	
+	commit := aCommitId 
+		ifNotNil: [ 
+			IceUnknownCommit new 
+				id: aCommitId;
+	 			yourself ]
+		ifNil: [ 
+			IceNoCommit new ].
+		
 	workingCopy := IceWorkingCopy basicNew
 		repository: repository;
 		initialize;
@@ -52,16 +76,18 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 			sourceDirectory: 'src';
 			yourself);
 		yourself.
+
 	repository workingCopy: workingCopy.
-		
 	commit repository: repository.
-	"add packages to project"
-	packageNames
-		do: [ :each |
+	
+	(aCollection 
+		flatCollect: [ :each | (Smalltalk globals at: each) allPackageNames copyWith: each ] 
+		as: Set)
+		do: [ :each | 
 			repository workingCopy basicAddPackage: (IcePackage
 				named: each
 				repository: repository) ].
-	"register project"
+
 	repository register
 ]
 
