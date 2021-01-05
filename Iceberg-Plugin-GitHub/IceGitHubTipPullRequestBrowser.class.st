@@ -80,7 +80,8 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 	IceGitHubAcceptPullRequestModel new
 		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
-			self pullRequest acceptMessage: aModel message type: aModel type ];
+			self pullRequest acceptMessage: aModel message type: aModel type.
+			self window close ];
 		openWithSpec
 ]
 
@@ -236,6 +237,7 @@ IceGitHubTipPullRequestBrowser >> refresh [
 
 { #category : #'accessing ui' }
 IceGitHubTipPullRequestBrowser >> rejectButton [
+
 	^ rejectButton
 ]
 
@@ -245,7 +247,8 @@ IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 	IceGitHubRejectPullRequestModel new
 		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
-			self pullRequest rejectMessage: aModel message ];
+			self pullRequest rejectMessage: aModel message.
+			self window close ];
 		openWithSpec
 ]
 
