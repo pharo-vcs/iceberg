@@ -89,8 +89,8 @@ IceGitHubAcceptPullRequestModel >> initializePresenter [
 	super initializePresenter.
 	self typeList
 		items: self class availableTypes;
-		displayBlock: [ :each | each ];
-		selectedItem: self class defaultType
+		display: [ :each | each ];
+		selectItem: self class defaultType
 ]
 
 { #category : #initialization }

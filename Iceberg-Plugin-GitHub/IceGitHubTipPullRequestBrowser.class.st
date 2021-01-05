@@ -101,7 +101,7 @@ IceGitHubTipPullRequestBrowser >> connectPresenters [
 
 	super connectPresenters.
 	self commits whenSelectionChangedDo: [ :selection | 
-		self uptadeSelectedCommit: selection selectedItem ].
+		self diff selectedModel: selection selectedItem ].
 
 	mergeButton action: [ self mergePullRequestIntoImage ].
 	acceptButton action: [ self acceptPullRequest ].
@@ -185,6 +185,7 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 	acceptButton label: 'Accept pull request'.
 	rejectButton label: 'Reject pull request'.
 
+	self refresh.
 ]
 
 { #category : #'accessing ui' }
@@ -269,13 +270,4 @@ IceGitHubTipPullRequestBrowser >> titleForWindow [
 
 	^ 'Browsing pull request: #{1} {2}' format: { self pullRequest number. self pullRequest title }
 
-]
-
-{ #category : #initialization }
-IceGitHubTipPullRequestBrowser >> uptadeSelectedCommit: anEvent [
-
-	self diff selectedModel: (anEvent newSelectedRowIndexes
-			 ifNotEmpty: [ :indexes | 
-			 self commits widget dataSource elementAt: indexes first ]
-			 ifEmpty: [ nil ])
 ]

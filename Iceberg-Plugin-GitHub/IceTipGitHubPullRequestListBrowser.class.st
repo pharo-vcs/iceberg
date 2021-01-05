@@ -178,9 +178,9 @@ IceTipGitHubPullRequestListBrowser >> repository [
 ]
 
 { #category : #private }
-IceTipGitHubPullRequestListBrowser >> strongSelection: anEvent [
+IceTipGitHubPullRequestListBrowser >> strongSelection: aSelection [
 
-	self viewPullRequest: (self pullRequests widget dataSource elementAt: anEvent selectedRowIndex)
+	self viewPullRequest: aSelection selectedItem
 ]
 
 { #category : #initialization }
