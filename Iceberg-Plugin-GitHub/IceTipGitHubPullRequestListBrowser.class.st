@@ -200,12 +200,12 @@ IceTipGitHubPullRequestListBrowser >> updateSelectedPullRequest: aSpSingleSelect
 IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 
 	UIManager default
-		informUser:
-			('Opening pull request {1} {2}'
-				format:
-					{aPullRequest number.
-					aPullRequest title})
-		during: [ "IceGitHubPullRequestBrowser new 
-			pullRequest: aPullRequest;
-			open" (IceGitHubTipPullRequestBrowser on: self model pullRequest: aPullRequest) openWithSpec ]
+		informUser: (
+				'Opening pull request {1} {2}' format: { 
+					 aPullRequest number.
+					 aPullRequest title })
+		during: [ 
+			(IceGitHubTipPullRequestBrowser
+				 on: self model
+				 pullRequest: aPullRequest) openWithSpec ]
 ]
