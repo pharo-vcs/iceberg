@@ -11,7 +11,7 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 
 	self 
 		addProjectNamed: 'pharo' 
-		commit: SystemVersion current commitHash 
+		commit: self pharoCommitHash 
 		baselines: #(
 			BaselineOfAthens
 			BaselineOfBasicTools
@@ -35,21 +35,14 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 			BaselineOfUnifiedFFI).
 
 	self 
-		addProjectNamed: 'pharo-spec2' 
+		addProjectNamed: 'pharo-spec2'
+		commit: self spec2CommitHash
 		baselines: #(BaselineOfSpec2).
 		
 	self 
-		addProjectNamed: 'pharo-newtools' 
+		addProjectNamed: 'pharo-newtools'
+		commit: self newtoolsCommitHash 
 		baselines: #(BaselineOfNewTools)	
-]
-
-{ #category : #adding }
-IcePharoPlugin class >> addProjectNamed: aName baselines: aCollection [
-
-	^ self 
-		addProjectNamed: aName 
-		commit: nil
-		baselines: aCollection
 ]
 
 { #category : #adding }
@@ -60,14 +53,10 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 		name: aName;
 		yourself.
 	
-	commit := aCommitId 
-		ifNotNil: [ 
-			IceUnknownCommit new 
-				id: aCommitId;
-	 			yourself ]
-		ifNil: [ 
-			IceNoCommit new ].
-		
+	commit := IceUnknownCommit new 
+		id: aCommitId;
+	 	yourself.
+
 	workingCopy := IceWorkingCopy basicNew
 		repository: repository;
 		initialize;
@@ -95,6 +84,24 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 IcePharoPlugin class >> isAvailableFor: aRepository [
 
 	^ aRepository remotes anySatisfy: [ :each | each projectName = 'pharo' ]
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> newtoolsCommitHash [
+
+	^ 'bdda5b7923bb42d97c9733641cd50fa8f3507c9c'
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> pharoCommitHash [
+
+	^ SystemVersion current commitHash
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> spec2CommitHash [
+
+	^ '3afda41c3764bf7e05eaf990fef4ca87937cd113'
 ]
 
 { #category : #events }
