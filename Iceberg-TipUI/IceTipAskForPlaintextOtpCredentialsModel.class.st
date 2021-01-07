@@ -36,11 +36,14 @@ IceTipAskForPlaintextOtpCredentialsModel class >> defaultSpec [
 
 { #category : #api }
 IceTipAskForPlaintextOtpCredentialsModel >> initialExtent [
-	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight)) scaledByDisplayScaleFactor
+
+	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight))
+		  scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
 IceTipAskForPlaintextOtpCredentialsModel >> initializePresenters [
+
 	super initializePresenters.
 	tokenLabel := self newLabel label: 'OTP Token: '.
 	tokenInput := self newTextInput
@@ -60,16 +63,8 @@ IceTipAskForPlaintextOtpCredentialsModel >> newCredentials [
 		  yourself
 ]
 
-{ #category : #initialization }
-IceTipAskForPlaintextOtpCredentialsModel >> putFocusOrder [
-	self focusOrder
-		add: usernameInput;
-		add: passwordInput;
-		add: tokenInput;
-		add: storeCheckbox
-]
-
 { #category : #accessing }
 IceTipAskForPlaintextOtpCredentialsModel >> token [
+
 	^ tokenInput text
 ]

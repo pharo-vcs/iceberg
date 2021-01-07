@@ -21,22 +21,19 @@ Class {
 { #category : #specs }
 IceTipCommentPanel class >> defaultSpec [
 
-	<spec: #default>
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #pushCheckbox;
-				add: #saveCheckbox;
-				yourself)
-			height: self inputTextHeight;
-		add: #commentText;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #fixesLabel width: 40;
-				add: #fixesField;
-				yourself)
-			height: self inputTextHeight;
-		add: #actionButtonBar height: self buttonHeight
+		  add: (SpBoxLayout newHorizontal
+				   add: #pushCheckbox;
+				   add: #saveCheckbox;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: #commentText;
+		  add: (SpBoxLayout newHorizontal
+				   add: #fixesLabel width: 40;
+				   add: #fixesField;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: #actionButtonBar height: self buttonHeight
 ]
 
 { #category : #specs }

@@ -48,12 +48,11 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 { #category : #specs }
 IceTipWorkingCopyBrowser class >> defaultSpec [
-	<spec: #default>
-	
-	^ SpBoxLayout newVertical 
-			add: #packagesTable;
-			add: #filterInput expand: false;
-			yourself 
+
+	^ SpBoxLayout newVertical
+		  add: #packagesTable;
+		  add: #filterInput expand: false;
+		  yourself
 ]
 
 { #category : #'instance creation' }

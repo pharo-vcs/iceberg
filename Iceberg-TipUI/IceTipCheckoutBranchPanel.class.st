@@ -9,6 +9,6 @@ Class {
 
 { #category : #actions }
 IceTipCheckoutBranchPanel >> doAccept [
-	self validate.
+
 	self selectedBranch previewCheckout
 ]

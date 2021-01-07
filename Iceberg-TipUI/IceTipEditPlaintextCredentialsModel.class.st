@@ -9,19 +9,21 @@ Class {
 
 { #category : #specs }
 IceTipEditPlaintextCredentialsModel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #usernameInput;
-				yourself) height: self inputTextHeight ;
-		add:
-			(SpBoxLayout newHorizontal 
-				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #passwordInput;
-				yourself) height: self inputTextHeight ;
-		yourself
+		  add: (SpBoxLayout newHorizontal
+				   add: #usernameLabel
+				   width: 80 * self currentWorld displayScaleFactor;
+				   add: #usernameInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: (SpBoxLayout newHorizontal
+				   add: #passwordLabel
+				   width: 80 * self currentWorld displayScaleFactor;
+				   add: #passwordInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  yourself
 ]
 
 { #category : #actions }
@@ -32,15 +34,9 @@ IceTipEditPlaintextCredentialsModel >> accept [
 
 { #category : #api }
 IceTipEditPlaintextCredentialsModel >> initialExtent [
-	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight)) scaledByDisplayScaleFactor
-]
 
-{ #category : #initialization }
-IceTipEditPlaintextCredentialsModel >> putFocusOrder [
-
-	self focusOrder
-		add: usernameInput;
-		add: passwordInput.
+	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight))
+		  scaledByDisplayScaleFactor
 ]
 
 { #category : #actions }

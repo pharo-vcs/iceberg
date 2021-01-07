@@ -17,27 +17,24 @@ Class {
 
 { #category : #specs }
 IceTipAddTokenCredentialsModel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #usernameLabel width: self labelWidth;
-				add: #usernameInput;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #hostLabel width: self labelWidth;
-				add: #hostInput;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #tokenLabel width: self labelWidth;
-				add: #tokenInput;
-				yourself)
-			height: self inputTextHeight;
-		yourself
+		  add: (SpBoxLayout newHorizontal
+				   add: #usernameLabel width: self labelWidth;
+				   add: #usernameInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: (SpBoxLayout newHorizontal
+				   add: #hostLabel width: self labelWidth;
+				   add: #hostInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: (SpBoxLayout newHorizontal
+				   add: #tokenLabel width: self labelWidth;
+				   add: #tokenInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -97,15 +94,6 @@ IceTipAddTokenCredentialsModel >> newCredentials [
 		token: self tokenFromInput;
 		host: self hostnameFromInput;
 		yourself 
-]
-
-{ #category : #initialization }
-IceTipAddTokenCredentialsModel >> putFocusOrder [
-
-	self focusOrder
-		add: usernameInput;
-		add: hostInput;
-		add: tokenInput
 ]
 
 { #category : #accessing }

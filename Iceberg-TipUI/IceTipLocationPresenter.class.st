@@ -29,12 +29,12 @@ IceTipLocationPresenter class >> defaultLabel [
 
 { #category : #specs }
 IceTipLocationPresenter class >> defaultSpec [
-	<spec>
+
 	^ SpBoxLayout newHorizontal
-		add: #locationLabel width: self labelWidth ;
-		add: #locationInput;
-		add: #chooseButton width: 24;
-		yourself.
+		  add: #locationLabel width: self labelWidth;
+		  add: #locationInput;
+		  add: #chooseButton width: 24;
+		  yourself
 ]
 
 { #category : #accessing }

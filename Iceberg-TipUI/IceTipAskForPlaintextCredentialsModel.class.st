@@ -10,21 +10,21 @@ Class {
 
 { #category : #specs }
 IceTipAskForPlaintextCredentialsModel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #usernameInput;
-				yourself )
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #passwordInput;
-				yourself )
-			height: self inputTextHeight;
-		add: #storeCheckbox height: self inputTextHeight
+		  add: (SpBoxLayout newHorizontal
+				   add: #usernameLabel
+				   width: 80 * self currentWorld displayScaleFactor;
+				   add: #usernameInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: (SpBoxLayout newHorizontal
+				   add: #passwordLabel
+				   width: 80 * self currentWorld displayScaleFactor;
+				   add: #passwordInput;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: #storeCheckbox height: self inputTextHeight
 ]
 
 { #category : #actions }
@@ -41,18 +41,13 @@ IceTipAskForPlaintextCredentialsModel >> cancelAction [
 
 { #category : #api }
 IceTipAskForPlaintextCredentialsModel >> initialExtent [
-	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
-]
 
-{ #category : #initialization }
-IceTipAskForPlaintextCredentialsModel >> putFocusOrder [
-	self focusOrder
-		add: usernameInput;
-		add: passwordInput;
-		add: storeCheckbox
+	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
+		  scaledByDisplayScaleFactor
 ]
 
 { #category : #accessing }
 IceTipAskForPlaintextCredentialsModel >> title [
+
 	^ 'Please log in to ' , askingHostname
 ]

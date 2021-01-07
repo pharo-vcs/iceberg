@@ -15,20 +15,15 @@ Class {
 
 { #category : #specs }
 IceTipAddPackagesDialog class >> defaultSpec [
-	<spec: #default>
-	^ SpBoxLayout newVertical 
-				add: #packagesList;
-				add: #packageNameText height: self inputTextHeight
+
+	^ SpBoxLayout newVertical
+		  add: #packagesList;
+		  add: #packageNameText height: self inputTextHeight
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog class >> icon [
 	^ self iconNamed: #branch
-]
-
-{ #category : #accessing }
-IceTipAddPackagesDialog class >> order [
-	^ 20
 ]
 
 { #category : #specs }
@@ -38,16 +33,18 @@ IceTipAddPackagesDialog class >> title [
 
 { #category : #actions }
 IceTipAddPackagesDialog >> accept [
+
 	"ensure window goes away (in case accept comes from a keybinding and not the ok button)"
-	self window delete.
-	selectedPackages
-		ifEmpty: [ UIManager default inform: 'No packages selected.'.
-			^ self ].
+	self closeWindow.
+	selectedPackages ifEmpty: [ 
+		UIManager default inform: 'No packages selected.'.
+		^ self ].
 	self model addPackages: selectedPackages
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> allPackages [
+
 	^ RPackageOrganizer default packages
 		asOrderedCollection 
 		sort: [ :a :b | a name < b name ]
@@ -55,28 +52,25 @@ IceTipAddPackagesDialog >> allPackages [
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> allPackagesNotRegistered [
+
 	| currentPackagesNames |
 	currentPackagesNames := self model packages collect: #packageName.
-	^ self allPackages reject: [ :rPackage | currentPackagesNames includes: rPackage name ]
+	^ self allPackages reject: [ :rPackage | 
+		  currentPackagesNames includes: rPackage name ]
 ]
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackageNameText [
-	self packageNameText
-		whenBuiltDo: [ :ann | 
-			ann widget
-				bindKeyCombination: Character enter asKeyCombination
-					toAction: [ self accept ];
-				bindKeyCombination: Character arrowUp asKeyCombination
-					toAction: [ self packagesList takeKeyboardFocus.
-					self packagesList adapter selectLastVisibleRow ];
-				bindKeyCombination: Character arrowDown asKeyCombination
-					toAction: [ self packagesList takeKeyboardFocus.
-					self packagesList widget selectFirstVisibleRow ] ]
+
+	packageNameText
+		placeholder: 'Enter a package name';
+		autoAccept: true;
+		whenTextChangedDo: [ :text | self refresh ]
 ]
 
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackagesList [
+
 	packagesList
 		addColumn:
 			(SpCompositeTableColumn new
@@ -96,89 +90,76 @@ IceTipAddPackagesDialog >> initializePackagesList [
 					(SpStringTableColumn new
 						evaluated: #name;
 						yourself);
-				yourself);
-		items: self allPackagesNotRegistered
+				yourself)
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> initializeWidgets [
+IceTipAddPackagesDialog >> initializePresenters [
+
+	super initializePresenters.
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
-	packageNameText := self newTextInput
-		placeholder: 'Enter a package name';
-		autoAccept: true;
-		whenTextChangedDo: [ :text | 
-			packagesList
-				items:  (self allPackagesNotRegistered
-						select:
-							[ :currPackage | currPackage name asLowercase includesSubstring: text asString asLowercase ] )
-						] .
+	packageNameText := self newTextInput.
+
 	self initializePackagesList.
 	self initializePackageNameText.
-	self focusOrder
-		add: self packagesList;
-		add: self packageNameText
+
+	self refresh.
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> model [
+
 	^ model
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> model: anObject [
+
 	model := anObject.
 	self refresh
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipAddPackagesDialog >> packageNameText [
+
 	^ packageNameText
 ]
 
-{ #category : #accessing }
-IceTipAddPackagesDialog >> packageNameText: anObject [
-	packageNameText := anObject
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipAddPackagesDialog >> packagesList [
+
 	^ packagesList
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> packagesList: anObject [
-	packagesList := anObject
-]
-
-{ #category : #accessing }
 IceTipAddPackagesDialog >> refresh [
-	packagesList widget 
-		in: [ :this | 
-			this selectRowIndexes: #(). 
-			this dataSource 
-				rootForItems: self model repositoryModelsByGroup;
-				expandAll ];
-		refresh.
+
+	packagesList items: (packageNameText text
+		ifEmpty: [
+			self allPackagesNotRegistered ]
+		ifNotEmpty: [ :text |
+			self allPackagesNotRegistered select: [ :currPackage | 
+				 currPackage name asLowercase includesSubstring:
+					 text asString asLowercase ] ])
+
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> selectedPackage [
-	| index |
-	self flag: #pharoTodo. "This should -maybe- be modeled better on a SpecTablePresenter ;)"
-	index := packagesList widget selectedRowIndex.
-	index = 0 ifTrue: [ ^ nil ].
-	^ packagesList widget dataSource elementAt: index
+
+	^ packagesList selectedItem
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [ 
+IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]
 
 { #category : #accessing }
 IceTipAddPackagesDialog >> validate [
-self flag: #Todo .
+
 	self
 		assert: self selectedPackage isNotNil
 		description: 'Please select a branch to checkout.'

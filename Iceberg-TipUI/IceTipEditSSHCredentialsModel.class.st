@@ -37,16 +37,6 @@ IceTipEditSSHCredentialsModel >> initialExtent [
 	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
-IceTipEditSSHCredentialsModel >> putFocusOrder [
-	self focusOrder
-		add: usernameInput;
-		add: publicKeyInput locationInput;
-		add: privateKeyInput locationInput;
-		add: passphraseInput;
-		add: storeCheckbox
-]
-
 { #category : #actions }
 IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
 
@@ -59,6 +49,7 @@ IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
 
 { #category : #accessing }
 IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
+
 	usernameInput text: credentials username.
 	passphraseInput text: credentials keyPassphrase.
 	privateKeyInput location: credentials privateKey.
@@ -67,5 +58,6 @@ IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
 
 { #category : #api }
 IceTipEditSSHCredentialsModel >> title [
+
 	^ 'Edit SSH keys for ' , self credentials hostDescription
 ]

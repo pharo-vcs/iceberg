@@ -39,6 +39,7 @@ IceTipAddRemoteDialog class >> title [
 
 { #category : #actions }
 IceTipAddRemoteDialog >> accept [
+
 	self validate.
 	self model 
 		addRemoteNamed: self remoteName 
@@ -48,6 +49,7 @@ IceTipAddRemoteDialog >> accept [
 
 { #category : #accessing }
 IceTipAddRemoteDialog >> initialExtent [
+
 	^ (500@(
 		self class inputTextHeight * 2
 		+ self class buttonHeight 
@@ -56,96 +58,94 @@ IceTipAddRemoteDialog >> initialExtent [
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> initializeWidgets [
-	nameLabel := self newLabel label: 'Remote name'.
+IceTipAddRemoteDialog >> initializePresenters [
+
+	super initializePresenters.
+	nameLabel := self newLabel
+		label: 'Remote name';
+		yourself.
 	nameText := self newTextInput
 		placeholder: 'e.g., user-remote';
-		autoAccept: true.
-	urlLabel := self newLabel label: 'Remote URL'.
+		autoAccept: true;
+		yourself.
+	urlLabel := self newLabel
+		label: 'Remote URL';
+		yourself.
 	urlText := self newTextInput
 		placeholder: 'e.g., git@github.com:user/project.git';
-		autoAccept: true.
-	self focusOrder
-		add: nameText;
-		add: urlText
+		autoAccept: true;
+		yourself.
+
 ]
 
 { #category : #accessing }
 IceTipAddRemoteDialog >> model [
+
 	^ model
 ]
 
 { #category : #accessing }
 IceTipAddRemoteDialog >> model: anObject [
+
 	model := anObject
 ]
 
 { #category : #'accessing ui' }
 IceTipAddRemoteDialog >> nameLabel [
+
 	^ nameLabel
 ]
 
 { #category : #'accessing ui' }
-IceTipAddRemoteDialog >> nameLabel: anObject [
-	nameLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipAddRemoteDialog >> nameText [
-	^ nameText
-]
 
-{ #category : #'accessing ui' }
-IceTipAddRemoteDialog >> nameText: anObject [
-	nameText := anObject
+	^ nameText
 ]
 
 { #category : #events }
 IceTipAddRemoteDialog >> onAccept: aBlock [
+
 	acceptBlock := aBlock
 ]
 
 { #category : #accessing }
 IceTipAddRemoteDialog >> remoteName [
+
 	^ self nameText text trimmed
 ]
 
 { #category : #accessing }
 IceTipAddRemoteDialog >> remoteUrl [
+
 	^ self urlText text trimmed
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> setModelBeforeInitialization: anObject [ 
+IceTipAddRemoteDialog >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]
 
 { #category : #'accessing ui' }
 IceTipAddRemoteDialog >> urlLabel [
+
 	^ urlLabel
 ]
 
 { #category : #'accessing ui' }
-IceTipAddRemoteDialog >> urlLabel: anObject [
-	urlLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipAddRemoteDialog >> urlText [
-	^ urlText
-]
 
-{ #category : #'accessing ui' }
-IceTipAddRemoteDialog >> urlText: anObject [
-	urlText := anObject
+	^ urlText
 ]
 
 { #category : #actions }
 IceTipAddRemoteDialog >> validate [
-	self 
+
+	self
 		assert: self remoteName notEmpty 
 		description: 'You need to specify a remote name.'.
-	self 
+	self
 		assert: self remoteUrl notEmpty
 		description: 'You need to specify a remote url.'
+
 ]

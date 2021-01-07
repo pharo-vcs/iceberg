@@ -18,14 +18,19 @@ Class {
 
 { #category : #initialization }
 IceTipAbstractSSHCredentialsModel >> initializePresenters [
+
 	super initializePresenters.
-	usernameLabel := self newLabel label: 'Username: '.
+	usernameLabel := self newLabel
+		label: 'Username: ';
+		yourself.
 	usernameInput := self newTextInput
 		text: 'git';
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	passphraseLabel := self newLabel label: 'Key Passphrase: '.
+	passphraseLabel := self newLabel
+		label: 'Key Passphrase: ';
+		yourself.
 	passphraseInput := self newTextInput
 		bePassword;
 		autoAccept: true;
@@ -48,26 +53,35 @@ IceTipAbstractSSHCredentialsModel >> initializePresenters [
 
 { #category : #testing }
 IceTipAbstractSSHCredentialsModel >> isOkEnabled [
-	
-	^ self username isNotEmpty and: [ self publicKey isNotEmpty and: [ self privateKey isNotEmpty ] ]
+
+	^ self username isNotEmpty and: [ 
+		  self publicKey isNotEmpty and: [ self privateKey isNotEmpty ] ]
 ]
 
 { #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> passphrase [
+
 	^ passphraseInput text
 ]
 
 { #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> privateKey [
-	^ privateKeyInput location ifNil: [ '' ] ifNotNil: [ :x | x pathString ]
+
+	^ privateKeyInput location
+		  ifNil: [ '' ]
+		  ifNotNil: [ :x | x pathString ]
 ]
 
 { #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> publicKey [
-	^ publicKeyInput location ifNil: [ '' ] ifNotNil: [ :x | x pathString ]
+
+	^ publicKeyInput location
+		  ifNil: [ '' ]
+		  ifNotNil: [ :x | x pathString ]
 ]
 
 { #category : #accessing }
 IceTipAbstractSSHCredentialsModel >> username [
+
 	^ usernameInput text
 ]

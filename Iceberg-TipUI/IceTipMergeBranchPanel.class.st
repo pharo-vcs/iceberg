@@ -12,13 +12,13 @@ Class {
 
 { #category : #accessing }
 IceTipMergeBranchPanel >> beSwitchAndMerge [
+
 	self mergeType: IceTipMergeType switchAndMerge
 ]
 
 { #category : #actions }
 IceTipMergeBranchPanel >> doAccept [
-	self validate.
-	
+
 	IceTipStandardAction new 
 		repository: self model entity; 
 		message: ('Verifying merge from {1}' format: { self selectedBranch name });
@@ -28,16 +28,19 @@ IceTipMergeBranchPanel >> doAccept [
 
 { #category : #accessing }
 IceTipMergeBranchPanel >> mergeType [
+
 	^ mergeType ifNil: [ IceTipMergeType default ]
 ]
 
 { #category : #accessing }
 IceTipMergeBranchPanel >> mergeType: anObject [
+
 	mergeType := anObject
 ]
 
 { #category : #accessing }
 IceTipMergeBranchPanel >> withoutHead [
+
 	self branchesList items: (self branchModels reject: #isHead).
 	self branchesList selectIndex: 1
 ]

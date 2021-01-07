@@ -19,12 +19,12 @@ Class {
 
 { #category : #specs }
 IceTipDiffPanel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpPanedLayout newHorizontal
-		position: 25 percent;
-		add: #iceNodesTree;
-		add: #diffPanel;
-		yourself
+		  position: 25 percent;
+		  add: #iceNodesTree;
+		  add: #diffPanel;
+		  yourself
 ]
 
 { #category : #'instance creation' }

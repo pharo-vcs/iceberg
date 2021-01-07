@@ -13,28 +13,18 @@ Class {
 	#category : #'Iceberg-TipUI-Spec2'
 }
 
-{ #category : #accessing }
-IceTipActionPanel class >> defaultActionWidth [
-	^ 100 * self currentWorld displayScaleFactor
-]
-
-{ #category : #accessing }
-IceTipActionPanel class >> defaultHeight [
-	^ 25 * self currentWorld displayScaleFactor
-]
-
 { #category : #specs }
 IceTipActionPanel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add: #actionsButtonBar height: self  buttonHeight ;
-		yourself
+		  add: #actionsButtonBar height: self buttonHeight;
+		  yourself
 ]
 
 { #category : #accessing }
 IceTipActionPanel >> actionWidth [
 
-	^ actionWidth ifNil: [ self class defaultActionWidth ]
+	^ actionWidth ifNil: [ self defaultActionWidth ]
 ]
 
 { #category : #accessing }
@@ -48,6 +38,11 @@ IceTipActionPanel >> addAction: aPresenter [
 
 	actions add: aPresenter.
 	self refresh
+]
+
+{ #category : #accessing }
+IceTipActionPanel >> defaultActionWidth [
+	^ 100 * self currentWorld displayScaleFactor
 ]
 
 { #category : #initialization }

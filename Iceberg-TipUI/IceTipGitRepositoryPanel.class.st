@@ -10,15 +10,15 @@ Class {
 
 { #category : #specs }
 IceTipGitRepositoryPanel class >> defaultSpec [
-	<spec: #default>
 
 	^ SpBoxLayout newVertical
-		add: (SpBoxLayout newHorizontal 
-					add: #remoteLabel width: self labelWidth ;
-					add: #remoteInputText;
-					yourself ) height: self inputTextHeight;
-		add: #projectLocation 	height: self inputTextHeight;
-			yourself
+		  add: (SpBoxLayout newHorizontal
+				   add: #remoteLabel width: self labelWidth;
+				   add: #remoteInputText;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: #projectLocation height: self inputTextHeight;
+		  yourself
 ]
 
 { #category : #accessing }

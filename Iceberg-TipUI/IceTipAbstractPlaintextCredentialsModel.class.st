@@ -16,6 +16,7 @@ Class {
 
 { #category : #initialization }
 IceTipAbstractPlaintextCredentialsModel >> initializePresenters [
+
 	super initializePresenters.
 	usernameLabel := self newLabel label: 'Username: '.
 	usernameInput := self newTextInput
@@ -47,21 +48,25 @@ IceTipAbstractPlaintextCredentialsModel >> newCredentials [
 ]
 
 { #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> password [ 
+IceTipAbstractPlaintextCredentialsModel >> password [
+
 	^ passwordInput text
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipAbstractPlaintextCredentialsModel >> passwordInput [
+
 	^ passwordInput
 ]
 
 { #category : #accessing }
 IceTipAbstractPlaintextCredentialsModel >> username [
+
 	^ usernameInput text
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipAbstractPlaintextCredentialsModel >> usernameInput [
+
 	^ usernameInput
 ]

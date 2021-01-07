@@ -15,21 +15,10 @@ Class {
 
 { #category : #specs }
 IceTipExistingBranchPanel class >> defaultSpec [
-	<spec: #default>
-	
-	^ SpBoxLayout newHorizontal 
-		add: #branchesList;
-		yourself 
-]
 
-{ #category : #accessing }
-IceTipExistingBranchPanel class >> icon [
-	^ self iconNamed: #branch
-]
-
-{ #category : #accessing }
-IceTipExistingBranchPanel class >> order [
-	^ 30
+	^ SpBoxLayout newHorizontal
+		  add: #branchesList;
+		  yourself
 ]
 
 { #category : #specs }
@@ -42,23 +31,21 @@ IceTipExistingBranchPanel >> branchModels [
 	^ self model branchModels
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipExistingBranchPanel >> branchesList [
+
 	^ branchesList
 ]
 
-{ #category : #accessing }
-IceTipExistingBranchPanel >> branchesList: anObject [
-	branchesList := anObject
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipExistingBranchPanel >> icon [
-	^ icon ifNil: [ super icon ]
+
+	^ icon ifNil: [ self iconNamed: #branch ]
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipExistingBranchPanel >> icon: anIcon [
+
 	icon := anIcon
 ]
 
@@ -80,7 +67,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 ]
 
 { #category : #initialization }
-IceTipExistingBranchPanel >> initializeWidgets [
+IceTipExistingBranchPanel >> initializePresenters [
 	branchesList := self newTable.
 	self initializeBranchesList.
 	
@@ -94,17 +81,21 @@ IceTipExistingBranchPanel >> selectedBranch [
 	^ self branchesList selection selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipExistingBranchPanel >> title [
+
 	^ title ifNil: [ self model name ]
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipExistingBranchPanel >> title: aString [
+
 	title := aString
 ]
 
 { #category : #accessing }
 IceTipExistingBranchPanel >> validate [
-	self selectedBranch ifNil: [ IceError signal: 'Please select a branch to checkout.' ]
+
+	self selectedBranch ifNil: [ 
+		IceError signal: 'Please select a branch to checkout.' ]
 ]

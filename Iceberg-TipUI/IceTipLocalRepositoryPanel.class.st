@@ -10,10 +10,10 @@ Class {
 
 { #category : #specs }
 IceTipLocalRepositoryPanel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add: #projectLocation height: self inputTextHeight;
-		yourself
+		  add: #projectLocation height: self inputTextHeight;
+		  yourself
 ]
 
 { #category : #accessing }

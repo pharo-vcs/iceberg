@@ -20,11 +20,12 @@ Class {
 
 { #category : #specs }
 IceTipOptionDialog class >> defaultSpec [
-	<spec>
+
 	^ SpBoxLayout newHorizontal
-		add: #typeList withConstraints: [:constraints | constraints width: 180];
-		add: #contentPanel;
-		yourself
+		  add: #typeList
+		  withConstraints: [ :constraints | constraints width: 180 ];
+		  add: #contentPanel;
+		  yourself
 ]
 
 { #category : #actions }

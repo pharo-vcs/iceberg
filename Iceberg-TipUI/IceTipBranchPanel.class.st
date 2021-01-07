@@ -12,23 +12,15 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #accessing }
-IceTipBranchPanel class >> icon [
-	^ self subclassResponsibility
-]
-
 { #category : #'instance creation' }
 IceTipBranchPanel class >> onRepository: aRepository [
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
-]
 
-{ #category : #accessing }
-IceTipBranchPanel class >> order [
-	^ self subclassResponsibility
+	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
 { #category : #actions }
 IceTipBranchPanel >> accept [
+
 	self validate.
 	self doAccept.
 	acceptBlock ifNotNil: [ acceptBlock cull: self ]
@@ -36,45 +28,42 @@ IceTipBranchPanel >> accept [
 
 { #category : #actions }
 IceTipBranchPanel >> doAccept [
+
 	self subclassResponsibility
 ]
 
 { #category : #accessing }
 IceTipBranchPanel >> icon [
-	^ self class icon
+
+	^ self subclassResponsibility
 ]
 
 { #category : #testing }
 IceTipBranchPanel >> isNewBranch [
+
 	^ false
 ]
 
 { #category : #accessing }
 IceTipBranchPanel >> model [
+
 	^ model
 ]
 
 { #category : #accessing }
 IceTipBranchPanel >> model: anObject [
-	model := anObject.
-	self refresh
+
+	model := anObject
 ]
 
 { #category : #events }
 IceTipBranchPanel >> onAccept: aBlock [
+
 	acceptBlock := aBlock
 ]
 
-{ #category : #accessing }
-IceTipBranchPanel >> refresh [
-]
-
 { #category : #initialization }
-IceTipBranchPanel >> setModelBeforeInitialization: anObject [ 
+IceTipBranchPanel >> setModelBeforeInitialization: anObject [
+
 	model := anObject
-]
-
-{ #category : #accessing }
-IceTipBranchPanel >> validate [
-
 ]

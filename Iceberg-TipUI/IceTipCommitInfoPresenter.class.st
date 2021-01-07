@@ -21,11 +21,10 @@ Class {
 
 { #category : #specs }
 IceTipCommitInfoPresenter class >> defaultSpec [
-	<spec: #default>
-	
+
 	^ SpBoxLayout newVertical
-		add: #notebookPanel;
-		yourself
+		  add: #notebookPanel;
+		  yourself
 ]
 
 { #category : #accessing }

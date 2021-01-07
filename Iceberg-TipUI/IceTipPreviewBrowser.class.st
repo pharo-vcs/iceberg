@@ -27,11 +27,11 @@ IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 
 { #category : #specs }
 IceTipPreviewBrowser class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-				add: #diffPanel;
-				add: #actionPanel height: 25;
-			yourself
+		  add: #diffPanel;
+		  add: #actionPanel height: 25;
+		  yourself
 ]
 
 { #category : #'accessing ui' }

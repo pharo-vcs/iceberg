@@ -16,31 +16,16 @@ Class {
 	#category : #'Iceberg-Plugin-Migration'
 }
 
-{ #category : #accessing }
-IceTipFiletreeToTonelDialog class >> branchBaseName [
-	^ 'migrate-sources-to-tonel'
-]
-
-{ #category : #accessing }
-IceTipFiletreeToTonelDialog class >> confirmMessage [
-	^ 'Convert repository {1} sources from filetree format to tonel. 
-This process will use a new branch named {2}. 
-You can choose to not merge immediately your migration.
-
-ARE YOU SURE?'
-]
-
 { #category : #specs }
 IceTipFiletreeToTonelDialog class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newHorizontal
-		add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
-		add:
-			(SpBoxLayout newVertical
-				add: #confirmLabel;
-				add: #mergeWithMasterCheckbox height: self inputTextHeight;
-				yourself );
-				yourself 
+		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
+		  add: (SpBoxLayout newVertical
+				   add: #confirmLabel;
+				   add: #mergeWithMasterCheckbox height: self inputTextHeight;
+				   yourself);
+		  yourself
 ]
 
 { #category : #specs }
@@ -60,18 +45,31 @@ IceTipFiletreeToTonelDialog >> accept [
 ]
 
 { #category : #accessing }
+IceTipFiletreeToTonelDialog >> branchBaseName [
+
+	^ 'migrate-sources-to-tonel'
+]
+
+{ #category : #accessing }
 IceTipFiletreeToTonelDialog >> branchName [
+
 	^ branchName ifNil: [ branchName := self obtainBranchName ]
 ]
 
 { #category : #'accessing ui' }
 IceTipFiletreeToTonelDialog >> confirmLabel [
+
 	^ confirmLabel
 ]
 
-{ #category : #'accessing ui' }
-IceTipFiletreeToTonelDialog >> confirmLabel: anObject [
-	confirmLabel := anObject
+{ #category : #accessing }
+IceTipFiletreeToTonelDialog >> confirmMessage [
+
+	^ 'Convert repository {1} sources from filetree format to tonel. 
+This process will use a new branch named {2}. 
+You can choose to not merge immediately your migration.
+
+ARE YOU SURE?'
 ]
 
 { #category : #actions }
@@ -87,69 +85,66 @@ IceTipFiletreeToTonelDialog >> doAccept [
 
 { #category : #'accessing ui' }
 IceTipFiletreeToTonelDialog >> iconPanel [
-	^ iconPanel
-]
 
-{ #category : #'accessing ui' }
-IceTipFiletreeToTonelDialog >> iconPanel: anObject [
-	iconPanel := anObject
+	^ iconPanel
 ]
 
 { #category : #api }
 IceTipFiletreeToTonelDialog >> initialExtent [
-	^ (500@(
-		self class inputTextHeight * 5
-		+ self class buttonHeight 
-		+ 50
-		)) scaledByDisplayScaleFactor
+
+	^ (500
+	   @ (self class inputTextHeight * 5 + self class buttonHeight + 50))
+		  scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipFiletreeToTonelDialog >> initializeWidgets [
-	iconPanel := self newImage.
-	iconPanel image: (self iconNamed: #question).
-	confirmLabel := self newText.
-	confirmLabel text: (self class confirmMessage
-				format:
-					{self repository name.
-					self branchName}).
+IceTipFiletreeToTonelDialog >> initializePresenters [
+
+	super initializePresenters.
+	iconPanel := self newImage
+		image: (self iconNamed: #question);
+		yourself.
+	confirmLabel := self newText
+		text: (self confirmMessage format: {
+			self repository name.
+			self branchName });
+		yourself.
 	mergeWithMasterCheckbox := self newCheckBox
 		label: ('Merge with branch {1}' format: {self repository branchName});
-		state: true.
-	self focusOrder add: mergeWithMasterCheckbox
+		state: true;
+		yourself.
+
 ]
 
 { #category : #'accessing ui' }
 IceTipFiletreeToTonelDialog >> mergeWithMasterCheckbox [
-	^ mergeWithMasterCheckbox
-]
 
-{ #category : #'accessing ui' }
-IceTipFiletreeToTonelDialog >> mergeWithMasterCheckbox: anObject [
-	mergeWithMasterCheckbox := anObject
+	^ mergeWithMasterCheckbox
 ]
 
 { #category : #private }
 IceTipFiletreeToTonelDialog >> obtainBranchName [
+
 	| baseName suffix count |
-	
-	count := 0. 	
-	baseName := self class branchBaseName.
+	count := 0.
+	baseName := self branchBaseName.
 	suffix := ''.
 	[ true ] whileTrue: [ 
-		self repository 
-			branchNamed: baseName, suffix
-			ifAbsent: [ ^ baseName, suffix ].
+		self repository
+			branchNamed: baseName , suffix
+			ifAbsent: [ ^ baseName , suffix ].
 		count := count + 1.
-		suffix := '-', count asString ]
+		suffix := '-' , count asString ]
 ]
 
 { #category : #accessing }
 IceTipFiletreeToTonelDialog >> repository [
+
 	^ repository
 ]
 
 { #category : #initialization }
 IceTipFiletreeToTonelDialog >> setModelBeforeInitialization: anObject [
+
 	repository := anObject
 ]

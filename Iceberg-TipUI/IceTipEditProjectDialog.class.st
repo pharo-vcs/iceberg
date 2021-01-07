@@ -65,7 +65,7 @@ IceTipEditProjectDialog >> accept [
 			"Set the project in the repository"
 			model repository workingCopy project: model ].
 
-	self window delete.
+	self closeWindow.
 	acceptCallback ifNotNil: [ 
 		acceptCallback value ].
 ]
@@ -212,15 +212,20 @@ IceTipEditProjectDialog >> initializeMessagePanel [
 { #category : #initialization }
 IceTipEditProjectDialog >> initializePresenters [
 
-	nameLabel := self newLabel label: 'Project Name'; yourself.
-	nameInput := self newLabel label: self model name; yourself.
-	
+	super initializePresenters.
+	nameLabel := self newLabel
+		label: 'Project Name';
+		yourself.
+	nameInput := self newLabel
+		label: self model name;
+		yourself.
 	sourceDirectoryLabel := self newLabel
 		label: 'Code directory';
 		yourself.
 	sourceDirectoryTree := self newTreeTable.
-	
-	formatLabel := self newLabel label: 'Format'; yourself.
+	formatLabel := self newLabel
+		label: 'Format';
+		yourself.
 	formatList := self newDropList.
 
 	self initializeMessagePanel.

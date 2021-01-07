@@ -37,13 +37,11 @@ IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 
 { #category : #specs }
 IceTipHistoryBrowser class >> defaultSpec [
-	<spec: #default>
 
 	^ SpPanedLayout newVertical
 		  add: #commitList;
 		  add: #commitInfoTabs;
 		  yourself
-
 ]
 
 { #category : #specs }

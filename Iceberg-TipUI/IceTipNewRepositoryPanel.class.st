@@ -18,22 +18,20 @@ Class {
 
 { #category : #specs }
 IceTipNewRepositoryPanel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #projectNameLabel width: self labelWidth;
-				add: #projectNameInputText;
-				yourself)
-			height: 30;
-		add: #projectLocation height: 30;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #subdirectoryLabel width: self labelWidth;
-				add: #subdirectoryInputText;
-				yourself)
-			height: 30;
-		yourself
+		  add: (SpBoxLayout newHorizontal
+				   add: #projectNameLabel width: self labelWidth;
+				   add: #projectNameInputText;
+				   yourself)
+		  height: 30;
+		  add: #projectLocation height: 30;
+		  add: (SpBoxLayout newHorizontal
+				   add: #subdirectoryLabel width: self labelWidth;
+				   add: #subdirectoryInputText;
+				   yourself)
+		  height: 30;
+		  yourself
 ]
 
 { #category : #accessing }

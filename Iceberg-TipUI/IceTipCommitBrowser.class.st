@@ -33,7 +33,6 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 { #category : #specs }
 IceTipCommitBrowser class >> defaultSpec [
 
-	<spec: #default>
 	^ SpPanedLayout newVertical
 		  add: #diffPanel;
 		  add: #commentPanel;

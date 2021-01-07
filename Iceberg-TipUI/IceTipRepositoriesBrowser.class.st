@@ -60,7 +60,6 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 
 { #category : #specs }
 IceTipRepositoriesBrowser class >> defaultSpec [
-	<spec: #default>
 
 	^ SpBoxLayout newVertical
 		  add: #repositoryList;

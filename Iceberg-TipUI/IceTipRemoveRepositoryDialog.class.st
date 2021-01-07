@@ -10,31 +10,19 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #accessing }
-IceTipRemoveRepositoryDialog class >> confirmMessage [
-	^ 'Are you sure to remove your repository {1} from your image?'
-]
-
 { #category : #specs }
 IceTipRemoveRepositoryDialog class >> defaultSpec [
-	<spec: #default>
-	^ SpBoxLayout newVertical 
-		add:
-			(SpBoxLayout newHorizontal
-				add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
-				add:
-					(SpBoxLayout newVertical
-						add: #confirmLabel;
-						add: #removeFileSystemCheckbox height: self inputTextHeight;
-						yourself);
-				yourself);
-		yourself
 
-]
-
-{ #category : #accessing }
-IceTipRemoveRepositoryDialog class >> removeMessage [
-	^ 'Also remove repository from file system'
+	^ SpBoxLayout newVertical
+		  add: (SpBoxLayout newHorizontal
+				   add: #iconPanel
+				   width: 40 * self currentWorld displayScaleFactor;
+				   add: (SpBoxLayout newVertical
+						    add: #confirmLabel;
+						    add: #removeFileSystemCheckbox height: self inputTextHeight;
+						    yourself);
+				   yourself);
+		  yourself
 ]
 
 { #category : #specs }
@@ -44,33 +32,32 @@ IceTipRemoveRepositoryDialog class >> title [
 
 { #category : #actions }
 IceTipRemoveRepositoryDialog >> accept [
-	self removeFileSystemCheckbox state 
+
+	self removeFileSystemCheckbox state
 		ifTrue: [ self model delete ]
 		ifFalse: [ self model forget ]
 ]
 
 { #category : #'accessing ui' }
 IceTipRemoveRepositoryDialog >> confirmLabel [
+
 	^ confirmLabel
 ]
 
-{ #category : #'accessing ui' }
-IceTipRemoveRepositoryDialog >> confirmLabel: anObject [
-	confirmLabel := anObject
+{ #category : #accessing }
+IceTipRemoveRepositoryDialog >> confirmMessage [
+	^ 'Are you sure to remove your repository {1} from your image?'
 ]
 
 { #category : #'accessing ui' }
 IceTipRemoveRepositoryDialog >> iconPanel [
-	^ iconPanel
-]
 
-{ #category : #'accessing ui' }
-IceTipRemoveRepositoryDialog >> iconPanel: anObject [
-	iconPanel := anObject
+	^ iconPanel
 ]
 
 { #category : #accessing }
 IceTipRemoveRepositoryDialog >> initialExtent [
+
 	^ (500@(
 		self class inputTextHeight * 2
 		+ self class buttonHeight 
@@ -79,37 +66,46 @@ IceTipRemoveRepositoryDialog >> initialExtent [
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> initializeWidgets [
-	iconPanel := self newImage.
-	iconPanel image: (self iconNamed: #question).
+IceTipRemoveRepositoryDialog >> initializePresenters [
+
+	super initializePresenters.
+	iconPanel := self newImage
+		image: (self iconNamed: #question);
+		yourself.
 	confirmLabel := self newLabel
-		label: (self class confirmMessage format: {self model name}).
+		label: (self confirmMessage format: {self model name});
+		yourself.
 	removeFileSystemCheckbox := self newCheckBox
-		label: self class removeMessage.
-	self focusOrder add: self removeFileSystemCheckbox
+		label: self removeMessage;
+		yourself.
+
 ]
 
 { #category : #accessing }
 IceTipRemoveRepositoryDialog >> model [
+
 	^ model
 ]
 
 { #category : #accessing }
 IceTipRemoveRepositoryDialog >> model: anObject [
+
 	model := anObject
 ]
 
 { #category : #'accessing ui' }
 IceTipRemoveRepositoryDialog >> removeFileSystemCheckbox [
+
 	^ removeFileSystemCheckbox
 ]
 
-{ #category : #'accessing ui' }
-IceTipRemoveRepositoryDialog >> removeFileSystemCheckbox: anObject [
-	removeFileSystemCheckbox := anObject
+{ #category : #accessing }
+IceTipRemoveRepositoryDialog >> removeMessage [
+	^ 'Also remove repository from file system'
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> setModelBeforeInitialization: anObject [ 
+IceTipRemoveRepositoryDialog >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]

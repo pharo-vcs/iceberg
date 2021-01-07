@@ -16,18 +16,17 @@ Class {
 
 { #category : #specs }
 IceTipCheckoutPreviewBrowser class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
-		add:
-			(SpBoxLayout newHorizontal
-				add: #checkoutStrategyLabel width: 100 * self currentWorld displayScaleFactor;
-				add: #checkoutStrategyList;
-				yourself)
-			height: self inputTextHeight;
-		add: #diffPanel height: 300 ;
-		add: #actionPanel;
-		"newRow: #toolbar height: IceTipToolbar defaultHeight;"
-			yourself
+		  add: (SpBoxLayout newHorizontal
+				   add: #checkoutStrategyLabel
+				   width: 100 * self currentWorld displayScaleFactor;
+				   add: #checkoutStrategyList;
+				   yourself)
+		  height: self inputTextHeight;
+		  add: #diffPanel height: 300;
+		  add: #actionPanel;
+		  yourself
 ]
 
 { #category : #'instance creation' }

@@ -22,8 +22,9 @@ IceTipDialog >> cancel [
 
 { #category : #accessing }
 IceTipDialog >> openDialogWithSpec [
+
 	^ super openDialogWithSpec
-		okAction: [  self accept ];
-		cancelAction: [  self cancel ];
-		yourself
+		  okAction: [ self accept ];
+		  cancelAction: [ self cancel ];
+		  yourself
 ]

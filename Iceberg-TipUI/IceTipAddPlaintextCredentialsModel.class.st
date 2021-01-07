@@ -13,7 +13,7 @@ Class {
 
 { #category : #specs }
 IceTipAddPlaintextCredentialsModel class >> defaultSpec [
-	<spec: #default>
+
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
@@ -44,16 +44,20 @@ IceTipAddPlaintextCredentialsModel >> accept [
 
 { #category : #accessing }
 IceTipAddPlaintextCredentialsModel >> hostnameFromInput [
+
 	^ hostInput text
 ]
 
 { #category : #initialization }
 IceTipAddPlaintextCredentialsModel >> initialExtent [
-	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
+
+	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
+		  scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
 IceTipAddPlaintextCredentialsModel >> initializePresenters [
+
 	super initializePresenters.
 	hostLabel := self newLabel label: 'Host: '.
 	hostInput := self newTextInput
@@ -64,19 +68,12 @@ IceTipAddPlaintextCredentialsModel >> initializePresenters [
 
 { #category : #testing }
 IceTipAddPlaintextCredentialsModel >> isOkEnabled [
-	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
-]
 
-{ #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> putFocusOrder [
-	self focusOrder
-		add: hostInput;
-		add: usernameInput;
-		add: passwordInput;
-		add: storeCheckbox
+	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
 ]
 
 { #category : #accessing }
 IceTipAddPlaintextCredentialsModel >> title [
+
 	^ 'Add new Plain Text Credential'
 ]
