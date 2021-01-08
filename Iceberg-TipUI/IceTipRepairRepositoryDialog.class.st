@@ -15,9 +15,19 @@ Class {
 IceTipRepairRepositoryDialog class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
-		add: #reasonPanel height: 70 * self currentWorld displayScaleFactor;
-		add: #optionsList height: 100 * self currentWorld displayScaleFactor;
-		add: #detailPanel;
+		add: #reasonPanel 
+		withConstraints: [ :constraints |
+			constraints 
+				height: 70 * self currentWorld displayScaleFactor;
+				padding: 2 ];
+		add: #optionsList
+		withConstraints: [ :constraints |
+			constraints 
+				height: 100 * self currentWorld displayScaleFactor;
+				padding: 2 ];
+		add: #detailPanel
+		withConstraints: [ :constraints |
+			constraints padding: 2 ];
 		yourself
 ]
 
@@ -50,6 +60,7 @@ IceTipRepairRepositoryDialog >> initialExtent [
 IceTipRepairRepositoryDialog >> initializeOptionsList [
 
 	optionsList
+		hideColumnHeaders;
 		addColumn:
 			(SpCompositeTableColumn new
 				addColumn:
