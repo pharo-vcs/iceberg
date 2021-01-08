@@ -33,18 +33,18 @@ IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 	allTypes :=  { 
 		IceTipCheckoutNewBranchPanel on: self model. "New branch"
 	 	(IceTipCheckoutBranchPanel on: self model) 
-			title: 'Local';
+			titleForWindow: 'Local';
 			icon: (self iconNamed: #branch);
 			yourself }, 
 	(self model remoteModels collect: [ :each | 
 		(IceTipCheckoutBranchPanel on: each)
-			title: each name;
+			titleForWindow: each name;
 			icon: (self iconNamed: #remote);
 			yourself ]),
 	(self model entity pluginManager checkoutBranchPanelsOnModel: self model).
 	
 	"Doing this because I can trigger the accept inside the panels."
-	allTypes do: [ :each | each onAccept: [ self window delete ] ].
+	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
 	
 	^ allTypes
 ]
@@ -67,13 +67,6 @@ IceTipCheckoutBranchDialog >> model [
 	^ model
 ]
 
-{ #category : #accessing }
-IceTipCheckoutBranchDialog >> model: anObject [
-
-	model := anObject.
-	self allTypes do: [ :each | each model: anObject ]
-]
-
 { #category : #initialization }
 IceTipCheckoutBranchDialog >> setModelBeforeInitialization: anObject [
 
@@ -88,9 +81,9 @@ IceTipCheckoutBranchDialog >> titleForWindow [
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> withOnlyNewBranch [
-	types := self allTypes select: #isNewBranch.
-	typeList items: types.
 
+	types := self allTypes select: #isNewBranch.
+	typeList items: types
 ]
 
 { #category : #accessing }

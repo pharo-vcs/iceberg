@@ -23,6 +23,7 @@ IceTipExistingBranchPanel class >> defaultSpec [
 
 { #category : #initialization }
 IceTipExistingBranchPanel >> branchModels [
+
 	^ self model branchModels
 ]
 
@@ -46,18 +47,18 @@ IceTipExistingBranchPanel >> icon: anIcon [
 
 { #category : #initialization }
 IceTipExistingBranchPanel >> initializeBranchesList [
-	branchesList 
-		addColumn: (( SpStringTableColumn evaluated: #shortDescriptionWithDecoration));
-		items: 	self model branchModels.
-	"
-	We would prefere to have this implementation but for now we have a bug with the caches because #branchModels return the same cache used by the datasource but not #defaultBranchSelection. If we correct that later we can clean the code bellow.
-	
-	self model defaultBranchSelection ifNotNil: [ :branchModel | branchesList widget selectRowIndex: (dataSource elements indexOf: branchModel) ]."
+
+	branchesList
+		hideColumnHeaders;
+		addColumn: (SpStringTableColumn evaluated: #shortDescriptionWithDecoration);
+		items: self model branchModels.
+
 	self model branchModels
 		detect: #isHead
 		ifFound: [ :head | branchesList selectItem: head ]
-		ifNone: [ self model hasBranches
-			ifTrue: [ branchesList selectIndex: 1 ] ]
+		ifNone: [ self model hasBranches ifTrue: [ branchesList selectIndex: 1 ] ].
+
+	self flag: #pharoTodo. "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
 
 ]
 

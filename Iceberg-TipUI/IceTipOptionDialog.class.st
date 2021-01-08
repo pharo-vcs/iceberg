@@ -21,9 +21,9 @@ Class {
 { #category : #specs }
 IceTipOptionDialog class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
-		  add: #typeList
-		  withConstraints: [ :constraints | constraints width: 180 ];
+	^ SpPanedLayout newHorizontal
+		  position: 30 percent;
+		  add: #typeList;
 		  add: #contentPanel;
 		  yourself
 ]
@@ -44,15 +44,6 @@ IceTipOptionDialog >> accept [
 IceTipOptionDialog >> allTypes [
 
 	^ self subclassResponsibility
-]
-
-{ #category : #private }
-IceTipOptionDialog >> basicSelectionChanged: aType [
-
-	type := aType.
-	aType ifNotNil: [ 
-		self window title: type title.
-		self replacePanelWith: type ]
 ]
 
 { #category : #'accessing ui' }
@@ -100,23 +91,35 @@ IceTipOptionDialog >> initializePresenters [
 IceTipOptionDialog >> initializeTypeList [
 
 	typeList
+		hideColumnHeaders;
 		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
 		addColumn: (SpStringTableColumn evaluated: #titleForWindow);
 		whenSelectionChangedDo: [ :selection | 
-			self basicSelectionChanged: selection selectedItem ];
+			self selectionChanged: selection selectedItem ];
 		items: self allTypes
 ]
 
 { #category : #private }
 IceTipOptionDialog >> replacePanelWith: aType [
 
-	contentPanel := aType
+	contentPanel := aType.
+	self needRebuild: false.
+	self buildWithSpec
 ]
 
 { #category : #accessing }
 IceTipOptionDialog >> selectedType [
 
 	^ type
+]
+
+{ #category : #private }
+IceTipOptionDialog >> selectionChanged: aType [
+
+	type := aType.
+	aType ifNotNil: [ 
+		self window title: type titleForWindow.
+		self replacePanelWith: type ]
 ]
 
 { #category : #'accessing ui' }
