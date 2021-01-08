@@ -49,7 +49,7 @@ IceTipMergeBranchDialog >> createMergeBranchTypes [
 			yourself ]).
 	
 	"Doing this because I can trigger the accept inside the panels."
-	allTypes do: [ :each | each onAccept: [ self window delete ] ].
+	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
 	
 	^ allTypes
 ]

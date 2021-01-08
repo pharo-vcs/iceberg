@@ -55,7 +55,7 @@ IceTipCherrypickPreviewBrowser >> doCherryPick [
 	root := diffPanel model tree.
 	root accept: IceMergeToChangeTreeVisitor new.
 	self model repository workingCopy loadChangesInWorkingCopy: root.
-	self window close
+	self closeWindow
 ]
 
 { #category : #initialization }

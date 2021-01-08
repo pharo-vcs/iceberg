@@ -27,7 +27,7 @@ IceTipPushBrowser class >> onRepositoryModel: aModel [
 { #category : #actions }
 IceTipPushBrowser >> doPush [
 
-	self model pushThen: [ self window delete ]
+	self model pushThen: [ self closeWindow ]
 ]
 
 { #category : #initialization }

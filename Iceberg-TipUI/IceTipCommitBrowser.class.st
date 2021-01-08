@@ -185,7 +185,7 @@ IceTipCommitBrowser >> verifyNeedsRefreshOrClose [
 	self model reset.
 	diffPanel model reset.
 	diffPanel model isEmpty
-		ifTrue: [ ^ self window close ].
+		ifTrue: [ ^ self closeWindow ].
 	self commentPanel clear. 
 	diffPanel basicRefresh
 ]

@@ -52,7 +52,7 @@ IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 { #category : #actions }
 IceTipCheckoutPreviewBrowser >> doCheckout [
 
-	self model executeCheckoutActionAndThen: [ self window close ]
+	self model executeCheckoutActionAndThen: [ self closeWindow ]
 ]
 
 { #category : #initialization }

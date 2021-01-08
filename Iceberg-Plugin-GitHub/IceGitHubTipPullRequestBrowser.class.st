@@ -81,7 +81,7 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
 			self pullRequest acceptMessage: aModel message type: aModel type.
-			self window close ];
+			self closeWindow ];
 		openWithSpec
 ]
 
@@ -248,7 +248,7 @@ IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
 			self pullRequest rejectMessage: aModel message.
-			self window close ];
+			self closeWindow ];
 		openWithSpec
 ]
 
