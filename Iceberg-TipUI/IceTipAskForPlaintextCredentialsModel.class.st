@@ -47,7 +47,7 @@ IceTipAskForPlaintextCredentialsModel >> initialExtent [
 ]
 
 { #category : #accessing }
-IceTipAskForPlaintextCredentialsModel >> title [
+IceTipAskForPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Please log in to ' , askingHostname
 ]

@@ -33,7 +33,7 @@ IceTipEditTokenCredentialsModel >> refreshPresenterFromCredentials [
 ]
 
 { #category : #TOREMOVE }
-IceTipEditTokenCredentialsModel >> title [
+IceTipEditTokenCredentialsModel >> titleForWindow [
 
 	^ 'Edit token credentials'
 ]

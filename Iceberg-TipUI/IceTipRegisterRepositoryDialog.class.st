@@ -17,18 +17,15 @@ Class {
 	#category : #'Iceberg-TipUI-View-RepositoryType'
 }
 
-{ #category : #specs }
-IceTipRegisterRepositoryDialog class >> title [
-	^ 'Register project'
-]
-
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> allTypes [
+
 	^ types ifNil: [ types := IceTipRepositoryTypePanel allTypes ]
 ]
 
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> beForCloneOfRepository: aRepository [
+
 	self withoutNewRepository.
 	self withoutLocalRepository.
 	repository := aRepository
@@ -36,42 +33,51 @@ IceTipRegisterRepositoryDialog >> beForCloneOfRepository: aRepository [
 
 { #category : #actions }
 IceTipRegisterRepositoryDialog >> doAccept [
+
 	| newRepository |
-	
 	self selectedType validate.
 	self isEditing ifTrue: [ self selectedType repository: repository ].
 	newRepository := self selectedType newRepository.
 	self isEditing ifFalse: [ newRepository register ].
-	acceptBlock ifNotNil: [ 
-		acceptBlock cull: self ]
+	acceptBlock ifNotNil: [ acceptBlock cull: self ]
 ]
 
 { #category : #actions }
 IceTipRegisterRepositoryDialog >> doEdit: aRepository [
-	repository 
+
+	repository
 		location: aRepository location;
 		subdirectory: aRepository subdirectory
 ]
 
 { #category : #testing }
-IceTipRegisterRepositoryDialog >> isEditing [ 
-	^ repository isNil not
+IceTipRegisterRepositoryDialog >> isEditing [
+
+	^ repository isNotNil
 ]
 
 { #category : #events }
 IceTipRegisterRepositoryDialog >> onAccept: aBlock [
+
 	acceptBlock := aBlock
+]
+
+{ #category : #specs }
+IceTipRegisterRepositoryDialog >> titleForWindow [
+
+	^ 'Register project'
 ]
 
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> withoutLocalRepository [
-	types := self allTypes reject: #isLocalRepository.
-	typeList items: types.
 
+	types := self allTypes reject: #isLocalRepository.
+	typeList items: types
 ]
 
 { #category : #accessing }
 IceTipRegisterRepositoryDialog >> withoutNewRepository [
+
 	types := self allTypes reject: #isNewRepository.
 	typeList items: types
 ]

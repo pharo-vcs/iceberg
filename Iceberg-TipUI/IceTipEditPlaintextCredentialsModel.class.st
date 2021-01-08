@@ -55,7 +55,7 @@ IceTipEditPlaintextCredentialsModel >> refreshPresenterFromCredentials [
 ]
 
 { #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> title [
+IceTipEditPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Edit credential for ' , credentials host
 ]

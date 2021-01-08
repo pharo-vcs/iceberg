@@ -21,11 +21,6 @@ IceTipExistingBranchPanel class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipExistingBranchPanel class >> title [
-	^ 'Local branches'
-]
-
 { #category : #initialization }
 IceTipExistingBranchPanel >> branchModels [
 	^ self model branchModels
@@ -68,11 +63,10 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 { #category : #initialization }
 IceTipExistingBranchPanel >> initializePresenters [
+
+	super initializePresenters.
 	branchesList := self newTable.
-	self initializeBranchesList.
-	
-	self focusOrder 
-		add: self branchesList
+	self initializeBranchesList
 ]
 
 { #category : #accessing }
@@ -82,13 +76,13 @@ IceTipExistingBranchPanel >> selectedBranch [
 ]
 
 { #category : #'accessing ui' }
-IceTipExistingBranchPanel >> title [
+IceTipExistingBranchPanel >> titleForWindow [
 
 	^ title ifNil: [ self model name ]
 ]
 
 { #category : #'accessing ui' }
-IceTipExistingBranchPanel >> title: aString [
+IceTipExistingBranchPanel >> titleForWindow: aString [
 
 	title := aString
 ]

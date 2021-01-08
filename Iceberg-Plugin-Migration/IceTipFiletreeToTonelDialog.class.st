@@ -28,11 +28,6 @@ IceTipFiletreeToTonelDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipFiletreeToTonelDialog class >> title [
-	^ 'Convert sources to tonel'
-]
-
 { #category : #actions }
 IceTipFiletreeToTonelDialog >> accept [
 	
@@ -147,4 +142,9 @@ IceTipFiletreeToTonelDialog >> repository [
 IceTipFiletreeToTonelDialog >> setModelBeforeInitialization: anObject [
 
 	repository := anObject
+]
+
+{ #category : #specs }
+IceTipFiletreeToTonelDialog >> titleForWindow [
+	^ 'Convert sources to tonel'
 ]

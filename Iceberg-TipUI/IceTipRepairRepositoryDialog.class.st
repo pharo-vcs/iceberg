@@ -27,12 +27,6 @@ IceTipRepairRepositoryDialog class >> onRepository: aRepository [
 	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
-{ #category : #specs }
-IceTipRepairRepositoryDialog class >> title [
-
-	^ 'Repair repository'
-]
-
 { #category : #actions }
 IceTipRepairRepositoryDialog >> accept [
 
@@ -137,4 +131,10 @@ IceTipRepairRepositoryDialog >> selectionChanged: selectedItem [
 IceTipRepairRepositoryDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipRepairRepositoryDialog >> titleForWindow [
+
+	^ 'Repair repository'
 ]

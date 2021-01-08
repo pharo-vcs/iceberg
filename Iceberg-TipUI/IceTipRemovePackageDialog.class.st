@@ -28,11 +28,6 @@ IceTipRemovePackageDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipRemovePackageDialog class >> title [
-	^ 'Remove Package'
-]
-
 { #category : #actions }
 IceTipRemovePackageDialog >> accept [
 
@@ -112,6 +107,11 @@ IceTipRemovePackageDialog >> removeFromRepositoryCheckbox [
 IceTipRemovePackageDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipRemovePackageDialog >> titleForWindow [
+	^ 'Remove Package'
 ]
 
 { #category : #accessing }

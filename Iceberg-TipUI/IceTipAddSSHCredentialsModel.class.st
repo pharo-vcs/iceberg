@@ -78,7 +78,7 @@ IceTipAddSSHCredentialsModel >> newCredentials [
 ]
 
 { #category : #api }
-IceTipAddSSHCredentialsModel >> title [
+IceTipAddSSHCredentialsModel >> titleForWindow [
 
 	^ 'Add SSH credential'
 ]

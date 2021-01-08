@@ -73,7 +73,7 @@ IceTipAddPlaintextCredentialsModel >> isOkEnabled [
 ]
 
 { #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> title [
+IceTipAddPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Add new Plain Text Credential'
 ]

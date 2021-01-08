@@ -47,11 +47,6 @@ IceTipCreateTagPanel class >> icon [
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #specs }
-IceTipCreateTagPanel class >> title [
-	^ 'New tag'
-]
-
 { #category : #accessing }
 IceTipCreateTagPanel >> accept [
 
@@ -238,7 +233,7 @@ IceTipCreateTagPanel >> tagNameLabel [
 ]
 
 { #category : #api }
-IceTipCreateTagPanel >> title [
+IceTipCreateTagPanel >> titleForWindow [
 
 	^ 'New tag of ' , commitishToTag name
 ]

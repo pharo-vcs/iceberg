@@ -36,11 +36,6 @@ IceTipGitUsernameAndEmailDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipGitUsernameAndEmailDialog class >> title [
-	^ 'Please provide Git missing properties'
-]
-
 { #category : #actions }
 IceTipGitUsernameAndEmailDialog >> accept [
 
@@ -143,6 +138,11 @@ IceTipGitUsernameAndEmailDialog >> onAccept: aBlockClosure [
 IceTipGitUsernameAndEmailDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipGitUsernameAndEmailDialog >> titleForWindow [
+	^ 'Please provide Git missing properties'
 ]
 
 { #category : #accessing }

@@ -97,7 +97,7 @@ IceTipAddTokenCredentialsModel >> newCredentials [
 ]
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> title [
+IceTipAddTokenCredentialsModel >> titleForWindow [
 
 	^ 'Add token credentials'
 ]

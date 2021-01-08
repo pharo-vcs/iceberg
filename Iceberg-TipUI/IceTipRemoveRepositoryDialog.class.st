@@ -25,11 +25,6 @@ IceTipRemoveRepositoryDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipRemoveRepositoryDialog class >> title [
-	^ 'Remove repository'
-]
-
 { #category : #actions }
 IceTipRemoveRepositoryDialog >> accept [
 
@@ -108,4 +103,9 @@ IceTipRemoveRepositoryDialog >> removeMessage [
 IceTipRemoveRepositoryDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipRemoveRepositoryDialog >> titleForWindow [
+	^ 'Remove repository'
 ]

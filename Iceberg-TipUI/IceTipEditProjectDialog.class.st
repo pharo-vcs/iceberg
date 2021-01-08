@@ -45,11 +45,6 @@ IceTipEditProjectDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipEditProjectDialog class >> title [
-	^ 'Edit Project'
-]
-
 { #category : #actions }
 IceTipEditProjectDialog >> accept [	
 	
@@ -312,6 +307,11 @@ IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedPaths [
 IceTipEditProjectDialog >> sourceDirectoryTree [
 
 	^ sourceDirectoryTree
+]
+
+{ #category : #specs }
+IceTipEditProjectDialog >> titleForWindow [
+	^ 'Edit Project'
 ]
 
 { #category : #accessing }

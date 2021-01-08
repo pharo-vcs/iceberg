@@ -10,7 +10,7 @@ Some design remarks:
 "
 Class {
 	#name : #IceTipBrowser,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'model',
 		'toolbar'
@@ -140,10 +140,11 @@ IceTipBrowser >> initialize [
 { #category : #initialization }
 IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
+	super initializeWindow: aSpWindowPresenter.
+
 	self addToolbarIfNotEmptyIn: aSpWindowPresenter.
 
 	aSpWindowPresenter
-		title: self titleForWindow;
 		windowIcon: self iconForWindow;
 		initialExtent: self initialExtentForWindow
 ]

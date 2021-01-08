@@ -15,28 +15,20 @@ Class {
 
 { #category : #'instance creation' }
 IceTipCheckoutBranchDialog class >> onRepository: aRepository [
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
-]
 
-{ #category : #specs }
-IceTipCheckoutBranchDialog class >> title [
-	^ 'Checkout branch'
+	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> allTypes [
-	^ types ifNil: [ types := self createCheckoutBranchTypes ]
-]
 
-{ #category : #accessing }
-IceTipCheckoutBranchDialog >> contextClass [
-	^ IceTipBranchContext
+	^ types ifNil: [ types := self createCheckoutBranchTypes ]
 ]
 
 { #category : #'private factory' }
 IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
-	| allTypes |
 
+	| allTypes |
 	"Collect types new+local+remotes"	
 	allTypes :=  { 
 		IceTipCheckoutNewBranchPanel on: self model. "New branch"
@@ -59,33 +51,39 @@ IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 
 { #category : #actions }
 IceTipCheckoutBranchDialog >> doAccept [
+
 	self selectedType doAccept
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> initialExtent [
-	^ (600@400) scaledByDisplayScaleFactor
+
+	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> model [
+
 	^ model
 ]
 
 { #category : #accessing }
 IceTipCheckoutBranchDialog >> model: anObject [
+
 	model := anObject.
 	self allTypes do: [ :each | each model: anObject ]
 ]
 
 { #category : #initialization }
-IceTipCheckoutBranchDialog >> setModelBeforeInitialization: anObject [ 
+IceTipCheckoutBranchDialog >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]
 
 { #category : #accessing }
-IceTipCheckoutBranchDialog >> title [
-	^ 'Checkout ', super title asLowercase
+IceTipCheckoutBranchDialog >> titleForWindow [
+
+	^ 'Checkout branch'
 ]
 
 { #category : #accessing }

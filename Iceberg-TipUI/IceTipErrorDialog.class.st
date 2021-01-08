@@ -26,11 +26,6 @@ IceTipErrorDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipErrorDialog class >> title [
-	^ 'Error'
-]
-
 { #category : #initialization }
 IceTipErrorDialog >> accept [
 	
@@ -96,4 +91,9 @@ IceTipErrorDialog >> initializePresenters [
 IceTipErrorDialog >> setModelBeforeInitialization: aDomainObject [
 
 	self exception: aDomainObject
+]
+
+{ #category : #specs }
+IceTipErrorDialog >> titleForWindow [
+	^ 'Error'
 ]

@@ -26,11 +26,6 @@ IceTipAddPackagesDialog class >> icon [
 	^ self iconNamed: #branch
 ]
 
-{ #category : #specs }
-IceTipAddPackagesDialog class >> title [
-	^ 'Add packages'
-]
-
 { #category : #actions }
 IceTipAddPackagesDialog >> accept [
 
@@ -155,6 +150,11 @@ IceTipAddPackagesDialog >> selectedPackage [
 IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipAddPackagesDialog >> titleForWindow [
+	^ 'Add packages'
 ]
 
 { #category : #accessing }

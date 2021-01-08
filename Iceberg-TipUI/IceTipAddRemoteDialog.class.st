@@ -32,11 +32,6 @@ IceTipAddRemoteDialog class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #specs }
-IceTipAddRemoteDialog class >> title [
-	^ 'Add remote'
-]
-
 { #category : #actions }
 IceTipAddRemoteDialog >> accept [
 
@@ -124,6 +119,11 @@ IceTipAddRemoteDialog >> remoteUrl [
 IceTipAddRemoteDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipAddRemoteDialog >> titleForWindow [
+	^ 'Add remote'
 ]
 
 { #category : #'accessing ui' }

@@ -26,11 +26,6 @@ IceTipCheckoutNewBranchPanel class >> defaultSpec [
 		  height: self inputTextHeight
 ]
 
-{ #category : #specs }
-IceTipCheckoutNewBranchPanel class >> title [
-	^ 'New branch'
-]
-
 { #category : #'accessing ui' }
 IceTipCheckoutNewBranchPanel >> branchInputText [
 
@@ -108,6 +103,11 @@ IceTipCheckoutNewBranchPanel >> openDialogWithSpec [
 	^ super openDialogWithSpec
 		  okAction: [ self accept ];
 		  yourself
+]
+
+{ #category : #specs }
+IceTipCheckoutNewBranchPanel >> titleForWindow [
+	^ 'New branch'
 ]
 
 { #category : #accessing }

@@ -18,11 +18,6 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #specs }
-IceTipAbstractCredentialsModel class >> title [
-	^ 'Default Title'
-]
-
 { #category : #actions }
 IceTipAbstractCredentialsModel >> acceptAddAction [
 
@@ -120,7 +115,6 @@ IceTipAbstractCredentialsModel >> initialize [
 IceTipAbstractCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	super initializeDialogWindow: aDialogWindowPresenter.
-	aDialogWindowPresenter title: self title.
 	self updateOkButton
 ]
 

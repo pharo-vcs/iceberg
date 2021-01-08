@@ -40,11 +40,6 @@ IceGitHubNewBranchFromIssuePanel class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceGitHubNewBranchFromIssuePanel class >> title [
-	^ 'New branch from issue'
-]
-
-{ #category : #accessing }
 IceGitHubNewBranchFromIssuePanel >> branchName [
 	
 	^ '{1}-{2}' format: { 
@@ -98,42 +93,26 @@ IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 
 { #category : #'accessing ui' }
 IceGitHubNewBranchFromIssuePanel >> issueLabel [
+
 	^ issueLabel
 ]
 
 { #category : #'accessing ui' }
-IceGitHubNewBranchFromIssuePanel >> issueLabel: anObject [
-	issueLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubNewBranchFromIssuePanel >> issueNumberText [
+
 	^ issueNumberText
 ]
 
 { #category : #'accessing ui' }
-IceGitHubNewBranchFromIssuePanel >> issueNumberText: anObject [
-	issueNumberText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubNewBranchFromIssuePanel >> issueText [
+
 	^ issueText
 ]
 
 { #category : #'accessing ui' }
-IceGitHubNewBranchFromIssuePanel >> issueText: anObject [
-	issueText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubNewBranchFromIssuePanel >> remotePanel [
-	^ remotePanel
-]
 
-{ #category : #'accessing ui' }
-IceGitHubNewBranchFromIssuePanel >> remotePanel: anObject [
-	remotePanel := anObject
+	^ remotePanel
 ]
 
 { #category : #private }
@@ -160,7 +139,14 @@ IceGitHubNewBranchFromIssuePanel >> selectRemoteModel [
 ]
 
 { #category : #accessing }
+IceGitHubNewBranchFromIssuePanel >> titleForWindow [
+
+	^ 'New branch from issue'
+]
+
+{ #category : #accessing }
 IceGitHubNewBranchFromIssuePanel >> unknownTitle [
+
 	^ 'INVALID-ISSUE'
 ]
 
@@ -190,8 +176,8 @@ IceGitHubNewBranchFromIssuePanel >> validate [
 
 { #category : #private }
 IceGitHubNewBranchFromIssuePanel >> validateIssue: aString [
-	| number remote |
 
+	| number remote |
 	fetched := false.
 	aString trimmed isEmpty ifTrue: [ ^ self ].
 	aString isAllDigits ifFalse: [ ^ self ].
