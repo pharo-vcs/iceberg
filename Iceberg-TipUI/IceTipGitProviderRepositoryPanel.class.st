@@ -52,18 +52,28 @@ IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 ]
 
 { #category : #initialization }
-IceTipGitProviderRepositoryPanel >> initializeWidgets [
-	super initializeWidgets .
-	userNameLabel := self newLabel label: 'Owner name'.
+IceTipGitProviderRepositoryPanel >> initializePresenters [
+
+	super initializePresenters.
+	userNameLabel := self newLabel
+		label: 'Owner name';
+		yourself.
 	userNameInputText := self newTextInput
 		autoAccept: true;
-		placeholder: 'e.g., JohnDoe'.
-	projectNameLabel := self newLabel label: 'Project name'.
+		placeholder: 'e.g., JohnDoe';
+		yourself.
+	projectNameLabel := self newLabel
+		label: 'Project name';
+		yourself.
 	projectNameInputText := self newTextInput
 		autoAccept: true;
-		placeholder: 'e.g., MyProject'.
-	protocolLabel := self newLabel label: 'Protocol'.
+		placeholder: 'e.g., MyProject';
+		yourself.
+	protocolLabel := self newLabel
+		label: 'Protocol';
+		yourself.
 	protocolDropList := self newDropList.
+
 	userNameInputText
 		whenTextChangedDo: [ :text | projectLocation appendPath: self projectAsPathToAppend ].
 	projectNameInputText
@@ -72,67 +82,51 @@ IceTipGitProviderRepositoryPanel >> initializeWidgets [
 		items: IceUrlProtocol allSubclasses;
 		display: [ :each | each description ];
 		selectItem: IceUrlProtocol defaultProtocol.
-	self focusOrder
-		add: self userNameInputText;
-		add: self projectNameInputText;
-		add: self projectLocation;
-		add: self protocolDropList
+
 ]
 
 { #category : #private }
 IceTipGitProviderRepositoryPanel >> projectAsPathToAppend [
-	(self userName isEmpty and: [ self projectName isEmpty ])
-		ifTrue: [ ^ '' ]. 
-	^ (self userName ifEmpty: [ '?' ]), '/', self projectName
+
+	^ (self userName isEmpty and: [ self projectName isEmpty ])
+		ifTrue: [ '' ]
+		ifFalse: [ (self userName ifEmpty: [ '?' ]), '/', self projectName ]
+
 ]
 
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> projectName [
+
 	^ self projectNameInputText text asString trimmed
 ]
 
 { #category : #'accessing ui' }
 IceTipGitProviderRepositoryPanel >> projectNameInputText [
+
 	^ projectNameInputText
 ]
 
 { #category : #'accessing ui' }
-IceTipGitProviderRepositoryPanel >> projectNameInputText: anObject [
-	projectNameInputText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipGitProviderRepositoryPanel >> projectNameLabel [
-	^ projectNameLabel
-]
 
-{ #category : #'accessing ui' }
-IceTipGitProviderRepositoryPanel >> projectNameLabel: anObject [
-	projectNameLabel := anObject
+	^ projectNameLabel
 ]
 
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> protocolDropList [
+
 	^ protocolDropList
 ]
 
 { #category : #accessing }
-IceTipGitProviderRepositoryPanel >> protocolDropList: anObject [
-	protocolDropList := anObject
-]
-
-{ #category : #accessing }
 IceTipGitProviderRepositoryPanel >> protocolLabel [
+
 	^ protocolLabel
 ]
 
 { #category : #accessing }
-IceTipGitProviderRepositoryPanel >> protocolLabel: anObject [
-	protocolLabel := anObject
-]
-
-{ #category : #accessing }
 IceTipGitProviderRepositoryPanel >> providerName [
+
 	^ self class providerName
 ]
 
@@ -149,41 +143,36 @@ IceTipGitProviderRepositoryPanel >> remoteUrl [
 
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> selectedProtocol [
+
 	^ self protocolDropList selectedItem
 ]
 
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> userName [
+
 	^ self userNameInputText text asString trimmed
 ]
 
 { #category : #'accessing ui' }
 IceTipGitProviderRepositoryPanel >> userNameInputText [
+
 	^ userNameInputText
 ]
 
 { #category : #'accessing ui' }
-IceTipGitProviderRepositoryPanel >> userNameInputText: anObject [
-	userNameInputText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipGitProviderRepositoryPanel >> userNameLabel [
-	^ userNameLabel
-]
 
-{ #category : #'accessing ui' }
-IceTipGitProviderRepositoryPanel >> userNameLabel: anObject [
-	userNameLabel := anObject
+	^ userNameLabel
 ]
 
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> validate [
-	self 
-		assert: self userName isNotEmpty  
+
+	self
+		assert: self userName isNotEmpty
 		description: 'You must enter a GitHub username.'.
-	self 
-		assert: self projectName isNotEmpty  
+	self
+		assert: self projectName isNotEmpty
 		description: 'You must enter a GitHub project.'.
 	super validate
 ]

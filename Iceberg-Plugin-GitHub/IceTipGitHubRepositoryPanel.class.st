@@ -5,7 +5,7 @@ I'm a presenter to define a new remote repository from a github repository (owne
 Class {
 	#name : #IceTipGitHubRepositoryPanel,
 	#superclass : #IceTipGitProviderRepositoryPanel,
-	#category : 'Iceberg-Plugin-GitHub-View'
+	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
 { #category : #accessing }
@@ -36,17 +36,18 @@ IceTipGitHubRepositoryPanel >> configureBuilder: aBuilder [
 
 { #category : #'querying-github' }
 IceTipGitHubRepositoryPanel >> getGitHubRepository [
-	[ ^ IceGitHubAPI new
+
+	^ [ IceGitHubAPI new
 		beAnonymous;
 		getRepository: self userName project: self projectName ]
-		on: LGitNoCredentialsProvided
-		do: [ ^ nil ]
+			on: LGitNoCredentialsProvided
+			do: [ nil ]
 ]
 
 { #category : #accessing }
 IceTipGitHubRepositoryPanel >> newRepository [
 
-	|  newRepository |
+	| newRepository |
 	newRepository := super newRepository.
 	UIManager default 
 		informUser: 'Configuring Remotes...'
@@ -56,8 +57,11 @@ IceTipGitHubRepositoryPanel >> newRepository [
 			(githubRepository at: #fork)
 				ifTrue: [ | parent remote |
 					parent := githubRepository at: #parent.
-					remote := IceGitRemote name: ((parent at: #owner) at: #login) url: (parent at: self selectedProtocol githubRequestUrlKey).
+					remote := IceGitRemote
+						name: ((parent at: #owner) at: #login)
+						url: (parent at: self selectedProtocol githubRequestUrlKey).
 					newRepository addRemote: remote.
 					remote fetch. ] ].
 	^ newRepository
+
 ]

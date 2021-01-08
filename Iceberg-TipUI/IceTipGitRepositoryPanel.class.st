@@ -39,24 +39,27 @@ IceTipGitRepositoryPanel class >> title [
 { #category : #utilities }
 IceTipGitRepositoryPanel >> extractProjectName: aString [
 
-	^ [(IceGitRemote url: aString) projectName]
-		on: IceWrongUrl do: [ 'invalid-url' ]
+	^ [ (IceGitRemote url: aString) projectName ]
+		  on: IceWrongUrl
+		  do: [ 'invalid-url' ]
 ]
 
 { #category : #initialization }
-IceTipGitRepositoryPanel >> initializeWidgets [
-	super initializeWidgets.
+IceTipGitRepositoryPanel >> initializePresenters [
+
+	super initializePresenters.
 	self initializeRemoteURL.
+
 	self remoteInputText
 		placeholder: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
-	self remoteInputText
-		whenTextChangedDo:
-			[ :text | self projectLocation appendPath: (self extractProjectName: text) ].
-	self focusOrder add: self remoteInputText
+	self remoteInputText whenTextChangedDo: [ :text |
+		self projectLocation appendPath: (self extractProjectName: text) ].
+
 ]
 
 { #category : #accessing }
 IceTipGitRepositoryPanel >> newRepository [
+
 	UIManager default 
 		informUser: ('Cloning repository {1}' format: { self remoteUrl })
 		during: [ 
@@ -69,22 +72,23 @@ IceTipGitRepositoryPanel >> newRepository [
 
 { #category : #accessing }
 IceTipGitRepositoryPanel >> remoteUrl [
+
 	^ self remoteInputText text asString trimmed
 ]
 
 { #category : #accessing }
 IceTipGitRepositoryPanel >> validate [
+
 	| remoteString |
-	
 	remoteString := self remoteUrl.
-	self 
-		assert: remoteString isNotEmpty  
+	self
+		assert: remoteString isNotEmpty
 		description: 'You must enter your project url.'.
-	self 
+	self
 		assert: (IceGitRemote isValidUrl: remoteString)
 		description: 'The url is incorrect.'.
-		
 	self
-		assert: self projectLocation location notNil  
-		description: 'Project location must be defined (if it does not exists, it will be created).'
+		assert: self projectLocation location notNil
+		description:
+		'Project location must be defined (if it does not exists, it will be created).'
 ]

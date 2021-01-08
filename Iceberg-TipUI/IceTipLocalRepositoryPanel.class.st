@@ -33,6 +33,7 @@ IceTipLocalRepositoryPanel class >> title [
 
 { #category : #api }
 IceTipLocalRepositoryPanel >> initialExtent [
+
 	^ (500@(
 		self class inputTextHeight * 2
 		+ self class buttonHeight 
@@ -40,30 +41,27 @@ IceTipLocalRepositoryPanel >> initialExtent [
 		)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
-IceTipLocalRepositoryPanel >> initializeWidgets [
-	super initializeWidgets.
-	self focusOrder 
-		add: self projectLocation
-]
-
 { #category : #testing }
 IceTipLocalRepositoryPanel >> isLocalRepository [
+
 	^ true
 ]
 
 { #category : #accessing }
 IceTipLocalRepositoryPanel >> location [
+
 	^ self projectLocation location
 ]
 
 { #category : #accessing }
 IceTipLocalRepositoryPanel >> location: aReferenceOrString [
+
 	^ self projectLocation location: aReferenceOrString
 ]
 
 { #category : #accessing }
 IceTipLocalRepositoryPanel >> newRepository [
+
 	UIManager default 
 		informUser: ('Importing repository from {1}' format: { self location fullName })
 		during: [ 
@@ -74,16 +72,15 @@ IceTipLocalRepositoryPanel >> newRepository [
 ]
 
 { #category : #accessing }
-IceTipLocalRepositoryPanel >> validate [ 
+IceTipLocalRepositoryPanel >> validate [
+
 	self
-		assert: self location notNil  
+		assert: self location notNil
 		description: 'Project location must exist!'.
-	
 	self
-		assert: self location exists  
+		assert: self location exists
 		description: 'Project location must exist!'.
-		
-	self 
+	self
 		assert: (IceRepositoryCreator isGitRoot: self location)
-	 	description: 'Project location does not seems to be a valid git repository.'
+		description: 'Project location does not seems to be a valid git repository.'
 ]

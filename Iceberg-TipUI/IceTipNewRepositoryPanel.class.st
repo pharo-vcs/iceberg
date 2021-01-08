@@ -50,40 +50,46 @@ IceTipNewRepositoryPanel class >> title [
 ]
 
 { #category : #initialization }
-IceTipNewRepositoryPanel >> initializeSourceDirectory [
-	subdirectoryLabel := self newLabel label: 'Source directory'.
-	subdirectoryInputText := self newTextInput
-		placeholder: 'e.g., src';
-		autoAccept: true.
-	subdirectoryInputText text: self defaultSubdirectory
+IceTipNewRepositoryPanel >> initializePresenters [
+
+	super initializePresenters.
+	self initializeSourceDirectory.
+
+	projectNameLabel := self newLabel
+		label: 'Project name';
+		yourself.
+	projectNameInputText := self newTextInput
+		placeholder: 'e.g., MyProject';
+		autoAccept: true;
+		whenTextChangedDo: [ :text | projectLocation appendPath: text ];
+		yourself.
+
 ]
 
 { #category : #initialization }
-IceTipNewRepositoryPanel >> initializeWidgets [
-	super initializeWidgets.
-	self initializeSourceDirectory.
-	projectNameLabel := self newLabel label: 'Project name'.
-	projectNameInputText := self newTextInput
-		placeholder: 'e.g., MyProject';
-		autoAccept: true.
-	projectNameInputText
-		whenTextChangedDo: [ :text | projectLocation appendPath: text ].
-	self focusOrder
-		add: self projectNameInputText;
-		add: self projectLocation;
-		add: self subdirectoryInputText;
-		add: self remoteInputText
+IceTipNewRepositoryPanel >> initializeSourceDirectory [
+
+	subdirectoryLabel := self newLabel
+		label: 'Source directory';
+		yourself.
+	subdirectoryInputText := self newTextInput
+		placeholder: 'e.g., src';
+		autoAccept: true;
+		text: self defaultSubdirectory;
+		yourself.
+
 ]
 
 { #category : #testing }
 IceTipNewRepositoryPanel >> isNewRepository [
+
 	^ true
 ]
 
 { #category : #accessing }
 IceTipNewRepositoryPanel >> newRepository [
-	| repositoryName location subdirectory |
 
+	| repositoryName location subdirectory |
 	repositoryName := self projectNameInputText text trimmed.
 	location := self projectLocation location.
 	subdirectory := self subdirectoryInputText text asString trimmed.
@@ -100,46 +106,31 @@ IceTipNewRepositoryPanel >> newRepository [
 
 { #category : #'accessing ui' }
 IceTipNewRepositoryPanel >> projectNameInputText [
+
 	^ projectNameInputText
 ]
 
 { #category : #'accessing ui' }
-IceTipNewRepositoryPanel >> projectNameInputText: anObject [
-	projectNameInputText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipNewRepositoryPanel >> projectNameLabel [
+
 	^ projectNameLabel
 ]
 
 { #category : #'accessing ui' }
-IceTipNewRepositoryPanel >> projectNameLabel: anObject [
-	projectNameLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipNewRepositoryPanel >> subdirectoryInputText [
+
 	^ subdirectoryInputText
 ]
 
-{ #category : #accessing }
-IceTipNewRepositoryPanel >> subdirectoryInputText: anObject [
-	subdirectoryInputText := anObject
-]
-
-{ #category : #accessing }
+{ #category : #'accessing ui' }
 IceTipNewRepositoryPanel >> subdirectoryLabel [
+
 	^ subdirectoryLabel
 ]
 
 { #category : #accessing }
-IceTipNewRepositoryPanel >> subdirectoryLabel: anObject [
-	subdirectoryLabel := anObject
-]
+IceTipNewRepositoryPanel >> validate [
 
-{ #category : #accessing }
-IceTipNewRepositoryPanel >> validate [ 
 	self 
 		assert: self projectNameInputText text isNotEmpty  
 		description: 'You must enter a project name (it will be used also as part of the path).'.

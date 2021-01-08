@@ -39,94 +39,95 @@ IceTipRepositoryTypePanel class >> order [
 
 { #category : #private }
 IceTipRepositoryTypePanel >> defaultLocation [
+
 	^ IceLibgitRepository repositoriesLocation pathString
 ]
 
 { #category : #initialization }
 IceTipRepositoryTypePanel >> defaultSubdirectory [
+
 	^ IceLibgitRepository defaultCodeSubdirectory
 ]
 
 { #category : #accessing }
 IceTipRepositoryTypePanel >> icon [
+
 	^ self class icon
 ]
 
 { #category : #initialization }
-IceTipRepositoryTypePanel >> initializeProjectLocation [
-	projectLocation := self instantiate: IceTipDirectoryPresenter.
-	projectLocation 
-		label: 'Local directory';
-		chooseTitle: 'Choose local repository';
-		location: self defaultLocation	
-]
+IceTipRepositoryTypePanel >> initializePresenters [
 
-{ #category : #initialization }
-IceTipRepositoryTypePanel >> initializeRemoteURL [
-	remoteLabel := self newLabel label: 'Remote URL'.
-	remoteInputText := self newTextInput
-		placeholder: 'e.g., git@github.com:user/MyProject.git';
-		autoAccept: true
-]
-
-{ #category : #initialization }
-IceTipRepositoryTypePanel >> initializeWidgets [
+	super initializePresenters.
 	self initializeProjectLocation.
 
 ]
 
+{ #category : #initialization }
+IceTipRepositoryTypePanel >> initializeProjectLocation [
+
+	projectLocation := self instantiate: IceTipDirectoryPresenter.
+	projectLocation
+		label: 'Local directory';
+		chooseTitle: 'Choose local repository';
+		location: self defaultLocation
+]
+
+{ #category : #initialization }
+IceTipRepositoryTypePanel >> initializeRemoteURL [
+
+	remoteLabel := self newLabel label: 'Remote URL'; yourself.
+	remoteInputText := self newTextInput
+		placeholder: 'e.g., git@github.com:user/MyProject.git';
+		autoAccept: true;
+		yourself.
+]
+
 { #category : #testing }
 IceTipRepositoryTypePanel >> isLocalRepository [
+
 	^ false
 ]
 
 { #category : #testing }
 IceTipRepositoryTypePanel >> isNewRepository [
+
 	^ false
 ]
 
 { #category : #accessing }
 IceTipRepositoryTypePanel >> newRepository [
+
 	^ self subclassResponsibility
 ]
 
 { #category : #'accessing ui' }
 IceTipRepositoryTypePanel >> projectLocation [
+
 	^ projectLocation
 ]
 
 { #category : #'accessing ui' }
-IceTipRepositoryTypePanel >> projectLocation: anObject [
-	projectLocation := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipRepositoryTypePanel >> remoteInputText [
+
 	^ remoteInputText
 ]
 
 { #category : #'accessing ui' }
-IceTipRepositoryTypePanel >> remoteInputText: anObject [
-	remoteInputText := anObject
-]
-
-{ #category : #'accessing ui' }
 IceTipRepositoryTypePanel >> remoteLabel [
-	^ remoteLabel
-]
 
-{ #category : #'accessing ui' }
-IceTipRepositoryTypePanel >> remoteLabel: anObject [
-	remoteLabel := anObject
+	^ remoteLabel
 ]
 
 { #category : #accessing }
 IceTipRepositoryTypePanel >> repository: aRepository [
 	"Used if editing an existing repository"
+
 	repository := aRepository
 ]
 
 { #category : #accessing }
 IceTipRepositoryTypePanel >> validate [
+
 	^ self subclassResponsibility
 ]
