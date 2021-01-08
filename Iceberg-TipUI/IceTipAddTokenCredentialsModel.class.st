@@ -59,19 +59,28 @@ IceTipAddTokenCredentialsModel >> initialExtent [
 IceTipAddTokenCredentialsModel >> initializePresenters [
 
 	super initializePresenters.
-	usernameLabel := self newLabel label: 'Username: '.
+	usernameLabel := self newLabel
+		label: 'Username: ';
+		yourself.
 	usernameInput := self newTextInput
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	hostLabel := self newLabel label: 'Host: '.
+
+	hostLabel := self newLabel
+		label: 'Host: ';
+		yourself.
 	hostInput := self newTextInput
 		placeholder: 'github.com';
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	tokenLabel := self newLabel label: 'Token: '.
+
+	tokenLabel := self newLabel
+		label: 'Token: ';
+		yourself.
 	tokenInput := self newTextInput
+		bePassword;
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
