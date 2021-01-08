@@ -103,7 +103,7 @@ IceTipCreateTagPanel >> initializeExistingTagsList [
 	existingTagsList := self newList.
 	existingTagsList
 		items: commitishToTag tagModels;
-		displayBlock: #name;
+		display: #name;
 		sortingBlock: #name descending
 
 ]
