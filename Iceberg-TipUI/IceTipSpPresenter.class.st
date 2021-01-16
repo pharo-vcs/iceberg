@@ -11,12 +11,20 @@ IceTipSpPresenter >> closeWindow [
 	self window close
 ]
 
+{ #category : #specs }
+IceTipSpPresenter >> iconForWindow [
+
+	^ self iconNamed: #smallWindow
+]
+
 { #category : #initialization }
 IceTipSpPresenter >> initializeWindow: aSpWindowPresenter [
 
 	super initializeWindow: aSpWindowPresenter.
 
-	aSpWindowPresenter title: self titleForWindow
+	aSpWindowPresenter
+		title: self titleForWindow;
+		windowIcon: self iconForWindow
 ]
 
 { #category : #specs }

@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipSaveImageAction,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #execution }

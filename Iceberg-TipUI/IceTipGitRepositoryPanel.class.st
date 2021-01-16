@@ -22,18 +22,9 @@ IceTipGitRepositoryPanel class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceTipGitRepositoryPanel class >> icon [
-	^ self iconNamed: #git
-]
-
-{ #category : #accessing }
 IceTipGitRepositoryPanel class >> order [
-	^ 1000 "to the end"
-]
 
-{ #category : #specs }
-IceTipGitRepositoryPanel class >> title [
-	^ 'Clone remote repository'
+	^ 1000 "to the end"
 ]
 
 { #category : #utilities }
@@ -42,6 +33,12 @@ IceTipGitRepositoryPanel >> extractProjectName: aString [
 	^ [ (IceGitRemote url: aString) projectName ]
 		  on: IceWrongUrl
 		  do: [ 'invalid-url' ]
+]
+
+{ #category : #accessing }
+IceTipGitRepositoryPanel >> iconForWindow [
+
+	^ self iconNamed: #git
 ]
 
 { #category : #initialization }
@@ -74,6 +71,12 @@ IceTipGitRepositoryPanel >> newRepository [
 IceTipGitRepositoryPanel >> remoteUrl [
 
 	^ self remoteInputText text asString trimmed
+]
+
+{ #category : #specs }
+IceTipGitRepositoryPanel >> titleForWindow [
+
+	^ 'Clone remote repository'
 ]
 
 { #category : #accessing }

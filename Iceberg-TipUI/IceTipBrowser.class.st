@@ -145,7 +145,6 @@ IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 	self addToolbarIfNotEmptyIn: aSpWindowPresenter.
 
 	aSpWindowPresenter
-		windowIcon: self iconForWindow;
 		initialExtent: self initialExtentForWindow
 ]
 

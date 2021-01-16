@@ -9,23 +9,9 @@ Class {
 }
 
 { #category : #accessing }
-IceTipGitHubRepositoryPanel class >> icon [
-	^ (self iconNamed: #github) lighter: 0.50 "just to be sure is visible in all themes"
-]
-
-{ #category : #accessing }
 IceTipGitHubRepositoryPanel class >> order [
+
 	^ 100
-]
-
-{ #category : #accessing }
-IceTipGitHubRepositoryPanel class >> providerName [
-	^ 'GitHub'
-]
-
-{ #category : #specs }
-IceTipGitHubRepositoryPanel class >> title [
-	^ 'Clone From github.com'
 ]
 
 { #category : #accessing }
@@ -42,6 +28,12 @@ IceTipGitHubRepositoryPanel >> getGitHubRepository [
 		getRepository: self userName project: self projectName ]
 			on: LGitNoCredentialsProvided
 			do: [ nil ]
+]
+
+{ #category : #accessing }
+IceTipGitHubRepositoryPanel >> iconForWindow [
+
+	^ (self iconNamed: #github) lighter: 0.50 "just to be sure is visible in all themes"
 ]
 
 { #category : #accessing }
@@ -64,4 +56,16 @@ IceTipGitHubRepositoryPanel >> newRepository [
 					remote fetch. ] ].
 	^ newRepository
 
+]
+
+{ #category : #accessing }
+IceTipGitHubRepositoryPanel >> providerName [
+
+	^ 'GitHub'
+]
+
+{ #category : #specs }
+IceTipGitHubRepositoryPanel >> titleForWindow [
+
+	^ 'Clone From github.com'
 ]

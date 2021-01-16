@@ -43,11 +43,6 @@ IceTipCreateTagPanel class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceTipCreateTagPanel class >> icon [
-	^ self iconNamed: #smallNew
-]
-
-{ #category : #accessing }
 IceTipCreateTagPanel >> accept [
 
 	self validate.
@@ -86,6 +81,12 @@ IceTipCreateTagPanel >> doAccept [
 IceTipCreateTagPanel >> existingTagsList [
 
 	^ existingTagsList
+]
+
+{ #category : #accessing }
+IceTipCreateTagPanel >> iconForWindow [
+
+	^ self iconNamed: #smallNew
 ]
 
 { #category : #initialization }

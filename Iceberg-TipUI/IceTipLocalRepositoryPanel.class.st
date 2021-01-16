@@ -17,18 +17,15 @@ IceTipLocalRepositoryPanel class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceTipLocalRepositoryPanel class >> icon [
-	^ self iconNamed: #smallOpen
-]
-
-{ #category : #accessing }
 IceTipLocalRepositoryPanel class >> order [
+
 	^ 20
 ]
 
-{ #category : #specs }
-IceTipLocalRepositoryPanel class >> title [
-	^ 'Import from existing clone'
+{ #category : #accessing }
+IceTipLocalRepositoryPanel >> iconForWindow [
+
+	^ self iconNamed: #smallOpen
 ]
 
 { #category : #api }
@@ -69,6 +66,12 @@ IceTipLocalRepositoryPanel >> newRepository [
 				repository: repository;
 				location: self location;
 				createRepository ]
+]
+
+{ #category : #specs }
+IceTipLocalRepositoryPanel >> titleForWindow [
+
+	^ 'Import from existing clone'
 ]
 
 { #category : #accessing }

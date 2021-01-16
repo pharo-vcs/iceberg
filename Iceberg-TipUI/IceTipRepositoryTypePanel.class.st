@@ -4,7 +4,7 @@ I'm used as part of the creation dialog and to edit repository properties.
 "
 Class {
 	#name : #IceTipRepositoryTypePanel,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'projectLocation',
 		'remoteLabel',
@@ -22,18 +22,15 @@ IceTipRepositoryTypePanel class >> allTypes [
 		collect: #new
 ]
 
-{ #category : #accessing }
-IceTipRepositoryTypePanel class >> icon [
-	self subclassResponsibility
-]
-
 { #category : #testing }
 IceTipRepositoryTypePanel class >> isAbstract [
+
 	^ self = IceTipRepositoryTypePanel
 ]
 
 { #category : #accessing }
 IceTipRepositoryTypePanel class >> order [
+
 	^ 0
 ]
 
@@ -47,12 +44,6 @@ IceTipRepositoryTypePanel >> defaultLocation [
 IceTipRepositoryTypePanel >> defaultSubdirectory [
 
 	^ IceLibgitRepository defaultCodeSubdirectory
-]
-
-{ #category : #accessing }
-IceTipRepositoryTypePanel >> icon [
-
-	^ self class icon
 ]
 
 { #category : #initialization }

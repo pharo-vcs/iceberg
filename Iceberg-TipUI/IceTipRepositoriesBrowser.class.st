@@ -67,7 +67,8 @@ IceTipRepositoriesBrowser class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceTipRepositoriesBrowser class >> icon [
+IceTipRepositoriesBrowser class >> iconForWorldMenu [
+
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
@@ -77,8 +78,8 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 	<worldMenu> 
 	
 	(aBuilder item: #'Iceberg')
-		order: 0.8; 
-		icon: self icon;  
+		order: 0.8;
+		icon: self iconForWorldMenu;
 		parent: #'Tools';
 		keyText: 'o, i';
 		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
@@ -98,6 +99,12 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		model: (IceTipRepositoriesModel new repositoryProvider: aProvider; yourself);
 		initialize;
 		yourself
+]
+
+{ #category : #accessing }
+IceTipRepositoriesBrowser >> iconForWindow [
+
+	^ self class iconForWorldMenu
 ]
 
 { #category : #initialization }

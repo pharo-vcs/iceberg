@@ -37,12 +37,8 @@ IceTipGitProviderRepositoryPanel class >> defaultSpec [
 
 { #category : #testing }
 IceTipGitProviderRepositoryPanel class >> isAbstract [
-	^ super isAbstract or: [ self = IceTipGitProviderRepositoryPanel ]
-]
 
-{ #category : #accessing }
-IceTipGitProviderRepositoryPanel class >> providerName [
-	self subclassResponsibility
+	^ super isAbstract or: [ self = IceTipGitProviderRepositoryPanel ]
 ]
 
 { #category : #actions }
@@ -127,7 +123,7 @@ IceTipGitProviderRepositoryPanel >> protocolLabel [
 { #category : #accessing }
 IceTipGitProviderRepositoryPanel >> providerName [
 
-	^ self class providerName
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }

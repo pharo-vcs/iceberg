@@ -35,18 +35,15 @@ IceTipNewRepositoryPanel class >> defaultSpec [
 ]
 
 { #category : #accessing }
-IceTipNewRepositoryPanel class >> icon [
-	^ self iconNamed: #smallNew
-]
-
-{ #category : #accessing }
 IceTipNewRepositoryPanel class >> order [
+
 	^ 10
 ]
 
-{ #category : #specs }
-IceTipNewRepositoryPanel class >> title [
-	^ 'New repository'
+{ #category : #accessing }
+IceTipNewRepositoryPanel >> iconForWindow [
+
+	^ self iconNamed: #smallNew
 ]
 
 { #category : #initialization }
@@ -126,6 +123,12 @@ IceTipNewRepositoryPanel >> subdirectoryInputText [
 IceTipNewRepositoryPanel >> subdirectoryLabel [
 
 	^ subdirectoryLabel
+]
+
+{ #category : #specs }
+IceTipNewRepositoryPanel >> titleForWindow [
+
+	^ 'New repository'
 ]
 
 { #category : #accessing }

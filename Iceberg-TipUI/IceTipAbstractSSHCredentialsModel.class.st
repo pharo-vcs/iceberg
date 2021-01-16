@@ -24,7 +24,6 @@ IceTipAbstractSSHCredentialsModel >> initializePresenters [
 		label: 'Username: ';
 		yourself.
 	usernameInput := self newTextInput
-		text: 'git';
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.

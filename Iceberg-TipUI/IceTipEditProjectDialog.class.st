@@ -195,10 +195,6 @@ IceTipEditProjectDialog >> initializeDirectoryTree [
 { #category : #initialization }
 IceTipEditProjectDialog >> initializeMessagePanel [
 
-	messageText := self newText.
-	messageIcon := self newImage.
-	messageText disable.
-
 	self hasToShowWarning ifTrue: [ 
 		messageIcon image: (self iconNamed: #warning).
 		messageText text: self warningMessage ]
@@ -222,6 +218,10 @@ IceTipEditProjectDialog >> initializePresenters [
 		label: 'Format';
 		yourself.
 	formatList := self newDropList.
+	messageIcon := self newImage.
+	messageText := self newText
+		beNotEditable;
+		yourself.
 
 	self initializeMessagePanel.
 	self initializeDirectoryTree.
