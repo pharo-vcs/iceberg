@@ -39,14 +39,14 @@ IceTipAskForPlaintextCredentialsModel >> cancelAction [
 	self cancelAskAction
 ]
 
-{ #category : #api }
-IceTipAskForPlaintextCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipAskForPlaintextCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipAskForPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Please log in to ' , askingHostname

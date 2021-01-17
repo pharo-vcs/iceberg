@@ -58,7 +58,7 @@ IceTipErrorDialog >> iconPanel [
 ]
 
 { #category : #initialization }
-IceTipErrorDialog >> initialExtent [
+IceTipErrorDialog >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -93,7 +93,8 @@ IceTipErrorDialog >> setModelBeforeInitialization: aDomainObject [
 	self exception: aDomainObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipErrorDialog >> titleForWindow [
+
 	^ 'Error'
 ]

@@ -90,7 +90,7 @@ IceTipGitHubPullRequestListBrowser >> fetchPullRequests [
 				yourself ]
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipGitHubPullRequestListBrowser >> initialExtentForWindow [
 
 	^ (700 @ 700) scaledByDisplayScaleFactor

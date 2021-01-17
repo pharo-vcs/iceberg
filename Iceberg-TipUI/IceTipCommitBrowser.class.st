@@ -102,7 +102,7 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 				ifTrue: [ saveAction execute ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipCommitBrowser >> initialExtentForWindow [
 
 	^ (800@600) scaledByDisplayScaleFactor
@@ -169,7 +169,7 @@ IceTipCommitBrowser >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipCommitBrowser >> titleForWindow [
 
 	^ 'Commit on {1} branch {2}' format: { 

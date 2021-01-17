@@ -34,8 +34,8 @@ IceTipAskForPlaintextOtpCredentialsModel class >> defaultSpec [
 
 ]
 
-{ #category : #api }
-IceTipAskForPlaintextOtpCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipAskForPlaintextOtpCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight))
 		  scaledByDisplayScaleFactor

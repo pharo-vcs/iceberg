@@ -55,8 +55,8 @@ IceTipCheckoutBranchDialog >> doAccept [
 	self selectedType doAccept
 ]
 
-{ #category : #accessing }
-IceTipCheckoutBranchDialog >> initialExtent [
+{ #category : #initialization }
+IceTipCheckoutBranchDialog >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
@@ -73,7 +73,7 @@ IceTipCheckoutBranchDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipCheckoutBranchDialog >> titleForWindow [
 
 	^ 'Checkout branch'

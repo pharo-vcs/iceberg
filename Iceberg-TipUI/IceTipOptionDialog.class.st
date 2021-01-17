@@ -64,8 +64,8 @@ IceTipOptionDialog >> doAccept [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
-IceTipOptionDialog >> initialExtent [
+{ #category : #initialization }
+IceTipOptionDialog >> initialExtentForWindow [
 
 	^ (600 @ 300) scaledByDisplayScaleFactor
 ]

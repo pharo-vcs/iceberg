@@ -49,7 +49,7 @@ IceTipPushBrowser >> newActionButton [
 
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipPushBrowser >> titleForWindow [
 
 	^ 'Push {1}/{2} to {3}' format: { 

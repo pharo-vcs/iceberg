@@ -101,7 +101,7 @@ IceTipCredentialsStoreBrowser >> store [
 	^ self model
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipCredentialsStoreBrowser >> titleForWindow [
 
 	^ model isCurrent

@@ -75,8 +75,8 @@ IceTipGitUsernameAndEmailDialog >> globalCheckbox [
 	^ globalCheckbox
 ]
 
-{ #category : #api }
-IceTipGitUsernameAndEmailDialog >> initialExtent [
+{ #category : #initialization }
+IceTipGitUsernameAndEmailDialog >> initialExtentForWindow [
 
 	^ (400@(
 		self class inputTextHeight * 3
@@ -140,8 +140,9 @@ IceTipGitUsernameAndEmailDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipGitUsernameAndEmailDialog >> titleForWindow [
+
 	^ 'Please provide Git missing properties'
 ]
 

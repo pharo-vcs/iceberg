@@ -149,8 +149,8 @@ IceTipEditProjectDialog >> hasToShowWarning [
 	^ model repository workingCopy packages isNotEmpty
 ]
 
-{ #category : #api }
-IceTipEditProjectDialog >> initialExtent [
+{ #category : #initialization }
+IceTipEditProjectDialog >> initialExtentForWindow [
 
 	^ self hasToShowWarning 
 		ifTrue: [ (475@525) scaledByDisplayScaleFactor ]
@@ -309,8 +309,9 @@ IceTipEditProjectDialog >> sourceDirectoryTree [
 	^ sourceDirectoryTree
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipEditProjectDialog >> titleForWindow [
+
 	^ 'Edit Project'
 ]
 

@@ -83,7 +83,7 @@ IceTipCreateTagPanel >> existingTagsList [
 	^ existingTagsList
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipCreateTagPanel >> iconForWindow [
 
 	^ self iconNamed: #smallNew
@@ -233,7 +233,7 @@ IceTipCreateTagPanel >> tagNameLabel [
 	^ tagNameLabel
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipCreateTagPanel >> titleForWindow [
 
 	^ 'New tag of ' , commitishToTag name

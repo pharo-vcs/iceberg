@@ -62,7 +62,7 @@ IceTipRegisterRepositoryDialog >> onAccept: aBlock [
 	acceptBlock := aBlock
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipRegisterRepositoryDialog >> titleForWindow [
 
 	^ 'Register project'

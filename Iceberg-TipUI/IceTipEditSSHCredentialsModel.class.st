@@ -31,8 +31,8 @@ IceTipEditSSHCredentialsModel >> accept [
 	^ self acceptEditAction
 ]
 
-{ #category : #api }
-IceTipEditSSHCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipEditSSHCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
@@ -56,7 +56,7 @@ IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
 	publicKeyInput location: credentials publicKey
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipEditSSHCredentialsModel >> titleForWindow [
 
 	^ 'Edit SSH keys for ' , self credentials hostDescription

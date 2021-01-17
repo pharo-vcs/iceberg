@@ -49,8 +49,8 @@ IceTipAddTokenCredentialsModel >> hostnameFromInput [
 	^ hostInput text
 ]
 
-{ #category : #testing }
-IceTipAddTokenCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipAddTokenCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
@@ -105,7 +105,7 @@ IceTipAddTokenCredentialsModel >> newCredentials [
 		yourself 
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipAddTokenCredentialsModel >> titleForWindow [
 
 	^ 'Add token credentials'

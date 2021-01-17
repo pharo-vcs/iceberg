@@ -53,9 +53,10 @@ IceGitHubNewBranchFromIssuePanel >> icon [
 	^ (self iconNamed: #github) scaledToSize: 16@16
 ]
 
-{ #category : #api }
-IceGitHubNewBranchFromIssuePanel >> initialExtent [
-	^ 800@175
+{ #category : #initialization }
+IceGitHubNewBranchFromIssuePanel >> initialExtentForWindow [
+
+	^ 800 @ 175
 ]
 
 { #category : #initialization }
@@ -138,7 +139,7 @@ IceGitHubNewBranchFromIssuePanel >> selectRemoteModel [
 			on: self model entity ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceGitHubNewBranchFromIssuePanel >> titleForWindow [
 
 	^ 'New branch from issue'

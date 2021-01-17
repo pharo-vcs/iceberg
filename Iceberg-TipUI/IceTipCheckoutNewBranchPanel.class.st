@@ -105,8 +105,9 @@ IceTipCheckoutNewBranchPanel >> openDialogWithSpec [
 		  yourself
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipCheckoutNewBranchPanel >> titleForWindow [
+
 	^ 'New branch'
 ]
 

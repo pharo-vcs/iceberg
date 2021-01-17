@@ -30,7 +30,7 @@ IceTipGitHubRepositoryPanel >> getGitHubRepository [
 			do: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipGitHubRepositoryPanel >> iconForWindow [
 
 	^ (self iconNamed: #github) lighter: 0.50 "just to be sure is visible in all themes"
@@ -64,7 +64,7 @@ IceTipGitHubRepositoryPanel >> providerName [
 	^ 'GitHub'
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipGitHubRepositoryPanel >> titleForWindow [
 
 	^ 'Clone From github.com'

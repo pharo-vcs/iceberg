@@ -46,7 +46,7 @@ IceTipPreviewBrowser >> diffPanel [
 	^ diffPanel
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipPreviewBrowser >> initialExtentForWindow [
 
 	^ (800 @ 400) scaledByDisplayScaleFactor

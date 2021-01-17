@@ -40,7 +40,7 @@ IceTipNewRepositoryPanel class >> order [
 	^ 10
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipNewRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #smallNew
@@ -125,7 +125,7 @@ IceTipNewRepositoryPanel >> subdirectoryLabel [
 	^ subdirectoryLabel
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipNewRepositoryPanel >> titleForWindow [
 
 	^ 'New repository'

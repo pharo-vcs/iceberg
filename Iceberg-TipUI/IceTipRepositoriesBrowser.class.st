@@ -101,7 +101,7 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> iconForWindow [
 
 	^ self class iconForWorldMenu
@@ -194,7 +194,7 @@ IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 	Iceberg announcer weak when: IceAnnouncement send: #refresh to: self
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> titleForWindow [
 
 	^ 'Repositories'

@@ -55,8 +55,8 @@ IceTipRemovePackageDialog >> iconPanel [
 	^ iconPanel
 ]
 
-{ #category : #accessing }
-IceTipRemovePackageDialog >> initialExtent [
+{ #category : #initialization }
+IceTipRemovePackageDialog >> initialExtentForWindow [
 
 	^ (500
 		@ (self class inputTextHeight * 2 + self class buttonHeight + 75))
@@ -109,8 +109,9 @@ IceTipRemovePackageDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipRemovePackageDialog >> titleForWindow [
+
 	^ 'Remove Package'
 ]
 

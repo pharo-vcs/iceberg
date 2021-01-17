@@ -51,7 +51,7 @@ IceTipRepairRepositoryDialog >> detailPanel [
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> initialExtent [
+IceTipRepairRepositoryDialog >> initialExtentForWindow [
 
 	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
@@ -144,7 +144,7 @@ IceTipRepairRepositoryDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipRepairRepositoryDialog >> titleForWindow [
 
 	^ 'Repair repository'

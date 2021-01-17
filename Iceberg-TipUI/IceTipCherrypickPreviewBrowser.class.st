@@ -101,7 +101,7 @@ IceTipCherrypickPreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipCherrypickPreviewBrowser >> titleForWindow [
 
 	^ 'Preview result of Cherrypick'

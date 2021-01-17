@@ -84,8 +84,8 @@ IceTipFiletreeToTonelDialog >> iconPanel [
 	^ iconPanel
 ]
 
-{ #category : #api }
-IceTipFiletreeToTonelDialog >> initialExtent [
+{ #category : #initialization }
+IceTipFiletreeToTonelDialog >> initialExtentForWindow [
 
 	^ (500
 	   @ (self class inputTextHeight * 5 + self class buttonHeight + 50))
@@ -144,7 +144,8 @@ IceTipFiletreeToTonelDialog >> setModelBeforeInitialization: anObject [
 	repository := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipFiletreeToTonelDialog >> titleForWindow [
+
 	^ 'Convert sources to tonel'
 ]

@@ -76,7 +76,7 @@ IceTipExistingBranchPanel >> selectedBranch [
 	^ self branchesList selection selectedItem
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #initialization }
 IceTipExistingBranchPanel >> titleForWindow [
 
 	^ title ifNil: [ self model name ]

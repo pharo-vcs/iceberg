@@ -59,7 +59,7 @@ IceTipVersionHistoryBrowser >> commitList [
 	^ commitList
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipVersionHistoryBrowser >> initialExtentForWindow [
 
 	^ (700@700) scaledByDisplayScaleFactor
@@ -213,7 +213,7 @@ IceTipVersionHistoryBrowser >> selectionChanged: aSelection [
 	self refreshCommitTabPanel
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipVersionHistoryBrowser >> titleForWindow [
 
 	^ self model  

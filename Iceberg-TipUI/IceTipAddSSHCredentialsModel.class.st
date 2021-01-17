@@ -46,8 +46,8 @@ IceTipAddSSHCredentialsModel >> hostnameFromInput [
 	^ hostInput text
 ]
 
-{ #category : #api }
-IceTipAddSSHCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipAddSSHCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 7 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
@@ -77,7 +77,7 @@ IceTipAddSSHCredentialsModel >> newCredentials [
 		yourself 
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipAddSSHCredentialsModel >> titleForWindow [
 
 	^ 'Add SSH credential'

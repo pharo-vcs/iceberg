@@ -49,7 +49,7 @@ IceTipAddPackagesDialog >> allPackagesNotRegistered [
 		  currentPackagesNames includes: rPackage name ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipAddPackagesDialog >> iconForWindow [
 
 	^ self iconNamed: #branch
@@ -153,8 +153,9 @@ IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipAddPackagesDialog >> titleForWindow [
+
 	^ 'Add packages'
 ]
 

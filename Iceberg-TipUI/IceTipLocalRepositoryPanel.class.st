@@ -22,14 +22,14 @@ IceTipLocalRepositoryPanel class >> order [
 	^ 20
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipLocalRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #smallOpen
 ]
 
-{ #category : #api }
-IceTipLocalRepositoryPanel >> initialExtent [
+{ #category : #initialization }
+IceTipLocalRepositoryPanel >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -68,7 +68,7 @@ IceTipLocalRepositoryPanel >> newRepository [
 				createRepository ]
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipLocalRepositoryPanel >> titleForWindow [
 
 	^ 'Import from existing clone'

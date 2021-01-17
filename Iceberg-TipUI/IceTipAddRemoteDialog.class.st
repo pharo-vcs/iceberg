@@ -42,8 +42,8 @@ IceTipAddRemoteDialog >> accept [
 	^ acceptBlock ifNotNil: [ acceptBlock cull: self remoteName ]
 ]
 
-{ #category : #accessing }
-IceTipAddRemoteDialog >> initialExtent [
+{ #category : #initialization }
+IceTipAddRemoteDialog >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -121,8 +121,9 @@ IceTipAddRemoteDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipAddRemoteDialog >> titleForWindow [
+
 	^ 'Add remote'
 ]
 

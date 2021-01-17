@@ -50,8 +50,8 @@ IceTipRemoveRepositoryDialog >> iconPanel [
 	^ iconPanel
 ]
 
-{ #category : #accessing }
-IceTipRemoveRepositoryDialog >> initialExtent [
+{ #category : #initialization }
+IceTipRemoveRepositoryDialog >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -105,7 +105,8 @@ IceTipRemoveRepositoryDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipRemoveRepositoryDialog >> titleForWindow [
+
 	^ 'Remove repository'
 ]

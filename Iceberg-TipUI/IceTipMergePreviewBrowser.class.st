@@ -48,7 +48,7 @@ IceTipMergePreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #api }
+{ #category : #initialization }
 IceTipMergePreviewBrowser >> titleForWindow [
 
 	^ 'Preview merge of {1}/{2}' format: { 

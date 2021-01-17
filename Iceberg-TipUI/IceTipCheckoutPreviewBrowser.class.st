@@ -98,7 +98,7 @@ IceTipCheckoutPreviewBrowser >> selectedCheckoutStrategy [
 	^ selectedCheckoutStrategy
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipCheckoutPreviewBrowser >> titleForWindow [
 
 	^ 'Preview checkout of {1}/{2}' format: { 

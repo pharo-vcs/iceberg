@@ -49,7 +49,7 @@ IceTipAddPlaintextCredentialsModel >> hostnameFromInput [
 ]
 
 { #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> initialExtent [
+IceTipAddPlaintextCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
@@ -72,7 +72,7 @@ IceTipAddPlaintextCredentialsModel >> isOkEnabled [
 	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipAddPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Add new Plain Text Credential'

@@ -60,8 +60,8 @@ IceTipMergeBranchDialog >> doAccept [
 	self selectedType doAccept
 ]
 
-{ #category : #accessing }
-IceTipMergeBranchDialog >> initialExtent [
+{ #category : #initialization }
+IceTipMergeBranchDialog >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
@@ -85,7 +85,7 @@ IceTipMergeBranchDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipMergeBranchDialog >> titleForWindow [
 
 	^ 'Select branch to merge into ' , self model branchName

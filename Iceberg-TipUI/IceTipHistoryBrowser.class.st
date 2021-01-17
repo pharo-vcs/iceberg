@@ -166,7 +166,7 @@ IceTipHistoryBrowser >> selectionChanged: ann [
 
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipHistoryBrowser >> titleForWindow [
 
 	^ self model

@@ -32,8 +32,8 @@ IceTipEditPlaintextCredentialsModel >> accept [
 	^ self acceptEditAction
 ]
 
-{ #category : #api }
-IceTipEditPlaintextCredentialsModel >> initialExtent [
+{ #category : #initialization }
+IceTipEditPlaintextCredentialsModel >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
@@ -54,7 +54,7 @@ IceTipEditPlaintextCredentialsModel >> refreshPresenterFromCredentials [
 	passwordInput text: credentials password
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipEditPlaintextCredentialsModel >> titleForWindow [
 
 	^ 'Edit credential for ' , credentials host

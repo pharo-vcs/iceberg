@@ -16,7 +16,7 @@ IceTipGitLabRepositoryPanel >> configureBuilder: aBuilder [
 	aBuilder beGitLab
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipGitLabRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #gitlab
@@ -28,7 +28,7 @@ IceTipGitLabRepositoryPanel >> providerName [
 	^ 'GitLab'
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipGitLabRepositoryPanel >> titleForWindow [
 
 	^ 'Clone From gitlab.com'

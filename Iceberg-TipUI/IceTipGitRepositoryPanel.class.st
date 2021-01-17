@@ -35,7 +35,7 @@ IceTipGitRepositoryPanel >> extractProjectName: aString [
 		  do: [ 'invalid-url' ]
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipGitRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #git
@@ -73,7 +73,7 @@ IceTipGitRepositoryPanel >> remoteUrl [
 	^ self remoteInputText text asString trimmed
 ]
 
-{ #category : #specs }
+{ #category : #initialization }
 IceTipGitRepositoryPanel >> titleForWindow [
 
 	^ 'Clone remote repository'

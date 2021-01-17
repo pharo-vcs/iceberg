@@ -32,7 +32,7 @@ IceTipEditTokenCredentialsModel >> refreshPresenterFromCredentials [
 
 ]
 
-{ #category : #TOREMOVE }
+{ #category : #initialization }
 IceTipEditTokenCredentialsModel >> titleForWindow [
 
 	^ 'Edit token credentials'

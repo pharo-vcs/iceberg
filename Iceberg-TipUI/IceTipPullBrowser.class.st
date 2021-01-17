@@ -48,7 +48,7 @@ IceTipPullBrowser >> newActionButton [
 
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceTipPullBrowser >> titleForWindow [
 
 	^ 'Pull {1}/{2} from {3}' format: { 
