@@ -99,6 +99,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 IceTipRepositoryBrowser >> initializeSidebarTree [
 
 	sidebarTree
+		hideColumnHeaders;
 		addColumn:
 			(SpCompositeTableColumn new
 				addColumn:
