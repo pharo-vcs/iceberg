@@ -149,5 +149,5 @@ IceTipAskForPlaintextCredentialsModelTest >> testTitle [
 	dialog askingHostname: 'github.com'. 
 	dialog openNonModal. 
 	
-	self assert: dialog title equals: 'Please log in to github.com'.
+	self assert: dialog titleForWindow equals: 'Please log in to github.com'.
 ]

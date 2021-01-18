@@ -57,7 +57,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceCommitedUpdatesP
 	Iceberg announcer announce: (IceCommited for: self repository).
 	
 	pushButton := presenter toolbar itemNamed: 'Push'.
-	self assert: pushButton badge equals: 1
+	self assert: pushButton badge equals: '1'
 ]
 
 { #category : #'tests-fetch' }
@@ -74,7 +74,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceUpdatesPushBadge
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 	
 	pushButton := presenter toolbar itemNamed: 'Push'.
-	self assert: pushButton badge equals: 1
+	self assert: pushButton badge equals: '1'
 ]
 
 { #category : #'tests-fetch' }
