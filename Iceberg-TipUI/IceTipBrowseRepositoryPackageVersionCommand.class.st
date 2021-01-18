@@ -18,7 +18,7 @@ IceTipBrowseRepositoryPackageVersionCommand class >> defaultDescription [
 { #category : #accessing }
 IceTipBrowseRepositoryPackageVersionCommand class >> defaultName [
 
-	^ 'Browse repository version'
+	^ 'Browse this version in Monticello'
 ]
 
 { #category : #execution }
