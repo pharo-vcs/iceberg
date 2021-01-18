@@ -23,6 +23,7 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Calypso' with: [ spec requires: #('Iceberg-Plugin') ];
 			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
 			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
@@ -54,7 +55,8 @@ BaselineOfIceberg >> baseline: spec [
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
 				'Iceberg-Plugin-Pharo'
-				'Iceberg-Plugin-Migration');
+				'Iceberg-Plugin-Migration'
+				'Iceberg-Plugin-Calypso');
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit' 
