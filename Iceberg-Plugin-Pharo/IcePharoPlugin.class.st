@@ -49,11 +49,12 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCollection [
 	| repository commit workingCopy |
 
-	repository := IceLibgitRepository new 
+	repository := IceLibgitRepository new
 		name: aName;
 		yourself.
 	
 	commit := IceUnknownCommit new 
+		repository: repository;
 		id: aCommitId;
 	 	yourself.
 
@@ -67,7 +68,6 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 		yourself.
 
 	repository workingCopy: workingCopy.
-	commit repository: repository.
 	
 	(aCollection 
 		flatCollect: [ :each | (Smalltalk globals at: each) allPackageNames copyWith: each ] 
