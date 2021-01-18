@@ -51,12 +51,3 @@ Metacello new
     baseline: 'Tonel';
     repository: 'github://pharo-vcs/tonel:v1.0.17';
     load.
-
-"Development branch requires latest Spec2"
-Metacello new
-    githubUser: 'pharo-spec' project: 'Spec' commitish: 'master' path: 'src';
-    baseline: 'Spec2';
-    onConflict: [ :e | e useIncoming ];
-    onUpgrade: [ :e | e useIncoming ];
-    ignoreImage;
-    load
