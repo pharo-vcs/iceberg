@@ -142,7 +142,7 @@ IceGitHubRemoveBranchesModel >> selectLabel: aString [
 	self selectButton label: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceGitHubRemoveBranchesModel >> timeSinceLastCommit: branch [
 
 	| lastCommitDate |

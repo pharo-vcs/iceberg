@@ -101,8 +101,8 @@ IceGitHubPullRequest >> detail [
 
 { #category : #actions }
 IceGitHubPullRequest >> fetch [
-	[ ^ self remote fetch ]
-	ensure: [ fetched := true ]
+
+	^ [ self remote fetch ] ensure: [ fetched := true ]
 ]
 
 { #category : #accessing }

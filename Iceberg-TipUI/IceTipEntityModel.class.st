@@ -32,11 +32,6 @@ IceTipEntityModel class >> repositoryModel: aRepositoryModel on: anObject [
 ]
 
 { #category : #TOMOVE }
-IceTipEntityModel >> colorError [
-	^ Smalltalk ui theme dangerTextColor
-]
-
-{ #category : #TOMOVE }
 IceTipEntityModel >> colorModified [
 	^ Smalltalk ui theme successTextColor
 ]

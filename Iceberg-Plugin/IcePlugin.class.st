@@ -11,7 +11,7 @@ Class {
 	#category : #'Iceberg-Plugin-Base'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 IcePlugin class >> allAvailableFor: aRepository [
 	^ self allSubclasses select: [ :each | each isAvailableFor: aRepository ]
 

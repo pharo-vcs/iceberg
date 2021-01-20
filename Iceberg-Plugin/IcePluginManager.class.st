@@ -38,9 +38,9 @@ IcePluginManager >> availablePluginsFor: aRepository [
 { #category : #'accessing-ui' }
 IcePluginManager >> checkoutBranchPanelsOnModel: aModel [ 
 
-	^ self plugins
-		inject: #() 
-		into: [ :all :each | all, (each checkoutBranchPanelsOnModel: aModel ) ]
+	^ Array streamContents: [ :stream |
+		self plugins do: [ :each |
+			stream nextPutAll: (each checkoutBranchPanelsOnModel: aModel) ]]
 ]
 
 { #category : #initialization }

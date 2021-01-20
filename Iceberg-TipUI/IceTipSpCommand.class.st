@@ -1,3 +1,8 @@
+"
+I am a CmUICommand that is specialized for Iceberg UI. 
+
+In particular, I'm used to wrap instances of IceTipCommand in a IceTipBrowser.
+"
 Class {
 	#name : #IceTipSpCommand,
 	#superclass : #CmUICommand,
@@ -41,8 +46,8 @@ IceTipSpCommand >> presenterBuildingStrategy [
 ]
 
 { #category : #accessing }
-IceTipSpCommand >> presenterBuildingStrategy: anObject [
-	presenterBuildingStrategy := anObject
+IceTipSpCommand >> presenterBuildingStrategy: aStrategy [
+	presenterBuildingStrategy := aStrategy
 ]
 
 { #category : #accessing }

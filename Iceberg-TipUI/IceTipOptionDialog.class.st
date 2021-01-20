@@ -12,8 +12,7 @@ Class {
 	#instVars : [
 		'typeList',
 		'type',
-		'contentPanel',
-		'firstTimeBuild'
+		'contentPanel'
 	],
 	#category : #'Iceberg-TipUI-View'
 }

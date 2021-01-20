@@ -10,10 +10,10 @@ Class {
 		'result',
 		'nextPage'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : #'Iceberg-Plugin-GitHub-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 IceGitHubAPIPaginatedResult class >> api: anAPI request: aString [
 	^ self new 
 		api: anAPI;
@@ -47,11 +47,16 @@ IceGitHubAPIPaginatedResult >> hasNext [
 ]
 
 { #category : #accessing }
-IceGitHubAPIPaginatedResult >> next [ 
+IceGitHubAPIPaginatedResult >> next [
+
 	nextPage ifNil: [ nextPage := 1 ].
-	[ result := self api getRaw: (self request asUrl ? (#page -> nextPage asString)) asString ]
-	ensure: [ nextPage := nextPage + 1].
-	^ STON fromString: result contents
+	^ [ 
+		| aUrl |
+		aUrl := self request asUrl ? (#page -> nextPage asString).
+		result := self api getRaw: aUrl asString.
+		STON fromString: result contents
+
+		] ensure: [ nextPage := nextPage + 1 ]
 ]
 
 { #category : #private }

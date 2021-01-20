@@ -1,3 +1,8 @@
+"
+I implement the action of saving the image.
+
+I'm used by the presenter that prepares the commit.
+"
 Class {
 	#name : #IceTipSaveImageAction,
 	#superclass : #Object,

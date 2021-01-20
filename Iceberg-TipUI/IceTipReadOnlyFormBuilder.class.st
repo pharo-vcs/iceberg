@@ -34,13 +34,6 @@ IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary [
 ]
 
 { #category : #accessing }
-IceTipReadOnlyFormBuilder >> addLabel: aString value: anObject [
-
-	items at: aString put: anObject.
-	self refresh
-]
-
-{ #category : #accessing }
 IceTipReadOnlyFormBuilder >> defaultLabelWidth [
 
 	^ 100 * self currentWorld displayScaleFactor

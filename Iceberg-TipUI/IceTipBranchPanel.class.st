@@ -67,3 +67,8 @@ IceTipBranchPanel >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
+
+{ #category : #accessing }
+IceTipBranchPanel >> validate [
+	^ self subclassResponsibility
+]

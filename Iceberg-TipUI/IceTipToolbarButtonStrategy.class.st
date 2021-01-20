@@ -1,3 +1,7 @@
+"
+I'm a strategy to build Spec2 buttons foro a toolar wrapping a IceTipSpCommand.
+
+"
 Class {
 	#name : #IceTipToolbarButtonStrategy,
 	#superclass : #IceTipCommandToPresenterBuildingStrategy,
@@ -16,10 +20,9 @@ IceTipToolbarButtonStrategy >> resultOn: aCommand [
 	| aButtonPresenter |
 	aButtonPresenter := super resultOn: aCommand.
 
-
-	aButtonPresenter label: aCommand toolbarItemName.
-
-	aButtonPresenter badge: aCommand decoratedCommand badge.
+	aButtonPresenter
+		label: aCommand toolbarItemName;
+		badge: aCommand decoratedCommand badge.
 
 	^ aButtonPresenter
 

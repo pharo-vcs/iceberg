@@ -14,6 +14,12 @@ IceTipModel >> beCached [
 	^ IceTipCachedModel for: self
 ]
 
+{ #category : #private }
+IceTipModel >> colorForError [
+
+	^ Smalltalk ui theme dangerTextColor
+]
+
 { #category : #testing }
 IceTipModel >> matches: aString [
 	"Override this if you want to make this model discoverable"
@@ -33,5 +39,6 @@ IceTipModel >> reset [
 
 { #category : #private }
 IceTipModel >> toErrorMessage: aString [
-	^ aString asText allBold makeAllColor: self colorError
+
+	^ aString asText allBold makeAllColor: self colorForError
 ]

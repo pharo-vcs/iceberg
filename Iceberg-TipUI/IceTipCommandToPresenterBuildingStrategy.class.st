@@ -1,3 +1,8 @@
+"
+I'm an abstract strategy to build Spec2 buttons wrapping a IceTipSpCommand. My concrete subclasses do this with specific characteristics.
+
+
+"
 Class {
 	#name : #IceTipCommandToPresenterBuildingStrategy,
 	#superclass : #Object,
