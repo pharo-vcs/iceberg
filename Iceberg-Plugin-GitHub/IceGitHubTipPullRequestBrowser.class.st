@@ -182,9 +182,9 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 	commitLabel label: 'Commits'.
 	self initializeCommitsTable.
 	diff beForMerge.
-	mergeButton label: 'Merge into image'.
-	acceptButton label: 'Accept pull request'.
-	rejectButton label: 'Reject pull request'.
+	mergeButton label: 'Merge into image'; icon: (self iconNamed: #smallLoadProject).
+	acceptButton label: 'Accept pull request'; icon: (self iconNamed: #testGreen).
+	rejectButton label: 'Reject pull request'; icon: (self iconNamed: #testRed).
 
 	self refresh.
 ]
