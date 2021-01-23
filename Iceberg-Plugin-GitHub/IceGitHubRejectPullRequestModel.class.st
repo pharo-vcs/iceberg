@@ -68,9 +68,10 @@ IceGitHubRejectPullRequestModel >> initializePresenters [
 	acceptButton := self newButton.
 
 	messageLabel label: 'Comment'.
-	messageText 	whenBuiltDo: [ :this | this widget withGhostText: self messageGhostText ].
-	acceptButton label: 'Reject pull request'.
-	acceptButton action: [ self accept ].
+	messageText placeholder: self messageGhostText.
+	acceptButton
+		label: 'Reject pull request';
+		action: [ self accept ].
 
 ]
 

@@ -85,16 +85,19 @@ IceGitHubAcceptPullRequestModel >> initializePresenters [
 
 	super initializePresenters.
 	messageLabel := self newLabel.
-	messageText := self newText autoAccept: true.
+	messageText := self newText.
 	typeLabel := self newLabel.
 	typeList := self newDropList.
 	acceptButton := self newButton.
 		
 	messageLabel label: 'Comment'.
-	messageText 	whenBuiltDo: [ :this | this widget withGhostText: self messageGhostText ].
+	messageText
+		autoAccept: true;
+		placeholder: self messageGhostText.
 	typeLabel label: 'Merge type'.
-	acceptButton label: 'Accept pull request'.
-	acceptButton action: [ self accept ].
+	acceptButton
+		label: 'Accept pull request';
+		action: [ self accept ].
 
 ]
 

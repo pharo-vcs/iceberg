@@ -81,11 +81,13 @@ IceTipCommentPanel >> initializePresenters [
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
-		ifTrue: [ pushCheckbox
+		ifTrue: [
+			pushCheckbox
 				label: ('Push changes to {1}' format: {self repositoryRemoteName});
 				state: IceTipCommitSettings pushOnCommit;
 				whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ] ]
-		ifFalse: [ pushCheckbox
+		ifFalse: [
+			pushCheckbox
 				label: 'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
 	saveCheckbox
@@ -95,12 +97,14 @@ IceTipCommentPanel >> initializePresenters [
 
 	commentText := self newText
 		autoAccept: true;
-		whenBuiltDo: [ :ann | ann widget withGhostText: 'A comment for your commit' ].
+		placeholder: 'A comment for your commit';
+		yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be commited or merged in the default branch'.
 	fixesLabel := self newLabel
 		label: 'Fixes #';
-		help: fixesHelpString.
+		help: fixesHelpString;
+		yourself.
 	fixesField := self newNumberInput
 		autoAccept: true;
 		help: fixesHelpString;
