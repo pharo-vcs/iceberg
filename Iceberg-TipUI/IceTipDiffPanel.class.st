@@ -8,7 +8,7 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : #IceTipDiffPanel,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'model',
 		'diffPanel',
@@ -29,12 +29,8 @@ IceTipDiffPanel class >> defaultSpec [
 
 { #category : #'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
-	^ self on: (IceTipCommitDiffModel on: aDiff)
-]
 
-{ #category : #specs }
-IceTipDiffPanel class >> title [
-	^ 'Diff'
+	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
 { #category : #accessing }
@@ -192,4 +188,10 @@ IceTipDiffPanel >> selectionChanged: ann [
 IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #specs }
+IceTipDiffPanel >> titleForWindow [
+
+	^ 'Diff'
 ]

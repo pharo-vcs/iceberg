@@ -3,7 +3,7 @@ I'm a dialog to select a list of anything (used by branches now).
 "
 Class {
 	#name : #IceGitHubRemoveBranchesModel,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'selectedItems',
 		'listPanel',
@@ -16,35 +16,21 @@ Class {
 }
 
 { #category : #specs }
-IceGitHubRemoveBranchesModel class >> buttonLabel [
-	^ 'Select'
-]
-
-{ #category : #api }
-IceGitHubRemoveBranchesModel class >> defaultExtent [ 
-	^ 550@500
-]
-
-{ #category : #specs }
 IceGitHubRemoveBranchesModel class >> defaultSpec [
-	<spec>
-	^ SpBoxLayout newVertical
-		add: #listPanel;
-		add: #selectButton
-			withConstraints: [ :constraints | constraints height: self buttonHeight ];
-		yourself
-]
 
-{ #category : #specs }
-IceGitHubRemoveBranchesModel class >> title [
-	^ 'Select...'
+	^ SpBoxLayout newVertical
+		  add: #listPanel;
+		  add: #selectButton
+		  withConstraints: [ :constraints | 
+			  constraints height: self buttonHeight ];
+		  yourself
 ]
 
 { #category : #actions }
 IceGitHubRemoveBranchesModel >> confirmSelection [
-	acceptBlock ifNotNil: [ 
-		acceptBlock value: selectedItems ].
-	self window delete
+
+	acceptBlock ifNotNil: [ acceptBlock value: selectedItems ].
+	self closeWindow
 ]
 
 { #category : #api }
@@ -53,19 +39,23 @@ IceGitHubRemoveBranchesModel >> displayBlock: aBlock [
 	displayBlock := aBlock
 ]
 
-{ #category : #api }
-IceGitHubRemoveBranchesModel >> initialExtent [
-	^ self class defaultExtent
+{ #category : #initialization }
+IceGitHubRemoveBranchesModel >> initialExtentForWindow [
+
+	^ 550 @ 500
 ]
 
 { #category : #initialization }
 IceGitHubRemoveBranchesModel >> initialize [
+
 	selectedItems := Set new.
-	super initialize.
+	super initialize
 ]
 
 { #category : #initialization }
-IceGitHubRemoveBranchesModel >> initializeWidgets [
+IceGitHubRemoveBranchesModel >> initializePresenters [
+
+	super initializePresenters.
 	listPanel := self newTable.
 	selectButton := self newButton.
 	listPanel
@@ -84,61 +74,50 @@ IceGitHubRemoveBranchesModel >> initializeWidgets [
 			(SpStringTableColumn
 				evaluated: [ :branch | self timeSinceLastCommit: branch ]).
 	selectButton
-		label: self class buttonLabel;
+		label: 'Select';
 		action: [ self confirmSelection ].
-	self focusOrder
-		add: listPanel;
-		add: selectButton
-]
 
-{ #category : #initialization }
-IceGitHubRemoveBranchesModel >> initializeWindow: aWindowPresenter [
-	super initializeWindow: aWindowPresenter.
-	aWindowPresenter title: ('Select branches to remove on remote {1}' format: {self remote name})
 ]
 
 { #category : #api }
 IceGitHubRemoveBranchesModel >> items: aCollection [
+
 	self listPanel items: aCollection
 ]
 
 { #category : #'accessing ui' }
 IceGitHubRemoveBranchesModel >> listPanel [
-	^ listPanel
-]
 
-{ #category : #'accessing ui' }
-IceGitHubRemoveBranchesModel >> listPanel: anObject [
-	listPanel := anObject
+	^ listPanel
 ]
 
 { #category : #events }
 IceGitHubRemoveBranchesModel >> onAccept: aBlock [
+
 	acceptBlock := aBlock
 ]
 
 { #category : #accessing }
 IceGitHubRemoveBranchesModel >> remote [
+
 	^ remote
 ]
 
 { #category : #accessing }
 IceGitHubRemoveBranchesModel >> remote: anObject [
+
 	remote := anObject
 ]
 
 { #category : #'accessing ui' }
 IceGitHubRemoveBranchesModel >> selectButton [
-	^ selectButton
-]
 
-{ #category : #'accessing ui' }
-IceGitHubRemoveBranchesModel >> selectButton: anObject [
-	selectButton := anObject
+	^ selectButton
 ]
 
 { #category : #api }
 IceGitHubRemoveBranchesModel >> selectLabel: aString [
+
 	self selectButton label: aString
 ]
 
@@ -149,4 +128,11 @@ IceGitHubRemoveBranchesModel >> timeSinceLastCommit: branch [
 	lastCommitDate := 	((((branch at: 'commit') at: 'commit')
 		at: 'author') at: 'date')asDateAndTime.
 		^ '{1} days' format: {(Date today - lastCommitDate) days}
+]
+
+{ #category : #initialization }
+IceGitHubRemoveBranchesModel >> titleForWindow [
+
+	^ 'Select branches to remove on remote {1}' format:
+		  { self remote name }
 ]

@@ -1,3 +1,6 @@
+"
+I'm a panel to show and/or manipulate a project definition in a BitBucket git repository.
+"
 Class {
 	#name : #IceTipBitbucketRepositoryPanel,
 	#superclass : #IceTipGitProviderRepositoryPanel,

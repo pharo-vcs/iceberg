@@ -1,3 +1,6 @@
+"
+I'm a SpPresenter that is prepared to be wrapped in a window (or a dialog). The way it is prepared is through a system of hooks (template method pattern), but also providing some convenience API.
+"
 Class {
 	#name : #IceTipSpPresenter,
 	#superclass : #SpPresenter,

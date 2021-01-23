@@ -114,6 +114,7 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePresenters [
 
+	super initializePresenters.
 	filterInput := self newTextInput.
 	packagesTable := self newTable.
 	self initializePackagesTable.

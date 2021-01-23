@@ -36,7 +36,7 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 
 { #category : #specs }
 IceGitHubPullRequestDetailModel class >> defaultSpec [
-	<spec>
+
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
@@ -142,6 +142,8 @@ IceGitHubPullRequestDetailModel >> iconForStatus: status [
 
 { #category : #initialization }
 IceGitHubPullRequestDetailModel >> initializePresenters [
+
+	super initializePresenters.
 
 	urlLabel := self newLabel label: 'Url'.
 	authorLabel := self newLabel label: 'Author'.

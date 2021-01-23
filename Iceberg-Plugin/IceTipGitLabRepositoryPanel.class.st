@@ -1,3 +1,6 @@
+"
+I'm a panel to show and/or manipulate a project definition in a GitLab git repository.
+"
 Class {
 	#name : #IceTipGitLabRepositoryPanel,
 	#superclass : #IceTipGitProviderRepositoryPanel,

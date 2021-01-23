@@ -55,6 +55,7 @@ IceTipActionPanel >> initialize [
 { #category : #initialization }
 IceTipActionPanel >> initializePresenters [
 
+	super initializePresenters.
 	actionsButtonBar := self newButtonBar 
 
 ]

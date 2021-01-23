@@ -34,6 +34,7 @@ IceTipWorkingCopyStatusBar >> canTakeKeyboardFocus [
 { #category : #initialization }
 IceTipWorkingCopyStatusBar >> initializePresenters [
 
+	super initializePresenters.
 	branchLabel := self newLabel.
 	commitLink := self newLink.
 	statusLabel := self newLabel

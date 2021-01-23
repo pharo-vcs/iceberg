@@ -90,6 +90,7 @@ IceTipBrowser >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
 { #category : #commands }
 IceTipBrowser >> connectPresenters [
 
+	super connectPresenters.
 	self mainList whenSelectionChangedDo: [
 		| rootGroup |
 		rootGroup := self rootCommandsGroup.

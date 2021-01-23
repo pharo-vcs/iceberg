@@ -9,6 +9,7 @@ Class {
 
 { #category : #actions }
 IceTipDirectoryPresenter >> chooseReference [
+
 	^ UIManager default 
 		chooseDirectory: self chooseTitle 
 		path: self location

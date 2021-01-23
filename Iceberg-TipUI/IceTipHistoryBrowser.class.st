@@ -46,7 +46,6 @@ IceTipHistoryBrowser class >> defaultSpec [
 
 { #category : #specs }
 IceTipHistoryBrowser class >> panelSpec [
-	<spec>
 	
 	^ SpPanedLayout newVertical
 		add: #commitList;

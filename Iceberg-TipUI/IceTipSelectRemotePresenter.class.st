@@ -45,6 +45,8 @@ IceTipSelectRemotePresenter >> icon [
 { #category : #initialization }
 IceTipSelectRemotePresenter >> initializePresenters [
 
+	super initializePresenters.
+
 	remoteLabel := self newLabel
 		label: 'Remote:';
 		yourself.

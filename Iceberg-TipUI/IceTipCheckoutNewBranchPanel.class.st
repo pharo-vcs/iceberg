@@ -81,6 +81,7 @@ IceTipCheckoutNewBranchPanel >> initializeCurrentBranchLabel [
 { #category : #initialization }
 IceTipCheckoutNewBranchPanel >> initializePresenters [
 
+	super initializePresenters.
 	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel
 		               label: 'New branch';
@@ -89,6 +90,7 @@ IceTipCheckoutNewBranchPanel >> initializePresenters [
 		                   autoAccept: true;
 		                   placeholder: 'e.g., feature/what';
 		                   yourself.
+
 ]
 
 { #category : #testing }

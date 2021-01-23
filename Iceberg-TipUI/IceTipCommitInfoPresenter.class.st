@@ -64,6 +64,7 @@ IceTipCommitInfoPresenter >> diffFromHead [
 
 { #category : #initialization }
 IceTipCommitInfoPresenter >> initialize [
+
 	self beForCommit.
 	super initialize
 ]
@@ -85,12 +86,12 @@ IceTipCommitInfoPresenter >> initializeCommitPanel [
 ]
 
 { #category : #initialization }
-IceTipCommitInfoPresenter >> initializeWidgets [
+IceTipCommitInfoPresenter >> initializePresenters [
 
+	super initializePresenters.
 	notebookPanel := self newNotebook.
 	self initializeCommitPanel.
-	
-	self focusOrder add: notebookPanel
+
 ]
 
 { #category : #'private factory' }
@@ -119,15 +120,6 @@ IceTipCommitInfoPresenter >> newInfoPage [
 		provider: [ self commitInfo ]
 ]
 
-{ #category : #'private factory' }
-IceTipCommitInfoPresenter >> newInfoTab [
-	^ self newTab 
-		label: 'Info';
-		icon: (self iconNamed: #smallQuestion);
-		closeable: false;
-		yourself
-]
-
 { #category : #accessing }
 IceTipCommitInfoPresenter >> refresh [
 	
@@ -140,21 +132,25 @@ IceTipCommitInfoPresenter >> refresh [
 
 { #category : #private }
 IceTipCommitInfoPresenter >> refreshDiffFromAncestor [
+
 	ancestorTabContainer updateContentsOn: selectedModel
 ]
 
 { #category : #private }
 IceTipCommitInfoPresenter >> refreshDiffFromAncestorLabel [
+
 	ancestorTabContainer updateLabelOn: selectedModel
 ]
 
 { #category : #private }
 IceTipCommitInfoPresenter >> refreshDiffFromHead [
+
 	headTabContainer updateContentsOn: selectedModel
 ]
 
 { #category : #private }
 IceTipCommitInfoPresenter >> refreshDiffFromHeadLabel [
+
 	headTabContainer updateLabelOn: selectedModel
 ]
 
@@ -167,5 +163,6 @@ IceTipCommitInfoPresenter >> selectedModel: aModel [
 
 { #category : #initialization }
 IceTipCommitInfoPresenter >> setModelBeforeInitialization: anObject [
+
 	model := anObject
 ]

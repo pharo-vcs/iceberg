@@ -4,7 +4,7 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',
@@ -34,11 +34,6 @@ IceTipCommentPanel class >> defaultSpec [
 				   yourself)
 		  height: self inputTextHeight;
 		  add: #actionButtonBar height: self buttonHeight
-]
-
-{ #category : #specs }
-IceTipCommentPanel class >> title [
-	^ 'Comment'
 ]
 
 { #category : #accessing }
@@ -81,6 +76,8 @@ IceTipCommentPanel >> fixesLabel [
 IceTipCommentPanel >> initializePresenters [
 
 	| fixesHelpString |
+	super initializePresenters.
+
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
 	self repositoryModel branchModel hasUpstream
@@ -197,4 +194,10 @@ IceTipCommentPanel >> saveCheckbox [
 IceTipCommentPanel >> setModelBeforeInitialization: aRepositoryModel [
 
 	repositoryModel := aRepositoryModel
+]
+
+{ #category : #specs }
+IceTipCommentPanel >> titleForWindow [
+
+	^ 'Comment'
 ]

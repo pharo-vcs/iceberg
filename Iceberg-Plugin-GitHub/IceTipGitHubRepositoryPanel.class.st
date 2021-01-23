@@ -1,5 +1,5 @@
 "
-I'm a presenter to define a new remote repository from a github repository (owner/project).
+I'm a presenter to define a new remote repository from a GitHub repository (owner/project).
 
 "
 Class {

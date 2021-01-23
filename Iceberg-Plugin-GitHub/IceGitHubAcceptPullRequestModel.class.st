@@ -3,7 +3,7 @@ I'm a dialog for collecting data to accept a pull request.
 "
 Class {
 	#name : #IceGitHubAcceptPullRequestModel,
-	#superclass : #SpPresenter,
+	#superclass : #IceTipSpPresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',
@@ -15,14 +15,9 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #accessing }
-IceGitHubAcceptPullRequestModel class >> availableTypes [
-	^ #('merge' 'squash' 'rebase')
-]
-
 { #category : #specs }
 IceGitHubAcceptPullRequestModel class >> defaultSpec [
-	<spec>
+
 	^ SpBoxLayout newVertical
 		add:
 			(SpBoxLayout newHorizontal
@@ -44,57 +39,51 @@ IceGitHubAcceptPullRequestModel class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #accessing }
-IceGitHubAcceptPullRequestModel class >> defaultType [
-	^ 'merge'
-]
-
-{ #category : #accessing }
-IceGitHubAcceptPullRequestModel class >> messageGhostText [
-	^ 'Commit title
-
-Add an optional extented description'
-]
-
-{ #category : #specs }
-IceGitHubAcceptPullRequestModel class >> title [
-	^ 'Accept pull request'
-]
-
 { #category : #actions }
 IceGitHubAcceptPullRequestModel >> accept [
-	acceptBlock ifNotNil: [ 
-		acceptBlock cull: self ].
-	
-	self window delete
+
+	acceptBlock ifNotNil: [ acceptBlock cull: self ].
+
+	self closeWindow
 ]
 
 { #category : #'accessing ui' }
 IceGitHubAcceptPullRequestModel >> acceptButton [
+
 	^ acceptButton
 ]
 
-{ #category : #'accessing ui' }
-IceGitHubAcceptPullRequestModel >> acceptButton: anObject [
-	acceptButton := anObject
+{ #category : #accessing }
+IceGitHubAcceptPullRequestModel >> availableTypes [
+
+	^ #( 'merge' 'squash' 'rebase' )
+]
+
+{ #category : #initialization }
+IceGitHubAcceptPullRequestModel >> connectPresenters [
+	super connectPresenters.
+	self typeList
+		items: self availableTypes;
+		display: [ :each | each ];
+		selectItem: self defaultType
+]
+
+{ #category : #accessing }
+IceGitHubAcceptPullRequestModel >> defaultType [
+
+	^ 'merge'
 ]
 
 { #category : #api }
-IceGitHubAcceptPullRequestModel >> initialExtent [
-	^ (500@250) scaledByDisplayScaleFactor
+IceGitHubAcceptPullRequestModel >> initialExtentForWindow [
+
+	^ (500 @ 250) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceGitHubAcceptPullRequestModel >> initializePresenter [
-	super initializePresenter.
-	self typeList
-		items: self class availableTypes;
-		display: [ :each | each ];
-		selectItem: self class defaultType
-]
+IceGitHubAcceptPullRequestModel >> initializePresenters [
 
-{ #category : #initialization }
-IceGitHubAcceptPullRequestModel >> initializeWidgets [
+	super initializePresenters.
 	messageLabel := self newLabel.
 	messageText := self newText autoAccept: true.
 	typeLabel := self newLabel.
@@ -102,40 +91,37 @@ IceGitHubAcceptPullRequestModel >> initializeWidgets [
 	acceptButton := self newButton.
 		
 	messageLabel label: 'Comment'.
-	messageText 	whenBuiltDo: [ :this | this widget withGhostText: self class messageGhostText ].
+	messageText 	whenBuiltDo: [ :this | this widget withGhostText: self messageGhostText ].
 	typeLabel label: 'Merge type'.
 	acceptButton label: 'Accept pull request'.
 	acceptButton action: [ self accept ].
-	
-	self focusOrder 
-		add: messageText;
-		add: typeList;
-		add: acceptButton
+
 ]
 
 { #category : #accessing }
 IceGitHubAcceptPullRequestModel >> message [
+
 	^ self messageText text asString
+]
+
+{ #category : #accessing }
+IceGitHubAcceptPullRequestModel >> messageGhostText [
+
+	^ 'Commit title
+
+Add an optional extented description'
 ]
 
 { #category : #'accessing ui' }
 IceGitHubAcceptPullRequestModel >> messageLabel [
+
 	^ messageLabel
 ]
 
 { #category : #'accessing ui' }
-IceGitHubAcceptPullRequestModel >> messageLabel: anObject [
-	messageLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubAcceptPullRequestModel >> messageText [
-	^ messageText
-]
 
-{ #category : #'accessing ui' }
-IceGitHubAcceptPullRequestModel >> messageText: anObject [
-	messageText := anObject
+	^ messageText
 ]
 
 { #category : #events }
@@ -143,27 +129,26 @@ IceGitHubAcceptPullRequestModel >> onAccept: aBlock [
 	acceptBlock := aBlock
 ]
 
+{ #category : #specs }
+IceGitHubAcceptPullRequestModel >> titleForWindow [
+
+	^ 'Accept pull request'
+]
+
 { #category : #accessing }
 IceGitHubAcceptPullRequestModel >> type [
+
 	^ self typeList selectedItem
 ]
 
 { #category : #'accessing ui' }
 IceGitHubAcceptPullRequestModel >> typeLabel [
+
 	^ typeLabel
 ]
 
 { #category : #'accessing ui' }
-IceGitHubAcceptPullRequestModel >> typeLabel: anObject [
-	typeLabel := anObject
-]
-
-{ #category : #'accessing ui' }
 IceGitHubAcceptPullRequestModel >> typeList [
-	^ typeList
-]
 
-{ #category : #'accessing ui' }
-IceGitHubAcceptPullRequestModel >> typeList: anObject [
-	typeList := anObject
+	^ typeList
 ]

@@ -1,3 +1,10 @@
+"
+I'm a panel to show and/or manipulate a project definition in a git remote repository.
+
+I'm an abstract class, and my concrete subclasses define the particularities
+for each provider.
+
+"
 Class {
 	#name : #IceTipGitProviderRepositoryPanel,
 	#superclass : #IceTipGitRepositoryPanel,
@@ -166,9 +173,9 @@ IceTipGitProviderRepositoryPanel >> validate [
 
 	self
 		assert: self userName isNotEmpty
-		description: 'You must enter a GitHub username.'.
+		description: 'You must enter a GitHub owner (e.g. username).'.
 	self
 		assert: self projectName isNotEmpty
-		description: 'You must enter a GitHub project.'.
+		description: 'You must enter a GitHub project name.'.
 	super validate
 ]

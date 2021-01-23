@@ -172,6 +172,8 @@ IceGitHubTipPullRequestBrowser >> initializeDiff [
 { #category : #initialization }
 IceGitHubTipPullRequestBrowser >> initializePresenters [
 
+	super initializePresenters.
+
 	commitLabel := self newLabel.
 	commits := self newTable.
 	diff := self instantiate: IceTipCommitInfoPresenter.
@@ -187,6 +189,7 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 	rejectButton label: 'Reject pull request'; icon: (self iconNamed: #testRed).
 
 	self refresh.
+
 ]
 
 { #category : #'accessing ui' }

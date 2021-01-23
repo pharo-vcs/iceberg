@@ -77,6 +77,8 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initializePresenters [
 
+	super initializePresenters.
+
 	credentialsList := self newTable.
 	self initializeCredentialsList.
 
