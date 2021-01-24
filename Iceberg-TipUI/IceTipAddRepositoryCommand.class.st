@@ -32,6 +32,12 @@ IceTipAddRepositoryCommand >> iconName [
 	^ #add
 ]
 
+{ #category : #accessing }
+IceTipAddRepositoryCommand >> shortcutKey [
+
+	^ $n meta
+]
+
 { #category : #testing }
 IceTipAddRepositoryCommand >> shouldBeDisplayedOnRightSideInToolbar [
 

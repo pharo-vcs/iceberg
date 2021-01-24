@@ -41,6 +41,12 @@ IceTipSettingsCommand >> iconName [
 ]
 
 { #category : #accessing }
+IceTipSettingsCommand >> shortcutKey [
+
+	^ $n meta
+]
+
+{ #category : #accessing }
 IceTipSettingsCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

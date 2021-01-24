@@ -37,3 +37,9 @@ IceTipFetchCommand >> iconName [
 
 	^ #smallUpdate
 ]
+
+{ #category : #accessing }
+IceTipFetchCommand >> shortcutKey [
+
+	^ $s meta
+]
