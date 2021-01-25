@@ -167,21 +167,6 @@ IceTipDiffPanel >> selectionChanged [
 			right: itemValue leftContents ]
 ]
 
-{ #category : #'event handling' }
-IceTipDiffPanel >> selectionChanged: ann [
-
-	| element |
-	self flag: #todo. "FIX low level accesds"
-	(ann newSelectedIndexes reject: [ :each | each = 0 ])
-		ifNotEmpty: [ :indexes | 
-			element := iceNodesTree widget dataSource realElementAt: indexes first.
-			self
-				diffContentsLeft: element value rightContents
-				right: element value leftContents ]
-		ifEmpty: [ self resetDiffContents ]
-
-]
-
 { #category : #initialization }
 IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 
