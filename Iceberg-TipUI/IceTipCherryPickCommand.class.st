@@ -16,6 +16,13 @@ IceTipCherryPickCommand class >> defaultName [
 	^ 'Cherrypick'
 ]
 
+{ #category : #testing }
+IceTipCherryPickCommand >> canBeExecuted [
+
+	self flag: #pharoTodo. "TODO: Still not ready"
+	^ false
+]
+
 { #category : #execution }
 IceTipCherryPickCommand >> execute [
 
