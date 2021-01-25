@@ -101,8 +101,8 @@ IceTipVersionHistoryBrowser >> initializeCommitList [
 				evaluated: #descriptionWithDecoration;
 				yourself).
 				
-	commitList whenSelectionChangedDo: [ :s |
-		self selectionChanged: s ].
+	commitList whenSelectionChangedDo: [ :aSelection |
+		self selectionChanged: aSelection selectedItem ].
 
 ]
 
@@ -222,9 +222,9 @@ IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 ]
 
 { #category : #'event handling' }
-IceTipVersionHistoryBrowser >> selectionChanged: aSelection [
+IceTipVersionHistoryBrowser >> selectionChanged: aSelectedItem [
 
-	selectedModel := aSelection selectedItem.
+	selectedModel := aSelectedItem.
 	self refreshCommitTabPanel
 ]
 
