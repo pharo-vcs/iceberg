@@ -68,10 +68,8 @@ IceTipDiffSelectingPanel >> initialize [
 IceTipDiffSelectingPanel >> refresh [
 
 	super refresh.
-	self model treeRoots
-		do: [ :root | 
-			checkedIceNodes add: root.
-			root allChildrenDo: [ :child | checkedIceNodes add: child ] ]
+	self model treeRoots do: [ :root |
+		root withAllChildrenDo: [ :each | checkedIceNodes add: each ] ]
 ]
 
 { #category : #accessing }
