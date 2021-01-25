@@ -37,11 +37,9 @@ IceTipDiffPanel class >> onDiff: aDiff [
 IceTipDiffPanel >> basicRefresh [
 
 	self resetDiffContents.
-	iceNodesTree roots: self model treeRoots.
-
-	self flag: #fix. "Low level access"
-	self defer: [
-		iceNodesTree adapter widget dataSource expandAll ]
+	iceNodesTree
+		roots: self model treeRoots;
+		expandAll
 ]
 
 { #category : #initialization }
