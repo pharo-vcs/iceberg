@@ -82,10 +82,23 @@ IceTipDiffPanel >> diffPanel [
 	^ diffPanel
 ]
 
+{ #category : #private }
+IceTipDiffPanel >> entryRemoved: ann [
+
+	self refresh
+]
+
 { #category : #'accessing ui' }
 IceTipDiffPanel >> iceNodesTree [
 
 	^ iceNodesTree
+]
+
+{ #category : #initialization }
+IceTipDiffPanel >> initialize [
+
+	super initialize.
+	self subscribeToAnnouncements.
 ]
 
 { #category : #initialization }
@@ -171,6 +184,15 @@ IceTipDiffPanel >> selectionChanged [
 IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #initialize }
+IceTipDiffPanel >> subscribeToAnnouncements [
+
+	self announcer
+		when: IceTipDiffEntryRemoved 
+		send: #entryRemoved:
+		to: self	
 ]
 
 { #category : #specs }

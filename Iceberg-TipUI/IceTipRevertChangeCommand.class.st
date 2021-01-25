@@ -39,3 +39,10 @@ IceTipRevertChangeCommand >> iconName [
 
 	^ #smallUndo
 ]
+
+{ #category : #execution }
+IceTipRevertChangeCommand >> tool [
+	"We consider the diffPanel of the context as our tool. This is important because we have to announce in the same Announcer instance that is subscribed for our news."
+
+	^ super tool diffPanel
+]

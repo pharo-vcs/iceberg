@@ -46,17 +46,10 @@ IceTipDiffSelectingPanel >> changeListColumn [
 		yourself
 ]
 
-{ #category : #private }
-IceTipDiffSelectingPanel >> entryRemoved: ann [
-
-	self refresh
-]
-
 { #category : #initialization }
 IceTipDiffSelectingPanel >> initialize [
 
 	super initialize.
-	self subscribeToAnnouncements.
 	checkedIceNodes := Set new.
 	self model treeRoots do: [ :root |
 		checkedIceNodes add: root.
@@ -84,13 +77,4 @@ IceTipDiffSelectingPanel >> refreshCheckbox [
 IceTipDiffSelectingPanel >> selectedItems [
 
 	^ checkedIceNodes
-]
-
-{ #category : #initialize }
-IceTipDiffSelectingPanel >> subscribeToAnnouncements [
-
-	self announcer
-		when: IceTipDiffEntryRemoved 
-		send: #entryRemoved:
-		to: self	
 ]

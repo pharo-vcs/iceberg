@@ -64,17 +64,10 @@ IceTipMergeSelectingPanel >> codePanel [
 	^ codePanel
 ]
 
-{ #category : #private }
-IceTipMergeSelectingPanel >> entryRemoved: ann [
-
-	self refresh
-]
-
 { #category : #initialization }
 IceTipMergeSelectingPanel >> initialize [
 
 	super initialize.
-	self subscribeToAnnouncements.
 	checkedIceNodes := Set new.
 	self model treeRoots do: [ :root | 
 		root withAllChildrenDo: [ :child | 
@@ -83,17 +76,10 @@ IceTipMergeSelectingPanel >> initialize [
 ]
 
 { #category : #initialization }
-IceTipMergeSelectingPanel >> initializeCodePanel [
-
-	codePanel text: ''
-]
-
-{ #category : #initialization }
 IceTipMergeSelectingPanel >> initializePresenters [
 
-	codePanel := self newCode.
-	self initializeCodePanel.
 	super initializePresenters.
+	codePanel := self newCode.
 
 ]
 
@@ -101,11 +87,9 @@ IceTipMergeSelectingPanel >> initializePresenters [
 IceTipMergeSelectingPanel >> refresh [
 
 	super refresh.
-	self model treeRoots
-		do: [ :root | 
-			checkedIceNodes add: root.
-			root allChildrenDo: [ :child | checkedIceNodes add: child ] ];
-		refreshCodePanel 
+	self model treeRoots do: [ :root |
+		root withAllChildrenDo: [ :each | checkedIceNodes add: each ] ].
+	self refreshCodePanel 
 ]
 
 { #category : #private }
@@ -130,13 +114,4 @@ IceTipMergeSelectingPanel >> selectionChanged [
 
 	super selectionChanged.
 	self refreshCodePanel.
-]
-
-{ #category : #initialize }
-IceTipMergeSelectingPanel >> subscribeToAnnouncements [
-
-	self announcer
-		when: IceTipDiffEntryRemoved 
-		send: #entryRemoved:
-		to: self
 ]
