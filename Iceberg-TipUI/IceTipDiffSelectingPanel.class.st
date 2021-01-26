@@ -18,6 +18,19 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
+{ #category : #private }
+IceTipDiffSelectingPanel >> activateItem: iceNode [
+		
+	checkedIceNodes add: iceNode.
+	iceNode children isEmptyOrNil ifTrue: [ ^ self ].
+
+	iceNode allChildrenDo: [ :child |
+		checkedIceNodes add: child ].
+
+	self refreshCheckbox
+
+]
+
 { #category : #initialization }
 IceTipDiffSelectingPanel >> changeListColumn [
 
@@ -26,17 +39,8 @@ IceTipDiffSelectingPanel >> changeListColumn [
 			(SpCheckBoxTableColumn new
 				width: 20;
 				evaluated: [ :iceNode | checkedIceNodes includes: iceNode ];
-				onActivation: [ :iceNode | 
-					checkedIceNodes add: iceNode.
-					iceNode children isEmptyOrNil
-						ifFalse: [ iceNode allChildrenDo: [ :child | checkedIceNodes add: child ].
-							self refreshCheckbox ] ];
-				onDeactivation: [ :iceNode | 
-					checkedIceNodes remove: iceNode.
-					iceNode children isEmptyOrNil
-						ifFalse: [ iceNode
-								allChildrenDo: [ :child | checkedIceNodes remove: child ifAbsent: [  ] ].
-							self refreshCheckbox. ] ]);
+				onActivation: [ :iceNode | self activateItem: iceNode ];
+				onDeactivation: [ :iceNode | self deactivateItem: iceNode ]);
 		addColumn:
 			(SpImageTableColumn new
 				width: 20;
@@ -44,6 +48,18 @@ IceTipDiffSelectingPanel >> changeListColumn [
 				yourself);
 		addColumn: self changeDescriptionColumn;
 		yourself
+]
+
+{ #category : #private }
+IceTipDiffSelectingPanel >> deactivateItem: iceNode [
+		
+	checkedIceNodes remove: iceNode.
+	iceNode children isEmptyOrNil ifTrue: [ ^ self ].
+
+	iceNode allChildrenDo: [ :child |
+		checkedIceNodes remove: child ifAbsent: [  ] ].
+
+	self refreshCheckbox.
 ]
 
 { #category : #initialization }

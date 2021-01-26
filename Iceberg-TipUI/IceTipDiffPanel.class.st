@@ -82,12 +82,6 @@ IceTipDiffPanel >> diffPanel [
 	^ diffPanel
 ]
 
-{ #category : #private }
-IceTipDiffPanel >> entryRemoved: ann [
-
-	self refresh
-]
-
 { #category : #'accessing ui' }
 IceTipDiffPanel >> iceNodesTree [
 
@@ -191,8 +185,9 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 
 	self announcer
 		when: IceTipDiffEntryRemoved 
-		send: #entryRemoved:
-		to: self	
+		send: #refresh
+		to: self
+
 ]
 
 { #category : #specs }
