@@ -91,7 +91,7 @@ IceTipOptionDialog >> initializeTypeList [
 
 	typeList
 		hideColumnHeaders;
-		addColumn: ((SpImageTableColumn evaluated: #icon) width: 20);
+		addColumn: ((SpImageTableColumn evaluated: #iconForWindow) width: 20);
 		addColumn: (SpStringTableColumn evaluated: #titleForWindow);
 		whenSelectionChangedDo: [ :selection | 
 			self selectionChanged: selection selectedItem ];
