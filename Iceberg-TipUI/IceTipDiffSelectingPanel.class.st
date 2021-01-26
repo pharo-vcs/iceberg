@@ -69,8 +69,7 @@ IceTipDiffSelectingPanel >> refresh [
 IceTipDiffSelectingPanel >> refreshCheckbox [
 	"Refresh after a checkbox state has changed. When a node with children changes this state, all children might change too. That's the reason of this special refresh. When a leave node changed such state, this refresh is redundant."
 
-	self flag: #fix. "Low level access"
-	iceNodesTree adapter widget refresh
+	iceNodesTree refresh
 ]
 
 { #category : #accessing }
