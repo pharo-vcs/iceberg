@@ -102,7 +102,7 @@ IceTipHistoryBrowser >> initializeCommitList [
 			((SpStringTableColumn evaluated: #descriptionWithDecoration)
 				title: 'Description';
 				yourself);
-		whenSelectionChangedDo: [ commitInfoTabs selectedModel: self selectedCommit ]
+		whenSelectionChangedDo: [ :aSelection | self selectionChanged: aSelection selectedItem ]
 
 ]
 
@@ -155,14 +155,9 @@ IceTipHistoryBrowser >> selectedCommit [
 ]
 
 { #category : #'event handling' }
-IceTipHistoryBrowser >> selectionChanged: ann [
+IceTipHistoryBrowser >> selectionChanged: anElement [
 
-	commitInfoTabs selectedModel:
-		(ann newSelectedIndexes
-			 ifNotEmpty: [ :indexes | 
-				 self commitList widget dataSource elementAt: indexes first ]
-			 ifEmpty: [ nil ])
-
+	commitInfoTabs selectedModel: anElement
 ]
 
 { #category : #initialization }
