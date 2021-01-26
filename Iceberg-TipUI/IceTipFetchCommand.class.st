@@ -41,5 +41,5 @@ IceTipFetchCommand >> iconName [
 { #category : #accessing }
 IceTipFetchCommand >> shortcutKey [
 
-	^ $s meta
+	^ $f meta
 ]
