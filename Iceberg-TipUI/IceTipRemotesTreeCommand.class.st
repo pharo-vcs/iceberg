@@ -34,5 +34,5 @@ IceTipRemotesTreeCommand >> actsOnTag: aTagModel [
 { #category : #execution }
 IceTipRemotesTreeCommand >> canBeExecuted [
 
-	^ self item canActivateCommand: self
+	^ self hasSelectedItem and: [ self item canActivateCommand: self ]
 ]
