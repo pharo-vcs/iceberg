@@ -119,6 +119,7 @@ IceTipDiffPanel >> initializePresenters [
 IceTipDiffPanel >> initializeTree [
 
 	iceNodesTree
+		hideColumnHeaders;
 		addColumn: self changeListColumn;
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ self selectionChanged ].
