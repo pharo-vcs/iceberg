@@ -4,7 +4,7 @@ I open a pull view window.
 "
 Class {
 	#name : #IceTipPullCommand,
-	#superclass : #IceTipRemoteActionCommand2,
+	#superclass : #IceTipRemoteActionCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
