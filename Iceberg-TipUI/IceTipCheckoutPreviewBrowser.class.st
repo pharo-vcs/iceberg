@@ -24,8 +24,8 @@ IceTipCheckoutPreviewBrowser class >> defaultSpec [
 				   add: #checkoutStrategyList;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: #diffPanel height: 300;
-		  add: #actionPanel;
+		  add: #diffPanel expand: true;
+		  add: #actionPanel height: self inputTextHeight;
 		  yourself
 ]
 
@@ -75,7 +75,9 @@ IceTipCheckoutPreviewBrowser >> initializePresenters [
 		leftLabel: 'Working Copy';
 		rightLabel: 'Checkout ' , model targetName.
 	
-	checkoutStrategyLabel := self newLabel label: 'How to checkout:'; yourself.
+	checkoutStrategyLabel := self newLabel
+		label: 'How to checkout:';
+		yourself.
 	checkoutStrategyList := self newDropList.
 	self initializeCheckoutStrategyList.
 
