@@ -217,14 +217,13 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuHasPackagesOptionEnabled 
 
 { #category : #'tests - context menu' }
 IceTipRepositoriesBrowserTest >> testListHasContextMenuHasRepairRepositoryOptionDisabled [
-	
+
 	| menu |
-	
 	presenter repositoryList selectIndex: 1.
 	menu := presenter repositoryList contextMenu value.
-	
-	self assert: (menu defaultGroup menuItems at: 2) name equals: 'Repair repository'.
-	self deny: (menu defaultGroup menuItems at: 2) isEnabled
+
+	self deny: (menu defaultGroup menuItems anySatisfy: [ :each | 
+			 each name = IceTipRepairCommand defaultName ])
 ]
 
 { #category : #'tests - context menu' }
