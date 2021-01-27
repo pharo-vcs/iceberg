@@ -1,7 +1,6 @@
 # Iceberg
 
-[![Travis Build Status](https://travis-ci.org/pharo-vcs/iceberg.svg?branch=master)](https://travis-ci.org/pharo-vcs/iceberg)
-[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/github/pharo-vcs/iceberg?svg=true)](https://ci.appveyor.com/project/pharo-vcs/iceberg)  
+[![Travis Build Status](https://travis-ci.com/pharo-vcs/iceberg.svg?branch=dev-1.9)](https://travis-ci.com/pharo-vcs/iceberg)
 
 
 Iceberg is the main toolset for handling [VCS](https://en.wikipedia.org/wiki/Version_control) in Pharo.
