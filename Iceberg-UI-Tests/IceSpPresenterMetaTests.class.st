@@ -94,11 +94,12 @@ IceSpPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 
 { #category : #tests }
 IceSpPresenterMetaTests >> testDoNotForgetToSendSuper [
-	"We do not want to forget to send super on these methods, because each presenter in the hierarchy needs to
-	initialze the sub-presenters it defines."
+	"We do not want to forget to send super on these methods, because each 
+	presenter in the hierarchy needs to initialze the sub-presenters it defines."
 
 	self assertSendSuperAllMethodsNamed: #initializePresenters isMeta: false.
 	self assertSendSuperAllMethodsNamed: #connectPresenters isMeta: false.
+	self assertSendSuperAllMethodsNamed: #initialize isMeta: false.
 ]
 
 { #category : #tests }
