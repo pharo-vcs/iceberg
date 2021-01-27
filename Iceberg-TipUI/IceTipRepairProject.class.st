@@ -1,3 +1,6 @@
+"
+I'm an action to repair a project, which is useful when it answers true to #isUnborn.
+"
 Class {
 	#name : #IceTipRepairProject,
 	#superclass : #IceTipRepairAction,

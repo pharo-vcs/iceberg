@@ -1,3 +1,6 @@
+"
+I'm a command that makes a working copy to recalculate the dirty packages (via #forceCalculateDirtyPackages).
+"
 Class {
 	#name : #IceTipCalculateDirtyPackagesCommand,
 	#superclass : #IceTipRepositoryCommand,

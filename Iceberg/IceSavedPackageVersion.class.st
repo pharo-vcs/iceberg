@@ -14,7 +14,6 @@ Class {
 		'entry',
 		'info',
 		'commit',
-		'originatingCommit',
 		'package'
 	],
 	#category : #'Iceberg-Core'

@@ -5,8 +5,6 @@ Class {
 	#name : #IceOperation,
 	#superclass : #Object,
 	#instVars : [
-		'diff',
-		'modifiedNode',
 		'definition'
 	],
 	#category : #'Iceberg-Changes'

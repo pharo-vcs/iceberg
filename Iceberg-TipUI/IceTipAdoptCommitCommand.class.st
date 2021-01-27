@@ -1,3 +1,9 @@
+"
+I'm a command that sets a commit as the commit of a working copy. 
+
+I won't modify the loaded code, but will calculate the differences between the
+loaded packages and the new commit, to mark packages as dirty.
+"
 Class {
 	#name : #IceTipAdoptCommitCommand,
 	#superclass : #IceTipRepositoryCommand,

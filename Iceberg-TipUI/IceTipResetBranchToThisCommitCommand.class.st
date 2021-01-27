@@ -1,3 +1,6 @@
+"
+I'm a command to reset the selected branch to the selected commit. It does not modify the working copy.
+"
 Class {
 	#name : #IceTipResetBranchToThisCommitCommand,
 	#superclass : #IceTipRepositoryCommand,

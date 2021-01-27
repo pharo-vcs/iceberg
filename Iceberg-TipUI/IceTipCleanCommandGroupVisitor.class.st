@@ -1,3 +1,7 @@
+"
+I'm a CmVisitor that in one hand, tells each command to be hidden if it can't be executed, and in the other hand, unregisters each group that is empty.
+
+"
 Class {
 	#name : #IceTipCleanCommandGroupVisitor,
 	#superclass : #CmVisitor,
