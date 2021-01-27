@@ -11,16 +11,6 @@ IceTipWorkingCopyBrowserOnDetachedRepoTest >> newFixture [
 ]
 
 { #category : #running }
-IceTipWorkingCopyBrowserOnDetachedRepoTest >> testStatusBarShowsCommit [
-	self skip.
-	self
-		assert:
-			((presenter statusBar leftPanel presenters
-				select: [ :e | e class = SpLabelPresenter ])
-				anySatisfy: [ :aLabel | aLabel label = 'Lala' ])
-]
-
-{ #category : #running }
 IceTipWorkingCopyBrowserOnDetachedRepoTest >> testStatusBarShowsStatusOfRepository [
 
 	self assert:
