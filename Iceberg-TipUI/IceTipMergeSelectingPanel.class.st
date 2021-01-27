@@ -78,8 +78,10 @@ IceTipMergeSelectingPanel >> initialize [
 { #category : #initialization }
 IceTipMergeSelectingPanel >> initializePresenters [
 
-	super initializePresenters.
 	codePanel := self newCode.
+
+	"Super triggers a selection changed that requires that codePanel is already instantiated."
+	super initializePresenters.
 
 ]
 
