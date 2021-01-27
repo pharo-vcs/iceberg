@@ -52,7 +52,7 @@ IceTipWorkingCopyBrowserTest >> testPackageHasBrowseRepositoryVersionOption [
 	| menu |
 	
 	menu := self contextMenuForIndex: 1.
-	self assert: (menu defaultGroup menuItems anySatisfy: [ :e | e name = 'Browse repository version' ])
+	self assert: (menu defaultGroup menuItems anySatisfy: [ :e | e name = 'Browse this version in Monticello' ])
 ]
 
 { #category : #tests }
