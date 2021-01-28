@@ -13,10 +13,5 @@ SmalltalkCISpec {
       #onWarningLog : true,
       #load : [ 'development' ]
      }
-  ],
-  #testing : {
-     #exclude : {
-        #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]
-    }
-  }
+  ]
 }
