@@ -21,6 +21,11 @@ Class {
 { #category : #specs }
 IceTipCommentPanel class >> defaultSpec [
 
+	self flag: #pharoTodo. "FIXES ISSUE NUMBER INPUT is disabled. See below.
+	Reason: for the first stage of merging dev-1.9, we'll keep the diff as simple
+	as possible, to reduce noise in users. (Right now this branch is only a
+	migration from Spec1+Commander1 to Spec2+Commander2)."
+
 	^ SpBoxLayout newVertical
 		  add: (SpBoxLayout newHorizontal
 				   add: #pushCheckbox;
@@ -28,11 +33,11 @@ IceTipCommentPanel class >> defaultSpec [
 				   yourself)
 		  height: self inputTextHeight;
 		  add: #commentText;
-		  add: (SpBoxLayout newHorizontal
+" 		  add: (SpBoxLayout newHorizontal
 				   add: #fixesLabel width: 40;
 				   add: #fixesField;
 				   yourself)
-		  height: self inputTextHeight;
+		  height: self inputTextHeight;"
 		  add: #actionButtonBar height: self buttonHeight
 ]
 
