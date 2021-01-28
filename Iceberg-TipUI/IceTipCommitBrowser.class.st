@@ -116,6 +116,19 @@ IceTipCommitBrowser >> initialize [
 ]
 
 { #category : #initialization }
+IceTipCommitBrowser >> initializeAcceptShortcut [
+
+	self
+		bindKeyCombination: $s meta
+		toAction: [ self accept ].
+		
+	commentPanel commentText
+		bindKeyCombination: $s meta
+		toAction: [ self accept ].
+
+]
+
+{ #category : #initialization }
 IceTipCommitBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -127,9 +140,8 @@ IceTipCommitBrowser >> initializePresenters [
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
 	
-"	self addShortcutsTo: commentPanel commentText.
-	self addShortcutsTo: self.
-"
+	self initializeAcceptShortcut.
+
 ]
 
 { #category : #'accessing ui' }
