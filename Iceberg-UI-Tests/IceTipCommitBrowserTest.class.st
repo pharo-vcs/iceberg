@@ -42,7 +42,7 @@ IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
 	self assert: saveMock timesExecuted equals: 0.
 	
 	presenter commentPanel commentText adapter 
-		keyPressed: $s asciiValue 
+		keyDown: $s asciiValue 
 		shift: false 
 		meta: true
 		control: false
