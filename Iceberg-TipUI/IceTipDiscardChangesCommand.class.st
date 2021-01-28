@@ -22,9 +22,9 @@ IceTipDiscardChangesCommand class >> defaultName [
 { #category : #testing }
 IceTipDiscardChangesCommand >> canBeExecuted [
 
-	^ self context isRepositoryMissing not and: [ 
+	^ self isRepositoryMissing not and: [ 
 		| aCommit |
-		aCommit := self context repositoryModel entity workingCopy referenceCommit.
+		aCommit := self repository workingCopy referenceCommit.
 		aCommit isCollection not and: [ aCommit isUnknownCommit not ] ]
 ]
 

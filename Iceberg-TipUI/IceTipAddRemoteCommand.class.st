@@ -20,6 +20,13 @@ IceTipAddRemoteCommand class >> defaultName [
 ]
 
 { #category : #execution }
+IceTipAddRemoteCommand >> canBeExecuted [
+	"Any repository can have more remotes."
+
+	^ true
+]
+
+{ #category : #execution }
 IceTipAddRemoteCommand >> execute [
 
 	(IceTipAddRemoteDialog on: self repositoryModel) openDialogWithSpec
