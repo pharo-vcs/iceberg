@@ -33,6 +33,16 @@ IceTipDiffPanel class >> onDiff: aDiff [
 	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
+{ #category : #initialization }
+IceTipDiffPanel >> applyWorkaroundToFixLayout [
+
+	self flag: #pharoTodo. "See https://github.com/pharo-spec/Spec/issues/984"
+	self defer: [ 
+		self update.
+		iceNodesTree expandAll ].
+
+]
+
 { #category : #accessing }
 IceTipDiffPanel >> basicRefresh [
 
@@ -40,6 +50,8 @@ IceTipDiffPanel >> basicRefresh [
 	iceNodesTree
 		roots: self model treeRoots;
 		expandAll
+		
+
 ]
 
 { #category : #initialization }
@@ -111,8 +123,9 @@ IceTipDiffPanel >> initializePresenters [
 	self initializeTree.
 	self initializeDiffPanel.
 
-	self basicRefresh
+	self basicRefresh.
 
+	self applyWorkaroundToFixLayout.
 ]
 
 { #category : #initialization }
