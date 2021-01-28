@@ -39,6 +39,8 @@ IceTipCommitBrowserTest >> tearDown [
 { #category : #tests }
 IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
 	
+	self assert: saveMock timesExecuted equals: 0.
+	
 	presenter commentPanel commentText adapter 
 		keyPressed: $s asciiValue 
 		shift: false 
@@ -46,9 +48,7 @@ IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
 		control: false
 		option: false. 
 
-	self
-		assert: self repository branch commit comment
-		equals: 'my super commit message'
+	self assert: saveMock timesExecuted equals: 1.
 ]
 
 { #category : #tests }
