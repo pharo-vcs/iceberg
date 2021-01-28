@@ -154,7 +154,7 @@ IceTipWorkingCopyBrowser >> packagesTable [
 { #category : #accessing }
 IceTipWorkingCopyBrowser >> refresh [
 
-	self rebuildToolbar.
+	self refreshCommands.
 	self refreshStatusBar.
 	self refreshPackagesTable.
 

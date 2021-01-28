@@ -129,7 +129,7 @@ IceTipRepositoryBrowser >> mainList [
 { #category : #accessing }
 IceTipRepositoryBrowser >> refresh [
 
-	self rebuildToolbar.
+	self refreshCommands.
 	self sidebarTree selection unselectAll.
 	self sidebarTree roots: self model repositoryModelsByGroup.
 	self selectCurrentBranch

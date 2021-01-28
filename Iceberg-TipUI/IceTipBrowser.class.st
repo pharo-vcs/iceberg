@@ -79,32 +79,10 @@ IceTipBrowser class >> selectionExtraCommandGroupName [
 ]
 
 { #category : #initialization }
-IceTipBrowser >> addToolbarIfNotEmptyIn: aSpWindowPresenter [
-
-	aSpWindowPresenter ifNil: [ ^ self ].
-	toolbar := self newToolbarForWindow.
-
-	toolbar isEmpty ifFalse: [ aSpWindowPresenter toolbar: toolbar ]
-]
-
-{ #category : #commands }
 IceTipBrowser >> connectPresenters [
 
 	super connectPresenters.
-	self mainList whenSelectionChangedDo: [
-		| rootGroup |
-		rootGroup := self rootCommandsGroup.
-		IceTipCleanCommandGroupVisitor new visit: rootGroup.
-
-		rootGroup installShortcutsIn: self.
-		
-		rootGroup
-			commandOrGroupNamed: self class selectionCommandGroupName
-			ifFound: [ :subgroup |
-				self mainList contextMenuFromCommandsGroup: subgroup ]
-		].
-
-
+	self mainList whenSelectionChangedDo: [ self refreshCommands ]
 ]
 
 { #category : #initialization }
@@ -143,7 +121,7 @@ IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
 	super initializeWindow: aSpWindowPresenter.
 
-	self addToolbarIfNotEmptyIn: aSpWindowPresenter.
+	self refreshCommands. "This adds the toolbar, if not empty."
 
 ]
 
@@ -166,26 +144,65 @@ IceTipBrowser >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #commands }
-IceTipBrowser >> newToolbarForWindow [
-
-	^ (self rootCommandsGroup / self class generalCommandGroupName)
-		  beRoot;
-		  asToolbarPresenterWith: [ :presenter | 
-			  presenter
-				  displayMode: SpToolbarDisplayMode modeIconAndLabel;
-				  addStyle: 'stToolbar' ]
-]
-
-{ #category : #initialization }
-IceTipBrowser >> rebuildToolbar [
-
-	self addToolbarIfNotEmptyIn: self window
-]
-
 { #category : #accessing }
 IceTipBrowser >> refresh [
 	"Update the UI elements given a possible update in the model."
+]
+
+{ #category : #commands }
+IceTipBrowser >> refreshCommands [
+
+	| rootGroup |
+	rootGroup := self rootCommandsGroup.
+	IceTipCleanCommandGroupVisitor new visit: rootGroup.
+
+	self
+		refreshShortcutsWith: rootGroup;
+		refreshMainListContextMenuWith: rootGroup;
+		refreshToolbarWith: rootGroup.
+
+]
+
+{ #category : #commands }
+IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
+	"Update context menu (for mainList)."
+
+	rootGroup
+		commandOrGroupNamed: self class selectionCommandGroupName
+		ifFound: [ :subgroup |
+			self mainList contextMenuFromCommandsGroup: subgroup ].
+]
+
+{ #category : #commands }
+IceTipBrowser >> refreshShortcutsWith: rootGroup [
+	"Update shortcuts with available commands"
+
+	rootGroup installShortcutsIn: self
+
+]
+
+{ #category : #commands }
+IceTipBrowser >> refreshToolbarWith: rootGroup [
+	"Update toolbar (in window)."
+
+	self hasWindow ifFalse: [ ^ self ].
+	toolbar := nil.
+
+	rootGroup
+		commandOrGroupNamed: self class generalCommandGroupName
+		ifFound: [ :subgroup | 
+			| builder |
+			subgroup beRoot.
+			builder := IceTipToolbarPresenterBuilder new.
+			builder visit: subgroup.
+
+			builder toolbarPresenter
+				displayMode: SpToolbarDisplayMode modeIconAndLabel;
+				addStyle: 'stToolbar'.
+			builder toolbarPresenter isEmpty ifFalse: [
+				toolbar := builder toolbarPresenter ] ].
+
+	self window toolbar: toolbar
 ]
 
 { #category : #accessing }
@@ -195,7 +212,7 @@ IceTipBrowser >> repositoryModel [
 	^ self model repositoryModel
 ]
 
-{ #category : #commands }
+{ #category : #accessing }
 IceTipBrowser >> selectedItem [
 	"Answer the object selected in the main list of this browser. The answer is nil when there isn't a selection."
 

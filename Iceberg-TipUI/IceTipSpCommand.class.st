@@ -33,6 +33,12 @@ IceTipSpCommand >> displayIn: aMenuGroupOrPresenter do: aBlock [
 		do: aBlock
 ]
 
+{ #category : #displaying }
+IceTipSpCommand >> ifVisible: aBlock [
+
+	self displayStrategy ifVisible: self do: aBlock
+]
+
 { #category : #'presenter building' }
 IceTipSpCommand >> initialize [
 
