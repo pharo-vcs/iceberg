@@ -12,9 +12,11 @@ jobs:
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - uses: hpi-swa/setup-smalltalkCI@v1
+      - name: Setup smalltalkCI
+        uses: hpi-swa/setup-smalltalkCI@v1
         with:
           smalltalk-version: ${{ matrix.smalltalk }}
-      - run: smalltalkci -s ${{ matrix.smalltalk }}
+      - name: Load Image and Run Tests
+        run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 30
