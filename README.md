@@ -13,33 +13,43 @@ Iceberg also provides some plugins for smooth and fast integration with common a
 
 ## Documentation
 
-We count with a [wiki](https://github.com/pharo-vcs/iceberg/wiki) section on this GitHub repository.
-
-**Getting Started?** Check the 5 minutes tutorial [in our wiki](https://github.com/pharo-vcs/iceberg/wiki/Tutorial).
-
-
-## Contributions
-
-To contribute with **source code** to this project, please fork and create a pull request.
-Please find below the instructions to install the development branch.
-
-The same procedure applies for **documentation**, since the wiki contents are deployed by CI when master branch changes: the markdown files in `/doc` are copied to the wiki. 
-The entry point for changes is the [documentation home page](docs/Home.md).
+Please refer to the [Wiki section](https://github.com/pharo-vcs/iceberg/wiki).
+Getting Started? Check the 5 minutes tutorial [in our wiki](https://github.com/pharo-vcs/iceberg/wiki/Tutorial).
 
 
-## Installation (development)
+## Contributions to Source Code
 
-Since Iceberg is included in Pharo (from 6.0), the installation of another version involves an update.
-Such update can be non-trivial because it may involve updating dependencies that affect the code loading itself (LibGit2, for example). 
+Since Iceberg is included in Pharo (from 6.0), contributors normally propose changes to this project with the final motivation of getting them to be merged into a version of Pharo (either Pharo-development or -stable).
+
+To do that, it's needed to create a pull request to one of the following branches:
+- For Pharo-stable, use the `master` branch.
+- For Pharo-development, use the latest `dev-` branch.
+
+### Installation
+
+Loading Iceberg in Pharo is more difficult than updating other projects -that just use a "Metacello script"- since normally Metacello will rely on Iceberg to update Iceberg.
+
 That's the reason to have [a bash update script](/scripts/testUpdateIceberg.sh) that performs some pre- and post-load actions.
-
+Steps to use it:
 1. Open a terminal
-2. clone this repository
-3. `cd scripts`
-4. `testUpdateIceberg.sh --dev`
+2. Clone this repository and checkout the right branch
+3. Execute `./scripts/testUpdateIceberg.sh --dev`
 
-In the case of Windows, we know it worked in the MING64 Bash Console that comes with git-for-windows.
+About Windows platform, we know it worked in the MING64 Bash Console that came by installing git (around 2020).
 
+## Contributions to Wiki
+ 
+We count with [a bash script](scripts/sync-wiki.sh) that deploys the markdown files in `doc/` directory to the Wiki section.
+The entry point for the wiki is the [Home page](docs/Home.md).
+
+A while ago, Travis CI executed such bash script each time the `master` branch changed.
+This is not working for the moment, but contributors can execute the following command in a terminal:
+
+```
+export GH_TOKEN=<<TOKEN>> && ./scripts/sync-wiki.sh
+```
+
+where `<<TOKEN>>` is a [GitHub Personal Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) with repo:write permissions on this repository.
 
 ## License
 
