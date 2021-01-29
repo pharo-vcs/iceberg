@@ -1,8 +1,5 @@
 # Iceberg
 
-[![Travis Build Status](https://travis-ci.com/pharo-vcs/iceberg.svg?branch=dev-1.9)](https://travis-ci.com/pharo-vcs/iceberg)
-
-
 Iceberg is the main toolset for handling [VCS](https://en.wikipedia.org/wiki/Version_control) in Pharo.
 
 More concretely, Iceberg provides tools to checkout, commit, merge and other common operations in git repositories, all directly from the image.
