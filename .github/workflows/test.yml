@@ -3,6 +3,9 @@ name: Run All Tests
 on:
   push:
     branches: [ dev-1.9 ]
+    paths-ignore:
+    - 'README.md'
+    - 'docs/**'
   pull_request:
     branches: [ dev-1.9 ]
   # Allows you to run this workflow manually from the Actions tab
@@ -11,6 +14,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         smalltalk: [ Pharo64-9.0 ]
         os: [ ubuntu-latest, macos-latest, windows-latest ]
