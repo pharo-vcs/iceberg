@@ -10,11 +10,8 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
-    name: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    name: Update Iceberg in Pharo (only loading, no tests running)
     steps:
       - uses: actions/checkout@v2
       - run: scripts/testUpdateIceberg.sh
