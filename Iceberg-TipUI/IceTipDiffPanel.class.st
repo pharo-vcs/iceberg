@@ -76,6 +76,13 @@ IceTipDiffPanel >> changeListColumn [
 
 ]
 
+{ #category : #initialization }
+IceTipDiffPanel >> connectPresenters [ 
+
+	super connectPresenters.
+	self applyWorkaroundToFixLayout.
+]
+
 { #category : #private }
 IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 
@@ -125,7 +132,6 @@ IceTipDiffPanel >> initializePresenters [
 
 	self basicRefresh.
 
-	self applyWorkaroundToFixLayout.
 ]
 
 { #category : #initialization }
@@ -194,7 +200,7 @@ IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 IceTipDiffPanel >> subscribeToAnnouncements [
 
 	self announcer
