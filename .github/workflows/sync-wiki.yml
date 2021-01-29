@@ -1,0 +1,20 @@
+name: Sync Wiki
+
+# Ignored. To make it work, we would need a secret named GH_PERSONAL_ACCESS_TOKEN with a Github personal access token with "repo" authorization.
+# Inspired in: https://github.com/marketplace/actions/publish-to-github-wiki
+
+on:
+  push:
+    branches-ignore:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploy GitHub Wiki from sources
+    steps:
+      - run: ./scripts/sync-wiki.sh
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        shell: bash
+        timeout-minutes: 5
