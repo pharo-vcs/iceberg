@@ -37,7 +37,7 @@ Class {
 		'directory',
 		'command'
 	],
-	#category : #'Iceberg-GitCommand'
+	#category : #'Iceberg-Tests'
 }
 
 { #category : #accessing }
