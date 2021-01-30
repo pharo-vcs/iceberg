@@ -37,9 +37,7 @@ IceTipDiffPanel class >> onDiff: aDiff [
 IceTipDiffPanel >> applyWorkaroundToFixLayout [
 
 	self flag: #pharoTodo. "See https://github.com/pharo-spec/Spec/issues/984"
-	self defer: [ 
-		self update.
-		iceNodesTree expandAll ].
+	iceNodesTree defer: [ iceNodesTree expandAll ].
 
 ]
 
@@ -47,11 +45,8 @@ IceTipDiffPanel >> applyWorkaroundToFixLayout [
 IceTipDiffPanel >> basicRefresh [
 
 	self resetDiffContents.
-	iceNodesTree
-		roots: self model treeRoots;
-		expandAll
-		
-
+	iceNodesTree roots: self model treeRoots.
+	self applyWorkaroundToFixLayout.
 ]
 
 { #category : #initialization }
@@ -105,9 +100,7 @@ IceTipDiffPanel >> initialize [
 
 	super initialize.
 	self subscribeToAnnouncements.
-	
-	self whenDisplayDo: [
-		self applyWorkaroundToFixLayout ]
+
 ]
 
 { #category : #initialization }
@@ -139,13 +132,6 @@ IceTipDiffPanel >> initializeTree [
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ self selectionChanged ].
 
-]
-
-{ #category : #initialization }
-IceTipDiffPanel >> initializeWindow: w [
-
-	super initializeWindow: w.
-	self applyWorkaroundToFixLayout.
 ]
 
 { #category : #accessing }
