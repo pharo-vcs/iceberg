@@ -105,6 +105,9 @@ IceTipDiffPanel >> initialize [
 
 	super initialize.
 	self subscribeToAnnouncements.
+	
+	self whenDisplayDo: [
+		self applyWorkaroundToFixLayout ]
 ]
 
 { #category : #initialization }
@@ -136,6 +139,13 @@ IceTipDiffPanel >> initializeTree [
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ self selectionChanged ].
 
+]
+
+{ #category : #initialization }
+IceTipDiffPanel >> initializeWindow: w [
+
+	super initializeWindow: w.
+	self applyWorkaroundToFixLayout.
 ]
 
 { #category : #accessing }
