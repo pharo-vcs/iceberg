@@ -76,13 +76,6 @@ IceTipDiffPanel >> changeListColumn [
 
 ]
 
-{ #category : #initialization }
-IceTipDiffPanel >> connectPresenters [ 
-
-	super connectPresenters.
-	self applyWorkaroundToFixLayout.
-]
-
 { #category : #private }
 IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 
