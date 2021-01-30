@@ -31,7 +31,8 @@ IceTipWorkingCopyBrowserTest >> setUp [
 { #category : #running }
 IceTipWorkingCopyBrowserTest >> tearDown [
 
-	presenter hasWindow ifTrue: [ presenter window close ].
+	presenter ifNotNil: [ 
+		presenter hasWindow ifTrue: [ presenter window close ] ].
 	super tearDown
 ]
 
