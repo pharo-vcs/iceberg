@@ -11,13 +11,15 @@ Class {
 { #category : #specs }
 IceTipMergeSelectingPanel class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
-		  add: #iceNodesTree width: 200;
+	^ SpPanedLayout newHorizontal
+		  position: 25 percent;
+		  add: #iceNodesTree;
 		  add: (SpBoxLayout newVertical
 				   add: #diffPanel;
 				   add: #codePanel;
 				   yourself);
 		  yourself
+
 ]
 
 { #category : #accessing }
