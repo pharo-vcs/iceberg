@@ -17,9 +17,14 @@ jobs:
       fail-fast: false
       matrix:
         smalltalk: [ Pharo64-9.0 ]
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        os: [ ubuntu-latest, macos-latest ]
+        ston: [ .smalltalk.ston ]
+        include:
+          - smalltalk: Pharo64-9.0
+            os: windows-latest
+            ston: .smalltalk.no.metacellotests.ston
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
+    name: ${{ matrix.smalltalk }} on ${{ matrix.os }} with ${{ matrix.ston }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup smalltalkCI
@@ -27,6 +32,6 @@ jobs:
         with:
           smalltalk-version: ${{ matrix.smalltalk }}
       - name: Load Image and Run Tests
-        run: smalltalkci -s ${{ matrix.smalltalk }}
+        run: smalltalkci -s ${{ matrix.smalltalk }} ${{ matrix.ston }}
         shell: bash
         timeout-minutes: 30
