@@ -1,24 +1,19 @@
-# Welcome to Iceberg!
+# Welcome to Iceberg
 
 Iceberg is a set of tools that allow developers to handle git repositories directly from a Pharo image.
 
+Next, we organize links to topics according to the reader's intention:
 
-## Background
-
-For the last 20 years, many different flavours of Smalltalk have used Monticello as a simple but powerful distributed version control system. 
-
-In the past decade, newer distributing versioning systems such as Git and Mercurial have become extremely popular and, although Monticello still has lots of fans and is very functional, there is an increasing view in the community that we should leverage the convenience of these more widely known systems. 
-
-While there are several tools that already allow Smalltalk code to be committed into such code repositories (most frequently: git), none of them has yet reached the maturity to replace Monticello. Iceberg was born as a project to bring these ideas together and fix this for Pharo!
-
-
-## Index
-
-- [F.A.Q. (Frequently Asked Questions)](FAQ)
-- [Contributing to Iceberg](Contributing-to-Iceberg)
-- [How to Help](How-to-help-us,-What-you-could-contribute)
-- [Glossary](Iceberg-glossary)
-- [Branching and Merging](Branching-and-Merging)
-- [Recovering Code](Recovering-Code)
-- [Working Copies](The-Working-Copy(ies))
-- [Loading Baselines (Metacello Support)](Metacello-Support)
+* For Users:
+  - [Tutorial: Getting Started](Tutorial)
+  - [Tutorial: Hotfixes](Metacello-Support)
+  - [Loading Baselines (Metacello Support)](Metacello-Support)
+  - [Glossary](Iceberg-glossary)
+  - [F.A.Q. (Frequently Asked Questions)](FAQ)
+  - [Advanced: Recovering Code Manually](Recovering-Code)
+  - [History (Background)](Background.md)
+* For Contributors:
+  - [Contributing to Iceberg](Contributing-to-Iceberg)
+  - [How to Help? A List of Missing Features](How-to-help-us,-What-you-could-contribute)
+  - [Discussion: Working Copies?](The-Working-Copy(ies))
+  - [Discussion: Branching and Merging](Branching-and-Merging)

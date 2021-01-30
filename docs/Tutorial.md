@@ -1,4 +1,4 @@
-## Getting Started
+## Getting Started Tutorial
 
 This page will get you through the process of getting started with Iceberg.
 We will assume some (although not a lot) knowledge on Git, but it should be fairly straight-forward.
