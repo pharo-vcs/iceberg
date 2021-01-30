@@ -35,17 +35,8 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
 			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
-			
 			"for testing"
-			for: #MacOS do: [ 
-				self osSubprocess: spec.
-				spec package: 'Iceberg-GitCommand' with: [ spec requires: #('OSSubprocess') ] ];
-			for: #Unix do: [ 
-				self osSubprocess: spec.
-				spec package: 'Iceberg-GitCommand' with: [ spec requires: #('OSSubprocess' ) ] ];
-			for: #Windows do: [ 
-				self processWrapper: spec.
-				spec package: 'Iceberg-GitCommand' with: [ spec requires: #('ProcessWrapper') ] ];
+			package: 'Iceberg-GitCommand';
 			"groups"
 			group: 'default' with: #(
 				minimal 
@@ -93,14 +84,6 @@ BaselineOfIceberg >> libgit: spec [
 		with: [ spec loads: #('tests') ]
 ]
 
-{ #category : #baseline }
-BaselineOfIceberg >> osSubprocess: spec [
-	spec 
-		baseline: 'OSSubprocess' 
-		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.3.0/repository' ]
-
-]
-
 { #category : #script }
 BaselineOfIceberg >> postLoad [
 
@@ -123,16 +106,6 @@ BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	(Smalltalk at: #Iceberg)
 		bootstrapWithCommitId: repository commitId
 		packageList: aSpec packageNames
-]
-
-{ #category : #baseline }
-BaselineOfIceberg >> processWrapper: spec [
-	spec 
-		configuration: 'ProcessWrapper' 
-		with: [ 
-			spec
-				versionString: '1.2';
-				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]				
 ]
 
 { #category : #accessing }

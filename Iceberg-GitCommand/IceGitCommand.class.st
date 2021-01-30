@@ -37,7 +37,7 @@ Class {
 		'directory',
 		'command'
 	],
-	#category : 'Iceberg-GitCommand'
+	#category : #'Iceberg-GitCommand'
 }
 
 { #category : #accessing }
@@ -101,71 +101,34 @@ IceGitCommand >> gitCommand [
 
 { #category : #running }
 IceGitCommand >> run [
-	"Dispatch depending on the platform. Copied from MCFileTreeGitRepository."
 
-	UIManager default
-		informUserDuring: [ :bar | 
-			bar label: self gitCommand , ' ' , (' ' join: self command).
-			Smalltalk platform isWin32
-				ifTrue: [ ^ self runProcessWrapperGitCommand ]
-				ifFalse: [ ^ self runOSSubprocessGitCommand ]]
-]
-
-{ #category : #running }
-IceGitCommand >> runOSSubprocessGitCommand [
-	| classOfOSSUnixSubprocess |
-	classOfOSSUnixSubprocess := Smalltalk at: #OSSUnixSubprocess.
-	classOfOSSUnixSubprocess new
-		command: self gitCommand;
-		arguments:
-			{'-C'. (MCFileTreeFileUtils current directoryPathString: self directory)}, 
-			self command;
-		redirectStdout;
-		redirectStderr;
-		runAndWaitPollingEvery: (Delay forMilliseconds: 5)
-			retrievingStreams: true
-			onExitDo: [ :cmd :outString :errString | 
-			cmd isSuccess
-				ifTrue: [ ^ outString ]
-				ifFalse: [ Error new signal: 'Git error: ' , (errString ifEmpty: outString) ] ]
+	UIManager default informUserDuring: [ :bar | 
+		bar label: self gitCommand , ' ' , (' ' join: self command).
+		self runLibCGitCommand ]
 
 ]
 
 { #category : #running }
-IceGitCommand >> runProcessWrapperGitCommand [
+IceGitCommand >> runLibCGitCommand [
+
+	| exitCode aCommandString |
 	"Enclose all parameters with double quotes to protect."
+	aCommandString := String streamContents: [ :stream | 
+		                  stream
+			                  nextPutAll: self gitCommand;
+			                  nextPutAll: ' -C "';
+			                  nextPutAll:
+				                  (MCFileTreeFileUtils current 
+					                   directoryPathString: self directory);
+			                  nextPutAll: '" '.
+		                  self command do: [ :e | 
+			                  stream
+				                  nextPut: $";
+				                  nextPutAll: e;
+				                  nextPutAll: '" ' ] ].
 
-	| r aCommandString |
-	aCommandString := String
-		streamContents: [ :stream | 
-			self command
-				do: [ :e | 
-					stream
-						nextPut: $";
-						nextPutAll: e;
-						nextPutAll: '" ' ] ].
-	(Smalltalk at: #ProcessWrapper ifAbsent: [ self error: 'Please load ProcessWrapper' ])
-		ifNotNil: [ :pW | 
-			| cmd |
-			cmd := pW new.
-			cmd useStdout.
-			cmd useStderr.
-			self assert: (cmd startWithCommand:
-					self gitCommand , ' -C "'
-						,
-							(MCFileTreeFileUtils current directoryPathString: self directory)
-						, '" ' , aCommandString).
-			cmd waitForExit.
-			self assert: cmd isRunning not.
-			r := cmd upToEnd.
-			cmd exitCode > 0
-				ifTrue:
-					[ 
-					| errorString |
-					errorString := cmd errorUpToEnd.
-					errorString notEmpty
-						ifTrue:
-							[ Error signal: 'Git error: ' , errorString ].
-					r := '' ] ].
-	^ r
+	exitCode := LibC runCommand: aCommandString.
+
+	exitCode > 0 ifTrue: [ 
+		Error signal: 'Shell git error (but message was lost)' ]
 ]
