@@ -15,7 +15,7 @@ SmalltalkCISpec {
   ],
   #testing : {
      #exclude : {
-        #classes : [ ],
+        #classes : [ #'IceTipWorkingCopyBrowserWithRemoteTest', #'IceTipCommitBrowserTestWithRemoteSet' ],
         #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]
     }
   }
