@@ -59,5 +59,8 @@ Metacello new
 Iceberg-Plugin-Calypso in this repository."
 {ClyBrowseIcebergCommitCommand.
 ClyBrowseIcebergPackageCommand.
-ClyBrowseIcebergRepositoryCommand} do: #removeFromSystem.
+ClyBrowseIcebergRepositoryCommand} do: [ :each |
+    Smalltalk globals
+        at: each
+        ifPresent: #removeFromSystem ].
 
