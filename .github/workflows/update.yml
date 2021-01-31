@@ -1,19 +1,12 @@
-name: Update in Pharo
+name: Update Test
 
-on:
-  push:
-    branches: [ dev-1.9 ]
-  pull_request:
-    branches: [ dev-1.9 ]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
-    name: Update Iceberg in Pharo (only loading, no tests running)
     steps:
       - uses: actions/checkout@v2
-      - run: scripts/testUpdateIceberg.sh
+      - run: scripts/testUpdateIceberg.sh --dev
         shell: bash
         timeout-minutes: 15
