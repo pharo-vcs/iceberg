@@ -7,7 +7,6 @@ SmalltalkCISpec {
       #baseline : 'Iceberg',
       #platforms : [ #pharo ],
       #ignoreImage : true,
-      #load : [ 'default' ],
       #onConflict : #useIncoming,
       #onUpgrade : #useIncoming,
       #onWarningLog : true,
@@ -16,7 +15,7 @@ SmalltalkCISpec {
   ],
   #testing : {
      #exclude : {
-        #classes : [ #IceTipWorkingCopyBrowserWithRemoteTest, #IceTipCommitBrowserTestWithRemoteSet ],
+        #classes : [ ],
         #packages : [ 'Iceberg-Tests-MetacelloIntegration' ]
     }
   }
