@@ -6,7 +6,9 @@ Class {
 
 { #category : #tests }
 IceCherryPickBrowserTest >> testWindowOnMethodConflict [
+
 	| commitToCherryPick presenter |
+	self timeLimit: 1 minute.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
