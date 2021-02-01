@@ -53,13 +53,6 @@ IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 		beCached
 ]
 
-{ #category : #'backward compatibility' }
-IceTipVersionHistoryBrowser class >> repository: repository method: method [ 
-	"The Calypso command uses this selector to instantiate the browser."
-
-	^ self onRepository: repository method: method
-]
-
 { #category : #accessing }
 IceTipVersionHistoryBrowser >> commitList [
 
@@ -189,14 +182,6 @@ IceTipVersionHistoryBrowser >> newVersionInfoPresenter [
 	
 	selectedModel ifNil: [ ^ self ].
 	^ IceTipReadOnlyFormBuilder newBuiltFor: selectedModel info
-]
-
-{ #category : #'backward compatibility' }
-IceTipVersionHistoryBrowser >> open [
-	"Calypso's ClyIcebergShowMethodVersionCommand uses this selector to open the browser."
-	<deprecated>
-
-	^ self openWithSpec
 ]
 
 { #category : #accessing }
