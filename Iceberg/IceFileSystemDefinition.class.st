@@ -42,7 +42,7 @@ IceFileSystemDefinition >> path [
 
 { #category : #accessing }
 IceFileSystemDefinition >> path: anObject [
-self haltIf: [ anObject == nil ].
+
 	path := anObject
 ]
 
