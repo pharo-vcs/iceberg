@@ -18,10 +18,10 @@ IceTipCachedModel class >> for: anObject [
 	^ self basicNew initializeObject: anObject
 ]
 
-{ #category : #accessing }
-IceTipCachedModel >> = aObject [ 
-	self species ~= aObject species
-	ifTrue: [^ false].
+{ #category : #comparing }
+IceTipCachedModel >> = aObject [
+
+	self species ~= aObject species ifTrue: [ ^ false ].
 	^ self realObject = aObject realObject
 ]
 
@@ -51,6 +51,7 @@ IceTipCachedModel >> forwardMessage: aMessage [
 
 { #category : #comparing }
 IceTipCachedModel >> hash [
+
 	^ self realObject hash
 ]
 
