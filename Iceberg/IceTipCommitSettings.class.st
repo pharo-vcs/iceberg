@@ -13,7 +13,9 @@ Class {
 
 { #category : #accessing }
 IceTipCommitSettings class >> pushOnCommit [
-	^ pushOnCommit ifNil: [ pushOnCommit := false ]
+
+	^ pushOnCommit ifNil: [ 
+		  pushOnCommit := self pushOnCommitDefaultValue ]
 ]
 
 { #category : #accessing }
@@ -22,8 +24,16 @@ IceTipCommitSettings class >> pushOnCommit: aBoolean [
 ]
 
 { #category : #accessing }
+IceTipCommitSettings class >> pushOnCommitDefaultValue [
+
+	^ false
+]
+
+{ #category : #accessing }
 IceTipCommitSettings class >> saveImageOnCommit [
-	^ saveImageOnCommit ifNil: [ saveImageOnCommit := true ]
+
+	^ saveImageOnCommit ifNil: [ 
+		  saveImageOnCommit := self saveImageOnCommitDefaultValue ]
 ]
 
 { #category : #accessing }
@@ -31,8 +41,15 @@ IceTipCommitSettings class >> saveImageOnCommit: aBoolean [
 	saveImageOnCommit := aBoolean 
 ]
 
+{ #category : #accessing }
+IceTipCommitSettings class >> saveImageOnCommitDefaultValue [
+
+	^ true
+]
+
 { #category : #settings }
 IceTipCommitSettings class >> settingsOn: aBuilder [
+
 	<systemsettings>
 	(aBuilder group: #commitPreferences)
 		parent: #Iceberg;
@@ -40,15 +57,19 @@ IceTipCommitSettings class >> settingsOn: aBuilder [
 		target: self;
 		label: 'Commit action settings';
 		description: 'Chose the behavior when you commit something';
-		with: [ (aBuilder setting: #saveImageOnCommit)
+		with: [
+			(aBuilder setting: #saveImageOnCommit)
 				noOrdering;
 				target: self;
+				default: self saveImageOnCommitDefaultValue;
 				label: 'Save the image when commiting';
-				description: 'Check if you want to save the image each time you commit something'.
+				description:
+					'Check if you want to save the image each time you commit something'.
 			(aBuilder setting: #pushOnCommit)
 				noOrdering;
 				target: self;
+				default: self pushOnCommitDefaultValue;
 				label: 'Push when commiting';
 				description:
-					'Check if you want to push your changes each time you commit something'. ]
+					'Check if you want to push your changes each time you commit something' ]
 ]
