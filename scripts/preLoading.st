@@ -54,13 +54,3 @@ Metacello new
     baseline: 'Tonel';
     repository: 'github://pharo-vcs/tonel:v1.0.17';
     load.
-
-"Until merged into Pharo 9, manually remove 3 Calypso commands that now belong to
-Iceberg-Plugin-Calypso in this repository."
-{ClyBrowseIcebergCommitCommand.
-ClyBrowseIcebergPackageCommand.
-ClyBrowseIcebergRepositoryCommand} do: [ :each |
-    Smalltalk globals
-        at: each
-        ifPresent: #removeFromSystem ].
-
