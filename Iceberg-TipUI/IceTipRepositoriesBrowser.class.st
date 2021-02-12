@@ -78,9 +78,9 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 	<worldMenu> 
 	
 	(aBuilder item: #'Iceberg')
-		order: 0.8;
+		order: 1;
 		icon: self iconForWorldMenu;
-		parent: #'Tools';
+		parent: #'Versioning';
 		keyText: 'o, i';
 		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
 		action: [ self new openWithSpec ]
