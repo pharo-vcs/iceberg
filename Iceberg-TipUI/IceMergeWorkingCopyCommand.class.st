@@ -4,7 +4,7 @@ I'm a command to perform a merge  of current image sources with head commit.
 Class {
 	#name : #IceMergeWorkingCopyCommand,
 	#superclass : #IceRepositoryCommand,
-	#category : #'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #execute }

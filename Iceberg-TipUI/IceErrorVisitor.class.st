@@ -4,7 +4,7 @@ I'm a generic error visitor to traverse diferent iceberg errors.
 Class {
 	#name : #IceErrorVisitor,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #visiting }

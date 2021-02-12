@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'remote'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : #'Iceberg-TipUI-Commands'
 }
 
 { #category : #execute }
