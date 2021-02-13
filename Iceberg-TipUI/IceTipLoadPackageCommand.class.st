@@ -30,7 +30,7 @@ IceTipLoadPackageCommand >> execute [
 
 	self packageModel load.
 	Iceberg announcer announce:
-		(IceRepositoryModified for: self repositoryModel entity)
+		(IceRepositoryModified for: self repository)
 ]
 
 { #category : #accessing }
