@@ -44,10 +44,30 @@ IceTipWorkingCopyStatusBar >> initializePresenters [
 IceTipWorkingCopyStatusBar >> model: aModel [
 	"Fill labels from a IceTipWorkingCopyModel."
 
+	aModel shortCommitId
+		ifNil: [ self refreshWithoutCommitId: aModel ]
+		ifNotNil: [ self refreshWithCommitId: aModel ].
+	statusLabel label: aModel status.
+
+]
+
+{ #category : #accessing }
+IceTipWorkingCopyStatusBar >> refreshWithCommitId: aModel [
+
 	branchLabel label: ('{1} at ' format: { aModel branchName }).
 	commitLink
 		label: aModel shortCommitId;
 		help: 'Copy the commit ID to the clipboard';
 		action: [ aModel copyCommitIDToClipboard ].
-	statusLabel label: aModel status
+
+]
+
+{ #category : #accessing }
+IceTipWorkingCopyStatusBar >> refreshWithoutCommitId: aModel [
+
+	branchLabel label: aModel branchName.
+	commitLink
+		label: '';
+		help: '';
+		action: [ ]
 ]
