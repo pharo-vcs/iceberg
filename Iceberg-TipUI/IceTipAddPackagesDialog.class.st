@@ -10,7 +10,7 @@ Class {
 		'packageNameText',
 		'selectedPackages'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
 { #category : #specs }

@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'codePresenter'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #'instance creation' }

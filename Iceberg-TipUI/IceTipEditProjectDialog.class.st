@@ -16,7 +16,7 @@ Class {
 		'messageIcon',
 		'messageText'
 	],
-	#category : #'Iceberg-TipUI-View-Project'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #specs }

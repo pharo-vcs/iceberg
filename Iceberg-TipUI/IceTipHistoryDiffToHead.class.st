@@ -5,7 +5,7 @@ I keep a diff from WorkingCopy to HEAD.
 Class {
 	#name : #IceTipHistoryDiffToHead,
 	#superclass : #IceTipHistoryDiffUpdater,
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #accessing }

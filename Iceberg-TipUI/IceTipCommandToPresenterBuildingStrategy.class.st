@@ -6,7 +6,7 @@ I'm an abstract strategy to build Spec2 buttons wrapping a IceTipSpCommand. My c
 Class {
 	#name : #IceTipCommandToPresenterBuildingStrategy,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Spec2'
 }
 
 { #category : #hook }

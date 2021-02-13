@@ -4,7 +4,7 @@ I'm a model to choose files.
 Class {
 	#name : #IceTipFilePresenter,
 	#superclass : #IceTipLocationPresenter,
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #actions }

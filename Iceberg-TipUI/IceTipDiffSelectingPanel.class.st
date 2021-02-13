@@ -15,7 +15,7 @@ Class {
 	#instVars : [
 		'checkedIceNodes'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #private }

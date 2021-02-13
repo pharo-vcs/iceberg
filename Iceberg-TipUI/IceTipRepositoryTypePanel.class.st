@@ -11,7 +11,7 @@ Class {
 		'remoteInputText',
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-View-RepositoryType'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #accessing }

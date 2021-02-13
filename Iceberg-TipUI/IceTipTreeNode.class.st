@@ -12,7 +12,7 @@ Class {
 		'parent',
 		'icon'
 	],
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #'instance creation' }
