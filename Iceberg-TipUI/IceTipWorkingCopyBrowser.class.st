@@ -18,7 +18,8 @@ Class {
 { #category : #commands }
 IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipCommitCommand.
+	{	IceTipRepairCommand. 	
+		IceTipCommitCommand.
 		IceTipPushCommand.
 		IceTipPullCommand.
 		IceTipFetchCommand.
