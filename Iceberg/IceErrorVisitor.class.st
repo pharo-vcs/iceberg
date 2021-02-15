@@ -1,5 +1,5 @@
 "
-I'm a generic error visitor to traverse diferent iceberg errors.
+I'm a generic visitor for IceError instances. My subclasses can override my methods to specialize handling.
 "
 Class {
 	#name : #IceErrorVisitor,
