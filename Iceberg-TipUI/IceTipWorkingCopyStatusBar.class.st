@@ -36,7 +36,6 @@ IceTipWorkingCopyStatusBar >> initializePresenters [
 
 	super initializePresenters.
 	branchLabel := self newLabel.
-	commitLink := self newLink.
 	statusLabel := self newLabel
 ]
 
@@ -55,6 +54,7 @@ IceTipWorkingCopyStatusBar >> model: aModel [
 IceTipWorkingCopyStatusBar >> refreshWithCommitId: aModel [
 
 	branchLabel label: ('{1} at ' format: { aModel branchName }).
+	commitLink := self newLink.
 	commitLink
 		label: aModel shortCommitId;
 		help: 'Copy the commit ID to the clipboard';
@@ -66,8 +66,6 @@ IceTipWorkingCopyStatusBar >> refreshWithCommitId: aModel [
 IceTipWorkingCopyStatusBar >> refreshWithoutCommitId: aModel [
 
 	branchLabel label: aModel branchName.
-	commitLink
-		label: '';
-		help: '';
-		action: [ ]
+	commitLink := self newNullPresenter.
+
 ]
