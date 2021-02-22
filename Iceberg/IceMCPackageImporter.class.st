@@ -5,7 +5,6 @@ Class {
 	#name : #IceMCPackageImporter,
 	#superclass : #Object,
 	#instVars : [
-		'packageName',
 		'version',
 		'package'
 	],
