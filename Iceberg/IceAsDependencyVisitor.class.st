@@ -2,7 +2,6 @@ Class {
 	#name : #IceAsDependencyVisitor,
 	#superclass : #Object,
 	#instVars : [
-		'currentNode',
 		'cherrypicker'
 	],
 	#category : #'Iceberg-Cherrypicking'

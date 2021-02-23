@@ -2,9 +2,7 @@ Class {
 	#name : #IceBasicProject,
 	#superclass : #IceAbstractProject,
 	#instVars : [
-		'properties',
-		'repository',
-		'repositoryProperties'
+		'properties'
 	],
 	#category : #'Iceberg-Project'
 }

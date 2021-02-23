@@ -10,10 +10,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'parentNode',
-		'sourceSnapshot',
-		'targetSnapshot',
 		'diff',
-		'operation',
 		'version'
 	],
 	#category : #'Iceberg-Changes'
