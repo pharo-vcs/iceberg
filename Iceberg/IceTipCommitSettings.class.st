@@ -2,7 +2,6 @@ Class {
 	#name : #IceTipCommitSettings,
 	#superclass : #Object,
 	#classVars : [
-		'pushOnCommit',
 		'saveImageOnCommit'
 	],
 	#classInstVars : [

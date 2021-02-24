@@ -4,10 +4,7 @@ Emulates other 'file utils' classes by reading from a git repository (its blob, 
 Class {
 	#name : #IceLibgitFiletreeFileUtils,
 	#superclass : #Object,
-	#classVars : [
-		'Current'
-	],
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree'
 }
 
 { #category : #utilities }

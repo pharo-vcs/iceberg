@@ -4,10 +4,7 @@ Emulates other 'file utils' classes by reading from a git repository (its blob, 
 Class {
 	#name : #IceLibgitTonelFileUtils,
 	#superclass : #Object,
-	#classVars : [
-		'Current'
-	],
-	#category : 'Iceberg-Libgit-Tonel'
+	#category : #'Iceberg-Libgit-Tonel'
 }
 
 { #category : #utilities }
