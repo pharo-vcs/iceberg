@@ -20,11 +20,19 @@ IceTipDialog >> cancel [
 	
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
+IceTipDialog >> initializeDialogWindow: aWindow [
+
+	super initializeDialogWindow: aWindow.
+
+	aWindow 
+		  okAction: [ self accept ];
+		  cancelAction: [ self cancel ].
+]
+
+{ #category : #showing }
 IceTipDialog >> openDialogWithSpec [
 
-	^ super openDialogWithSpec
-		  okAction: [ self accept ];
-		  cancelAction: [ self cancel ];
-		  yourself
+	^ self openModalWithSpec
+
 ]
