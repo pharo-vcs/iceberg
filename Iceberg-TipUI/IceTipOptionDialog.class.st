@@ -70,10 +70,11 @@ IceTipOptionDialog >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipOptionDialog >> initializeDialogWindow: aPresenter [
+IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 
-	super initializeDialogWindow: aPresenter.
-	aPresenter okAction: [ self doAccept ]
+	super initializeDialogWindow: aWindowPresenter.
+	aWindowPresenter okAction: [ self doAccept ].
+	aWindowPresenter whenOpenedDo: [ self typeList selectIndex: 1 ]
 ]
 
 { #category : #initialization }
