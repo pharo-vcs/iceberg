@@ -34,6 +34,12 @@ IceTipAskForPlaintextCredentialsModel >> accept [
 ]
 
 { #category : #actions }
+IceTipAskForPlaintextCredentialsModel >> cancel [
+
+	self cancelAskAction
+]
+
+{ #category : #actions }
 IceTipAskForPlaintextCredentialsModel >> cancelAction [
 
 	self cancelAskAction
