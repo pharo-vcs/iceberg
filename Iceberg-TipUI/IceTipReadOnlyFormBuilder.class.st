@@ -21,16 +21,27 @@ Class {
 		'labelColor',
 		'labelWidth',
 		'rowHeight',
-		'items'
+		'items',
+		'spApplication'
 	],
 	#category : #'Iceberg-TipUI-Spec2'
 }
 
 { #category : #'instance creation' }
-IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary [
+IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary application: aSpApplication [
+
 	"If you want to keep order, just send an OrderedDictionary"
 
-	^ self new items: aDictionary; newPresenter
+	^ self new
+		items: aDictionary;
+		application: aSpApplication;
+		newPresenter
+]
+
+{ #category : #accessing }
+IceTipReadOnlyFormBuilder >> application: aSpApplication [ 
+	
+	spApplication := aSpApplication
 ]
 
 { #category : #accessing }
@@ -42,7 +53,7 @@ IceTipReadOnlyFormBuilder >> defaultLabelWidth [
 { #category : #accessing }
 IceTipReadOnlyFormBuilder >> defaultRowHeight [
 
-	^ 25 * self currentWorld displayScaleFactor
+	^ 30 * self currentWorld displayScaleFactor
 ]
 
 { #category : #initialization }
@@ -90,10 +101,19 @@ IceTipReadOnlyFormBuilder >> newLayout [
 	| newLayout |
 	newLayout := SpBoxLayout newVertical.
 
-	items keysAndValuesDo: [ :label :value | 
-		newLayout
-			add: (self newRowPresenterForLabel: label value: value)
-			height: self rowHeight ].
+	items associations withIndexDo: [ :anAssociation :index | 
+		
+		"Last item takes all remaining space"		
+		index = items size 
+			ifTrue: [ newLayout
+							add: (self newRowPresenterForLabel: anAssociation key value: anAssociation value)
+							withConstraints: [ :constraints |
+								constraints padding: 1 ] ]
+			ifFalse: [ newLayout
+							add: (self newRowPresenterForLabel: anAssociation key value: anAssociation value)
+							withConstraints: [ :constraints | 
+								constraints padding: 1.
+								constraints height: self rowHeight ]]].
 
 	^ newLayout
 ]
@@ -101,7 +121,7 @@ IceTipReadOnlyFormBuilder >> newLayout [
 { #category : #'private factory' }
 IceTipReadOnlyFormBuilder >> newPresenter [
 
-	^ SpPresenter new
+	^ (spApplication newPresenter: SpPresenter)
 		  layout: self newLayout;
 		  yourself
 ]
@@ -110,13 +130,13 @@ IceTipReadOnlyFormBuilder >> newPresenter [
 IceTipReadOnlyFormBuilder >> newRowPresenterForLabel: aString value: anotherString [
 
 	^ SpBoxLayout newHorizontal
-		  add: (SpLabelPresenter new
+		  add: ((spApplication newPresenter: SpLabelPresenter)
 				   label: aString;
 				   color: self labelColor;
-				   yourself)
-		  width: self labelWidth;
-		  add: (SpLabelPresenter new
-				   label: anotherString;
+				   yourself) width: self labelWidth;
+		  add: ((spApplication newPresenter: SpTextInputFieldPresenter)
+				   text: anotherString trimBoth;
+					enabled: false;
 				   yourself);
 		  yourself
 ]
