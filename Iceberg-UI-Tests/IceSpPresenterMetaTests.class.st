@@ -133,9 +133,7 @@ IceSpPresenterMetaTests >> testDontAccessUnderlyingWidget [
 		select: [ :each | each sendsAnySelectorOf: #(whenBuiltDo: adapter widget dataSource) ].
 
 	"Only two exceptions to this rule, for the moment."
-	self assert: aCollection equals: {
-		IceGitHubNewBranchFromIssuePanel>>#initializePresenters.
-		IceTipLocationPresenter>>#initializePresenters }.
+	self assertEmpty: aCollection.
 
 	"Browse results with:
 	aCollection do: #browse.

@@ -107,7 +107,6 @@ IceTipLocationPresenter >> initializePresenters [
 		icon: self icon;
 		yourself.
 	
-	locationInput whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
 	chooseButton action: [ self choose ].
 
 ]
