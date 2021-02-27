@@ -32,5 +32,6 @@ IceTipCheckoutSelectedTagCommand >> execute [
 
 { #category : #accessing }
 IceTipCheckoutSelectedTagCommand >> iconName [
-	^ #checkout
+
+	^ #branch
 ]
