@@ -36,8 +36,9 @@ IceTipInteractiveCredentialsProvider >> obtainPlaintextCredentials: credentialsT
 	returnedCred := IceTipAskForPlaintextCredentialsModel new
 		credentialStore: self credentialStore;
 		askingHostname: remote host;
-		openModalWithSpec;
+		openDialogWithSpec;
 		credentials.
+
 	credentialsToReturn readFrom: returnedCred
 ]
 

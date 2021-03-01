@@ -9,7 +9,7 @@ Class {
 		'actionButtonBar',
 		'button'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #actions }

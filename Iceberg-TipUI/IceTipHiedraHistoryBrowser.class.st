@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'hiedraColumnController'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #initialization }

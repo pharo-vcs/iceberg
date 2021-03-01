@@ -1,7 +1,7 @@
 Class {
 	#name : #IceTipTreeTag,
 	#superclass : #IceTipTreeItem,
-	#category : #'Iceberg-TipUI-View-DataSource'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #testing }

@@ -11,11 +11,11 @@ Class {
 		'remotePanel',
 		'issueNumberText',
 		'issueLabel',
-		'issueText',
 		'issue',
 		'fetched',
 		'selectRemoteModel',
-		'currentWaitingProcess'
+		'currentWaitingProcess',
+		'issueText'
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
@@ -75,19 +75,21 @@ IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 		on: self selectRemoteModel.
 	remotePanel remoteList
 		whenSelectedItemChangedDo: [ :remoteModel | self useRemote: remoteModel ].
-	branchLabel := self newLabel label: 'Issue number:'.
+	branchLabel := self newLabel
+		label: 'Issue number:';
+		yourself.
 	issueNumberText := self newTextInput
 		placeholder: 'e.g., 123';
-		autoAccept: true.
-	issueLabel := self newLabel label: 'Title:'.
+		autoAccept: true;
+		yourself.
+	issueLabel := self newLabel
+		label: 'Branch name:';
+		yourself.
 	issueText := self newTextInput
-		placeholder: 'e.g., 123-github-issue';
-		autoAccept: true.
-	issueNumberText whenBuiltDo: [ :w | w widget wrapFlag: false ].
-	issueText
-		whenBuiltDo: [ :w | 
-			w widget wrapFlag: false.
-			w widget enabled: false ].
+		placeholder: 'Generated-from-title-after-issue-number-is-completed';
+		disable;
+		yourself.
+		
 	issueNumberText whenTextChangedDo: [ :text | self validateIssue: text ]
 ]
 

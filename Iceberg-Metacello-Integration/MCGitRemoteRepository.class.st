@@ -12,7 +12,6 @@ Class {
 	#name : #MCGitRemoteRepository,
 	#superclass : #MCGitBasedNetworkRepository,
 	#instVars : [
-		'location',
 		'host',
 		'port',
 		'path',

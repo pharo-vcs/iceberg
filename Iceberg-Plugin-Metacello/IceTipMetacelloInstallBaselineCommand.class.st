@@ -124,13 +124,13 @@ IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anArray [
 
 	IceTipStandardAction new
-		repository: self repositoryModel entity;
+		repository: self repository;
 		message: ('Installing baseline {1} of {2}' format: { 
 			icePackage metacelloBaselineName.
 			self repositoryModel name });
 		onSuccessRepositoryModified;
 		execute: [ 
 			Iceberg announcer 
-				suspendAllForRepository: self repositoryModel entity
+				suspendAllForRepository: self repository
 				while: [ self basicInstallBaseline: icePackage groups: anArray ] ]
 ]

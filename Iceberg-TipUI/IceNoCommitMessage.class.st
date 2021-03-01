@@ -5,7 +5,7 @@ This is usually possible, but bad, very bad. Do not do it.
 Class {
 	#name : #IceNoCommitMessage,
 	#superclass : #IceWarning,
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-Exceptions'
 }
 
 { #category : #accessing }

@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'presenterBuildingStrategy'
 	],
-	#category : #'Iceberg-TipUI-Commands'
+	#category : #'Iceberg-TipUI-Spec2'
 }
 
 { #category : #'presenter building' }

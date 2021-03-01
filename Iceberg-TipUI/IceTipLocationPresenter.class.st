@@ -14,7 +14,7 @@ Class {
 		'chooseBlock',
 		'keptLocation'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Repository'
 }
 
 { #category : #specs }
@@ -107,7 +107,6 @@ IceTipLocationPresenter >> initializePresenters [
 		icon: self icon;
 		yourself.
 	
-	locationInput whenBuiltDo: [ :w | w widget wrapFlag: false ]. 
 	chooseButton action: [ self choose ].
 
 ]

@@ -5,7 +5,7 @@ Class {
 		'codePanel',
 		'checkedIceNodes'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #specs }

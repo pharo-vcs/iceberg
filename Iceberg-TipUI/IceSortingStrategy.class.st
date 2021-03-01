@@ -21,7 +21,7 @@ Class {
 		'first',
 		'last'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
 { #category : #accessing }

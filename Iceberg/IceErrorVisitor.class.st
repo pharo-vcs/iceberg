@@ -1,10 +1,10 @@
 "
-I'm a generic error visitor to traverse diferent iceberg errors.
+I'm a generic visitor for IceError instances. My subclasses can override my methods to specialize handling.
 "
 Class {
 	#name : #IceErrorVisitor,
 	#superclass : #Object,
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-Errors'
 }
 
 { #category : #visiting }
@@ -41,11 +41,6 @@ IceErrorVisitor >> visitMergeAborted: anError [
 { #category : #visiting }
 IceErrorVisitor >> visitMissingCredentialsError: anError [
 	self visitGenericError: anError
-]
-
-{ #category : #visiting }
-IceErrorVisitor >> visitNoCommitMessage: aWarning [
-	self visitGenericError: aWarning
 ]
 
 { #category : #visiting }

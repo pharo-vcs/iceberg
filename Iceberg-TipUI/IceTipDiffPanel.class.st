@@ -14,7 +14,7 @@ Class {
 		'diffPanel',
 		'iceNodesTree'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-Branch'
 }
 
 { #category : #specs }

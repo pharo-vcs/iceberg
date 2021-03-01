@@ -5,9 +5,7 @@ Class {
 	#name : #IceDefinedDependency,
 	#superclass : #IceDependency,
 	#instVars : [
-		'definition',
-		'aIceNode',
-		'execute'
+		'definition'
 	],
 	#category : #'Iceberg-Cherrypicking'
 }

@@ -12,13 +12,14 @@ Class {
 		'packagesTable',
 		'filterInput'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
 { #category : #commands }
 IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipCommitCommand.
+	{	IceTipRepairCommand. 	
+		IceTipCommitCommand.
 		IceTipPushCommand.
 		IceTipPullCommand.
 		IceTipFetchCommand.
