@@ -29,10 +29,3 @@ IceTipDialog >> initializeDialogWindow: aWindow [
 		  okAction: [ self accept ];
 		  cancelAction: [ self cancel ].
 ]
-
-{ #category : #showing }
-IceTipDialog >> openDialogWithSpec [
-
-	^ self openModalWithSpec
-
-]
