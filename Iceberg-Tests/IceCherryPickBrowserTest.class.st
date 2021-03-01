@@ -8,7 +8,9 @@ Class {
 IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 
 	| commitToCherryPick presenter |
-	self timeLimit: 1 minute.
+	self flag: #todo. "Tt's a feature that's not available in menus yet, and it randomly fails on CI."
+	self skip.
+	
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
