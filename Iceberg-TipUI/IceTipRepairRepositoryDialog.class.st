@@ -85,12 +85,16 @@ IceTipRepairRepositoryDialog >> initializePresenters [
 	
 	reasonPanel := self newText
 		beNotEditable;
+		addStyle: 'iceTipReadonly';
+		beWrapWord;
 		yourself.
 	optionsList := self newTable
 		disable;
 		yourself.
 	detailPanel := self newText
 		beNotEditable;
+		beWrapWord;
+		addStyle: 'iceTipReadonly';
 		yourself.
 
 	self initializeReasonPanel.

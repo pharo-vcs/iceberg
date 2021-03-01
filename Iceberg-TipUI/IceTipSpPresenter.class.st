@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #accessing }
+IceTipSpPresenter class >> currentApplication [ 
+
+	^ StPresenter currentApplication 
+]
+
+{ #category : #accessing }
 IceTipSpPresenter >> closeWindow [
 	"Close the window of this presenter"
 

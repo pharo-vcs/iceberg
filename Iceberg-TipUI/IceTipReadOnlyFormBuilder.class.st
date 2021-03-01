@@ -136,6 +136,7 @@ IceTipReadOnlyFormBuilder >> newRowPresenterForLabel: aString value: anotherStri
 				   yourself) width: self labelWidth;
 		  add: ((spApplication newPresenter: SpTextInputFieldPresenter)
 				   text: anotherString trimBoth;
+					addStyle: 'iceTipReadonly';
 					enabled: false;
 				   yourself);
 		  yourself
