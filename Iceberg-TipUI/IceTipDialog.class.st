@@ -17,7 +17,7 @@ IceTipDialog >> accept [
 IceTipDialog >> cancel [
 	"override this if you want a dialog"
 
-	
+	self closeWindow
 ]
 
 { #category : #initialization }
@@ -27,7 +27,9 @@ IceTipDialog >> initializeDialogWindow: aWindow [
 
 	aWindow 
 		  okAction: [ self accept ];
-		  cancelAction: [ self cancel ].
+		  cancelAction: [ self cancel ];
+		  bindKeyCombination: Character escape asShortcut toAction: [ self cancel ].
+		
 ]
 
 { #category : #showing }
