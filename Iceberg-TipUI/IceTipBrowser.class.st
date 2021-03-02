@@ -177,7 +177,10 @@ IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
 IceTipBrowser >> refreshShortcutsWith: rootGroup [
 	"Update shortcuts with available commands"
 
-	rootGroup installShortcutsIn: self
+	self window 
+		ifNotNil: [ :aWindow | 
+			rootGroup installShortcutsIn: aWindow]
+	
 
 ]
 
