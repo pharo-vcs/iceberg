@@ -38,3 +38,9 @@ IceTipDialog >> openDialogWithSpec [
 	^ self openModalWithSpec
 
 ]
+
+{ #category : #showing }
+IceTipDialog >> openNonModalWithSpec [
+
+	^ super openDialogWithSpec
+]

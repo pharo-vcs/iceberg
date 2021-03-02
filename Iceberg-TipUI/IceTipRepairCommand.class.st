@@ -35,7 +35,7 @@ IceTipRepairCommand >> canBeExecuted [
 IceTipRepairCommand >> execute [
 
 	(IceTipRepairRepositoryDialog on: self repositoryModel)
-		openDialogWithSpec
+		openNonModalWithSpec
 ]
 
 { #category : #accessing }
