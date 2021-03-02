@@ -19,6 +19,13 @@ IceTipFetchAllProjectCommand class >> defaultName [
 	^ 'Fetch all'
 ]
 
+{ #category : #testing }
+IceTipFetchAllProjectCommand >> canBeExecuted [ 
+	
+	"This command can be executed with our without selection"
+	^ true
+]
+
 { #category : #execution }
 IceTipFetchAllProjectCommand >> execute [
 

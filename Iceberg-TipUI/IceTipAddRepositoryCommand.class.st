@@ -20,6 +20,13 @@ IceTipAddRepositoryCommand class >> defaultName [
 	^ 'Add'
 ]
 
+{ #category : #testing }
+IceTipAddRepositoryCommand >> canBeExecuted [ 
+	
+	"This command can be executed with our without selection"
+	^ true
+]
+
 { #category : #execution }
 IceTipAddRepositoryCommand >> execute [
 

@@ -36,3 +36,9 @@ IceTipRepositoryCommand >> announcer [
 
 	^ self context toolAnnouncer
 ]
+
+{ #category : #testing }
+IceTipRepositoryCommand >> canBeExecuted [
+
+	^ self repositoryModel isNotNil
+]

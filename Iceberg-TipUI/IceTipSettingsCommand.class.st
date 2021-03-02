@@ -19,6 +19,13 @@ IceTipSettingsCommand class >> defaultName [
 	^ 'Settings'
 ]
 
+{ #category : #testing }
+IceTipSettingsCommand >> canBeExecuted [ 
+	
+	"This command can be executed with our without selection"
+	^ true
+]
+
 { #category : #execution }
 IceTipSettingsCommand >> execute [
 
