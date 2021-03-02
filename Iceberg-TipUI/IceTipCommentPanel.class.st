@@ -38,7 +38,11 @@ IceTipCommentPanel class >> defaultSpec [
 				   add: #fixesField;
 				   yourself)
 		  height: self inputTextHeight;"
-		  add: #actionButtonBar height: self buttonHeight
+		  add: #actionButtonBar withConstraints: [ :aConstraint |
+			 aConstraint 	
+				height: self buttonHeight + 6;
+				fill: true;
+				padding: 5 ]
 ]
 
 { #category : #accessing }
