@@ -144,6 +144,13 @@ IceTipCommitBrowser >> initializePresenters [
 
 ]
 
+{ #category : #initialization }
+IceTipCommitBrowser >> initializeWindow: aWindow [
+
+	super initializeWindow: aWindow.
+	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
+]
+
 { #category : #'accessing ui' }
 IceTipCommitBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."

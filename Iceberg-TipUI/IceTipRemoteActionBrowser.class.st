@@ -44,6 +44,14 @@ IceTipRemoteActionBrowser >> initializePresenters [
 ]
 
 { #category : #initialization }
+IceTipRemoteActionBrowser >> initializeWindow: aWindow [
+
+	super initializeWindow: aWindow.
+	
+	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
+]
+
+{ #category : #initialization }
 IceTipRemoteActionBrowser >> labelForRemotePanel [
 
 	^ self subclassResponsibility
