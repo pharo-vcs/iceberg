@@ -27,6 +27,7 @@ IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aC
 { #category : #commands }
 IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
+	| aGroup |
 	{
 		IceTipFetchRemoteCommand.
 		IceTipCheckoutSelectedBranchCommand.
@@ -34,8 +35,18 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 		IceTipDeleteTagCommand.
 		IceTipCheckoutSelectedTagCommand.
 		IceTipDeleteRemoteCommand
-		} do: [ :each |
-			aCommandGroup register: each forSpec ]
+		}  do: [ :each |
+			aCommandGroup register: each forSpec ].
+	
+	aGroup := (CmCommandGroup named: 'GitHub' ) asSpecGroup
+		icon: (self iconNamed: #github);
+		description: 'Extended Operations when the Remote is in Github'.
+		
+	
+	aCommandGroup register: aGroup.
+
+	IceGitHubTreeCommand allSubclasses do: [ :each |
+		aGroup register: each forSpec ]
 
 ]
 

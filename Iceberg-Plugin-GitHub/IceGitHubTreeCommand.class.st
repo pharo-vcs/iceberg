@@ -8,19 +8,19 @@ Class {
 }
 
 { #category : #testing }
-IceGitHubTreeCommand class >> actsOnBranch: anIceTipTreeBranch [
+IceGitHubTreeCommand >> actsOnBranch: anIceTipTreeBranch [
 
 	^ false
 ]
 
 { #category : #testing }
-IceGitHubTreeCommand class >> actsOnRemote: aRemoteModel [
+IceGitHubTreeCommand >> actsOnRemote: aRemoteModel [
 
 	^ true
 ]
 
 { #category : #testing }
-IceGitHubTreeCommand class >> actsOnTag: aRemoteModel [
+IceGitHubTreeCommand >> actsOnTag: aRemoteModel [
 
 	^ false
 ]
@@ -28,8 +28,7 @@ IceGitHubTreeCommand class >> actsOnTag: aRemoteModel [
 { #category : #testing }
 IceGitHubTreeCommand >> canBeExecuted [
 
-	^ super canBeExecuted and: [ 
-		  self item canActivateCommand: self ]
+	^ (self item canActivateCommand: self) and: [super canBeExecuted]
 ]
 
 { #category : #accessing }
