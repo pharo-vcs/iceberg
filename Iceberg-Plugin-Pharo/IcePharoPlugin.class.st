@@ -6,8 +6,11 @@ Class {
 
 { #category : #adding }
 IcePharoPlugin class >> addIcebergProjectToIceberg [
-	
-	
+
+	self
+		addProjectNamed: 'iceberg'
+		commit: self icebergCommitHash
+		baselines: #( BaselineOfIceberg )
 ]
 
 { #category : #adding }
@@ -74,6 +77,23 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 				repository: repository) ].
 
 	repository register
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> icebergCommitHash [
+
+	"We need to get the short hash from Metacello"
+	| shortHash |
+	shortHash := (MetacelloProjectRegistration registry registrations detect: [ :e | 
+		  e projectName = 'Iceberg' ]) versionInfo versionString.
+	
+	"We need to get the full hash from github api"
+	
+	^ (IceGitHubAPI new 
+		getCommit: 'd1ca9a4' 
+		owner: 'pharo-vcs' 
+		project: 'iceberg')
+		at: #sha
 ]
 
 { #category : #testing }

@@ -180,6 +180,12 @@ IceGitHubAPI >> getBranches: owner project: projectName [
 ]
 
 { #category : #requesting }
+IceGitHubAPI >> getCommit: aCommitish owner: owner project: projectName [ 
+
+	^ self get: 'repos/', owner,'/', projectName, '/commits/', aCommitish
+]
+
+{ #category : #requesting }
 IceGitHubAPI >> getIssue: owner project: projectName number: issueNumber [
 
 	^ self get: 'repos/', owner,'/', projectName, '/issues/', (issueNumber asString)
