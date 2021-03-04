@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #adding }
+IcePharoPlugin class >> addIcebergProjectToIceberg [
+	
+	
+]
+
+{ #category : #adding }
 IcePharoPlugin class >> addPharoProjectToIceberg [
 	"It will take all packages corresponding to Pharo project and it will create an iceberg 
 	 project with it"
@@ -33,16 +39,6 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 			BaselineOfTraits
 			BaselineOfUI    
 			BaselineOfUnifiedFFI).
-
-	self 
-		addProjectNamed: 'pharo-spec2'
-		commit: self spec2CommitHash
-		baselines: #(BaselineOfSpec2).
-		
-	self 
-		addProjectNamed: 'pharo-newtools'
-		commit: self newtoolsCommitHash 
-		baselines: #(BaselineOfNewTools)	
 ]
 
 { #category : #adding }
@@ -87,21 +83,9 @@ IcePharoPlugin class >> isAvailableFor: aRepository [
 ]
 
 { #category : #'accessing commits' }
-IcePharoPlugin class >> newtoolsCommitHash [
-
-	^ 'bdda5b7923bb42d97c9733641cd50fa8f3507c9c'
-]
-
-{ #category : #'accessing commits' }
 IcePharoPlugin class >> pharoCommitHash [
 
 	^ SystemVersion current commitHash
-]
-
-{ #category : #'accessing commits' }
-IcePharoPlugin class >> spec2CommitHash [
-
-	^ '3afda41c3764bf7e05eaf990fef4ca87937cd113'
 ]
 
 { #category : #events }
