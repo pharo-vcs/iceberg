@@ -10,7 +10,18 @@ IcePharoPlugin class >> addIcebergProjectToIceberg [
 	self
 		addProjectNamed: 'iceberg'
 		commit: self icebergCommitHash
-		baselines: #( BaselineOfIceberg )
+		baselines: #( BaselineOfIceberg ).
+
+	self
+		addProjectNamed: 'libgit2-pharo-bindings'
+		commit: self libgitCommitHash
+		baselines: #( BaselineOfLibGit ).		
+	
+	self
+		addProjectNamed: 'tonel'
+		commit: self tonelCommitHash
+		baselines: #( BaselineOfTonel ).		
+
 ]
 
 { #category : #adding }
@@ -80,20 +91,30 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 ]
 
 { #category : #'accessing commits' }
-IcePharoPlugin class >> icebergCommitHash [
+IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner repository: repository [
+
+	| shortHash |
 
 	"We need to get the short hash from Metacello"
-	| shortHash |
-	shortHash := (MetacelloProjectRegistration registry registrations detect: [ :e | 
-		  e projectName = 'Iceberg' ]) versionInfo versionString.
-	
+	shortHash := (MetacelloProjectRegistration registry registrations 
+		              detect: [ :e | e projectName = projectName ])
+		             versionInfo versionString.
+
 	"We need to get the full hash from github api"
-	
-	^ (IceGitHubAPI new 
-		getCommit: 'd1ca9a4' 
-		owner: 'pharo-vcs' 
-		project: 'iceberg')
-		at: #sha
+
+	^ (IceGitHubAPI new
+		   getCommit: shortHash
+		   owner: owner
+		   project: repository) at: #sha
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> icebergCommitHash [
+
+	^ self
+		  getCommitishOfProject: 'Iceberg'
+		  owner: 'pharo-vcs'
+		  repository: 'iceberg'
 ]
 
 { #category : #testing }
@@ -103,9 +124,27 @@ IcePharoPlugin class >> isAvailableFor: aRepository [
 ]
 
 { #category : #'accessing commits' }
+IcePharoPlugin class >> libgitCommitHash [
+
+	^ self
+		  getCommitishOfProject: 'LibGit'
+		  owner: 'pharo-vcs'
+		  repository: 'libgit2-pharo-bindings'
+]
+
+{ #category : #'accessing commits' }
 IcePharoPlugin class >> pharoCommitHash [
 
 	^ SystemVersion current commitHash
+]
+
+{ #category : #'accessing commits' }
+IcePharoPlugin class >> tonelCommitHash [
+
+	^ self
+		  getCommitishOfProject: 'Tonel'
+		  owner: 'pharo-vcs'
+		  repository: 'tonel'
 ]
 
 { #category : #events }
