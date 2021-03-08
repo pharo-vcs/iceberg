@@ -103,6 +103,11 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 	packagesTable
 		beResizable;
 		addColumn: 
+			(SpImageTableColumn new 
+				width: (self iconNamed: #package) width;
+				evaluated: [ self iconNamed: #package];
+				yourself);
+		addColumn: 
 			(SpStringTableColumn
 				title: 'Name'
 				evaluated: #descriptionWithDecoration);
