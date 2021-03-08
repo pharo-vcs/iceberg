@@ -4,6 +4,9 @@ Abstract class representing commands to be applied on top of packages.
 Class {
 	#name : #IceTipPackageCommand,
 	#superclass : #IceTipCommand,
+	#instVars : [
+		'packageModel'
+	],
 	#category : #'Iceberg-TipUI-Commands'
 }
 
@@ -34,5 +37,11 @@ IceTipPackageCommand >> package [
 { #category : #accessing }
 IceTipPackageCommand >> packageModel [
 
-	^ self context packageModel
+	^ packageModel ifNil: [self context packageModel]
+]
+
+{ #category : #accessing }
+IceTipPackageCommand >> packageModel: anIceTipPackageModel [ 
+
+	packageModel := anIceTipPackageModel
 ]
