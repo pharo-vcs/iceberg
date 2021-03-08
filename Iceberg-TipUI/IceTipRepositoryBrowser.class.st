@@ -98,6 +98,8 @@ IceTipRepositoryBrowser >> initializePresenters [
 	historyPanel := self
 		instantiate: IceTipHiedraHistoryBrowser
 		on: self model headModel.
+
+	historyPanel whenSelectionChangedDo: [ self refreshCommands ].
 	historyPanel beForMerge.
 
 	self initializeSidebarTree.

@@ -168,3 +168,9 @@ IceTipHistoryBrowser >> titleForWindow [
 		ifNil: [ 'History' ]
 
 ]
+
+{ #category : #events }
+IceTipHistoryBrowser >> whenSelectionChangedDo: aBlock [ 
+	
+	commitList whenSelectionChangedDo: aBlock
+]
