@@ -475,6 +475,12 @@ IceTipRepositoryModel >> verifyDirectoryStructureIfMissing: aBlock [
 ]
 
 { #category : #accessing }
+IceTipRepositoryModel >> workingCopy [
+	
+	^ IceTipWorkingCopyModel on: self
+]
+
+{ #category : #accessing }
 IceTipRepositoryModel >> workingCopyDiff [
 	<noCache>
 
