@@ -30,7 +30,7 @@ IceTipPreviewBrowser class >> defaultSpec [
 
 	^ SpBoxLayout newVertical
 		  add: #diffPanel;
-		  add: #actionPanel height: 25;
+		  add: #actionPanel expand: false;
 		  yourself
 ]
 
@@ -58,8 +58,8 @@ IceTipPreviewBrowser >> initializePresenters [
 	super initializePresenters.
 	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
-	actionPanel := self instantiate: IceTipActionPanel.
-	actionPanel addAction: (button := self newActionButton).
+	actionPanel := self newButtonBar.
+	actionPanel add: (button := self newActionButton).
 
 ]
 
