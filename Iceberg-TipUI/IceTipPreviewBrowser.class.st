@@ -82,11 +82,5 @@ IceTipPreviewBrowser >> mainList [
 
 { #category : #'private factory' }
 IceTipPreviewBrowser >> newActionButton [
-
-	^ self newButton
-		label: 'Discard All';
-		icon: (self iconNamed: #refresh);
-		help: ('Discard all changes from the image and loads the current commit');
-		action: [ self doDiscardAll ];
-		yourself
+	self subclassResponsibility
 ]
