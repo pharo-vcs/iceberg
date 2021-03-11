@@ -33,6 +33,7 @@ IceTipAskForPlaintextCredentialsModelTest >> testAcceptCreatesCredential [
 	dialog usernameInput text: 'bbb'.
 	
 	dialog window triggerOkAction.
+
 	cred := dialog credentials.
 
 	self assert: cred username equals: 'bbb'.
