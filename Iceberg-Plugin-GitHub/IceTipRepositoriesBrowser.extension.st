@@ -45,10 +45,10 @@ IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRoo
 
 	"Note: The following commands use the remote model as a context, while the default
 	context is the presenter."
-	{ 	IceGitHubNewPullRequestCommand.
+	{ 	IceGitHubViewPullRequestsCommand.
+		IceGitHubNewPullRequestCommand.
 		IceGitHubOpenOnGithubCommand.
-		IceGitHubRemoveBranchesCommand.
-		IceGitHubViewPullRequestsCommand }
+		IceGitHubRemoveBranchesCommand }
 			do: [ :each | 
 				thisRemoteGroup register: (each forSpecContext: anIceRemoteModel) ]
 

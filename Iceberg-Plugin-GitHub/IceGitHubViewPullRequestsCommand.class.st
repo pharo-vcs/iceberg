@@ -10,7 +10,7 @@ Class {
 { #category : #accessing }
 IceGitHubViewPullRequestsCommand class >> defaultName [
 
-	^ 'View Pull Request...'
+	^ 'View Pull Requests...'
 ]
 
 { #category : #execute }
