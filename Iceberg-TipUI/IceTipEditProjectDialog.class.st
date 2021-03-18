@@ -14,7 +14,9 @@ Class {
 		'formats',
 		'defaultFormat',
 		'messageIcon',
-		'messageText'
+		'messageText',
+		'removeButton',
+		'addButton'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
@@ -25,7 +27,9 @@ IceTipEditProjectDialog class >> defaultSpec [
 	^ SpBoxLayout newVertical
 		  add: (SpBoxLayout newHorizontal
 				   add: #nameLabel width: self labelWidth;
-				   add: #nameInput;
+				   add: #nameInput expand: true;
+				   add: #addButton width: 32 * self currentWorld displayScaleFactor;
+				   add: #removeButton width: 32 * self currentWorld displayScaleFactor;
 				   yourself)
 		  height: self inputTextHeight;
 		  add: (SpBoxLayout newHorizontal
@@ -71,39 +75,76 @@ IceTipEditProjectDialog >> acceptCallback [
 	^ acceptCallback
 ]
 
+{ #category : #actions }
+IceTipEditProjectDialog >> addDirectory [
+
+	| newDirectoryName newDirectory previousSelection |
+	
+	newDirectoryName := UIManager default
+		textEntry: 'Enter the new Directory name'
+		title: 'Create a directory'.
+	
+	newDirectoryName ifNil: [ ^ self ].
+	
+	previousSelection := selectedDirectoryPath.
+	newDirectory := (previousSelection / newDirectoryName) asResolvedBy: self model fileSystem. 
+	
+	newDirectory exists 
+		ifFalse: [ newDirectory createDirectory ].
+	
+	sourceDirectoryTree roots: { self model fileSystem }.
+	self expandAndSelect: previousSelection.
+
+]
+
 { #category : #initialization }
 IceTipEditProjectDialog >> connectPresenters [
 
-	| path currentNode |
 	super connectPresenters.
+
+	removeButton action: [ self removeDirectory ].
+	addButton action: [ self addDirectory ].
+
 	self formatList
 		items: self formats;
 		display: [ :each | each description ];
 		selectItem: model repositoryProperties fileFormat.
-	path := (RelativePath with: model sourceDirectory) segments
-		asOrderedCollection.
-	currentNode := self sourceDirectoryTree roots first children first.
-	"	currentNode expand.
-	[ path isEmpty ]
-		whileFalse: [ | currentSegment |
-			currentSegment := path removeFirst.
-			currentNode := currentNode children
-				detect: [ :e | (e data basename ifEmpty: [ '/' ]) = currentSegment ]
-				ifFound: [ :node | 
-					node expand.
-					node ]
-				ifNone: [ nil ] ]
 
-	currentNode
-		ifNotNil: [ | index |
-			index := self sourceDirectoryTree widget dataSource indexOfElementMatching: [ :elem | elem = currentNode data ].
-			self sourceDirectoryTree widget selectRowIndex: index ]."
+	self expandAndSelect: (RelativePath with: model sourceDirectory).
+
 ]
 
 { #category : #accessing }
 IceTipEditProjectDialog >> defaultFormat [
 
 	^ defaultFormat
+]
+
+{ #category : #utils }
+IceTipEditProjectDialog >> expandAndSelect: aRelativePath [ 
+
+	
+	| path aPathForSpec currentNode |
+	path := aRelativePath segments	asOrderedCollection.
+	
+	aPathForSpec := OrderedCollection new.
+	aPathForSpec add: 1.
+	
+	currentNode := self model fileSystem.
+	
+	path do: [ :aPart | | found |
+		found := currentNode directories detect: [ :e | e basename = aPart ] ifNone: [ ^self ].
+		aPathForSpec add: (currentNode directories indexOf: found).
+		currentNode := found].
+	
+	sourceDirectoryTree expandPath: aPathForSpec.
+
+	sourceDirectoryTree withAdapterPerformOrDefer: [ :anAdapter |
+		sourceDirectoryTree selectPaths: { aPathForSpec } ].
+	
+	
+
+
 ]
 
 { #category : #'accessing ui' }
@@ -195,8 +236,13 @@ IceTipEditProjectDialog >> initializeDirectoryTree [
 { #category : #initialization }
 IceTipEditProjectDialog >> initializeMessagePanel [
 
+	| icon |
+
 	self hasToShowWarning ifTrue: [ 
-		messageIcon image: (self iconNamed: #warning).
+		icon := self iconNamed: #warning.
+		icon := icon scaledToSize: (icon extent * 2).
+
+		messageIcon image: icon .
 		messageText text: self warningMessage ]
 ]
 
@@ -221,7 +267,11 @@ IceTipEditProjectDialog >> initializePresenters [
 	messageIcon := self newImage.
 	messageText := self newText
 		beNotEditable;
+		addStyle: 'iceTipReadonly';
 		yourself.
+
+	removeButton := self newButton icon: (self iconNamed: #remove); yourself.
+	addButton := self newButton icon: (self iconNamed: #add); yourself.
 
 	self initializeMessagePanel.
 	self initializeDirectoryTree.
@@ -264,6 +314,27 @@ IceTipEditProjectDialog >> onAccept: aBlockClosure [
 	acceptCallback := aBlockClosure
 ]
 
+{ #category : #actions }
+IceTipEditProjectDialog >> removeDirectory [
+
+	| toRemove newSelection |
+	
+	newSelection := selectedDirectoryPath parent.
+	toRemove := selectedDirectoryPath asResolvedBy: self model fileSystem.
+
+	toRemove exists 
+		ifTrue: [ 
+			(UIManager default 
+				questionWithoutCancel: ('Are you sure to delete ''{1}''?' format: {toRemove basename})  
+				title: 'Remove directory')
+				ifFalse: [ ^ self].
+			toRemove ensureDelete ].
+		
+	sourceDirectoryTree roots: { self model fileSystem }.
+	self expandAndSelect: newSelection.
+
+]
+
 { #category : #accessing }
 IceTipEditProjectDialog >> selectedDirectoryPath [
 
@@ -292,6 +363,7 @@ IceTipEditProjectDialog >> sourceDirectoryLabel [
 IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedPaths [
 
 	| selection |
+
 	selectedPaths
 		ifEmpty:
 			[ "If the user does not select any directory, we choose the root and we use the default format"
