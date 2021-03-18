@@ -162,11 +162,7 @@ IceTipAbstractCredentialsModel >> open [
 { #category : #'API - opening' }
 IceTipAbstractCredentialsModel >> openNonModal [
 
-	^ self openDialogWithSpec
-		  okAction: [ self accept ];
-		  cancelAction: [ self cancelAction ];
-		  whenClosedDo: [ self closeAction ];
-		  centered
+	^ self openNonModalWithSpec
 ]
 
 { #category : #accessing }
