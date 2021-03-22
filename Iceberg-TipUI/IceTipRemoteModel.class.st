@@ -9,6 +9,14 @@ Class {
 	#category : #'Iceberg-TipUI-Model'
 }
 
+{ #category : #comparing }
+IceTipRemoteModel >> = anotherModel [
+
+	self species = anotherModel species ifFalse: [ ^ false ].
+	
+	^ entity = anotherModel entity
+]
+
 { #category : #accessing }
 IceTipRemoteModel >> branches [
 	^ self entity branches
