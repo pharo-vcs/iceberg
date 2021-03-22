@@ -22,7 +22,7 @@ Metacello new
 Class {
 	#name : #IceGitLocalRepositoryType,
 	#superclass : #IceMetacelloRepositoryType,
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration'
 }
 
 { #category : #accessing }
@@ -37,14 +37,15 @@ IceGitLocalRepositoryType >> isGitRoot: aReference [
 
 { #category : #accessing }
 IceGitLocalRepositoryType >> mcRepository [
+
 	| repository tuple extractedLocation |
-	
+
 	tuple := self splitRootAndSubdirectoryFromLocation.
 	extractedLocation := tuple first asFileReference asAbsolute.
 	repository := IceRepository registry 
 		detect: [ :each | 
 			each location notNil 
-				and: [ each location asAbsolute = extractedLocation ] ]
+				and: [ each location resolve asAbsolute = extractedLocation ] ]
 		ifNone: [ 
 			(IceRepositoryCreator new 
 				location: tuple first;
