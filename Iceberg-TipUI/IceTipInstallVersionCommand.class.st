@@ -35,5 +35,5 @@ IceTipInstallVersionCommand >> iconName [
 { #category : #execution }
 IceTipInstallVersionCommand >> version [
 
-	^ self context version
+	^ self context selectedItem
 ]
