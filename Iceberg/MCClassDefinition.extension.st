@@ -14,3 +14,10 @@ MCClassDefinition >> fullDefinitionString [
 		stream cr; cr.
 		stream << self comment ]
 ]
+
+{ #category : #'*Iceberg-Changes' }
+MCClassDefinition >> removeMetaSideVariables [
+	
+	variables := variables reject: [ :e | e isClassInstanceVariable ].
+
+]

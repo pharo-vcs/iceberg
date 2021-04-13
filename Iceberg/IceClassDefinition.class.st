@@ -45,19 +45,8 @@ IceClassDefinition >> addToPatcher: aMCPatcher [
 { #category : #converting }
 IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 	
-	^ MCClassDefinition
-		name: mcDefinition className
-		superclassName: mcDefinition superclassName
-		traitComposition: mcDefinition traitCompositionString
-		classTraitComposition: mcDefinition classTraitCompositionString
-		category: mcDefinition category
-		instVarNames: mcDefinition instanceVariablesString
-		classVarNames: mcDefinition classVariablesString
-		poolDictionaryNames: mcDefinition poolDictionaries
-		classInstVarNames: #()
-		type: mcDefinition type
-		comment: mcDefinition comment
-		commentStamp: mcDefinition commentStamp
+	^ mcDefinition deepCopy removeMetaSideVariables
+
 ]
 
 { #category : #accessing }
