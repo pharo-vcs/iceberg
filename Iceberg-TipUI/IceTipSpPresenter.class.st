@@ -56,3 +56,9 @@ IceTipSpPresenter >> titleForWindow [
 	^ self subclassResponsibility
 
 ]
+
+{ #category : #extensions }
+IceTipSpPresenter >> updateTitle [
+	
+	self withWindowDo: [ :aWindow | aWindow title: self titleForWindow ]
+]
