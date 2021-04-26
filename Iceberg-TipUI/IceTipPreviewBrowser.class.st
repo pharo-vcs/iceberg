@@ -63,16 +63,6 @@ IceTipPreviewBrowser >> initializePresenters [
 
 ]
 
-{ #category : #initialization }
-IceTipPreviewBrowser >> initializeWindow: aWindowPresenter [
-
-	super initializeWindow: aWindowPresenter.
-
-	aWindowPresenter
-		askOkToClose: self askOkToClose;
-		aboutText: self aboutText
-]
-
 { #category : #'accessing ui' }
 IceTipPreviewBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
