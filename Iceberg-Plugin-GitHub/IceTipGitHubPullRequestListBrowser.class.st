@@ -43,7 +43,7 @@ IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: pres
 IceTipGitHubPullRequestListBrowser class >> defaultSpec [
 
 	^ SpPanedLayout newVertical
-		  position: 30 percent;
+		  positionOfSlider: 30 percent;
 		  add: #pullRequests;
 		  add: #details;
 		  yourself
