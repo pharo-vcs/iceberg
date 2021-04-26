@@ -102,19 +102,21 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 
 	packagesTable
 		beResizable;
-		addColumn: 
-			(SpImageTableColumn new 
-				width: (self iconNamed: #package) width;
-				evaluated: [ self iconNamed: #package];
-				yourself);
-		addColumn: 
-			(SpStringTableColumn
-				title: 'Name'
-				evaluated: #descriptionWithDecoration);
-		addColumn:
-			(SpStringTableColumn
-				title: 'Status'
-				evaluated: #statusWithDecoration)
+		addColumn: (SpImageTableColumn new 
+			width: (self iconNamed: #package) width;
+			evaluated: [ self iconNamed: #package];
+			yourself);
+		addColumn: (SpStringTableColumn
+			title: 'Name'
+			evaluated: #descriptionWithDecoration);
+		addColumn: (SpStringTableColumn
+			title: 'Status'
+			evaluated: #statusWithDecoration);
+		activateOnDoubleClick;
+		whenActivatedDo: [ :selection |
+			IceTipBrowsePackageCommand new
+				packageModel: selection selectedItem;
+				execute ]
 ]
 
 { #category : #initialization }
