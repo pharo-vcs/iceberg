@@ -75,23 +75,18 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 
 	optionsList
 		hideColumnHeaders;
-		addColumn:
-			(SpCompositeTableColumn new
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: #icon;
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: #title;
-						yourself);
+		addColumn: (SpCompositeTableColumn new
+			addColumn: (SpImageTableColumn new
+				width: 20;
+				evaluated: #icon;
 				yourself);
+			addColumn: (SpStringTableColumn new
+				evaluated: #title;
+				yourself);
+			yourself);
 		items: self model availableRepairOptions;
 		whenSelectionChangedDo: [ :selection | self selectionChanged: selection selectedItem ];
-		bindKeyCombination: Character cr asShortcut toAction: [ 
-			selectedOption ifNotNil: [self accept] ]
-	
+		whenActivatedDo: [ :selection | selection ifNotNil: [ self accept ] ]
 ]
 
 { #category : #initialization }

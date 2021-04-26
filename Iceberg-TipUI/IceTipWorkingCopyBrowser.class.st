@@ -68,6 +68,19 @@ IceTipWorkingCopyBrowser >> allListItems [
 	^ self model packageModels
 ]
 
+{ #category : #'private actions' }
+IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
+	| commandClass |
+	
+	commandClass := aPackageModel isLoaded
+		ifTrue: [ IceTipBrowsePackageCommand ]
+		ifFalse: [ IceTipBrowseRepositoryPackageVersionCommand ].
+		
+	 commandClass new
+		packageModel: aPackageModel;
+		execute
+]
+
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> connectPresenters [
 
@@ -102,19 +115,18 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 
 	packagesTable
 		beResizable;
-		addColumn: 
-			(SpImageTableColumn new 
-				width: (self iconNamed: #package) width;
-				evaluated: [ self iconNamed: #package];
-				yourself);
-		addColumn: 
-			(SpStringTableColumn
-				title: 'Name'
-				evaluated: #descriptionWithDecoration);
-		addColumn:
-			(SpStringTableColumn
-				title: 'Status'
-				evaluated: #statusWithDecoration)
+		addColumn: (SpImageTableColumn new 
+			width: (self iconNamed: #package) width;
+			evaluated: [ self iconNamed: #package];
+			yourself);
+		addColumn: (SpStringTableColumn
+			title: 'Name'
+			evaluated: #descriptionWithDecoration);
+		addColumn: (SpStringTableColumn
+			title: 'Status'
+			evaluated: #statusWithDecoration);
+		activateOnDoubleClick;
+		whenActivatedDo: [ :selection | self browsePackage: selection selectedItem ]
 ]
 
 { #category : #initialization }

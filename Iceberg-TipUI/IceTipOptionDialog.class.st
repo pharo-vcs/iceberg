@@ -21,7 +21,7 @@ Class {
 IceTipOptionDialog class >> defaultSpec [
 
 	^ SpPanedLayout newHorizontal
-		  position: 30 percent;
+		  positionOfSlider: 30 percent;
 		  add: #typeList;
 		  add: #contentPanel;
 		  yourself
