@@ -35,17 +35,15 @@ IceTipDiffSelectingPanel >> activateItem: iceNode [
 IceTipDiffSelectingPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
-		addColumn:
-			(SpCheckBoxTableColumn new
-				width: 20;
-				evaluated: [ :iceNode | checkedIceNodes includes: iceNode ];
-				onActivation: [ :iceNode | self activateItem: iceNode ];
-				onDeactivation: [ :iceNode | self deactivateItem: iceNode ]);
-		addColumn:
-			(SpImageTableColumn new
-				width: 20;
-				evaluated: [ :each | each value icon ];
-				yourself);
+		addColumn: (SpCheckBoxTableColumn new
+			width: 20;
+			evaluated: [ :iceNode | checkedIceNodes includes: iceNode ];
+			onActivation: [ :iceNode | self activateItem: iceNode ];
+			onDeactivation: [ :iceNode | self deactivateItem: iceNode ]);
+		addColumn: (SpImageTableColumn new
+			width: 20;
+			evaluated: [ :each | each value icon ];
+			yourself);
 		addColumn: self changeDescriptionColumn;
 		yourself
 ]
@@ -73,6 +71,15 @@ IceTipDiffSelectingPanel >> initialize [
 
 ]
 
+{ #category : #initialization }
+IceTipDiffSelectingPanel >> initializeTree [
+
+	super initializeTree.
+	iceNodesTree 
+		bindKeyCombination: Character space asKeyCombination 
+		toAction: [ self toggleActivationItem: iceNodesTree selectedItem ]
+]
+
 { #category : #accessing }
 IceTipDiffSelectingPanel >> refresh [
 
@@ -92,4 +99,14 @@ IceTipDiffSelectingPanel >> refreshCheckbox [
 IceTipDiffSelectingPanel >> selectedItems [
 
 	^ checkedIceNodes
+]
+
+{ #category : #private }
+IceTipDiffSelectingPanel >> toggleActivationItem: iceNode [
+
+	(checkedIceNodes includes: iceNode)
+		ifTrue: [ self deactivateItem: iceNode ]
+		ifFalse: [ self activateItem: iceNode ]
+
+	
 ]
