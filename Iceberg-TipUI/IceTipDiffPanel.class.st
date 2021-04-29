@@ -54,14 +54,12 @@ IceTipDiffPanel >> changeDescriptionColumn [
 IceTipDiffPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
-		addColumn:
-			(SpImageTableColumn new
-				width: 20;
-				evaluated: [ :each | each value icon ];
-				yourself);
+		addColumn: (SpImageTableColumn new
+			width: 20;
+			evaluated: [ :each | each value icon ];
+			yourself);
 		addColumn: self changeDescriptionColumn;
 		yourself
-
 ]
 
 { #category : #private }
