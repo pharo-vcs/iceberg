@@ -11,7 +11,7 @@ Class {
 { #category : #commands }
 IceTipPullBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipFetchCommand forSpec
+	aCommandGroup register: IceTipFetchInPullCommand forSpec
 ]
 
 { #category : #'instance creation' }
