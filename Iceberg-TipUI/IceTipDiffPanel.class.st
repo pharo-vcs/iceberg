@@ -63,6 +63,14 @@ IceTipDiffPanel >> changeListColumn [
 ]
 
 { #category : #private }
+IceTipDiffPanel >> collapsePath: aPath [
+
+	iceNodesTree 
+		collapsePath: aPath;
+		selectPath: aPath
+]
+
+{ #category : #private }
 IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 
 	diffPanel
@@ -80,6 +88,26 @@ IceTipDiffPanel >> diffPanel [
 	^ diffPanel
 ]
 
+{ #category : #actions }
+IceTipDiffPanel >> doCollapseSelection [
+	
+	self collapsePath: iceNodesTree selection selectedPath
+]
+
+{ #category : #actions }
+IceTipDiffPanel >> doExpandSelection [
+	
+	self expandPath: iceNodesTree selection selectedPath
+]
+
+{ #category : #private }
+IceTipDiffPanel >> expandPath: aPath [
+
+	iceNodesTree 
+		expandPath: aPath;
+		selectPath: aPath
+]
+
 { #category : #'accessing ui' }
 IceTipDiffPanel >> iceNodesTree [
 
@@ -90,8 +118,7 @@ IceTipDiffPanel >> iceNodesTree [
 IceTipDiffPanel >> initialize [
 
 	super initialize.
-	self subscribeToAnnouncements.
-
+	self subscribeToAnnouncements
 ]
 
 { #category : #initialization }
@@ -103,15 +130,13 @@ IceTipDiffPanel >> initializeDiffPanel [
 { #category : #initialization }
 IceTipDiffPanel >> initializePresenters [
 
-	super initializePresenters.
 	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.
 
 	self initializeTree.
 	self initializeDiffPanel.
 
-	self basicRefresh.
-
+	self basicRefresh
 ]
 
 { #category : #initialization }
@@ -121,8 +146,11 @@ IceTipDiffPanel >> initializeTree [
 		hideColumnHeaders;
 		addColumn: self changeListColumn;
 		children: [ :each | each children ];
-		whenSelectionChangedDo: [ self selectionChanged ].
-
+		whenSelectionChangedDo: [ self selectionChanged ];
+		bindKeyCombination: Character arrowLeft asKeyCombination 
+			toAction: [ self collapsePath: iceNodesTree selection selectedPath ];
+		bindKeyCombination: Character arrowRight asKeyCombination 
+			toAction: [ self expandPath: iceNodesTree selection selectedPath ].
 ]
 
 { #category : #accessing }
