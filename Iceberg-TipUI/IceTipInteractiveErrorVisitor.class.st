@@ -55,6 +55,22 @@ IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
 ]
 
 { #category : #visiting }
+IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
+	| proceed |
+	
+	proceed := UIManager default
+		confirm: aWarning messageText
+		label: 'Warning!'  
+		trueChoice: 'Continue' 
+		falseChoice: 'Cancel'
+		cancelChoice: nil
+		default: false.
+	
+	proceed ifNil: [ ^ self ].
+	proceed ifTrue: [ aWarning resume ]
+]
+
+{ #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 	
 	(IceTipErrorDialog on: anError) openDialogWithSpec
