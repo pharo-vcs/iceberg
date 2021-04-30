@@ -23,10 +23,17 @@ IceTipCommitBrowser class >> buildGeneralCommandGroupWith: presenter for: aComma
 { #category : #commands }
 IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipBrowseCommand.
-		IceTipRevertChangeCommand }
-			do: [ :each |
-				aCommandGroup register: each forSpec ]
+	{ 	
+		IceTipBrowseCommand.
+		IceTipRevertChangeCommand.
+	} 
+	do: [ :each | aCommandGroup register: each forSpec ].
+	
+	aCommandGroup register: ((CmCommandGroup named: 'Edit') asSpecGroup
+		beDisplayedAsGroup;
+		register: IceTipTreeExpandCommand forSpec;
+		register: IceTipTreeCollapseCommand forSpec;
+		yourself).
 
 ]
 
@@ -76,6 +83,12 @@ IceTipCommitBrowser >> diffPanel: aSpPresenter [
 ]
 
 { #category : #actions }
+IceTipCommitBrowser >> doCollapseSelection [
+
+	diffPanel doCollapseSelection
+]
+
+{ #category : #actions }
 IceTipCommitBrowser >> doCommit [
 
 	self
@@ -100,6 +113,12 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
 			savingBoolean
 				ifTrue: [ saveAction execute ] ]
+]
+
+{ #category : #actions }
+IceTipCommitBrowser >> doExpandSelection [
+	
+	diffPanel doExpandSelection
 ]
 
 { #category : #initialization }
