@@ -8,7 +8,9 @@ Class {
 }
 
 { #category : #'meta-data' }
-ManifestIcebergPlugin class >> description [ ^ 'I contains a plugin manager for Iceberg. 
+ManifestIcebergPlugin class >> description [
+
+	^ 'I contains a plugin manager for Iceberg. 
 
 This plugin manager allow to extends Iceberg''s functionnalities with modularity.'
 ]
