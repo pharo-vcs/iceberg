@@ -25,14 +25,14 @@ Class {
 { #category : #specs }
 IceTipCreateTagPanel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #currentCommitishLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #tagNameLabel width: self labelWidth;
 				   add: #tagNameInputText;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #majorButton;
 				   add: #minorButton;
 				   add: #patchButton;

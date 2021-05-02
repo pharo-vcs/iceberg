@@ -99,7 +99,7 @@ IceTipReadOnlyFormBuilder >> labelWidth: aNumber [
 IceTipReadOnlyFormBuilder >> newLayout [
 
 	| newLayout |
-	newLayout := SpBoxLayout newVertical.
+	newLayout := SpBoxLayout newTopToBottom.
 
 	items associations withIndexDo: [ :anAssociation :index | 
 		
@@ -129,7 +129,7 @@ IceTipReadOnlyFormBuilder >> newPresenter [
 { #category : #'private factory' }
 IceTipReadOnlyFormBuilder >> newRowPresenterForLabel: aString value: anotherString [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: ((spApplication newPresenter: SpLabelPresenter)
 				   label: aString;
 				   color: self labelColor;

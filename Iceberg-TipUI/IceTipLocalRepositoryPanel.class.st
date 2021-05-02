@@ -11,7 +11,7 @@ Class {
 { #category : #specs }
 IceTipLocalRepositoryPanel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #projectLocation height: self inputTextHeight;
 		  yourself
 ]

@@ -31,9 +31,9 @@ Class {
 { #category : #specs }
 IceGitHubCreatePullRequestModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #titleLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -42,7 +42,7 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 			withConstraints:
 				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #headLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -52,7 +52,7 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 			withConstraints:
 				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #baseLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -62,7 +62,7 @@ IceGitHubCreatePullRequestModel class >> defaultSpec [
 			withConstraints:
 				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #bodyLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];

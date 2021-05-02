@@ -18,18 +18,18 @@ Class {
 { #category : #specs }
 IceTipAddTokenCredentialsModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #usernameLabel width: self labelWidth;
 				   add: #usernameInput;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #hostLabel width: self labelWidth;
 				   add: #hostInput;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #tokenLabel width: self labelWidth;
 				   add: #tokenInput;
 				   yourself)

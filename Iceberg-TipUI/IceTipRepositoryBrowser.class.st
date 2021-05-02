@@ -53,7 +53,7 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 { #category : #specs }
 IceTipRepositoryBrowser class >> defaultSpec [
 
-	^ SpPanedLayout newHorizontal
+	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 30 percent;
 		  add: #sidebarTree;
 		  add: #historyPanel withConstraints: [ :c | c spec: #panelSpec ];

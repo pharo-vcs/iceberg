@@ -28,7 +28,7 @@ IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 { #category : #specs }
 IceTipPreviewBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;
 		  add: #actionPanel expand: false;
 		  yourself

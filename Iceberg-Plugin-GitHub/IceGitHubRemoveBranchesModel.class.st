@@ -18,7 +18,7 @@ Class {
 { #category : #specs }
 IceGitHubRemoveBranchesModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #listPanel;
 		  add: #selectButton
 		  withConstraints: [ :constraints | 

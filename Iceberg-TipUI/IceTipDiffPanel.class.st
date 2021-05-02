@@ -20,7 +20,7 @@ Class {
 { #category : #specs }
 IceTipDiffPanel class >> defaultSpec [
 
-	^ SpPanedLayout newHorizontal
+	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 25 percent;
 		  add: #iceNodesTree;
 		  add: #diffPanel;

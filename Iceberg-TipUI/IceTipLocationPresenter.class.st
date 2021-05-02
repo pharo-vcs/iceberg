@@ -20,7 +20,7 @@ Class {
 { #category : #specs }
 IceTipLocationPresenter class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: #locationLabel width: self labelWidth;
 		  add: #locationInput;
 		  add: #chooseButton width: 24;

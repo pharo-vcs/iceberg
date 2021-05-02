@@ -14,11 +14,11 @@ Class {
 { #category : #specs }
 IceTipRemovePackageDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #iconPanel
 				   width: 40 * self currentWorld displayScaleFactor;
-				   add: (SpBoxLayout newVertical
+				   add: (SpBoxLayout newTopToBottom
 						    add: #confirmLabel;
 						    add: #unloadFromImageCheckbox height: self inputTextHeight;
 						    add: #removeFromRepositoryCheckbox

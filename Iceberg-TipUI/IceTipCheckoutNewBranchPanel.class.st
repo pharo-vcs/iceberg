@@ -17,9 +17,9 @@ Class {
 { #category : #specs }
 IceTipCheckoutNewBranchPanel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #branchLabel width: self labelWidth;
 				   add: #branchInputText;
 				   yourself)

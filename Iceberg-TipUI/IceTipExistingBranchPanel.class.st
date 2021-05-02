@@ -16,7 +16,7 @@ Class {
 { #category : #specs }
 IceTipExistingBranchPanel class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: #branchesList;
 		  yourself
 ]

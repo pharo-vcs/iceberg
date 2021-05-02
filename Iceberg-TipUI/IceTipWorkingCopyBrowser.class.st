@@ -50,7 +50,7 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 { #category : #specs }
 IceTipWorkingCopyBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #packagesTable;
 		  add: #filterInput expand: false;
 		  yourself

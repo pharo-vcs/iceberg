@@ -11,8 +11,8 @@ Class {
 { #category : #specs }
 IceTipGitRepositoryPanel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #remoteLabel width: self labelWidth;
 				   add: #remoteInputText;
 				   yourself)

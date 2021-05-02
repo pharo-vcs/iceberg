@@ -22,7 +22,7 @@ Class {
 { #category : #specs }
 IceTipCommitInfoPresenter class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #notebookPanel;
 		  yourself
 ]

@@ -17,8 +17,8 @@ Class {
 { #category : #specs }
 IceTipCheckoutPreviewBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #checkoutStrategyLabel
 				   width: 100 * self currentWorld displayScaleFactor;
 				   add: #checkoutStrategyList;

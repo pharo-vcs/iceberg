@@ -18,7 +18,7 @@ Class {
 { #category : #specs }
 IceGitHubAcceptPullRequestModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		add:
 			(SpBoxLayout newHorizontal
 				add: #messageLabel

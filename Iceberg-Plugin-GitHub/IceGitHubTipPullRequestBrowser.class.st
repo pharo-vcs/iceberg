@@ -38,13 +38,13 @@ IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presente
 { #category : #specs }
 IceGitHubTipPullRequestBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #commitLabel height: self labelHeight;
-		  add: (SpPanedLayout newVertical
+		  add: (SpPanedLayout newTopToBottom
 				   add: #commits;
 				   add: #diff;
 				   yourself);
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #mergeButton;
 				   add: #acceptButton;
 				   add: #rejectButton;

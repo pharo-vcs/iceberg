@@ -18,9 +18,9 @@ Class {
 { #category : #specs }
 IceTipFiletreeToTonelDialog class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
-		  add: (SpBoxLayout newVertical
+		  add: (SpBoxLayout newTopToBottom
 				   add: #confirmLabel;
 				   add: #mergeWithMasterCheckbox height: self inputTextHeight;
 				   yourself);

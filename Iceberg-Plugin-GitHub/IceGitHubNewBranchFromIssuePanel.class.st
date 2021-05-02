@@ -23,15 +23,15 @@ Class {
 { #category : #specs }
 IceGitHubNewBranchFromIssuePanel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #currentBranchLabel height: self inputTextHeight;
 		  add: #remotePanel height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #branchLabel width: self labelWidth;
 				   add: #issueNumberText;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #issueLabel width: self labelWidth;
 				   add: #issueText;
 				   yourself)

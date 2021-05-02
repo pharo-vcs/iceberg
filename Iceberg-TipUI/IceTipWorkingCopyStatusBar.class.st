@@ -15,7 +15,7 @@ Class {
 { #category : #specs }
 IceTipWorkingCopyStatusBar class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: #branchLabel expand: false;
 		  add: #commitLink
 			  expand: true

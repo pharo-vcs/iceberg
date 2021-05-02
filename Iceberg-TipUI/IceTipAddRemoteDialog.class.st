@@ -18,13 +18,13 @@ Class {
 { #category : #specs }
 IceTipAddRemoteDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #nameLabel width: self labelWidth;
 				   add: #nameText;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #urlLabel width: self labelWidth;
 				   add: #urlText;
 				   yourself)

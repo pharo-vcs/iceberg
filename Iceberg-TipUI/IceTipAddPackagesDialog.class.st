@@ -16,7 +16,7 @@ Class {
 { #category : #specs }
 IceTipAddPackagesDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #packagesList;
 		  add: #packageNameText height: self inputTextHeight
 ]
