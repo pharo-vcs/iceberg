@@ -19,14 +19,14 @@ Class {
 { #category : #specs }
 IceTipGitUsernameAndEmailDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #nameLabel
 				   width: 100 * self currentWorld displayScaleFactor;
 				   add: #nameInput;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #emailLabel
 				   width: 100 * self currentWorld displayScaleFactor;
 				   add: #emailInput;

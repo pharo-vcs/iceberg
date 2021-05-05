@@ -13,7 +13,7 @@ Class {
 { #category : #specs }
 IceTipSelectRemotePresenter class >> defaultSpec [
 
-	^ SpBoxLayout newHorizontal
+	^ SpBoxLayout newLeftToRight
 		  add: #remoteLabel width: self labelWidth;
 		  add: #remoteList;
 		  add: #addButton width: self iconWidth

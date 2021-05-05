@@ -16,8 +16,8 @@ Class {
 { #category : #specs }
 IceGitHubRejectPullRequestModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #messageLabel withConstraints: [ :constraints | 
 					   constraints width: 80 currentWorld displayScaleFactor ];
 				   add: #messageText;

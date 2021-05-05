@@ -16,7 +16,7 @@ IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for
 { #category : #specs }
 IceTipRemoteActionBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #remotePanel
 		  withConstraints: [ :c | c height: self inputTextHeight ];
 		  add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];

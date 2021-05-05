@@ -37,9 +37,9 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 { #category : #specs }
 IceGitHubPullRequestDetailModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #urlLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -47,7 +47,7 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 				yourself)
 			height: self inputTextHeight;
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #authorLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -55,7 +55,7 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 				yourself)
 			height: self inputTextHeight;
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #fromLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
@@ -80,7 +80,7 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 				yourself)
 			height: self inputTextHeight;
 		add:
-			(SpBoxLayout newHorizontal
+			(SpBoxLayout newLeftToRight
 				add: #statusLabel
 					withConstraints:
 						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];

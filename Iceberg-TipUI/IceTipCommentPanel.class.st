@@ -26,14 +26,14 @@ IceTipCommentPanel class >> defaultSpec [
 	as possible, to reduce noise in users. (Right now this branch is only a
 	migration from Spec1+Commander1 to Spec2+Commander2)."
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #pushCheckbox;
 				   add: #saveCheckbox;
 				   yourself)
 		  height: self inputTextHeight;
 		  add: #commentText;
-" 		  add: (SpBoxLayout newHorizontal
+" 		  add: (SpBoxLayout newLeftToRight
 				   add: #fixesLabel width: 40;
 				   add: #fixesField;
 				   yourself)

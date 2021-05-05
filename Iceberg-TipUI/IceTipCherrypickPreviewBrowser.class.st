@@ -23,7 +23,7 @@ IceTipCherrypickPreviewBrowser class >> buildSelectionCommandGroupWith: presente
 { #category : #specs }
 IceTipCherrypickPreviewBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;
 		  add: #buttonBar height: self buttonHeight;
 		  yourself

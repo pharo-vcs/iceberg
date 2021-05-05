@@ -14,7 +14,7 @@ Class {
 { #category : #specs }
 IceTipRepairRepositoryDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		add: #reasonPanel 
 		withConstraints: [ :constraints |
 			constraints 

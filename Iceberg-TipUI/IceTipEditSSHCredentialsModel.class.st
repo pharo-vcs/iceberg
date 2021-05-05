@@ -10,15 +10,15 @@ Class {
 { #category : #specs }
 IceTipEditSSHCredentialsModel class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #usernameLabel width: self labelWidth;
 				   add: #usernameInput;
 				   yourself)
 		  height: self inputTextHeight;
 		  add: #publicKeyInput height: self inputTextHeight;
 		  add: #privateKeyInput height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #passphraseLabel width: self labelWidth;
 				   add: #passphraseInput;
 				   yourself)

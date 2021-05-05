@@ -13,11 +13,11 @@ Class {
 { #category : #specs }
 IceTipRemoveRepositoryDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #iconPanel
 				   width: 40 * self currentWorld displayScaleFactor;
-				   add: (SpBoxLayout newVertical
+				   add: (SpBoxLayout newTopToBottom
 						    add: #confirmLabel;
 						    add: #removeFileSystemCheckbox height: self inputTextHeight;
 						    yourself);

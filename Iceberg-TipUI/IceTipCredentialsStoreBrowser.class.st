@@ -33,7 +33,7 @@ IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter
 { #category : #specs }
 IceTipCredentialsStoreBrowser class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
+	^ SpBoxLayout newTopToBottom
 		  add: #credentialsList;
 		  yourself
 ]

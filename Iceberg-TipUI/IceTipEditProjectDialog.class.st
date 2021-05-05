@@ -24,25 +24,25 @@ Class {
 { #category : #specs }
 IceTipEditProjectDialog class >> defaultSpec [
 
-	^ SpBoxLayout newVertical
-		  add: (SpBoxLayout newHorizontal
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
 				   add: #nameLabel width: self labelWidth;
 				   add: #nameInput expand: true;
 				   add: #addButton width: 32 * self currentWorld displayScaleFactor;
 				   add: #removeButton width: 32 * self currentWorld displayScaleFactor;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #sourceDirectoryLabel width: self labelWidth;
 				   add: #sourceDirectoryTree;
 				   yourself)
 		  height: 200 * self currentWorld displayScaleFactor;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #formatLabel width: self labelWidth;
 				   add: #formatList;
 				   yourself)
 		  height: self inputTextHeight;
-		  add: (SpBoxLayout newHorizontal
+		  add: (SpBoxLayout newLeftToRight
 				   add: #messageIcon width: self labelWidth;
 				   add: #messageText;
 				   yourself);

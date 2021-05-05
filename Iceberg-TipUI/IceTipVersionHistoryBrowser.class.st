@@ -38,7 +38,7 @@ IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter f
 { #category : #specs }
 IceTipVersionHistoryBrowser class >> defaultSpec [
 	
-	^ SpPanedLayout newVertical
+	^ SpPanedLayout newTopToBottom
 		add: #commitList;
 		add: #commitPanel;
 		yourself
