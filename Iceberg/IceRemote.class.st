@@ -18,7 +18,7 @@ Class {
 		'name',
 		'localRepository'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #comparing }
@@ -38,7 +38,7 @@ IceRemote >> branches [
 	self subclassResponsibility
 ]
 
-{ #category : #accesing }
+{ #category : #accessing }
 IceRemote >> branchesFrom: aRepository [
 	"I return all the branches of my remote from a repository"
 
