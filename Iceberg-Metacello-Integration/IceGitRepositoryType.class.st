@@ -9,7 +9,7 @@ git:git@github.com:user/project.git
 Class {
 	#name : #IceGitRepositoryType,
 	#superclass : #IceProviderRepositoryType,
-	#category : #'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-RepoTypes'
 }
 
 { #category : #accessing }

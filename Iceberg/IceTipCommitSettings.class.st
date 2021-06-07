@@ -5,7 +5,7 @@ Class {
 		'pushOnCommit',
 		'saveImageOnCommit'
 	],
-	#category : #Iceberg
+	#category : #'Iceberg-Settings'
 }
 
 { #category : #accessing }

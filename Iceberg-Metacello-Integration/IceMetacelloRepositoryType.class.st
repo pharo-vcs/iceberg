@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'location'
 	],
-	#category : #'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-RepoTypes'
 }
 
 { #category : #accessing }

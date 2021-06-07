@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'choices'
 	],
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-Session'
 }
 
 { #category : #initialization }

@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'iceVersion'
 	],
-	#category : #'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Reader'
 }
 
 { #category : #accessing }

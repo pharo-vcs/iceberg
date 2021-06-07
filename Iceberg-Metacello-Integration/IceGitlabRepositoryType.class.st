@@ -4,7 +4,7 @@ I resolve Gilab repositories
 Class {
 	#name : #IceGitlabRepositoryType,
 	#superclass : #IceProviderRepositoryType,
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-RepoTypes'
 }
 
 { #category : #accessing }
