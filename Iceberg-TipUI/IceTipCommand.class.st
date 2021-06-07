@@ -14,6 +14,12 @@ IceTipCommand class >> defaultToolbarItemName [
 
 ]
 
+{ #category : #testing }
+IceTipCommand class >> isAbstract [
+
+	^ self == IceTipCommand
+]
+
 { #category : #accessing }
 IceTipCommand >> application [
 

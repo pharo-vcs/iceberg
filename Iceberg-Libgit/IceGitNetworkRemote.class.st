@@ -25,6 +25,12 @@ IceGitNetworkRemote class >> defaultPort [
 	^self subclassResponsibility
 ]
 
+{ #category : #testing }
+IceGitNetworkRemote class >> isAbstract [
+
+	^ self == IceGitNetworkRemote 
+]
+
 { #category : #private }
 IceGitNetworkRemote >> basicUrl: aString [
 	url := aString

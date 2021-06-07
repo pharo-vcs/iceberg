@@ -30,6 +30,12 @@ IceTipRepairAction class >> icon [
 ]
 
 { #category : #testing }
+IceTipRepairAction class >> isAbstract [
+
+	^ self == IceTipRepairAction
+]
+
+{ #category : #testing }
 IceTipRepairAction class >> isAvailableFor: aRepository [
 	^ false
 ]

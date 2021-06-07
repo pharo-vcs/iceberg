@@ -9,6 +9,12 @@ Class {
 }
 
 { #category : #testing }
+IceGitHubCommand class >> isAbstract [
+
+	^ self == IceGitHubCommand
+]
+
+{ #category : #testing }
 IceGitHubCommand >> canBeExecuted [
 
 	^ self remote url includesSubstring: 'github.com'

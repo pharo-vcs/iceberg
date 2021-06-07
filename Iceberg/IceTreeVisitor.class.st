@@ -10,6 +10,12 @@ Class {
 	#category : #'Iceberg-Changes'
 }
 
+{ #category : #testing }
+IceTreeVisitor class >> isAbstract [
+
+	^ self == IceTreeVisitor 
+]
+
 { #category : #visiting }
 IceTreeVisitor >> visitChildrenOf: anIceNode [ 
 	

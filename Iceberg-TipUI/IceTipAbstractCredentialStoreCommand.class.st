@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
+{ #category : #testing }
+IceTipAbstractCredentialStoreCommand class >> isAbstract [
+
+	^ self == IceTipAbstractCredentialStoreCommand
+]
+
 { #category : #initialization }
 IceTipAbstractCredentialStoreCommand >> iconName [
 
