@@ -25,12 +25,6 @@ IceTipCommitCommand >> canBeExecuted [
 	^ self isRepositoryOperational
 ]
 
-{ #category : #execution }
-IceTipCommitCommand >> execute [
-
-	(IceTipCommitBrowser on: self repositoryModel) openWithSpec
-]
-
 { #category : #accessing }
 IceTipCommitCommand >> iconName [
 
