@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #testing }
+IceGitHubTreeCommand class >> isAbstract [
+
+	^ self == IceGitHubTreeCommand
+]
+
+{ #category : #testing }
 IceGitHubTreeCommand >> actsOnBranch: anIceTipTreeBranch [
 
 	^ false

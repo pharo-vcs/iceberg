@@ -27,6 +27,12 @@ IceTipLocationPresenter class >> defaultSpec [
 		  yourself
 ]
 
+{ #category : #testing }
+IceTipLocationPresenter class >> isAbstract [
+
+	^ self == IceTipLocationPresenter
+]
+
 { #category : #accessing }
 IceTipLocationPresenter >> appendPath: aString [
 

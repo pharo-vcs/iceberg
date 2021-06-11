@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-Changes'
 }
 
+{ #category : #testing }
+IceAbstractNode class >> isAbstract [
+
+	^ self == IceAbstractNode
+]
+
 { #category : #accessing }
 IceAbstractNode >> accept: aVisitor [
 

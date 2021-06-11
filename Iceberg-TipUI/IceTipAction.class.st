@@ -11,6 +11,12 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
+{ #category : #testing }
+IceTipAction class >> isAbstract [
+
+	^ self == IceTipAction
+]
+
 { #category : #executing }
 IceTipAction >> basicExecute [
 	self subclassResponsibility

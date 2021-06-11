@@ -12,6 +12,12 @@ Class {
 	#category : 'Iceberg-Plugin-GitHub-Commands'
 }
 
+{ #category : #testing }
+IceGitHubAction class >> isAbstract [
+
+	^ self == IceGitHubAction 
+]
+
 { #category : #accessing }
 IceGitHubAction >> credentials [ 
 	^ credentials ifNil: [ credentials := self obtainCredentials ]

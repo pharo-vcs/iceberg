@@ -11,6 +11,12 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
+{ #category : #testing }
+IceRepositoryCommand class >> isAbstract [
+
+	^ self == IceRepositoryCommand
+]
+
 { #category : #accessing }
 IceRepositoryCommand >> beSuccess [
 	success := true

@@ -18,6 +18,12 @@ IcePlugin class >> allAvailableFor: aRepository [
 ]
 
 { #category : #testing }
+IcePlugin class >> isAbstract [
+
+	^ self == IcePlugin
+]
+
+{ #category : #testing }
 IcePlugin class >> isAvailableFor: aRepository [
 	^ self subclassResponsibility
 ]

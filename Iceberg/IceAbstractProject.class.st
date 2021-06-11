@@ -7,6 +7,12 @@ Class {
 	#category : 'Iceberg-Project'
 }
 
+{ #category : #testing }
+IceAbstractProject class >> isAbstract [
+
+	^ self == IceAbstractProject
+]
+
 { #category : #'instance creation' }
 IceAbstractProject class >> onCommitish: anIceCommitish [
 	

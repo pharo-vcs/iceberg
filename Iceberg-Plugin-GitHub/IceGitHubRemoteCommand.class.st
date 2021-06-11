@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
+{ #category : #testing }
+IceGitHubRemoteCommand class >> isAbstract [
+
+	^ self == IceGitHubRemoteCommand
+]
+
 { #category : #accessing }
 IceGitHubRemoteCommand >> repositoryModel [
 

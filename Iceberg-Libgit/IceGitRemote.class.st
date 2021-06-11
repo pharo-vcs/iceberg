@@ -10,6 +10,12 @@ IceGitRemote class >> canHandleUrl: aRepositoryUrl [
 ]
 
 { #category : #testing }
+IceGitRemote class >> isAbstract [
+
+	^ self == IceGitRemote
+]
+
+{ #category : #testing }
 IceGitRemote class >> isValidUrl: aRepositoryUrl [
 	^ self allSubclasses  
 		anySatisfy: [ :subclass | subclass canHandleUrl: aRepositoryUrl ]

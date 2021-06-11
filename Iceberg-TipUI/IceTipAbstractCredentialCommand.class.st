@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
+{ #category : #testing }
+IceTipAbstractCredentialCommand class >> isAbstract [
+
+	^ self == IceTipAbstractCredentialCommand
+]
+
 { #category : #accessing }
 IceTipAbstractCredentialCommand >> credential [
 

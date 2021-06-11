@@ -10,6 +10,12 @@ Class {
 	#category : 'Iceberg-WorkingCopy'
 }
 
+{ #category : #testing }
+IceWorkingCopyState class >> isAbstract [
+
+	^ self == IceWorkingCopyState 
+]
+
 { #category : #'as yet unclassified' }
 IceWorkingCopyState class >> repository: aRepository [ 
 
