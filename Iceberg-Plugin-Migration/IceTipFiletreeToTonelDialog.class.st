@@ -12,7 +12,7 @@ Class {
 		'branchName',
 		'repository'
 	],
-	#category : #'Iceberg-Plugin-Migration'
+	#category : #'Iceberg-Plugin-Migration-UI'
 }
 
 { #category : #specs }

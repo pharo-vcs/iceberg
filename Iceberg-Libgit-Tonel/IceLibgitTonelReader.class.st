@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'iceVersion'
 	],
-	#category : 'Iceberg-Libgit-Tonel'
+	#category : #'Iceberg-Libgit-Tonel-Reader'
 }
 
 { #category : #accessing }

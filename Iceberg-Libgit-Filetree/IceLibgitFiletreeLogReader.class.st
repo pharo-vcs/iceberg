@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'fileName'
 	],
-	#category : #'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Reader'
 }
 
 { #category : #'instance creation' }

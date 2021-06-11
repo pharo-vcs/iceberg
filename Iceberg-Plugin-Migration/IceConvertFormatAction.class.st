@@ -7,7 +7,7 @@ Class {
 		'format',
 		'mergeWithCurrentBranch'
 	],
-	#category : 'Iceberg-Plugin-Migration'
+	#category : #'Iceberg-Plugin-Migration-Conversion'
 }
 
 { #category : #accessing }

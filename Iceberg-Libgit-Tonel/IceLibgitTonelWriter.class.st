@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'repositoryDirectory'
 	],
-	#category : 'Iceberg-Libgit-Tonel'
+	#category : #'Iceberg-Libgit-Tonel-Writer'
 }
 
 { #category : #accessing }

@@ -4,7 +4,7 @@ I can write filetree metadataless versions of a snapshot.
 Class {
 	#name : #IceMetadatalessStCypressWriter,
 	#superclass : #MCFileTreeStCypressWriter,
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Writer'
 }
 
 { #category : #writing }

@@ -4,7 +4,7 @@ I can write metadataless filetree versions from an ice formed version.
 Class {
 	#name : #IceMetadatalessFileTreeWriter,
 	#superclass : #MCFileTreeWriter,
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Writer'
 }
 
 { #category : #writing }

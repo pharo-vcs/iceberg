@@ -7,7 +7,7 @@ Class {
 	#superclass : #IceMetadatalessFileTreeWriter,
 	#traits : 'TIceRepositoryWriter',
 	#classTraits : 'TIceRepositoryWriter classTrait',
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Writer'
 }
 
 { #category : #accessing }

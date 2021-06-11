@@ -4,7 +4,7 @@ I'm a tool to ask the full history of a method (based on tonel file format).
 Class {
 	#name : #IceLibgitTonelLog,
 	#superclass : #IceLog,
-	#category : 'Iceberg-Libgit-Tonel'
+	#category : #'Iceberg-Libgit-Tonel-Log'
 }
 
 { #category : #testing }
