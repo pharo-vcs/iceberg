@@ -19,7 +19,7 @@ IceTipCheckoutModel >> checkout [
 
 	checkoutStrategy
 		committish: self commitish;
-		diff: diffModel entity.
+		diff: self diff entity.
 
 	self commitish checkout: checkoutStrategy
 ]
