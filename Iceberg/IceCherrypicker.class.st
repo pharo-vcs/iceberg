@@ -29,7 +29,7 @@ IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
 				yourself)
 ]
 
-{ #category : #'access options' }
+{ #category : #'accessing - options' }
 IceCherrypicker >> addDependency: anIceDependency [ 
 	self dependencies add: anIceDependency .
 ]
