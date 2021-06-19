@@ -28,7 +28,7 @@ IcePlugin class >> isAvailableFor: aRepository [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing-ui' }
+{ #category : #'accessing - ui' }
 IcePlugin >> checkoutBranchPanelsOnModel: anIceTipCachedModel [ 
 
 	"Hook for subclasses"

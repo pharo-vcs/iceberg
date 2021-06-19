@@ -57,13 +57,13 @@ IceTipCommentPanel >> clear [
 	commentText text: ''
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> commentText [
 
 	^ commentText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> commitButton [
 
 	^ commitButton
@@ -166,7 +166,7 @@ IceTipCommentPanel >> onCommit: aBlock [
 			cull: self isPushing ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> pushCheckbox [
 
 	^ pushCheckbox
@@ -185,19 +185,19 @@ IceTipCommentPanel >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceTipCommentPanel >> repositoryName [
 
 	^ self repositoryModel name
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
 
 	^ self repositoryModel pushRemoteName
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> saveCheckbox [
 
 	^ saveCheckbox

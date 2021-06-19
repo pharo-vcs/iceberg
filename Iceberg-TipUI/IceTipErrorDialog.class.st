@@ -33,7 +33,7 @@ IceTipErrorDialog >> accept [
 	exception debug.
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipErrorDialog >> errorLabel [
 
 	^ errorLabel
@@ -51,7 +51,7 @@ IceTipErrorDialog >> exception: anException [
 	exception := anException freeze
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipErrorDialog >> iconPanel [
 
 	^ iconPanel

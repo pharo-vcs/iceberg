@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRemoveFromRepositoryPackageCommand class >> defaultDescription [
 
 	^ 'Removes the current repository from the repository, without removing it from the system'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRemoveFromRepositoryPackageCommand class >> defaultName [
 
 	^ 'Remove from repository'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRemoveFromRepositoryPackageCommand >> execute [
 
 	self packageModel remove

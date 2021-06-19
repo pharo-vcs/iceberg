@@ -10,13 +10,13 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceGitHubTreeOpenOnGithubCommand class >> defaultName [
 
 	^ 'Open on github'
 ]
 
-{ #category : #execute }
+{ #category : #executing }
 IceGitHubTreeOpenOnGithubCommand >> execute [
 
 	(IceGitHubOpenOnGithubAction

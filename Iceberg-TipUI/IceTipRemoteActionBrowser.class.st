@@ -57,19 +57,19 @@ IceTipRemoteActionBrowser >> labelForRemotePanel [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoteActionBrowser >> mainList [
 
 	^ commitsPanel commitList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoteActionBrowser >> remotePanel [
 
 	^ remotePanel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoteActionBrowser >> remotePanel: aSpPresenter [
 
 	remotePanel := aSpPresenter

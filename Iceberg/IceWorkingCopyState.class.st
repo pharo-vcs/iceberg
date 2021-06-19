@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-WorkingCopy'
+	#category : #'Iceberg-WorkingCopy'
 }
 
 { #category : #testing }
@@ -16,7 +16,7 @@ IceWorkingCopyState class >> isAbstract [
 	^ self == IceWorkingCopyState 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceWorkingCopyState class >> repository: aRepository [ 
 
 	^ self new
@@ -24,7 +24,7 @@ IceWorkingCopyState class >> repository: aRepository [
 		yourself
 ]
 
-{ #category : #display }
+{ #category : #displaying }
 IceWorkingCopyState >> description [
 
 	self subclassResponsibility

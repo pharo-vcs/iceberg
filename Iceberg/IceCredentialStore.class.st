@@ -185,7 +185,7 @@ IceCredentialStore >> storeCredential: credential forHostname: aHostname [
 	self saveIntoStore
 ]
 
-{ #category : #accessor }
+{ #category : #accessing }
 IceCredentialStore >> storeFile: aFileLocator [ 
 	storeFile := aFileLocator
 ]

@@ -7,26 +7,26 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddRemoteCommand class >> defaultDescription [
 
 	^ 'Adds a remote to this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddRemoteCommand class >> defaultName [
 
 	^ 'Add remote'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddRemoteCommand >> canBeExecuted [
 	"Any repository can have more remotes."
 
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddRemoteCommand >> execute [
 
 	(IceTipAddRemoteDialog on: self repositoryModel) openDialogWithSpec

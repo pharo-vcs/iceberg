@@ -36,7 +36,7 @@ IceTipPullBrowser >> labelForRemotePanel [
 	^ 'Pull from remote:'
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipPullBrowser >> newActionButton [
 
 	^ self newButton

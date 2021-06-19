@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipOpenNativelyCommand class >> defaultDescription [
 
 	^ 'Open the native file browser on the local repository of this project.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipOpenNativelyCommand class >> defaultName [
 
 	^ 'Open in native file browser'
@@ -28,7 +28,7 @@ IceTipOpenNativelyCommand >> canBeExecuted [
 	^ location isNotNil and: [ location exists ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipOpenNativelyCommand >> execute [
 
 	self item location openInOSFileBrowser

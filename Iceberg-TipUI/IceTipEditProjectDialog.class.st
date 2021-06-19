@@ -120,7 +120,7 @@ IceTipEditProjectDialog >> defaultFormat [
 	^ defaultFormat
 ]
 
-{ #category : #utils }
+{ #category : #utilities }
 IceTipEditProjectDialog >> expandAndSelect: aRelativePath [ 
 
 	
@@ -147,13 +147,13 @@ IceTipEditProjectDialog >> expandAndSelect: aRelativePath [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> formatLabel [
 
 	^ formatLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> formatList [
 
 	^ formatList
@@ -296,13 +296,13 @@ IceTipEditProjectDialog >> model [
 	^ model
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> nameInput [
 
 	^ nameInput
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> nameLabel [
 
 	^ nameLabel
@@ -353,7 +353,7 @@ IceTipEditProjectDialog >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> sourceDirectoryLabel [
 
 	^ sourceDirectoryLabel
@@ -375,7 +375,7 @@ IceTipEditProjectDialog >> sourceDirectorySelectionChanged: selectedPaths [
 	selectedDirectoryPath := selection relativeTo: self model fileSystem. 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipEditProjectDialog >> sourceDirectoryTree [
 
 	^ sourceDirectoryTree

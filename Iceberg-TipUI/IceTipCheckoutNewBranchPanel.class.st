@@ -26,13 +26,13 @@ IceTipCheckoutNewBranchPanel class >> defaultSpec [
 		  height: self inputTextHeight
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchInputText [
 
 	^ branchInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchLabel [
 
 	^ branchLabel
@@ -50,7 +50,7 @@ IceTipCheckoutNewBranchPanel >> commitish: anIceTipModel [
 	branchCommitish := anIceTipModel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> currentBranchLabel [
 
 	^ currentBranchLabel

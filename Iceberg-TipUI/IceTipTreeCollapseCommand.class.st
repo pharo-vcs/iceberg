@@ -8,26 +8,26 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipTreeCollapseCommand class >> defaultDescription [
 
 	^ 'Collapse selected item'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipTreeCollapseCommand class >> defaultName [
 
 	^ 'Collapse'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipTreeCollapseCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipTreeCollapseCommand >> execute [
 
 	self context doCollapseSelection

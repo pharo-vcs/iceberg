@@ -68,7 +68,7 @@ IceGitHubTipPullRequestBrowser class >> taskbarIcon [
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> acceptButton [
 
 	^ acceptButton
@@ -85,13 +85,13 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 		openWithSpec
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> commitLabel [
 
 	^ commitLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> commits [
 
 	^ commits
@@ -109,7 +109,7 @@ IceGitHubTipPullRequestBrowser >> connectPresenters [
 	rejectButton action: [ self rejectPullRequest ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> diff [
 
 	^ diff
@@ -192,14 +192,14 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ commits
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> mergeButton [
 
 	^ mergeButton
@@ -238,7 +238,7 @@ IceGitHubTipPullRequestBrowser >> refresh [
 	commits items: commitModels
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> rejectButton [
 
 	^ rejectButton

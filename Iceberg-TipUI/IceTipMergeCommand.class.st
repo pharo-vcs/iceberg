@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipMergeCommand class >> defaultDescription [
 
 	^ 'Merge your current branch with another.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipMergeCommand class >> defaultName [
 
 	^ 'Merge'
@@ -25,7 +25,7 @@ IceTipMergeCommand >> canBeExecuted [
 	^ self isRepositoryOperational
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipMergeCommand >> execute [
 	(IceTipMergeBranchDialog on: self repositoryModel) openDialogWithSpec
 ]

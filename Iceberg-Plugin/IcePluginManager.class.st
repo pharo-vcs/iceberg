@@ -35,7 +35,7 @@ IcePluginManager >> availablePluginsFor: aRepository [
 		as: Array
 ]
 
-{ #category : #'accessing-ui' }
+{ #category : #'accessing - ui' }
 IcePluginManager >> checkoutBranchPanelsOnModel: aModel [ 
 
 	^ Array streamContents: [ :stream |

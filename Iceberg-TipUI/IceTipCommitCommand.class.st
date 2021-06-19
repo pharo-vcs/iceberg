@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCommitCommand class >> defaultDescription [
 
 	^ 'Commit changes to this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCommitCommand class >> defaultName [
 
 	^ 'Commit'
@@ -25,7 +25,7 @@ IceTipCommitCommand >> canBeExecuted [
 	^ self isRepositoryOperational
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCommitCommand >> execute [
 
 	(IceTipCommitBrowser on: self repositoryModel) openWithSpec

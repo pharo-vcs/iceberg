@@ -8,13 +8,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddRepositoryCommand class >> defaultDescription [
 
 	^ 'Add a repository (new, local, cloned) to your managed repositories.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddRepositoryCommand class >> defaultName [
 
 	^ 'Add'
@@ -27,7 +27,7 @@ IceTipAddRepositoryCommand >> canBeExecuted [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddRepositoryCommand >> execute [
 
 	IceTipRegisterRepositoryDialog new openDialogWithSpec

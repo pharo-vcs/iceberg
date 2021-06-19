@@ -36,7 +36,7 @@ IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassD
 		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceExtensionDefinition [
 cherrypicker addExtendedClassDependency: anIceExtensionDefinition
 ]

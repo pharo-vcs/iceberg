@@ -47,7 +47,7 @@ IceGitCommit >> author: aString [
 	author := aString
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceGitCommit >> changesFromCommit: anIceGitCommit [ 
 	|  files |
 	files := self repository changedFilesBetween: anIceGitCommit and: self.
@@ -76,7 +76,7 @@ IceGitCommit >> commonAncestorWithCommit: anIceGitCommit [
 		^ mergeBaseId ifNotNil: [ self repository lookupCommit: mergeBaseId ] ]
 ]
 
-{ #category : #'API-tags' }
+{ #category : #'API - tags' }
 IceGitCommit >> createTag: aString [ 
 
 	self repository handleLibgitError: [ 
@@ -99,7 +99,7 @@ IceGitCommit >> datetime: aDateAndTime [
 	datetime := aDateAndTime
 ]
 
-{ #category : #'file-access' }
+{ #category : #'accessing - file' }
 IceGitCommit >> entryByPath: aString [ 
 	
 	repository handleLibgitError: [ ^ (LGitCommit of: self repositoryHandle fromHexString: self id) entryByPath: aString ]
@@ -119,7 +119,7 @@ IceGitCommit >> fetchPackageNames [
 		thenCollect: [ :each | writerClass packageNameFromDirectory: each ]
 ]
 
-{ #category : #'file-access' }
+{ #category : #'accessing - file' }
 IceGitCommit >> fileSystem [
 	
 	^ (FileSystem onGitCommit: self libgitCommit) root
@@ -170,7 +170,7 @@ IceGitCommit >> packageNames [
 		ifAbsentPut: [ self fetchPackageNames ]
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceGitCommit >> project [
 
 	self flag: #todo. "This is a quick fix for issue https://github.com/pharo-vcs/iceberg/issues/1002 and this should probably be improved to also cover issue https://github.com/pharo-vcs/iceberg/issues/949
@@ -182,7 +182,7 @@ IceGitCommit >> project [
 	^ [ IceProjectReader readProjectFrom: self ] on: NotFound do: [ self repository fetch. IceProjectReader readProjectFrom: self ]
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceGitCommit >> readerClass [
 	
 	^ self properties readerClass
@@ -195,7 +195,7 @@ IceGitCommit >> repositoryHandle [
 	^ repository repositoryHandle
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceGitCommit >> resetPackageCache [
 	
 	packageNamesCache := nil.
@@ -213,7 +213,7 @@ IceGitCommit >> timeStamp [
 	^ self datetime
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceGitCommit >> writerClass [
 
 	^ self properties writerClass

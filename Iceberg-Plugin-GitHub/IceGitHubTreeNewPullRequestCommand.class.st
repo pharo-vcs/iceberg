@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceGitHubTreeNewPullRequestCommand class >> defaultName [
 
 	^ 'New Pull Request'
 ]
 
-{ #category : #execute }
+{ #category : #executing }
 IceGitHubTreeNewPullRequestCommand >> execute [ 
 
 	^ IceGitHubNewPullRequestAction new

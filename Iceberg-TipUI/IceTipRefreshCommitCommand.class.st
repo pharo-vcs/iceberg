@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRefreshCommitCommand class >> defaultDescription [
 
 	^ 'Refresh this change tree'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRefreshCommitCommand class >> defaultName [
 
 	^ 'Refresh'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRefreshCommitCommand >> execute [
 
 	self repositoryModel reset.

@@ -22,7 +22,7 @@ IceTipRefreshPullRequestsCommand class >> defaultName [
 	^ 'Refresh'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRefreshPullRequestsCommand >> execute [
 
 	UIManager default

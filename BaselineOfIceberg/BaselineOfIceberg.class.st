@@ -1,3 +1,6 @@
+"
+Baseline for https://github.com/pharo-vcs/iceberg project
+"
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,

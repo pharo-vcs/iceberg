@@ -36,7 +36,7 @@ IceRepositoryCreator class >> isGitRoot: aReference [
 		and: [ (aReference / '.git' / 'config') exists ] ]
 ]
 
-{ #category : #'private actions' }
+{ #category : #'private - actions' }
 IceRepositoryCreator >> addLocalRepository [
 	self repository location: self locationToUse.
 	self repository pluginManager repositoryWillBeCreated: self repository.
@@ -48,7 +48,7 @@ IceRepositoryCreator >> addLocalRepository [
 	^ self repository	
 ]
 
-{ #category : #'private actions' }
+{ #category : #'private - actions' }
 IceRepositoryCreator >> addLocalRepositoryAndCheckout [
 	| localRepository |
 	localRepository := self addLocalRepository.
@@ -85,7 +85,7 @@ IceRepositoryCreator >> beBare [
 	isBareRepository := true
 ]
 
-{ #category : #'private actions' }
+{ #category : #'private - actions' }
 IceRepositoryCreator >> cloneRepository [
 	IceGitClone new
 		location: self locationToUse;
@@ -149,7 +149,7 @@ IceRepositoryCreator >> createRepository [
 		e signal ]
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceRepositoryCreator >> defaultLocation [
 	| remoteToUse |
 	remoteToUse := self remoteToUse.
@@ -194,7 +194,7 @@ IceRepositoryCreator >> initialize [
 	isBareRepository := false
 ]
 
-{ #category : #'private testing' }
+{ #category : #'private - testing' }
 IceRepositoryCreator >> isCloning [
 	^ self remoteToUse notNil
 ]
@@ -209,7 +209,7 @@ IceRepositoryCreator >> location: anObject [
 	location := anObject
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceRepositoryCreator >> locationToUse [
 	^ self location ifNil: [ self defaultLocation ]
 ]
@@ -224,7 +224,7 @@ IceRepositoryCreator >> remote: anObject [
 	remote := anObject
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceRepositoryCreator >> remoteToUse [
 	self remote ifNotNil: [ ^ self remote ].
 	self url ifNotNil: [ ^ IceGitRemote url: self url ]. 

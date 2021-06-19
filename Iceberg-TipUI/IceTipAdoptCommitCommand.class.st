@@ -10,7 +10,7 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAdoptCommitCommand class >> defaultDescription [
 
 	^ 'Sets this commit as the commit of your working copy. It will not modify your loaded code, but it will calculate the differences between your loaded packages and the the new commit to mark packages as dirty.'
@@ -22,7 +22,7 @@ IceTipAdoptCommitCommand >> defaultNameFromContext [
 	^ 'Adopt commit ' , self selectedCommitish shortId
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAdoptCommitCommand >> execute [
 	
 	self selectedCommitish adopt.

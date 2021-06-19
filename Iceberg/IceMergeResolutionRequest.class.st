@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Errors'
 }
 
-{ #category : #exceptiondescription }
+{ #category : #'exception description' }
 IceMergeResolutionRequest >> defaultAction [
 
 	| window mergeMorph |

@@ -8,13 +8,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipInstallVersionCommand class >> defaultDescription [
 
 	^ 'Revert to the selected version'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipInstallVersionCommand class >> defaultName [
 
 	^ 'Install this version'

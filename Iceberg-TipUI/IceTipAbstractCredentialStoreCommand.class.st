@@ -25,7 +25,7 @@ IceTipAbstractCredentialStoreCommand >> shouldBeDisplayedOnRightSideInToolbar [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAbstractCredentialStoreCommand >> store [
 
 	^ self context store

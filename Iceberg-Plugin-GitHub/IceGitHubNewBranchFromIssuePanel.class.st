@@ -93,25 +93,25 @@ IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 	issueNumberText whenTextChangedDo: [ :text | self validateIssue: text ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueLabel [
 
 	^ issueLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueNumberText [
 
 	^ issueNumberText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueText [
 
 	^ issueText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> remotePanel [
 
 	^ remotePanel

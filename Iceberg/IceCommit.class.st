@@ -25,7 +25,7 @@ Class {
 	#category : #'Iceberg-Core'
 }
 
-{ #category : #'API-working copy' }
+{ #category : #'API - working copy' }
 IceCommit >> adopt [
 	
 	"Low level.
@@ -34,7 +34,7 @@ IceCommit >> adopt [
 	self repository workingCopy adoptCommit: self
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> ancestors [
 	
 	^ self subclassResponsibility
@@ -46,12 +46,12 @@ IceCommit >> author [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> canRevertChanges [
 	^ false
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceCommit >> changedPackagesToWorkingCopy: left [ 
 	
 	| leftPackageNames rightPackageNames added removed |
@@ -82,13 +82,13 @@ IceCommit >> changedPackagesToWorkingCopy: left [
 			removed
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceCommit >> changesFromNoCommit: anIceNoCommit [ 
 
 	^ self packages collect: [ :each | IceImageChange package: each ]
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> changesTo: aCommitish [
 
 	^ aCommitish changesFromCommit: self
@@ -106,19 +106,19 @@ IceCommit >> commit [
 	^ self
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> commonAncestorWith: aCommitish [
 	
 	^ aCommitish commonAncestorWithCommit: self
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceCommit >> compatibleUsername [
 	
 	^ 'CompatibleUserName'
 ]
 
-{ #category : #'API-tags' }
+{ #category : #'API - tags' }
 IceCommit >> createTag: aString [
 
 	self subclassResponsibility
@@ -140,12 +140,12 @@ IceCommit >> description [
 	^ 'Detached at {1}' format: { self shortId }
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> diffFromHead [
 	^ self repository headCommit diffTo: self
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> diffToParent [
 	"returns a diff between me and my first parent/ancestor"
 	^ self diffTo: (self ancestors
@@ -153,18 +153,18 @@ IceCommit >> diffToParent [
 			ifEmpty: [ nil ])
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> diffToWorkingCopy [
 	^ self diffTo: self repository workingCopy
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> diffToWorkingCopyForPackage: aPackage [
 
 	^ self diffToWorkingCopyForPackages: { aPackage }
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceCommit >> diffToWorkingCopyForPackages: aCollection [
 
 	^ IceDiff new
@@ -186,13 +186,13 @@ IceCommit >> id [
 	self subclassResponsibility
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceCommit >> includesPackageNamed: aName [
 	
 	^ self packageNames includes: aName
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> isAncestorOf: aCommit [
 	
 	^ aCommit isParentOf: self
@@ -216,7 +216,7 @@ IceCommit >> isNoCommit [
 	^ false
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> isParentOf: aCommit [
 
 	^ self newCommitWalk includesCommit: aCommit
@@ -228,7 +228,7 @@ IceCommit >> isUnknownCommit [
 	^ false
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceCommit >> mcPackageSnapshotsOfPackages: aCollection [
 	self flag: #pharoTodo. "I'm not sure I need to answer an empty snapshot. 
 	if there is no mcVersion it likely means the package was removed and an empty snapshow will 
@@ -249,25 +249,25 @@ IceCommit >> name [
 	^ self id
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> newCommitWalk [
 
 	^ repository newCommitWalk fromCommit: self
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceCommit >> packageNames [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceCommit >> packages [
 
 	^ self packageNames collect: [ :name | IcePackage named: name repository: self repository ]
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceCommit >> parent [
 	
 	^ self ancestors first
@@ -283,7 +283,7 @@ IceCommit >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceCommit >> project [
 	
 	self subclassResponsibility
@@ -313,7 +313,7 @@ IceCommit >> status [
 	^ 'Not merged'
 ]
 
-{ #category : #'API-tags' }
+{ #category : #'API - tags' }
 IceCommit >> tags [
 	
 	^ self repository tags select: [ :each | each commit = self ]
@@ -331,7 +331,7 @@ IceCommit >> validateIsBranch [
 	IceNotInBranch signal
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceCommit >> versionFor: aPackage [
 	
 	^ IceSavedPackageVersion fromCommit: self package: aPackage

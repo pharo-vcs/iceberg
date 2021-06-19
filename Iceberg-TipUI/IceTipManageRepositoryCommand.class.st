@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultDescription [
 
 	^ 'Open repository manager browser for this repository.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultName [
 
 	^ 'Open Repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultToolbarItemName [
 
 	^ 'Repository'
@@ -32,7 +32,7 @@ IceTipManageRepositoryCommand >> canBeExecuted [
 	^ self isRepositoryMissing not
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipManageRepositoryCommand >> execute [
 
 	(IceTipRepositoryBrowser on: self repositoryModel) openWithSpec

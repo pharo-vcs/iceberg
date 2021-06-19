@@ -90,7 +90,7 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 	repository register
 ]
 
-{ #category : #'accessing commits' }
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner repository: repository [
 
 	| shortHash |
@@ -108,7 +108,7 @@ IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner reposito
 		   project: repository) at: #sha
 ]
 
-{ #category : #'accessing commits' }
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> icebergCommitHash [
 
 	^ self
@@ -123,7 +123,7 @@ IcePharoPlugin class >> isAvailableFor: aRepository [
 	^ aRepository remotes anySatisfy: [ :each | each projectName = 'pharo' ]
 ]
 
-{ #category : #'accessing commits' }
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> libgitCommitHash [
 
 	^ self
@@ -132,13 +132,13 @@ IcePharoPlugin class >> libgitCommitHash [
 		  repository: 'libgit2-pharo-bindings'
 ]
 
-{ #category : #'accessing commits' }
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> pharoCommitHash [
 
 	^ SystemVersion current commitHash
 ]
 
-{ #category : #'accessing commits' }
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> tonelCommitHash [
 
 	^ self

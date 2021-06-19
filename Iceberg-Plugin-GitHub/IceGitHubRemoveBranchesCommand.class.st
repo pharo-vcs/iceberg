@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceGitHubRemoveBranchesCommand class >> defaultName [
 
 	^ 'Remove Branches...'

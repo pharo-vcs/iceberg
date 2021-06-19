@@ -18,19 +18,19 @@ IceTipHistoryActionBrowser >> accept [
 	button performAction
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryActionBrowser >> actionButtonBar [
 
 	^ actionButtonBar
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryActionBrowser >> commitsPanel [
 
 	^ commitsPanel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryActionBrowser >> commitsPanel: aSpPresenter [
 
 	commitsPanel := aSpPresenter
@@ -63,7 +63,7 @@ IceTipHistoryActionBrowser >> moveToRemote: aRemoteModel [
 	self updateTitle
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipHistoryActionBrowser >> newActionButton [
 	"Answer a new instance of SpButton to be placed at bottom, as the main action of the window."
 

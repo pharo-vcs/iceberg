@@ -4,10 +4,10 @@ I am a working copy whose packages were all loaded from the same single commit.
 Class {
 	#name : #IceAttachedSingleVersionWorkingCopy,
 	#superclass : #IceWorkingCopyState,
-	#category : 'Iceberg-WorkingCopy'
+	#category : #'Iceberg-WorkingCopy'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 IceAttachedSingleVersionWorkingCopy class >> on: anIceCommit repository: aRepository [
 	
 	^ self new
@@ -16,7 +16,7 @@ IceAttachedSingleVersionWorkingCopy class >> on: anIceCommit repository: aReposi
 		yourself
 ]
 
-{ #category : #display }
+{ #category : #displaying }
 IceAttachedSingleVersionWorkingCopy >> description [
 	
 	^ self referenceCommit description

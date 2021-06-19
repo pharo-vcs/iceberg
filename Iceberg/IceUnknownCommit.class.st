@@ -8,10 +8,10 @@ Class {
 		'id',
 		'datetime'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
-{ #category : #'API-working copy' }
+{ #category : #'API - working copy' }
 IceUnknownCommit >> adopt [
 	
 	"Low level.
@@ -20,12 +20,12 @@ IceUnknownCommit >> adopt [
 	self repository workingCopy adoptCommit: self
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceUnknownCommit >> changesFromCommit: anIceGitCommit [ 
 	^ anIceGitCommit changesFromNoCommit: self
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceUnknownCommit >> changesTo: aCommitish [
 
 	aCommitish = self
@@ -102,7 +102,7 @@ IceUnknownCommit >> isUnknownCommit [
 	^ true
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceUnknownCommit >> project [
 
 	^ repository newUnbornProject

@@ -10,7 +10,7 @@ I am a remote tracked branch. I am a copy to a branch that exists in a remote. I
 Class {
 	#name : #IceRemoteBranch,
 	#superclass : #IceBranch,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #comparing }
@@ -20,7 +20,7 @@ IceRemoteBranch >> = aBranch [
 		and: [ self name = aBranch name ]
 ]
 
-{ #category : #'API-checkout' }
+{ #category : #'API - checkout' }
 IceRemoteBranch >> checkout: aCheckoutStrategy [
 
 	| localBranch |
@@ -36,7 +36,7 @@ IceRemoteBranch >> checkout: aCheckoutStrategy [
 	^ localBranch checkout: aCheckoutStrategy
 ]
 
-{ #category : #'API-actions' }
+{ #category : #'API - actions' }
 IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 	"checkouts a remote branch"
 
@@ -59,7 +59,7 @@ IceRemoteBranch >> hash [
 	^ self name hash
 ]
 
-{ #category : #'API-remotes' }
+{ #category : #'API - remotes' }
 IceRemoteBranch >> incomingCommits [
 	^ #()
 ]
@@ -70,7 +70,7 @@ IceRemoteBranch >> isRemote [
 	^ true
 ]
 
-{ #category : #'API-remotes' }
+{ #category : #'API - remotes' }
 IceRemoteBranch >> outgoingCommits [
 	^ #()
 ]
@@ -80,7 +80,7 @@ IceRemoteBranch >> remote [
 	^ repository remoteNamed: self remoteName
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceRemoteBranch >> shortName [
 	^ self name copyAfter: $/
 ]

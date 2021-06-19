@@ -8,7 +8,7 @@ It just add options to easily handle the creation of branchs with the ""conventi
 Class {
 	#name : #IceGitHubPlugin,
 	#superclass : #IcePlugin,
-	#category : 'Iceberg-Plugin-GitHub-Core'
+	#category : #'Iceberg-Plugin-GitHub-Core'
 }
 
 { #category : #testing }
@@ -17,7 +17,7 @@ IceGitHubPlugin class >> isAvailableFor: aRepository [
 	^ aRepository remotes anySatisfy: [ :each | each host = 'github.com' ]
 ]
 
-{ #category : #'accessing-ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPlugin >> checkoutBranchPanelsOnModel: aRepositoryModel [ 
 	
 	^ { IceGitHubNewBranchFromIssuePanel on: aRepositoryModel }

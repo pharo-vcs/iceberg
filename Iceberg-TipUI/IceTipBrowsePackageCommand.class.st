@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowsePackageCommand class >> defaultDescription [
 
 	^ 'Browse the selected package as it is loaded in the image'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowsePackageCommand class >> defaultName [
 
 	^ 'Browse'
@@ -25,7 +25,7 @@ IceTipBrowsePackageCommand >> canBeExecuted [
 	^ self isPackageLoaded
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipBrowsePackageCommand >> execute [
 
 	self packageModel browsePackage

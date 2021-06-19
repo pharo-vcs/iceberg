@@ -31,7 +31,7 @@ IceOperation >> accept: aVisitor [
 	self subclassResponsibility
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceOperation >> contextClass [
 	
 	^ definition contextClass

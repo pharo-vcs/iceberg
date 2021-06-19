@@ -85,7 +85,7 @@ IceGitHubRemoveBranchesModel >> items: aCollection [
 	self listPanel items: aCollection
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubRemoveBranchesModel >> listPanel [
 
 	^ listPanel
@@ -109,7 +109,7 @@ IceGitHubRemoveBranchesModel >> remote: anObject [
 	remote := anObject
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubRemoveBranchesModel >> selectButton [
 
 	^ selectButton

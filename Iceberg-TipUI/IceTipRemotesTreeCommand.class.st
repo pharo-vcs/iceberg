@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #testing }
 IceTipRemotesTreeCommand class >> isAbstract [
 
 	^ self == IceTipRemotesTreeCommand
@@ -31,7 +31,7 @@ IceTipRemotesTreeCommand >> actsOnTag: aTagModel [
 	^ false
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRemotesTreeCommand >> canBeExecuted [
 
 	^ self hasSelectedItem and: [ self item canActivateCommand: self ]

@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutSelectedTagCommand class >> defaultDescription [
 
 	^ 'Checkout this tag for this repository. Repository will then be in Detached Head state!'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutSelectedTagCommand class >> defaultName [
 
 	^ 'Checkout tag'
@@ -25,7 +25,7 @@ IceTipCheckoutSelectedTagCommand >> actsOnTag: aRemoteModel [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCheckoutSelectedTagCommand >> execute [
 	self item previewCheckout
 ]

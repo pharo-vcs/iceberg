@@ -136,7 +136,7 @@ IceGitHubAPI >> credentials: anObject [
 	credentials := anObject
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> delete: aString [ 
 	^ self contentsWithValidationDo: [
 		(self newRequestTo: aString)
@@ -149,7 +149,7 @@ IceGitHubAPI >> deleteBranch: owner project: projectName name: branchName [
 	^ self delete: 'repos/', owner, '/', projectName, '/git/refs/heads/', branchName
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> get: aString [ 
 	^ self jsonContentsWithValidationDo: [
 		(self newRequestTo: aString)
@@ -157,7 +157,7 @@ IceGitHubAPI >> get: aString [
 			response ]
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> get: aString parameters: aDictionary [
 	^ self jsonContentsWithValidationDo: [
 		(self newRequestTo: aString, (String streamContents: [ :stream |
@@ -191,7 +191,7 @@ IceGitHubAPI >> getIssue: owner project: projectName number: issueNumber [
 	^ self get: 'repos/', owner,'/', projectName, '/issues/', (issueNumber asString)
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> getPaginated: aString [ 
 	^ IceGitHubAPIPaginatedResult api: self request: aString
 
@@ -203,7 +203,7 @@ IceGitHubAPI >> getPullRequests: owner project: projectName [
 		
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> getRaw: aString [ 
 	^ self responseWithValidationDo: [
 		(self newRequestTo: aString)
@@ -250,7 +250,7 @@ IceGitHubAPI >> jsonContentsWithValidationDo: aBlock [
 	^ STON fromString: (self contentsWithValidationDo: aBlock)
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceGitHubAPI >> newRequestTo: aString [
 
 	^ ZnClient new 
@@ -264,7 +264,7 @@ IceGitHubAPI >> newRequestTo: aString [
 		yourself
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> patch: aString with: aBlock [  
 	^ self jsonContentsWithValidationDo: [
 		(self newRequestTo: aString)
@@ -273,7 +273,7 @@ IceGitHubAPI >> patch: aString with: aBlock [
 			response ]
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> post: aString with: aBlock [  
 	^ self jsonContentsWithValidationDo: [
 		(self newRequestTo: aString)
@@ -282,7 +282,7 @@ IceGitHubAPI >> post: aString with: aBlock [
 			response ]
 ]
 
-{ #category : #'private requesting' }
+{ #category : #'private - requesting' }
 IceGitHubAPI >> put: aString with: aBlock [  
 	^ self jsonContentsWithValidationDo: [
 		(self newRequestTo: aString)

@@ -138,7 +138,7 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitHubPullRequestListBrowser >> mainList [
 
 	^ pullRequests

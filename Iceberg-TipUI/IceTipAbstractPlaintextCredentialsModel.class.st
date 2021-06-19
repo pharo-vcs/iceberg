@@ -53,7 +53,7 @@ IceTipAbstractPlaintextCredentialsModel >> password [
 	^ passwordInput text
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAbstractPlaintextCredentialsModel >> passwordInput [
 
 	^ passwordInput
@@ -65,7 +65,7 @@ IceTipAbstractPlaintextCredentialsModel >> username [
 	^ usernameInput text
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAbstractPlaintextCredentialsModel >> usernameInput [
 
 	^ usernameInput

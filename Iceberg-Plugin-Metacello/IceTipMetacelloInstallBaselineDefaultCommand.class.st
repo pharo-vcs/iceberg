@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipMetacelloInstallBaselineDefaultCommand class >> defaultName [
 
 	^ 'Install baseline (default)'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipMetacelloInstallBaselineDefaultCommand >> execute [
 
 	self installBaseline: self package

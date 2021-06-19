@@ -8,13 +8,13 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #initialization }
+{ #category : #'accessing - defaults' }
 IceTipOpenCheckUrlCommand class >> defaultDescription [
 
 	^ 'Open a internet browser to look for the url of the check'
 ]
 
-{ #category : #initialization }
+{ #category : #'accessing - defaults' }
 IceTipOpenCheckUrlCommand class >> defaultName [
 
 	^ 'Open url'

@@ -10,7 +10,7 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #testing }
 IceTipPackageCommand class >> isAbstract [
 
 	^ self == IceTipPackageCommand

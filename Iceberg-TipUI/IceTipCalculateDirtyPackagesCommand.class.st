@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCalculateDirtyPackagesCommand class >> defaultName [
 
 	^ 'Recalculate dirty packages'
@@ -20,7 +20,7 @@ IceTipCalculateDirtyPackagesCommand >> canBeExecuted [
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCalculateDirtyPackagesCommand >> execute [
 
 	IceTipStandardAction new

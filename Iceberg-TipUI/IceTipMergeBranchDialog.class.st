@@ -31,7 +31,7 @@ IceTipMergeBranchDialog >> beSwitchAndMerge [
 	self allTypes do: #beSwitchAndMerge
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipMergeBranchDialog >> createMergeBranchTypes [
 
 	| allTypes |
@@ -79,7 +79,7 @@ IceTipMergeBranchDialog >> model: anObject [
 	self allTypes do: [ :each | each model: anObject ]
 ]
 
-{ #category : #'model access' }
+{ #category : #'accessing - model' }
 IceTipMergeBranchDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject

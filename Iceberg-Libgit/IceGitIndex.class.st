@@ -28,7 +28,7 @@ IceGitIndex >> addToGitIndex [
 	repository addFilesToIndex: modifiedFilePaths.
 ]
 
-{ #category : #'API-commiting' }
+{ #category : #'API - commiting' }
 IceGitIndex >> commitWithMessage: message andParents: parentCommits [
 	
 	| index |
@@ -79,7 +79,7 @@ IceGitIndex >> isEmpty [
 	^ modifiedFilePaths isEmpty
 ]
 
-{ #category : #'API-commiting' }
+{ #category : #'API - commiting' }
 IceGitIndex >> libGitCommitsFrom: aLGitRepository for: aListOfCommitish [
 	^ aListOfCommitish collect: 
 		[ :commitish | 
