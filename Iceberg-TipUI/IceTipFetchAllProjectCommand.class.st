@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchAllProjectCommand class >> defaultDescription [
 
 	^ 'Fetch (bring new commits) from all repositories in your list.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchAllProjectCommand class >> defaultName [
 
 	^ 'Fetch all'
@@ -26,7 +26,7 @@ IceTipFetchAllProjectCommand >> canBeExecuted [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipFetchAllProjectCommand >> execute [
 
 	| repositories |
@@ -53,7 +53,7 @@ IceTipFetchAllProjectCommand >> iconName [
 	^ #smallUpdate
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipFetchAllProjectCommand >> isConfirmed [
 
 	^ UIManager default

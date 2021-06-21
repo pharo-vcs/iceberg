@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutSelectedBranchCommand class >> defaultDescription [
 
 	^ 'Checkout this branch'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutSelectedBranchCommand class >> defaultName [
 
 	^ 'Checkout branch'
@@ -25,7 +25,7 @@ IceTipCheckoutSelectedBranchCommand >> actsOnBranch: aBranchModel [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCheckoutSelectedBranchCommand >> execute [
 
 	self item previewCheckout

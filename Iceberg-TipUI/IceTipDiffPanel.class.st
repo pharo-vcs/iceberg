@@ -82,7 +82,7 @@ IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 		rightText: rightString
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipDiffPanel >> diffPanel [
 
 	^ diffPanel
@@ -108,7 +108,7 @@ IceTipDiffPanel >> expandPath: aPath [
 		selectPath: aPath
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipDiffPanel >> iceNodesTree [
 
 	^ iceNodesTree

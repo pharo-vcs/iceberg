@@ -1,16 +1,19 @@
+"
+Generic command to cherry pick changes
+"
 Class {
 	#name : #IceTipCherryPickCommand,
 	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #default }
+{ #category : #'accessing - defaults' }
 IceTipCherryPickCommand class >> defaultDescription [
 
 	^ 'Cherrypick this commit and apply changes to the working copy'
 ]
 
-{ #category : #default }
+{ #category : #'accessing - defaults' }
 IceTipCherryPickCommand class >> defaultName [
 
 	^ 'Cherrypick'
@@ -23,14 +26,14 @@ IceTipCherryPickCommand >> canBeExecuted [
 	^ false
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCherryPickCommand >> execute [
 
 	(IceTipCherrypickPreviewBrowser onCommitish: self selectedCommitish)
 		openWithSpec
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCherryPickCommand >> selectedCommitish [
 
 	^ self context selectedCommit realObject entity

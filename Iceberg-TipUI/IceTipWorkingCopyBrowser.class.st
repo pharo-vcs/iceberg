@@ -68,7 +68,7 @@ IceTipWorkingCopyBrowser >> allListItems [
 	^ self model packageModels
 ]
 
-{ #category : #'private actions' }
+{ #category : #'private - actions' }
 IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 	| commandClass |
 	
@@ -91,7 +91,7 @@ IceTipWorkingCopyBrowser >> connectPresenters [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipWorkingCopyBrowser >> filterInput [
 
 	^ filterInput
@@ -151,7 +151,7 @@ IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipWorkingCopyBrowser >> mainList [
 
 	^ packagesTable
@@ -163,7 +163,7 @@ IceTipWorkingCopyBrowser >> packageModel [
 	^ packagesTable selectedItem
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipWorkingCopyBrowser >> packagesTable [
 
 	^ packagesTable
@@ -216,7 +216,7 @@ IceTipWorkingCopyBrowser >> showsPackageNamed: aString [
 	^ packagesTable items anySatisfy: [ :packageModel | packageModel name = aString ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipWorkingCopyBrowser >> statusBar [
 
 	^ statusBar

@@ -24,7 +24,7 @@ IceGitChange >> accept: aVisitor [
 	^ aVisitor visitGitChange: self
 ]
 
-{ #category : #ccessing }
+{ #category : #accessing }
 IceGitChange >> child [
 	
 	^ IceGitChange on: (RelativePath withAll: self path segments allButFirst) pathString

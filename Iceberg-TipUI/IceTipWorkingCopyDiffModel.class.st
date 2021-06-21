@@ -20,7 +20,7 @@ IceTipWorkingCopyDiffModel >> isEmpty [
 	^ self diff isEmpty
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipWorkingCopyDiffModel >> newDiff [
 	^ self entity workingCopyDiff
 ]

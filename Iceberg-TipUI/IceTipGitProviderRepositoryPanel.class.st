@@ -103,13 +103,13 @@ IceTipGitProviderRepositoryPanel >> projectName [
 	^ self projectNameInputText text asString trimmed
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> projectNameInputText [
 
 	^ projectNameInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> projectNameLabel [
 
 	^ projectNameLabel
@@ -156,13 +156,13 @@ IceTipGitProviderRepositoryPanel >> userName [
 	^ self userNameInputText text asString trimmed
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> userNameInputText [
 
 	^ userNameInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> userNameLabel [
 
 	^ userNameLabel

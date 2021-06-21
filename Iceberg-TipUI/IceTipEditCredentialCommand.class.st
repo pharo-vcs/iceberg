@@ -9,19 +9,19 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipEditCredentialCommand class >> defaultDescription [
 
 	^ 'Edits the credential from the store'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipEditCredentialCommand class >> defaultName [
 
 	^ 'Edit'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipEditCredentialCommand >> execute [
 
 	self item editModelClass new

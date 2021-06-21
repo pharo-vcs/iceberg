@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRemoveCredentialCommand class >> defaultDescription [
 
 	^ 'Removes the credential from the store'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRemoveCredentialCommand class >> defaultName [
 
 	^ 'Remove'
@@ -25,7 +25,7 @@ IceTipRemoveCredentialCommand >> canBeExecuted [
 	^ self item isDefault not
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRemoveCredentialCommand >> execute [
 	
 	self store removeCredential: self item.

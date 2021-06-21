@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutCommitCommand class >> defaultDescription [
 
 	^ 'Set the selected commit as current commit and load the code in the image'
 ]
 
-{ #category : #activation }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutCommitCommand class >> defaultName [
 
 	^ 'Checkout'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCheckoutCommitCommand >> execute [
 
 	(IceTipCheckoutPreviewBrowser onBranch: self selectedCommit)

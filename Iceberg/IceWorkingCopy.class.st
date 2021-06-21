@@ -112,20 +112,20 @@ IceWorkingCopy class >> repository: repository [
 		yourself
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> addPackage: aPackage [
 	
 	self basicAddPackage: aPackage.
 	aPackage beDirty.
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> addPackageNamed: aString [ 
 	
 	self addPackage: (IcePackage named: aString asSymbol repository: repository) beDirty
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> addPackages: aCollection [ 
 	
 	aCollection keysDo: [ :each | self addPackageNamed: each ]
@@ -147,7 +147,7 @@ IceWorkingCopy >> adoptCommit: aCommit [
 		ifFalse: [ self forceCalculateDirtyPackages. ]
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 
 	| loader |
@@ -159,13 +159,13 @@ IceWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 	loader load
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> basicAddPackage: aPackage [
 	
 	self packagesDictionary at: aPackage name put: aPackage.
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> basicRemovePackage: aPackage [
 	
 	self packagesDictionary 
@@ -173,19 +173,19 @@ IceWorkingCopy >> basicRemovePackage: aPackage [
 		ifAbsent: []
 ]
 
-{ #category : #'private-project' }
+{ #category : #'private - project' }
 IceWorkingCopy >> basicSetProject: aProject [
 
 	project := aProject
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> canRevertChanges [
 	
 	^ true
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceWorkingCopy >> changesFromCommit: anIceCommit [
 	"Image changes should be taken into account before changes in the repository"
 	^ (self modifiedPackages collect: [ :each | 
@@ -193,13 +193,13 @@ IceWorkingCopy >> changesFromCommit: anIceCommit [
 				(self referenceCommit changesFromCommit: anIceCommit) asArray
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceWorkingCopy >> changesFromNoCommit: anIceNoCommit [ 
 	
 	^ self packages collect: [ :each | IceImageChange package: each ]
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> changesTo: aCommitish [
 
 	| removedPackages changes |
@@ -217,13 +217,13 @@ IceWorkingCopy >> changesTo: aCommitish [
 	^ changes
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> checkout: aCheckoutStrategy [
 	
 	aCheckoutStrategy checkoutOn: self
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> commitChanges: aDiff withMessage: message [ 
 	
 	^ self commitChanges: aDiff withMessage: message force: false
@@ -255,7 +255,7 @@ IceWorkingCopy >> commitChanges: aDiff withMessage: message force: forcing [
 	^ newCommit
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> commitWithMessage: aString [ 
 	"Creates a commit with all changed code using the comment given as argument.
 	
@@ -269,19 +269,19 @@ IceWorkingCopy >> commitWithMessage: aString [
 		withMessage: aString
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceWorkingCopy >> commonAncestorWith: aCommitish [
 	
 	^ self referenceCommit commonAncestorWith: aCommitish
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceWorkingCopy >> commonAncestorWithCommit:  aCommitish [
 	
 	^ self referenceCommit commonAncestorWithCommit: aCommitish
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> diffTo: aCommitish [
 
 	^ IceDiff
@@ -289,19 +289,19 @@ IceWorkingCopy >> diffTo: aCommitish [
 		to: aCommitish commit
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> diffToReferenceCommit [
 
 	^ self diffTo: self referenceCommit
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> discardChanges [
 	
 	self discardChanges: self diffToReferenceCommit tree
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> discardChanges: aTree [
 	
 	self loadChangesInWorkingCopy: (aTree collect: [ :definition |
@@ -315,7 +315,7 @@ IceWorkingCopy >> fileSystem [
 	^ repository location ifNil: [ FileSystem memory root ]
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> forceCalculateDirtyPackages [
 
 	| diff |
@@ -328,21 +328,21 @@ IceWorkingCopy >> forceCalculateDirtyPackages [
 		each beDirty: (diff includesPackageNamed: each name) ].
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> hasSingleCommit [
 	"Returns true if all loaded packages were loaded from the single same commit"
 	
 	^ self workingCopyState isSingleCommitState
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> hasUnknownCommit [
 	"Returns true if we couldn't calculate a single commit or a merge situation"
 	
 	^ self workingCopyState isUnknownCommitState
 ]
 
-{ #category : #'private-packages' }
+{ #category : #'private - packages' }
 IceWorkingCopy >> ignoreNotificationsDuring: aBlock [
 	"While the working copy is loading code, it should ignore modifications to avoid circular refreshes"
 
@@ -352,13 +352,13 @@ IceWorkingCopy >> ignoreNotificationsDuring: aBlock [
 	aBlock ensure: [ shouldIgnoreNotifications := oldValue ]
 ]
 
-{ #category : #'private-packages' }
+{ #category : #'private - packages' }
 IceWorkingCopy >> includesInWorkingCopyPackageNamed: aString [ 
 	^ (self packagesDictionary includesKey: aString)
 		and: [ (self packageNamed: aString) isLoaded ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> includesPackageNamed: aString [ 
 	"true if is in image or is in commit"
 	^ self includesInWorkingCopyPackageNamed: aString
@@ -386,7 +386,7 @@ IceWorkingCopy >> initializePackagesFromRepository [
 	self adoptCommit: commitToAdopt.
 ]
 
-{ #category : #'API-merging' }
+{ #category : #'API - merging' }
 IceWorkingCopy >> isCommitMerged: aCommit [
 
 	^ self workingCopyState isCommitMerged: aCommit
@@ -398,20 +398,20 @@ IceWorkingCopy >> isDetached [
 	^ self workingCopyState isDetached
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> isInMerge [
 	"Returns true if all the repository packages are in merge between the same commits."
 	
 	^ self workingCopyState isInMerge
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> isLoadedPackageNamed: aString [ 
 	
 	^ RPackageOrganizer default includesPackageNamed: aString
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> isModified [
 	^ self project isDirty or: [ self loadedPackages anySatisfy: [ :e | e isDirty ] ]
 ]
@@ -422,13 +422,13 @@ IceWorkingCopy >> isWorkingCopy [
 	^ true
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> loadAllPackages [
 	
 	self loadPackagesNamed: repository head packageNames
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceWorkingCopy >> loadChangesInWorkingCopy: aTree [
 	
 	| visitor |
@@ -441,19 +441,19 @@ IceWorkingCopy >> loadChangesInWorkingCopy: aTree [
 
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> loadPackageNamed: aString [ 
 	
 	self loadPackagesNamed: { aString }
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> loadPackageNamed: aString fromCommit: aCommit [
 
 	self loadPackagesNamed: { aString } fromCommit: aCommit
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> loadPackagesNamed: aCollection [ 
 	
 	self
@@ -461,7 +461,7 @@ IceWorkingCopy >> loadPackagesNamed: aCollection [
 		fromCommit: self repository head commit
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> loadPackagesNamed: aCollection fromCommit: aCommit [
 	
 	self ignoreNotificationsDuring: [ | loader |
@@ -478,33 +478,33 @@ IceWorkingCopy >> loadPackagesNamed: aCollection fromCommit: aCommit [
 		loader load ]
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> loadedPackages [
 
 	^ self packages select: #isLoaded
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> markAllPackagesAsClean [
 	
 	self markAsCleanPackagesThat: [ :each | true ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> markAsCleanPackagesNotInDiff: aDiff [
 	
 	self markAsCleanPackagesThat: [ :each |
 		(aDiff includesPackageNamed: each name) not ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> markAsCleanPackagesThat: aBlock [
 	
 	self modifiedPackages do: [ :each |
 		(aBlock value: each) ifTrue: [ each beClean ] ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> markAsDirtyPackageNamed: aPackageName [
 
 	(self packageNamed: aPackageName) beDirty
@@ -512,7 +512,7 @@ IceWorkingCopy >> markAsDirtyPackageNamed: aPackageName [
 	
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> mcVersionFor: anIceSavedPackageVersion [ 
 
 	| mcPackage mcWorkingCopy |
@@ -525,19 +525,19 @@ IceWorkingCopy >> mcVersionFor: anIceSavedPackageVersion [
 		dependencies: #()
 ]
 
-{ #category : #'API-merging' }
+{ #category : #'API - merging' }
 IceWorkingCopy >> mergeCommit: aCommit [
 	
 	^ self workingCopyState mergeCommit: aCommit
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceWorkingCopy >> modifiedPackages [
 
 	^ self loadedPackages select: [ :e | e isDirty ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> notifyPackageModified: aString [ 
 	self flag: #pharoTodo. "we cannot use #includesPackageNamed: as is because it can happen 
 	that a package is present in a commit but not in image yet?"
@@ -553,50 +553,50 @@ IceWorkingCopy >> notifyPackageModified: aString [
 	^ false
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> packageNamed: aString [ 
 	
 	^ self packagesDictionary at: aString
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> packageNames [
 	
 	^ self packagesDictionary keys
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> packages [
 	
 	^ self packagesDictionary values
 ]
 
-{ #category : #'private-packages' }
+{ #category : #'private - packages' }
 IceWorkingCopy >> packagesDictionary [
 
 	^ packages
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceWorkingCopy >> project [
 	
 	"For backwards compatibility, if we don't find a project, take the project from HEAD"
 	^ project ifNil: [ self refreshProjectFromRepository ]
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceWorkingCopy >> project: anIceProject [
 
 	self basicSetProject: anIceProject.
 	self refreshProject.
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceWorkingCopy >> properties [
 	^ properties
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> referenceCommit [
 	
 	^ referenceCommit
@@ -612,7 +612,7 @@ IceWorkingCopy >> referenceCommit: aCommit [
 	self refreshProjectFromRepository
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> referenceCommits [
 	"Returns a collection with all current loaded commits.
 	If we are in a single commit state, return a collection with only one element."
@@ -620,12 +620,12 @@ IceWorkingCopy >> referenceCommits [
 	^ { referenceCommit }
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceWorkingCopy >> refreshDirtyPackages [
 	self markAsCleanPackagesNotInDiff: self repository workingCopyDiff
 ]
 
-{ #category : #'private-packages' }
+{ #category : #'private - packages' }
 IceWorkingCopy >> refreshPackages [
 	| commitPackages |
 	commitPackages := self referenceCommit isCollection
@@ -639,7 +639,7 @@ IceWorkingCopy >> refreshPackages [
 
 ]
 
-{ #category : #'private-project' }
+{ #category : #'private - project' }
 IceWorkingCopy >> refreshProject [
 
 	repository commitsInPackageCache: nil.
@@ -663,14 +663,14 @@ IceWorkingCopy >> refreshProjectFromRepository [
 	^ project
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceWorkingCopy >> refreshRepositoryProperties [
 	
 	properties := self referenceCommit properties asBornProperties.
 
 ]
 
-{ #category : #'private-impacting-changes' }
+{ #category : #'private - impacting changes' }
 IceWorkingCopy >> removeClassNamed: aString [ 
 	
 	"Impact the system.
@@ -678,7 +678,7 @@ IceWorkingCopy >> removeClassNamed: aString [
 	(Smalltalk globals at: aString ifAbsent: [ ^ self ]) removeFromSystem
 ]
 
-{ #category : #'private-impacting-changes' }
+{ #category : #'private - impacting changes' }
 IceWorkingCopy >> removeMethod: anIceMethodDefinition [ 
 	
 	anIceMethodDefinition asMCDefinition unload
@@ -694,7 +694,7 @@ IceWorkingCopy >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceWorkingCopy >> repositoryProperties [
 	
 	^ properties
@@ -706,24 +706,24 @@ IceWorkingCopy >> rootFileReference [
 	^ repository location
 ]
 
-{ #category : #'private-commits' }
+{ #category : #'private - commits' }
 IceWorkingCopy >> setMergeStateBetweenCommits: aCollection [ 
 	
 	self referenceCommit: aCollection
 ]
 
-{ #category : #'private-notifications' }
+{ #category : #'private - notifications' }
 IceWorkingCopy >> shouldIgnoreNotifications [
 	^ shouldIgnoreNotifications = true
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> snapshotFor: package [
 
 	^ (self versionFor: package) snapshot
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> snapshotForPackage: aPackage [ 
 	
 	^ aPackage isLoaded
@@ -731,20 +731,20 @@ IceWorkingCopy >> snapshotForPackage: aPackage [
 		ifFalse: [ self referenceCommit snapshotForPackage: aPackage ]
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> unload [
 	
 	"Unload all code loaded into the image that belong to this repository"
 	self loadedPackages do: [ :each | self unloadPackage: each ]
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> unloadPackage: aPackage [
 
 	aPackage mcWorkingCopy ifNotNil: #unload
 ]
 
-{ #category : #'API-loading' }
+{ #category : #'API - loading' }
 IceWorkingCopy >> unloadPackageNamed: aPackageName [
 
 	self unloadPackage: (IcePackage named: aPackageName repository: repository)
@@ -763,7 +763,7 @@ IceWorkingCopy >> validateCanCommit [
 	self workingCopyState validateCanCommit
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceWorkingCopy >> versionFor: package [
 
 	^ IceSavedPackageVersion fromCommit: self package: package
@@ -791,7 +791,7 @@ The working copy state is calculated every time that it is called. This is becau
 	^ IceAttachedSingleVersionWorkingCopy repository: repository
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceWorkingCopy >> writerClass [
 	
 	^ self referenceCommit writerClass

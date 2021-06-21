@@ -7,26 +7,26 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowseCommand class >> defaultDescription [
 
 	^ 'Browse the selected item'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowseCommand class >> defaultName [
 
 	^ 'Browse...'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipBrowseCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipBrowseCommand >> execute [
 
 	self item value definition browse

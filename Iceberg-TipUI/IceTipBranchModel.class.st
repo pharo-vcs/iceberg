@@ -149,7 +149,7 @@ IceTipBranchModel >> repositoryName [
 	^ self repositoryModel name
 ]
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceTipBranchModel >> resetToCommit: anIceTipCachedModel [ 
 	
 	entity resetToCommit: anIceTipCachedModel entity

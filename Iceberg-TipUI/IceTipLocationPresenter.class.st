@@ -57,7 +57,7 @@ IceTipLocationPresenter >> choose [
 		self onChoose ifNotNil: #value ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipLocationPresenter >> chooseButton [
 
 	^ chooseButton
@@ -169,13 +169,13 @@ IceTipLocationPresenter >> location: aReferenceOrString [
 	self basicLocation: ref
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipLocationPresenter >> locationInput [
 
 	^ locationInput
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipLocationPresenter >> locationLabel [
 
 	^ locationLabel

@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipPullCommand class >> defaultDescription [
 
 	^ 'Pulls into image all commits from your version to the origin remote HEAD'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipPullCommand class >> defaultName [
 
 	^ 'Pull'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipPullCommand >> badge [
 
 	| result |
@@ -33,7 +33,7 @@ IceTipPullCommand >> badge [
 	^ result
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipPullCommand >> execute [
 
 	self withErrorHandlingDo: [ 

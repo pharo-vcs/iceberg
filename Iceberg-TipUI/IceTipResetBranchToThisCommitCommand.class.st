@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipResetBranchToThisCommitCommand class >> defaultDescription [
 
 	^ 'Resets the selected branch to the selected commit. It does not modify the working copy (!!).'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
 
 	^ 'Reset ', self selectedBranch name, ' to commit ', self selectedCommitish shortId
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipResetBranchToThisCommitCommand >> execute [
 	
 	self selectedBranch resetToCommit: self selectedCommitish.

@@ -77,7 +77,7 @@ IceTipRepositoryBrowser >> commitishSelected: ann [
 	historyPanel model: ann
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryBrowser >> historyPanel [
 
 	^ historyPanel
@@ -131,7 +131,7 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
@@ -147,7 +147,7 @@ IceTipRepositoryBrowser >> refresh [
 	self selectCurrentBranch
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
@@ -168,13 +168,13 @@ IceTipRepositoryBrowser >> selectCurrentBranch [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryBrowser >> sidebarTree [
 
 	^ sidebarTree
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipRepositoryBrowser >> subscribeToAnnouncements [
 
     Iceberg announcer weak 

@@ -101,25 +101,25 @@ IceTipNewRepositoryPanel >> newRepository [
 				createNewRepositoryNamed: repositoryName ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipNewRepositoryPanel >> projectNameInputText [
 
 	^ projectNameInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipNewRepositoryPanel >> projectNameLabel [
 
 	^ projectNameLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipNewRepositoryPanel >> subdirectoryInputText [
 
 	^ subdirectoryInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipNewRepositoryPanel >> subdirectoryLabel [
 
 	^ subdirectoryLabel

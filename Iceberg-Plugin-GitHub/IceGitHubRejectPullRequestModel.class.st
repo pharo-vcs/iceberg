@@ -35,7 +35,7 @@ IceGitHubRejectPullRequestModel >> accept [
 	self closeWindow
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubRejectPullRequestModel >> acceptButton [
 
 	^ acceptButton
@@ -89,13 +89,13 @@ IceGitHubRejectPullRequestModel >> messageGhostText [
 Add an optional extented description'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubRejectPullRequestModel >> messageLabel [
 
 	^ messageLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubRejectPullRequestModel >> messageText [
 
 	^ messageText

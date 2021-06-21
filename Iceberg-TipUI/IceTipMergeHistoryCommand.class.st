@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipMergeHistoryCommand class >> defaultDescription [
 
 	^ 'Show the merged history of the selected merge commit'
 ]
 
-{ #category : #activation }
+{ #category : #'accessing - defaults' }
 IceTipMergeHistoryCommand class >> defaultName [
 
 	^ 'Browse merge history'
@@ -25,13 +25,13 @@ IceTipMergeHistoryCommand >> canBeExecuted [
 	^ self commitModel hasMultipleAncestors
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipMergeHistoryCommand >> commitModel [
 
 	^ self context selectedCommit
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipMergeHistoryCommand >> execute [
 
 	(IceTipHistoryBrowser on:

@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCopyCommitishCommand class >> defaultDescription [
 
 	^ 'Copy the selected short commit ID (7 characters long) to the clipboard'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCopyCommitishCommand class >> defaultName [
 
 	^ 'Copy commitish ID'
@@ -25,7 +25,7 @@ IceTipCopyCommitishCommand >> canBeExecuted [
 	^ self hasSelectedItem and: [ self item commitId isNotNil ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCopyCommitishCommand >> execute [
 
 	self item copyCommitIDToClipboard

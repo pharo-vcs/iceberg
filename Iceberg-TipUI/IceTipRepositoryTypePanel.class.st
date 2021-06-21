@@ -92,19 +92,19 @@ IceTipRepositoryTypePanel >> newRepository [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryTypePanel >> projectLocation [
 
 	^ projectLocation
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryTypePanel >> remoteInputText [
 
 	^ remoteInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoryTypePanel >> remoteLabel [
 
 	^ remoteLabel

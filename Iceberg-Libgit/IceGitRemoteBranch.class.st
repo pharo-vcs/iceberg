@@ -13,7 +13,7 @@ IceGitRemoteBranch >> commit [
 		^ self repository commitFromGitCommit: gitCommit ]
 ]
 
-{ #category : #'API-branches' }
+{ #category : #'API - branches' }
 IceGitRemoteBranch >> delete [
 	
 	repository handleLibgitError: [ | found |

@@ -1,29 +1,32 @@
+"
+A generic command to expand tree items within a tree.
+"
 Class {
 	#name : #IceTipTreeExpandCommand,
 	#superclass : #IceTipCommand,
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipTreeExpandCommand class >> defaultDescription [
 
 	^ 'Expand selected item'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipTreeExpandCommand class >> defaultName [
 
 	^ 'Expand'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipTreeExpandCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipTreeExpandCommand >> execute [
 
 	self context doExpandSelection

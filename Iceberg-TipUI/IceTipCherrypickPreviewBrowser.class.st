@@ -36,13 +36,13 @@ IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 			(IceTipCherrypickModel onCommitish: aCommitish)
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> buttonBar [
 
 	^ buttonBar
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> diffPanel [
 
 	^ diffPanel
@@ -77,7 +77,7 @@ IceTipCherrypickPreviewBrowser >> initializePresenters [
 	diffPanel rightLabel: ' With Cherrypicked commit '
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
@@ -90,7 +90,7 @@ IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 	self model mergeType: anObject
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
 
 	^ self newButton

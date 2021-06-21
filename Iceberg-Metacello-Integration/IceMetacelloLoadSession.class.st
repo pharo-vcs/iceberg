@@ -20,13 +20,13 @@ IceMetacelloLoadSession >> initialize [
 	choices := Set new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceMetacelloLoadSession >> recordChoice: anIceMetacelloLoadChoice [
 	
 	^ choices add: anIceMetacelloLoadChoice
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceMetacelloLoadSession >> recordChoiceProject: projectName optionA: optionA optionB: optionB ifAbsentAnswer: aBlock [
 	
 	^ choices 

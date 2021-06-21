@@ -59,13 +59,13 @@ IceTipHistoryBrowser >> beForMerge [
 	self commitInfoTabs beForMerge
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryBrowser >> commitInfoTabs [
 
 	^ commitInfoTabs
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryBrowser >> commitList [
 
 	^ commitList
@@ -118,7 +118,7 @@ IceTipHistoryBrowser >> initializePresenters [
 	self refreshCommitList.
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipHistoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 

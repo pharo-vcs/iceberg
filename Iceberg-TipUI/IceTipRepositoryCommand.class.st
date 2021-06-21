@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #testing }
 IceTipRepositoryCommand class >> isAbstract [
 
 	^ self == IceTipRepositoryCommand

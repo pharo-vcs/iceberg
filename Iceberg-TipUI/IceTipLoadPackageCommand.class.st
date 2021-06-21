@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipLoadPackageCommand class >> defaultDescription [
 
 	^ 'Load selected package in the image'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipLoadPackageCommand class >> defaultName [
 
 	^ 'Load'
@@ -25,7 +25,7 @@ IceTipLoadPackageCommand >> canBeExecuted [
 	^ self isPackageLoaded not
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipLoadPackageCommand >> execute [
 
 	self packageModel load.

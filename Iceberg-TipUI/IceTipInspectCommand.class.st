@@ -7,25 +7,25 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipInspectCommand class >> defaultDescription [
 
 	^ 'Inspect the selected element'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipInspectCommand class >> defaultName [
 
 	^ 'Inspect...'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipInspectCommand >> canBeExecuted [
 
 	^ self context hasSelectedItem
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipInspectCommand >> execute [
 
 	self item inspect

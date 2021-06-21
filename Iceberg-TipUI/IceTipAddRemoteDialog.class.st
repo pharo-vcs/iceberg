@@ -85,13 +85,13 @@ IceTipAddRemoteDialog >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddRemoteDialog >> nameLabel [
 
 	^ nameLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddRemoteDialog >> nameText [
 
 	^ nameText
@@ -127,13 +127,13 @@ IceTipAddRemoteDialog >> titleForWindow [
 	^ 'Add remote'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddRemoteDialog >> urlLabel [
 
 	^ urlLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddRemoteDialog >> urlText [
 
 	^ urlText

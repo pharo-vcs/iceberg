@@ -8,7 +8,7 @@ Class {
 		'leftOperation',
 		'rightOperation'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -26,7 +26,7 @@ IceConflictingOperation >> accept: aVisitor [
 	^ aVisitor visitConflictingOperation: self
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceConflictingOperation >> actualClass [
 	
 	^ leftOperation definition actualClass
@@ -38,7 +38,7 @@ IceConflictingOperation >> chosenOperation [
 	^ chosen
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceConflictingOperation >> contextClass [
 	
 	^ leftOperation contextClass

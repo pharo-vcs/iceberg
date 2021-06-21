@@ -7,17 +7,17 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddPlainTextCredentialCommand class >> defaultDescription [
 	^ 'Add a new plain text credential'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddPlainTextCredentialCommand class >> defaultName [
 	^ 'Plain Text'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddPlainTextCredentialCommand >> execute [
 
 	IceTipAddPlaintextCredentialsModel new

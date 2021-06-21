@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteRemoteCommand class >> defaultDescription [
 
 	^ 'Delete this remote for this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteRemoteCommand class >> defaultName [
 
 	^ 'Delete remote'
@@ -25,7 +25,7 @@ IceTipDeleteRemoteCommand >> actsOnRemote: aRemoteModel [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDeleteRemoteCommand >> execute [
 
 	self remoteModel delete
@@ -37,7 +37,7 @@ IceTipDeleteRemoteCommand >> iconName [
 	^ #delete
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDeleteRemoteCommand >> remoteModel [
 
 	^ self item

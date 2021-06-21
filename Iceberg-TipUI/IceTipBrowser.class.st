@@ -125,7 +125,7 @@ IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
@@ -232,7 +232,7 @@ IceTipBrowser >> setModelBeforeInitialization: anObject [
 IceTipBrowser >> subscribeToAnnouncements [
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipBrowser >> toolbar [
 
 	^ toolbar

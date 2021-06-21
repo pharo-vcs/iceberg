@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDiscardChangesCommand class >> defaultDescription [
 
 	^ 'Discard all changes in this working copy.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDiscardChangesCommand class >> defaultName [
 
 	^ 'Discard all'
@@ -28,7 +28,7 @@ IceTipDiscardChangesCommand >> canBeExecuted [
 		aCommit isCollection not and: [ aCommit isUnknownCommit not ] ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDiscardChangesCommand >> execute [
 
 	(IceTipDiscardAllChangesPreviewBrowser onRepository: self repositoryModel)

@@ -58,25 +58,25 @@ IceTipCommitBrowser >> accept [
 	^ self doCommit
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommitBrowser >> commentPanel [
 
 	^ commentPanel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommitBrowser >> commentPanel: aSpPresenter [
 
 	commentPanel := aSpPresenter
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommitBrowser >> diffPanel [
 
 	^ diffPanel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommitBrowser >> diffPanel: aSpPresenter [
 
 	diffPanel := aSpPresenter
@@ -170,7 +170,7 @@ IceTipCommitBrowser >> initializeWindow: aWindow [
 	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommitBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 

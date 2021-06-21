@@ -8,7 +8,7 @@ Class {
 		'name',
 		'commit'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -21,7 +21,7 @@ IceTag >> commit [
 	^ commit ifNil: [ commit := self repository peelTag: self ]
 ]
 
-{ #category : #'API-tags' }
+{ #category : #'API - tags' }
 IceTag >> delete [
 
 	self repository removeTag: self
@@ -33,7 +33,7 @@ IceTag >> fileSystem [
 	^ self commit fileSystem
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceTag >> gitRef [
 	^ self name
 ]
@@ -59,7 +59,7 @@ IceTag >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceTag >> newCommitWalk [
 
 	^ repository newCommitWalk fromTag: self
@@ -89,7 +89,7 @@ IceTag >> versionFor: package [
 	^ self commit versionFor: package
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceTag >> versionsFor: package [ 
 	^ self commit versionsFor: package
 ]

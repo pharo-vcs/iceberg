@@ -124,7 +124,7 @@ IceTipVersionHistoryBrowser >> initializePresenters [
 	self refresh
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipVersionHistoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
@@ -138,7 +138,7 @@ IceTipVersionHistoryBrowser >> model: anObject [
 	self refresh
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipVersionHistoryBrowser >> newDiffPage [
 
 	^ SpNotebookPage  
@@ -147,7 +147,7 @@ IceTipVersionHistoryBrowser >> newDiffPage [
 		provider: [ self newDiffPresenter ]
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipVersionHistoryBrowser >> newDiffPanelLeft: leftString right: rightString [
 
 	^ (self instantiate: SpDiffPresenter) 
@@ -167,7 +167,7 @@ IceTipVersionHistoryBrowser >> newDiffPresenter [
 		right: selectedModel source
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipVersionHistoryBrowser >> newInfoPage [
 
 	^ SpNotebookPage  

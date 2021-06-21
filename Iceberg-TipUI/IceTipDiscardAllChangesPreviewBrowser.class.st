@@ -36,7 +36,7 @@ IceTipDiscardAllChangesPreviewBrowser >> initializePresenters [
 
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipDiscardAllChangesPreviewBrowser >> newActionButton [
 
 	^ self newButton

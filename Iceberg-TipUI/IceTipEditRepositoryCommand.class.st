@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipEditRepositoryCommand class >> defaultDescription [
 
 	^ 'Edit repository data'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipEditRepositoryCommand class >> defaultName [
 
 	^ 'Edit...'
@@ -25,7 +25,7 @@ IceTipEditRepositoryCommand >> canBeExecuted [
 	^ self isRepositoryOperational
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipEditRepositoryCommand >> execute [
 
 	self repositoryModel edit

@@ -36,7 +36,7 @@ IceAsDependencyVisitor >> visitMethodNode: anIceMethodDefinition [
 	yourself 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #visiting }
 IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [
 	^ IcePackageDependency new
 		definition: anIcePackageDefinition;

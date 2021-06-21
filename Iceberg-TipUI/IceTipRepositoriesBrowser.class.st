@@ -148,7 +148,7 @@ IceTipRepositoriesBrowser >> isShowingRepository: anIceLibgitRepository [
 		  aRepositoryModel entity = anIceLibgitRepository ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepositoriesBrowser >> mainList [
 
 	^ repositoryList

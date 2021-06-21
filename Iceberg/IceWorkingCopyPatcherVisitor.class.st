@@ -74,7 +74,7 @@ IceWorkingCopyPatcherVisitor >> visitAddition: anIceAddition [
 	repository workingCopy applyDefinition: anIceAddition definition inNode: currentNode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #visiting }
 IceWorkingCopyPatcherVisitor >> visitClassDefinition: anIceClassDefinition [ 
 	
 	repository workingCopy applyDefinition: anIceClassDefinition inNode: currentNode.

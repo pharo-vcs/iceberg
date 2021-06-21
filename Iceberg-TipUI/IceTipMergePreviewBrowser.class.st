@@ -37,7 +37,7 @@ IceTipMergePreviewBrowser >> mergeType: anObject [
 	self model mergeType: anObject
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipMergePreviewBrowser >> newActionButton [
 
 	^ self newButton 

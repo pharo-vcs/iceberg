@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddPackageCommand class >> defaultDescription [
 
 	^ 'Adds an existing package to this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddPackageCommand class >> defaultName [
 
 	^ 'Add package'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddPackageCommand >> execute [
 
 	(IceTipAddPackagesDialog on: self repositoryModel) openDialogWithSpec

@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchRemoteCommand class >> defaultDescription [
 
 	^ 'Fetch commits from this remote'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchRemoteCommand class >> defaultName [
 
 	^ 'Fetch remote'
@@ -25,7 +25,7 @@ IceTipFetchRemoteCommand >> actsOnRemote: aRemoteModel [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipFetchRemoteCommand >> execute [
 
 	self remoteModel fetch
@@ -37,7 +37,7 @@ IceTipFetchRemoteCommand >> iconName [
 	^ #smallUpdate
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipFetchRemoteCommand >> remoteModel [
 
 	^ self item

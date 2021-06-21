@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipPushCommand class >> defaultDescription [
 
 	^ 'Pushes pending commits to the origin repository (in current branch)'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipPushCommand class >> defaultName [
 
 	^ 'Push'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipPushCommand >> badge [
 
 	| result |
@@ -34,7 +34,7 @@ IceTipPushCommand >> badge [
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipPushCommand >> execute [
 
 	self withErrorHandlingDo: [ 

@@ -1,3 +1,6 @@
+"
+A branch was not found.
+"
 Class {
 	#name : #IceBranchNotFound,
 	#superclass : #IceError,

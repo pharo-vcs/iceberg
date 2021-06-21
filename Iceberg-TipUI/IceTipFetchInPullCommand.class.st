@@ -4,13 +4,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #default }
+{ #category : #'accessing - defaults' }
 IceTipFetchInPullCommand class >> defaultDescription [
 
 	^ 'Fetch from the selected remote'
 ]
 
-{ #category : #default }
+{ #category : #'accessing - defaults' }
 IceTipFetchInPullCommand class >> defaultName [
 
 	^ 'Fetch'

@@ -19,7 +19,7 @@ IceTipSelectRemotePresenter class >> defaultSpec [
 		  add: #addButton width: self iconWidth
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipSelectRemotePresenter >> addButton [
 
 	^ addButton
@@ -83,13 +83,13 @@ IceTipSelectRemotePresenter >> refresh [
 	remoteList items: self model remoteModels
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipSelectRemotePresenter >> remoteLabel [
 
 	^ remoteLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipSelectRemotePresenter >> remoteList [
 
 	^ remoteList
