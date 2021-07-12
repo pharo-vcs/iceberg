@@ -32,9 +32,3 @@ IceTipTreeCollapseCommand >> execute [
 
 	self context doCollapseSelection
 ]
-
-{ #category : #accessing }
-IceTipTreeCollapseCommand >> shortcutKey [
-
-	^ Character arrowLeft asKeyCombination
-]
