@@ -37,9 +37,3 @@ IceTipTreeExpandCommand >> iconName [
 
 	^ nil
 ]
-
-{ #category : #accessing }
-IceTipTreeExpandCommand >> shortcutKey [
-
-	^ Character arrowRight asKeyCombination
-]
