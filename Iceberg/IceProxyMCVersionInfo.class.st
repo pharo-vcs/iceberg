@@ -69,11 +69,6 @@ IceProxyMCVersionInfo class >> remoteUrl: urlString packageName: nameString comm
 		stub: aVersionInfo
 ]
 
-{ #category : #converting }
-IceProxyMCVersionInfo >> asSpotterCandidateLink [
-	^ GTSpotterCandidateLink value: self
-]
-
 { #category : #'reflective operations' }
 IceProxyMCVersionInfo >> becomeForward: otherObject copyHash: copyHash [
 	"Primitive. All variables in the entire system that used to point to the receiver now point to the argument.
