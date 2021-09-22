@@ -51,43 +51,6 @@ IceCredentialsProvider class >> isDefault [
 	^ false
 ]
 
-{ #category : #deprecated }
-IceCredentialsProvider class >> plaintextCredentials [
-	
-	self deprecated: '
-	This method have been deprecated. The new CredentialStore keeps the keys by host. There is no default key for all the hosts.
-	You should use:
-	
-		CredentialStore current plaintextCredentialForHostname: ''aHost.com''.
-		
-		This method will return an empty IcePlaintextCredentials for compatibility.
-		
-		
-	Attention: Changing any script to use this new API, will break compatibility with Iceberg version < 1.1.0
-	'.	
-
-	^ IcePlaintextCredentials new
-]
-
-{ #category : #deprecated }
-IceCredentialsProvider class >> plaintextCredentials: anIcePlaintextCredentials [ 
-	
-	self deprecated: '
-	This API has been deprecated. The new CredentialStore hosts the keys by hostname. 
-	The code should be changed to: 
-		IceCredentialStore current
-		storeCredential: (IcePlaintextCredentials new 
-			username: ''user'';
-			password: ''password'';
-			host: ''github.com'';
-			yourself).
-
-	However this modification will break with older versions of Iceberg ( < 1.1.0 ).
-	
-	This method does nothing for compatibility.'
-
-]
-
 { #category : #private }
 IceCredentialsProvider class >> providerType [
 	^ ProviderType ifNil: [ ProviderType := self defaultCredentialProviderClass ]
