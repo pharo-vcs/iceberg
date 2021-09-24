@@ -20,6 +20,21 @@ IceClassDefinition >> accept: aVisitor [
 { #category : #patching }
 IceClassDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 	
+	"If we are replacing an existing class, we need to handle the case. 
+	For example, removing the last instance variable. 
+	We need to remove the existing definition (empty class instance variables are not saved)."
+	| defModification |
+	
+	"If the new definition has no class instance vaiables, we remove the meta side variables, and apply the new changes to the patcher "
+	(self isMeta and: [ mcDefinition isNil and: [ anIceModification rightDefinition asMCDefinition isNotNil ] ])
+		ifTrue: [ 
+			defModification := anIceModification rightDefinition asMCDefinition deepCopy.
+			defModification removeMetaSideVariables.
+			aMCPatcher
+				modifyDefinition: anIceModification rightDefinition asMCDefinition
+				to: defModification.
+				^ self].
+
 	"We should not handle metaclasses if their mcDefinition is nil.
 	They should be added automatically when added the instance side."
 	(self isMeta and: [ mcDefinition isNil ])
