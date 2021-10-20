@@ -3,7 +3,7 @@ Publish content of playground a github gist (in your user space)
 "
 Class {
 	#name : #IcePlaygroundPublishGistCommand,
-	#superclass : #StPlaygroundExtensionCommand,
+	#superclass : #StPlaygroundToolbarExtensionCommand,
 	#category : #'Iceberg-Playground-Plugin-Gist-Command'
 }
 
