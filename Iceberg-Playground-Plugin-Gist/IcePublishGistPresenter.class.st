@@ -9,7 +9,11 @@ Class {
 	#instVars : [
 		'descriptionTextInput',
 		'contentCode',
-		'publishedAction'
+		'publishedAction',
+		'publicCheckbox'
+	],
+	#classVars : [
+		'GistPublic'
 	],
 	#category : #'Iceberg-Playground-Plugin-Gist-View'
 }
@@ -30,6 +34,12 @@ IcePublishGistPresenter class >> windowTitle [
 IcePublishGistPresenter >> content: aString [
 
 	contentCode text: aString
+]
+
+{ #category : #initialization }
+IcePublishGistPresenter >> defaultPublic [
+		
+	^ GistPublic ifNil: [ GistPublic := true ]
 ]
 
 { #category : #private }
@@ -64,8 +74,13 @@ IcePublishGistPresenter >> initializePresenters [
 		add: (descriptionTextInput := self newTextInput) expand: false;
 		add: 'Content' expand: false;
 		add: (contentCode := self newCode);
+		add: (publicCheckbox := self newCheckBox) expand: false;
 		yourself).
 		
+	publicCheckbox 
+		label: 'Make Gist public';
+		state: self defaultPublic.
+	
 	contentCode 
 		beNotEditable;
 		beForScripting
@@ -81,15 +96,21 @@ IcePublishGistPresenter >> initializeWindow: aWindowPresenter [
 
 { #category : #actions }
 IcePublishGistPresenter >> publishThen: aBlock [
-	| description jsonResult |
+	| description public jsonResult |
 
 	self validate ifFalse: [ ^ self ].
 
-	description := descriptionTextInput text trimmed .
+	description := descriptionTextInput text trimmed.
+	public := publicCheckbox state.
+	
 	jsonResult := IceGitHubAPI new 
 		postGist: description
+		public: public
 		name: (self fileNameFrom: description) 
 		contents: contentCode text.
+
+	"Save last public status"
+	GistPublic := public.
 
 	publishedAction ifNotNil: [ publishedAction value: jsonResult ].
 	aBlock value.
