@@ -91,11 +91,23 @@ IceTipCommitBrowser >> doCollapseSelection [
 { #category : #actions }
 IceTipCommitBrowser >> doCommit [
 
-	self
-		doCommit: diffPanel selectedItems
-		message: commentPanel message
-		pushing: commentPanel isPushing
-		saving: commentPanel isSaving
+	| selectedItems message isPushing isSaving |
+	self closeWindow.
+
+	selectedItems := diffPanel selectedItems.
+	message := commentPanel message.
+	isPushing := commentPanel isPushing.
+	isSaving := commentPanel isSaving.
+
+	(IceTipCritiquesBeforeCommitBrowser on: selectedItems)
+		commitModel: self model;
+		onAccept: [ 	
+			self
+				doCommit: selectedItems
+				message: message
+				pushing: isPushing
+				saving: isSaving ];
+		openIfCritiques
 ]
 
 { #category : #actions }
