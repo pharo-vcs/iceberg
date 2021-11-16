@@ -44,6 +44,12 @@ IceCritiquesVisitor >> visitClassDefinition: anIceClassDefinition [
 ]
 
 { #category : #visiting }
+IceCritiquesVisitor >> visitExtensionDefinition: anIceExtension [ 
+	
+	^ anIceExtension definition accept: self
+]
+
+{ #category : #visiting }
 IceCritiquesVisitor >> visitFileNode: anIceFileDefinition [ 
 	
 	
