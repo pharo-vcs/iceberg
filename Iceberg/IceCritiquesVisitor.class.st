@@ -76,3 +76,9 @@ IceCritiquesVisitor >> visitPackage: anIcePackageDefinition [
 	aPackage := RPackage organizer packageNamed: anIcePackageDefinition name ifAbsent: [ ^ self ].
 	critiques addAll: aPackage critiques
 ]
+
+{ #category : #visiting }
+IceCritiquesVisitor >> visitRemoval: anIceRemoval [ 
+	
+	"We do nothing on removal"
+]
