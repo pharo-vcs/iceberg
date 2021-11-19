@@ -106,9 +106,6 @@ IceTipCommitBrowser >> doCommit [
 				pushing: isPushing
 				saving: isSaving ].
 
-	"IceTipCommitSettings critiquesOnCommit 
-		ifFalse: [ commitBlock value.
-				^self ]."
 	(IceTipCritiquesBeforeCommitBrowser on: selectedItems)
 		commitModel: self model;
 		onAccept: commitBlock ;
