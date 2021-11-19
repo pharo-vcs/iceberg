@@ -45,8 +45,13 @@ IceCritiquesVisitor >> visitClassDefinition: anIceClassDefinition [
 
 { #category : #visiting }
 IceCritiquesVisitor >> visitExtensionDefinition: anIceExtension [ 
+	"^ anIceExtension definition accept: self"
+	| actualClass methods |
+	actualClass := anIceExtension actualClass.
+	methods := actualClass methodsInProtocol: '*', anIceExtension packageName.
+	methods do: [ :method | critiques addAll: method critiques ].
 	
-	^ anIceExtension definition accept: self
+	
 ]
 
 { #category : #visiting }
