@@ -22,7 +22,7 @@ IceTipEditRepositoryCommand class >> defaultName [
 { #category : #testing }
 IceTipEditRepositoryCommand >> canBeExecuted [
 
-	^ self isRepositoryOperational
+	^ super canBeExecuted and: [ self isRepositoryOperational ]
 ]
 
 { #category : #executing }

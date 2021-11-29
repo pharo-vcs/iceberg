@@ -28,7 +28,7 @@ IceTipRepairCommand class >> defaultToolbarItemName [
 { #category : #testing }
 IceTipRepairCommand >> canBeExecuted [
 
-	^ self isRepositoryOperational not
+	^ super canBeExecuted and: [ self isRepositoryOperational not ]
 ]
 
 { #category : #executing }

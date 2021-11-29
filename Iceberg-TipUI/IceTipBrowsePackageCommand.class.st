@@ -22,7 +22,7 @@ IceTipBrowsePackageCommand class >> defaultName [
 { #category : #testing }
 IceTipBrowsePackageCommand >> canBeExecuted [
 
-	^ self isPackageLoaded
+	^ super canBeExecuted and: [ self isPackageLoaded ]
 ]
 
 { #category : #executing }

@@ -28,7 +28,7 @@ IceTipCheckoutBranchCommand class >> defaultToolbarItemName [
 { #category : #testing }
 IceTipCheckoutBranchCommand >> canBeExecuted [
 
-	^ self isRepositoryMissing not
+	^ super canBeExecuted and: [ self isRepositoryMissing not]
 ]
 
 { #category : #executing }

@@ -17,7 +17,7 @@ IceGitHubCommand class >> isAbstract [
 { #category : #testing }
 IceGitHubCommand >> canBeExecuted [
 
-	^ self remote url includesSubstring: 'github.com'
+	^ super canBeExecuted and: [ self remote url includesSubstring: 'github.com' ]
 ]
 
 { #category : #accessing }

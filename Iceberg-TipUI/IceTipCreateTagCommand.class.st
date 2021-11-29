@@ -19,6 +19,12 @@ IceTipCreateTagCommand class >> defaultName [
 	^ 'Create tag'
 ]
 
+{ #category : #testing }
+IceTipCreateTagCommand >> canBeExecuted [ 
+
+	^ self repositoryModel isNotNil
+]
+
 { #category : #executing }
 IceTipCreateTagCommand >> execute [
 	
