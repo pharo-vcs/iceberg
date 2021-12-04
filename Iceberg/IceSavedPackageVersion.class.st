@@ -104,25 +104,25 @@ IceSavedPackageVersion >> isNewerThan: another [
 	^ self info timeStamp > another info timeStamp
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IceSavedPackageVersion >> lookupSnapshot [
 	
 	^ commit snapshotForPackage: self package
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IceSavedPackageVersion >> mcPackage [
 	
 	^ package mcPackage
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IceSavedPackageVersion >> mcSnapshot [
 
 	^ self mcVersion snapshot
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IceSavedPackageVersion >> mcVersion [
 
 	^ commit mcVersionFor: self
@@ -184,7 +184,7 @@ IceSavedPackageVersion >> repository [
 	^ self package repository
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IceSavedPackageVersion >> snapshot [
 	"compatibility method"
 	^ self mcSnapshot

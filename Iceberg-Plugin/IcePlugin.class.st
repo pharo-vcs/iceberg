@@ -18,11 +18,17 @@ IcePlugin class >> allAvailableFor: aRepository [
 ]
 
 { #category : #testing }
+IcePlugin class >> isAbstract [
+
+	^ self == IcePlugin
+]
+
+{ #category : #testing }
 IcePlugin class >> isAvailableFor: aRepository [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing-ui' }
+{ #category : #'accessing - ui' }
 IcePlugin >> checkoutBranchPanelsOnModel: anIceTipCachedModel [ 
 
 	"Hook for subclasses"

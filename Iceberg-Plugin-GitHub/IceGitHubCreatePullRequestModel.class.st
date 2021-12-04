@@ -116,7 +116,7 @@ IceGitHubCreatePullRequestModel >> availableRemotes [
 		  availableRemotes := self obtainAvailableRemotes ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseBranchList [
 	^ baseBranchList
 ]
@@ -139,12 +139,12 @@ IceGitHubCreatePullRequestModel >> baseDefaultBranchName [
 	^ self gitBase at: #default_branch
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseForkList [
 	^ baseForkList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseLabel [
 	^ baseLabel
 ]
@@ -157,12 +157,12 @@ IceGitHubCreatePullRequestModel >> baseRemote [
 	^ baseRemote ifNil: [ baseRemote := self obtainBaseRemote ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> bodyLabel [
 	^ bodyLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> bodyPanel [
 	^ bodyPanel
 ]
@@ -235,17 +235,17 @@ IceGitHubCreatePullRequestModel >> hasParent [
 	^ self gitRepositoryInfo includesKey: #parent
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headBranchList [
 	^ headBranchList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headForkList [
 	^ headForkList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headLabel [
 	^ headLabel
 ]
@@ -352,7 +352,7 @@ IceGitHubCreatePullRequestModel >> repository [
 	^ repository
 ]
 
-{ #category : #'private request' }
+{ #category : #'private - request' }
 IceGitHubCreatePullRequestModel >> requestBaseBranches [
 
 	^ IceGitHubAPI new
@@ -361,7 +361,7 @@ IceGitHubCreatePullRequestModel >> requestBaseBranches [
 		  project: self baseRemote projectBasename
 ]
 
-{ #category : #'private request' }
+{ #category : #'private - request' }
 IceGitHubCreatePullRequestModel >> requestGitRepositoryInfo [
 
 	| remote |
@@ -377,13 +377,13 @@ IceGitHubCreatePullRequestModel >> titleForWindow [
 	^ 'New pull request'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> titleLabel [
 
 	^ titleLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubCreatePullRequestModel >> titlePanel [
 
 	^ titlePanel

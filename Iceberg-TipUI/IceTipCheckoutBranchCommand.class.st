@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutBranchCommand class >> defaultDescription [
 
 	^ 'Checkout a new or existing branch.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutBranchCommand class >> defaultName [
 
 	^ 'Checkout branch'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutBranchCommand class >> defaultToolbarItemName [
 
 	^ 'Branch'
@@ -28,10 +28,10 @@ IceTipCheckoutBranchCommand class >> defaultToolbarItemName [
 { #category : #testing }
 IceTipCheckoutBranchCommand >> canBeExecuted [
 
-	^ self isRepositoryMissing not
+	^ super canBeExecuted and: [ self isRepositoryMissing not]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCheckoutBranchCommand >> execute [
 
 	(IceTipCheckoutBranchDialog on: self repositoryModel)

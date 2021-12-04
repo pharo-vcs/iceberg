@@ -17,7 +17,7 @@ Class {
 		'path',
 		'user'
 	],
-	#category : #'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-RepoTypes'
 }
 
 { #category : #accessing }
@@ -63,7 +63,7 @@ MCGitRemoteRepository >> initialize [
 	super initialize.
 ]
 
-{ #category : #initialize }
+{ #category : #'private - initialization' }
 MCGitRemoteRepository >> parseHTTPLocation: aString [
 	| url |
 
@@ -73,7 +73,7 @@ MCGitRemoteRepository >> parseHTTPLocation: aString [
 	path := self pathFrom: url path
 ]
 
-{ #category : #initialize }
+{ #category : #'private - initialization' }
 MCGitRemoteRepository >> parseLocation: aString [
 
 	(#('http:' 'https:') 
@@ -82,7 +82,7 @@ MCGitRemoteRepository >> parseLocation: aString [
 		ifFalse: [ self parseSSHLocation: aString ]
 ]
 
-{ #category : #initialize }
+{ #category : #'private - initialization' }
 MCGitRemoteRepository >> parseSSHLocation: aString [
 	| segments |
 	
@@ -98,7 +98,7 @@ MCGitRemoteRepository >> path [
 	^ path
 ]
 
-{ #category : #initialize }
+{ #category : #'private - initialization' }
 MCGitRemoteRepository >> pathFrom: aString [
 
 	^ (aString endsWith: '.git')

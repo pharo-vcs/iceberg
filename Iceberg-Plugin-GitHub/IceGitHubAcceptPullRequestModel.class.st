@@ -47,7 +47,7 @@ IceGitHubAcceptPullRequestModel >> accept [
 	self closeWindow
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> acceptButton [
 
 	^ acceptButton
@@ -115,13 +115,13 @@ IceGitHubAcceptPullRequestModel >> messageGhostText [
 Add an optional extented description'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> messageLabel [
 
 	^ messageLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> messageText [
 
 	^ messageText
@@ -144,13 +144,13 @@ IceGitHubAcceptPullRequestModel >> type [
 	^ self typeList selectedItem
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> typeLabel [
 
 	^ typeLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> typeList [
 
 	^ typeList

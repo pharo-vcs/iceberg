@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchCommand class >> defaultDescription [
 
 	^ 'Fetch (bring new commits) from this repositories.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipFetchCommand class >> defaultName [
 
 	^ 'Fetch'
@@ -22,11 +22,12 @@ IceTipFetchCommand class >> defaultName [
 { #category : #testing }
 IceTipFetchCommand >> canBeExecuted [
 
-	^ self isRepositoryMissing not and: [ 
-		  self repositoryModel hasRemotes ]
+	^ super canBeExecuted and: [ 
+		  self isRepositoryMissing not and: [ 
+			  self repositoryModel hasRemotes ] ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipFetchCommand >> execute [
 
 	self repositoryModel fetch

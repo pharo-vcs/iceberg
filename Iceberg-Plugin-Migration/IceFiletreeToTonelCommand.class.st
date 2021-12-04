@@ -6,10 +6,10 @@ I will be active in repository list browser, when repository is in filetree form
 Class {
 	#name : #IceFiletreeToTonelCommand,
 	#superclass : #IceTipCommand,
-	#category : #'Iceberg-Plugin-Migration'
+	#category : #'Iceberg-Plugin-Migration-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceFiletreeToTonelCommand class >> defaultName [
 
 	^ 'Convert repository sources to tonel'
@@ -29,7 +29,7 @@ IceFiletreeToTonelCommand >> canBeExecuted [
 
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceFiletreeToTonelCommand >> execute [
 
 	(IceTipFiletreeToTonelDialog on: self repository) openDialogWithSpec

@@ -12,6 +12,7 @@ Class {
 		'commitButton',
 		'actionButtonBar',
 		'saveCheckbox',
+		'critiquesCheckbox',
 		'fixesField',
 		'fixesLabel'
 	],
@@ -30,6 +31,7 @@ IceTipCommentPanel class >> defaultSpec [
 		  add: (SpBoxLayout newLeftToRight
 				   add: #pushCheckbox;
 				   add: #saveCheckbox;
+					add: #critiquesCheckbox;
 				   yourself)
 		  height: self inputTextHeight;
 		  add: #commentText;
@@ -57,13 +59,13 @@ IceTipCommentPanel >> clear [
 	commentText text: ''
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> commentText [
 
 	^ commentText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> commitButton [
 
 	^ commitButton
@@ -89,6 +91,8 @@ IceTipCommentPanel >> initializePresenters [
 
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
+	critiquesCheckbox := self newCheckBox.
+	
 	self repositoryModel branchModel hasUpstream
 		ifTrue: [
 			pushCheckbox
@@ -103,6 +107,11 @@ IceTipCommentPanel >> initializePresenters [
 		label: 'Save the image when commiting';
 		state: IceTipCommitSettings saveImageOnCommit;
 		whenChangedDo: [ :state | IceTipCommitSettings saveImageOnCommit: state ].
+
+	critiquesCheckbox
+		label: 'Run Critiques when commiting';
+		state: IceTipCommitSettings critiquesOnCommit;
+		whenChangedDo: [ :state | IceTipCommitSettings critiquesOnCommit: state ].
 
 	commentText := self newText
 		autoAccept: true;
@@ -166,7 +175,7 @@ IceTipCommentPanel >> onCommit: aBlock [
 			cull: self isPushing ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> pushCheckbox [
 
 	^ pushCheckbox
@@ -185,19 +194,19 @@ IceTipCommentPanel >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceTipCommentPanel >> repositoryName [
 
 	^ self repositoryModel name
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
 
 	^ self repositoryModel pushRemoteName
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCommentPanel >> saveCheckbox [
 
 	^ saveCheckbox

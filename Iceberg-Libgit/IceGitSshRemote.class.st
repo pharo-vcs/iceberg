@@ -14,7 +14,7 @@ IceGitSshRemote class >> canHandleUrl: aRepositoryUrl [
 	^ aRepositoryUrl beginsWith: 'git://'
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitSshRemote class >> defaultPort [
 	^9418
 ]

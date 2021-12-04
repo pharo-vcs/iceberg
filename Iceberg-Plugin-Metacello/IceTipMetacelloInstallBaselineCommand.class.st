@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #accessing }
+{ #category : #testing }
 IceTipMetacelloInstallBaselineCommand class >> isAbstract [
 
 	^ self == IceTipMetacelloInstallBaselineCommand
@@ -108,7 +108,7 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName
 		title: 'Duplicated project!'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipMetacelloInstallBaselineCommand >> iconName [
 
 	^ #smallLoadProject

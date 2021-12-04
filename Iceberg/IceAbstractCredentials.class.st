@@ -10,6 +10,12 @@ Class {
 	#category : #'Iceberg-Security'
 }
 
+{ #category : #testing }
+IceAbstractCredentials class >> isAbstract [
+
+	^ self == IceAbstractCredentials
+]
+
 { #category : #accessing }
 IceAbstractCredentials >> description [
 	^ self subclassResponsibility

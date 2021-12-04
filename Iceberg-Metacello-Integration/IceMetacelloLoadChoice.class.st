@@ -11,7 +11,7 @@ Class {
 		'optionB',
 		'choosen'
 	],
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-Session'
 }
 
 { #category : #accessing }

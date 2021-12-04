@@ -44,7 +44,7 @@ IceTipRepairRepositoryDialog >> accept [
 	selectedOption executeWith: self model
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepairRepositoryDialog >> detailPanel [
 
 	^ detailPanel
@@ -125,13 +125,13 @@ IceTipRepairRepositoryDialog >> model [
 	^ model
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepairRepositoryDialog >> optionsList [
 
 	^ optionsList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRepairRepositoryDialog >> reasonPanel [
 
 	^ reasonPanel

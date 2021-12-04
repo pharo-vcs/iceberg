@@ -70,7 +70,7 @@ IceBasicProject >> addToChangeBuilder: anIceChangeImporter [
 	"self addPropertiesFileToChangeBuilder: anIceChangeImporter."
 ]
 
-{ #category : #initialize }
+{ #category : #accessing }
 IceBasicProject >> backwardsCompatibleFormat [
 
 	^ TIceRepositoryWriter users

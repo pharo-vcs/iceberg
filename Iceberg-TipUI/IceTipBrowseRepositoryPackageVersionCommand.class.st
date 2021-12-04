@@ -9,19 +9,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowseRepositoryPackageVersionCommand class >> defaultDescription [
 
 	^ 'Browse the version in the repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipBrowseRepositoryPackageVersionCommand class >> defaultName [
 
 	^ 'Browse this version in Monticello'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipBrowseRepositoryPackageVersionCommand >> execute [
 
 	self packageModel browseRepositoryVersion

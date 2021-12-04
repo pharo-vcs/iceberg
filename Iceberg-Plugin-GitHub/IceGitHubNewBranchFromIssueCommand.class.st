@@ -16,7 +16,13 @@ IceGitHubNewBranchFromIssueCommand class >> defaultToolbarItemName [
 	^ 'New issue'
 ]
 
-{ #category : #execution }
+{ #category : #testing }
+IceGitHubNewBranchFromIssueCommand >> canBeExecuted [ 
+
+	^ self repositoryModel isNotNil
+]
+
+{ #category : #executing }
 IceGitHubNewBranchFromIssueCommand >> execute [
 
 	(IceTipCheckoutBranchDialog on: self repositoryModel)

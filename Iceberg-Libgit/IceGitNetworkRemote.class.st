@@ -20,9 +20,15 @@ IceGitNetworkRemote class >> canHandleUrl: aString [
 	^ false
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitNetworkRemote class >> defaultPort [
 	^self subclassResponsibility
+]
+
+{ #category : #testing }
+IceGitNetworkRemote class >> isAbstract [
+
+	^ self == IceGitNetworkRemote 
 ]
 
 { #category : #private }

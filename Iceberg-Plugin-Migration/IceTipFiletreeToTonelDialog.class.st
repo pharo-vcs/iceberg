@@ -12,7 +12,7 @@ Class {
 		'branchName',
 		'repository'
 	],
-	#category : #'Iceberg-Plugin-Migration'
+	#category : #'Iceberg-Plugin-Migration-UI'
 }
 
 { #category : #specs }
@@ -50,7 +50,7 @@ IceTipFiletreeToTonelDialog >> branchName [
 	^ branchName ifNil: [ branchName := self obtainBranchName ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipFiletreeToTonelDialog >> confirmLabel [
 
 	^ confirmLabel
@@ -77,7 +77,7 @@ IceTipFiletreeToTonelDialog >> doAccept [
 		execute
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipFiletreeToTonelDialog >> iconPanel [
 
 	^ iconPanel
@@ -110,7 +110,7 @@ IceTipFiletreeToTonelDialog >> initializePresenters [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipFiletreeToTonelDialog >> mergeWithMasterCheckbox [
 
 	^ mergeWithMasterCheckbox

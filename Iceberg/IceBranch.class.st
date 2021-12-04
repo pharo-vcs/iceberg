@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -27,19 +27,19 @@ IceBranch >> = aBranch [
 	^ self fullname = aBranch fullname
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceBranch >> changesFromCommit: anIceCommit [
 	
 	^ self commit changesFromCommit: anIceCommit
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceBranch >> commitsDo: aBlockClosure [ 
 	
 	self newCommitWalk commitsDo: aBlockClosure
 ]
 
-{ #category : #'API-branches' }
+{ #category : #'API - branches' }
 IceBranch >> delete [
 	
 	self subclassResponsibility
@@ -63,13 +63,13 @@ IceBranch >> hash [
 	^ self fullname hash
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceBranch >> includesCommit: aCommit [
 	
 	^ self newCommitWalk includesCommit: aCommit
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceBranch >> includesPackageNamed: aString [
 	
 	^ self commit includesPackageNamed: aString
@@ -102,19 +102,19 @@ IceBranch >> name: aString [
 	name := aString
 ]
 
-{ #category : #'API-history' }
+{ #category : #'API - history' }
 IceBranch >> newCommitWalk [
 
 	^ repository newCommitWalk fromBranch: self
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceBranch >> packageNames [
 	
 	^ self commit packageNames
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceBranch >> packages [
 	
 	^ self commit packages
@@ -130,13 +130,13 @@ IceBranch >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceBranch >> properties [
 	
 	^ self commit properties
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceBranch >> snapshotFor: anIceSavedPackage [ 
 	
 	^ self commit snapshotFor: anIceSavedPackage
@@ -148,7 +148,7 @@ IceBranch >> validateIsBranch [
 	"Nothing. I'm a branch"
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceBranch >> versionFor: anIcePackage [ 
 	
 	^ self commit versionFor: anIcePackage

@@ -45,7 +45,7 @@ IceTraitDependency >> referencedTraits [
 		allChildren select: #isVariable) collect: #name ) , self usedTraitsNames  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceTraitDependency >> usedTraitsNames [
 	^ self cherrypicker environment
 		allUsingTraitNamed: self definition name

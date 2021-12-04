@@ -37,7 +37,7 @@ IceTipRemovePackageDialog >> accept [
 		ifTrue: [ self model unload ].
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemovePackageDialog >> confirmLabel [
 
 	^ confirmLabel
@@ -49,7 +49,7 @@ IceTipRemovePackageDialog >> confirmMessage [
 	^ 'Are you sure to remove package {1}?'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemovePackageDialog >> iconPanel [
 
 	^ iconPanel
@@ -97,7 +97,7 @@ IceTipRemovePackageDialog >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemovePackageDialog >> removeFromRepositoryCheckbox [
 
 	^ removeFromRepositoryCheckbox

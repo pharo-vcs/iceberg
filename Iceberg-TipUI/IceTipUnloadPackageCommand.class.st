@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipUnloadPackageCommand class >> defaultDescription [
 
 	^ 'Unload selected package from the system, but keep it in the repository.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipUnloadPackageCommand class >> defaultName [
 
 	^ 'Unload'
@@ -25,7 +25,7 @@ IceTipUnloadPackageCommand >> canBeExecuted [
 	^ self isPackageLoaded
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipUnloadPackageCommand >> execute [
 
 	self packageModel unload

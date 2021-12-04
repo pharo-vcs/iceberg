@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipSettingsCommand class >> defaultDescription [
 
 	^ 'Open settings browser to configure Iceberg'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipSettingsCommand class >> defaultName [
 
 	^ 'Settings'
@@ -26,7 +26,7 @@ IceTipSettingsCommand >> canBeExecuted [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipSettingsCommand >> execute [
 
 	| browser window path |

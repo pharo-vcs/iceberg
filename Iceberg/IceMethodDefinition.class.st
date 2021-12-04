@@ -14,7 +14,7 @@ Class {
 		'protocol',
 		'sourceCode'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -43,7 +43,7 @@ IceMethodDefinition >> accept: aVisitor [
 	^ aVisitor visitMethodNode: self
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceMethodDefinition >> actualClass [
 
 	^ self contextClass
@@ -95,7 +95,7 @@ IceMethodDefinition >> contents [
 ', sourceCode
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceMethodDefinition >> contextClass [
 	
 	| class |
@@ -110,7 +110,7 @@ IceMethodDefinition >> install [
 	self asMCDefinition load
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceMethodDefinition >> isLoadable [
 	^ self contextClass notNil
 ]

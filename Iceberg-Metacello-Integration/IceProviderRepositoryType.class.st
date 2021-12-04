@@ -22,7 +22,7 @@ Metacello new
 Class {
 	#name : #IceProviderRepositoryType,
 	#superclass : #IceMetacelloRepositoryType,
-	#category : #'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-RepoTypes'
 }
 
 { #category : #testing }

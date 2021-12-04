@@ -85,7 +85,7 @@ IceTipCredentialsStoreBrowser >> initializePresenters [
 	self refresh.
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCredentialsStoreBrowser >> mainList [
 
 	^ credentialsList

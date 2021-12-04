@@ -1,3 +1,6 @@
+"
+The remote was not found
+"
 Class {
 	#name : #IceCloneRemoteNotFound,
 	#superclass : #IceCloneError,

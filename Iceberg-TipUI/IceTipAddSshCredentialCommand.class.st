@@ -7,12 +7,12 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddSshCredentialCommand class >> defaultDescription [
 	^ 'Add a SSH pair of credential'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddSshCredentialCommand class >> defaultName [
 	^ 'SSH Pair'
 ]

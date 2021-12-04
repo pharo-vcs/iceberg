@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipForgetRepositoryCommand class >> defaultDescription [
 
 	^ 'Removes this repository from the list of managed repositories (it will not remove any local repository)'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipForgetRepositoryCommand class >> defaultName [
 
 	^ 'Forget repository'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipForgetRepositoryCommand >> execute [
 
 	(IceTipRemoveRepositoryDialog on: self repositoryModel)

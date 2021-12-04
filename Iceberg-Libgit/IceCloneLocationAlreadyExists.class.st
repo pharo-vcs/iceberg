@@ -1,3 +1,7 @@
+"
+Error while cloning a project - the location on disk already exists
+
+"
 Class {
 	#name : #IceCloneLocationAlreadyExists,
 	#superclass : #IceCloneError,

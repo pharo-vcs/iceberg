@@ -1,7 +1,10 @@
+"
+A strategy to checkout but not load packages into the image
+"
 Class {
 	#name : #IceCheckoutDoNotLoadPackages,
 	#superclass : #IceCheckoutStrategy,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }

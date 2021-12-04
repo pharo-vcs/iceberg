@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipReloadPackageCommand class >> defaultDescription [
 
 	^ 'Reload selected package, discarding all changes.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipReloadPackageCommand class >> defaultName [
 
 	^ 'Reload'
@@ -25,7 +25,7 @@ IceTipReloadPackageCommand >> canBeExecuted [
 	^ self isPackageLoaded
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipReloadPackageCommand >> execute [
 
 	self packageModel reload.

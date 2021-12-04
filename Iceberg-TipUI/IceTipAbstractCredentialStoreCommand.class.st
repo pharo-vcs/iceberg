@@ -7,6 +7,12 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
+{ #category : #testing }
+IceTipAbstractCredentialStoreCommand class >> isAbstract [
+
+	^ self == IceTipAbstractCredentialStoreCommand
+]
+
 { #category : #initialization }
 IceTipAbstractCredentialStoreCommand >> iconName [
 
@@ -19,7 +25,7 @@ IceTipAbstractCredentialStoreCommand >> shouldBeDisplayedOnRightSideInToolbar [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAbstractCredentialStoreCommand >> store [
 
 	^ self context store

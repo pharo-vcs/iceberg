@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRevertChangeCommand class >> defaultDescription [
 
 	^ 'Revert selected change in the image'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRevertChangeCommand class >> defaultName [
 
 	^ 'Revert change'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRevertChangeCommand >> execute [
 
 	UIManager default
@@ -40,7 +40,7 @@ IceTipRevertChangeCommand >> iconName [
 	^ #smallUndo
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRevertChangeCommand >> tool [
 	"We consider the diffPanel of the context as our tool. This is important because we have to announce in the same Announcer instance that is subscribed for our news."
 

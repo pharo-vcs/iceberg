@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRepairCommand class >> defaultDescription [
 
 	^ 'Helps you to repair your repository when it is detached.'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRepairCommand class >> defaultName [
 
 	^ 'Repair repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipRepairCommand class >> defaultToolbarItemName [
 
 	^ 'Repair'
@@ -28,10 +28,10 @@ IceTipRepairCommand class >> defaultToolbarItemName [
 { #category : #testing }
 IceTipRepairCommand >> canBeExecuted [
 
-	^ self isRepositoryOperational not
+	^ super canBeExecuted and: [ self isRepositoryOperational not ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipRepairCommand >> execute [
 
 	(IceTipRepairRepositoryDialog on: self repositoryModel)

@@ -4,7 +4,7 @@ I'm a class to add support for iceberg to metacello.
 Class {
 	#name : #IceMetacelloPharoPlatform,
 	#superclass : #MetacelloPharoPlatform,
-	#category : 'Iceberg-Metacello-Integration'
+	#category : #'Iceberg-Metacello-Integration-Platform'
 }
 
 { #category : #initialization }

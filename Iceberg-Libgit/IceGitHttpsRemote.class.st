@@ -9,14 +9,14 @@ Class {
 	#category : #'Iceberg-Libgit-Core'
 }
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitHttpsRemote class >> defaultPort [
 	"Returns the HTTPS default port"
 	
 	^443
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitHttpsRemote class >> protocolID [
 	"Return the protocol identifier"
 	

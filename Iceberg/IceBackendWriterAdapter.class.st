@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'backend'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #'instance creation' }
@@ -25,12 +25,12 @@ IceBackendWriterAdapter >> backend: anObject [
 	backend := anObject
 ]
 
-{ #category : #accesing }
+{ #category : #accessing }
 IceBackendWriterAdapter >> directory [
 	^ self backend codeDirectory 
 ]
 
-{ #category : #acessing }
+{ #category : #accessing }
 IceBackendWriterAdapter >> propertyFileExtension [
 	^ MCFileTreeRepository defaultPropertyFileExtension
 ]

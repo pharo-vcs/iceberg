@@ -8,19 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutNewBranchCommand class >> defaultDescription [
 
 	^ 'Create a new branch from the selected commit and switch to it'
 ]
 
-{ #category : #activation }
+{ #category : #'accessing - defaults' }
 IceTipCheckoutNewBranchCommand class >> defaultName [
 
 	^ 'Branch...'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCheckoutNewBranchCommand >> execute [
 
 	(IceTipCheckoutNewBranchPanel on: self repositoryModel)

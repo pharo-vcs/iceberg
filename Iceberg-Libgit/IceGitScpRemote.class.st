@@ -17,7 +17,7 @@ IceGitScpRemote class >> canHandleUrl: aUrl [
 	^ (self isSSHUrl: aUrl) or: [ self isAlternateSSHUrl: aUrl ]
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitScpRemote class >> defaultPort [
 	^ 22
 ]

@@ -4,7 +4,7 @@ Class {
 	#category : 'Iceberg-Url'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'accessing - defaults' }
 IceUrlProtocol class >> defaultProtocol [
 
 	^ IceSSHProtocol
@@ -14,4 +14,10 @@ IceUrlProtocol class >> defaultProtocol [
 IceUrlProtocol class >> description [
 	
 	^ self subclassResponsibility
+]
+
+{ #category : #testing }
+IceUrlProtocol class >> isAbstract [
+
+	^ self == IceUrlProtocol 
 ]

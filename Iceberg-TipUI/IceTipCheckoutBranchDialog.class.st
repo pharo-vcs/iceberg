@@ -25,7 +25,7 @@ IceTipCheckoutBranchDialog >> allTypes [
 	^ types ifNil: [ types := self createCheckoutBranchTypes ]
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 
 	| allTypes |

@@ -37,7 +37,7 @@ IceTipPushBrowser >> labelForRemotePanel [
 
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipPushBrowser >> newActionButton [
 
 	^ self newButton

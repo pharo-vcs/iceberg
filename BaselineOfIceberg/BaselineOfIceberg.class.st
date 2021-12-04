@@ -1,3 +1,6 @@
+"
+Baseline for https://github.com/pharo-vcs/iceberg project
+"
 Class {
 	#name : #BaselineOfIceberg,
 	#superclass : #BaselineOf,
@@ -73,7 +76,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v2.1.5';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v2.2.2';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'

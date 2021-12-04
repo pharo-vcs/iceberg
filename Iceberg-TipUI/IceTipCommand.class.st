@@ -7,11 +7,17 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCommand class >> defaultToolbarItemName [
 
 	^ self defaultName
 
+]
+
+{ #category : #testing }
+IceTipCommand class >> isAbstract [
+
+	^ self == IceTipCommand
 ]
 
 { #category : #accessing }
@@ -92,7 +98,7 @@ IceTipCommand >> isRepositoryOperational [
 			and: [ self hasUnbornProject not ] ]
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipCommand >> item [
 
 	^ self context selectedItem

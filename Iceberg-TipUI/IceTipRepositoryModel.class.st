@@ -250,7 +250,7 @@ IceTipRepositoryModel >> isDetached [
 		or: [ self entity head isDetached ]
 ]
 
-{ #category : #'private testing' }
+{ #category : #'private - testing' }
 IceTipRepositoryModel >> isLoaded [
 	^ self entity loadedPackages notEmpty 
 ]

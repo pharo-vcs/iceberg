@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceGitHubViewPullRequestsCommand class >> defaultName [
 
 	^ 'View Pull Requests...'

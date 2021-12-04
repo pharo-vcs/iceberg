@@ -137,12 +137,12 @@ IceGitHubPullRequest >> initializeWithJSON: aDictionary [
 	self initialize
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceGitHubPullRequest >> json [
 	^ json
 ]
 
-{ #category : #'private accessing' }
+{ #category : #'private - accessing' }
 IceGitHubPullRequest >> jsonAt: aKey [
 	^ self json at: aKey
 ]

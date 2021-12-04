@@ -1,6 +1,14 @@
 Extension { #name : #IceMethodContainerDefinition }
 
 { #category : #'*Iceberg-TipUI' }
+IceMethodContainerDefinition >> actualClass [
+	
+	| actualClass |
+	actualClass := Smalltalk globals at: name.
+	^ isMeta ifTrue: [ actualClass classSide ] ifFalse: [ actualClass ]
+]
+
+{ #category : #'*Iceberg-TipUI' }
 IceMethodContainerDefinition >> browse [
 	
 	| browsed |

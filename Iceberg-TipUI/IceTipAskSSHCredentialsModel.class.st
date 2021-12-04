@@ -18,3 +18,10 @@ IceTipAskSSHCredentialsModel >> cancelAction [
 
 	self cancelAskAction
 ]
+
+{ #category : #accessing }
+IceTipAskSSHCredentialsModel >> newCredentials [
+
+	self refreshCredentialsFromPresenter.
+	^ credentials
+]

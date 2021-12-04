@@ -95,7 +95,7 @@ IceTipReadOnlyFormBuilder >> labelWidth: aNumber [
 	^ labelWidth := aNumber
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipReadOnlyFormBuilder >> newLayout [
 
 	| newLayout |
@@ -118,7 +118,7 @@ IceTipReadOnlyFormBuilder >> newLayout [
 	^ newLayout
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipReadOnlyFormBuilder >> newPresenter [
 
 	^ (spApplication newPresenter: SpPresenter)
@@ -126,7 +126,7 @@ IceTipReadOnlyFormBuilder >> newPresenter [
 		  yourself
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipReadOnlyFormBuilder >> newRowPresenterForLabel: aString value: anotherString [
 
 	^ SpBoxLayout newLeftToRight

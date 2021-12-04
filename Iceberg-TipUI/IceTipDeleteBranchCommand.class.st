@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteBranchCommand class >> defaultDescription [
 
 	^ 'Delete this branch for this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteBranchCommand class >> defaultName [
 
 	^ 'Delete branch'
@@ -25,7 +25,7 @@ IceTipDeleteBranchCommand >> actsOnBranch: aBranchModel [
 	^ aBranchModel isLocal
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDeleteBranchCommand >> execute [
 
 	self item delete

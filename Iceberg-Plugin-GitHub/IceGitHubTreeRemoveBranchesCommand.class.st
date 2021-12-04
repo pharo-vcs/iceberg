@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceGitHubTreeRemoveBranchesCommand class >> defaultName [
 
 	^ 'Remove Remote Branches'
 ]
 
-{ #category : #accessing }
+{ #category : #executing }
 IceGitHubTreeRemoveBranchesCommand >> execute [
 
 	^ IceGitHubRemoveBranchesAction new

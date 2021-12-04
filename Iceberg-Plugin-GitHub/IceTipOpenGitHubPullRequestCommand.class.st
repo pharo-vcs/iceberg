@@ -10,13 +10,13 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipOpenGitHubPullRequestCommand class >> defaultDescription [
 
 	^ 'Open the Pull Request review tool'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipOpenGitHubPullRequestCommand class >> defaultName [
 
 	^ 'Review pull request'
@@ -28,7 +28,7 @@ IceTipOpenGitHubPullRequestCommand >> canBeExecuted [
 	^ self hasSelectedItem
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipOpenGitHubPullRequestCommand >> execute [
 
 	self tool viewPullRequest: self item

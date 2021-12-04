@@ -1,3 +1,6 @@
+"
+Error while cloning a project
+"
 Class {
 	#name : #IceCloneError,
 	#superclass : #IceError,

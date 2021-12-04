@@ -37,13 +37,13 @@ IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 		yourself)
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyLabel [
 
 	^ checkoutStrategyLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 
 	^ checkoutStrategyList
@@ -83,7 +83,7 @@ IceTipCheckoutPreviewBrowser >> initializePresenters [
 
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipCheckoutPreviewBrowser >> newActionButton [
 
 	^ self newButton

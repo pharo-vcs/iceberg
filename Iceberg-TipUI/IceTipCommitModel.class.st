@@ -9,7 +9,7 @@ Class {
 	#category : #'Iceberg-TipUI-Model'
 }
 
-{ #category : #'API-commits' }
+{ #category : #'API - commits' }
 IceTipCommitModel >> adopt [
 	
 	self entity adopt

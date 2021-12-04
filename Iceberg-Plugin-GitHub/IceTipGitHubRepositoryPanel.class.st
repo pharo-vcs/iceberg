@@ -20,7 +20,7 @@ IceTipGitHubRepositoryPanel >> configureBuilder: aBuilder [
 	aBuilder beGithub
 ]
 
-{ #category : #'querying-github' }
+{ #category : #'querying - github' }
 IceTipGitHubRepositoryPanel >> getGitHubRepository [
 
 	^ [ IceGitHubAPI new

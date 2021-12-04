@@ -27,19 +27,19 @@ IceTipExistingBranchPanel >> branchModels [
 	^ self model branchModels
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipExistingBranchPanel >> branchesList [
 
 	^ branchesList
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipExistingBranchPanel >> icon [
 
 	^ icon ifNil: [ self iconNamed: #branch ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipExistingBranchPanel >> icon: anIcon [
 
 	icon := anIcon
@@ -82,7 +82,7 @@ IceTipExistingBranchPanel >> titleForWindow [
 	^ title ifNil: [ self model name ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipExistingBranchPanel >> titleForWindow: aString [
 
 	title := aString

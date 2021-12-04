@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -28,7 +28,7 @@ IceIndex >> addPackage: aPackage [
 	self subclassResponsibility
 ]
 
-{ #category : #'API-commiting' }
+{ #category : #'API - commiting' }
 IceIndex >> commitWithMessage: message andParents: parentCommits [
 
 	self subclassResponsibility.	

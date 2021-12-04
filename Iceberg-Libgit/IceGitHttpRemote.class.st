@@ -14,14 +14,14 @@ IceGitHttpRemote class >> canHandleUrl: aRepositoryUrl [
 	^ (aRepositoryUrl beginsWith: self protocolID, '://') 
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitHttpRemote class >> defaultPort [
 	"Returns the HTTP default port"
 	
 	^80
 ]
 
-{ #category : #defaults }
+{ #category : #'accessing - defaults' }
 IceGitHttpRemote class >> protocolID [
 	"Return the protocol identifier"
 	

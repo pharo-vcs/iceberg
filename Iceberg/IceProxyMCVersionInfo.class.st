@@ -14,7 +14,7 @@ Class {
 	#classVars : [
 		'LastCommitFound'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : #'Iceberg-Adapters'
 }
 
 { #category : #private }
@@ -69,11 +69,6 @@ IceProxyMCVersionInfo class >> remoteUrl: urlString packageName: nameString comm
 		stub: aVersionInfo
 ]
 
-{ #category : #converting }
-IceProxyMCVersionInfo >> asSpotterCandidateLink [
-	^ GTSpotterCandidateLink value: self
-]
-
 { #category : #'reflective operations' }
 IceProxyMCVersionInfo >> becomeForward: otherObject copyHash: copyHash [
 	"Primitive. All variables in the entire system that used to point to the receiver now point to the argument.
@@ -118,24 +113,6 @@ Please fetch from "{1}" and try again.'
 	^ IceMCVersionInfo new 
 		fromCommit: commit 
 		package: (IcePackage named: packageName repository: repo)
-]
-
-{ #category : #printing }
-IceProxyMCVersionInfo >> gtDisplayOn: stream [
-	"This offers a means to customize how the object is shown in the inspector"
-	^ self printOn: stream
-]
-
-{ #category : #printing }
-IceProxyMCVersionInfo >> gtDisplayString [
-	"This offers a means to customize how the object is shown in the inspector.
-	Do not override this method. Override gtDisplayOn: instead"
-		
-	| limitedString limit |
-	limit := 1000.
-	limitedString := String streamContents: [:s | self gtDisplayOn: s] limitedTo: limit.
-	limitedString size < limit ifTrue: [^ limitedString].
-	^ limitedString , ' ...'
 ]
 
 { #category : #inspecting }

@@ -50,13 +50,13 @@ IcePackage >> beDirty: aBoolean [
 	isDirty := aBoolean
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> currentCommit [
 	
 	^ repository workingCopy referenceCommit
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> currentCommits [
 	
 	^ repository workingCopy referenceCommits
@@ -103,7 +103,7 @@ IcePackage >> isLoaded [
 	^ repository workingCopy isLoadedPackageNamed: self packageName
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> isMetacelloBaseline [
 	
 	^ self name beginsWith: self metacelloBaselinePrefix
@@ -132,33 +132,33 @@ IcePackage >> loadedVersion [
 	^ self repository workingCopy versionFor: self
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> mcPackage [
 	
 	^ MCPackage named: self packageName
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> mcSnapshotInRepository [
 	"Answer a version of the package as it is present on repository. 
 	 Useful to browse non-loaded packages."
 	^ self repository branch snapshotFor: self
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> mcWorkingCopy [
 
 	^ self isLoaded ifTrue: [
 		self mcPackage workingCopy ]
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> metacelloBaselineName [
 
 	^ self name allButFirst: self metacelloBaselinePrefix size
 ]
 
-{ #category : #'accessing-monticello' }
+{ #category : #'accessing - monticello' }
 IcePackage >> metacelloBaselinePrefix [
 	
 	^ 'BaselineOf'

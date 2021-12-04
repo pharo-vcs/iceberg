@@ -82,7 +82,7 @@ IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 		rightText: rightString
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipDiffPanel >> diffPanel [
 
 	^ diffPanel
@@ -108,7 +108,19 @@ IceTipDiffPanel >> expandPath: aPath [
 		selectPath: aPath
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'event handling' }
+IceTipDiffPanel >> handleArrowLeft [
+
+	self collapsePath: iceNodesTree selection selectedPath
+]
+
+{ #category : #'event handling' }
+IceTipDiffPanel >> handleArrowRight [
+
+	self expandPath: iceNodesTree selection selectedPath
+]
+
+{ #category : #'accessing - ui' }
 IceTipDiffPanel >> iceNodesTree [
 
 	^ iceNodesTree
@@ -148,9 +160,9 @@ IceTipDiffPanel >> initializeTree [
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ self selectionChanged ];
 		bindKeyCombination: Character arrowLeft asKeyCombination 
-			toAction: [ self collapsePath: iceNodesTree selection selectedPath ];
+			toAction: [ self handleArrowLeft ];
 		bindKeyCombination: Character arrowRight asKeyCombination 
-			toAction: [ self expandPath: iceNodesTree selection selectedPath ].
+			toAction: [ self handleArrowRight ].
 ]
 
 { #category : #accessing }

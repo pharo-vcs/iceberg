@@ -10,7 +10,7 @@ Class {
 		'iceCommit',
 		'history'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -52,13 +52,13 @@ IceHistoryCommit >> datetime [
 	^ iceCommit datetime
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceHistoryCommit >> diffFromHead [
 	
 	^ iceCommit diffFromHead
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceHistoryCommit >> diffToParent [
 	
 	^ iceCommit diffToParent

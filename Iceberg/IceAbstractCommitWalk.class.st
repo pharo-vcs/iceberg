@@ -17,6 +17,12 @@ IceAbstractCommitWalk class >> forRepository: repository [
 	^ self new repository: repository; yourself
 ]
 
+{ #category : #testing }
+IceAbstractCommitWalk class >> isAbstract [
+
+	^ self == IceAbstractCommitWalk 
+]
+
 { #category : #private }
 IceAbstractCommitWalk >> commitFrom: result [
 	^ self repository commitFromGitCommit: result

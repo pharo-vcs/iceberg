@@ -4,18 +4,18 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddTokenCredentialCommand class >> defaultDescription [
 
 	^ 'Add a new token credential'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipAddTokenCredentialCommand class >> defaultName [
 	^ 'Token'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipAddTokenCredentialCommand >> execute [
 
 	IceTipAddTokenCredentialsModel new

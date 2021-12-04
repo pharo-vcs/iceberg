@@ -7,13 +7,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteTagCommand class >> defaultDescription [
 
 	^ 'Delete this tag for this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipDeleteTagCommand class >> defaultName [
 
 	^ 'Delete tag'
@@ -25,7 +25,7 @@ IceTipDeleteTagCommand >> actsOnTag: aRemoteModel [
 	^ true
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDeleteTagCommand >> execute [
 
 	self tagModel delete
@@ -37,7 +37,7 @@ IceTipDeleteTagCommand >> iconName [
 	^ #delete
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipDeleteTagCommand >> tagModel [
 
 	^ self item

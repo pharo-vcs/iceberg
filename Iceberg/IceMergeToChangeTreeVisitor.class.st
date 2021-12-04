@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Changes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #utilities }
 IceMergeToChangeTreeVisitor >> convertMergeNodeToChangeNode [
 	currentNode value: currentNode value chosenOperation .
 ]
@@ -23,12 +23,12 @@ IceMergeToChangeTreeVisitor >> visitClassDefinition: anIceClassDefinition [
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visting }
+{ #category : #visiting }
 IceMergeToChangeTreeVisitor >> visitNoModification: anIceNoModification [
 	anIceNoModification definition accept: self.
 ]
 
-{ #category : #visting }
+{ #category : #visiting }
 IceMergeToChangeTreeVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
 	anIceNonConflictingOperation chosenOperation accept: self.
 ]
@@ -39,7 +39,7 @@ IceMergeToChangeTreeVisitor >> visitPackage: anIcePackageDefinition [
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visting }
+{ #category : #visiting }
 IceMergeToChangeTreeVisitor >> visitRootDefinition: anIceRootDefinition [ 
 	self visitChildrenOf: currentNode
 ]

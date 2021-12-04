@@ -7,19 +7,25 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCreateTagCommand class >> defaultDescription [
 
 	^ 'Creates a tag for the selected commit'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipCreateTagCommand class >> defaultName [
 
 	^ 'Create tag'
 ]
 
-{ #category : #execution }
+{ #category : #testing }
+IceTipCreateTagCommand >> canBeExecuted [ 
+
+	^ self repositoryModel isNotNil
+]
+
+{ #category : #executing }
 IceTipCreateTagCommand >> execute [
 	
 	(IceTipCreateTagPanel on: self item) openDialogWithSpec

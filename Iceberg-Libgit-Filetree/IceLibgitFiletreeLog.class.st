@@ -4,7 +4,7 @@ I'm a tool to ask the full history of a method (based on filetree file format).
 Class {
 	#name : #IceLibgitFiletreeLog,
 	#superclass : #IceLog,
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Log'
 }
 
 { #category : #testing }

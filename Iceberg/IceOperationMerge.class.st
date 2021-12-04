@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'chosen'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
@@ -16,7 +16,7 @@ IceOperationMerge >> accept: aVisitor [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceOperationMerge >> actualClass [
 	self subclassResponsibility
 ]
@@ -33,7 +33,7 @@ IceOperationMerge >> clearSelection [
 	chosen := nil
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceOperationMerge >> contextClass [
 	self subclassResponsibility
 ]
@@ -64,7 +64,7 @@ IceOperationMerge >> isLeftChosen [
 	self subclassResponsibility
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceOperationMerge >> isLoadable [
 	^ false
 ]

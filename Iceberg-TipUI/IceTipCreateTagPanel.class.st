@@ -62,7 +62,7 @@ IceTipCreateTagPanel >> commitishToTag [
 	^ commitishToTag
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> currentCommitishLabel [
 
 	^ currentCommitishLabel
@@ -77,7 +77,7 @@ IceTipCreateTagPanel >> doAccept [
 		thenDo: [ :newBranch | callback ifNotNil: [ callback value: newBranch ] ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> existingTagsList [
 
 	^ existingTagsList
@@ -185,12 +185,12 @@ IceTipCreateTagPanel >> latestTagPartsIn: tagNames [
 	^ parts
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> majorButton [
 	^ majorButton
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> minorButton [
 	^ minorButton
 ]
@@ -203,7 +203,7 @@ IceTipCreateTagPanel >> openDialogWithSpec [
 		yourself
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> patchButton [
 
 	^ patchButton
@@ -215,19 +215,19 @@ IceTipCreateTagPanel >> setModelBeforeInitialization: aCommitish [
 	self commitish: aCommitish
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> tagName [
 
 	^ self tagNameInputText text asString trimBoth
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> tagNameInputText [
 
 	^ tagNameInputText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipCreateTagPanel >> tagNameLabel [
 
 	^ tagNameLabel

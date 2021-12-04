@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'fileName'
 	],
-	#category : 'Iceberg-Libgit-Tonel'
+	#category : #'Iceberg-Libgit-Tonel-Reader'
 }
 
 { #category : #'instance creation' }

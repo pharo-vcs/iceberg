@@ -45,7 +45,7 @@ IceTipOptionDialog >> allTypes [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipOptionDialog >> contentPanel [
 
 	^ contentPanel
@@ -122,7 +122,7 @@ IceTipOptionDialog >> selectionChanged: aType [
 		self replacePanelWith: type ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipOptionDialog >> typeList [
 
 	^ typeList

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'job'
 	],
-	#category : 'Iceberg-Progress'
+	#category : #'Iceberg-Progress'
 }
 
 { #category : #accessing }
@@ -36,7 +36,7 @@ IceGitTransferProgress >> initialize [
 	self initializeBlock.
 ]
 
-{ #category : #'initialize - release' }
+{ #category : #'initialize-release' }
 IceGitTransferProgress >> initializeBlock [
 	self signature: self class fnSpec block: self block.
 ]

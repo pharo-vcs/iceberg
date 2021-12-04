@@ -15,7 +15,7 @@ IceDependencyEnvironment class >> on: anIceGitCommit [
 	yourself 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceDependencyEnvironment >> allSubclassesNamesOf: aName [
 
 	| result |
@@ -25,7 +25,7 @@ IceDependencyEnvironment >> allSubclassesNamesOf: aName [
 	^ result , (result flatCollect: [ :e | self allSubclassesNamesOf: e ]).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceDependencyEnvironment >> allUsingTraitNamed: aName [ 
 	| result |
 	result := self usersOfTraitNamed: aName.
@@ -61,12 +61,12 @@ IceDependencyEnvironment >> subclassNamesOf: aString [
 		thenCollect: [ :e | e className ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceDependencyEnvironment >> traits [
 	^ self definitions select: [ :e | e isTraitDefinition ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceDependencyEnvironment >> usersOfTraitNamed: aName [ 
 	^ (self traits , self classes) 
 		select: [ :e | e traitComposition includesSubstring: aName ]

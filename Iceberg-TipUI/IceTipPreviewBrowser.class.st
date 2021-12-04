@@ -34,13 +34,13 @@ IceTipPreviewBrowser class >> defaultSpec [
 		  yourself
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipPreviewBrowser >> actionPanel [
 
 	^ actionPanel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipPreviewBrowser >> diffPanel [
 
 	^ diffPanel
@@ -63,14 +63,14 @@ IceTipPreviewBrowser >> initializePresenters [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipPreviewBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ diffPanel iceNodesTree
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceTipPreviewBrowser >> newActionButton [
 	self subclassResponsibility
 ]

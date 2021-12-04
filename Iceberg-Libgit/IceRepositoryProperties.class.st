@@ -149,12 +149,12 @@ IceRepositoryProperties >> isUnborn [
 	^ false
 ]
 
-{ #category : #'private ' }
+{ #category : #private }
 IceRepositoryProperties >> properties [
 	^ properties ifNil: [ properties := Dictionary new ]
 ]
 
-{ #category : #'private ' }
+{ #category : #private }
 IceRepositoryProperties >> properties: aDictionary [
 	properties := aDictionary
 ]

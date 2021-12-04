@@ -5,7 +5,7 @@ I'm not surre I cannot unify myself class with my parent.
 Class {
 	#name : #IceLibgitFiletreeSnapshotWriter,
 	#superclass : #IceMetadatalessStCypressWriter,
-	#category : 'Iceberg-Libgit-Filetree'
+	#category : #'Iceberg-Libgit-Filetree-Writer'
 }
 
 { #category : #accessing }

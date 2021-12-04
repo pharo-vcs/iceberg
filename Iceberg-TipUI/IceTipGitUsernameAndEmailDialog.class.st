@@ -58,19 +58,19 @@ IceTipGitUsernameAndEmailDialog >> email [
 	^ self emailInput text trimBoth
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitUsernameAndEmailDialog >> emailInput [
 
 	^ emailInput
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitUsernameAndEmailDialog >> emailLabel [
 
 	^ emailLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitUsernameAndEmailDialog >> globalCheckbox [
 	^ globalCheckbox
 ]
@@ -116,13 +116,13 @@ IceTipGitUsernameAndEmailDialog >> isGlobal [
 	^ self globalCheckbox state
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitUsernameAndEmailDialog >> nameInput [
 
 	^ nameInput
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipGitUsernameAndEmailDialog >> nameLabel [
 
 	^ nameLabel

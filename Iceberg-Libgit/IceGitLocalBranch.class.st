@@ -4,7 +4,7 @@ Class {
 	#category : #'Iceberg-Libgit-Core'
 }
 
-{ #category : #'private-pushing' }
+{ #category : #'private - pushing' }
 IceGitLocalBranch >> basicPushTo: aRemote [
 	| gitRemote |
 	
@@ -65,7 +65,7 @@ IceGitLocalBranch >> commit: anIceGitCommit [
 							yourself) ]]
 ]
 
-{ #category : #'API-branches' }
+{ #category : #'API - branches' }
 IceGitLocalBranch >> delete [
 	repository handleLibgitError: [ | found |
 		found := self repositoryHandle lookupLocalBranch: self name ifAbsent: [ nil ].
@@ -84,7 +84,7 @@ IceGitLocalBranch >> gitRef [
 	^ self name
 ]
 
-{ #category : #'private-tracking' }
+{ #category : #'private - tracking' }
 IceGitLocalBranch >> hasUpstream [
 	
 	self upstreamIfNone: [ ^ false ].
@@ -102,7 +102,7 @@ IceGitLocalBranch >> name [
 	^ self fullname withoutPrefix: self branchNamePrefix
 ]
 
-{ #category : #'private-pushing' }
+{ #category : #'private - pushing' }
 IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 	
 	gitRemote 
@@ -117,7 +117,7 @@ IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: 
 			yourself)
 ]
 
-{ #category : #'private-pushing' }
+{ #category : #'private - pushing' }
 IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
 	gitRemote 
@@ -132,7 +132,7 @@ IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progres
 			yourself)
 ]
 
-{ #category : #'private-pushing' }
+{ #category : #'private - pushing' }
 IceGitLocalBranch >> pushTagsToRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
 	self tags do: [ :tag | 
@@ -143,7 +143,7 @@ IceGitLocalBranch >> pushTagsToRemote: aRemote gitRemote: gitRemote progress: pu
 			progress: pushProgress ]
 ]
 
-{ #category : #'API-remotes' }
+{ #category : #'API - remotes' }
 IceGitLocalBranch >> pushTo: aRemote [
 
 	repository handleLibgitError: [ 
@@ -157,7 +157,7 @@ IceGitLocalBranch >> repositoryHandle [
 	^ repository repositoryHandle
 ]
 
-{ #category : #'API-remotes' }
+{ #category : #'API - remotes' }
 IceGitLocalBranch >> setUpstream: anIceGitRemoteBranch [
 	
 	repository handleLibgitError: [ | localBranch |
@@ -165,7 +165,7 @@ IceGitLocalBranch >> setUpstream: anIceGitRemoteBranch [
 		localBranch setUpstream: anIceGitRemoteBranch gitRef ]
 ]
 
-{ #category : #'private-pushing' }
+{ #category : #'private - pushing' }
 IceGitLocalBranch >> setUpstreamIfMissing: aRemote [
 	
 	self hasUpstream ifTrue: [ ^ self ].
@@ -195,13 +195,13 @@ IceGitLocalBranch >> tracksRemoteBranch [
 	^ self hasUpstream
 ]
 
-{ #category : #'private-tracking' }
+{ #category : #'private - tracking' }
 IceGitLocalBranch >> upstream [
 	
 	^ self upstreamIfNone: [ IceUpstreamNotConfigured signal ]
 ]
 
-{ #category : #'private-tracking' }
+{ #category : #'private - tracking' }
 IceGitLocalBranch >> upstreamIfNone: aBlock [
 	repository handleLibgitError: [ | localBranch gitUpstream |
 		localBranch := self repositoryHandle lookupLocalBranch: self name.

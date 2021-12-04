@@ -1,11 +1,20 @@
+"
+Abstract superclass for projects
+"
 Class {
 	#name : #IceAbstractProject,
 	#superclass : #Object,
 	#instVars : [
 		'commitish'
 	],
-	#category : 'Iceberg-Project'
+	#category : #'Iceberg-Project'
 }
+
+{ #category : #testing }
+IceAbstractProject class >> isAbstract [
+
+	^ self == IceAbstractProject
+]
 
 { #category : #'instance creation' }
 IceAbstractProject class >> onCommitish: anIceCommitish [
@@ -61,7 +70,7 @@ IceAbstractProject >> isUnborn [
 	^ false
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceAbstractProject >> packages [
 	
 	self repository handleLibgitError: [ | writerClass sourceFileReference |
@@ -76,7 +85,7 @@ IceAbstractProject >> packages [
 				IcePackage named: packageName repository: self repository ] ]
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceAbstractProject >> packagesFrom: aCommit [
 	
 	self repository handleLibgitError: [ | writerClass sourceFileReference |

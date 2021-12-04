@@ -12,6 +12,12 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
+{ #category : #testing }
+IceTipHistoryDiffUpdater class >> isAbstract [
+
+	^ self == IceTipHistoryDiffUpdater
+]
+
 { #category : #'instance creation' }
 IceTipHistoryDiffUpdater class >> tab: aTab [
 	^ self new

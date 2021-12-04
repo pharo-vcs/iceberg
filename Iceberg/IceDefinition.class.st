@@ -18,7 +18,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -48,7 +48,7 @@ IceDefinition >> contents [
 	self subclassResponsibility
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : #'morphic - compatibility' }
 IceDefinition >> contextClass [
 	
 	^ nil

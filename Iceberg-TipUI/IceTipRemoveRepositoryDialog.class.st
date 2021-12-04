@@ -33,7 +33,7 @@ IceTipRemoveRepositoryDialog >> accept [
 		ifFalse: [ self model forget ]
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoveRepositoryDialog >> confirmLabel [
 
 	^ confirmLabel
@@ -44,7 +44,7 @@ IceTipRemoveRepositoryDialog >> confirmMessage [
 	^ 'Are you sure to remove your repository {1} from your image?'
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoveRepositoryDialog >> iconPanel [
 
 	^ iconPanel
@@ -88,7 +88,7 @@ IceTipRemoveRepositoryDialog >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipRemoveRepositoryDialog >> removeFileSystemCheckbox [
 
 	^ removeFileSystemCheckbox

@@ -12,13 +12,13 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipUnloadAndRemovePackageCommand class >> defaultDescription [
 
 	^ 'Opens a dialog to choose between unloading from system and/or removing a package from the repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipUnloadAndRemovePackageCommand class >> defaultName [
 
 	^ 'Unload and/or remove from repository'
@@ -30,7 +30,7 @@ IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 	^ self isPackageLoaded
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipUnloadAndRemovePackageCommand >> execute [
 
 	(IceTipRemovePackageDialog on: self packageModel) openDialogWithSpec

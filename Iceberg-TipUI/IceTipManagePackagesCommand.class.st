@@ -7,19 +7,19 @@ Class {
 	#category : #'Iceberg-TipUI-Commands'
 }
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipManagePackagesCommand class >> defaultDescription [
 
 	^ 'Open packages manager browser for this repository'
 ]
 
-{ #category : #accessing }
+{ #category : #'accessing - defaults' }
 IceTipManagePackagesCommand class >> defaultName [
 
 	^ 'Packages'
 ]
 
-{ #category : #execution }
+{ #category : #executing }
 IceTipManagePackagesCommand >> execute [
 	(IceTipWorkingCopyBrowser on: self repositoryModel) openWithSpec
 ]

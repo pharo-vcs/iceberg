@@ -4,7 +4,7 @@ I am a null object representing the absence of a commit. I'm used generally in t
 Class {
 	#name : #IceNoCommit,
 	#superclass : #IceCommitish,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -21,25 +21,25 @@ IceNoCommit >> = aNoCommit [
 	^ aNoCommit isNoCommit
 ]
 
-{ #category : #'private-changes' }
+{ #category : #'private - changes' }
 IceNoCommit >> changedPackagesToCommitInfo: anIceGitCommit [
 	
 	^ anIceGitCommit packages
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceNoCommit >> changesFromCommit: anIceNoCommit [ 
 	
 	^ anIceNoCommit changesFromNoCommit: self
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceNoCommit >> changesFromNoCommit: anIceNoCommit [ 
 	
 	^ #()
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceNoCommit >> changesTo: aCommitish [
 
 	^ aCommitish changesFromNoCommit: self
@@ -51,7 +51,7 @@ IceNoCommit >> commit [
 	^ self
 ]
 
-{ #category : #'API-changes' }
+{ #category : #'API - changes' }
 IceNoCommit >> commonAncestorWith: aCommitish [
 
 	^ aCommitish
@@ -63,7 +63,7 @@ IceNoCommit >> description [
 	^ 'No code loaded'
 ]
 
-{ #category : #'file-access' }
+{ #category : #'accessing - file' }
 IceNoCommit >> fileSystem [
 	
 	"This should belong to a Git specific No-Commit only..."
@@ -76,7 +76,7 @@ IceNoCommit >> hash [
 	^ self class hash
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceNoCommit >> includesPackageNamed: aName [
 	
 	^ false
@@ -112,7 +112,7 @@ IceNoCommit >> isUnknownCommit [
 	^ false
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceNoCommit >> mcCommit [
 
 	"This method is just for compatibility.
@@ -121,13 +121,13 @@ IceNoCommit >> mcCommit [
 	^ MCVersion new
 ]
 
-{ #category : #'API-packages' }
+{ #category : #'API - packages' }
 IceNoCommit >> packageNames [
 	
 	^ #()
 ]
 
-{ #category : #'API-project' }
+{ #category : #'API - project' }
 IceNoCommit >> project [
 
 	^ repository newUnbornProject
@@ -145,13 +145,13 @@ IceNoCommit >> repository: aRepository [
 	repository := aRepository
 ]
 
-{ #category : #'private-monticello' }
+{ #category : #'private - monticello' }
 IceNoCommit >> snapshotFor: anIceSavedPackage [ 
 	
 	^ MCSnapshot empty
 ]
 
-{ #category : #'API-properties' }
+{ #category : #'API - properties' }
 IceNoCommit >> writerClass [
 
 	^ self properties writerClass

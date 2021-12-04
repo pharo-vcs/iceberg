@@ -116,13 +116,13 @@ IceTipAddPackagesDialog >> model: anObject [
 	self refresh
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddPackagesDialog >> packageNameText [
 
 	^ packageNameText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceTipAddPackagesDialog >> packagesList [
 
 	^ packagesList

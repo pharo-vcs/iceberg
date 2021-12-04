@@ -20,6 +20,21 @@ IceClassDefinition >> accept: aVisitor [
 { #category : #patching }
 IceClassDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 	
+	"If we are replacing an existing class, we need to handle the case. 
+	For example, removing the last instance variable. 
+	We need to remove the existing definition (empty class instance variables are not saved)."
+	| defModification |
+	
+	"If the new definition has no class instance vaiables, we remove the meta side variables, and apply the new changes to the patcher "
+	(self isMeta and: [ mcDefinition isNil and: [ anIceModification rightDefinition asMCDefinition isNotNil ] ])
+		ifTrue: [ 
+			defModification := anIceModification rightDefinition asMCDefinition deepCopy.
+			defModification removeMetaSideVariables.
+			aMCPatcher
+				modifyDefinition: anIceModification rightDefinition asMCDefinition
+				to: defModification.
+				^ self].
+
 	"We should not handle metaclasses if their mcDefinition is nil.
 	They should be added automatically when added the instance side."
 	(self isMeta and: [ mcDefinition isNil ])
@@ -75,10 +90,21 @@ IceClassDefinition >> removeFromPatcher: aMCPatcher [
 	self asMCDefinition ifNil: [ ^ self ].
 	
 	isMeta ifTrue: [ 
-		^ aMCPatcher
-			modifyDefinition: self asMCDefinition
-			to: self asMCDefinitionWithoutMetaSide
-	].
+		
+	"The patcher is storing the definitions by name of the class only.
+	We need to check it also if the original definition is the one we have here.
+	If it is, we can replace it in the patch.
+	But if it is not, we should not replace. If we replace it we will overwrite
+	the changes already in the patcher"
+		aMCPatcher definitions definitionLike: self asMCDefinition 
+			ifPresent: [ :found |
+				found = self asMCDefinition 
+				ifTrue: [
+					aMCPatcher
+						modifyDefinition: self asMCDefinition
+						to: self asMCDefinitionWithoutMetaSide]] 
+			ifAbsent: [].
+		^ self ].
 	
 	aMCPatcher removeDefinition: self asMCDefinition 
 ]

@@ -95,32 +95,32 @@ IceGitHubPullRequestDetailModel class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> authorLabel [
 	^ authorLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> authorText [
 	^ authorText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> bodyText [
 	^ bodyText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> checksTable [
 	^ checksTable
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> fromLabel [
 	^ fromLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> fromText [
 	^ fromText
 ]
@@ -165,17 +165,17 @@ IceGitHubPullRequestDetailModel >> initializePresenters [
 
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> mergeableLabel [
 	^ mergeableLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> mergeableMessage [
 	^ mergeableMessage
 ]
 
-{ #category : #'private factory' }
+{ #category : #'private - factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
 	^ self newTable
 		addColumn:
@@ -250,17 +250,17 @@ IceGitHubPullRequestDetailModel >> retrieveStatuses [
 	] fork
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusIcon [
 	^ statusIcon
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusLabel [
 	^ statusLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusMessage [
 	^ statusMessage
 ]
@@ -273,22 +273,22 @@ IceGitHubPullRequestDetailModel >> textForMergeable: mergeable [
 	
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> toLabel [
 	^ toLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> toText [
 	^ toText
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> urlLabel [
 	^ urlLabel
 ]
 
-{ #category : #'accessing ui' }
+{ #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> urlText [
 	^ urlText
 ]
