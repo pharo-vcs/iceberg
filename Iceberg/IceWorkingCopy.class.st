@@ -229,7 +229,7 @@ IceWorkingCopy >> commitChanges: aDiff withMessage: message [
 	^ self commitChanges: aDiff withMessage: message force: false
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'API - commits' }
 IceWorkingCopy >> commitChanges: aDiff withMessage: message force: forcing [ 
 
 	"Creates a commit with the given changes using the comment given as argument.

@@ -49,7 +49,7 @@ IceClassDependency >> referencedTraits [
 		allChildren select: #isVariable) collect: #name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 IceClassDependency >> subclassNames [
 
 	^ self cherrypicker environment

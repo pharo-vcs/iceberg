@@ -9,7 +9,7 @@ Class {
 	#category : 'Iceberg-Changes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 IceCodeDefinition class >> named: aName source: aString [
 	
 	^ (super named: aName)
