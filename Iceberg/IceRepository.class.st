@@ -284,13 +284,6 @@ IceRepository >> branchNamed: aName ifPresent: presentBlock ifAbsent: absentBloc
 	self subclassResponsibility
 ]
 
-{ #category : #deprecated }
-IceRepository >> branchesForMerge: aCommit [
-	"Returns a list of local branches to which we could merge the received commit"
-
-	^ self allBranches reject: [ :each | each includesCommit: aCommit ]
-]
-
 { #category : #testing }
 IceRepository >> canPush [
 	
