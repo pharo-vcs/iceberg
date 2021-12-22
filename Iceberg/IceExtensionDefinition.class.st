@@ -15,7 +15,7 @@ Class {
 	#category : #'Iceberg-Changes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 IceExtensionDefinition class >> named: aString isMeta: isMeta packageName: aName [
 	^ self new
 		name: aString;
