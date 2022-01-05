@@ -90,9 +90,7 @@ IceTipCommitBrowser >> doCollapseSelection [
 
 { #category : #actions }
 IceTipCommitBrowser >> doCommit [
-
 	| selectedItems message isPushing isSaving commitBlock|
-	self closeWindow.
 
 	selectedItems := diffPanel selectedItems.
 	message := commentPanel message.
