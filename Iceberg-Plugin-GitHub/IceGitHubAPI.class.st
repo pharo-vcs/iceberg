@@ -216,6 +216,12 @@ IceGitHubAPI >> getRepository: owner project: projectName [
 	^ self get: 'repos/', owner,'/', projectName
 ]
 
+{ #category : #requesting }
+IceGitHubAPI >> getTagsOwner: owner project: project [
+
+	 ^ self get: 'repos', '/', owner, '/', project, '/tags'
+]
+
 { #category : #responses }
 IceGitHubAPI >> handleUnauthorized: aZnResponse [ 
 	"If we are in unauthorized we require the correct credentials."

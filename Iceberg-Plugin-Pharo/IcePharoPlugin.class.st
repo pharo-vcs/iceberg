@@ -91,6 +91,29 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 ]
 
 { #category : #'accessing - commits' }
+IcePharoPlugin class >> commitOfExternalProject: aName [
+	| externalProject tags branch |
+	
+	externalProject := (Smalltalk classNamed: #BaselineOfPharo) externalProjectNamed: aName.
+	
+	"First try to get a tah with the version (this should be the regular case)"
+	tags := IceGitHubAPI new 
+		getTagsOwner: externalProject owner 
+		project: externalProject project.
+	tags do: [ :each | 
+		((each at: #name) = externalProject version) 
+			ifTrue: [ ^ each at: #commit at: #sha ] ].
+	
+	"If that fails, it has to be a branch so get the branch last commit"
+	branch := IceGitHubAPI new 
+		getBranch: externalProject owner 
+		project: externalProject project
+		name: externalProject version.
+		
+	^ branch at: #commit at: #sha
+]
+
+{ #category : #'accessing - commits' }
 IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner repository: repository [
 
 	| shortHash |
