@@ -37,8 +37,8 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 
 ]
 
-{ #category : #specs }
-IceTipCommitBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipCommitBrowser class >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
 		  add: #diffPanel;

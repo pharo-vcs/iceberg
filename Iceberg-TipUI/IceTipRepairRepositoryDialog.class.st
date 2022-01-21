@@ -11,8 +11,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipRepairRepositoryDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipRepairRepositoryDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add: #reasonPanel 

@@ -22,7 +22,7 @@ IceTipAddPackageCommand class >> defaultName [
 { #category : #executing }
 IceTipAddPackageCommand >> execute [
 
-	(IceTipAddPackagesDialog on: self repositoryModel) openDialogWithSpec
+	(IceTipAddPackagesDialog on: self repositoryModel) openDialog
 ]
 
 { #category : #accessing }

@@ -196,9 +196,9 @@ IceTipCreateTagPanel >> minorButton [
 ]
 
 { #category : #accessing }
-IceTipCreateTagPanel >> openDialogWithSpec [
+IceTipCreateTagPanel >> openDialog [
 
-	^ super openDialogWithSpec
+	^ super openDialog
 		okAction: [ self accept ];
 		yourself
 ]

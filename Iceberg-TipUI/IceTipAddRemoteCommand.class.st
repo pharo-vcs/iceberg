@@ -29,7 +29,7 @@ IceTipAddRemoteCommand >> canBeExecuted [
 { #category : #executing }
 IceTipAddRemoteCommand >> execute [
 
-	(IceTipAddRemoteDialog on: self repositoryModel) openDialogWithSpec
+	(IceTipAddRemoteDialog on: self repositoryModel) openDialog
 ]
 
 { #category : #accessing }

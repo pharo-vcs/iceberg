@@ -58,8 +58,8 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 
 ]
 
-{ #category : #specs }
-IceTipRepositoriesBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipRepositoriesBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #repositoryList;

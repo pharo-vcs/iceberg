@@ -30,7 +30,7 @@ IceTipAddRepositoryCommand >> canBeExecuted [
 { #category : #executing }
 IceTipAddRepositoryCommand >> execute [
 
-	IceTipRegisterRepositoryDialog new openDialogWithSpec
+	IceTipRegisterRepositoryDialog new openDialog
 ]
 
 { #category : #accessing }

@@ -35,7 +35,7 @@ IceTipCheckoutBranchCommand >> canBeExecuted [
 IceTipCheckoutBranchCommand >> execute [
 
 	(IceTipCheckoutBranchDialog on: self repositoryModel)
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #accessing }

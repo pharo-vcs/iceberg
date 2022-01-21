@@ -17,8 +17,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipDiffPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipDiffPanel class >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 25 percent;

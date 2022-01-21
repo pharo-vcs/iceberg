@@ -181,7 +181,7 @@ IceTipRepositoryModel >> discardChanges [
 IceTipRepositoryModel >> edit [
 	<noCache>
 	
-	(IceTipEditProjectDialog on: self entity project) openNonModalWithSpec 
+	(IceTipEditProjectDialog on: self entity project) openNonModal 
 ]
 
 { #category : #actions }
