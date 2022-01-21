@@ -33,14 +33,14 @@ IceTipDialog >> initializeDialogWindow: aWindow [
 ]
 
 { #category : #showing }
-IceTipDialog >> openDialogWithSpec [
+IceTipDialog >> openDialog [
 
-	^ self openModalWithSpec
+	^ self openModal
 
 ]
 
 { #category : #showing }
-IceTipDialog >> openNonModalWithSpec [
+IceTipDialog >> openNonModal [
 
 	^ super openDialog
 ]

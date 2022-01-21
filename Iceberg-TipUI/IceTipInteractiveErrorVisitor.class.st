@@ -73,7 +73,7 @@ IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 	
-	(IceTipErrorDialog on: anError) openDialogWithSpec
+	(IceTipErrorDialog on: anError) openDialog
 ]
 
 { #category : #visiting }
@@ -90,7 +90,7 @@ IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 
 	((IceTipGitUsernameAndEmailDialog on: self repository)
 		onAccept: [ anError resume ];
-		openDialogWithSpec)
+		openDialog)
 			modalRelativeTo: self currentWorld.
 ]
 

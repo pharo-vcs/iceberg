@@ -99,7 +99,7 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 					                   setModal: SystemWindow topWindow;
 					                   yourself.
 
-				 changesBrowser openDialogWithSpec
+				 changesBrowser openDialog
 					 okAction: [ 
 						 changesBrowser accept.
 						 self disableCommitAfterChanges.
@@ -223,7 +223,7 @@ IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 		ifFalse: [ ^ onAcceptAction value ].
 
 	critiques 
-		ifNotEmpty: [ self openNonModalWithSpec ] 
+		ifNotEmpty: [ self openNonModal ] 
 		ifEmpty: [ onAcceptAction value ] 
 	
 ]

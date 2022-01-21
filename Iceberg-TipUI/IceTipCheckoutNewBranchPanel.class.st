@@ -100,9 +100,9 @@ IceTipCheckoutNewBranchPanel >> isNewBranch [
 ]
 
 { #category : #accessing }
-IceTipCheckoutNewBranchPanel >> openDialogWithSpec [
+IceTipCheckoutNewBranchPanel >> openDialog [
 
-	^ super openDialogWithSpec
+	^ super openDialog
 		  okAction: [ self accept ];
 		  yourself
 ]

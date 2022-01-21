@@ -33,7 +33,7 @@ IceTipSelectRemotePresenter >> addRemote [
 			self model reset.
 			self refresh.
 			self selectRemoteNamed: newRemoteName ];
-		openDialogWithSpec.
+		openDialog.
 ]
 
 { #category : #accessing }

@@ -26,7 +26,7 @@ IceTipCheckoutNewBranchCommand >> execute [
 	(IceTipCheckoutNewBranchPanel on: self repositoryModel)
 		commitish: self selectedCommit;
 		withResultDo: [ :branch | branch checkout ];
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #accessing }

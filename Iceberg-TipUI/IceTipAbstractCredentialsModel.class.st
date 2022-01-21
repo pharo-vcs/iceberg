@@ -161,12 +161,6 @@ IceTipAbstractCredentialsModel >> open [
 	^ self credentials
 ]
 
-{ #category : #'API - opening' }
-IceTipAbstractCredentialsModel >> openNonModal [
-
-	^ self openNonModalWithSpec
-]
-
 { #category : #accessing }
 IceTipAbstractCredentialsModel >> refreshCredentialsFromPresenter [
 	"Hook to update the credentials object from the presenter inputs."
