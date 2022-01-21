@@ -53,7 +53,7 @@ IceTipRepairDiscardAndLoad class >> title [
 { #category : #executing }
 IceTipRepairDiscardAndLoad >> basicExecute [
 			
-	(IceTipCheckoutPreviewBrowser onBranch: self repositoryModel branchModel) openWithSpec
+	(IceTipCheckoutPreviewBrowser onBranch: self repositoryModel branchModel) open
 ]
 
 { #category : #private }

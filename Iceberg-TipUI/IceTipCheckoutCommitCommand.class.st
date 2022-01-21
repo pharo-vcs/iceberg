@@ -24,7 +24,7 @@ IceTipCheckoutCommitCommand class >> defaultName [
 IceTipCheckoutCommitCommand >> execute [
 
 	(IceTipCheckoutPreviewBrowser onBranch: self selectedCommit)
-		openWithSpec
+		open
 ]
 
 { #category : #accessing }

@@ -83,7 +83,7 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 		parent: #'Versioning';
 		keyText: 'o, i';
 		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
-		action: [ self new openWithSpec ]
+		action: [ self new open ]
 ]
 
 { #category : #'instance creation' }

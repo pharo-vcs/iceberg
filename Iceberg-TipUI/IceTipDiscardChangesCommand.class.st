@@ -32,7 +32,7 @@ IceTipDiscardChangesCommand >> canBeExecuted [
 IceTipDiscardChangesCommand >> execute [
 
 	(IceTipDiscardAllChangesPreviewBrowser onRepository: self repositoryModel)
-		openWithSpec
+		open
 
 
 ]

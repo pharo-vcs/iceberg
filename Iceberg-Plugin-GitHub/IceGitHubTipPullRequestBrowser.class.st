@@ -82,7 +82,7 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 			IceGitHubAPI ensureCredentials.
 			self pullRequest acceptMessage: aModel message type: aModel type.
 			self closeWindow ];
-		openWithSpec
+		open
 ]
 
 { #category : #'accessing - ui' }
@@ -252,7 +252,7 @@ IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 			IceGitHubAPI ensureCredentials.
 			self pullRequest rejectMessage: aModel message.
 			self closeWindow ];
-		openWithSpec
+		open
 ]
 
 { #category : #accessing }

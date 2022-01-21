@@ -207,5 +207,5 @@ IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 		during: [ 
 			(IceGitHubTipPullRequestBrowser
 				 on: self model
-				 pullRequest: aPullRequest) openWithSpec ]
+				 pullRequest: aPullRequest) open ]
 ]
