@@ -14,8 +14,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipCheckoutPreviewBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipCheckoutPreviewBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

@@ -35,8 +35,8 @@ IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presente
 	"Nothing to add"
 ]
 
-{ #category : #specs }
-IceGitHubTipPullRequestBrowser class >> defaultSpec [
+{ #category : #layout }
+IceGitHubTipPullRequestBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #commitLabel height: self labelHeight;

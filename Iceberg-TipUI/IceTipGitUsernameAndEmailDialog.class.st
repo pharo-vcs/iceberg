@@ -16,8 +16,8 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #specs }
-IceTipGitUsernameAndEmailDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipGitUsernameAndEmailDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

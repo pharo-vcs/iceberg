@@ -30,8 +30,8 @@ IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: pres
 	
 ]
 
-{ #category : #specs }
-IceTipCritiquesBeforeCommitBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipCritiquesBeforeCommitBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 			add: #reasonPanel withConstraints: [ :constraints |

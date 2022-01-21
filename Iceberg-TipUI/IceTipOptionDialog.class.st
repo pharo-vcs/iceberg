@@ -17,8 +17,8 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #specs }
-IceTipOptionDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipOptionDialog class >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 30 percent;
@@ -104,7 +104,7 @@ IceTipOptionDialog >> replacePanelWith: aType [
 
 	contentPanel := aType.
 	self needRebuild: false.
-	self buildWithSpec
+	self build
 ]
 
 { #category : #accessing }

@@ -12,8 +12,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
-{ #category : #specs }
-IceTipWorkingCopyStatusBar class >> defaultSpec [
+{ #category : #layout }
+IceTipWorkingCopyStatusBar class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #branchLabel expand: false;

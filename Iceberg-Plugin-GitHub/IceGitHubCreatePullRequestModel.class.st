@@ -28,8 +28,8 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #specs }
-IceGitHubCreatePullRequestModel class >> defaultSpec [
+{ #category : #layout }
+IceGitHubCreatePullRequestModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add:

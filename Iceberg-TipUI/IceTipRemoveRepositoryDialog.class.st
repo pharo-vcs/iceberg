@@ -10,8 +10,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipRemoveRepositoryDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipRemoveRepositoryDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

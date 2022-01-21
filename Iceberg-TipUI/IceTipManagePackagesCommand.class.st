@@ -21,7 +21,8 @@ IceTipManagePackagesCommand class >> defaultName [
 
 { #category : #executing }
 IceTipManagePackagesCommand >> execute [
-	(IceTipWorkingCopyBrowser on: self repositoryModel) openWithSpec
+
+	(IceTipWorkingCopyBrowser on: self repositoryModel) open
 ]
 
 { #category : #accessing }

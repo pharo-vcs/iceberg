@@ -8,8 +8,8 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #specs }
-IceTipAskForPlaintextOtpCredentialsModel class >> defaultSpec [
+{ #category : #layout }
+IceTipAskForPlaintextOtpCredentialsModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add:

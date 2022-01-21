@@ -13,8 +13,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
-{ #category : #specs }
-IceTipAddPackagesDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipAddPackagesDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #packagesList;

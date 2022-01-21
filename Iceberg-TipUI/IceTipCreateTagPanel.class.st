@@ -22,8 +22,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipCreateTagPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipCreateTagPanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #currentCommitishLabel height: self inputTextHeight;

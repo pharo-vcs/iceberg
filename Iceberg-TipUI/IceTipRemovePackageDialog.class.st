@@ -11,8 +11,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
-{ #category : #specs }
-IceTipRemovePackageDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipRemovePackageDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

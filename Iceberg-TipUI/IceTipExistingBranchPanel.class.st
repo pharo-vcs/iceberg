@@ -13,8 +13,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipExistingBranchPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipExistingBranchPanel class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #branchesList;
