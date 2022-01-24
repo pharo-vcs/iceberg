@@ -142,6 +142,8 @@ IceTipDiffPanel >> initializeDiffPanel [
 { #category : #initialization }
 IceTipDiffPanel >> initializePresenters [
 
+	super initializePresenters.
+
 	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.
 
