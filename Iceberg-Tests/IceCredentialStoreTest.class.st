@@ -24,23 +24,6 @@ IceCredentialStoreTest >> tearDown [
 ]
 
 { #category : #tests }
-IceCredentialStoreTest >> testDeprecatedAPI [
-	self
-		should: [ IceCredentialsProvider
-				plaintextCredentials:
-					(IcePlaintextCredentials new
-						username: 'anUser';
-						password: '*****';
-						yourself) ]
-		raise: Deprecation
-]
-
-{ #category : #tests }
-IceCredentialStoreTest >> testDeprecatedGetterAPI [
-	self should: [ IceCredentialsProvider plaintextCredentials ] raise: Deprecation
-]
-
-{ #category : #tests }
 IceCredentialStoreTest >> testEmptySShStore [
 
 	| cred |
