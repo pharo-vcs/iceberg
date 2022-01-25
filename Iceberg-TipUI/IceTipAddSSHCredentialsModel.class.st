@@ -11,8 +11,8 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #specs }
-IceTipAddSSHCredentialsModel class >> defaultSpec [
+{ #category : #layout }
+IceTipAddSSHCredentialsModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

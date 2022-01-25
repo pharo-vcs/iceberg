@@ -39,7 +39,7 @@ IceGitHubNewPullRequestAction >> basicExecute [
 				actionOnClick: [ self class environment at: #WebBrowser ifPresent: [ :webBrowser | webBrowser openOn: url ] ifAbsent: [ self inform: ('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' format: { url }) ]  ] ]
 				on: IceGitHubError
 				do: [ :e | self reportError: e ] ];
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #private }

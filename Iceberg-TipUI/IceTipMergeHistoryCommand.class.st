@@ -35,5 +35,5 @@ IceTipMergeHistoryCommand >> commitModel [
 IceTipMergeHistoryCommand >> execute [
 
 	(IceTipHistoryBrowser on:
-		 self commitModel mergeHistoryFromSecondAncestor) openWithSpec
+		 self commitModel mergeHistoryFromSecondAncestor) open
 ]

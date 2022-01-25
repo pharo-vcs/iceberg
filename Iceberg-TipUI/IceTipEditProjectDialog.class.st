@@ -21,8 +21,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipEditProjectDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipEditProjectDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

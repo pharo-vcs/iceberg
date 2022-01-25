@@ -130,7 +130,7 @@ Do you want to open the Iceberg Browser instead?' format: { workingCopy packageN
 		cancelChoice: nil
 		default: true.
 	shouldOpenIceberg ifFalse: [ ^ self ].
-	IceTipRepositoriesBrowser new openWithSpec
+	IceTipRepositoriesBrowser new open
 ]
 
 { #category : #accessing }

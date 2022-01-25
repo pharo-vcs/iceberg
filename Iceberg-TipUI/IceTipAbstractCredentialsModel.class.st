@@ -156,15 +156,9 @@ IceTipAbstractCredentialsModel >> okButton [
 { #category : #'API - opening' }
 IceTipAbstractCredentialsModel >> open [
 
-	self openModalWithSpec.
+	self openModal.
 	
 	^ self credentials
-]
-
-{ #category : #'API - opening' }
-IceTipAbstractCredentialsModel >> openNonModal [
-
-	^ self openNonModalWithSpec
 ]
 
 { #category : #accessing }

@@ -33,7 +33,7 @@ IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 { #category : #executing }
 IceTipUnloadAndRemovePackageCommand >> execute [
 
-	(IceTipRemovePackageDialog on: self packageModel) openDialogWithSpec
+	(IceTipRemovePackageDialog on: self packageModel) openDialog
 ]
 
 { #category : #accessing }

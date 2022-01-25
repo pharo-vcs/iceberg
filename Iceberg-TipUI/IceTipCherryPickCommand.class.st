@@ -30,7 +30,7 @@ IceTipCherryPickCommand >> canBeExecuted [
 IceTipCherryPickCommand >> execute [
 
 	(IceTipCherrypickPreviewBrowser onCommitish: self selectedCommitish)
-		openWithSpec
+		open
 ]
 
 { #category : #executing }

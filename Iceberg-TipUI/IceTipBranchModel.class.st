@@ -118,11 +118,12 @@ IceTipBranchModel >> name [
 
 { #category : #actions }
 IceTipBranchModel >> previewCheckout [
+
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
-	<noCache>
 
-	(IceTipCheckoutPreviewBrowser onBranch: self) openWithSpec
+	<noCache>
+	(IceTipCheckoutPreviewBrowser onBranch: self) open
 ]
 
 { #category : #actions }
@@ -132,7 +133,7 @@ IceTipBranchModel >> previewMerge: aMergeType [
 	<noCache>
 	(IceTipMergePreviewBrowser onBranch: self) 
 		mergeType: aMergeType;
-		openWithSpec
+		open
 ]
 
 { #category : #printing }

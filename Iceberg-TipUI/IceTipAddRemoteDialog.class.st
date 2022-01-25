@@ -15,8 +15,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipAddRemoteDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipAddRemoteDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

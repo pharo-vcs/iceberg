@@ -13,8 +13,8 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #specs }
-IceGitHubRejectPullRequestModel class >> defaultSpec [
+{ #category : #layout }
+IceGitHubRejectPullRequestModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

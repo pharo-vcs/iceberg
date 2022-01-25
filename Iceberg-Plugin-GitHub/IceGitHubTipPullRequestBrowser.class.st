@@ -35,8 +35,8 @@ IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presente
 	"Nothing to add"
 ]
 
-{ #category : #specs }
-IceGitHubTipPullRequestBrowser class >> defaultSpec [
+{ #category : #layout }
+IceGitHubTipPullRequestBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #commitLabel height: self labelHeight;
@@ -82,7 +82,7 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 			IceGitHubAPI ensureCredentials.
 			self pullRequest acceptMessage: aModel message type: aModel type.
 			self closeWindow ];
-		openWithSpec
+		open
 ]
 
 { #category : #'accessing - ui' }
@@ -252,7 +252,7 @@ IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 			IceGitHubAPI ensureCredentials.
 			self pullRequest rejectMessage: aModel message.
 			self closeWindow ];
-		openWithSpec
+		open
 ]
 
 { #category : #accessing }

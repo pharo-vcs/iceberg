@@ -15,8 +15,8 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #specs }
-IceGitHubRemoveBranchesModel class >> defaultSpec [
+{ #category : #layout }
+IceGitHubRemoveBranchesModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #listPanel;

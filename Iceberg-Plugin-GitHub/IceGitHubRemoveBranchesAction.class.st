@@ -22,7 +22,7 @@ IceGitHubRemoveBranchesAction >> basicExecute [
 		selectLabel: 'Remove branches';
 		items: branchesByName values ;
 		onAccept: [ :selection | self removeBranches: selection ];
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #private }

@@ -30,8 +30,8 @@ IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: pres
 	
 ]
 
-{ #category : #specs }
-IceTipCritiquesBeforeCommitBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipCritiquesBeforeCommitBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 			add: #reasonPanel withConstraints: [ :constraints |
@@ -99,7 +99,7 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 					                   setModal: SystemWindow topWindow;
 					                   yourself.
 
-				 changesBrowser openDialogWithSpec
+				 changesBrowser openDialog
 					 okAction: [ 
 						 changesBrowser accept.
 						 self disableCommitAfterChanges.
@@ -223,7 +223,7 @@ IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 		ifFalse: [ ^ onAcceptAction value ].
 
 	critiques 
-		ifNotEmpty: [ self openNonModalWithSpec ] 
+		ifNotEmpty: [ self openNonModal ] 
 		ifEmpty: [ onAcceptAction value ] 
 	
 ]

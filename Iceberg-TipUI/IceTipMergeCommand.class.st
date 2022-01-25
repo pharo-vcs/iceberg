@@ -27,7 +27,7 @@ IceTipMergeCommand >> canBeExecuted [
 
 { #category : #executing }
 IceTipMergeCommand >> execute [
-	(IceTipMergeBranchDialog on: self repositoryModel) openDialogWithSpec
+	(IceTipMergeBranchDialog on: self repositoryModel) openDialog
 ]
 
 { #category : #accessing }

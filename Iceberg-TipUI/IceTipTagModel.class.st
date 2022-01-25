@@ -46,5 +46,5 @@ IceTipTagModel >> previewCheckout [
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
 	<noCache>
 
-	(IceTipCheckoutPreviewBrowser onBranch: self) openWithSpec
+	(IceTipCheckoutPreviewBrowser onBranch: self) open
 ]

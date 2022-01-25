@@ -13,8 +13,8 @@ IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for
 	"No commands to add"
 ]
 
-{ #category : #specs }
-IceTipRemoteActionBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipRemoteActionBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #remotePanel
