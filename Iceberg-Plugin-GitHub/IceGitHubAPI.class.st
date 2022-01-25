@@ -288,6 +288,33 @@ IceGitHubAPI >> post: aString with: aBlock [
 			response ]
 ]
 
+{ #category : #'requesting - gists' }
+IceGitHubAPI >> postGist: descriptionString public: aBoolean files: anArrayOfAssociations [
+
+	^ self 
+		post: 'gists'
+		with: [ :client |
+			client 
+				entity: (ZnEntity text: (STON toJsonString: (Dictionary new
+					at: 'description' put: descriptionString;
+					at: 'public' put: aBoolean;
+					at: 'files' put:  (anArrayOfAssociations 
+						collect: [ :each | 
+							each key -> (Dictionary with: 'content' -> each value withUnixLineEndings) ] 
+						as: Dictionary);
+					yourself)));
+				contentType: ZnMimeType applicationJson ]
+]
+
+{ #category : #'requesting - gists' }
+IceGitHubAPI >> postGist: descriptionString public: aBoolean name: fileName contents: contentsString [
+
+	^ self 
+		postGist: descriptionString 
+		public: aBoolean
+		files: { fileName -> contentsString }
+]
+
 { #category : #'private - requesting' }
 IceGitHubAPI >> put: aString with: aBlock [  
 	^ self jsonContentsWithValidationDo: [
