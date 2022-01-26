@@ -1,3 +1,6 @@
+"
+A decorator to react to the fact that a package is a Baseline
+"
 Class {
 	#name : #IceTipMetacelloBaselineDecorator,
 	#superclass : #IceTipDecorator,
