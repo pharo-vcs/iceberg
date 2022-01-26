@@ -104,6 +104,16 @@ IceTipWorkingCopyBrowser >> filteredItemsFor: pattern [
 		  each name asLowercase includesSubstring: pattern asLowercase ]
 ]
 
+{ #category : #private }
+IceTipWorkingCopyBrowser >> iconFor: aPackage [ 
+
+	self decorations do: [ :each | 
+		(each iconNameForPackage: aPackage) 
+			ifNotNil: [ :aName | ^ self iconNamed: aName ] ].
+
+	^ self iconNamed: #package
+]
+
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initialExtentForWindow [
 
@@ -116,8 +126,8 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 	packagesTable
 		beResizable;
 		addColumn: (SpImageTableColumn new 
-			width: (self iconNamed: #package) width;
-			evaluated: [ self iconNamed: #package];
+			beNotExpandable;
+			evaluated: [ :aPackage | self iconFor: aPackage ];
 			yourself);
 		addColumn: (SpStringTableColumn
 			title: 'Name'
@@ -174,8 +184,7 @@ IceTipWorkingCopyBrowser >> refresh [
 
 	self refreshCommands.
 	self refreshStatusBar.
-	self refreshPackagesTable.
-
+	self refreshPackagesTable
 ]
 
 { #category : #private }

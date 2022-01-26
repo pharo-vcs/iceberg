@@ -4,8 +4,18 @@ I'm a SpPresenter that is prepared to be wrapped in a window (or a dialog). The 
 Class {
 	#name : #IceTipSpPresenter,
 	#superclass : #SpPresenter,
+	#instVars : [
+		'decorations'
+	],
 	#category : #'Iceberg-TipUI-View'
 }
+
+{ #category : #'as yet unclassified' }
+IceTipSpPresenter class >> buildDecorations [
+
+	^ (Pragma allNamed: #extensionDecorators in: self class) 
+			flatCollect: [ :pragma | self perform: pragma methodSelector ]
+]
 
 { #category : #accessing }
 IceTipSpPresenter class >> currentApplication [ 
@@ -18,6 +28,12 @@ IceTipSpPresenter >> closeWindow [
 	"Close the window of this presenter"
 
 	self window close
+]
+
+{ #category : #private }
+IceTipSpPresenter >> decorations [
+
+	^ decorations ifNil: [ decorations := self class buildDecorations ]
 ]
 
 { #category : #initialization }

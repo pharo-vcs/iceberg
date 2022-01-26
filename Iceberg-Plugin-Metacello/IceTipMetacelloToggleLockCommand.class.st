@@ -26,13 +26,15 @@ IceTipMetacelloToggleLockCommand >> execute [
 	
 	self isLocked 
 		ifTrue: [ metacello unlock ]
-		ifFalse: [ metacello lock ]
+		ifFalse: [ metacello lock ].
+		
+	context ifNotNil: [ context refresh ]
 ]
 
 { #category : #accessing }
 IceTipMetacelloToggleLockCommand >> iconName [
 
-	^ #lock
+	^ #smallLock
 ]
 
 { #category : #testing }

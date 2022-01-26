@@ -20,3 +20,12 @@ IceTipWorkingCopyBrowser class >> metacelloCommandsWith: presenter forRootGroup:
 		register: newGroup. 
 
 ]
+
+{ #category : #'*Iceberg-Plugin-Metacello' }
+IceTipWorkingCopyBrowser class >> metacelloDecorators [
+	<extensionDecorators>
+	
+	^ { 
+	IceTipMetacelloBaselineDecorator new.  
+	}
+]
