@@ -19,8 +19,7 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel 
 ]
 
 { #category : #builder }
-IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGroup: aSpCommandGroup [ 
-	
+IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGroup: commandGroup [ 
 	| defaultBaselineCommand groupBaselineCommand baselineName |
 	
 	baselineName := aPackage name allButFirst: 'BaselineOf' size.
@@ -28,10 +27,14 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGrou
 	defaultBaselineCommand := IceTipMetacelloInstallBaselineDefaultCommand new.
 	defaultBaselineCommand name: ('Install baseline of {1} (Default)' format: { baselineName }).
 	defaultBaselineCommand packageModel: aPackage.
-	aSpCommandGroup register: defaultBaselineCommand asSpecCommand.
+	commandGroup register: defaultBaselineCommand asSpecCommand.
 	
 	groupBaselineCommand := IceTipMetacelloInstallBaselineGroupCommand new.
 	groupBaselineCommand name: ('Install baseline of {1} ...' format: { baselineName }).
 	groupBaselineCommand packageModel: aPackage.
-	aSpCommandGroup register: groupBaselineCommand asSpecCommand
+	commandGroup register: groupBaselineCommand asSpecCommand.
+	
+	commandGroup register: (IceTipMetacelloToggleLockCommand new 
+		packageModel: aPackage;
+		asSpecCommand)
 ]
