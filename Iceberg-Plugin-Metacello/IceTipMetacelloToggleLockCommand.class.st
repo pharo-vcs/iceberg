@@ -7,7 +7,13 @@ Class {
 { #category : #accessing }
 IceTipMetacelloToggleLockCommand >> baselineName [
 
-	^ self package name allButFirst: 10
+	^ self packageName allButFirst: 10
+]
+
+{ #category : #accessing }
+IceTipMetacelloToggleLockCommand >> description [
+
+	^ 'Toggle lock/unlock baseline.'
 ]
 
 { #category : #executing }
@@ -32,13 +38,15 @@ IceTipMetacelloToggleLockCommand >> iconName [
 { #category : #testing }
 IceTipMetacelloToggleLockCommand >> isBaseline [
 	
+	self packageModel ifNil: [ ^ false ]. 
 	^ self packageName beginsWith: 'BaselineOf'
 ]
 
 { #category : #accessing }
 IceTipMetacelloToggleLockCommand >> isLocked [
 	
-	self packageModel ifNil: [ ^ false ].
+	self isBaseline ifFalse: [ ^ false ].
+	
 	^ (MetacelloProjectRegistration 
 		projectSpecForClassNamed: self package name 
 		ifAbsent: [ ^ false ])
@@ -48,9 +56,7 @@ IceTipMetacelloToggleLockCommand >> isLocked [
 { #category : #accessing }
 IceTipMetacelloToggleLockCommand >> name [ 
 
-	(self packageModel isNil 
-		or: [ self isBaseline not ])
-		ifTrue: [ ^ 'Lock/Unlock' ].
+	self isBaseline ifFalse: [ ^ 'Lock/Unlock' ].
 
 	^ self isLocked 
 		ifTrue: [ 'Unlock {1}' format: { self baselineName } ]
