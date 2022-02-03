@@ -50,8 +50,9 @@ IceTipRepairCheckoutBranch class >> title [
 
 { #category : #executing }
 IceTipRepairCheckoutBranch >> basicExecute [
+
 	self fetchAllRemotes.
-	(IceTipCheckoutBranchDialog on: self repositoryModel) 
+	(IceTipCheckoutBranchDialog on: self repositoryModel)
 		withoutNewBranch;
-		openDialogWithSpec
+		openDialog
 ]

@@ -19,8 +19,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Commit'
 }
 
-{ #category : #specs }
-IceTipCommentPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipCommentPanel class >> defaultLayout [
 
 	self flag: #pharoTodo. "FIXES ISSUE NUMBER INPUT is disabled. See below.
 	Reason: for the first stage of merging dev-1.9, we'll keep the diff as simple

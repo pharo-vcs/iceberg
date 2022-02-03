@@ -50,8 +50,8 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 
 ]
 
-{ #category : #specs }
-IceTipRepositoryBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipRepositoryBrowser class >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 30 percent;

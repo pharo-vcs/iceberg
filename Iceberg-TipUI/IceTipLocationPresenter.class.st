@@ -17,8 +17,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipLocationPresenter class >> defaultSpec [
+{ #category : #layout }
+IceTipLocationPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #locationLabel width: self labelWidth;

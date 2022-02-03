@@ -16,8 +16,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipNewRepositoryPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipNewRepositoryPanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

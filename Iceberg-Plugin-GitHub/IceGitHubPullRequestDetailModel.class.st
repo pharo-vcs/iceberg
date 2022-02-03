@@ -34,8 +34,8 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 			register: IceTipOpenCheckUrlCommand forSpec)
 ]
 
-{ #category : #specs }
-IceGitHubPullRequestDetailModel class >> defaultSpec [
+{ #category : #layout }
+IceGitHubPullRequestDetailModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add:

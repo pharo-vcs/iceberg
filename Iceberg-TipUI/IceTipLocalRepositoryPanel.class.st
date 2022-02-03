@@ -8,8 +8,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #specs }
-IceTipLocalRepositoryPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipLocalRepositoryPanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #projectLocation height: self inputTextHeight;

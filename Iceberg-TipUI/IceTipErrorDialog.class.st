@@ -17,8 +17,8 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #specs }
-IceTipErrorDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipErrorDialog class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;

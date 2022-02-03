@@ -53,7 +53,7 @@ IceTipHistoryDiffUpdater >> tab: anObject [
 { #category : #updating }
 IceTipHistoryDiffUpdater >> updateContentsOn: aCommitModel [
 	aCommitModel ifNil: [ ^ self ].
-	self tab contents: (self newDiffPanelFor: (self diffFor: aCommitModel)) buildWithSpec
+	self tab contents: (self newDiffPanelFor: (self diffFor: aCommitModel)) build
 ]
 
 { #category : #updating }

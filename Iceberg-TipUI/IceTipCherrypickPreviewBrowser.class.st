@@ -20,8 +20,8 @@ IceTipCherrypickPreviewBrowser class >> buildSelectionCommandGroupWith: presente
 	"Nothing to add"
 ]
 
-{ #category : #specs }
-IceTipCherrypickPreviewBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipCherrypickPreviewBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;

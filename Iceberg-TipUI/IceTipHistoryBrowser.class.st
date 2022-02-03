@@ -35,8 +35,8 @@ IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 
 ]
 
-{ #category : #specs }
-IceTipHistoryBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipHistoryBrowser class >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
 		  add: #commitList;

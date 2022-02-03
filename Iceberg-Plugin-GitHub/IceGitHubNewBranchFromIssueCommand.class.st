@@ -27,7 +27,7 @@ IceGitHubNewBranchFromIssueCommand >> execute [
 
 	(IceTipCheckoutBranchDialog on: self repositoryModel)
 		withTypes: (IceGitHubPlugin new checkoutBranchPanelsOnModel: self repositoryModel);
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #testing }

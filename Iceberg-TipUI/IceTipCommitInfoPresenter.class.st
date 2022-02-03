@@ -19,8 +19,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipCommitInfoPresenter class >> defaultSpec [
+{ #category : #layout }
+IceTipCommitInfoPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #notebookPanel;

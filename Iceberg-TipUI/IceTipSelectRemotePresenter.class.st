@@ -10,8 +10,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipSelectRemotePresenter class >> defaultSpec [
+{ #category : #layout }
+IceTipSelectRemotePresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #remoteLabel width: self labelWidth;
@@ -33,7 +33,7 @@ IceTipSelectRemotePresenter >> addRemote [
 			self model reset.
 			self refresh.
 			self selectRemoteNamed: newRemoteName ];
-		openDialogWithSpec.
+		openDialog.
 ]
 
 { #category : #accessing }

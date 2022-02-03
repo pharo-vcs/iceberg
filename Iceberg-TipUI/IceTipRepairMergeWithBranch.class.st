@@ -54,5 +54,5 @@ IceTipRepairMergeWithBranch >> basicExecute [
 	self fetchAllRemotes.
 	(IceTipMergeBranchDialog on: self repositoryModel) 
 		beSwitchAndMerge;
-		openDialogWithSpec
+		openDialog
 ]

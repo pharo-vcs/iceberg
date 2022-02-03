@@ -47,7 +47,6 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 			BaselineOfPharoBootstrap
 			BaselineOfSUnit
 			BaselineOfShift 
-			BaselineOfSpec
 			BaselineOfSpec2
 			BaselineOfNewTools
 			BaselineOfTraits

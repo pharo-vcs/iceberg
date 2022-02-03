@@ -39,7 +39,7 @@ IceTipPushCommand >> execute [
 
 	self withErrorHandlingDo: [ 
 		self validateRemotesPresent.
-		(IceTipPushBrowser onRepositoryModel: self repositoryModel) openWithSpec ]
+		(IceTipPushBrowser onRepositoryModel: self repositoryModel) open ]
 ]
 
 { #category : #accessing }

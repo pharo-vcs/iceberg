@@ -47,8 +47,8 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 ]
 
-{ #category : #specs }
-IceTipWorkingCopyBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipWorkingCopyBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #packagesTable;

@@ -24,7 +24,7 @@ IceTipForgetRepositoryCommand class >> defaultName [
 IceTipForgetRepositoryCommand >> execute [
 
 	(IceTipRemoveRepositoryDialog on: self repositoryModel)
-		openDialogWithSpec
+		openDialog
 ]
 
 { #category : #accessing }

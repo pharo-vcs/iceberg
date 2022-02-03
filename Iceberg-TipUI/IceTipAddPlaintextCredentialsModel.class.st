@@ -11,8 +11,8 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #specs }
-IceTipAddPlaintextCredentialsModel class >> defaultSpec [
+{ #category : #layout }
+IceTipAddPlaintextCredentialsModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add:

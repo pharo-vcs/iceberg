@@ -25,8 +25,8 @@ IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 	"Nothing to add"
 ]
 
-{ #category : #specs }
-IceTipPreviewBrowser class >> defaultSpec [
+{ #category : #layout }
+IceTipPreviewBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;

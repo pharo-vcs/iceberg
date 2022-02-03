@@ -32,5 +32,5 @@ IceFiletreeToTonelCommand >> canBeExecuted [
 { #category : #executing }
 IceFiletreeToTonelCommand >> execute [
 
-	(IceTipFiletreeToTonelDialog on: self repository) openDialogWithSpec
+	(IceTipFiletreeToTonelDialog on: self repository) openDialog
 ]

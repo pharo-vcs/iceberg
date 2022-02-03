@@ -8,8 +8,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipMergeSelectingPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipMergeSelectingPanel class >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 25 percent;

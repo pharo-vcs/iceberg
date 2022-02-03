@@ -14,8 +14,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipCheckoutNewBranchPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipCheckoutNewBranchPanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #currentBranchLabel height: self inputTextHeight;
@@ -100,9 +100,9 @@ IceTipCheckoutNewBranchPanel >> isNewBranch [
 ]
 
 { #category : #accessing }
-IceTipCheckoutNewBranchPanel >> openDialogWithSpec [
+IceTipCheckoutNewBranchPanel >> openDialog [
 
-	^ super openDialogWithSpec
+	^ super openDialog
 		  okAction: [ self accept ];
 		  yourself
 ]

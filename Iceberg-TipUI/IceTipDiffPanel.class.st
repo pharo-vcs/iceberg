@@ -17,8 +17,8 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #specs }
-IceTipDiffPanel class >> defaultSpec [
+{ #category : #layout }
+IceTipDiffPanel class >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 25 percent;
@@ -141,6 +141,8 @@ IceTipDiffPanel >> initializeDiffPanel [
 
 { #category : #initialization }
 IceTipDiffPanel >> initializePresenters [
+
+	super initializePresenters.
 
 	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.

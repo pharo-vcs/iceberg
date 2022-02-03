@@ -15,8 +15,8 @@ Class {
 	#category : #'Iceberg-Plugin-Migration-UI'
 }
 
-{ #category : #specs }
-IceTipFiletreeToTonelDialog class >> defaultSpec [
+{ #category : #layout }
+IceTipFiletreeToTonelDialog class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;

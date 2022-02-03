@@ -51,5 +51,5 @@ IceTipRepairCloneRepository >> basicExecute [
 		beForCloneOfRepository: self repositoryModel entity;
 		onAccept: [ 
 			Iceberg announcer announce: (IceRepositoryModified for: self repositoryModel entity) ];
-		openDialogWithSpec
+		openDialog
 ]

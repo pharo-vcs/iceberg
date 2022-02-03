@@ -20,8 +20,8 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #specs }
-IceGitHubNewBranchFromIssuePanel class >> defaultSpec [
+{ #category : #layout }
+IceGitHubNewBranchFromIssuePanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #currentBranchLabel height: self inputTextHeight;
