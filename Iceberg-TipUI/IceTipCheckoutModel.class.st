@@ -53,12 +53,26 @@ IceTipCheckoutModel >> executeCheckoutActionAndThen: aBlock [
 		execute: [ self checkout ]
 ]
 
+{ #category : #testing }
+IceTipCheckoutModel >> hasNewPackages [
+	
+	^ diffModel tree anySatisfy:[ :aNode | aNode isAddition and: [ aNode definition isPackageDefinition]]
+]
+
 { #category : #initialization }
 IceTipCheckoutModel >> initialize [
 
 	super initialize.
-	checkoutStrategies := (IceCheckoutStrategy allSubclasses 
-		sorted: [ :a :b | a order < b order ])
-		collect: #new.
+	checkoutStrategies := IceCheckoutStrategy allStrategies.
 	checkoutStrategy := checkoutStrategies first.
+]
+
+{ #category : #accessing }
+IceTipCheckoutModel >> newPackages [
+
+	| packageNodes |
+	packageNodes := diffModel tree allChildren select: [ :aNode | 
+		  aNode value isAddition and: [ aNode definition value isPackageDefinition ] ].
+	
+	^ packageNodes collect: [ :aNode | aNode value definition ]
 ]

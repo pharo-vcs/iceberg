@@ -11,14 +11,21 @@ Class {
 		'committish',
 		'diff'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }
 IceCheckoutStrategy class >> allStrategies [
-	^ (self allSubclasses 
-		sorted: [ :a :b | a order < b order ])
-		collect: #uniqueInstance
+
+	^ (self allSubclasses sorted: [ :a :b | a order < b order ])
+		  select: [ :e | e canBeUsedFromUI ]
+		  thenCollect: [ :e | e new ]
+]
+
+{ #category : #accessing }
+IceCheckoutStrategy class >> canBeUsedFromUI [
+
+	^ true
 ]
 
 { #category : #accessing }
@@ -55,6 +62,12 @@ IceCheckoutStrategy >> diff [
 IceCheckoutStrategy >> diff: anIceDiff [ 
 	
 	diff := anIceDiff
+]
+
+{ #category : #testing }
+IceCheckoutStrategy >> isLoadAlreadyLoadedStrategy [
+	
+	^ false
 ]
 
 { #category : #accessing }
