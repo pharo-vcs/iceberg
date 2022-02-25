@@ -93,3 +93,10 @@ IceCritiquesVisitor >> visitRemoval: anIceRemoval [
 	
 	"We do nothing on removal"
 ]
+
+{ #category : #visiting }
+IceCritiquesVisitor >> visitTraitDefinition: anIceClassDefinition [
+
+	anIceClassDefinition canBeBrowsed ifTrue: [ 
+		critiques addAll: anIceClassDefinition actualClass critiques ]
+]
