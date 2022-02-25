@@ -52,7 +52,9 @@ IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 { #category : #actions }
 IceTipCheckoutPreviewBrowser >> doCheckout [
 
-	self model executeCheckoutActionAndThen: [ self closeWindow ]
+	(self model hasNewPackages and: [ self model checkoutStrategy isLoadAlreadyLoadedStrategy ])
+		ifTrue: [ self openAddNewPackagesDialog ]
+		ifFalse:	[self model executeCheckoutActionAndThen: [ self closeWindow ]]
 ]
 
 { #category : #initialization }
@@ -92,6 +94,15 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 		help: ('Checks out {1} into your image.' format: { self model targetName });
 		action: [ self doCheckout ];
 		yourself
+]
+
+{ #category : #operations }
+IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
+
+	(IceTipAddNewPackagesDialog on: self model newPackages) 
+		checkoutModel: self model;
+		checkoutPreviewWindow: self;
+		openDialog
 ]
 
 { #category : #accessing }

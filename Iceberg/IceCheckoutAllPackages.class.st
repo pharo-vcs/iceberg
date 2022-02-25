@@ -6,7 +6,7 @@ This strategy is very dangerous since it can introduce in image package versions
 Class {
 	#name : #IceCheckoutAllPackages,
 	#superclass : #IceCheckoutStrategy,
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #accessing }
@@ -16,11 +16,13 @@ IceCheckoutAllPackages class >> order [
 
 { #category : #checkout }
 IceCheckoutAllPackages >> checkoutOn: anIceWorkingCopy [
+
 	
 	anIceWorkingCopy
 		loadPackagesNamed: committish packageNames
 		fromCommit: committish commit.
-	self repository setHead: committish.
+
 	anIceWorkingCopy referenceCommit: committish commit.
+	self repository setHead: committish.
 	anIceWorkingCopy markAllPackagesAsClean.
 ]

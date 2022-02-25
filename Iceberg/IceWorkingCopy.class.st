@@ -464,6 +464,8 @@ IceWorkingCopy >> loadPackagesNamed: aCollection [
 { #category : #'private - monticello' }
 IceWorkingCopy >> loadPackagesNamed: aCollection fromCommit: aCommit [
 	
+	aCollection ifEmpty: [ ^ self ].
+	
 	self ignoreNotificationsDuring: [ | loader |
 		loader := MCVersionLoader new.
 		aCollection do: [ :name | | package packageVersion |

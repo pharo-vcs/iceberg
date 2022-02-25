@@ -25,6 +25,15 @@ IceAbstractNode >> addTo: anotherNode [
 	^ self subclassResponsibility
 ]
 
+{ #category : #'accessing - children' }
+IceAbstractNode >> allChildren [
+	
+	| children |
+	children := OrderedCollection new.
+	self allChildrenDo: [ :each | children add: each ].
+	^ children
+]
+
 { #category : #accessing }
 IceAbstractNode >> allChildrenDo: aBlockClosure [
 	"Evaluate aBlockClosure with my direct and indirect children."
