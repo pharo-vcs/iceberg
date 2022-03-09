@@ -164,8 +164,15 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-
-	repositoryList items: self model repositories
+	repositoryList items: (self model repositories
+		sorted: [ :a :b | 
+			| status1 status2 |
+			status1 := a status.
+			status2 := b status.
+			status1 string = status2 string
+				ifTrue: [ a name < b name ]
+				ifFalse: [ status1 string > status2 string ]
+	 	])
 ]
 
 { #category : #accessing }
