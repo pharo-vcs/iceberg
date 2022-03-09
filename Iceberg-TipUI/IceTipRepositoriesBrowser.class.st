@@ -166,12 +166,17 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 IceTipRepositoriesBrowser >> refresh [
 	repositoryList items: (self model repositories
 		sorted: [ :a :b | 
-			| status1 status2 |
-			status1 := a status.
-			status2 := b status.
-			status1 string = status2 string
+			| stat1 stat2 |
+			stat1 := a entity isMissing
+				ifTrue: [0]
+				ifFalse: [1].
+			stat2 := b entity isMissing
+				ifTrue: [0]
+				ifFalse: [1].
+				
+			stat1 = stat2
 				ifTrue: [ a name < b name ]
-				ifFalse: [ status1 string > status2 string ]
+				ifFalse: [ stat1 > stat2 ]
 	 	])
 ]
 
