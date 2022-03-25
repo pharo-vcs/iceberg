@@ -43,6 +43,7 @@ IceTipCommitBrowser class >> defaultLayout [
 	^ SpPanedLayout newTopToBottom
 		  add: #diffPanel;
 		  add: #commentPanel;
+		  positionOfSlider: 75 percent;
 		  yourself
 ]
 
