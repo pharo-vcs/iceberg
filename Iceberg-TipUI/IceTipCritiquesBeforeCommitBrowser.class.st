@@ -96,10 +96,9 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 				 | changesBrowser |
 				 changesBrowser := (ChangesBrowser changes: { crit change })
 					                   extent: 500 @ 400;
-					                   setModal: SystemWindow topWindow;
 					                   yourself.
 
-				 changesBrowser openDialog
+				 changesBrowser openModal
 					 okAction: [ 
 						 changesBrowser accept.
 						 self disableCommitAfterChanges.
