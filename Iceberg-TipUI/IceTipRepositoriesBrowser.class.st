@@ -164,7 +164,7 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self sortedRepositories
+	repositoryList items: self model repositories
 ]
 
 { #category : #accessing }
@@ -185,19 +185,6 @@ IceTipRepositoriesBrowser >> repositoryModels [
 
 	^ repositoryList items
 
-]
-
-{ #category : #private }
-IceTipRepositoriesBrowser >> sortedRepositories [
-	^ self model repositories
-		sorted: [ :a :b | 
-			| status1 status2 |
-			status1 := a entity isMissing asInteger.
-			status2 := b entity isMissing asInteger.
-			status1 = status2
-				ifTrue: [ a name < b name ]
-				ifFalse: [ status1 < status2 ]
-	 	]
 ]
 
 { #category : #initialization }
