@@ -164,7 +164,7 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self sortedRepositories
+	repositoryList items: self model repositories
 ]
 
 { #category : #accessing }
