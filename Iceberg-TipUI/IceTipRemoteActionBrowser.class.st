@@ -17,11 +17,9 @@ IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for
 IceTipRemoteActionBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: #remotePanel
-		  withConstraints: [ :c | c height: self inputTextHeight ];
+		  add: #remotePanel expand: false;
 		  add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
-		  add: #actionButtonBar
-		  withConstraints: [ :c | c height: self buttonHeight ];
+		  add: #actionButtonBar expand: false;
 		  yourself
 ]
 

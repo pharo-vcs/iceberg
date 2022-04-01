@@ -19,13 +19,11 @@ IceTipCheckoutPreviewBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
-				   add: #checkoutStrategyLabel
-				   width: 100 * self currentWorld displayScaleFactor;
+				   add: #checkoutStrategyLabel expand: false;
 				   add: #checkoutStrategyList;
-				   yourself)
-		  height: self inputTextHeight;
+				   yourself) expand: false;
 		  add: #diffPanel expand: true;
-		  add: #actionPanel height: self inputTextHeight;
+		  add: #actionPanel expand: false;
 		  yourself
 ]
 

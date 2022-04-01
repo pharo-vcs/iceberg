@@ -6,7 +6,6 @@ Class {
 	#name : #IceTipLocationPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'locationLabel',
 		'locationInput',
 		'chooseButton',
 		'label',
@@ -20,11 +19,10 @@ Class {
 { #category : #layout }
 IceTipLocationPresenter class >> defaultLayout [
 
-	^ SpBoxLayout newLeftToRight
-		  add: #locationLabel width: self labelWidth;
-		  add: #locationInput;
-		  add: #chooseButton width: 24;
-		  yourself
+	^ SpBoxLayout newHorizontal
+			add: #locationInput;
+			add: #chooseButton expand: false;
+			yourself 
 ]
 
 { #category : #testing }
@@ -103,14 +101,12 @@ IceTipLocationPresenter >> icon [
 IceTipLocationPresenter >> initializePresenters [
 
 	super initializePresenters.
-	locationLabel := self newLabel
-		label: self label;
-		yourself.
 	locationInput := self newTextInput
 		autoAccept: true;
 		yourself.
 	chooseButton := self newButton
 		icon: self icon;
+		addStyle: 'small';
 		yourself.
 	
 	chooseButton action: [ self choose ].
@@ -127,7 +123,6 @@ IceTipLocationPresenter >> label [
 IceTipLocationPresenter >> label: aString [
 
 	label := aString.
-	self locationLabel label: aString
 ]
 
 { #category : #accessing }
@@ -173,12 +168,6 @@ IceTipLocationPresenter >> location: aReferenceOrString [
 IceTipLocationPresenter >> locationInput [
 
 	^ locationInput
-]
-
-{ #category : #'accessing - ui' }
-IceTipLocationPresenter >> locationLabel [
-
-	^ locationLabel
 ]
 
 { #category : #hook }

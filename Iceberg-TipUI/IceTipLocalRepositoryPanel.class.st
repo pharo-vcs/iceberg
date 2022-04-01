@@ -8,18 +8,19 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipLocalRepositoryPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #projectLocation height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipLocalRepositoryPanel class >> order [
 
 	^ 20
+]
+
+{ #category : #layout }
+IceTipLocalRepositoryPanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: projectLocation label expand: false;
+		  add: projectLocation expand: false;
+		  yourself
 ]
 
 { #category : #initialization }

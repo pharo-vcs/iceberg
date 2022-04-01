@@ -8,23 +8,22 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipGitRepositoryPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #remoteLabel width: self labelWidth;
-				   add: #remoteInputText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #projectLocation height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipGitRepositoryPanel class >> order [
 
 	^ 1000 "to the end"
+]
+
+{ #category : #layout }
+IceTipGitRepositoryPanel >> defaultLayout [
+
+	^ SpGridLayout build: [ :builder |
+		builder
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+		 	add: remoteLabel; add: remoteInputText;
+			nextRow;
+			add: projectLocation label; add: projectLocation ]
 ]
 
 { #category : #utilities }

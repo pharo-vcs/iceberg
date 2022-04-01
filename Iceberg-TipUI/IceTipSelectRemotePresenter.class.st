@@ -14,9 +14,9 @@ Class {
 IceTipSelectRemotePresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
-		  add: #remoteLabel width: self labelWidth;
+		  add: #remoteLabel expand: false;
 		  add: #remoteList;
-		  add: #addButton width: self iconWidth
+		  add: #addButton expand: false
 ]
 
 { #category : #'accessing - ui' }

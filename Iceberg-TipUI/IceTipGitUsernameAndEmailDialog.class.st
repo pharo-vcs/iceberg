@@ -19,21 +19,16 @@ Class {
 { #category : #layout }
 IceTipGitUsernameAndEmailDialog class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #nameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #emailLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #emailInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #globalCheckbox height: self inputTextHeight;
-		  yourself
+	^ SpGridLayout build: [ :builder |
+		builder
+		 	add: #nameLabel;
+			add: #nameInput;
+			nextRow;
+			add: #emailLabel;
+			add: #emailInput;
+			nextRow;
+			add: #globalCheckbox
+	]
 ]
 
 { #category : #actions }

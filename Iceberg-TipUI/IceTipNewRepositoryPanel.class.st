@@ -16,28 +16,25 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipNewRepositoryPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #projectNameLabel width: self labelWidth;
-				   add: #projectNameInputText;
-				   yourself)
-		  height: 30;
-		  add: #projectLocation height: 30;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #subdirectoryLabel width: self labelWidth;
-				   add: #subdirectoryInputText;
-				   yourself)
-		  height: 30;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipNewRepositoryPanel class >> order [
 
 	^ 10
+]
+
+{ #category : #layout }
+IceTipNewRepositoryPanel >> defaultLayout [
+
+	^ SpGridLayout build: [ :builder |
+		builder
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+		   add: projectNameLabel; add: projectNameInputText;
+			nextRow;
+		  	add: projectLocation label; add: projectLocation;
+			nextRow;
+		  	add: subdirectoryLabel; add: subdirectoryInputText
+		 ]
 ]
 
 { #category : #initialization }

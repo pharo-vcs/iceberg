@@ -15,11 +15,10 @@ IceTipRemoveRepositoryDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
-				   add: #iconPanel
-				   width: 40 * self currentWorld displayScaleFactor;
+				   add: #iconPanel expand: false;
 				   add: (SpBoxLayout newTopToBottom
 						    add: #confirmLabel;
-						    add: #removeFileSystemCheckbox height: self inputTextHeight;
+						    add: #removeFileSystemCheckbox expand: false;
 						    yourself);
 				   yourself);
 		  yourself

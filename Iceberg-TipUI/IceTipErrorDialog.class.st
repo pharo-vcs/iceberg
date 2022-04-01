@@ -21,7 +21,7 @@ Class {
 IceTipErrorDialog class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
-		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
+		  add: #iconPanel expand: false;
 		  add: #errorLabel;
 		  yourself
 ]

@@ -16,13 +16,11 @@ IceTipRemovePackageDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
-				   add: #iconPanel
-				   width: 40 * self currentWorld displayScaleFactor;
+				   add: #iconPanel expand: false;
 				   add: (SpBoxLayout newTopToBottom
 						    add: #confirmLabel;
-						    add: #unloadFromImageCheckbox height: self inputTextHeight;
-						    add: #removeFromRepositoryCheckbox
-						    height: self inputTextHeight;
+						    add: #unloadFromImageCheckbox expand: false;
+						    add: #removeFromRepositoryCheckbox expand: false;
 						    yourself);
 				   yourself);
 		  yourself

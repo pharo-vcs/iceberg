@@ -19,29 +19,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipGitProviderRepositoryPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #userNameLabel width: self labelWidth;
-				   add: #userNameInputText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #projectNameLabel width: self labelWidth;
-				   add: #projectNameInputText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #projectLocation height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #protocolLabel width: self labelWidth;
-				   add: #protocolDropList;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #testing }
 IceTipGitProviderRepositoryPanel class >> isAbstract [
 
@@ -52,6 +29,23 @@ IceTipGitProviderRepositoryPanel class >> isAbstract [
 IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 
 	self subclassResponsibility
+]
+
+{ #category : #layout }
+IceTipGitProviderRepositoryPanel >> defaultLayout [
+
+	^ SpGridLayout build: [ :builder |
+		builder
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+		 	add: userNameLabel; add: userNameInputText;
+			nextRow;
+			add: projectNameLabel; add: projectNameInputText;
+			nextRow;
+			add: projectLocation label; add: projectLocation;
+			nextRow;
+			add: protocolLabel; add: protocolDropList
+	]
 ]
 
 { #category : #initialization }

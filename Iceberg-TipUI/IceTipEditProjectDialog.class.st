@@ -26,14 +26,14 @@ IceTipEditProjectDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
+				   add: #nameLabel expand: false;
 				   add: #nameInput expand: true;
 				   add: #addButton width: 32 * self currentWorld displayScaleFactor;
 				   add: #removeButton width: 32 * self currentWorld displayScaleFactor;
 				   yourself)
 		  height: self inputTextHeight;
 		  add: (SpBoxLayout newLeftToRight
-				   add: #sourceDirectoryLabel width: self labelWidth;
+				   add: #sourceDirectoryLabel expand: false;
 				   add: #sourceDirectoryTree;
 				   yourself)
 		  height: 200 * self currentWorld displayScaleFactor;

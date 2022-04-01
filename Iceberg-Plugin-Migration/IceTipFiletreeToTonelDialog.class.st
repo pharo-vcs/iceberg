@@ -19,10 +19,10 @@ Class {
 IceTipFiletreeToTonelDialog class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
-		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
+		  add: #iconPanel expand: false;
 		  add: (SpBoxLayout newTopToBottom
 				   add: #confirmLabel;
-				   add: #mergeWithMasterCheckbox height: self inputTextHeight;
+				   add: #mergeWithMasterCheckbox expand: false;
 				   yourself);
 		  yourself
 ]
