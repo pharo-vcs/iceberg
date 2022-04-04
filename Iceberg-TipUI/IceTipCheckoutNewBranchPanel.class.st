@@ -16,14 +16,15 @@ Class {
 
 { #category : #layout }
 IceTipCheckoutNewBranchPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #branchLabel width: self labelWidth;
+	
+		^ SpBoxLayout newTopToBottom
+			spacing: 5;
+		 	add: #currentBranchLabel expand: false;
+		  	add: (SpBoxLayout newLeftToRight
+					spacing: 5;
+				   add: #branchLabel expand: false;
 				   add: #branchInputText;
-				   yourself)
-		  height: self inputTextHeight
+				   yourself) expand: false
 ]
 
 { #category : #'accessing - ui' }

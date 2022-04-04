@@ -18,7 +18,7 @@ IceTipAddPackagesDialog class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #packagesList;
-		  add: #packageNameText height: self inputTextHeight
+		  add: #packageNameText expand: false
 ]
 
 { #category : #actions }

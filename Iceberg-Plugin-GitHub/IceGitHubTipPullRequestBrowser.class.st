@@ -48,8 +48,7 @@ IceGitHubTipPullRequestBrowser class >> defaultLayout [
 				   add: #mergeButton;
 				   add: #acceptButton;
 				   add: #rejectButton;
-				   yourself)
-		  height: self toolbarHeight;
+				   yourself) expand: false;
 		  yourself
 ]
 

@@ -18,24 +18,14 @@ Class {
 { #category : #layout }
 IceGitHubAcceptPullRequestModel class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newHorizontal
-				add: #messageLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #messageText;
-				yourself);
-		add:
-			(SpBoxLayout newHorizontal
-				add: #typeLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #typeList;
-				yourself)
-			withConstraints: [ :constraints | constraints width: 25 * self currentWorld displayScaleFactor ];
-		add: #acceptButton
-			withConstraints: [ :constraints | constraints height: self buttonHeight ];
+	^  SpBoxLayout newTopToBottom
+		add: (SpGridLayout build: [ :builder |
+					builder
+						beColumnNotHomogeneous;
+						column: 2 withConstraints: [ :c | c beExpand ];
+						add: #messageLabel; add: #messageText; nextRow;
+						add: #typeLabel; add: #typeList ]);
+		add: #acceptButton expand: false;
 		yourself
 ]
 

@@ -13,19 +13,22 @@ IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for
 	"No commands to add"
 ]
 
-{ #category : #layout }
-IceTipRemoteActionBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #remotePanel expand: false;
-		  add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
-		  add: #actionButtonBar expand: false;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipRemoteActionBrowser class >> onRepositoryModel: aRepository [
 	^ self subclassResponsibility
+]
+
+{ #category : #layout }
+IceTipRemoteActionBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight 
+				add: remotePanel label ;
+				add: remotePanel;
+				yourself) expand: false;
+		  add: commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
+		  add: actionButtonBar expand: false;
+		  yourself
 ]
 
 { #category : #initialization }

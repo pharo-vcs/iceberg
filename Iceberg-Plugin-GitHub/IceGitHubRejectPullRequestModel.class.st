@@ -22,9 +22,8 @@ IceGitHubRejectPullRequestModel class >> defaultLayout [
 					   constraints width: 80 currentWorld displayScaleFactor ];
 				   add: #messageText;
 				   yourself);
-		  add: #acceptButton
-		  withConstraints:
-		  [ :constraints | constraints height: self buttonHeight ] yourself
+		  add: #acceptButton expand: false;
+		  yourself
 ]
 
 { #category : #actions }

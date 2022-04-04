@@ -14,7 +14,7 @@ Class {
 IceTipSelectRemotePresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
-		  add: #remoteLabel expand: false;
+		  "add: #remoteLabel expand: false;"
 		  add: #remoteList;
 		  add: #addButton expand: false
 ]
@@ -58,11 +58,18 @@ IceTipSelectRemotePresenter >> initializePresenters [
 	addButton := self newButton
 		icon: self icon;
 		action: [ self addRemote ];
+		addStyle: 'small';
 		yourself.
 
 	self refresh.
 	self selectRemoteNamed: self model remoteModel name.
 
+]
+
+{ #category : #accessing }
+IceTipSelectRemotePresenter >> label [
+
+	^ self remoteLabel label
 ]
 
 { #category : #accessing }

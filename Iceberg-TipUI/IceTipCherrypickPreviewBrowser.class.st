@@ -25,7 +25,7 @@ IceTipCherrypickPreviewBrowser class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;
-		  add: #buttonBar height: self buttonHeight;
+		  add: #buttonBar expand: false;
 		  yourself
 ]
 

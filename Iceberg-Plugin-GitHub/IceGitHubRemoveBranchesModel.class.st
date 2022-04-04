@@ -20,9 +20,7 @@ IceGitHubRemoveBranchesModel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #listPanel;
-		  add: #selectButton
-		  withConstraints: [ :constraints | 
-			  constraints height: self buttonHeight ];
+		  add: #selectButton expand: false;
 		  yourself
 ]
 

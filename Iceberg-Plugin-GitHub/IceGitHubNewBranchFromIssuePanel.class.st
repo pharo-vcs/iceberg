@@ -20,30 +20,27 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #layout }
-IceGitHubNewBranchFromIssuePanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: #remotePanel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #branchLabel width: self labelWidth;
-				   add: #issueNumberText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #issueLabel width: self labelWidth;
-				   add: #issueText;
-				   yourself)
-		  height: self inputTextHeight
-]
-
 { #category : #accessing }
 IceGitHubNewBranchFromIssuePanel >> branchName [
 	
 	^ '{1}-{2}' format: { 
 		issueNumberText text trim. 
 		issueText text trim }.
+]
+
+{ #category : #layout }
+IceGitHubNewBranchFromIssuePanel >> defaultLayout [
+
+	^ SpGridLayout build: [ :builder |
+		builder
+			borderWidth: 10;
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+			add: currentBranchLabel span: 2@1; nextRow;
+			add: remotePanel label; add: remotePanel; nextRow;
+			add: branchLabel; add: issueNumberText; nextRow;
+			add: issueLabel; add: issueText; nextRow
+		 ]
 ]
 
 { #category : #accessing }

@@ -44,5 +44,4 @@ IcePlugin >> repositoryWasCreated: aRepository [
 { #category : #events }
 IcePlugin >> repositoryWillBeCreated: aRepository [
 	"Hook. Allows plugins to do an action when a repository will be added"
-
 ]

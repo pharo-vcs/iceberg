@@ -31,44 +31,21 @@ Class {
 { #category : #layout }
 IceGitHubCreatePullRequestModel class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #titleLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #titlePanel;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #headLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+	^ SpGridLayout build: [ :builder |
+		builder
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+			add: #titleLabel; 	add: #titlePanel; nextRow;
+			add: #headLabel; add: (SpBoxLayout newLeftToRight
 				add: #headForkList;
 				add: #headBranchList;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #baseLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
+				yourself); nextRow;
+			add: #baseLabel; add: (SpBoxLayout newLeftToRight
 				add: #baseForkList;
 				add: #baseBranchList;
-				yourself)
-			withConstraints:
-				[ :constraints | constraints height: 25 * self currentWorld displayScaleFactor ];
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #bodyLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #bodyPanel;
-				yourself );
-			yourself
+				yourself); nextRow;
+			add: #bodyLabel; add: #bodyPanel
+		]
 ]
 
 { #category : #'instance creation' }

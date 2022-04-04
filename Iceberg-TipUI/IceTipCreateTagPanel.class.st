@@ -26,18 +26,18 @@ Class {
 IceTipCreateTagPanel class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: #currentCommitishLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #tagNameLabel width: self labelWidth;
-				   add: #tagNameInputText;
-				   yourself)
-		  height: self inputTextHeight;
+		add: (SpGridLayout build: [ :builder |
+			builder 
+				borderWidth: 10;
+				beColumnNotHomogeneous;
+				column: 2 withConstraints: [ :c | c beExpand ];
+		  		add: #currentCommitishLabel span: 2@1; nextRow;
+		  		add:#tagNameLabel; add: #tagNameInputText; nextRow ]);
 		  add: (SpBoxLayout newLeftToRight
 				   add: #majorButton;
 				   add: #minorButton;
 				   add: #patchButton;
-				   yourself)
-		  height: self inputTextHeight;
+				   yourself) expand: false;
 		  add: #existingTagsList height: self inputTextHeight * 3;
 		  yourself
 ]

@@ -18,18 +18,13 @@ Class {
 { #category : #layout }
 IceTipAddRemoteDialog class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
-				   add: #nameText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #urlLabel width: self labelWidth;
-				   add: #urlText;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
+	^ SpGridLayout build: [ :builder |
+		builder
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+			add: #nameLabel; add: #nameText; nextRow;
+			add: #urlLabel; add: #urlText
+	]
 ]
 
 { #category : #actions }
@@ -45,11 +40,7 @@ IceTipAddRemoteDialog >> accept [
 { #category : #initialization }
 IceTipAddRemoteDialog >> initialExtentForWindow [
 
-	^ (500@(
-		self class inputTextHeight * 2
-		+ self class buttonHeight 
-		+ 50 "Yes, a magic number"
-		)) scaledByDisplayScaleFactor
+	^ (500@175) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }

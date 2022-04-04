@@ -18,23 +18,15 @@ Class {
 { #category : #layout }
 IceTipAddTokenCredentialsModel class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel width: self labelWidth;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #hostLabel width: self labelWidth;
-				   add: #hostInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #tokenLabel width: self labelWidth;
-				   add: #tokenInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
+^ SpGridLayout build: [ :builder |
+		builder
+			borderWidth: 10;
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+			add: #usernameLabel; add: #usernameInput; nextRow;
+			add: #hostLabel; add: #hostInput; nextRow;
+			add: #tokenLabel; add: #tokenInput
+		 ]
 ]
 
 { #category : #accessing }
