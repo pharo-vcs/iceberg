@@ -11,33 +11,26 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipAddSSHCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #hostLabel width: self labelWidth;
-				   add: #hostInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel width: self labelWidth;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #publicKeyInput height: self inputTextHeight;
-		  add: #privateKeyInput height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #passphraseLabel width: self labelWidth;
-				   add: #passphraseInput;
-				   yourself)
-		  height: self inputTextHeight
-]
-
 { #category : #actions }
 IceTipAddSSHCredentialsModel >> accept [
 
 	self acceptAddAction
+]
+
+{ #category : #layout }
+IceTipAddSSHCredentialsModel >> defaultLayout [
+
+	^ SpGridLayout build: [ :builder |
+		builder
+			borderWidth: 10;
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+		 	add: hostLabel; add: hostInput; nextRow;
+		 	add: usernameLabel; add: usernameInput; nextRow;
+			add: publicKeyInput label; add: publicKeyInput; nextRow;
+			add: privateKeyInput label; add: privateKeyInput; nextRow;
+			add: passphraseLabel; add: passphraseInput
+	]
 ]
 
 { #category : #accessing }

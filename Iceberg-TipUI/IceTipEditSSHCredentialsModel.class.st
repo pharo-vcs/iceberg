@@ -18,6 +18,7 @@ IceTipEditSSHCredentialsModel >> defaultLayout [
 
 	^ SpGridLayout build: [ :builder |
 		builder
+			borderWidth: 10;
 			beColumnNotHomogeneous;
 			column: 2 withConstraints: [ :c | c beExpand ];
 		 	add: usernameLabel; add: usernameInput;

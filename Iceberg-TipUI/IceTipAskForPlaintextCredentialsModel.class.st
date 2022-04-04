@@ -11,20 +11,17 @@ Class {
 { #category : #layout }
 IceTipAskForPlaintextCredentialsModel class >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #passwordLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #passwordInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #storeCheckbox height: self inputTextHeight
+	^ SpGridLayout build: [ :builder |
+		builder
+			borderWidth: 10;
+			beColumnNotHomogeneous;
+			column: 2 withConstraints: [ :c | c beExpand ];
+			add: #usernameLabel; add: #usernameInput; nextRow;
+			add: #passwordLabel; add: #passwordInput; nextRow;
+		 	add: #storeCheckbox
+		 ]
+	
+
 ]
 
 { #category : #actions }
