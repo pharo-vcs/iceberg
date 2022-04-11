@@ -10,7 +10,7 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #decorating }
 IceTipSpPresenter class >> buildDecorations [
 
 	^ (Pragma allNamed: #extensionDecorators in: self class) 
