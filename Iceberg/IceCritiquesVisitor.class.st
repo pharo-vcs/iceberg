@@ -44,6 +44,11 @@ IceCritiquesVisitor >> visitClassDefinition: anIceClassDefinition [
 ]
 
 { #category : #visiting }
+IceCritiquesVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
+	"no critiques for directories"
+]
+
+{ #category : #visiting }
 IceCritiquesVisitor >> visitExtensionDefinition: anIceExtension [ 
 	"^ anIceExtension definition accept: self"
 	| actualClass methods |
