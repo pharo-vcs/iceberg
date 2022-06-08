@@ -109,10 +109,14 @@ IceCredentialStore >> loadFromStore [
 	"If the file is new, I cannot load it."
 	storeFile exists ifFalse: [ ^ self ].
 	
-	array := FLMaterializer materializeFromFileNamed: storeFile resolve pathString.
+	array := [
+		FLMaterializer new
+			filePath: storeFile resolve pathString;
+			materializeRoot ]
+				on: FLMaterializationError
+				do: [ ^ self ].
 	plainCredentials := array at: 1.
-	sshCredentials := array at: 2.
-
+	sshCredentials := array at: 2
 ]
 
 { #category : #'private - lookup' }
@@ -149,18 +153,16 @@ IceCredentialStore >> removeSSHCredential: aCredential [
 
 { #category : #'API - storing' }
 IceCredentialStore >> saveIntoStore [
-
-	| serializer |
-	
 	self flag: #pharoTodo. "implement an encrypted version"
 		
 	storeFile ifNotNil: [  	
 		storeFile parent ensureCreateDirectory.	
 		
 		storeFile resolve binaryWriteStreamDo: [ :stream | 
-			serializer := FLSerializer on:  stream.
-			serializer serialize: {plainCredentials. sshCredentials}]
-	]
+			FLSerializer new
+				onStream:  stream;
+				object: {plainCredentials. sshCredentials};
+				serialize ] ]
 ]
 
 { #category : #'API - accessing' }
