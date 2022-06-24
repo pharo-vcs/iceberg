@@ -51,25 +51,27 @@ IceMCDefinitionImporter >> snapshot: aMCSnapshot [
 ]
 
 { #category : #visiting }
-IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [ 
-	
+IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [
+
 	| classDefinitionNode classDefinition |
 	classDefinitionNode := self
-		ensureMethodOwnerNamed: aMCClassDefinition className
-		isMeta: false
-		isTrait: false
-		isExtension: false.
+		                       ensureMethodOwnerNamed:
+		                       aMCClassDefinition className
+		                       isMeta: false
+		                       isTrait: false
+		                       isExtension: false.
 	classDefinitionNode value mcDefinition: aMCClassDefinition.
-	
-	(aMCClassDefinition hasClassInstanceVariables
-		or: [aMCClassDefinition hasClassTraitComposition]) ifTrue: [
-		"We also generate the definition for the metaclass (See visitMetaclassDefinition: comment)"
-		classDefinition := self
-			ensureMethodOwnerNamed: aMCClassDefinition className
-			isMeta: true
-			isTrait: false
-			isExtension: false.
-		classDefinition value mcDefinition: aMCClassDefinition ].
+
+	"We also generate the definition for the metaclass (See visitMetaclassDefinition: comment).
+	We need both the instance and class side class nodes so they can contain their corresponding methods (that are visited in a random order)
+	=> Generate the class side definition always. If it turns out to be empty, we will filter it later."
+	classDefinition := self
+		                   ensureMethodOwnerNamed:
+		                   aMCClassDefinition className
+		                   isMeta: true
+		                   isTrait: false
+		                   isExtension: false.
+	classDefinition value mcDefinition: aMCClassDefinition.
 	^ classDefinitionNode
 ]
 
