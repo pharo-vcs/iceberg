@@ -90,7 +90,7 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 
 	critiquesList selectedItem ifNotNil: [ :aCritique | 
 		(RePropertyAction new
-			 icon: (aCritique iconNamed: #repairIcon);
+			 icon: (aCritique iconNamed: #repair);
 			 description: 'Automatically resolve the issue';
 			 action: [ :crit | 
 				 | changesBrowser |
