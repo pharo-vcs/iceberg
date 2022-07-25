@@ -67,26 +67,21 @@ IceTipAddPackagesDialog >> initializePackageNameText [
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePackagesList [
 
-	packagesList
-		addColumn:
-			(SpCompositeTableColumn new
-				addColumn:
-					(SpCheckBoxTableColumn new
-						evaluated: [ :item | selectedPackages includes: item ];
-						onActivation: [ :item | selectedPackages add: item ];
-						onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
-						width: 20 * self currentWorld displayScaleFactor;
-						yourself);
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: [ :each | self iconNamed: #package ];
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: #name;
-						yourself);
-				yourself)
+	packagesList addColumn: (SpCompositeTableColumn new
+		addColumn: (SpCheckBoxTableColumn new
+			evaluated: [ :item | selectedPackages includes: item ];
+			onActivation: [ :item | selectedPackages add: item ];
+			onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
+			beNotExpandable;
+			yourself);
+		addColumn: (SpImageTableColumn new
+			evaluated: [ :each | self iconNamed: #package ];
+			beNotExpandable;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			evaluated: #name;
+			yourself);
+		yourself)
 ]
 
 { #category : #initialization }
