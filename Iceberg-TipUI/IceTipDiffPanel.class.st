@@ -55,8 +55,8 @@ IceTipDiffPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
 		addColumn: (SpImageTableColumn new
-			width: 20;
 			evaluated: [ :each | each value icon ];
+			beNotExpandable;
 			yourself);
 		addColumn: self changeDescriptionColumn;
 		yourself
@@ -142,15 +142,11 @@ IceTipDiffPanel >> initializeDiffPanel [
 { #category : #initialization }
 IceTipDiffPanel >> initializePresenters [
 
-	super initializePresenters.
-
 	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.
 
 	self initializeTree.
-	self initializeDiffPanel.
-
-	self basicRefresh
+	self initializeDiffPanel
 ]
 
 { #category : #initialization }
@@ -236,4 +232,10 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 IceTipDiffPanel >> titleForWindow [
 
 	^ 'Diff'
+]
+
+{ #category : #initialization }
+IceTipDiffPanel >> updatePresenter [
+
+	self basicRefresh
 ]

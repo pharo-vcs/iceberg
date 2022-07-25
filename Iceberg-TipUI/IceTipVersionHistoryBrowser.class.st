@@ -114,14 +114,11 @@ IceTipVersionHistoryBrowser >> initializeCommitPanel [
 { #category : #initialization }
 IceTipVersionHistoryBrowser >> initializePresenters [
 
-	super initializePresenters.	
 	commitList := self newTable.
 	commitPanel := self newNotebook.
 	
 	self initializeCommitList.
-	self initializeCommitPanel.
-	
-	self refresh
+	self initializeCommitPanel
 ]
 
 { #category : #'accessing - ui' }
@@ -219,4 +216,10 @@ IceTipVersionHistoryBrowser >> titleForWindow [
 	^ self model  
 		ifNotNil: [ 'Versions of {1}' format: { self model name } ]
 		ifNil: [ 'Versions' ]
+]
+
+{ #category : #initialization }
+IceTipVersionHistoryBrowser >> updatePresenter [
+
+	self refresh
 ]

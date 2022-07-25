@@ -110,11 +110,8 @@ IceTipRepositoriesBrowser >> iconForWindow [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializePresenters [
 
-	super initializePresenters.
 	repositoryList := self newTable.
-	self initializeRepositoryList.
-
-	self refresh.
+	self initializeRepositoryList
 ]
 
 { #category : #initialization }
@@ -123,20 +120,17 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 	repositoryList
 		showColumnHeaders;
 		beResizable;
-		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
-				width: 200;
-				title: self titleForWindow;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #statusText)
-				width: 150;
-				title: #Status;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #branchNameText)
-				title: #Branch;
-				yourself);
+		addColumn: ((SpStringTableColumn evaluated: #descriptionWithDecoration)
+			width: 200;
+			title: self titleForWindow;
+			yourself);
+		addColumn: ((SpStringTableColumn evaluated: #statusText)
+			width: 200;
+			title: #Status;
+			yourself);
+		addColumn: ((SpStringTableColumn evaluated: #branchNameText)
+			title: #Branch;
+			yourself);
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
@@ -190,11 +184,20 @@ IceTipRepositoriesBrowser >> repositoryModels [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 
-	Iceberg announcer weak when: IceAnnouncement send: #refresh to: self
+	Iceberg announcer weak 
+		when: IceAnnouncement 
+		send: #refresh
+		to: self
 ]
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> titleForWindow [
 
 	^ 'Repositories'
+]
+
+{ #category : #private }
+IceTipRepositoriesBrowser >> updatePresenter [
+
+	self refresh
 ]

@@ -163,8 +163,6 @@ IceTipCommitBrowser >> initializeAcceptShortcut [
 { #category : #initialization }
 IceTipCommitBrowser >> initializePresenters [
 
-	super initializePresenters.
-	
 	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
 	diffPanel leftLabel: 'Repository'.
 	diffPanel rightLabel: 'Working Copy'.
@@ -172,8 +170,7 @@ IceTipCommitBrowser >> initializePresenters [
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
 	
-	self initializeAcceptShortcut.
-
+	self initializeAcceptShortcut
 ]
 
 { #category : #initialization }

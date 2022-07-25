@@ -45,11 +45,9 @@ IceTipHistoryActionBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipHistoryActionBrowser >> initializePresenters [
 
-	super initializePresenters.
 	commitsPanel := self instantiate: IceTipHistoryBrowser on: self model.
 	actionButtonBar := self newButtonBar.
-	actionButtonBar add: (button := self newActionButton).
-
+	actionButtonBar add: (button := self newActionButton)
 ]
 
 { #category : #actions }

@@ -172,8 +172,6 @@ IceTipCritiquesBeforeCommitBrowser >> initializeDialogWindow: aWindow [
 { #category : #initialization }
 IceTipCritiquesBeforeCommitBrowser >> initializePresenters [
 
-	super initializePresenters.
-
 	browseButton := self newButton.
 	browseButton label: 'Browse Entity'.
 	browseButton action: (MessageSend receiver: self selector: #doBrowse).

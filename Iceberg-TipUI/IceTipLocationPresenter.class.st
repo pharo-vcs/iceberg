@@ -102,7 +102,6 @@ IceTipLocationPresenter >> icon [
 { #category : #initialization }
 IceTipLocationPresenter >> initializePresenters [
 
-	super initializePresenters.
 	locationLabel := self newLabel
 		label: self label;
 		yourself.
@@ -113,8 +112,7 @@ IceTipLocationPresenter >> initializePresenters [
 		icon: self icon;
 		yourself.
 	
-	chooseButton action: [ self choose ].
-
+	chooseButton action: [ self choose ]
 ]
 
 { #category : #accessing }

@@ -49,9 +49,7 @@ IceTipRepositoryTypePanel >> defaultSubdirectory [
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializePresenters [
 
-	super initializePresenters.
-	self initializeProjectLocation.
-
+	self initializeProjectLocation
 ]
 
 { #category : #initialization }

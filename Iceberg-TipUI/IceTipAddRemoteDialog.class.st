@@ -55,7 +55,6 @@ IceTipAddRemoteDialog >> initialExtentForWindow [
 { #category : #initialization }
 IceTipAddRemoteDialog >> initializePresenters [
 
-	super initializePresenters.
 	nameLabel := self newLabel
 		label: 'Remote name';
 		yourself.
@@ -69,8 +68,7 @@ IceTipAddRemoteDialog >> initializePresenters [
 	urlText := self newTextInput
 		placeholder: 'e.g., git@github.com:user/project.git';
 		autoAccept: true;
-		yourself.
-
+		yourself
 ]
 
 { #category : #accessing }

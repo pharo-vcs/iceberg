@@ -50,7 +50,7 @@ IceTipAbstractCredentialsModel >> acceptEditAction [
 
 	self refreshCredentialsFromPresenter.
 	credentialStore storeCredential: self credentials.
-	tool ifNotNil: #refresh.
+	tool ifNotNil: [ tool refresh ].
 	accepted := true.
 	^ credentials
 ]
@@ -124,8 +124,6 @@ IceTipAbstractCredentialsModel >> initializeDialogWindow: aDialogWindowPresenter
 { #category : #initialization }
 IceTipAbstractCredentialsModel >> initializePresenters [
 
-	super initializePresenters.
-	
 	storeCheckbox := self newCheckBox
 		label: 'Do you want this credentials to be stored for future use?';
 		help: 'Please note that storing your credentials is handy but unsafe';

@@ -137,7 +137,6 @@ IceTipCreateTagPanel >> initializeNextTagPanel [
 { #category : #initialization }
 IceTipCreateTagPanel >> initializePresenters [
 
-	super initializePresenters.
 	self initializeCurrentBranchLabel.
 
 	tagNameLabel := self newLabel
@@ -149,8 +148,7 @@ IceTipCreateTagPanel >> initializePresenters [
 		                    yourself.
 
 	self initializeNextTagPanel.
-	self initializeExistingTagsList.
-
+	self initializeExistingTagsList
 ]
 
 { #category : #testing }

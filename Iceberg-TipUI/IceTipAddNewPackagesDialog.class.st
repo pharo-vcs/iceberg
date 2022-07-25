@@ -85,7 +85,6 @@ IceTipAddNewPackagesDialog >> initializePackagesList [
 { #category : #initialization }
 IceTipAddNewPackagesDialog >> initializePresenters [
 
-	super initializePresenters.
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
 	problemDescription := self newText
@@ -97,8 +96,7 @@ IceTipAddNewPackagesDialog >> initializePresenters [
 	problemDescription text: 'One or more packages unloaded packages (they are in the repository, but not in the image) has been changed.
 Please select the packages if you wish to load them in the image'.
 
-	self initializePackagesList.
-
+	self initializePackagesList
 ]
 
 { #category : #'accessing - ui' }

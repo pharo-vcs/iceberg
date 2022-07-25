@@ -65,7 +65,6 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 { #category : #initialization }
 IceTipExistingBranchPanel >> initializePresenters [
 
-	super initializePresenters.
 	branchesList := self newTable.
 	self initializeBranchesList
 ]

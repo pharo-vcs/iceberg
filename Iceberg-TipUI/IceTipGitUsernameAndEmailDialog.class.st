@@ -88,7 +88,6 @@ IceTipGitUsernameAndEmailDialog >> initialExtentForWindow [
 { #category : #initialization }
 IceTipGitUsernameAndEmailDialog >> initializePresenters [
 
-	super initializePresenters.
 	nameLabel := self newLabel
 		label: 'user.name';
 		yourself.
@@ -106,8 +105,7 @@ IceTipGitUsernameAndEmailDialog >> initializePresenters [
 	globalCheckbox := self newCheckBox
 		label: 'Save properties as global?';
 		state: false;
-		yourself.
-
+		yourself
 ]
 
 { #category : #testing }

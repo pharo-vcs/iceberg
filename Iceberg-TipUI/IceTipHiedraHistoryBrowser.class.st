@@ -14,22 +14,17 @@ Class {
 IceTipHiedraHistoryBrowser >> initializeCommitList [
 	"Add the Hiedra column at the beginning. The Datasource has the logic to render it."
 
-	commitList
-		addColumn:
-			(SpImageTableColumn new
-				evaluated: [ :each |
-					hiedraColumnController cellMorphAtRow: (commitList items indexOf: each) ];
-				title: ' ';
-				width: 80;
-				yourself).
-	super initializeCommitList.
-
+	commitList addColumn: (SpImageTableColumn new
+		evaluated: [ :each | hiedraColumnController cellMorphAtRow: (commitList items indexOf: each) ];
+		width: 80;
+		yourself).
+	super initializeCommitList
 ]
 
 { #category : #initialization }
 IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
-
 	| ancestorIds |
+	
 	hiedraColumnController := HiColumnController new.
 	hiedraColumnController renderer
 		arrowSize: 0;
@@ -47,7 +42,9 @@ IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
 		newRulerValues: (self model commitModels collect: #id) "Note: ids should keep the original order."
 		linksBlock: [ :id | ancestorIds at: id ]).
 
-	hiedraColumnController renderer rowHeight: 20; cellWidth: 5.25
+	hiedraColumnController renderer 
+		rowHeight: 20; 
+		cellWidth: 5.25
 ]
 
 { #category : #initialization }

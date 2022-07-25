@@ -92,8 +92,6 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 { #category : #initialization }
 IceTipRepairRepositoryDialog >> initializePresenters [
 
-	super initializePresenters.
-	
 	reasonPanel := self newText
 		beNotEditable;
 		addStyle: 'iceTipReadonly';
@@ -109,8 +107,7 @@ IceTipRepairRepositoryDialog >> initializePresenters [
 		yourself.
 
 	self initializeReasonPanel.
-	self initializeOptionsList.
-
+	self initializeOptionsList
 ]
 
 { #category : #private }

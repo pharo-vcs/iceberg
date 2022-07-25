@@ -80,11 +80,9 @@ IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 { #category : #initialization }
 IceTipOptionDialog >> initializePresenters [
 
-	super initializePresenters.
 	contentPanel := self newNullPresenter.
 	typeList := self newTable.
-	self initializeTypeList.
-
+	self initializeTypeList
 ]
 
 { #category : #initialization }

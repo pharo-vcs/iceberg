@@ -249,7 +249,6 @@ IceTipEditProjectDialog >> initializeMessagePanel [
 { #category : #initialization }
 IceTipEditProjectDialog >> initializePresenters [
 
-	super initializePresenters.
 	nameLabel := self newLabel
 		label: 'Project Name';
 		yourself.
@@ -274,8 +273,7 @@ IceTipEditProjectDialog >> initializePresenters [
 	addButton := self newButton icon: (self iconNamed: #add); yourself.
 
 	self initializeMessagePanel.
-	self initializeDirectoryTree.
-
+	self initializeDirectoryTree
 ]
 
 { #category : #accessing }

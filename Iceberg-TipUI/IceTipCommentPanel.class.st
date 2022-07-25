@@ -85,9 +85,7 @@ IceTipCommentPanel >> fixesLabel [
 
 { #category : #initialization }
 IceTipCommentPanel >> initializePresenters [
-
 	| fixesHelpString |
-	super initializePresenters.
 
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
@@ -137,8 +135,7 @@ IceTipCommentPanel >> initializePresenters [
 				label: 'Commit';
 				icon: (self iconNamed: #smallOk);
 				help: ('Commit your changes to {1}' format: {self repositoryName});
-				yourself).
-
+				yourself)
 ]
 
 { #category : #testing }

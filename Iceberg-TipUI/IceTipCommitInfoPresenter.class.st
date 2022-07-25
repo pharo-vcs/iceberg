@@ -88,10 +88,8 @@ IceTipCommitInfoPresenter >> initializeCommitPanel [
 { #category : #initialization }
 IceTipCommitInfoPresenter >> initializePresenters [
 
-	super initializePresenters.
 	notebookPanel := self newNotebook.
-	self initializeCommitPanel.
-
+	self initializeCommitPanel
 ]
 
 { #category : #'private factory' }

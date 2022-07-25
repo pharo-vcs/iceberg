@@ -45,8 +45,6 @@ IceTipSelectRemotePresenter >> icon [
 { #category : #initialization }
 IceTipSelectRemotePresenter >> initializePresenters [
 
-	super initializePresenters.
-
 	remoteLabel := self newLabel
 		label: 'Remote:';
 		yourself.
@@ -58,11 +56,7 @@ IceTipSelectRemotePresenter >> initializePresenters [
 	addButton := self newButton
 		icon: self icon;
 		action: [ self addRemote ];
-		yourself.
-
-	self refresh.
-	self selectRemoteNamed: self model remoteModel name.
-
+		yourself
 ]
 
 { #category : #accessing }
@@ -102,8 +96,15 @@ IceTipSelectRemotePresenter >> selectRemoteNamed: aString [
 		(self model remoteModels detect: [ :each | each name = aString ])
 ]
 
-{ #category : #initialization }
+{ #category : #'accessing - model' }
 IceTipSelectRemotePresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
+]
+
+{ #category : #initialization }
+IceTipSelectRemotePresenter >> updatePresenter [ 
+
+	self refresh.
+	self selectRemoteNamed: self model remoteModel name
 ]

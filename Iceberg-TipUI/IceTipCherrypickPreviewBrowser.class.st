@@ -66,7 +66,6 @@ IceTipCherrypickPreviewBrowser >> initialExtentForWindow [
 
 { #category : #initialization }
 IceTipCherrypickPreviewBrowser >> initializePresenters [
-	super initializePresenters.
 
 	diffPanel := self
 		instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).

@@ -66,8 +66,6 @@ IceTipRemovePackageDialog >> initialExtentForWindow [
 { #category : #initialization }
 IceTipRemovePackageDialog >> initializePresenters [
 
-	super initializePresenters.
-
 	iconPanel := self newImage
 		image: (self iconNamed: #question);
 		yourself.
@@ -81,8 +79,7 @@ IceTipRemovePackageDialog >> initializePresenters [
 	removeFromRepositoryCheckbox := self newCheckBox
 		label: 'Remove from repository';
 		state: true;
-		yourself.
-
+		yourself
 ]
 
 { #category : #accessing }

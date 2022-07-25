@@ -92,7 +92,6 @@ IceTipRepositoryBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializePresenters [
 
-	super initializePresenters.
 	sidebarTree := self newTreeTable.
 	historyPanel := self
 		instantiate: IceTipHiedraHistoryBrowser
@@ -101,10 +100,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 	historyPanel whenSelectionChangedDo: [ self refreshCommands ].
 	historyPanel beForMerge.
 
-	self initializeSidebarTree.
-
-	self refresh.
-
+	self initializeSidebarTree
 ]
 
 { #category : #initialization }
@@ -112,23 +108,19 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 
 	sidebarTree
 		hideColumnHeaders;
-		addColumn:
-			(SpCompositeTableColumn new
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: #icon;
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: #name;
-						yourself);
+		addColumn: (SpCompositeTableColumn new
+			addColumn: (SpImageTableColumn new
+				evaluated: #icon;
+				beNotExpandable;
 				yourself);
+			addColumn: (SpStringTableColumn new
+				evaluated: #name;
+				yourself);
+			yourself);
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ :selection | 
 			(selection isEmpty not and: [ selection selectedItem isCommitish ])
-				ifTrue: [ self commitishSelected: selection selectedItem ] ].
-
+				ifTrue: [ self commitishSelected: selection selectedItem ] ]
 ]
 
 { #category : #'accessing - ui' }
@@ -152,7 +144,7 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
 	self model reset.
-	self refresh
+	self updatePresenter
 ]
 
 { #category : #initialization }
@@ -187,4 +179,10 @@ IceTipRepositoryBrowser >> subscribeToAnnouncements [
 IceTipRepositoryBrowser >> titleForWindow [
 
 	^ 'Repository of ' , self model name
+]
+
+{ #category : #initialization }
+IceTipRepositoryBrowser >> updatePresenter [
+
+	self refresh
 ]

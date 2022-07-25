@@ -55,12 +55,9 @@ IceTipPreviewBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipPreviewBrowser >> initializePresenters [
 
-	super initializePresenters.
-	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
 	actionPanel := self newButtonBar.
-	actionPanel add: (button := self newActionButton).
-
+	actionPanel add: (button := self newActionButton)
 ]
 
 { #category : #'accessing - ui' }

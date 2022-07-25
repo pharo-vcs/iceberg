@@ -92,15 +92,12 @@ IceTipAddPackagesDialog >> initializePackagesList [
 { #category : #initialization }
 IceTipAddPackagesDialog >> initializePresenters [
 
-	super initializePresenters.
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
 	packageNameText := self newTextInput.
 
 	self initializePackagesList.
-	self initializePackageNameText.
-
-	self refresh.
+	self initializePackageNameText
 ]
 
 { #category : #accessing }
@@ -157,6 +154,12 @@ IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
 IceTipAddPackagesDialog >> titleForWindow [
 
 	^ 'Add packages'
+]
+
+{ #category : #initialization }
+IceTipAddPackagesDialog >> updatePresenter [
+
+	self refresh
 ]
 
 { #category : #accessing }

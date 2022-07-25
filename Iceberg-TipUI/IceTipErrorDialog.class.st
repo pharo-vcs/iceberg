@@ -81,8 +81,6 @@ IceTipErrorDialog >> initializeDialogWindow: aWindow [
 { #category : #initialization }
 IceTipErrorDialog >> initializePresenters [
 
-	super initializePresenters.
-
 	iconPanel := self newImage.
 	iconPanel image: (self iconNamed: #error).
 

@@ -81,16 +81,13 @@ IceTipCheckoutNewBranchPanel >> initializeCurrentBranchLabel [
 { #category : #initialization }
 IceTipCheckoutNewBranchPanel >> initializePresenters [
 
-	super initializePresenters.
 	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel
-		               label: 'New branch';
-		               yourself.
+		label: 'New branch';
+		yourself.
 	branchInputText := self newTextInput
-		                   autoAccept: true;
-		                   placeholder: 'e.g., feature/what';
-		                   yourself.
-
+		placeholder: 'e.g., feature/what';
+		yourself
 ]
 
 { #category : #testing }
