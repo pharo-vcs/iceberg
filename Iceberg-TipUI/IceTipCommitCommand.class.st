@@ -28,7 +28,10 @@ IceTipCommitCommand >> canBeExecuted [
 { #category : #executing }
 IceTipCommitCommand >> execute [
 
-	(IceTipCommitBrowser on: self repositoryModel) open
+	(IceTipCommitBrowser 
+		newApplication: context application 
+		model: self repositoryModel) 
+		open
 ]
 
 { #category : #accessing }
