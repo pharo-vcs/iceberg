@@ -3,7 +3,7 @@ I'm a dialog to select a list of anything (used by branches now).
 "
 Class {
 	#name : #IceGitHubRemoveBranchesModel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'selectedItems',
 		'listPanel',

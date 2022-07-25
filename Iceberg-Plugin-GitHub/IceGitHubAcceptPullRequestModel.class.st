@@ -3,7 +3,7 @@ I'm a dialog for collecting data to accept a pull request.
 "
 Class {
 	#name : #IceGitHubAcceptPullRequestModel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',

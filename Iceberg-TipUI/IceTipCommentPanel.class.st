@@ -4,7 +4,7 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',

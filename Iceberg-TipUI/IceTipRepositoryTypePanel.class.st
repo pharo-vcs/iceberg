@@ -4,7 +4,7 @@ I'm used as part of the creation dialog and to edit repository properties.
 "
 Class {
 	#name : #IceTipRepositoryTypePanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'projectLocation',
 		'remoteLabel',

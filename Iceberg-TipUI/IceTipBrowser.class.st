@@ -10,7 +10,7 @@ Some design remarks:
 "
 Class {
 	#name : #IceTipBrowser,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'model',
 		'toolbar'

@@ -4,7 +4,7 @@ I implement a default accept method that needs to be overriden my children and s
 "
 Class {
 	#name : #IceTipDialog,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#category : #'Iceberg-TipUI-View'
 }
 

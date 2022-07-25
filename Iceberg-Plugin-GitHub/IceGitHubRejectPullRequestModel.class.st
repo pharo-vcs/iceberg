@@ -3,7 +3,7 @@ I'm a dialog to collect data about a pull request rejection.
 "
 Class {
 	#name : #IceGitHubRejectPullRequestModel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',

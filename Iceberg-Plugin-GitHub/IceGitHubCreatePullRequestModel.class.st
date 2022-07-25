@@ -3,7 +3,7 @@ I'm a dialog to ask for data relevant to create a pull request.
 "
 Class {
 	#name : #IceGitHubCreatePullRequestModel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'repository',
 		'titleLabel',

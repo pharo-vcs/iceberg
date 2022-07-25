@@ -6,7 +6,7 @@ I'm done to be embedded in a dialog, so I implement doAccept to execute my actio
 "
 Class {
 	#name : #IceTipCreateTagPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'callback',
 		'tagNameInputText',

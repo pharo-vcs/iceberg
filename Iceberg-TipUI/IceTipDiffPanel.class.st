@@ -8,7 +8,7 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : #IceTipDiffPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'model',
 		'diffPanel',
