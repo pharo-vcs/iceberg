@@ -30,7 +30,10 @@ IceTipAddRepositoryCommand >> canBeExecuted [
 { #category : #executing }
 IceTipAddRepositoryCommand >> execute [
 
-	IceTipRegisterRepositoryDialog new openDialog
+	(IceTipRegisterRepositoryDialog newApplication: context application)	
+		asModalWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

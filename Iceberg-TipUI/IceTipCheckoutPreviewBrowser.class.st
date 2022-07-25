@@ -99,10 +99,14 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 { #category : #operations }
 IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 
-	(IceTipAddNewPackagesDialog on: self model newPackages) 
+	((IceTipAddNewPackagesDialog 
+		newApplication: self application 
+		model: self model newPackages) 
 		checkoutModel: self model;
-		checkoutPreviewWindow: self;
-		openDialog
+		checkoutPreviewWindow: self)
+		asModalWindow 
+			centeredRelativeTo: self window;
+			open
 ]
 
 { #category : #accessing }

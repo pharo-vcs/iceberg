@@ -28,12 +28,16 @@ IceTipSelectRemotePresenter >> addButton [
 { #category : #actions }
 IceTipSelectRemotePresenter >> addRemote [
 
-	(IceTipAddRemoteDialog on: self model repositoryModel) 
+	((IceTipAddRemoteDialog 
+		newApplication: self application 
+		model: self model repositoryModel) 
 		onAccept: [ :newRemoteName | 
 			self model reset.
 			self refresh.
-			self selectRemoteNamed: newRemoteName ];
-		openDialog.
+			self selectRemoteNamed: newRemoteName ])
+		asModalWindow 
+			centeredRelativeTo: self window;
+			open
 ]
 
 { #category : #accessing }

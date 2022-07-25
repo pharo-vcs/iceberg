@@ -29,7 +29,12 @@ IceTipAddRemoteCommand >> canBeExecuted [
 { #category : #executing }
 IceTipAddRemoteCommand >> execute [
 
-	(IceTipAddRemoteDialog on: self repositoryModel) openDialog
+	(IceTipAddRemoteDialog 
+		newApplication: context application 
+		model: self repositoryModel) 
+		asModalWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }
