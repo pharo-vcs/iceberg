@@ -20,7 +20,7 @@ IceTipAddSshCredentialCommand class >> defaultName [
 { #category : #execution }
 IceTipAddSshCredentialCommand >> execute [
 
-	IceTipAddSSHCredentialsModel new
+	(IceTipAddSSHCredentialsModel newApplication: context application)
 		credentialStore: self store;
 		tool: self tool;
 		openNonModal

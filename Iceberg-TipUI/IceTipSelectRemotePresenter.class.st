@@ -35,7 +35,7 @@ IceTipSelectRemotePresenter >> addRemote [
 			self model reset.
 			self refresh.
 			self selectRemoteNamed: newRemoteName ])
-		asModalWindow 
+		asDialogWindow 
 			centeredRelativeTo: self window;
 			open
 ]

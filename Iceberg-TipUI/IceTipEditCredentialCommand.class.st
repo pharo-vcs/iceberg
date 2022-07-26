@@ -24,7 +24,7 @@ IceTipEditCredentialCommand class >> defaultName [
 { #category : #executing }
 IceTipEditCredentialCommand >> execute [
 
-	self item editModelClass new
+	(self item editModelClass newApplication: context application)
 		credentials: self item;
 		credentialStore: self store;
 		tool: self tool;

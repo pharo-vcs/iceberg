@@ -105,7 +105,7 @@ IceTipCommitBrowser >> doCommit [
 				pushing: isPushing
 				saving: isSaving ].
 
-	(IceTipCritiquesBeforeCommitBrowser on: selectedItems)
+	(IceTipCritiquesBeforeCommitBrowser newApplication: self application model: selectedItems)
 		commitModel: self model;
 		onAccept: commitBlock ;
 		openIfCritiques

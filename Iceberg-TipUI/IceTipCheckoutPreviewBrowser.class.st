@@ -104,7 +104,7 @@ IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 		model: self model newPackages) 
 		checkoutModel: self model;
 		checkoutPreviewWindow: self)
-		asModalWindow 
+		asDialogWindow 
 			centeredRelativeTo: self window;
 			open
 ]

@@ -31,7 +31,7 @@ IceTipCreateTagCommand >> execute [
 	(IceTipCreateTagPanel 
 		newApplication: context application 
 		model: self item) 		
-		asModalWindow 
+		asDialogWindow 
 			centeredRelativeTo: context window;
 			open
 ]

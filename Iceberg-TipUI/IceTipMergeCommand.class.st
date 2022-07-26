@@ -31,7 +31,7 @@ IceTipMergeCommand >> execute [
 	(IceTipMergeBranchDialog 
 		newApplication: context application 
 		model: self repositoryModel) 
-		asModalWindow 
+		asDialogWindow 
 			centeredRelativeTo: context window;
 			open
 ]

@@ -28,7 +28,7 @@ IceTipCheckoutNewBranchCommand >> execute [
 		model: self repositoryModel)
 		commitish: self selectedCommit;
 		withResultDo: [ :branch | branch checkout ])
-		asModalWindow 
+		asDialogWindow 
 			centeredRelativeTo: context window;
 			open
 ]
