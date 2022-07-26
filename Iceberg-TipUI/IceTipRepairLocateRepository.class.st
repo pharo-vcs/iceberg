@@ -47,12 +47,12 @@ IceTipRepairLocateRepository class >> title [
 
 { #category : #executing }
 IceTipRepairLocateRepository >> basicExecute [
-
 	| dialog |
-	dialog := IceTipLocalRepositoryPanel new
-		          location:
-			          (self repository location ifNil: [ self defaultLocation ]);
-		          yourself.
+	
+	dialog := (IceTipLocalRepositoryPanel newApplication: context application)
+		location: (self repository location ifNil: [ self defaultLocation ]);
+		yourself.
+	
 	dialog openDialog okAction: [ 
 		dialog validate.
 		self repositoryModel updateLocation: dialog location.

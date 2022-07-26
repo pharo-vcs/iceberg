@@ -41,7 +41,9 @@ IceTipRepairRepositoryDialog class >> onRepository: aRepository [
 IceTipRepairRepositoryDialog >> accept [
 
 	self closeWindow.
-	selectedOption executeWith: self model
+	selectedOption 
+		executeContext: self
+		model: self model
 ]
 
 { #category : #'accessing - ui' }

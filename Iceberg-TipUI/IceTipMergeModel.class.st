@@ -16,9 +16,9 @@ IceTipMergeModel >> calculateDiff [
 
 { #category : #actions }
 IceTipMergeModel >> executeMergeActionAndThen: aBlock [ 
-
 	<noCache>
-	IceTipStandardAction new 
+	
+	(IceTipStandardAction newContext: self)
 		repository: self repository;
 		message: ('Merging {1} into {2}' format: { self targetName. self repositoryName });
 		onSuccessRepositoryModified;

@@ -44,6 +44,9 @@ IceTipRepairProject class >> title [
 
 { #category : #executing }
 IceTipRepairProject >> basicExecute [
-	(IceTipEditProjectDialog on: (IceBasicProject onRepository: self repositoryModel entity)) 
+
+	(IceTipEditProjectDialog 
+		newApplication: context application 
+		model: (IceBasicProject onRepository: self repositoryModel entity)) 
 		openNonModal
 ]

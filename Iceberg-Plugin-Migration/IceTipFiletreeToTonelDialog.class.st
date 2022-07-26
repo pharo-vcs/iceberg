@@ -30,11 +30,11 @@ IceTipFiletreeToTonelDialog class >> defaultLayout [
 { #category : #actions }
 IceTipFiletreeToTonelDialog >> accept [
 	
-	IceTipStandardAction new 
+	(IceTipStandardAction newContext: self)
 		repository: self repository; 
 		message: ('Migrating {1} sources to tonel' format: { self repository name });
 		onSuccessRepositoryModified;
-		onSuccess: [ UIManager default inform: 'Sources migrated!' ];
+		onSuccess: [ self window inform: 'Sources migrated!' ];
 		execute: [ self doAccept ]
 ]
 

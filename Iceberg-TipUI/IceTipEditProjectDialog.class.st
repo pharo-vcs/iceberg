@@ -52,7 +52,7 @@ IceTipEditProjectDialog class >> defaultLayout [
 { #category : #actions }
 IceTipEditProjectDialog >> accept [	
 	
-	IceTipStandardAction new 
+	(IceTipStandardAction newContext: self)
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;

@@ -123,7 +123,7 @@ IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anArray [
 
-	IceTipStandardAction new
+	(IceTipStandardAction newContext: context)
 		repository: self repository;
 		message: ('Installing baseline {1} of {2}' format: { 
 			icePackage metacelloBaselineName.

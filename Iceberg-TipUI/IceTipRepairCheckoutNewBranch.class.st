@@ -52,12 +52,13 @@ IceTipRepairCheckoutNewBranch class >> title [
 
 { #category : #executing }
 IceTipRepairCheckoutNewBranch >> basicExecute [
-
 	"Fetching remotes is necessary in case the current image commit is not in the repository.
 	Could be optimized"
 
 	self fetchAllRemotes.
-	(IceTipCheckoutBranchDialog on: self repositoryModel)
+	(IceTipCheckoutBranchDialog 
+		newApplication: context application 
+		model: self repositoryModel)
 		withOnlyNewBranch;
 		openDialog
 ]

@@ -19,7 +19,7 @@ IceTipMergeBranchPanel >> beSwitchAndMerge [
 { #category : #actions }
 IceTipMergeBranchPanel >> doAccept [
 
-	IceTipStandardAction new 
+	(IceTipStandardAction newContext: self)
 		repository: self model entity; 
 		message: ('Verifying merge from {1}' format: { self selectedBranch name });
 		onSuccess: [ self selectedBranch previewMerge: self mergeType ];

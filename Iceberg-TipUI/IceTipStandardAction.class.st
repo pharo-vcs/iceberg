@@ -7,12 +7,21 @@ Class {
 	#name : #IceTipStandardAction,
 	#superclass : #IceTipAction,
 	#instVars : [
+		'context',
 		'message',
 		'successAnnounceBlock',
 		'actionBlock'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
+
+{ #category : #'instance creation' }
+IceTipStandardAction class >> newContext: aContext [
+
+	^ self new 
+		context: aContext;
+		yourself
+]
 
 { #category : #accessing }
 IceTipStandardAction >> action [
@@ -31,6 +40,18 @@ IceTipStandardAction >> basicExecute [
 		during: actionBlock.
 	successAnnounceBlock 
 		ifNotNil: [ Iceberg announcer announce: successAnnounceBlock value ]
+]
+
+{ #category : #accessing }
+IceTipStandardAction >> context [
+
+	^ context
+]
+
+{ #category : #accessing }
+IceTipStandardAction >> context: aContext [
+
+	context := aContext
 ]
 
 { #category : #executing }

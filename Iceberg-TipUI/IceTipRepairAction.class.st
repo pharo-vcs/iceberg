@@ -6,7 +6,8 @@ Class {
 	#name : #IceTipRepairAction,
 	#superclass : #IceTipAction,
 	#instVars : [
-		'repositoryModel'
+		'repositoryModel',
+		'context'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
@@ -50,6 +51,26 @@ IceTipRepairAction class >> title [
 	^ self subclassResponsibility
 ]
 
+{ #category : #accessing }
+IceTipRepairAction >> context [
+
+	^ context
+]
+
+{ #category : #private }
+IceTipRepairAction >> context: aContext [
+
+	context := aContext
+]
+
+{ #category : #executing }
+IceTipRepairAction >> executeContext: aContext model: aRepositoryModel [
+
+	self context: aContext.
+	self repositoryModel: aRepositoryModel.
+	self execute
+]
+
 { #category : #executing }
 IceTipRepairAction >> executeWith: aRepositoryModel [
 	self repositoryModel: aRepositoryModel.
@@ -90,7 +111,7 @@ IceTipRepairAction >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 IceTipRepairAction >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]

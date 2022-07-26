@@ -23,7 +23,7 @@ IceTipCalculateDirtyPackagesCommand >> canBeExecuted [
 { #category : #executing }
 IceTipCalculateDirtyPackagesCommand >> execute [
 
-	IceTipStandardAction new
+	(IceTipStandardAction newContext: context)
 		repository: self item entity;
 		message: 'Recalculating Dirty Packages';
 		onSuccessRepositoryModified;
