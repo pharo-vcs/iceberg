@@ -7,11 +7,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #accessing }
-IceTipTreeItem >> descriptionWithDecoration [
-	^ self model descriptionWithDecoration
-]
-
 { #category : #testing }
 IceTipTreeItem >> isSameAs: aNode [
 	^ aNode species = self species 

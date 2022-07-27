@@ -29,8 +29,16 @@ IceTipTagModel >> delete [
 ]
 
 { #category : #accessing }
+IceTipTagModel >> description [
+	
+	^ self entity name
+]
+
+{ #category : #TOREMOVE }
 IceTipTagModel >> descriptionWithDecoration [
 	
+	self halt.
+
 	^ self entity name
 ]
 

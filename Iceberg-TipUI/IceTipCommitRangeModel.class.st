@@ -18,8 +18,10 @@ IceTipCommitRangeModel >> commitModels [
 		
 ]
 
-{ #category : #accessing }
+{ #category : #TOREMOVE }
 IceTipCommitRangeModel >> descriptionWithDecoration [
+
+	self halt.
 	^ self name
 ]
 

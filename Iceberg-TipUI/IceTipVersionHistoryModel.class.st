@@ -28,7 +28,16 @@ IceTipVersionHistoryModel >> commitModels [
 ]
 
 { #category : #accessing }
+IceTipVersionHistoryModel >> description [
+
+	^ self name
+]
+
+{ #category : #TOREMOVE }
 IceTipVersionHistoryModel >> descriptionWithDecoration [
+
+	self halt.
+
 	^ self name
 ]
 

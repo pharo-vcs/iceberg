@@ -70,33 +70,28 @@ IceTipVersionHistoryBrowser >> initializeCommitList [
 
 	commitList
 		beResizable;
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Timestamp';
-				evaluated: [ :each | each timeStamp asLocalStringYMDHM ];
-				width: 110 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Commit';
-				evaluated: #shortId;
-				width: 60 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Author';
-				evaluated: #author;
-				width: 150 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Description';
-				evaluated: #descriptionWithDecoration;
-				yourself).
+		addColumn: (SpStringTableColumn new
+			title: 'Timestamp';
+			evaluated: [ :each | each timeStamp asLocalStringYMDHM ];
+			width: 110;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Commit';
+			evaluated: #shortId;
+			width: 60;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Author';
+			evaluated: #author;
+			width: 150;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Description';
+			evaluated: #shortDescription;
+			yourself).
 				
 	commitList whenSelectionChangedDo: [ :aSelection |
-		self selectionChanged: aSelection selectedItem ].
-
+		self selectionChanged: aSelection selectedItem ]
 ]
 
 { #category : #initialization }

@@ -95,9 +95,9 @@ IceTipHistoryBrowser >> initializeCommitList [
 			title: 'Author';
 			width: 180;
 			yourself);
-		addColumn: ((SpStringTableColumn evaluated: [ :each | 
-				each descriptionWithDecoration asString lines first ])
+		addColumn: (SpStringTableColumn new 
 			title: 'Description';
+			evaluated: [ :each | each shortDescription ];
 			yourself);
 		whenSelectionChangedDo: [ :aSelection | self selectionChanged: aSelection selectedItem ]
 ]

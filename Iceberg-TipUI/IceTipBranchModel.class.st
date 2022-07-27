@@ -63,7 +63,25 @@ IceTipBranchModel >> delete [
 ]
 
 { #category : #accessing }
+IceTipBranchModel >> description [
+
+	^ self entity isRemote 
+		ifTrue: [ self entity shortName ]
+		ifFalse: [ self name ]
+]
+
+{ #category : #accessing }
+IceTipBranchModel >> descriptionDecorator [
+		
+	self entity isHead ifTrue: [ ^ IceTipDescriptionDecorator head ].
+	^ super descriptionDecorator
+]
+
+{ #category : #TOREMOVE }
 IceTipBranchModel >> descriptionWithDecoration [
+
+	self halt.
+
 	^ self addDecorationTo: (self entity isRemote 
 		ifTrue: [ self entity shortName ]
 		ifFalse: [ self name ])

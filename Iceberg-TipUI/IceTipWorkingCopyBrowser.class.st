@@ -129,12 +129,20 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 			beNotExpandable;
 			evaluated: [ :aPackage | self iconFor: aPackage ];
 			yourself);
-		addColumn: (SpStringTableColumn
-			title: 'Name'
-			evaluated: #descriptionWithDecoration);
-		addColumn: (SpStringTableColumn
-			title: 'Status'
-			evaluated: #statusWithDecoration);
+		addColumn: (SpStringTableColumn new
+			title: 'Name';
+			evaluated: #description;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];			
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Status';
+			evaluated: #status;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];			
+			yourself);
 		activateOnDoubleClick;
 		whenActivatedDo: [ :selection | self browsePackage: selection selectedItem ]
 ]

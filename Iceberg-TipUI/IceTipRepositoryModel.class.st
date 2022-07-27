@@ -155,9 +155,29 @@ IceTipRepositoryModel >> delete [
 ]
 
 { #category : #accessing }
+IceTipRepositoryModel >> description [
+	| text |
+	
+	text := self displayString.
+	self entity isModified 
+		ifTrue: [ text := '*', text ].
+	^ text
+]
+
+{ #category : #accessing }
+IceTipRepositoryModel >> descriptionDecorator [
+
+	self entity isModified 
+		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
+	^ super descriptionDecorator
+]
+
+{ #category : #TOREMOVE }
 IceTipRepositoryModel >> descriptionWithDecoration [
 	| text |
 	
+	self halt.
+
 	text := self displayString asText.
 	self entity isModified 
 		ifTrue: [ text := ('*', text) asText makeAllColor: self colorModified ].
@@ -398,8 +418,9 @@ IceTipRepositoryModel >> shortCommitId [
 	^ [self entity headCommit shortId] on: Error do: [ nil ].
 ]
 
-{ #category : #accessing }
+{ #category : #TOREMOVE }
 IceTipRepositoryModel >> status [
+	self halt.
 	[
 		| status incoming outgoing | 
 
@@ -437,6 +458,66 @@ IceTipRepositoryModel >> status [
 ]
 
 { #category : #accessing }
+IceTipRepositoryModel >> statusDecorator [
+
+	[
+		self entity isMissing 
+			ifTrue: [ ^ IceTipStatusDecorator error ].
+		entity workingCopy workingCopyState isUnknownCommitState 
+			ifTrue: [ ^ IceTipStatusDecorator error ].	
+		entity workingCopy isDetached 
+			ifTrue: [  ^ IceTipStatusDecorator error ].
+		(entity head isDetached and: [ entity head tags notEmpty ])
+			ifTrue: [ ^ IceTipStatusDecorator warning ].
+		entity head isDetached 
+			ifTrue: [ ^ IceTipStatusDecorator error ].
+		entity workingCopy project isUnborn
+			ifTrue: [ ^ IceTipStatusDecorator error ] 
+	] 
+	on: Error 
+	do: [ :e | ^ IceTipStatusDecorator error ].
+	
+	^ IceTipStatusDecorator none
+]
+
+{ #category : #accessing }
+IceTipRepositoryModel >> statusString [
+	[
+		| status incoming outgoing | 
+
+		self verifyDirectoryStructureIfMissing: [ :message | ^ message asString ].
+		
+		entity workingCopy workingCopyState isUnknownCommitState 
+			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
+		entity workingCopy isDetached 
+			ifTrue: [  ^ 'Detached Working Copy' ].
+		(entity head isDetached and: [ entity head tags notEmpty ])
+			ifTrue: [ ^ 'Detached HEAD' ].
+		entity head isDetached 
+			ifTrue: [ ^ 'Detached HEAD' ].
+
+		entity workingCopy project isUnborn
+			ifTrue: [ ^ 'No Project Found' ].
+
+		self isLoaded ifFalse: [ ^ 'Not loaded' ].
+
+		status := OrderedCollection new.
+		entity isModified ifTrue: [ status add: 'Uncommited changes' ].
+		
+		incoming := self incomingCommits size.
+		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].
+		
+		outgoing := self outgoingCommits size.
+		outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
+
+		status ifEmpty: [ status add: 'Up to date' ].
+		
+		^ ', ' join: status ] 
+	on: Error 
+	do: [ :e | ^ e description ]
+]
+
+{ #category : #TOREMOVE }
 IceTipRepositoryModel >> statusText [
 	
 	^ self status asText

@@ -85,3 +85,15 @@ IceTipWorkingCopyModel >> sortingStrategy [
 IceTipWorkingCopyModel >> status [
 	^ self repositoryModel status
 ]
+
+{ #category : #accessing }
+IceTipWorkingCopyModel >> statusDecorator [
+
+	^ self repositoryModel statusDecorator
+]
+
+{ #category : #accessing }
+IceTipWorkingCopyModel >> statusString [
+
+	^ self repositoryModel statusString
+]

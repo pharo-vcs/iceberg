@@ -54,7 +54,7 @@ IceTipSelectRemotePresenter >> initializePresenters [
 		yourself.
 
 	remoteList := self newDropList
-		display: [ :each | each descriptionWithDecoration ];
+		display: [ :each | each shortDescription ];
 		yourself.
 
 	addButton := self newButton

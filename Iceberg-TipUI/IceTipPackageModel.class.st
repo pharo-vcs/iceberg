@@ -25,9 +25,32 @@ IceTipPackageModel >> browseRepositoryVersion [
 ]
 
 { #category : #accessing }
-IceTipPackageModel >> descriptionWithDecoration [
+IceTipPackageModel >> description [
 	| text |
 	
+	text := self displayString.
+	self entity isModified 
+		ifTrue: [ text := '*', text ].
+	^ text
+]
+
+{ #category : #accessing }
+IceTipPackageModel >> descriptionDecorator [
+
+	self entity isModified 
+		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
+	self entity isLoaded
+		ifFalse:[ ^ IceTipDescriptionDecorator notLoaded ].
+	
+	^ super descriptionDecorator
+]
+
+{ #category : #TOREMOVE }
+IceTipPackageModel >> descriptionWithDecoration [
+	| text |
+
+	self halt.
+
 	text := self displayString asText.
 	self entity isLoaded
 		ifFalse:[ text := text makeAllColor: self colorNotLoaded ].
@@ -111,6 +134,14 @@ IceTipPackageModel >> status [
 ]
 
 { #category : #accessing }
+IceTipPackageModel >> statusDecorator [
+
+	self entity isLoaded 
+		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
+	^ super statusDecorator
+]
+
+{ #category : #TOREMOVE }
 IceTipPackageModel >> statusWithDecoration [
 	| text |
 	
