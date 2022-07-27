@@ -50,8 +50,8 @@ IceTipTreeGroup >> children: aCollection [
 ]
 
 { #category : #accessing }
-IceTipTreeGroup >> descriptionWithDecoration [
-	^ self name asText
+IceTipTreeGroup >> description [
+	^ self name
 ]
 
 { #category : #accessing }

@@ -39,14 +39,6 @@ IceTipRemoteModel >> description [
 	^ '{1} <{2}>' format: { self name. self entity url }
 ]
 
-{ #category : #TOREMOVE }
-IceTipRemoteModel >> descriptionWithDecoration [
-
-	self halt.
-
-	^ '{1} <{2}>' format: { self name. self entity url }
-]
-
 { #category : #actions }
 IceTipRemoteModel >> fetch [
 	<noCache>

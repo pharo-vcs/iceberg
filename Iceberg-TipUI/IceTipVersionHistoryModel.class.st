@@ -33,14 +33,6 @@ IceTipVersionHistoryModel >> description [
 	^ self name
 ]
 
-{ #category : #TOREMOVE }
-IceTipVersionHistoryModel >> descriptionWithDecoration [
-
-	self halt.
-
-	^ self name
-]
-
 { #category : #accessing }
 IceTipVersionHistoryModel >> name [
 	^ '{1}>>{2}' format: { self entity origin name. self entity selector }

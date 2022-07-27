@@ -58,14 +58,6 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 
 ]
 
-{ #category : #layout }
-IceTipRepositoriesBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #repositoryList;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipRepositoriesBrowser class >> iconForWorldMenu [
 
@@ -101,6 +93,14 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		yourself
 ]
 
+{ #category : #layout }
+IceTipRepositoriesBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: repositoryList;
+		  yourself
+]
+
 { #category : #initialization }
 IceTipRepositoriesBrowser >> iconForWindow [
 
@@ -120,16 +120,25 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 	repositoryList
 		showColumnHeaders;
 		beResizable;
-		addColumn: ((SpStringTableColumn evaluated: #descriptionWithDecoration)
-			width: 200;
+		addColumn: (SpStringTableColumn new 
 			title: self titleForWindow;
-			yourself);
-		addColumn: ((SpStringTableColumn evaluated: #statusText)
+			evaluated: #description;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];
 			width: 200;
-			title: #Status;
 			yourself);
-		addColumn: ((SpStringTableColumn evaluated: #branchNameText)
-			title: #Branch;
+		addColumn: (SpStringTableColumn new 
+			title: 'Status';
+			evaluated: #status;
+			displayColor: [ :each | each statusDecorator color ];
+			displayBold: [ :each | each statusDecorator isBold ];
+			displayItalic: [ :each | each statusDecorator isItalic ];
+			width: 200;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Branch';
+			evaluated: #branchName;
 			yourself);
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
@@ -196,7 +205,7 @@ IceTipRepositoriesBrowser >> titleForWindow [
 	^ 'Repositories'
 ]
 
-{ #category : #private }
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> updatePresenter [
 
 	self refresh

@@ -42,8 +42,14 @@ IceTipRepairRepositoryDialog >> accept [
 
 	self closeWindow.
 	selectedOption 
-		executeContext: self
+		executeWithContext: self
 		model: self model
+]
+
+{ #category : #'api - focus' }
+IceTipRepairRepositoryDialog >> defaultKeyboardFocus [
+
+	^ optionsList
 ]
 
 { #category : #'accessing - ui' }
@@ -79,8 +85,8 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 		hideColumnHeaders;
 		addColumn: (SpCompositeTableColumn new
 			addColumn: (SpImageTableColumn new
-				width: 20;
 				evaluated: #icon;
+				beNotExpandable;
 				yourself);
 			addColumn: (SpStringTableColumn new
 				evaluated: #title;
@@ -99,9 +105,7 @@ IceTipRepairRepositoryDialog >> initializePresenters [
 		addStyle: 'iceTipReadonly';
 		beWrapWord;
 		yourself.
-	optionsList := self newTable
-		disable;
-		yourself.
+	optionsList := self newTable.
 	detailPanel := self newText
 		beNotEditable;
 		beWrapWord;

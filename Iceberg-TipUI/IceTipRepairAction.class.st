@@ -64,15 +64,9 @@ IceTipRepairAction >> context: aContext [
 ]
 
 { #category : #executing }
-IceTipRepairAction >> executeContext: aContext model: aRepositoryModel [
+IceTipRepairAction >> executeWithContext: aContext model: aRepositoryModel [
 
 	self context: aContext.
-	self repositoryModel: aRepositoryModel.
-	self execute
-]
-
-{ #category : #executing }
-IceTipRepairAction >> executeWith: aRepositoryModel [
 	self repositoryModel: aRepositoryModel.
 	self execute
 ]

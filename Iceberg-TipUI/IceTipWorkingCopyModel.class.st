@@ -91,9 +91,3 @@ IceTipWorkingCopyModel >> statusDecorator [
 
 	^ self repositoryModel statusDecorator
 ]
-
-{ #category : #accessing }
-IceTipWorkingCopyModel >> statusString [
-
-	^ self repositoryModel statusString
-]

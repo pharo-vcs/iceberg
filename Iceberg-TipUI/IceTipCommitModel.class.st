@@ -79,11 +79,12 @@ IceTipCommitModel >> datetime [
 ]
 
 { #category : #accessing }
-IceTipCommitModel >> descriptionWithDecoration [
+IceTipCommitModel >> description [
 	| text |
-	text := (', ' join: self entity tagNames) asText allBold makeAllColor: Color gray.
-	text ifNotEmpty: [ text := text , ' ' ].
-	text append: self entity comment asText.
+	
+	text := ', ' join: (self entity tagNames collect: [ :each | '[', each, ']' ]).
+	text ifNotEmpty: [ text := text, ' ' ].
+	text := text, self entity comment asText.
 	^ text
 ]
 

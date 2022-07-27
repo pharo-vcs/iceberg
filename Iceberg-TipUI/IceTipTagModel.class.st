@@ -34,14 +34,6 @@ IceTipTagModel >> description [
 	^ self entity name
 ]
 
-{ #category : #TOREMOVE }
-IceTipTagModel >> descriptionWithDecoration [
-	
-	self halt.
-
-	^ self entity name
-]
-
 { #category : #accessing }
 IceTipTagModel >> name [
 	

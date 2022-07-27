@@ -31,21 +31,6 @@ IceTipEntityModel class >> repositoryModel: aRepositoryModel on: anObject [
 		yourself
 ]
 
-{ #category : #TOREMOVE }
-IceTipEntityModel >> colorModified [
-	^ Smalltalk ui theme successTextColor
-]
-
-{ #category : #TOREMOVE }
-IceTipEntityModel >> colorNotLoaded [
-	^ Smalltalk ui theme disabledTextColor
-]
-
-{ #category : #TOREMOVE }
-IceTipEntityModel >> colorWarning [
-	^ Smalltalk ui theme warningTextColor
-]
-
 { #category : #tagging }
 IceTipEntityModel >> createTag: aString thenDo: aBlockClosure [ 
 	<noCache>
@@ -71,15 +56,6 @@ IceTipEntityModel >> description [
 IceTipEntityModel >> descriptionDecorator [
 	
 	^ IceTipTextDecorator none
-]
-
-{ #category : #TOREMOVE }
-IceTipEntityModel >> descriptionWithDecoration [
-	"A decorated description of this entity. 
-	 It can return a text (in case decorations apply) or a simple string."
-	self halt.
-
-	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -120,13 +96,8 @@ IceTipEntityModel >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]
 
-{ #category : #TOREMOVE }
+{ #category : #accessing }
 IceTipEntityModel >> shortDescription [
 
 	^ self description asString lines first
-]
-
-{ #category : #TOREMOVE }
-IceTipEntityModel >> toWarningMessage: aString [
-	^ aString asText allBold makeAllColor: self colorWarning
 ]

@@ -45,20 +45,6 @@ IceTipPackageModel >> descriptionDecorator [
 	^ super descriptionDecorator
 ]
 
-{ #category : #TOREMOVE }
-IceTipPackageModel >> descriptionWithDecoration [
-	| text |
-
-	self halt.
-
-	text := self displayString asText.
-	self entity isLoaded
-		ifFalse:[ text := text makeAllColor: self colorNotLoaded ].
-	self entity isModified 
-		ifTrue: [ text := ('*', text) asText makeAllColor: self colorModified ].
-	^ text
-]
-
 { #category : #testing }
 IceTipPackageModel >> isLoaded [
 	^ self entity isLoaded
@@ -139,16 +125,6 @@ IceTipPackageModel >> statusDecorator [
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
-]
-
-{ #category : #TOREMOVE }
-IceTipPackageModel >> statusWithDecoration [
-	| text |
-	
-	text := self status asText.
-	self entity isLoaded 
-		ifFalse: [ text := text makeAllColor: self colorNotLoaded ].
-	^ text
 ]
 
 { #category : #actions }

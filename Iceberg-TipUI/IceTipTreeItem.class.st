@@ -13,6 +13,12 @@ IceTipTreeItem >> description [
 	^ self model description
 ]
 
+{ #category : #accessing }
+IceTipTreeItem >> descriptionDecorator [
+
+	^ self model descriptionDecorator
+]
+
 { #category : #testing }
 IceTipTreeItem >> isSameAs: aNode [
 	^ aNode species = self species 
@@ -27,5 +33,6 @@ IceTipTreeItem >> shortDescription [
 
 { #category : #accessing }
 IceTipTreeItem >> traversingDo: aBlock parents: anArray [
+
 	aBlock cull: self cull: anArray
 ]

@@ -46,7 +46,7 @@ IceTipWorkingCopyStatusBar >> model: aModel [
 		ifNil: [ self refreshWithoutCommitId: aModel ]
 		ifNotNil: [ self refreshWithCommitId: aModel ].
 	statusLabel 
-		label: aModel statusString;
+		label: aModel status;
 		displayColor: [ :aString | aModel statusDecorator color ];
 		displayBold: [ :aString | aModel statusDecorator isBold ].
 
