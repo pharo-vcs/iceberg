@@ -7,10 +7,22 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
+{ #category : #accessing }
+IceTipTreeItem >> description [
+
+	^ self model description
+]
+
 { #category : #testing }
 IceTipTreeItem >> isSameAs: aNode [
 	^ aNode species = self species 
 		and: [ self model = aNode model ]
+]
+
+{ #category : #accessing }
+IceTipTreeItem >> shortDescription [
+
+	^ self model shortDescription
 ]
 
 { #category : #accessing }
