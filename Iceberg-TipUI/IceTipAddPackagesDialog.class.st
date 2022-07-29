@@ -27,7 +27,7 @@ IceTipAddPackagesDialog >> accept [
 	"ensure window goes away (in case accept comes from a keybinding and not the ok button)"
 	self closeWindow.
 	selectedPackages ifEmpty: [ 
-		UIManager default inform: 'No packages selected.'.
+		self window inform: 'No packages selected.'.
 		^ self ].
 	(self model newAddPackagesAction: selectedPackages)
 		executeWithContext: self

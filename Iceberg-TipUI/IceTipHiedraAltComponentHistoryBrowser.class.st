@@ -107,7 +107,6 @@ IceTipHiedraAltComponentHistoryBrowser >> refreshCommitList [
 	commitModels := self model commitModels.
 	commitList model: (SpGeneratorListModel on: [ :generator | 
 		commitModels withIndexDo: [ :each :index |
-			index crTrace.
 			generator yield: (self newCommitRow: index commit: each) ] ]).
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 ]

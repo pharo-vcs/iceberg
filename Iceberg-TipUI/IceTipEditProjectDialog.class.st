@@ -81,10 +81,10 @@ IceTipEditProjectDialog >> addDirectory [
 
 	| newDirectoryName newDirectory previousSelection |
 	
-	newDirectoryName := UIManager default
-		textEntry: 'Enter the new Directory name'
-		title: 'Create a directory'.
-	
+	newDirectoryName := self application newRequest
+		title: 'Create a directory';
+		label: 'Enter the new Directory name';
+		openModalWithParent: self window.
 	newDirectoryName ifNil: [ ^ self ].
 	
 	previousSelection := selectedDirectoryPath.
@@ -94,8 +94,7 @@ IceTipEditProjectDialog >> addDirectory [
 		ifFalse: [ newDirectory createDirectory ].
 	
 	sourceDirectoryTree roots: { self model fileSystem }.
-	self expandAndSelect: previousSelection.
-
+	self expandAndSelect: previousSelection
 ]
 
 { #category : #initialization }

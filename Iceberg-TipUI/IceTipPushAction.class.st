@@ -9,8 +9,9 @@ Class {
 
 { #category : #executing }
 IceTipPushAction >> basicExecute [
-	UIManager default 
-		informUser: 'Pushing...' 
+	
+	context window 
+		inform: 'Pushing...' 
 		during: [ self repository push ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 	Iceberg announcer announce: (IcePushed for: self repository).
