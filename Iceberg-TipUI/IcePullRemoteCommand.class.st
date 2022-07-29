@@ -12,6 +12,7 @@ Class {
 
 { #category : #execute }
 IcePullRemoteCommand >> execute [
+
 	self repository branch pullFrom: self remote.
 	self beSuccess
 ]

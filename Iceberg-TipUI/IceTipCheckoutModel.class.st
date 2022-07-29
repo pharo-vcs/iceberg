@@ -41,18 +41,6 @@ IceTipCheckoutModel >> checkoutStrategy: aStrategy [
 	checkoutStrategy := aStrategy
 ]
 
-{ #category : #actions }
-IceTipCheckoutModel >> executeCheckoutActionAndThen: aBlock [ 
-	
-	<noCache>
-	IceTipStandardAction new 
-		repository: self repository;
-		message: ('Checking out {1} from {2}' format: { self targetName. self repositoryName });
-		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self checkout ]
-]
-
 { #category : #testing }
 IceTipCheckoutModel >> hasNewPackages [
 	
@@ -65,6 +53,18 @@ IceTipCheckoutModel >> initialize [
 	super initialize.
 	checkoutStrategies := IceCheckoutStrategy allStrategies.
 	checkoutStrategy := checkoutStrategies first.
+]
+
+{ #category : #actions }
+IceTipCheckoutModel >> newCheckoutAction [ 
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self repository;
+		message: ('Checking out {1} from {2}' format: { self targetName. self repositoryName });
+		onSuccessRepositoryModified;
+		action: [ self checkout ];
+		yourself
 ]
 
 { #category : #accessing }

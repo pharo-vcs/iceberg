@@ -80,12 +80,8 @@ IceTipCommitModel >> datetime [
 
 { #category : #accessing }
 IceTipCommitModel >> description [
-	| text |
-	
-	text := ', ' join: (self entity tagNames collect: [ :each | '[', each, ']' ]).
-	text ifNotEmpty: [ text := text, ' ' ].
-	text := text, self entity comment asText.
-	^ text
+
+	^ self entity comment
 ]
 
 { #category : #accessing }
@@ -196,6 +192,18 @@ IceTipCommitModel >> name [
 { #category : #accessing }
 IceTipCommitModel >> shortId [
 	^ self entity shortId
+]
+
+{ #category : #accessing }
+IceTipCommitModel >> tagDecorator [
+	
+	^ IceTipTagDecorator uniqueInstance
+]
+
+{ #category : #accessing }
+IceTipCommitModel >> tagNames [
+
+	^ self entity tagNames
 ]
 
 { #category : #accessing }

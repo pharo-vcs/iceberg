@@ -44,3 +44,8 @@ IceTipMergeType class >> uniqueInstance [
 IceTipMergeType >> mergeOn: aModel then: aBlock [
 	self subclassResponsibility
 ]
+
+{ #category : #executing }
+IceTipMergeType >> newMergeAction: aModel [
+	self subclassResponsibility
+]

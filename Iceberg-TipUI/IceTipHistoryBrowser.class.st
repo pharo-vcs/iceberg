@@ -165,7 +165,7 @@ IceTipHistoryBrowser >> titleForWindow [
 { #category : #initialization }
 IceTipHistoryBrowser >> updatePresenter [
 
-	self refreshCommitList
+	self refresh
 ]
 
 { #category : #events }

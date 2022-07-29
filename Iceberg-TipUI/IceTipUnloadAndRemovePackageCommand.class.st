@@ -36,7 +36,7 @@ IceTipUnloadAndRemovePackageCommand >> execute [
 	(IceTipRemovePackageDialog 
 		newApplication: context application 
 		model: self packageModel) 
-		asDialogWindow 
+		asModalWindow 
 			centeredRelativeTo: context window;
 			open
 ]

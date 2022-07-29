@@ -22,18 +22,6 @@ IceTipBranchModel >> checkoutStrategies [
 	^ IceCheckoutStrategy allStrategies
 ]
 
-{ #category : #actions }
-IceTipBranchModel >> checkoutWithStrategy: aCheckoutStrategy then: aBlock [
-	<noCache>
-	
-	IceTipStandardAction new 
-		repository: self entity repository; 
-		message: ('Checking out branch {1} from {2}' format: { self name. self repositoryName });
-		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self entity checkoutWithStrategy: aCheckoutStrategy ]
-]
-
 { #category : #accessing }
 IceTipBranchModel >> commitModels [
 	| commits |
@@ -49,17 +37,6 @@ IceTipBranchModel >> commitModels [
 { #category : #accessing }
 IceTipBranchModel >> commits [
 	self shouldBeImplemented.
-]
-
-{ #category : #actions }
-IceTipBranchModel >> delete [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self repositoryModel entity;
-		message: ('Removing branch {1}' format: { self name });
-		onSuccessRepositoryModified;
-		execute: [ self entity delete ]
 ]
 
 { #category : #accessing }
@@ -107,21 +84,57 @@ IceTipBranchModel >> isLocal [
 	^ self entity isLocal
 ]
 
-{ #category : #actions }
-IceTipBranchModel >> mergeThen: aBlock [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self repositoryModel entity;
-		message: ('Merging branch {1} from {2}' format: { self name. self repositoryName });
-		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self entity merge ]
-]
-
 { #category : #accessing }
 IceTipBranchModel >> name [
 	^ self entity name
+]
+
+{ #category : #actions }
+IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
+	<noCache>
+	
+	^ IceTipStandardAction new 
+		repository: self entity repository; 
+		message: ('Checking out branch {1} from {2}' format: { self name. self repositoryName });
+		onSuccessRepositoryModified;
+		action: [ self entity checkoutWithStrategy: aCheckoutStrategy ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipBranchModel >> newDeleteAction [
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self repositoryModel entity;
+		message: ('Removing branch {1}' format: { self name });
+		onSuccessRepositoryModified;
+		action: [ self entity delete ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipBranchModel >> newDirectMergeAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self repositoryModel entity;
+		message: ('Merging branch {1} from {2}' format: { self name. self repositoryName });
+		onSuccessRepositoryModified;
+		action: [ self entity merge ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipBranchModel >> newSwitchAndMergeAction [
+	<noCache>
+
+	^ IceTipStandardAction new
+		repository: self entity repository; 
+		message: ('Merging branch {1} from {2}' format: { self name. self repositoryName });
+		onSuccessRepositoryModified;
+		action: [ self entity switchAndMergeWorkingCopy ];
+		yourself
 ]
 
 { #category : #actions }
@@ -169,16 +182,4 @@ IceTipBranchModel >> shortDescriptionWithDecoration [
 	^ self addDecorationTo: (self entity isRemote 
 		ifTrue: [ self name copyAfter: $/ ]
 		ifFalse: [ self name])
-]
-
-{ #category : #actions }
-IceTipBranchModel >> switchAndMergeThen: aBlock [
-	<noCache>
-
-	IceTipStandardAction new
-		repository: self entity repository; 
-		message: ('Merging branch {1} from {2}' format: { self name. self repositoryName });
-		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self entity switchAndMergeWorkingCopy ]
 ]

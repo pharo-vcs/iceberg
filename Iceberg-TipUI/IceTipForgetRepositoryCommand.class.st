@@ -26,7 +26,7 @@ IceTipForgetRepositoryCommand >> execute [
 	(IceTipRemoveRepositoryDialog 
 		newApplication: context application 
 		model: self repositoryModel)
-		asDialogWindow 
+		asModalWindow 
 			centeredRelativeTo: context window;
 			open		
 ]

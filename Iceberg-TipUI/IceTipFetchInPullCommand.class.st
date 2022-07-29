@@ -19,7 +19,7 @@ IceTipFetchInPullCommand class >> defaultName [
 { #category : #executing }
 IceTipFetchInPullCommand >> execute [
 
-	context model remoteModel fetch
+	context model remoteModel newFetchAction executeWithContext: self context
 
 ]
 

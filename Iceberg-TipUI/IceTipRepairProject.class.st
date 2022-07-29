@@ -45,8 +45,10 @@ IceTipRepairProject class >> title [
 { #category : #executing }
 IceTipRepairProject >> basicExecute [
 
-	(IceTipEditProjectDialog 
+	((IceTipEditProjectDialog 
 		newApplication: context application 
 		model: (IceBasicProject onRepository: self repositoryModel entity)) 
-		openNonModal
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]

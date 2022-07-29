@@ -28,9 +28,10 @@ IceTipRemoveRepositoryDialog class >> defaultLayout [
 { #category : #actions }
 IceTipRemoveRepositoryDialog >> accept [
 
-	self removeFileSystemCheckbox state
-		ifTrue: [ self model delete ]
-		ifFalse: [ self model forget ]
+	(self removeFileSystemCheckbox state
+		ifTrue: [ self model newDeleteAction  ]
+		ifFalse: [ self model newForgetAction ])
+		executeWithContext: self
 ]
 
 { #category : #'accessing - ui' }

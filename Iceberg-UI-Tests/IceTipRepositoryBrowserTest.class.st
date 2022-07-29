@@ -39,7 +39,8 @@ IceTipRepositoryBrowserTest >> testHasCorrectSideTreeBar [
 
 { #category : #testing }
 IceTipRepositoryBrowserTest >> testHasHiedraHistoryBrowser [
-	presenter historyPanel class = IceTipHiedraHistoryBrowser
+
+	presenter historyPanel class = IceTipHiedraAltHistoryBrowser
 ]
 
 { #category : #testing }

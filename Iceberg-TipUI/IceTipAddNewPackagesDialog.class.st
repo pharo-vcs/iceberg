@@ -34,9 +34,11 @@ IceTipAddNewPackagesDialog >> accept [
 		packages: selectedPackageNames;
 		yourself).
 		
-	checkoutModel executeCheckoutActionAndThen: [ 
-		self closeWindow.
-		checkoutPreviewWindow closeWindow ]
+	checkoutModel newCheckoutAction
+		onSuccess: [ 
+			self closeWindow.
+			checkoutPreviewWindow closeWindow ];
+		executeWithContext: self
 ]
 
 { #category : #accessing }

@@ -14,8 +14,10 @@ Class {
 IceTipHiedraHistoryBrowser >> initializeCommitList [
 	"Add the Hiedra column at the beginning. The Datasource has the logic to render it."
 
+	commitList addStyle: 'hiedra'.
 	commitList addColumn: (SpImageTableColumn new
 		evaluated: [ :each | hiedraColumnController cellMorphAtRow: (commitList items indexOf: each) ];
+		displayAlignment: [ :each | SpColumnAlignment left ];
 		width: 80;
 		yourself).
 	super initializeCommitList
@@ -39,11 +41,12 @@ IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
 			put: aCommit entity ancestorIds ].
 
 	hiedraColumnController ruler: (HiRulerBuilder
-		newRulerValues: (self model commitModels collect: #id) "Note: ids should keep the original order."
+		"Note: ids should keep the original order."
+		newRulerValues: (self model commitModels collect: #id) 
 		linksBlock: [ :id | ancestorIds at: id ]).
 
 	hiedraColumnController renderer 
-		rowHeight: 20; 
+		rowHeight: 22; 
 		cellWidth: 5.25
 ]
 

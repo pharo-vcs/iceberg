@@ -19,5 +19,5 @@ IceGitHubRemoveBranchesCommand >> execute [
 	^ IceGitHubRemoveBranchesAction new
 		  repository: self repository;
 		  remote: self remote;
-		  execute
+		  executeWithContext: context
 ]

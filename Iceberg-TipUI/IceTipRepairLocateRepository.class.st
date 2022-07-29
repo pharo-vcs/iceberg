@@ -53,10 +53,12 @@ IceTipRepairLocateRepository >> basicExecute [
 		location: (self repository location ifNil: [ self defaultLocation ]);
 		yourself.
 	
-	dialog openDialog okAction: [ 
-		dialog validate.
-		self repositoryModel updateLocation: dialog location.
-		true ]
+	dialog asDialogWindow 
+		okAction: [ 
+			dialog validate.
+			self repositoryModel updateLocation: dialog location.
+			true ];
+		open.
 ]
 
 { #category : #private }

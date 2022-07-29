@@ -55,23 +55,24 @@ IceTipPackageModel >> isModified [
 	^ self entity isModified
 ]
 
-{ #category : #actions }
-IceTipPackageModel >> load [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Loading package {1}' format: { self entity name });
-		onSuccessRepositoryModified;
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity load ] ]
-]
-
 { #category : #accessing }
 IceTipPackageModel >> name [
 	^ self entity name
+]
+
+{ #category : #actions }
+IceTipPackageModel >> newLoadAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Loading package {1}' format: { self entity name });
+		onSuccessRepositoryModified;
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity load ] ];
+		yourself
 ]
 
 { #category : #accessing }

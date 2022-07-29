@@ -53,8 +53,12 @@ IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 IceTipCheckoutPreviewBrowser >> doCheckout [
 
 	(self model hasNewPackages and: [ self model checkoutStrategy isLoadAlreadyLoadedStrategy ])
-		ifTrue: [ self openAddNewPackagesDialog ]
-		ifFalse:	[self model executeCheckoutActionAndThen: [ self closeWindow ]]
+		ifTrue: [ 
+			self openAddNewPackagesDialog ]
+		ifFalse:	[
+			self model newCheckoutAction 
+				onSuccess: [ self closeWindow ];
+				executeWithContext: self ]
 ]
 
 { #category : #initialization }
@@ -104,7 +108,7 @@ IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 		model: self model newPackages) 
 		checkoutModel: self model;
 		checkoutPreviewWindow: self)
-		asDialogWindow 
+		asModalWindow 
 			centeredRelativeTo: self window;
 			open
 ]

@@ -6,14 +6,36 @@ Class {
 	#name : #IceTipInteractiveErrorVisitor,
 	#superclass : #IceErrorVisitor,
 	#instVars : [
+		'context',
 		'repository'
 	],
 	#category : #'Iceberg-TipUI-Exceptions'
 }
 
 { #category : #'instance creation' }
+IceTipInteractiveErrorVisitor class >> newContext: aContext repository: aModel [
+
+	^ self new 
+		context: aContext;
+		repository: aModel;
+		yourself
+]
+
+{ #category : #'instance creation' }
 IceTipInteractiveErrorVisitor class >> on: aModel [
 	^ self new repository: aModel
+]
+
+{ #category : #accessing }
+IceTipInteractiveErrorVisitor >> context [
+
+	^ context
+]
+
+{ #category : #accessing }
+IceTipInteractiveErrorVisitor >> context: anObject [
+
+	context := anObject
 ]
 
 { #category : #accessing }
@@ -73,7 +95,12 @@ IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 	
-	(IceTipErrorDialog on: anError) openDialog
+	(IceTipErrorDialog 
+		newApplication: context application 
+		model: anError) 
+		asModalWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #visiting }
@@ -88,10 +115,13 @@ WARNING: If you have external files, you may need to verify the conflicts there.
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 
-	((IceTipGitUsernameAndEmailDialog on: self repository)
+	((IceTipGitUsernameAndEmailDialog 
+		newApplication: context application 
+		model: self repository)
 		onAccept: [ anError resume ];
-		openDialog)
-			modalRelativeTo: self currentWorld.
+		asModalWindow)
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #visiting }
@@ -148,7 +178,7 @@ You need to pull remote changes before continue and push your changes.' format: 
 		remote: anError remote;
 		yourself.
 
-	[ command execute ]
+	[ command executeWithContext: context ]
 	on: IceMergeAborted, IceShouldCommitBeforePull
 	do: [ :e |
 		self flag: #pharoTodo. "Refactor this" 
@@ -181,6 +211,7 @@ We recommend that you commit first and then pull incoming changes again.'
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitWorkingCopyDesynchronizedError: anError [
 	| solveStrategy command |
+
 	solveStrategy := UIManager default 
 		chooseFrom: #(
 			'Create new branch and commit' 
@@ -194,7 +225,7 @@ You need to solve this problem before you continue, please choose one of the str
 	solveStrategy ifNil: [ ^ self ].
 	(command := solveStrategy new) 
 		repository: self repository;
-		execute.
+		executeWithContext: context.
 	command isSuccess 
 		ifTrue: [ anError retry ]
 ]

@@ -72,9 +72,13 @@ IceTipCreateTagPanel >> currentCommitishLabel [
 IceTipCreateTagPanel >> doAccept [
 
 	self validate.
-	commitishToTag
-		createTag: self tagName
-		thenDo: [ :newBranch | callback ifNotNil: [ callback value: newBranch ] ]
+	(commitishToTag newCreateTagAction: self tagName) 
+		onSuccess: [ 
+			callback ifNotNil: [ 
+				callback value: (IceTag 
+					named: self tagName
+					inRepository: commitishToTag repository) ] ];
+		executeWithContext: self
 ]
 
 { #category : #'accessing - ui' }
@@ -195,10 +199,10 @@ IceTipCreateTagPanel >> minorButton [
 
 { #category : #accessing }
 IceTipCreateTagPanel >> openDialog [
-
-	^ super openDialog
+self halt.
+	^ self asDialogWindow
 		okAction: [ self accept ];
-		yourself
+		open
 ]
 
 { #category : #'accessing - ui' }

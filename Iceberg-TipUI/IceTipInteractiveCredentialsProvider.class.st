@@ -33,6 +33,9 @@ IceTipInteractiveCredentialsProvider >> obtainCredentials: credentialsToReturn [
 { #category : #private }
 IceTipInteractiveCredentialsProvider >> obtainPlaintextCredentials: credentialsToReturn [
 	| returnedCred |
+	
+	self halt.
+	
 	returnedCred := IceTipAskForPlaintextCredentialsModel new
 		credentialStore: self credentialStore;
 		askingHostname: remote host;

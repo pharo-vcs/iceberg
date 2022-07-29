@@ -77,13 +77,17 @@ IceGitHubCreatePullRequestModel class >> new [
 ]
 
 { #category : #'instance creation' }
-IceGitHubCreatePullRequestModel class >> repository: aRepository credentials: aCredentials headRemote: aRemote [
+IceGitHubCreatePullRequestModel class >> newApplication: anApplication 
+	repository: aRepository 
+	credentials: aCredentials 
+	headRemote: aRemote [
 
 	^ self basicNew
-		  initializeRepository: aRepository
-		  credentials: aCredentials
-		  headRemote: aRemote;
-		  yourself
+		application: anApplication;
+		initializeRepository: aRepository
+		  	credentials: aCredentials
+		  	headRemote: aRemote;
+		yourself
 ]
 
 { #category : #actions }

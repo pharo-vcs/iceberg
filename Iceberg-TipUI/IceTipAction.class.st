@@ -5,6 +5,7 @@ Class {
 	#name : #IceTipAction,
 	#superclass : #Object,
 	#instVars : [
+		'context',
 		'repository',
 		'successBlock'
 	],
@@ -23,11 +24,31 @@ IceTipAction >> basicExecute [
 
 ]
 
+{ #category : #accessing }
+IceTipAction >> context [
+
+	^ context
+]
+
+{ #category : #accessing }
+IceTipAction >> context: aContext [
+
+	context := aContext
+]
+
 { #category : #executing }
 IceTipAction >> execute [
+
 	self withErrorHandlingDo: [ 
 		self basicExecute.
 		self finishSuccess ]
+]
+
+{ #category : #executing }
+IceTipAction >> executeWithContext: aContext [
+
+	self context: aContext.
+	^ self execute
 ]
 
 { #category : #private }
@@ -57,6 +78,9 @@ IceTipAction >> repository: anObject [
 IceTipAction >> withErrorHandlingDo: aBlock [
 	aBlock
 	on: IceError, IceWarning
-	do: [ :e | e acceptError: (IceTipInteractiveErrorVisitor on: self repository) ].
+	do: [ :e | 
+		e acceptError: (IceTipInteractiveErrorVisitor 
+			newContext: self context 
+			repository: self repository) ].
 
 ]

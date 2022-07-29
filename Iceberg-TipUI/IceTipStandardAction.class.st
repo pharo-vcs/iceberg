@@ -7,21 +7,12 @@ Class {
 	#name : #IceTipStandardAction,
 	#superclass : #IceTipAction,
 	#instVars : [
-		'context',
 		'message',
 		'successAnnounceBlock',
 		'actionBlock'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
-
-{ #category : #'instance creation' }
-IceTipStandardAction class >> newContext: aContext [
-
-	^ self new 
-		context: aContext;
-		yourself
-]
 
 { #category : #accessing }
 IceTipStandardAction >> action [
@@ -35,23 +26,13 @@ IceTipStandardAction >> action: aBlock [
 
 { #category : #executing }
 IceTipStandardAction >> basicExecute [
+
+	self halt.
 	UIManager default 
 		informUser: self message
 		during: actionBlock.
 	successAnnounceBlock 
 		ifNotNil: [ Iceberg announcer announce: successAnnounceBlock value ]
-]
-
-{ #category : #accessing }
-IceTipStandardAction >> context [
-
-	^ context
-]
-
-{ #category : #accessing }
-IceTipStandardAction >> context: aContext [
-
-	context := aContext
 ]
 
 { #category : #executing }
@@ -62,6 +43,7 @@ IceTipStandardAction >> do: aBlock [
 
 { #category : #executing }
 IceTipStandardAction >> execute: aBlock [
+	self halt. "MOD THE SENDER"
 	self action: aBlock.
 	self execute
 ]

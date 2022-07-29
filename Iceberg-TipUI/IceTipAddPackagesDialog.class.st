@@ -29,7 +29,8 @@ IceTipAddPackagesDialog >> accept [
 	selectedPackages ifEmpty: [ 
 		UIManager default inform: 'No packages selected.'.
 		^ self ].
-	self model addPackages: selectedPackages
+	(self model newAddPackagesAction: selectedPackages)
+		executeWithContext: self
 ]
 
 { #category : #accessing }

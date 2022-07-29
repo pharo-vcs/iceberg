@@ -14,31 +14,6 @@ IceTipRepositoryModel class >> unknownBranchLabel [
 	^ 'Unknown'
 ]
 
-{ #category : #actions }
-IceTipRepositoryModel >> addPackages: aCollection [
-
-	IceTipStandardAction new 
-		repository: self entity;
-		message: 'Adding packages';
-		onSuccessRepositoryModified;
-		execute: [ 
-			aCollection do: [ :each | 
-				self entity workingCopy addPackageNamed: each name ] ]
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> addRemoteNamed: aName url: anUrl [
-	
-	IceTipStandardAction new 
-		repository: self entity;
-		message: 'Adding remote';
-		onSuccessRepositoryModified;
-		execute: [ | remote |
-			remote := IceGitRemote name: aName url: anUrl.
-			self entity addRemote: remote.
-			remote fetch ]
-]
-
 { #category : #accessing }
 IceTipRepositoryModel >> allBranchModels [
 	^ self entity allBranches 
@@ -58,6 +33,7 @@ IceTipRepositoryModel >> availableRepairOptions [
 
 { #category : #accessing }
 IceTipRepositoryModel >> branchModel [
+
 	^ (IceTipBranchModel 
 		repositoryModel: self 
 		on: self entity branch)
@@ -80,9 +56,9 @@ IceTipRepositoryModel >> branchName [
 ]
 
 { #category : #accessing }
-IceTipRepositoryModel >> branchNameText [
-	
-	^ self branchName asText
+IceTipRepositoryModel >> branchNamed: aString [
+
+	^ self entity branchNamed: aString
 ]
 
 { #category : #accessing }
@@ -97,32 +73,10 @@ IceTipRepositoryModel >> checkMissing [
 		IceError signal: ('You have no repository attached to project "{1}"' format: { self name }) ]
 ]
 
-{ #category : #actions }
-IceTipRepositoryModel >> checkoutNewBranchNamed: aString inCommit: aCommit thenDo: aBlock [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity;
-		message: ('Checking out new branch {1}' format: { aString });
-		onSuccessRepositoryModified;
-		execute: [ | branch |
-			branch := self entity createBranch: aString inCommit: aCommit.
-			aBlock value: branch ]
-]
-
 { #category : #accessing }
 IceTipRepositoryModel >> commit [
 	
 	^ self entity workingCopy referenceCommit
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> commit: aCommitIssue then: aBlock [
-
-	aCommitIssue 
-		repository: self entity;
-		onSuccess: aBlock;
-		execute
 ]
 
 { #category : #accessing }
@@ -144,16 +98,6 @@ IceTipRepositoryModel >> createSourceDirectory [
 	entity createSourceDirectory
 ]
 
-{ #category : #actions }
-IceTipRepositoryModel >> delete [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self entity;
-		message: ('Deleting {1}' format: {self name});
-		execute: [ self entity delete ]
-]
-
 { #category : #accessing }
 IceTipRepositoryModel >> description [
 	| text |
@@ -170,47 +114,6 @@ IceTipRepositoryModel >> descriptionDecorator [
 	self entity isModified 
 		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
 	^ super descriptionDecorator
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> discardChanges [
-	<noCache>
-	
-	IceTipStandardAction new 
-		repository: self entity;
-		message: 'Discarding changes';
-		onSuccessRepositoryModified;
-		execute: [ 
-			Iceberg announcer suspendAllWhile: [ 
-				self entity discardChanges ] ]
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> edit [
-	<noCache>
-	
-	(IceTipEditProjectDialog on: self entity project) openNonModal 
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> fetch [
-	<noCache>
-	
-	IceTipStandardAction new 
-		repository: self entity;
-		message: ('Fetching incoming commits of {1}' format: { self name });
-		onSuccessRepositoryModified;
-		execute: [ self entity fetch ]
-]
-
-{ #category : #actions }
-IceTipRepositoryModel >> forget [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self entity;
-		message: ('Forgeting {1}' format: {self name});
-		execute: [ self entity forget ]
 ]
 
 { #category : #testing }
@@ -312,6 +215,102 @@ IceTipRepositoryModel >> matches: aString [
 { #category : #accessing }
 IceTipRepositoryModel >> name [
 	^ self entity name
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newAddPackagesAction: aCollection [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: 'Adding packages';
+		onSuccessRepositoryModified;
+		action: [ 
+			aCollection do: [ :each | 
+				self entity workingCopy addPackageNamed: each name ] ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newAddRemoteActionName: aName url: anUrl [
+	<noCache>
+	
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: 'Adding remote';
+		onSuccessRepositoryModified;
+		action: [ | remote |
+			remote := IceGitRemote name: aName url: anUrl.
+			self entity addRemote: remote.
+			remote fetch ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Checking out new branch {1}' format: { aString });
+		onSuccessRepositoryModified;
+		action: [ self entity createBranch: aString inCommit: aCommit ]
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newCommitAction [
+
+	^ IceTipCommitAction new
+		repository: self entity;
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newDeleteAction [
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self entity;
+		message: ('Deleting {1}' format: {self name});
+		action: [ self entity delete ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newDiscardChangesAction [
+	<noCache>
+	
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: 'Discarding changes';
+		onSuccessRepositoryModified;
+		action: [ 
+			Iceberg announcer suspendAllWhile: [ 
+				self entity discardChanges ] ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newFetchAction [
+	<noCache>
+	
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Fetching incoming commits of {1}' format: { self name });
+		onSuccessRepositoryModified;
+		action: [ self entity fetch ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRepositoryModel >> newForgetAction [
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self entity;
+		message: ('Forgeting {1}' format: {self name});
+		action: [ self entity forget ];
+		yourself
 ]
 
 { #category : #accessing }
@@ -503,12 +502,6 @@ IceTipRepositoryModel >> statusString [
 	do: [ :e | ^ e description ]
 ]
 
-{ #category : #TOREMOVE }
-IceTipRepositoryModel >> statusText [
-	
-	^ self status asText
-]
-
 { #category : #accessing }
 IceTipRepositoryModel >> subdirectory [
 
@@ -526,7 +519,7 @@ IceTipRepositoryModel >> tagModels [
 				beCached ]
 ]
 
-{ #category : #actions }
+{ #category : #operations }
 IceTipRepositoryModel >> updateLocation: aReference [
 	
 	"change location"

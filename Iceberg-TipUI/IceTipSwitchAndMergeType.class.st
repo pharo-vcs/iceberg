@@ -14,6 +14,7 @@ Class {
 }
 
 { #category : #executing }
-IceTipSwitchAndMergeType >> mergeOn: aModel then: aBlock [
-	^ aModel switchAndMergeThen: aBlock
+IceTipSwitchAndMergeType >> newMergeAction: aModel [
+
+	^ aModel newSwitchAndMergeAction
 ]

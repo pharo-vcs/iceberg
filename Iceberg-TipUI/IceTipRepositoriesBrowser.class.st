@@ -86,9 +86,18 @@ IceTipRepositoriesBrowser class >> new [
 
 { #category : #'instance creation' }
 IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [ 
+	| application |
+	
+	"I don't know if iceberg is loaded before or after or even with newtools. 
+	 But in case is present, I want iceberg to run within the same context"
+	application := (self environment classNamed: #StPharoApplication)
+		ifNotNil: [ :c | c current ].
 
 	^ self basicNew
-		model: (IceTipRepositoriesModel new repositoryProvider: aProvider; yourself);
+		application: application;
+		model: (IceTipRepositoriesModel new 
+			repositoryProvider: aProvider; 
+			yourself);
 		initialize;
 		yourself
 ]

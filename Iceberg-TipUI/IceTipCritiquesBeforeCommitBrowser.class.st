@@ -218,10 +218,13 @@ IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 	"If the setting is disabled we just commit"
 	IceTipCommitSettings critiquesOnCommit 
 		ifFalse: [ ^ onAcceptAction value ].
-
 	critiques 
-		ifNotEmpty: [ self openNonModal ] 
-		ifEmpty: [ onAcceptAction value ] 
+		ifEmpty: [ ^ onAcceptAction value ].
+		
+	
+	self asDialogWindow
+		centeredRelativeTo: self window;
+		open
 	
 ]
 

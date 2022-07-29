@@ -31,20 +31,6 @@ IceTipEntityModel class >> repositoryModel: aRepositoryModel on: anObject [
 		yourself
 ]
 
-{ #category : #tagging }
-IceTipEntityModel >> createTag: aString thenDo: aBlockClosure [ 
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity;
-		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
-		onSuccessRepositoryModified;
-		execute: [ | branch |
-			branch := self commit createTag: aString.
-			aBlockClosure value: branch ]
-	
-]
-
 { #category : #accessing }
 IceTipEntityModel >> description [
 	"A decorated description of this entity. 
@@ -84,6 +70,18 @@ IceTipEntityModel >> isCommitish [
 { #category : #testing }
 IceTipEntityModel >> isModelOf: anObject [
 	^ self entity = anObject
+]
+
+{ #category : #tagging }
+IceTipEntityModel >> newCreateTagAction: aString [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
+		onSuccessRepositoryModified;
+		action: [ self commit createTag: aString ]
+		yourself
 ]
 
 { #category : #accessing }

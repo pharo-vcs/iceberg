@@ -71,6 +71,12 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
+{ #category : #'instance creation' }
+IceTipRepositoryBrowser class >> onRepositoryNamed: aString [
+
+	^ self onRepository: (IceRepository registry detect: [ :each | each name = aString ])
+]
+
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
@@ -94,7 +100,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 
 	sidebarTree := self newTreeTable.
 	historyPanel := self
-		instantiate: IceTipHiedraHistoryBrowser
+		instantiate: IceTipHiedraAltHistoryBrowser
 		on: self model headModel.
 
 	historyPanel whenSelectionChangedDo: [ self refreshCommands ].

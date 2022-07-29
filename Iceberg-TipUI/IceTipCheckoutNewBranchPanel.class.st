@@ -59,10 +59,13 @@ IceTipCheckoutNewBranchPanel >> currentBranchLabel [
 { #category : #actions }
 IceTipCheckoutNewBranchPanel >> doAccept [
 
-	self model
-		checkoutNewBranchNamed: self branchName
-		inCommit: (branchCommitish ifNil: [ self model entity workingCopy referenceCommit ])
-		thenDo: [ :newBranch | callback ifNotNil: [ callback value: newBranch ] ]
+	(self model
+		newCheckoutNewBranchNamed: self branchName
+		inCommit: (branchCommitish ifNil: [ self model entity workingCopy referenceCommit ]))
+		onSuccess: [ 
+			callback ifNotNil: [ 
+				callback value: (self model branchNamed: self branchName) ] ];
+		executeWithContext: self
 ]
 
 { #category : #accessing }
@@ -98,10 +101,10 @@ IceTipCheckoutNewBranchPanel >> isNewBranch [
 
 { #category : #accessing }
 IceTipCheckoutNewBranchPanel >> openDialog [
-
-	^ super openDialog
+self halt.
+	^ super asDialogWindow
 		  okAction: [ self accept ];
-		  yourself
+		  open
 ]
 
 { #category : #initialization }

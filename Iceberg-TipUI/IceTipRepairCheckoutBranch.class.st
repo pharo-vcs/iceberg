@@ -52,9 +52,11 @@ IceTipRepairCheckoutBranch class >> title [
 IceTipRepairCheckoutBranch >> basicExecute [
 
 	self fetchAllRemotes.
-	(IceTipCheckoutBranchDialog 
+	((IceTipCheckoutBranchDialog 
 		newApplication: context application 
 		model: self repositoryModel)
 		withoutNewBranch;
-		openDialog
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]

@@ -11,7 +11,7 @@ Class {
 IceMergeWorkingCopyCommand >> execute [
 	| commit |
 	commit := self repository headCommit.
-	commit merge.
+	commit newMergeAction executeWithContext: context.
 	(self repository workingCopy referenceCommit = commit)
 		ifTrue: [ self beSuccess ]
 ]

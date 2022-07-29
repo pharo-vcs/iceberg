@@ -56,9 +56,11 @@ IceTipRepairCheckoutNewBranch >> basicExecute [
 	Could be optimized"
 
 	self fetchAllRemotes.
-	(IceTipCheckoutBranchDialog 
+	((IceTipCheckoutBranchDialog 
 		newApplication: context application 
 		model: self repositoryModel)
 		withOnlyNewBranch;
-		openDialog
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]

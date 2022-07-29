@@ -6,8 +6,7 @@ Class {
 	#name : #IceTipRepairAction,
 	#superclass : #IceTipAction,
 	#instVars : [
-		'repositoryModel',
-		'context'
+		'repositoryModel'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
@@ -49,18 +48,6 @@ IceTipRepairAction class >> order [
 { #category : #accessing }
 IceTipRepairAction class >> title [
 	^ self subclassResponsibility
-]
-
-{ #category : #accessing }
-IceTipRepairAction >> context [
-
-	^ context
-]
-
-{ #category : #private }
-IceTipRepairAction >> context: aContext [
-
-	context := aContext
 ]
 
 { #category : #executing }

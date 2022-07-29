@@ -26,13 +26,7 @@ IceTipMergeModel >> executeMergeActionAndThen: aBlock [
 		execute: [ self merge ]
 ]
 
-{ #category : #actions }
-IceTipMergeModel >> merge [
-
-	mergeType mergeOn: commitish then: [  ].
-]
-
-{ #category : #actions }
+{ #category : #private }
 IceTipMergeModel >> mergeAction [
 
 	^ mergeAction ifNil: [
@@ -46,6 +40,12 @@ IceTipMergeModel >> mergeAction [
 IceTipMergeModel >> mergeType: aMergeType [
 
 	mergeType := aMergeType
+]
+
+{ #category : #actions }
+IceTipMergeModel >> newMergeAction [
+
+	mergeType newMergeAction: commitish
 ]
 
 { #category : #accessing }

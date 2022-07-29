@@ -36,9 +36,11 @@ IceTipAddRemoteDialog class >> defaultLayout [
 IceTipAddRemoteDialog >> accept [
 
 	self validate.
-	self model 
-		addRemoteNamed: self remoteName 
-		url: self remoteUrl.
+	(self model 
+		newAddRemoteActionName: self remoteName 
+		url: self remoteUrl)
+		executeWithContext: self.
+		
 	^ acceptBlock ifNotNil: [ acceptBlock cull: self remoteName ]
 ]
 

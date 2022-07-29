@@ -52,21 +52,22 @@ IceTipEditProjectDialog class >> defaultLayout [
 { #category : #actions }
 IceTipEditProjectDialog >> accept [	
 	
-	(IceTipStandardAction newContext: self)
+	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;
-		execute: [ 
+		action: [ 
 			"Update the project"
 			model sourceDirectory: self selectedDirectoryPath pathString.
 			model fileFormat: self selectedFileFormat.
 			self assert: model repositoryProperties fileFormat = self selectedFileFormat.
 			"Set the project in the repository"
-			model repository workingCopy project: model ].
+			model repository workingCopy project: model ];
+		executeWithContext: self.
 
 	self closeWindow.
 	acceptCallback ifNotNil: [ 
-		acceptCallback value ].
+		acceptCallback value ]
 ]
 
 { #category : #accessing }

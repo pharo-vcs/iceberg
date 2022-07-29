@@ -16,7 +16,9 @@ IceTipDiscardAllChangesPreviewBrowser class >> onRepository: anIceModelRepositor
 { #category : #operations }
 IceTipDiscardAllChangesPreviewBrowser >> doDiscardAll [
 	
-	self model executeDiscardAndThen: [ self closeWindow ]
+	self model newDiscardAction 
+		onSuccess: [ self closeWindow ];
+		executeWithContext: self
 ]
 
 { #category : #initialization }

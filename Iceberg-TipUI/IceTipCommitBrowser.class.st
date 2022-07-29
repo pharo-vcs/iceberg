@@ -114,18 +114,17 @@ IceTipCommitBrowser >> doCommit [
 { #category : #actions }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
 
-	self model
-		commit:
-			(IceTipCommitAction new
-				diff: self model workingCopyDiff;
-				items: aCollection;
-				message: aString;
-				yourself)
-		then: [ self verifyNeedsRefreshOrClose.
-			pushingBoolean
-				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
-			savingBoolean
-				ifTrue: [ saveAction execute ] ]
+	self model newCommitAction
+		diff: self model workingCopyDiff;
+		items: aCollection;
+		message: aString;
+		onSuccess: [ 
+			self verifyNeedsRefreshOrClose.
+			pushingBoolean ifTrue: [ 
+				(IceTipPushAction new repository: self model entity) executeWithContext: self ].
+			savingBoolean ifTrue: [ 
+				saveAction execute ] ];
+		executeWithContext: self
 ]
 
 { #category : #actions }

@@ -20,6 +20,7 @@ IceGitHubOpenOnGithubCommand class >> defaultName [
 IceGitHubOpenOnGithubCommand >> execute [
 
 	(IceGitHubOpenOnGithubAction
-		 organisation: self remote owner
-		 projectName: self remote projectName) execute
+		organisation: self remote owner
+		projectName: self remote projectName)
+		executeWithContext: context
 ]

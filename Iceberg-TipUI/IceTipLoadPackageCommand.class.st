@@ -28,7 +28,7 @@ IceTipLoadPackageCommand >> canBeExecuted [
 { #category : #executing }
 IceTipLoadPackageCommand >> execute [
 
-	self packageModel load.
+	self packageModel newLoadAction executeWithContext: self context.
 	Iceberg announcer announce:
 		(IceRepositoryModified for: self repository)
 ]
