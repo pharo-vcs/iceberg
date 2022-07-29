@@ -59,7 +59,7 @@ IceTipLocalRepositoryPanel >> location: aReferenceOrString [
 { #category : #accessing }
 IceTipLocalRepositoryPanel >> newRepository [
 
-	self window 
+	self application 
 		inform: ('Importing repository from {1}' format: { self location fullName })
 		during: [ 
 			^ IceRepositoryCreator new

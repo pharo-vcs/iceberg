@@ -27,7 +27,7 @@ IceTipStandardAction >> action: aBlock [
 { #category : #executing }
 IceTipStandardAction >> basicExecute [
 
-	context window	 
+	context application	 
 		inform: self message
 		during: actionBlock.
 	successAnnounceBlock 

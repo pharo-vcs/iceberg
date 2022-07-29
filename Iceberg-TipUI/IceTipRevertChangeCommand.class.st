@@ -23,7 +23,7 @@ IceTipRevertChangeCommand class >> defaultName [
 { #category : #executing }
 IceTipRevertChangeCommand >> execute [
 
-	context window
+	context application
 		inform: 'Reverting change...'
 		during: [ self repository workingCopy discardChanges: self item ].
 

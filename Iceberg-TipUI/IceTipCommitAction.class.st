@@ -15,8 +15,8 @@ Class {
 { #category : #executing }
 IceTipCommitAction >> basicExecute [
 	self validateCanCommit.
-	UIManager default 
-		informUser: 'Commiting...' 
+	context application
+		inform: 'Commiting...' 
 		during: [ 
 			self repository
 				commitChanges: (diff copyWithOnly: items)

@@ -57,7 +57,7 @@ IceTipGitRepositoryPanel >> initializePresenters [
 { #category : #accessing }
 IceTipGitRepositoryPanel >> newRepository [
 
-	self window
+	self application
 		inform: ('Cloning repository {1}' format: { self remoteUrl })
 		during: [ 
 			^ IceRepositoryCreator new 

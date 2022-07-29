@@ -10,7 +10,7 @@ Class {
 { #category : #executing }
 IceTipPushAction >> basicExecute [
 	
-	context window 
+	context application 
 		inform: 'Pushing...' 
 		during: [ self repository push ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).

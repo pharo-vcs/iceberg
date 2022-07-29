@@ -91,7 +91,7 @@ IceTipNewRepositoryPanel >> newRepository [
 	location := self projectLocation location.
 	subdirectory := self subdirectoryInputText text asString trimmed.
 	
-	self window 
+	self application 
 		inform: ('Cloning repository {1} at {2}' format: { repositoryName. location fullName })
 		during: [ 
 			^ IceRepositoryCreator new
