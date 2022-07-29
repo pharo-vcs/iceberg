@@ -207,6 +207,12 @@ IceTipCommitModel >> tagNames [
 ]
 
 { #category : #accessing }
+IceTipCommitModel >> tagsDescription [
+
+	^ ', ' join: self tagNames 
+]
+
+{ #category : #accessing }
 IceTipCommitModel >> timeStamp [
 	^ self entity timeStamp
 ]

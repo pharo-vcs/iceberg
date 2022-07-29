@@ -40,6 +40,12 @@ IceTipHiedraAltHistoryBrowser >> initializeCommitList [
 				"beNotExpandable;"
 				yourself);
 			addColumn: (SpStringTableColumn new
+				evaluated: [ :each | each tagsDescription ];				
+				displayColor: [ :each | each tagDecorator color ];
+				displayBold: [ :each | each tagDecorator isBold ];
+				displayItalic: [ :each | each tagDecorator isItalic ];
+				yourself);
+			addColumn: (SpStringTableColumn new
 				evaluated: #shortDescription;				
 				yourself);
 			yourself);
