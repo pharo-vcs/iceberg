@@ -37,7 +37,7 @@ IceTipHiedraAltHistoryBrowser >> initializeCommitList [
 			addColumn: (SpImageTableColumn new 
 				evaluated: [ :each | 
 					(hiedraColumnController formAtRow: (commitList items indexOf: each) ) ];
-				beNotExpandable;
+				"beNotExpandable;"
 				yourself);
 			addColumn: (SpStringTableColumn new
 				evaluated: #shortDescription;				
@@ -130,9 +130,7 @@ IceTipHiedraAltHistoryBrowser >> refreshCommitList [
 	| commitModels |
 	
 	commitModels := self model commitModels.
-	commitList model: (SpGeneratorListModel on: [ :generator | 
-		commitModels do: [ :each |
-			generator yield: each ] ]).
+	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 
