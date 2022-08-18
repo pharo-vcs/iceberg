@@ -65,11 +65,6 @@ IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 ]
 
 { #category : #accessing }
-IceClassDefinition >> basicName [
-	^ name
-]
-
-{ #category : #accessing }
 IceClassDefinition >> contents [
 	mcDefinition ifNil: [ ^ '' ].
 	^ self isMeta
