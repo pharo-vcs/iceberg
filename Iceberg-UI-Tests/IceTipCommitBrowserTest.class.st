@@ -15,6 +15,7 @@ IceTipCommitBrowserTest class >> isAbstract [
 
 { #category : #running }
 IceTipCommitBrowserTest >> setUp [
+
 	super setUp.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
@@ -26,7 +27,7 @@ IceTipCommitBrowserTest >> setUp [
 	presenter := IceTipCommitBrowser onRepository: self repository.
 	saveMock := IceTipMockSaveImageAction new.
 	presenter saveAction: saveMock.
-	presenter openWithSpec.
+	presenter open.
 	presenter commentPanel commentText text: 'my super commit message'
 ]
 
