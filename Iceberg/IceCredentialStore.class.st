@@ -102,19 +102,25 @@ IceCredentialStore >> loadFromStore [
 
 	| array |
 	self flag: #pharoTodo. "implement an encrypted version"
-	
+
 	"If I don't have a store file I do nothing"
 	storeFile ifNil: [ ^ self ].
-	
+
 	"If the file is new, I cannot load it."
 	storeFile exists ifFalse: [ ^ self ].
-	
-	array := [
-		FLMaterializer new
-			filePath: storeFile resolve pathString;
-			materializeRoot ]
-				on: FLMaterializationError
-				do: [ ^ self ].
+
+	"Fuel API is not compatible between Pharo10 and Pharo11"
+	SystemVersion current major >= 11
+		ifTrue: [ 
+			array := [ 
+			         FLMaterializer new
+				         filePath: storeFile resolve pathString;
+				         materializeRoot ]
+				         on: FLMaterializationError
+				         do: [ ^ self ] ]
+		ifFalse: [ 
+			array := FLMaterializer materializeFromFileNamed:
+				         storeFile resolve pathString ].
 	plainCredentials := array at: 1.
 	sshCredentials := array at: 2
 ]
