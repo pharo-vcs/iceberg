@@ -153,16 +153,28 @@ IceCredentialStore >> removeSSHCredential: aCredential [
 
 { #category : #'API - storing' }
 IceCredentialStore >> saveIntoStore [
+
 	self flag: #pharoTodo. "implement an encrypted version"
-		
-	storeFile ifNotNil: [  	
-		storeFile parent ensureCreateDirectory.	
-		
-		storeFile resolve binaryWriteStreamDo: [ :stream | 
-			FLSerializer new
-				onStream:  stream;
-				object: {plainCredentials. sshCredentials};
-				serialize ] ]
+
+	storeFile ifNil: [ ^ self ].
+	storeFile parent ensureCreateDirectory.
+
+	storeFile resolve binaryWriteStreamDo: [ :stream | 
+		"Fuel API changed in Pharo 11"
+		SystemVersion current major >= 11
+			ifTrue: [ 
+				FLSerializer new
+					onStream: stream;
+					object: { 
+							plainCredentials.
+							sshCredentials };
+					serialize ]
+			ifFalse: [ 
+				| serializer |
+				serializer := FLSerializer on: stream.
+				serializer serialize: { 
+						plainCredentials.
+						sshCredentials } ] ]
 ]
 
 { #category : #'API - accessing' }
