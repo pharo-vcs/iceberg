@@ -95,7 +95,7 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByAClass [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 3.
 	self
 		assert: (diff / self packageName1 / 'TestTraitInitial') value isRemoval.
 	self

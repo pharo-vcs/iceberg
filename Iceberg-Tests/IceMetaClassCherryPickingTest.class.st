@@ -55,9 +55,7 @@ IceMetaClassCherryPickingTest >> testAddMethodInMetaSideOfExistingClass [
 	self assert: diff children size equals: 1.
 	self assert: (diff / self packageName1) children size equals: 1.
 
-	self
-		deny: (diff / self packageName1 / 'TestClass class') value isModification.
-	self assert: (diff / self packageName1 / 'TestClass class') value isAddition.
+	self assert: (diff / self packageName1 / 'TestClass class') value isNoModification.
 
 	self
 		assert: (diff / self packageName1 / 'TestClass class' / 'm1') value isAddition
@@ -208,10 +206,7 @@ IceMetaClassCherryPickingTest >> testRemoveMethodInMetaSideOfExistingClass [
 	self assert: diff children size equals: 1.
 	self assert: (diff / self packageName1) children size equals: 1.
 
-	self
-		deny: (diff / self packageName1 / 'TestClass class') value isModification.
-	self
-		assert: (diff / self packageName1 / 'TestClass class') value isRemoval.
+	self assert: (diff / self packageName1 / 'TestClass class') value isNoModification.
 
 	self
 		assert: (diff / self packageName1 / 'TestClass class' / 'm1') value isRemoval.

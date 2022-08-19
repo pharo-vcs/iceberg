@@ -30,7 +30,7 @@ IceMethodCherryPickingTest >> testAddMethodInClassAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 1.
+		equals: 2.
 
 	self
 		assert:
@@ -270,7 +270,7 @@ IceMethodCherryPickingTest >> testAddMethodUsingASharedPoolAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -396,7 +396,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassAndSuperclassAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -465,7 +465,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -535,7 +535,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependencyWithSupe
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 3.
 
 	self
 		assert:
@@ -594,7 +594,7 @@ IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -659,7 +659,7 @@ IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependencyWithS
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 3.
 
 	self
 		assert:
@@ -706,7 +706,7 @@ IceMethodCherryPickingTest >> testAddMethodWithReferencedClassAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 3.
 
 	self
 		assert:
@@ -824,7 +824,7 @@ IceMethodCherryPickingTest >> testRemoveClassWithMethods [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 2.
 
 	self
 		assert: (diff / self packageName1 / 'TestClass2') value isRemoval.

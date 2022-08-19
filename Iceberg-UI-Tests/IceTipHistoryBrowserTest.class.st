@@ -14,14 +14,15 @@ IceTipHistoryBrowserTest >> newFixture [
 
 { #category : #running }
 IceTipHistoryBrowserTest >> setUp [
+
 	| model iceTipPullModel |
 	super setUp.
 	model := IceTipRepositoryModel on: self repository.
 	iceTipPullModel := IceTipPullModel
-		repositoryModel: model
-		on: model entity.
+		                   repositoryModel: model
+		                   on: model entity.
 	presenter := IceTipHistoryBrowser on: iceTipPullModel.
-	presenter openWithSpec
+	presenter open
 ]
 
 { #category : #running }

@@ -23,18 +23,23 @@ IceTipRepositoriesBrowserTest >> newRepositoryNamed: aName [
 
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> setUp [
+
 	| alphabeticallyLastRepository |
 	super setUp.
-	
-	alphabeticallyFirstRepository := self newRepositoryNamed: 'anotherOne'.
+
+	alphabeticallyFirstRepository := self newRepositoryNamed:
+		                                 'anotherOne'.
 	alphabeticallyLastRepository := self newRepositoryNamed: 'zzzz last'.
-	
-	repositoryProvider := IceTipCollectionRepositoryProvider new collection: {
-		self repository. 
-		alphabeticallyLastRepository . 
-		alphabeticallyFirstRepository } asOrderedCollection.
-	presenter := IceTipRepositoriesBrowser newOnRepositoryProvider: repositoryProvider.
-	presenter openWithSpec.
+
+	repositoryProvider := IceTipCollectionRepositoryProvider new 
+		                      collection: { 
+				                      self repository.
+				                      alphabeticallyLastRepository.
+				                      alphabeticallyFirstRepository }
+				                      asOrderedCollection.
+	presenter := IceTipRepositoriesBrowser newOnRepositoryProvider:
+		             repositoryProvider.
+	presenter open
 ]
 
 { #category : #testing }
