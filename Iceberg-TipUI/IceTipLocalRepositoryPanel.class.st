@@ -8,18 +8,21 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipLocalRepositoryPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #projectLocation height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipLocalRepositoryPanel class >> order [
 
 	^ 20
+]
+
+{ #category : #layout }
+IceTipLocalRepositoryPanel >> defaultLayout [
+
+	^ SpGridLayout new 
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder 
+			add: #projectLocationLabel; add: #projectLocation; nextRow ];
+		yourself
 ]
 
 { #category : #initialization }

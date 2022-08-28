@@ -17,16 +17,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipLocationPresenter class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #locationLabel width: self labelWidth;
-		  add: #locationInput;
-		  add: #chooseButton width: 24;
-		  yourself
-]
-
 { #category : #testing }
 IceTipLocationPresenter class >> isAbstract [
 
@@ -91,6 +81,16 @@ IceTipLocationPresenter >> defaultChooseDialogTitle [
 IceTipLocationPresenter >> defaultLabel [
 
 	^ 'Directory'
+]
+
+{ #category : #layout }
+IceTipLocationPresenter >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		  add: #locationLabel width: self class labelWidth;
+		  add: #locationInput;
+		  add: #chooseButton width: 24;
+		  yourself
 ]
 
 { #category : #accessing }

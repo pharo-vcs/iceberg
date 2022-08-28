@@ -6,6 +6,7 @@ Class {
 	#name : #IceTipRepositoryTypePanel,
 	#superclass : #IceTipPresenter,
 	#instVars : [
+		'projectLocationLabel',
 		'projectLocation',
 		'remoteLabel',
 		'remoteInputText',
@@ -55,9 +56,9 @@ IceTipRepositoryTypePanel >> initializePresenters [
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializeProjectLocation [
 
+	projectLocationLabel := self newLabel label: 'Local directory'.
 	projectLocation := self instantiate: IceTipDirectoryPresenter.
 	projectLocation
-		label: 'Local directory';
 		chooseTitle: 'Choose local repository';
 		location: self defaultLocation
 ]
