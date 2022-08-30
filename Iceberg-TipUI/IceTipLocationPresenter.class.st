@@ -89,7 +89,7 @@ IceTipLocationPresenter >> defaultLayout [
 	^ SpBoxLayout newLeftToRight
 		  add: #locationLabel width: self class labelWidth;
 		  add: #locationInput;
-		  add: #chooseButton width: 24;
+		  add: #chooseButton expand: false;
 		  yourself
 ]
 
@@ -109,6 +109,7 @@ IceTipLocationPresenter >> initializePresenters [
 		autoAccept: true;
 		yourself.
 	chooseButton := self newButton
+		addStyle: 'small';
 		icon: self icon;
 		yourself.
 	

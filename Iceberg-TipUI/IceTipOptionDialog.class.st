@@ -12,20 +12,10 @@ Class {
 	#instVars : [
 		'typeList',
 		'type',
-		'contentPanel'
+		'contentLayout'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
-
-{ #category : #layout }
-IceTipOptionDialog class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 30 percent;
-		  add: #typeList;
-		  add: #contentPanel;
-		  yourself
-]
 
 { #category : #actions }
 IceTipOptionDialog >> accept [
@@ -45,16 +35,20 @@ IceTipOptionDialog >> allTypes [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing - ui' }
-IceTipOptionDialog >> contentPanel [
-
-	^ contentPanel
-]
-
 { #category : #accessing }
 IceTipOptionDialog >> contextSelection [
 
 	^ type
+]
+
+{ #category : #layout }
+IceTipOptionDialog >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 30 percent;
+		  add: typeList;
+		  add: contentLayout;
+		  yourself
 ]
 
 { #category : #actions }
@@ -66,7 +60,7 @@ IceTipOptionDialog >> doAccept [
 { #category : #initialization }
 IceTipOptionDialog >> initialExtentForWindow [
 
-	^ (600 @ 300) scaledByDisplayScaleFactor
+	^ (700 @ 300) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -80,7 +74,7 @@ IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 { #category : #initialization }
 IceTipOptionDialog >> initializePresenters [
 
-	contentPanel := self newNullPresenter.
+	contentLayout := SpBoxLayout newVertical.
 	typeList := self newTable.
 	self initializeTypeList
 ]
@@ -100,9 +94,9 @@ IceTipOptionDialog >> initializeTypeList [
 { #category : #private }
 IceTipOptionDialog >> replacePanelWith: aType [
 
-	contentPanel := aType.
-	self needRebuild: false.
-	self build
+	contentLayout 
+		removeAll;
+		add: aType
 ]
 
 { #category : #accessing }

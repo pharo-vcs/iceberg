@@ -20,7 +20,8 @@ IceTipDirectoryPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		vAlignCenter;
-		  add: #locationInput;
-		  add: #chooseButton expand: false;
-		  yourself
+		spacing: 5;
+		add: #locationInput;
+		add: #chooseButton expand: false;
+		yourself
 ]
