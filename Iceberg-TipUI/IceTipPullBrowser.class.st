@@ -27,7 +27,8 @@ IceTipPullBrowser class >> onRepositoryModel: aModel [
 { #category : #actions }
 IceTipPullBrowser >> doPull [
 
-	self model pullThen: [ self closeWindow ]
+	self model newPullAction executeWithContext: self.
+	self closeWindow
 ]
 
 { #category : #initialization }
