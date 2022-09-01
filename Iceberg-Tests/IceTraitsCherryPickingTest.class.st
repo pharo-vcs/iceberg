@@ -39,7 +39,7 @@ IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -95,7 +95,7 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByAClass [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 3.
+	self assert: (diff / self packageName1) children size equals: 4.
 	self
 		assert: (diff / self packageName1 / 'TestTraitInitial') value isRemoval.
 	self
@@ -135,7 +135,7 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByATrait [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 4.
 	self assert: (diff / self packageName1 / 'TestTraitInitial') value isRemoval.
 	self assert: (diff / self packageName1 / 'TestSubTrait') value isRemoval.
 ]
