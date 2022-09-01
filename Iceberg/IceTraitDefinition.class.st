@@ -25,13 +25,22 @@ IceTraitDefinition >> accept: aVisitor [
 ]
 
 { #category : #patching }
-IceTraitDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
-	
+IceTraitDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
+
+	"If the new definition has no class instance vaiables, we remove the meta side variables, and apply the new changes to the patcher "
+	(self isMeta and: [ mcDefinition isNil and: [ anIceModification rightDefinition asMCDefinition isNotNil ] ]) 
+		ifTrue: [ | defModification |
+			defModification := anIceModification rightDefinition asMCDefinition deepCopy.
+			defModification removeMetaSideVariables.
+			aMCPatcher
+				modifyDefinition: anIceModification rightDefinition asMCDefinition
+				to: defModification.
+			^ self ].
+
 	"We should not handle metaclasses if their mcDefinition is nil.
 	They should be added automatically when added the instance side."
-	(self isMeta and: [ mcDefinition isNil ])
-		ifTrue: [ ^ self ].
-	
+	(self isMeta and: [ mcDefinition isNil ]) ifTrue: [ ^ self ].
+
 	aMCPatcher
 		modifyDefinition: anIceModification rightDefinition asMCDefinition
 		to: anIceModification leftDefinition asMCDefinition
