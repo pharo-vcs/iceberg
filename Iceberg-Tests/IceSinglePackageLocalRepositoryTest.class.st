@@ -180,7 +180,7 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsComposi
 
 	diff := self repository headCommit diffToParent.
 	self assert: diff codeSubdirectoryNode children size equals: 1.
-	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 3.
+	self assert: (diff codeSubdirectoryNode / self packageName1) children size equals: 4.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') value isAddition.
 	self assert: (diff codeSubdirectoryNode / self packageName1 / 'IceGeneratedClassForTesting class') 
 					value definition asMCDefinition hasClassTraitComposition.

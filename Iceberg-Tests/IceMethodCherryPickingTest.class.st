@@ -148,7 +148,7 @@ IceMethodCherryPickingTest >> testAddMethodInTraitAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 1.
+		equals: 2.
 
 	self
 		assert:
@@ -749,7 +749,7 @@ IceMethodCherryPickingTest >> testAddMethodWithReferencedTraitAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 3.
 
 	self
 		assert:

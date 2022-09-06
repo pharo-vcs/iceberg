@@ -129,14 +129,27 @@ IceMCDefinitionImporter >> visitOrganizationDefinition: aMCOrganizationDefinitio
 ]
 
 { #category : #visiting }
-IceMCDefinitionImporter >> visitTraitDefinition: aMCTraitDefinition [ 
-	
-	| traitDefinitionNode |
+IceMCDefinitionImporter >> visitTraitDefinition: aMCTraitDefinition [
+
+	| traitDefinitionNode classTraitDefinition |
 	traitDefinitionNode := self
-		ensureMethodOwnerNamed: aMCTraitDefinition className
-		isMeta: false
-		isTrait: true
-		isExtension: false.
+		                       ensureMethodOwnerNamed:
+		                       aMCTraitDefinition className
+		                       isMeta: false
+		                       isTrait: true
+		                       isExtension: false.
 	traitDefinitionNode value mcDefinition: aMCTraitDefinition.
+
+	"We also generate the definition for the class side trait.
+	We need both the instance and class side class nodes so they can contain their corresponding methods (that are visited in a random order)
+	=> Generate the trait side definition always. If it turns out to be empty, we will filter it later."
+	classTraitDefinition := self
+		                        ensureMethodOwnerNamed:
+		                        aMCTraitDefinition className
+		                        isMeta: true
+		                        isTrait: true
+		                        isExtension: false.
+	classTraitDefinition value mcDefinition: aMCTraitDefinition.
+
 	^ traitDefinitionNode
 ]
