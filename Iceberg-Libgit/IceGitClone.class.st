@@ -8,6 +8,20 @@ Class {
 	#category : #'Iceberg-Libgit-GitActions'
 }
 
+{ #category : #'private - operations' }
+IceGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries [ 
+
+	[repo clone: url options: cloneOptions] 
+		on: LGit_GIT_ERROR 
+		do: [ :error | 
+			(error object = LGitErrorTypeEnum giterr_net and: [remainingRetries > 1])
+				ifTrue: [ 
+					location ensureDeleteAll.
+					self cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries - 1   ] 
+				ifFalse: [ error pass ] ].
+
+]
+
 { #category : #actions }
 IceGitClone >> execute [
 
@@ -28,7 +42,7 @@ IceGitClone >> execute [
 	checkoutOptions checkoutStrategy: LGitCheckoutStrategyEnum git_checkout_force.
 	checkoutOptions progressCallback: IceGitCheckoutProgress new.
 
-	repo clone: url options: cloneOptions.
+	self cloneRepo: repo cloneOptions: cloneOptions remainingRetries: 3.
 
 	(LGitRemote of: repo named: 'origin')
 		lookup;
