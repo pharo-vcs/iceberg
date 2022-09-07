@@ -14,21 +14,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipCheckoutPreviewBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #checkoutStrategyLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #checkoutStrategyList;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #diffPanel expand: true;
-		  add: #actionPanel height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 
@@ -47,6 +32,23 @@ IceTipCheckoutPreviewBrowser >> checkoutStrategyLabel [
 IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 
 	^ checkoutStrategyList
+]
+
+{ #category : #layout }
+IceTipCheckoutPreviewBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: #checkoutStrategyLabel expand: false;
+				add: #checkoutStrategyList;
+				yourself)
+		  	expand: false;
+		add: #diffPanel;
+		add: #actionPanel expand: false;
+		yourself
 ]
 
 { #category : #actions }

@@ -2,22 +2,12 @@ Class {
 	#name : #IceTipSelectRemotePresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'remoteLabel',
 		'remoteList',
 		'addButton',
 		'model'
 	],
 	#category : #'Iceberg-TipUI-View-Branch'
 }
-
-{ #category : #layout }
-IceTipSelectRemotePresenter class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #remoteLabel width: self labelWidth;
-		  add: #remoteList;
-		  add: #addButton width: self iconWidth
-]
 
 { #category : #'accessing - ui' }
 IceTipSelectRemotePresenter >> addButton [
@@ -40,6 +30,16 @@ IceTipSelectRemotePresenter >> addRemote [
 			open
 ]
 
+{ #category : #layout }
+IceTipSelectRemotePresenter >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		spacing: 3;
+		add: remoteList;
+		add: addButton expand: false;
+		yourself
+]
+
 { #category : #accessing }
 IceTipSelectRemotePresenter >> icon [
 
@@ -49,15 +49,12 @@ IceTipSelectRemotePresenter >> icon [
 { #category : #initialization }
 IceTipSelectRemotePresenter >> initializePresenters [
 
-	remoteLabel := self newLabel
-		label: 'Remote:';
-		yourself.
-
 	remoteList := self newDropList
 		display: [ :each | each shortDescription ];
 		yourself.
 
 	addButton := self newButton
+		addStyle: 'small';
 		icon: self icon;
 		action: [ self addRemote ];
 		yourself
@@ -79,12 +76,6 @@ IceTipSelectRemotePresenter >> model [
 IceTipSelectRemotePresenter >> refresh [
 
 	remoteList items: self model remoteModels
-]
-
-{ #category : #'accessing - ui' }
-IceTipSelectRemotePresenter >> remoteLabel [
-
-	^ remoteLabel
 ]
 
 { #category : #'accessing - ui' }

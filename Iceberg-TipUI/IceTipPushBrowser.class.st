@@ -34,7 +34,7 @@ IceTipPushBrowser >> doPush [
 { #category : #initialization }
 IceTipPushBrowser >> labelForRemotePanel [
 
-	^ 'Push to remote:'
+	^ 'Push to remote'
 
 ]
 

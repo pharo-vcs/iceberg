@@ -34,7 +34,7 @@ IceTipPullBrowser >> doPull [
 { #category : #initialization }
 IceTipPullBrowser >> labelForRemotePanel [
 
-	^ 'Pull from remote:'
+	^ 'Pull from remote'
 ]
 
 { #category : #'private - factory' }

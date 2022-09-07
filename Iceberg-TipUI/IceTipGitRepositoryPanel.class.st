@@ -21,8 +21,8 @@ IceTipGitRepositoryPanel >> defaultLayout [
 		beColumnNotHomogeneous;
 		column: 2 expand: true;
 		build: [ :builder | builder
-			add: #remoteLabel; add: #remoteInputText; nextRow;
-			add: #projectLocationLabel; add: #projectLocation; nextRow ];
+			add: remoteLabel; add: remoteInputText; nextRow;
+			add: projectLocationLabel; add: projectLocation; nextRow ];
 		yourself
 ]
 

@@ -14,18 +14,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipCheckoutNewBranchPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #branchLabel width: self labelWidth;
-				   add: #branchInputText;
-				   yourself)
-		  height: self inputTextHeight
-]
-
 { #category : #'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchInputText [
 
@@ -54,6 +42,22 @@ IceTipCheckoutNewBranchPanel >> commitish: anIceTipModel [
 IceTipCheckoutNewBranchPanel >> currentBranchLabel [
 
 	^ currentBranchLabel
+]
+
+{ #category : #layout }
+IceTipCheckoutNewBranchPanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: currentBranchLabel expand: false;
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: branchLabel expand: false;
+				add: branchInputText;
+				yourself)
+		 	expand: false;
+		yourself
 ]
 
 { #category : #actions }

@@ -13,14 +13,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipExistingBranchPanel class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #branchesList;
-		  yourself
-]
-
 { #category : #initialization }
 IceTipExistingBranchPanel >> branchModels [
 
@@ -31,6 +23,14 @@ IceTipExistingBranchPanel >> branchModels [
 IceTipExistingBranchPanel >> branchesList [
 
 	^ branchesList
+]
+
+{ #category : #layout }
+IceTipExistingBranchPanel >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		  add: branchesList;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }

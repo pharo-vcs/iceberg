@@ -21,7 +21,7 @@ IceTipLocalRepositoryPanel >> defaultLayout [
 		beColumnNotHomogeneous;
 		column: 2 expand: true;
 		build: [ :builder | builder 
-			add: #projectLocationLabel; add: #projectLocation; nextRow ];
+			add: projectLocationLabel; add: projectLocation; nextRow ];
 		yourself
 ]
 

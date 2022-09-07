@@ -25,19 +25,19 @@ IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 	"Nothing to add"
 ]
 
+{ #category : #'accessing - ui' }
+IceTipPreviewBrowser >> actionPanel [
+
+	^ actionPanel
+]
+
 { #category : #layout }
-IceTipPreviewBrowser class >> defaultLayout [
+IceTipPreviewBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #diffPanel;
 		  add: #actionPanel expand: false;
 		  yourself
-]
-
-{ #category : #'accessing - ui' }
-IceTipPreviewBrowser >> actionPanel [
-
-	^ actionPanel
 ]
 
 { #category : #'accessing - ui' }

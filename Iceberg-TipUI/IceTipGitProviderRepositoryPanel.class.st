@@ -38,10 +38,10 @@ IceTipGitProviderRepositoryPanel >> defaultLayout [
 		beColumnNotHomogeneous;
 		column: 2 expand: true;
 		build: [ :builder | builder
-			add: #userNameLabel; add: #userNameInputText; nextRow;
-			add: #projectNameLabel; add: #projectNameInputText; nextRow;
-			add: #projectLocationLabel; add: #projectLocation; nextRow;  
-			add: #protocolLabel; add: #protocolDropList; nextRow ];
+			add: userNameLabel; add: userNameInputText; nextRow;
+			add: projectNameLabel; add: projectNameInputText; nextRow;
+			add: projectLocationLabel; add: projectLocation; nextRow;  
+			add: protocolLabel; add: protocolDropList; nextRow ];
 		yourself
 ]
 

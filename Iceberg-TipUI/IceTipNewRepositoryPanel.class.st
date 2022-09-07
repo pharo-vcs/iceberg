@@ -29,9 +29,9 @@ IceTipNewRepositoryPanel >> defaultLayout [
 		beColumnNotHomogeneous;
 		column: 2 expand: true;
 		build: [ :builder | builder
-			add: #projectNameLabel; add: #projectNameInputText; nextRow;
-			add: #projectLocationLabel; add: #projectLocation; nextRow;
-			add: #subdirectoryLabel; add: #subdirectoryInputText; nextRow ];
+			add: projectNameLabel; add: projectNameInputText; nextRow;
+			add: projectLocationLabel; add: projectLocation; nextRow;
+			add: subdirectoryLabel; add: subdirectoryInputText; nextRow ];
 		yourself
 ]
 
