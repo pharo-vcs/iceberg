@@ -57,7 +57,8 @@ IceProviderRepositoryType >> mcRepository [
 
 { #category : #accessing }
 IceProviderRepositoryType >> mcRepositoryClass [
-	^ MCGitBasedNetworkRepository allSubclasses detect: [ :e | e basicDescription = self class type ].
+	^ MCGitBasedNetworkRepository allSubclasses detect: [ :e | 
+		e isAbstract not and: [ e basicDescription = self class type ]].
 ]
 
 { #category : #accessing }
