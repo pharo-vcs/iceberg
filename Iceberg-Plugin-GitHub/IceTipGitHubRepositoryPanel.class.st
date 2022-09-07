@@ -23,11 +23,17 @@ IceTipGitHubRepositoryPanel >> configureBuilder: aBuilder [
 { #category : #'querying - github' }
 IceTipGitHubRepositoryPanel >> getGitHubRepository [
 
-	^ [ IceGitHubAPI new
-		beAnonymous;
-		getRepository: self userName project: self projectName ]
-			on: LGitNoCredentialsProvided
-			do: [ nil ]
+	^ [ [ IceGitHubAPI new
+		  beAnonymous;
+		  getRepository: self userName project: self projectName ]
+		  on: LGitNoCredentialsProvided
+		  do: [ nil ] ]
+		  on: IceGitHubError
+		  do: [ :error | 
+			"If not found, probably means a private repository => ignore it"
+			error messageText = 'Not Found'
+				ifTrue: [ ^ nil ].
+			error pass ]
 ]
 
 { #category : #initialization }
