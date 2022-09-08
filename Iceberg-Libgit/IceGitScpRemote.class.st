@@ -75,10 +75,3 @@ IceGitScpRemote >> parseUrl [
 	restSegments isEmpty ifTrue: [ IceWrongUrl signal: 'Remote repository scheme not supported: ', url ].
 	projectName := self stripPossibleExtension: (restSegments last)
 ]
-
-{ #category : #testing }
-IceGitScpRemote >> referencesSameRemoteLocationAs: aRemote [
-	^ ((super referencesSameRemoteLocationAs: aRemote)
-		or: [ self httpsUrl = aRemote httpsUrl ])
-			
-]

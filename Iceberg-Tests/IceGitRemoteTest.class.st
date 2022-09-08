@@ -1,7 +1,7 @@
 Class {
 	#name : #IceGitRemoteTest,
 	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#category : #'Iceberg-Tests-Core-Remotes'
 }
 
 { #category : #'tests-scp' }
@@ -181,6 +181,22 @@ IceGitRemoteTest >> testGithubScpUrlShouldBeTransformableToHttps [
 	self assert: remote httpsUrl equals: 'https://github.com/npasserini/iceberg.git'
 ]
 
+{ #category : #'tests-ssh' }
+IceGitRemoteTest >> testHTTPSRemoteEqualsLocationThanSCPRemote [
+	| sshremote scpremote |
+	sshremote := IceGitHttpsRemote new url: 'https://github.com/pharo-vcs/iceberg.git'.
+	scpremote := IceGitScpRemote new url: 'git@github.com:pharo-vcs/iceberg.git'.
+	self assert: (sshremote referencesSameRemoteLocationAs: scpremote).
+]
+
+{ #category : #'tests-ssh' }
+IceGitRemoteTest >> testHTTPSRemoteNotEqualsLocationThanSCPRemote [
+	| sshremote scpremote |
+	sshremote := IceGitHttpsRemote new url: 'https://github.com/pharo-vcs/iceberg.git'.
+	scpremote := IceGitScpRemote new url: 'git@github.com:different/iceberg.git'.
+	self deny: (sshremote referencesSameRemoteLocationAs: scpremote).
+]
+
 { #category : #'tests-scp' }
 IceGitRemoteTest >> testNonGithubImplicitScpUrlExtractsFullUrlPath [
 	| url |
@@ -308,4 +324,20 @@ IceGitRemoteTest >> testNonGithubScpUrlShouldBeTransformableToHttps [
 	
 	url := IceGitScpRemote new url: 'ssh://git.fremont.lamrc.net/diffuse/300/rdebug.git'.
 	self assert: url httpsUrl equals: 'https://git.fremont.lamrc.net/diffuse/300/rdebug.git'
+]
+
+{ #category : #'tests-ssh' }
+IceGitRemoteTest >> testSSHRemoteEqualsLocationThanSCPRemote [
+	| sshremote scpremote |
+	sshremote := IceGitSshRemote new url: 'git://github.com/pharo-vcs/iceberg.git'.
+	scpremote := IceGitScpRemote new url: 'git@github.com:pharo-vcs/iceberg.git'.
+	self assert: (sshremote referencesSameRemoteLocationAs: scpremote).
+]
+
+{ #category : #'tests-ssh' }
+IceGitRemoteTest >> testSSHRemoteNotEqualsLocationThanSCPRemote [
+	| sshremote scpremote |
+	sshremote := IceGitSshRemote new url: 'git://github.com/pharo-vcs/iceberg.git'.
+	scpremote := IceGitScpRemote new url: 'git@github.com:different/iceberg.git'.
+	self deny: (sshremote referencesSameRemoteLocationAs: scpremote).
 ]

@@ -106,7 +106,9 @@ IceGitNetworkRemote >> projectPath [
 
 { #category : #comparing }
 IceGitNetworkRemote >> referencesSameRemoteLocationAs: another [
-	^ (self url withoutSuffix: '.git') sameAs: (another url withoutSuffix: '.git')
+
+	^ (self httpsUrl withoutSuffix: '.git') sameAs:
+		  (another httpsUrl withoutSuffix: '.git')
 ]
 
 { #category : #private }
