@@ -74,21 +74,19 @@ IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 { #category : #initialization }
 IceTipOptionDialog >> initializePresenters [
 
-	contentLayout := SpBoxLayout newVertical.
-	typeList := self newTable.
+	contentLayout := SpBoxLayout newTopToBottom.
 	self initializeTypeList
 ]
 
 { #category : #initialization }
 IceTipOptionDialog >> initializeTypeList [
 
-	typeList
-		hideColumnHeaders;
-		addColumn: ((SpImageTableColumn evaluated: #iconForWindow) width: 20);
-		addColumn: (SpStringTableColumn evaluated: #titleForWindow);
+	(typeList := self newList)
+		items: self allTypes;
+		display: [ :aType | aType titleForWindow ];
+		displayIcon: [ :aType | aType icon ];
 		whenSelectionChangedDo: [ :selection | 
-			self selectionChanged: selection selectedItem ];
-		items: self allTypes
+			self selectionChanged: selection selectedItem ]		
 ]
 
 { #category : #private }
