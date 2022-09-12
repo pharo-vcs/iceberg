@@ -35,9 +35,11 @@ IceTipPreviewBrowser >> actionPanel [
 IceTipPreviewBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: #diffPanel;
-		  add: #actionPanel expand: false;
-		  yourself
+		borderWidth: 5;
+		spacing: 5; 
+		add: diffPanel;
+		add: actionPanel expand: false;
+	 	yourself
 ]
 
 { #category : #'accessing - ui' }

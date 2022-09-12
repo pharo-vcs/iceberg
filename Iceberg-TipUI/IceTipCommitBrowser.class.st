@@ -37,16 +37,6 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 
 ]
 
-{ #category : #layout }
-IceTipCommitBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newTopToBottom
-		  add: #diffPanel;
-		  add: #commentPanel;
-		  positionOfSlider: 75 percent;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipCommitBrowser class >> onRepository: aRepository [
 
@@ -69,6 +59,16 @@ IceTipCommitBrowser >> commentPanel [
 IceTipCommitBrowser >> commentPanel: aSpPresenter [
 
 	commentPanel := aSpPresenter
+]
+
+{ #category : #layout }
+IceTipCommitBrowser >> defaultLayout [
+
+	^ SpPanedLayout newTopToBottom
+		  positionOfSlider: 75 percent;
+		  add: diffPanel;
+		  add: commentPanel;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }

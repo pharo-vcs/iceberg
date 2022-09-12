@@ -17,16 +17,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipDiffPanel class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 25 percent;
-		  add: #iceNodesTree;
-		  add: #diffPanel;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
 
@@ -68,6 +58,16 @@ IceTipDiffPanel >> collapsePath: aPath [
 	iceNodesTree 
 		collapsePath: aPath;
 		selectPath: aPath
+]
+
+{ #category : #layout }
+IceTipDiffPanel >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 25 percent;
+		  add: iceNodesTree;
+		  add: diffPanel;
+		  yourself
 ]
 
 { #category : #private }
