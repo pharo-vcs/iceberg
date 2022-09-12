@@ -11,23 +11,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
-{ #category : #layout }
-IceTipRemovePackageDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #iconPanel
-				   width: 40 * self currentWorld displayScaleFactor;
-				   add: (SpBoxLayout newTopToBottom
-						    add: #confirmLabel;
-						    add: #unloadFromImageCheckbox height: self inputTextHeight;
-						    add: #removeFromRepositoryCheckbox
-						    height: self inputTextHeight;
-						    yourself);
-				   yourself);
-		  yourself
-]
-
 { #category : #actions }
 IceTipRemovePackageDialog >> accept [
 
@@ -47,6 +30,22 @@ IceTipRemovePackageDialog >> confirmLabel [
 IceTipRemovePackageDialog >> confirmMessage [
 
 	^ 'Are you sure to remove package {1}?'
+]
+
+{ #category : #layout }
+IceTipRemovePackageDialog >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		borderWidth: 5;
+		spacing: 10;
+		add: iconPanel expand: false;
+		add: (SpBoxLayout newTopToBottom
+			add: confirmLabel;
+			add: unloadFromImageCheckbox expand: false;
+			add: removeFromRepositoryCheckbox expand: false;
+			yourself);
+		yourself
+		
 ]
 
 { #category : #'accessing - ui' }

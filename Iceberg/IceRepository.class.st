@@ -185,6 +185,14 @@ IceRepository class >> repositories [
 	^ self registry
 ]
 
+{ #category : #'as yet unclassified' }
+IceRepository class >> repositoryNamed: aString [
+
+	^ self repositories 
+		detect: [ :each | each name = aString ]
+		ifNone: [ nil ]
+]
+
 { #category : #'class initialization' }
 IceRepository class >> reset [
 	Registry := nil.

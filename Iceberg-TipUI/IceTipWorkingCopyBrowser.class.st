@@ -47,15 +47,6 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 ]
 
-{ #category : #layout }
-IceTipWorkingCopyBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #packagesTable;
-		  add: #filterInput expand: false;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
@@ -89,6 +80,15 @@ IceTipWorkingCopyBrowser >> connectPresenters [
 		placeholder: 'Filter...';
 		whenTextChangedDo: [ :text | self refreshPackagesTable ]
 
+]
+
+{ #category : #layout }
+IceTipWorkingCopyBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: packagesTable;
+		  add: filterInput expand: false;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }

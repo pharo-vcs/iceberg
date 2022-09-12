@@ -11,26 +11,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipRepairRepositoryDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		add: #reasonPanel 
-		withConstraints: [ :constraints |
-			constraints 
-				height: 70 * self currentWorld displayScaleFactor;
-				padding: 2 ];
-		add: #optionsList
-		withConstraints: [ :constraints |
-			constraints 
-				height: 100 * self currentWorld displayScaleFactor;
-				padding: 2 ];
-		add: #detailPanel
-		withConstraints: [ :constraints |
-			constraints padding: 2 ];
-		yourself
-]
-
 { #category : #'instance creation' }
 IceTipRepairRepositoryDialog class >> onRepository: aRepository [
 
@@ -50,6 +30,18 @@ IceTipRepairRepositoryDialog >> accept [
 IceTipRepairRepositoryDialog >> defaultKeyboardFocus [
 
 	^ optionsList
+]
+
+{ #category : #layout }
+IceTipRepairRepositoryDialog >> defaultLayout [
+
+	self flag: #TODO. "Replace the fixed height with a correct style"
+	^ SpBoxLayout newTopToBottom
+		spacing: 2;
+		add: reasonPanel height: 70 * self currentWorld displayScaleFactor;
+		add: optionsList height: 100 * self currentWorld displayScaleFactor;
+		add: detailPanel;
+		yourself
 ]
 
 { #category : #'accessing - ui' }

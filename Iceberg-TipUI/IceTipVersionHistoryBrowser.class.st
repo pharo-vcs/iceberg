@@ -35,15 +35,6 @@ IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter f
 
 ]
 
-{ #category : #layout }
-IceTipVersionHistoryBrowser class >> defaultLayout [
-	
-	^ SpPanedLayout newTopToBottom
-		add: #commitList;
-		add: #commitPanel;
-		yourself
-]
-
 { #category : #'instance creation' }
 IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 	
@@ -57,6 +48,15 @@ IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 IceTipVersionHistoryBrowser >> commitList [
 
 	^ commitList
+]
+
+{ #category : #layout }
+IceTipVersionHistoryBrowser >> defaultLayout [
+	
+	^ SpPanedLayout newTopToBottom
+		add: commitList;
+		add: commitPanel;
+		yourself
 ]
 
 { #category : #initialization }

@@ -50,16 +50,6 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 
 ]
 
-{ #category : #layout }
-IceTipRepositoryBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 30 percent;
-		  add: #sidebarTree;
-		  add: #historyPanel withConstraints: [ :c | c spec: #panelSpec ];
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipRepositoryBrowser class >> new [
 	self error: 'Use #onRepository:'
@@ -81,6 +71,16 @@ IceTipRepositoryBrowser class >> onRepositoryNamed: aString [
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
 	historyPanel model: ann
+]
+
+{ #category : #layout }
+IceTipRepositoryBrowser >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 30 percent;
+		  add: sidebarTree;
+		  add: historyPanel withConstraints: [ :c | c spec: #panelSpec ];
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
