@@ -24,10 +24,3 @@ IceGitSshRemote >> httpsUrl [
 	^ 'https://{1}/{2}.git' format: { self host . self projectPath }
 
 ]
-
-{ #category : #testing }
-IceGitSshRemote >> referencesSameRemoteLocationAs: aRemote [
-	^ ((super referencesSameRemoteLocationAs: aRemote)
-		or: [ self httpsUrl sameAs: aRemote httpsUrl ])
-			
-]
