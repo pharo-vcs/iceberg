@@ -15,23 +15,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipAddRemoteDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
-				   add: #nameText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #urlLabel width: self labelWidth;
-				   add: #urlText;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #actions }
 IceTipAddRemoteDialog >> accept [
 
@@ -42,6 +25,20 @@ IceTipAddRemoteDialog >> accept [
 		executeWithContext: self.
 		
 	^ acceptBlock ifNotNil: [ acceptBlock cull: self remoteName ]
+]
+
+{ #category : #layout }
+IceTipAddRemoteDialog >> defaultLayout [
+
+	^ SpGridLayout new
+		borderWidth: 5;
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder 
+			add: nameLabel; add: nameText; nextRow;
+			add: urlLabel; add: urlText; nextRow ];
+		yourself
+	
 ]
 
 { #category : #initialization }
