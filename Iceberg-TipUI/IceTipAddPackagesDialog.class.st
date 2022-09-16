@@ -13,14 +13,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-WorkingCopy'
 }
 
-{ #category : #layout }
-IceTipAddPackagesDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #packagesList;
-		  add: #packageNameText height: self inputTextHeight
-]
-
 { #category : #actions }
 IceTipAddPackagesDialog >> accept [
 
@@ -48,6 +40,15 @@ IceTipAddPackagesDialog >> allPackagesNotRegistered [
 	currentPackagesNames := self model packages collect: #packageName.
 	^ self allPackages reject: [ :rPackage | 
 		  currentPackagesNames includes: rPackage name ]
+]
+
+{ #category : #layout }
+IceTipAddPackagesDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		add: packagesList;
+		add: packageNameText expand: false;
+		yourself
 ]
 
 { #category : #initialization }

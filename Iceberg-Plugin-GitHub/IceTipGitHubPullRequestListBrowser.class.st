@@ -39,16 +39,6 @@ IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: pres
 
 ]
 
-{ #category : #layout }
-IceTipGitHubPullRequestListBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newTopToBottom
-		  positionOfSlider: 30 percent;
-		  add: #pullRequests;
-		  add: #details;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipGitHubPullRequestListBrowser class >> onRepository: aRepository [
 
@@ -71,6 +61,16 @@ IceTipGitHubPullRequestListBrowser >> connectPresenters [
 		whenSelectionChangedDo: [ :selection |
 			self updateSelectedPullRequest: selection ].
 
+]
+
+{ #category : #layout }
+IceTipGitHubPullRequestListBrowser >> defaultLayout [
+
+	^ SpPanedLayout newTopToBottom
+		  positionOfSlider: 30 percent;
+		  add: pullRequests;
+		  add: details;
+		  yourself
 ]
 
 { #category : #accessing }

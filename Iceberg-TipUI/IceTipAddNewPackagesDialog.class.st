@@ -15,15 +15,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipAddNewPackagesDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-			add: #problemDescription height: (self labelHeight * 4);
-			add: #packagesList;
-			yourself
-]
-
 { #category : #actions }
 IceTipAddNewPackagesDialog >> accept [
 
@@ -51,6 +42,15 @@ IceTipAddNewPackagesDialog >> checkoutModel: anIceTipCheckoutModel [
 IceTipAddNewPackagesDialog >> checkoutPreviewWindow: anIceTipCheckoutPreviewBrowser [ 
 	
 	checkoutPreviewWindow := anIceTipCheckoutPreviewBrowser 
+]
+
+{ #category : #layout }
+IceTipAddNewPackagesDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+			add: problemDescription expand: false;
+			add: packagesList;
+			yourself
 ]
 
 { #category : #initialization }
@@ -87,6 +87,7 @@ IceTipAddNewPackagesDialog >> initializePresenters [
 	problemDescription := self newText
 		beNotEditable;
 		addStyle: 'iceTipReadonly';
+		addStyle: 'iceTipText4Lines';
 		beWrapWord;
 		yourself.
 
