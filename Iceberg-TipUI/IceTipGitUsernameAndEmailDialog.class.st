@@ -16,26 +16,6 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #layout }
-IceTipGitUsernameAndEmailDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #nameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #emailLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #emailInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #globalCheckbox height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #actions }
 IceTipGitUsernameAndEmailDialog >> accept [
 
@@ -50,6 +30,24 @@ IceTipGitUsernameAndEmailDialog >> accept [
 	
 	acceptCallback ifNotNil: [ 
 		acceptCallback value ].
+]
+
+{ #category : #layout }
+IceTipGitUsernameAndEmailDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpGridLayout new 
+			borderWidth: 0;
+			beColumnNotHomogeneous;
+			column: 2 expand: true;
+			build: [ :build | build 
+				add: nameLabel; add: nameInput; nextRow;
+				add: emailLabel; add: emailInput; nextRow ];
+			yourself);
+		add: globalCheckbox expand: false;
+		yourself
 ]
 
 { #category : #accessing }
@@ -78,11 +76,7 @@ IceTipGitUsernameAndEmailDialog >> globalCheckbox [
 { #category : #initialization }
 IceTipGitUsernameAndEmailDialog >> initialExtentForWindow [
 
-	^ (400@(
-		self class inputTextHeight * 3
-		+ self class buttonHeight 
-		+ 50 "Yes, a magic number"
-		)) scaledByDisplayScaleFactor
+	^ (400@200) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
