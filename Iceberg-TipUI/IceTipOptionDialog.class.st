@@ -84,7 +84,7 @@ IceTipOptionDialog >> initializeTypeList [
 	(typeList := self newList)
 		items: self allTypes;
 		display: [ :aType | aType titleForWindow ];
-		displayIcon: [ :aType | aType icon ];
+		displayIcon: [ :aType | aType iconForWindow ];
 		whenSelectionChangedDo: [ :selection | 
 			self selectionChanged: selection selectedItem ]		
 ]

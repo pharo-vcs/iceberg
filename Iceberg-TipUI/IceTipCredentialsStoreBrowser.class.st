@@ -30,18 +30,18 @@ IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter
 
 ]
 
-{ #category : #layout }
-IceTipCredentialsStoreBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #credentialsList;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> credentialsList [
 
 	^ credentialsList
+]
+
+{ #category : #layout }
+IceTipCredentialsStoreBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: credentialsList;
+		  yourself
 ]
 
 { #category : #initialization }

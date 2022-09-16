@@ -14,14 +14,3 @@ IceTipDirectoryPresenter >> chooseReference [
 		chooseDirectory: self chooseTitle 
 		path: self location
 ]
-
-{ #category : #layout }
-IceTipDirectoryPresenter >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		vAlignCenter;
-		spacing: 5;
-		add: #locationInput;
-		add: #chooseButton expand: false;
-		yourself
-]

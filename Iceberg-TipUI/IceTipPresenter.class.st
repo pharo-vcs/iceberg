@@ -20,7 +20,13 @@ IceTipPresenter class >> buildDecorations [
 { #category : #accessing }
 IceTipPresenter class >> currentApplication [ 
 
-	^ StPresenter currentApplication 
+	^ StPresenter currentApplication
+]
+
+{ #category : #'instance creation' }
+IceTipPresenter class >> new [ 
+
+	^ self newApplication: self currentApplication
 ]
 
 { #category : #accessing }
