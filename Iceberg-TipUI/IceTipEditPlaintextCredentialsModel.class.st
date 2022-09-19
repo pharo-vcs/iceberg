@@ -7,36 +7,28 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipEditPlaintextCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #passwordLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #passwordInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #actions }
 IceTipEditPlaintextCredentialsModel >> accept [ 
 	
 	^ self acceptEditAction
 ]
 
+{ #category : #layout }
+IceTipEditPlaintextCredentialsModel >> defaultLayout [
+
+	^ SpGridLayout new 
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder
+			add: usernameLabel; add: usernameInput; nextRow;
+			add: passwordLabel; add: passwordInput; nextRow ];
+		yourself
+]
+
 { #category : #initialization }
 IceTipEditPlaintextCredentialsModel >> initialExtentForWindow [
 
-	^ (350 @ (self class inputTextHeight * 4 + self class buttonHeight))
-		  scaledByDisplayScaleFactor
+	^ (350 @ 160) scaledByDisplayScaleFactor
 ]
 
 { #category : #actions }
