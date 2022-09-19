@@ -30,32 +30,6 @@ IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: pres
 	
 ]
 
-{ #category : #layout }
-IceTipCritiquesBeforeCommitBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-			add: #reasonPanel withConstraints: [ :constraints |
-				constraints 
-					height: 70;
-					padding: 2 ];	
-			add: #critiquesList withConstraints: [ :constraints | 
-				constraints
-					height: 100;
-					padding: 2 ];
-			add: #detailPanel withConstraints: [ :constraints | 
-				constraints
-					height: 100; 
-					padding: 2 ];
-			add: ( SpBoxLayout newLeftToRight 
-				add: #browseButton;
-				add: #autofixButton;
-				yourself) withConstraints: [:constraints | 
-					constraints 
-						height: self buttonHeight;
-						padding: 2];
-			yourself
-]
-
 { #category : #actions }
 IceTipCritiquesBeforeCommitBrowser >> accept [
 
@@ -73,6 +47,24 @@ IceTipCritiquesBeforeCommitBrowser >> commitModel [
 IceTipCritiquesBeforeCommitBrowser >> commitModel: anObject [
 
 	commitModel := anObject
+]
+
+{ #category : #layout }
+IceTipCritiquesBeforeCommitBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+			borderWidth: 5;
+			spacing: 5;
+			add: reasonPanel height: 70 * self currentWorld displayScaleFactor;	
+			add: critiquesList;
+			add: detailPanel;
+			add: (SpBoxLayout newLeftToRight 
+					spacing: 5;
+					add: browseButton;
+					add: autofixButton;
+					yourself)
+				expand: false;
+			yourself
 ]
 
 { #category : #updating }
