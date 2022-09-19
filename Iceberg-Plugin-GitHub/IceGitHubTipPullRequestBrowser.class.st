@@ -63,9 +63,9 @@ IceGitHubTipPullRequestBrowser class >> on: aModel pullRequest: aPullRequest [
 ]
 
 { #category : #accessing }
-IceGitHubTipPullRequestBrowser class >> taskbarIcon [
+IceGitHubTipPullRequestBrowser class >> taskbarIconName [
 
-	^ self iconNamed: #komitterSmalltalkhubRemote
+	^ #komitterSmalltalkhubRemote
 ]
 
 { #category : #'accessing - ui' }

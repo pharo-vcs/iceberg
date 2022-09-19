@@ -46,9 +46,9 @@ IceTipGitHubPullRequestListBrowser class >> onRepository: aRepository [
 ]
 
 { #category : #accessing }
-IceTipGitHubPullRequestListBrowser class >> taskbarIcon [
+IceTipGitHubPullRequestListBrowser class >> taskbarIconName [
 
-	^ self iconNamed: #komitterSmalltalkhubRemote
+	^ #komitterSmalltalkhubRemote
 ]
 
 { #category : #initialization }
