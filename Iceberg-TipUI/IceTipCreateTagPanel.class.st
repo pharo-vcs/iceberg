@@ -22,26 +22,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipCreateTagPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentCommitishLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #tagNameLabel width: self labelWidth;
-				   add: #tagNameInputText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #majorButton;
-				   add: #minorButton;
-				   add: #patchButton;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #existingTagsList height: self inputTextHeight * 3;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipCreateTagPanel >> accept [
 
@@ -66,6 +46,30 @@ IceTipCreateTagPanel >> commitishToTag [
 IceTipCreateTagPanel >> currentCommitishLabel [
 
 	^ currentCommitishLabel
+]
+
+{ #category : #layout }
+IceTipCreateTagPanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: currentCommitishLabel expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: tagNameLabel expand: false;
+				add: tagNameInputText;
+				yourself)
+			expand: false;
+	  	add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: majorButton;
+				add: minorButton;
+				add: patchButton;
+				yourself)
+	  		expand: false;
+		add: existingTagsList;
+		yourself
 ]
 
 { #category : #actions }

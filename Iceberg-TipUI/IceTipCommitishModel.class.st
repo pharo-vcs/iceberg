@@ -30,3 +30,9 @@ IceTipCommitishModel >> shortCommitId [
 	
 	^ self entity shortId
 ]
+
+{ #category : #accessing }
+IceTipCommitishModel >> tagModels [
+	
+	^ self repositoryModel tagModels
+]
