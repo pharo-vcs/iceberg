@@ -7,28 +7,24 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipEditSSHCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel width: self labelWidth;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #publicKeyInput height: self inputTextHeight;
-		  add: #privateKeyInput height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #passphraseLabel width: self labelWidth;
-				   add: #passphraseInput;
-				   yourself)
-		  height: self inputTextHeight
-]
-
 { #category : #actions }
 IceTipEditSSHCredentialsModel >> accept [
 
 	^ self acceptEditAction
+]
+
+{ #category : #layout }
+IceTipEditSSHCredentialsModel >> defaultLayout [
+
+	^ SpGridLayout new 
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder 
+			add: usernameLabel; add: usernameInput; nextRow; 
+			add: publicKeyLabel; add: publicKeyInput; nextRow; 
+			add: privateKeyLabel; add: privateKeyInput; nextRow;
+			add: passphraseLabel; add: passphraseInput; nextRow ];
+		yourself
 ]
 
 { #category : #initialization }
