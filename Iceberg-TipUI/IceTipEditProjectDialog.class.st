@@ -21,34 +21,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipEditProjectDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
-				   add: #nameInput expand: true;
-				   add: #addButton width: 32 * self currentWorld displayScaleFactor;
-				   add: #removeButton width: 32 * self currentWorld displayScaleFactor;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #sourceDirectoryLabel width: self labelWidth;
-				   add: #sourceDirectoryTree;
-				   yourself)
-		  height: 200 * self currentWorld displayScaleFactor;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #formatLabel width: self labelWidth;
-				   add: #formatList;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #messageIcon width: self labelWidth;
-				   add: #messageText;
-				   yourself);
-		  yourself
-]
-
 { #category : #actions }
 IceTipEditProjectDialog >> accept [	
 	
@@ -118,6 +90,41 @@ IceTipEditProjectDialog >> connectPresenters [
 IceTipEditProjectDialog >> defaultFormat [
 
 	^ defaultFormat
+]
+
+{ #category : #layout }
+IceTipEditProjectDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				vAlignCenter;
+				add: nameLabel expand: false;
+				add: nameInput;
+				add: addButton expand: false;
+				add: removeButton expand: false;
+				yourself)
+		  	expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: sourceDirectoryLabel expand: false;
+				add: sourceDirectoryTree;
+				yourself);
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: formatLabel expand: false;
+				add: formatList;
+				yourself)
+			expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: messageIcon expand: false;
+				add: messageText;
+				yourself);
+		yourself
 ]
 
 { #category : #utilities }
@@ -258,7 +265,9 @@ IceTipEditProjectDialog >> initializePresenters [
 	sourceDirectoryLabel := self newLabel
 		label: 'Code directory';
 		yourself.
-	sourceDirectoryTree := self newTreeTable.
+	sourceDirectoryTree := self newTreeTable
+		hideColumnHeaders;
+		yourself.
 	formatLabel := self newLabel
 		label: 'Format';
 		yourself.
@@ -269,8 +278,14 @@ IceTipEditProjectDialog >> initializePresenters [
 		addStyle: 'iceTipReadonly';
 		yourself.
 
-	removeButton := self newButton icon: (self iconNamed: #remove); yourself.
-	addButton := self newButton icon: (self iconNamed: #add); yourself.
+	removeButton := self newButton 
+		addStyle: 'small';
+		icon: (self iconNamed: #remove); 
+		yourself.
+	addButton := self newButton 
+		addStyle: 'small';
+		icon: (self iconNamed: #add); 
+		yourself.
 
 	self initializeMessagePanel.
 	self initializeDirectoryTree
