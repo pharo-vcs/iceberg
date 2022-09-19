@@ -30,7 +30,7 @@ IceTipEditSSHCredentialsModel >> defaultLayout [
 { #category : #initialization }
 IceTipEditSSHCredentialsModel >> initialExtentForWindow [
 
-	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight)) scaledByDisplayScaleFactor
+	^ (500@230) scaledByDisplayScaleFactor
 ]
 
 { #category : #actions }
