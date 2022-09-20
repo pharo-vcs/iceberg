@@ -18,12 +18,12 @@ Class {
 IceTipAbstractPlaintextCredentialsModel >> initializePresenters [
 
 	super initializePresenters.
-	usernameLabel := self newLabel label: 'Username: '.
+	usernameLabel := self newLabel label: 'Username:'.
 	usernameInput := self newTextInput
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	passwordLabel := self newLabel label: 'Password: '.
+	passwordLabel := self newLabel label: self passwordLabel.
 	passwordInput := self newTextInput
 		bePassword;
 		autoAccept: true;
@@ -57,6 +57,12 @@ IceTipAbstractPlaintextCredentialsModel >> password [
 IceTipAbstractPlaintextCredentialsModel >> passwordInput [
 
 	^ passwordInput
+]
+
+{ #category : #private }
+IceTipAbstractPlaintextCredentialsModel >> passwordLabel [
+
+	^ 'Password:'
 ]
 
 { #category : #accessing }

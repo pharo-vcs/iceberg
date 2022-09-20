@@ -23,13 +23,6 @@ IceGitHubCommand >> canBeExecuted [
 { #category : #accessing }
 IceGitHubCommand >> remote [
 
-	^ self context entity
-
-]
-
-{ #category : #accessing }
-IceGitHubCommand >> remoteModel [
-
-	^ self context
+	^ self subclassResponsibility
 
 ]

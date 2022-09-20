@@ -20,7 +20,6 @@ IceGitHubRemoveBranchesAction >> basicExecute [
 	
 	((IceGitHubRemoveBranchesModel newApplication: context application)
 		remote: remote;
-		selectLabel: 'Remove branches';
 		items: branchesByName values ;
 		onAccept: [ :selection | self removeBranches: selection ];
 		asDialogWindow)

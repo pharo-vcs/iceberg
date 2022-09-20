@@ -35,7 +35,6 @@ IceTipDialog >> initializeDialogWindow: aWindow [
 { #category : #showing }
 IceTipDialog >> openDialog [
 
-	self halt.
 	^ self openModal
 
 ]

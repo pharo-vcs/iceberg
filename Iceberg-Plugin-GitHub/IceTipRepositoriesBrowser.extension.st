@@ -29,7 +29,8 @@ IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: a
 			presenter selectedItem remoteModels do: [ :each |
 				self
 					githubRemoteCommands: each
-					forRootGroup: remotesGroup ] ].
+					forRootGroup: remotesGroup
+					context: presenter ] ].
 	pluginGroup register: remotesGroup.
 
 ]
@@ -52,4 +53,26 @@ IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRoo
 			do: [ :each | 
 				thisRemoteGroup register: (each forSpecContext: anIceRemoteModel) ]
 
+]
+
+{ #category : #'*Iceberg-Plugin-GitHub' }
+IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRootGroup: aCommandGroup context: aPresenter [
+
+	| thisRemoteGroup |
+	thisRemoteGroup := CmCommandGroup forSpec
+		name: anIceRemoteModel name;
+		yourself.
+	aCommandGroup register: thisRemoteGroup.
+
+	"Note: The following commands use the remote model as a context, while the default
+	context is the presenter."
+	{ 	IceGitHubViewPullRequestsCommand.
+		IceGitHubNewPullRequestCommand.
+		IceGitHubOpenOnGithubCommand.
+		IceGitHubRemoveBranchesCommand }
+			do: [ :each | 
+				thisRemoteGroup register: (each new 
+					context: aPresenter;
+					remoteModel: anIceRemoteModel;
+					asSpecCommand) ]
 ]

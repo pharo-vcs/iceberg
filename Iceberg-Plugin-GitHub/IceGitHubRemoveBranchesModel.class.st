@@ -15,22 +15,20 @@ Class {
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #layout }
-IceGitHubRemoveBranchesModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #listPanel;
-		  add: #selectButton
-		  withConstraints: [ :constraints | 
-			  constraints height: self buttonHeight ];
-		  yourself
-]
-
 { #category : #actions }
 IceGitHubRemoveBranchesModel >> confirmSelection [
 
 	acceptBlock ifNotNil: [ acceptBlock value: selectedItems ].
 	self closeWindow
+]
+
+{ #category : #layout }
+IceGitHubRemoveBranchesModel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: listPanel;"
+		  add: selectButton expand: false;"
+		  yourself
 ]
 
 { #category : #api }
@@ -53,30 +51,30 @@ IceGitHubRemoveBranchesModel >> initialize [
 ]
 
 { #category : #initialization }
+IceGitHubRemoveBranchesModel >> initializeDialogWindow: aDialogWindowPresenter [
+
+	aDialogWindowPresenter
+		addButton: 'Remove' do: [ :presenter | 
+			self triggerAcceptAction.
+			presenter close ];
+		addButton: 'Cancel' do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ]	
+]
+
+{ #category : #initialization }
 IceGitHubRemoveBranchesModel >> initializePresenters [
 
-	super initializePresenters.
 	listPanel := self newTable.
-	selectButton := self newButton.
 	listPanel
-		addColumn:
-			((SpCheckBoxTableColumn
-				evaluated: [ :branch | selectedItems includes: branch ])
-				onActivation: [ :branch | selectedItems add: branch ];
-				onDeactivation: [ :branch | selectedItems remove: branch ];
-				width: 20 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: [ :branch | branch at: 'name' ])
-				width: 350 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn
-				evaluated: [ :branch | self timeSinceLastCommit: branch ]).
-	selectButton
-		label: 'Select';
-		action: [ self confirmSelection ].
-
+		addColumn: (SpCheckBoxTableColumn new
+			evaluated: [ :branch | selectedItems includes: branch ];
+			onActivation: [ :branch | selectedItems add: branch ];
+			onDeactivation: [ :branch | selectedItems remove: branch ];
+			beNotExpandable;
+			yourself);
+		addColumn: (SpStringTableColumn evaluated: [ :branch | branch at: 'name' ]);
+		addColumn: (SpStringTableColumn evaluated: [ :branch | self timeSinceLastCommit: branch ])
 ]
 
 { #category : #api }
@@ -135,4 +133,11 @@ IceGitHubRemoveBranchesModel >> titleForWindow [
 
 	^ 'Select branches to remove on remote {1}' format:
 		  { self remote name }
+]
+
+{ #category : #initialization }
+IceGitHubRemoveBranchesModel >> triggerAcceptAction [
+		
+	acceptBlock ifNil: [ ^ self ].
+	acceptBlock value: selectedItems
 ]

@@ -9,36 +9,27 @@ Class {
 }
 
 { #category : #layout }
-IceTipAskForPlaintextOtpCredentialsModel class >> defaultLayout [
+IceTipAskForPlaintextOtpCredentialsModel >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #usernameInput;
-				yourself )
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #passwordInput;
-				yourself )
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #tokenLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #tokenInput;
-				yourself )
-			height: self inputTextHeight;
-		add: #storeCheckbox height: self inputTextHeight
-
+	^ SpBoxLayout newTopToBottom 
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpGridLayout new 
+			borderWidth: 0;
+			beColumnNotHomogeneous;
+			column: 2 expand: true;
+			build: [ :builder | builder
+				add: usernameLabel; add: usernameInput; nextRow;
+				add: passwordLabel; add: passwordInput; nextRow;
+				add: tokenLabel; add: tokenInput; nextRow ]);
+		add: storeCheckbox expand: false;
+		yourself
 ]
 
 { #category : #initialization }
 IceTipAskForPlaintextOtpCredentialsModel >> initialExtentForWindow [
 
-	^ (350 @ (self class inputTextHeight * 6 + self class buttonHeight))
-		  scaledByDisplayScaleFactor
+	^ (350 @ 210) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -48,7 +39,6 @@ IceTipAskForPlaintextOtpCredentialsModel >> initializePresenters [
 	tokenLabel := self newLabel label: 'OTP Token: '.
 	tokenInput := self newTextInput
 		bePassword;
-		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself
 ]
