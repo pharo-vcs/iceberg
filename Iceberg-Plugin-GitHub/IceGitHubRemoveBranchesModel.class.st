@@ -7,7 +7,6 @@ Class {
 	#instVars : [
 		'selectedItems',
 		'listPanel',
-		'selectButton',
 		'acceptBlock',
 		'displayBlock',
 		'remote'
@@ -107,18 +106,6 @@ IceGitHubRemoveBranchesModel >> remote: anObject [
 	remote := anObject
 ]
 
-{ #category : #'accessing - ui' }
-IceGitHubRemoveBranchesModel >> selectButton [
-
-	^ selectButton
-]
-
-{ #category : #api }
-IceGitHubRemoveBranchesModel >> selectLabel: aString [
-
-	self selectButton label: aString
-]
-
 { #category : #accessing }
 IceGitHubRemoveBranchesModel >> timeSinceLastCommit: branch [
 
@@ -135,7 +122,7 @@ IceGitHubRemoveBranchesModel >> titleForWindow [
 		  { self remote name }
 ]
 
-{ #category : #initialization }
+{ #category : #private }
 IceGitHubRemoveBranchesModel >> triggerAcceptAction [
 		
 	acceptBlock ifNil: [ ^ self ].
