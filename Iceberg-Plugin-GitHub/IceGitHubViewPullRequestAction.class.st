@@ -13,7 +13,9 @@ IceGitHubViewPullRequestAction >> basicExecute [
 	
 	UIManager default
 		informUser: ('Retrieving pull requests from {1}' format: {self remote})
-		during: [ (IceTipGitHubPullRequestListBrowser onRepository: self repository)
+		during: [ 
+			(IceTipGitHubPullRequestListBrowser onRepository: self repository)
+				application: context application;
 				remote: self remote;
 				refreshPullRequests;
 				open ]

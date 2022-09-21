@@ -45,7 +45,9 @@ IceTipCommitInfoPresenter >> beForMerge [
 IceTipCommitInfoPresenter >> commitInfo [
 
 	selectedModel ifNil: [ ^ self newEmpty ].
-	^ IceTipReadOnlyFormBuilder newBuiltFor: selectedModel info application: self application
+	^ IceTipReadOnlyFormBuilder 
+		newBuiltFor: selectedModel info 
+		application: self application
 ]
 
 { #category : #private }

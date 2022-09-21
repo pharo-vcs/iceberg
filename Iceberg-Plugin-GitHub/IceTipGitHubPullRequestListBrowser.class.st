@@ -33,9 +33,11 @@ IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presen
 { #category : #commands }
 IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipOpenGitHubPullRequestCommand }
-			do: [ :each |
-				aCommandGroup register: each forSpec ]
+	{ 
+	  IceTipOpenGitHubPullRequestCommand. 
+	  IceTipOpenGitHubPullRequestInBrowserCommand 
+	}
+	do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
@@ -205,7 +207,9 @@ IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 					 aPullRequest number.
 					 aPullRequest title })
 		during: [ 
-			(IceGitHubTipPullRequestBrowser
-				 on: self model
-				 pullRequest: aPullRequest) open ]
+			(IceGitHubTipPullRequestBrowser 
+				newApplication: self application
+					model: self model
+					pullRequest: aPullRequest) 
+				open ]
 ]

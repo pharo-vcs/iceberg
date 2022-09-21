@@ -32,7 +32,7 @@ IceGitHubNewPullRequestAction >> basicExecute [
 			credentials: self credentials
 			headRemote: remote)
 		onAccept: [ :pullRequest | self informPullRequestDone: pullRequest ];
-		asDialogWindow)
+		asModalWindow)
 			centeredRelativeTo: context window;
 			open
 ]

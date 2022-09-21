@@ -1,19 +1,5 @@
-"
-Description
---------------------
-
-I am a simple action taking as parameters an owner of a project and the project name and I open the project on github from that.	
- 
-Internal Representation and Key Implementation Points.
---------------------
-
-    Instance Variables
-	organisation:		<aString>		The name of the owner of the project.
-	projectName:			<aString>		The project name.
-
-"
 Class {
-	#name : #IceGitHubOpenOnGithubAction,
+	#name : #IceGitHubViewPullRequestOnGithubAction,
 	#superclass : #IceGitHubAction,
 	#instVars : [
 		'organisation',
@@ -23,7 +9,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-IceGitHubOpenOnGithubAction class >> organisation: aString projectName: anotherString [
+IceGitHubViewPullRequestOnGithubAction class >> organisation: aString projectName: anotherString [
 	^ self new
 		organisation: aString;
 		projectName: anotherString;
@@ -31,7 +17,7 @@ IceGitHubOpenOnGithubAction class >> organisation: aString projectName: anotherS
 ]
 
 { #category : #executing }
-IceGitHubOpenOnGithubAction >> basicExecute [
+IceGitHubViewPullRequestOnGithubAction >> basicExecute [
 	[ 
 	
 	| url |
@@ -53,21 +39,21 @@ IceGitHubOpenOnGithubAction >> basicExecute [
 ]
 
 { #category : #accessing }
-IceGitHubOpenOnGithubAction >> organisation [
+IceGitHubViewPullRequestOnGithubAction >> organisation [
 	^ organisation
 ]
 
 { #category : #accessing }
-IceGitHubOpenOnGithubAction >> organisation: anObject [
+IceGitHubViewPullRequestOnGithubAction >> organisation: anObject [
 	organisation := anObject
 ]
 
 { #category : #accessing }
-IceGitHubOpenOnGithubAction >> projectName [
+IceGitHubViewPullRequestOnGithubAction >> projectName [
 	^ projectName
 ]
 
 { #category : #accessing }
-IceGitHubOpenOnGithubAction >> projectName: anObject [
+IceGitHubViewPullRequestOnGithubAction >> projectName: anObject [
 	projectName := anObject
 ]

@@ -150,8 +150,8 @@ IceTipBrowser >> refresh [
 
 { #category : #commands }
 IceTipBrowser >> refreshCommands [
-
 	| rootGroup |
+
 	rootGroup := self rootCommandsGroup.
 	IceTipCleanCommandGroupVisitor new visit: rootGroup.
 

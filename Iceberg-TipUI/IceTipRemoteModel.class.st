@@ -22,35 +22,37 @@ IceTipRemoteModel >> branches [
 	^ self entity branches
 ]
 
-{ #category : #actions }
-IceTipRemoteModel >> delete [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self repositoryModel entity;
-		message: ('Removing remote {1}' format: { self name });
-		onSuccessRepositoryModified;
-		do: [ self repositoryModel entity removeRemote: self entity ]
-]
-
 { #category : #accessing }
 IceTipRemoteModel >> description [
 
 	^ '{1} <{2}>' format: { self name. self entity url }
 ]
 
-{ #category : #actions }
-IceTipRemoteModel >> fetch [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self repositoryModel entity;
-		message: ('Fetching remote {1}' format: { self name });
-		onSuccessRepositoryModified;
-		do: [ self entity fetch ]
-]
-
 { #category : #accessing }
 IceTipRemoteModel >> name [
 	^ self entity name
+]
+
+{ #category : #actions }
+IceTipRemoteModel >> newDeleteAction [
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self repositoryModel entity;
+		message: ('Removing remote {1}' format: { self name });
+		onSuccessRepositoryModified;
+		action: [ self repositoryModel entity removeRemote: self entity ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipRemoteModel >> newFetchAction [
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self repositoryModel entity;
+		message: ('Fetching remote {1}' format: { self name });
+		onSuccessRepositoryModified;
+		action: [ self entity fetch ];
+		yourself
 ]

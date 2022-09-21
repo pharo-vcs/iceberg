@@ -22,7 +22,8 @@ Class {
 		'labelWidth',
 		'rowHeight',
 		'items',
-		'spApplication'
+		'spApplication',
+		'presenter'
 	],
 	#category : #'Iceberg-TipUI-Spec2'
 }
@@ -35,13 +36,52 @@ IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary application: aSpAppl
 	^ self new
 		items: aDictionary;
 		application: aSpApplication;
-		newPresenter
+		build
 ]
 
 { #category : #accessing }
 IceTipReadOnlyFormBuilder >> application: aSpApplication [ 
 	
 	spApplication := aSpApplication
+]
+
+{ #category : #building }
+IceTipReadOnlyFormBuilder >> build [
+
+	presenter := spApplication newPresenter: SpPresenter.
+	presenter layout: self buildLayout.
+	^ presenter
+]
+
+{ #category : #building }
+IceTipReadOnlyFormBuilder >> buildLayout [
+	| lastLabel fieldPresenter |
+	lastLabel := items associations last key.
+	^ SpGridLayout new
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder |
+			items keysAndValuesDo: [ :label :value | 
+				builder add: (presenter newLabel 
+					label: label;
+					yourself). 
+
+				fieldPresenter := (label ~= lastLabel) 
+					ifTrue: [ presenter newTextInput ]
+					ifFalse: [ 
+						presenter newText 
+							beWrapWord;
+							addStyle: 'lines8';
+							yourself ].
+				
+				builder add: (fieldPresenter
+					addStyle: 'iceTipReadonly';
+					editable: false;
+					text: value; 
+					yourself).
+				
+				builder nextRow ] ];
+		yourself
 ]
 
 { #category : #accessing }
@@ -93,53 +133,6 @@ IceTipReadOnlyFormBuilder >> labelWidth [
 IceTipReadOnlyFormBuilder >> labelWidth: aNumber [
 
 	^ labelWidth := aNumber
-]
-
-{ #category : #'private - factory' }
-IceTipReadOnlyFormBuilder >> newLayout [
-
-	| newLayout |
-	newLayout := SpBoxLayout newTopToBottom.
-
-	items associations withIndexDo: [ :anAssociation :index | 
-		
-		"Last item takes all remaining space"		
-		index = items size 
-			ifTrue: [ newLayout
-							add: (self newRowPresenterForLabel: anAssociation key value: anAssociation value)
-							withConstraints: [ :constraints |
-								constraints padding: 1 ] ]
-			ifFalse: [ newLayout
-							add: (self newRowPresenterForLabel: anAssociation key value: anAssociation value)
-							withConstraints: [ :constraints | 
-								constraints padding: 1.
-								constraints height: self rowHeight ]]].
-
-	^ newLayout
-]
-
-{ #category : #'private - factory' }
-IceTipReadOnlyFormBuilder >> newPresenter [
-
-	^ (spApplication newPresenter: SpPresenter)
-		  layout: self newLayout;
-		  yourself
-]
-
-{ #category : #'private - factory' }
-IceTipReadOnlyFormBuilder >> newRowPresenterForLabel: aString value: anotherString [
-
-	^ SpBoxLayout newLeftToRight
-		  add: ((spApplication newPresenter: SpLabelPresenter)
-				   label: aString;
-				   color: self labelColor;
-				   yourself) width: self labelWidth;
-		  add: ((spApplication newPresenter: SpTextInputFieldPresenter)
-				   text: anotherString trimBoth;
-					addStyle: 'iceTipReadonly';
-					enabled: false;
-				   yourself);
-		  yourself
 ]
 
 { #category : #accessing }

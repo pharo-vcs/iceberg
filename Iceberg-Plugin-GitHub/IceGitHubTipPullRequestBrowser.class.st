@@ -35,27 +35,11 @@ IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presente
 	"Nothing to add"
 ]
 
-{ #category : #layout }
-IceGitHubTipPullRequestBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #commitLabel height: self labelHeight;
-		  add: (SpPanedLayout newTopToBottom
-				   add: #commits;
-				   add: #diff;
-				   yourself);
-		  add: (SpBoxLayout newLeftToRight
-				   add: #mergeButton;
-				   add: #acceptButton;
-				   add: #rejectButton;
-				   yourself)
-		  height: self toolbarHeight;
-		  yourself
-]
-
 { #category : #'instance creation' }
-IceGitHubTipPullRequestBrowser class >> on: aModel pullRequest: aPullRequest [
+IceGitHubTipPullRequestBrowser class >> newApplication: app model: aModel pullRequest: aPullRequest [
+
 	^ self basicNew
+		application: app;
 		pullRequest: aPullRequest;
 		setModelBeforeInitialization: aModel;
 		initialize;
@@ -107,6 +91,25 @@ IceGitHubTipPullRequestBrowser >> connectPresenters [
 	mergeButton action: [ self mergePullRequestIntoImage ].
 	acceptButton action: [ self acceptPullRequest ].
 	rejectButton action: [ self rejectPullRequest ]
+]
+
+{ #category : #layout }
+IceGitHubTipPullRequestBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		add: commitLabel expand: false;
+		add: (SpPanedLayout newTopToBottom
+			add: commits;
+			add: diff;
+			yourself);
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: mergeButton expand: false;
+				addLast: acceptButton expand: false;
+				addLast: rejectButton expand: false;
+				yourself)
+  				expand: false;
+  			yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -184,12 +187,18 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 	commitLabel label: 'Commits'.
 	self initializeCommitsTable.
 	diff beForMerge.
-	mergeButton label: 'Merge into image'; icon: (self iconNamed: #smallLoadProject).
-	acceptButton label: 'Accept pull request'; icon: (self iconNamed: #testGreen).
-	rejectButton label: 'Reject pull request'; icon: (self iconNamed: #testRed).
-
-	self refresh.
-
+	mergeButton 
+		addStyle: 'large';
+		label: 'Merge into image'; 
+		icon: (self iconNamed: #smallLoadProject).
+	acceptButton 
+		addStyle: 'large';
+		label: 'Accept pull request'; 
+		icon: (self iconNamed: #testGreen).
+	rejectButton 
+		addStyle: 'large';
+		label: 'Reject pull request'; 
+		icon: (self iconNamed: #testRed)
 ]
 
 { #category : #'accessing - ui' }
@@ -227,10 +236,11 @@ IceGitHubTipPullRequestBrowser >> pullRequest: anObject [
 	pullRequest := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 IceGitHubTipPullRequestBrowser >> refresh [
-
 	| commitModels |
+	
+	self halt.
 	commitModels := self pullRequest commits collect: [ :each | 
 		                (IceTipCommitModel
 			                 repositoryModel: self repositoryModel
@@ -247,12 +257,14 @@ IceGitHubTipPullRequestBrowser >> rejectButton [
 { #category : #actions }
 IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 
-	IceGitHubRejectPullRequestModel new
+	((IceGitHubRejectPullRequestModel newApplication: self application)
 		onAccept: [ :aModel | 
 			IceGitHubAPI ensureCredentials.
 			self pullRequest rejectMessage: aModel message.
 			self closeWindow ];
-		open
+		asModalWindow)
+			centeredRelativeTo: self window;
+			open
 ]
 
 { #category : #accessing }
@@ -276,4 +288,10 @@ IceGitHubTipPullRequestBrowser >> titleForWindow [
 
 	^ 'Browsing pull request: #{1} {2}' format: { self pullRequest number. self pullRequest title }
 
+]
+
+{ #category : #initialization }
+IceGitHubTipPullRequestBrowser >> updatePresenter [
+
+	self refresh
 ]

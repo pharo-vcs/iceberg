@@ -21,7 +21,8 @@ Class {
 		'mergeableMessage',
 		'mergeableIcon',
 		'statusMessage',
-		'statusIcon'
+		'statusIcon',
+		'scheduler'
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
@@ -32,67 +33,6 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 	rootCommandGroup register:
 		((CmCommandGroup named: 'checks commands') asSpecGroup 
 			register: IceTipOpenCheckUrlCommand forSpec)
-]
-
-{ #category : #layout }
-IceGitHubPullRequestDetailModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #urlLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #urlText;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #authorLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #authorText;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #fromLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #fromText;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #toLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #toText;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newHorizontal
-				add: #mergeableLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #mergeableIcon width: self iconWidth ;
-				add: #mergeableMessage;
-				yourself)
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #statusLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #statusIcon width: self iconWidth ;
-				add: #statusMessage;
-				yourself)
-			height: self inputTextHeight;
-			add: #checksTable;
-			add: #bodyText
-			withConstraints:
-				[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-		yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -113,6 +53,39 @@ IceGitHubPullRequestDetailModel >> bodyText [
 { #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> checksTable [
 	^ checksTable
+]
+
+{ #category : #layout }
+IceGitHubPullRequestDetailModel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpGridLayout new 
+			borderWidth: 0;
+			beColumnNotHomogeneous;
+			column: 2 expand: true;
+			build: [ :builder | builder
+				add: urlLabel; add: urlText; nextRow; 
+				add: authorLabel; add: authorText; nextRow;
+				add: fromLabel; add: fromText; nextRow;
+				add: toLabel; add: toText; nextRow; 
+				add: mergeableLabel; add: (SpBoxLayout newLeftToRight
+						spacing: 5;
+						add: mergeableIcon expand: false;
+						add: mergeableMessage; 
+						yourself);
+					nextRow;
+				add: statusLabel; add: (SpBoxLayout newLeftToRight
+						spacing: 5;
+						add: statusIcon expand: false;
+						add: statusMessage;
+						yourself);
+					nextRow ];
+				yourself);
+		add: checksTable expand: false;
+		add: bodyText expand: false;
+		yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -143,8 +116,6 @@ IceGitHubPullRequestDetailModel >> iconForStatus: status [
 { #category : #initialization }
 IceGitHubPullRequestDetailModel >> initializePresenters [
 
-	super initializePresenters.
-
 	urlLabel := self newLabel label: 'Url'.
 	authorLabel := self newLabel label: 'Author'.
 	fromLabel := self newLabel label: 'From'.
@@ -152,17 +123,20 @@ IceGitHubPullRequestDetailModel >> initializePresenters [
 	mergeableLabel := self newLabel label: 'Mergeable'.
 	statusLabel := self newLabel label: 'Status'.
 
-	urlText := self newTextInput disable; yourself.
-	authorText  := self newTextInput disable; yourself.
-	fromText  := self newTextInput disable; yourself.
-	toText  := self newTextInput disable; yourself.
+	urlText := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
+	authorText  := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
+	fromText  := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
+	toText  := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
 	mergeableIcon := self newImage.
-	mergeableMessage := self newTextInput disable; yourself.
+	mergeableMessage := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
 	statusIcon  := self newImage.
-	statusMessage := self newTextInput disable; yourself.
+	statusMessage := self newTextInput editable: false; addStyle: 'iceTipReadonly'; yourself.
 	checksTable := self newChecksTable.
-	bodyText := self newText disable; yourself.
-
+	checksTable addStyle: 'rows4'.
+	bodyText := self newText editable: false; yourself.
+	bodyText 
+		addStyle: 'lines8';
+		addStyle: 'iceTipReadonly'
 ]
 
 { #category : #'accessing - ui' }
@@ -177,28 +151,26 @@ IceGitHubPullRequestDetailModel >> mergeableMessage [
 
 { #category : #'private - factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
+
 	^ self newTable
-		addColumn:
-			(SpCompositeTableColumn new
-				title: 'state';
-				addColumn:
-					(SpImageTableColumn
-						evaluated: [ :aStatus | self iconForStatus: (aStatus at: 'state') ]);
-				addColumn: (SpStringTableColumn evaluated: [ :aStatus | aStatus at: 'state' ]);
-				width: 50 * self currentWorld displayScaleFactor);
-		addColumn:
-			((SpStringTableColumn
-				title: 'context';
-				evaluated: [ :aStatus | aStatus at: 'context' ])
-				width: 120 * self currentWorld displayScaleFactor);
-		addColumn:
-			(SpStringTableColumn
-				title: 'description';
-				evaluated: [ :aStatus | aStatus at: 'description' ]);
+		addColumn: (SpCompositeTableColumn new
+			title: 'state';
+			addColumn: (SpImageTableColumn new 
+				evaluated: [ :aStatus | self iconForStatus: (aStatus at: 'state') ];
+				beNotExpandable);
+			addColumn: (SpStringTableColumn evaluated: [ :aStatus | aStatus at: 'state' ]);
+			width: 120;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'context';
+			evaluated: [ :aStatus | aStatus at: 'context' ];
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'description';
+			evaluated: [ :aStatus | aStatus at: 'description' ];
+			yourself);
 		beResizable;
-		showColumnHeaders;
-		contextMenu:
-				[ (self rootCommandsGroup / 'checks commands') beRoot asMenuPresenter ]
+		contextMenu: [ (self rootCommandsGroup / 'checks commands') beRoot asMenuPresenter ]
 ]
 
 { #category : #accessing }
@@ -208,46 +180,62 @@ IceGitHubPullRequestDetailModel >> pullRequest [
 
 { #category : #accessing }
 IceGitHubPullRequestDetailModel >> pullRequest: aPullRequest [
+	
 	pullRequest := aPullRequest.
-	urlText text: self pullRequest url.
-	authorText text: self pullRequest author.
-	fromText text: self pullRequest headLabel.
-	toText text: self pullRequest baseLabel.
-	bodyText text: self pullRequest body.
-	self retrieveStatuses.
-	self retrieveDetail
+	self updatePresenter
 ]
 
 { #category : #private }
 IceGitHubPullRequestDetailModel >> retrieveDetail [
 	
 	self mergeableMessage text: (self mergeableMessage text , '  Loading...' ).
-	[ | detail mergeable |  
+	self schedule: [ 
+		| detail mergeable |  
 		[  
 			detail := self pullRequest detail.
 			mergeable := detail at: #mergeable ]
-		on: Error do: [ :e | mergeable := nil ].
-		mergeableMessage defer: [mergeableMessage text: (self textForMergeable: mergeable).].
-		mergeableIcon defer: [mergeableIcon image: ( self iconForMergeable: mergeable).].
-		] fork
+		on: Error do: [ :e | 
+			mergeable := nil ].
+		mergeableMessage defer: [
+			mergeableMessage text: (self textForMergeable: mergeable) ].
+		mergeableIcon defer: [
+			mergeableIcon image: ( self iconForMergeable: mergeable) ] ]
 ]
 
 { #category : #private }
 IceGitHubPullRequestDetailModel >> retrieveStatuses [
 "	self statusPanel widget addMorphBack: 'Loading...' asMorph."
 	self statusMessage text: (statusMessage text , '  Loading...').
-	[ | status generalStatus statuses |	
-	[
-		status := self pullRequest status.
-		generalStatus := status at: 'state'.
-		statuses := status at: 'statuses' ]
-	on: Error do: [ :e | 
-		generalStatus := 'Unknown'.
-		statuses := #() ].
-		statusMessage defer: [statusMessage text: (self textForMergeable: generalStatus).].
-		statusIcon defer: [statusIcon image: (self iconForStatus: generalStatus).].
-		checksTable defer: [ checksTable items:(statuses )]
-	] fork
+	self schedule: [ 
+		| status generalStatus statuses |	
+		[
+			status := self pullRequest status.
+			generalStatus := status at: 'state'.
+			statuses := status at: 'statuses' ]
+		on: Error do: [ :e | 
+			generalStatus := 'Unknown'.
+			statuses := #() ].
+			statusMessage defer: [
+				statusMessage text: (self textForMergeable: generalStatus) ].
+			statusIcon defer: [
+				statusIcon image: (self iconForStatus: generalStatus) ].
+			checksTable defer: [ checksTable items:(statuses ) ] ]
+]
+
+{ #category : #private }
+IceGitHubPullRequestDetailModel >> schedule: aBlock [
+
+	self scheduler schedule: aBlock
+]
+
+{ #category : #private }
+IceGitHubPullRequestDetailModel >> scheduler [
+
+	^ scheduler ifNil: [ 
+			scheduler := TKTWorkerPool new
+				poolMaxSize: 2;
+				start;
+				yourself ]
 ]
 
 { #category : #'accessing - ui' }
@@ -267,10 +255,12 @@ IceGitHubPullRequestDetailModel >> statusMessage [
 
 { #category : #private }
 IceGitHubPullRequestDetailModel >> textForMergeable: mergeable [
+
 	mergeable = true ifTrue: [ ^ 'Yes' ].
 	mergeable = false ifTrue: [ ^ 'There are conflicts' ].
-	^ mergeable asString
-	
+	^ mergeable 
+		ifNotNil: [ mergeable asString ]  
+		ifNil: [ 'Unknown' ]
 ]
 
 { #category : #'accessing - ui' }
@@ -281,6 +271,20 @@ IceGitHubPullRequestDetailModel >> toLabel [
 { #category : #'accessing - ui' }
 IceGitHubPullRequestDetailModel >> toText [
 	^ toText
+]
+
+{ #category : #initialization }
+IceGitHubPullRequestDetailModel >> updatePresenter [
+
+	self pullRequest ifNil: [ ^ self ].
+	
+	urlText text: self pullRequest url.
+	authorText text: self pullRequest author.
+	fromText text: self pullRequest headLabel.
+	toText text: self pullRequest baseLabel.
+	bodyText text: (self pullRequest body ifNil: [ '' ]).
+	self retrieveStatuses.
+	self retrieveDetail
 ]
 
 { #category : #'accessing - ui' }

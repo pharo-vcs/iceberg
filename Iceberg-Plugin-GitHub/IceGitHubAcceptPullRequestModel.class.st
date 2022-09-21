@@ -9,48 +9,17 @@ Class {
 		'messageText',
 		'typeLabel',
 		'typeList',
-		'acceptButton',
 		'acceptBlock'
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
 
-{ #category : #layout }
-IceGitHubAcceptPullRequestModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newHorizontal
-				add: #messageLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #messageText;
-				yourself);
-		add:
-			(SpBoxLayout newHorizontal
-				add: #typeLabel
-					withConstraints:
-						[ :constraints | constraints width: 80 * self currentWorld displayScaleFactor ];
-				add: #typeList;
-				yourself)
-			withConstraints: [ :constraints | constraints width: 25 * self currentWorld displayScaleFactor ];
-		add: #acceptButton
-			withConstraints: [ :constraints | constraints height: self buttonHeight ];
-		yourself
-]
-
 { #category : #actions }
 IceGitHubAcceptPullRequestModel >> accept [
 
-	acceptBlock ifNotNil: [ acceptBlock cull: self ].
-
+	acceptBlock ifNotNil: [ 
+		acceptBlock cull: self ].
 	self closeWindow
-]
-
-{ #category : #'accessing - ui' }
-IceGitHubAcceptPullRequestModel >> acceptButton [
-
-	^ acceptButton
 ]
 
 { #category : #accessing }
@@ -61,11 +30,22 @@ IceGitHubAcceptPullRequestModel >> availableTypes [
 
 { #category : #initialization }
 IceGitHubAcceptPullRequestModel >> connectPresenters [
-	super connectPresenters.
+
 	self typeList
 		items: self availableTypes;
-		display: [ :each | each ];
 		selectItem: self defaultType
+]
+
+{ #category : #layout }
+IceGitHubAcceptPullRequestModel >> defaultLayout [
+
+	^ SpGridLayout new 
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder
+			add: messageLabel; add: messageText; nextRow;
+			add: typeLabel; add: typeList; nextRow ];
+		yourself
 ]
 
 { #category : #accessing }
@@ -77,28 +57,32 @@ IceGitHubAcceptPullRequestModel >> defaultType [
 { #category : #api }
 IceGitHubAcceptPullRequestModel >> initialExtentForWindow [
 
-	^ (500 @ 250) scaledByDisplayScaleFactor
+	^ (600 @ 300) scaledByDisplayScaleFactor
+]
+
+{ #category : #initialization }
+IceGitHubAcceptPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
+	
+	aDialogWindowPresenter
+		addButton: 'Accept' do: [ :presenter | 
+			self accept ];
+		addButton: 'Cancel' do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ]	
 ]
 
 { #category : #initialization }
 IceGitHubAcceptPullRequestModel >> initializePresenters [
 
-	super initializePresenters.
 	messageLabel := self newLabel.
 	messageText := self newText.
 	typeLabel := self newLabel.
 	typeList := self newDropList.
-	acceptButton := self newButton.
 		
 	messageLabel label: 'Comment'.
-	messageText
-		autoAccept: true;
-		placeholder: self messageGhostText.
-	typeLabel label: 'Merge type'.
-	acceptButton
-		label: 'Accept pull request';
-		action: [ self accept ].
-
+	messageText addStyle: 'lines8'.
+	messageText placeholder: self messageGhostText.
+	typeLabel label: 'Merge type'
 ]
 
 { #category : #accessing }
