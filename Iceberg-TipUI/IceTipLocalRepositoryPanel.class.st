@@ -62,8 +62,8 @@ IceTipLocalRepositoryPanel >> location: aReferenceOrString [
 { #category : #accessing }
 IceTipLocalRepositoryPanel >> newRepository [
 
-	self application 
-		inform: ('Importing repository from {1}' format: { self location fullName })
+	UIManager default
+		informUser: ('Importing repository from {1}' format: { self location fullName })
 		during: [ 
 			^ IceRepositoryCreator new
 				repository: repository;
