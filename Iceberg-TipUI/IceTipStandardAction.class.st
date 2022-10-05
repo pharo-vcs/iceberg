@@ -27,8 +27,8 @@ IceTipStandardAction >> action: aBlock [
 { #category : #executing }
 IceTipStandardAction >> basicExecute [
 
-	context application	 
-		inform: self message
+	UIManager default
+		informUser: self message
 		during: [ actionBlock cull: self context ].
 	successAnnounceBlock 
 		ifNotNil: [ Iceberg announcer announce: successAnnounceBlock value ]

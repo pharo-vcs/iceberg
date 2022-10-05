@@ -27,12 +27,12 @@ IceGitHubViewPullRequestOnGithubAction >> basicExecute [
 		at: #WebBrowser 
 		ifPresent: [ :webBrowser | webBrowser openOn: url ] 
 		ifAbsent: [ 
-			self inform: ('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' format: { url }) ] 
+			UIManager default inform: ('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' format: { url }) ] 
 	
 	]
 		on: IceGitHubError
 		do: [ 
-			self inform: ('Invalid Github repository. No project named "{1}" found for the owner "{2}"' 
+			UIManager default inform: ('Invalid Github repository. No project named "{1}" found for the owner "{2}"' 
 				format: {
 					self projectName. 
 					self organisation}) ]

@@ -44,7 +44,7 @@ IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 		
 		pullRequestDatas := pullRequest send.
 		url := pullRequestDatas at: 'html_url'.
-		context window
+		UIManager default
 			inform: 'Pull request created. Click to view on Github.' 
 			actionOnClick: [ WebBrowser openOn: url ] 
 	]
