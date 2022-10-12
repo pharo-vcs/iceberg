@@ -123,14 +123,15 @@ IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [
 { #category : #private }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anArray [
 
-	(IceTipStandardAction newContext: context)
+	IceTipStandardAction new
 		repository: self repository;
 		message: ('Installing baseline {1} of {2}' format: { 
 			icePackage metacelloBaselineName.
 			self repositoryModel name });
 		onSuccessRepositoryModified;
-		execute: [ 
+		action: [ 
 			Iceberg announcer 
 				suspendAllForRepository: self repository
-				while: [ self basicInstallBaseline: icePackage groups: anArray ] ]
+				while: [ self basicInstallBaseline: icePackage groups: anArray ] ];
+		executeWithContext: self context
 ]
