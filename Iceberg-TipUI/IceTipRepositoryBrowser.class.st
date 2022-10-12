@@ -100,7 +100,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 
 	sidebarTree := self newTreeTable.
 	historyPanel := self
-		instantiate: IceTipHiedraAltHistoryBrowser
+		instantiate: IceTipHiedraHistoryBrowser
 		on: self model headModel.
 
 	historyPanel whenSelectionChangedDo: [ self refreshCommands ].
