@@ -36,9 +36,3 @@ IceTipModel >> repositoryModel [
 IceTipModel >> reset [
 	"to provide polymorphism with cached version"
 ]
-
-{ #category : #private }
-IceTipModel >> toErrorMessage: aString [
-
-	^ aString asText allBold makeAllColor: self colorForError
-]

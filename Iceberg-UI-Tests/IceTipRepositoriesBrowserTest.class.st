@@ -23,18 +23,23 @@ IceTipRepositoriesBrowserTest >> newRepositoryNamed: aName [
 
 { #category : #testing }
 IceTipRepositoriesBrowserTest >> setUp [
+
 	| alphabeticallyLastRepository |
 	super setUp.
-	
-	alphabeticallyFirstRepository := self newRepositoryNamed: 'anotherOne'.
+
+	alphabeticallyFirstRepository := self newRepositoryNamed:
+		                                 'anotherOne'.
 	alphabeticallyLastRepository := self newRepositoryNamed: 'zzzz last'.
-	
-	repositoryProvider := IceTipCollectionRepositoryProvider new collection: {
-		self repository. 
-		alphabeticallyLastRepository . 
-		alphabeticallyFirstRepository } asOrderedCollection.
-	presenter := IceTipRepositoriesBrowser newOnRepositoryProvider: repositoryProvider.
-	presenter openWithSpec.
+
+	repositoryProvider := IceTipCollectionRepositoryProvider new 
+		                      collection: { 
+				                      self repository.
+				                      alphabeticallyLastRepository.
+				                      alphabeticallyFirstRepository }
+				                      asOrderedCollection.
+	presenter := IceTipRepositoriesBrowser newOnRepositoryProvider:
+		             repositoryProvider.
+	presenter open
 ]
 
 { #category : #testing }
@@ -78,16 +83,16 @@ IceTipRepositoriesBrowserTest >> testAddRepositoryThenRefreshShowsNewRepository 
 IceTipRepositoriesBrowserTest >> testEditRepositoryBranchThenRefreshDoesRefreshList [
 	
 	self
-		testEditThenRefreshRepositoryProperty: #branchNameText
+		testEditThenRefreshRepositoryProperty: #branchName
 		doing: [ :repository | repository createBranch: 'toto' ]
-		makesPropertyValueTo: 'toto' asText
+		makesPropertyValueTo: 'toto'
 ]
 
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryBranchWithoutRefreshDoesNotRefreshList [
 		
 	self
-		testEditWithoutRefreshRepositoryProperty: #branchNameText
+		testEditWithoutRefreshRepositoryProperty: #branchName
 		doing: [ :repository | repository createBranch: 'toto' ]
 ]
 
@@ -132,18 +137,18 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryProperty: aProperty doing: aB
 IceTipRepositoriesBrowserTest >> testEditRepositoryStatusThenRefreshDoesRefreshList [
 	
 	self
-		testEditThenRefreshRepositoryProperty: #statusText
+		testEditThenRefreshRepositoryProperty: #status
 		doing: [ :repository |
 			"Make the repository missing by removing its underlying repository"
 			repository repositoryDirectory ensureDeleteAll ]
-		makesPropertyValueTo: (IceTipRepositoryModel on: nil) localRepositoryMissingText
+		makesPropertyValueTo: (IceTipRepositoryModel on: nil) localRepositoryMissing
 ]
 
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryStatusWithoutRefreshDoesNotRefreshList [
 	
 	self
-		testEditWithoutRefreshRepositoryProperty: #statusText
+		testEditWithoutRefreshRepositoryProperty: #status
 		doing: [ :repository | 
 			"Make the repository missing by removing its underlying repository"
 			repository repositoryDirectory ensureDeleteAll ]
