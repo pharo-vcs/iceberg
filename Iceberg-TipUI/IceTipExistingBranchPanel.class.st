@@ -50,7 +50,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: #shortDescriptionWithDecoration);
+		addColumn: (SpStringTableColumn evaluated: #shortDescription);
 		items: self model branchModels.
 
 	self model branchModels

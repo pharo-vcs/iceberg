@@ -7,16 +7,6 @@ Class {
 	#category : #'Iceberg-TipUI-Model'
 }
 
-{ #category : #private }
-IceTipBranchModel >> addDecorationTo: aString [
-	| text |
-	text := aString asText.
-	[ 
-		self entity isHead ifTrue: [ text := text allBold ] ]
-	on: IceNotInBranch do: [ :e | "Do not decorate" ].
-	^ text
-]
-
 { #category : #accessing }
 IceTipBranchModel >> checkoutStrategies [
 	^ IceCheckoutStrategy allStrategies
@@ -175,11 +165,4 @@ IceTipBranchModel >> repositoryName [
 IceTipBranchModel >> resetToCommit: anIceTipCachedModel [ 
 	
 	entity resetToCommit: anIceTipCachedModel entity
-]
-
-{ #category : #accessing }
-IceTipBranchModel >> shortDescriptionWithDecoration [
-	^ self addDecorationTo: (self entity isRemote 
-		ifTrue: [ self name copyAfter: $/ ]
-		ifFalse: [ self name])
 ]
