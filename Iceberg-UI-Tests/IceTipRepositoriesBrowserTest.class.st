@@ -199,13 +199,13 @@ IceTipRepositoriesBrowserTest >> testInitialListShowsElementsInOriginalOrder [
 	
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 1)
-		equals: presenter repositoryList items first descriptionWithDecoration asString.
+		equals: presenter repositoryList items first description.
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 2)
-		equals: presenter repositoryList items second descriptionWithDecoration asString.
+		equals: presenter repositoryList items second description.
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 3)
-		equals: presenter repositoryList items third descriptionWithDecoration asString.
+		equals: presenter repositoryList items third description.
 ]
 
 { #category : #'tests - context menu' }
@@ -245,9 +245,9 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuOnSelection [
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testListShowsNotLoadedProject [
 	
-	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne' asText.
-	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded' asText.
-	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master' asText.
+	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne'.
+	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded'.
+	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master'.
 ]
 
 { #category : #'tests - table' }
