@@ -47,9 +47,12 @@ IceTipRepairCloneRepository class >> title [
 
 { #category : #executing }
 IceTipRepairCloneRepository >> basicExecute [
-	IceTipRegisterRepositoryDialog new 
+
+	((IceTipRegisterRepositoryDialog newApplication: context application) 
 		beForCloneOfRepository: self repositoryModel entity;
 		onAccept: [ 
 			Iceberg announcer announce: (IceRepositoryModified for: self repositoryModel entity) ];
-		openDialog
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]

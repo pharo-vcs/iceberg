@@ -15,28 +15,11 @@ Class {
 		'fetched',
 		'selectRemoteModel',
 		'currentWaitingProcess',
-		'issueText'
+		'issueText',
+		'remoteLabel'
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
-
-{ #category : #layout }
-IceGitHubNewBranchFromIssuePanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: #remotePanel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #branchLabel width: self labelWidth;
-				   add: #issueNumberText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #issueLabel width: self labelWidth;
-				   add: #issueText;
-				   yourself)
-		  height: self inputTextHeight
-]
 
 { #category : #accessing }
 IceGitHubNewBranchFromIssuePanel >> branchName [
@@ -44,6 +27,25 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 	^ '{1}-{2}' format: { 
 		issueNumberText text trim. 
 		issueText text trim }.
+]
+
+{ #category : #layout }
+IceGitHubNewBranchFromIssuePanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: currentBranchLabel expand: false;
+		add: (SpGridLayout new 
+			borderWidth: 0;
+			beColumnNotHomogeneous;
+			column: 2 expand: true;
+			build: [ :builder | builder
+				add: remoteLabel; add: remotePanel; nextRow;
+				add: branchLabel; add: issueNumberText; nextRow;
+				add: issueLabel; add: issueText; nextRow ];
+			yourself);
+		yourself
 ]
 
 { #category : #accessing }
@@ -70,20 +72,21 @@ IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 
 	super initializePresenters.
 	self initializeCurrentBranchLabel.
-	remotePanel := self
-		instantiate: IceTipSelectRemotePresenter
-		on: self selectRemoteModel.
+	remoteLabel := self newLabel
+		label: 'Remote';
+		yourself.
+	remotePanel := self instantiate: IceTipSelectRemotePresenter on: self selectRemoteModel.
 	remotePanel remoteList
 		whenSelectedItemChangedDo: [ :remoteModel | self useRemote: remoteModel ].
 	branchLabel := self newLabel
-		label: 'Issue number:';
+		label: 'Issue number';
 		yourself.
 	issueNumberText := self newTextInput
 		placeholder: 'e.g., 123';
 		autoAccept: true;
 		yourself.
 	issueLabel := self newLabel
-		label: 'Branch name:';
+		label: 'Branch name';
 		yourself.
 	issueText := self newTextInput
 		placeholder: 'Generated-from-title-after-issue-number-is-completed';

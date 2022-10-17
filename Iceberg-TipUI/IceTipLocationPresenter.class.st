@@ -6,26 +6,14 @@ Class {
 	#name : #IceTipLocationPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'locationLabel',
 		'locationInput',
 		'chooseButton',
-		'label',
 		'chooseTitle',
 		'chooseBlock',
 		'keptLocation'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
-
-{ #category : #layout }
-IceTipLocationPresenter class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #locationLabel width: self labelWidth;
-		  add: #locationInput;
-		  add: #chooseButton width: 24;
-		  yourself
-]
 
 { #category : #testing }
 IceTipLocationPresenter class >> isAbstract [
@@ -93,6 +81,18 @@ IceTipLocationPresenter >> defaultLabel [
 	^ 'Directory'
 ]
 
+{ #category : #layout }
+IceTipLocationPresenter >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		borderWidth: 0;
+		vAlignCenter;
+		spacing: 5;
+		add: #locationInput;
+		add: #chooseButton expand: false;
+		yourself
+]
+
 { #category : #accessing }
 IceTipLocationPresenter >> icon [
 
@@ -102,32 +102,15 @@ IceTipLocationPresenter >> icon [
 { #category : #initialization }
 IceTipLocationPresenter >> initializePresenters [
 
-	super initializePresenters.
-	locationLabel := self newLabel
-		label: self label;
-		yourself.
 	locationInput := self newTextInput
 		autoAccept: true;
 		yourself.
 	chooseButton := self newButton
+		addStyle: 'small';
 		icon: self icon;
 		yourself.
 	
-	chooseButton action: [ self choose ].
-
-]
-
-{ #category : #accessing }
-IceTipLocationPresenter >> label [
-
-	^ label ifNil: [ self defaultLabel ]
-]
-
-{ #category : #accessing }
-IceTipLocationPresenter >> label: aString [
-
-	label := aString.
-	self locationLabel label: aString
+	chooseButton action: [ self choose ]
 ]
 
 { #category : #accessing }
@@ -173,12 +156,6 @@ IceTipLocationPresenter >> location: aReferenceOrString [
 IceTipLocationPresenter >> locationInput [
 
 	^ locationInput
-]
-
-{ #category : #'accessing - ui' }
-IceTipLocationPresenter >> locationLabel [
-
-	^ locationLabel
 ]
 
 { #category : #hook }

@@ -100,7 +100,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounc
 	"Then notify the UI with an announcement"
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 
-	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: ('*', self packageName1) asText.
+	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: ('*', self packageName1).
 ]
 
 { #category : #'tests-fetch' }
@@ -120,13 +120,13 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageNonDirtyInModelThenAnno
 	"Then notify the UI with an announcement"
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 
-	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1 asText.
+	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1.
 ]
 
 { #category : #'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testNonDirtyPackageIsNotDirtyInList [
 
-	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1 asText.
+	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1.
 ]
 
 { #category : #'tests-fetch' }

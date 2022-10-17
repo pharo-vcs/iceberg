@@ -8,25 +8,6 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipAskForPlaintextCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #passwordLabel
-				   width: 80 * self currentWorld displayScaleFactor;
-				   add: #passwordInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #storeCheckbox height: self inputTextHeight
-]
-
 { #category : #actions }
 IceTipAskForPlaintextCredentialsModel >> accept [
 
@@ -45,11 +26,28 @@ IceTipAskForPlaintextCredentialsModel >> cancelAction [
 	self cancelAskAction
 ]
 
+{ #category : #layout }
+IceTipAskForPlaintextCredentialsModel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom 
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpGridLayout new 
+			borderWidth: 0;
+			beColumnNotHomogeneous;
+			column: 2 expand: true;
+			build: [ :builder | builder
+				add: usernameLabel; add: usernameInput; nextRow;
+				add: passwordLabel; add: passwordInput; nextRow ]);
+		add: storeCheckbox expand: false;
+		yourself
+
+]
+
 { #category : #initialization }
 IceTipAskForPlaintextCredentialsModel >> initialExtentForWindow [
 
-	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
-		  scaledByDisplayScaleFactor
+	^ (450 @ 180) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }

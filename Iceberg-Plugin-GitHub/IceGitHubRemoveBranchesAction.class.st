@@ -13,16 +13,18 @@ Class {
 
 { #category : #execute }
 IceGitHubRemoveBranchesAction >> basicExecute [
-	credentials := IceGitHubAPI ensureCredentials.
+	credentials := IceGitHubAPI ensureCredentials.	
 	UIManager default
 		informUser: ('Retrieving branch information from {1}' format: {self remote url})
 		during: [ self cacheAllBranches ].
-	IceGitHubRemoveBranchesModel new
+	
+	((IceGitHubRemoveBranchesModel newApplication: context application)
 		remote: remote;
-		selectLabel: 'Remove branches';
 		items: branchesByName values ;
 		onAccept: [ :selection | self removeBranches: selection ];
-		openDialog
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #private }

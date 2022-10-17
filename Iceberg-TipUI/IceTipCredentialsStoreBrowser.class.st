@@ -30,18 +30,18 @@ IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter
 
 ]
 
-{ #category : #layout }
-IceTipCredentialsStoreBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #credentialsList;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipCredentialsStoreBrowser >> credentialsList [
 
 	^ credentialsList
+]
+
+{ #category : #layout }
+IceTipCredentialsStoreBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: credentialsList;
+		  yourself
 ]
 
 { #category : #initialization }
@@ -77,12 +77,8 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initializePresenters [
 
-	super initializePresenters.
-
 	credentialsList := self newTable.
-	self initializeCredentialsList.
-
-	self refresh.
+	self initializeCredentialsList
 ]
 
 { #category : #'accessing - ui' }
@@ -109,4 +105,10 @@ IceTipCredentialsStoreBrowser >> titleForWindow [
 	^ model isCurrent
 		  ifTrue: [ 'Current Iceberg credentials' ]
 		  ifFalse: [ 'Credentials of ' , model printString ]
+]
+
+{ #category : #initialization }
+IceTipCredentialsStoreBrowser >> updatePresenter [
+
+	self refresh
 ]

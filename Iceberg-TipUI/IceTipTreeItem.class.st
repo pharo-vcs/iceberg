@@ -8,8 +8,15 @@ Class {
 }
 
 { #category : #accessing }
-IceTipTreeItem >> descriptionWithDecoration [
-	^ self model descriptionWithDecoration
+IceTipTreeItem >> description [
+
+	^ self model description
+]
+
+{ #category : #accessing }
+IceTipTreeItem >> descriptionDecorator [
+
+	^ self model descriptionDecorator
 ]
 
 { #category : #testing }
@@ -19,6 +26,13 @@ IceTipTreeItem >> isSameAs: aNode [
 ]
 
 { #category : #accessing }
+IceTipTreeItem >> shortDescription [
+
+	^ self model shortDescription
+]
+
+{ #category : #accessing }
 IceTipTreeItem >> traversingDo: aBlock parents: anArray [
+
 	aBlock cull: self cull: anArray
 ]

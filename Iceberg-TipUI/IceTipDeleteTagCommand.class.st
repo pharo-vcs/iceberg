@@ -28,7 +28,7 @@ IceTipDeleteTagCommand >> actsOnTag: aRemoteModel [
 { #category : #executing }
 IceTipDeleteTagCommand >> execute [
 
-	self tagModel delete
+	self tagModel newDeleteAction executeWithContext: self context
 ]
 
 { #category : #accessing }

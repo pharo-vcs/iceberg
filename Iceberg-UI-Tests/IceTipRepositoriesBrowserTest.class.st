@@ -83,16 +83,16 @@ IceTipRepositoriesBrowserTest >> testAddRepositoryThenRefreshShowsNewRepository 
 IceTipRepositoriesBrowserTest >> testEditRepositoryBranchThenRefreshDoesRefreshList [
 	
 	self
-		testEditThenRefreshRepositoryProperty: #branchNameText
+		testEditThenRefreshRepositoryProperty: #branchName
 		doing: [ :repository | repository createBranch: 'toto' ]
-		makesPropertyValueTo: 'toto' asText
+		makesPropertyValueTo: 'toto'
 ]
 
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryBranchWithoutRefreshDoesNotRefreshList [
 		
 	self
-		testEditWithoutRefreshRepositoryProperty: #branchNameText
+		testEditWithoutRefreshRepositoryProperty: #branchName
 		doing: [ :repository | repository createBranch: 'toto' ]
 ]
 
@@ -137,18 +137,18 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryProperty: aProperty doing: aB
 IceTipRepositoriesBrowserTest >> testEditRepositoryStatusThenRefreshDoesRefreshList [
 	
 	self
-		testEditThenRefreshRepositoryProperty: #statusText
+		testEditThenRefreshRepositoryProperty: #status
 		doing: [ :repository |
 			"Make the repository missing by removing its underlying repository"
 			repository repositoryDirectory ensureDeleteAll ]
-		makesPropertyValueTo: (IceTipRepositoryModel on: nil) localRepositoryMissingText
+		makesPropertyValueTo: (IceTipRepositoryModel on: nil) localRepositoryMissing
 ]
 
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryStatusWithoutRefreshDoesNotRefreshList [
 	
 	self
-		testEditWithoutRefreshRepositoryProperty: #statusText
+		testEditWithoutRefreshRepositoryProperty: #status
 		doing: [ :repository | 
 			"Make the repository missing by removing its underlying repository"
 			repository repositoryDirectory ensureDeleteAll ]
@@ -199,13 +199,13 @@ IceTipRepositoriesBrowserTest >> testInitialListShowsElementsInOriginalOrder [
 	
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 1)
-		equals: presenter repositoryList items first descriptionWithDecoration asString.
+		equals: presenter repositoryList items first description.
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 2)
-		equals: presenter repositoryList items second descriptionWithDecoration asString.
+		equals: presenter repositoryList items second description.
 	self
 		assert: (presenter repositoryList valueAtColumn: 1 row: 3)
-		equals: presenter repositoryList items third descriptionWithDecoration asString.
+		equals: presenter repositoryList items third description.
 ]
 
 { #category : #'tests - context menu' }
@@ -245,9 +245,9 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuOnSelection [
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testListShowsNotLoadedProject [
 	
-	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne' asText.
-	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded' asText.
-	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master' asText.
+	self assert: (presenter repositoryList valueAtColumn: 1 row: 3) equals: '*anotherOne'.
+	self assert: (presenter repositoryList valueAtColumn: 2 row: 3) equals: 'Not loaded'.
+	self assert: (presenter repositoryList valueAtColumn: 3 row: 3) equals: 'master'.
 ]
 
 { #category : #'tests - table' }

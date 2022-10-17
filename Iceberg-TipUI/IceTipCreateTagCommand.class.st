@@ -28,7 +28,12 @@ IceTipCreateTagCommand >> canBeExecuted [
 { #category : #executing }
 IceTipCreateTagCommand >> execute [
 	
-	(IceTipCreateTagPanel on: self item) openDialog
+	(IceTipCreateTagPanel 
+		newApplication: context application 
+		model: self item) 		
+		asDialogWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #activation }

@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'repository',
-		'success'
+		'success',
+		'context'
 	],
 	#category : #'Iceberg-TipUI-Commands'
 }
@@ -25,6 +26,13 @@ IceRepositoryCommand >> beSuccess [
 { #category : #execute }
 IceRepositoryCommand >> execute [ 
 	self subclassResponsibility
+]
+
+{ #category : #execute }
+IceRepositoryCommand >> executeWithContext: aContext [
+
+	context := aContext.
+	self execute
 ]
 
 { #category : #initialization }

@@ -58,14 +58,6 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 
 ]
 
-{ #category : #layout }
-IceTipRepositoriesBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #repositoryList;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipRepositoriesBrowser class >> iconForWorldMenu [
 
@@ -94,11 +86,28 @@ IceTipRepositoriesBrowser class >> new [
 
 { #category : #'instance creation' }
 IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [ 
+	| application |
+	
+	"I don't know if iceberg is loaded before or after or even with newtools. 
+	 But in case is present, I want iceberg to run within the same context"
+	application := (self environment classNamed: #StPharoApplication)
+		ifNotNil: [ :c | c current ].
 
 	^ self basicNew
-		model: (IceTipRepositoriesModel new repositoryProvider: aProvider; yourself);
+		application: application;
+		model: (IceTipRepositoriesModel new 
+			repositoryProvider: aProvider; 
+			yourself);
 		initialize;
 		yourself
+]
+
+{ #category : #layout }
+IceTipRepositoriesBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: repositoryList;
+		  yourself
 ]
 
 { #category : #initialization }
@@ -110,11 +119,8 @@ IceTipRepositoriesBrowser >> iconForWindow [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializePresenters [
 
-	super initializePresenters.
 	repositoryList := self newTable.
-	self initializeRepositoryList.
-
-	self refresh.
+	self initializeRepositoryList
 ]
 
 { #category : #initialization }
@@ -123,20 +129,26 @@ IceTipRepositoriesBrowser >> initializeRepositoryList [
 	repositoryList
 		showColumnHeaders;
 		beResizable;
-		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
-				width: 200;
-				title: self titleForWindow;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #statusText)
-				width: 150;
-				title: #Status;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #branchNameText)
-				title: #Branch;
-				yourself);
+		addColumn: (SpStringTableColumn new 
+			title: self titleForWindow;
+			evaluated: #description;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];
+			width: 200;
+			yourself);
+		addColumn: (SpStringTableColumn new 
+			title: 'Status';
+			evaluated: #status;
+			displayColor: [ :each | each statusDecorator color ];
+			displayBold: [ :each | each statusDecorator isBold ];
+			displayItalic: [ :each | each statusDecorator isItalic ];
+			width: 200;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Branch';
+			evaluated: #branchName;
+			yourself);
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
@@ -190,11 +202,20 @@ IceTipRepositoriesBrowser >> repositoryModels [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 
-	Iceberg announcer weak when: IceAnnouncement send: #refresh to: self
+	Iceberg announcer weak 
+		when: IceAnnouncement 
+		send: #refresh
+		to: self
 ]
 
 { #category : #initialization }
 IceTipRepositoriesBrowser >> titleForWindow [
 
 	^ 'Repositories'
+]
+
+{ #category : #initialization }
+IceTipRepositoriesBrowser >> updatePresenter [
+
+	self refresh
 ]

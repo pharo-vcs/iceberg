@@ -3,7 +3,7 @@ I'm a dialog to collect data about a pull request rejection.
 "
 Class {
 	#name : #IceGitHubRejectPullRequestModel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'messageLabel',
 		'messageText',
@@ -12,20 +12,6 @@ Class {
 	],
 	#category : #'Iceberg-Plugin-GitHub-View'
 }
-
-{ #category : #layout }
-IceGitHubRejectPullRequestModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #messageLabel withConstraints: [ :constraints | 
-					   constraints width: 80 currentWorld displayScaleFactor ];
-				   add: #messageText;
-				   yourself);
-		  add: #acceptButton
-		  withConstraints:
-		  [ :constraints | constraints height: self buttonHeight ] yourself
-]
 
 { #category : #actions }
 IceGitHubRejectPullRequestModel >> accept [
@@ -47,6 +33,17 @@ IceGitHubRejectPullRequestModel >> availableTypes [
 	^ #( 'merge' 'squash' 'rebase' )
 ]
 
+{ #category : #layout }
+IceGitHubRejectPullRequestModel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: messageLabel expand: false;
+		add: messageText;
+		yourself
+]
+
 { #category : #accessing }
 IceGitHubRejectPullRequestModel >> defaultType [
 
@@ -57,6 +54,18 @@ IceGitHubRejectPullRequestModel >> defaultType [
 IceGitHubRejectPullRequestModel >> initialExtentForWindow [
 
 	^ (500 @ 250) scaledByDisplayScaleFactor
+]
+
+{ #category : #initialization }
+IceGitHubRejectPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
+
+	aDialogWindowPresenter
+		addButton: 'Reject' do: [ :presenter | 
+			presenter triggerOkAction.
+			presenter close ];
+		addButton: 'Cancel' do: [ :presenter | 
+			presenter triggerCancelAction.
+			presenter close ]
 ]
 
 { #category : #initialization }
@@ -110,5 +119,5 @@ IceGitHubRejectPullRequestModel >> onAccept: aBlock [
 { #category : #specs }
 IceGitHubRejectPullRequestModel >> titleForWindow [
 
-	^ 'Accept pull request'
+	^ 'Reject pull request'
 ]

@@ -14,25 +14,7 @@ IceTipMergeModel >> calculateDiff [
 	^ self mergeAction
 ]
 
-{ #category : #actions }
-IceTipMergeModel >> executeMergeActionAndThen: aBlock [ 
-
-	<noCache>
-	IceTipStandardAction new 
-		repository: self repository;
-		message: ('Merging {1} into {2}' format: { self targetName. self repositoryName });
-		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self merge ]
-]
-
-{ #category : #actions }
-IceTipMergeModel >> merge [
-
-	mergeType mergeOn: commitish then: [  ].
-]
-
-{ #category : #actions }
+{ #category : #private }
 IceTipMergeModel >> mergeAction [
 
 	^ mergeAction ifNil: [
@@ -46,6 +28,24 @@ IceTipMergeModel >> mergeAction [
 IceTipMergeModel >> mergeType: aMergeType [
 
 	mergeType := aMergeType
+]
+
+{ #category : #actions }
+IceTipMergeModel >> newExecuteMergeAction [ 
+	<noCache>
+	
+	^ IceTipStandardAction new
+		repository: self repository;
+		message: ('Merging {1} into {2}' format: { self targetName. self repositoryName });
+		onSuccessRepositoryModified;
+		action: [ :aContext | self newMergeAction executeWithContext: aContext ];
+		yourself
+]
+
+{ #category : #actions }
+IceTipMergeModel >> newMergeAction [
+
+	^ mergeType newMergeAction: commitish
 ]
 
 { #category : #accessing }

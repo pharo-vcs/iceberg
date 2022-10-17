@@ -8,24 +8,14 @@ This is useful to keep a variable number of options.
 "
 Class {
 	#name : #IceTipOptionDialog,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'typeList',
 		'type',
-		'contentPanel'
+		'contentLayout'
 	],
 	#category : #'Iceberg-TipUI-View'
 }
-
-{ #category : #layout }
-IceTipOptionDialog class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 30 percent;
-		  add: #typeList;
-		  add: #contentPanel;
-		  yourself
-]
 
 { #category : #actions }
 IceTipOptionDialog >> accept [
@@ -45,16 +35,20 @@ IceTipOptionDialog >> allTypes [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing - ui' }
-IceTipOptionDialog >> contentPanel [
-
-	^ contentPanel
-]
-
 { #category : #accessing }
 IceTipOptionDialog >> contextSelection [
 
 	^ type
+]
+
+{ #category : #layout }
+IceTipOptionDialog >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 30 percent;
+		  add: typeList;
+		  add: contentLayout;
+		  yourself
 ]
 
 { #category : #actions }
@@ -66,7 +60,7 @@ IceTipOptionDialog >> doAccept [
 { #category : #initialization }
 IceTipOptionDialog >> initialExtentForWindow [
 
-	^ (600 @ 300) scaledByDisplayScaleFactor
+	^ (700 @ 300) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -80,31 +74,27 @@ IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 { #category : #initialization }
 IceTipOptionDialog >> initializePresenters [
 
-	super initializePresenters.
-	contentPanel := self newNullPresenter.
-	typeList := self newTable.
-	self initializeTypeList.
-
+	contentLayout := SpBoxLayout newTopToBottom.
+	self initializeTypeList
 ]
 
 { #category : #initialization }
 IceTipOptionDialog >> initializeTypeList [
 
-	typeList
-		hideColumnHeaders;
-		addColumn: ((SpImageTableColumn evaluated: #iconForWindow) width: 20);
-		addColumn: (SpStringTableColumn evaluated: #titleForWindow);
+	(typeList := self newList)
+		items: self allTypes;
+		display: [ :aType | aType titleForWindow ];
+		displayIcon: [ :aType | aType iconForWindow ];
 		whenSelectionChangedDo: [ :selection | 
-			self selectionChanged: selection selectedItem ];
-		items: self allTypes
+			self selectionChanged: selection selectedItem ]		
 ]
 
 { #category : #private }
 IceTipOptionDialog >> replacePanelWith: aType [
 
-	contentPanel := aType.
-	self needRebuild: false.
-	self build
+	contentLayout 
+		removeAll;
+		add: aType
 ]
 
 { #category : #accessing }

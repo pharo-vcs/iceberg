@@ -35,7 +35,10 @@ IceTipManageRepositoryCommand >> canBeExecuted [
 { #category : #executing }
 IceTipManageRepositoryCommand >> execute [
 
-	(IceTipRepositoryBrowser on: self repositoryModel) open
+	(IceTipRepositoryBrowser 
+		newApplication: context application 
+		model: self repositoryModel) 
+		open
 ]
 
 { #category : #accessing }

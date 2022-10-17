@@ -14,18 +14,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipCheckoutNewBranchPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentBranchLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #branchLabel width: self labelWidth;
-				   add: #branchInputText;
-				   yourself)
-		  height: self inputTextHeight
-]
-
 { #category : #'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchInputText [
 
@@ -56,13 +44,32 @@ IceTipCheckoutNewBranchPanel >> currentBranchLabel [
 	^ currentBranchLabel
 ]
 
+{ #category : #layout }
+IceTipCheckoutNewBranchPanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: currentBranchLabel expand: false;
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: branchLabel expand: false;
+				add: branchInputText;
+				yourself)
+		 	expand: false;
+		yourself
+]
+
 { #category : #actions }
 IceTipCheckoutNewBranchPanel >> doAccept [
 
-	self model
-		checkoutNewBranchNamed: self branchName
-		inCommit: (branchCommitish ifNil: [ self model entity workingCopy referenceCommit ])
-		thenDo: [ :newBranch | callback ifNotNil: [ callback value: newBranch ] ]
+	(self model
+		newCheckoutNewBranchNamed: self branchName
+		inCommit: (branchCommitish ifNil: [ self model entity workingCopy referenceCommit ]))
+		onSuccess: [ 
+			callback ifNotNil: [ 
+				callback value: (self model branchNamed: self branchName) ] ];
+		executeWithContext: self
 ]
 
 { #category : #accessing }
@@ -81,16 +88,13 @@ IceTipCheckoutNewBranchPanel >> initializeCurrentBranchLabel [
 { #category : #initialization }
 IceTipCheckoutNewBranchPanel >> initializePresenters [
 
-	super initializePresenters.
 	self initializeCurrentBranchLabel.
 	branchLabel := self newLabel
-		               label: 'New branch';
-		               yourself.
+		label: 'New branch';
+		yourself.
 	branchInputText := self newTextInput
-		                   autoAccept: true;
-		                   placeholder: 'e.g., feature/what';
-		                   yourself.
-
+		placeholder: 'e.g., feature/what';
+		yourself
 ]
 
 { #category : #testing }
@@ -101,10 +105,10 @@ IceTipCheckoutNewBranchPanel >> isNewBranch [
 
 { #category : #accessing }
 IceTipCheckoutNewBranchPanel >> openDialog [
-
-	^ super openDialog
+self halt.
+	^ super asDialogWindow
 		  okAction: [ self accept ];
-		  yourself
+		  open
 ]
 
 { #category : #initialization }

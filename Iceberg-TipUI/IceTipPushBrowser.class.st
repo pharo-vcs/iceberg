@@ -27,13 +27,14 @@ IceTipPushBrowser class >> onRepositoryModel: aModel [
 { #category : #actions }
 IceTipPushBrowser >> doPush [
 
-	self model pushThen: [ self closeWindow ]
+	self model newPushAction executeWithContext: self.
+	self closeWindow
 ]
 
 { #category : #initialization }
 IceTipPushBrowser >> labelForRemotePanel [
 
-	^ 'Push to remote:'
+	^ 'Push to remote'
 
 ]
 

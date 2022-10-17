@@ -34,7 +34,6 @@ IceTipWorkingCopyStatusBar >> canTakeKeyboardFocus [
 { #category : #initialization }
 IceTipWorkingCopyStatusBar >> initializePresenters [
 
-	super initializePresenters.
 	branchLabel := self newLabel.
 	statusLabel := self newLabel
 ]
@@ -46,7 +45,10 @@ IceTipWorkingCopyStatusBar >> model: aModel [
 	aModel shortCommitId
 		ifNil: [ self refreshWithoutCommitId: aModel ]
 		ifNotNil: [ self refreshWithCommitId: aModel ].
-	statusLabel label: aModel status.
+	statusLabel 
+		label: aModel status;
+		displayColor: [ :aString | aModel statusDecorator color ];
+		displayBold: [ :aString | aModel statusDecorator isBold ].
 
 ]
 

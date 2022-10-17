@@ -17,20 +17,22 @@ Class {
 	#category : #'Iceberg-TipUI-View'
 }
 
-{ #category : #layout }
-IceTipErrorDialog class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
-		  add: #errorLabel;
-		  yourself
-]
-
 { #category : #initialization }
 IceTipErrorDialog >> accept [
 	
 	self closeWindow.
 	exception debug.
+]
+
+{ #category : #layout }
+IceTipErrorDialog >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		borderWidth: 5;
+		spacing: 10;
+		add: iconPanel expand: false;
+		add: errorLabel;
+		yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -81,13 +83,12 @@ IceTipErrorDialog >> initializeDialogWindow: aWindow [
 { #category : #initialization }
 IceTipErrorDialog >> initializePresenters [
 
-	super initializePresenters.
-
 	iconPanel := self newImage.
 	iconPanel image: (self iconNamed: #error).
 
 	errorLabel := self newText.
-	errorLabel text: exception messageText
+	errorLabel text: exception messageText.
+	errorLabel editable: false
 ]
 
 { #category : #initialization }

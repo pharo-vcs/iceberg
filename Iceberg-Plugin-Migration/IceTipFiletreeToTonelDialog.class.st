@@ -15,26 +15,14 @@ Class {
 	#category : #'Iceberg-Plugin-Migration-UI'
 }
 
-{ #category : #layout }
-IceTipFiletreeToTonelDialog class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #iconPanel width: 40 * self currentWorld displayScaleFactor;
-		  add: (SpBoxLayout newTopToBottom
-				   add: #confirmLabel;
-				   add: #mergeWithMasterCheckbox height: self inputTextHeight;
-				   yourself);
-		  yourself
-]
-
 { #category : #actions }
 IceTipFiletreeToTonelDialog >> accept [
 	
-	IceTipStandardAction new 
+	(IceTipStandardAction newContext: self)
 		repository: self repository; 
 		message: ('Migrating {1} sources to tonel' format: { self repository name });
 		onSuccessRepositoryModified;
-		onSuccess: [ UIManager default inform: 'Sources migrated!' ];
+		onSuccess: [ self window inform: 'Sources migrated!' ];
 		execute: [ self doAccept ]
 ]
 
@@ -64,6 +52,20 @@ This process will use a new branch named {2}.
 You can choose to not merge immediately your migration.
 
 ARE YOU SURE?'
+]
+
+{ #category : #layout }
+IceTipFiletreeToTonelDialog >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		borderWidth: 5;
+		spacing: 10;
+		add: iconPanel expand: false;
+		add: (SpBoxLayout newTopToBottom
+			add: confirmLabel;
+			add: mergeWithMasterCheckbox expand: false;
+			yourself);
+		yourself
 ]
 
 { #category : #actions }

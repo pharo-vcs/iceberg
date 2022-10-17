@@ -79,12 +79,9 @@ IceTipCommitModel >> datetime [
 ]
 
 { #category : #accessing }
-IceTipCommitModel >> descriptionWithDecoration [
-	| text |
-	text := (', ' join: self entity tagNames) asText allBold makeAllColor: Color gray.
-	text ifNotEmpty: [ text := text , ' ' ].
-	text append: self entity comment asText.
-	^ text
+IceTipCommitModel >> description [
+
+	^ self entity comment
 ]
 
 { #category : #accessing }
@@ -195,6 +192,24 @@ IceTipCommitModel >> name [
 { #category : #accessing }
 IceTipCommitModel >> shortId [
 	^ self entity shortId
+]
+
+{ #category : #accessing }
+IceTipCommitModel >> tagDecorator [
+	
+	^ IceTipTagDecorator uniqueInstance
+]
+
+{ #category : #accessing }
+IceTipCommitModel >> tagNames [
+
+	^ self entity tagNames
+]
+
+{ #category : #accessing }
+IceTipCommitModel >> tagsDescription [
+
+	^ ', ' join: self tagNames 
 ]
 
 { #category : #accessing }

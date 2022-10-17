@@ -6,7 +6,7 @@ I'm done to be embedded in a dialog, so I implement doAccept to execute my actio
 "
 Class {
 	#name : #IceTipCreateTagPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'callback',
 		'tagNameInputText',
@@ -21,26 +21,6 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
-
-{ #category : #layout }
-IceTipCreateTagPanel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #currentCommitishLabel height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #tagNameLabel width: self labelWidth;
-				   add: #tagNameInputText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #majorButton;
-				   add: #minorButton;
-				   add: #patchButton;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #existingTagsList height: self inputTextHeight * 3;
-		  yourself
-]
 
 { #category : #accessing }
 IceTipCreateTagPanel >> accept [
@@ -68,13 +48,41 @@ IceTipCreateTagPanel >> currentCommitishLabel [
 	^ currentCommitishLabel
 ]
 
+{ #category : #layout }
+IceTipCreateTagPanel >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: currentCommitishLabel expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: tagNameLabel expand: false;
+				add: tagNameInputText;
+				yourself)
+			expand: false;
+	  	add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: majorButton;
+				add: minorButton;
+				add: patchButton;
+				yourself)
+	  		expand: false;
+		add: existingTagsList;
+		yourself
+]
+
 { #category : #actions }
 IceTipCreateTagPanel >> doAccept [
 
 	self validate.
-	commitishToTag
-		createTag: self tagName
-		thenDo: [ :newBranch | callback ifNotNil: [ callback value: newBranch ] ]
+	(commitishToTag newCreateTagAction: self tagName) 
+		onSuccess: [ 
+			callback ifNotNil: [ 
+				callback value: (IceTag 
+					named: self tagName
+					inRepository: commitishToTag repository) ] ];
+		executeWithContext: self
 ]
 
 { #category : #'accessing - ui' }
@@ -137,7 +145,6 @@ IceTipCreateTagPanel >> initializeNextTagPanel [
 { #category : #initialization }
 IceTipCreateTagPanel >> initializePresenters [
 
-	super initializePresenters.
 	self initializeCurrentBranchLabel.
 
 	tagNameLabel := self newLabel
@@ -149,8 +156,7 @@ IceTipCreateTagPanel >> initializePresenters [
 		                    yourself.
 
 	self initializeNextTagPanel.
-	self initializeExistingTagsList.
-
+	self initializeExistingTagsList
 ]
 
 { #category : #testing }
@@ -197,10 +203,10 @@ IceTipCreateTagPanel >> minorButton [
 
 { #category : #accessing }
 IceTipCreateTagPanel >> openDialog [
-
-	^ super openDialog
+self halt.
+	^ self asDialogWindow
 		okAction: [ self accept ];
-		yourself
+		open
 ]
 
 { #category : #'accessing - ui' }

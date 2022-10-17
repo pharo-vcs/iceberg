@@ -11,35 +11,23 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipAddPlaintextCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #hostLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #hostInput;
-				yourself )
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #usernameLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #usernameInput;
-				yourself )
-			height: self inputTextHeight;
-		add:
-			(SpBoxLayout newLeftToRight
-				add: #passwordLabel width: 80 * self currentWorld displayScaleFactor;
-				add: #passwordInput;
-				yourself )
-			height: self inputTextHeight;
-		yourself
-]
-
 { #category : #testing }
 IceTipAddPlaintextCredentialsModel >> accept [
 
 	self acceptAddAction
+]
+
+{ #category : #layout }
+IceTipAddPlaintextCredentialsModel >> defaultLayout [
+
+	^ SpGridLayout new 
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder 
+			add: hostLabel; add: hostInput; nextRow;
+			add: usernameLabel; add: usernameInput; nextRow;
+			add: passwordLabel; add: passwordInput; nextRow ];
+		yourself
 ]
 
 { #category : #accessing }

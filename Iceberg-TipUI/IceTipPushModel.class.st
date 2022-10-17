@@ -18,11 +18,12 @@ IceTipPushModel >> commitModels [
 ]
 
 { #category : #actions }
-IceTipPushModel >> pushThen: aBlock [
-	IceTipStandardAction new 
+IceTipPushModel >> newPushAction [
+
+	^ IceTipStandardAction new 
 		repository: self entity;
 		message: ('Pushing to {1}' format: { self remote name }) ;
 		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self entity pushTo: self remote ]
+		action: [ self entity pushTo: self remote ];
+		yourself
 ]

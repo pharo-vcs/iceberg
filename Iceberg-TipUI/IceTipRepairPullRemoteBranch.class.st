@@ -52,5 +52,7 @@ IceTipRepairPullRemoteBranch >> basicExecute [
 	"Fetching remotes is necessary in case the current image commit is not in the repository.
 	Could be optimized"
 	self fetchAllRemotes.
-	(IceTipPullBrowser onRepositoryModel: self repositoryModel) open
+	(IceTipPullBrowser onRepositoryModel: self repositoryModel) 
+		application: context application;
+		open
 ]

@@ -28,7 +28,8 @@ IceTipVersionHistoryModel >> commitModels [
 ]
 
 { #category : #accessing }
-IceTipVersionHistoryModel >> descriptionWithDecoration [
+IceTipVersionHistoryModel >> description [
+
 	^ self name
 ]
 

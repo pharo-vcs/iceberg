@@ -33,20 +33,12 @@ IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presen
 { #category : #commands }
 IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipOpenGitHubPullRequestCommand }
-			do: [ :each |
-				aCommandGroup register: each forSpec ]
+	{ 
+	  IceTipOpenGitHubPullRequestCommand. 
+	  IceTipOpenGitHubPullRequestInBrowserCommand 
+	}
+	do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ]
 
-]
-
-{ #category : #layout }
-IceTipGitHubPullRequestListBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newTopToBottom
-		  positionOfSlider: 30 percent;
-		  add: #pullRequests;
-		  add: #details;
-		  yourself
 ]
 
 { #category : #'instance creation' }
@@ -56,9 +48,9 @@ IceTipGitHubPullRequestListBrowser class >> onRepository: aRepository [
 ]
 
 { #category : #accessing }
-IceTipGitHubPullRequestListBrowser class >> taskbarIcon [
+IceTipGitHubPullRequestListBrowser class >> taskbarIconName [
 
-	^ self iconNamed: #komitterSmalltalkhubRemote
+	^ #komitterSmalltalkhubRemote
 ]
 
 { #category : #initialization }
@@ -71,6 +63,16 @@ IceTipGitHubPullRequestListBrowser >> connectPresenters [
 		whenSelectionChangedDo: [ :selection |
 			self updateSelectedPullRequest: selection ].
 
+]
+
+{ #category : #layout }
+IceTipGitHubPullRequestListBrowser >> defaultLayout [
+
+	^ SpPanedLayout newTopToBottom
+		  positionOfSlider: 30 percent;
+		  add: pullRequests;
+		  add: details;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -205,7 +207,9 @@ IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 					 aPullRequest number.
 					 aPullRequest title })
 		during: [ 
-			(IceGitHubTipPullRequestBrowser
-				 on: self model
-				 pullRequest: aPullRequest) open ]
+			(IceGitHubTipPullRequestBrowser 
+				newApplication: self application
+					model: self model
+					pullRequest: aPullRequest) 
+				open ]
 ]

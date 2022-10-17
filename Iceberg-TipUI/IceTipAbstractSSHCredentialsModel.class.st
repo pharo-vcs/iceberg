@@ -11,7 +11,9 @@ Class {
 		'publicKeyInput',
 		'privateKeyInput',
 		'passphraseInput',
-		'passphraseLabel'
+		'passphraseLabel',
+		'publicKeyLabel',
+		'privateKeyLabel'
 	],
 	#category : #'Iceberg-TipUI-Credentials'
 }
@@ -35,14 +37,18 @@ IceTipAbstractSSHCredentialsModel >> initializePresenters [
 		autoAccept: true;
 		whenTextChangedDo: [ self updateOkButton ];
 		yourself.
-	privateKeyInput := IceTipFilePresenter new
+	privateKeyLabel := self newLabel
 		label: 'Private Key';
+		yourself.
+	privateKeyInput := IceTipFilePresenter new
 		onChoose: [ self updateOkButton ];
 		chooseTitle: 'Select Private Key';
 		whenTextChanged: [ self updateOkButton ];
 		yourself.
-	publicKeyInput := IceTipFilePresenter new
+	publicKeyLabel := self newLabel
 		label: 'Public Key';
+		yourself.
+	publicKeyInput := IceTipFilePresenter new
 		onChoose: [ self updateOkButton ];
 		chooseTitle: 'Select Public Key';
 		whenTextChanged: [ self updateOkButton ];

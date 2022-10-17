@@ -15,32 +15,25 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #layout }
-IceTipAddTokenCredentialsModel class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #usernameLabel width: self labelWidth;
-				   add: #usernameInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #hostLabel width: self labelWidth;
-				   add: #hostInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #tokenLabel width: self labelWidth;
-				   add: #tokenInput;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #accessing }
 IceTipAddTokenCredentialsModel >> accept [
 
 	self acceptAddAction
+]
+
+{ #category : #layout }
+IceTipAddTokenCredentialsModel >> defaultLayout [
+
+	^ SpGridLayout new 
+		borderWidth: 5;
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder
+			add: usernameLabel; add: usernameInput; nextRow;
+			add: hostLabel; add: hostInput; nextRow;
+			add: tokenLabel; add: tokenInput; nextRow ];
+		yourself
+
 ]
 
 { #category : #accessing }

@@ -13,14 +13,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipExistingBranchPanel class >> defaultLayout [
-
-	^ SpBoxLayout newLeftToRight
-		  add: #branchesList;
-		  yourself
-]
-
 { #category : #initialization }
 IceTipExistingBranchPanel >> branchModels [
 
@@ -31,6 +23,14 @@ IceTipExistingBranchPanel >> branchModels [
 IceTipExistingBranchPanel >> branchesList [
 
 	^ branchesList
+]
+
+{ #category : #layout }
+IceTipExistingBranchPanel >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight
+		  add: branchesList;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -50,7 +50,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: #shortDescriptionWithDecoration);
+		addColumn: (SpStringTableColumn evaluated: #shortDescription);
 		items: self model branchModels.
 
 	self model branchModels
@@ -65,7 +65,6 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 { #category : #initialization }
 IceTipExistingBranchPanel >> initializePresenters [
 
-	super initializePresenters.
 	branchesList := self newTable.
 	self initializeBranchesList
 ]

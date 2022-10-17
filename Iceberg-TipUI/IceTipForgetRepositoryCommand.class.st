@@ -23,8 +23,12 @@ IceTipForgetRepositoryCommand class >> defaultName [
 { #category : #executing }
 IceTipForgetRepositoryCommand >> execute [
 
-	(IceTipRemoveRepositoryDialog on: self repositoryModel)
-		openDialog
+	(IceTipRemoveRepositoryDialog 
+		newApplication: context application 
+		model: self repositoryModel)
+		asModalWindow 
+			centeredRelativeTo: context window;
+			open		
 ]
 
 { #category : #accessing }

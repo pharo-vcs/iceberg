@@ -35,15 +35,15 @@ IceTipDiscardAllModel >> discardAll [
 ]
 
 { #category : #operations }
-IceTipDiscardAllModel >> executeDiscardAndThen: aBlock [ 
-	
+IceTipDiscardAllModel >> newDiscardAction [
 	<noCache>
-	IceTipStandardAction new 
+
+	^ IceTipStandardAction new 
 		repository: self repository;
 		message: ('Discarding changes in the image');
 		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self discardAll ]
+		action: [ self discardAll ];
+		yourself
 ]
 
 { #category : #accessing }

@@ -19,11 +19,6 @@ IceTipCommitRangeModel >> commitModels [
 ]
 
 { #category : #accessing }
-IceTipCommitRangeModel >> descriptionWithDecoration [
-	^ self name
-]
-
-{ #category : #accessing }
 IceTipCommitRangeModel >> fromCommit [
 	^ self entity
 ]

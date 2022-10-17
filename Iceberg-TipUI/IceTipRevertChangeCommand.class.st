@@ -25,8 +25,7 @@ IceTipRevertChangeCommand >> execute [
 
 	UIManager default
 		informUser: 'Reverting change...'
-		during: [
-			self repository workingCopy discardChanges: self item ].
+		during: [ self repository workingCopy discardChanges: self item ].
 
 	self toolAnnouncer announce:
 		(IceTipDiffEntryRemoved entry: self item).

@@ -31,40 +31,17 @@ IceTipEntityModel class >> repositoryModel: aRepositoryModel on: anObject [
 		yourself
 ]
 
-{ #category : #TOMOVE }
-IceTipEntityModel >> colorModified [
-	^ Smalltalk ui theme successTextColor
-]
-
-{ #category : #TOMOVE }
-IceTipEntityModel >> colorNotLoaded [
-	^ Smalltalk ui theme disabledTextColor
-]
-
-{ #category : #TOMOVE }
-IceTipEntityModel >> colorWarning [
-	^ Smalltalk ui theme warningTextColor
-]
-
-{ #category : #tagging }
-IceTipEntityModel >> createTag: aString thenDo: aBlockClosure [ 
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity;
-		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
-		onSuccessRepositoryModified;
-		execute: [ | branch |
-			branch := self commit createTag: aString.
-			aBlockClosure value: branch ]
-	
-]
-
 { #category : #accessing }
-IceTipEntityModel >> descriptionWithDecoration [
+IceTipEntityModel >> description [
 	"A decorated description of this entity. 
 	 It can return a text (in case decorations apply) or a simple string."
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+IceTipEntityModel >> descriptionDecorator [
+	
+	^ IceTipTextDecorator none
 ]
 
 { #category : #accessing }
@@ -95,6 +72,18 @@ IceTipEntityModel >> isModelOf: anObject [
 	^ self entity = anObject
 ]
 
+{ #category : #tagging }
+IceTipEntityModel >> newCreateTagAction: aString [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
+		onSuccessRepositoryModified;
+		action: [ self commit createTag: aString ]
+		yourself
+]
+
 { #category : #accessing }
 IceTipEntityModel >> repositoryModel [
 	^ repositoryModel
@@ -105,7 +94,8 @@ IceTipEntityModel >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]
 
-{ #category : #TOMOVE }
-IceTipEntityModel >> toWarningMessage: aString [
-	^ aString asText allBold makeAllColor: self colorWarning
+{ #category : #accessing }
+IceTipEntityModel >> shortDescription [
+
+	^ self description asString lines first
 ]

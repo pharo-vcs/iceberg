@@ -29,7 +29,7 @@ IceTipTagModel >> delete [
 ]
 
 { #category : #accessing }
-IceTipTagModel >> descriptionWithDecoration [
+IceTipTagModel >> description [
 	
 	^ self entity name
 ]

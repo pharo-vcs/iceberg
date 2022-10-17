@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #visiting }
-IceTipToolbarPresenterBuilder >> visitCommand: aCmCommandEntry [
+IceTipToolbarPresenterBuilder >> visitCommand: anEntry [
 
-	aCmCommandEntry ifVisible: [ super visitCommand: aCmCommandEntry ]
+	anEntry ifVisible: [ super visitCommand: anEntry ]
 ]

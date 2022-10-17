@@ -16,13 +16,15 @@ IceTipDiscardAllChangesPreviewBrowser class >> onRepository: anIceModelRepositor
 { #category : #operations }
 IceTipDiscardAllChangesPreviewBrowser >> doDiscardAll [
 	
-	self model executeDiscardAndThen: [ self closeWindow ]
+	self model newDiscardAction 
+		onSuccess: [ self closeWindow ];
+		executeWithContext: self
 ]
 
 { #category : #initialization }
 IceTipDiscardAllChangesPreviewBrowser >> initialExtentForWindow [
 
-	^ (1100 @ 400) scaledByDisplayScaleFactor
+	^ (900 @ 400) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
@@ -32,8 +34,7 @@ IceTipDiscardAllChangesPreviewBrowser >> initializePresenters [
 	
 	diffPanel
 		leftLabel: 'Working Copy (Image)';
-		rightLabel: 'Commit to load: ' , model workingCopy referenceCommit id.
-
+		rightLabel: 'Commit to load: ' , model workingCopy referenceCommit shortId
 ]
 
 { #category : #'private - factory' }

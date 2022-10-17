@@ -35,15 +35,6 @@ IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 
 ]
 
-{ #category : #layout }
-IceTipHistoryBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newTopToBottom
-		  add: #commitList;
-		  add: #commitInfoTabs;
-		  yourself
-]
-
 { #category : #specs }
 IceTipHistoryBrowser class >> panelSpec [
 	
@@ -71,6 +62,15 @@ IceTipHistoryBrowser >> commitList [
 	^ commitList
 ]
 
+{ #category : #layout }
+IceTipHistoryBrowser >> defaultLayout [
+
+	^ SpPanedLayout newTopToBottom
+		  add: commitList;
+		  add: commitInfoTabs;
+		  yourself
+]
+
 { #category : #initialization }
 IceTipHistoryBrowser >> initialExtentForWindow [
 
@@ -82,40 +82,33 @@ IceTipHistoryBrowser >> initializeCommitList [
 
 	commitList
 		beResizable;
-		addColumn:
-			((SpStringTableColumn
-				evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
-				title: 'Timestamp';
-				width: 110 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #shortId)
-				title: 'Commit';
-				width: 60 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #author)
-				title: 'Author';
-				width: 150 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			((SpStringTableColumn evaluated: #descriptionWithDecoration)
-				title: 'Description';
-				yourself);
+		addColumn: ((SpStringTableColumn
+			evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
+			title: 'Timestamp';
+			width: 120;
+			yourself);
+		addColumn: ((SpStringTableColumn evaluated: #shortId)
+			title: 'Commit';
+			width: 70;
+			yourself);	
+		addColumn: ((SpStringTableColumn evaluated: #author)
+			title: 'Author';
+			width: 180;
+			yourself);
+		addColumn: (SpStringTableColumn new 
+			title: 'Description';
+			evaluated: [ :each | each shortDescription ];
+			yourself);
 		whenSelectionChangedDo: [ :aSelection | self selectionChanged: aSelection selectedItem ]
-
 ]
 
 { #category : #initialization }
 IceTipHistoryBrowser >> initializePresenters [
 
-	super initializePresenters.	
 	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	
-	self initializeCommitList.
-		
-	self refreshCommitList.
+	self initializeCommitList
 ]
 
 { #category : #'accessing - ui' }
@@ -167,6 +160,12 @@ IceTipHistoryBrowser >> titleForWindow [
 		ifNotNil: [ 'History of {1}' format: {self model repositoryName} ]
 		ifNil: [ 'History' ]
 
+]
+
+{ #category : #initialization }
+IceTipHistoryBrowser >> updatePresenter [
+
+	self refresh
 ]
 
 { #category : #events }

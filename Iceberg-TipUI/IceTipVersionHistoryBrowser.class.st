@@ -35,15 +35,6 @@ IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter f
 
 ]
 
-{ #category : #layout }
-IceTipVersionHistoryBrowser class >> defaultLayout [
-	
-	^ SpPanedLayout newTopToBottom
-		add: #commitList;
-		add: #commitPanel;
-		yourself
-]
-
 { #category : #'instance creation' }
 IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 	
@@ -59,6 +50,15 @@ IceTipVersionHistoryBrowser >> commitList [
 	^ commitList
 ]
 
+{ #category : #layout }
+IceTipVersionHistoryBrowser >> defaultLayout [
+	
+	^ SpPanedLayout newTopToBottom
+		add: commitList;
+		add: commitPanel;
+		yourself
+]
+
 { #category : #initialization }
 IceTipVersionHistoryBrowser >> initialExtentForWindow [
 
@@ -70,33 +70,28 @@ IceTipVersionHistoryBrowser >> initializeCommitList [
 
 	commitList
 		beResizable;
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Timestamp';
-				evaluated: [ :each | each timeStamp asLocalStringYMDHM ];
-				width: 110 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Commit';
-				evaluated: #shortId;
-				width: 60 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Author';
-				evaluated: #author;
-				width: 150 * self currentWorld displayScaleFactor;
-				yourself);
-		addColumn:
-			(SpStringTableColumn new
-				title: 'Description';
-				evaluated: #descriptionWithDecoration;
-				yourself).
+		addColumn: (SpStringTableColumn new
+			title: 'Timestamp';
+			evaluated: [ :each | each timeStamp asLocalStringYMDHM ];
+			width: 110;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Commit';
+			evaluated: #shortId;
+			width: 60;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Author';
+			evaluated: #author;
+			width: 150;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Description';
+			evaluated: #shortDescription;
+			yourself).
 				
 	commitList whenSelectionChangedDo: [ :aSelection |
-		self selectionChanged: aSelection selectedItem ].
-
+		self selectionChanged: aSelection selectedItem ]
 ]
 
 { #category : #initialization }
@@ -114,14 +109,11 @@ IceTipVersionHistoryBrowser >> initializeCommitPanel [
 { #category : #initialization }
 IceTipVersionHistoryBrowser >> initializePresenters [
 
-	super initializePresenters.	
 	commitList := self newTable.
 	commitPanel := self newNotebook.
 	
 	self initializeCommitList.
-	self initializeCommitPanel.
-	
-	self refresh
+	self initializeCommitPanel
 ]
 
 { #category : #'accessing - ui' }
@@ -219,4 +211,10 @@ IceTipVersionHistoryBrowser >> titleForWindow [
 	^ self model  
 		ifNotNil: [ 'Versions of {1}' format: { self model name } ]
 		ifNil: [ 'Versions' ]
+]
+
+{ #category : #initialization }
+IceTipVersionHistoryBrowser >> updatePresenter [
+
+	self refresh
 ]

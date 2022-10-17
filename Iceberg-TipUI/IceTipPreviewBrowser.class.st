@@ -25,19 +25,21 @@ IceTipPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 	"Nothing to add"
 ]
 
-{ #category : #layout }
-IceTipPreviewBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #diffPanel;
-		  add: #actionPanel expand: false;
-		  yourself
-]
-
 { #category : #'accessing - ui' }
 IceTipPreviewBrowser >> actionPanel [
 
 	^ actionPanel
+]
+
+{ #category : #layout }
+IceTipPreviewBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5; 
+		add: diffPanel;
+		add: actionPanel expand: false;
+	 	yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -55,12 +57,9 @@ IceTipPreviewBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipPreviewBrowser >> initializePresenters [
 
-	super initializePresenters.
-	
 	diffPanel := self instantiate: IceTipDiffPanel on: self model diff.
 	actionPanel := self newButtonBar.
-	actionPanel add: (button := self newActionButton).
-
+	actionPanel add: (button := self newActionButton)
 ]
 
 { #category : #'accessing - ui' }

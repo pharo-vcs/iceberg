@@ -17,6 +17,6 @@ IceGitHubNewPullRequestCommand class >> defaultName [
 IceGitHubNewPullRequestCommand >> execute [
 
 	^ IceGitHubNewPullRequestAction new
-		  repository: self repository;
-		  execute
+		repository: self repository;
+		executeWithContext: context
 ]

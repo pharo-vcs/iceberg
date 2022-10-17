@@ -17,7 +17,7 @@ IceGitHubTreeRemoveBranchesCommand class >> defaultName [
 IceGitHubTreeRemoveBranchesCommand >> execute [
 
 	^ IceGitHubRemoveBranchesAction new
-		  repository: self repository;
-		  remote: self remote;
-		  execute
+		repository: self repository;
+		remote: self remote;
+		executeWithContext: context
 ]

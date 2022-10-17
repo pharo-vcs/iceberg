@@ -36,12 +36,13 @@ IceTipDiffSelectingPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
 		addColumn: (SpCheckBoxTableColumn new
-			width: 20;
+			beNotExpandable;
 			evaluated: [ :iceNode | checkedIceNodes includes: iceNode ];
 			onActivation: [ :iceNode | self activateItem: iceNode ];
-			onDeactivation: [ :iceNode | self deactivateItem: iceNode ]);
+			onDeactivation: [ :iceNode | self deactivateItem: iceNode ];
+			yourself);
 		addColumn: (SpImageTableColumn new
-			width: 20;
+			beNotExpandable;
 			evaluated: [ :each | each value icon ];
 			yourself);
 		addColumn: self changeDescriptionColumn;

@@ -31,7 +31,8 @@ IceTipTreeNode >> children [
 ]
 
 { #category : #accessing }
-IceTipTreeNode >> descriptionWithDecoration [
+IceTipTreeNode >> description [
+
 	^ self subclassResponsibility
 ]
 

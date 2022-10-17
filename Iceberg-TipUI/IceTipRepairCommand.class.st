@@ -34,8 +34,12 @@ IceTipRepairCommand >> canBeExecuted [
 { #category : #executing }
 IceTipRepairCommand >> execute [
 
-	(IceTipRepairRepositoryDialog on: self repositoryModel)
-		openNonModal
+	((IceTipRepairRepositoryDialog 
+		newApplication: context application
+		model: self repositoryModel)
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

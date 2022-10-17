@@ -34,5 +34,5 @@ IceTipBitbucketRepositoryPanel >> providerName [
 { #category : #initialization }
 IceTipBitbucketRepositoryPanel >> titleForWindow [
 
-	^ 'Clone From bitbucket.org'
+	^ 'Clone from bitbucket.org'
 ]

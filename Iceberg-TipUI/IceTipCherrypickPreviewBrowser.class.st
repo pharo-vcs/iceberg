@@ -20,15 +20,6 @@ IceTipCherrypickPreviewBrowser class >> buildSelectionCommandGroupWith: presente
 	"Nothing to add"
 ]
 
-{ #category : #layout }
-IceTipCherrypickPreviewBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #diffPanel;
-		  add: #buttonBar height: self buttonHeight;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 	^ self
@@ -40,6 +31,15 @@ IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 IceTipCherrypickPreviewBrowser >> buttonBar [
 
 	^ buttonBar
+]
+
+{ #category : #layout }
+IceTipCherrypickPreviewBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: diffPanel;
+		  add: buttonBar expand: false;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -66,7 +66,6 @@ IceTipCherrypickPreviewBrowser >> initialExtentForWindow [
 
 { #category : #initialization }
 IceTipCherrypickPreviewBrowser >> initializePresenters [
-	super initializePresenters.
 
 	diffPanel := self
 		instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).

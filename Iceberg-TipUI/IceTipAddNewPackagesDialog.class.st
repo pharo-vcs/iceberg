@@ -15,15 +15,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipAddNewPackagesDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-			add: #problemDescription height: (self labelHeight * 4);
-			add: #packagesList;
-			yourself
-]
-
 { #category : #actions }
 IceTipAddNewPackagesDialog >> accept [
 
@@ -34,9 +25,11 @@ IceTipAddNewPackagesDialog >> accept [
 		packages: selectedPackageNames;
 		yourself).
 		
-	checkoutModel executeCheckoutActionAndThen: [ 
-		self closeWindow.
-		checkoutPreviewWindow closeWindow ]
+	checkoutModel newCheckoutAction
+		onSuccess: [ 
+			self closeWindow.
+			checkoutPreviewWindow closeWindow ];
+		executeWithContext: self
 ]
 
 { #category : #accessing }
@@ -51,6 +44,15 @@ IceTipAddNewPackagesDialog >> checkoutPreviewWindow: anIceTipCheckoutPreviewBrow
 	checkoutPreviewWindow := anIceTipCheckoutPreviewBrowser 
 ]
 
+{ #category : #layout }
+IceTipAddNewPackagesDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+			add: problemDescription expand: false;
+			add: packagesList;
+			yourself
+]
+
 { #category : #initialization }
 IceTipAddNewPackagesDialog >> iconForWindow [
 
@@ -60,45 +62,39 @@ IceTipAddNewPackagesDialog >> iconForWindow [
 { #category : #initialization }
 IceTipAddNewPackagesDialog >> initializePackagesList [
 
-	packagesList
-		addColumn:
-			(SpCompositeTableColumn new
-				addColumn:
-					(SpCheckBoxTableColumn new
-						evaluated: [ :item | selectedPackages includes: item ];
-						onActivation: [ :item | selectedPackages add: item ];
-						onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
-						width: 20 * self currentWorld displayScaleFactor;
-						yourself);
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: [ :each | self iconNamed: #package ];
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: [:e | e name];
-						yourself);
-				yourself)
+	packagesList addColumn: (SpCompositeTableColumn new
+		addColumn: (SpCheckBoxTableColumn new
+			evaluated: [ :item | selectedPackages includes: item ];
+			onActivation: [ :item | selectedPackages add: item ];
+			onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
+			beNotExpandable;
+			yourself);
+		addColumn: (SpImageTableColumn new
+			evaluated: [ :each | self iconNamed: #package ];
+			beNotExpandable;
+			yourself);
+		addColumn: (SpStringTableColumn new
+			evaluated: [:e | e name];
+			yourself);
+		yourself)
 ]
 
 { #category : #initialization }
 IceTipAddNewPackagesDialog >> initializePresenters [
 
-	super initializePresenters.
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
 	problemDescription := self newText
 		beNotEditable;
 		addStyle: 'iceTipReadonly';
+		addStyle: 'iceTipText4Lines';
 		beWrapWord;
 		yourself.
 
 	problemDescription text: 'One or more packages unloaded packages (they are in the repository, but not in the image) has been changed.
 Please select the packages if you wish to load them in the image'.
 
-	self initializePackagesList.
-
+	self initializePackagesList
 ]
 
 { #category : #'accessing - ui' }

@@ -51,7 +51,9 @@ IceTipRepairAction class >> title [
 ]
 
 { #category : #executing }
-IceTipRepairAction >> executeWith: aRepositoryModel [
+IceTipRepairAction >> executeWithContext: aContext model: aRepositoryModel [
+
+	self context: aContext.
 	self repositoryModel: aRepositoryModel.
 	self execute
 ]
@@ -90,7 +92,7 @@ IceTipRepairAction >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 IceTipRepairAction >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]

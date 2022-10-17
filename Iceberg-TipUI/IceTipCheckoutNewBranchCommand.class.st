@@ -23,10 +23,14 @@ IceTipCheckoutNewBranchCommand class >> defaultName [
 { #category : #executing }
 IceTipCheckoutNewBranchCommand >> execute [
 
-	(IceTipCheckoutNewBranchPanel on: self repositoryModel)
+	((IceTipCheckoutNewBranchPanel 
+		newApplication: context application 
+		model: self repositoryModel)
 		commitish: self selectedCommit;
-		withResultDo: [ :branch | branch checkout ];
-		openDialog
+		withResultDo: [ :branch | branch checkout ])
+		asDialogWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

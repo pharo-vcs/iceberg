@@ -11,26 +11,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipRepairRepositoryDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		add: #reasonPanel 
-		withConstraints: [ :constraints |
-			constraints 
-				height: 70 * self currentWorld displayScaleFactor;
-				padding: 2 ];
-		add: #optionsList
-		withConstraints: [ :constraints |
-			constraints 
-				height: 100 * self currentWorld displayScaleFactor;
-				padding: 2 ];
-		add: #detailPanel
-		withConstraints: [ :constraints |
-			constraints padding: 2 ];
-		yourself
-]
-
 { #category : #'instance creation' }
 IceTipRepairRepositoryDialog class >> onRepository: aRepository [
 
@@ -41,7 +21,27 @@ IceTipRepairRepositoryDialog class >> onRepository: aRepository [
 IceTipRepairRepositoryDialog >> accept [
 
 	self closeWindow.
-	selectedOption executeWith: self model
+	selectedOption 
+		executeWithContext: self
+		model: self model
+]
+
+{ #category : #'api - focus' }
+IceTipRepairRepositoryDialog >> defaultKeyboardFocus [
+
+	^ optionsList
+]
+
+{ #category : #layout }
+IceTipRepairRepositoryDialog >> defaultLayout [
+
+	self flag: #TODO. "Replace the fixed height with a correct style"
+	^ SpBoxLayout newTopToBottom
+		spacing: 2;
+		add: reasonPanel height: 70 * self currentWorld displayScaleFactor;
+		add: optionsList height: 100 * self currentWorld displayScaleFactor;
+		add: detailPanel;
+		yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -77,8 +77,8 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 		hideColumnHeaders;
 		addColumn: (SpCompositeTableColumn new
 			addColumn: (SpImageTableColumn new
-				width: 20;
 				evaluated: #icon;
+				beNotExpandable;
 				yourself);
 			addColumn: (SpStringTableColumn new
 				evaluated: #title;
@@ -92,16 +92,12 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 { #category : #initialization }
 IceTipRepairRepositoryDialog >> initializePresenters [
 
-	super initializePresenters.
-	
 	reasonPanel := self newText
 		beNotEditable;
 		addStyle: 'iceTipReadonly';
 		beWrapWord;
 		yourself.
-	optionsList := self newTable
-		disable;
-		yourself.
+	optionsList := self newTable.
 	detailPanel := self newText
 		beNotEditable;
 		beWrapWord;
@@ -109,8 +105,7 @@ IceTipRepairRepositoryDialog >> initializePresenters [
 		yourself.
 
 	self initializeReasonPanel.
-	self initializeOptionsList.
-
+	self initializeOptionsList
 ]
 
 { #category : #private }

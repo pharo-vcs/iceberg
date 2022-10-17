@@ -20,7 +20,8 @@ IceTipMergePreviewBrowser class >> onBranch: aBranch [
 { #category : #actions }
 IceTipMergePreviewBrowser >> doMerge [
 
-	self model executeMergeActionAndThen: [ self closeWindow ]
+	self model newExecuteMergeAction executeWithContext: self.
+	self closeWindow
 ]
 
 { #category : #initialization }

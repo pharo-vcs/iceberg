@@ -2,7 +2,8 @@ Class {
 	#name : #IceTipRemoteActionBrowser,
 	#superclass : #IceTipHistoryActionBrowser,
 	#instVars : [
-		'remotePanel'
+		'remotePanel',
+		'remoteLabel'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
@@ -13,31 +14,38 @@ IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for
 	"No commands to add"
 ]
 
-{ #category : #layout }
-IceTipRemoteActionBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #remotePanel
-		  withConstraints: [ :c | c height: self inputTextHeight ];
-		  add: #commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
-		  add: #actionButtonBar
-		  withConstraints: [ :c | c height: self buttonHeight ];
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipRemoteActionBrowser class >> onRepositoryModel: aRepository [
 	^ self subclassResponsibility
+]
+
+{ #category : #layout }
+IceTipRemoteActionBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: remoteLabel expand: false; 
+				add: remotePanel;
+				yourself)
+			expand: false;
+		add: commitsPanel withConstraints: [ :c | c spec: #panelSpec ];
+		add: actionButtonBar expand: false;
+		yourself
 ]
 
 { #category : #initialization }
 IceTipRemoteActionBrowser >> initializePresenters [
 
 	super initializePresenters.
+	remoteLabel := self newLabel
+		label: self labelForRemotePanel;
+		yourself.
 	remotePanel := self
 		instantiate: IceTipSelectRemotePresenter
 		on: self model.
-	remotePanel label: self labelForRemotePanel.
 	remotePanel remoteList
 		whenSelectedItemChangedDo: [ :remoteModel | self moveToRemote: remoteModel ].
 

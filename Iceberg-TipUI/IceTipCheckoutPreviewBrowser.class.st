@@ -14,21 +14,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipCheckoutPreviewBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #checkoutStrategyLabel
-				   width: 100 * self currentWorld displayScaleFactor;
-				   add: #checkoutStrategyList;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #diffPanel expand: true;
-		  add: #actionPanel height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 
@@ -49,12 +34,33 @@ IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 	^ checkoutStrategyList
 ]
 
+{ #category : #layout }
+IceTipCheckoutPreviewBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: #checkoutStrategyLabel expand: false;
+				add: #checkoutStrategyList;
+				yourself)
+		  	expand: false;
+		add: #diffPanel;
+		add: #actionPanel expand: false;
+		yourself
+]
+
 { #category : #actions }
 IceTipCheckoutPreviewBrowser >> doCheckout [
 
 	(self model hasNewPackages and: [ self model checkoutStrategy isLoadAlreadyLoadedStrategy ])
-		ifTrue: [ self openAddNewPackagesDialog ]
-		ifFalse:	[self model executeCheckoutActionAndThen: [ self closeWindow ]]
+		ifTrue: [ 
+			self openAddNewPackagesDialog ]
+		ifFalse:	[
+			self model newCheckoutAction 
+				onSuccess: [ self closeWindow ];
+				executeWithContext: self ]
 ]
 
 { #category : #initialization }
@@ -99,10 +105,14 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 { #category : #operations }
 IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 
-	(IceTipAddNewPackagesDialog on: self model newPackages) 
+	((IceTipAddNewPackagesDialog 
+		newApplication: self application 
+		model: self model newPackages) 
 		checkoutModel: self model;
-		checkoutPreviewWindow: self;
-		openDialog
+		checkoutPreviewWindow: self)
+		asModalWindow 
+			centeredRelativeTo: self window;
+			open
 ]
 
 { #category : #accessing }

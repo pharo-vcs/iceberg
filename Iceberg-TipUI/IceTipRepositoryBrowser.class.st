@@ -50,16 +50,6 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 
 ]
 
-{ #category : #layout }
-IceTipRepositoryBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 30 percent;
-		  add: #sidebarTree;
-		  add: #historyPanel withConstraints: [ :c | c spec: #panelSpec ];
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipRepositoryBrowser class >> new [
 	self error: 'Use #onRepository:'
@@ -71,10 +61,26 @@ IceTipRepositoryBrowser class >> onRepository: aRepository [
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
+{ #category : #'instance creation' }
+IceTipRepositoryBrowser class >> onRepositoryNamed: aString [
+
+	^ self onRepository: (IceRepository registry detect: [ :each | each name = aString ])
+]
+
 { #category : #'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
 	historyPanel model: ann
+]
+
+{ #category : #layout }
+IceTipRepositoryBrowser >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 30 percent;
+		  add: sidebarTree;
+		  add: historyPanel withConstraints: [ :c | c spec: #panelSpec ];
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -92,7 +98,6 @@ IceTipRepositoryBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipRepositoryBrowser >> initializePresenters [
 
-	super initializePresenters.
 	sidebarTree := self newTreeTable.
 	historyPanel := self
 		instantiate: IceTipHiedraHistoryBrowser
@@ -101,10 +106,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 	historyPanel whenSelectionChangedDo: [ self refreshCommands ].
 	historyPanel beForMerge.
 
-	self initializeSidebarTree.
-
-	self refresh.
-
+	self initializeSidebarTree
 ]
 
 { #category : #initialization }
@@ -112,23 +114,19 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 
 	sidebarTree
 		hideColumnHeaders;
-		addColumn:
-			(SpCompositeTableColumn new
-				addColumn:
-					(SpImageTableColumn new
-						width: 20;
-						evaluated: #icon;
-						yourself);
-				addColumn:
-					(SpStringTableColumn new
-						evaluated: #name;
-						yourself);
+		addColumn: (SpCompositeTableColumn new
+			addColumn: (SpImageTableColumn new
+				evaluated: #icon;
+				beNotExpandable;
 				yourself);
+			addColumn: (SpStringTableColumn new
+				evaluated: #name;
+				yourself);
+			yourself);
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ :selection | 
 			(selection isEmpty not and: [ selection selectedItem isCommitish ])
-				ifTrue: [ self commitishSelected: selection selectedItem ] ].
-
+				ifTrue: [ self commitishSelected: selection selectedItem ] ]
 ]
 
 { #category : #'accessing - ui' }
@@ -152,7 +150,7 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
 	self model reset.
-	self refresh
+	self updatePresenter
 ]
 
 { #category : #initialization }
@@ -187,4 +185,10 @@ IceTipRepositoryBrowser >> subscribeToAnnouncements [
 IceTipRepositoryBrowser >> titleForWindow [
 
 	^ 'Repository of ' , self model name
+]
+
+{ #category : #initialization }
+IceTipRepositoryBrowser >> updatePresenter [
+
+	self refresh
 ]

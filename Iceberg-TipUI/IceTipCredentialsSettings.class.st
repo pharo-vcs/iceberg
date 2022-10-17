@@ -6,6 +6,7 @@ Class {
 
 { #category : #settings }
 IceTipCredentialsSettings class >> editButtonAction [
+
 	IceTipCredentialsStoreBrowser new open.
 ]
 

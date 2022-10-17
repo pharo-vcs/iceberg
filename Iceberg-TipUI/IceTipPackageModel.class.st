@@ -25,15 +25,24 @@ IceTipPackageModel >> browseRepositoryVersion [
 ]
 
 { #category : #accessing }
-IceTipPackageModel >> descriptionWithDecoration [
+IceTipPackageModel >> description [
 	| text |
 	
-	text := self displayString asText.
-	self entity isLoaded
-		ifFalse:[ text := text makeAllColor: self colorNotLoaded ].
+	text := self displayString.
 	self entity isModified 
-		ifTrue: [ text := ('*', text) asText makeAllColor: self colorModified ].
+		ifTrue: [ text := '*', text ].
 	^ text
+]
+
+{ #category : #accessing }
+IceTipPackageModel >> descriptionDecorator [
+
+	self entity isModified 
+		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
+	self entity isLoaded
+		ifFalse:[ ^ IceTipDescriptionDecorator notLoaded ].
+	
+	^ super descriptionDecorator
 ]
 
 { #category : #testing }
@@ -46,23 +55,24 @@ IceTipPackageModel >> isModified [
 	^ self entity isModified
 ]
 
-{ #category : #actions }
-IceTipPackageModel >> load [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Loading package {1}' format: { self entity name });
-		onSuccessRepositoryModified;
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity load ] ]
-]
-
 { #category : #accessing }
 IceTipPackageModel >> name [
 	^ self entity name
+]
+
+{ #category : #actions }
+IceTipPackageModel >> newLoadAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Loading package {1}' format: { self entity name });
+		onSuccessRepositoryModified;
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity load ] ];
+		yourself
 ]
 
 { #category : #accessing }
@@ -102,22 +112,20 @@ IceTipPackageModel >> remove [
 IceTipPackageModel >> status [
 	"entity could be a repository or a package"
 	[
-		self entity repository isMissing ifTrue: [ ^ self toErrorMessage: 'Local repository missing' ].
+		self entity repository isMissing ifTrue: [ ^ 'Local repository missing' ].
 		self entity isLoaded ifFalse: [ ^ 'Not loaded' ].
 		self entity isModified ifTrue: [ ^ 'Uncommited changes' ].
 		^ 'Up to date' ] 
 	on: Error do: [ :e | 
-		^ self toErrorMessage: e description ]
+		^ e description ]
 ]
 
 { #category : #accessing }
-IceTipPackageModel >> statusWithDecoration [
-	| text |
-	
-	text := self status asText.
+IceTipPackageModel >> statusDecorator [
+
 	self entity isLoaded 
-		ifFalse: [ text := text makeAllColor: self colorNotLoaded ].
-	^ text
+		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
+	^ super statusDecorator
 ]
 
 { #category : #actions }

@@ -4,7 +4,7 @@ I can obtain a comment text and certain ""commit specific"" options.
 "
 Class {
 	#name : #IceTipCommentPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'repositoryModel',
 		'commentText',
@@ -18,34 +18,6 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-View-Commit'
 }
-
-{ #category : #layout }
-IceTipCommentPanel class >> defaultLayout [
-
-	self flag: #pharoTodo. "FIXES ISSUE NUMBER INPUT is disabled. See below.
-	Reason: for the first stage of merging dev-1.9, we'll keep the diff as simple
-	as possible, to reduce noise in users. (Right now this branch is only a
-	migration from Spec1+Commander1 to Spec2+Commander2)."
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #pushCheckbox;
-				   add: #saveCheckbox;
-					add: #critiquesCheckbox;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: #commentText;
-" 		  add: (SpBoxLayout newLeftToRight
-				   add: #fixesLabel width: 40;
-				   add: #fixesField;
-				   yourself)
-		  height: self inputTextHeight;"
-		  add: #actionButtonBar withConstraints: [ :aConstraint |
-			 aConstraint 	
-				height: self buttonHeight + 6;
-				fill: true;
-				padding: 5 ]
-]
 
 { #category : #accessing }
 IceTipCommentPanel >> actionButtonBar [
@@ -71,6 +43,27 @@ IceTipCommentPanel >> commitButton [
 	^ commitButton
 ]
 
+{ #category : #layout }
+IceTipCommentPanel >> defaultLayout [
+
+	self flag: #pharoTodo. "FIXES ISSUE NUMBER INPUT is disabled. See below.
+	Reason: for the first stage of merging dev-1.9, we'll keep the diff as simple
+	as possible, to reduce noise in users. (Right now this branch is only a
+	migration from Spec1+Commander1 to Spec2+Commander2)."
+
+	^ SpBoxLayout newTopToBottom
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				add: pushCheckbox;
+				add: saveCheckbox;
+				add: critiquesCheckbox;
+				yourself)
+		  	expand: false;
+		add: commentText;
+		add: actionButtonBar expand: false;
+		yourself
+]
+
 { #category : #accessing }
 IceTipCommentPanel >> fixesField [
 
@@ -85,9 +78,7 @@ IceTipCommentPanel >> fixesLabel [
 
 { #category : #initialization }
 IceTipCommentPanel >> initializePresenters [
-
 	| fixesHelpString |
-	super initializePresenters.
 
 	pushCheckbox := self newCheckBox.
 	saveCheckbox := self newCheckBox.
@@ -131,14 +122,11 @@ IceTipCommentPanel >> initializePresenters [
 		yourself.
 
 	actionButtonBar := self newButtonBar.
-	actionButtonBar
-		add:
-			(commitButton := self newButton
-				label: 'Commit';
-				icon: (self iconNamed: #smallOk);
-				help: ('Commit your changes to {1}' format: {self repositoryName});
-				yourself).
-
+	actionButtonBar add: (commitButton := self newButton
+		label: 'Commit';
+		icon: (self iconNamed: #smallOk);
+		help: ('Commit your changes to {1}' format: { self repositoryName });
+		yourself)
 ]
 
 { #category : #testing }

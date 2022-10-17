@@ -22,7 +22,12 @@ IceTipAddPackageCommand class >> defaultName [
 { #category : #executing }
 IceTipAddPackageCommand >> execute [
 
-	(IceTipAddPackagesDialog on: self repositoryModel) openDialog
+	(IceTipAddPackagesDialog 
+		newApplication: context application 
+		model: self repositoryModel) 
+		asDialogWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

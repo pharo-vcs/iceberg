@@ -84,9 +84,14 @@ IceGitRemote >> fetchBranch: aBranch [
 { #category : #branches }
 IceGitRemote >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock [
 
-	localRepository handleLibgitError: [| found |
-		found := self repositoryHandle lookupRemoteBranch: self name , '/' , aString ifAbsent: [ nil ].
-		^ found ifNil: absentBlock ifNotNil: [ ^ presentBlock value: (localRepository basicNewRemoteBranchNamed: found name) ]]
+	localRepository handleLibgitError: [
+		| found |
+		found := self repositoryHandle 
+			lookupRemoteBranch: self name , '/' , aString 
+			ifAbsent: [ nil ].
+		^ found 
+			ifNotNil: [ presentBlock value: (localRepository basicNewRemoteBranchNamed: found name) ]
+			ifNil: absentBlock ]
 ]
 
 { #category : #accessing }

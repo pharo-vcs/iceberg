@@ -8,20 +8,6 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
-{ #category : #layout }
-IceTipMergeSelectingPanel class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 25 percent;
-		  add: #iceNodesTree;
-		  add: (SpBoxLayout newTopToBottom
-				   add: #diffPanel;
-				   add: #codePanel;
-				   yourself);
-		  yourself
-
-]
-
 { #category : #accessing }
 IceTipMergeSelectingPanel >> basicRefresh [
 
@@ -64,6 +50,20 @@ IceTipMergeSelectingPanel >> changeListColumn [
 IceTipMergeSelectingPanel >> codePanel [
 
 	^ codePanel
+]
+
+{ #category : #layout }
+IceTipMergeSelectingPanel >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 25 percent;
+		  add: iceNodesTree;
+		  add: (SpBoxLayout newTopToBottom
+				add: diffPanel;
+				add: codePanel;
+				yourself);
+		  yourself
+
 ]
 
 { #category : #initialization }

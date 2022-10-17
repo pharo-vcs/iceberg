@@ -33,7 +33,12 @@ IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 { #category : #executing }
 IceTipUnloadAndRemovePackageCommand >> execute [
 
-	(IceTipRemovePackageDialog on: self packageModel) openDialog
+	(IceTipRemovePackageDialog 
+		newApplication: context application 
+		model: self packageModel) 
+		asModalWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

@@ -4,8 +4,9 @@ I'm used as part of the creation dialog and to edit repository properties.
 "
 Class {
 	#name : #IceTipRepositoryTypePanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
+		'projectLocationLabel',
 		'projectLocation',
 		'remoteLabel',
 		'remoteInputText',
@@ -49,17 +50,15 @@ IceTipRepositoryTypePanel >> defaultSubdirectory [
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializePresenters [
 
-	super initializePresenters.
-	self initializeProjectLocation.
-
+	self initializeProjectLocation
 ]
 
 { #category : #initialization }
 IceTipRepositoryTypePanel >> initializeProjectLocation [
 
+	projectLocationLabel := self newLabel label: 'Local directory'.
 	projectLocation := self instantiate: IceTipDirectoryPresenter.
 	projectLocation
-		label: 'Local directory';
 		chooseTitle: 'Choose local repository';
 		location: self defaultLocation
 ]

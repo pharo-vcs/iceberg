@@ -1,11 +1,11 @@
 Class {
-	#name : #IceSpPresenterMetaTests,
+	#name : #IceTipPresenterMetaTests,
 	#superclass : #TestCase,
 	#category : #'Iceberg-UI-Tests'
 }
 
 { #category : #running }
-IceSpPresenterMetaTests >> allClassesInAnyIcebergPackage [
+IceTipPresenterMetaTests >> allClassesInAnyIcebergPackage [
 
 	^ Array streamContents: [ :str | 
 		  Smalltalk allClassesAndTraitsDo: [ :c | 
@@ -13,7 +13,7 @@ IceSpPresenterMetaTests >> allClassesInAnyIcebergPackage [
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> allMethodsInPresenters [
+IceTipPresenterMetaTests >> allMethodsInPresenters [
 	
 	^ Array streamContents: [ :stream |
 		self presenterClasses do: [ :each |
@@ -23,7 +23,7 @@ IceSpPresenterMetaTests >> allMethodsInPresenters [
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
+IceTipPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
 
 	| searcher |
 	searcher := RBParseTreeSearcher new
@@ -38,7 +38,7 @@ IceSpPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: isMeta [
+IceTipPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: isMeta [
 
 	| aCollection |
 	aCollection := (self methodsInPresentersWithName: aSelector isMeta: isMeta)
@@ -57,7 +57,7 @@ IceSpPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: isM
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMeta [
+IceTipPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMeta [
 
 	^ Array streamContents: [ :stream |
 		self presenterClasses do: [ :each | 
@@ -68,21 +68,21 @@ IceSpPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMeta
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> presenterClasses [
+IceTipPresenterMetaTests >> presenterClasses [
 
 	^ self allClassesInAnyIcebergPackage select: [ :each | 
 		  each inheritsFrom: SpPresenter ]
 ]
 
 { #category : #running }
-IceSpPresenterMetaTests >> presenterClassesDefining: aSelector isMeta: isMeta [
+IceTipPresenterMetaTests >> presenterClassesDefining: aSelector isMeta: isMeta [
 
 	^ (self methodsInPresentersWithName: aSelector isMeta: isMeta)
 		collect: [ :each | each origin ]
 ]
 
 { #category : #tests }
-IceSpPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
+IceTipPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 	"Do not use the <spec> pragma, that was necessary in Spec1 but not in Spec2."
 
 	| aCollection |
@@ -93,17 +93,7 @@ IceSpPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 ]
 
 { #category : #tests }
-IceSpPresenterMetaTests >> testDoNotForgetToSendSuper [
-	"We do not want to forget to send super on these methods, because each 
-	presenter in the hierarchy needs to initialze the sub-presenters it defines."
-
-	self assertSendSuperAllMethodsNamed: #initializePresenters isMeta: false.
-	self assertSendSuperAllMethodsNamed: #connectPresenters isMeta: false.
-	self assertSendSuperAllMethodsNamed: #initialize isMeta: false.
-]
-
-{ #category : #tests }
-IceSpPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
+IceTipPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
 
 	"Either instance or class-side, the old #title is named #titleForWindow in inst-side."
 	self assertEmpty: (self presenterClassesDefining: #title isMeta: true).
@@ -123,7 +113,7 @@ IceSpPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
 ]
 
 { #category : #tests }
-IceSpPresenterMetaTests >> testDontAccessUnderlyingWidget [
+IceTipPresenterMetaTests >> testDontAccessUnderlyingWidget [
 	"In general, we don't want uses of #whenBuiltDo: or #adapter or similar. 
 	They are not prohibited by Spec2, but they are often used to manipulate the
 	underlaying Morph, assuming that Morphic is the Spec2 application backend."
@@ -141,12 +131,12 @@ IceSpPresenterMetaTests >> testDontAccessUnderlyingWidget [
 ]
 
 { #category : #tests }
-IceSpPresenterMetaTests >> testPreferCloseWindow [
+IceTipPresenterMetaTests >> testPreferCloseWindow [
 	"IceTipSpPresenter provides #closeWindow to avoid 'self window close' and 'self window delete'."
 
 	self assertEmpty: (self allMethodsInPresentersThatMatch: 'self window delete').
 	self
 		assert: (self allMethodsInPresentersThatMatch: 'self window close')
-		equals: { IceTipSpPresenter>>#closeWindow }.
+		equals: { IceTipPresenter>>#closeWindow }.
 
 ]

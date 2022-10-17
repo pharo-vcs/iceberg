@@ -73,5 +73,5 @@ IceTipGitHubRepositoryPanel >> providerName [
 { #category : #initialization }
 IceTipGitHubRepositoryPanel >> titleForWindow [
 
-	^ 'Clone From github.com'
+	^ 'Clone from github.com'
 ]

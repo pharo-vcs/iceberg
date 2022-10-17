@@ -11,7 +11,8 @@ Class {
 		'fetched',
 		'branch',
 		'detail',
-		'status'
+		'status',
+		'remote'
 	],
 	#category : #'Iceberg-Plugin-GitHub-Model'
 }
@@ -78,9 +79,7 @@ IceGitHubPullRequest >> body [
 IceGitHubPullRequest >> branch [
 	fetched ifFalse: [ self fetch ].
 	^ branch ifNil: [
-		branch := (self repository
-			remoteNamed: self remote name )
-				remoteBranchNamed: self headRef ]
+		branch := self remote remoteBranchNamed: self headRef ]
 ]
 
 { #category : #accessing }
@@ -160,6 +159,22 @@ IceGitHubPullRequest >> number [
 	^ self jsonAt: #number
 ]
 
+{ #category : #private }
+IceGitHubPullRequest >> obtainRemote [
+	| remoteCandidate |
+	
+	remoteCandidate := IceGitRemote 
+		name: self author
+		url: (((self jsonAt: #head) at: #repo) at: #ssh_url).
+	^ self repository remotes 
+		detect: [ :each | each = remoteCandidate ]
+		ifFound: [ :each | each ]
+		ifNone: [ 
+			"self repository addRemote: remoteCandidate."
+			remoteCandidate localRepository: self repository.
+			remoteCandidate ]
+]
+
 { #category : #accessing }
 IceGitHubPullRequest >> owner [ 
 	^ (((self jsonAt: #base) at: #repo) at: #owner) at: #login
@@ -183,18 +198,8 @@ IceGitHubPullRequest >> rejectMessage: messageString [
 
 { #category : #accessing }
 IceGitHubPullRequest >> remote [
-	| remote |
-	remote := IceGitRemote 
-		name: self author
-		url: (((self jsonAt: #head) at: #repo) at: #ssh_url).
-	^ self repository remotes 
-		detect: [ :each | each = remote ]
-		ifFound: [ :each | each ]
-		ifNone: [ 
-			self repository addRemote: remote.
-			remote ].
-	
-	
+
+	^ remote ifNil: [ remote := self obtainRemote ]
 ]
 
 { #category : #accessing }

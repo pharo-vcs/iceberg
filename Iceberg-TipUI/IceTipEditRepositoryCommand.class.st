@@ -28,7 +28,13 @@ IceTipEditRepositoryCommand >> canBeExecuted [
 { #category : #executing }
 IceTipEditRepositoryCommand >> execute [
 
-	self repositoryModel edit
+	self flag: #TODO. "Demeter's law"
+	((IceTipEditProjectDialog 
+		newApplication: context application 
+		model: self repositoryModel entity project) 
+		asDialogWindow)
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

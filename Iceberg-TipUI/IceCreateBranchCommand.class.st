@@ -11,10 +11,11 @@ Class {
 { #category : #execute }
 IceCreateBranchCommand >> execute [
 	| selection |
-	selection := UIManager default
-		request: 'Please provide the name of the new branch to be created'
-		initialAnswer: ''
-		title: 'Create new branch'.
+	
+	context application newRequest
+		title: 'Create new branch';
+		label: 'Please provide the name of the new branch to be created';
+		openModalWithParent: context window.
 	selection isEmptyOrNil ifTrue: [ ^ self ].
 	self repository createBranch: selection.
 	self beSuccess

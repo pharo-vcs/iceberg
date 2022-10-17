@@ -28,7 +28,7 @@ IceTipDeleteBranchCommand >> actsOnBranch: aBranchModel [
 { #category : #executing }
 IceTipDeleteBranchCommand >> execute [
 
-	self item delete
+	self item newDeleteAction executeWithContext: self context
 ]
 
 { #category : #accessing }

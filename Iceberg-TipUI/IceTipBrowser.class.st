@@ -10,7 +10,7 @@ Some design remarks:
 "
 Class {
 	#name : #IceTipBrowser,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'model',
 		'toolbar'
@@ -81,7 +81,6 @@ IceTipBrowser class >> selectionExtraCommandGroupName [
 { #category : #initialization }
 IceTipBrowser >> connectPresenters [
 
-	super connectPresenters.
 	self mainList whenSelectionChangedDo: [ self refreshCommands ]
 ]
 
@@ -151,8 +150,8 @@ IceTipBrowser >> refresh [
 
 { #category : #commands }
 IceTipBrowser >> refreshCommands [
-
 	| rootGroup |
+
 	rootGroup := self rootCommandsGroup.
 	IceTipCleanCommandGroupVisitor new visit: rootGroup.
 
@@ -189,8 +188,8 @@ IceTipBrowser >> refreshToolbarWith: rootGroup [
 	"Update toolbar (in window)."
 
 	self hasWindow ifFalse: [ ^ self ].
-	toolbar := nil.
 
+	toolbar := nil.
 	rootGroup
 		commandOrGroupNamed: self class generalCommandGroupName
 		ifFound: [ :subgroup | 
@@ -200,7 +199,7 @@ IceTipBrowser >> refreshToolbarWith: rootGroup [
 			builder visit: subgroup.
 
 			builder toolbarPresenter
-				displayMode: SpToolbarDisplayMode modeIconAndLabel;
+				displayMode: self application toolbarDisplayMode;
 				addStyle: 'stToolbar'.
 			builder toolbarPresenter isEmpty ifFalse: [
 				toolbar := builder toolbarPresenter ] ].

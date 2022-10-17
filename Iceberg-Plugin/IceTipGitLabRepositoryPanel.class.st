@@ -34,5 +34,5 @@ IceTipGitLabRepositoryPanel >> providerName [
 { #category : #initialization }
 IceTipGitLabRepositoryPanel >> titleForWindow [
 
-	^ 'Clone From gitlab.com'
+	^ 'Clone from gitlab.com'
 ]

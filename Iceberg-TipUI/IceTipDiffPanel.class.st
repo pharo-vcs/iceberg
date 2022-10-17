@@ -8,7 +8,7 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : #IceTipDiffPanel,
-	#superclass : #IceTipSpPresenter,
+	#superclass : #IceTipPresenter,
 	#instVars : [
 		'model',
 		'diffPanel',
@@ -16,16 +16,6 @@ Class {
 	],
 	#category : #'Iceberg-TipUI-View-Branch'
 }
-
-{ #category : #layout }
-IceTipDiffPanel class >> defaultLayout [
-
-	^ SpPanedLayout newLeftToRight
-		  positionOfSlider: 25 percent;
-		  add: #iceNodesTree;
-		  add: #diffPanel;
-		  yourself
-]
 
 { #category : #'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
@@ -55,8 +45,8 @@ IceTipDiffPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
 		addColumn: (SpImageTableColumn new
-			width: 20;
 			evaluated: [ :each | each value icon ];
+			beNotExpandable;
 			yourself);
 		addColumn: self changeDescriptionColumn;
 		yourself
@@ -68,6 +58,16 @@ IceTipDiffPanel >> collapsePath: aPath [
 	iceNodesTree 
 		collapsePath: aPath;
 		selectPath: aPath
+]
+
+{ #category : #layout }
+IceTipDiffPanel >> defaultLayout [
+
+	^ SpPanedLayout newLeftToRight
+		  positionOfSlider: 25 percent;
+		  add: iceNodesTree;
+		  add: diffPanel;
+		  yourself
 ]
 
 { #category : #private }
@@ -142,15 +142,11 @@ IceTipDiffPanel >> initializeDiffPanel [
 { #category : #initialization }
 IceTipDiffPanel >> initializePresenters [
 
-	super initializePresenters.
-
 	iceNodesTree := self newTreeTable.
 	diffPanel := self instantiate: SpDiffPresenter.
 
 	self initializeTree.
-	self initializeDiffPanel.
-
-	self basicRefresh
+	self initializeDiffPanel
 ]
 
 { #category : #initialization }
@@ -236,4 +232,10 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 IceTipDiffPanel >> titleForWindow [
 
 	^ 'Diff'
+]
+
+{ #category : #initialization }
+IceTipDiffPanel >> updatePresenter [
+
+	self basicRefresh
 ]

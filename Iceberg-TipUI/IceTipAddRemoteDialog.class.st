@@ -15,31 +15,30 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipAddRemoteDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
-				   add: #nameText;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #urlLabel width: self labelWidth;
-				   add: #urlText;
-				   yourself)
-		  height: self inputTextHeight;
-		  yourself
-]
-
 { #category : #actions }
 IceTipAddRemoteDialog >> accept [
 
 	self validate.
-	self model 
-		addRemoteNamed: self remoteName 
-		url: self remoteUrl.
+	(self model 
+		newAddRemoteActionName: self remoteName 
+		url: self remoteUrl)
+		executeWithContext: self.
+		
 	^ acceptBlock ifNotNil: [ acceptBlock cull: self remoteName ]
+]
+
+{ #category : #layout }
+IceTipAddRemoteDialog >> defaultLayout [
+
+	^ SpGridLayout new
+		borderWidth: 5;
+		beColumnNotHomogeneous;
+		column: 2 expand: true;
+		build: [ :builder | builder 
+			add: nameLabel; add: nameText; nextRow;
+			add: urlLabel; add: urlText; nextRow ];
+		yourself
+	
 ]
 
 { #category : #initialization }
@@ -55,7 +54,6 @@ IceTipAddRemoteDialog >> initialExtentForWindow [
 { #category : #initialization }
 IceTipAddRemoteDialog >> initializePresenters [
 
-	super initializePresenters.
 	nameLabel := self newLabel
 		label: 'Remote name';
 		yourself.
@@ -69,8 +67,7 @@ IceTipAddRemoteDialog >> initializePresenters [
 	urlText := self newTextInput
 		placeholder: 'e.g., git@github.com:user/project.git';
 		autoAccept: true;
-		yourself.
-
+		yourself
 ]
 
 { #category : #accessing }

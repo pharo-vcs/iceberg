@@ -47,15 +47,6 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 ]
 
-{ #category : #layout }
-IceTipWorkingCopyBrowser class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: #packagesTable;
-		  add: #filterInput expand: false;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
@@ -89,6 +80,15 @@ IceTipWorkingCopyBrowser >> connectPresenters [
 		placeholder: 'Filter...';
 		whenTextChangedDo: [ :text | self refreshPackagesTable ]
 
+]
+
+{ #category : #layout }
+IceTipWorkingCopyBrowser >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: packagesTable;
+		  add: filterInput expand: false;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -129,12 +129,20 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 			beNotExpandable;
 			evaluated: [ :aPackage | self iconFor: aPackage ];
 			yourself);
-		addColumn: (SpStringTableColumn
-			title: 'Name'
-			evaluated: #descriptionWithDecoration);
-		addColumn: (SpStringTableColumn
-			title: 'Status'
-			evaluated: #statusWithDecoration);
+		addColumn: (SpStringTableColumn new
+			title: 'Name';
+			evaluated: #description;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];			
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Status';
+			evaluated: #status;
+			displayColor: [ :each | each descriptionDecorator color ];
+			displayBold: [ :each | each descriptionDecorator isBold ];
+			displayItalic: [ :each | each descriptionDecorator isItalic ];			
+			yourself);
 		activateOnDoubleClick;
 		whenActivatedDo: [ :selection | self browsePackage: selection selectedItem ]
 ]
@@ -142,14 +150,10 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 { #category : #initialization }
 IceTipWorkingCopyBrowser >> initializePresenters [
 
-	super initializePresenters.
 	filterInput := self newTextInput.
 	packagesTable := self newTable.
 	self initializePackagesTable.
-	statusBar := self instantiate: IceTipWorkingCopyStatusBar.
-
-	self refresh.
-
+	statusBar := self instantiate: IceTipWorkingCopyStatusBar
 ]
 
 { #category : #initialization }
@@ -213,7 +217,7 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 
 ]
 
-{ #category : #initialization }
+{ #category : #'accessing - model' }
 IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 
 	self model: ( IceTipWorkingCopyModel on: aRepositoryModel )
@@ -244,4 +248,10 @@ IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 IceTipWorkingCopyBrowser >> titleForWindow [
 
 	^ 'Working copy of ', self model repositoryName
+]
+
+{ #category : #initialization }
+IceTipWorkingCopyBrowser >> updatePresenter [
+
+	self refresh
 ]

@@ -37,16 +37,6 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 
 ]
 
-{ #category : #layout }
-IceTipCommitBrowser class >> defaultLayout [
-
-	^ SpPanedLayout newTopToBottom
-		  add: #diffPanel;
-		  add: #commentPanel;
-		  positionOfSlider: 75 percent;
-		  yourself
-]
-
 { #category : #'instance creation' }
 IceTipCommitBrowser class >> onRepository: aRepository [
 
@@ -69,6 +59,16 @@ IceTipCommitBrowser >> commentPanel [
 IceTipCommitBrowser >> commentPanel: aSpPresenter [
 
 	commentPanel := aSpPresenter
+]
+
+{ #category : #layout }
+IceTipCommitBrowser >> defaultLayout [
+
+	^ SpPanedLayout newTopToBottom
+		  positionOfSlider: 75 percent;
+		  add: diffPanel;
+		  add: commentPanel;
+		  yourself
 ]
 
 { #category : #'accessing - ui' }
@@ -105,7 +105,7 @@ IceTipCommitBrowser >> doCommit [
 				pushing: isPushing
 				saving: isSaving ].
 
-	(IceTipCritiquesBeforeCommitBrowser on: selectedItems)
+	(IceTipCritiquesBeforeCommitBrowser newApplication: self application model: selectedItems)
 		commitModel: self model;
 		onAccept: commitBlock ;
 		openIfCritiques
@@ -114,18 +114,17 @@ IceTipCommitBrowser >> doCommit [
 { #category : #actions }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
 
-	self model
-		commit:
-			(IceTipCommitAction new
-				diff: self model workingCopyDiff;
-				items: aCollection;
-				message: aString;
-				yourself)
-		then: [ self verifyNeedsRefreshOrClose.
-			pushingBoolean
-				ifTrue: [ (IceTipPushAction new repository: self model entity) execute ].
-			savingBoolean
-				ifTrue: [ saveAction execute ] ]
+	self model newCommitAction
+		diff: self model workingCopyDiff;
+		items: aCollection;
+		message: aString;
+		onSuccess: [ 
+			self verifyNeedsRefreshOrClose.
+			pushingBoolean ifTrue: [ 
+				(IceTipPushAction new repository: self model entity) executeWithContext: self ].
+			savingBoolean ifTrue: [ 
+				saveAction execute ] ];
+		executeWithContext: self
 ]
 
 { #category : #actions }
@@ -163,8 +162,6 @@ IceTipCommitBrowser >> initializeAcceptShortcut [
 { #category : #initialization }
 IceTipCommitBrowser >> initializePresenters [
 
-	super initializePresenters.
-	
 	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
 	diffPanel leftLabel: 'Repository'.
 	diffPanel rightLabel: 'Working Copy'.
@@ -172,8 +169,7 @@ IceTipCommitBrowser >> initializePresenters [
 	commentPanel := self instantiate: IceTipCommentPanel on: self model.
 	commentPanel onCommit: [ self doCommit ].
 	
-	self initializeAcceptShortcut.
-
+	self initializeAcceptShortcut
 ]
 
 { #category : #initialization }

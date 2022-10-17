@@ -129,8 +129,9 @@ IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anA
 			icePackage metacelloBaselineName.
 			self repositoryModel name });
 		onSuccessRepositoryModified;
-		execute: [ 
+		action: [ 
 			Iceberg announcer 
 				suspendAllForRepository: self repository
-				while: [ self basicInstallBaseline: icePackage groups: anArray ] ]
+				while: [ self basicInstallBaseline: icePackage groups: anArray ] ];
+		executeWithContext: self context
 ]

@@ -21,52 +21,25 @@ Class {
 	#category : #'Iceberg-TipUI-View-Repository'
 }
 
-{ #category : #layout }
-IceTipEditProjectDialog class >> defaultLayout [
-
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   add: #nameLabel width: self labelWidth;
-				   add: #nameInput expand: true;
-				   add: #addButton width: 32 * self currentWorld displayScaleFactor;
-				   add: #removeButton width: 32 * self currentWorld displayScaleFactor;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #sourceDirectoryLabel width: self labelWidth;
-				   add: #sourceDirectoryTree;
-				   yourself)
-		  height: 200 * self currentWorld displayScaleFactor;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #formatLabel width: self labelWidth;
-				   add: #formatList;
-				   yourself)
-		  height: self inputTextHeight;
-		  add: (SpBoxLayout newLeftToRight
-				   add: #messageIcon width: self labelWidth;
-				   add: #messageText;
-				   yourself);
-		  yourself
-]
-
 { #category : #actions }
 IceTipEditProjectDialog >> accept [	
 	
-	IceTipStandardAction new 
+	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;
-		execute: [ 
+		action: [ 
 			"Update the project"
 			model sourceDirectory: self selectedDirectoryPath pathString.
 			model fileFormat: self selectedFileFormat.
 			self assert: model repositoryProperties fileFormat = self selectedFileFormat.
 			"Set the project in the repository"
-			model repository workingCopy project: model ].
+			model repository workingCopy project: model ];
+		executeWithContext: self.
 
 	self closeWindow.
 	acceptCallback ifNotNil: [ 
-		acceptCallback value ].
+		acceptCallback value ]
 ]
 
 { #category : #accessing }
@@ -80,10 +53,10 @@ IceTipEditProjectDialog >> addDirectory [
 
 	| newDirectoryName newDirectory previousSelection |
 	
-	newDirectoryName := UIManager default
-		textEntry: 'Enter the new Directory name'
-		title: 'Create a directory'.
-	
+	newDirectoryName := self application newRequest
+		title: 'Create a directory';
+		label: 'Enter the new Directory name';
+		openModalWithParent: self window.
 	newDirectoryName ifNil: [ ^ self ].
 	
 	previousSelection := selectedDirectoryPath.
@@ -93,8 +66,7 @@ IceTipEditProjectDialog >> addDirectory [
 		ifFalse: [ newDirectory createDirectory ].
 	
 	sourceDirectoryTree roots: { self model fileSystem }.
-	self expandAndSelect: previousSelection.
-
+	self expandAndSelect: previousSelection
 ]
 
 { #category : #initialization }
@@ -118,6 +90,41 @@ IceTipEditProjectDialog >> connectPresenters [
 IceTipEditProjectDialog >> defaultFormat [
 
 	^ defaultFormat
+]
+
+{ #category : #layout }
+IceTipEditProjectDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		borderWidth: 5;
+		spacing: 5;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				vAlignCenter;
+				add: nameLabel expand: false;
+				add: nameInput;
+				add: addButton expand: false;
+				add: removeButton expand: false;
+				yourself)
+		  	expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: sourceDirectoryLabel expand: false;
+				add: sourceDirectoryTree;
+				yourself);
+		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
+				spacing: 5;
+				add: formatLabel expand: false;
+				add: formatList;
+				yourself)
+			expand: false;
+		add: (SpBoxLayout newLeftToRight
+				spacing: 5;
+				add: messageIcon expand: false;
+				add: messageText;
+				yourself);
+		yourself
 ]
 
 { #category : #utilities }
@@ -249,7 +256,6 @@ IceTipEditProjectDialog >> initializeMessagePanel [
 { #category : #initialization }
 IceTipEditProjectDialog >> initializePresenters [
 
-	super initializePresenters.
 	nameLabel := self newLabel
 		label: 'Project Name';
 		yourself.
@@ -259,7 +265,9 @@ IceTipEditProjectDialog >> initializePresenters [
 	sourceDirectoryLabel := self newLabel
 		label: 'Code directory';
 		yourself.
-	sourceDirectoryTree := self newTreeTable.
+	sourceDirectoryTree := self newTreeTable
+		hideColumnHeaders;
+		yourself.
 	formatLabel := self newLabel
 		label: 'Format';
 		yourself.
@@ -270,12 +278,17 @@ IceTipEditProjectDialog >> initializePresenters [
 		addStyle: 'iceTipReadonly';
 		yourself.
 
-	removeButton := self newButton icon: (self iconNamed: #remove); yourself.
-	addButton := self newButton icon: (self iconNamed: #add); yourself.
+	removeButton := self newButton 
+		addStyle: 'small';
+		icon: (self iconNamed: #remove); 
+		yourself.
+	addButton := self newButton 
+		addStyle: 'small';
+		icon: (self iconNamed: #add); 
+		yourself.
 
 	self initializeMessagePanel.
-	self initializeDirectoryTree.
-
+	self initializeDirectoryTree
 ]
 
 { #category : #accessing }

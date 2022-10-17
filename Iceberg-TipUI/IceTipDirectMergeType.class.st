@@ -13,6 +13,7 @@ Class {
 }
 
 { #category : #executing }
-IceTipDirectMergeType >> mergeOn: aModel then: aBlock [
-	^ aModel mergeThen: aBlock
+IceTipDirectMergeType >> newMergeAction: aModel [
+
+	^ aModel newDirectMergeAction
 ]

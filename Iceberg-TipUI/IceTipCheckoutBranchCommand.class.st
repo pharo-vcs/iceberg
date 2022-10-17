@@ -34,8 +34,12 @@ IceTipCheckoutBranchCommand >> canBeExecuted [
 { #category : #executing }
 IceTipCheckoutBranchCommand >> execute [
 
-	(IceTipCheckoutBranchDialog on: self repositoryModel)
-		openDialog
+	(IceTipCheckoutBranchDialog 
+		newApplication: context application 
+		model: self repositoryModel)
+		asDialogWindow 
+			centeredRelativeTo: context window;
+			open
 ]
 
 { #category : #accessing }

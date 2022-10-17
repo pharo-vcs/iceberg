@@ -28,7 +28,7 @@ IceTipDeleteRemoteCommand >> actsOnRemote: aRemoteModel [
 { #category : #executing }
 IceTipDeleteRemoteCommand >> execute [
 
-	self remoteModel delete
+	self remoteModel newDeleteAction executeWithContext: self context
 ]
 
 { #category : #accessing }

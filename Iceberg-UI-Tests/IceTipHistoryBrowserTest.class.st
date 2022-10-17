@@ -37,7 +37,7 @@ IceTipHistoryBrowserTest >> testCommitListDisplayData [
 	commit := (presenter commitList items at: 1) realObject.
 	self
 		assert: (presenter commitList valueAtColumn: 4 row: 1)
-		equals: commit descriptionWithDecoration.
+		equals: commit description.
 	self
 		assert: (presenter commitList valueAtColumn: 3 row: 1)
 		equals: commit author.

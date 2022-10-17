@@ -2,7 +2,7 @@
 I'm a SpPresenter that is prepared to be wrapped in a window (or a dialog). The way it is prepared is through a system of hooks (template method pattern), but also providing some convenience API.
 "
 Class {
-	#name : #IceTipSpPresenter,
+	#name : #IceTipPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'decorations'
@@ -11,40 +11,46 @@ Class {
 }
 
 { #category : #decorating }
-IceTipSpPresenter class >> buildDecorations [
+IceTipPresenter class >> buildDecorations [
 
 	^ (Pragma allNamed: #extensionDecorators in: self class) 
 			flatCollect: [ :pragma | self perform: pragma methodSelector ]
 ]
 
 { #category : #accessing }
-IceTipSpPresenter class >> currentApplication [ 
+IceTipPresenter class >> currentApplication [ 
 
-	^ StPresenter currentApplication 
+	^ StPresenter currentApplication
+]
+
+{ #category : #'instance creation' }
+IceTipPresenter class >> new [ 
+
+	^ self newApplication: self currentApplication
 ]
 
 { #category : #accessing }
-IceTipSpPresenter >> closeWindow [
+IceTipPresenter >> closeWindow [
 	"Close the window of this presenter"
 
 	self window close
 ]
 
 { #category : #private }
-IceTipSpPresenter >> decorations [
+IceTipPresenter >> decorations [
 
 	^ decorations ifNil: [ decorations := self class buildDecorations ]
 ]
 
 { #category : #initialization }
-IceTipSpPresenter >> iconForWindow [
+IceTipPresenter >> iconForWindow [
 	"Answer a Form to be used during initialization when opening in a SpWindowPresenter."
 
 	^ self iconNamed: #smallWindow
 ]
 
 { #category : #initialization }
-IceTipSpPresenter >> initialExtentForWindow [
+IceTipPresenter >> initialExtentForWindow [
 	"Answer either nil or a Point representing the initial extent of this presenter.
 	It is used during initialization if this presenter is opened inside a SpWindowPresenter. 
 	Answer nil if there is not a suggested extent."
@@ -53,7 +59,7 @@ IceTipSpPresenter >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipSpPresenter >> initializeWindow: aSpWindowPresenter [
+IceTipPresenter >> initializeWindow: aSpWindowPresenter [
 
 	super initializeWindow: aSpWindowPresenter.
 
@@ -65,7 +71,7 @@ IceTipSpPresenter >> initializeWindow: aSpWindowPresenter [
 ]
 
 { #category : #initialization }
-IceTipSpPresenter >> titleForWindow [
+IceTipPresenter >> titleForWindow [
 	"Answer the title to use during initialization when this presenter is being opened 
 	in a SpWindowPresenter."
 
@@ -74,7 +80,7 @@ IceTipSpPresenter >> titleForWindow [
 ]
 
 { #category : #extensions }
-IceTipSpPresenter >> updateTitle [
+IceTipPresenter >> updateTitle [
 	
 	self withWindowDo: [ :aWindow | aWindow title: self titleForWindow ]
 ]

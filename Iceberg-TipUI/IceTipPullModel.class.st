@@ -18,11 +18,12 @@ IceTipPullModel >> commitModels [
 ]
 
 { #category : #actions }
-IceTipPullModel >> pullThen: aBlock [
-	IceTipStandardAction new 
+IceTipPullModel >> newPullAction [
+
+	^ IceTipStandardAction new 
 		repository: self entity;
 		message: ('Pulling from {1}' format: { self remote name });
 		onSuccessRepositoryModified;
-		onSuccess: aBlock;
-		execute: [ self entity pullFrom: self remote ]
+		action: [ self entity pullFrom: self remote ];
+		yourself
 ]

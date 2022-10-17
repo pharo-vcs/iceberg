@@ -45,7 +45,9 @@ IceTipCommitInfoPresenter >> beForMerge [
 IceTipCommitInfoPresenter >> commitInfo [
 
 	selectedModel ifNil: [ ^ self newEmpty ].
-	^ IceTipReadOnlyFormBuilder newBuiltFor: selectedModel info application: self application
+	^ IceTipReadOnlyFormBuilder 
+		newBuiltFor: selectedModel info 
+		application: self application
 ]
 
 { #category : #private }
@@ -88,10 +90,8 @@ IceTipCommitInfoPresenter >> initializeCommitPanel [
 { #category : #initialization }
 IceTipCommitInfoPresenter >> initializePresenters [
 
-	super initializePresenters.
 	notebookPanel := self newNotebook.
-	self initializeCommitPanel.
-
+	self initializeCommitPanel
 ]
 
 { #category : #'private factory' }
