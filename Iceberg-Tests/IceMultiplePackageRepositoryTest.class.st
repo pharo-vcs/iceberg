@@ -1,7 +1,7 @@
 Class {
 	#name : #IceMultiplePackageRepositoryTest,
 	#superclass : #IceBornRepositoryTest,
-	#category : 'Iceberg-Tests-Common'
+	#category : #'Iceberg-Tests-Common'
 }
 
 { #category : #testing }
@@ -324,7 +324,7 @@ IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesChangesContainCla
 
 	diff := self repository workingCopyDiff.
 	self assert: diff tree children size equals: 1.
-	self assert: (diff tree / self packageName1) children size equals: 1.
+	self assert: (diff tree / self packageName1) children size equals: 2.
 	self assert: (diff tree / self packageName1 / 'IceGeneratedClassForTesting') value isAddition.
 	self assert: (diff tree / self packageName1 / 'IceGeneratedClassForTesting') value definition isClassDefinition.
 	self assert: (diff tree / self packageName1 / 'IceGeneratedClassForTesting') value definition name equals: #IceGeneratedClassForTesting.

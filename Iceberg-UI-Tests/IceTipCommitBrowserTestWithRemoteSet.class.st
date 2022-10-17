@@ -42,7 +42,7 @@ IceTipCommitBrowserTestWithRemoteSet >> testPushingAutomatically [
 	presenter doCommit.
 	diffTree := fixture pushRepository branch commit diffToParent
 		tree.
-	self assert: (diffTree / self packageName1) children size equals: 1.
+	self assert: (diffTree / self packageName1) children size equals: 2.
 	self assert: (diffTree / self packageName1) value isNoModification.
 	self
 		assert: (diffTree / self packageName1 / 'TestClass2') value isAddition.

@@ -15,6 +15,7 @@ IceTipCommitBrowserTest class >> isAbstract [
 
 { #category : #running }
 IceTipCommitBrowserTest >> setUp [
+
 	super setUp.
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
@@ -26,7 +27,7 @@ IceTipCommitBrowserTest >> setUp [
 	presenter := IceTipCommitBrowser onRepository: self repository.
 	saveMock := IceTipMockSaveImageAction new.
 	presenter saveAction: saveMock.
-	presenter openWithSpec.
+	presenter open.
 	presenter commentPanel commentText text: 'my super commit message'
 ]
 
@@ -105,7 +106,7 @@ IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
 
 	presenter doCommit.
 	diffTree := self workingCopy repository branch commit diffToParent	tree.
-	self assert: (diffTree / self packageName1) children size equals: 1.
+	self assert: (diffTree / self packageName1) children size equals: 2.
 	self assert: (diffTree / self packageName1) value isNoModification.
 	self
 		assert: (diffTree / self packageName1 / 'TestClass2') value isAddition.
@@ -152,7 +153,7 @@ IceTipCommitBrowserTest >> testIsNotCommitingUncheckedItems [
 	presenter doCommit.
 	diffTree := self workingCopy repository branch commit diffToParent
 		tree.
-	self assert: (diffTree / self packageName1) children size equals: 1.
+	self assert: (diffTree / self packageName1) children size equals: 2.
 	self assert: (diffTree / self packageName1) value isNoModification.
 	self
 		assert: (diffTree / self packageName1 / 'TestClass2') value isAddition.

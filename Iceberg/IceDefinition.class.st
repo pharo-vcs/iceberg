@@ -43,6 +43,12 @@ IceDefinition >> accept: aVisitor [
 ]
 
 { #category : #accessing }
+IceDefinition >> basicName [
+
+	^ name
+]
+
+{ #category : #accessing }
 IceDefinition >> contents [
 	
 	self subclassResponsibility

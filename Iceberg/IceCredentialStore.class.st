@@ -102,19 +102,25 @@ IceCredentialStore >> loadFromStore [
 
 	| array |
 	self flag: #pharoTodo. "implement an encrypted version"
-	
+
 	"If I don't have a store file I do nothing"
 	storeFile ifNil: [ ^ self ].
-	
+
 	"If the file is new, I cannot load it."
 	storeFile exists ifFalse: [ ^ self ].
-	
-	array := [
-		FLMaterializer new
-			filePath: storeFile resolve pathString;
-			materializeRoot ]
-				on: FLMaterializationError
-				do: [ ^ self ].
+
+	"Fuel API is not compatible between Pharo10 and Pharo11"
+	SystemVersion current major >= 11
+		ifTrue: [ 
+			array := [ 
+			         FLMaterializer new
+				         filePath: storeFile resolve pathString;
+				         materializeRoot ]
+				         on: FLMaterializationError
+				         do: [ ^ self ] ]
+		ifFalse: [ 
+			array := FLMaterializer materializeFromFileNamed:
+				         storeFile resolve pathString ].
 	plainCredentials := array at: 1.
 	sshCredentials := array at: 2
 ]
@@ -153,16 +159,28 @@ IceCredentialStore >> removeSSHCredential: aCredential [
 
 { #category : #'API - storing' }
 IceCredentialStore >> saveIntoStore [
+
 	self flag: #pharoTodo. "implement an encrypted version"
-		
-	storeFile ifNotNil: [  	
-		storeFile parent ensureCreateDirectory.	
-		
-		storeFile resolve binaryWriteStreamDo: [ :stream | 
-			FLSerializer new
-				onStream:  stream;
-				object: {plainCredentials. sshCredentials};
-				serialize ] ]
+
+	storeFile ifNil: [ ^ self ].
+	storeFile parent ensureCreateDirectory.
+
+	storeFile resolve binaryWriteStreamDo: [ :stream | 
+		"Fuel API changed in Pharo 11"
+		SystemVersion current major >= 11
+			ifTrue: [ 
+				FLSerializer new
+					onStream: stream;
+					object: { 
+							plainCredentials.
+							sshCredentials };
+					serialize ]
+			ifFalse: [ 
+				| serializer |
+				serializer := FLSerializer on: stream.
+				serializer serialize: { 
+						plainCredentials.
+						sshCredentials } ] ]
 ]
 
 { #category : #'API - accessing' }

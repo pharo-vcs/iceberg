@@ -11,9 +11,10 @@ IceTipRepositoryBrowserWithRemoteTest >> newFixture [
 
 { #category : #testing }
 IceTipRepositoryBrowserWithRemoteTest >> setUp [
+
 	super setUp.
 	presenter := IceTipRepositoryBrowser onRepository: self repository.
-	presenter openWithSpec.
+	presenter open
 ]
 
 { #category : #testing }

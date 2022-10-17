@@ -82,7 +82,7 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 
 	critiquesList selectedItem ifNotNil: [ :aCritique | 
 		(RePropertyAction new
-			 icon: (aCritique iconNamed: #repairIcon);
+			 icon: (aCritique iconNamed: #repair);
 			 description: 'Automatically resolve the issue';
 			 action: [ :crit | 
 				 | changesBrowser |
@@ -238,7 +238,12 @@ IceTipCritiquesBeforeCommitBrowser >> titleForWindow [
 IceTipCritiquesBeforeCommitBrowser >> updatePresenter [ 
 
 	super updatePresenter.
-	critiques := (IceCritiquesVisitor new visitAll: self model; critiques) asOrderedCollection.
+	critiques := IceTipCommitSettings critiquesOnCommit
+		             ifFalse: [ OrderedCollection new ]
+		             ifTrue: [ 
+			             (IceCritiquesVisitor new
+				              visitAll: self model;
+				              critiques) asOrderedCollection ].
 	critiquesList items: critiques.
 
 	critiques ifNotEmpty: [ critiquesList selectIndex: 1].

@@ -22,10 +22,11 @@ IceTipWorkingCopyBrowserTest >> contextMenuForIndex: index [
 
 { #category : #running }
 IceTipWorkingCopyBrowserTest >> setUp [
+
 	super setUp.
-	
+
 	presenter := IceTipWorkingCopyBrowser onRepository: self repository.
-	presenter openWithSpec.
+	presenter open
 ]
 
 { #category : #running }

@@ -39,7 +39,7 @@ IceClassesCherryPickingTest >> testAddClassDependingInATrait [
 
 	self assert: diff children size equals: 1.
 	
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 4.
 	self
 		assert: (diff / self packageName1 / 'TestClass2') value isAddition.
 	self
@@ -87,7 +87,7 @@ IceClassesCherryPickingTest >> testAddClassDependingInATraitWithComposition [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 4.
 
 	self
 		assert: (diff / self packageName1 / 'TestClass2') value isAddition.
@@ -126,7 +126,7 @@ IceClassesCherryPickingTest >> testAddClassSideMethodInExistingClass [
 	self
 		assert:
 			(diff / self packageName1 / 'TestClass class')
-				value isAddition.
+				value isNoModification.
 
 	self
 		assert:
@@ -163,7 +163,7 @@ IceClassesCherryPickingTest >> testAddClassUsingASharedPool [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 
 	self
 		assert:
@@ -204,7 +204,7 @@ IceClassesCherryPickingTest >> testAddClassWithMethod [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 1.
+	self assert: (diff / self packageName1) children size equals: 2.
 	self
 		assert: (diff / self packageName1 / 'TestClass2') value isAddition;
 		assert:
@@ -244,7 +244,7 @@ IceClassesCherryPickingTest >> testAddClassWithSuperclassAsDependency [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff / self packageName1) children size
-		equals: 2.
+		equals: 4.
 	self
 		should: [ diff / self packageName1 / 'C' ]
 		raise: NotFound.
@@ -281,7 +281,7 @@ IceClassesCherryPickingTest >> testAddClassWithoutDependencies [
 	self assert: diff children size equals: 1.
 	self
 		assert: (diff  / self packageName1) children size
-		equals: 1.
+		equals: 2.
 	self
 		assert:
 			(diff / self packageName1 / 'TestClass2') value
@@ -352,7 +352,7 @@ IceClassesCherryPickingTest >> testRemoveClassWithSubclasses [
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 4.
 	self
 		assert: (diff / self packageName1 / 'TestClass') value isRemoval.
 	self
@@ -400,7 +400,7 @@ IceClassesCherryPickingTest >> testRemoveClassWithSubclassesAndIntermediarySubcl
 	diff := mergeTree collect: [ :each | each chosenOperation ].
 
 	self assert: diff children size equals: 1.
-	self assert: (diff / self packageName1) children size equals: 2.
+	self assert: (diff / self packageName1) children size equals: 4.
 	self assert: (diff / self packageName1 / 'TestClass') value isRemoval.
 	self
 		assert: (diff / self packageName1 / 'TestSubclass') value isRemoval
