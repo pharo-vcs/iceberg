@@ -31,17 +31,3 @@ IceTipDialog >> initializeDialogWindow: aWindow [
 		  bindKeyCombination: Character escape asShortcut toAction: [ self cancel ].
 		
 ]
-
-{ #category : #showing }
-IceTipDialog >> openDialog [
-self halt.
-	^ self openModal
-
-]
-
-{ #category : #showing }
-IceTipDialog >> openNonModal [
-
-	self halt.
-	^ super openDialog
-]
