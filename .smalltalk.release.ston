@@ -2,7 +2,6 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Iceberg',
-      #directory : 'src',
       #onConflict : #useIncoming,
       #onUpgrade : #useIncoming,
       #ignoreImage : true,
