@@ -185,7 +185,7 @@ IceRepository class >> repositories [
 	^ self registry
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 IceRepository class >> repositoryNamed: aString [
 
 	^ self repositories 
