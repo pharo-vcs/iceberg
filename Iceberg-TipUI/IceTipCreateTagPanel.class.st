@@ -203,7 +203,7 @@ IceTipCreateTagPanel >> minorButton [
 
 { #category : #accessing }
 IceTipCreateTagPanel >> openDialog [
-self halt.
+
 	^ self asDialogWindow
 		okAction: [ self accept ];
 		open

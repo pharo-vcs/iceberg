@@ -42,7 +42,7 @@ IceTipStandardAction >> do: aBlock [
 
 { #category : #executing }
 IceTipStandardAction >> execute: aBlock [
-	self halt. "MOD THE SENDER"
+
 	self action: aBlock.
 	self execute
 ]

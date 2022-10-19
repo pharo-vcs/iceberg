@@ -1,0 +1,18 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Iceberg',
+      #onConflict : #useIncoming,
+      #onUpgrade : #useIncoming,
+      #ignoreImage : true,
+      #onWarningLog : true,
+      #load : [ 'development' ]      
+    }
+  ],
+  #preTesting : [ '.github/scripts/preTesting.st' ],
+  #testing : {
+  	#packages : [ 
+  		'System-Settings-Tests.*',
+  		'ReleaseTests.*' ] 
+  }  
+}
