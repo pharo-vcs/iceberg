@@ -122,7 +122,7 @@ IceTipCommentPanel >> initializePresenters [
 		yourself.
 
 	actionButtonBar := self newButtonBar.
-	actionButtonBar add: (commitButton := self newButton
+	actionButtonBar placeAtStart; add: (commitButton := self newButton
 		label: 'Commit';
 		icon: (self iconNamed: #smallOk);
 		help: ('Commit your changes to {1}' format: { self repositoryName });
