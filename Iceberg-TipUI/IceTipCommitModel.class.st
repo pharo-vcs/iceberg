@@ -191,6 +191,7 @@ IceTipCommitModel >> name [
 
 { #category : #accessing }
 IceTipCommitModel >> shortId [
+
 	^ self entity shortId
 ]
 
