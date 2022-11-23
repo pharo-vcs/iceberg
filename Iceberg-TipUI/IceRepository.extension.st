@@ -1,11 +1,21 @@
 Extension { #name : #IceRepository }
 
 { #category : #'*Iceberg-TipUI' }
-IceRepository >> gtInspectorItemsIn: composite [
-	<gtInspectorPresentationOrder: 0>
-	^ composite fastTable 
-		title: 'Packages';
-		display: [ self workingCopy packages ];
-		column: 'Name' evaluated: [:each | each name ] width: 400 * self currentWorld displayScaleFactor;
-		column: 'Status' evaluated: [:each | each asString ] width: 400 * self currentWorld displayScaleFactor
+IceRepository >> inspectorItems [
+	<inspectorPresentationOrder: 0 title: 'Packages'>
+
+	^ SpTablePresenter new
+		beResizable;
+		items: self workingCopy packages;
+		addColumn: (SpStringTableColumn new
+			title: 'Name';
+			width: 400;
+			evaluated: [ :each | each name ];
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Status';
+			width: 400;
+			evaluated: [ :each | each asString ];
+			yourself);
+		yourself.
 ]

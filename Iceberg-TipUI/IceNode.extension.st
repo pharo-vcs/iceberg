@@ -1,11 +1,21 @@
 Extension { #name : #IceNode }
 
 { #category : #'*Iceberg-TipUI' }
-IceNode >> gtInspectorItemsIn: composite [
-	<gtInspectorPresentationOrder: 0>
-	^ composite fastTable 
-		title: 'Items';
-		display: [ self children ];
-		column: 'Key' evaluated: [:each | each key ] width: 200 * self currentWorld displayScaleFactor;
-		column: 'Value' evaluated: [:each | each value ] width: 400 * self currentWorld displayScaleFactor
+IceNode >> inspectorItems [
+	<inspectorPresentationOrder: 0 title: 'Items'>
+
+	^ SpTablePresenter new
+		beResizable;
+		items: self children;
+		addColumn: (SpStringTableColumn new
+			title: 'Key';
+			width: 200;
+			evaluated: [ :each | each key asString ];
+			yourself);
+		addColumn: (SpStringTableColumn new
+			title: 'Value';
+			width: 400;
+			evaluated: [ :each | each value asString ];
+			yourself);
+		yourself.	
 ]
