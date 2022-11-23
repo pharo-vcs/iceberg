@@ -65,7 +65,7 @@ IceTipCommitBrowser >> commentPanel: aSpPresenter [
 IceTipCommitBrowser >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
-		  positionOfSlider: 75 percent;
+		  positionOfSlider: 66 percent;
 		  add: diffPanel;
 		  add: commentPanel;
 		  yourself
