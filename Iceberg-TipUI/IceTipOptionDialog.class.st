@@ -20,13 +20,12 @@ Class {
 { #category : #actions }
 IceTipOptionDialog >> accept [
 
-	^ [ 
+	[ 
 	  self doAccept.
-	  true ]
+	  self closeWindow ]
 		  on: IceError , IceWarning
 		  do: [ :e | 
-			  e acceptError: IceTipInteractiveErrorVisitor new.
-			  false ]
+			  e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
 ]
 
 { #category : #accessing }
@@ -66,8 +65,10 @@ IceTipOptionDialog >> initialExtentForWindow [
 { #category : #initialization }
 IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 
-	super initializeDialogWindow: aWindowPresenter.
-	aWindowPresenter okAction: [ self doAccept ].
+	aWindowPresenter
+		addButton: 'Ok' do: [ :presenter | self accept ];
+		addButton: 'Cancel' do: [ :presenter | presenter close ].	
+			
 	aWindowPresenter whenOpenedDo: [ self typeList selectIndex: 1 ]
 ]
 

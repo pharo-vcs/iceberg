@@ -39,9 +39,13 @@ IceTipAction >> context: aContext [
 { #category : #executing }
 IceTipAction >> execute [
 
+	| result |
+	
 	self withErrorHandlingDo: [ 
-		self basicExecute.
-		self finishSuccess ]
+		result := self basicExecute.
+		self finishSuccess ].
+	
+	^ result.
 ]
 
 { #category : #executing }
