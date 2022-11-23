@@ -8,7 +8,9 @@ Class {
 	#name : #IceTipRepositoriesBrowser,
 	#superclass : #IceTipBrowser,
 	#instVars : [
-		'repositoryList'
+		'currentGroupPanel',
+		'currentSelectedItem',
+		'repositoryNotebook'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
@@ -102,12 +104,41 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		yourself
 ]
 
+{ #category : #initialization }
+IceTipRepositoriesBrowser >> connectPresenters [
+
+	repositoryNotebook whenSelectedPageChangedDo: [ :newPage |
+		newPage activePresenter ifNotNil: [ :aPresenter |
+			aPresenter updatePresenter ] ]
+]
+
+{ #category : #private }
+IceTipRepositoriesBrowser >> currentGroupPanel [
+
+	^ currentGroupPanel ifNil: [ currentGroupPanel := self layout children first ]
+]
+
+{ #category : #'accessing - ui' }
+IceTipRepositoriesBrowser >> defaultKeyboardFocus [
+
+	^ repositoryNotebook
+]
+
 { #category : #layout }
 IceTipRepositoriesBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: repositoryList;
-		  yourself
+		add: repositoryNotebook;
+		yourself
+]
+
+{ #category : #initialization }
+IceTipRepositoriesBrowser >> hasSelectedItem [
+	
+	^ repositoryNotebook selectedPage 
+		ifNotNil: [ :aPage | aPage activePresenter hasSelectedItem ]
+		ifNil: [ ^ false ].
+
 ]
 
 { #category : #initialization }
@@ -117,53 +148,22 @@ IceTipRepositoriesBrowser >> iconForWindow [
 ]
 
 { #category : #initialization }
-IceTipRepositoriesBrowser >> initializePresenters [
+IceTipRepositoriesBrowser >> initialExtentForWindow [
 
-	repositoryList := self newTable.
-	self initializeRepositoryList
+	^ (600 @ 500) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipRepositoriesBrowser >> initializeRepositoryList [
+IceTipRepositoriesBrowser >> initializePresenters [
 
-	repositoryList
-		showColumnHeaders;
-		beResizable;
-		addColumn: (SpStringTableColumn new 
-			title: self titleForWindow;
-			evaluated: #description;
-			displayColor: [ :each | each descriptionDecorator color ];
-			displayBold: [ :each | each descriptionDecorator isBold ];
-			displayItalic: [ :each | each descriptionDecorator isItalic ];
-			width: 200;
-			yourself);
-		addColumn: (SpStringTableColumn new 
-			title: 'Status';
-			evaluated: #status;
-			displayColor: [ :each | each statusDecorator color ];
-			displayBold: [ :each | each statusDecorator isBold ];
-			displayItalic: [ :each | each statusDecorator isItalic ];
-			width: 200;
-			yourself);
-		addColumn: (SpStringTableColumn new
-			title: 'Branch';
-			evaluated: #branchName;
-			yourself);
-		activateOnDoubleClick;
-		whenActivatedDo: [ self openManagePackagesWindow ]
-]
-
-{ #category : #testing }
-IceTipRepositoriesBrowser >> isShowingRepository: anIceLibgitRepository [
-
-	^ self repositoryModels anySatisfy: [ :aRepositoryModel | 
-		  aRepositoryModel entity = anIceLibgitRepository ]
+	repositoryNotebook := self newNotebook
 ]
 
 { #category : #'accessing - ui' }
 IceTipRepositoriesBrowser >> mainList [
+	"should not arrive here"
 
-	^ repositoryList
+	^ nil
 ]
 
 { #category : #private }
@@ -176,13 +176,20 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 
 { #category : #private }
 IceTipRepositoriesBrowser >> refresh [
-	repositoryList items: self model repositories
+
+	repositoryNotebook selectedPage ifNil: [ ^ self ].
+	repositoryNotebook selectedPage activePresenter updatePresenter
 ]
 
-{ #category : #accessing }
-IceTipRepositoriesBrowser >> repositoryList [
+{ #category : #commands }
+IceTipRepositoriesBrowser >> refreshCommands [
+	| rootGroup |
 
-	^ repositoryList
+	rootGroup := self visibleRootCommandsGroup.
+
+	self
+		refreshShortcutsWith: rootGroup;
+		refreshToolbarWith: rootGroup
 ]
 
 { #category : #accessing }
@@ -192,11 +199,19 @@ IceTipRepositoriesBrowser >> repositoryModel [
 ]
 
 { #category : #accessing }
-IceTipRepositoriesBrowser >> repositoryModels [
-	"Return the currently shown repository models"
+IceTipRepositoriesBrowser >> selectedItem [
 
-	^ repositoryList items
+	^ repositoryNotebook selectedPage 
+		ifNotNil: [ :aPage | aPage activePresenter selectedItem ]
+		ifNil: [ nil ]
+]
 
+{ #category : #commands }
+IceTipRepositoriesBrowser >> selectionCommandsGroup [ 
+
+	^ self visibleRootCommandsGroup
+		commandOrGroupNamed: self class selectionCommandGroupName
+		ifNone: [ nil ]
 ]
 
 { #category : #initialization }
@@ -217,5 +232,22 @@ IceTipRepositoriesBrowser >> titleForWindow [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> updatePresenter [
 
+	self model repositoryGroups do: [ :group |
+		repositoryNotebook 
+			addPageTitle: group label 
+			provider: [ 
+				(self instantiate: IceTipRepositoryGroupPanel on: group)
+					transmitDo: [ "self refreshCommands" ];
+				yourself ] ].
+	
 	self refresh
+]
+
+{ #category : #commands }
+IceTipRepositoriesBrowser >> visibleRootCommandsGroup [
+	| rootGroup |	
+		
+	rootGroup := self rootCommandsGroup.
+	IceTipCleanCommandGroupVisitor new visit: rootGroup.
+	^ rootGroup
 ]

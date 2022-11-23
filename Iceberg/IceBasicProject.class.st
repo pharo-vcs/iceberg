@@ -198,3 +198,11 @@ IceBasicProject >> sourceDirectoryPath [
 	"
 	^ (RelativePath withAll: (RelativePath canonicalizeElements: ($/ split: self sourceDirectory)))
 ]
+
+{ #category : #accessing }
+IceBasicProject >> tags [
+
+	^ self properties 
+		at: #tags
+		ifAbsent: [ #() ]
+]
