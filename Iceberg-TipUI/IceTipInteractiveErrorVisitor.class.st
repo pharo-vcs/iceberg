@@ -13,6 +13,12 @@ Class {
 }
 
 { #category : #'instance creation' }
+IceTipInteractiveErrorVisitor class >> newContext: aContext [
+
+	^ self newContext: aContext repository: nil
+]
+
+{ #category : #'instance creation' }
 IceTipInteractiveErrorVisitor class >> newContext: aContext repository: aModel [
 
 	^ self new 

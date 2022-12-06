@@ -105,8 +105,8 @@ IceTipCheckoutNewBranchPanel >> isNewBranch [
 
 { #category : #accessing }
 IceTipCheckoutNewBranchPanel >> openDialog [
-self halt.
-	^ super asDialogWindow
+
+	^ self asDialogWindow
 		  okAction: [ self accept ];
 		  open
 ]
