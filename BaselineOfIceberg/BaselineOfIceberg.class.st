@@ -76,7 +76,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.0';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.4';
   			loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
@@ -135,5 +135,5 @@ BaselineOfIceberg >> ring2: spec [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.17' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.18' ]
 ]

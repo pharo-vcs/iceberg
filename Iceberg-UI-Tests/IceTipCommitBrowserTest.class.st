@@ -17,13 +17,17 @@ IceTipCommitBrowserTest class >> isAbstract [
 IceTipCommitBrowserTest >> setUp [
 
 	super setUp.
+	
 	self repository workingCopy addPackageNamed: self packageName1.
+	
 	self repository workingCopy
 		createClass: 'TestClass2'
 		inPackage: self packageName1 asSymbol.
+	
 	self repository workingCopy
 		createMethod: 'm1 ^42'
 		inClass: 'TestClass2'.
+	
 	presenter := IceTipCommitBrowser onRepository: self repository.
 	saveMock := IceTipMockSaveImageAction new.
 	presenter saveAction: saveMock.
@@ -39,6 +43,8 @@ IceTipCommitBrowserTest >> tearDown [
 
 { #category : #tests }
 IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
+	
+	presenter commentPanel saveCheckbox state: true.
 	
 	self assert: saveMock timesExecuted equals: 0.
 	
