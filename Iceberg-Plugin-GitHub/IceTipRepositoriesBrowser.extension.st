@@ -16,8 +16,7 @@ IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: a
 		name: 'Remotes';
 		yourself.
 
-	{ IceGitHubNewBranchFromIssueCommand.
-	  IceFiletreeToTonelCommand }
+	{ IceGitHubNewBranchFromIssueCommand }
 			do: [ :each | pluginGroup register: each forSpec ].
 
 	(aCommandGroup / self selectionCommandGroupName) 
