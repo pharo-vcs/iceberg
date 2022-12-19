@@ -175,11 +175,24 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 ]
 
 { #category : #private }
-IceTipRepositoriesBrowser >> projectsPageRepositoryList [
+IceTipRepositoriesBrowser >> projectsPanel [
+	"this method is using exclusively for testing."
+	
+	^ repositoryNotebook pages first activePresenter
+]
+
+{ #category : #private }
+IceTipRepositoriesBrowser >> projectsPanelIsShowingRepository: anIceLibgitRepository [
+
+	^ self projectsPanel isShowingRepository: anIceLibgitRepository
+]
+
+{ #category : #private }
+IceTipRepositoriesBrowser >> projectsPanelRepositoryList [
 	"this method is using exclusively for testing. 
 	 it will answer the repository list form the projects page"
 	
-	^ repositoryNotebook pages first activePresenter repositoryList
+	^ self projectsPanel repositoryList
 ]
 
 { #category : #private }

@@ -80,6 +80,14 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
 
+{ #category : #private }
+IceTipRepositoryGroupPanel >> isShowingRepository: anIceLibgitRepository [
+	"this method is using just for test"
+	
+	^ repositoryList items anySatisfy: [ :aRepositoryModel | 
+		  aRepositoryModel entity = anIceLibgitRepository ]
+]
+
 { #category : #actions }
 IceTipRepositoryGroupPanel >> openManagePackagesWindow [
 
