@@ -196,6 +196,13 @@ IceTipRepositoriesBrowser >> projectsPanelRepositoryList [
 ]
 
 { #category : #private }
+IceTipRepositoriesBrowser >> projectsPanelRepositoryModels [
+	"this method is used exclusively for testing"
+
+	^ self projectsPanelRepositoryList items
+]
+
+{ #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 
 	repositoryNotebook selectedPage ifNil: [ ^ self ].

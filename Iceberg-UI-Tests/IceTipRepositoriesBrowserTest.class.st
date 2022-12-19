@@ -117,15 +117,15 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryNameWithoutRefreshDoesNotRefr
 
 { #category : #'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryProperty: aProperty doing: aBlock makesPropertyValueTo: aValue [
-	
 	| firstRepository repositoryModel oldValue newValue |	
+
 	firstRepository := repositoryProvider repositories first.
-	repositoryModel := presenter repositoryModels first.
+	repositoryModel := presenter projectsPanelRepositoryModels first.
 	oldValue := repositoryModel perform: aProperty.
 	aBlock value: firstRepository.
 	
 	"Get again the repository model in case it was changed"
-	repositoryModel := presenter repositoryModels first.
+	repositoryModel := presenter projectsPanelRepositoryModels first.
 	
 	self assert: repositoryModel entity equals: firstRepository.
 	
@@ -169,7 +169,7 @@ IceTipRepositoriesBrowserTest >> testEditThenRefreshRepositoryProperty: aPropert
 IceTipRepositoriesBrowserTest >> testEditWithoutRefreshRepositoryProperty: aProperty doing: aBlock [
 	
 	| repositoryModel |
-	repositoryModel := presenter repositoryModels first.
+	repositoryModel := presenter projectsPanelRepositoryModels first.
 	self
 		testEditRepositoryProperty: aProperty
 		doing: aBlock
