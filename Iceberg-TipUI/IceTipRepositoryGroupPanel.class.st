@@ -60,6 +60,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			displayBold: [ :each | each descriptionDecorator isBold ];
 			displayItalic: [ :each | each descriptionDecorator isItalic ];
 			width: 200;
+			beSortable;
 			yourself);
 		addColumn: (SpStringTableColumn new 
 			title: 'Status';
@@ -68,6 +69,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			displayBold: [ :each | each statusDecorator isBold ];
 			displayItalic: [ :each | each statusDecorator isItalic ];
 			width: 200;
+			beSortable;
 			yourself);
 		addColumn: (SpStringTableColumn new
 			title: 'Branch';
