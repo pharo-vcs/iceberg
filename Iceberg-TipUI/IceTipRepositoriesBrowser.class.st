@@ -175,6 +175,14 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 ]
 
 { #category : #private }
+IceTipRepositoriesBrowser >> projectsPageRepositoryList [
+	"this method is using exclusively for testing. 
+	 it will answer the repository list form the projects page"
+	
+	^ repositoryNotebook pages first activePresenter repositoryList
+]
+
+{ #category : #private }
 IceTipRepositoriesBrowser >> refresh [
 
 	repositoryNotebook selectedPage ifNil: [ ^ self ].

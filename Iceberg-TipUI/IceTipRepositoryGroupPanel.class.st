@@ -97,6 +97,12 @@ IceTipRepositoryGroupPanel >> outputSelectionPort [
 ]
 
 { #category : #accessing }
+IceTipRepositoryGroupPanel >> repositoryList [
+
+	^ repositoryList
+]
+
+{ #category : #accessing }
 IceTipRepositoryGroupPanel >> repositoryModel [
 	
 	^ self selectedItem
