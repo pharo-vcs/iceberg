@@ -4,7 +4,8 @@ Class {
 	#traits : 'SpTModel',
 	#classTraits : 'SpTModel classTrait',
 	#instVars : [
-		'repositoryList'
+		'repositoryList',
+		'repositoryFilter'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
@@ -20,11 +21,18 @@ IceTipRepositoryGroupPanel class >> buildCommandsGroupWith: presenter forRoot: a
 		forRoot: aCommandGroup
 ]
 
+{ #category : #private }
+IceTipRepositoryGroupPanel >> allListItems [
+	
+	^ self model repositories
+]
+
 { #category : #layout }
 IceTipRepositoryGroupPanel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add: repositoryList;
+		addLast: repositoryFilter expand: false;
 		yourself
 ]
 
@@ -32,6 +40,13 @@ IceTipRepositoryGroupPanel >> defaultLayout [
 IceTipRepositoryGroupPanel >> defaultOutputPort [
 
 	^ self outputSelectionPort
+]
+
+{ #category : #private }
+IceTipRepositoryGroupPanel >> filteredItemsFor: pattern [
+
+	^ self allListItems select: [ :each | 
+		  each name asLowercase includesSubstring: pattern asLowercase ]
 ]
 
 { #category : #testing }
@@ -44,7 +59,18 @@ IceTipRepositoryGroupPanel >> hasSelectedItem [
 IceTipRepositoryGroupPanel >> initializePresenters [
 
 	repositoryList := self newTable.
-	self initializeRepositoryList
+	self initializeRepositoryList.
+	self initializeRepositoryFilter
+]
+
+{ #category : #initialization }
+IceTipRepositoryGroupPanel >> initializeRepositoryFilter [
+
+	repositoryFilter := self newTextInput.
+	repositoryFilter 
+		placeholder: 'Filter...';
+		whenTextChangedDo: [ :text | self refreshRepositoryList ]
+		
 ]
 
 { #category : #initialization }
@@ -104,6 +130,15 @@ IceTipRepositoryGroupPanel >> outputSelectionPort [
 		yourself
 ]
 
+{ #category : #private }
+IceTipRepositoryGroupPanel >> refreshRepositoryList [
+	
+	repositoryList updateItemsKeepingSelection:  (repositoryFilter text
+		ifEmpty: [ self allListItems ]
+		ifNotEmpty: [ :pattern | self filteredItemsFor: pattern ])
+
+]
+
 { #category : #accessing }
 IceTipRepositoryGroupPanel >> repositoryList [
 
@@ -133,7 +168,7 @@ IceTipRepositoryGroupPanel >> selectionCommandsGroup [
 { #category : #initialization }
 IceTipRepositoryGroupPanel >> updatePresenter [
 
-	repositoryList updateItemsKeepingSelection: self model repositories
+	self refreshRepositoryList
 ]
 
 { #category : #private }
