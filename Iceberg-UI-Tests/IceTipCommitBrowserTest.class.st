@@ -43,19 +43,22 @@ IceTipCommitBrowserTest >> tearDown [
 
 { #category : #tests }
 IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
+	| oldStatus |
 	
-	presenter commentPanel saveCheckbox state: true.
+	oldStatus := presenter commentPanel isSaving.
+	presenter commentPanel saveOnCommit: true.
 	
-	self assert: saveMock timesExecuted equals: 0.
-	
-	presenter commentPanel commentText adapter 
-		keyDown: $s asciiValue 
-		shift: false 
-		meta: true
-		control: false
-		option: false. 
-
-	self assert: saveMock timesExecuted equals: 1.
+	[
+		self assert: saveMock timesExecuted equals: 0.
+		presenter commentPanel commentText adapter 
+			keyDown: $s asciiValue 
+			shift: false 
+			meta: true
+			control: false
+			option: false.
+		self assert: saveMock timesExecuted equals: 1 ]
+	ensure: [
+		presenter commentPanel saveOnCommit: oldStatus ]
 ]
 
 { #category : #tests }
@@ -78,16 +81,19 @@ Fixes #123456'.
 { #category : #tests }
 IceTipCommitBrowserTest >> testHasCommentPanelWithSavingSettings [
 	| previousState |
+	
 	self assert: presenter commentPanel class equals: IceTipCommentPanel.
 	self
 		assert: presenter commentPanel isSaving 
 		equals: IceTipCommitSettings saveImageOnCommit.
 	previousState := presenter commentPanel isSaving.
-	presenter commentPanel saveCheckbox toggleState.
-	self
-		assert: previousState
-		equals: IceTipCommitSettings saveImageOnCommit not.
-	presenter commentPanel saveCheckbox toggleState
+	[
+		presenter commentPanel saveOnCommit: presenter commentPanel isSaving not.
+		self
+			assert: previousState
+			equals: IceTipCommitSettings saveImageOnCommit not ]
+	ensure: [ 
+		presenter commentPanel saveOnCommit: previousState ]
 ]
 
 { #category : #tests }
