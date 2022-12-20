@@ -41,7 +41,7 @@ IceTipRepositoryGroupPanel >> hasSelectedItem [
 ]
 
 { #category : #initialization }
-IceTipRepositoryGroupPanel >> initializePresenter [
+IceTipRepositoryGroupPanel >> initializePresenters [
 
 	repositoryList := self newTable.
 	self initializeRepositoryList
