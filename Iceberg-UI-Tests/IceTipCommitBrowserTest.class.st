@@ -99,11 +99,15 @@ IceTipCommitBrowserTest >> testHasDiffPanel [
 { #category : #tests }
 IceTipCommitBrowserTest >> testIsAutomaticallySavingWhenChecked [
 	| previousState|
+	
 	previousState := presenter commentPanel isSaving.
-	presenter commentPanel saveCheckbox state: true.
-	presenter doCommit.
-	self assert: saveMock timesExecuted equals: 1.
-	presenter commentPanel saveCheckbox state: previousState
+	presenter commentPanel saveOnCommit: true.
+	[
+		presenter doCommit.
+		self assert: saveMock timesExecuted equals: 1 ]
+	ensure: [
+		presenter commentPanel saveOnCommit: previousState ]
+	
 ]
 
 { #category : #tests }
@@ -143,10 +147,12 @@ IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
 IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
 	| previousState |
 	previousState := presenter commentPanel isSaving.
-	presenter commentPanel saveCheckbox state: false.
-	presenter doCommit.
-	self assert: saveMock  timesExecuted equals: 0.
-	presenter commentPanel saveCheckbox state: previousState
+	presenter commentPanel saveOnCommit: false.
+	[
+		presenter doCommit.
+		self assert: saveMock  timesExecuted equals: 0 ]
+	ensure: [ 
+		presenter commentPanel saveOnCommit: previousState ]
 ]
 
 { #category : #tests }
