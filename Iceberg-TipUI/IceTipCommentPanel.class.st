@@ -97,7 +97,7 @@ IceTipCommentPanel >> initializePresenters [
 			whenChangedDo: [ :aBoolean | self runCriticsOnCommit: aBoolean ];
 			yourself);
 		yourself.
-			
+
 	self repositoryModel branchModel hasUpstream
 		ifTrue: [
 			pushCheckbox
@@ -135,7 +135,7 @@ IceTipCommentPanel >> initializePresenters [
 { #category : #testing }
 IceTipCommentPanel >> isPushing [
 
-	^ IceTipCommitSettings pushOnCommit
+	^ IceTipCommitSettings pushOnCommit and: [ self repositoryModel branchModel hasUpstream ]
 ]
 
 { #category : #testing }

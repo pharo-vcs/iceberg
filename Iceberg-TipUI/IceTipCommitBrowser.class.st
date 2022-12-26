@@ -99,11 +99,11 @@ IceTipCommitBrowser >> doCommit [
 	isSaving := commentPanel isSaving.
 	
 	commitBlock := [  
-			self
-				doCommit: selectedItems
-				message: message
-				pushing: isPushing
-				saving: isSaving ].
+		self
+			doCommit: selectedItems
+			message: message
+			pushing: isPushing
+			saving: isSaving ].
 
 	(IceTipCritiquesBeforeCommitBrowser newApplication: self application model: selectedItems)
 		commitModel: self model;
