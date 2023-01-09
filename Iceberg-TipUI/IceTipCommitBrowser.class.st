@@ -139,8 +139,8 @@ IceTipCommitBrowser >> initialExtentForWindow [
 	^ (800@600) scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
-IceTipCommitBrowser >> initialize [ 
+{ #category : #initialization }
+IceTipCommitBrowser >> initialize [
 
 	super initialize.
 	saveAction := IceTipSaveImageAction new
