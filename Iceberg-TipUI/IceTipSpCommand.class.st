@@ -39,7 +39,7 @@ IceTipSpCommand >> ifVisible: aBlock [
 	self displayStrategy ifVisible: self do: aBlock
 ]
 
-{ #category : #'presenter building' }
+{ #category : #initialization }
 IceTipSpCommand >> initialize [
 
 	super initialize.
