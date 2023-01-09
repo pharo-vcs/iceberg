@@ -31,7 +31,7 @@ IceNodeQuery >> ifFound: aBlockClosure [
 	results do: aBlockClosure 
 ]
 
-{ #category : #visiting }
+{ #category : #initialization }
 IceNodeQuery >> initialize [
 
 	super initialize.
