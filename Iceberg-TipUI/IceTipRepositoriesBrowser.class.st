@@ -9,7 +9,6 @@ Class {
 	#superclass : #IceTipBrowser,
 	#instVars : [
 		'currentGroupPanel',
-		'currentSelectedItem',
 		'repositoryNotebook'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
