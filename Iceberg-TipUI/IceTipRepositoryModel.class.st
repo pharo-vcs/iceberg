@@ -14,6 +14,13 @@ IceTipRepositoryModel class >> unknownBranchLabel [
 	^ 'Unknown'
 ]
 
+{ #category : #comparing }
+IceTipRepositoryModel >> = other [
+
+	^ self species = other species
+		and: [ self entity = other entity ]
+]
+
 { #category : #accessing }
 IceTipRepositoryModel >> allBranchModels [
 	^ self entity allBranches 
@@ -124,6 +131,13 @@ IceTipRepositoryModel >> hasRemotes [
 { #category : #testing }
 IceTipRepositoryModel >> hasUnbornProject [
 	^ self entity workingCopy project isUnborn
+]
+
+{ #category : #comparing }
+IceTipRepositoryModel >> hash [
+
+	^ self species hash
+		bitXor: self entity hash
 ]
 
 { #category : #accessing }

@@ -34,7 +34,17 @@ IceTipDiscardAllChangesPreviewBrowser >> initializePresenters [
 	
 	diffPanel
 		leftLabel: 'Working Copy (Image)';
-		rightLabel: 'Commit to load: ' , model workingCopy referenceCommit shortId
+		rightLabel: 'Commit to load: ', self loadCommitShortId
+]
+
+{ #category : #private }
+IceTipDiscardAllChangesPreviewBrowser >> loadCommitShortId [
+	| shortId |
+	
+	shortId := model workingCopy referenceCommit shortId.
+	^ shortId size > 7
+		ifTrue: [ shortId first: 7 ]
+		ifFalse: [ shortId ]	
 ]
 
 { #category : #'private - factory' }

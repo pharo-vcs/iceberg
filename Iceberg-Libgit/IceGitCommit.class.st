@@ -179,7 +179,9 @@ IceGitCommit >> project [
 	
 	This is a quick fix of the issue for Pharo 7 release."
 
-	^ [ IceProjectReader readProjectFrom: self ] on: NotFound do: [ self repository fetch. IceProjectReader readProjectFrom: self ]
+	^ [ IceProjectReader readProjectFrom: self ] 
+		on: NotFound 
+		do: [ self repository fetch. IceProjectReader readProjectFrom: self ]
 ]
 
 { #category : #'API - properties' }

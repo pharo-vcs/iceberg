@@ -44,7 +44,7 @@ IcePlaygroundPublishGistCommand >> execute [
 		content: contents withUnixLineEndings;
 		whenPublishedDo: [ :jsonResult |
 			self application inform: (jsonResult at: 'html_url') , ' was published and the url was copied to clipboard' ];
-		openModalWithSpec
+		openModal
 ]
 
 { #category : #accessing }
