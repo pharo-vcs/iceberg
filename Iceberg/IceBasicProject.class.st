@@ -1,8 +1,13 @@
+"
+A basic project is the project defined in a .project file.
+It contains properties like sourceDirectory, format and tags.
+"
 Class {
 	#name : #IceBasicProject,
 	#superclass : #IceAbstractProject,
 	#instVars : [
-		'properties'
+		'properties',
+		'tags'
 	],
 	#category : #'Iceberg-Project'
 }
@@ -61,6 +66,13 @@ IceBasicProject >> addProjectFileToChangeBuilder: anIceChangeImporter [
 		addFileNamed: projectFileName
 		path: self projectFilePath
 		contents: self contentsString.
+]
+
+{ #category : #accessing }
+IceBasicProject >> addTag: aString [
+
+	tags ifNil: [ tags := #() ].
+	tags := tags copyWith: aString
 ]
 
 { #category : #writing }
@@ -167,6 +179,13 @@ IceBasicProject >> properties: aCollection [
 ]
 
 { #category : #accessing }
+IceBasicProject >> removeTag: aString [
+
+	tags ifNil: [ ^ self ].
+	tags := tags copyWithout: aString
+]
+
+{ #category : #accessing }
 IceBasicProject >> repository [
 	^ commitish repository
 ]
@@ -205,4 +224,10 @@ IceBasicProject >> tags [
 	^ self properties 
 		at: #tags
 		ifAbsent: [ #() ]
+]
+
+{ #category : #accessing }
+IceBasicProject >> tags: anArray [
+
+	tags := anArray asArray
 ]
