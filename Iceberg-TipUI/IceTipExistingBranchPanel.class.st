@@ -46,6 +46,12 @@ IceTipExistingBranchPanel >> icon: anIcon [
 ]
 
 { #category : #initialization }
+IceTipExistingBranchPanel >> iconForWindow [
+
+	^ self icon
+]
+
+{ #category : #initialization }
 IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList

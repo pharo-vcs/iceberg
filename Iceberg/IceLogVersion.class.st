@@ -9,7 +9,7 @@ Class {
 		'commit',
 		'definition'
 	],
-	#category : 'Iceberg-Core'
+	#category : #'Iceberg-Core'
 }
 
 { #category : #'instance creation' }
@@ -77,6 +77,7 @@ IceLogVersion >> originMethod [
 
 { #category : #accessing }
 IceLogVersion >> shortId [
+
 	^ self commit shortId
 ]
 

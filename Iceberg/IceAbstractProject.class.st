@@ -142,6 +142,12 @@ IceAbstractProject >> sourceDirectoryReference [
 ]
 
 { #category : #accessing }
+IceAbstractProject >> tags [
+
+	^ #()
+]
+
+{ #category : #accessing }
 IceAbstractProject >> writerClass [
 	
 	^ self repository properties writerClass

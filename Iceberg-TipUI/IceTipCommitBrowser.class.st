@@ -65,7 +65,7 @@ IceTipCommitBrowser >> commentPanel: aSpPresenter [
 IceTipCommitBrowser >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
-		  positionOfSlider: 75 percent;
+		  positionOfSlider: 66 percent;
 		  add: diffPanel;
 		  add: commentPanel;
 		  yourself
@@ -99,11 +99,11 @@ IceTipCommitBrowser >> doCommit [
 	isSaving := commentPanel isSaving.
 	
 	commitBlock := [  
-			self
-				doCommit: selectedItems
-				message: message
-				pushing: isPushing
-				saving: isSaving ].
+		self
+			doCommit: selectedItems
+			message: message
+			pushing: isPushing
+			saving: isSaving ].
 
 	(IceTipCritiquesBeforeCommitBrowser newApplication: self application model: selectedItems)
 		commitModel: self model;
@@ -139,8 +139,8 @@ IceTipCommitBrowser >> initialExtentForWindow [
 	^ (800@600) scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
-IceTipCommitBrowser >> initialize [ 
+{ #category : #initialization }
+IceTipCommitBrowser >> initialize [
 
 	super initialize.
 	saveAction := IceTipSaveImageAction new

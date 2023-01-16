@@ -11,10 +11,9 @@ Class {
 		'pushCheckbox',
 		'commitButton',
 		'actionButtonBar',
-		'saveCheckbox',
-		'critiquesCheckbox',
 		'fixesField',
-		'fixesLabel'
+		'fixesLabel',
+		'optionsButton'
 	],
 	#category : #'Iceberg-TipUI-View-Commit'
 }
@@ -54,9 +53,9 @@ IceTipCommentPanel >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		spacing: 5;
 		add: (SpBoxLayout newLeftToRight
+				vAlignCenter;
 				add: pushCheckbox;
-				add: saveCheckbox;
-				add: critiquesCheckbox;
+				addLast: optionsButton expand: false;
 				yourself)
 		  	expand: false;
 		add: commentText;
@@ -81,31 +80,36 @@ IceTipCommentPanel >> initializePresenters [
 	| fixesHelpString |
 
 	pushCheckbox := self newCheckBox.
-	saveCheckbox := self newCheckBox.
-	critiquesCheckbox := self newCheckBox.
-	
+	optionsButton := self newToolbar
+		displayMode: self application toolbarDisplayMode; 
+		add: (self newToolbarToggleButton
+			icon: (self application iconNamed: #smallSave);
+			label: 'Save image';
+			help: 'Save image when commiting';
+			state: self isSaving;
+			whenChangedDo: [ :aBoolean | self saveOnCommit: aBoolean ];
+			yourself);
+		add: (self newToolbarToggleButton
+			icon: (self application iconNamed: #smallError);
+			label: 'Run critics';
+			help: 'Run critics when commiting';
+			state: self isRunningCriticsOnCommit;
+			whenChangedDo: [ :aBoolean | self runCriticsOnCommit: aBoolean ];
+			yourself);
+		yourself.
+
 	self repositoryModel branchModel hasUpstream
 		ifTrue: [
 			pushCheckbox
-				label: ('Push changes to {1}' format: {self repositoryRemoteName});
-				state: IceTipCommitSettings pushOnCommit;
-				whenChangedDo: [ :state | IceTipCommitSettings pushOnCommit: state ] ]
+				label: (('Push changes to {1}' format: {self repositoryRemoteName}));
+				state: self isPushing;
+				whenChangedDo: [ :state | self pushOnCommit: state ] ]
 		ifFalse: [
 			pushCheckbox
 				label: 'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
-	saveCheckbox
-		label: 'Save the image when commiting';
-		state: IceTipCommitSettings saveImageOnCommit;
-		whenChangedDo: [ :state | IceTipCommitSettings saveImageOnCommit: state ].
-
-	critiquesCheckbox
-		label: 'Run Critiques when commiting';
-		state: IceTipCommitSettings critiquesOnCommit;
-		whenChangedDo: [ :state | IceTipCommitSettings critiquesOnCommit: state ].
 
 	commentText := self newText
-		autoAccept: true;
 		placeholder: 'A comment for your commit';
 		yourself.
 
@@ -115,7 +119,6 @@ IceTipCommentPanel >> initializePresenters [
 		help: fixesHelpString;
 		yourself.
 	fixesField := self newNumberInput
-		autoAccept: true;
 		help: fixesHelpString;
 		placeholder: 'issue number';
 		beInteger;
@@ -132,13 +135,19 @@ IceTipCommentPanel >> initializePresenters [
 { #category : #testing }
 IceTipCommentPanel >> isPushing [
 
-	^ self pushCheckbox state
+	^ IceTipCommitSettings pushOnCommit and: [ self repositoryModel branchModel hasUpstream ]
+]
+
+{ #category : #testing }
+IceTipCommentPanel >> isRunningCriticsOnCommit [
+
+	^ IceTipCommitSettings critiquesOnCommit
 ]
 
 { #category : #testing }
 IceTipCommentPanel >> isSaving [
 
-	^ self saveCheckbox state
+	^ IceTipCommitSettings saveImageOnCommit
 ]
 
 { #category : #accessing }
@@ -170,6 +179,12 @@ IceTipCommentPanel >> pushCheckbox [
 ]
 
 { #category : #accessing }
+IceTipCommentPanel >> pushOnCommit: aBoolean [
+
+	IceTipCommitSettings pushOnCommit: aBoolean
+]
+
+{ #category : #accessing }
 IceTipCommentPanel >> refresh [
 
 	commitButton help: ('Commit your changes to {1}' format: { self repositoryName }).
@@ -194,10 +209,16 @@ IceTipCommentPanel >> repositoryRemoteName [
 	^ self repositoryModel pushRemoteName
 ]
 
-{ #category : #'accessing - ui' }
-IceTipCommentPanel >> saveCheckbox [
+{ #category : #accessing }
+IceTipCommentPanel >> runCriticsOnCommit: aBoolean [
 
-	^ saveCheckbox
+	IceTipCommitSettings critiquesOnCommit: aBoolean
+]
+
+{ #category : #accessing }
+IceTipCommentPanel >> saveOnCommit: aBoolean [
+
+	IceTipCommitSettings saveImageOnCommit: aBoolean
 ]
 
 { #category : #initialization }
