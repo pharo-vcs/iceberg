@@ -58,7 +58,7 @@ IceTipBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGr
 IceTipBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipInspectCommand forSpec.
-	aCommandGroup register: IceFiletreeToTonelCommand forSpec.
+	aCommandGroup register: IceFiletreeToTonelCommand forSpec
 ]
 
 { #category : #commands }
