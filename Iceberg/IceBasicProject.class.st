@@ -6,8 +6,7 @@ Class {
 	#name : #IceBasicProject,
 	#superclass : #IceAbstractProject,
 	#instVars : [
-		'properties',
-		'tags'
+		'properties'
 	],
 	#category : #'Iceberg-Project'
 }
@@ -71,8 +70,7 @@ IceBasicProject >> addProjectFileToChangeBuilder: anIceChangeImporter [
 { #category : #accessing }
 IceBasicProject >> addTag: aString [
 
-	tags ifNil: [ tags := #() ].
-	tags := tags copyWith: aString
+	self tags: (self tags copyWith: aString)
 ]
 
 { #category : #writing }
@@ -170,19 +168,20 @@ IceBasicProject >> projectName [
 
 { #category : #accessing }
 IceBasicProject >> properties [
+
 	^ properties
 ]
 
 { #category : #accessing }
-IceBasicProject >> properties: aCollection [ 
-	properties := aCollection
+IceBasicProject >> properties: aDictionary [
+
+	properties := aDictionary
 ]
 
 { #category : #accessing }
 IceBasicProject >> removeTag: aString [
 
-	tags ifNil: [ ^ self ].
-	tags := tags copyWithout: aString
+	self tags: (self tags copyWithout: aString)
 ]
 
 { #category : #accessing }
@@ -229,5 +228,7 @@ IceBasicProject >> tags [
 { #category : #accessing }
 IceBasicProject >> tags: anArray [
 
-	tags := anArray asArray
+	self properties
+		at: #tags
+		put: anArray
 ]
