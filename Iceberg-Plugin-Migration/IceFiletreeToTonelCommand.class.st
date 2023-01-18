@@ -17,16 +17,15 @@ IceFiletreeToTonelCommand class >> defaultName [
 
 { #category : #testing }
 IceFiletreeToTonelCommand >> canBeExecuted [
-
 	| repository |
+
 	self hasRepository ifFalse: [ ^ false ].
 
 	repository := self repository.
-	^ repository isMissing not 
+	^ repository isMissing not
 		and: [ repository workingCopy isDetached not
 			and: [ repository workingCopy writerClass id = #filetree
 				and: [ repository head isUnbornBranch not ] ] ]
-
 ]
 
 { #category : #executing }
