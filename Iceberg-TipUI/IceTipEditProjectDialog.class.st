@@ -22,23 +22,24 @@ Class {
 }
 
 { #category : #actions }
-IceTipEditProjectDialog >> accept [	
-	
+IceTipEditProjectDialog >> accept [
+
 	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;
-		action: [ 
+		action: [
 			"Update the project"
 			model sourceDirectory: self selectedDirectoryPath pathString.
 			model fileFormat: self selectedFileFormat.
-			self assert: model repositoryProperties fileFormat = self selectedFileFormat.
+			(model repositoryProperties fileFormat = self selectedFileFormat)
+				ifFalse: [ self error: 'Selected file format is incorrect.' ].
 			"Set the project in the repository"
 			model repository workingCopy project: model ];
 		executeWithContext: self.
 
 	self closeWindow.
-	acceptCallback ifNotNil: [ 
+	acceptCallback ifNotNil: [
 		acceptCallback value ]
 ]
 
