@@ -79,7 +79,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 	repositoryList
 		showColumnHeaders;
 		beResizable;
-		addColumn: (SpStringTableColumn new 
+		addColumn: (SpStringTableColumn new
 			title: 'Repositories';
 			evaluated: #description;
 			displayColor: [ :each | each descriptionDecorator color ];
@@ -88,7 +88,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			width: 200;
 			beSortable;
 			yourself);
-		addColumn: (SpStringTableColumn new 
+		addColumn: (SpStringTableColumn new
 			title: 'Status';
 			evaluated: #status;
 			displayColor: [ :each | each statusDecorator color ];
@@ -102,6 +102,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			evaluated: #branchName;
 			yourself);
 		contextMenu: [ self selectionCommandsGroup beRoot asMenuPresenter ];
+		contextKeyBindings: self keyBindingsCommandsGroup asKMCategory;
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
@@ -112,6 +113,14 @@ IceTipRepositoryGroupPanel >> isShowingRepository: anIceLibgitRepository [
 	
 	^ repositoryList items anySatisfy: [ :aRepositoryModel | 
 		  aRepositoryModel entity = anIceLibgitRepository ]
+]
+
+{ #category : #private }
+IceTipRepositoryGroupPanel >> keyBindingsCommandsGroup [
+
+	^ self rootCommandsGroup
+		commandOrGroupNamed: IceTipRepositoriesBrowser selectionCommandGroupName
+		ifNone: [ nil ]
 ]
 
 { #category : #actions }
