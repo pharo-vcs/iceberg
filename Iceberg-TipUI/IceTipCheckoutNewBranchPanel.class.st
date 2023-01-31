@@ -79,6 +79,12 @@ IceTipCheckoutNewBranchPanel >> icon [
 ]
 
 { #category : #initialization }
+IceTipCheckoutNewBranchPanel >> iconForWindow [
+
+	^ self icon
+]
+
+{ #category : #initialization }
 IceTipCheckoutNewBranchPanel >> initializeCurrentBranchLabel [
 
 	currentBranchLabel := self newLabel

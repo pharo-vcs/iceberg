@@ -7,9 +7,9 @@ Class {
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
-{ #category : #private }
+{ #category : #'class initialization' }
 IceTipInteractiveCredentialsProvider class >> initialize [
-	
+
 	self providerType: nil
 ]
 

@@ -16,8 +16,8 @@ IceTipCredentialsStoreBrowser class >> buildGeneralCommandGroupWith: presenter f
 	{	IceTipAddPlainTextCredentialCommand.
 		IceTipAddSshCredentialCommand.
 		IceTipAddTokenCredentialCommand }
-			do: [ :each |
-				aCommandGroup register: each forSpec ]
+	do: [ :each |
+		aCommandGroup register: each forSpec ]
 ]
 
 { #category : #commands }
@@ -25,9 +25,14 @@ IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter
 
 	{ 	IceTipEditCredentialCommand.
 		IceTipRemoveCredentialCommand }
-			do: [ :each |
-				aCommandGroup register: each forSpec ]
+	do: [ :each |
+		aCommandGroup register: each forSpec ]
+]
 
+{ #category : #commands }
+IceTipCredentialsStoreBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+
+	aCommandGroup register: IceTipInspectCommand forSpec
 ]
 
 { #category : #accessing }
@@ -47,9 +52,8 @@ IceTipCredentialsStoreBrowser >> defaultLayout [
 { #category : #initialization }
 IceTipCredentialsStoreBrowser >> initialize [
 
-	model ifNil: [ model := IceCredentialStore current ].	
-	super initialize.
-
+	model ifNil: [ model := IceCredentialStore current ].
+	super initialize
 ]
 
 { #category : #initialization }

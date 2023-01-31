@@ -44,5 +44,8 @@ IceTipRepairEditRepository class >> title [
 { #category : #executing }
 IceTipRepairEditRepository >> basicExecute [
 
-	self repositoryModel edit
+	(IceTipEditProjectDialog
+		newApplication: context application
+		model: self repositoryModel entity project)
+		openDialog
 ]
