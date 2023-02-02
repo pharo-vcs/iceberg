@@ -7,7 +7,7 @@ Class {
 	#category : #'Iceberg-Metacello-Integration-Platform'
 }
 
-{ #category : #initialization }
+{ #category : #'class initialization' }
 IceMetacelloPharoPlatform class >> initialize [
 	 self select
 ]
