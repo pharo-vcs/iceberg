@@ -26,7 +26,7 @@ IceTipSelectAllPackagesCommand >> canBeExecuted [
 
 	| pkgList |
 
-	pkgList := self context packagesList.
+	pkgList := self packagesList.
  	^ pkgList items notEmpty and: [ pkgList items size ~= pkgList selectedItems size ]
 ]
 
@@ -34,12 +34,7 @@ IceTipSelectAllPackagesCommand >> canBeExecuted [
 IceTipSelectAllPackagesCommand >> execute [
 	" Private - Select all the receiver's packages "
 
-	self packagesList items
-		do: [ : pkgItem |
-			self packagesListSelectionColumn
-				select: [ : c | c isKindOf: SpCheckBoxTableColumn ]
-				thenDo: [ : c | c onActivation cull: pkgItem ] ]
-		displayingProgress: [ : pkgItem | 'Selecting ' , pkgItem name ].
+	self context selectedPackages: self packagesList items.
 	self packagesList refresh
 ]
 

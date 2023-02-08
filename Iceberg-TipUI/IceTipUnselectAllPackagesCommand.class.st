@@ -34,12 +34,7 @@ IceTipUnselectAllPackagesCommand >> canBeExecuted [
 IceTipUnselectAllPackagesCommand >> execute [
 	" Private - Unselect all the receiver's packages "
 
-	self packagesList items
-		do: [ : pkgItem |
-			self packagesListSelectionColumn
-				select: [ : c | c isKindOf: SpCheckBoxTableColumn ]
-				thenDo: [ : c | c onDeactivation cull: pkgItem ] ]
-		displayingProgress: [ : pkgItem | 'Unselecting ' , pkgItem name ].
+	self context selectedPackages: OrderedCollection empty.
 	self packagesList refresh
 ]
 

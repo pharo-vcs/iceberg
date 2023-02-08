@@ -15,6 +15,16 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
+{ #category : #commands }
+IceTipAddNewPackagesDialog class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
+
+	rootCommandGroup register:
+		((CmCommandGroup named: 'package list commands') asSpecGroup
+			 register: IceTipSelectAllPackagesCommand forSpec;
+			 register: IceTipUnselectAllPackagesCommand forSpec;
+			 yourself)
+]
+
 { #category : #actions }
 IceTipAddNewPackagesDialog >> accept [
 
@@ -30,16 +40,6 @@ IceTipAddNewPackagesDialog >> accept [
 			self closeWindow.
 			checkoutPreviewWindow closeWindow ];
 		executeWithContext: self
-]
-
-{ #category : #commands }
-IceTipAddNewPackagesDialog >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
-
-	rootCommandGroup
-		register: ((CmCommandGroup named: 'package list commands') asSpecGroup
-			register: IceTipSelectAllPackagesCommand forSpec;
-			register: IceTipUnselectAllPackagesCommand forSpec;
-			yourself)
 ]
 
 { #category : #accessing }
@@ -118,6 +118,18 @@ IceTipAddNewPackagesDialog >> packagesList [
 IceTipAddNewPackagesDialog >> selectedPackage [
 
 	^ packagesList selectedItem
+]
+
+{ #category : #accessing }
+IceTipAddNewPackagesDialog >> selectedPackages [
+
+	^ selectedPackages
+]
+
+{ #category : #accessing }
+IceTipAddNewPackagesDialog >> selectedPackages: anObject [
+
+	selectedPackages := anObject
 ]
 
 { #category : #'accessing - model' }

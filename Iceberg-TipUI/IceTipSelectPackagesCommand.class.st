@@ -13,12 +13,3 @@ IceTipSelectPackagesCommand >> packagesList [
 	
 	^ self context packagesList
 ]
-
-{ #category : #executing }
-IceTipSelectPackagesCommand >> packagesListSelectionColumn [
-	" Answer a <SpCheckBoxTableColumn> to select packages in the receiver's context package list "
-
-	| compositeCol |
-	compositeCol := self packagesList columns.
-	^ compositeCol anyOne columns select: [ : c | c isKindOf: SpCheckBoxTableColumn ]
-]
