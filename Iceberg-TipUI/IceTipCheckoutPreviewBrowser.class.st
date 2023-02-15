@@ -14,6 +14,12 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
+{ #category : #private }
+IceTipCheckoutPreviewBrowser class >> maxBranchNameLength [
+
+	^ 32
+]
+
 { #category : #'instance creation' }
 IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 
@@ -81,14 +87,13 @@ IceTipCheckoutPreviewBrowser >> initializePresenters [
 	super initializePresenters.
 	diffPanel
 		leftLabel: 'Working Copy';
-		rightLabel: 'Checkout ' , model targetName.
-	
+		rightLabel: 'Checkout ' , (model targetName contractTo: self class maxBranchNameLength).
+
 	checkoutStrategyLabel := self newLabel
 		label: 'How to checkout:';
 		yourself.
 	checkoutStrategyList := self newDropList.
-	self initializeCheckoutStrategyList.
-
+	self initializeCheckoutStrategyList
 ]
 
 { #category : #'private - factory' }

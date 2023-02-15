@@ -21,6 +21,21 @@ IceTipRepositoryGroupPanel class >> buildCommandsGroupWith: presenter forRoot: a
 		forRoot: aCommandGroup
 ]
 
+{ #category : #commands }
+IceTipRepositoryGroupPanel class >> buildRootCommandsGroupFor: aPresenter [
+	| rootCommandGroup |
+
+	rootCommandGroup := super buildRootCommandsGroupFor: aPresenter.
+	"since historically this menu was residing on IceTipRepositoriesBrowser,
+	 the place to put extensions was there. To not lose this place (is a good entry
+	 point, other than a panel), we ask extensions there too"
+	IceTipRepositoriesBrowser
+		buildExtensionCommandsWith: aPresenter
+		forRoot: rootCommandGroup.
+
+	^ rootCommandGroup
+]
+
 { #category : #private }
 IceTipRepositoryGroupPanel >> allListItems [
 	
