@@ -6,7 +6,7 @@ See IceGitHubPullRequestDetailModel
 Class {
 	#name : #IceGitHubPullRequestDataSource,
 	#superclass : #IceGitHubJSONDataSource,
-	#category : 'Iceberg-Plugin-GitHub-Utils'
+	#category : #'Iceberg-Plugin-GitHub-Utils'
 }
 
 { #category : #accessing }
@@ -79,7 +79,7 @@ IceGitHubPullRequestDataSource >> targetUrlCellColumn: column rowIndex: rowIndex
 	url := (self elementAt: rowIndex) at: column id.
 	^ FTCellMorph new  
 		addMorphBack: (
-			IconicButton new
+			IconicButtonMorph new
 				target: self;
 				actionSelector: #copyToClipboard:;
 				arguments: { url };
