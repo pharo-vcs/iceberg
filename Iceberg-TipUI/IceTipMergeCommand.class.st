@@ -10,13 +10,13 @@ Class {
 { #category : #'accessing - defaults' }
 IceTipMergeCommand class >> defaultDescription [
 
-	^ 'Merge your current branch with another.'
+	^ 'Merge a given branch into your current branch.'
 ]
 
 { #category : #'accessing - defaults' }
 IceTipMergeCommand class >> defaultName [
 
-	^ 'Merge'
+	^ 'Merge into current'
 ]
 
 { #category : #testing }
