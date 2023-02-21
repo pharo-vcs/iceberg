@@ -77,6 +77,12 @@ IceTipPresenter >> setInitialExtentTo: aSpWindowPresenter [
 ]
 
 { #category : #initialization }
+IceTipPresenter >> setTitleTo: aSpWindowPresenter [
+
+	aSpWindowPresenter title: self titleForWindow
+]
+
+{ #category : #initialization }
 IceTipPresenter >> setWindowIconTo: aSpWindowPresenter [
 	
 	aSpWindowPresenter windowIcon: self iconForWindow
