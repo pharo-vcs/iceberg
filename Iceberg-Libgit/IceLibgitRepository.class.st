@@ -269,9 +269,9 @@ IceLibgitRepository >> checkForRegistryConflicts [
 	"If the repository has no location, do not check for conflicts."
 	self location ifNil: [ ^ self ].
 	
-	self class registry 
+	self class registry
 		detect: [ :repo | repo location = self location ]
-		ifFound: [ :repo | self origin = repo origin
+		ifFound: [ :repo | (self origin referencesSameRemoteLocationAs: repo origin)
 			ifTrue: [ 
 				IceDuplicatedRepository signal: 
 					('You already have an Iceberg repository 
