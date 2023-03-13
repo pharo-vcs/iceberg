@@ -16,12 +16,11 @@ IceTipEditSSHCredentialsModel >> accept [
 { #category : #layout }
 IceTipEditSSHCredentialsModel >> defaultLayout [
 
-	^ SpGridLayout new 
+	^ SpGridLayout new
 		beColumnNotHomogeneous;
 		column: 2 expand: true;
-		build: [ :builder | builder 
-			add: usernameLabel; add: usernameInput; nextRow; 
-			add: publicKeyLabel; add: publicKeyInput; nextRow; 
+		build: [ :builder | builder
+			add: publicKeyLabel; add: publicKeyInput; nextRow;
 			add: privateKeyLabel; add: privateKeyInput; nextRow;
 			add: passphraseLabel; add: passphraseInput; nextRow ];
 		yourself
@@ -37,16 +36,14 @@ IceTipEditSSHCredentialsModel >> initialExtentForWindow [
 IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
 
 	credentials
-		username: self username;
 		publicKey: self publicKey;
 		privateKey: self privateKey;
 		keyPassphrase: self passphrase
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
 
-	usernameInput text: credentials username.
 	passphraseInput text: credentials keyPassphrase.
 	privateKeyInput location: credentials privateKey.
 	publicKeyInput location: credentials publicKey

@@ -25,7 +25,6 @@ IceTipAddSSHCredentialsModel >> defaultLayout [
 		column: 2 expand: true;
 		build: [ :builder | builder
 			add: hostLabel; add: hostInput; nextRow;
-			add: usernameLabel; add: usernameInput; nextRow;
 			add: publicKeyLabel; add: publicKeyInput; nextRow;
 			add: privateKeyLabel; add: privateKeyInput; nextRow;
 			add: passphraseLabel; add: passphraseInput; nextRow ]
@@ -59,13 +58,12 @@ IceTipAddSSHCredentialsModel >> initializePresenters [
 
 { #category : #accessing }
 IceTipAddSSHCredentialsModel >> newCredentials [
-	
+
 	^ IceSshCredentials new
-		username: self username;
 		publicKey: self publicKey;
 		privateKey: self privateKey;
 		keyPassphrase: self passphrase;
-		yourself 
+		yourself
 ]
 
 { #category : #initialization }

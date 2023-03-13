@@ -6,8 +6,6 @@ Class {
 	#name : #IceTipAbstractSSHCredentialsModel,
 	#superclass : #IceTipAbstractCredentialsModel,
 	#instVars : [
-		'usernameInput',
-		'usernameLabel',
 		'publicKeyInput',
 		'privateKeyInput',
 		'passphraseInput',
@@ -22,13 +20,6 @@ Class {
 IceTipAbstractSSHCredentialsModel >> initializePresenters [
 
 	super initializePresenters.
-	usernameLabel := self newLabel
-		label: 'Username: ';
-		yourself.
-	usernameInput := self newTextInput
-		autoAccept: true;
-		whenTextChangedDo: [ self updateOkButton ];
-		yourself.
 	passphraseLabel := self newLabel
 		label: 'Key Passphrase: ';
 		yourself.
@@ -52,15 +43,13 @@ IceTipAbstractSSHCredentialsModel >> initializePresenters [
 		onChoose: [ self updateOkButton ];
 		chooseTitle: 'Select Public Key';
 		whenTextChanged: [ self updateOkButton ];
-		yourself.
-
+		yourself
 ]
 
 { #category : #testing }
 IceTipAbstractSSHCredentialsModel >> isOkEnabled [
 
-	^ self username isNotEmpty and: [ 
-		  self publicKey isNotEmpty and: [ self privateKey isNotEmpty ] ]
+	^ self publicKey isNotEmpty and: [ self privateKey isNotEmpty ]
 ]
 
 { #category : #accessing }
@@ -83,10 +72,4 @@ IceTipAbstractSSHCredentialsModel >> publicKey [
 	^ publicKeyInput location
 		  ifNil: [ '' ]
 		  ifNotNil: [ :x | x pathString ]
-]
-
-{ #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> username [
-
-	^ usernameInput text
 ]
