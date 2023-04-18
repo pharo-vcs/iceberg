@@ -97,7 +97,7 @@ IceTipEntityModel >> repositoryModel: anObject [
 { #category : #accessing }
 IceTipEntityModel >> shortDescription [
 
-	^ self description asString lines
-		ifNotEmpty: [ :f | f first ]
-		ifEmpty: [  'No message' ]
+	^ self description asString
+		ifNotEmpty: [ :aString | aString lines first ]
+		ifEmpty: [ 'No message' ]
 ]
