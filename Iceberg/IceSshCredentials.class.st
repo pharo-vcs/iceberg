@@ -16,13 +16,13 @@ Class {
 { #category : #accessing }
 IceSshCredentials class >> defaultPrivateKey [ 	
 	self flag: #pharoTodo. "In fact this is different for windows. We need to change this."
-	^ (FileLocator home asFileReference / '.ssh' / 'id_rsa') pathString
+	^ (FileLocator home asFileReference / '.ssh' / 'id_ed25519') pathString
 ]
 
 { #category : #accessing }
 IceSshCredentials class >> defaultPublicKey [
 	self flag: #pharoTodo. "In fact this is different for windows. We need to change this."
-	^ (FileLocator home asFileReference / '.ssh' / 'id_rsa.pub') pathString
+	^ (FileLocator home asFileReference / '.ssh' / 'id_ed25519.pub') pathString
 ]
 
 { #category : #accessing }
