@@ -16,7 +16,7 @@ IceTipMergeCommand class >> defaultDescription [
 { #category : #'accessing - defaults' }
 IceTipMergeCommand class >> defaultName [
 
-	^ 'Merge into current'
+	^ 'Merge'
 ]
 
 { #category : #testing }
