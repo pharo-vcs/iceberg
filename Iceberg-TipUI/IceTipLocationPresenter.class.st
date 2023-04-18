@@ -124,7 +124,7 @@ IceTipLocationPresenter >> location [
 
 	fileReferenceLocation := locationInput text trim
 		ifNotEmpty: [ :value | value asFileReference ]
-		ifEmpty: [ ^ FileLocator home asFileReference ].
+		ifEmpty: [ ^ nil ].
 
 	(fileReferenceLocation
 		isContainedBy: IceLibgitRepository localRepositoriesLocation)

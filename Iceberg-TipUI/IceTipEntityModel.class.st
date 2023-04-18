@@ -96,9 +96,8 @@ IceTipEntityModel >> repositoryModel: anObject [
 
 { #category : #accessing }
 IceTipEntityModel >> shortDescription [
-	"Answer a <String> describing a short version of the receiver from its description. If there is no description, answer an empty <String> to avoid breaking the Push (see https://github.com/pharo-project/pharo/issues/12123)"
 
 	^ self description asString
 		ifNotEmpty: [ :aString | aString lines first ]
-		ifEmpty: [ String empty ]
+		ifEmpty: [ 'No message' ]
 ]

@@ -20,27 +20,27 @@ IceTipRepositoriesModel >> repositories [
 IceTipRepositoriesModel >> repositoryGroups [
 	| sortGroup groups |
 
-	groups := self repositories 
-		collect: [ :each | 
-			each entity project tags 
+	groups := self repositories
+		collect: [ :each |
+			each entity project tags
 				ifNotEmpty: [ :tags | tags first asString ]
 				ifEmpty: [ '' ] ]
 		as: Set.
-	
-	"sort groups: 
-	 	1. 'general' group (all projects without a group tag). 
+
+	"sort groups:
+	 	1. 'general' group (all projects without a group tag).
 		2. user defined groups sorted alphabetically
 		3. last (always last) system group"
 	sortGroup := Dictionary newFromPairs: { ''. 0. 'system'. 100 }.
-	groups := groups sorted: 
-		[ :each | sortGroup at: each ifAbsent: [ 1 ] ] ascending, 
+	groups := groups sorted:
+		[ :each | sortGroup at: each ifAbsent: [ 1 ] ] ascending,
 		[ :each | each yourself ] ascending.
-	
+
 	"add default group first if it is not there yet."
-	(groups first = '') 
+	(groups isEmpty or: [ groups first = ''])
 		ifFalse: [ groups := groups copyWithFirst: '' ].
-	
-	^ groups collect: [ :each | 
+
+	^ groups collect: [ :each |
 		IceTipRepositoryGroupModel new
 			repositoryProvider: repositoryProvider;
 			group: each ]
