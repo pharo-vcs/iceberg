@@ -5,7 +5,8 @@ Class {
 	#name : #IceTipMergeBranchPanel,
 	#superclass : #IceTipExistingBranchPanel,
 	#instVars : [
-		'mergeType'
+		'mergeType',
+		'isModifyingWindowTitle'
 	],
 	#category : #'Iceberg-TipUI-View-Branch'
 }

@@ -108,8 +108,8 @@ IceTipOptionDialog >> selectedType [
 IceTipOptionDialog >> selectionChanged: aType [
 
 	type := aType.
-	aType ifNotNil: [ 
-		self window title: type titleForWindow.
+	aType ifNotNil: [
+		self updateWindowTitle.
 		self replacePanelWith: type ]
 ]
 
@@ -117,4 +117,10 @@ IceTipOptionDialog >> selectionChanged: aType [
 IceTipOptionDialog >> typeList [
 
 	^ typeList
+]
+
+{ #category : #private }
+IceTipOptionDialog >> updateWindowTitle [
+	
+	self window title: type titleForWindow
 ]

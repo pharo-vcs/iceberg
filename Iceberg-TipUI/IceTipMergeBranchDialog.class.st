@@ -88,5 +88,11 @@ IceTipMergeBranchDialog >> setModelBeforeInitialization: anObject [
 { #category : #initialization }
 IceTipMergeBranchDialog >> titleForWindow [
 
-	^ 'Select branch to merge into ' , self model branchName
+	^ 'Select branch to merge into ' , (self model branchName contractTo: 45)
+]
+
+{ #category : #activation }
+IceTipMergeBranchDialog >> updateWindowTitle [
+
+	self window title: self titleForWindow
 ]
