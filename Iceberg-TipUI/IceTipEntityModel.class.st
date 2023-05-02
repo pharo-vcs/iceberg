@@ -54,6 +54,12 @@ IceTipEntityModel >> entity [
 	^ entity
 ]
 
+{ #category : #fetching }
+IceTipEntityModel >> fetch [
+
+	self entity fetch
+]
+
 { #category : #initialization }
 IceTipEntityModel >> initializeEntity: anObject [
 	entity := anObject.
