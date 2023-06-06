@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'oldNode'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -32,12 +32,6 @@ IceModification >> accept: aVisitor [
 	^ aVisitor visitModification: self
 ]
 
-{ #category : #accessing }
-IceModification >> description [
-	
-	^ definition name
-]
-
 { #category : #operations }
 IceModification >> inverse [
 	
@@ -48,12 +42,6 @@ IceModification >> inverse [
 IceModification >> isModification [
 	
 	^ true
-]
-
-{ #category : #accessing }
-IceModification >> key [
-	
-	^ definition key
 ]
 
 { #category : #accessing }

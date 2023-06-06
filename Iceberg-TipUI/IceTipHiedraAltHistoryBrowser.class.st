@@ -132,15 +132,6 @@ IceTipHiedraAltHistoryBrowser >> refreshCommands [
 ]
 
 { #category : #accessing }
-IceTipHiedraAltHistoryBrowser >> refreshCommitList [
-	| commitModels |
-	
-	commitModels := self model commitModels.
-	commitList items: commitModels.
-	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
-]
-
-{ #category : #accessing }
 IceTipHiedraAltHistoryBrowser >> refreshHiedraColumn [
 	| ancestorIds walk |
 
@@ -160,12 +151,6 @@ IceTipHiedraAltHistoryBrowser >> refreshHiedraColumn [
 	hiedraColumnController ruler: (HiRulerBuilder
 		newRulerValues: ancestorIds keys
 		linksBlock: [ :id | ancestorIds at: id ])
-]
-
-{ #category : #accessing }
-IceTipHiedraAltHistoryBrowser >> selectedCommit [
-
-	^ commitList selection selectedItem
 ]
 
 { #category : #accessing }

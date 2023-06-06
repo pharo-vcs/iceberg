@@ -58,15 +58,6 @@ IceTipMergePatchMorph >> keepAllCurrentVersion [
 	self updateSource
 ]
 
-{ #category : #actions }
-IceTipMergePatchMorph >> keepCurrentVersion [
-	"Mark the conflict as local."
-	
-	self selectedChangeWrapper chooseLocal.
-	self changed: #changes.
-	self updateSource
-]
-
 { #category : #testing }
 IceTipMergePatchMorph >> markAllAsConflict [
 	"Mark all conflicts as unresolved."

@@ -194,11 +194,6 @@ IcePharoPlugin >> fetchIfNeeded: aRepository [
 ]
 
 { #category : #events }
-IcePharoPlugin >> repositoryWasCreated: aRepository [
-
-]
-
-{ #category : #events }
 IcePharoPlugin >> repositoryWillBeCreated: aRepository [
 	SystemVersion current major < 7 ifTrue: [ ^ self ].
 	

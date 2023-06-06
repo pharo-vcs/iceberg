@@ -256,12 +256,6 @@ IceCommit >> newCommitWalk [
 ]
 
 { #category : #'API - packages' }
-IceCommit >> packageNames [
-	
-	^ self subclassResponsibility
-]
-
-{ #category : #'API - packages' }
 IceCommit >> packages [
 
 	^ self packageNames collect: [ :name | IcePackage named: name repository: self repository ]
@@ -281,12 +275,6 @@ IceCommit >> printOn: aStream [
 		nextPutAll: '(';
 		nextPutAll: self id asString;
 		nextPutAll: ')'
-]
-
-{ #category : #'API - project' }
-IceCommit >> project [
-	
-	self subclassResponsibility
 ]
 
 { #category : #printing }
