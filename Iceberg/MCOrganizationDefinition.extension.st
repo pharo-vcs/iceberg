@@ -5,12 +5,6 @@ MCOrganizationDefinition >> addAnalysisToPackageChangeSet: aPackageChangeSet cha
 	aPackageChangeSet addOrganisationChange: aChange
 ]
 
-{ #category : #'*Iceberg-Changes' }
-MCOrganizationDefinition >> addToPackageDiff: anIcePackageDiff leftSnapshot: leftSnapshot rightSnapshot: rightSnapshot [ 
-	
-	^ anIcePackageDiff ensureOrganization: categories
-]
-
 { #category : #'*Iceberg-Core' }
 MCOrganizationDefinition >> iceClass [
 	^ nil
