@@ -11,9 +11,3 @@ MCPatchOperation >> myVersionOn: aDiff [
 	
 	self subclassResponsibility
 ]
-
-{ #category : #'*Iceberg-Changes' }
-MCPatchOperation >> theirVersionOn: aDiff [ 
-	
-	self subclassResponsibility
-]
