@@ -25,6 +25,15 @@ IceGitCommitMessageTest >> testCommitNullString [
 ]
 
 { #category : #tests }
+IceGitCommitMessageTest >> testCommitWideString [
+	| msg |
+	msg := ZnUTF8Encoder new decodeBytes: (ByteArray readHexFrom: 'e38182e38184e38186'). "Japanese vowels a,i, and u - 'あいう'"
+	self repository commitWithMessage: msg.
+	self assert: self repository head commit comment equals: msg.
+
+]
+
+{ #category : #tests }
 IceGitCommitMessageTest >> testCommitWithEndingPesosSign [
 	"We used to have a problem that in some messages (depending of padding) the $ was added at the end"
 	| msg |
