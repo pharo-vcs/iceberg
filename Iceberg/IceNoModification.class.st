@@ -26,11 +26,6 @@ IceNoModification >> inverse [
 ]
 
 { #category : #testing }
-IceNoModification >> isConflict [
-	^ false
-]
-
-{ #category : #testing }
 IceNoModification >> isNoModification [
 	
 	^ true

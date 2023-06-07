@@ -74,16 +74,6 @@ IceTag >> printOn: aStream [
 		print: self name
 ]
 
-{ #category : #accessing }
-IceTag >> repository [
-	^ repository
-]
-
-{ #category : #accessing }
-IceTag >> repository: anObject [
-	repository := anObject
-]
-
 { #category : #querying }
 IceTag >> versionFor: package [
 	^ self commit versionFor: package

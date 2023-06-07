@@ -6,7 +6,7 @@ See my sub/superclasses for more information.
 Class {
 	#name : #IceCodeDefinition,
 	#superclass : #IceDefinition,
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #'instance creation' }
@@ -36,12 +36,6 @@ IceCodeDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 IceCodeDefinition >> addToPatcher: aMCPatcher [ 
 	
 	self subclassResponsibility
-]
-
-{ #category : #accessing }
-IceCodeDefinition >> contents [
-	
-	^ self subclassResponsibility
 ]
 
 { #category : #comparing }

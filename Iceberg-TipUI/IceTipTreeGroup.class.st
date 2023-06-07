@@ -67,11 +67,6 @@ IceTipTreeGroup >> ensurePath: aPath [
 		ifEmpty: [ next ]
 ]
 
-{ #category : #accessing }
-IceTipTreeGroup >> icon [
-	^ icon
-]
-
 { #category : #testing }
 IceTipTreeGroup >> isGroup [
 	^ true

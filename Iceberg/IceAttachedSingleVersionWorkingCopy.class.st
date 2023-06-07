@@ -62,18 +62,6 @@ IceAttachedSingleVersionWorkingCopy >> mergeStateWith: aMergeableState [
 ]
 
 { #category : #accessing }
-IceAttachedSingleVersionWorkingCopy >> referenceCommit [
-	
-	^ repository workingCopy referenceCommit
-]
-
-{ #category : #accessing }
-IceAttachedSingleVersionWorkingCopy >> referenceCommits [
-	
-	^ { self referenceCommit }
-]
-
-{ #category : #accessing }
 IceAttachedSingleVersionWorkingCopy >> singleCommit [
 	
 	^ self referenceCommit
