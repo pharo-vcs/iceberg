@@ -13,9 +13,3 @@ MCModification >> myVersionOn: aDiff [
 
 	^ aDiff versionFromDefinition: modification
 ]
-
-{ #category : #'*Iceberg-Changes' }
-MCModification >> theirVersionOn: aDiff [
-
-	^ aDiff versionFromDefinition: obsoletion
-]
