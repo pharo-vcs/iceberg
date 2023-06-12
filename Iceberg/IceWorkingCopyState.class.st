@@ -66,12 +66,6 @@ IceWorkingCopyState >> mergeCommit: aCommit [
 	self subclassResponsibility
 ]
 
-{ #category : #merging }
-IceWorkingCopyState >> mergeStateWith: aMergeableState [
-	
-	self subclassResponsibility
-]
-
 { #category : #accessing }
 IceWorkingCopyState >> referenceCommit [
 	

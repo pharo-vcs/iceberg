@@ -4,7 +4,7 @@ I am an empty working copy, with no loaded packages.
 Class {
 	#name : #IceEmptyWorkingCopy,
 	#superclass : #IceWorkingCopyState,
-	#category : 'Iceberg-WorkingCopy'
+	#category : #'Iceberg-WorkingCopy'
 }
 
 { #category : #display }
@@ -17,12 +17,6 @@ IceEmptyWorkingCopy >> description [
 IceEmptyWorkingCopy >> isDetached [
 	"I have no reference commit, I cannot be detached"
 	^ false
-]
-
-{ #category : #merging }
-IceEmptyWorkingCopy >> mergeStateWith: aMergeableState [
-	
-	^ aMergeableState mergeWithEmptyWorkingCopyState: self
 ]
 
 { #category : #accessing }
