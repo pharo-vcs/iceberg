@@ -138,12 +138,6 @@ IceUnbornBranch >> packageNames [
 	^ #()
 ]
 
-{ #category : #'API - packages' }
-IceUnbornBranch >> packages [
-
-	^ #()
-]
-
 { #category : #'API - remotes' }
 IceUnbornBranch >> pull [
 	

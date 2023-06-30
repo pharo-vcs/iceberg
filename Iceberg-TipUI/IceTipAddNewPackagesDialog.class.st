@@ -15,6 +15,16 @@ Class {
 	#category : #'Iceberg-TipUI-View-Branch'
 }
 
+{ #category : #commands }
+IceTipAddNewPackagesDialog class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
+
+	rootCommandGroup register:
+		((CmCommandGroup named: 'package list commands') asSpecGroup
+			 register: IceTipSelectAllPackagesCommand forSpec;
+			 register: IceTipUnselectAllPackagesCommand forSpec;
+			 yourself)
+]
+
 { #category : #actions }
 IceTipAddNewPackagesDialog >> accept [
 
@@ -62,21 +72,22 @@ IceTipAddNewPackagesDialog >> iconForWindow [
 { #category : #initialization }
 IceTipAddNewPackagesDialog >> initializePackagesList [
 
-	packagesList addColumn: (SpCompositeTableColumn new
-		addColumn: (SpCheckBoxTableColumn new
-			evaluated: [ :item | selectedPackages includes: item ];
-			onActivation: [ :item | selectedPackages add: item ];
-			onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
-			beNotExpandable;
-			yourself);
-		addColumn: (SpImageTableColumn new
-			evaluated: [ :each | self iconNamed: #package ];
-			beNotExpandable;
-			yourself);
-		addColumn: (SpStringTableColumn new
-			evaluated: [:e | e name];
-			yourself);
-		yourself)
+	packagesList
+		addColumn: (SpCompositeTableColumn new
+			addColumn: (SpCheckBoxTableColumn new
+				evaluated: [ :item | selectedPackages includes: item ];
+				onActivation: [ :item | selectedPackages add: item ];
+				onDeactivation: [ :item | selectedPackages remove: item ifAbsent: [  ] ];
+				beNotExpandable;
+				yourself);
+			addColumn: (SpImageTableColumn new
+				evaluated: [ :each | self iconNamed: #package ];
+				beNotExpandable;
+				yourself);
+			addColumn: (SpStringTableColumn new
+				evaluated: [:e | e name];
+				yourself));
+		contextMenu: [ (self rootCommandsGroup / 'package list commands') beRoot asMenuPresenter ]
 ]
 
 { #category : #initialization }
@@ -109,6 +120,18 @@ IceTipAddNewPackagesDialog >> selectedPackage [
 	^ packagesList selectedItem
 ]
 
+{ #category : #accessing }
+IceTipAddNewPackagesDialog >> selectedPackages [
+
+	^ selectedPackages
+]
+
+{ #category : #accessing }
+IceTipAddNewPackagesDialog >> selectedPackages: anObject [
+
+	selectedPackages := anObject
+]
+
 { #category : #'accessing - model' }
 IceTipAddNewPackagesDialog >> setModelBeforeInitialization: somePackages [
 
@@ -122,8 +145,8 @@ IceTipAddNewPackagesDialog >> titleForWindow [
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> updatePresenter [ 
-	
+IceTipAddNewPackagesDialog >> updatePresenter [
+
 	packagesList items: packages
 ]
 

@@ -2,7 +2,7 @@
 I'm a tool to show all repositories registered on this image. 
 I define basic actions and an entry point to manage each repository individually.
 
-IceTipRepositoriesBrowser new openWithSpec.
+IceTipRepositoriesBrowser new open.
 "
 Class {
 	#name : #IceTipRepositoriesBrowser,
@@ -70,7 +70,7 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 	"Add a custom menu item to the world menu"	
 	<worldMenu> 
 	
-	(aBuilder item: #'Iceberg')
+	(aBuilder item: #'Git Repositories Browser')
 		order: 1;
 		icon: self iconForWorldMenu;
 		parent: #'Versioning';

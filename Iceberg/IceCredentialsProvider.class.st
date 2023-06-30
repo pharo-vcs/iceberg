@@ -85,14 +85,14 @@ IceCredentialsProvider class >> settingsOn: aBuilder [
 				type: #FilePathEncoder;
 				default: IceSshCredentials defaultPublicKey ;
 				label: 'Public SSH key';
-				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_rsa.pub'.
+				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519.pub or id_rsa.pub'.
 			(aBuilder setting: #privateKey)
 				target: self;
 				targetSelector: #sshCredentials;
 				type: #FilePathEncoder;
 				default: IceSshCredentials defaultPrivateKey;
 				label: 'Private SSH key';
-				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_rsa'.
+				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519 or id_rsa'.
 			(aBuilder setting: #keyPassphrase)
 				target: self;
 				type: #Password;

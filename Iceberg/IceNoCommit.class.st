@@ -133,18 +133,6 @@ IceNoCommit >> project [
 	^ repository newUnbornProject
 ]
 
-{ #category : #accessing }
-IceNoCommit >> repository [
-
-	^ repository
-]
-
-{ #category : #accessing }
-IceNoCommit >> repository: aRepository [
-
-	repository := aRepository
-]
-
 { #category : #'private - monticello' }
 IceNoCommit >> snapshotFor: anIceSavedPackage [ 
 	

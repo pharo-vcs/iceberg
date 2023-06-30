@@ -20,13 +20,15 @@ IceLibgitTonelLog >> basepathOf: aPath [
 { #category : #private }
 IceLibgitTonelLog >> definitionFor: aMethod path: aPath commit: aCommit [
 	^ ((IceLibgitTonelLogReader fileName: aPath on: aCommit)
-		package: aMethod package mcPackage; 
+		package: aMethod package mcPackage;
 		packageDirectory: (self repository directoryPathStringForPackage: aMethod package);
 		definitions)
-		detect: [ :each | each isMethodDefinition and: [ each selector = aMethod selector  ] ]
-		ifNone: [ 
-			 "not found, return 'NULL' object: compare will fail anyway"
-			MCMethodDefinition 
+		detect: [ :each | 
+			each isMethodDefinition
+				and: [ each selector = aMethod selector
+						and: [ each method isClassSide = aMethod isClassSide ] ] ]
+		ifNone: [  "not found, return 'NULL' object: compare will fail anyway"
+			MCMethodDefinition
 				className: aMethod origin name
 				selector: aMethod selector
 				category: #''

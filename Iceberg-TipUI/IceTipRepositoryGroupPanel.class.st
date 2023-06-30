@@ -116,7 +116,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			title: 'Branch';
 			evaluated: #branchName;
 			yourself);
-		contextMenu: [ self selectionCommandsGroup beRoot asMenuPresenter ];
+		contextMenu: [ self selectionCommandsGroup ifNotNil: [ :group | group beRoot asMenuPresenter ] ];
 		contextKeyBindings: self keyBindingsCommandsGroup asKMCategory;
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]

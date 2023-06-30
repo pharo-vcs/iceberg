@@ -33,12 +33,6 @@ IceBranch >> changesFromCommit: anIceCommit [
 	^ self commit changesFromCommit: anIceCommit
 ]
 
-{ #category : #'API - history' }
-IceBranch >> commitsDo: aBlockClosure [ 
-	
-	self newCommitWalk commitsDo: aBlockClosure
-]
-
 { #category : #'API - branches' }
 IceBranch >> delete [
 	
@@ -140,12 +134,6 @@ IceBranch >> properties [
 IceBranch >> snapshotFor: anIceSavedPackage [ 
 	
 	^ self commit snapshotFor: anIceSavedPackage
-]
-
-{ #category : #validation }
-IceBranch >> validateIsBranch [
-	
-	"Nothing. I'm a branch"
 ]
 
 { #category : #'private - changes' }

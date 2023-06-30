@@ -73,12 +73,6 @@ IceMethodContainerDefinition >> name [
 	^ name , (isMeta ifTrue: [ ' class' ] ifFalse: [ '' ])
 ]
 
-{ #category : #accessing }
-IceMethodContainerDefinition >> name: aString [
-
-	name := aString
-]
-
 { #category : #patching }
 IceMethodContainerDefinition >> removeFrom: aPatcher [
 	

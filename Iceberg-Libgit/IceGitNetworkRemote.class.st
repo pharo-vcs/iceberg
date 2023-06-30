@@ -31,11 +31,6 @@ IceGitNetworkRemote class >> isAbstract [
 	^ self == IceGitNetworkRemote 
 ]
 
-{ #category : #private }
-IceGitNetworkRemote >> basicUrl: aString [
-	url := aString
-]
-
 { #category : #accessing }
 IceGitNetworkRemote >> detailedInfo [
 	^ { 

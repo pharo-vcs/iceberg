@@ -64,14 +64,6 @@ IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 
 ]
 
-{ #category : #accessing }
-IceClassDefinition >> contents [
-	mcDefinition ifNil: [ ^ '' ].
-	^ self isMeta
-		ifFalse: [ mcDefinition fullDefinitionString ]
-		ifTrue: [ mcDefinition classDefinitionString ]
-]
-
 { #category : #testing }
 IceClassDefinition >> isClassDefinition [
 	
