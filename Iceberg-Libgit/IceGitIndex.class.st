@@ -42,7 +42,7 @@ IceGitIndex >> commitWithMessage: message andParents: parentCommits [
 		index free.
 		commitId := (LGitCommitBuilder of: self repositoryHandle)
 			tree: (LGitTree of: self repositoryHandle fromId: indexTreeId);
-			message: message withUnixLineEndings utf8Encoded asString "FFI is expecting an string";
+			message: message withUnixLineEndings "FFI is expecting an string";
 			parents:
 				(self repositoryHandle isUnborn
 					ifTrue: [ #() ]
