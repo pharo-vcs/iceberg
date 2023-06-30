@@ -55,12 +55,6 @@ IceAttachedSingleVersionWorkingCopy >> mergeCommit: mergeCommit [
 		execute.
 ]
 
-{ #category : #merging }
-IceAttachedSingleVersionWorkingCopy >> mergeStateWith: aMergeableState [
-	
-	^ aMergeableState mergeWithSingleVersionWorkingCopyState: self
-]
-
 { #category : #accessing }
 IceAttachedSingleVersionWorkingCopy >> singleCommit [
 	
