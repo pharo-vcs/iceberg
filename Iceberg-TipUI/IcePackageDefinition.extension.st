@@ -9,8 +9,8 @@ IcePackageDefinition >> browse [
 
 { #category : #'*Iceberg-TipUI' }
 IcePackageDefinition >> canBeBrowsed [
-	
-	^ RPackage organizer includesPackageNamed: name
+
+	^ self packageOrganizer hasPackage: name
 ]
 
 { #category : #'*Iceberg-TipUI' }

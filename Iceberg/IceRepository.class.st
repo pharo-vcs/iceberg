@@ -170,7 +170,7 @@ IceRepository class >> registerRepository: aRepository [
 { #category : #registry }
 IceRepository class >> registeredRepositoryIncludingPackage: aPackage [ 
 	^ self registry 
-		detect: [ :each | each includesPackageNamed: aPackage name ]
+		detect: [ :repoitory | repoitory includesPackageNamed: aPackage name ]
 		ifNone: [ nil ]
 ]
 

@@ -54,18 +54,18 @@ IceSystemEventListener class >> handleVersionLoaded: ann [
 	"now we can verify its status"
 	RPackageSet withoutCacheDo: [
 		IceRepository registry
-			do: [ :each | 
-				(each includesPackageNamed: package name)
+			do: [ :repository | 
+				(repository includesPackageNamed: package name)
 					ifTrue: [ | icePackage isDirty |
-						icePackage := each packageNamed: package name.
+						icePackage := repository packageNamed: package name.
 						self flag: #pharoTodo. "Ugly hack. Should enhance for next version"
-						isDirty := each workingCopy referenceCommit isUnknownCommit
+						isDirty := repository workingCopy referenceCommit isUnknownCommit
 							ifTrue: [ true ]
 							ifFalse: [ | diff |
-								diff := each workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
+								diff := repository workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
 								diff includesPackageNamed: package name ].
 						icePackage beDirty: isDirty.
-						Iceberg announcer announce: (IceRepositoryModified for: each) ] ]]
+						Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]]
 ]
 
 { #category : #'class initialization' }
