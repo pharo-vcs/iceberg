@@ -324,8 +324,8 @@ IceWorkingCopy >> forceCalculateDirtyPackages [
 		targetVersion: self referenceCommit;
 		buildFull.
 
-	self loadedPackages do: [ :each |
-		each beDirty: (diff includesPackageNamed: each name) ].
+	self loadedPackages do: [ :package |
+		package beDirty: (diff includesPackageNamed: package name) ].
 ]
 
 { #category : #'API - commits' }
@@ -406,9 +406,9 @@ IceWorkingCopy >> isInMerge [
 ]
 
 { #category : #'API - packages' }
-IceWorkingCopy >> isLoadedPackageNamed: aString [ 
-	
-	^ RPackageOrganizer default includesPackageNamed: aString
+IceWorkingCopy >> isLoadedPackageNamed: aString [
+
+	^ self packageOrganizer hasPackage: aString
 ]
 
 { #category : #'API - changes' }
@@ -495,8 +495,8 @@ IceWorkingCopy >> markAllPackagesAsClean [
 { #category : #'API - packages' }
 IceWorkingCopy >> markAsCleanPackagesNotInDiff: aDiff [
 	
-	self markAsCleanPackagesThat: [ :each |
-		(aDiff includesPackageNamed: each name) not ]
+	self markAsCleanPackagesThat: [ :package |
+		(aDiff includesPackageNamed: package name) not ]
 ]
 
 { #category : #'API - packages' }
