@@ -62,30 +62,40 @@ IceTipInteractiveErrorVisitor >> repository: anObject [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
-	UIManager default 
-		alert: anError messageText
-		title: 'Iceberg authentication Error'
+	self defaultApplication 
+		label: anError messageText;
+		title: 'Iceberg authentication Error';
+		openModal
 ]
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
-	UIManager default 
-		alert: anError messageText
-		title: 'Iceberg conflicts while checking out'
+
+	self defaultApplication
+		label: anError messageText;
+		title: 'Iceberg conflicts while checking out';
+		openModal
 ]
 
 { #category : #visiting }
-IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [ 
-	UIManager default 
-		alert: ('The clone location {1} already exists' format: { anError location })
-		title: 'Clone action failed'	
+IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
+
+		self defaultApplication 
+		label:
+		('The clone location {1} already exists' format:
+			 { anError location });
+		title: 'Clone action failed';
+		openModal
 ]
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
-	UIManager default 
-		alert: ('The clone remote {1} could not been found' format: { anError remoteUrl })
-		title: 'Clone action failed'	
+
+		self defaultApplication 
+		label: ('The clone remote {1} could not been found' format:
+				 { anError remoteUrl });
+		title: 'Clone action failed';
+		openModal
 ]
 
 { #category : #visiting }
@@ -117,11 +127,14 @@ IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitMergeAborted: anError [
-	UIManager default 
-		alert: (anError messageText ifNil: ['Automatic (fast-forward) merge is not possible. 
+
+		self defaultApplication 
+		label: (anError messageText ifNil: [
+				 'Automatic (fast-forward) merge is not possible. 
 Please perform the merge manually, then proceed with your previous operation.
-WARNING: If you have external files, you may need to verify the conflicts there.'])
-		title: 'Automatic merge failed'
+WARNING: If you have external files, you may need to verify the conflicts there.' ]);
+		title: 'Automatic merge failed';
+		openModal
 ]
 
 { #category : #visiting }
@@ -154,10 +167,12 @@ IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitNoRemote: anError [
-	UIManager default 
-		alert: 'There are no remotes defined for this repository. 
-Add one before continue.'
-		title: 'Remote action failed'	
+
+		self defaultApplication 
+		label: 'There are no remotes defined for this repository. 
+Add one before continue.';
+		title: 'Remote action failed';
+		openModal
 ]
 
 { #category : #visiting }
