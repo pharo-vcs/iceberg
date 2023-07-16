@@ -8,7 +8,7 @@ Otherwise, libgit errors may be thrown to the user and produce ugly effects. E.g
 Class {
 	#name : #IceShouldHandleLibgitErrors,
 	#superclass : #ReAbstractRule,
-	#category : 'Iceberg-ArchitecturalRules'
+	#category : #'Iceberg-ArchitecturalRules'
 }
 
 { #category : #'testing-interest' }
@@ -55,7 +55,7 @@ IceShouldHandleLibgitErrors >> libgitRepositoryHandleAccessorsForClass: aClass [
 
 	^ aClass allMethods
 		select:
-			[ :m | m pragmas anySatisfy: [ :p | p keyword = IceLibgitRepository libgitRepositoryHandleAccessorPragmaSelector ] ]
+			[ :m | m pragmas anySatisfy: [ :p | p selector = IceLibgitRepository libgitRepositoryHandleAccessorPragmaSelector ] ]
 ]
 
 { #category : #accessing }

@@ -44,6 +44,12 @@ IceTipInteractiveErrorVisitor >> context: anObject [
 	context := anObject
 ]
 
+{ #category : #visiting }
+IceTipInteractiveErrorVisitor >> defaultApplication [
+
+	^ SpApplication defaultApplication
+]
+
 { #category : #accessing }
 IceTipInteractiveErrorVisitor >> repository [
 	^ repository
@@ -156,12 +162,19 @@ Add one before continue.'
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitNothingToCommitError: anError [
-	UIManager default inform: 'There is nothing to commit.'
+
+	self defaultApplication newInform
+		title: 'There is nothing to commit.';
+		openModal
 ]
 
 { #category : #visiting }
-IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [ 
-	UIManager default inform: ('Remote "{1}" already exists.' format: { anError remoteName })
+IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [
+
+	self defaultApplication newInform
+		title:
+			('Remote "{1}" already exists.' format: { anError remoteName });
+		openModal
 ]
 
 { #category : #visiting }
