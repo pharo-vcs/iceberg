@@ -29,6 +29,12 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 		issueText text trim }.
 ]
 
+{ #category : #private }
+IceGitHubNewBranchFromIssuePanel >> defaultApplication [
+
+	^ SpApplication defaultApplication
+]
+
 { #category : #layout }
 IceGitHubNewBranchFromIssuePanel >> defaultLayout [
 
@@ -187,22 +193,24 @@ IceGitHubNewBranchFromIssuePanel >> validateIssue: aString [
 	aString trimmed isEmpty ifTrue: [ ^ self ].
 	aString isAllDigits ifFalse: [ ^ self ].
 	number := aString asNumber.
-	(issue isNil or: [ (issue at: 'number') ~= number ]) ifFalse: [ ^ self ].
+	(issue isNil or: [ (issue at: 'number') ~= number ]) ifFalse: [
+		^ self ].
 	remote := self selectRemoteModel remote.
-	
-	self wait: 500 milliSeconds thenDo: [ 	
+
+	self wait: 500 milliSeconds thenDo: [
 		[
-			issue := IceGitHubAPI new 
-				beAnonymous;
-				getIssue: remote owner 
-					project: remote projectName 
-					number: number.
-			UIManager default defer: [ 
-				self updateText: (self sanitizeTitle: (issue at: 'title')) ] ]
-		on: IceGitHubError do: [ :e | 
-			e messageText = 'Not Found' ifFalse: [ e pass ].
-			 UIManager default defer: [ 
-				self updateText: self unknownTitle ] ] ]
+		issue := IceGitHubAPI new
+			         beAnonymous;
+			         getIssue: remote owner
+			         project: remote projectName
+			         number: number.
+		self defaultApplication defer: [
+			self updateText: (self sanitizeTitle: (issue at: 'title')) ] ]
+			on: IceGitHubError
+			do: [ :e |
+				e messageText = 'Not Found' ifFalse: [ e pass ].
+				self defaultApplication defer: [
+					self updateText: self unknownTitle ] ] ]
 ]
 
 { #category : #private }
