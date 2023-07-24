@@ -482,7 +482,7 @@ IceRepository >> forget [
 	Iceberg announcer announce: (IceRepositoryForgotten repository: self)
 ]
 
-{ #category : #'*Iceberg-Changes' }
+{ #category : #accessing }
 IceRepository >> fullWorkingCopyDiff [
 	^ IceDiff new
 		source: self workingCopy;
@@ -656,11 +656,6 @@ IceRepository >> lookupCommit: commitId [
 { #category : #'API - history' }
 IceRepository >> lookupCommit: commitId ifAbsent: aBlock [
 	self subclassResponsibility
-]
-
-{ #category : #'*Iceberg-Adapters' }
-IceRepository >> metacelloAdapter: version [
-	^ IceMetacelloRepositoryAdapter for: self withVersion: version
 ]
 
 { #category : #'API - packages' }
