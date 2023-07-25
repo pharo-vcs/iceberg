@@ -62,7 +62,7 @@ IcePackage >> currentCommits [
 	^ repository workingCopy referenceCommits
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : #accessing }
 IcePackage >> directoryName [
 
 	^ self repository directoryNameForPackage: self
