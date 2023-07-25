@@ -18,7 +18,7 @@ Class {
 { #category : #actions }
 IceTipFiletreeToTonelDialog >> accept [
 	
-	(IceTipStandardAction new)
+	IceTipStandardAction new
 		repository: self repository; 
 		message: ('Migrating {1} sources to tonel' format: { self repository name });
 		onSuccessRepositoryModified;

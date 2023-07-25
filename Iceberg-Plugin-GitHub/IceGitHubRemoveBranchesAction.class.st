@@ -62,7 +62,9 @@ IceGitHubRemoveBranchesAction >> removeBranch: json [
 		deleteBranch: self remote owner 
 			project: self remote projectBasename
 			name: branchName.
-	UIManager default inform: ('Branch {1} removed.' format: { branchName })		
+	SpApplication defaultApplication 
+		title: ('Branch {1} removed.' format: { branchName });
+		openModal	
 	
 ]
 

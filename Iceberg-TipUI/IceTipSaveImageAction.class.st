@@ -13,5 +13,5 @@ Class {
 IceTipSaveImageAction >> execute [
 
 	Smalltalk saveSession.
-	self inform: 'Image automatically saved'
+	SpApplication defaultApplication newInform title: 'Image automatically saved'; openModal
 ]

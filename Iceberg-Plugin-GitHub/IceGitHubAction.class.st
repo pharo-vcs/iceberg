@@ -9,7 +9,7 @@ Class {
 		'remote',
 		'retries'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Commands'
+	#category : #'Iceberg-Plugin-GitHub-Commands'
 }
 
 { #category : #testing }
@@ -68,7 +68,8 @@ IceGitHubAction >> reportError: error [
 	message := error messageBody.
 	message = 'Invalid field: head'
 		ifTrue: [ message := 'Branch does not exist on github. Please commit and push your changes.' ].
-	UIManager default 
-		alert: message
-		title: 'Error creating pull request: ', error messageText
+	SpApplication defaultApplication newInform
+		label: message;
+		title: 'Error creating pull request: ', error messageText;
+		openModal
 ]

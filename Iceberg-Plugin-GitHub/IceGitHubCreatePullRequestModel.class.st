@@ -60,9 +60,10 @@ IceGitHubCreatePullRequestModel >> accept [
 	| title |
 	title := self titlePanel text trim.
 	title ifEmpty: [ 
-		UIManager default 
-			alert: 'You need to specify a title for the pull request.' 
-			title: 'Error'. 
+		SpApplication defaultApplication newInform
+			label: 'You need to specify a title for the pull request.'; 
+			title: 'Error';
+			openModal.
 		^ self ].
 	
 	acceptBlock ifNotNil: [ 

@@ -63,7 +63,9 @@ IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 		ifNotEmpty: [ :commits | '{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
 	
-	^ UIManager default 
-		confirm: (('{1} has ongoing modifications ({2}). 
-Do you want to continue anyway?') format: { aRepository name. status asCommaString })
+	^ SpApplication defaultApplication newConfirm 
+		title: ('{1} has ongoing modifications.' format: { aRepository name.});
+		label: ('{2} 
+Do you want to continue anyway?' format: { status asCommaString });
+	openModal
 ]
