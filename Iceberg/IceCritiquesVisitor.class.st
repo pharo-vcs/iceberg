@@ -85,11 +85,10 @@ IceCritiquesVisitor >> visitNoModification: anIceNoModification [
 ]
 
 { #category : #visiting }
-IceCritiquesVisitor >> visitPackage: anIcePackageDefinition [ 
-	
+IceCritiquesVisitor >> visitPackage: anIcePackageDefinition [
+
 	| aPackage |
-	
-	aPackage := RPackage organizer packageNamed: anIcePackageDefinition name ifAbsent: [ ^ self ].
+	aPackage := self packageOrganizer packageNamed: anIcePackageDefinition name ifAbsent: [ ^ self ].
 	critiques addAll: aPackage critiques
 ]
 
