@@ -19,7 +19,7 @@ IceTipInspectCommand class >> defaultName [
 	^ 'Inspect...'
 ]
 
-{ #category : #executing }
+{ #category : #testing }
 IceTipInspectCommand >> canBeExecuted [
 
 	^ self context hasSelectedItem

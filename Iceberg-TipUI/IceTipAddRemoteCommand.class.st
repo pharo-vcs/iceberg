@@ -19,7 +19,7 @@ IceTipAddRemoteCommand class >> defaultName [
 	^ 'Add remote'
 ]
 
-{ #category : #executing }
+{ #category : #testing }
 IceTipAddRemoteCommand >> canBeExecuted [
 	"Any repository can have more remotes."
 

@@ -20,7 +20,7 @@ IceTipTreeCollapseCommand class >> defaultName [
 	^ 'Collapse'
 ]
 
-{ #category : #executing }
+{ #category : #testing }
 IceTipTreeCollapseCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
