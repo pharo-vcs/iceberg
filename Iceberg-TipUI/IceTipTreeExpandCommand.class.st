@@ -19,7 +19,7 @@ IceTipTreeExpandCommand class >> defaultName [
 	^ 'Expand'
 ]
 
-{ #category : #executing }
+{ #category : #testing }
 IceTipTreeExpandCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
