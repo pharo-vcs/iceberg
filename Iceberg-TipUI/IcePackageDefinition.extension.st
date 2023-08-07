@@ -4,7 +4,7 @@ Extension { #name : #IcePackageDefinition }
 IcePackageDefinition >> browse [
 	"Open a browser on the package, if it exists."
 
-	(RPackage organizer packageNamed: name ifAbsent: [ ^ self ]) browse
+	(self packageOrganizer packageNamed: name ifAbsent: [ ^ self ]) browse
 ]
 
 { #category : #'*Iceberg-TipUI' }
