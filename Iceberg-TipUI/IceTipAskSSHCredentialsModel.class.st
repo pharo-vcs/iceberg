@@ -19,6 +19,13 @@ IceTipAskSSHCredentialsModel >> cancelAction [
 	self cancelAskAction
 ]
 
+{ #category : #actions }
+IceTipAskSSHCredentialsModel >> cancelAskAction [
+
+	super cancelAskAction.
+	LGitNoCredentialsProvided signal
+]
+
 { #category : #accessing }
 IceTipAskSSHCredentialsModel >> newCredentials [
 

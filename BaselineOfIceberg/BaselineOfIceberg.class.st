@@ -72,13 +72,13 @@ BaselineOfIceberg >> customProjectAttributes [
 
 { #category : #baseline }
 BaselineOfIceberg >> libgit: spec [
-	spec 
-		baseline: 'LibGit' 
-		with: [ 
+	spec
+		baseline: 'LibGit'
+		with: [
 			spec
 				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.6';
   			loads: 'default' ].
-	spec  
+	spec
 		project: 'LibGit-Tests'
 		copyFrom: 'LibGit'
 		with: [ spec loads: #('tests') ]

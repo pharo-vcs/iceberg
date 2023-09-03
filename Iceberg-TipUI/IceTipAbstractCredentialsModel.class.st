@@ -71,8 +71,7 @@ IceTipAbstractCredentialsModel >> cancelAction [
 IceTipAbstractCredentialsModel >> cancelAskAction [
 
 	accepted := true.
-	self closeWindow.
-	LGitNoCredentialsProvided signal
+	self closeWindow
 ]
 
 { #category : #actions }
@@ -159,12 +158,12 @@ IceTipAbstractCredentialsModel >> open [
 	^ self credentials
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 IceTipAbstractCredentialsModel >> refreshCredentialsFromPresenter [
 	"Hook to update the credentials object from the presenter inputs."
 ]
 
-{ #category : #accessing }
+{ #category : #actions }
 IceTipAbstractCredentialsModel >> refreshPresenterFromCredentials [
 	"Hook to update the presenter input fields from the credentials object."
 ]
