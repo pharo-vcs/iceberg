@@ -54,18 +54,17 @@ IceGitHubRemoveBranchesAction >> remoteBranches [
 
 { #category : #actions }
 IceGitHubRemoveBranchesAction >> removeBranch: json [
+
 	| branchName |
-	
 	branchName := json at: 'name'.
-	IceGitHubAPI new 
+	IceGitHubAPI new
 		credentials: self credentials;
-		deleteBranch: self remote owner 
-			project: self remote projectBasename
-			name: branchName.
-	SpApplication defaultApplication 
+		deleteBranch: self remote owner
+		project: self remote projectBasename
+		name: branchName.
+	self defaultApplication
 		title: ('Branch {1} removed.' format: { branchName });
-		openModal	
-	
+		openModal
 ]
 
 { #category : #actions }

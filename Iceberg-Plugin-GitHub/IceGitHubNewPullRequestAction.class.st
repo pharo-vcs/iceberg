@@ -44,9 +44,10 @@ IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 		
 		pullRequestDatas := pullRequest send.
 		url := pullRequestDatas at: 'html_url'.
-		UIManager default
-			inform: 'Pull request created. Click to view on Github.' 
-			actionOnClick: [ WebBrowser openOn: url ] 
+		self defaultApplication newInform
+			title: 'Pull request created. Click to view on Github.';
+			onAccept: [ WebBrowser openOn: url ];
+			openModal.
 	]
 	on: IceGitHubError
 	do: [ :e | self reportError: e ]
@@ -54,18 +55,18 @@ IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 
 { #category : #private }
 IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
+
 	| status |
-	
 	status := OrderedCollection new: 2.
-	aRepository isModified 
-		ifTrue: [ status add: 'Uncommited changes' ].
-	(aRepository outgoingCommitsTo: remote) 
-		ifNotEmpty: [ :commits | '{1} not published' format: { commits size } ].
+	aRepository isModified ifTrue: [ status add: 'Uncommited changes' ].
+	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits |
+		'{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
-	
-	^ SpApplication defaultApplication newConfirm 
-		title: ('{1} has ongoing modifications.' format: { aRepository name.});
-		label: ('{2} 
+
+	^ self defaultApplication newConfirm
+		  title:
+			  ('{1} has ongoing modifications.' format: { aRepository name });
+		  label: ('{2} 
 Do you want to continue anyway?' format: { status asCommaString });
-	openModal
+		  openModal
 ]
