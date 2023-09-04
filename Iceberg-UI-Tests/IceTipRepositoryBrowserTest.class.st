@@ -48,5 +48,5 @@ IceTipRepositoryBrowserTest >> testHasMergeButtonOnTheLeft [
 	self
 		assert:
 			(presenter toolbar leftItems
-				anySatisfy: [ :aButton | aButton label = 'Merge' ])
+				anySatisfy: [ :aButton | 'Merge*' match: aButton label ])
 ]
