@@ -100,18 +100,16 @@ IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
+
 	| proceed |
-	
-	proceed := UIManager default
-		confirm: aWarning messageText
-		label: 'Warning!'  
-		trueChoice: 'Continue' 
-		falseChoice: 'Cancel'
-		cancelChoice: nil
-		default: false.
-	
-	proceed ifNil: [ ^ self ].
-	proceed ifTrue: [ aWarning resume ]
+	proceed := context application newConfirm
+		           label: aWarning messageText;
+		           title: 'Warning!';
+		           acceptLabel: 'Continue';
+		           cancelLabel: 'Cancel';
+					openModal.
+	proceed ifFalse: [ ^ self ].
+	aWarning resume
 ]
 
 { #category : #visiting }
@@ -151,18 +149,17 @@ IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
+
 	| proceed |
-	
-	proceed := UIManager default
-		confirm: aWarning messageText
-		label: 'Warning!'  
-		trueChoice: 'Commit' 
-		falseChoice: 'Cancel'
-		cancelChoice: nil
-		default: false.
-	
-	proceed ifNil: [ ^ self ].
-	proceed ifTrue: [ aWarning resume ]
+	proceed := context application newConfirm
+		           label: aWarning messageText;
+		           title: 'Warning!';
+		           acceptLabel: 'Commit';
+		           cancelLabel: 'Cancel';
+		         		openModal.
+
+	proceed ifFalse: [ ^ self ].
+	aWarning resume
 ]
 
 { #category : #visiting }
@@ -194,32 +191,32 @@ IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitRemoteDesynchronizedError: anError [
+
 	| continue command |
-	
-	continue := UIManager default
-		confirm: ('Your repository is out of sync with remote {1}. 
-You need to pull remote changes before continue and push your changes.' format: { anError remote })
-		label: 'Remote repository out of sync!'
-		trueChoice: 'Pull'
-		falseChoice: 'Cancel'
-		cancelChoice: nil
-		default: false.	
-	(continue isNil or: [continue not])
-		ifTrue: [ ^ self ].	
+	continue := context application newConfirm
+		            label:
+			            ('Your repository is out of sync with remote {1}. 
+You need to pull remote changes before continue and push your changes.'
+				             format: { anError remote }); 
+		            title: 'Remote repository out of sync!';
+		            acceptLabel: 'Pull';
+		            cancelLabel: 'Cancel';
+		            openModal.
+	(continue isNil or: [ continue not ]) ifTrue: [ ^ self ].
 
 	command := IcePullRemoteCommand new
-		repository: self repository;
-		remote: anError remote;
-		yourself.
+		           repository: self repository;
+		           remote: anError remote;
+		           yourself.
 
 	[ command executeWithContext: context ]
-	on: IceMergeAborted, IceShouldCommitBeforePull
-	do: [ :e |
-		self flag: #pharoTodo. "Refactor this" 
-		(e isKindOf: IceShouldCommitBeforePull)
-			ifTrue: [ e resume ]
-			ifFalse: [ e acceptError: self ] ].
-	
+		on: IceMergeAborted , IceShouldCommitBeforePull
+		do: [ :e |
+			self flag: #pharoTodo. "Refactor this"
+			(e isKindOf: IceShouldCommitBeforePull)
+				ifTrue: [ e resume ]
+				ifFalse: [ e acceptError: self ] ].
+
 	command isSuccess ifFalse: [ ^ self ].
 	anError isResumable ifTrue: [ ^ anError resume ].
 	anError retry
@@ -227,17 +224,17 @@ You need to pull remote changes before continue and push your changes.' format: 
 
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitShouldCommitBeforePullError: anError [
+
 	| continue |
-	continue := UIManager default
-		confirm:
-			'Your repository has uncommited changes. Merging incoming commits will change
+	continue := context application newConfirm
+		            label: 
+			            'Your repository has uncommited changes. Merging incoming commits will change
 your current working copy and your current state will not be recoverable. 
-We recommend that you commit first and then pull incoming changes again.'
-		label: 'You might loose your current changes!'
-		trueChoice: 'Proceed anyway'
-		falseChoice: 'Cancel'
-		cancelChoice: nil
-		default: false.	
+We recommend that you commit first and then pull incoming changes again.';
+		            title: 'You might loose your current changes!';
+		            acceptLabel: 'Proceed anyway';
+		            cancelLabel: 'Cancel';
+						openModal.
 	continue ifFalse: [ ^ self ].
 	anError resume
 ]

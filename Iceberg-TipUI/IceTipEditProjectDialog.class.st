@@ -332,21 +332,18 @@ IceTipEditProjectDialog >> onAccept: aBlockClosure [
 IceTipEditProjectDialog >> removeDirectory [
 
 	| toRemove newSelection |
-	
 	newSelection := selectedDirectoryPath parent.
 	toRemove := selectedDirectoryPath asResolvedBy: self model fileSystem.
 
-	toRemove exists 
-		ifTrue: [ 
-			(UIManager default 
-				questionWithoutCancel: ('Are you sure to delete ''{1}''?' format: {toRemove basename})  
-				title: 'Remove directory')
-				ifFalse: [ ^ self].
-			toRemove ensureDelete ].
-		
-	sourceDirectoryTree roots: { self model fileSystem }.
-	self expandAndSelect: newSelection.
+	toRemove exists ifTrue: [
+		(self application newConfirm
+			 title: 'Remove directory';
+			 label: ('Are you sure to delete ''{1}''?' format: { toRemove basename });
+			 openModal) ifFalse: [ ^ self ].
+		toRemove ensureDelete ].
 
+	sourceDirectoryTree roots: { self model fileSystem }.
+	self expandAndSelect: newSelection
 ]
 
 { #category : #accessing }
