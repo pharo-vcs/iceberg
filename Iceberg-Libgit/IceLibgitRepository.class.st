@@ -768,6 +768,11 @@ IceLibgitRepository >> remoteTrackedBranches [
 { #category : #'API - remotes' }
 IceLibgitRepository >> remotes [
 	
+	LGitLibrary uniqueInstance isAvailable 
+		ifFalse: [ 
+			'No libgit2 available, skipping.' crTrace.
+			^ #() ].
+	
 	self handleLibgitError: [ | gitRemotes |
 		self isValid ifFalse: [ ^ #() ].
 		gitRemotes := self repositoryHandle allRemotes.

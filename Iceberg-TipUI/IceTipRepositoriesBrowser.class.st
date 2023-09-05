@@ -9,7 +9,8 @@ Class {
 	#superclass : #IceTipBrowser,
 	#instVars : [
 		'currentGroupPanel',
-		'repositoryNotebook'
+		'repositoryNotebook',
+		'notifyPanel'
 	],
 	#category : #'Iceberg-TipUI-View-Repository'
 }
@@ -104,6 +105,14 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 ]
 
 { #category : #initialization }
+IceTipRepositoriesBrowser >> addLibGitNotAvailableWarning [
+	
+	notifyPanel layout add: (notifyPanel newLabel 
+		label: 'There is no libgit2 available in your system! Please verify everything is fine before continue.';
+		yourself)
+]
+
+{ #category : #initialization }
 IceTipRepositoriesBrowser >> connectPresenters [
 
 	repositoryNotebook whenSelectedPageChangedDo: [ :newPage |
@@ -127,6 +136,7 @@ IceTipRepositoriesBrowser >> defaultKeyboardFocus [
 IceTipRepositoriesBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
+		add: notifyPanel expand: false;
 		add: repositoryNotebook;
 		yourself
 ]
@@ -155,6 +165,10 @@ IceTipRepositoriesBrowser >> initialExtentForWindow [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> initializePresenters [
 
+	notifyPanel := self newPresenter.
+	notifyPanel layout: SpBoxLayout newVertical.
+	notifyPanel addStyle: 'libgit2NotAvailable'.
+	
 	repositoryNotebook := self newNotebook
 ]
 
@@ -259,6 +273,9 @@ IceTipRepositoriesBrowser >> titleForWindow [
 { #category : #initialization }
 IceTipRepositoriesBrowser >> updatePresenter [
 
+	LGitLibrary uniqueInstance isAvailable 
+		ifFalse: [ self addLibGitNotAvailableWarning ].
+	
 	self model repositoryGroups do: [ :group |
 		repositoryNotebook 
 			addPageTitle: group label 
