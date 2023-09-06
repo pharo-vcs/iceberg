@@ -123,9 +123,11 @@ IceMCDefinitionImporter >> visitMethodDefinition: aMCMethodDefinition [
 ]
 
 { #category : #visiting }
-IceMCDefinitionImporter >> visitOrganizationDefinition: aMCOrganizationDefinition [ 
-	
-	packageNode value categories: aMCOrganizationDefinition categories
+IceMCDefinitionImporter >> visitOrganizationDefinition: aMCOrganizationDefinition [
+
+	packageNode value
+		packageName: aMCOrganizationDefinition packageName;
+		tagNames: aMCOrganizationDefinition tagNames
 ]
 
 { #category : #visiting }

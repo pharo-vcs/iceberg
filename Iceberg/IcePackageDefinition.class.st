@@ -10,10 +10,11 @@ Class {
 	#superclass : #IceDefinition,
 	#instVars : [
 		'package',
-		'categories',
-		'path'
+		'path',
+		'packageName',
+		'tagNames'
 	],
-	#category : 'Iceberg-Changes'
+	#category : #'Iceberg-Changes'
 }
 
 { #category : #visiting }
@@ -37,44 +38,30 @@ IcePackageDefinition >> addModification: anIceModification toPatcher: aMCPatcher
 
 { #category : #patching }
 IcePackageDefinition >> addToPatcher: aPatcher [
-	
-	aPatcher addDefinition: (MCOrganizationDefinition categories: categories)
+
+	aPatcher addDefinition: self asMCDefinition
 ]
 
 { #category : #accessing }
 IcePackageDefinition >> asMCDefinition [
-	
-	^ MCOrganizationDefinition categories: categories
-]
 
-{ #category : #accessing }
-IcePackageDefinition >> categories [
-	^ categories
-]
-
-{ #category : #accessing }
-IcePackageDefinition >> categories: aCollection [
-
-	categories := aCollection
+	^ MCOrganizationDefinition packageName: packageName tagNames: tagNames
 ]
 
 { #category : #accessing }
 IcePackageDefinition >> contents [
-	
+
 	^ String streamContents: [ :stream |
-		stream nextPutAll:	'Package tags: '.
-		categories do: [ :elem | 
-			stream nextPutAll: String crlf;
-				nextPutAll: String tab;
-				nextPutAll: elem.
-	]]
-]
-
-{ #category : #initialization }
-IcePackageDefinition >> initialize [
-
-	super initialize.
-	categories := #()
+		  stream
+			  nextPutAll: 'Package: ';
+			  nextPutAll: self packageName;
+			  crlf;
+			  nextPutAll: 'Tags: '.
+		  self tagNames do: [ :tagName |
+			  stream
+				  nextPutAll: String crlf;
+				  nextPutAll: String tab;
+				  nextPutAll: tagName ] ]
 ]
 
 { #category : #testing }
@@ -87,6 +74,18 @@ IcePackageDefinition >> isPackageDefinition [
 IcePackageDefinition >> package [
 	
 	^ package
+]
+
+{ #category : #accessing }
+IcePackageDefinition >> packageName [
+
+	^ packageName
+]
+
+{ #category : #accessing }
+IcePackageDefinition >> packageName: anObject [
+
+	packageName := anObject
 ]
 
 { #category : #accessing }
@@ -107,6 +106,18 @@ IcePackageDefinition >> removeFrom: aVisitor [
 
 { #category : #patching }
 IcePackageDefinition >> removeFromPatcher: aPatcher [
-	
-	aPatcher removeDefinition: (MCOrganizationDefinition categories: categories)
+
+	aPatcher removeDefinition: self asMCDefinition
+]
+
+{ #category : #accessing }
+IcePackageDefinition >> tagNames [
+
+	^ tagNames
+]
+
+{ #category : #accessing }
+IcePackageDefinition >> tagNames: anObject [
+
+	tagNames := anObject
 ]
