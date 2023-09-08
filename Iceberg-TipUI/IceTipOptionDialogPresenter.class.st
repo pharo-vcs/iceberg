@@ -7,7 +7,7 @@ I'm kind of a ""tabbed"" dialog, but my options are ""mac style"": lateral and n
 This is useful to keep a variable number of options.
 "
 Class {
-	#name : #IceTipOptionDialog,
+	#name : #IceTipOptionDialogPresenter,
 	#superclass : #IceTipPresenter,
 	#instVars : [
 		'typeList',
@@ -18,7 +18,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipOptionDialog >> accept [
+IceTipOptionDialogPresenter >> accept [
 
 	[ 
 	  self doAccept.
@@ -29,19 +29,19 @@ IceTipOptionDialog >> accept [
 ]
 
 { #category : #accessing }
-IceTipOptionDialog >> allTypes [
+IceTipOptionDialogPresenter >> allTypes [
 
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-IceTipOptionDialog >> contextSelection [
+IceTipOptionDialogPresenter >> contextSelection [
 
 	^ type
 ]
 
 { #category : #layout }
-IceTipOptionDialog >> defaultLayout [
+IceTipOptionDialogPresenter >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
 		  positionOfSlider: 30 percent;
@@ -51,19 +51,19 @@ IceTipOptionDialog >> defaultLayout [
 ]
 
 { #category : #actions }
-IceTipOptionDialog >> doAccept [
+IceTipOptionDialogPresenter >> doAccept [
 
 	self subclassResponsibility
 ]
 
 { #category : #initialization }
-IceTipOptionDialog >> initialExtentForWindow [
+IceTipOptionDialogPresenter >> initialExtentForWindow [
 
 	^ (700 @ 300) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
+IceTipOptionDialogPresenter >> initializeDialogWindow: aWindowPresenter [
 
 	aWindowPresenter
 		addButton: 'Ok' do: [ :presenter | self accept ];
@@ -73,14 +73,14 @@ IceTipOptionDialog >> initializeDialogWindow: aWindowPresenter [
 ]
 
 { #category : #initialization }
-IceTipOptionDialog >> initializePresenters [
+IceTipOptionDialogPresenter >> initializePresenters [
 
 	contentLayout := SpBoxLayout newTopToBottom.
 	self initializeTypeList
 ]
 
 { #category : #initialization }
-IceTipOptionDialog >> initializeTypeList [
+IceTipOptionDialogPresenter >> initializeTypeList [
 
 	(typeList := self newList)
 		items: self allTypes;
@@ -91,7 +91,7 @@ IceTipOptionDialog >> initializeTypeList [
 ]
 
 { #category : #private }
-IceTipOptionDialog >> replacePanelWith: aType [
+IceTipOptionDialogPresenter >> replacePanelWith: aType [
 
 	contentLayout 
 		removeAll;
@@ -99,13 +99,13 @@ IceTipOptionDialog >> replacePanelWith: aType [
 ]
 
 { #category : #accessing }
-IceTipOptionDialog >> selectedType [
+IceTipOptionDialogPresenter >> selectedType [
 
 	^ type
 ]
 
 { #category : #private }
-IceTipOptionDialog >> selectionChanged: aType [
+IceTipOptionDialogPresenter >> selectionChanged: aType [
 
 	type := aType.
 	aType ifNotNil: [
@@ -114,13 +114,13 @@ IceTipOptionDialog >> selectionChanged: aType [
 ]
 
 { #category : #'accessing - ui' }
-IceTipOptionDialog >> typeList [
+IceTipOptionDialogPresenter >> typeList [
 
 	^ typeList
 ]
 
 { #category : #private }
-IceTipOptionDialog >> updateWindowTitle [
+IceTipOptionDialogPresenter >> updateWindowTitle [
 	
 	self window title: type titleForWindow
 ]

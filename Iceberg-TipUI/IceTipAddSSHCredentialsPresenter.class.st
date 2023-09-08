@@ -2,8 +2,8 @@
 I implement the dialog to add SSH credentials.
 "
 Class {
-	#name : #IceTipAddSSHCredentialsModel,
-	#superclass : #IceTipAbstractSSHCredentialsModel,
+	#name : #IceTipAddSSHCredentialsPresenter,
+	#superclass : #IceTipAbstractSSHCredentialsPresenter,
 	#instVars : [
 		'hostLabel',
 		'hostInput'
@@ -12,13 +12,13 @@ Class {
 }
 
 { #category : #actions }
-IceTipAddSSHCredentialsModel >> accept [
+IceTipAddSSHCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
 { #category : #layout }
-IceTipAddSSHCredentialsModel >> defaultLayout [
+IceTipAddSSHCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new
 		beColumnNotHomogeneous;
@@ -32,20 +32,20 @@ IceTipAddSSHCredentialsModel >> defaultLayout [
 ]
 
 { #category : #accessing }
-IceTipAddSSHCredentialsModel >> hostnameFromInput [
+IceTipAddSSHCredentialsPresenter >> hostnameFromInput [
 	
 	^ hostInput text
 ]
 
 { #category : #initialization }
-IceTipAddSSHCredentialsModel >> initialExtentForWindow [
+IceTipAddSSHCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 7 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipAddSSHCredentialsModel >> initializePresenters [
+IceTipAddSSHCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	hostLabel := self newLabel
@@ -58,7 +58,7 @@ IceTipAddSSHCredentialsModel >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipAddSSHCredentialsModel >> newCredentials [
+IceTipAddSSHCredentialsPresenter >> newCredentials [
 	
 	^ IceSshCredentials new
 		username: self username;
@@ -69,7 +69,7 @@ IceTipAddSSHCredentialsModel >> newCredentials [
 ]
 
 { #category : #initialization }
-IceTipAddSSHCredentialsModel >> titleForWindow [
+IceTipAddSSHCredentialsPresenter >> titleForWindow [
 
 	^ 'Add SSH credential'
 ]

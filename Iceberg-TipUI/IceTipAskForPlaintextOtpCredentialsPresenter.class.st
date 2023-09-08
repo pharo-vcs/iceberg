@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipAskForPlaintextOtpCredentialsModel,
-	#superclass : #IceTipAskForPlaintextCredentialsModel,
+	#name : #IceTipAskForPlaintextOtpCredentialsPresenter,
+	#superclass : #IceTipAskForPlaintextCredentialsPresenter,
 	#instVars : [
 		'tokenLabel',
 		'tokenInput'
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #layout }
-IceTipAskForPlaintextOtpCredentialsModel >> defaultLayout [
+IceTipAskForPlaintextOtpCredentialsPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom 
 		borderWidth: 5;
@@ -27,13 +27,13 @@ IceTipAskForPlaintextOtpCredentialsModel >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipAskForPlaintextOtpCredentialsModel >> initialExtentForWindow [
+IceTipAskForPlaintextOtpCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ 210) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipAskForPlaintextOtpCredentialsModel >> initializePresenters [
+IceTipAskForPlaintextOtpCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	tokenLabel := self newLabel label: 'OTP Token: '.
@@ -44,7 +44,7 @@ IceTipAskForPlaintextOtpCredentialsModel >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipAskForPlaintextOtpCredentialsModel >> newCredentials [
+IceTipAskForPlaintextOtpCredentialsPresenter >> newCredentials [
 
 	^ IcePlaintextOtpCredentials new
 		  username: self username;
@@ -54,7 +54,7 @@ IceTipAskForPlaintextOtpCredentialsModel >> newCredentials [
 ]
 
 { #category : #accessing }
-IceTipAskForPlaintextOtpCredentialsModel >> token [
+IceTipAskForPlaintextOtpCredentialsPresenter >> token [
 
 	^ tokenInput text
 ]

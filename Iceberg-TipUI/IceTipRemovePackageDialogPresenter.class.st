@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipRemovePackageDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipRemovePackageDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'model',
 		'iconPanel',
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipRemovePackageDialog >> accept [
+IceTipRemovePackageDialogPresenter >> accept [
 
 	self removeFromRepositoryCheckbox state
 		ifTrue: [ self model remove ].
@@ -21,19 +21,19 @@ IceTipRemovePackageDialog >> accept [
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemovePackageDialog >> confirmLabel [
+IceTipRemovePackageDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
 { #category : #accessing }
-IceTipRemovePackageDialog >> confirmMessage [
+IceTipRemovePackageDialogPresenter >> confirmMessage [
 
 	^ 'Are you sure to remove package {1}?'
 ]
 
 { #category : #layout }
-IceTipRemovePackageDialog >> defaultLayout [
+IceTipRemovePackageDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		borderWidth: 5;
@@ -49,13 +49,13 @@ IceTipRemovePackageDialog >> defaultLayout [
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemovePackageDialog >> iconPanel [
+IceTipRemovePackageDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
 { #category : #initialization }
-IceTipRemovePackageDialog >> initialExtentForWindow [
+IceTipRemovePackageDialogPresenter >> initialExtentForWindow [
 
 	^ (500
 		@ (self class inputTextHeight * 2 + self class buttonHeight + 75))
@@ -63,7 +63,7 @@ IceTipRemovePackageDialog >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipRemovePackageDialog >> initializePresenters [
+IceTipRemovePackageDialogPresenter >> initializePresenters [
 
 	iconPanel := self newImage
 		image: (self iconNamed: #question);
@@ -82,37 +82,37 @@ IceTipRemovePackageDialog >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipRemovePackageDialog >> model [
+IceTipRemovePackageDialogPresenter >> model [
 
 	^ model
 ]
 
 { #category : #accessing }
-IceTipRemovePackageDialog >> model: anObject [
+IceTipRemovePackageDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemovePackageDialog >> removeFromRepositoryCheckbox [
+IceTipRemovePackageDialogPresenter >> removeFromRepositoryCheckbox [
 
 	^ removeFromRepositoryCheckbox
 ]
 
 { #category : #initialization }
-IceTipRemovePackageDialog >> setModelBeforeInitialization: anObject [
+IceTipRemovePackageDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipRemovePackageDialog >> titleForWindow [
+IceTipRemovePackageDialogPresenter >> titleForWindow [
 
 	^ 'Remove Package'
 ]
 
 { #category : #accessing }
-IceTipRemovePackageDialog >> unloadFromImageCheckbox [
+IceTipRemovePackageDialogPresenter >> unloadFromImageCheckbox [
 
 	^ unloadFromImageCheckbox
 ]

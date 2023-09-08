@@ -18,7 +18,7 @@ IceTipSelectRemotePresenter >> addButton [
 { #category : #actions }
 IceTipSelectRemotePresenter >> addRemote [
 
-	((IceTipAddRemoteDialog 
+	((IceTipAddRemoteDialogPresenter 
 		newApplication: self application 
 		model: self model repositoryModel) 
 		onAccept: [ :newRemoteName | 

@@ -2,8 +2,8 @@
 I am a dialog to add token credentials.
 "
 Class {
-	#name : #IceTipAddTokenCredentialsModel,
-	#superclass : #IceTipAbstractCredentialsModel,
+	#name : #IceTipAddTokenCredentialsPresenter,
+	#superclass : #IceTipAbstractCredentialsPresenter,
 	#instVars : [
 		'hostInput',
 		'tokenInput',
@@ -16,13 +16,13 @@ Class {
 }
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> accept [
+IceTipAddTokenCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
 { #category : #layout }
-IceTipAddTokenCredentialsModel >> defaultLayout [
+IceTipAddTokenCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
 		borderWidth: 5;
@@ -37,19 +37,19 @@ IceTipAddTokenCredentialsModel >> defaultLayout [
 ]
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> hostnameFromInput [
+IceTipAddTokenCredentialsPresenter >> hostnameFromInput [
 	
 	^ hostInput text
 ]
 
 { #category : #initialization }
-IceTipAddTokenCredentialsModel >> initialExtentForWindow [
+IceTipAddTokenCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipAddTokenCredentialsModel >> initializePresenters [
+IceTipAddTokenCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	usernameLabel := self newLabel
@@ -81,7 +81,7 @@ IceTipAddTokenCredentialsModel >> initializePresenters [
 ]
 
 { #category : #testing }
-IceTipAddTokenCredentialsModel >> isOkEnabled [
+IceTipAddTokenCredentialsPresenter >> isOkEnabled [
 
 	^ self usernameFromInput isNotEmpty and: [ 
 		  self hostnameFromInput isNotEmpty and: [ 
@@ -89,7 +89,7 @@ IceTipAddTokenCredentialsModel >> isOkEnabled [
 ]
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> newCredentials [
+IceTipAddTokenCredentialsPresenter >> newCredentials [
 	
 	^ IceTokenCredentials new
 		username: self usernameFromInput;
@@ -99,19 +99,19 @@ IceTipAddTokenCredentialsModel >> newCredentials [
 ]
 
 { #category : #initialization }
-IceTipAddTokenCredentialsModel >> titleForWindow [
+IceTipAddTokenCredentialsPresenter >> titleForWindow [
 
 	^ 'Add token credentials'
 ]
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> tokenFromInput [
+IceTipAddTokenCredentialsPresenter >> tokenFromInput [
 	
 	^ tokenInput text
 ]
 
 { #category : #accessing }
-IceTipAddTokenCredentialsModel >> usernameFromInput [
+IceTipAddTokenCredentialsPresenter >> usernameFromInput [
 	
 	^ usernameInput text
 ]

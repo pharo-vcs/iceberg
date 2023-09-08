@@ -1,5 +1,5 @@
 Class {
-	#name : #IceTipHiedraAltHistoryRow,
+	#name : #IceTipHiedraAltHistoryRowPresenter,
 	#superclass : #SpPresenter,
 	#traits : 'SpTModel',
 	#classTraits : 'SpTModel classTrait',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : #initialization }
-IceTipHiedraAltHistoryRow >> addTagsTo: aLayout [
+IceTipHiedraAltHistoryRowPresenter >> addTagsTo: aLayout [
 	| tagNames tagLayout |
 	
 	tagNames := self item tagNames.
@@ -31,13 +31,13 @@ IceTipHiedraAltHistoryRow >> addTagsTo: aLayout [
 ]
 
 { #category : #accessing }
-IceTipHiedraAltHistoryRow >> form [
+IceTipHiedraAltHistoryRowPresenter >> form [
 
 	^ self model first
 ]
 
 { #category : #initialization }
-IceTipHiedraAltHistoryRow >> initializePresenters [
+IceTipHiedraAltHistoryRowPresenter >> initializePresenters [
 
 	self layout: (SpBoxLayout newLeftToRight
 		spacing: 5;
@@ -52,7 +52,7 @@ IceTipHiedraAltHistoryRow >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipHiedraAltHistoryRow >> item [
+IceTipHiedraAltHistoryRowPresenter >> item [
 
 	^ self model second
 ]

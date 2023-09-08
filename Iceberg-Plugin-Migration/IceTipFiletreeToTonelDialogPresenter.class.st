@@ -3,8 +3,8 @@ I'm a dialog validate and perform a migration of sources from filetree to tonel.
 
 "
 Class {
-	#name : #IceTipFiletreeToTonelDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipFiletreeToTonelDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'iconPanel',
 		'confirmLabel',
@@ -16,7 +16,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipFiletreeToTonelDialog >> accept [
+IceTipFiletreeToTonelDialogPresenter >> accept [
 	
 	IceTipStandardAction new
 		repository: self repository; 
@@ -28,25 +28,25 @@ IceTipFiletreeToTonelDialog >> accept [
 ]
 
 { #category : #accessing }
-IceTipFiletreeToTonelDialog >> branchBaseName [
+IceTipFiletreeToTonelDialogPresenter >> branchBaseName [
 
 	^ 'migrate-sources-to-tonel'
 ]
 
 { #category : #accessing }
-IceTipFiletreeToTonelDialog >> branchName [
+IceTipFiletreeToTonelDialogPresenter >> branchName [
 
 	^ branchName ifNil: [ branchName := self obtainBranchName ]
 ]
 
 { #category : #'accessing - ui' }
-IceTipFiletreeToTonelDialog >> confirmLabel [
+IceTipFiletreeToTonelDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
 { #category : #accessing }
-IceTipFiletreeToTonelDialog >> confirmMessage [
+IceTipFiletreeToTonelDialogPresenter >> confirmMessage [
 
 	^ 'Convert repository {1} sources from filetree format to tonel. 
 This process will use a new branch named {2}. 
@@ -56,7 +56,7 @@ ARE YOU SURE?'
 ]
 
 { #category : #layout }
-IceTipFiletreeToTonelDialog >> defaultLayout [
+IceTipFiletreeToTonelDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		borderWidth: 5;
@@ -70,7 +70,7 @@ IceTipFiletreeToTonelDialog >> defaultLayout [
 ]
 
 { #category : #actions }
-IceTipFiletreeToTonelDialog >> doAccept [
+IceTipFiletreeToTonelDialogPresenter >> doAccept [
 	
 	IceConvertFormatAction new 
 		repository: self repository;
@@ -81,13 +81,13 @@ IceTipFiletreeToTonelDialog >> doAccept [
 ]
 
 { #category : #'accessing - ui' }
-IceTipFiletreeToTonelDialog >> iconPanel [
+IceTipFiletreeToTonelDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
 { #category : #initialization }
-IceTipFiletreeToTonelDialog >> initialExtentForWindow [
+IceTipFiletreeToTonelDialogPresenter >> initialExtentForWindow [
 
 	^ (500
 	   @ (self class inputTextHeight * 5 + self class buttonHeight + 50))
@@ -95,7 +95,7 @@ IceTipFiletreeToTonelDialog >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipFiletreeToTonelDialog >> initializePresenters [
+IceTipFiletreeToTonelDialogPresenter >> initializePresenters [
 
 	super initializePresenters.
 	iconPanel := self newImage
@@ -114,13 +114,13 @@ IceTipFiletreeToTonelDialog >> initializePresenters [
 ]
 
 { #category : #'accessing - ui' }
-IceTipFiletreeToTonelDialog >> mergeWithMasterCheckbox [
+IceTipFiletreeToTonelDialogPresenter >> mergeWithMasterCheckbox [
 
 	^ mergeWithMasterCheckbox
 ]
 
 { #category : #private }
-IceTipFiletreeToTonelDialog >> obtainBranchName [
+IceTipFiletreeToTonelDialogPresenter >> obtainBranchName [
 
 	| baseName suffix count |
 	count := 0.
@@ -135,19 +135,19 @@ IceTipFiletreeToTonelDialog >> obtainBranchName [
 ]
 
 { #category : #accessing }
-IceTipFiletreeToTonelDialog >> repository [
+IceTipFiletreeToTonelDialogPresenter >> repository [
 
 	^ repository
 ]
 
 { #category : #initialization }
-IceTipFiletreeToTonelDialog >> setModelBeforeInitialization: anObject [
+IceTipFiletreeToTonelDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	repository := anObject
 ]
 
 { #category : #initialization }
-IceTipFiletreeToTonelDialog >> titleForWindow [
+IceTipFiletreeToTonelDialogPresenter >> titleForWindow [
 
 	^ 'Convert sources to tonel'
 ]

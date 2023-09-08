@@ -3,8 +3,8 @@ I implement the basic behavior of all the ssh credentials.
 My subclasses implements the specific behavior for each of the operations.
 "
 Class {
-	#name : #IceTipAbstractSSHCredentialsModel,
-	#superclass : #IceTipAbstractCredentialsModel,
+	#name : #IceTipAbstractSSHCredentialsPresenter,
+	#superclass : #IceTipAbstractCredentialsPresenter,
 	#instVars : [
 		'usernameInput',
 		'usernameLabel',
@@ -19,7 +19,7 @@ Class {
 }
 
 { #category : #initialization }
-IceTipAbstractSSHCredentialsModel >> initializePresenters [
+IceTipAbstractSSHCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	usernameLabel := self newLabel
@@ -57,20 +57,20 @@ IceTipAbstractSSHCredentialsModel >> initializePresenters [
 ]
 
 { #category : #testing }
-IceTipAbstractSSHCredentialsModel >> isOkEnabled [
+IceTipAbstractSSHCredentialsPresenter >> isOkEnabled [
 
 	^ self username isNotEmpty and: [ 
 		  self publicKey isNotEmpty and: [ self privateKey isNotEmpty ] ]
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> passphrase [
+IceTipAbstractSSHCredentialsPresenter >> passphrase [
 
 	^ passphraseInput text
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> privateKey [
+IceTipAbstractSSHCredentialsPresenter >> privateKey [
 
 	^ privateKeyInput location
 		  ifNil: [ '' ]
@@ -78,7 +78,7 @@ IceTipAbstractSSHCredentialsModel >> privateKey [
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> publicKey [
+IceTipAbstractSSHCredentialsPresenter >> publicKey [
 
 	^ publicKeyInput location
 		  ifNil: [ '' ]
@@ -86,7 +86,7 @@ IceTipAbstractSSHCredentialsModel >> publicKey [
 ]
 
 { #category : #accessing }
-IceTipAbstractSSHCredentialsModel >> username [
+IceTipAbstractSSHCredentialsPresenter >> username [
 
 	^ usernameInput text
 ]

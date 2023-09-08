@@ -2,8 +2,8 @@
 I implement the dialog to add plaintext credentials.
 "
 Class {
-	#name : #IceTipAddPlaintextCredentialsModel,
-	#superclass : #IceTipAbstractPlaintextCredentialsModel,
+	#name : #IceTipAddPlaintextCredentialsPresenter,
+	#superclass : #IceTipAbstractPlaintextCredentialsPresenter,
 	#instVars : [
 		'hostLabel',
 		'hostInput'
@@ -12,13 +12,13 @@ Class {
 }
 
 { #category : #testing }
-IceTipAddPlaintextCredentialsModel >> accept [
+IceTipAddPlaintextCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
 { #category : #layout }
-IceTipAddPlaintextCredentialsModel >> defaultLayout [
+IceTipAddPlaintextCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
 		beColumnNotHomogeneous;
@@ -31,20 +31,20 @@ IceTipAddPlaintextCredentialsModel >> defaultLayout [
 ]
 
 { #category : #accessing }
-IceTipAddPlaintextCredentialsModel >> hostnameFromInput [
+IceTipAddPlaintextCredentialsPresenter >> hostnameFromInput [
 
 	^ hostInput text
 ]
 
 { #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> initialExtentForWindow [
+IceTipAddPlaintextCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> initializePresenters [
+IceTipAddPlaintextCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	hostLabel := self newLabel label: 'Host: '.
@@ -55,13 +55,13 @@ IceTipAddPlaintextCredentialsModel >> initializePresenters [
 ]
 
 { #category : #testing }
-IceTipAddPlaintextCredentialsModel >> isOkEnabled [
+IceTipAddPlaintextCredentialsPresenter >> isOkEnabled [
 
 	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
 ]
 
 { #category : #initialization }
-IceTipAddPlaintextCredentialsModel >> titleForWindow [
+IceTipAddPlaintextCredentialsPresenter >> titleForWindow [
 
 	^ 'Add new Plain Text Credential'
 ]

@@ -2,8 +2,8 @@
 I am an small dialog to ask the user to select new packages to load. New packages are packages in the commit but not in the image.
 "
 Class {
-	#name : #IceTipAddNewPackagesDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipAddNewPackagesDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'packagesList',
 		'selectedPackages',
@@ -16,7 +16,7 @@ Class {
 }
 
 { #category : #commands }
-IceTipAddNewPackagesDialog class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
+IceTipAddNewPackagesDialogPresenter class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
 
 	rootCommandGroup register:
 		((CmCommandGroup named: 'package list commands') asSpecGroup
@@ -26,7 +26,7 @@ IceTipAddNewPackagesDialog class >> buildCommandsGroupWith: presenterInstance fo
 ]
 
 { #category : #actions }
-IceTipAddNewPackagesDialog >> accept [
+IceTipAddNewPackagesDialogPresenter >> accept [
 
 	| selectedPackageNames |
 	selectedPackageNames := selectedPackages collect: [ :e | e name ].
@@ -43,19 +43,19 @@ IceTipAddNewPackagesDialog >> accept [
 ]
 
 { #category : #accessing }
-IceTipAddNewPackagesDialog >> checkoutModel: anIceTipCheckoutModel [ 
+IceTipAddNewPackagesDialogPresenter >> checkoutModel: anIceTipCheckoutModel [ 
 	
 	checkoutModel := anIceTipCheckoutModel
 ]
 
 { #category : #accessing }
-IceTipAddNewPackagesDialog >> checkoutPreviewWindow: anIceTipCheckoutPreviewBrowser [ 
+IceTipAddNewPackagesDialogPresenter >> checkoutPreviewWindow: anIceTipCheckoutPreviewBrowser [ 
 	
 	checkoutPreviewWindow := anIceTipCheckoutPreviewBrowser 
 ]
 
 { #category : #layout }
-IceTipAddNewPackagesDialog >> defaultLayout [
+IceTipAddNewPackagesDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 			add: problemDescription expand: false;
@@ -64,13 +64,13 @@ IceTipAddNewPackagesDialog >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> iconForWindow [
+IceTipAddNewPackagesDialogPresenter >> iconForWindow [
 
 	^ self iconNamed: #branch
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> initializePackagesList [
+IceTipAddNewPackagesDialogPresenter >> initializePackagesList [
 
 	packagesList
 		addColumn: (SpCompositeTableColumn new
@@ -91,7 +91,7 @@ IceTipAddNewPackagesDialog >> initializePackagesList [
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> initializePresenters [
+IceTipAddNewPackagesDialogPresenter >> initializePresenters [
 
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
@@ -109,49 +109,49 @@ Please select the packages if you wish to load them in the image'.
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddNewPackagesDialog >> packagesList [
+IceTipAddNewPackagesDialogPresenter >> packagesList [
 
 	^ packagesList
 ]
 
 { #category : #accessing }
-IceTipAddNewPackagesDialog >> selectedPackage [
+IceTipAddNewPackagesDialogPresenter >> selectedPackage [
 
 	^ packagesList selectedItem
 ]
 
 { #category : #accessing }
-IceTipAddNewPackagesDialog >> selectedPackages [
+IceTipAddNewPackagesDialogPresenter >> selectedPackages [
 
 	^ selectedPackages
 ]
 
 { #category : #accessing }
-IceTipAddNewPackagesDialog >> selectedPackages: anObject [
+IceTipAddNewPackagesDialogPresenter >> selectedPackages: anObject [
 
 	selectedPackages := anObject
 ]
 
 { #category : #'accessing - model' }
-IceTipAddNewPackagesDialog >> setModelBeforeInitialization: somePackages [
+IceTipAddNewPackagesDialogPresenter >> setModelBeforeInitialization: somePackages [
 
 	packages := somePackages
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> titleForWindow [ 
+IceTipAddNewPackagesDialogPresenter >> titleForWindow [ 
 
 	^ 'Select New Packages to Load'.
 ]
 
 { #category : #initialization }
-IceTipAddNewPackagesDialog >> updatePresenter [
+IceTipAddNewPackagesDialogPresenter >> updatePresenter [
 
 	packagesList items: packages
 ]
 
 { #category : #validation }
-IceTipAddNewPackagesDialog >> validate [
+IceTipAddNewPackagesDialogPresenter >> validate [
 
 	self
 		assert: self selectedPackage isNotNil

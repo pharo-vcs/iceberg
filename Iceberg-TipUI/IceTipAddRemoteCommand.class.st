@@ -29,7 +29,7 @@ IceTipAddRemoteCommand >> canBeExecuted [
 { #category : #executing }
 IceTipAddRemoteCommand >> execute [
 
-	(IceTipAddRemoteDialog 
+	(IceTipAddRemoteDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel) 
 		asDialogWindow 

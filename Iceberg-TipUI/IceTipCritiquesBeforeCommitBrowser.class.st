@@ -3,7 +3,7 @@ I am a dialog to be used before commit so we can check if the code to commit has
 "
 Class {
 	#name : #IceTipCritiquesBeforeCommitBrowser,
-	#superclass : #IceTipDialog,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'commitModel',
 		'onAcceptAction',
