@@ -53,7 +53,7 @@ IceTipRepairMergeWithBranch class >> title [
 IceTipRepairMergeWithBranch >> basicExecute [
 
 	self fetchAllRemotes.
-	((IceTipMergeBranchDialog 
+	((IceTipMergeBranchDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel) 
 		beSwitchAndMerge;

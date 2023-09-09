@@ -2,19 +2,19 @@
 I implement the dialog to edit plaintext credentials.
 "
 Class {
-	#name : #IceTipEditPlaintextCredentialsModel,
-	#superclass : #IceTipAbstractPlaintextCredentialsModel,
+	#name : #IceTipEditPlaintextCredentialsPresenter,
+	#superclass : #IceTipAbstractPlaintextCredentialsPresenter,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }
-IceTipEditPlaintextCredentialsModel >> accept [ 
+IceTipEditPlaintextCredentialsPresenter >> accept [ 
 	
 	^ self acceptEditAction
 ]
 
 { #category : #layout }
-IceTipEditPlaintextCredentialsModel >> defaultLayout [
+IceTipEditPlaintextCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
 		beColumnNotHomogeneous;
@@ -26,13 +26,13 @@ IceTipEditPlaintextCredentialsModel >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipEditPlaintextCredentialsModel >> initialExtentForWindow [
+IceTipEditPlaintextCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ 160) scaledByDisplayScaleFactor
 ]
 
 { #category : #actions }
-IceTipEditPlaintextCredentialsModel >> refreshCredentialsFromPresenter [
+IceTipEditPlaintextCredentialsPresenter >> refreshCredentialsFromPresenter [
 
 	credentials
 		username: self username;
@@ -40,14 +40,14 @@ IceTipEditPlaintextCredentialsModel >> refreshCredentialsFromPresenter [
 ]
 
 { #category : #accessing }
-IceTipEditPlaintextCredentialsModel >> refreshPresenterFromCredentials [
+IceTipEditPlaintextCredentialsPresenter >> refreshPresenterFromCredentials [
 
 	usernameInput text: credentials username.
 	passwordInput text: credentials password
 ]
 
 { #category : #initialization }
-IceTipEditPlaintextCredentialsModel >> titleForWindow [
+IceTipEditPlaintextCredentialsPresenter >> titleForWindow [
 
 	^ 'Edit credential for ' , credentials host
 ]

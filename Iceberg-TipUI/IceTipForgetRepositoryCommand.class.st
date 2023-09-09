@@ -23,7 +23,7 @@ IceTipForgetRepositoryCommand class >> defaultName [
 { #category : #executing }
 IceTipForgetRepositoryCommand >> execute [
 
-	(IceTipRemoveRepositoryDialog 
+	(IceTipRemoveRepositoryDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel)
 		asModalWindow 

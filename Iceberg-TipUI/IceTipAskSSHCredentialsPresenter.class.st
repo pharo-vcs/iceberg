@@ -2,25 +2,25 @@
 I am a dialog to ask for SSH credentials.
 "
 Class {
-	#name : #IceTipAskSSHCredentialsModel,
-	#superclass : #IceTipEditSSHCredentialsModel,
+	#name : #IceTipAskSSHCredentialsPresenter,
+	#superclass : #IceTipEditSSHCredentialsPresenter,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }
-IceTipAskSSHCredentialsModel >> accept [
+IceTipAskSSHCredentialsPresenter >> accept [
 
 	^ self acceptAskAction
 ]
 
 { #category : #actions }
-IceTipAskSSHCredentialsModel >> cancelAction [
+IceTipAskSSHCredentialsPresenter >> cancelAction [
 
 	self cancelAskAction
 ]
 
 { #category : #accessing }
-IceTipAskSSHCredentialsModel >> newCredentials [
+IceTipAskSSHCredentialsPresenter >> newCredentials [
 
 	self refreshCredentialsFromPresenter.
 	^ credentials

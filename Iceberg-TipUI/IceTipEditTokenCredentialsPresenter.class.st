@@ -2,19 +2,19 @@
 I am a dialog to edit token credentials.
 "
 Class {
-	#name : #IceTipEditTokenCredentialsModel,
-	#superclass : #IceTipAddTokenCredentialsModel,
+	#name : #IceTipEditTokenCredentialsPresenter,
+	#superclass : #IceTipAddTokenCredentialsPresenter,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #accessing }
-IceTipEditTokenCredentialsModel >> accept [
+IceTipEditTokenCredentialsPresenter >> accept [
 
 	^ self acceptEditAction
 ]
 
 { #category : #accessing }
-IceTipEditTokenCredentialsModel >> refreshCredentialsFromPresenter [
+IceTipEditTokenCredentialsPresenter >> refreshCredentialsFromPresenter [
 
 	credentials
 		username: self usernameFromInput;
@@ -24,7 +24,7 @@ IceTipEditTokenCredentialsModel >> refreshCredentialsFromPresenter [
 ]
 
 { #category : #accessing }
-IceTipEditTokenCredentialsModel >> refreshPresenterFromCredentials [
+IceTipEditTokenCredentialsPresenter >> refreshPresenterFromCredentials [
 
 	usernameInput text: credentials username.
 	tokenInput text: credentials token.
@@ -33,7 +33,7 @@ IceTipEditTokenCredentialsModel >> refreshPresenterFromCredentials [
 ]
 
 { #category : #initialization }
-IceTipEditTokenCredentialsModel >> titleForWindow [
+IceTipEditTokenCredentialsPresenter >> titleForWindow [
 
 	^ 'Edit token credentials'
 ]

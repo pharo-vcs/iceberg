@@ -7,5 +7,5 @@ IceSshCredentials >> askForModelClass [
 
 { #category : #'*Iceberg-TipUI' }
 IceSshCredentials >> editModelClass [
-	^ IceTipEditSSHCredentialsModel
+	^ IceTipEditSSHCredentialsPresenter
 ]

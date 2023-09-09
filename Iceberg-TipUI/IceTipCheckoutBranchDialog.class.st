@@ -5,7 +5,7 @@ I'm a dialog to perform a checkout of a branch.
 "
 Class {
 	#name : #IceTipCheckoutBranchDialog,
-	#superclass : #IceTipOptionDialog,
+	#superclass : #IceTipOptionDialogPresenter,
 	#instVars : [
 		'model',
 		'types'

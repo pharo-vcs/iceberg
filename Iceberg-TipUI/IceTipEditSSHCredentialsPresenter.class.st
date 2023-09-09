@@ -2,19 +2,19 @@
 I implement the dialog to edit SSH credentials.
 "
 Class {
-	#name : #IceTipEditSSHCredentialsModel,
-	#superclass : #IceTipAbstractSSHCredentialsModel,
+	#name : #IceTipEditSSHCredentialsPresenter,
+	#superclass : #IceTipAbstractSSHCredentialsPresenter,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }
-IceTipEditSSHCredentialsModel >> accept [
+IceTipEditSSHCredentialsPresenter >> accept [
 
 	^ self acceptEditAction
 ]
 
 { #category : #layout }
-IceTipEditSSHCredentialsModel >> defaultLayout [
+IceTipEditSSHCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
 		beColumnNotHomogeneous;
@@ -28,13 +28,13 @@ IceTipEditSSHCredentialsModel >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipEditSSHCredentialsModel >> initialExtentForWindow [
+IceTipEditSSHCredentialsPresenter >> initialExtentForWindow [
 
 	^ (500@230) scaledByDisplayScaleFactor
 ]
 
 { #category : #actions }
-IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
+IceTipEditSSHCredentialsPresenter >> refreshCredentialsFromPresenter [
 
 	credentials
 		username: self username;
@@ -44,7 +44,7 @@ IceTipEditSSHCredentialsModel >> refreshCredentialsFromPresenter [
 ]
 
 { #category : #accessing }
-IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
+IceTipEditSSHCredentialsPresenter >> refreshPresenterFromCredentials [
 
 	usernameInput text: credentials username.
 	passphraseInput text: credentials keyPassphrase.
@@ -53,7 +53,7 @@ IceTipEditSSHCredentialsModel >> refreshPresenterFromCredentials [
 ]
 
 { #category : #initialization }
-IceTipEditSSHCredentialsModel >> titleForWindow [
+IceTipEditSSHCredentialsPresenter >> titleForWindow [
 
 	^ 'Edit SSH keys for ' , self credentials hostDescription
 ]

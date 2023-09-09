@@ -3,31 +3,31 @@ I implement the dialog to ask plaintext credentials.
 This dialog is used when the IceTipInteractiveCredentialsProvider needs to ask a plaintext credential.
 "
 Class {
-	#name : #IceTipAskForPlaintextCredentialsModel,
-	#superclass : #IceTipAbstractPlaintextCredentialsModel,
+	#name : #IceTipAskForPlaintextCredentialsPresenter,
+	#superclass : #IceTipAbstractPlaintextCredentialsPresenter,
 	#category : #'Iceberg-TipUI-Credentials'
 }
 
 { #category : #actions }
-IceTipAskForPlaintextCredentialsModel >> accept [
+IceTipAskForPlaintextCredentialsPresenter >> accept [
 
 	^ self acceptAskAction
 ]
 
 { #category : #actions }
-IceTipAskForPlaintextCredentialsModel >> cancel [
+IceTipAskForPlaintextCredentialsPresenter >> cancel [
 
 	self cancelAskAction
 ]
 
 { #category : #actions }
-IceTipAskForPlaintextCredentialsModel >> cancelAction [
+IceTipAskForPlaintextCredentialsPresenter >> cancelAction [
 
 	self cancelAskAction
 ]
 
 { #category : #layout }
-IceTipAskForPlaintextCredentialsModel >> defaultLayout [
+IceTipAskForPlaintextCredentialsPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom 
 		borderWidth: 5;
@@ -45,13 +45,13 @@ IceTipAskForPlaintextCredentialsModel >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipAskForPlaintextCredentialsModel >> initialExtentForWindow [
+IceTipAskForPlaintextCredentialsPresenter >> initialExtentForWindow [
 
 	^ (450 @ 180) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipAskForPlaintextCredentialsModel >> titleForWindow [
+IceTipAskForPlaintextCredentialsPresenter >> titleForWindow [
 
 	^ 'Please log in to ' , askingHostname
 ]

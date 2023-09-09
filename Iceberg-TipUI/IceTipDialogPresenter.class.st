@@ -3,25 +3,25 @@ I'm a general dialog.
 I implement a default accept method that needs to be overriden my children and some utility methods to easier build a dialog.
 "
 Class {
-	#name : #IceTipDialog,
+	#name : #IceTipDialogPresenter,
 	#superclass : #IceTipPresenter,
 	#category : #'Iceberg-TipUI-View'
 }
 
 { #category : #actions }
-IceTipDialog >> accept [
+IceTipDialogPresenter >> accept [
 	"override this if you want a dialog"
 ]
 
 { #category : #actions }
-IceTipDialog >> cancel [
+IceTipDialogPresenter >> cancel [
 	"override this if you want a dialog"
 
 	self closeWindow
 ]
 
 { #category : #initialization }
-IceTipDialog >> initializeDialogWindow: aWindow [
+IceTipDialogPresenter >> initializeDialogWindow: aWindow [
 
 	super initializeDialogWindow: aWindow.
 

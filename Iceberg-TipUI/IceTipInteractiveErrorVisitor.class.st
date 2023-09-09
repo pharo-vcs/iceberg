@@ -115,7 +115,7 @@ IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 	
-	(IceTipErrorDialog 
+	(IceTipErrorDialogPresenter 
 		newApplication: context application 
 		model: anError) 
 		asModalWindow 
@@ -138,7 +138,7 @@ WARNING: If you have external files, you may need to verify the conflicts there.
 { #category : #visiting }
 IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 
-	((IceTipGitUsernameAndEmailDialog 
+	((IceTipGitUsernameAndEmailDialogPresenter 
 		newApplication: context application 
 		model: self repository)
 		onAccept: [ anError resume ];

@@ -2,8 +2,8 @@
 I'm a dialog to add remotes to a repository.
 "
 Class {
-	#name : #IceTipAddRemoteDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipAddRemoteDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'model',
 		'nameLabel',
@@ -16,7 +16,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipAddRemoteDialog >> accept [
+IceTipAddRemoteDialogPresenter >> accept [
 
 	self validate.
 	(self model 
@@ -28,7 +28,7 @@ IceTipAddRemoteDialog >> accept [
 ]
 
 { #category : #layout }
-IceTipAddRemoteDialog >> defaultLayout [
+IceTipAddRemoteDialogPresenter >> defaultLayout [
 
 	^ SpGridLayout new
 		borderWidth: 5;
@@ -42,7 +42,7 @@ IceTipAddRemoteDialog >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> initialExtentForWindow [
+IceTipAddRemoteDialogPresenter >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -52,7 +52,7 @@ IceTipAddRemoteDialog >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> initializePresenters [
+IceTipAddRemoteDialogPresenter >> initializePresenters [
 
 	nameLabel := self newLabel
 		label: 'Remote name';
@@ -71,73 +71,73 @@ IceTipAddRemoteDialog >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipAddRemoteDialog >> model [
+IceTipAddRemoteDialogPresenter >> model [
 
 	^ model
 ]
 
 { #category : #accessing }
-IceTipAddRemoteDialog >> model: anObject [
+IceTipAddRemoteDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddRemoteDialog >> nameLabel [
+IceTipAddRemoteDialogPresenter >> nameLabel [
 
 	^ nameLabel
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddRemoteDialog >> nameText [
+IceTipAddRemoteDialogPresenter >> nameText [
 
 	^ nameText
 ]
 
 { #category : #events }
-IceTipAddRemoteDialog >> onAccept: aBlock [
+IceTipAddRemoteDialogPresenter >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
 { #category : #accessing }
-IceTipAddRemoteDialog >> remoteName [
+IceTipAddRemoteDialogPresenter >> remoteName [
 
 	^ self nameText text trimmed
 ]
 
 { #category : #accessing }
-IceTipAddRemoteDialog >> remoteUrl [
+IceTipAddRemoteDialogPresenter >> remoteUrl [
 
 	^ self urlText text trimmed
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> setModelBeforeInitialization: anObject [
+IceTipAddRemoteDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipAddRemoteDialog >> titleForWindow [
+IceTipAddRemoteDialogPresenter >> titleForWindow [
 
 	^ 'Add remote'
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddRemoteDialog >> urlLabel [
+IceTipAddRemoteDialogPresenter >> urlLabel [
 
 	^ urlLabel
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddRemoteDialog >> urlText [
+IceTipAddRemoteDialogPresenter >> urlText [
 
 	^ urlText
 ]
 
 { #category : #actions }
-IceTipAddRemoteDialog >> validate [
+IceTipAddRemoteDialogPresenter >> validate [
 
 	self
 		assert: self remoteName notEmpty 

@@ -153,7 +153,7 @@ IceTipWorkingCopyBrowser >> initializePresenters [
 	filterInput := self newTextInput.
 	packagesTable := self newTable.
 	self initializePackagesTable.
-	statusBar := self instantiate: IceTipWorkingCopyStatusBar
+	statusBar := self instantiate: IceTipWorkingCopyStatusBarPresenter
 ]
 
 { #category : #initialization }

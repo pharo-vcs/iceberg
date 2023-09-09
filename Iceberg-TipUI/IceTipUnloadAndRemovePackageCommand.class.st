@@ -33,7 +33,7 @@ IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 { #category : #executing }
 IceTipUnloadAndRemovePackageCommand >> execute [
 
-	(IceTipRemovePackageDialog 
+	(IceTipRemovePackageDialogPresenter 
 		newApplication: context application 
 		model: self packageModel) 
 		asModalWindow 

@@ -29,7 +29,7 @@ IceTipEditRepositoryCommand >> canBeExecuted [
 IceTipEditRepositoryCommand >> execute [
 
 	self flag: #TODO. "Demeter's law"
-	((IceTipEditProjectDialog 
+	((IceTipEditProjectDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel entity project) 
 		asDialogWindow)
