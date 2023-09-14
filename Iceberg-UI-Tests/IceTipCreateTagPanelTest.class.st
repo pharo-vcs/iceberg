@@ -1,33 +1,34 @@
 Class {
-	#name : #IceTipCreateTagPanelTest,
-	#superclass : #TestCase,
+	#name : 'IceTipCreateTagPanelTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'panel'
 	],
-	#category : 'Iceberg-UI-Tests'
+	#category : 'Iceberg-UI-Tests',
+	#package : 'Iceberg-UI-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsNoNumeric [
 	panel := IceTipCreateTagPanel basicNew.
 	self assert: (panel latestTagPartsIn: #()) equals: #('v' 0 0 0).
 	self assert: (panel latestTagPartsIn: #('non-numeric')) equals: #('v' 0 0 0)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsNoNumeric2 [
 	panel := IceTipCreateTagPanel basicNew.
 	self assert: (panel latestTagPartsIn: #('v1.2.x')) equals: #('v' 1 2 0).
 	self assert: (panel latestTagPartsIn: #('v1.x')) equals: #('v' 1 0 0).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsPadded [
 	panel := IceTipCreateTagPanel basicNew.
 	self assert: (panel latestTagPartsIn: #('v2.1')) equals: #('v' 2 1 0)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsWithExtra [
 	panel := IceTipCreateTagPanel basicNew.
 	self
@@ -35,7 +36,7 @@ IceTipCreateTagPanelTest >> testLatestTagPartsWithExtra [
 		equals: #('v' 1 0 3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsWithPrefix [
 	panel := IceTipCreateTagPanel basicNew.
 	self
@@ -43,7 +44,7 @@ IceTipCreateTagPanelTest >> testLatestTagPartsWithPrefix [
 		equals: #('v' 2 1 3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCreateTagPanelTest >> testLatestTagPartsWithoutPrefix [
 	panel := IceTipCreateTagPanel basicNew.
 	self

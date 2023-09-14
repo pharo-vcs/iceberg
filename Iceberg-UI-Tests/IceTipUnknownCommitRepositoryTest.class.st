@@ -1,16 +1,17 @@
 Class {
-	#name : #IceTipUnknownCommitRepositoryTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-UI-Tests'
+	#name : 'IceTipUnknownCommitRepositoryTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-UI-Tests',
+	#package : 'Iceberg-UI-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipUnknownCommitRepositoryTest >> newFixture [
 
 	^ IceWithRemoteAndUnknownCommitFixture inGit
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipUnknownCommitRepositoryTest >> testRepositoryStatusIsUnknown [
 
 	| model status |
