@@ -18,7 +18,7 @@ IceTipAddTokenCredentialCommand class >> defaultName [
 { #category : #executing }
 IceTipAddTokenCredentialCommand >> execute [
 
-	((IceTipAddTokenCredentialsModel newApplication: context application)
+	((IceTipAddTokenCredentialsPresenter newApplication: context application)
 		credentialStore: self store;
 		tool: self tool;
 		asDialogWindow)

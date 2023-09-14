@@ -7,5 +7,5 @@ IceTokenCredentials >> askForModelClass [
 
 { #category : #'*Iceberg-TipUI' }
 IceTokenCredentials >> editModelClass [
-	^ IceTipEditTokenCredentialsModel
+	^ IceTipEditTokenCredentialsPresenter
 ]

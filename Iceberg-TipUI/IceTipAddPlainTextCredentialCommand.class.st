@@ -20,7 +20,7 @@ IceTipAddPlainTextCredentialCommand class >> defaultName [
 { #category : #executing }
 IceTipAddPlainTextCredentialCommand >> execute [
 
-	((IceTipAddPlaintextCredentialsModel newApplication: context application)
+	((IceTipAddPlaintextCredentialsPresenter newApplication: context application)
 		credentialStore: self store;
 		tool: self tool;
 		asDialogWindow)

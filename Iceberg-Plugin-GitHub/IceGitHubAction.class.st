@@ -23,6 +23,12 @@ IceGitHubAction >> credentials [
 	^ credentials ifNil: [ credentials := self obtainCredentials ]
 ]
 
+{ #category : #private }
+IceGitHubAction >> defaultApplication [
+
+	^ SpApplication defaultApplication
+]
+
 { #category : #executing }
 IceGitHubAction >> execute [
 	self withErrorHandlingDo: [ 
@@ -63,13 +69,13 @@ IceGitHubAction >> remote: anObject [
 
 { #category : #private }
 IceGitHubAction >> reportError: error [
-	
+
 	| message |
 	message := error messageBody.
-	message = 'Invalid field: head'
-		ifTrue: [ message := 'Branch does not exist on github. Please commit and push your changes.' ].
-	SpApplication defaultApplication newInform
+	message = 'Invalid field: head' ifTrue: [
+		message := 'Branch does not exist on github. Please commit and push your changes.' ].
+	self defaultApplication newInform
 		label: message;
-		title: 'Error creating pull request: ', error messageText;
+		title: 'Error creating pull request: ' , error messageText;
 		openModal
 ]

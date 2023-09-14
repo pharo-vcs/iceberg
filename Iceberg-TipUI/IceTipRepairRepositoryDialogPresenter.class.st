@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipRepairRepositoryDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipRepairRepositoryDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'optionsList',
 		'detailPanel',
@@ -12,13 +12,13 @@ Class {
 }
 
 { #category : #'instance creation' }
-IceTipRepairRepositoryDialog class >> onRepository: aRepository [
+IceTipRepairRepositoryDialogPresenter class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
 { #category : #actions }
-IceTipRepairRepositoryDialog >> accept [
+IceTipRepairRepositoryDialogPresenter >> accept [
 
 	self closeWindow.
 	selectedOption 
@@ -27,13 +27,13 @@ IceTipRepairRepositoryDialog >> accept [
 ]
 
 { #category : #'api - focus' }
-IceTipRepairRepositoryDialog >> defaultKeyboardFocus [
+IceTipRepairRepositoryDialogPresenter >> defaultKeyboardFocus [
 
 	^ optionsList
 ]
 
 { #category : #layout }
-IceTipRepairRepositoryDialog >> defaultLayout [
+IceTipRepairRepositoryDialogPresenter >> defaultLayout [
 
 	self flag: #TODO. "Replace the fixed height with a correct style"
 	^ SpBoxLayout newTopToBottom
@@ -45,19 +45,19 @@ IceTipRepairRepositoryDialog >> defaultLayout [
 ]
 
 { #category : #'accessing - ui' }
-IceTipRepairRepositoryDialog >> detailPanel [
+IceTipRepairRepositoryDialogPresenter >> detailPanel [
 
 	^ detailPanel
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> initialExtentForWindow [
+IceTipRepairRepositoryDialogPresenter >> initialExtentForWindow [
 
 	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> initializeDialogWindow: aWindow [
+IceTipRepairRepositoryDialogPresenter >> initializeDialogWindow: aWindow [
 
 	super initializeDialogWindow: aWindow.
 
@@ -71,7 +71,7 @@ IceTipRepairRepositoryDialog >> initializeDialogWindow: aWindow [
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> initializeOptionsList [
+IceTipRepairRepositoryDialogPresenter >> initializeOptionsList [
 
 	optionsList
 		hideColumnHeaders;
@@ -90,7 +90,7 @@ IceTipRepairRepositoryDialog >> initializeOptionsList [
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> initializePresenters [
+IceTipRepairRepositoryDialogPresenter >> initializePresenters [
 
 	reasonPanel := self newText
 		beNotEditable;
@@ -109,31 +109,31 @@ IceTipRepairRepositoryDialog >> initializePresenters [
 ]
 
 { #category : #private }
-IceTipRepairRepositoryDialog >> initializeReasonPanel [
+IceTipRepairRepositoryDialogPresenter >> initializeReasonPanel [
 
 	reasonPanel text: self model longStatus
 ]
 
 { #category : #accessing }
-IceTipRepairRepositoryDialog >> model [
+IceTipRepairRepositoryDialogPresenter >> model [
 
 	^ model
 ]
 
 { #category : #'accessing - ui' }
-IceTipRepairRepositoryDialog >> optionsList [
+IceTipRepairRepositoryDialogPresenter >> optionsList [
 
 	^ optionsList
 ]
 
 { #category : #'accessing - ui' }
-IceTipRepairRepositoryDialog >> reasonPanel [
+IceTipRepairRepositoryDialogPresenter >> reasonPanel [
 
 	^ reasonPanel
 ]
 
 { #category : #private }
-IceTipRepairRepositoryDialog >> refreshDetailPanel [
+IceTipRepairRepositoryDialogPresenter >> refreshDetailPanel [
 
 	selectedOption ifNotNil: [ 
 		detailPanel
@@ -142,14 +142,14 @@ IceTipRepairRepositoryDialog >> refreshDetailPanel [
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> refreshDialogButtons [
+IceTipRepairRepositoryDialogPresenter >> refreshDialogButtons [
 
 	self window ifNotNil: [ :aWindow |
 		aWindow buttons first enabled: (selectedOption isNotNil) ]
 ]
 
 { #category : #private }
-IceTipRepairRepositoryDialog >> selectionChanged: selectedItem [
+IceTipRepairRepositoryDialogPresenter >> selectionChanged: selectedItem [
 
 	selectedOption := selectedItem.
 	self refreshDetailPanel.
@@ -158,13 +158,13 @@ IceTipRepairRepositoryDialog >> selectionChanged: selectedItem [
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> setModelBeforeInitialization: anObject [
+IceTipRepairRepositoryDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipRepairRepositoryDialog >> titleForWindow [
+IceTipRepairRepositoryDialogPresenter >> titleForWindow [
 
 	^ 'Repair repository'
 ]

@@ -110,7 +110,7 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 { #category : #operations }
 IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 
-	((IceTipAddNewPackagesDialog 
+	((IceTipAddNewPackagesDialogPresenter 
 		newApplication: self application 
 		model: self model newPackages) 
 		checkoutModel: self model;

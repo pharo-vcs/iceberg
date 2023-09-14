@@ -2,8 +2,8 @@
 I'm a dialog to add packages to a repository.
 "
 Class {
-	#name : #IceTipAddPackagesDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipAddPackagesDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'model',
 		'packagesList',
@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipAddPackagesDialog >> accept [
+IceTipAddPackagesDialogPresenter >> accept [
 
 	"ensure window goes away (in case accept comes from a keybinding and not the ok button)"
 	self closeWindow.
@@ -26,7 +26,7 @@ IceTipAddPackagesDialog >> accept [
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> allPackages [
+IceTipAddPackagesDialogPresenter >> allPackages [
 
 	^ RPackageOrganizer default packages
 		asOrderedCollection 
@@ -34,7 +34,7 @@ IceTipAddPackagesDialog >> allPackages [
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> allPackagesNotRegistered [
+IceTipAddPackagesDialogPresenter >> allPackagesNotRegistered [
 
 	| currentPackagesNames |
 	currentPackagesNames := self model packages collect: #packageName.
@@ -43,7 +43,7 @@ IceTipAddPackagesDialog >> allPackagesNotRegistered [
 ]
 
 { #category : #layout }
-IceTipAddPackagesDialog >> defaultLayout [
+IceTipAddPackagesDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		add: packagesList;
@@ -52,13 +52,13 @@ IceTipAddPackagesDialog >> defaultLayout [
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> iconForWindow [
+IceTipAddPackagesDialogPresenter >> iconForWindow [
 
 	^ self iconNamed: #branch
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> initializePackageNameText [
+IceTipAddPackagesDialogPresenter >> initializePackageNameText [
 
 	packageNameText
 		placeholder: 'Enter a package name';
@@ -67,7 +67,7 @@ IceTipAddPackagesDialog >> initializePackageNameText [
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> initializePackagesList [
+IceTipAddPackagesDialogPresenter >> initializePackagesList [
 
 	packagesList addColumn: (SpCompositeTableColumn new
 		addColumn: (SpCheckBoxTableColumn new
@@ -87,7 +87,7 @@ IceTipAddPackagesDialog >> initializePackagesList [
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> initializePresenters [
+IceTipAddPackagesDialogPresenter >> initializePresenters [
 
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
@@ -98,32 +98,32 @@ IceTipAddPackagesDialog >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> model [
+IceTipAddPackagesDialogPresenter >> model [
 
 	^ model
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> model: anObject [
+IceTipAddPackagesDialogPresenter >> model: anObject [
 
 	model := anObject.
 	self refresh
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddPackagesDialog >> packageNameText [
+IceTipAddPackagesDialogPresenter >> packageNameText [
 
 	^ packageNameText
 ]
 
 { #category : #'accessing - ui' }
-IceTipAddPackagesDialog >> packagesList [
+IceTipAddPackagesDialogPresenter >> packagesList [
 
 	^ packagesList
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> refresh [
+IceTipAddPackagesDialogPresenter >> refresh [
 
 	packagesList items: (packageNameText text
 		ifEmpty: [
@@ -136,31 +136,31 @@ IceTipAddPackagesDialog >> refresh [
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> selectedPackage [
+IceTipAddPackagesDialogPresenter >> selectedPackage [
 
 	^ packagesList selectedItem
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> setModelBeforeInitialization: anObject [
+IceTipAddPackagesDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> titleForWindow [
+IceTipAddPackagesDialogPresenter >> titleForWindow [
 
 	^ 'Add packages'
 ]
 
 { #category : #initialization }
-IceTipAddPackagesDialog >> updatePresenter [
+IceTipAddPackagesDialogPresenter >> updatePresenter [
 
 	self refresh
 ]
 
 { #category : #accessing }
-IceTipAddPackagesDialog >> validate [
+IceTipAddPackagesDialogPresenter >> validate [
 
 	self
 		assert: self selectedPackage isNotNil

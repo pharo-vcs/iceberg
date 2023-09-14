@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipRemoveRepositoryDialog,
-	#superclass : #IceTipDialog,
+	#name : #IceTipRemoveRepositoryDialogPresenter,
+	#superclass : #IceTipDialogPresenter,
 	#instVars : [
 		'model',
 		'iconPanel',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #actions }
-IceTipRemoveRepositoryDialog >> accept [
+IceTipRemoveRepositoryDialogPresenter >> accept [
 
 	(self removeFileSystemCheckbox state
 		ifTrue: [ self model newDeleteAction  ]
@@ -20,18 +20,18 @@ IceTipRemoveRepositoryDialog >> accept [
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemoveRepositoryDialog >> confirmLabel [
+IceTipRemoveRepositoryDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
 { #category : #accessing }
-IceTipRemoveRepositoryDialog >> confirmMessage [
+IceTipRemoveRepositoryDialogPresenter >> confirmMessage [
 	^ 'Are you sure to remove your repository {1} from your image?'
 ]
 
 { #category : #layout }
-IceTipRemoveRepositoryDialog >> defaultLayout [
+IceTipRemoveRepositoryDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		borderWidth: 5;
@@ -45,13 +45,13 @@ IceTipRemoveRepositoryDialog >> defaultLayout [
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemoveRepositoryDialog >> iconPanel [
+IceTipRemoveRepositoryDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> initialExtentForWindow [
+IceTipRemoveRepositoryDialogPresenter >> initialExtentForWindow [
 
 	^ (500@(
 		self class inputTextHeight * 2
@@ -61,7 +61,7 @@ IceTipRemoveRepositoryDialog >> initialExtentForWindow [
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> initializePresenters [
+IceTipRemoveRepositoryDialogPresenter >> initializePresenters [
 
 	iconPanel := self newImage
 		image: (self iconNamed: #question);
@@ -75,36 +75,36 @@ IceTipRemoveRepositoryDialog >> initializePresenters [
 ]
 
 { #category : #accessing }
-IceTipRemoveRepositoryDialog >> model [
+IceTipRemoveRepositoryDialogPresenter >> model [
 
 	^ model
 ]
 
 { #category : #accessing }
-IceTipRemoveRepositoryDialog >> model: anObject [
+IceTipRemoveRepositoryDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
 { #category : #'accessing - ui' }
-IceTipRemoveRepositoryDialog >> removeFileSystemCheckbox [
+IceTipRemoveRepositoryDialogPresenter >> removeFileSystemCheckbox [
 
 	^ removeFileSystemCheckbox
 ]
 
 { #category : #accessing }
-IceTipRemoveRepositoryDialog >> removeMessage [
+IceTipRemoveRepositoryDialogPresenter >> removeMessage [
 	^ 'Also remove repository from file system'
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> setModelBeforeInitialization: anObject [
+IceTipRemoveRepositoryDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
 { #category : #initialization }
-IceTipRemoveRepositoryDialog >> titleForWindow [
+IceTipRemoveRepositoryDialogPresenter >> titleForWindow [
 
 	^ 'Remove repository'
 ]

@@ -204,12 +204,12 @@ IceGitHubNewBranchFromIssuePanel >> validateIssue: aString [
 			         getIssue: remote owner
 			         project: remote projectName
 			         number: number.
-		self defaultApplication defer: [
+		self defer: [
 			self updateText: (self sanitizeTitle: (issue at: 'title')) ] ]
 			on: IceGitHubError
 			do: [ :e |
 				e messageText = 'Not Found' ifFalse: [ e pass ].
-				self defaultApplication defer: [
+				self defer: [
 					self updateText: self unknownTitle ] ] ]
 ]
 

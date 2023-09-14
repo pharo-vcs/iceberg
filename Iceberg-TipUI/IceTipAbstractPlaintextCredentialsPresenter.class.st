@@ -3,8 +3,8 @@ I implement the basic behavior of all the plaintext credentials.
 My subclasses implements the specific behavior for each of the operations.
 "
 Class {
-	#name : #IceTipAbstractPlaintextCredentialsModel,
-	#superclass : #IceTipAbstractCredentialsModel,
+	#name : #IceTipAbstractPlaintextCredentialsPresenter,
+	#superclass : #IceTipAbstractCredentialsPresenter,
 	#instVars : [
 		'usernameLabel',
 		'usernameInput',
@@ -15,7 +15,7 @@ Class {
 }
 
 { #category : #initialization }
-IceTipAbstractPlaintextCredentialsModel >> initializePresenters [
+IceTipAbstractPlaintextCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
 	usernameLabel := self newLabel label: 'Username:'.
@@ -33,13 +33,13 @@ IceTipAbstractPlaintextCredentialsModel >> initializePresenters [
 ]
 
 { #category : #testing }
-IceTipAbstractPlaintextCredentialsModel >> isOkEnabled [
+IceTipAbstractPlaintextCredentialsPresenter >> isOkEnabled [
 
 	^ self username isNotEmpty and: [ self password isNotEmpty ]
 ]
 
 { #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> newCredentials [
+IceTipAbstractPlaintextCredentialsPresenter >> newCredentials [
 
 	^ IcePlaintextCredentials new
 		  username: self username;
@@ -48,31 +48,31 @@ IceTipAbstractPlaintextCredentialsModel >> newCredentials [
 ]
 
 { #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> password [
+IceTipAbstractPlaintextCredentialsPresenter >> password [
 
 	^ passwordInput text
 ]
 
 { #category : #'accessing - ui' }
-IceTipAbstractPlaintextCredentialsModel >> passwordInput [
+IceTipAbstractPlaintextCredentialsPresenter >> passwordInput [
 
 	^ passwordInput
 ]
 
 { #category : #private }
-IceTipAbstractPlaintextCredentialsModel >> passwordLabel [
+IceTipAbstractPlaintextCredentialsPresenter >> passwordLabel [
 
 	^ 'Password:'
 ]
 
 { #category : #accessing }
-IceTipAbstractPlaintextCredentialsModel >> username [
+IceTipAbstractPlaintextCredentialsPresenter >> username [
 
 	^ usernameInput text
 ]
 
 { #category : #'accessing - ui' }
-IceTipAbstractPlaintextCredentialsModel >> usernameInput [
+IceTipAbstractPlaintextCredentialsPresenter >> usernameInput [
 
 	^ usernameInput
 ]

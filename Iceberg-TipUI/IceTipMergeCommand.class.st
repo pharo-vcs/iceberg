@@ -28,7 +28,7 @@ IceTipMergeCommand >> canBeExecuted [
 { #category : #executing }
 IceTipMergeCommand >> execute [
 	
-	(IceTipMergeBranchDialog 
+	(IceTipMergeBranchDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel) 
 		asDialogWindow 

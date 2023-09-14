@@ -48,10 +48,10 @@ IceTipInteractiveCredentialsProvider >> obtainSshCredentials: credentialsToRetur
 	
 	| returnedCred |
 	
-	returnedCred := IceTipAskSSHCredentialsModel new
+	returnedCred := IceTipAskSSHCredentialsPresenter new
 		credentials: self sshCredentials;
 		credentialStore: self credentialStore;
 		open.
-		
+
 	credentialsToReturn readFrom: returnedCred
 ]

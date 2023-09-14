@@ -32,27 +32,30 @@ IceGitHubOpenOnGithubAction class >> organisation: aString projectName: anotherS
 
 { #category : #executing }
 IceGitHubOpenOnGithubAction >> basicExecute [
-	[ 
-	
+
+	[
 	| url |
-	url := (self github getRepository: self organisation project: self projectName) at: 'html_url'.
-	
-	self class environment 
-		at: #WebBrowser 
-		ifPresent: [ :webBrowser | webBrowser openOn: url ] 
-		ifAbsent: [ 
-			SpApplication defaultApplication 
+	url := (self github
+		        getRepository: self organisation
+		        project: self projectName) at: 'html_url'.
+
+	self class environment
+		at: #WebBrowser
+		ifPresent: [ :webBrowser | webBrowser openOn: url ]
+		ifAbsent: [
+			self defaultApplication
 				title: ('Cannot open "{1}"' format: { url });
-				label: 'Because the project WebBrowser is not present by default in Pharo 6.';
-				openModal ] 
-	
-	]
+				label:
+					'Because the project WebBrowser is not present by default in Pharo 6.';
+				openModal ] ]
 		on: IceGitHubError
-		do: [ 
-			SpApplication defaultApplication 
+		do: [
+			self defaultApplication
 				title: 'Invalid Github repository.';
-				label: ('No project named "{1}" found for the owner "{2}"' 
-								format: { self projectName . self organisation});
+				label:
+					('No project named "{1}" found for the owner "{2}"' format: {
+								 self projectName.
+								 self organisation });
 				openModal ]
 ]
 

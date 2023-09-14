@@ -114,7 +114,7 @@ IceTipHiedraAltHistoryBrowser >> initializeWindow: aWindowPresenter [
 IceTipHiedraAltHistoryBrowser >> newCommitRow: index commit: item [ 
 	
 	^ self 
-		instantiate: IceTipHiedraAltHistoryRow 
+		instantiate: IceTipHiedraAltHistoryRowPresenter 
 		on: { (hiedraColumnController formAtRow: index). item }
 ]
 

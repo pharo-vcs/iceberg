@@ -2,7 +2,7 @@
 I'm the status bar for a IceTipWorkingCopyBrowser.
 "
 Class {
-	#name : #IceTipWorkingCopyStatusBar,
+	#name : #IceTipWorkingCopyStatusBarPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'branchLabel',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #layout }
-IceTipWorkingCopyStatusBar class >> defaultLayout [
+IceTipWorkingCopyStatusBarPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #branchLabel expand: false;
@@ -26,20 +26,20 @@ IceTipWorkingCopyStatusBar class >> defaultLayout [
 ]
 
 { #category : #testing }
-IceTipWorkingCopyStatusBar >> canTakeKeyboardFocus [
+IceTipWorkingCopyStatusBarPresenter >> canTakeKeyboardFocus [
 
 	^ false
 ]
 
 { #category : #initialization }
-IceTipWorkingCopyStatusBar >> initializePresenters [
+IceTipWorkingCopyStatusBarPresenter >> initializePresenters [
 
 	branchLabel := self newLabel.
 	statusLabel := self newLabel
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyStatusBar >> model: aModel [
+IceTipWorkingCopyStatusBarPresenter >> model: aModel [
 	"Fill labels from a IceTipWorkingCopyModel."
 
 	aModel shortCommitId
@@ -53,7 +53,7 @@ IceTipWorkingCopyStatusBar >> model: aModel [
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyStatusBar >> refreshWithCommitId: aModel [
+IceTipWorkingCopyStatusBarPresenter >> refreshWithCommitId: aModel [
 
 	branchLabel label: ('{1} at ' format: { aModel branchName }).
 	commitLink := self newLink.
@@ -65,7 +65,7 @@ IceTipWorkingCopyStatusBar >> refreshWithCommitId: aModel [
 ]
 
 { #category : #accessing }
-IceTipWorkingCopyStatusBar >> refreshWithoutCommitId: aModel [
+IceTipWorkingCopyStatusBarPresenter >> refreshWithoutCommitId: aModel [
 
 	branchLabel label: aModel branchName.
 	commitLink := self newNullPresenter.

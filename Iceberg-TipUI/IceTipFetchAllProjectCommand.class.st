@@ -56,8 +56,10 @@ IceTipFetchAllProjectCommand >> iconName [
 { #category : #executing }
 IceTipFetchAllProjectCommand >> isConfirmed [
 
-	^ UIManager default
-		  confirm:
-		  'This operation can take some times depending on the size and number of your repositories. Are you sure you want to fetch all repositories?'
-		  label: 'Proceed?'
+	^ self application newConfirm
+		  	title: 'Proceed?';
+			label: 
+		  'This operation can take some times depending on the size and number of your repositories. Are you sure you want to fetch all repositories?';
+			openModal 
+		 
 ]
