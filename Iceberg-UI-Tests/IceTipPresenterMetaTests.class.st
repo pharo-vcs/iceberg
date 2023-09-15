@@ -1,10 +1,11 @@
 Class {
-	#name : #IceTipPresenterMetaTests,
-	#superclass : #TestCase,
-	#category : #'Iceberg-UI-Tests'
+	#name : 'IceTipPresenterMetaTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-UI-Tests',
+	#package : 'Iceberg-UI-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> allClassesInAnyIcebergPackage [
 
 	^ Array streamContents: [ :str | 
@@ -12,7 +13,7 @@ IceTipPresenterMetaTests >> allClassesInAnyIcebergPackage [
 			  (c package name beginsWith: 'Iceberg') ifTrue: [ str nextPut: c ] ] ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> allMethodsInPresenters [
 	
 	^ Array streamContents: [ :stream |
@@ -22,7 +23,7 @@ IceTipPresenterMetaTests >> allMethodsInPresenters [
 			 	nextPutAll: each classSide methods ] ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
 
 	| searcher |
@@ -37,7 +38,7 @@ IceTipPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: isMeta [
 
 	| aCollection |
@@ -56,7 +57,7 @@ IceTipPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: is
 	"
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMeta [
 
 	^ Array streamContents: [ :stream |
@@ -67,21 +68,21 @@ IceTipPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMet
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> presenterClasses [
 
 	^ self allClassesInAnyIcebergPackage select: [ :each | 
 		  each inheritsFrom: SpPresenter ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipPresenterMetaTests >> presenterClassesDefining: aSelector isMeta: isMeta [
 
 	^ (self methodsInPresentersWithName: aSelector isMeta: isMeta)
 		collect: [ :each | each origin ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 	"Do not use the <spec> pragma, that was necessary in Spec1 but not in Spec2."
 
@@ -92,7 +93,7 @@ IceTipPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
 
 	"Either instance or class-side, the old #title is named #titleForWindow in inst-side."
@@ -112,7 +113,7 @@ IceTipPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipPresenterMetaTests >> testDontAccessUnderlyingWidget [
 	"In general, we don't want uses of #whenBuiltDo: or #adapter or similar. 
 	They are not prohibited by Spec2, but they are often used to manipulate the
@@ -130,7 +131,7 @@ IceTipPresenterMetaTests >> testDontAccessUnderlyingWidget [
 	"
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipPresenterMetaTests >> testPreferCloseWindow [
 	"IceTipSpPresenter provides #closeWindow to avoid 'self window close' and 'self window delete'."
 

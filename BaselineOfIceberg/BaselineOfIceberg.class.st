@@ -2,12 +2,13 @@
 Baseline for https://github.com/pharo-vcs/iceberg project
 "
 Class {
-	#name : #BaselineOfIceberg,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfIceberg
+	#name : 'BaselineOfIceberg',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfIceberg',
+	#package : 'BaselineOfIceberg'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfIceberg >> baseline: spec [
 	<baseline>
 	
@@ -63,14 +64,14 @@ BaselineOfIceberg >> baseline: spec [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfIceberg >> customProjectAttributes [
 	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
 	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
 	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfIceberg >> libgit: spec [
 	spec 
 		baseline: 'LibGit' 
@@ -84,14 +85,14 @@ BaselineOfIceberg >> libgit: spec [
 		with: [ spec loads: #('tests') ]
 ]
 
-{ #category : #script }
+{ #category : 'script' }
 BaselineOfIceberg >> postLoad [
 
 	self resetKMRepository.
 	(Smalltalk at: #Iceberg) bootstrap
 ]
 
-{ #category : #script }
+{ #category : 'script' }
 BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	| repository |
 	self resetKMRepository.
@@ -108,7 +109,7 @@ BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 		packageList: aSpec packageNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfIceberg >> projectClass [
 	^ super projectClass 
 	"this is breaking the bootstrap. Reverting it for now."
@@ -117,23 +118,23 @@ BaselineOfIceberg >> projectClass [
 		do: [ super projectClass ]"
 ]
 
-{ #category : #script }
+{ #category : 'script' }
 BaselineOfIceberg >> resetKMRepository [
 	Smalltalk 
 		at: #KMRepository 
 		ifPresent: [ :class | class reset ]
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfIceberg >> ring2: spec [
 	spec
 		baseline: 'Ring2'
 		with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ]
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:v1.0.19' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo12' ]
 ]

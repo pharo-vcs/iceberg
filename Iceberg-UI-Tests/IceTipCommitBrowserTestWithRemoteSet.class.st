@@ -1,15 +1,17 @@
 Class {
-	#name : #IceTipCommitBrowserTestWithRemoteSet,
-	#superclass : #IceTipCommitBrowserTest,
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#name : 'IceTipCommitBrowserTestWithRemoteSet',
+	#superclass : 'IceTipCommitBrowserTest',
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipCommitBrowserTestWithRemoteSet >> newFixture [
 	^ IceClonedFromRemoteFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTestWithRemoteSet >> testNotPushingAutomatically [
 	| previousState |
 	previousState := presenter commentPanel isPushing.
@@ -19,7 +21,7 @@ IceTipCommitBrowserTestWithRemoteSet >> testNotPushingAutomatically [
 	presenter commentPanel pushCheckbox state: previousState
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTestWithRemoteSet >> testPushSettingCheckbox [
 	| previousState |
 
@@ -34,7 +36,7 @@ IceTipCommitBrowserTestWithRemoteSet >> testPushSettingCheckbox [
 	presenter commentPanel pushCheckbox toggleState
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTestWithRemoteSet >> testPushingAutomatically [
 	| previousState diffTree |
 	previousState := presenter commentPanel isPushing.

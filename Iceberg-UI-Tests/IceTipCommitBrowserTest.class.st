@@ -1,19 +1,21 @@
 Class {
-	#name : #IceTipCommitBrowserTest,
-	#superclass : #IceAbstractTestCase,
+	#name : 'IceTipCommitBrowserTest',
+	#superclass : 'IceAbstractTestCase',
 	#instVars : [
 		'presenter',
 		'saveMock'
 	],
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommitBrowserTest class >> isAbstract [
 	^ self name = #IceTipCommitBrowserTest
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipCommitBrowserTest >> setUp [
 
 	super setUp.
@@ -35,13 +37,13 @@ IceTipCommitBrowserTest >> setUp [
 	presenter commentPanel commentText text: 'my super commit message'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipCommitBrowserTest >> tearDown [
 	presenter ifNotNil: [ presenter window close ].
 	super tearDown 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
 	| oldStatus |
 	
@@ -61,7 +63,7 @@ IceTipCommitBrowserTest >> testAcceptShortcutInCommentBoxTriggersCommit [
 		presenter commentPanel saveOnCommit: oldStatus ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testFixesField [
 	self
 		assert: presenter commentPanel fixesField class
@@ -78,7 +80,7 @@ IceTipCommitBrowserTest >> testFixesField [
 Fixes #123456'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testHasCommentPanelWithSavingSettings [
 	| previousState |
 	
@@ -96,13 +98,13 @@ IceTipCommitBrowserTest >> testHasCommentPanelWithSavingSettings [
 		presenter commentPanel saveOnCommit: previousState ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testHasDiffPanel [
 	self
 		assert: presenter diffPanel class equals: IceTipDiffSelectingPanel 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testIsAutomaticallySavingWhenChecked [
 	| previousState|
 	
@@ -116,7 +118,7 @@ IceTipCommitBrowserTest >> testIsAutomaticallySavingWhenChecked [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
 	| diffTree |
 
@@ -141,7 +143,7 @@ IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
 				isMethodDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
 	presenter doCommit.
 	self
@@ -149,7 +151,7 @@ IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
 		equals: 'my super commit message'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
 	| previousState |
 	previousState := presenter commentPanel isSaving.
@@ -161,7 +163,7 @@ IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
 		presenter commentPanel saveOnCommit: previousState ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTipCommitBrowserTest >> testIsNotCommitingUncheckedItems [
 	| diffTree |
 	presenter diffPanel selectedItems

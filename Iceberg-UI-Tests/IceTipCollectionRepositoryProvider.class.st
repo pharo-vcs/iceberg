@@ -1,24 +1,25 @@
 Class {
-	#name : #IceTipCollectionRepositoryProvider,
-	#superclass : #Object,
+	#name : 'IceTipCollectionRepositoryProvider',
+	#superclass : 'Object',
 	#instVars : [
 		'collection'
 	],
-	#category : #'Iceberg-UI-Tests'
+	#category : 'Iceberg-UI-Tests',
+	#package : 'Iceberg-UI-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCollectionRepositoryProvider >> addRepository: aRepository [
 	
 	collection add: aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCollectionRepositoryProvider >> collection: anObject [
 	collection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCollectionRepositoryProvider >> repositories [
 
 	^ collection
