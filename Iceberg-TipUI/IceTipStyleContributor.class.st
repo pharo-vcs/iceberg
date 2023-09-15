@@ -13,13 +13,16 @@ Class {
 IceTipStyleContributor >> styleSheetContribution [
 	
 	^ SpStyle newApplication 
-		addClass: 'textInputField' with: [ :textClass |
-			textClass addClass: 'iceTipReadonly' with: [ :iceTipReadonly |
-				iceTipReadonly addPropertyDrawWith: [ :draw | draw color: Color transparent ] ]]	;
-		addClass: 'text' with: [ :textClass |
-			textClass addClass: 'iceTipReadonly' with: [ :iceTipReadonly |
-				iceTipReadonly addPropertyDrawWith: [ :draw | draw color: Color transparent ].
-			textClass addClass: 'iceTipText4Lines' with: [ :iceTipText4Lines | 
-				iceTipText4Lines addPropertyGeometryWith: [ :geo | geo height: 80 ] ] ] ];
+		addClass: 'libgit2NotAvailable' with: [ :aClass | aClass 
+			addPropertyDrawWith: [ :draw | draw backgroundColor: Color orange ];
+			addPropertyFontWith: [ :font | font color: Color white ] ];
+		addClass: 'textInputField' with: [ :textClass | textClass 
+			addClass: 'iceTipReadonly' with: [ :iceTipReadonly | iceTipReadonly 
+				addPropertyDrawWith: [ :draw | draw color: Color transparent ] ] ];
+		addClass: 'text' with: [ :textClass | textClass 
+			addClass: 'iceTipReadonly' with: [ :iceTipReadonly | iceTipReadonly 
+				addPropertyDrawWith: [ :draw | draw color: Color transparent ];
+			addClass: 'iceTipText4Lines' with: [ :iceTipText4Lines | iceTipText4Lines 
+				addPropertyGeometryWith: [ :geo | geo height: 80 ] ] ] ];
 		yourself
 ]

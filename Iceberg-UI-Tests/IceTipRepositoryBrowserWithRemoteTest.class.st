@@ -1,15 +1,17 @@
 Class {
-	#name : #IceTipRepositoryBrowserWithRemoteTest,
-	#superclass : #IceTipRepositoryBrowserTest,
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#name : 'IceTipRepositoryBrowserWithRemoteTest',
+	#superclass : 'IceTipRepositoryBrowserTest',
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipRepositoryBrowserWithRemoteTest >> newFixture [
 	^ IceWithRemoteFixture inGit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserWithRemoteTest >> setUp [
 
 	super setUp.
@@ -17,13 +19,13 @@ IceTipRepositoryBrowserWithRemoteTest >> setUp [
 	presenter open
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserWithRemoteTest >> tearDown [
 	presenter ifNotNil: [ "super tearDown" presenter window close ].
 	super tearDown.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserWithRemoteTest >> testHasFetchButtonOnTheLeft [
 	self
 		assert:
@@ -31,7 +33,7 @@ IceTipRepositoryBrowserWithRemoteTest >> testHasFetchButtonOnTheLeft [
 				anySatisfy: [ :aButton | aButton label = 'Fetch' ])
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserWithRemoteTest >> testHasPullButtonOnTheLeft [
 	self
 		assert:
@@ -39,7 +41,7 @@ IceTipRepositoryBrowserWithRemoteTest >> testHasPullButtonOnTheLeft [
 				anySatisfy: [ :aButton | aButton label = 'Pull' ])
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserWithRemoteTest >> testHasPushButtonOnTheLeft [
 	self
 		assert:

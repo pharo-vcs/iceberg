@@ -1,16 +1,18 @@
 Class {
-	#name : #IceTipWorkingCopyBrowserOnDetachedRepoTest,
-	#superclass : #IceTipWorkingCopyBrowserTest,
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#name : 'IceTipWorkingCopyBrowserOnDetachedRepoTest',
+	#superclass : 'IceTipWorkingCopyBrowserTest',
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipWorkingCopyBrowserOnDetachedRepoTest >> newFixture [
 	
 	^ IceDetachedWorkingCopyFixture inGit
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipWorkingCopyBrowserOnDetachedRepoTest >> testStatusBarShowsStatusOfRepository [
 
 	self assert:

@@ -1,19 +1,21 @@
 Class {
-	#name : #IceTipWorkingCopyBrowserWithRemoteTest,
-	#superclass : #IceTipWorkingCopyBrowserTest,
+	#name : 'IceTipWorkingCopyBrowserWithRemoteTest',
+	#superclass : 'IceTipWorkingCopyBrowserTest',
 	#instVars : [
 		'remoteWorkingCopy'
 	],
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceTipWorkingCopyBrowserWithRemoteTest >> newFixture [
 
 	^ IceClonedFromRemoteFixture inGit
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
 
 	super setUp.
@@ -30,7 +32,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
 	self remoteRepository push
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testAddPackageInModelThenAnnounceAddsPackageToList [
 
 	"Add package directly in the model without notifying the UI"
@@ -43,7 +45,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testAddPackageInModelThenAnnounceAddsP
 	self assert: (presenter showsPackageNamed: self packageName2).
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceCommitedUpdatesPushBadge [
 
 	| pushButton |
@@ -60,7 +62,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceCommitedUpdatesP
 	self assert: pushButton badge equals: '1'
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceUpdatesPushBadge [
 
 	| pushButton |
@@ -77,7 +79,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testCommitThenAnnounceUpdatesPushBadge
 	self assert: pushButton badge equals: '1'
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testFetchButtonUpdatesPullBadge [
 
 	"If fetch brings commits in the upstream of the current branch, the badge of the pull button should be updated"	
@@ -90,7 +92,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testFetchButtonUpdatesPullBadge [
 	self assert: pullButton badge equals: 1
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounceMakesPackageDirtyInList [
 
 	"Add package directly in the model without notifying the UI"
@@ -103,7 +105,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageDirtyInModelThenAnnounc
 	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: ('*', self packageName1).
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageNonDirtyInModelThenAnnounceMakesPackageDirtyInList [
 
 	"Add package directly in the model without notifying the UI"
@@ -123,13 +125,13 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testMakePackageNonDirtyInModelThenAnno
 	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1.
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testNonDirtyPackageIsNotDirtyInList [
 
 	self assert: (presenter packagesTable valueAtColumn: 2 row: 1) equals: self packageName1.
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testPullButtonHasNoBadgeBeforeFetching [
 
 	"If we don't fetch, the badge of the pull button should not be updated"	
@@ -138,7 +140,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> testPullButtonHasNoBadgeBeforeFetching
 	self deny: pullButton hasBadge
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceTipWorkingCopyBrowserWithRemoteTest >> testPushButtonHasNoBadgeBeforeCommit [
 
 	| pushButton |

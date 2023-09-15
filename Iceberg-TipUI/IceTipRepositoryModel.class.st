@@ -57,9 +57,11 @@ IceTipRepositoryModel >> branchModelFor: aBranch [
 
 { #category : #accessing }
 IceTipRepositoryModel >> branchName [
-	self entity isMissing ifTrue: [ ^ self class unknownBranchLabel ].
 	
-	^ self entity head description.
+	(self isLibGitAvailable not or: [ self entity isMissing ]) 
+		ifTrue: [ ^ self class unknownBranchLabel ].
+	
+	^ self entity head description
 ]
 
 { #category : #accessing }
@@ -110,7 +112,7 @@ IceTipRepositoryModel >> description [
 	| text |
 	
 	text := self displayString.
-	self entity isModified 
+	(self isLibGitAvailable and: [ self entity isModified ]) 
 		ifTrue: [ text := '*', text ].
 	^ text
 ]
@@ -118,7 +120,7 @@ IceTipRepositoryModel >> description [
 { #category : #accessing }
 IceTipRepositoryModel >> descriptionDecorator [
 
-	self entity isModified 
+	(self isLibGitAvailable and: [ self entity isModified ]) 
 		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
 	^ super descriptionDecorator
 ]
@@ -173,6 +175,12 @@ IceTipRepositoryModel >> isCodeMissing [
 IceTipRepositoryModel >> isDetached [
 	^ self entity workingCopy isDetached 
 		or: [ self entity head isDetached ]
+]
+
+{ #category : #'private - testing' }
+IceTipRepositoryModel >> isLibGitAvailable [
+
+	^ LGitLibrary uniqueInstance isAvailable
 ]
 
 { #category : #'private - testing' }
@@ -425,6 +433,7 @@ IceTipRepositoryModel >> status [
 		| status incoming outgoing | 
 
 		self verifyDirectoryStructureIfMissing: [ :message | ^ message asString ].
+		self isLibGitAvailable ifFalse: [ ^ 'Unknown (No libgit2)' ].
 		
 		entity workingCopy workingCopyState isUnknownCommitState 
 			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
