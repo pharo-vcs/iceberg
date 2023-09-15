@@ -1,6 +1,6 @@
-Extension { #name : #IceChangeImporter }
+Extension { #name : 'IceChangeImporter' }
 
-{ #category : #'*Iceberg-Memory' }
+{ #category : '*Iceberg-Memory' }
 IceChangeImporter >> visitMemoryChange: anIceMemoryChange [ 
 	
 	| importer |

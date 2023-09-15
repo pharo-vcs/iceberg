@@ -1,14 +1,15 @@
 Class {
-	#name : #IceMemoryRemote,
-	#superclass : #IceRemote,
+	#name : 'IceMemoryRemote',
+	#superclass : 'IceRemote',
 	#instVars : [
 		'remoteRepository',
 		'branchRepository'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance-creation' }
+{ #category : 'instance-creation' }
 IceMemoryRemote class >> name: aString remoteRepository: aRepository branchRepository: aMCBranchRepository [
 
 	^ self new
@@ -18,19 +19,19 @@ IceMemoryRemote class >> name: aString remoteRepository: aRepository branchRepos
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMemoryRemote >> = anIceMemoryRemote [ 
 	
 	^ self species = anIceMemoryRemote species
 		and: [ self remoteRepository = anIceMemoryRemote remoteRepository ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemote >> branchRepository: aMCDictionaryRepository [ 
 	branchRepository := aMCDictionaryRepository
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRemote >> branches [
 	
 	^ (self latestCommitsOf: branchRepository)
@@ -47,7 +48,7 @@ IceMemoryRemote >> branches [
 			yourself ]
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceMemoryRemote >> fetch [
 
 	self fetchCommitsThat: [ :each | true ].
@@ -56,13 +57,13 @@ IceMemoryRemote >> fetch [
 	localRepository postFetch.
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceMemoryRemote >> fetchBranch: anIceMemoryRemoteBranch [ 
 	
 	self fetchCommitsThat: [ :each | each name = anIceMemoryRemoteBranch name ]
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceMemoryRemote >> fetchCommitsThat: aBlock [
 
 	"Really low level.
@@ -85,7 +86,7 @@ IceMemoryRemote >> fetchCommitsThat: aBlock [
 					ifAbsent: [ localRepository codeRepository storeVersion: (remoteCodeRepository versionWithInfo: dependencyInfo) ] ] ]
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRemote >> latestCommitsOf: aMCDictionaryRepository [ 
 	
 	^ (aMCDictionaryRepository sortedVersionInfos
@@ -95,7 +96,7 @@ IceMemoryRemote >> latestCommitsOf: aMCDictionaryRepository [
 				aMCDictionaryRepository versionWithInfo: versionInfo ]
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRemote >> latestMCVersionForBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [
 	
 	| latestVersionInfo latestVersion branchCommits |
@@ -110,7 +111,7 @@ IceMemoryRemote >> latestMCVersionForBranchNamed: aName ifPresent: presentBlock 
 	presentBlock value: latestVersion
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceMemoryRemote >> printOn: aStream [
 
 	aStream
@@ -120,7 +121,7 @@ IceMemoryRemote >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRemote >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [ 
 
 	^ self
@@ -138,12 +139,12 @@ IceMemoryRemote >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent: ab
 		ifAbsent: absentBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemote >> remoteRepository [
 	^ remoteRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemote >> remoteRepository: aRepository [ 
 	remoteRepository := aRepository
 ]

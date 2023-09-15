@@ -1,14 +1,15 @@
 Class {
-	#name : #IceMemoryProject,
-	#superclass : #Object,
+	#name : 'IceMemoryProject',
+	#superclass : 'Object',
 	#instVars : [
 		'repository',
 		'commitish'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance-creation' }
+{ #category : 'instance-creation' }
 IceMemoryProject class >> onRepository: anIceMemoryRepository commitish: aCommitish [
 
 	^ self new
@@ -17,54 +18,54 @@ IceMemoryProject class >> onRepository: anIceMemoryRepository commitish: aCommit
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMemoryProject >> = aMemoryProject [
 
 	^ aMemoryProject isMemoryProject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryProject >> commitish: aCommitish [
 	
 	commitish := aCommitish	
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMemoryProject >> isDirty [
 	^ repository workingCopy referenceCommit project ~= self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMemoryProject >> isInvalid [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMemoryProject >> isMemoryProject [
 
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 IceMemoryProject >> isUnbornProject [
 	
 	^ false
 ]
 
-{ #category : #'API-projects' }
+{ #category : 'API-projects' }
 IceMemoryProject >> packages [
 	
 	^ commitish packages
 ]
 
-{ #category : #'API-packages' }
+{ #category : 'API-packages' }
 IceMemoryProject >> packagesFrom: anIceMemoryCommit [
 
 	^ anIceMemoryCommit packages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryProject >> repository: anIceMemoryRepository [ 
 	repository := anIceMemoryRepository
 ]

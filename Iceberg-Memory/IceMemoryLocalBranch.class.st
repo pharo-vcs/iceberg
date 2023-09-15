@@ -1,32 +1,33 @@
 Class {
-	#name : #IceMemoryLocalBranch,
-	#superclass : #IceLocalBranch,
+	#name : 'IceMemoryLocalBranch',
+	#superclass : 'IceLocalBranch',
 	#instVars : [
 		'commit',
 		'upstream'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryLocalBranch >> commit [
 
 	^ commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryLocalBranch >> commit: aCommit [
 
 	commit := aCommit
 ]
 
-{ #category : #'API-remotes' }
+{ #category : 'API-remotes' }
 IceMemoryLocalBranch >> hasUpstream [
 	
 	^ upstream notNil
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceMemoryLocalBranch >> mergeWithBranch: anIceMemoryRemoteBranch [ 
 	
 	"Ensure that all commits of the remote branch are in the local branch mc repository"
@@ -38,25 +39,25 @@ IceMemoryLocalBranch >> mergeWithBranch: anIceMemoryRemoteBranch [
 	commit := self commit mergeWith: anIceMemoryRemoteBranch commit
 ]
 
-{ #category : #'API-remotes' }
+{ #category : 'API-remotes' }
 IceMemoryLocalBranch >> setUpstream: anIceMemoryRemoteBranch [ 
 	
 	upstream := anIceMemoryRemoteBranch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryLocalBranch >> trackedBranch [
 	
 	^ repository remoteTrackedBranches detect: [ :each | each name = name ]
 ]
 
-{ #category : #tracking }
+{ #category : 'tracking' }
 IceMemoryLocalBranch >> tracksRemoteBranch [
 	
 	^ repository remoteTrackedBranches anySatisfy: [ :branch | branch name = self name ]
 ]
 
-{ #category : #'API-remotes' }
+{ #category : 'API-remotes' }
 IceMemoryLocalBranch >> upstream [
 
 	^ upstream ifNil: [ IceUpstreamNotConfigured signal ]

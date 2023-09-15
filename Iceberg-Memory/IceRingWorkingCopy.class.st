@@ -1,20 +1,21 @@
 Class {
-	#name : #IceRingWorkingCopy,
-	#superclass : #IceWorkingCopy,
+	#name : 'IceRingWorkingCopy',
+	#superclass : 'IceWorkingCopy',
 	#instVars : [
 		'ringEnvironment'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> addClassVariable: aVariableName to: aClassName [
 	| class |
 	class := ringEnvironment ensureClassNamed: aClassName.
 	class addClassVariable: (RG2ClassVariableDefinition named: aVariableName asSymbol parent: class ).
 ]
 
-{ #category : #'private-impacting-changes' }
+{ #category : 'private-impacting-changes' }
 IceRingWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 
 	| visitor |
@@ -22,14 +23,14 @@ IceRingWorkingCopy >> applyDefinition: anIceDefinition inNode: aNode [
 	aNode accept: visitor.
 ]
 
-{ #category : #packages }
+{ #category : 'packages' }
 IceRingWorkingCopy >> basicAddPackage: aPackage [
 	
 	super basicAddPackage: aPackage.
 	ringEnvironment ensurePackageNamed: aPackage name.
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createClass: className inPackage: packageName [
 	
 	self
@@ -38,7 +39,7 @@ IceRingWorkingCopy >> createClass: className inPackage: packageName [
 		with: [ :class | class superclass name: 'Object' ]
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createClass: className inPackage: packageName with: aBlock [
 	
 	| package class |
@@ -52,7 +53,7 @@ IceRingWorkingCopy >> createClass: className inPackage: packageName with: aBlock
 	self markAsDirtyPackageNamed: package name
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createMethod: source extendingClass: aClassName inPackage: packageName [
 	
 	| class method package |
@@ -68,7 +69,7 @@ IceRingWorkingCopy >> createMethod: source extendingClass: aClassName inPackage:
 	self markAsDirtyPackageNamed: packageName.
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createMethod: source inClass: aClassName [
 	
 	| class method |
@@ -79,7 +80,7 @@ IceRingWorkingCopy >> createMethod: source inClass: aClassName [
 	self markAsDirtyPackageNamed: class package name.
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createMethod: source inClass: aClassName isMeta: aBoolean [
 	
 	| class method package |
@@ -92,7 +93,7 @@ IceRingWorkingCopy >> createMethod: source inClass: aClassName isMeta: aBoolean 
 	self markAsDirtyPackageNamed: package name.
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createMethod: source tagged: tagName extendingClass: aClassName inPackage: packageName [
   	| class method package |
 
@@ -108,13 +109,13 @@ IceRingWorkingCopy >> createMethod: source tagged: tagName extendingClass: aClas
  	self markAsDirtyPackageNamed: packageName.  
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createTrait: traitName inPackage: packageName [
 	
 	^ self createTrait: traitName inPackage: packageName with: [ :aTrait |  ]
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> createTrait: traitName inPackage: packageName with: aBlock [
 	
 	| package class |
@@ -128,26 +129,26 @@ IceRingWorkingCopy >> createTrait: traitName inPackage: packageName with: aBlock
 	self markAsDirtyPackageNamed: package name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRingWorkingCopy >> environment [
 	
 	^ ringEnvironment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceRingWorkingCopy >> initialize [
 
 	super initialize.
 	ringEnvironment := RG2Environment new.
 ]
 
-{ #category : #packages }
+{ #category : 'packages' }
 IceRingWorkingCopy >> isLoadedPackageNamed: aString [ 
 	
 	^ (ringEnvironment ask packageNamed: aString) notNil
 ]
 
-{ #category : #'private-changes' }
+{ #category : 'private-changes' }
 IceRingWorkingCopy >> loadChangesInWorkingCopy: aTree [
 	
 	| visitor |
@@ -159,7 +160,7 @@ IceRingWorkingCopy >> loadChangesInWorkingCopy: aTree [
 
 ]
 
-{ #category : #'private-monticello' }
+{ #category : 'private-monticello' }
 IceRingWorkingCopy >> loadPackagesNamed: packageNames fromCommit: aCommit [
 	
 	packageNames do: [ :packageName | | package snapshot |
@@ -174,7 +175,7 @@ IceRingWorkingCopy >> loadPackagesNamed: packageNames fromCommit: aCommit [
 	self referenceCommit: aCommit
 ]
 
-{ #category : #'private-impacting-changes' }
+{ #category : 'private-impacting-changes' }
 IceRingWorkingCopy >> removeClassNamed: aString [ 
 	
 	| class |
@@ -185,7 +186,7 @@ IceRingWorkingCopy >> removeClassNamed: aString [
 	self markAsDirtyPackageNamed: class package name.
 ]
 
-{ #category : #'private-impacting changes' }
+{ #category : 'private-impacting changes' }
 IceRingWorkingCopy >> removeMethod: anIceMethodDefinition [ 
 	
 	self
@@ -193,7 +194,7 @@ IceRingWorkingCopy >> removeMethod: anIceMethodDefinition [
 		fromClass: anIceMethodDefinition ownerName
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> removeMethod: selector extendingClass: aClassName fromPackage: aPackageName [
 
 	| method class |
@@ -203,7 +204,7 @@ IceRingWorkingCopy >> removeMethod: selector extendingClass: aClassName fromPack
 	self markAsDirtyPackageNamed: aPackageName.
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceRingWorkingCopy >> removeMethod: selector fromClass: aClassName [
 
 	| class method |
@@ -213,13 +214,13 @@ IceRingWorkingCopy >> removeMethod: selector fromClass: aClassName [
 	self markAsDirtyPackageNamed: class package name.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceRingWorkingCopy >> snapshotForPackage: aPackage [
 
 	^ (ringEnvironment ensurePackageNamed: aPackage name) asMCSnapshot.
 ]
 
-{ #category : #'private-monticello' }
+{ #category : 'private-monticello' }
 IceRingWorkingCopy >> unloadPackage: aPackage [
 
 	| package |
