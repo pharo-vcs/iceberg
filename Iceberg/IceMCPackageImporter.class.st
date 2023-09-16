@@ -2,16 +2,18 @@
 I am an importer of MCPackages into an IceNode. I am created from a version and a node. I calculate the snapshot of that definition and import all those definitions into my node, delegating to a IceMCDefinitionImporter.
 "
 Class {
-	#name : #IceMCPackageImporter,
-	#superclass : #Object,
+	#name : 'IceMCPackageImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'version',
 		'package'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #importing }
+{ #category : 'importing' }
 IceMCPackageImporter >> importOn: aNode [
 
 	| packageNode snapshot definition |
@@ -31,30 +33,30 @@ IceMCPackageImporter >> importOn: aNode [
 	^ packageNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCPackageImporter >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCPackageImporter >> package: aPackage [
 	
 	package := aPackage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCPackageImporter >> packageName [
 	
 	^ self package name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCPackageImporter >> snapshot [
 	
 	^ version snapshotForPackage: self package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCPackageImporter >> version: aVersion [
 	
 	version := aVersion

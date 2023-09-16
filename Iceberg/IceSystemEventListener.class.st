@@ -5,12 +5,14 @@ I'm mainly used to mark as dirty packages whose methods and classes are modified
 I'm implemented as class side methods to avoid memory leaks and problems when unsubscribing to events.
 "
 Class {
-	#name : #IceSystemEventListener,
-	#superclass : #Object,
-	#category : #'Iceberg-Changes'
+	#name : 'IceSystemEventListener',
+	#superclass : 'Object',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceSystemEventListener class >> handleClassChange: aClassChange [
 
 	"We should take care not only about the class package but also the package of the methods extending that class."
@@ -18,19 +20,19 @@ IceSystemEventListener class >> handleClassChange: aClassChange [
 
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceSystemEventListener class >> handleMethodChange: aMethodChange [
 
 	self handlePackagesChange: aMethodChange packagesAffected
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceSystemEventListener class >> handlePackageChange: aPackageChange [
 
 	self handlePackagesChange: aPackageChange packagesAffected
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceSystemEventListener class >> handlePackagesChange: packages [
 
 	IceRepository registry do: [ :repository | | changed |
@@ -39,7 +41,7 @@ IceSystemEventListener class >> handlePackagesChange: packages [
 		changed ifTrue: [ 	Iceberg announcer announce: (IceRepositoryModified for: repository) ]]
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceSystemEventListener class >> handleVersionLoaded: ann [
 	"When monticello finishes to load a package, we need to verify its status to mark them as dirty or 
 	 not dirty as they apply."
@@ -68,13 +70,13 @@ IceSystemEventListener class >> handleVersionLoaded: ann [
 						Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 IceSystemEventListener class >> initialize [
 
 	self registerSystemAnnouncements
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 IceSystemEventListener class >> registerSystemAnnouncements [
 
 	self unregisterSystemAnnouncements.
@@ -85,7 +87,7 @@ IceSystemEventListener class >> registerSystemAnnouncements [
 		when: MCVersionLoaderStopped send: #handleVersionLoaded: to: self.
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 IceSystemEventListener class >> unregisterSystemAnnouncements [
 	
 	SystemAnnouncer uniqueInstance unsubscribe: self

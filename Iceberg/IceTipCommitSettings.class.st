@@ -1,69 +1,71 @@
 Class {
-	#name : #IceTipCommitSettings,
-	#superclass : #Object,
+	#name : 'IceTipCommitSettings',
+	#superclass : 'Object',
 	#classInstVars : [
 		'pushOnCommit',
 		'saveImageOnCommit',
 		'critiquesOnCommit'
 	],
-	#category : #'Iceberg-Settings'
+	#category : 'Iceberg-Settings',
+	#package : 'Iceberg',
+	#tag : 'Settings'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommit [
 
 	^ critiquesOnCommit ifNil: [ 
 		  critiquesOnCommit := self critiquesOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommit: aBoolean [
 	critiquesOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommitDefaultValue [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommit [
 
 	^ pushOnCommit ifNil: [ 
 		  pushOnCommit := self pushOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommit: aBoolean [
 	pushOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommitDefaultValue [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommit [
 
 	^ saveImageOnCommit ifNil: [ 
 		  saveImageOnCommit := self saveImageOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommit: aBoolean [
 	saveImageOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommitDefaultValue [
 
 	^ true
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCommitSettings class >> settingsOn: aBuilder [
 
 	<systemsettings>

@@ -2,35 +2,37 @@
 Adapter for having MCFileTreeWriters being able to write into Iceberg backend repositories without introducing unpleasant modifications in them.
 "
 Class {
-	#name : #IceBackendWriterAdapter,
-	#superclass : #Object,
+	#name : 'IceBackendWriterAdapter',
+	#superclass : 'Object',
 	#instVars : [
 		'backend'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters',
+	#package : 'Iceberg',
+	#tag : 'Adapters'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceBackendWriterAdapter class >> for: anIceBackend [
 	^ self new backend: anIceBackend; yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBackendWriterAdapter >> backend [
 	^ backend
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBackendWriterAdapter >> backend: anObject [
 	backend := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBackendWriterAdapter >> directory [
 	^ self backend codeDirectory 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBackendWriterAdapter >> propertyFileExtension [
 	^ MCFileTreeRepository defaultPropertyFileExtension
 ]

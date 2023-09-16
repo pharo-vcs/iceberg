@@ -2,33 +2,35 @@
 I am a tree visitor that returns a set of critics to the elements in the collection
 "
 Class {
-	#name : #IceCritiquesVisitor,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceCritiquesVisitor',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'critiques'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCritiquesVisitor >> critiques [
 	^ critiques
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceCritiquesVisitor >> initialize [
 
 	super initialize.
 	critiques := Set new
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitAddition: anIceAddition [ 
 	
 	^ anIceAddition definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitAll: aCollection [
 
 	aCollection
@@ -36,19 +38,19 @@ IceCritiquesVisitor >> visitAll: aCollection [
 		displayingProgress: [ :each | 'Calculating Critiques...' ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitClassDefinition: anIceClassDefinition [
 
 	anIceClassDefinition canBeBrowsed ifTrue: [ 
 		critiques addAll: anIceClassDefinition actualClass critiques ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	"no critiques for directories"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitExtensionDefinition: anIceExtension [ 
 	"^ anIceExtension definition accept: self"
 	| actualClass methods |
@@ -59,32 +61,32 @@ IceCritiquesVisitor >> visitExtensionDefinition: anIceExtension [
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitFileNode: anIceFileDefinition [ 
 	
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitMethodNode: anIceMethodDefinition [ 
 
 	anIceMethodDefinition canBeBrowsed 
 		ifTrue: [ critiques addAll: (anIceMethodDefinition contextClass >> anIceMethodDefinition name) critiques ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitModification: anIceModification [ 
 
 	^ anIceModification definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitNoModification: anIceNoModification [ 
 	
 	"If there is no modification I don't generate critics for this node"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitPackage: anIcePackageDefinition [
 
 	| aPackage |
@@ -92,13 +94,13 @@ IceCritiquesVisitor >> visitPackage: anIcePackageDefinition [
 	critiques addAll: aPackage critiques
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitRemoval: anIceRemoval [ 
 	
 	"We do nothing on removal"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCritiquesVisitor >> visitTraitDefinition: anIceClassDefinition [
 
 	anIceClassDefinition canBeBrowsed ifTrue: [ 

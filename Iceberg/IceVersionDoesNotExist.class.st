@@ -2,15 +2,17 @@
 Version does not exist, probably the package was created in a later commit or it was deleted.
 "
 Class {
-	#name : #IceVersionDoesNotExist,
-	#superclass : #IceError,
+	#name : 'IceVersionDoesNotExist',
+	#superclass : 'IceError',
 	#instVars : [
 		'version'
 	],
-	#category : 'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceVersionDoesNotExist >> messageText [
 	^ 'There is no version for package: {1} in  commit {2}' 
 		format: { 
@@ -19,12 +21,12 @@ IceVersionDoesNotExist >> messageText [
 		}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceVersionDoesNotExist >> version [
 	^ version
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceVersionDoesNotExist >> version: anObject [
 	version := anObject
 ]

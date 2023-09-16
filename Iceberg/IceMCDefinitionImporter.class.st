@@ -2,16 +2,18 @@
 I am an importer that visits MCDefinitions and creates IceDefinitions from them. I install those definitions into a corresponding package node.
 "
 Class {
-	#name : #IceMCDefinitionImporter,
-	#superclass : #Object,
+	#name : 'IceMCDefinitionImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'packageNode',
 		'snapshot'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> ensureMethodOwnerNamed: ownerName isMeta: isMeta isTrait: isTrait isExtension: isExtension [
 	| newDefinition |
 	newDefinition := isExtension
@@ -25,14 +27,14 @@ IceMCDefinitionImporter >> ensureMethodOwnerNamed: ownerName isMeta: isMeta isTr
 		ifAbsentPut: [ newDefinition ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMCDefinitionImporter >> isExtension: aName [
 	
 	snapshot classDefinitionNamed: aName ifAbsent:  [ ^ true ].
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMCDefinitionImporter >> isTrait: aName [ 
 	
 	| definition |
@@ -40,17 +42,17 @@ IceMCDefinitionImporter >> isTrait: aName [
 	^ definition isTraitDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCDefinitionImporter >> packageNode: anIcePackageNode [ 
 	packageNode := anIcePackageNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMCDefinitionImporter >> snapshot: aMCSnapshot [ 
 	snapshot := aMCSnapshot
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [
 
 	| classDefinitionNode classDefinition |
@@ -75,7 +77,7 @@ IceMCDefinitionImporter >> visitClassDefinition: aMCClassDefinition [
 	^ classDefinitionNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitClassTraitDefinition: aMCClassTraitDefinition [ 
 
 	| classTraitDefinitionNode |
@@ -88,7 +90,7 @@ IceMCDefinitionImporter >> visitClassTraitDefinition: aMCClassTraitDefinition [
 	^ classTraitDefinitionNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitMetaclassDefinition: aMCClassDefinition [
 	"We do nothing because of Monticello meta-model.
 	
@@ -99,7 +101,7 @@ IceMCDefinitionImporter >> visitMetaclassDefinition: aMCClassDefinition [
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitMethodDefinition: aMCMethodDefinition [ 
 	
 	| ownerName isMeta isTrait ownerNode |
@@ -122,7 +124,7 @@ IceMCDefinitionImporter >> visitMethodDefinition: aMCMethodDefinition [
 		sourceCode: aMCMethodDefinition source)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitOrganizationDefinition: aMCOrganizationDefinition [
 
 	packageNode value
@@ -130,7 +132,7 @@ IceMCDefinitionImporter >> visitOrganizationDefinition: aMCOrganizationDefinitio
 		tagNames: aMCOrganizationDefinition tagNames
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMCDefinitionImporter >> visitTraitDefinition: aMCTraitDefinition [
 
 	| traitDefinitionNode classTraitDefinition |

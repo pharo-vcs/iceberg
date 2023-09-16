@@ -6,18 +6,20 @@ My contents is the class definition code.
 See my superclasses for more information.
 "
 Class {
-	#name : #IceClassDefinition,
-	#superclass : #IceMethodContainerDefinition,
-	#category : #'Iceberg-Changes'
+	#name : 'IceClassDefinition',
+	#superclass : 'IceMethodContainerDefinition',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceClassDefinition >> accept: aVisitor [ 
 	
 	^ aVisitor visitClassDefinition: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceClassDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 	
 	"If we are replacing an existing class, we need to handle the case. 
@@ -45,7 +47,7 @@ IceClassDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 		to: anIceModification leftDefinition asMCDefinition
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceClassDefinition >> addToPatcher: aMCPatcher [ 
 	
 	"We should not handle metaclasses if their mcDefinition is nil.
@@ -57,20 +59,20 @@ IceClassDefinition >> addToPatcher: aMCPatcher [
 	aMCPatcher addDefinition: self asMCDefinition
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 	
 	^ mcDefinition deepCopy removeMetaSideVariables
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceClassDefinition >> isClassDefinition [
 	
 	^ true
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceClassDefinition >> removeFromPatcher: aMCPatcher [
 
 	"If the meta side is removed, we should modify the class definition to not include the meta-parts such as class-instance-variables"

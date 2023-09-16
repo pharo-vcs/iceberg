@@ -1,13 +1,15 @@
 Class {
-	#name : #IceMergeResolutionRequest,
-	#superclass : #Notification,
+	#name : 'IceMergeResolutionRequest',
+	#superclass : 'Notification',
 	#instVars : [
 		'merge'
 	],
-	#category : #'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #'exception description' }
+{ #category : 'exception description' }
 IceMergeResolutionRequest >> defaultAction [
 
 	| window mergeMorph |
@@ -25,12 +27,12 @@ IceMergeResolutionRequest >> defaultAction [
 	^ mergeMorph merged
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMergeResolutionRequest >> merge [
 	^ merge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMergeResolutionRequest >> merger: anIceMerge [ 
 	
 	merge := anIceMerge

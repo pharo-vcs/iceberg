@@ -1,6 +1,6 @@
-Extension { #name : #MCPatcher }
+Extension { #name : 'MCPatcher' }
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCPatcher >> definitions [
 	^ definitions
 ]

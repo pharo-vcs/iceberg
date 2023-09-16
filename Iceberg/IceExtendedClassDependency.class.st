@@ -1,41 +1,43 @@
 Class {
-	#name : #IceExtendedClassDependency,
-	#superclass : #IceDefinedDependency,
-	#category : #'Iceberg-Cherrypicking'
+	#name : 'IceExtendedClassDependency',
+	#superclass : 'IceDefinedDependency',
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceExtendedClassDependency >> = anObject [
 	^ super = anObject and: [ self definition name = anObject definition name ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceExtendedClassDependency >> hash [
 	^ super hash bitXor: self definition name hash
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceExtendedClassDependency >> isDependencyTo: anIceDefinition [
 	^ anIceDefinition name = self definition name
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceExtendedClassDependency >> referencedClasses [
 	^ {definition name asSymbol }
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceExtendedClassDependency >> referencedPackages [
 	^ {self definition packageName}
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceExtendedClassDependency >> referencedTraits [
 	
 	^ self referencedClasses 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceExtendedClassDependency >> visitExtensionDefinition: anIceExtensionDefinition [
 	^ definition  name = anIceExtensionDefinition name
 ]

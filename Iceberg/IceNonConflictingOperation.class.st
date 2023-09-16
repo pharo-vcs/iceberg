@@ -2,15 +2,17 @@
 I reprensent a non-conflict between two operations that can be solved automatically. The user can still override the automatic choice using #selectLeft and #selectRight.
 "
 Class {
-	#name : #IceNonConflictingOperation,
-	#superclass : #IceOperationMerge,
+	#name : 'IceNonConflictingOperation',
+	#superclass : 'IceOperationMerge',
 	#instVars : [
 		'operation'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceNonConflictingOperation class >> operation: anOperation [
 	
 	^ self new
@@ -18,19 +20,19 @@ IceNonConflictingOperation class >> operation: anOperation [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNonConflictingOperation >> accept: aVisitor [
 	
 	^ aVisitor visitNonConflictingOperation: self
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceNonConflictingOperation >> actualClass [
 	
 	^ operation definition actualClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> chosenOperation [
 	
 	^ chosen
@@ -38,75 +40,75 @@ IceNonConflictingOperation >> chosenOperation [
 		ifNotNil: [ chosen ]
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceNonConflictingOperation >> contextClass [
 	
 	^ operation contextClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> definition [
 	
 	"This is just for compatibility"
 	^ operation definition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> description [
 	
 	"Any of my instances should have the same description"
 	^ operation description
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceNonConflictingOperation >> isConflict [
 
 	^ false
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceNonConflictingOperation >> isLeftChosen [
 	
 	^ chosen = operation
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceNonConflictingOperation >> isRightChosen [
 	
 	^ chosen = operation inverse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> key [
 	
 	"Any of my operations should have the same key"
 	^ operation key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> leftContents [
 	
 	^ operation leftContents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> operation: anIceModification [ 
 	operation := anIceModification
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNonConflictingOperation >> rightContents [
 	
 	^ operation rightContents
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceNonConflictingOperation >> selectLeft [
 	
 	chosen := operation
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceNonConflictingOperation >> selectRight [
 	
 	chosen := operation inverse

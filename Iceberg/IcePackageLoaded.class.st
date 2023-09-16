@@ -2,25 +2,27 @@
 I announce when a package has been loaded.
 "
 Class {
-	#name : #IcePackageLoaded,
-	#superclass : #IceAnnouncement,
+	#name : 'IcePackageLoaded',
+	#superclass : 'IceAnnouncement',
 	#instVars : [
 		'loadedVersion'
 	],
-	#category : 'Iceberg-Announcements'
+	#category : 'Iceberg-Announcements',
+	#package : 'Iceberg',
+	#tag : 'Announcements'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IcePackageLoaded class >> version: version [ 
 	^ self new loadedVersion: version
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageLoaded >> loadedVersion [
 	^ loadedVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageLoaded >> loadedVersion: anObject [
 	loadedVersion := anObject
 ]

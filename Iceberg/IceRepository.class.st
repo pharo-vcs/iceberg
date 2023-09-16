@@ -140,8 +140,8 @@ From the repository point of view, only some convenience methods are provided to
 
 "
 Class {
-	#name : #IceRepository,
-	#superclass : #Object,
+	#name : 'IceRepository',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'workingCopy',
@@ -151,41 +151,43 @@ Class {
 	#classVars : [
 		'Registry'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepository class >> isAbstract [
 
 	^ self == IceRepository
 ]
 
-{ #category : #registry }
+{ #category : 'registry' }
 IceRepository class >> registerRepository: aRepository [
 	
 	self registry add: aRepository.
 	^ aRepository
 ]
 
-{ #category : #registry }
+{ #category : 'registry' }
 IceRepository class >> registeredRepositoryIncludingPackage: aPackage [ 
 	^ self registry 
 		detect: [ :repoitory | repoitory includesPackageNamed: aPackage name ]
 		ifNone: [ nil ]
 ]
 
-{ #category : #registry }
+{ #category : 'registry' }
 IceRepository class >> registry [
 	^ Registry ifNil: [ Registry := OrderedCollection new ]
 ]
 
-{ #category : #registry }
+{ #category : 'registry' }
 IceRepository class >> repositories [
 	
 	^ self registry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository class >> repositoryNamed: aString [
 
 	^ self repositories 
@@ -193,20 +195,20 @@ IceRepository class >> repositoryNamed: aString [
 		ifNone: [ nil ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 IceRepository class >> reset [
 	Registry := nil.
 	Iceberg announcer announce: IceRepositoryForgotten new.
 ]
 
-{ #category : #registry }
+{ #category : 'registry' }
 IceRepository class >> unregisterRepository: aRepository ifAbsent: aBlock [
 	^ self registry 
 		remove: aRepository 
 		ifAbsent: aBlock 
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> addRemote: aRemote [  
 	"Add a remote to the current repository.
 	
@@ -221,14 +223,14 @@ IceRepository >> addRemote: aRemote [
 	aRemote localRepository: self.
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> allBranches [
 	"Returns all local and remote branches, instances of IceBranch, from the current repository. This method will return only already fetched branches."
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> branch [
 	"Returns head if head is a branch.
 	Throws an exception if HEAD is not a branch"
@@ -237,7 +239,7 @@ IceRepository >> branch [
 	^ self head
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> branchName [
 	"Returns current branch name.
 	
@@ -246,7 +248,7 @@ IceRepository >> branchName [
 	^ self branch name
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> branchNamed: aName [
 	"Access a branch by name.
 	Throws an IceBranchNotFound is the branch does not exist in the repository."
@@ -260,7 +262,7 @@ IceRepository >> branchNamed: aName [
 				signal ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> branchNamed: aName ifAbsent: absentBlock [
 	"Access a branch by name.
 	Returns the result of the second argument if absent."
@@ -271,7 +273,7 @@ IceRepository >> branchNamed: aName ifAbsent: absentBlock [
 		ifAbsent: absentBlock
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> branchNamed: aString ifPresent: aBlockClosure [ 
 	"Access a branch by name.
 	If present, evaluate the block used as second argument with the branch found.
@@ -283,7 +285,7 @@ IceRepository >> branchNamed: aString ifPresent: aBlockClosure [
 		ifAbsent: [ self ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> branchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [
 	"Access a branch by name.
 	If present, evaluate the block used as second argument with the branch found.
@@ -292,33 +294,33 @@ IceRepository >> branchNamed: aName ifPresent: presentBlock ifAbsent: absentBloc
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepository >> canPush [
 	
 	^ self head isDetached not and: [ 
 		self branch tracksRemoteBranch ]
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceRepository >> checkForRegistryConflicts [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - working copy' }
+{ #category : 'API - working copy' }
 IceRepository >> checkout: aCheckoutStrategy [
 	
 	self workingCopy checkout: aCheckoutStrategy
 ]
 
-{ #category : #'API - loading' }
+{ #category : 'API - loading' }
 IceRepository >> checkoutAllPackages [
 
 	"A checkout operation loads all packages from the current branch in the image"
 	self branch checkoutAllPackages
 ]
 
-{ #category : #'API - loading' }
+{ #category : 'API - loading' }
 IceRepository >> checkoutBranch: branchName [
 	"Convenience method to checkout all packages from a branch given a branch name"
 
@@ -328,19 +330,19 @@ IceRepository >> checkoutBranch: branchName [
 			self createBranch: branchName ]) checkout
 ]
 
-{ #category : #'API - cherry-picking' }
+{ #category : 'API - cherry-picking' }
 IceRepository >> cherryPickFrom: anotherCommit [ 
 
 	^ self head cherryPickFrom: anotherCommit
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceRepository >> commitAt: commitId [
 	
 	^ self lookupCommit: commitId
 ]
 
-{ #category : #'API - commit' }
+{ #category : 'API - commit' }
 IceRepository >> commitChanges: changes withMessage: message [
 	"Creates a commit with the given changes using the comment given as argument.
 	
@@ -354,7 +356,7 @@ IceRepository >> commitChanges: changes withMessage: message [
 		withMessage: message
 ]
 
-{ #category : #'API - commit' }
+{ #category : 'API - commit' }
 IceRepository >> commitIndexWithMessage: message andParents: parentCommitishList [
 	"Low level.
 	
@@ -368,7 +370,7 @@ IceRepository >> commitIndexWithMessage: message andParents: parentCommitishList
 	^ newCommit
 ]
 
-{ #category : #'API - commit' }
+{ #category : 'API - commit' }
 IceRepository >> commitWithMessage: message [
 	"Creates a commit with all changed code using the comment given as argument.
 	
@@ -380,7 +382,7 @@ IceRepository >> commitWithMessage: message [
 	^ self workingCopy commitWithMessage: message
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> commitishNamed: aName [
 	"Resolve a name in the form of:
 	  - a commit hash
@@ -391,77 +393,77 @@ IceRepository >> commitishNamed: aName [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceRepository >> commitsInPackageCache [
 
 	^ commitsInPackageCache ifNil: [ commitsInPackageCache := LRUCache new maximumWeight: 30  ]
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceRepository >> commitsInPackageCache: aCache [
 
 	commitsInPackageCache := aCache
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> createBranch: branchName [
 	"Creates a new branch from #headCommit and switch to it"
 	
 	^ self createBranch: branchName inCommit: self headCommit
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> createBranch: branchName inCommit: aCommit [
 	"Creates a new branch from a given commit and switch to it"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> createNewBranch: branchName [
 	"Creates a new branch starting on HEAD commit and switch to it"
 
 	self createBranch: branchName inCommit: self headCommit
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> createTag: aString [
 
 	^ self workingCopy referenceCommit createTag: aString
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceRepository >> delete [
 	"Delete is idempotent. If the repository does not exist, do nothing.
 	Otherwise, forget the repository"
 	self forget
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceRepository >> description [
 	^ self origin url, '[', self head description, ']'
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceRepository >> discardChanges [
 	
 	self workingCopy discardChanges
 ]
 
-{ #category : #'private - remotes' }
+{ #category : 'private - remotes' }
 IceRepository >> doRemoveRemote: aRemote [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> ensureBranch: branchName [
 	(self hasLocalBranchNamed: branchName)
 		ifFalse: [ self createBranch: branchName ]
 
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> fetch [
 	"Fetch all commits and branches from all remotes"
 	
@@ -469,20 +471,20 @@ IceRepository >> fetch [
 		displayingProgress: [ :each | 'Remote: ' , each name asString ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> fetchFrom: aRemote [ 
 	"Fetch all commits and branches from the pull remote"
 
 	aRemote fetch
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceRepository >> forget [
 	self class unregisterRepository: self ifAbsent: [ ^ nil ].
 	Iceberg announcer announce: (IceRepositoryForgotten repository: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> fullWorkingCopyDiff [
 	^ IceDiff new
 		source: self workingCopy;
@@ -491,29 +493,29 @@ IceRepository >> fullWorkingCopyDiff [
 		yourself
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> hasIncomingCommits [
 	
 	^ self branch hasIncomingCommits
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> hasIncomingCommitsFrom: aRemote [
 	
 	^ self branch hasIncomingCommitsFrom: aRemote
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepository >> hasLoadedPackages [
 	^ self loadedPackages notEmpty
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> hasLocalBraches [
 	^ self localBranches isNotEmpty
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> hasLocalBranchNamed: aString [
 	
 	^ self branchNamed: aString
@@ -521,26 +523,26 @@ IceRepository >> hasLocalBranchNamed: aString [
 		ifAbsent: [ false ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> hasOutgoingCommits [
 	
 	^ self branch hasOutgoingCommits
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> hasRemoteNamed: aString [ 
 	
 	self remoteNamed: aString ifAbsent: [ ^ false ].
 	^ true
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> hasTagNamed: aString [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> head [
 	"The repository HEAD is a reference to our current working commit/branch in the repository.
 
@@ -549,33 +551,33 @@ IceRepository >> head [
 	self subclassResponsibility
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> headCommit [
 	"The head can be either a branch or a commit. To access the current commit you can ask the head for its commit, or directly the repository for its headCommit (Yes, commits and branches are polymorphic, a commit returns self when asked for its commit)."
 
 	^ self head commit
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceRepository >> headDescription [
 	
 	^ self head description
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceRepository >> includesCommit: anIceCommit [
 	self lookupCommit: anIceCommit id ifAbsent: [ ^ false ].
 	^ true	
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceRepository >> includesPackageNamed: aString [
 	"Returns true if the given package name belongs to a package loaded in the image"
 	
 	^ self workingCopy includesPackageNamed: aString
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> incomingCommits [
 	
 	(self head isDetached)
@@ -583,12 +585,12 @@ IceRepository >> incomingCommits [
 	^ self branch incomingCommits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> index [
 	^ index
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceRepository >> initialize [
 	super initialize.
 
@@ -599,51 +601,51 @@ IceRepository >> initialize [
 	index := self newIndex.
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceRepository >> internalStoreVersion: aMCVersion [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepository >> isCloneOfUrl: aString [ 
 
 	^ self origin url = aString
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceRepository >> isModified [
 	"Returns true if a package in the working copy has modifications"
 	
 	^ self workingCopy isModified
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceRepository >> loadedPackages [
 	"Lists all loaded packages"
 
 	^ self workingCopy loadedPackages
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> localBranchNames [
 	
 	^ self localBranches collect: #name
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> localBranches [
 	"Lists local branches"
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> log [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceRepository >> lookupCommit: commitId [
 
 	^ self
@@ -653,24 +655,24 @@ IceRepository >> lookupCommit: commitId [
 				id: commitId; yourself ]
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceRepository >> lookupCommit: commitId ifAbsent: aBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceRepository >> modifiedPackages [
 	"Lists all modified packages currently loaded in the image"
 
 	^ self workingCopy modifiedPackages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> name: aString [
 	"Change the name of the repository as is seen inside image (real project name resides 
 	 externally, in repository). This can be confusing, but some times you need it to create new 
@@ -678,72 +680,72 @@ IceRepository >> name: aString [
 	name := aString
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceRepository >> newCommitWalk [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceRepository >> newIndex [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceRepository >> newNoCommit [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceRepository >> newProjectFromCommit: aCommit [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceRepository >> newUnbornProject [
 	
 	^ IceUnbornProject onRepository: self
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceRepository >> notifyPackageModified: aString [ 
 	
 	^ self workingCopy notifyPackageModified: aString
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> origin [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> outgoingCommits [
 	^ self branch outgoingCommits 
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> outgoingCommitsTo: aRemote [
 	^ self branch outgoingCommitsTo: aRemote
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceRepository >> packageNamed: packageName [
 	"Returns the loaded package with the given name"
 	
 	^ self workingCopy packageNamed: packageName
 ]
 
-{ #category : #'private - tags' }
+{ #category : 'private - tags' }
 IceRepository >> peelTag: anIceTag [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'private - remotes' }
+{ #category : 'private - remotes' }
 IceRepository >> postFetch [
 	"This method is called after every fetch.
 	Fox possible broken references using unknown commits."
@@ -754,7 +756,7 @@ IceRepository >> postFetch [
 	maybeGoodCommit isUnknownCommit ifFalse: [ 	maybeGoodCommit adopt ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceRepository >> printOn: aStream [
 	aStream nextPutAll: self class name;
 		nextPut: $(;
@@ -762,40 +764,40 @@ IceRepository >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceRepository >> project [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> pull [
 	"Fetch new commits corresponding to the current branch from the default pull remote.
 	Then merge the remote branch with the current branch."
 	self branch pull
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> pullFrom: aRemote [
 	"Fetch new commits corresponding to the remote.
 	Then merge the remote branch with the current branch."
 	self branch pullFrom: aRemote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> push [
 	"Push current commits to the default push remote"
 	
 	self branch push
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> pushTo: aRemote [	
 	
 	self branch pushTo: aRemote
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceRepository >> register [
 	self checkForRegistryConflicts.
 	self class registerRepository: self.
@@ -804,13 +806,13 @@ IceRepository >> register [
 
 ]
 
-{ #category : #'private - remotes' }
+{ #category : 'private - remotes' }
 IceRepository >> remoteAt: aString put: aRemote [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteBranchNamed: aString [
 	"Access a remote branch by name.
 	Throws an IceBranchNotFound is the branch does not exist in the repository."
@@ -823,7 +825,7 @@ IceRepository >> remoteBranchNamed: aString [
 			signal ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteBranchNamed: aName ifAbsent: absentBlock [
 	"Access a remote branch by name.
 	Returns the result of the second argument if absent."
@@ -834,7 +836,7 @@ IceRepository >> remoteBranchNamed: aName ifAbsent: absentBlock [
 		ifAbsent: absentBlock
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteBranchNamed: aString ifPresent: aBlockClosure [ 
 	"Access a remote branch by name.
 	If present, evaluate the block used as second argument with the branch found.
@@ -846,7 +848,7 @@ IceRepository >> remoteBranchNamed: aString ifPresent: aBlockClosure [
 		ifAbsent: [ self ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock [ 
 	"Access a remote branch by name.
 	If present, evaluate the block used as second argument with the branch found.
@@ -855,13 +857,13 @@ IceRepository >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: ab
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteBranchNames [
 	
 	^ self remoteTrackedBranches collect: #name
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> remoteNamed: aString [ 
 	
 	^ self remoteNamed: aString ifAbsent: [ IceRemoteNotFoundError new
@@ -869,26 +871,26 @@ IceRepository >> remoteNamed: aString [
 		signal ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> remoteNamed: aString ifAbsent: aBlockClosure [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> remoteTrackedBranches [
 	"Lists branches in remotes"
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> remotes [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRepository >> removeRemote: aRemote [
 	
 	(self hasRemoteNamed: aRemote name)
@@ -899,19 +901,19 @@ IceRepository >> removeRemote: aRemote [
 	self doRemoveRemote: aRemote
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> removeTag: anIceTag [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> setHead: anIceGitBranch [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceRepository >> subdirectoryPath [
 	"Return a relative path containing the path to the code source.
 	This is required to compute the diff between two versions.
@@ -921,7 +923,7 @@ IceRepository >> subdirectoryPath [
 	self subclassResponsibility
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> switchToBranchNamed: aString [
 	
 	^ (self branchNamed: aString)
@@ -929,7 +931,7 @@ IceRepository >> switchToBranchNamed: aString [
 		yourself
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceRepository >> switchToCommitishNamed: aString [
 	
 	^ (self commitishNamed: aString)
@@ -937,7 +939,7 @@ IceRepository >> switchToCommitishNamed: aString [
 		yourself
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> tagNamed: aString [ 
 	
 	(self hasTagNamed: aString) ifFalse: [ 
@@ -948,26 +950,26 @@ IceRepository >> tagNamed: aString [
 	^ IceTag named: aString inRepository: self
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> tagNames [
 	
 	^ self tags collect: #name
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceRepository >> tags [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - loading' }
+{ #category : 'API - loading' }
 IceRepository >> unload [
 	"Unload all code loaded into the image that belong to this repository"
 	
 	self workingCopy unload
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceRepository >> validateCanCommit [
 	"Private API. Do not rely on this.
 	
@@ -979,13 +981,13 @@ IceRepository >> validateCanCommit [
 		IceWorkingCopyDesyncronized signal ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceRepository >> validateCanPull [
 	self isModified 
 		ifTrue: [ IceShouldCommitBeforePull signal ]
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceRepository >> validateCanPushTo: aRemote [
 	| commits |
 	
@@ -1002,20 +1004,20 @@ IceRepository >> validateCanPushTo: aRemote [
 		signal
 ]
 
-{ #category : #'private - packages' }
+{ #category : 'private - packages' }
 IceRepository >> workingCopies [
 	^ self loadedPackages collect: #workingCopy
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> workingCopy [
 	"See IceWorkingCopy"
 	
 	^ workingCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> workingCopy: aWorkingCopy [
 	"See IceWorkingCopy"
 	
@@ -1023,7 +1025,7 @@ IceRepository >> workingCopy: aWorkingCopy [
 	workingCopy repository: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepository >> workingCopyDiff [
 	
 	^ self workingCopy diffToReferenceCommit

@@ -1,13 +1,15 @@
 Class {
-	#name : #IceGitCheckoutProgress,
-	#superclass : #LGitCheckoutProgressCallback,
+	#name : 'IceGitCheckoutProgress',
+	#superclass : 'LGitCheckoutProgressCallback',
 	#instVars : [
 		'job'
 	],
-	#category : 'Iceberg-Progress'
+	#category : 'Iceberg-Progress',
+	#package : 'Iceberg',
+	#tag : 'Progress'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCheckoutProgress >> block [
 	^ [ :path :completed :total :payload | 
 		job ensureStarted.
@@ -21,7 +23,7 @@ IceGitCheckoutProgress >> block [
 	]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitCheckoutProgress >> initialize [
 	super initialize.
 	
@@ -32,7 +34,7 @@ IceGitCheckoutProgress >> initialize [
 	self initializeBlock.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitCheckoutProgress >> initializeBlock [
 	self signature: self class fnSpec block: self block.
 ]

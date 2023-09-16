@@ -1,6 +1,6 @@
 Class {
-	#name : #IceExternalJob,
-	#superclass : #Object,
+	#name : 'IceExternalJob',
+	#superclass : 'Object',
 	#instVars : [
 		'title',
 		'started',
@@ -8,70 +8,72 @@ Class {
 		'max',
 		'current'
 	],
-	#category : 'Iceberg-Progress'
+	#category : 'Iceberg-Progress',
+	#package : 'Iceberg',
+	#tag : 'Progress'
 }
 
-{ #category : #events }
+{ #category : 'events' }
 IceExternalJob >> changed [
 
 	current >= max ifTrue: [ ^ Job jobAnnouncer announce: (JobEnd on: self) ].
 	Job jobAnnouncer announce: (JobChange on: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> current: anInteger [ 
 	current := anInteger 
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceExternalJob >> end [
 	Job jobAnnouncer announce: (JobEnd on: self)
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceExternalJob >> ensureStarted [
 	started ifFalse: [ self start ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceExternalJob >> initialize [
 	super initialize.
 	started := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> max: anInteger [ 
 	max := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> min: anInteger [ 
 	min := anInteger 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> owner [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> progress [
 	^ min >= max ifTrue: [ 1 ] ifFalse: [ (current - min) / (max - min) ]
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceExternalJob >> start [
 	started := true.
 
 	Job jobAnnouncer announce: (JobStart on: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExternalJob >> title: aString [ 
 	title := aString
 ]

@@ -1,11 +1,11 @@
-Extension { #name : #DateAndTime }
+Extension { #name : 'DateAndTime' }
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 DateAndTime >> asLocalStringYMDHM [
 	^ self asLocal asStringYMDHM
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 DateAndTime >> asStringYMDHM [
 	^ String streamContents: [ :aStream |
 		self printYMDOn: aStream.

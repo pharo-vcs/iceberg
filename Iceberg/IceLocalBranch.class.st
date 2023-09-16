@@ -21,25 +21,27 @@ A local branch can also pull from its tracked branch or pull from a given remote
   branch pullFrom: aRemote.
 "
 Class {
-	#name : #IceLocalBranch,
-	#superclass : #IceBranch,
-	#category : #'Iceberg-Core'
+	#name : 'IceLocalBranch',
+	#superclass : 'IceBranch',
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceLocalBranch >> commit: anIceCommit [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLocalBranch >> hasIncomingCommits [
 	
 	self hasUpstream ifFalse: [ ^ false ].
 	^ self hasIncomingCommitsFrom: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> hasIncomingCommitsFrom: aRemote [
 	
 	| localCommits remoteCommits |
@@ -52,14 +54,14 @@ IceLocalBranch >> hasIncomingCommitsFrom: aRemote [
 		(localCommits includes: each) not ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLocalBranch >> hasOutgoingCommits [
 	
 	self hasUpstream ifFalse: [ ^ false ].
 	^ self hasOutgoingCommitsTo: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> hasOutgoingCommitsTo: aRemote [
 	
 	| localCommits remoteCommits |
@@ -72,20 +74,20 @@ IceLocalBranch >> hasOutgoingCommitsTo: aRemote [
 		(remoteCommits includes: each) not ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> hasUpstream [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> incomingCommits [
 	
 	self hasUpstream ifFalse: [ ^ #() ].
 	^ self incomingCommitsFrom: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> incomingCommitsFrom: aRemote [
 	
 	| remoteBranch |
@@ -96,7 +98,7 @@ IceLocalBranch >> incomingCommitsFrom: aRemote [
 		commits
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> incomingCommitsFromBranch: aBranch [
 	
 	^ aBranch newCommitWalk
@@ -104,32 +106,32 @@ IceLocalBranch >> incomingCommitsFromBranch: aBranch [
 		commits
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLocalBranch >> isRemote [
 
 	^ false
 ]
 
-{ #category : #'API - merging' }
+{ #category : 'API - merging' }
 IceLocalBranch >> mergeWith: aCommit [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - merging' }
+{ #category : 'API - merging' }
 IceLocalBranch >> mergeWithBranch: aBranch [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> outgoingCommits [
 	
 	self hasUpstream ifFalse: [ ^ #() ].
 	^ self outgoingCommitsTo: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> outgoingCommitsTo: aRemote [
 	
 	| remoteBranch walk |
@@ -143,13 +145,13 @@ IceLocalBranch >> outgoingCommitsTo: aRemote [
 	^ walk commits
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> pull [
 	
 	self pullFrom: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> pullFrom: aRemote [
 	
 	| remoteBranch |
@@ -160,26 +162,26 @@ IceLocalBranch >> pullFrom: aRemote [
 	self repository workingCopy mergeCommit: remoteBranch commit.
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> push [
 	
 	self pushTo: self upstream remote
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> pushTo: aRemote [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> reducedOutgoingCommitsWhenNoRemote [
 	^ self newCommitWalk
 		maxNumber: 20;
 		commits
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceLocalBranch >> resetToCommit: anIceGitCommit [
 	"Equivalent to a `git reset --hard` but not touching the image"
 	"1) Change the current commit of this branch
@@ -190,31 +192,31 @@ IceLocalBranch >> resetToCommit: anIceGitCommit [
 	self commit: anIceGitCommit
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> setUpstream: anUpstreamBranch [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> setUpstreamRemote: aRemote [
 	
 	self setUpstream: (aRemote remoteBranchNamed: self name)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLocalBranch >> trackedBranch [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> tracksRemoteBranch [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLocalBranch >> upstream [
 	
 	^ self subclassResponsibility

@@ -10,35 +10,37 @@ Internal Representation and Key Implementation Points.
 	url:		<String>
 "
 Class {
-	#name : #IceRemote,
-	#superclass : #Object,
+	#name : 'IceRemote',
+	#superclass : 'Object',
 	#instVars : [
 		'url',
 		'projectName',
 		'name',
 		'localRepository'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceRemote >> = another [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRemote >> basicUrl: aString [
 	url := aString
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceRemote >> branches [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> branchesFrom: aRepository [
 	"I return all the branches of my remote from a repository"
 
@@ -46,36 +48,36 @@ IceRemote >> branchesFrom: aRepository [
 		select: [ :branch | branch isRemote and: [ branch remoteName = self name ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> detailedInfo [
 	^ #()
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceRemote >> displayString [
 	^ '{1}: {2}' format: { 
 			self name.
 			self url }
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceRemote >> fetch [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceRemote >> fetchBranch: aRemoteBranch [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemote >> hasBranches [
 	^ self branches isNotEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemote >> hasRemoteBranchNamed: aString [ 
 	
 	self
@@ -84,12 +86,12 @@ IceRemote >> hasRemoteBranchNamed: aString [
 		ifAbsent: [ ^ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> host [
 	^ self subclassResponsibility
 ]
 
-{ #category : #patches }
+{ #category : 'patches' }
 IceRemote >> httpsUrl [
 	"This method is used to compare exchangeable addresses (https:// and git@). 
 	 So it has sense in my children, and is notably used on #isSameUrl: 
@@ -97,70 +99,70 @@ IceRemote >> httpsUrl [
 	^ self url
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemote >> isSame: aRemote [
 	^ (self referencesSameRemoteLocationAs: aRemote)
 		and: [ self name = aRemote name ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemote >> isUndefined [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> localRepository [
 	
 	^ localRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> localRepository: aRepository [
 	
 	localRepository := aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> name: aString [ 
 	
 	name := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRemote >> parseUrl [
 	^ self subclassResponsibility 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceRemote >> printOn: stream [
 	stream 
 		<< (self name ifNil: [ 'noname' ]) 
 		<< ' (' << self url << ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> projectBasename [
 	^ self projectName withoutSuffix: '.git'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> projectName [
 	^ projectName
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemote >> referencesSameRemoteLocationAs: another [
 	"Base/trivial implementation is that two urls are the same if they are equal, 
 	but some subclasses have more complicated logic to detect two urls pointing to the same remote"
 	^ self url sameAs: another url
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceRemote >> remoteBranchNamed: aString [ 
 	
 	^ self
@@ -171,7 +173,7 @@ IceRemote >> remoteBranchNamed: aString [
 			signal ]
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceRemote >> remoteBranchNamed: aString ifAbsent: aBlock [
 	
 	^ self
@@ -180,13 +182,13 @@ IceRemote >> remoteBranchNamed: aString ifAbsent: aBlock [
 		ifAbsent: [ ^ aBlock value ]
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceRemote >> remoteBranchNamed: aString ifPresent: presentClosure ifAbsent: absentClosure [
 	
 	^ absentClosure value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> upstreamForBranch: aBranch backend: backend [
 	^ backend 
 		lookupBranchNamed: aBranch name 
@@ -194,12 +196,12 @@ IceRemote >> upstreamForBranch: aBranch backend: backend [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemote >> url: aString [
 	self basicUrl: aString.
 	self parseUrl

@@ -25,15 +25,17 @@ I can also be queried for packages, ancestry and to make diffs to another commit
  aCommitish newCommitWalk.
 "
 Class {
-	#name : #IceCommitish,
-	#superclass : #Object,
+	#name : 'IceCommitish',
+	#superclass : 'Object',
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceCommitish class >> inRepository: aRepository [
 
 	^ self new
@@ -41,19 +43,19 @@ IceCommitish class >> inRepository: aRepository [
 		yourself
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommitish >> changesFromCommit: anIceCommit [ 
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommitish >> changesTo: aCommitish [
 
 	^ self commit changesTo: aCommitish
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> checkout [
 		
 	self checkout: (IceCheckoutAlreadyLoadedPackages new
@@ -61,14 +63,14 @@ IceCommitish >> checkout [
 		yourself)
 ]
 
-{ #category : #'API - checkout' }
+{ #category : 'API - checkout' }
 IceCommitish >> checkout: aCheckoutStrategy [
 	
 	aCheckoutStrategy committish: self.
 	^ repository checkout: aCheckoutStrategy
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> checkoutAllPackages [
 		
 	repository checkout: (IceCheckoutAllPackages new
@@ -76,20 +78,20 @@ IceCommitish >> checkoutAllPackages [
 		yourself)
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> checkoutWithStrategy: aCheckoutStrategy [
 	"Load code of a myself into the working copy (following strategy), and set myself as HEAD."
 	
 	repository checkout: (aCheckoutStrategy commitish: self)
 ]
 
-{ #category : #'API - cherry-picking' }
+{ #category : 'API - cherry-picking' }
 IceCommitish >> cherryPickFrom: anotherCommit [ 
 	
 	^ anotherCommit cherryPickTo: self
 ]
 
-{ #category : #'cherry-picking' }
+{ #category : 'cherry-picking' }
 IceCommitish >> cherryPickTo: anotherCommit [ 
 
 	| initialDiff extendedDiff commonAncestor receiverDiff |
@@ -108,79 +110,79 @@ IceCommitish >> cherryPickTo: anotherCommit [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommitish >> commit [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommitish >> commits [
 	
 	^ self newCommitWalk commits
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommitish >> commitsDo: aBlockClosure [ 
 	
 	self newCommitWalk commitsDo: aBlockClosure
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommitish >> commonAncestorWith: anIceWorkingCopy [ 
 
 	^ self commit commonAncestorWith: anIceWorkingCopy
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommitish >> diffTo: aCommitish [
 
 	^ IceDiff from: self to: aCommitish
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommitish >> diffToParent [
 
 	^ self diffTo: self parent
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceCommitish >> includesPackageNamed: aString [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommitish >> isBranch [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommitish >> isDetached [
 
 	^ self isBranch not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommitish >> isTag [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommitish >> isUnbornBranch [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommitish >> isWorkingCopy [
 	
 	^ false
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> loadPackageNamed: aString [ 
 	"Load the code of the given package into the working copy.
 	Does not modify HEAD"
@@ -190,67 +192,67 @@ IceCommitish >> loadPackageNamed: aString [
 		fromCommit: self
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceCommitish >> mcVersionFor: anIceSavedPackageVersion [ 
 	
 	^ repository mcVersionFor: anIceSavedPackageVersion
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> merge [
 	
 	^ self repository workingCopy mergeCommit: self commit
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommitish >> newCommitWalk [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceCommitish >> packageNames [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceCommitish >> packages [
 	
 	^ #()
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceCommitish >> project [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceCommitish >> properties [
 	^ IceRepositoryProperties
 		fromFileReferenceDirectory: self project sourceDirectoryReference
 		commitish: self
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceCommitish >> readerClass [
 	
 	^ self commit readerClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommitish >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommitish >> repository: aRepository [
 	
 	repository := aRepository
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceCommitish >> snapshotForPackage: anIceSavedPackage [
 
 	^ [ (self mcVersionFor: (self versionFor: anIceSavedPackage)) snapshot ]
@@ -258,13 +260,13 @@ IceCommitish >> snapshotForPackage: anIceSavedPackage [
 		do: [ MCSnapshot empty ]
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> switch [
 
 	self checkout: IceCheckoutDoNotLoadPackages new
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceCommitish >> switchAndMergeWorkingCopy [
 	self switch.
 	self flag: #pharoTodo. "Demeters law"
@@ -272,19 +274,19 @@ IceCommitish >> switchAndMergeWorkingCopy [
 	self commit merge
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceCommitish >> tagNames [
 	
 	^ self tags collect: #name
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceCommitish >> tags [
 	
 	^ self commit tags
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceCommitish >> validateCanMerge [
 
 	| imageCommit headCommit mergeCommit |
@@ -304,19 +306,19 @@ IceCommitish >> validateCanMerge [
 					imageCommit description }) ].
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceCommitish >> validateIsBranch [
 	
 	"Nothing. I'm a branch"
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceCommitish >> versionFor: aPackage [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceCommitish >> writerClass [
 	
 	^ self commit writerClass

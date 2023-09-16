@@ -2,15 +2,17 @@
 I represent a change coming from the image (in contrast to a change coming from git). I know the changed file and I can be visited to define the create a more detailed diff.
 "
 Class {
-	#name : #IceImageChange,
-	#superclass : #IceChange,
+	#name : 'IceImageChange',
+	#superclass : 'IceChange',
 	#instVars : [
 		'package'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceImageChange class >> package: anIcePackage [ 
 	
 	^ self new
@@ -18,23 +20,23 @@ IceImageChange class >> package: anIcePackage [
 		yourself
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceImageChange >> accept: aVisitor [
 	
 	^ aVisitor visitImageChange: self
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceImageChange >> displayingProgressString [
 	^ 'Comparing image changes of ' , self package name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceImageChange >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceImageChange >> package: anIcePackage [ 
 	package := anIcePackage
 ]

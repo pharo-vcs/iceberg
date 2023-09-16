@@ -1,45 +1,47 @@
 Class {
-	#name : #IceUrlBuilder,
-	#superclass : #Object,
+	#name : 'IceUrlBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'host',
 		'protocol',
 		'path'
 	],
-	#category : 'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> beBitbucket [
 	
 	self host: 'bitbucket.org'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> beGitLab [
 
 	self host: 'gitlab.com'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> beGithub [
 	
 	self host: 'github.com'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> beHttps [
 	
 	protocol := IceHttpsProtocol new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> beSsh [
 	
 	protocol := IceSSHProtocol new
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceUrlBuilder >> buildUrl [
 	
 	^ protocol
@@ -47,22 +49,22 @@ IceUrlBuilder >> buildUrl [
 		repositoryPath: path
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> host: aString [ 
 	host := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> path: aString [ 
 	path := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> protocol: aProtocol [ 
 	protocol := aProtocol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlBuilder >> username: aUsername project: aProject [ 
 	
 	path := aUsername, '/', aProject

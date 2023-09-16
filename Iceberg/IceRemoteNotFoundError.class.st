@@ -1,18 +1,20 @@
 Class {
-	#name : #IceRemoteNotFoundError,
-	#superclass : #IceError,
+	#name : 'IceRemoteNotFoundError',
+	#superclass : 'IceError',
 	#instVars : [
 		'remoteName'
 	],
-	#category : 'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteNotFoundError >> remoteName [
 	^ remoteName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteNotFoundError >> remoteName: aString [ 
 	remoteName := aString
 ]

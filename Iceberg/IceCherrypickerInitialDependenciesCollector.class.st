@@ -3,32 +3,34 @@ I am a visitor of IceDiff (and IceDefinition) collect the initial ser of depende
 
 "
 Class {
-	#name : #IceCherrypickerInitialDependenciesCollector,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceCherrypickerInitialDependenciesCollector',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'cherrypicker'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypickerInitialDependenciesCollector >> cherrypicker [
 	^ cherrypicker
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypickerInitialDependenciesCollector >> cherrypicker: anIceCherrypicker [
 
 	cherrypicker := anIceCherrypicker
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitAddition: anIceAddition [
 	anIceAddition definition accept: self.
 		self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassDefinition [
 	anIceClassDefinition isMeta
 		ifTrue: [ cherrypicker
@@ -36,43 +38,43 @@ IceCherrypickerInitialDependenciesCollector >> visitClassDefinition: anIceClassD
 		ifFalse: [ cherrypicker addClassDependencyOf: anIceClassDefinition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypickerInitialDependenciesCollector >> visitExtensionDefinition: anIceExtensionDefinition [
 cherrypicker addExtendedClassDependency: anIceExtensionDefinition
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitMethodNode: anIceMethodDefinition [
 	cherrypicker
 		addMethodDependencyOf: anIceMethodDefinition
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitModification: anIceModification [
 	anIceModification definition accept: self.
 		self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitNoModification: anIceNoModification [ 
 	
 	"Nothing with me. Just visit children"
 	self visitChildrenOf: currentNode.
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitPackage: anIcePackageDefinition [
 	cherrypicker
 		addPackageDependency: anIcePackageDefinition
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitRemoval: anIceRemoval [
 	anIceRemoval definition accept: self.
 		self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerInitialDependenciesCollector >> visitTraitDefinition: anIceTraitDefinition [
 	cherrypicker
 		addTraitDependencyOf: anIceTraitDefinition

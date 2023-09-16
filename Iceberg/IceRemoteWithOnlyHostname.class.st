@@ -5,27 +5,29 @@ This is to not intended to be polymorphic with all the uses of remotes in iceber
 It is only used in the credential
 "
 Class {
-	#name : #IceRemoteWithOnlyHostname,
-	#superclass : #Object,
+	#name : 'IceRemoteWithOnlyHostname',
+	#superclass : 'Object',
 	#instVars : [
 		'host'
 	],
-	#category : 'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRemoteWithOnlyHostname class >> for: aHost [
 	^ self new
 		host: aHost;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteWithOnlyHostname >> host [
 	^ host 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteWithOnlyHostname >> host: aString [ 
 	host := aString
 ]

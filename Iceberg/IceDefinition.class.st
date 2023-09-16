@@ -13,15 +13,17 @@ My main API is used to show myself in a diff or merge browser:
 I am also used for comparison to build diffs. See my definitions of equality along my subclasses.
 "
 Class {
-	#name : #IceDefinition,
-	#superclass : #Object,
+	#name : 'IceDefinition',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceDefinition class >> named: aString [ 
 	
 	^ self new
@@ -29,110 +31,110 @@ IceDefinition class >> named: aString [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceDefinition >> = anotherDefinition [
 
 	^ self species = anotherDefinition species
 		and: [ self name = anotherDefinition name ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceDefinition >> accept: aVisitor [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinition >> basicName [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinition >> contents [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceDefinition >> contextClass [
 	
 	^ nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceDefinition >> hash [
 
 	^ self name hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isClassDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isDirectoryDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isExtensionDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isFileDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isMethodDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isPackageDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isRootDefinition [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDefinition >> isTraitDefinition [
 	
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinition >> key [
 	
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinition >> name [
 	
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinition >> name: aString [ 
 	
 	name := aString
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceDefinition >> removeFrom: aVisitor [
 	
 	self subclassResponsibility

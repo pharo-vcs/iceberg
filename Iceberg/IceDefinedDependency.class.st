@@ -2,15 +2,17 @@
 I am a dependency for the IceDefinitions that have a MCDefinition.
 "
 Class {
-	#name : #IceDefinedDependency,
-	#superclass : #IceDependency,
+	#name : 'IceDefinedDependency',
+	#superclass : 'IceDependency',
 	#instVars : [
 		'definition'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceDefinedDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 	self == anObject
@@ -20,7 +22,7 @@ IceDefinedDependency >> = anObject [
 	^ definition className = anObject definition className
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	| asDependencyVisitor |
 	asDependencyVisitor := IceAsDependencyVisitor new.
@@ -54,35 +56,35 @@ IceDefinedDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherry
 						[ :iceNode | anIceCherrypicker addDependency: (iceNode accept: asDependencyVisitor) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinedDependency >> definition [
 	^ definition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDefinedDependency >> definition: anObject [
 	definition := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceDefinedDependency >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ definition className hash
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceDefinedDependency >> referencedClasses [
 
 	^ self subclassResponsibility 
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceDefinedDependency >> referencedPackages [
 	^ self subclassResponsibility
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceDefinedDependency >> referencedTraits [
 
 	^ self subclassResponsibility 

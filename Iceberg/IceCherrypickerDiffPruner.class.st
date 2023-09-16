@@ -3,16 +3,18 @@ I am an IceDiff visitor to remove nodes that are not required the IceCherrypicke
 
 "
 Class {
-	#name : #IceCherrypickerDiffPruner,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceCherrypickerDiffPruner',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'cherrypicker',
 		'nodesToRemove'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 IceCherrypickerDiffPruner >> applyTo: anIceDiff [
 	
 	nodesToRemove := Set new.
@@ -23,31 +25,31 @@ IceCherrypickerDiffPruner >> applyTo: anIceDiff [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypickerDiffPruner >> cherrypicker [
 	^ cherrypicker
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypickerDiffPruner >> cherrypicker: anIceCherrypicker [
 	cherrypicker := anIceCherrypicker
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerDiffPruner >> visitAddition: anIceAddition [ 
 	
 	(cherrypicker includesDependencyTo: anIceAddition definition) 
 		ifFalse: [ nodesToRemove add: currentNode ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerDiffPruner >> visitModification: anIceModification [
 
 	(cherrypicker includesDependencyTo: anIceModification definition)
 		ifFalse: [ nodesToRemove add: currentNode ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerDiffPruner >> visitNoModification: anIceNoModification [ 
 	
 	"Nothing with me. Just visit children"
@@ -55,7 +57,7 @@ IceCherrypickerDiffPruner >> visitNoModification: anIceNoModification [
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCherrypickerDiffPruner >> visitRemoval: anIceRemoval [
 	(cherrypicker includesDependencyTo: anIceRemoval definition)
 		ifFalse: [ nodesToRemove add: currentNode ]

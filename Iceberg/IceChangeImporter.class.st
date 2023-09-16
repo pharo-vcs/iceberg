@@ -6,17 +6,19 @@ I receive the node where I have to work on, a version, and the I can be visited 
 I work recursively: I create new instances of myself to build the children nodes of my node.
 "
 Class {
-	#name : #IceChangeImporter,
-	#superclass : #Object,
+	#name : 'IceChangeImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'parentNode',
 		'diff',
 		'version'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #importing }
+{ #category : 'importing' }
 IceChangeImporter >> addFileNamed: aString path: aRelativePath contents: aByteArray [ 
 
 	| fileParentNode |
@@ -34,12 +36,12 @@ IceChangeImporter >> addFileNamed: aString path: aRelativePath contents: aByteAr
 		contents: aByteArray).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceChangeImporter >> diff: anIceDiff [ 
 	diff := anIceDiff
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceChangeImporter >> ensureDirectoryAtPath: aPathSegments inNode: aNode [
 
 	| firstChild |
@@ -48,7 +50,7 @@ IceChangeImporter >> ensureDirectoryAtPath: aPathSegments inNode: aNode [
 	^ self ensureDirectoryAtPath: aPathSegments allButFirst inNode: firstChild
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceChangeImporter >> ensureDirectoryNamed: aName inNode: aNode [
 
 	aNode childAt: aName ifPresent: [ :node |
@@ -57,7 +59,7 @@ IceChangeImporter >> ensureDirectoryNamed: aName inNode: aNode [
 	^ aNode addChild: (IceDirectoryDefinition named: aName path: aNode path / aName)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceChangeImporter >> ensureSourceCodeParentNodeIn: aNode [
 	
 	^ self
@@ -65,24 +67,24 @@ IceChangeImporter >> ensureSourceCodeParentNodeIn: aNode [
 		inNode: aNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceChangeImporter >> parentNode: anIcePackageNode [ 
 	parentNode := anIcePackageNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceChangeImporter >> version: aVersion [ 
 	
 	version := aVersion
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceChangeImporter >> visitCypressPropertiesChange: anIceCypressPropertiesChange [ 
 	
 	version properties addToChangeBuilder: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceChangeImporter >> visitImageChange: anIceImageChange [ 
 
 	| importer |
@@ -93,7 +95,7 @@ IceChangeImporter >> visitImageChange: anIceImageChange [
 	^ importer importOn: (self ensureSourceCodeParentNodeIn: parentNode)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceChangeImporter >> visitProjectChange: anIceProjectChange [ 
 	
 	"Import the project file extracted from the commit without utterly post-treatment to create the new project file"
