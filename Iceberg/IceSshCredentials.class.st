@@ -2,125 +2,127 @@
 I am a container for the credentials needed for connecting to a git repository via ssh/scp.
 "
 Class {
-	#name : #IceSshCredentials,
-	#superclass : #IceAbstractCredentials,
+	#name : 'IceSshCredentials',
+	#superclass : 'IceAbstractCredentials',
 	#instVars : [
 		'username',
 		'publicKey',
 		'privateKey',
 		'keyPassphrase'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials class >> defaultPrivateKey [ 	
 	self flag: #pharoTodo. "In fact this is different for windows. We need to change this."
 	^ (FileLocator home asFileReference / '.ssh' / 'id_ed25519') pathString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials class >> defaultPublicKey [
 	self flag: #pharoTodo. "In fact this is different for windows. We need to change this."
 	^ (FileLocator home asFileReference / '.ssh' / 'id_ed25519.pub') pathString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials class >> defaultUsername [
 	^ 'git'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceSshCredentials >> description [
 
 	^ 'User: ' , self username , ' Public: ' , self publicKey , ' Private: ' , self privateKey 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceSshCredentials >> hostDescription [
 	^ host = #'*' ifTrue: [ 'Default' ] ifFalse: [ host ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceSshCredentials >> isDefault [
 
 	^ host = #'*'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceSshCredentials >> isPresent [
 	^ self username notEmpty 
 		and: [ self publicKey notEmpty 
 		and: [ self privateKey notEmpty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> keyPassphrase [
 	^ keyPassphrase ifNil: [ keyPassphrase := '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> keyPassphrase: anObject [
 	keyPassphrase := anObject.
 	
 	self storeIfDefault.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> privateKey [
 	^ privateKey ifNil: [ privateKey := self class defaultPrivateKey ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> privateKey: anObject [
 	privateKey := anObject.
 	
 	self storeIfDefault.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> publicKey [
 	^ publicKey ifNil: [ publicKey := self class defaultPublicKey ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> publicKey: anObject [
 	publicKey := anObject.
 	
 	self storeIfDefault.
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceSshCredentials >> removeFrom: aStore [ 
 
 	aStore removeSSHCredential: self.
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceSshCredentials >> storeIfDefault [
 	
 	self isDefault ifFalse: [ ^ self ].
 	IceCredentialStore current storeCredential: self.
 ]
 
-{ #category : #'API - storing' }
+{ #category : 'API - storing' }
 IceSshCredentials >> storeInto: aCredentialStore forHostname: aHost [
 
 	host := aHost.
  	aCredentialStore storeSshCredential: self forHostname: aHost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> type [
 	^ 'SSH Keys'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> username [
 	^ username ifNil: [ username := self class defaultUsername ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSshCredentials >> username: anObject [
 	username := anObject
 ]

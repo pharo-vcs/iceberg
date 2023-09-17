@@ -1,16 +1,18 @@
 Class {
-	#name : #IceSSHProtocol,
-	#superclass : #IceUrlProtocol,
-	#category : 'Iceberg-Url'
+	#name : 'IceSSHProtocol',
+	#superclass : 'IceUrlProtocol',
+	#category : 'Iceberg-Url',
+	#package : 'Iceberg',
+	#tag : 'Url'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSSHProtocol class >> description [
 	
 	^ 'SSH'
 ]
 
-{ #category : #url }
+{ #category : 'url' }
 IceSSHProtocol >> composeUrlWithHost: host repositoryPath: path [
 	
 	^ 'git@{1}:{2}.git' format: { host . path }

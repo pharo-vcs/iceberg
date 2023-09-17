@@ -2,18 +2,20 @@
 I am a dependency to a method.
 "
 Class {
-	#name : #IceMethodDependency,
-	#superclass : #IceDefinedDependency,
-	#category : #'Iceberg-Cherrypicking'
+	#name : 'IceMethodDependency',
+	#superclass : 'IceDefinedDependency',
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMethodDependency >> = anObject [
 	^ super = anObject
 		and: [ definition asMCDefinition selector = anObject definition asMCDefinition selector ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	super addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker.
 
@@ -26,12 +28,12 @@ IceMethodDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherryp
 				ifFound: [ :anIceNode | anIceCherrypicker addDependency: (anIceNode accept: IceAsDependencyVisitor new  )] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMethodDependency >> hash [
 	^ super hash bitXor: definition asMCDefinition className hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 
 	^ 	anIceMethodDefinition isMethodDefinition and: [ 
@@ -39,34 +41,34 @@ IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 		anIceMethodDefinition asMCDefinition selector = definition selector ] ]
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMethodDependency >> methodAST [
 	^ RBParser parseMethod: definition asMCDefinition source
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMethodDependency >> referencedClasses [
 
 	^ self referencedNames , {definition className}
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMethodDependency >> referencedNames [
 	^ (self methodAST allChildren select: #isVariable) collect: #name
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMethodDependency >> referencedPackages [
 	^ { }
 ]
 
-{ #category : #'computing - dependencies' }
+{ #category : 'computing - dependencies' }
 IceMethodDependency >> referencedSelectors [
 	
 	^ (self methodAST allChildren select: #isMessage) collect: #selector
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMethodDependency >> referencedTraits [
 	
 	"The method cannot diferenciate if the reference is a trait or a class, so I try both"

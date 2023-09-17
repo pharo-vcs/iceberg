@@ -1,16 +1,18 @@
 Class {
-	#name : #IceHttpsProtocol,
-	#superclass : #IceUrlProtocol,
-	#category : 'Iceberg-Url'
+	#name : 'IceHttpsProtocol',
+	#superclass : 'IceUrlProtocol',
+	#category : 'Iceberg-Url',
+	#package : 'Iceberg',
+	#tag : 'Url'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHttpsProtocol class >> description [
 	
 	^ 'HTTPS'
 ]
 
-{ #category : #composing }
+{ #category : 'composing' }
 IceHttpsProtocol >> composeUrlWithHost: host repositoryPath: path [
 	
 	^ 'https://{1}/{2}.git' format: { host . path }

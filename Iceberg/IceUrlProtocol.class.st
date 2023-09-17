@@ -1,22 +1,24 @@
 Class {
-	#name : #IceUrlProtocol,
-	#superclass : #Object,
-	#category : 'Iceberg-Url'
+	#name : 'IceUrlProtocol',
+	#superclass : 'Object',
+	#category : 'Iceberg-Url',
+	#package : 'Iceberg',
+	#tag : 'Url'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceUrlProtocol class >> defaultProtocol [
 
 	^ IceSSHProtocol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUrlProtocol class >> description [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUrlProtocol class >> isAbstract [
 
 	^ self == IceUrlProtocol 

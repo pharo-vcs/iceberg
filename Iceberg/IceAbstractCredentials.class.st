@@ -2,57 +2,59 @@
 I represent the common behavior of all iceberg credentials.
 "
 Class {
-	#name : #IceAbstractCredentials,
-	#superclass : #Object,
+	#name : 'IceAbstractCredentials',
+	#superclass : 'Object',
 	#instVars : [
 		'host'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAbstractCredentials class >> isAbstract [
 
 	^ self == IceAbstractCredentials
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> description [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> host [
 	^ host
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> host: anObject [
 	host := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> hostDescription [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAbstractCredentials >> isDefault [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> isPresent [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - storing' }
+{ #category : 'API - storing' }
 IceAbstractCredentials >> storeInto: aCredentialStore forHostname: aHost [ 
 	host := aHost.
 	aCredentialStore storePlaintextCredential: self forHostname: aHost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAbstractCredentials >> type [
 	^ self subclassResponsibility
 ]

@@ -3,30 +3,32 @@ I am a dependency of an IceDefinition in a IceDiff.
 
 "
 Class {
-	#name : #IceDependency,
-	#superclass : #Object,
+	#name : 'IceDependency',
+	#superclass : 'Object',
 	#instVars : [
 		'cherrypicker'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependency >> cherrypicker [ 
 	^ cherrypicker 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependency >> cherrypicker: anIceCherrypicker [
 	cherrypicker :=anIceCherrypicker 
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceDependency >> isDependencyTo: aDefinition [
 	^ self subclassResponsibility
 ]

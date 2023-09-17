@@ -1,6 +1,6 @@
-Extension { #name : #RPackageSet }
+Extension { #name : 'RPackageSet' }
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 RPackageSet class >> withoutCacheDo: aBlock [ 
 	| oldActive |
 	

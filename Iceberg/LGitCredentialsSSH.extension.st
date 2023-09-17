@@ -1,6 +1,6 @@
-Extension { #name : #LGitCredentialsSSH }
+Extension { #name : 'LGitCredentialsSSH' }
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 LGitCredentialsSSH >> readFrom: credentials [
 	self username: credentials username.
 	self passphrase: credentials keyPassphrase.  

@@ -1,6 +1,6 @@
-Extension { #name : #MCVersion }
+Extension { #name : 'MCVersion' }
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCVersion >> directoryName [
 	^ (MCFileTreeRepository parseName: self info name) first , '.package'
 ]

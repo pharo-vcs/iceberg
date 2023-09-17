@@ -7,15 +7,17 @@ My contents is just an empty string as the extended class/trait is not defined i
 See my superclasses for more information.
 "
 Class {
-	#name : #IceExtensionDefinition,
-	#superclass : #IceMethodContainerDefinition,
+	#name : 'IceExtensionDefinition',
+	#superclass : 'IceMethodContainerDefinition',
 	#instVars : [
 		'packageName'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceExtensionDefinition class >> named: aString isMeta: isMeta packageName: aName [
 	^ self new
 		name: aString;
@@ -24,64 +26,64 @@ IceExtensionDefinition class >> named: aString isMeta: isMeta packageName: aName
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceExtensionDefinition >> = otherExtension [
 	^ self species = otherExtension species 
 		and: [ self name = otherExtension name ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceExtensionDefinition >> accept: aVisitor [
 
 	^ aVisitor visitExtensionDefinition: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceExtensionDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 	
 	"Do nothing. Monticello does not have definitions for extensions"
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceExtensionDefinition >> addToPatcher: aMCPatcher [ 
 	
 	"Monticello does not reify extensions"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceExtensionDefinition >> contents [
 
 	^ ''
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceExtensionDefinition >> hash [
 	^ self name hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceExtensionDefinition >> isExtensionDefinition [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExtensionDefinition >> packageName [
 	^ packageName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceExtensionDefinition >> packageName: anObject [
 	packageName := anObject
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceExtensionDefinition >> removeFrom: aPatcher [
 	
 	"Do nothing. Do not remove extensions"
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceExtensionDefinition >> removeFromPatcher: aMCPatcher [ 
 	
 	"Monticello does not reify extensions"

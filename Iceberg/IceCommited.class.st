@@ -2,7 +2,9 @@
 Announces when a repository has commited.
 "
 Class {
-	#name : #IceCommited,
-	#superclass : #IceRepositoryAnnouncement,
-	#category : 'Iceberg-Announcements'
+	#name : 'IceCommited',
+	#superclass : 'IceRepositoryAnnouncement',
+	#category : 'Iceberg-Announcements',
+	#package : 'Iceberg',
+	#tag : 'Announcements'
 }

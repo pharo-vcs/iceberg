@@ -1,6 +1,6 @@
-Extension { #name : #RPackage }
+Extension { #name : 'RPackage' }
 
-{ #category : #'*Iceberg-Core' }
+{ #category : '*Iceberg-Core' }
 RPackage >> iceRepository [
 	^ Iceberg repositoryForPackage: self
 

@@ -7,8 +7,8 @@ Future optimizations:
  - implement pagination
 "
 Class {
-	#name : #IceHistory,
-	#superclass : #Object,
+	#name : 'IceHistory',
+	#superclass : 'Object',
 	#instVars : [
 		'commitish',
 		'commits',
@@ -16,10 +16,12 @@ Class {
 		'headHistory',
 		'repository'
 	],
-	#category : 'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceHistory class >> on: commitish repository: anIceRepository [
 	
 	^ self new
@@ -28,45 +30,45 @@ IceHistory class >> on: commitish repository: anIceRepository [
 		yourself
 ]
 
-{ #category : #history }
+{ #category : 'history' }
 IceHistory >> commitDictionary [
 
 	commitDictionary ifNil: [ self lookupCommits ].
 	^ commitDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistory >> commitish: aCommitish [
 	commitish := aCommitish
 ]
 
-{ #category : #history }
+{ #category : 'history' }
 IceHistory >> commits [
 	
 	commits ifNil: [ self lookupCommits ].
 	^ commits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistory >> headHistory [
 	
 	^ headHistory ifNil: [ 
 		headHistory := IceHistory on: repository headCommit repository: repository ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceHistory >> includes: anIceGitCommit [ 
 	
 	^ self commitDictionary includesKey: anIceGitCommit id
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceHistory >> isHead [
 	
 	^ commitish = repository head
 ]
 
-{ #category : #history }
+{ #category : 'history' }
 IceHistory >> lookupCommits [
 	
 	| newCommitDictionary newCommits |
@@ -80,13 +82,13 @@ IceHistory >> lookupCommits [
 	commits := newCommits.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistory >> name [
 	
 	^ commitish name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistory >> repository: aRepository [ 
 	repository := aRepository
 ]

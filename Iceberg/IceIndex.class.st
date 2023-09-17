@@ -6,15 +6,17 @@ My main responsibility is to store temporary changes and commit them.
 However, I'm an abstract class, check my subclasses for more concrete information.
 "
 Class {
-	#name : #IceIndex,
-	#superclass : #Object,
+	#name : 'IceIndex',
+	#superclass : 'Object',
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceIndex class >> on: anIceLibgitRepository [ 
 	
 	^ self new
@@ -22,48 +24,48 @@ IceIndex class >> on: anIceLibgitRepository [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceIndex >> addPackage: aPackage [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #'API - commiting' }
+{ #category : 'API - commiting' }
 IceIndex >> commitWithMessage: message andParents: parentCommits [
 
 	self subclassResponsibility.	
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceIndex >> isEmpty [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceIndex >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceIndex >> repository: anIceLibgitRepository [ 
 	repository := anIceLibgitRepository
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceIndex >> storeVersion: aMCVersion [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceIndex >> updateDiskWorkingCopy: anIceDiff [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceIndex >> updateIndex: anIceDiff [ 
 
 	anIceDiff tree

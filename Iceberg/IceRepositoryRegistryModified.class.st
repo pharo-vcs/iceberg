@@ -2,25 +2,27 @@
 I'm a generic announcement to notify when the repository registry has changed.
 "
 Class {
-	#name : #IceRepositoryRegistryModified,
-	#superclass : #Announcement,
+	#name : 'IceRepositoryRegistryModified',
+	#superclass : 'Announcement',
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-Announcements'
+	#category : 'Iceberg-Announcements',
+	#package : 'Iceberg',
+	#tag : 'Announcements'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryRegistryModified class >> repository: aRepository [
 	^ self new repository: aRepository; yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryRegistryModified >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryRegistryModified >> repository: anObject [
 	repository := anObject
 ]

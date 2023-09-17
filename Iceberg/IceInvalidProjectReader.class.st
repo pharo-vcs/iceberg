@@ -4,26 +4,28 @@ I return an invalid project for those commits that are not the current checked o
 This is because an invalid project cannot be fixed since it is already in the history.
 "
 Class {
-	#name : #IceInvalidProjectReader,
-	#superclass : #IceProjectReader,
-	#category : 'Iceberg-Project'
+	#name : 'IceInvalidProjectReader',
+	#superclass : 'IceProjectReader',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceInvalidProjectReader >> canReadProjectFromCommitish: aCommitish [
 	
 	^ aCommitish isWorkingCopy not
 		and: [ (aCommitish fileSystem / '.project') exists not ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceInvalidProjectReader >> priority [
 
 	"The unborn project reader should be the default one in case no other matches"
 	^ 100000
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 IceInvalidProjectReader >> readProjectFromCommitish: aCommitish [
 
 	^ IceInvalidProject onCommitish: aCommitish

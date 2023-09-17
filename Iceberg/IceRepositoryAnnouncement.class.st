@@ -2,30 +2,32 @@
 Groupes different announcements that can happen in a repository.
 "
 Class {
-	#name : #IceRepositoryAnnouncement,
-	#superclass : #IceAnnouncement,
+	#name : 'IceRepositoryAnnouncement',
+	#superclass : 'IceAnnouncement',
 	#instVars : [
 		'repository'
 	],
-	#category : 'Iceberg-Announcements'
+	#category : 'Iceberg-Announcements',
+	#package : 'Iceberg',
+	#tag : 'Announcements'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryAnnouncement class >> for: repository [
 	^ self new repository: repository; yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryAnnouncement >> appliesToRepository: aRepository [
 	^ self repository = aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryAnnouncement >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryAnnouncement >> repository: anObject [
 	repository := anObject
 ]

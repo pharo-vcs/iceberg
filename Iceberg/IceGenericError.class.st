@@ -1,13 +1,15 @@
 Class {
-	#name : #IceGenericError,
-	#superclass : #IceError,
+	#name : 'IceGenericError',
+	#superclass : 'IceError',
 	#instVars : [
 		'wrappedException'
 	],
-	#category : 'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGenericError >> wrappedException: anError [
 	
 	wrappedException := anError

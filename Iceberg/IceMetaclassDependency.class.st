@@ -2,15 +2,17 @@
 I am a dependency to a metaclass.
 "
 Class {
-	#name : #IceMetaclassDependency,
-	#superclass : #IceDependency,
+	#name : 'IceMetaclassDependency',
+	#superclass : 'IceDependency',
 	#instVars : [
 		'definition'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceMetaclassDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [
 	IceNodeQuery new
 		on: anIceDiff tree;
@@ -20,17 +22,17 @@ IceMetaclassDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCher
 				[ :anIceNode | anIceCherrypicker addClassDependencyOf: anIceNode value definition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetaclassDependency >> definition [
 	^ definition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetaclassDependency >> definition: anIceClassDefinition [
 	definition:= anIceClassDefinition 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMetaclassDependency >> isDependencyTo: anIceClassDefinition [
 	^ anIceClassDefinition basicName = definition basicName
 ]

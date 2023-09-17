@@ -2,16 +2,18 @@
 I represent an commit that cannot be found in the current repository. I have a commit id/hash, but that commit was not fetched (or was wrongly set). Once the real commit is fetched, I'll be becomed into a real commit.
 "
 Class {
-	#name : #IceUnknownCommit,
-	#superclass : #IceCommitish,
+	#name : 'IceUnknownCommit',
+	#superclass : 'IceCommitish',
 	#instVars : [
 		'id',
 		'datetime'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'API - working copy' }
+{ #category : 'API - working copy' }
 IceUnknownCommit >> adopt [
 	
 	"Low level.
@@ -20,12 +22,12 @@ IceUnknownCommit >> adopt [
 	self repository workingCopy adoptCommit: self
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceUnknownCommit >> changesFromCommit: anIceGitCommit [ 
 	^ anIceGitCommit changesFromNoCommit: self
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceUnknownCommit >> changesTo: aCommitish [
 
 	aCommitish = self
@@ -33,82 +35,82 @@ IceUnknownCommit >> changesTo: aCommitish [
 	^ aCommitish changesFromNoCommit: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> comment [
 	
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> commit [
 	self shouldBeImplemented.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> compatibleUsername [
 	
 	^ 'CompatibleUserName'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> datetime [
 	
 	^ datetime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> description [
 	^ 'Unknown {1}' format: { self shortId }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> fileSystem [
 	
 	^ FileSystem memory root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceUnknownCommit >> initialize [
 
 	super initialize.
 	datetime := DateAndTime now
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownCommit >> isNoCommit [
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownCommit >> isParentOf: aCommit [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownCommit >> isUnknownCommit [
 	
 	^ true
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceUnknownCommit >> project [
 
 	^ repository newUnbornProject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnknownCommit >> shortId [
 	
 	^ self id first: 7

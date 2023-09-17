@@ -1,6 +1,6 @@
-Extension { #name : #MCGitBasedNetworkRepository }
+Extension { #name : 'MCGitBasedNetworkRepository' }
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCGitBasedNetworkRepository >> createIcebergRepositoryFor: remoteUrl [
 	| builder repository |
 	builder := IceRepositoryCreator new 
@@ -22,7 +22,7 @@ MCGitBasedNetworkRepository >> createIcebergRepositoryFor: remoteUrl [
 	^ repository
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCGitBasedNetworkRepository >> createIcebergRepositoryWithFallbackFor: remote url: remoteUrl [
 	| urlToUse  |
 	
@@ -34,7 +34,7 @@ MCGitBasedNetworkRepository >> createIcebergRepositoryWithFallbackFor: remote ur
 		^ self createIcebergRepositoryFor: urlToUse ]
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCGitBasedNetworkRepository >> getOrCreateIcebergRepository [
 	| remoteUrl |
 	
@@ -46,13 +46,13 @@ MCGitBasedNetworkRepository >> getOrCreateIcebergRepository [
 			self createIcebergRepositoryWithFallbackFor: remote url: remoteUrl ]
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCGitBasedNetworkRepository >> httpUrl [
 
 	^ self httpsUrl copyReplaceAll: 'https://' with: 'http://'
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCGitBasedNetworkRepository >> httpsUrl [
 
 	self subclassResponsibility

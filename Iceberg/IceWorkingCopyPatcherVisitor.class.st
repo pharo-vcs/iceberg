@@ -2,122 +2,124 @@
 I visit a tree of changes and apply those changes to the working copy.
 "
 Class {
-	#name : #IceWorkingCopyPatcherVisitor,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceWorkingCopyPatcherVisitor',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'repository',
 		'loader'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceWorkingCopyPatcherVisitor class >> on: aRepository [
 	^ self new 
 		repository: aRepository;
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceWorkingCopyPatcherVisitor >> initialize [
 	super initialize.
 	loader := MCPackageLoader new
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IceWorkingCopyPatcherVisitor >> load [
 	loader load
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceWorkingCopyPatcherVisitor >> removeClass: anIceClassDefinition [ 
 	
 	repository workingCopy removeClassNamed: anIceClassDefinition name
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 IceWorkingCopyPatcherVisitor >> removeFile: anIceFileDefinition [ 
 	"I do not remove nothing from the file in the image"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> removeFileReferenceInPath: anUndefinedObject [ 
 	
 	"I do not remove nothing from the file in the image"
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceWorkingCopyPatcherVisitor >> removeMethod: anIceMethodDefinition [ 
 
 	repository workingCopy removeMethod: anIceMethodDefinition
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceWorkingCopyPatcherVisitor >> removePackage: anIcePackageDefinition [ 
 	
 	repository workingCopy unloadPackageNamed: anIcePackageDefinition name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWorkingCopyPatcherVisitor >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWorkingCopyPatcherVisitor >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitAddition: anIceAddition [ 
 	
 	repository workingCopy applyDefinition: anIceAddition definition inNode: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitClassDefinition: anIceClassDefinition [ 
 	
 	repository workingCopy applyDefinition: anIceClassDefinition inNode: currentNode.
 	self visitChildrenOf: currentNode.
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [
 
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitFileNode: anIceFileDefinition [
 	
 	"Ignore files, they are not loaded in the image"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitMethodNode: anIceMethodDefinition [ 
 
 	repository workingCopy applyDefinition: anIceMethodDefinition inNode: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitModification: anIceModification [ 
 	
 	anIceModification definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitNoModification: anIceNoModification [ 
 
 	anIceNoModification definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
 	
 	^ anIceNonConflictingOperation chosenOperation accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitPackage: anIcePackageDefinition [
 	
 	(self repository packageNamed: anIcePackageDefinition name) isLoaded
@@ -128,14 +130,14 @@ IceWorkingCopyPatcherVisitor >> visitPackage: anIcePackageDefinition [
 		yourself).
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitRemoval: anIceRemoval [ 
 	
 	anIceRemoval definition removeFrom: self.
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitRootDefinition: anIceRootDefinition [ 
 	
 	self visitChildrenOf: currentNode

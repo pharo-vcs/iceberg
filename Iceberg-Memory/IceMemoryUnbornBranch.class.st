@@ -1,13 +1,14 @@
 Class {
-	#name : #IceMemoryUnbornBranch,
-	#superclass : #IceUnbornBranch,
+	#name : 'IceMemoryUnbornBranch',
+	#superclass : 'IceUnbornBranch',
 	#instVars : [
 		'name'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance-creation' }
+{ #category : 'instance-creation' }
 IceMemoryUnbornBranch class >> inRepository: anIceMemoryRepository named: aString [ 
 	
 	^ (super inRepository: anIceMemoryRepository)
@@ -15,13 +16,13 @@ IceMemoryUnbornBranch class >> inRepository: anIceMemoryRepository named: aStrin
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryUnbornBranch >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryUnbornBranch >> name: aString [ 
 	
 	name := aString

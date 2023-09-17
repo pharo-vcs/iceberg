@@ -1,13 +1,15 @@
 Class {
-	#name : #IceTagNotFound,
-	#superclass : #IceError,
+	#name : 'IceTagNotFound',
+	#superclass : 'IceError',
 	#instVars : [
 		'tagName'
 	],
-	#category : 'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTagNotFound >> tagName: aString [ 
 	tagName := aString
 ]

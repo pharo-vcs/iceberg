@@ -20,12 +20,14 @@ And to the packages existing in that commit:
 IMPORTANT IMPLEMENTATION NOTE. For optimization purposes, a commit caches the names of the packages inside himself. This was made under the assumption that a commit is immutble and nobody ""cooks"" the commit once it is in the repository.
 "
 Class {
-	#name : #IceCommit,
-	#superclass : #IceCommitish,
-	#category : #'Iceberg-Core'
+	#name : 'IceCommit',
+	#superclass : 'IceCommitish',
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'API - working copy' }
+{ #category : 'API - working copy' }
 IceCommit >> adopt [
 	
 	"Low level.
@@ -34,24 +36,24 @@ IceCommit >> adopt [
 	self repository workingCopy adoptCommit: self
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> ancestors [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> author [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> canRevertChanges [
 	^ false
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceCommit >> changedPackagesToWorkingCopy: left [ 
 	
 	| leftPackageNames rightPackageNames added removed |
@@ -82,55 +84,55 @@ IceCommit >> changedPackagesToWorkingCopy: left [
 			removed
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceCommit >> changesFromNoCommit: anIceNoCommit [ 
 
 	^ self packages collect: [ :each | IceImageChange package: each ]
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> changesTo: aCommitish [
 
 	^ aCommitish changesFromCommit: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> comment [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> commit [
 	
 	^ self
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> commonAncestorWith: aCommitish [
 	
 	^ aCommitish commonAncestorWithCommit: self
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceCommit >> compatibleUsername [
 	
 	^ 'CompatibleUserName'
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceCommit >> createTag: aString [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> datetime [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceCommit >> description [
 	
 	self tags
@@ -140,12 +142,12 @@ IceCommit >> description [
 	^ 'Detached at {1}' format: { self shortId }
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> diffFromHead [
 	^ self repository headCommit diffTo: self
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> diffToParent [
 	"returns a diff between me and my first parent/ancestor"
 	^ self diffTo: (self ancestors
@@ -153,18 +155,18 @@ IceCommit >> diffToParent [
 			ifEmpty: [ nil ])
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> diffToWorkingCopy [
 	^ self diffTo: self repository workingCopy
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> diffToWorkingCopyForPackage: aPackage [
 
 	^ self diffToWorkingCopyForPackages: { aPackage }
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceCommit >> diffToWorkingCopyForPackages: aCollection [
 
 	^ IceDiff new
@@ -173,7 +175,7 @@ IceCommit >> diffToWorkingCopyForPackages: aCollection [
 		buildForPackages: aCollection
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommit >> hasMultipleAncestors [
 	| ancestors |
 	ancestors := self ancestors.
@@ -181,54 +183,54 @@ IceCommit >> hasMultipleAncestors [
 		and: [ ancestors size > 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> id [
 	self subclassResponsibility
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceCommit >> includesPackageNamed: aName [
 	
 	^ self packageNames includes: aName
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> isAncestorOf: aCommit [
 	
 	^ aCommit isParentOf: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommit >> isMergeCommit [
 	
 	^ self ancestors size > 1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommit >> isMerged [
 	
 	^ self repository workingCopy isCommitMerged: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommit >> isNoCommit [
 	
 	^ false
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> isParentOf: aCommit [
 
 	^ self newCommitWalk includesCommit: aCommit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCommit >> isUnknownCommit [
 	
 	^ false
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceCommit >> mcPackageSnapshotsOfPackages: aCollection [
 	self flag: #pharoTodo. "I'm not sure I need to answer an empty snapshot. 
 	if there is no mcVersion it likely means the package was removed and an empty snapshow will 
@@ -243,31 +245,31 @@ IceCommit >> mcPackageSnapshotsOfPackages: aCollection [
 			do: [ :e | MCSnapshot empty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> name [
 
 	^ self id
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> newCommitWalk [
 
 	^ repository newCommitWalk fromCommit: self
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceCommit >> packages [
 
 	^ self packageNames collect: [ :name | IcePackage named: name repository: self repository ]
 ]
 
-{ #category : #'API - history' }
+{ #category : 'API - history' }
 IceCommit >> parent [
 	
 	^ self ancestors first
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceCommit >> printOn: aStream [
 
 	aStream
@@ -277,7 +279,7 @@ IceCommit >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceCommit >> shortId [
 	
 	"This is just for presentation purposes.
@@ -285,7 +287,7 @@ IceCommit >> shortId [
 	^ self id first: 7
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceCommit >> status [
 
 	(self repository workingCopy referenceCommits includes: self)
@@ -301,25 +303,25 @@ IceCommit >> status [
 	^ 'Not merged'
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceCommit >> tags [
 	
 	^ self repository tags select: [ :each | each commit = self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCommit >> timeStamp [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceCommit >> validateIsBranch [
 	"Operation not permitted in a detached commit state"
 	IceNotInBranch signal
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceCommit >> versionFor: aPackage [
 	
 	^ IceSavedPackageVersion fromCommit: self package: aPackage

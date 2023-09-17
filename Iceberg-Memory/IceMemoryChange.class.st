@@ -1,13 +1,14 @@
 Class {
-	#name : #IceMemoryChange,
-	#superclass : #IceChange,
+	#name : 'IceMemoryChange',
+	#superclass : 'IceChange',
 	#instVars : [
 		'package'
 	],
-	#category : #'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryChange class >> on: anIcePackage [ 
 	
 	^ self new
@@ -15,23 +16,23 @@ IceMemoryChange class >> on: anIcePackage [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMemoryChange >> accept: aVisitor [
 	
 	aVisitor visitMemoryChange: self
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceMemoryChange >> displayingProgressString [
 	^ 'Comparing memory changes of ' , self package name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryChange >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryChange >> package: anIcePackage [
 	
 	package := anIcePackage

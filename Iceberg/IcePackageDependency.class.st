@@ -2,15 +2,17 @@
 I am a dependency to a package.
 "
 Class {
-	#name : #IcePackageDependency,
-	#superclass : #IceDependency,
+	#name : 'IcePackageDependency',
+	#superclass : 'IceDependency',
 	#instVars : [
 		'definition'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IcePackageDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -21,29 +23,29 @@ IcePackageDependency >> = anObject [
 	^ definition name = anObject definition name
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IcePackageDependency >> addTransitiveDependenciesFrom: anIceDiff to: anIceCherrypicker [ 
 	"No transitive dependencies of a package"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDependency >> definition [ 
 	^ definition 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDependency >> definition: aIcePackageDefinition [
 	definition := aIcePackageDefinition
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IcePackageDependency >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ definition name hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePackageDependency >> isDependencyTo: anIcePackageDefinition [
 	^ definition name = anIcePackageDefinition name
 ]

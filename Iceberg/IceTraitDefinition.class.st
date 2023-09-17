@@ -6,25 +6,27 @@ My contents is the trait definition.
 See my superclasses for more information.
 "
 Class {
-	#name : #IceTraitDefinition,
-	#superclass : #IceMethodContainerDefinition,
-	#category : #'Iceberg-Changes'
+	#name : 'IceTraitDefinition',
+	#superclass : 'IceMethodContainerDefinition',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTraitDefinition >> = anotherDefinition [
 	
 	^ super = anotherDefinition
 		and: [ mcDefinition = anotherDefinition asMCDefinition ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTraitDefinition >> accept: aVisitor [
 	
 	^ aVisitor visitTraitDefinition: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceTraitDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 
 	"If the new definition has no class instance vaiables, we remove the meta side variables, and apply the new changes to the patcher "
@@ -46,7 +48,7 @@ IceTraitDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 		to: anIceModification leftDefinition asMCDefinition
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceTraitDefinition >> addToPatcher: aMCPatcher [ 
 	
 	"We should not handle metaclasses if their mcDefinition is nil.
@@ -58,18 +60,18 @@ IceTraitDefinition >> addToPatcher: aMCPatcher [
 	aMCPatcher addDefinition: self asMCDefinition
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTraitDefinition >> isTraitDefinition [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTraitDefinition >> name [
 	^ name , (isMeta ifTrue: [ ' classTrait' ] ifFalse: [ '' ])
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceTraitDefinition >> removeFromPatcher: aMCPatcher [ 
 	
 	"We should not handle metaclasses. They will be added automatically when added the instance side"

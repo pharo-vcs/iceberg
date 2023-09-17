@@ -7,12 +7,14 @@ Then, a reader must implement:
  - #readProjectFromCommitish: returns a project object
 "
 Class {
-	#name : #IceProjectReader,
-	#superclass : #Object,
-	#category : #'Iceberg-Project'
+	#name : 'IceProjectReader',
+	#superclass : 'Object',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProjectReader class >> availableReaders [
 
 	^ (self allSubclasses
@@ -20,7 +22,7 @@ IceProjectReader class >> availableReaders [
 		sorted: [ :a :b | a priority < b priority ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceProjectReader class >> readProjectFrom: anIceCommitish [
 
 	^ (self availableReaders
@@ -28,20 +30,20 @@ IceProjectReader class >> readProjectFrom: anIceCommitish [
 			readProjectFromCommitish: anIceCommitish
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceProjectReader >> canReadProjectFromCommitish: aCommitish [
 	"Return a boolean indicating if I know how to read the project from the commitish"
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProjectReader >> priority [
 
 	"By default all readers are important..."
 	^ 1
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 IceProjectReader >> readProjectFromCommitish: aCommitish [
 	"Return a project object read from the commitish"
 	self subclassResponsibility

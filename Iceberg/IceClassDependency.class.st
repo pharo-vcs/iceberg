@@ -2,54 +2,56 @@
 I am a dependency to a class.
 "
 Class {
-	#name : #IceClassDependency,
-	#superclass : #IceDefinedDependency,
-	#category : #'Iceberg-Cherrypicking'
+	#name : 'IceClassDependency',
+	#superclass : 'IceDefinedDependency',
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceClassDependency >> = anObject [
 	^ super = anObject
 		and: [ definition asMCDefinition superclassName = anObject definition asMCDefinition superclassName ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceClassDependency >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ super hash bitXor: self definition asMCDefinition superclassName hash
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceClassDependency >> isDependencyTo: aIceDefinition [
 	^ aIceDefinition asMCDefinition className
 		= definition asMCDefinition className
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceClassDependency >> referencedClasses [
 	^ {definition asMCDefinition superclassName} , self subclassNames
 		, self referencedSharedPool
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceClassDependency >> referencedPackages [
 
 	^ self definition asMCDefinition category
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceClassDependency >> referencedSharedPool [
 	^ (definition asMCDefinition sharedPoolsString splitOn: ' ') collect: #asSymbol
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceClassDependency >> referencedTraits [
 	^ ((RBParser parseExpression: definition asMCDefinition traitComposition)
 		allChildren select: #isVariable) collect: #name
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceClassDependency >> subclassNames [
 
 	^ self cherrypicker environment

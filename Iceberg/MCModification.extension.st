@@ -1,6 +1,6 @@
-Extension { #name : #MCModification }
+Extension { #name : 'MCModification' }
 
-{ #category : #'*Iceberg-Changes' }
+{ #category : '*Iceberg-Changes' }
 MCModification >> asIceOperationOn: aNode diff: anIceDiff [ 
 	
 	^ MCModification
@@ -8,7 +8,7 @@ MCModification >> asIceOperationOn: aNode diff: anIceDiff [
 		to: aNode
 ]
 
-{ #category : #'*Iceberg-Changes' }
+{ #category : '*Iceberg-Changes' }
 MCModification >> myVersionOn: aDiff [
 
 	^ aDiff versionFromDefinition: modification

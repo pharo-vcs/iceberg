@@ -18,8 +18,8 @@ I am created by doing one of the following:
 	yourself
 "
 Class {
-	#name : #IceDiff,
-	#superclass : #Object,
+	#name : 'IceDiff',
+	#superclass : 'Object',
 	#instVars : [
 		'tree',
 		'source',
@@ -27,10 +27,12 @@ Class {
 		'writerClass',
 		'mergedTree'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceDiff class >> from: sourceCommitish to: targetCommitish [
 	
 	^ self new
@@ -40,19 +42,19 @@ IceDiff class >> from: sourceCommitish to: targetCommitish [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceDiff >> accept: aVisitor [
 	
 	^ tree accept: aVisitor
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> build [
 
 	self buildForChanges: (source changesTo: target)
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> buildForAllFiles [
 
 	| files changes |
@@ -62,7 +64,7 @@ IceDiff >> buildForAllFiles [
 	self buildForChanges: changes
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> buildForChanges: aCollection [
 
 	| leftTree rightTree |
@@ -86,13 +88,13 @@ IceDiff >> buildForChanges: aCollection [
 	tree := mergedTree select: [ :operation | operation hasChanges ].
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> buildForPackages: aCollection [
 
 	self buildForChanges: (aCollection collect: [ :package | IceImageChange package: package ])
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> buildFull [
 
 	"Image changes should be processed before commit changes
@@ -100,13 +102,13 @@ IceDiff >> buildFull [
 	self buildForChanges: self imageChanges, (source referenceCommit changesTo: target) asArray
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDiff >> canRevertChanges [
 	
 	^ source canRevertChanges
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> codeSubdirectoryNode [
 	
 	^ self repository subdirectory
@@ -115,7 +117,7 @@ IceDiff >> codeSubdirectoryNode [
 		
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 IceDiff >> copyWithOnly: aCollection [ 
 	
 	| treeCopy selectedOperations |
@@ -129,44 +131,44 @@ IceDiff >> copyWithOnly: aCollection [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> description [
 	
 	^ target description
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceDiff >> diff: leftTree with: rightTree [
 
 	^ (self mergedTreeOf: leftTree with: rightTree)
 		select: [ :operation | operation hasChanges ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> diffTree: anIceTreeDiff [
 
 	tree := anIceTreeDiff
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> imageChanges [
 
 	^ self imageChangesForPackages: source loadedPackages
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceDiff >> imageChangesForPackages: aCollection [
 
 	^ aCollection collect: [ :package | IceImageChange package: package ] as: Array
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDiff >> includesPackageNamed: aString [
 	^ self isEmpty not
 		and: [ self codeSubdirectoryNode includesKey: aString ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDiff >> isCodeSubdirectory: aNode [
 	
 	| nodeLocation repositorySubdirectoryLocation |
@@ -175,24 +177,24 @@ IceDiff >> isCodeSubdirectory: aNode [
 	^ nodeLocation pathString = repositorySubdirectoryLocation pathString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDiff >> isEmpty [
 	
 	^ tree isEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDiff >> isValidPackage: aFileReference [
 	
 	^ self writerClass isValidPackage: aFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> mergedTree [
 	^ mergedTree
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceDiff >> mergedTreeOf: leftTree with: rightTree [
 	
 	^ leftTree
@@ -205,55 +207,55 @@ IceDiff >> mergedTreeOf: leftTree with: rightTree [
 				ifFalse: [ IceModification left: left right: right ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceDiff >> packageNameFromDirectory: aString [ 
 	
 	^ self writerClass packageNameFromDirectory: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> packages [
 	
 	tree isEmpty ifTrue: [ ^ #( ) ].
 	^ self codeSubdirectoryNode children
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> repository [
 	
 	^ source repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> sourceVersion [
 	
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> sourceVersion: aCommitish [
 	
 	source := aCommitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> targetVersion [
 	
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> targetVersion: aCommitish [
 	
 	target := aCommitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> tree [
 	^ tree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDiff >> treeToShow [
 	"Returns the tree to show in the UI.
 	For a diff it is always the same tree.
@@ -261,7 +263,7 @@ IceDiff >> treeToShow [
 	^ self tree
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceDiff >> writerClass [
 	
 	"I am cached per instance of diff because obtaining the writer class is an expensive operation (600ms per call)"

@@ -1,13 +1,15 @@
 Class {
-	#name : #IceGitTransferProgress,
-	#superclass : #LGitTransferProgressCallback,
+	#name : 'IceGitTransferProgress',
+	#superclass : 'LGitTransferProgressCallback',
 	#instVars : [
 		'job'
 	],
-	#category : #'Iceberg-Progress'
+	#category : 'Iceberg-Progress',
+	#package : 'Iceberg',
+	#tag : 'Progress'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitTransferProgress >> block [
 	^ [ :stats :payload | 
 		| gitStats |
@@ -25,7 +27,7 @@ IceGitTransferProgress >> block [
 	]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTransferProgress >> initialize [
 	super initialize.
 	
@@ -36,7 +38,7 @@ IceGitTransferProgress >> initialize [
 	self initializeBlock.
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 IceGitTransferProgress >> initializeBlock [
 	self signature: self class fnSpec block: self block.
 ]

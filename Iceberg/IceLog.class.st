@@ -7,37 +7,39 @@ I'm used through a repository:
 aRepository ice historyOfMethod: aMethod
 "
 Class {
-	#name : #IceLog,
-	#superclass : #Object,
+	#name : 'IceLog',
+	#superclass : 'Object',
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLog class >> for: aRepository [
 	^ self basicNew
 		initializeRepository: aRepository;
 		yourself	
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLog class >> isAvailableFor: aRepository [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLog class >> new [
 	self error: '#for:'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> basepathOf: aPath [
 	self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> collectCommitsFor: aMethod path: aPath [
 	| commit pathSpec options commits pathSpecArray |
 
@@ -66,7 +68,7 @@ IceLog >> collectCommitsFor: aMethod path: aPath [
 	^ commits
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> collectVersionsFrom: aCollection method: aMethod path: aPath [
 	| lastDefinition basepath history |
 		
@@ -84,12 +86,12 @@ IceLog >> collectVersionsFrom: aCollection method: aMethod path: aPath [
 	^ history reversed
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> definitionFor: aMethod path: aPath commit: aCommit [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLog >> historyOfMethod: aMethod [
 	| path commits |
 
@@ -102,23 +104,23 @@ IceLog >> historyOfMethod: aMethod [
 		path: path
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> iceCommitFrom: aLGitCommit [
 	^ self repository iceCommitFrom: aLGitCommit
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceLog >> initializeRepository: aRepository [
 	repository := aRepository.
 	self initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLog >> repository [
 	^ repository
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLog >> toFileName: aMethod [
 	^ self subclassResponsibility
 ]

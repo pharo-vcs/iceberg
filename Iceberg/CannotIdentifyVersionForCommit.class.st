@@ -4,7 +4,9 @@ This error is signaled when looking for a version in a commit (and its ancestry)
 This should not happen if the repository is consistent.
 "
 Class {
-	#name : #CannotIdentifyVersionForCommit,
-	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#name : 'CannotIdentifyVersionForCommit',
+	#superclass : 'IceError',
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }

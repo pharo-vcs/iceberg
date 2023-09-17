@@ -4,24 +4,26 @@ I am an IceDefinition representing the repository root. I contain all packages, 
 See my superclasses for more information.
 "
 Class {
-	#name : #IceRootDefinition,
-	#superclass : #IceDefinition,
-	#category : 'Iceberg-Changes'
+	#name : 'IceRootDefinition',
+	#superclass : 'IceDefinition',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRootDefinition >> accept: aVisitor [
 	
 	^ aVisitor visitRootDefinition: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceRootDefinition >> initialize [
 	super initialize.
 	name := ''.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRootDefinition >> isRootDefinition [
 	
 	^ true

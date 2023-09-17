@@ -1,6 +1,6 @@
-Extension { #name : #MetacelloResolveProjectUpgrade }
+Extension { #name : 'MetacelloResolveProjectUpgrade' }
 
-{ #category : #'*Iceberg-Metacello' }
+{ #category : '*Iceberg-Metacello' }
 MetacelloResolveProjectUpgrade >> projectName [
 	
 	^ self existingProjectRegistration projectName

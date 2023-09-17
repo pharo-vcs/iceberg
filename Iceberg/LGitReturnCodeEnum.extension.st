@@ -1,6 +1,6 @@
-Extension { #name : #LGitReturnCodeEnum }
+Extension { #name : 'LGitReturnCodeEnum' }
 
-{ #category : #'*Iceberg-Core' }
+{ #category : '*Iceberg-Core' }
 LGitReturnCodeEnum >> asBoolean [
 	^ self value = 0 ifTrue: false ifFalse: 
 		[ self value = 1 ifTrue: true ifFalse: 

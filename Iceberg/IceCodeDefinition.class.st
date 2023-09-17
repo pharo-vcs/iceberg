@@ -4,12 +4,14 @@ I am an IceDefinition that have some source code in my contents.
 See my sub/superclasses for more information.
 "
 Class {
-	#name : #IceCodeDefinition,
-	#superclass : #IceDefinition,
-	#category : #'Iceberg-Changes'
+	#name : 'IceCodeDefinition',
+	#superclass : 'IceDefinition',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceCodeDefinition class >> named: aName source: aString [
 	
 	^ (super named: aName)
@@ -17,14 +19,14 @@ IceCodeDefinition class >> named: aName source: aString [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceCodeDefinition >> = anotherDefinition [
 
 	^ super = anotherDefinition
 		and: [ self contents = anotherDefinition contents ]
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceCodeDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 	
 	aMCPatcher
@@ -32,25 +34,25 @@ IceCodeDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 		to: anIceModification leftDefinition asMCDefinition
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceCodeDefinition >> addToPatcher: aMCPatcher [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceCodeDefinition >> hash [
 
 	^ self contents hash
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceCodeDefinition >> removeFrom: aPatcher [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceCodeDefinition >> removeFromPatcher: aMCPatcher [ 
 	
 	self subclassResponsibility

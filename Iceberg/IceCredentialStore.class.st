@@ -8,8 +8,8 @@ There is a default instance that stores the credentials in a file per image, in 
 In the settings you can modify the location of the credentials file.
 "
 Class {
-	#name : #IceCredentialStore,
-	#superclass : #Object,
+	#name : 'IceCredentialStore',
+	#superclass : 'Object',
 	#instVars : [
 		'plainCredentials',
 		'sshCredentials',
@@ -19,10 +19,12 @@ Class {
 		'CurrentStore',
 		'StoreFile'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore class >> current [
 	^ CurrentStore
 		ifNil: [ CurrentStore := self new
@@ -30,12 +32,12 @@ IceCredentialStore class >> current [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore class >> defaultCredentialsStoreFile [
 	^ FileLocator localDirectory / #iceberg / 'credentials.fuel'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore class >> settingsOn: aBuilder [
 	<systemsettings>
 		
@@ -56,18 +58,18 @@ IceCredentialStore class >> settingsOn: aBuilder [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore class >> storeFile [
 	^ StoreFile ifNil:
 		[ StoreFile := self defaultCredentialsStoreFile ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore class >> storeFile: aValue [
 	StoreFile := aValue
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> allCredentials [
 	self loadFromStore.
 	self defaultSSHCredential.
@@ -75,7 +77,7 @@ IceCredentialStore >> allCredentials [
 	^ plainCredentials values , sshCredentials values
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> defaultSSHCredential [
 	^ sshCredentials
 		at: #*
@@ -84,7 +86,7 @@ IceCredentialStore >> defaultSSHCredential [
 				yourself ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceCredentialStore >> initialize [
 
 	super initialize.
@@ -92,12 +94,12 @@ IceCredentialStore >> initialize [
 	sshCredentials := Dictionary new.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCredentialStore >> isCurrent [
 	^ self == CurrentStore
 ]
 
-{ #category : #'API - storing' }
+{ #category : 'API - storing' }
 IceCredentialStore >> loadFromStore [
 
 	| array |
@@ -125,39 +127,39 @@ IceCredentialStore >> loadFromStore [
 	sshCredentials := array at: 2
 ]
 
-{ #category : #'private - lookup' }
+{ #category : 'private - lookup' }
 IceCredentialStore >> lookup: aHostName in: dict ifAbsent: aBlock [
 
 	self loadFromStore.
 	^ dict at: aHostName ifAbsent: aBlock
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> plaintextCredentialForHostname: aHostname [
  
 	^ self lookup: aHostname in: plainCredentials ifAbsent: [ IcePlaintextCredentials new ]
 ]
 
-{ #category : #'API - storing' }
+{ #category : 'API - storing' }
 IceCredentialStore >> removeCredential: aCredential [ 
 
 	aCredential removeFrom: self.
 	self saveIntoStore.
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceCredentialStore >> removePlainTextCredential: anIcePlaintextCredentials [ 
 	
 	plainCredentials removeKey: anIcePlaintextCredentials host
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceCredentialStore >> removeSSHCredential: aCredential [ 
 	
 	sshCredentials removeKey: aCredential host
 ]
 
-{ #category : #'API - storing' }
+{ #category : 'API - storing' }
 IceCredentialStore >> saveIntoStore [
 
 	self flag: #pharoTodo. "implement an encrypted version"
@@ -183,13 +185,13 @@ IceCredentialStore >> saveIntoStore [
 						sshCredentials } ] ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> sshCredentialForHostname: aHostname [
  
 	^ self lookup: aHostname in: sshCredentials ifAbsent: [ self defaultSSHCredential ].
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> storeCredential: credential [
  
 	self loadFromStore.
@@ -197,7 +199,7 @@ IceCredentialStore >> storeCredential: credential [
 	self saveIntoStore
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceCredentialStore >> storeCredential: credential forHostname: aHostname [
  
 	self loadFromStore.
@@ -205,18 +207,18 @@ IceCredentialStore >> storeCredential: credential forHostname: aHostname [
 	self saveIntoStore
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCredentialStore >> storeFile: aFileLocator [ 
 	storeFile := aFileLocator
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceCredentialStore >> storePlaintextCredential: credential forHostname: aHostname [
  
 	plainCredentials at: aHostname put: credential
 ]
 
-{ #category : #'private - storing' }
+{ #category : 'private - storing' }
 IceCredentialStore >> storeSshCredential: credential forHostname: aHostname [
  
 	sshCredentials at: aHostname put: credential

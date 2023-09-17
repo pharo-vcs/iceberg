@@ -6,17 +6,19 @@ This strategy is still dangerous bacause packages installed may be incorrectly i
 
 "
 Class {
-	#name : #IceCheckoutAlreadyLoadedPackages,
-	#superclass : #IceCheckoutStrategy,
-	#category : #'Iceberg-Core'
+	#name : 'IceCheckoutAlreadyLoadedPackages',
+	#superclass : 'IceCheckoutStrategy',
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutAlreadyLoadedPackages class >> order [
 	^ 10
 ]
 
-{ #category : #checkout }
+{ #category : 'checkout' }
 IceCheckoutAlreadyLoadedPackages >> checkoutOn: anIceWorkingCopy [ 
 	
 	anIceWorkingCopy loadChangesInWorkingCopy: self diff.
@@ -25,7 +27,7 @@ IceCheckoutAlreadyLoadedPackages >> checkoutOn: anIceWorkingCopy [
 	anIceWorkingCopy markAllPackagesAsClean.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCheckoutAlreadyLoadedPackages >> isLoadAlreadyLoadedStrategy [
 	
 	^ true

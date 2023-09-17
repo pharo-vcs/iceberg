@@ -2,27 +2,29 @@
 I implement a basic tree visitor for Iceberg trees implemented through IceNode
 "
 Class {
-	#name : #IceTreeVisitor,
-	#superclass : #Object,
+	#name : 'IceTreeVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'currentNode'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTreeVisitor class >> isAbstract [
 
 	^ self == IceTreeVisitor 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTreeVisitor >> visitChildrenOf: anIceNode [ 
 	
 	anIceNode childrenDo: [ :each | each accept: self ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTreeVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
 	
 	anIceConflictingOperation isResolved
@@ -31,20 +33,20 @@ IceTreeVisitor >> visitConflictingOperation: anIceConflictingOperation [
 	^ anIceConflictingOperation chosenOperation accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTreeVisitor >> visitEmptyNode: anIceEmptyNode [ 
 	
 	"Do nothing by default"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTreeVisitor >> visitTreeNode: anIceNode [
 	
 	self withNode: anIceNode do: [ 
 		anIceNode value accept: self ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTreeVisitor >> withNode: anIceNode do: aBlockClosure [ 
 	
 	| previousNode |

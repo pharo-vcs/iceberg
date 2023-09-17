@@ -2,20 +2,22 @@
 In addition to my base I have a one time token as well.
 "
 Class {
-	#name : #IcePlaintextOtpCredentials,
-	#superclass : #IcePlaintextCredentials,
+	#name : 'IcePlaintextOtpCredentials',
+	#superclass : 'IcePlaintextCredentials',
 	#instVars : [
 		'token'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePlaintextOtpCredentials >> token [
 	^token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePlaintextOtpCredentials >> token: aToken [
 	token := aToken
 ]

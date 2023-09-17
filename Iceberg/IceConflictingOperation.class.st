@@ -2,16 +2,18 @@
 I reprensent a conflict between two operations that can be solved by using #selectLeft and #selectRight.
 "
 Class {
-	#name : #IceConflictingOperation,
-	#superclass : #IceOperationMerge,
+	#name : 'IceConflictingOperation',
+	#superclass : 'IceOperationMerge',
 	#instVars : [
 		'leftOperation',
 		'rightOperation'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceConflictingOperation class >> left: leftOperation right: rightOperation [
 	
 	^ self new
@@ -20,100 +22,100 @@ IceConflictingOperation class >> left: leftOperation right: rightOperation [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceConflictingOperation >> accept: aVisitor [
 	
 	^ aVisitor visitConflictingOperation: self
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceConflictingOperation >> actualClass [
 	
 	^ leftOperation definition actualClass
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceConflictingOperation >> chosenOperation [
 
 	^ chosen
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceConflictingOperation >> contextClass [
 	
 	^ leftOperation contextClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> definition [
 	
 	"This is just for compatibility"
 	^ leftOperation definition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> description [
 	
 	"Any of my instances should have the same description"
 	^ leftOperation description
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceConflictingOperation >> isConflict [
 
 	^ true
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceConflictingOperation >> isLeftChosen [
 	
 	^ chosen = leftOperation
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceConflictingOperation >> isRightChosen [
 	
 	^ chosen = rightOperation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> key [
 	
 	"Any of my operations should have the same key"
 	^ leftOperation key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> leftContents [
 	
 	^ leftOperation leftContents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> leftOperation: anOperation [
 	
 	leftOperation := anOperation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> rightContents [
 	
 	^ rightOperation leftContents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConflictingOperation >> rightOperation: anOperation [
 	
 	rightOperation := anOperation
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceConflictingOperation >> selectLeft [
 	
 	chosen := leftOperation
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceConflictingOperation >> selectRight [
 	
 	chosen := rightOperation

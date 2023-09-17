@@ -1,6 +1,6 @@
-Extension { #name : #LGitTag }
+Extension { #name : 'LGitTag' }
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 LGitTag >> asIcebergObjectInRepository: backend [
 	^ IceTag named: self name inRepository: backend
 ]

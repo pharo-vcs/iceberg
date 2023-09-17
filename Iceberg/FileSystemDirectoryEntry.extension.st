@@ -1,6 +1,6 @@
-Extension { #name : #FileSystemDirectoryEntry }
+Extension { #name : 'FileSystemDirectoryEntry' }
 
-{ #category : #'*Iceberg-Core' }
+{ #category : '*Iceberg-Core' }
 FileSystemDirectoryEntry >> packageName [ 
 	^ self asFileReference basenameWithoutExtension
 

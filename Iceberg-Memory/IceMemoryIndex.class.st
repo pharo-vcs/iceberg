@@ -1,13 +1,14 @@
 Class {
-	#name : #IceMemoryIndex,
-	#superclass : #IceIndex,
+	#name : 'IceMemoryIndex',
+	#superclass : 'IceIndex',
 	#instVars : [
 		'modifiedVersions'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryIndex class >> on: anIceMemoryRepository [ 
 	
 	^ self new
@@ -15,13 +16,13 @@ IceMemoryIndex class >> on: anIceMemoryRepository [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceMemoryIndex >> addPackage: anIcePackageDefinition [ 
 	
 	"Nothing, the package should be already added"
 ]
 
-{ #category : #'API-commiting' }
+{ #category : 'API-commiting' }
 IceMemoryIndex >> commitWithMessage: message andParents: parentCommits [
 
 	| newCommit versionInfos packageNames iceCommit head headCommit |
@@ -60,39 +61,39 @@ IceMemoryIndex >> commitWithMessage: message andParents: parentCommits [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceMemoryIndex >> initialize [
 
 	super initialize.
 	modifiedVersions := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMemoryIndex >> isEmpty [
 	
 	^ modifiedVersions isEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryIndex >> modifiedVersions [
 	
 	^ modifiedVersions
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceMemoryIndex >> storeMCVersion: aMCVersion [ 
 	
 	repository internalStoreVersion: aMCVersion.
 	modifiedVersions add: aMCVersion.
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceMemoryIndex >> storeVersion: aMCVersion [ 
 	
 	self storeMCVersion: aMCVersion
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceMemoryIndex >> updateDiskWorkingCopy: anIceDiff [ 
 	
 	anIceDiff tree
@@ -103,7 +104,7 @@ IceMemoryIndex >> updateDiskWorkingCopy: anIceDiff [
 				diff: anIceDiff)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 IceMemoryIndex >> updateProject: anIceUnbornProject [ 
 	
 	"Nothing for now"	1halt.

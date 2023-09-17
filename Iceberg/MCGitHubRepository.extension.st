@@ -1,6 +1,6 @@
-Extension { #name : #MCGitHubRepository }
+Extension { #name : 'MCGitHubRepository' }
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> commitId [
 	"This kind of repo is associated to a specific commit that was downloaded, 
 	sadly the only way to know it is to parse the directory name."
@@ -9,7 +9,7 @@ MCGitHubRepository >> commitId [
 	^ repoRoot basename copyAfterLast: $-.
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository class >> commitIdFor: aWorkingCopy [
 	^ aWorkingCopy repositoryGroup repositories 
 		detect: [ :repo | repo isKindOf: self ] 
@@ -18,18 +18,18 @@ MCGitHubRepository class >> commitIdFor: aWorkingCopy [
 
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> commitIdFor: aMCWorkingCopy ifFound: aBlockClosure [ 
 	(aMCWorkingCopy repositoryGroup includes: self)
 		ifTrue: [ aBlockClosure value: self commitId ]
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> httpsUrl [
 	^ 'https://github.com/', projectPath, '.git'
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> scpUrl [
 	^ 'git@github.com:', projectPath, '.git'
 ]

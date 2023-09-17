@@ -1,22 +1,24 @@
 Class {
-	#name : #IceUnknownVersionWorkingCopy,
-	#superclass : #IceWorkingCopyState,
-	#category : 'Iceberg-WorkingCopy'
+	#name : 'IceUnknownVersionWorkingCopy',
+	#superclass : 'IceWorkingCopyState',
+	#category : 'Iceberg-WorkingCopy',
+	#package : 'Iceberg',
+	#tag : 'WorkingCopy'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownVersionWorkingCopy >> description [
 	
 	^ 'Fetch required. ', self referenceCommit description
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownVersionWorkingCopy >> isDetached [
 	
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownVersionWorkingCopy >> isUnknownCommitState [
 	
 	^ true
