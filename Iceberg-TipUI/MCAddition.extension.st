@@ -1,6 +1,6 @@
-Extension { #name : #MCAddition }
+Extension { #name : 'MCAddition' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 MCAddition >> icon [
 	^ self iconNamed: #changeAdd
 ]

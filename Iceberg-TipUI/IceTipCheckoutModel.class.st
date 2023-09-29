@@ -1,20 +1,22 @@
 Class {
-	#name : #IceTipCheckoutModel,
-	#superclass : #IceTipDiffPreviewModel,
+	#name : 'IceTipCheckoutModel',
+	#superclass : 'IceTipDiffPreviewModel',
 	#instVars : [
 		'checkoutStrategy',
 		'checkoutStrategies'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutModel >> calculateDiff [
 
 	^ commitish entity diffTo: self repository workingCopy
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCheckoutModel >> checkout [
 
 	checkoutStrategy
@@ -24,30 +26,30 @@ IceTipCheckoutModel >> checkout [
 	self commitish checkout: checkoutStrategy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutModel >> checkoutStrategies [
 	
 	^ checkoutStrategies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutModel >> checkoutStrategy [
 	
 	^ checkoutStrategy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutModel >> checkoutStrategy: aStrategy [
 	checkoutStrategy := aStrategy
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCheckoutModel >> hasNewPackages [
 	
 	^ diffModel tree anySatisfy:[ :aNode | aNode isAddition and: [ aNode definition isPackageDefinition]]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutModel >> initialize [
 
 	super initialize.
@@ -55,7 +57,7 @@ IceTipCheckoutModel >> initialize [
 	checkoutStrategy := checkoutStrategies first.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCheckoutModel >> newCheckoutAction [ 
 	<noCache>
 
@@ -67,7 +69,7 @@ IceTipCheckoutModel >> newCheckoutAction [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutModel >> newPackages [
 
 	| packageNodes |

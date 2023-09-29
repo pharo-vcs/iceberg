@@ -2,36 +2,38 @@
 Command to unload a package from the system, keeping it in the repository
 "
 Class {
-	#name : #IceTipUnloadPackageCommand,
-	#superclass : #IceTipPackageCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipUnloadPackageCommand',
+	#superclass : 'IceTipPackageCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipUnloadPackageCommand class >> defaultDescription [
 
 	^ 'Unload selected package from the system, but keep it in the repository.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipUnloadPackageCommand class >> defaultName [
 
 	^ 'Unload'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipUnloadPackageCommand >> canBeExecuted [
 
 	^ self isPackageLoaded
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipUnloadPackageCommand >> execute [
 
 	self packageModel unload
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipUnloadPackageCommand >> iconName [
 
 	^ #smallCancel

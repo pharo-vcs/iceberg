@@ -2,67 +2,69 @@
 I am a morphic list wrapper that wraps iceberg diff tree nodes (potentially with conflicts)
 "
 Class {
-	#name : #IceMergeListWrapper,
-	#superclass : #ListItemWrapper,
-	#category : #'Iceberg-TipUI-Morphic'
+	#name : 'IceMergeListWrapper',
+	#superclass : 'ListItemWrapper',
+	#category : 'Iceberg-TipUI-Morphic',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Morphic'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMergeListWrapper >> = aWrapper [
 
 	^ self item = aWrapper item
 ]
 
-{ #category : #'morphic-compatibility' }
+{ #category : 'morphic-compatibility' }
 IceMergeListWrapper >> actualClass [
 	
 	^ self item value actualClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMergeListWrapper >> asString [
 
 	^item value description
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceMergeListWrapper >> chooseLocal [
 	
 	^ item value selectRight
 ]
 
-{ #category : #resolution }
+{ #category : 'resolution' }
 IceMergeListWrapper >> chooseRemote [
 	
 	^ item value selectLeft
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMergeListWrapper >> contents [
 	"Answer the contents of the change from the model."
 
 	^ item children collect: [ :each | IceMergeListWrapper with: each model: model ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMergeListWrapper >> hash [
 
 	^ self item hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMergeListWrapper >> icon [
 
 	^ item value icon
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMergeListWrapper >> isConflict [
 	
 	^ item value isConflict
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMergeListWrapper >> preferredColor [
 
 	^ self item value preferredColor

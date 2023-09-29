@@ -1,6 +1,6 @@
-Extension { #name : #FTTreeItem }
+Extension { #name : 'FTTreeItem' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 FTTreeItem >> isRoot [
 	^ false
 ]

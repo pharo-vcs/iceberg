@@ -2,36 +2,38 @@
 Command that opens the repair window on a repository
 "
 Class {
-	#name : #IceTipRepairCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRepairCommand class >> defaultDescription [
 
 	^ 'Helps you to repair your repository when it is detached.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRepairCommand class >> defaultName [
 
 	^ 'Repair repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRepairCommand class >> defaultToolbarItemName [
 
 	^ 'Repair'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairCommand >> canBeExecuted [
 
 	^ super canBeExecuted and: [ self isRepositoryOperational not ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairCommand >> execute [
 
 	((IceTipRepairRepositoryDialogPresenter 
@@ -42,7 +44,7 @@ IceTipRepairCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCommand >> iconName [
 
 	^ #repair

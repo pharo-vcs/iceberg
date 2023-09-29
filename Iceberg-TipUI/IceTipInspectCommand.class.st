@@ -2,42 +2,44 @@
 I am a command implementing the inspect option. I have several context activations to be able to inspect different objects in Iceberg's UI
 "
 Class {
-	#name : #IceTipInspectCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipInspectCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipInspectCommand class >> defaultDescription [
 
 	^ 'Inspect the selected element'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipInspectCommand class >> defaultName [
 
 	^ 'Inspect...'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipInspectCommand >> canBeExecuted [
 
 	^ self context hasSelectedItem
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipInspectCommand >> execute [
 
 	self item inspect
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInspectCommand >> iconName [
 
 	^ #glamorousInspect
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInspectCommand >> item [
 
 	| maybeCachedObject |

@@ -3,18 +3,20 @@ I perform a push of outgoing commits.
 
 "
 Class {
-	#name : #IceTipPushBrowser,
-	#superclass : #IceTipRemoteActionBrowser,
-	#category : #'Iceberg-TipUI-View-Repository'
+	#name : 'IceTipPushBrowser',
+	#superclass : 'IceTipRemoteActionBrowser',
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipPushBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	"No commands to add."
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipPushBrowser class >> onRepositoryModel: aModel [
 
 	^ self on: (IceTipPushModel 
@@ -24,21 +26,21 @@ IceTipPushBrowser class >> onRepositoryModel: aModel [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPushBrowser >> doPush [
 
 	self model newPushAction executeWithContext: self.
 	self closeWindow
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipPushBrowser >> labelForRemotePanel [
 
 	^ 'Push to remote'
 
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipPushBrowser >> newActionButton [
 
 	^ self newButton
@@ -50,7 +52,7 @@ IceTipPushBrowser >> newActionButton [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipPushBrowser >> titleForWindow [
 
 	^ 'Push {1}/{2} to {3}' format: { 

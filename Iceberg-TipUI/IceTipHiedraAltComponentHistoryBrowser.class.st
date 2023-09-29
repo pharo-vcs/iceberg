@@ -1,13 +1,15 @@
 Class {
-	#name : #IceTipHiedraAltComponentHistoryBrowser,
-	#superclass : #IceTipHistoryBrowser,
+	#name : 'IceTipHiedraAltComponentHistoryBrowser',
+	#superclass : 'IceTipHistoryBrowser',
 	#instVars : [
 		'hiedraColumnController'
 	],
-	#category : #'Iceberg-TipUI-View-Repository-HiedraAlt'
+	#category : 'Iceberg-TipUI-View-Repository-HiedraAlt',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository-HiedraAlt'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipHiedraAltComponentHistoryBrowser >> availableCommands [ 
 	| rootGroup |
 	
@@ -16,7 +18,7 @@ IceTipHiedraAltComponentHistoryBrowser >> availableCommands [
 	^ rootGroup
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipHiedraAltComponentHistoryBrowser >> contextMenuCommands [
 
 	self availableCommands
@@ -27,13 +29,13 @@ IceTipHiedraAltComponentHistoryBrowser >> contextMenuCommands [
 	self error: 'Should not arrive here'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> initializeCommitList [
 
 	self error: 'Should not arrive here'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> initializeHiedraColumn [
 	| ancestorIds |
 	
@@ -62,7 +64,7 @@ IceTipHiedraAltComponentHistoryBrowser >> initializeHiedraColumn [
 	hiedraColumnController renderer rowHeight: 20
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> initializePresenters [
 
 	commitList := self newComponentList.
@@ -73,13 +75,13 @@ IceTipHiedraAltComponentHistoryBrowser >> initializePresenters [
 	self initializeHiedraColumn
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> initializeWindow: aWindowPresenter [
 
 	super initializeWindow: aWindowPresenter.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> newCommitRow: index commit: item [ 
 	
 	^ self 
@@ -87,20 +89,20 @@ IceTipHiedraAltComponentHistoryBrowser >> newCommitRow: index commit: item [
 		on: { (hiedraColumnController formAtRow: index). item }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltComponentHistoryBrowser >> refresh [
 
 	self refreshHiedraColumn.
 	super refresh
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipHiedraAltComponentHistoryBrowser >> refreshCommands [
 
 	self refreshToolbarWith: self availableCommands
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltComponentHistoryBrowser >> refreshCommitList [
 	| commitModels |
 	
@@ -111,7 +113,7 @@ IceTipHiedraAltComponentHistoryBrowser >> refreshCommitList [
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltComponentHistoryBrowser >> refreshHiedraColumn [
 	| ancestorIds walk |
 
@@ -133,19 +135,19 @@ IceTipHiedraAltComponentHistoryBrowser >> refreshHiedraColumn [
 		linksBlock: [ :id | ancestorIds at: id ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltComponentHistoryBrowser >> selectedCommit [
 
 	^ commitList selection selectedItem ifNotNil: #item
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltComponentHistoryBrowser >> selectedItem [
 
 	^ self selectedCommit
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> updatePresenter [
 
 	"self refresh"

@@ -2,47 +2,49 @@
 I'm a base browser for pull/push action browser.
 "
 Class {
-	#name : #IceTipHistoryActionBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipHistoryActionBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'commitsPanel',
 		'actionButtonBar',
 		'button'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipHistoryActionBrowser >> accept [
 
 	button performAction
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryActionBrowser >> actionButtonBar [
 
 	^ actionButtonBar
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryActionBrowser >> commitsPanel [
 
 	^ commitsPanel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryActionBrowser >> commitsPanel: aSpPresenter [
 
 	commitsPanel := aSpPresenter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryActionBrowser >> initialExtentForWindow [
 
 	^ (800@600) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryActionBrowser >> initializePresenters [
 
 	commitsPanel := self instantiate: IceTipHistoryBrowser on: self model.
@@ -50,7 +52,7 @@ IceTipHistoryActionBrowser >> initializePresenters [
 	actionButtonBar add: (button := self newActionButton)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipHistoryActionBrowser >> moveToRemote: aRemoteModel [
 
 	aRemoteModel ifNil: [ ^ self ].
@@ -61,26 +63,26 @@ IceTipHistoryActionBrowser >> moveToRemote: aRemoteModel [
 	self updateTitle
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipHistoryActionBrowser >> newActionButton [
 	"Answer a new instance of SpButton to be placed at bottom, as the main action of the window."
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryActionBrowser >> refresh [
 
 	self refreshCommits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryActionBrowser >> refreshCommits [
 
 	commitsPanel refresh
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipHistoryActionBrowser >> refreshWhenRepository: ann [
 
 	(self model repositoryModel isModelOf: ann repository)
@@ -89,7 +91,7 @@ IceTipHistoryActionBrowser >> refreshWhenRepository: ann [
 	self refresh
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryActionBrowser >> subscribeToAnnouncements [
 
 	self announcer

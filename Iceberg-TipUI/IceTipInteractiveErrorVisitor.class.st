@@ -3,22 +3,24 @@ I'm a visitor to provide users with an interactive way to react to iceberg error
 
 "
 Class {
-	#name : #IceTipInteractiveErrorVisitor,
-	#superclass : #IceErrorVisitor,
+	#name : 'IceTipInteractiveErrorVisitor',
+	#superclass : 'IceErrorVisitor',
 	#instVars : [
 		'context',
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-Exceptions'
+	#category : 'Iceberg-TipUI-Exceptions',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Exceptions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipInteractiveErrorVisitor class >> newContext: aContext [
 
 	^ self newContext: aContext repository: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipInteractiveErrorVisitor class >> newContext: aContext repository: aModel [
 
 	^ self new 
@@ -27,40 +29,40 @@ IceTipInteractiveErrorVisitor class >> newContext: aContext repository: aModel [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipInteractiveErrorVisitor class >> on: aModel [
 	^ self new repository: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInteractiveErrorVisitor >> context [
 
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInteractiveErrorVisitor >> context: anObject [
 
 	context := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> defaultApplication [
 
 	^ SpApplication defaultApplication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInteractiveErrorVisitor >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipInteractiveErrorVisitor >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
 	self defaultApplication 
 		label: anError messageText;
@@ -68,7 +70,7 @@ IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
 
 	self defaultApplication
@@ -77,7 +79,7 @@ IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 
 		self defaultApplication 
@@ -88,17 +90,17 @@ IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
 
-		self defaultApplication 
+		self defaultApplication newInform
 		label: ('The clone remote {1} could not been found' format:
 				 { anError remoteUrl });
 		title: 'Clone action failed';
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
 
 	| proceed |
@@ -112,7 +114,7 @@ IceTipInteractiveErrorVisitor >> visitExperimentalFeature: aWarning [
 	aWarning resume
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 	
 	(IceTipErrorDialogPresenter 
@@ -123,7 +125,7 @@ IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 			open
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitMergeAborted: anError [
 
 		self defaultApplication 
@@ -135,7 +137,7 @@ WARNING: If you have external files, you may need to verify the conflicts there.
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 
 	((IceTipGitUsernameAndEmailDialogPresenter 
@@ -147,7 +149,7 @@ IceTipInteractiveErrorVisitor >> visitMissingCredentialsError: anError [
 			open
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
 
 	| proceed |
@@ -162,7 +164,7 @@ IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
 	aWarning resume
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitNoRemote: anError [
 
 		self defaultApplication 
@@ -172,7 +174,7 @@ Add one before continue.';
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitNothingToCommitError: anError [
 
 	self defaultApplication newInform
@@ -180,7 +182,7 @@ IceTipInteractiveErrorVisitor >> visitNothingToCommitError: anError [
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [
 
 	self defaultApplication newInform
@@ -189,7 +191,7 @@ IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [
 		openModal
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitRemoteDesynchronizedError: anError [
 
 	| continue command |
@@ -222,7 +224,7 @@ You need to pull remote changes before continue and push your changes.'
 	anError retry
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitShouldCommitBeforePullError: anError [
 
 	| continue |
@@ -239,7 +241,7 @@ We recommend that you commit first and then pull incoming changes again.';
 	anError resume
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitWorkingCopyDesynchronizedError: anError [
 	| solveStrategy command |
 

@@ -2,8 +2,8 @@
 I am a dialog to be used before commit so we can check if the code to commit has critiques on it
 "
 Class {
-	#name : #IceTipCritiquesBeforeCommitBrowser,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipCritiquesBeforeCommitBrowser',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'commitModel',
 		'onAcceptAction',
@@ -15,41 +15,43 @@ Class {
 		'browseButton',
 		'autofixButton'
 	],
-	#category : #'Iceberg-TipUI-View-Commit'
+	#category : 'Iceberg-TipUI-View-Commit',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Commit'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCritiquesBeforeCommitBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> accept [
 
 	self closeWindow.
 	onAcceptAction value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCritiquesBeforeCommitBrowser >> commitModel [
 
 	^ commitModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCritiquesBeforeCommitBrowser >> commitModel: anObject [
 
 	commitModel := anObject
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCritiquesBeforeCommitBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -67,7 +69,7 @@ IceTipCritiquesBeforeCommitBrowser >> defaultLayout [
 			yourself
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipCritiquesBeforeCommitBrowser >> disableCommitAfterChanges [
 
 	self withWindowDo: [ :window | 
@@ -77,7 +79,7 @@ IceTipCritiquesBeforeCommitBrowser >> disableCommitAfterChanges [
 		window buttons third label: 'Close' ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 
 	critiquesList selectedItem ifNotNil: [ :aCritique | 
@@ -98,13 +100,13 @@ IceTipCritiquesBeforeCommitBrowser >> doAutofix [
 					 centered ]) actOnCritic: aCritique ofEntity: aCritique entity ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> doBrowse [
 	
 	critiquesList selectedItem ifNotNil: [ :aCritique | aCritique entity browse ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializeCritiquesList [
 
 	critiquesList := self newTable.
@@ -128,7 +130,7 @@ IceTipCritiquesBeforeCommitBrowser >> initializeCritiquesList [
 		whenSelectionChangedDo: (MessageSend receiver: self selector: #updateSelectedCritique) 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializeDetailPanel [
 
 	detailPanel := self newText
@@ -139,7 +141,7 @@ IceTipCritiquesBeforeCommitBrowser >> initializeDetailPanel [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializeDialogWindow: aWindow [
 
 	super initializeDialogWindow: aWindow.
@@ -161,7 +163,7 @@ IceTipCritiquesBeforeCommitBrowser >> initializeDialogWindow: aWindow [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializePresenters [
 
 	browseButton := self newButton.
@@ -179,7 +181,7 @@ IceTipCritiquesBeforeCommitBrowser >> initializePresenters [
 	self initializeDetailPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializeReasonPanel [
 
 	reasonPanel := self newText
@@ -193,18 +195,18 @@ Select each critique to see a detailed message of each critique.'.
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCritiquesBeforeCommitBrowser >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCritiquesBeforeCommitBrowser >> onAccept: aFullBlockClosure [ 
 	
 	onAcceptAction := aFullBlockClosure 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 
 	"If the setting is disabled we just commit"
@@ -220,13 +222,13 @@ IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 	
 ]
 
-{ #category : #'accessing - model' }
+{ #category : 'accessing - model' }
 IceTipCritiquesBeforeCommitBrowser >> setModelBeforeInitialization: someNodes [
 
 	model := someNodes
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> titleForWindow [
 
 	^ 'Critiques for Commit on {1} branch {2}' format: { 
@@ -234,7 +236,7 @@ IceTipCritiquesBeforeCommitBrowser >> titleForWindow [
 			  commitModel branchName }
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> updatePresenter [ 
 
 	super updatePresenter.
@@ -250,7 +252,7 @@ IceTipCritiquesBeforeCommitBrowser >> updatePresenter [
 
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipCritiquesBeforeCommitBrowser >> updateSelectedCritique [
 
 	critiquesList selectedItem

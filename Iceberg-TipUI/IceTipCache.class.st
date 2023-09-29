@@ -5,70 +5,72 @@ I'm used to cache values to be used on the UI.
 I can be reseted (sending #reset), but responsibility of reset caches belongs to presenters who use them.
 "
 Class {
-	#name : #IceTipCache,
-	#superclass : #Object,
+	#name : 'IceTipCache',
+	#superclass : 'Object',
 	#instVars : [
 		'proxy',
 		'objects'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCache class >> proxy: aProxy [ 
 	^ self new proxy: aProxy 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> at: aKey ifAbsent: anObject [
 	^ objects 
 		at: aKey 
 		ifAbsent: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> at: aKey ifAbsentPut: anObject [
 	^ objects 
 		at: aKey 
 		ifAbsentPut: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> at: aKey ifPresent: anObject [
 	^ objects 
 		at: aKey 
 		ifPresent: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> at: aKey put: anObject [
 	^ objects 
 		at: aKey 
 		put: anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCache >> initialize [
 	super initialize.
 	self reset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> objects [
 	^ objects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> proxy [
 	^ proxy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCache >> proxy: anObject [
 	proxy := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCache >> reset [
 	objects := SmallDictionary new
 ]
