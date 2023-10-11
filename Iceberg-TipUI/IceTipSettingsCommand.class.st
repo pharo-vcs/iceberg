@@ -2,31 +2,33 @@
 Command that opens the settings on a repository
 "
 Class {
-	#name : #IceTipSettingsCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipSettingsCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipSettingsCommand class >> defaultDescription [
 
 	^ 'Open settings browser to configure Iceberg'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipSettingsCommand class >> defaultName [
 
 	^ 'Settings'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipSettingsCommand >> canBeExecuted [ 
 	
 	"This command can be executed with our without selection"
 	^ true
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipSettingsCommand >> execute [
 
 	| browser window path |
@@ -41,19 +43,19 @@ IceTipSettingsCommand >> execute [
 	browser expandNodePath: path first contents first contents first path.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSettingsCommand >> iconName [
 
 	^ #configuration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSettingsCommand >> shortcutKey [
 
 	^ $n meta
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSettingsCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

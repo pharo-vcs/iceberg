@@ -2,18 +2,20 @@
 I implement the dialog to edit SSH credentials.
 "
 Class {
-	#name : #IceTipEditSSHCredentialsPresenter,
-	#superclass : #IceTipAbstractSSHCredentialsPresenter,
-	#category : #'Iceberg-TipUI-Credentials'
+	#name : 'IceTipEditSSHCredentialsPresenter',
+	#superclass : 'IceTipAbstractSSHCredentialsPresenter',
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditSSHCredentialsPresenter >> accept [
 
 	^ self acceptEditAction
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipEditSSHCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -27,13 +29,13 @@ IceTipEditSSHCredentialsPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditSSHCredentialsPresenter >> initialExtentForWindow [
 
 	^ (500@230) scaledByDisplayScaleFactor
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditSSHCredentialsPresenter >> refreshCredentialsFromPresenter [
 
 	credentials
@@ -43,7 +45,7 @@ IceTipEditSSHCredentialsPresenter >> refreshCredentialsFromPresenter [
 		keyPassphrase: self passphrase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditSSHCredentialsPresenter >> refreshPresenterFromCredentials [
 
 	usernameInput text: credentials username.
@@ -52,7 +54,7 @@ IceTipEditSSHCredentialsPresenter >> refreshPresenterFromCredentials [
 	publicKeyInput location: credentials publicKey
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditSSHCredentialsPresenter >> titleForWindow [
 
 	^ 'Edit SSH keys for ' , self credentials hostDescription

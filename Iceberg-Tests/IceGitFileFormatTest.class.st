@@ -1,16 +1,18 @@
 Class {
-	#name : #IceGitFileFormatTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitFileFormatTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitFileFormatTest >> newFixture [
 
 	^ IceMultiplePackageFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitFileFormatTest >> testRepositoryInFileTreeDoesNotSeeFilesCalledAsPackages [
 
 	| fileRef |
@@ -28,7 +30,7 @@ IceGitFileFormatTest >> testRepositoryInFileTreeDoesNotSeeFilesCalledAsPackages 
 	self assertCollection: (self repository workingCopy packages collect: #name) hasSameElements: { #FileTreePackage }
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitFileFormatTest >> testRepositoryInFileTreeDoesNotSeeTonelPackages [
 
 	self repository project fileFormat: IceLibgitFiletreeWriter.
@@ -39,7 +41,7 @@ IceGitFileFormatTest >> testRepositoryInFileTreeDoesNotSeeTonelPackages [
 	self assertCollection: (self repository workingCopy packages collect: #name) hasSameElements: { #FileTreePackage }
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitFileFormatTest >> testRepositoryWithFilesInUppercaseAreNotRecognizedAsPackages [
 
 	| fileRef |
@@ -53,7 +55,7 @@ IceGitFileFormatTest >> testRepositoryWithFilesInUppercaseAreNotRecognizedAsPack
 	self assertCollection: (self repository workingCopy packages collect: #name) hasSameElements: { self packageName1 asSymbol. self packageName2 asSymbol }
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitFileFormatTest >> testRepositoryWithFiletreePackageNotRecognizedAsPackages [
 
 	self repository project fileFormat: IceLibgitFiletreeWriter.

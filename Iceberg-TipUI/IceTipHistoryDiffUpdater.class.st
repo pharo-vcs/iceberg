@@ -4,64 +4,66 @@ Since orders may change for different operations, I need a different approach fo
 
 "
 Class {
-	#name : #IceTipHistoryDiffUpdater,
-	#superclass : #Object,
+	#name : 'IceTipHistoryDiffUpdater',
+	#superclass : 'Object',
 	#instVars : [
 		'tab'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipHistoryDiffUpdater class >> isAbstract [
 
 	^ self == IceTipHistoryDiffUpdater
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipHistoryDiffUpdater class >> tab: aTab [
 	^ self new
 		tab: aTab;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryDiffUpdater >> diffFor: aCommitModel [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryDiffUpdater >> labelFor: aCommitModel [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'private factory' }
+{ #category : 'private factory' }
 IceTipHistoryDiffUpdater >> newDiffPanelFor: aDiffModel [
 	^ IceTipDiffPanel on: aDiffModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryDiffUpdater >> tab [
 	^ tab
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryDiffUpdater >> tab: anObject [
 	tab := anObject
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipHistoryDiffUpdater >> updateContentsOn: aCommitModel [
 	aCommitModel ifNil: [ ^ self ].
 	self tab contents: (self newDiffPanelFor: (self diffFor: aCommitModel)) build
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipHistoryDiffUpdater >> updateLabelOn: aCommitModel [
 	self tab label: (self labelFor: aCommitModel)
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipHistoryDiffUpdater >> updateOn: aCommitModel [
 	self updateLabelOn: aCommitModel.
 	self updateContentsOn: aCommitModel

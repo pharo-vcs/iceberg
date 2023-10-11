@@ -4,34 +4,36 @@ I'm a dialog to perform a merge of a branch.
 (self onRepository: IceRepository registry anyOne) openDialogWithSpec
 "
 Class {
-	#name : #IceTipMergeBranchDialogPresenter,
-	#superclass : #IceTipOptionDialogPresenter,
+	#name : 'IceTipMergeBranchDialogPresenter',
+	#superclass : 'IceTipOptionDialogPresenter',
 	#instVars : [
 		'model',
 		'types'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipMergeBranchDialogPresenter class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchDialogPresenter >> allTypes [
 
 	^ types ifNil: [ types := self createMergeBranchTypes ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchDialogPresenter >> beSwitchAndMerge [
 
 	self allTypes do: #beSwitchAndMerge
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipMergeBranchDialogPresenter >> createMergeBranchTypes [
 
 	| allTypes |
@@ -54,44 +56,44 @@ IceTipMergeBranchDialogPresenter >> createMergeBranchTypes [
 	^ allTypes
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergeBranchDialogPresenter >> doAccept [
 
 	self selectedType doAccept
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergeBranchDialogPresenter >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchDialogPresenter >> model: anObject [
 
 	model := anObject.
 	self allTypes do: [ :each | each model: anObject ]
 ]
 
-{ #category : #'accessing - model' }
+{ #category : 'accessing - model' }
 IceTipMergeBranchDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergeBranchDialogPresenter >> titleForWindow [
 
 	^ 'Select branch to merge into ' , (self model branchName contractTo: 45)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 IceTipMergeBranchDialogPresenter >> updateWindowTitle [
 
 	self window title: self titleForWindow

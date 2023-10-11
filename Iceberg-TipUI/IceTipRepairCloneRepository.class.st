@@ -6,12 +6,14 @@ I'm active when repository can not be located in disk.
 Notice that doing this can lead you to another situation that needs repair (like a detached status)
 "
 Class {
-	#name : #IceTipRepairCloneRepository,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairCloneRepository',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCloneRepository class >> help [
 	^ 'Clone again the repository into a new location.
 
@@ -23,29 +25,29 @@ So, this action will very probably let you in a detached status.
 You will need to re-synchronize your repository with another repair action.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCloneRepository class >> icon [
 	^ self iconNamed: #smallAdd
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairCloneRepository class >> isAvailableFor: aRepository [
 	"active when there is no repository directory"
 
 	^ aRepository isMissing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCloneRepository class >> order [
 	^ 20
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCloneRepository class >> title [
 	^ 'Clone again this repository in a new location'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairCloneRepository >> basicExecute [
 
 	((IceTipRegisterRepositoryDialogPresenter newApplication: context application) 

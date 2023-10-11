@@ -6,17 +6,19 @@ If #parameters method is not overriden, I will be run as a normal test case.
 To run with the parameterization you have to use Test Runner. If you run tests from Nautilus, they will ignore parameterization and run with current global configuration. For example if you ran IceBranchTest from the test runner it will be run with every Iceberg backend loaded in the image (see #parameters class method in IceBranchTest). But if you run it from Nautilus it will run the test only once with the current backend, as specified by IceRepository class>>defaultBackendType.
 "
 Class {
-	#name : #IceParameterizedTestCase,
-	#superclass : #TestCase,
+	#name : 'IceParameterizedTestCase',
+	#superclass : 'TestCase',
 	#instVars : [
 		'testParameters',
 		'oldShareRepositoriesBetweenImages',
 		'provider'
 	],
-	#category : #'Iceberg-Tests-Base'
+	#category : 'Iceberg-Tests-Base',
+	#package : 'Iceberg-Tests',
+	#tag : 'Base'
 }
 
-{ #category : #'building suites' }
+{ #category : 'building suites' }
 IceParameterizedTestCase class >> buildSuite [
 	^ self buildSuiteNamed: self name asString 
 		withGlobals: #() 
@@ -24,7 +26,7 @@ IceParameterizedTestCase class >> buildSuite [
 
 ]
 
-{ #category : #'building suites' }
+{ #category : 'building suites' }
 IceParameterizedTestCase class >> buildSuiteNamed: suiteName withGlobals: globals andConfigurations: configs [
 	| suite |
 	configs ifEmpty: [ 
@@ -48,7 +50,7 @@ IceParameterizedTestCase class >> buildSuiteNamed: suiteName withGlobals: global
 
 ]
 
-{ #category : #'building suites' }
+{ #category : 'building suites' }
 IceParameterizedTestCase class >> buildSuiteNamed: suiteName withGlobals: globalParameterValues andSubsuites: moreParameters [
 	| suite |
 	moreParameters ifEmpty: [ 
@@ -72,18 +74,18 @@ IceParameterizedTestCase class >> buildSuiteNamed: suiteName withGlobals: global
 
 ]
 
-{ #category : #history }
+{ #category : 'history' }
 IceParameterizedTestCase class >> lastStoredRun [
 	^ ((Dictionary new) add: (#timeStamp->(DateAndTime basicNew instVarAt: 1 put: 72896; instVarAt: 2 put: (Duration seconds: 3600 nanoSeconds: 0); instVarAt: 3 put: 2457731; instVarAt: 4 put: 823745000; yourself)); add: (#passed->((Set new) add: #testParameters; yourself)); add: (#failures->((Set new))); add: (#errors->((Set new))); yourself)
 ]
 
-{ #category : #'building suites' }
+{ #category : 'building suites' }
 IceParameterizedTestCase class >> parameters [
 	"No parameters will make this tests work like a normal TestCase"
 	^ #()
 ]
 
-{ #category : #configurations }
+{ #category : 'configurations' }
 IceParameterizedTestCase class >> remoteTypeConfiguration [
 	^ IceTestParameter 
 		withOptions: { #httpsUrl. #scpUrl }
@@ -91,12 +93,12 @@ IceParameterizedTestCase class >> remoteTypeConfiguration [
 		selector: #remoteTypeSelector
 ]
 
-{ #category : #configurations }
+{ #category : 'configurations' }
 IceParameterizedTestCase class >> repositoryBackendConfiguration [
 	^ IceTestParameter withOptions: {1}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceParameterizedTestCase >> cleanUpInstanceVariables [
 	| instanceVariablesNames |
 	instanceVariablesNames := #('testSelector' 'testParameters').
@@ -106,22 +108,22 @@ IceParameterizedTestCase >> cleanUpInstanceVariables [
 				ifFalse: [ self instVarNamed: name put: nil ] ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceParameterizedTestCase >> isCI [
 	^ (OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceParameterizedTestCase >> parameters [
 	^ testParameters ifNil: [ testParameters := #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceParameterizedTestCase >> parameters: anObject [
 	testParameters := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceParameterizedTestCase >> printOn: aStream [
 	super printOn: aStream.
 
@@ -133,7 +135,7 @@ IceParameterizedTestCase >> printOn: aStream [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceParameterizedTestCase >> setUp [
 
 	super setUp.
@@ -146,7 +148,7 @@ IceParameterizedTestCase >> setUp [
 	self parameters do: [ :each | each activate ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceParameterizedTestCase >> tearDown [
 	self parameters
 		do: [ :parameter | 

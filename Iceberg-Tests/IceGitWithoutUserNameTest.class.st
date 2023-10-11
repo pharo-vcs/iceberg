@@ -1,19 +1,21 @@
 Class {
-	#name : #IceGitWithoutUserNameTest,
-	#superclass : #IceAbstractTestCase,
+	#name : 'IceGitWithoutUserNameTest',
+	#superclass : 'IceAbstractTestCase',
 	#instVars : [
 		'username',
 		'email'
 	],
-	#category : #'Iceberg-Tests-Git'
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitWithoutUserNameTest >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitWithoutUserNameTest >> setUp [
 
 	| global |
@@ -30,7 +32,7 @@ IceGitWithoutUserNameTest >> setUp [
 		email: 'mock mail'.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitWithoutUserNameTest >> tearDown [
 
 	| global |
@@ -42,7 +44,7 @@ IceGitWithoutUserNameTest >> tearDown [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testCommitWithEmptyUserMailThrowsException [
 
 	(self repository getConfigurationGlobal: false)
@@ -54,7 +56,7 @@ IceGitWithoutUserNameTest >> testCommitWithEmptyUserMailThrowsException [
 		raise: IceGitUsernameOrEmailNotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testCommitWithEmptyUserNameThrowsException [
 
 	(self repository getConfigurationGlobal: false)
@@ -66,7 +68,7 @@ IceGitWithoutUserNameTest >> testCommitWithEmptyUserNameThrowsException [
 		raise: IceGitUsernameOrEmailNotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testCommitWithoutUserMailThrowsException [
 
 	(self repository getConfigurationGlobal: false)
@@ -78,7 +80,7 @@ IceGitWithoutUserNameTest >> testCommitWithoutUserMailThrowsException [
 		raise: IceGitUsernameOrEmailNotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testCommitWithoutUserNameThrowsException [
 
 	(self repository getConfigurationGlobal: false)
@@ -90,7 +92,7 @@ IceGitWithoutUserNameTest >> testCommitWithoutUserNameThrowsException [
 		raise: IceGitUsernameOrEmailNotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testFixEmptyUserMailAndResumeDoesCommit [
 	| before after |
 	(self repository getConfigurationGlobal: false) email: ''.
@@ -107,7 +109,7 @@ IceGitWithoutUserNameTest >> testFixEmptyUserMailAndResumeDoesCommit [
 	self fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testFixEmptyUserNameAndResumeDoesCommit [
 	| before after |
 	(self repository getConfigurationGlobal: false) username: ''.
@@ -124,7 +126,7 @@ IceGitWithoutUserNameTest >> testFixEmptyUserNameAndResumeDoesCommit [
 	self fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testFixUnsetUserMailAndResumeDoesCommit [
 	| before after |
 	(self repository getConfigurationGlobal: false) unset: 'user.email'.
@@ -141,7 +143,7 @@ IceGitWithoutUserNameTest >> testFixUnsetUserMailAndResumeDoesCommit [
 	self fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testFixUnsetUserNameAndResumeDoesCommit [
 	| before after |
 	(self repository getConfigurationGlobal: false) unset: 'user.name'.
@@ -158,7 +160,7 @@ IceGitWithoutUserNameTest >> testFixUnsetUserNameAndResumeDoesCommit [
 	self fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitWithoutUserNameTest >> testUtf8Username [
 	| after utf8Username |
 	utf8Username := 'Yn-aë éé'.

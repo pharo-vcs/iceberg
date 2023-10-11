@@ -2,36 +2,38 @@
 Publish content of playground a github gist (in your user space)
 "
 Class {
-	#name : #IcePlaygroundPublishGistCommand,
-	#superclass : #StPlaygroundToolbarExtensionCommand,
-	#category : #'Iceberg-Playground-Plugin-Gist-Command'
+	#name : 'IcePlaygroundPublishGistCommand',
+	#superclass : 'StPlaygroundToolbarExtensionCommand',
+	#category : 'Iceberg-Playground-Plugin-Gist-Command',
+	#package : 'Iceberg-Playground-Plugin-Gist',
+	#tag : 'Command'
 }
 
-{ #category : #default }
+{ #category : 'default' }
 IcePlaygroundPublishGistCommand class >> defaultDescription [
 
 	^ 'Publish contents as gist.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePlaygroundPublishGistCommand class >> defaultIconName [
 
 	^ #github
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 IcePlaygroundPublishGistCommand class >> defaultName [
 
 	^ 'Publish Gist'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePlaygroundPublishGistCommand class >> order [
 
 	^ 6
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 IcePlaygroundPublishGistCommand >> execute [ 
 	| contents |
 
@@ -47,7 +49,7 @@ IcePlaygroundPublishGistCommand >> execute [
 		openModal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePlaygroundPublishGistCommand >> page [
 
 	^ context page

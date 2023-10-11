@@ -5,12 +5,14 @@ I'm a model for IceLogVersion entries.
 - I can install a certain method version.
 "
 Class {
-	#name : #IceTipVersionModel,
-	#superclass : #IceTipCommitModel,
-	#category : 'Iceberg-TipUI-Model'
+	#name : 'IceTipVersionModel',
+	#superclass : 'IceTipCommitModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipVersionModel >> basicInstall [
 	| definition |
 	
@@ -20,12 +22,12 @@ IceTipVersionModel >> basicInstall [
 		classified: definition category	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionModel >> commit [
 	^ self entity commit
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipVersionModel >> install [
 	<noCache>
 
@@ -36,7 +38,7 @@ IceTipVersionModel >> install [
 		execute: [ self basicInstall ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionModel >> source [
 	^ self entity source
 ]

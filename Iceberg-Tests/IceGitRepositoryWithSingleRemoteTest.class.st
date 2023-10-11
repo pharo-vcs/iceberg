@@ -1,16 +1,18 @@
 Class {
-	#name : #IceGitRepositoryWithSingleRemoteTest,
-	#superclass : #IceRepositoryWithSingleRemoteTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitRepositoryWithSingleRemoteTest',
+	#superclass : 'IceRepositoryWithSingleRemoteTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitRepositoryWithSingleRemoteTest >> newFixture [
 	^ IceWithRemoteFixture inGit
 		remoteBranchName: 'newBranch'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitRepositoryWithSingleRemoteTest >> testPushPushesTags [
 
 	"We can only push if the repository is bare"

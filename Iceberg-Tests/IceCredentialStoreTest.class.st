@@ -1,21 +1,23 @@
 Class {
-	#name : #IceCredentialStoreTest,
-	#superclass : #TestCase,
+	#name : 'IceCredentialStoreTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'store',
 		'file',
 		'dir'
 	],
-	#category : #'Iceberg-Tests-Security'
+	#category : 'Iceberg-Tests-Security',
+	#package : 'Iceberg-Tests',
+	#tag : 'Security'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceCredentialStoreTest >> setUp [
 	super setUp.
 	store := IceCredentialStore new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceCredentialStoreTest >> tearDown [
 	file ifNotNil: [ file ensureDelete ].
 	dir ifNotNil: [ dir ensureDeleteAll ].
@@ -23,7 +25,7 @@ IceCredentialStoreTest >> tearDown [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCredentialStoreTest >> testEmptySShStore [
 
 	| cred |
@@ -34,7 +36,7 @@ IceCredentialStoreTest >> testEmptySShStore [
 	self assert: cred privateKey equals: IceSshCredentials defaultPrivateKey.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCredentialStoreTest >> testEmptyStore [
 
 	| cred |
@@ -42,7 +44,7 @@ IceCredentialStoreTest >> testEmptyStore [
 	self deny: cred isPresent.
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testLoadNonExistingFile [
 
 	| newStore cred |
@@ -60,7 +62,7 @@ IceCredentialStoreTest >> testLoadNonExistingFile [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCredentialStoreTest >> testLookupHostname [
 
 	| cred orig |
@@ -78,7 +80,7 @@ IceCredentialStoreTest >> testLookupHostname [
 
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testSaveAndLoadEmptyStore [
 
 	| newStore cred |
@@ -98,7 +100,7 @@ IceCredentialStoreTest >> testSaveAndLoadEmptyStore [
 	
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testStoreInNonExistingDirectory [
 
 	| newStore cred otherStore |
@@ -130,7 +132,7 @@ IceCredentialStoreTest >> testStoreInNonExistingDirectory [
 	
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testStoreInNonExistingFile [
 
 	| newStore cred otherStore |
@@ -159,7 +161,7 @@ IceCredentialStoreTest >> testStoreInNonExistingFile [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCredentialStoreTest >> testStorePlainText [
 
 	| cred orig |
@@ -177,7 +179,7 @@ IceCredentialStoreTest >> testStorePlainText [
 
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testStorePlainTextSavingInFile [
 
 	| cred orig newStore |
@@ -203,7 +205,7 @@ IceCredentialStoreTest >> testStorePlainTextSavingInFile [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCredentialStoreTest >> testStoreSSH [
 
 	| cred orig |
@@ -224,7 +226,7 @@ IceCredentialStoreTest >> testStoreSSH [
 	self assert: cred keyPassphrase equals: 'aPassword'.	
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testStoreToken [
 
 	| original |
@@ -243,7 +245,7 @@ IceCredentialStoreTest >> testStoreToken [
 
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> testStoreTokenSavingInFile [
 
 	| original newStore |
@@ -270,13 +272,13 @@ IceCredentialStoreTest >> testStoreTokenSavingInFile [
 
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> tokenForTesting [
 
 	^ 'e72e16c7e42f292c6912e7710c838347ae178b4a'
 ]
 
-{ #category : #'tests - store' }
+{ #category : 'tests - store' }
 IceCredentialStoreTest >> usernameForTesting [
 
 	^ 'aUsername'

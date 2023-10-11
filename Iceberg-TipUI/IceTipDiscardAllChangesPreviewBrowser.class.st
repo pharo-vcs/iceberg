@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTipDiscardAllChangesPreviewBrowser,
-	#superclass : #IceTipPreviewBrowser,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#name : 'IceTipDiscardAllChangesPreviewBrowser',
+	#superclass : 'IceTipPreviewBrowser',
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipDiscardAllChangesPreviewBrowser class >> onRepository: anIceModelRepository [
 
 	^ self on: (IceTipDiscardAllModel new
@@ -13,7 +15,7 @@ IceTipDiscardAllChangesPreviewBrowser class >> onRepository: anIceModelRepositor
 			   yourself)
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipDiscardAllChangesPreviewBrowser >> doDiscardAll [
 	
 	self model newDiscardAction 
@@ -21,13 +23,13 @@ IceTipDiscardAllChangesPreviewBrowser >> doDiscardAll [
 		executeWithContext: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiscardAllChangesPreviewBrowser >> initialExtentForWindow [
 
 	^ (900 @ 400) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiscardAllChangesPreviewBrowser >> initializePresenters [ 
 
 	super initializePresenters.
@@ -37,7 +39,7 @@ IceTipDiscardAllChangesPreviewBrowser >> initializePresenters [
 		rightLabel: 'Commit to load: ', self loadCommitShortId
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiscardAllChangesPreviewBrowser >> loadCommitShortId [
 	| shortId |
 	
@@ -47,7 +49,7 @@ IceTipDiscardAllChangesPreviewBrowser >> loadCommitShortId [
 		ifFalse: [ shortId ]	
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipDiscardAllChangesPreviewBrowser >> newActionButton [
 
 	^ self newButton
@@ -58,7 +60,7 @@ IceTipDiscardAllChangesPreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiscardAllChangesPreviewBrowser >> titleForWindow [
 	
 	^ 'Preview Changes to Discard'

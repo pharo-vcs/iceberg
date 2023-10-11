@@ -8,15 +8,17 @@ I also have a context, which points to the object that is requesting the excepti
 This context is used to obtain more information about the operation that failed, usually not provided by Libgit, such as urls, locations, etc.
 "
 Class {
-	#name : #IceLibgitErrorVisitor,
-	#superclass : #Object,
+	#name : 'IceLibgitErrorVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'context'
 	],
-	#category : #'Iceberg-Libgit-Exceptions'
+	#category : 'Iceberg-Libgit-Exceptions',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Exceptions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLibgitErrorVisitor class >> onContext: aContext [
 
 	^ self new
@@ -24,24 +26,24 @@ IceLibgitErrorVisitor class >> onContext: aContext [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitErrorVisitor >> context [
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitErrorVisitor >> context: anObject [
 	context := anObject
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitECONFLICT: anError [
 	anError object =  LGitErrorTypeEnum giterr_checkout
 		ifTrue: [ ^ anError resignalAs: IceCheckoutConflictError new ].
 	self visitGenericError: anError
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitEEOF: aLGit_GIT_EEOF [
 
 	aLGit_GIT_EEOF messageText trimmed = 'ERROR: Repository not found.'
@@ -50,7 +52,7 @@ IceLibgitErrorVisitor >> visitEEOF: aLGit_GIT_EEOF [
 	^ self visitGenericError: aLGit_GIT_EEOF
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitEEXISTS: anError [
 
 	(anError messageText asLowercase beginsWith: 'failed to write reference ''refs/tags')
@@ -66,13 +68,13 @@ IceLibgitErrorVisitor >> visitEEXISTS: anError [
 	self visitGenericError: anError
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitENOTFOUND: anError [
 
 	NotFound signal: anError messageText
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitERROR: anError [
 
 	(anError object = LGitErrorTypeEnum giterr_ssh)
@@ -93,7 +95,7 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 	self visitGenericError: anError
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitEUSER: anError [
 	"Since user errors do not have a code, they can can just be handled by analysis 
 	 of messageText. String comparisson is not the thing in history, but for not it will 
@@ -105,7 +107,7 @@ IceLibgitErrorVisitor >> visitEUSER: anError [
 	self visitGenericError: anError
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitErrorVisitor >> visitGenericError: anError [
 
 	IceGenericError new

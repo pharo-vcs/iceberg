@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipRemovePackageDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipRemovePackageDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'model',
 		'iconPanel',
@@ -8,10 +8,12 @@ Class {
 		'removeFromRepositoryCheckbox',
 		'unloadFromImageCheckbox'
 	],
-	#category : #'Iceberg-TipUI-View-WorkingCopy'
+	#category : 'Iceberg-TipUI-View-WorkingCopy',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-WorkingCopy'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRemovePackageDialogPresenter >> accept [
 
 	self removeFromRepositoryCheckbox state
@@ -20,19 +22,19 @@ IceTipRemovePackageDialogPresenter >> accept [
 		ifTrue: [ self model unload ].
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemovePackageDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemovePackageDialogPresenter >> confirmMessage [
 
 	^ 'Are you sure to remove package {1}?'
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRemovePackageDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -48,13 +50,13 @@ IceTipRemovePackageDialogPresenter >> defaultLayout [
 		
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemovePackageDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemovePackageDialogPresenter >> initialExtentForWindow [
 
 	^ (500
@@ -62,7 +64,7 @@ IceTipRemovePackageDialogPresenter >> initialExtentForWindow [
 		scaledByDisplayScaleFactor	"Yes, a magic number"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemovePackageDialogPresenter >> initializePresenters [
 
 	iconPanel := self newImage
@@ -81,37 +83,37 @@ IceTipRemovePackageDialogPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemovePackageDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemovePackageDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemovePackageDialogPresenter >> removeFromRepositoryCheckbox [
 
 	^ removeFromRepositoryCheckbox
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemovePackageDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemovePackageDialogPresenter >> titleForWindow [
 
 	^ 'Remove Package'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemovePackageDialogPresenter >> unloadFromImageCheckbox [
 
 	^ unloadFromImageCheckbox

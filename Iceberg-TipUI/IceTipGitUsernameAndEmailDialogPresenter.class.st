@@ -2,8 +2,8 @@
 I'm a dialog for asking ""user.name"" and ""user.email"" .
 "
 Class {
-	#name : #IceTipGitUsernameAndEmailDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipGitUsernameAndEmailDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'nameLabel',
 		'nameInput',
@@ -13,10 +13,12 @@ Class {
 		'model',
 		'acceptCallback'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipGitUsernameAndEmailDialogPresenter >> accept [
 
 	self username isEmptyOrNil ifTrue: [ ^ self window alert: 'user.name is required.' ].
@@ -32,7 +34,7 @@ IceTipGitUsernameAndEmailDialogPresenter >> accept [
 		acceptCallback value ].
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipGitUsernameAndEmailDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -50,36 +52,36 @@ IceTipGitUsernameAndEmailDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitUsernameAndEmailDialogPresenter >> email [
 
 	^ self emailInput text trimBoth
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitUsernameAndEmailDialogPresenter >> emailInput [
 
 	^ emailInput
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitUsernameAndEmailDialogPresenter >> emailLabel [
 
 	^ emailLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitUsernameAndEmailDialogPresenter >> globalCheckbox [
 	^ globalCheckbox
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitUsernameAndEmailDialogPresenter >> initialExtentForWindow [
 
 	^ (400@200) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitUsernameAndEmailDialogPresenter >> initializePresenters [
 
 	nameLabel := self newLabel
@@ -102,43 +104,43 @@ IceTipGitUsernameAndEmailDialogPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipGitUsernameAndEmailDialogPresenter >> isGlobal [
 
 	^ self globalCheckbox state
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitUsernameAndEmailDialogPresenter >> nameInput [
 
 	^ nameInput
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitUsernameAndEmailDialogPresenter >> nameLabel [
 
 	^ nameLabel
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipGitUsernameAndEmailDialogPresenter >> onAccept: aBlockClosure [ 
 	
 	acceptCallback := aBlockClosure
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipGitUsernameAndEmailDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitUsernameAndEmailDialogPresenter >> titleForWindow [
 
 	^ 'Please provide Git missing properties'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitUsernameAndEmailDialogPresenter >> username [
 
 	^ self nameInput text trimBoth

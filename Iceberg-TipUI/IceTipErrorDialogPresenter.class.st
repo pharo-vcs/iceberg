@@ -7,24 +7,26 @@ My model is an exception that I'll freeze for further debugging.
 (IceTipErrorDialog on: anError) openDialogWithSpec
 "
 Class {
-	#name : #IceTipErrorDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipErrorDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'exception',
 		'errorLabel',
 		'iconPanel'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> accept [
 	
 	self closeWindow.
 	exception debug.
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipErrorDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -35,31 +37,31 @@ IceTipErrorDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipErrorDialogPresenter >> errorLabel [
 
 	^ errorLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipErrorDialogPresenter >> exception [
 
 	^ exception
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipErrorDialogPresenter >> exception: anException [
 
 	exception := anException freeze
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipErrorDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> initialExtentForWindow [
 
 	^ (500@(
@@ -69,7 +71,7 @@ IceTipErrorDialogPresenter >> initialExtentForWindow [
 		)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> initializeDialogWindow: aWindow [
 
 	aWindow 
@@ -80,7 +82,7 @@ IceTipErrorDialogPresenter >> initializeDialogWindow: aWindow [
 		do: [ :presenter | presenter close ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> initializePresenters [
 
 	iconPanel := self newImage.
@@ -91,13 +93,13 @@ IceTipErrorDialogPresenter >> initializePresenters [
 	errorLabel editable: false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> setModelBeforeInitialization: aDomainObject [
 
 	self exception: aDomainObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipErrorDialogPresenter >> titleForWindow [
 
 	^ 'Error'

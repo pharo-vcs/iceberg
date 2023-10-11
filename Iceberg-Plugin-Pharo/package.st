@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Plugin-Pharo' }
+Package { #name : 'Iceberg-Plugin-Pharo' }

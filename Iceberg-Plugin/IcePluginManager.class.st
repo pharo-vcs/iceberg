@@ -5,37 +5,39 @@ WARNING: Managers are kept in a weak dictionary with Repository as a key, reason
 Consider using stateless plugins or instance copies of relevant information instead.
 "
 Class {
-	#name : #IcePluginManager,
-	#superclass : #Object,
+	#name : 'IcePluginManager',
+	#superclass : 'Object',
 	#instVars : [
 		'plugins'
 	],
-	#category : #'Iceberg-Plugin-Base'
+	#category : 'Iceberg-Plugin-Base',
+	#package : 'Iceberg-Plugin',
+	#tag : 'Base'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IcePluginManager class >> managerFor: aRepository [
 	^ self basicNew initializeRepository: aRepository
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IcePluginManager class >> new [
 	self error: 'Use #managerFor:'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePluginManager >> addPlugin: aPlugin [ 
 	plugins := plugins copyWith: aPlugin
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePluginManager >> availablePluginsFor: aRepository [
 	^ (IcePlugin allAvailableFor: aRepository) 
 		collect: #new
 		as: Array
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IcePluginManager >> checkoutBranchPanelsOnModel: aModel [ 
 
 	^ Array streamContents: [ :stream |
@@ -43,23 +45,23 @@ IcePluginManager >> checkoutBranchPanelsOnModel: aModel [
 			stream nextPutAll: (each checkoutBranchPanelsOnModel: aModel) ]]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePluginManager >> initializeRepository: aRepository [
 	self initialize.
 	plugins := self availablePluginsFor: aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePluginManager >> plugins [ 
 	^ plugins
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePluginManager >> repositoryWasCreated: aRepository [
 	^ self plugins do: [ :each | each repositoryWasCreated: aRepository ]
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePluginManager >> repositoryWillBeCreated: aRepository [
 	^ self plugins do: [ :each | each repositoryWillBeCreated: aRepository ]
 ]

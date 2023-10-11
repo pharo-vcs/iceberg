@@ -1,6 +1,6 @@
-Extension { #name : #SpToolbarButtonPresenter }
+Extension { #name : 'SpToolbarButtonPresenter' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 SpToolbarButtonPresenter >> hasBadge [
 	^ badge isNotNil
 ]

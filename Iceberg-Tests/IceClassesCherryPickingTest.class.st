@@ -1,10 +1,12 @@
 Class {
-	#name : #IceClassesCherryPickingTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceClassesCherryPickingTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassDependingInATrait [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -52,7 +54,7 @@ IceClassesCherryPickingTest >> testAddClassDependingInATrait [
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassDependingInATraitWithComposition [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -102,7 +104,7 @@ IceClassesCherryPickingTest >> testAddClassDependingInATraitWithComposition [
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassSideMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -134,7 +136,7 @@ IceClassesCherryPickingTest >> testAddClassSideMethodInExistingClass [
 				/ 'm1') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassUsingASharedPool [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -186,7 +188,7 @@ IceClassesCherryPickingTest >> testAddClassUsingASharedPool [
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassWithMethod [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -215,7 +217,7 @@ IceClassesCherryPickingTest >> testAddClassWithMethod [
 		assert: (diff / self packageName1 / 'TestClass2' / 'm1') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassWithSuperclassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -263,7 +265,7 @@ IceClassesCherryPickingTest >> testAddClassWithSuperclassAsDependency [
 				isClassDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testAddClassWithoutDependencies [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -292,7 +294,7 @@ IceClassesCherryPickingTest >> testAddClassWithoutDependencies [
 				definition isClassDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testModifyClassWithoutDependencies [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -323,7 +325,7 @@ IceClassesCherryPickingTest >> testModifyClassWithoutDependencies [
 				definition isClassDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testRemoveClassWithSubclasses [
 	| commitToCherryPick diff mergeTree |
 
@@ -360,7 +362,7 @@ IceClassesCherryPickingTest >> testRemoveClassWithSubclasses [
 			(diff / self packageName1 / 'TestSubclass') value isRemoval .
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceClassesCherryPickingTest >> testRemoveClassWithSubclassesAndIntermediarySubclass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy

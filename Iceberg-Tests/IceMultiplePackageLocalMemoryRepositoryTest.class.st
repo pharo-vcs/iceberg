@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMultiplePackageLocalMemoryRepositoryTest,
-	#superclass : #IceMultiplePackageRepositoryTest,
-	#category : 'Iceberg-Tests-Memory'
+	#name : 'IceMultiplePackageLocalMemoryRepositoryTest',
+	#superclass : 'IceMultiplePackageRepositoryTest',
+	#category : 'Iceberg-Tests-Memory',
+	#package : 'Iceberg-Tests',
+	#tag : 'Memory'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceMultiplePackageLocalMemoryRepositoryTest >> newFixture [
 	^ IceMultiplePackageFixture inMemory
 ]

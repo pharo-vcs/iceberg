@@ -1,47 +1,49 @@
 Class {
-	#name : #IceClonedFromRemoteFixture,
-	#superclass : #IceNotYetClonedRepositoryFixture,
+	#name : 'IceClonedFromRemoteFixture',
+	#superclass : 'IceNotYetClonedRepositoryFixture',
 	#instVars : [
 		'remote',
 		'remoteBranchName',
 		'repository',
 		'pushRepository'
 	],
-	#category : #'Iceberg-Tests-Common-Fixtures'
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> pushRepository [
 	^ pushRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> remote [
 	^ remote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> remoteBranchName [
 	^ remoteBranchName ifNil: [ remoteBranchName  := 'master' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> remoteBranchName: aBranchName [
 	
 	remoteBranchName := aBranchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> remoteRepository [
 	^ remoteRepository
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 IceClonedFromRemoteFixture >> repository [
 	^ repository
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceClonedFromRemoteFixture >> setUp [
 	super setUp.
 	remoteRepository := self ensureRemoteRepository.
@@ -79,7 +81,7 @@ IceClonedFromRemoteFixture >> setUp [
 	repository commitWithMessage: 'Initial local commit'."
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceClonedFromRemoteFixture >> tearDown [
 	factory tearDownWithRepository: repository.
 	factory tearDownWithRepository: remoteRepository.

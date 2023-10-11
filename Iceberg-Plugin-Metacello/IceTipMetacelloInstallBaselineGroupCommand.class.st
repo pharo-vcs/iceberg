@@ -2,18 +2,19 @@
 I'm a command to install a baseline (choose the group(s) to install)
 "
 Class {
-	#name : #IceTipMetacelloInstallBaselineGroupCommand,
-	#superclass : #IceTipMetacelloInstallBaselineCommand,
-	#category : #'Iceberg-Plugin-Metacello'
+	#name : 'IceTipMetacelloInstallBaselineGroupCommand',
+	#superclass : 'IceTipMetacelloInstallBaselineCommand',
+	#category : 'Iceberg-Plugin-Metacello',
+	#package : 'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipMetacelloInstallBaselineGroupCommand class >> defaultName [
 
 	^ 'Install baseline...'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipMetacelloInstallBaselineGroupCommand >> execute [
 
 	| result |

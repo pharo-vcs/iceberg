@@ -1,6 +1,6 @@
-Extension { #name : #IcePlaintextOtpCredentials }
+Extension { #name : 'IcePlaintextOtpCredentials' }
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IcePlaintextOtpCredentials >> applyToRequest: aRequest [
 	super applyToRequest: aRequest.
 	self token ifNotNil: [:aToken |

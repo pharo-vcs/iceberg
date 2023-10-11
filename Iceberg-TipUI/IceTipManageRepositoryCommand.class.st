@@ -3,36 +3,38 @@ I'm a command to show the repository manager for a repository model.
 
 "
 Class {
-	#name : #IceTipManageRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipManageRepositoryCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultDescription [
 
 	^ 'Open repository manager browser for this repository.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultName [
 
 	^ 'Open Repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipManageRepositoryCommand class >> defaultToolbarItemName [
 
 	^ 'Repository'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipManageRepositoryCommand >> canBeExecuted [
 
 	^ super canBeExecuted and: [ self isRepositoryMissing not ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipManageRepositoryCommand >> execute [
 
 	(IceTipRepositoryBrowser 
@@ -41,19 +43,19 @@ IceTipManageRepositoryCommand >> execute [
 		open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipManageRepositoryCommand >> iconName [
 
 	^ #komitterSmalltalkhubRemote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipManageRepositoryCommand >> shortcutKey [
 
 	^ $r meta
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipManageRepositoryCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

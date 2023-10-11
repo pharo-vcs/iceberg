@@ -1,6 +1,6 @@
-Extension { #name : #RG2PackageDefinition }
+Extension { #name : 'RG2PackageDefinition' }
 
-{ #category : #'*Iceberg-Tests' }
+{ #category : '*Iceberg-Tests' }
 RG2PackageDefinition >> asMCSnapshot [
 
 	| definitions |

@@ -2,16 +2,18 @@
 Utility class for searching through a commit history taking advantage of git revwalk utilities. Found and returned commits will be added to the commit cache of the corresponding IceRepository.
 "
 Class {
-	#name : #IceLibgitCommitWalk,
-	#superclass : #IceAbstractCommitWalk,
+	#name : 'IceLibgitCommitWalk',
+	#superclass : 'IceAbstractCommitWalk',
 	#instVars : [
 		'revwalk',
 		'lgitRepository'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #walking }
+{ #category : 'walking' }
 IceLibgitCommitWalk >> commitsDo: aBlock [ 
 	self maxNumber 
 		ifNil: [ super commitsDo: aBlock ]
@@ -26,7 +28,7 @@ IceLibgitCommitWalk >> commitsDo: aBlock [
 
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromBranch: branch [
 	[ self revwalk pushReference: (lgitRepository lookupBranch: (branch isRemote ifTrue: [branch fullname] ifFalse: [ branch shortname ]) remote: branch isRemote) ]
 		on: LGit_GIT_EINVALIDSPEC do: [
@@ -38,27 +40,27 @@ IceLibgitCommitWalk >> fromBranch: branch [
 
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromCommit: commit [
 	self fromCommitId: commit id
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromCommitId: commitId [
 	self fromLGitId: (LGitId fromHexString: commitId)
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromHead [
 	self revwalk pushHead
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromLGitId: lGitId [
 	self revwalk pushCommit: lGitId
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> fromTag: tag [
 	self revwalk.
 	^ self fromLGitId: (lgitRepository revparse: tag name) id
@@ -66,21 +68,21 @@ IceLibgitCommitWalk >> fromTag: tag [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitCommitWalk >> rawResultsDo: aBlockClosure [ 
 	self revwalk 
 		select: [ :result | self shouldInclude: result ]
 		thenDo: aBlockClosure
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitCommitWalk >> repositoryHandle [
 
 	<repositoryHandleAccessor>	
 	^ repository repositoryHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitCommitWalk >> revwalk [
 
 	repository handleLibgitError: [
@@ -93,7 +95,7 @@ IceLibgitCommitWalk >> revwalk [
 				revwalk ]]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitCommitWalk >> shouldInclude: aLGitCommit [ 
 	^ self modifyingPackage 
 		ifNil: [ true ] 
@@ -102,7 +104,7 @@ IceLibgitCommitWalk >> shouldInclude: aLGitCommit [
 
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceLibgitCommitWalk >> uptoCommit: commit [
 	self revwalk hideCommit: (LGitId fromHexString: commit id)
 ]

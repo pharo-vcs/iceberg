@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMultiplePackageLocalGitRepositoryTest,
-	#superclass : #IceMultiplePackageRepositoryTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceMultiplePackageLocalGitRepositoryTest',
+	#superclass : 'IceMultiplePackageRepositoryTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceMultiplePackageLocalGitRepositoryTest >> newFixture [
 	^ IceMultiplePackageFixture inGit
 ]

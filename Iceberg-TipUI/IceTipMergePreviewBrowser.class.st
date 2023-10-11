@@ -4,12 +4,14 @@ I preview the changes that will be introduced in the image when a merge occurs.
 (self onBranch: IceRepository registry anyOne branch) openWithSpec.
 "
 Class {
-	#name : #IceTipMergePreviewBrowser,
-	#superclass : #IceTipPreviewBrowser,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#name : 'IceTipMergePreviewBrowser',
+	#superclass : 'IceTipPreviewBrowser',
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipMergePreviewBrowser class >> onBranch: aBranch [
 	^ self on: (IceTipMergeModel new
 		commitish: aBranch;
@@ -17,14 +19,14 @@ IceTipMergePreviewBrowser class >> onBranch: aBranch [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergePreviewBrowser >> doMerge [
 
 	self model newExecuteMergeAction executeWithContext: self.
 	self closeWindow
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergePreviewBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -32,13 +34,13 @@ IceTipMergePreviewBrowser >> initializePresenters [
 	diffPanel rightLabel: 'Merge with ', model targetName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergePreviewBrowser >> mergeType: anObject [
 	
 	self model mergeType: anObject
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipMergePreviewBrowser >> newActionButton [
 
 	^ self newButton 
@@ -49,7 +51,7 @@ IceTipMergePreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergePreviewBrowser >> titleForWindow [
 
 	^ 'Preview merge of {1}/{2}' format: { 

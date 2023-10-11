@@ -1,16 +1,18 @@
 Class {
-	#name : #IceUnbornProjectFixture,
-	#superclass : #IceSinglePackageFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceUnbornProjectFixture',
+	#superclass : 'IceSinglePackageFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceUnbornProjectFixture >> isUnbornProjectFixture [
 
 	^ true
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceUnbornProjectFixture >> setUp [
 
 	super setUp.

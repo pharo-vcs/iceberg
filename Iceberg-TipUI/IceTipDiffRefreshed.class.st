@@ -2,25 +2,27 @@
 I announce when a diff has been refreshed.
 "
 Class {
-	#name : #IceTipDiffRefreshed,
-	#superclass : #IceTipAnnouncement,
+	#name : 'IceTipDiffRefreshed',
+	#superclass : 'IceTipAnnouncement',
 	#instVars : [
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-Announcements'
+	#category : 'Iceberg-TipUI-Announcements',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Announcements'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipDiffRefreshed class >> for: aRepository [
 	^ self new repository: aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffRefreshed >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffRefreshed >> repository: anObject [
 	repository := anObject
 ]

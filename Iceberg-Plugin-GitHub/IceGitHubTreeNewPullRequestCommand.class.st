@@ -2,18 +2,20 @@
 I'm a command to create a Pull Request
 "
 Class {
-	#name : #IceGitHubTreeNewPullRequestCommand,
-	#superclass : #IceGitHubTreeCommand,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubTreeNewPullRequestCommand',
+	#superclass : 'IceGitHubTreeCommand',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceGitHubTreeNewPullRequestCommand class >> defaultName [
 
 	^ 'New Pull Request'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubTreeNewPullRequestCommand >> execute [ 
 
 	^ IceGitHubNewPullRequestAction new

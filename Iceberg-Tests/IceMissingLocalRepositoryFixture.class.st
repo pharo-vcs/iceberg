@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMissingLocalRepositoryFixture,
-	#superclass : #IceCleanWorkingCopyFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceMissingLocalRepositoryFixture',
+	#superclass : 'IceCleanWorkingCopyFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceMissingLocalRepositoryFixture >> setUp [
 
 	super setUp.

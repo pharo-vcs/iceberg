@@ -1,10 +1,12 @@
 Class {
-	#name : #IceDetachedWorkingCopyFixture,
-	#superclass : #IceBasicRepositoryFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceDetachedWorkingCopyFixture',
+	#superclass : 'IceBasicRepositoryFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceDetachedWorkingCopyFixture >> setUp [
 
 	| head |

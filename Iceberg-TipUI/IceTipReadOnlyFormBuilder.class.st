@@ -15,8 +15,8 @@ IceTipReadOnlyForm new
 	
 "
 Class {
-	#name : #IceTipReadOnlyFormBuilder,
-	#superclass : #Object,
+	#name : 'IceTipReadOnlyFormBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'labelColor',
 		'labelWidth',
@@ -25,10 +25,12 @@ Class {
 		'spApplication',
 		'presenter'
 	],
-	#category : #'Iceberg-TipUI-Spec2'
+	#category : 'Iceberg-TipUI-Spec2',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Spec2'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary application: aSpApplication [
 
 	"If you want to keep order, just send an OrderedDictionary"
@@ -39,13 +41,13 @@ IceTipReadOnlyFormBuilder class >> newBuiltFor: aDictionary application: aSpAppl
 		build
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> application: aSpApplication [ 
 	
 	spApplication := aSpApplication
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceTipReadOnlyFormBuilder >> build [
 
 	presenter := spApplication newPresenter: SpPresenter.
@@ -53,7 +55,7 @@ IceTipReadOnlyFormBuilder >> build [
 	^ presenter
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceTipReadOnlyFormBuilder >> buildLayout [
 	| lastLabel fieldPresenter |
 	lastLabel := items associations last key.
@@ -84,26 +86,26 @@ IceTipReadOnlyFormBuilder >> buildLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> defaultLabelWidth [
 
 	^ 100 * self currentWorld displayScaleFactor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> defaultRowHeight [
 
 	^ 30 * self currentWorld displayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipReadOnlyFormBuilder >> initialize [
 
 	items := OrderedDictionary new.
 	super initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> items: aDictionary [
 
 	items removeAll.
@@ -111,37 +113,37 @@ IceTipReadOnlyFormBuilder >> items: aDictionary [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> labelColor [
 
 	^ labelColor ifNil: [ labelColor := Smalltalk ui theme textColor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> labelColor: aColor [
 
 	^ labelColor := aColor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> labelWidth [
 
 	^ labelWidth ifNil: [ self defaultLabelWidth ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> labelWidth: aNumber [
 
 	^ labelWidth := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> rowHeight [
 
 	^ rowHeight ifNil: [ rowHeight := self defaultRowHeight ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipReadOnlyFormBuilder >> rowHeight: aNumber [
 
 	rowHeight := aNumber

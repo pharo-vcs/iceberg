@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMethodCherryPickingTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceMethodCherryPickingTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodInClassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -47,7 +49,7 @@ IceMethodCherryPickingTest >> testAddMethodInClassAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -82,7 +84,7 @@ IceMethodCherryPickingTest >> testAddMethodInExistingClass [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodInExistingTrait [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -122,7 +124,7 @@ IceMethodCherryPickingTest >> testAddMethodInExistingTrait [
 				/ 'm1') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodInTraitAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -165,7 +167,7 @@ IceMethodCherryPickingTest >> testAddMethodInTraitAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodReferingAnAddedMethod [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -209,7 +211,7 @@ IceMethodCherryPickingTest >> testAddMethodReferingAnAddedMethod [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodThatVariablesThatAreNotDependencies [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -235,7 +237,7 @@ IceMethodCherryPickingTest >> testAddMethodThatVariablesThatAreNotDependencies [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodUsingASharedPoolAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -293,7 +295,7 @@ IceMethodCherryPickingTest >> testAddMethodUsingASharedPoolAsDependency [
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodUsingASharedPoolAsDependencyWithClassAlreadyCommited [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -360,7 +362,7 @@ IceMethodCherryPickingTest >> testAddMethodUsingASharedPoolAsDependencyWithClass
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithClassAndSuperclassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -423,7 +425,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassAndSuperclassAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -493,7 +495,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependencyWithSuperclassAlreadyCommited [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -557,7 +559,7 @@ IceMethodCherryPickingTest >> testAddMethodWithClassVariableAsDependencyWithSupe
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -622,7 +624,7 @@ IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependencyWithSuperclassAlreadyCommited [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -681,7 +683,7 @@ IceMethodCherryPickingTest >> testAddMethodWithInstanceVariableAsDependencyWithS
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithReferencedClassAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -724,7 +726,7 @@ IceMethodCherryPickingTest >> testAddMethodWithReferencedClassAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithReferencedTraitAsDependency [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -767,7 +769,7 @@ IceMethodCherryPickingTest >> testAddMethodWithReferencedTraitAsDependency [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testAddMethodWithTwoCommits [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -799,7 +801,7 @@ IceMethodCherryPickingTest >> testAddMethodWithTwoCommits [
 		assert: (diff / self packageName1 / 'TestClass' / 'm1') value definition sourceCode equals: 'm1 ^36'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testRemoveClassWithMethods [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -835,7 +837,7 @@ IceMethodCherryPickingTest >> testRemoveClassWithMethods [
 		assert: (diff / self packageName1 / 'TestClass2' / 'm1') value isRemoval
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testRemoveMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 
@@ -869,7 +871,7 @@ IceMethodCherryPickingTest >> testRemoveMethodInExistingClass [
 		assert: (diff / self packageName1 / 'TestClass' / 'm1') value isRemoval
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMethodCherryPickingTest >> testRemoveMethodInExistingTrait [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
