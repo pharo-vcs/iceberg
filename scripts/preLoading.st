@@ -12,12 +12,8 @@ Smalltalk globals at: #IceSystemEventListener ifPresent: #unregisterSystemAnnoun
 "Remove iceberg from system (so I can reload it)"
 MetacelloPharoPlatform select.
 #(
-    'BaselineOfTonel'
     'BaselineOfLibGit'
     'BaselineOfIceberg'
-    'MonticelloTonel-Core'
-    'MonticelloTonel-FileSystem'
-    'MonticelloTonel-Tests'
     'Iceberg-UI' 
     'Iceberg-TipUI'
     'Iceberg-Plugin-Pharo' 
