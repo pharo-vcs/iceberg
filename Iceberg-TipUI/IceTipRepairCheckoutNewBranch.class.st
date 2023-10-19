@@ -7,12 +7,14 @@ I'm active when:
 	- repository HEAD is detached
 "
 Class {
-	#name : #IceTipRepairCheckoutNewBranch,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairCheckoutNewBranch',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCheckoutNewBranch class >> help [
 	^ 'It creates a new branch from the commit your image is pointing to.
 This will not lose any change in the image.
@@ -22,12 +24,12 @@ This situation happens because the code loaded in your image does not correspond
 This operation will modify the state of your working copy on disk. All non-commited changes in your disk working copy that are not in the image will be lost (this can happen if you edited the repository from outside). If you want to keep them, perform a commit from outside before.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCheckoutNewBranch class >> icon [
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairCheckoutNewBranch class >> isAvailableFor: aRepository [
 	"matches if: 
 		- workingCopy is detached
@@ -40,17 +42,17 @@ IceTipRepairCheckoutNewBranch class >> isAvailableFor: aRepository [
 	^ aRepository workingCopy isDetached or: [ aRepository head isDetached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCheckoutNewBranch class >> order [
 	^ 10
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCheckoutNewBranch class >> title [
 	^ 'Create a new branch pointing to your image commit'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairCheckoutNewBranch >> basicExecute [
 	"Fetching remotes is necessary in case the current image commit is not in the repository.
 	Could be optimized"

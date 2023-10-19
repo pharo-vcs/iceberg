@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTipAskGithubForPlaintextCredentialsPresenter,
-	#superclass : #IceTipAskForPlaintextCredentialsPresenter,
-	#category : #'Iceberg-TipUI-Credentials'
+	#name : 'IceTipAskGithubForPlaintextCredentialsPresenter',
+	#superclass : 'IceTipAskForPlaintextCredentialsPresenter',
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipAskGithubForPlaintextCredentialsPresenter >> passwordLabel [
 
 	^ 'Token:'

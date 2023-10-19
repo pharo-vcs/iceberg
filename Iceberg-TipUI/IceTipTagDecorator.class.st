@@ -1,16 +1,18 @@
 Class {
-	#name : #IceTipTagDecorator,
-	#superclass : #IceTipTextDecorator,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipTagDecorator',
+	#superclass : 'IceTipTextDecorator',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTagDecorator >> color [
 
 	^ Smalltalk ui theme disabledColor
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTagDecorator >> isItalic [
 
 	^ true

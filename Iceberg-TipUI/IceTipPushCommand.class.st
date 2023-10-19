@@ -3,24 +3,26 @@ I'm a command to perform a push of outgoing commits.
 I open a push view window.
 "
 Class {
-	#name : #IceTipPushCommand,
-	#superclass : #IceTipRemoteActionCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipPushCommand',
+	#superclass : 'IceTipRemoteActionCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipPushCommand class >> defaultDescription [
 
 	^ 'Pushes pending commits to the origin repository (in current branch)'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipPushCommand class >> defaultName [
 
 	^ 'Push'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipPushCommand >> badge [
 
 	| result |
@@ -34,7 +36,7 @@ IceTipPushCommand >> badge [
 
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipPushCommand >> execute [
 
 	self withErrorHandlingDo: [ 
@@ -42,7 +44,7 @@ IceTipPushCommand >> execute [
 		(IceTipPushBrowser onRepositoryModel: self repositoryModel) open ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPushCommand >> iconName [
 
 	^ #up

@@ -1,6 +1,6 @@
-Extension { #name : #Text }
+Extension { #name : 'Text' }
 
-{ #category : #'*Iceberg-TipUI-Spec' }
+{ #category : '*Iceberg-TipUI-Spec' }
 Text >> threeWayCompareTo: anotherText [
 	
 	^ self asString threeWayCompareTo: anotherText asString

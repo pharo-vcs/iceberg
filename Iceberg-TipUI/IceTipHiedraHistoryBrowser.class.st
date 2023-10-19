@@ -2,15 +2,17 @@
 I add a Hiedra column to the browser defined by my superclass. This column visualizes the relationship between commits in the history list.
 "
 Class {
-	#name : #IceTipHiedraHistoryBrowser,
-	#superclass : #IceTipHistoryBrowser,
+	#name : 'IceTipHiedraHistoryBrowser',
+	#superclass : 'IceTipHistoryBrowser',
 	#instVars : [
 		'hiedraColumnController'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraHistoryBrowser >> initializeCommitList [
 	"Add the Hiedra column at the beginning. The Datasource has the logic to render it."
 
@@ -23,7 +25,7 @@ IceTipHiedraHistoryBrowser >> initializeCommitList [
 	super initializeCommitList
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
 	| ancestorIds |
 	
@@ -50,21 +52,21 @@ IceTipHiedraHistoryBrowser >> initializeHiedraColumn [
 		cellWidth: 5.25
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraHistoryBrowser >> initializePresenters [
 
 	super initializePresenters.
 	self initializeHiedraColumn
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraHistoryBrowser >> refresh [
 
 	self refreshHiedraColumn.
 	super refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraHistoryBrowser >> refreshHiedraColumn [
 	| ancestorIds |
 

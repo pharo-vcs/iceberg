@@ -2,14 +2,16 @@
 I'm a model for IceRemote entries.
 "
 Class {
-	#name : #IceTipRemoteModel,
-	#superclass : #IceTipEntityModel,
+	#name : 'IceTipRemoteModel',
+	#superclass : 'IceTipEntityModel',
 	#traits : 'TWithBranchModel',
 	#classTraits : 'TWithBranchModel classTrait',
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTipRemoteModel >> = anotherModel [
 
 	self species = anotherModel species ifFalse: [ ^ false ].
@@ -17,23 +19,23 @@ IceTipRemoteModel >> = anotherModel [
 	^ entity = anotherModel entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteModel >> branches [
 	^ self entity branches
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteModel >> description [
 
 	^ '{1} <{2}>' format: { self name. self entity url }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteModel >> name [
 	^ self entity name
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRemoteModel >> newDeleteAction [
 	<noCache>
 	
@@ -45,7 +47,7 @@ IceTipRemoteModel >> newDeleteAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRemoteModel >> newFetchAction [
 	<noCache>
 	

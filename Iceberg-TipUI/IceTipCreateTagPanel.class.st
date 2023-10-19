@@ -5,8 +5,8 @@ I have a form with a label and an input, and the commitish to tag.
 I'm done to be embedded in a dialog, so I implement doAccept to execute my action.
 "
 Class {
-	#name : #IceTipCreateTagPanel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceTipCreateTagPanel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'callback',
 		'tagNameInputText',
@@ -19,10 +19,12 @@ Class {
 		'minorButton',
 		'patchButton'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> accept [
 
 	self validate.
@@ -30,25 +32,25 @@ IceTipCreateTagPanel >> accept [
 	acceptBlock ifNotNil: [ acceptBlock cull: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> commitish: anIceTipCachedModel [
 	
 	commitishToTag := anIceTipCachedModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> commitishToTag [
 
 	^ commitishToTag
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> currentCommitishLabel [
 
 	^ currentCommitishLabel
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCreateTagPanel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -72,7 +74,7 @@ IceTipCreateTagPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCreateTagPanel >> doAccept [
 
 	self validate.
@@ -85,19 +87,19 @@ IceTipCreateTagPanel >> doAccept [
 		executeWithContext: self
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> existingTagsList [
 
 	^ existingTagsList
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> iconForWindow [
 
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> initializeCurrentBranchLabel [
 
 	currentCommitishLabel := self newLabel
@@ -106,7 +108,7 @@ IceTipCreateTagPanel >> initializeCurrentBranchLabel [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> initializeExistingTagsList [
 
 	existingTagsList := self newList.
@@ -117,7 +119,7 @@ IceTipCreateTagPanel >> initializeExistingTagsList [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> initializeNextTagPanel [
 
 	| parts prefix nextMajor nextMinor nextPatch toString |
@@ -142,7 +144,7 @@ IceTipCreateTagPanel >> initializeNextTagPanel [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> initializePresenters [
 
 	self initializeCurrentBranchLabel.
@@ -159,18 +161,18 @@ IceTipCreateTagPanel >> initializePresenters [
 	self initializeExistingTagsList
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCreateTagPanel >> isNewBranch [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> latestTagParts [
 
 	^ self latestTagPartsIn: (commitishToTag tagModels collect: #name)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> latestTagPartsIn: tagNames [
 
 	| prefix parts |
@@ -191,17 +193,17 @@ IceTipCreateTagPanel >> latestTagPartsIn: tagNames [
 	^ parts
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> majorButton [
 	^ majorButton
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> minorButton [
 	^ minorButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> openDialog [
 
 	^ self asDialogWindow
@@ -209,43 +211,43 @@ IceTipCreateTagPanel >> openDialog [
 		open
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> patchButton [
 
 	^ patchButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> setModelBeforeInitialization: aCommitish [
 
 	self commitish: aCommitish
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> tagName [
 
 	^ self tagNameInputText text asString trimBoth
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> tagNameInputText [
 
 	^ tagNameInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCreateTagPanel >> tagNameLabel [
 
 	^ tagNameLabel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCreateTagPanel >> titleForWindow [
 
 	^ 'New tag of ' , commitishToTag name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCreateTagPanel >> validate [
 
 	self 
@@ -256,7 +258,7 @@ IceTipCreateTagPanel >> validate [
 		description: 'You can''t have spaces in your branch name.'
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 IceTipCreateTagPanel >> withResultDo: aBlockClosure [ 
 	
 	callback := aBlockClosure

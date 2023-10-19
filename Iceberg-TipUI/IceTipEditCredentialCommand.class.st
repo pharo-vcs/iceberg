@@ -4,24 +4,26 @@ I colaborate with the credential to know the specific class of the dialog model.
 Check #editModelClass in IceSshCredentials and IcePlaintextCredentials
 "
 Class {
-	#name : #IceTipEditCredentialCommand,
-	#superclass : #IceTipAbstractCredentialCommand,
-	#category : #'Iceberg-TipUI-Credentials'
+	#name : 'IceTipEditCredentialCommand',
+	#superclass : 'IceTipAbstractCredentialCommand',
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipEditCredentialCommand class >> defaultDescription [
 
 	^ 'Edits the credential from the store'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipEditCredentialCommand class >> defaultName [
 
 	^ 'Edit'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipEditCredentialCommand >> execute [
 
 	((self item editModelClass newApplication: context application)
@@ -33,13 +35,13 @@ IceTipEditCredentialCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditCredentialCommand >> iconName [
 
 	^ #edit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditCredentialCommand >> shortcutKey [
 
 	^ $e meta

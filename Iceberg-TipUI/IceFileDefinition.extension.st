@@ -1,6 +1,6 @@
-Extension { #name : #IceFileDefinition }
+Extension { #name : 'IceFileDefinition' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceFileDefinition >> icon [
 	^ self iconNamed: #book
 ]

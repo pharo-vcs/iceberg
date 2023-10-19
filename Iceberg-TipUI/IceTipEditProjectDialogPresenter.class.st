@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipEditProjectDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipEditProjectDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'nameLabel',
 		'nameInput',
@@ -18,10 +18,12 @@ Class {
 		'removeButton',
 		'addButton'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditProjectDialogPresenter >> accept [
 
 	IceTipStandardAction new
@@ -43,13 +45,13 @@ IceTipEditProjectDialogPresenter >> accept [
 		acceptCallback value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> acceptCallback [
 
 	^ acceptCallback
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditProjectDialogPresenter >> addDirectory [
 
 	| newDirectoryName newDirectory previousSelection |
@@ -70,7 +72,7 @@ IceTipEditProjectDialogPresenter >> addDirectory [
 	self expandAndSelect: previousSelection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> connectPresenters [
 
 	super connectPresenters.
@@ -87,13 +89,13 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> defaultFormat [
 
 	^ defaultFormat
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipEditProjectDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -128,7 +130,7 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [ 
 
 	
@@ -155,25 +157,25 @@ IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> formatLabel [
 
 	^ formatLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> formatList [
 
 	^ formatList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> formats [
 
 	^ formats
 ]
 
-{ #category : #'format-management' }
+{ #category : 'format-management' }
 IceTipEditProjectDialogPresenter >> guessFormatFromDirectory: aFileReference [ 
 	
 	"We take as guinea pig a sub-directory to guess what format it is on.
@@ -192,13 +194,13 @@ IceTipEditProjectDialogPresenter >> guessFormatFromDirectory: aFileReference [
 		ifNone: [ ^ defaultFormat ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> hasToShowWarning [
 
 	^ model repository workingCopy packages isNotEmpty
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initialExtentForWindow [
 
 	^ self hasToShowWarning 
@@ -213,7 +215,7 @@ IceTipEditProjectDialogPresenter >> initialExtentForWindow [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initialize [
 
 	selectedDirectoryPath := RelativePath new.
@@ -223,7 +225,7 @@ IceTipEditProjectDialogPresenter >> initialize [
 	super initialize.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initializeDirectoryTree [
 
 	sourceDirectoryTree
@@ -241,7 +243,7 @@ IceTipEditProjectDialogPresenter >> initializeDirectoryTree [
 			self sourceDirectorySelectionChanged: announcement selectedPaths ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 
 	| icon |
@@ -254,7 +256,7 @@ IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 		messageText text: self warningMessage ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initializePresenters [
 
 	nameLabel := self newLabel
@@ -292,43 +294,43 @@ IceTipEditProjectDialogPresenter >> initializePresenters [
 	self initializeDirectoryTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> messageIcon [
 
 	^ messageIcon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> messageText [ 
 
 	^ messageText 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> nameInput [
 
 	^ nameInput
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> nameLabel [
 
 	^ nameLabel
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipEditProjectDialogPresenter >> onAccept: aBlockClosure [ 
 	
 	acceptCallback := aBlockClosure
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditProjectDialogPresenter >> removeDirectory [
 
 	| toRemove newSelection |
@@ -346,31 +348,31 @@ IceTipEditProjectDialogPresenter >> removeDirectory [
 	self expandAndSelect: newSelection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> selectedDirectoryPath [
 
 	^ selectedDirectoryPath
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipEditProjectDialogPresenter >> selectedFileFormat [
 	
 	^ formatList selectedItem
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipEditProjectDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> sourceDirectoryLabel [
 
 	^ sourceDirectoryLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> sourceDirectorySelectionChanged: selectedPaths [
 
 	| selection |
@@ -386,25 +388,25 @@ IceTipEditProjectDialogPresenter >> sourceDirectorySelectionChanged: selectedPat
 	selectedDirectoryPath := selection relativeTo: self model fileSystem. 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipEditProjectDialogPresenter >> sourceDirectoryTree [
 
 	^ sourceDirectoryTree
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> titleForWindow [
 
 	^ 'Edit Project'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> username [
 
 	^ self nameInput text trimBoth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> warningMessage [
 
 	^ 'Be careful. You should choose the actual format of the current repository.

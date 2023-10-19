@@ -7,23 +7,25 @@ self new
 	openDialogWithSpec
 "
 Class {
-	#name : #IceTipRegisterRepositoryDialogPresenter,
-	#superclass : #IceTipOptionDialogPresenter,
+	#name : 'IceTipRegisterRepositoryDialogPresenter',
+	#superclass : 'IceTipOptionDialogPresenter',
 	#instVars : [
 		'types',
 		'repository',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> allTypes [
 
 	^ types ifNil: [ types := IceTipRepositoryTypePanel allTypes ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 
 	self withoutNewRepository.
@@ -31,7 +33,7 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 	repository := aRepository
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRegisterRepositoryDialogPresenter >> doAccept [
 
 	| newRepository |
@@ -42,7 +44,7 @@ IceTipRegisterRepositoryDialogPresenter >> doAccept [
 	acceptBlock ifNotNil: [ acceptBlock cull: self ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRegisterRepositoryDialogPresenter >> doEdit: aRepository [
 
 	repository
@@ -50,32 +52,32 @@ IceTipRegisterRepositoryDialogPresenter >> doEdit: aRepository [
 		subdirectory: aRepository subdirectory
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRegisterRepositoryDialogPresenter >> isEditing [
 
 	^ repository isNotNil
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipRegisterRepositoryDialogPresenter >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRegisterRepositoryDialogPresenter >> titleForWindow [
 
 	^ 'Register project'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> withoutLocalRepository [
 
 	types := self allTypes reject: #isLocalRepository.
 	typeList items: types
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> withoutNewRepository [
 
 	types := self allTypes reject: #isNewRepository.

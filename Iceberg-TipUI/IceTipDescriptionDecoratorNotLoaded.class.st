@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTipDescriptionDecoratorNotLoaded,
-	#superclass : #IceTipDescriptionDecorator,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipDescriptionDecoratorNotLoaded',
+	#superclass : 'IceTipDescriptionDecorator',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDescriptionDecoratorNotLoaded >> color [
 
 	^ Smalltalk ui theme disabledTextColor

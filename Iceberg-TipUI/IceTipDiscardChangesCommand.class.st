@@ -2,24 +2,26 @@
 Command that discard all changes in the repository
 "
 Class {
-	#name : #IceTipDiscardChangesCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipDiscardChangesCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipDiscardChangesCommand class >> defaultDescription [
 
 	^ 'Discard all changes in this working copy.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipDiscardChangesCommand class >> defaultName [
 
 	^ 'Discard all'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipDiscardChangesCommand >> canBeExecuted [
 
 	^ self isRepositoryMissing not and: [ 
@@ -28,7 +30,7 @@ IceTipDiscardChangesCommand >> canBeExecuted [
 		aCommit isCollection not and: [ aCommit isUnknownCommit not ] ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipDiscardChangesCommand >> execute [
 
 	(IceTipDiscardAllChangesPreviewBrowser onRepository: self repositoryModel)
@@ -37,13 +39,13 @@ IceTipDiscardChangesCommand >> execute [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiscardChangesCommand >> iconName [
 
 	^ #refresh
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipDiscardChangesCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

@@ -6,12 +6,14 @@ I'm active when:
 	- repository HEAD is NOT detached
 "
 Class {
-	#name : #IceTipRepairMergeWithBranch,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairMergeWithBranch',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairMergeWithBranch class >> help [
 	^ 'This action checkouts an existing branch and loads the code in your image without discarding any change.
 This will not lose any change in the image but may lead to conflicts. If there are conflicts it opens a merge view.
@@ -21,12 +23,12 @@ This situation happens because loaded code in your image is from a different com
 This operation will modify the state of your working copy in disk, the checkouted branch will replace the disk working copy. All non-commited changes in your disk working copy will be lost. If you want to keep them, perform a commit from outside before.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairMergeWithBranch class >> icon [
 	^ self iconNamed: #merge
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairMergeWithBranch class >> isAvailableFor: aRepository [
 	"matches if: 
 		- workingCopy is detached
@@ -39,17 +41,17 @@ IceTipRepairMergeWithBranch class >> isAvailableFor: aRepository [
 	^ aRepository workingCopy isDetached and: [ aRepository head isDetached not ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairMergeWithBranch class >> order [
 	^ 20
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairMergeWithBranch class >> title [
 	^ 'Checkout an existing branch and merge the changes into the image (without discarding image changes)'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairMergeWithBranch >> basicExecute [
 
 	self fetchAllRemotes.
