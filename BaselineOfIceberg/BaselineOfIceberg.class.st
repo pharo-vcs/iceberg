@@ -129,7 +129,7 @@ BaselineOfIceberg >> resetKMRepository [
 BaselineOfIceberg >> ring2: spec [
 	spec
 		baseline: 'Ring2'
-		with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ]
+		with: [ spec repository: 'github://pharo-contributions/Ring2:v2.0.1/src' ]
 ]
 
 { #category : 'baseline' }
