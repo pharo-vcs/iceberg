@@ -56,6 +56,7 @@ Metacello new
     load.
 
 "Development branch requires latest Spec2"
+"
 Metacello new
     githubUser: 'pharo-spec' project: 'Spec' commitish: 'Pharo10' path: 'src';
     baseline: 'Spec2';
@@ -63,3 +64,4 @@ Metacello new
     onUpgrade: [ :e | e useIncoming ];
     ignoreImage;
     load
+"
