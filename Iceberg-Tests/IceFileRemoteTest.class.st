@@ -2,12 +2,14 @@
 An IceFileRemoteTest is a test class for testing the behavior of IceFileRemote
 "
 Class {
-	#name : #IceFileRemoteTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#name : 'IceFileRemoteTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileRemoteTest >> testCanHandleFileUrl [
 	| url |
 	self assert: (IceGitFileRemote canHandleUrl: 'file:///Users/pharo/some-repo-name').
@@ -22,7 +24,7 @@ IceFileRemoteTest >> testCanHandleFileUrl [
 			ifFalse: [ '/Users/pharo/some-repo-name' ]).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileRemoteTest >> testCanHandleUnixPath [
 	"git clone existing-repo tmp-repo produces a url = /..../existing-repo remote"
 	| url |

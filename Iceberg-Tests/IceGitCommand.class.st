@@ -31,22 +31,23 @@ The latter is useful for simplifying the specification of optional parameters, f
 
 "
 Class {
-	#name : #IceGitCommand,
-	#superclass : #Object,
+	#name : 'IceGitCommand',
+	#superclass : 'Object',
 	#instVars : [
 		'directory',
 		'command'
 	],
-	#category : #'Iceberg-Tests'
+	#category : 'Iceberg-Tests',
+	#package : 'Iceberg-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand class >> gitCommand [
 	^ Smalltalk os isWindows ifTrue: [ 'git' ] ifFalse:[ '/usr/bin/git' ]
 
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 IceGitCommand class >> in: directory execute: commandDescription [
 	"See class comments for the specification of possible command descriptions"
 	^ self new 
@@ -56,7 +57,7 @@ IceGitCommand class >> in: directory execute: commandDescription [
 
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 IceGitCommand class >> preprocess: commandDescription [
 	commandDescription ifNil: [ ^ {} ]. 
 	commandDescription isString ifTrue: [ 
@@ -69,37 +70,37 @@ IceGitCommand class >> preprocess: commandDescription [
 	self error: ('Unknown argument type in git command: {1}' format: commandDescription)
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 IceGitCommand class >> preprocessString: commandDescription [
 	^ (commandDescription withoutPrefix: '"') withoutSuffix: '"'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand >> command [
 	^ command
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand >> command: anObject [
 	command := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand >> directory [
 	^ directory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand >> directory: anObject [
 	directory := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommand >> gitCommand [
 	^ self class gitCommand
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitCommand >> run [
 
 	UIManager default informUserDuring: [ :bar | 
@@ -108,7 +109,7 @@ IceGitCommand >> run [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitCommand >> runLibCGitCommand [
 
 	| exitCode aCommandString |

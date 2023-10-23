@@ -1,10 +1,12 @@
 Class {
-	#name : #IceDiffTests,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Changes'
+	#name : 'IceDiffTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff [
 
 	| left right diff |
@@ -16,7 +18,7 @@ IceDiffTests >> testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff [
 	self deny: diff notEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation [
 
 	| left right diff |
@@ -29,7 +31,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation [
 	self assert: (diff / 'Readme.md') value isRemoval
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfFileModificationCreatesModificationOperation [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
@@ -54,7 +56,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationCreatesModificationOper
 	self assert: (diff / 'Readme.md') value rightDefinition contents equals: 'right'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDirectory [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
@@ -77,7 +79,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesM
 	self assert: (diff / 'src') value isModification
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOperationOnFile [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef leftSrc rightSrc |
@@ -104,7 +106,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesM
 	self assert: (diff / 'src' / 'Readme.md') value rightDefinition contents equals: 'right'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation [
 
 	| left right diff |
@@ -117,7 +119,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation [
 	self assert: (diff / 'Readme.md') value isRemoval
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDiffTests >> testTwoSimmetricDifferencesShouldGiveTheSameResult [
 
 	| left right leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef diff1 diff2 leftSrc rightSrc |

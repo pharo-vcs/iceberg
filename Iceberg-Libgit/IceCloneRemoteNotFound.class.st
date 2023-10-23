@@ -2,32 +2,34 @@
 The remote was not found
 "
 Class {
-	#name : #IceCloneRemoteNotFound,
-	#superclass : #IceCloneError,
+	#name : 'IceCloneRemoteNotFound',
+	#superclass : 'IceCloneError',
 	#instVars : [
 		'remoteUrl'
 	],
-	#category : #'Iceberg-Libgit-Exceptions'
+	#category : 'Iceberg-Libgit-Exceptions',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Exceptions'
 }
 
-{ #category : #signalling }
+{ #category : 'signalling' }
 IceCloneRemoteNotFound class >> signalFor: aUrl [
 	^ self new
 		remoteUrl: aUrl;
 		signal.
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceCloneRemoteNotFound >> acceptError: aVisitor [
 	aVisitor visitCloneRemoteNotFound: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCloneRemoteNotFound >> remoteUrl [
 	^ remoteUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCloneRemoteNotFound >> remoteUrl: anObject [
 	remoteUrl := anObject
 ]

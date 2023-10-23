@@ -1,10 +1,12 @@
 Class {
-	#name : #IceBasicCherryPickingFixture,
-	#superclass : #IceBasicRepositoryFixture,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceBasicCherryPickingFixture',
+	#superclass : 'IceBasicRepositoryFixture',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceBasicCherryPickingFixture >> setUp [ 
 
 	super setUp.

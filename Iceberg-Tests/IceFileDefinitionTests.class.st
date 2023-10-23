@@ -1,23 +1,25 @@
 Class {
-	#name : #IceFileDefinitionTests,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Changes'
+	#name : 'IceFileDefinitionTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 IceFileDefinitionTests class >> bytesWithIlegalLeadingBytes [
 
 	^ #[102 111 111 160 102 111 111]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileDefinitionTests >> hexDumped: bytesWithIlegalLeadingBytes [
 	
 	^ String streamContents: [ :str |
 		bytesWithIlegalLeadingBytes hexDumpOn: str max: Float infinity ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileDefinitionTests >> testContentsOfBinaryTextFileDefinitionInUtf8IsHexDumped [
 
 	| definition hexDumped |
@@ -31,7 +33,7 @@ IceFileDefinitionTests >> testContentsOfBinaryTextFileDefinitionInUtf8IsHexDumpe
 	self assert: definition contents equals: hexDumped.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileDefinitionTests >> testContentsOfTextFileDefinitionInUtf16IsHexDumped [
 
 	| text definition bytes |
@@ -46,7 +48,7 @@ IceFileDefinitionTests >> testContentsOfTextFileDefinitionInUtf16IsHexDumped [
 	self assert: definition contents equals: (self hexDumped: bytes).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceFileDefinitionTests >> testContentsOfTextFileDefinitionInUtf8IsDecoded [
 
 	| text definition |

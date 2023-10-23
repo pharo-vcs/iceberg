@@ -1,23 +1,25 @@
 Class {
-	#name : #IceBornRepositoryTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceBornRepositoryTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceBornRepositoryTest class >> isAbstract [
 
 	^ self == IceBornRepositoryTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBornRepositoryTest >> expectedCommitsInNewBranch [
 	
 	"A git repository has just the initial commit"
 	^ 1
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testAccessingNonExistingTagRaisesException [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
@@ -25,7 +27,7 @@ IceBornRepositoryTest >> testAccessingNonExistingTagRaisesException [
 	self should: [self repository tagNamed: 'nonExisting'] raise: IceTagNotFound
 ]
 
-{ #category : #'tests-remotes' }
+{ #category : 'tests-remotes' }
 IceBornRepositoryTest >> testAddNewRemoteListsRemote [
 
 	| remote |
@@ -35,7 +37,7 @@ IceBornRepositoryTest >> testAddNewRemoteListsRemote [
 	self assert: (self repository remotes includes: remote).
 ]
 
-{ #category : #'tests-remotes' }
+{ #category : 'tests-remotes' }
 IceBornRepositoryTest >> testAddTwoRemotesWithSameNameRaiseError [
 
 	| remote |
@@ -46,7 +48,7 @@ IceBornRepositoryTest >> testAddTwoRemotesWithSameNameRaiseError [
 	self should: [ self repository addRemote: remote ] raise: IceRemoteAlreadyExistsError
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testBranchAlreadyExistsErrorInformsExistingBranchName [
 	
 	| branchName |
@@ -59,7 +61,7 @@ IceBornRepositoryTest >> testBranchAlreadyExistsErrorInformsExistingBranchName [
 	 	do: [ :error | self assert: error branchName equals: branchName ]
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testBranchNotFoundErrorInformsNotFoundBranchName [
 
 	| branchName |
@@ -70,7 +72,7 @@ IceBornRepositoryTest >> testBranchNotFoundErrorInformsNotFoundBranchName [
 	 	do: [ :error | self assert: error branchName equals: branchName ]
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testBranchWithSlashesNotFoundErrorInformsNotFoundBranchName [
 
 	| branchName |
@@ -81,7 +83,7 @@ IceBornRepositoryTest >> testBranchWithSlashesNotFoundErrorInformsNotFoundBranch
 	 	do: [ :error | self assert: error branchName equals: branchName ]
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testCreateExistingBranchRaisesError [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
@@ -89,7 +91,7 @@ IceBornRepositoryTest >> testCreateExistingBranchRaisesError [
 	self should: [self repository createBranch: 'master'] raise: IceBranchAlreadyExists
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testCreateExistingTagRaisesError [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
@@ -98,7 +100,7 @@ IceBornRepositoryTest >> testCreateExistingTagRaisesError [
 	self should: [self repository createTag: 'v1.0'] raise: IceTagAlreadyExists
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testCreateNewBranchSwitchesToBranch [
 
 	| createdBranch |
@@ -106,7 +108,7 @@ IceBornRepositoryTest >> testCreateNewBranchSwitchesToBranch [
 	self assert: self repository head equals: createdBranch
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testCreateNewBranchWithSlashesSwitchesToBranch [
 
 	| createdBranch |
@@ -114,7 +116,7 @@ IceBornRepositoryTest >> testCreateNewBranchWithSlashesSwitchesToBranch [
 	self assert: self repository head equals: createdBranch
 ]
 
-{ #category : #'tests-remotes' }
+{ #category : 'tests-remotes' }
 IceBornRepositoryTest >> testDeleteRepositoryDeletesLocation [
 
 	"Test valid only for git backend. Other backends may not have location"
@@ -126,7 +128,7 @@ IceBornRepositoryTest >> testDeleteRepositoryDeletesLocation [
 	self deny: self repository location exists.
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testDeleteTagDoesNotListListsDeletedTag [
 
 	| tagName |
@@ -139,7 +141,7 @@ IceBornRepositoryTest >> testDeleteTagDoesNotListListsDeletedTag [
 	self assert: self repository tags isEmpty
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testListBranchesListsExistingBranches [
 
 	| branches |
@@ -148,7 +150,7 @@ IceBornRepositoryTest >> testListBranchesListsExistingBranches [
 	self assert: branches first name equals: 'master'
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testListBranchesListsNewBranch [
 
 	| branches branchName |
@@ -164,7 +166,7 @@ IceBornRepositoryTest >> testListBranchesListsNewBranch [
 		ifNone: [ self fail ]
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testListBranchesListsNewBranchWithSlashes [
 
 	| branches branchName |
@@ -180,7 +182,7 @@ IceBornRepositoryTest >> testListBranchesListsNewBranchWithSlashes [
 		ifNone: [ self fail ]
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testListTagsListsNewTag [
 
 	| tags tagName |
@@ -196,7 +198,7 @@ IceBornRepositoryTest >> testListTagsListsNewTag [
 		ifNone: [ self fail ]
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testListTagsOfACommitWithNoTagsReturnsEmptyCollection [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
@@ -204,7 +206,7 @@ IceBornRepositoryTest >> testListTagsOfACommitWithNoTagsReturnsEmptyCollection [
 	self assert: self repository headCommit tags isEmpty
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testListTagsOfACommitWithTagsReturnsTagCollection [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
@@ -213,7 +215,7 @@ IceBornRepositoryTest >> testListTagsOfACommitWithTagsReturnsTagCollection [
 	self assert: self repository headCommit tags first name equals: 'test'
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testNewBranchReferencesCurrentCommitAtBranchTime [
 
 	| commitAtBranchTime createdBranch |
@@ -222,7 +224,7 @@ IceBornRepositoryTest >> testNewBranchReferencesCurrentCommitAtBranchTime [
 	self assert: createdBranch commit equals: commitAtBranchTime
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testNewBranchWithSlashReferencesCurrentCommitAtBranchTime [
 
 	| commitAtBranchTime createdBranch |
@@ -231,13 +233,13 @@ IceBornRepositoryTest >> testNewBranchWithSlashReferencesCurrentCommitAtBranchTi
 	self assert: createdBranch commit equals: commitAtBranchTime
 ]
 
-{ #category : #'tests-remotes' }
+{ #category : 'tests-remotes' }
 IceBornRepositoryTest >> testNewRepositoryHasNoRemotes [
 
 	self assert: self repository remotes isEmpty
 ]
 
-{ #category : #'tests-remotes' }
+{ #category : 'tests-remotes' }
 IceBornRepositoryTest >> testRemoteAlreadyExistsErrorReferencesExistingRemote [
 
 	| remote remoteName |
@@ -252,7 +254,7 @@ IceBornRepositoryTest >> testRemoteAlreadyExistsErrorReferencesExistingRemote [
 		do: [ :error | self assert: error remoteName equals: remoteName ]
 ]
 
-{ #category : #'tests-project' }
+{ #category : 'tests-project' }
 IceBornRepositoryTest >> testRepositoryHasProjectFile [
 
 	fixture factory isGit ifFalse: [ ^ self skip ].
@@ -261,7 +263,7 @@ IceBornRepositoryTest >> testRepositoryHasProjectFile [
 	self assert: (self repository location / '.project') exists
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testSwitchToExistingBranchNameChangesRepositoryHead [
 
 	| branchName newBranch masterBranch |
@@ -278,7 +280,7 @@ IceBornRepositoryTest >> testSwitchToExistingBranchNameChangesRepositoryHead [
 	self assert: newBranch equals: self repository head.
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testSwitchToExistingBranchNameWithSlashesChangesRepositoryHead [
 
 	| branchName newBranch masterBranch |
@@ -295,19 +297,19 @@ IceBornRepositoryTest >> testSwitchToExistingBranchNameWithSlashesChangesReposit
 	self assert: newBranch equals: self repository head.
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testSwitchToUnexistingBranchRaisesError [
 
 	self should: [self repository switchToBranchNamed: 'nonexisting'] raise: IceBranchNotFound
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceBornRepositoryTest >> testSwitchToUnexistingBranchWithSlashesRaisesError [
 
 	self should: [self repository switchToBranchNamed: 'feature/nonexisting'] raise: IceBranchNotFound
 ]
 
-{ #category : #'tests-tags' }
+{ #category : 'tests-tags' }
 IceBornRepositoryTest >> testTagAlreadyExistsErrorInformsExistingTagName [
 	
 	| tagName |

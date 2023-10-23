@@ -1,10 +1,12 @@
 Class {
-	#name : #IceDirtyDetachedWorkingCopyFixture,
-	#superclass : #IceDetachedWorkingCopyFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceDirtyDetachedWorkingCopyFixture',
+	#superclass : 'IceDetachedWorkingCopyFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceDirtyDetachedWorkingCopyFixture >> setUp [
 
 	super setUp.

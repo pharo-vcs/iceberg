@@ -1,16 +1,18 @@
 Class {
-	#name : #IceGitUnbornProjectTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitUnbornProjectTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitUnbornProjectTest >> newFixture [
 
 	^ IceUnbornProjectFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testCommitNewProjectCreatesProjectFile [
 
 	self repository workingCopy project: (IceBasicProject onRepository: self repository withSourceDirectory: fixture subdirectory).
@@ -18,7 +20,7 @@ IceGitUnbornProjectTest >> testCommitNewProjectCreatesProjectFile [
 	self assert: (self repository headCommit fileSystem / '.project') exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testCommitNewProjectFindsPropertiesFile [
 
 	self repository workingCopy project: (IceBasicProject onRepository: self repository withSourceDirectory: fixture subdirectory).
@@ -27,7 +29,7 @@ IceGitUnbornProjectTest >> testCommitNewProjectFindsPropertiesFile [
 	self assert: (self repository headCommit fileSystem resolve: self repository properties propertiesFilePath) exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testDiffContainsNewProject [
 
 	| diff |
@@ -37,7 +39,7 @@ IceGitUnbornProjectTest >> testDiffContainsNewProject [
 	self assert: (diff tree / '.project') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testInvalidProjectReturnsSameSourceDirectoryThanCurrentProject [
 
 	"Create a new commit"
@@ -50,7 +52,7 @@ IceGitUnbornProjectTest >> testInvalidProjectReturnsSameSourceDirectoryThanCurre
 	self assert: self repository headCommit parent project isInvalid
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testProjectCurrentCommitAfterChangeIsUnborn [
 
 	"Create a new commit"
@@ -64,13 +66,13 @@ IceGitUnbornProjectTest >> testProjectCurrentCommitAfterChangeIsUnborn [
 	self assert: self repository headCommit project isInvalid.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testProjectIsUnborn [
 
 	self assert: self repository project isUnborn
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testProjectOlderCommitIsInvalid [
 
 	"Create a new commit"
@@ -84,7 +86,7 @@ IceGitUnbornProjectTest >> testProjectOlderCommitIsInvalid [
 	self assert: self repository headCommit parent project sourceDirectory equals: 'test'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testPropertiesFileIsNotEmpty [
 
 	| props |
@@ -95,7 +97,7 @@ IceGitUnbornProjectTest >> testPropertiesFileIsNotEmpty [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitUnbornProjectTest >> testRepositoryHasNoProjectFile [
 
 	self deny: (self repository location / '.project') exists

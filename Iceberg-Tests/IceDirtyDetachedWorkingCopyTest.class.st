@@ -1,43 +1,45 @@
 Class {
-	#name : #IceDirtyDetachedWorkingCopyTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceDirtyDetachedWorkingCopyTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceDirtyDetachedWorkingCopyTest class >> isAbstract [
 
 	^ self == IceDirtyDetachedWorkingCopyTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testIsDetached [
 
 	self assert: self repository workingCopy isDetached
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testPackageIsDirty [
 
 	"There are uncommited changes"
 	self assert: self repository workingCopy isModified
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testReattachInNewBranchIsStillDirty [
 
 	self repository createBranch: 'test' inCommit: self repository workingCopy referenceCommit.
 	self assert: self repository workingCopy isModified.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testReattachInNewBranchMakesNoMoreDetached [
 
 	self repository createBranch: 'test' inCommit: self repository workingCopy referenceCommit.
 	self deny: self repository workingCopy isDetached.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testWorkingCopyDiffIsAgainstReferenceCommitAndNotHead [
 
 	self assert: self repository workingCopyDiff targetVersion equals: self repository workingCopy referenceCommit.

@@ -1,10 +1,12 @@
 Class {
-	#name : #IceGitDetachedWorkingCopyTest,
-	#superclass : #IceDetachedWorkingCopyTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitDetachedWorkingCopyTest',
+	#superclass : 'IceDetachedWorkingCopyTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitDetachedWorkingCopyTest >> newFixture [
 
 	^ IceDetachedWorkingCopyFixture inGit

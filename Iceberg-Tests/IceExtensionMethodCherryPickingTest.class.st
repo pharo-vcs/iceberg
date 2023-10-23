@@ -1,10 +1,12 @@
 Class {
-	#name : #IceExtensionMethodCherryPickingTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceExtensionMethodCherryPickingTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testAddExtensionMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -34,7 +36,7 @@ IceExtensionMethodCherryPickingTest >> testAddExtensionMethodInExistingClass [
 				value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testAddExtensionMethodInExistingTrait [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -65,7 +67,7 @@ IceExtensionMethodCherryPickingTest >> testAddExtensionMethodInExistingTrait [
 				/ 'm1') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -96,7 +98,7 @@ IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInExistingClass
 		assert: (diff / self packageName2 / 'TestClass' / 'm2') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInExistingClasses [
 	| commitToCherryPick diff mergeTree |
 
@@ -137,7 +139,7 @@ IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInExistingClass
 		assert: (diff / self packageName2 / 'TestClass2' / 'm2') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInNonExistingClasses [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName2.
@@ -188,7 +190,7 @@ IceExtensionMethodCherryPickingTest >> testAddTwoExtensionMethodsInNonExistingCl
 		assert: (diff / self packageName2 / 'TestClass2' / 'm2') value isAddition.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testModifyExtensionMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName2.
@@ -223,7 +225,7 @@ IceExtensionMethodCherryPickingTest >> testModifyExtensionMethodInExistingClass 
 		assert: (diff / self packageName2 / 'TestClass' / 'm1') value isModification.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceExtensionMethodCherryPickingTest >> testRemoveExtensionMethodInExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName2.

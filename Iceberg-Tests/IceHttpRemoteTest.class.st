@@ -2,26 +2,28 @@
 Tests for IceHTTPRemote
 "
 Class {
-	#name : #IceHttpRemoteTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#name : 'IceHttpRemoteTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #'private - defaults' }
+{ #category : 'private - defaults' }
 IceHttpRemoteTest >> defaultTestClass [
 	"Return the default test class"
 	
 	^IceGitHttpRemote
 ]
 
-{ #category : #'private - defaults' }
+{ #category : 'private - defaults' }
 IceHttpRemoteTest >> protocolID [
 	"Return the protocol identifier"
 	
 	^self defaultTestClass protocolID
 ]
 
-{ #category : #'private - utilities' }
+{ #category : 'private - utilities' }
 IceHttpRemoteTest >> protocolURLFor: aString [
 
 	^IceGitRemote url: self protocolID, '://', aString
@@ -29,7 +31,7 @@ IceHttpRemoteTest >> protocolURLFor: aString [
 
 ]
 
-{ #category : #'tests - providers' }
+{ #category : 'tests - providers' }
 IceHttpRemoteTest >> testBitBucketURL [
 	|remote|
 	remote := self protocolURLFor: 'bitbucket.org/owner/repo.git'.
@@ -40,13 +42,13 @@ IceHttpRemoteTest >> testBitBucketURL [
 		assert: remote projectName equals: 'repo'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testCanHandleProtocol [
 
 	self assert: (self defaultTestClass canHandleUrl: self protocolID ,'://')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testFullURL [
 	| remote |
 	remote := self protocolURLFor: 'user@hostname.com:1234/subpath1/subpath2/owner/repo.git'.
@@ -57,7 +59,7 @@ IceHttpRemoteTest >> testFullURL [
 		assert: remote projectName equals: 'repo'
 ]
 
-{ #category : #'tests - providers' }
+{ #category : 'tests - providers' }
 IceHttpRemoteTest >> testGitHubURL [
 	|remote|
 	remote := self protocolURLFor: 'github.com/owner/repo.git'.
@@ -68,7 +70,7 @@ IceHttpRemoteTest >> testGitHubURL [
 		assert: remote projectName equals: 'repo'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testLocalhostRepo [
 	|remote|
 	remote := self protocolURLFor: 'hostname/owner/repo.git'.
@@ -79,7 +81,7 @@ IceHttpRemoteTest >> testLocalhostRepo [
 		assert: remote projectName equals: 'repo'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testURLWithDeepPath [
 	|remote|
 	remote := self protocolURLFor: 'hostname:8080/sub1/sub2/sub3/owner/repo.git'.
@@ -90,7 +92,7 @@ IceHttpRemoteTest >> testURLWithDeepPath [
 		assert: remote path third equals: 'sub3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testURLWithEmpty [
 	|remote|
 	remote := self protocolURLFor: 'hostname:8080/owner/repo.git'.
@@ -98,7 +100,7 @@ IceHttpRemoteTest >> testURLWithEmpty [
 		assert: remote path isEmpty 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpRemoteTest >> testURLWithSinglePath [
 	|remote|
 	remote := self protocolURLFor: 'hostname:8080/path/owner/repo.git'.

@@ -2,15 +2,17 @@
 I represent a change coming from git (in contrast to a change coming from the image). I know the changed file and I can be visited to define the create a more detailed diff.
 "
 Class {
-	#name : #IceGitChange,
-	#superclass : #IceChange,
+	#name : 'IceGitChange',
+	#superclass : 'IceChange',
 	#instVars : [
 		'filePathString'
 	],
-	#category : #'Iceberg-Libgit-Changes'
+	#category : 'Iceberg-Libgit-Changes',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChange class >> on: aString [ 
 	
 	^ self new
@@ -18,35 +20,35 @@ IceGitChange class >> on: aString [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitChange >> accept: aVisitor [
 	
 	^ aVisitor visitGitChange: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChange >> child [
 	
 	^ IceGitChange on: (RelativePath withAll: self path segments allButFirst) pathString
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceGitChange >> displayingProgressString [
 	^ 'Comparing changes of ' , filePathString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChange >> filePathString: aString [ 
 	filePathString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChange >> path [
 	
 	^ Path from: filePathString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceGitChange >> printOn: aStream [
 
 	aStream

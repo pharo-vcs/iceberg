@@ -1,15 +1,17 @@
 Class {
-	#name : #IceGitPropertiesFileTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitPropertiesFileTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitPropertiesFileTest >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitPropertiesFileTest >> testCommitSavesPropertiesFile [
 	self repository properties
 		at: #bla put: #blo.
@@ -18,7 +20,7 @@ IceGitPropertiesFileTest >> testCommitSavesPropertiesFile [
 	self assert: (self repository head properties at: #bla) equals: #blo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitPropertiesFileTest >> testPropertiesFileIsStoredInMemory [
 
 	| ston |
@@ -29,7 +31,7 @@ IceGitPropertiesFileTest >> testPropertiesFileIsStoredInMemory [
 	self assert: (self repository properties at: #bla) equals: #blo
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitPropertiesFileTest >> testRecoverPropertiesFromOldCommitEvenIfDiskIsDifferent [
 	self repository properties
 		at: #bla put: #old.
@@ -44,7 +46,7 @@ IceGitPropertiesFileTest >> testRecoverPropertiesFromOldCommitEvenIfDiskIsDiffer
 	self assert: (self repository head properties at: #bla) equals: #old
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitPropertiesFileTest >> testRecoverPropertiesFromOldCommitEvenIfHeadIsDifferent [
 	self repository properties
 		at: #bla put: #old.

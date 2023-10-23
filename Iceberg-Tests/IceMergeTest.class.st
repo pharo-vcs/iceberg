@@ -1,16 +1,18 @@
 Class {
-	#name : #IceMergeTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceMergeTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMergeTest class >> isAbstract [
 
 	^ self == IceMergeTest
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testFastForwardApplyChangesCorrectly [
 
 	"This is a Ring working copy"
@@ -36,7 +38,7 @@ IceMergeTest >> testFastForwardApplyChangesCorrectly [
 	self assert: (self repository workingCopy environment ask includesClassNamed: #IceGeneratedClassForTesting2)
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead [
 
 	"If the image and HEAD are behind the commit to merge, we need to advance HEAD and update the image so they correspond.
@@ -80,7 +82,7 @@ IceMergeTest >> testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHea
 	self assert: self workingCopy isModified not.
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage [
 
 	"If we want to merge the image into the head commit the usual thing would be to:
@@ -142,7 +144,7 @@ IceMergeTest >> testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeComm
 	self assert: self repository workingCopy isModified not.
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage [
 
 	"If the image and HEAD diverted from the merge commit, we need to create a merge commit and advance both HEAD and the image to it.
@@ -200,7 +202,7 @@ IceMergeTest >> testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvan
 	self deny: self repository workingCopy isModified.
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testImageBehindHeadShouldOnlyMergeInImage [
 
 	"If the image is behind HEAD and we want to merge HEAD we need to update the image to be in HEAD.
@@ -245,7 +247,7 @@ IceMergeTest >> testImageBehindHeadShouldOnlyMergeInImage [
 	self assert: headCommit equals: self repository workingCopy referenceCommit.
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testMergeAheadImageCommitShouldFastForwardHEAD [
 
 	"If the image corresponds to the head commit and the commit we want to merge is in the history of the head commit, the merge should be ignored.
@@ -288,7 +290,7 @@ IceMergeTest >> testMergeAheadImageCommitShouldFastForwardHEAD [
 	self assert: self repository workingCopy isModified not.
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testMergeChangesInDifferentClassesButSamePackageCausesNoConflicts [
 
 	"This is a Ring working copy"
@@ -320,7 +322,7 @@ IceMergeTest >> testMergeChangesInDifferentClassesButSamePackageCausesNoConflict
 	self assert: (self repository headCommit ancestors includes: change2Commit).
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testMergeChangesInDifferentMethodsButSameClassCausesNoConflicts [
 
 	"This is a Ring working copy"
@@ -353,7 +355,7 @@ IceMergeTest >> testMergeChangesInDifferentMethodsButSameClassCausesNoConflicts 
 	self assert: (self repository headCommit ancestors includes: change2Commit).
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testMergeChangesInDifferentPackagesCausesNoConflicts [
 
 	"This is a Ring working copy"
@@ -386,7 +388,7 @@ IceMergeTest >> testMergeChangesInDifferentPackagesCausesNoConflicts [
 	self assert: (self repository headCommit ancestors includes: change2Commit).
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testMergeChangesInSameClassesSamePackageCausesConflicts [
 
 	"This is a Ring working copy"
@@ -418,7 +420,7 @@ IceMergeTest >> testMergeChangesInSameClassesSamePackageCausesConflicts [
 	self should: [self repository workingCopy mergeCommit: change2Commit] raise: IceMergeResolutionRequest
 ]
 
-{ #category : #'merge-conflicts' }
+{ #category : 'merge-conflicts' }
 IceMergeTest >> testMergeChangesInSameMethodSameClassSamePackageCausesConflicts [
 
 	"This is a Ring working copy"
@@ -449,7 +451,7 @@ IceMergeTest >> testMergeChangesInSameMethodSameClassSamePackageCausesConflicts 
 	self should: [self repository workingCopy mergeCommit: change2Commit] raise: IceMergeResolutionRequest
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testMergeCommitInHistoryShouldDoNothing [
 
 	"If the image corresponds to the head commit and the commit we want to merge is in the history of the head commit, the merge should be ignored.
@@ -489,7 +491,7 @@ IceMergeTest >> testMergeCommitInHistoryShouldDoNothing [
 	self assert: self repository workingCopy isModified not.
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeFastForwardClassRemovalIsAppliedToWorkingCopy [
 
 	| headCommit mergeCommit |
@@ -511,7 +513,7 @@ IceMergeTest >> testMergeFastForwardClassRemovalIsAppliedToWorkingCopy [
 	self denyClassExists: 'IceGeneratedClassForTesting'.
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeFastForwardMethodRemovalIsAppliedToWorkingCopy [
 
 	| headCommit mergeCommit |
@@ -537,7 +539,7 @@ IceMergeTest >> testMergeFastForwardMethodRemovalIsAppliedToWorkingCopy [
 
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testMergeImageReferenceCommitInHistoryShouldDoNothing [
 
 	"If the image corresponds to the merge commit and is in the history of the head commit, the merge should be ignored.
@@ -580,7 +582,7 @@ IceMergeTest >> testMergeImageReferenceCommitInHistoryShouldDoNothing [
 	self assert: self repository workingCopy isModified not.
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeNonFastForwardClassRemovalIsAppliedToWorkingCopy [
 
 	| headCommit mergeCommit |
@@ -610,7 +612,7 @@ IceMergeTest >> testMergeNonFastForwardClassRemovalIsAppliedToWorkingCopy [
 	self denyClassExists: 'IceGeneratedClassForTesting'.
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeNonFastForwardLocalMethodAdditionIsNotInMergeTree [
 
 	| headCommit mergeCommit mergeTree |
@@ -647,7 +649,7 @@ IceMergeTest >> testMergeNonFastForwardLocalMethodAdditionIsNotInMergeTree [
 
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeNonFastForwardLocalMethodModificationIsNotInMergeTree [
 
 	| headCommit mergeCommit mergeTree |
@@ -684,7 +686,7 @@ IceMergeTest >> testMergeNonFastForwardLocalMethodModificationIsNotInMergeTree [
 
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeNonFastForwardLocalMethodRemovalIsNotInMergeTree [
 
 	| headCommit mergeCommit mergeTree |
@@ -721,7 +723,7 @@ IceMergeTest >> testMergeNonFastForwardLocalMethodRemovalIsNotInMergeTree [
 
 ]
 
-{ #category : #'merge-operations' }
+{ #category : 'merge-operations' }
 IceMergeTest >> testMergeNonFastForwardMethodRemovalIsAppliedToWorkingCopy [
 
 	| headCommit mergeCommit |
@@ -753,7 +755,7 @@ IceMergeTest >> testMergeNonFastForwardMethodRemovalIsAppliedToWorkingCopy [
 
 ]
 
-{ #category : #'merge-cases' }
+{ #category : 'merge-cases' }
 IceMergeTest >> testTrimergeShouldRaiseError [
 	"If the image, HEAD and merge commit are three different commits, we should avoid merging.
 	

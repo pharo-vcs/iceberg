@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTraitsCherryPickingTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceTraitsCherryPickingTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -62,7 +64,7 @@ IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 		equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTraitsCherryPickingTest >> testRemoveTraitUsedByAClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy
@@ -102,7 +104,7 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByAClass [
 		assert: (diff / self packageName1 / 'TestClassUsingTrait') value isRemoval
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTraitsCherryPickingTest >> testRemoveTraitUsedByATrait [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy

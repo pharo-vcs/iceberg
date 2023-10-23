@@ -1,17 +1,19 @@
 Class {
-	#name : #IceSinglePackageLocalGitRepositoryWithDotSubdirectoryTest,
-	#superclass : #IceSinglePackageLocalRepositoryTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceSinglePackageLocalGitRepositoryWithDotSubdirectoryTest',
+	#superclass : 'IceSinglePackageLocalRepositoryTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceSinglePackageLocalGitRepositoryWithDotSubdirectoryTest >> newFixture [
 	^ IceSinglePackageFixture inGit
 		subdirectory: '.';
 		yourself
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceSinglePackageLocalGitRepositoryWithDotSubdirectoryTest >> testCodeSubdirectoryIsRoot [
 
 	self assert: self repository location equals: self repository subdirectoryReference

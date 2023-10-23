@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMemoryRepositoryWithSingleRemoteTest,
-	#superclass : #IceRepositoryWithSingleRemoteTest,
-	#category : 'Iceberg-Tests-Memory'
+	#name : 'IceMemoryRepositoryWithSingleRemoteTest',
+	#superclass : 'IceRepositoryWithSingleRemoteTest',
+	#category : 'Iceberg-Tests-Memory',
+	#package : 'Iceberg-Tests',
+	#tag : 'Memory'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceMemoryRepositoryWithSingleRemoteTest >> newFixture [
 	^ IceWithRemoteFixture inMemory
 ]

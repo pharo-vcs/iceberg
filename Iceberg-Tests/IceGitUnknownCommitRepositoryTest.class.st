@@ -1,10 +1,12 @@
 Class {
-	#name : #IceGitUnknownCommitRepositoryTest,
-	#superclass : #IceUnknownCommitRepositoryTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitUnknownCommitRepositoryTest',
+	#superclass : 'IceUnknownCommitRepositoryTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitUnknownCommitRepositoryTest >> newFixture [
 
 	^ IceWithRemoteAndUnknownCommitFixture inGit

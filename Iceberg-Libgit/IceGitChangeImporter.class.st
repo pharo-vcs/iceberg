@@ -1,20 +1,22 @@
 Class {
-	#name : #IceGitChangeImporter,
-	#superclass : #Object,
+	#name : 'IceGitChangeImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'path',
 		'diff',
 		'version'
 	],
-	#category : #'Iceberg-Libgit-Changes'
+	#category : 'Iceberg-Libgit-Changes',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChangeImporter >> diff: anIceDiff [ 
 	diff := anIceDiff
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceGitChangeImporter >> ensureDirectory: aFileReference inParentNode: aNode [
 	
 	aNode childAt: aFileReference basename ifPresent: [ :node |
@@ -23,7 +25,7 @@ IceGitChangeImporter >> ensureDirectory: aFileReference inParentNode: aNode [
 	^ aNode addChild: (IceDirectoryDefinition named: aFileReference basename path: aNode path / aFileReference basename)
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceGitChangeImporter >> ensurePackageFromDirectory: aFileReference inParentNode: aParentNode [
 	
 	| importer packageName package |
@@ -45,7 +47,7 @@ IceGitChangeImporter >> ensurePackageFromDirectory: aFileReference inParentNode:
 	^ importer importOn: aParentNode
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 IceGitChangeImporter >> importOn: aNode [
 	
 	| currentSegment fileReference filePath |
@@ -84,7 +86,7 @@ IceGitChangeImporter >> importOn: aNode [
 	"If path size = 0 we should stop recursion"
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceGitChangeImporter >> nextPath [
 
 	^ IceGitChangeImporter new
@@ -94,18 +96,18 @@ IceGitChangeImporter >> nextPath [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChangeImporter >> path: aRelativePath [ 
 	path := aRelativePath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChangeImporter >> repository [
 	
 	^ diff repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitChangeImporter >> version: aVersion [
 	
 	version := aVersion
