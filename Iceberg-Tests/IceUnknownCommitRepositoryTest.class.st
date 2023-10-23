@@ -1,16 +1,18 @@
 Class {
-	#name : #IceUnknownCommitRepositoryTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceUnknownCommitRepositoryTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnknownCommitRepositoryTest class >> isAbstract [
 
 	^ self == IceUnknownCommitRepositoryTest
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceUnknownCommitRepositoryTest >> testFetchFixesUnknownCommit [
 
 	self repository fetch.
@@ -18,13 +20,13 @@ IceUnknownCommitRepositoryTest >> testFetchFixesUnknownCommit [
 	self assert: self repository workingCopy workingCopyState isSingleCommitState
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceUnknownCommitRepositoryTest >> testReferenceCommitIsUnknown [
 
 	self assert: self repository workingCopy referenceCommit isUnknownCommit
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceUnknownCommitRepositoryTest >> testWorkingCopyIsUnknownVersionWorkingCopy [
 
 	self assert: self repository workingCopy workingCopyState isUnknownCommitState

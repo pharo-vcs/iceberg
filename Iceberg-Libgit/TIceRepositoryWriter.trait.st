@@ -2,22 +2,24 @@
 I indicate when a class is writer for iceberg 
 "
 Trait {
-	#name : #TIceRepositoryWriter,
-	#category : #'Iceberg-Libgit-Writing'
+	#name : 'TIceRepositoryWriter',
+	#category : 'Iceberg-Libgit-Writing',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Writing'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TIceRepositoryWriter classSide >> id [
 	^ self required
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TIceRepositoryWriter classSide >> isDefault [
 	"Indicates when this is default when create new repositories"
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TIceRepositoryWriter classSide >> isLegacyDefault [
 	"Indicates when repository is default as legacy (when there is no properties file indicating 
 	 a specific format type)"

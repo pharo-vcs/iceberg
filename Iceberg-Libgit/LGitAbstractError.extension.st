@@ -1,6 +1,6 @@
-Extension { #name : #LGitAbstractError }
+Extension { #name : 'LGitAbstractError' }
 
-{ #category : #'*Iceberg-Libgit' }
+{ #category : '*Iceberg-Libgit' }
 LGitAbstractError >> acceptError: aVisitor [
 	^ aVisitor visitGenericError: self
 ]

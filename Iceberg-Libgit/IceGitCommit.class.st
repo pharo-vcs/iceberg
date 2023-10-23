@@ -1,6 +1,6 @@
 Class {
-	#name : #IceGitCommit,
-	#superclass : #IceCommit,
+	#name : 'IceGitCommit',
+	#superclass : 'IceCommit',
 	#instVars : [
 		'id',
 		'author',
@@ -9,10 +9,12 @@ Class {
 		'comment',
 		'packageNamesCache'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceGitCommit >> = aGitCommit [
 
 	(aGitCommit isKindOf: self species)
@@ -20,51 +22,51 @@ IceGitCommit >> = aGitCommit [
 	^ self id = aGitCommit id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> ancestorIds [
 
 	^ ancestorIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> ancestorIds: aCollection [ 
 	ancestorIds := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> ancestors [
 	
 	^ ancestorIds collect: [ :each | repository lookupCommit: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> author [
 	^ author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> author: aString [ 
 	author := aString
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceGitCommit >> changesFromCommit: anIceGitCommit [ 
 	|  files |
 	files := self repository changedFilesBetween: anIceGitCommit and: self.
 	^ files collect: [ :each | IceGitChange on: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> comment [
 	^ comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> comment: aString [ 
 	comment := aString
 ]
 
-{ #category : #ancestry }
+{ #category : 'ancestry' }
 IceGitCommit >> commonAncestorWithCommit: anIceGitCommit [
 	
 	repository handleLibgitError: [ | mergeBaseId |
@@ -76,7 +78,7 @@ IceGitCommit >> commonAncestorWithCommit: anIceGitCommit [
 		^ mergeBaseId ifNotNil: [ self repository lookupCommit: mergeBaseId ] ]
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceGitCommit >> createTag: aString [ 
 
 	self repository handleLibgitError: [ 
@@ -89,23 +91,23 @@ IceGitCommit >> createTag: aString [
 			inRepository: self repository ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> datetime [
 	^ datetime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> datetime: aDateAndTime [ 
 	datetime := aDateAndTime
 ]
 
-{ #category : #'accessing - file' }
+{ #category : 'accessing - file' }
 IceGitCommit >> entryByPath: aString [ 
 	
 	repository handleLibgitError: [ ^ (LGitCommit of: self repositoryHandle fromHexString: self id) entryByPath: aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> fetchPackageNames [
 
 	| writerClass dir |
@@ -119,19 +121,19 @@ IceGitCommit >> fetchPackageNames [
 		thenCollect: [ :each | writerClass packageNameFromDirectory: each ]
 ]
 
-{ #category : #'accessing - file' }
+{ #category : 'accessing - file' }
 IceGitCommit >> fileSystem [
 	
 	^ (FileSystem onGitCommit: self libgitCommit) root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> gitRef [
 	
 	^ self id
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitCommit >> hasMultipleAncestors [
 	| ancestors |
 	"using ancestorsIds because ancestors will instantiate parents and is slower"
@@ -140,29 +142,29 @@ IceGitCommit >> hasMultipleAncestors [
 		and: [ ancestors size > 1 ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceGitCommit >> hash [
 
 	^ self id hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> id: aString [ 
 	id := aString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitCommit >> libgitCommit [
 	
 	repository handleLibgitError: [ ^ LGitCommit of: self repositoryHandle fromHexString: self id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> packageNames [
 	
 	^ self repository commitsInPackageCache
@@ -170,7 +172,7 @@ IceGitCommit >> packageNames [
 		ifAbsentPut: [ self fetchPackageNames ]
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceGitCommit >> project [
 
 	self flag: #todo. "This is a quick fix for issue https://github.com/pharo-vcs/iceberg/issues/1002 and this should probably be improved to also cover issue https://github.com/pharo-vcs/iceberg/issues/949
@@ -184,38 +186,38 @@ IceGitCommit >> project [
 		do: [ self repository fetch. IceProjectReader readProjectFrom: self ]
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceGitCommit >> readerClass [
 	
 	^ self properties readerClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> repositoryHandle [
 	
 	<repositoryHandleAccessor>
 	^ repository repositoryHandle
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceGitCommit >> resetPackageCache [
 	
 	packageNamesCache := nil.
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IceGitCommit >> snapshotFor: package [ 
 	^ [ (self repository mcVersionFor: (self versionFor: package)) snapshot ]
 		on: IceVersionDoesNotExist 
 		do: [ :e | MCSnapshot empty ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitCommit >> timeStamp [
 	^ self datetime
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceGitCommit >> writerClass [
 
 	^ self properties writerClass

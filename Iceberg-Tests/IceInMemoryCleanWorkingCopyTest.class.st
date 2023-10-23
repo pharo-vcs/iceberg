@@ -1,10 +1,12 @@
 Class {
-	#name : #IceInMemoryCleanWorkingCopyTest,
-	#superclass : #IceCleanWorkingCopyTest,
-	#category : 'Iceberg-Tests-Memory'
+	#name : 'IceInMemoryCleanWorkingCopyTest',
+	#superclass : 'IceCleanWorkingCopyTest',
+	#category : 'Iceberg-Tests-Memory',
+	#package : 'Iceberg-Tests',
+	#tag : 'Memory'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceInMemoryCleanWorkingCopyTest >> newFixture [
 	^ IceCleanWorkingCopyFixture inMemory
 ]

@@ -4,12 +4,14 @@ A remote repository created out of a SCP url, such as 'git@github.com:npasserini
 
 "
 Class {
-	#name : #IceGitScpRemote,
-	#superclass : #IceGitNetworkRemote,
-	#category : #'Iceberg-Libgit-Core'
+	#name : 'IceGitScpRemote',
+	#superclass : 'IceGitNetworkRemote',
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitScpRemote class >> canHandleUrl: aUrl [
 	"Very simplistic implementation that does not cover all cases. Either there
 	is the ssh scheme or treat all non absolute paths as SSH"
@@ -17,41 +19,41 @@ IceGitScpRemote class >> canHandleUrl: aUrl [
 	^ (self isSSHUrl: aUrl) or: [ self isAlternateSSHUrl: aUrl ]
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceGitScpRemote class >> defaultPort [
 	^ 22
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitScpRemote class >> isAlternateSSHUrl: aUrl [
 	"Definition taken from https://stackoverflow.com/questions/14348874/git-repository-url-ssh-syntax-without-absolute-path"
 	^ (aUrl includesSubstring: '://') not and: [ (aUrl beginsWith: '/') not ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitScpRemote class >> isSSHUrl: aUrl [
 	^ aUrl beginsWith: 'ssh://'
 ]
 
-{ #category : #'private - patches' }
+{ #category : 'private - patches' }
 IceGitScpRemote >> httpsUrl [
 	^ 'https://{1}/{2}.git' format: { self host . self projectPath }
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitScpRemote >> isAlternateSSHUrl: aString [ 
 	
 	^ self class isAlternateSSHUrl: aString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitScpRemote >> isSSHUrl: aString [ 
 	
 	^ self class isSSHUrl: aString
 ]
 
-{ #category : #'private - patches' }
+{ #category : 'private - patches' }
 IceGitScpRemote >> parseUrl [
 	| urlStream restSegments |
 	(self isSSHUrl: url)

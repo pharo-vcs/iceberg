@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTreeTests,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Changes'
+	#name : 'IceTreeTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeTests >> testDetectFoundElement [
 
 	| selected |
@@ -13,12 +15,12 @@ IceTreeTests >> testDetectFoundElement [
 	self assert: selected equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeTests >> testDetectNotFoundElement [
 	self should: [ (IceNode value: 1) detect: [ :e | e value even ] ] raise: NotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeTests >> testSelect [
 
 	| selected |

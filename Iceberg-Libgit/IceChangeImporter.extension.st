@@ -1,6 +1,6 @@
-Extension { #name : #IceChangeImporter }
+Extension { #name : 'IceChangeImporter' }
 
-{ #category : #'*Iceberg-Libgit' }
+{ #category : '*Iceberg-Libgit' }
 IceChangeImporter >> visitGitChange: anIceGitChange [ 
 
 	| importer |

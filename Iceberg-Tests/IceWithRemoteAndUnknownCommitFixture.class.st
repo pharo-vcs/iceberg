@@ -1,10 +1,12 @@
 Class {
-	#name : #IceWithRemoteAndUnknownCommitFixture,
-	#superclass : #IceWithRemoteFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceWithRemoteAndUnknownCommitFixture',
+	#superclass : 'IceWithRemoteFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceWithRemoteAndUnknownCommitFixture >> setUp [
 	super setUp.
 

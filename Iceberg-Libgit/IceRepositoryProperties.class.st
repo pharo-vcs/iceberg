@@ -7,17 +7,19 @@ I can answer concrete things about repositories, e.g. :
 - ...
 "
 Class {
-	#name : #IceRepositoryProperties,
-	#superclass : #Object,
+	#name : 'IceRepositoryProperties',
+	#superclass : 'Object',
 	#instVars : [
 		'properties',
 		'repository',
 		'commitish'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryProperties class >> fromDictionary: aDictionary commitish: aCommitish [
 	^ self new
 		repository: aCommitish repository;
@@ -27,7 +29,7 @@ IceRepositoryProperties class >> fromDictionary: aDictionary commitish: aCommiti
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryProperties class >> fromFileReference: aFileReference commitish: aCommitish [
 
 	aFileReference exists
@@ -35,31 +37,31 @@ IceRepositoryProperties class >> fromFileReference: aFileReference commitish: aC
 	^ self fromDictionary: (self readPropertiesFrom: aFileReference) commitish: aCommitish
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryProperties class >> fromFileReferenceDirectory: aDirectory commitish: aCommitish [
 
 	^ self fromFileReference: aDirectory / self propertiesFileName  commitish: aCommitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties class >> propertiesFileName [
 	^ '.properties'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceRepositoryProperties class >> readPropertiesFrom: aFileReference [
 	self flag: #pharoFixMe.	"When Pharo 6.1 will not be supported anymore we can directly use: `ref readStreamDo: [ :stream | STON fromStream: stream ]` but currently FileReference>>readStream return a ZnBufferedStream in Pharo 61 and a ZnCharacterReadStream decoding utf8 in Pharo 7."
 	^ aFileReference
 		binaryReadStreamDo: [ :stream | STON fromStream: (ZnCharacterReadStream on: stream encoding: 'utf8') ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceRepositoryProperties >> = anotherObject [
 
 	^ self species = anotherObject species and: [ properties = anotherObject properties ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceRepositoryProperties >> addToChangeBuilder: anIceChangeImporter [ 
 
 	anIceChangeImporter
@@ -68,36 +70,36 @@ IceRepositoryProperties >> addToChangeBuilder: anIceChangeImporter [
 		contents: self contentsString
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceRepositoryProperties >> asBornProperties [
 	
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> at: aKey [
 
 	^ self properties at: aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> at: aKey put: aValue [
 
 	self properties at: aKey put: aValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> commitish [
 	^ commitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> commitish: anObject [
 	self assert: anObject isNotNil.
 	commitish := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> contentsString [
 	
 	^ ByteArray streamContents: [ :stream |
@@ -107,7 +109,7 @@ IceRepositoryProperties >> contentsString [
 				nextPut: self properties ]
 ]
 
-{ #category : #'initialization-release' }
+{ #category : 'initialization-release' }
 IceRepositoryProperties >> ensureDefaultProperties [
 	
 	properties at: #format ifAbsentPut: [ 
@@ -115,72 +117,72 @@ IceRepositoryProperties >> ensureDefaultProperties [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> fileFormat [
 	^ self writerClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> fileFormat: aClass [
 	
 	self fileFormatId: aClass id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> fileFormatId: aFileFormatId [
 	
 	self properties at: #format put: aFileFormatId
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceRepositoryProperties >> hash [
 	^ properties hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryProperties >> isDirty [
 	
 	^ repository workingCopy referenceCommit properties ~= self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryProperties >> isUnborn [
 	
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryProperties >> properties [
 	^ properties ifNil: [ properties := Dictionary new ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryProperties >> properties: aDictionary [
 	properties := aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> propertiesFilePath [
 	
 	^ repository project sourceDirectoryPath / self class propertiesFileName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> readerClass [
 	^ TIceRepositoryReader users detect: [ :each | each id = self fileFormat id  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> repository: anIceLibgitRepository [ 
 	repository := anIceLibgitRepository
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceRepositoryProperties >> storeOnDirectory: aFileLocator root: rootDirectory [
 
 	| propertiesFileReference relativePath |
@@ -196,7 +198,7 @@ IceRepositoryProperties >> storeOnDirectory: aFileLocator root: rootDirectory [
 				nextPut: self properties  ]
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceRepositoryProperties >> storeOnFileReference: aFileReference [
 
 	aFileReference
@@ -208,7 +210,7 @@ IceRepositoryProperties >> storeOnFileReference: aFileReference [
 				nextPut: self properties  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryProperties >> writerClass [
 	^ self properties
 		at: 'format' 

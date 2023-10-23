@@ -1,22 +1,24 @@
 Class {
-	#name : #IceGitTestFactory,
-	#superclass : #IceAbstractTestFactory,
-	#category : #'Iceberg-Tests-Git'
+	#name : 'IceGitTestFactory',
+	#superclass : 'IceAbstractTestFactory',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory class >> setUp [
 
 	^ self new setUp
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> defaultRemoteUrl [
 
 	^ self remoteFileUrl asString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> ensureRemoteRepository [
 	| remoteRepository |
 	remoteRepository := self remoteFileUrl asFileReference exists
@@ -31,19 +33,19 @@ IceGitTestFactory >> ensureRemoteRepository [
 	^ remoteRepository
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitTestFactory >> isGit [
 	
 	^ true
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> location [
 	
 	^ FileLocator imageDirectory / 'test'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubdirectory [
 	| repository |
 	(self location / projectName) ensureDeleteAll.
@@ -69,13 +71,13 @@ IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubd
 	^ repository
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> newRemoteNamed: aName toRepository: aRepository [
 
 	^ IceGitRemote name: aName url: aRepository location resolve asUrl asString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirectory [
 	| repository |
 	(self location / projectName) ensureDeleteAll.
@@ -96,13 +98,13 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 	^ repository
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> remoteFileUrl [
 	
 	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitTestFactory >> tearDownWithRepository: aRepository [
 		
 	aRepository ifNotNil: [

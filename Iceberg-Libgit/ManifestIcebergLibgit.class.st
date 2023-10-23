@@ -2,12 +2,14 @@
 I store metadata for this package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
 "
 Class {
-	#name : #ManifestIcebergLibgit,
-	#superclass : #PackageManifest,
-	#category : #'Iceberg-Libgit-Manifest'
+	#name : 'ManifestIcebergLibgit',
+	#superclass : 'PackageManifest',
+	#category : 'Iceberg-Libgit-Manifest',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Manifest'
 }
 
-{ #category : #'meta-data' }
+{ #category : 'meta-data' }
 ManifestIcebergLibgit class >> description [
 
 	^ 'I contains the core of the libgit binding of Iceberg. 

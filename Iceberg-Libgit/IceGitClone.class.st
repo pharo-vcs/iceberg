@@ -1,14 +1,16 @@
 Class {
-	#name : #IceGitClone,
-	#superclass : #Object,
+	#name : 'IceGitClone',
+	#superclass : 'Object',
 	#instVars : [
 		'location',
 		'url'
 	],
-	#category : #'Iceberg-Libgit-GitActions'
+	#category : 'Iceberg-Libgit-GitActions',
+	#package : 'Iceberg-Libgit',
+	#tag : 'GitActions'
 }
 
-{ #category : #'private - operations' }
+{ #category : 'private - operations' }
 IceGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries [ 
 
 	[repo clone: url options: cloneOptions] 
@@ -22,7 +24,7 @@ IceGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: rema
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitClone >> execute [
 
 	| repo cloneOptions checkoutOptions callbacks |
@@ -33,6 +35,8 @@ IceGitClone >> execute [
 
 	repo := LGitRepository on: location.
 	cloneOptions := repo cloneOptionsStructureClass withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
+
+	Iceberg configureLGitProxyOpt: cloneOptions fetchOptions proxyOptions.
 
 	"Keeping references, because if not the GC take them."
 	checkoutOptions := cloneOptions checkoutOptions.
@@ -53,22 +57,22 @@ IceGitClone >> execute [
 		error acceptError: (IceLibgitErrorVisitor onContext: self) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitClone >> location [
 	^ location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitClone >> location: aFileReference [
 	location := aFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitClone >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitClone >> url: aString [ 
 	url := aString
 ]

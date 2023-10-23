@@ -29,8 +29,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #IceLibgitTreeBuilder,
-	#superclass : #Object,
+	#name : 'IceLibgitTreeBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'parent',
 		'entryName',
@@ -40,16 +40,18 @@ Class {
 		'initialTree',
 		'hasChanges'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLibgitTreeBuilder class >> on: aLGitTree [
 	"Creates a tree builder on the root of the repository"
 	^ self new initializeWithTree: aLGitTree
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 IceLibgitTreeBuilder >> addEntryNamed: name withContents: aString [
 	self builder 
 		addEntry: (LGitBlob of: self repository fromString: aString)
@@ -59,7 +61,7 @@ IceLibgitTreeBuilder >> addEntryNamed: name withContents: aString [
 	hasChanges := true
 ]
 
-{ #category : #building }
+{ #category : 'building' }
 IceLibgitTreeBuilder >> buildTree [
 	self children keysAndValuesDo: [ :childEntryName :childBuilder |
 		childBuilder hasChanges ifTrue: [ 
@@ -72,7 +74,7 @@ IceLibgitTreeBuilder >> buildTree [
 	^ self builder newTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> builder [
 	^ builder ifNil: [ 
 		builder := LGitTreeBuilder 
@@ -81,28 +83,28 @@ IceLibgitTreeBuilder >> builder [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> changes [
 	^ changes ifNil: [ changes := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> children [
 	^ children ifNil: [ children := Dictionary new ]
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 IceLibgitTreeBuilder >> deleteAll [
 	self builder clear.
 
 ]
 
-{ #category : #patches }
+{ #category : 'patches' }
 IceLibgitTreeBuilder >> directory [
 	^ self 
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceLibgitTreeBuilder >> entryByName: aString [
 	^ self children 
 		at: aString 
@@ -112,7 +114,7 @@ IceLibgitTreeBuilder >> entryByName: aString [
 				entryName: aString ]
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceLibgitTreeBuilder >> entryByPath: aString [
 	^ (aString = '.' )
 		ifTrue: [ self ]
@@ -121,12 +123,12 @@ IceLibgitTreeBuilder >> entryByPath: aString [
 			into: [ :treeBuilder :name | treeBuilder entryByName: name ]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> entryName [
 	^ entryName
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceLibgitTreeBuilder >> hasChanges [
 	^ hasChanges
 		or: [ initialTree isNil "It means that this is a new tree"
@@ -134,20 +136,20 @@ IceLibgitTreeBuilder >> hasChanges [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> initialTree [
 	^ initialTree
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceLibgitTreeBuilder >> initialize [
 	super initialize.
 	hasChanges := false.
 	
 ]
 
-{ #category : #initializing }
+{ #category : 'initializing' }
 IceLibgitTreeBuilder >> initializeWithParent: anIceTreeBuilder entryName: aString [
 	| treeEntry |
 	parent := anIceTreeBuilder.
@@ -162,18 +164,18 @@ IceLibgitTreeBuilder >> initializeWithParent: anIceTreeBuilder entryName: aStrin
 
 ]
 
-{ #category : #initializing }
+{ #category : 'initializing' }
 IceLibgitTreeBuilder >> initializeWithTree: aLGitTree [
 	"This is a builder on the root of a repository"
 	initialTree := aLGitTree 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> parent [
 	^ parent
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceLibgitTreeBuilder >> printOn: aStream [
 	aStream 
 		nextPutAll: self class name;
@@ -183,7 +185,7 @@ IceLibgitTreeBuilder >> printOn: aStream [
 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceLibgitTreeBuilder >> printPathOn: aStream [
 	parent 
 		ifNil: [ 
@@ -194,7 +196,7 @@ IceLibgitTreeBuilder >> printPathOn: aStream [
 				nextPutAll: entryName ] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTreeBuilder >> repository [
 	^ parent 
 		ifNotNil: [ self parent repository ]

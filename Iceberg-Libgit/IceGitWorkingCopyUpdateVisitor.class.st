@@ -1,60 +1,62 @@
 Class {
-	#name : #IceGitWorkingCopyUpdateVisitor,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceGitWorkingCopyUpdateVisitor',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'repository',
 		'diff',
 		'index'
 	],
-	#category : #'Iceberg-Libgit-Commit'
+	#category : 'Iceberg-Libgit-Commit',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Commit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitWorkingCopyUpdateVisitor >> diff: anIceDiff [ 
 	diff := anIceDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitWorkingCopyUpdateVisitor >> index: anIndex [ 
 	index := anIndex
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceGitWorkingCopyUpdateVisitor >> removeFile: anIceFileDefinition [ 
 	
 	(repository location resolvePath: anIceFileDefinition path)
 		ensureDelete
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitWorkingCopyUpdateVisitor >> removeFileReferenceInPath: aPath [
 	
 	(repository workingCopy fileSystem resolve: aPath) ensureDeleteAll
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceGitWorkingCopyUpdateVisitor >> removePackage: aDefinition [
 	
 	(repository location resolvePath: aDefinition path) ensureDeleteAll
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitWorkingCopyUpdateVisitor >> repository: anIceLibgitRepository [ 
 	repository := anIceLibgitRepository
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitAddition: anIceAddition [ 
 	
 	anIceAddition definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitFileNode: anIceFileDefinition [ 
 	
 	| reference |
@@ -66,25 +68,25 @@ IceGitWorkingCopyUpdateVisitor >> visitFileNode: anIceFileDefinition [
 			writeStream nextPutAll: anIceFileDefinition basicContents ].
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitModification: anIceModification [ 
 	
 	^ anIceModification leftDefinition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitNoModification: anIceNoModification [ 
 	
 	anIceNoModification definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
 	
 	anIceNonConflictingOperation chosenOperation accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitPackage: anIcePackageDefinition [ 
 	
 	"I am a package, I have to export my changes using the repository format.
@@ -114,13 +116,13 @@ IceGitWorkingCopyUpdateVisitor >> visitPackage: anIcePackageDefinition [
 	index storeVersion: version
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitRemoval: anIceRemoval [ 
 	
 	anIceRemoval definition removeFrom: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitWorkingCopyUpdateVisitor >> visitRootDefinition: anIceRootDefinition [ 
 	
 	self visitChildrenOf: currentNode

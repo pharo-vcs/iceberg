@@ -1,10 +1,12 @@
 Class {
-	#name : #IceLibGitIndexTestCase,
-	#superclass : #IceMergeTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceLibGitIndexTestCase',
+	#superclass : 'IceMergeTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceLibGitIndexTestCase >> assertIndexIsClean [
 
 	| diff |
@@ -15,12 +17,12 @@ IceLibGitIndexTestCase >> assertIndexIsClean [
 	self assert: diff numberOfDeltas equals: 0
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceLibGitIndexTestCase >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceLibGitIndexTestCase >> testGitIndexIsCleanAfterCheckoutBranch [
 
 	"If we checkout a branch, git's index should be clean.
@@ -48,56 +50,56 @@ IceLibGitIndexTestCase >> testGitIndexIsCleanAfterCheckoutBranch [
 	self assertIndexIsClean
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead [
 
 	super testImageAndHeadBehindMergeCommitShouldMergeInImageAndAdvanceHead.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage [
 
 	super testImageAndHeadInverseMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage [
 
 	super testImageAndHeadMergeDivergingCommitShouldCreateMergeCommitAdvanceHeadAndImage.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testImageBehindHeadShouldOnlyMergeInImage [
 
 	super testImageBehindHeadShouldOnlyMergeInImage.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testMergeAheadImageCommitShouldFastForwardHEAD [
 
 	super testMergeAheadImageCommitShouldFastForwardHEAD.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testMergeCommitInHistoryShouldDoNothing [
 
 	super testMergeCommitInHistoryShouldDoNothing.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testMergeImageReferenceCommitInHistoryShouldDoNothing [
 
 	super testMergeImageReferenceCommitInHistoryShouldDoNothing.
 	self assertIndexIsClean.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibGitIndexTestCase >> testTrimergeShouldRaiseError [
 
 	super testTrimergeShouldRaiseError.

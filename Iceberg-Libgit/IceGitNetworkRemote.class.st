@@ -2,8 +2,8 @@
 Base abstract class for SCP and HTTPS remotes.
 "
 Class {
-	#name : #IceGitNetworkRemote,
-	#superclass : #IceGitRemote,
+	#name : 'IceGitNetworkRemote',
+	#superclass : 'IceGitRemote',
 	#instVars : [
 		'user',
 		'host',
@@ -11,27 +11,29 @@ Class {
 		'path',
 		'owner'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitNetworkRemote class >> canHandleUrl: aString [ 
 	"I am abstract I can't handle any url."
 	^ false
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceGitNetworkRemote class >> defaultPort [
 	^self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitNetworkRemote class >> isAbstract [
 
 	^ self == IceGitNetworkRemote 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> detailedInfo [
 	^ { 
 		'Origin' -> self url.
@@ -41,22 +43,22 @@ IceGitNetworkRemote >> detailedInfo [
 	} 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> host [
 	^ host
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceGitNetworkRemote >> organizer [
 	^ self owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> owner [
 	 ^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> parseUrl [
 	| znUrl |
 	znUrl := ZnUrl fromString: url.
@@ -72,23 +74,23 @@ IceGitNetworkRemote >> parseUrl [
 	projectName := self stripPossibleExtension: (znUrl segments last).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> path [
 	^path ifNil: [ path := OrderedCollection new ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> port [
 
 	^port ifNil: [ self class defaultPort ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> portName [
 	^self port asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> projectPath [
 
 	| projectPath |
@@ -99,26 +101,26 @@ IceGitNetworkRemote >> projectPath [
 	^ (RelativePath withAll: projectPath) pathString
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceGitNetworkRemote >> referencesSameRemoteLocationAs: another [
 
 	^ (self httpsUrl withoutSuffix: '.git') sameAs:
 		  (another httpsUrl withoutSuffix: '.git')
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitNetworkRemote >> stripPossibleExtension: aString [
 	^ (aString endsWith: '.git')
 		ifTrue: [ aString allButLast: 4 ]
 		ifFalse: [ aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> user [
 	^user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitNetworkRemote >> userName [
 	^user ifNil: [ '' ]
 	

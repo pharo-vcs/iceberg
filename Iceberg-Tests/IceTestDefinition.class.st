@@ -1,13 +1,15 @@
 Class {
-	#name : #IceTestDefinition,
-	#superclass : #IceDefinition,
+	#name : 'IceTestDefinition',
+	#superclass : 'IceDefinition',
 	#instVars : [
 		'contents'
 	],
-	#category : 'Iceberg-Tests-Changes'
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 IceTestDefinition class >> named: aString contents: aContensts [
 	
 	^ self new
@@ -16,32 +18,32 @@ IceTestDefinition class >> named: aString contents: aContensts [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTestDefinition >> = aTestDefinition [
 	
 	^ super = aTestDefinition
 		and: [ contents = aTestDefinition contents ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestDefinition >> contents [
 
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestDefinition >> contents: aString [ 
 	
 	contents := aString
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTestDefinition >> hash [
 
 	^ super hash + contents hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTestDefinition >> initialize [
 	super initialize.
 	name := 'test'

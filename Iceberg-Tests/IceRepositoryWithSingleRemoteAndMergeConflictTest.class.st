@@ -1,16 +1,18 @@
 Class {
-	#name : #IceRepositoryWithSingleRemoteAndMergeConflictTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceRepositoryWithSingleRemoteAndMergeConflictTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryWithSingleRemoteAndMergeConflictTest class >> isAbstract [
 
 	^ self == IceRepositoryWithSingleRemoteAndMergeConflictTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceRepositoryWithSingleRemoteAndMergeConflictTest >> testRepositoryHasIncomingCommitsAfterFetch [
 
 	self repository fetch.
@@ -18,19 +20,19 @@ IceRepositoryWithSingleRemoteAndMergeConflictTest >> testRepositoryHasIncomingCo
 	self assert: self repository hasIncomingCommits
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceRepositoryWithSingleRemoteAndMergeConflictTest >> testRepositoryHasNoIncomingCommitsIfNoFetch [
 
 	self deny: self repository hasIncomingCommits
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceRepositoryWithSingleRemoteAndMergeConflictTest >> testRepositoryHasNoOutgoingCommitsIfNoFetch [
 
 	self deny: self repository hasOutgoingCommits
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceRepositoryWithSingleRemoteAndMergeConflictTest >> testRepositoryHasOutgoingCommitsAfterFetch [
 
 	self repository fetch.

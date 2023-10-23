@@ -1,6 +1,6 @@
-Extension { #name : #RG2MetaclassTraitDefinition }
+Extension { #name : 'RG2MetaclassTraitDefinition' }
 
-{ #category : #'*Iceberg-Tests' }
+{ #category : '*Iceberg-Tests' }
 RG2MetaclassTraitDefinition >> asMCDefinition [
 
 	^ MCClassTraitDefinition
