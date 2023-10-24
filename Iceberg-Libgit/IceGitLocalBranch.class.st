@@ -104,32 +104,52 @@ IceGitLocalBranch >> name [
 
 { #category : #'private - pushing' }
 IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: pushProgress [
-	
-	gitRemote 
+
+	| pushOptions |
+	pushOptions := gitRemote ffiLibrary uniqueInstance
+		               pushOptionsStructureClass defaults
+		               callbacks:
+			               ((gitRemote ffiLibrary uniqueInstance
+				                 remoteCallbacksStructureClass withProvider:
+					                 (IceCredentialsProvider defaultForRemote:
+							                  aRemote))
+				                pushTransferProgress: pushProgress;
+				                yourself);
+		               yourself.
+
+	Iceberg configureLGitProxyOpt: pushOptions proxyOptions.
+
+	gitRemote
 		pushWithRefSpec: (LGitRefSpec new
-			source: self fullname;
-			destination: self fullname;
-			yourself)
-		pushOptions: (gitRemote ffiLibrary uniqueInstance pushOptionsStructureClass defaults
-			callbacks: ((gitRemote ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote)) 
-				pushTransferProgress: pushProgress; 
-				yourself);
-			yourself)
+				 source: self fullname;
+				 destination: self fullname;
+				 yourself)
+		pushOptions: pushOptions
 ]
 
 { #category : #'private - pushing' }
 IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
-	gitRemote 
+	| pushOptions |
+	pushOptions := gitRemote ffiLibrary uniqueInstance
+		               pushOptionsStructureClass defaults
+		               callbacks:
+			               ((gitRemote ffiLibrary uniqueInstance
+				                 remoteCallbacksStructureClass withProvider:
+					                 (IceCredentialsProvider defaultForRemote:
+							                  aRemote))
+				                pushTransferProgress: pushProgress;
+				                yourself);
+		               yourself.
+
+	Iceberg configureLGitProxyOpt: pushOptions proxyOptions.
+
+	gitRemote
 		pushWithRefSpec: (LGitRefSpec new
-			source: 'refs/tags/' , tag name;
-			destination: 'refs/tags/' , tag name;
-			yourself)
-		pushOptions: (gitRemote ffiLibrary uniqueInstance pushOptionsStructureClass defaults
-			callbacks: ((gitRemote ffiLibrary uniqueInstance remoteCallbacksStructureClass withProvider: (IceCredentialsProvider defaultForRemote: aRemote))
-				pushTransferProgress: pushProgress;
-				yourself);
-			yourself)
+				 source: 'refs/tags/' , tag name;
+				 destination: 'refs/tags/' , tag name;
+				 yourself)
+		pushOptions: pushOptions
 ]
 
 { #category : #'private - pushing' }

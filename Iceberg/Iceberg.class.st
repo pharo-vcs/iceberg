@@ -19,6 +19,7 @@ Class {
 	#superclass : #Object,
 	#classVars : [
 		'EnableMetacelloIntegration',
+		'ProxyURLExternalString',
 		'RemoteTypeSelector',
 		'ShowSystemRepositories'
 	],
@@ -64,6 +65,27 @@ Iceberg class >> bootstrapWithCommitId: commitId packageList: packageNameList [
 	repository register
 ]
 
+{ #category : #proxy }
+Iceberg class >> configureLGitProxyOpt: aLGitProxyOptions [ 
+	
+	| proxyURL |
+	proxyURL := self proxyURLExternalString.
+	
+	"If there is not configured proxy, let's return"
+	proxyURL isNull ifTrue: [ ^ self ].
+	
+	aLGitProxyOptions prim_url: proxyURL
+]
+
+{ #category : #proxy }
+Iceberg class >> createProxyURLExternalString [
+
+	NetworkSystemSettings httpProxyServer isEmpty 
+		ifTrue: [ ^ ProxyURLExternalString := ExternalAddress null ].
+	
+	ProxyURLExternalString := ExternalAddress fromString: self formatNetworkSettingsProxyServer. 
+]
+
 { #category : #settings }
 Iceberg class >> enableMetacelloIntegration [
 	^ EnableMetacelloIntegration ifNil: [ EnableMetacelloIntegration := true ]
@@ -72,6 +94,31 @@ Iceberg class >> enableMetacelloIntegration [
 { #category : #settings }
 Iceberg class >> enableMetacelloIntegration: anObject [
 	EnableMetacelloIntegration := anObject
+]
+
+{ #category : #proxy }
+Iceberg class >> ensureProxyURLExternalString [
+
+
+	"If we have a valid string in the external memory, we check its value"
+	(ProxyURLExternalString isNotNil and: [ ProxyURLExternalString isNull not ]) ifTrue: [
+
+		"If it is the same that we want, let's just continue. If it is different, we need to free it so, we can allocate a new one"
+		ProxyURLExternalString utf8StringFromCString = self formatNetworkSettingsProxyServer
+			ifTrue: [ ^ self ]
+			ifFalse: [ ProxyURLExternalString free ] ].
+
+	^ self createProxyURLExternalString
+]
+
+{ #category : #proxy }
+Iceberg class >> formatNetworkSettingsProxyServer [
+
+	^ String streamContents: [ :s |
+		  s nextPutAll: 'https://'.
+		  s nextPutAll: NetworkSystemSettings httpProxyServer.
+		  s nextPutAll: ':'.
+		  s nextPutAll: NetworkSystemSettings httpProxyPort printString ]
 ]
 
 { #category : #accessing }
@@ -109,6 +156,13 @@ Iceberg class >> packageForCategoryNamed: categoryName [
 	systemPackage := RPackageOrganizer default packageMatchingExtensionName: categoryName.
 	^ self packageNamed: systemPackage name
 
+]
+
+{ #category : #proxy }
+Iceberg class >> proxyURLExternalString [
+
+	self ensureProxyURLExternalString.
+	^ ProxyURLExternalString
 ]
 
 { #category : #accessing }

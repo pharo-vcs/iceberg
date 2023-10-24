@@ -49,36 +49,40 @@ IceGitRemote >> branches [
 ]
 
 { #category : #fetching }
-IceGitRemote >> fetch [
-	
+IceGitRemote >> doFetchWithRefSpec: refSpec [
+
 	localRepository handleLibgitError: [
-		[ (LGitRemote of: self repositoryHandle named: self name)
+		[
+		(LGitRemote of: self repositoryHandle named: self name)
 			lookup;
-			fetchWithCredentials: (IceCredentialsProvider defaultForRemote: self)
-			andProgressCallback: IceGitTransferProgress new ]
+			fetchWithCredentials:
+				(IceCredentialsProvider defaultForRemote: self)
+			andProgressCallback: IceGitTransferProgress new
+			refSpec: refSpec
+			proxyConfigurationBlock: [ :proxyOpt | Iceberg configureLGitProxyOpt: proxyOpt ] ]
 			on: LGitAbstractError
-			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ].
-		
-		"Call post fetch to fix unknown commits"
-		localRepository postFetch ]
+			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ] ]
+]
+
+{ #category : #fetching }
+IceGitRemote >> fetch [
+
+	self doFetchWithRefSpec: nil.
+
+	"Call post fetch to fix unknown commits"
+	localRepository postFetch
 ]
 
 { #category : #fetching }
 IceGitRemote >> fetchBranch: aBranch [
-	
-	localRepository handleLibgitError: [
-		[ | refSpec remote |
-		refSpec := LGitRefSpec
-			fromString:
-				('{2}:refs/remotes/{1}/{2}'
-					format:
-						{self name.
-						aBranch name}).
-		(remote := LGitRemote of: self repositoryHandle named: self name)
-			lookup;
-			fetchWithCredentials: (IceCredentialsProvider defaultForRemote: self) refSpec: refSpec ]
-			on: LGitAbstractError
-			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ] ]
+
+	| refSpec |
+	refSpec := LGitRefSpec fromString:
+		           ('{2}:refs/remotes/{1}/{2}' format: {
+				            self name.
+				            aBranch name }).
+
+	self doFetchWithRefSpec: refSpec
 ]
 
 { #category : #branches }
