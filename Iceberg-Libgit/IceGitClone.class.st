@@ -34,6 +34,8 @@ IceGitClone >> execute [
 	repo := LGitRepository on: location.
 	cloneOptions := repo cloneOptionsStructureClass withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
 
+	Iceberg configureLGitProxyOpt: cloneOptions fetchOptions proxyOptions.
+
 	"Keeping references, because if not the GC take them."
 	checkoutOptions := cloneOptions checkoutOptions.
 	callbacks := cloneOptions fetchOptions callbacks.
