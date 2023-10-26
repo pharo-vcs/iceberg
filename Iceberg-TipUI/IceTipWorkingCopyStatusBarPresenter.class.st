@@ -2,17 +2,19 @@
 I'm the status bar for a IceTipWorkingCopyBrowser.
 "
 Class {
-	#name : #IceTipWorkingCopyStatusBarPresenter,
-	#superclass : #SpPresenter,
+	#name : 'IceTipWorkingCopyStatusBarPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'branchLabel',
 		'commitLink',
 		'statusLabel'
 	],
-	#category : #'Iceberg-TipUI-View-WorkingCopy'
+	#category : 'Iceberg-TipUI-View-WorkingCopy',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-WorkingCopy'
 }
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipWorkingCopyStatusBarPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -25,20 +27,20 @@ IceTipWorkingCopyStatusBarPresenter class >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipWorkingCopyStatusBarPresenter >> canTakeKeyboardFocus [
 
 	^ false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyStatusBarPresenter >> initializePresenters [
 
 	branchLabel := self newLabel.
 	statusLabel := self newLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyStatusBarPresenter >> model: aModel [
 	"Fill labels from a IceTipWorkingCopyModel."
 
@@ -52,7 +54,7 @@ IceTipWorkingCopyStatusBarPresenter >> model: aModel [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyStatusBarPresenter >> refreshWithCommitId: aModel [
 
 	branchLabel label: ('{1} at ' format: { aModel branchName }).
@@ -64,7 +66,7 @@ IceTipWorkingCopyStatusBarPresenter >> refreshWithCommitId: aModel [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyStatusBarPresenter >> refreshWithoutCommitId: aModel [
 
 	branchLabel label: aModel branchName.

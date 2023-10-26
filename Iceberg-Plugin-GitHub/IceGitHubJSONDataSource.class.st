@@ -3,19 +3,21 @@ I'm a generic datasource to show in a table results of a JSON.
 I'm intended to be used to show information from GitHub API, but I'm generic enough to be used which any kind of JSON structure.
 "
 Class {
-	#name : #IceGitHubJSONDataSource,
-	#superclass : #FTSimpleDataSource,
-	#category : 'Iceberg-Plugin-GitHub-Utils'
+	#name : 'IceGitHubJSONDataSource',
+	#superclass : 'FTSimpleDataSource',
+	#category : 'Iceberg-Plugin-GitHub-Utils',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Utils'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubJSONDataSource >> actionColumn: column [
 	elements := elements sorted: [ :a :b |
 		(a at: column id) < (b at: column id) ]
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubJSONDataSource >> cellColumn: column row: rowIndex [ 
 	^ FTCellMorph new  
 		addMorphBack: ((self elementAt: rowIndex) at: column id) asStringMorph;
@@ -23,12 +25,12 @@ IceGitHubJSONDataSource >> cellColumn: column row: rowIndex [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubJSONDataSource >> columnTitleFor: column [
 	^ column id capitalized
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubJSONDataSource >> headerColumn: column [
 	column id ifNil: [ ^ nil ].
 

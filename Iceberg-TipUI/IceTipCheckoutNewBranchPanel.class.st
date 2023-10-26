@@ -2,8 +2,8 @@
 I'm a panel to create a new local branch 
 "
 Class {
-	#name : #IceTipCheckoutNewBranchPanel,
-	#superclass : #IceTipBranchPanel,
+	#name : 'IceTipCheckoutNewBranchPanel',
+	#superclass : 'IceTipBranchPanel',
 	#instVars : [
 		'currentBranchLabel',
 		'branchLabel',
@@ -11,40 +11,42 @@ Class {
 		'branchCommitish',
 		'callback'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchInputText [
 
 	^ branchInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> branchLabel [
 
 	^ branchLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchPanel >> branchName [
 
 	^ self branchInputText text asString trimBoth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchPanel >> commitish: anIceTipModel [
 	
 	branchCommitish := anIceTipModel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCheckoutNewBranchPanel >> currentBranchLabel [
 
 	^ currentBranchLabel
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCheckoutNewBranchPanel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -60,7 +62,7 @@ IceTipCheckoutNewBranchPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCheckoutNewBranchPanel >> doAccept [
 
 	(self model
@@ -72,26 +74,26 @@ IceTipCheckoutNewBranchPanel >> doAccept [
 		executeWithContext: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchPanel >> icon [
 
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutNewBranchPanel >> iconForWindow [
 
 	^ self icon
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutNewBranchPanel >> initializeCurrentBranchLabel [
 
 	currentBranchLabel := self newLabel
 		label: 'Current branch: ', self model branchName
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutNewBranchPanel >> initializePresenters [
 
 	self initializeCurrentBranchLabel.
@@ -103,13 +105,13 @@ IceTipCheckoutNewBranchPanel >> initializePresenters [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCheckoutNewBranchPanel >> isNewBranch [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchPanel >> openDialog [
 
 	^ self asDialogWindow
@@ -117,13 +119,13 @@ IceTipCheckoutNewBranchPanel >> openDialog [
 		  open
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutNewBranchPanel >> titleForWindow [
 
 	^ 'New branch'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchPanel >> validate [
 
 	self 
@@ -134,7 +136,7 @@ IceTipCheckoutNewBranchPanel >> validate [
 		description: 'You can''t have spaces in your branch name.'
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 IceTipCheckoutNewBranchPanel >> withResultDo: aBlockClosure [ 
 	
 	callback := aBlockClosure

@@ -1,25 +1,27 @@
 Class {
-	#name : #IceTipRemoteActionBrowser,
-	#superclass : #IceTipHistoryActionBrowser,
+	#name : 'IceTipRemoteActionBrowser',
+	#superclass : 'IceTipHistoryActionBrowser',
 	#instVars : [
 		'remotePanel',
 		'remoteLabel'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRemoteActionBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	"No commands to add"
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRemoteActionBrowser class >> onRepositoryModel: aRepository [
 	^ self subclassResponsibility
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRemoteActionBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -36,7 +38,7 @@ IceTipRemoteActionBrowser >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoteActionBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -51,7 +53,7 @@ IceTipRemoteActionBrowser >> initializePresenters [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoteActionBrowser >> initializeWindow: aWindow [
 
 	super initializeWindow: aWindow.
@@ -59,25 +61,25 @@ IceTipRemoteActionBrowser >> initializeWindow: aWindow [
 	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoteActionBrowser >> labelForRemotePanel [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoteActionBrowser >> mainList [
 
 	^ commitsPanel commitList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoteActionBrowser >> remotePanel [
 
 	^ remotePanel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoteActionBrowser >> remotePanel: aSpPresenter [
 
 	remotePanel := aSpPresenter

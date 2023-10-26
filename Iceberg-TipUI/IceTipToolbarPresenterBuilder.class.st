@@ -3,12 +3,14 @@ I'm a SpToolbarPresenterBuilder that delegates to the command the decision to ac
 
 "
 Class {
-	#name : #IceTipToolbarPresenterBuilder,
-	#superclass : #SpToolbarPresenterBuilder,
-	#category : #'Iceberg-TipUI-Spec2'
+	#name : 'IceTipToolbarPresenterBuilder',
+	#superclass : 'SpToolbarPresenterBuilder',
+	#category : 'Iceberg-TipUI-Spec2',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Spec2'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipToolbarPresenterBuilder >> visitCommand: anEntry [
 
 	anEntry ifVisible: [ super visitCommand: anEntry ]

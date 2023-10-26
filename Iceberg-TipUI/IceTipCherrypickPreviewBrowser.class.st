@@ -1,39 +1,41 @@
 Class {
-	#name : #IceTipCherrypickPreviewBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipCherrypickPreviewBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'diffPanel',
 		'buttonBar'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCherrypickPreviewBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCherrypickPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCherrypickPreviewBrowser class >> onCommitish: aCommitish [
 	^ self
 		on:
 			(IceTipCherrypickModel onCommitish: aCommitish)
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> buttonBar [
 
 	^ buttonBar
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCherrypickPreviewBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -42,13 +44,13 @@ IceTipCherrypickPreviewBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> diffPanel [
 
 	^ diffPanel
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCherrypickPreviewBrowser >> doCherryPick [
 
 	| root |
@@ -58,13 +60,13 @@ IceTipCherrypickPreviewBrowser >> doCherryPick [
 	self closeWindow
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCherrypickPreviewBrowser >> initialExtentForWindow [
 
 	^ (800 @ 600) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCherrypickPreviewBrowser >> initializePresenters [
 
 	diffPanel := self
@@ -76,20 +78,20 @@ IceTipCherrypickPreviewBrowser >> initializePresenters [
 	diffPanel rightLabel: ' With Cherrypicked commit '
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCherrypickPreviewBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ diffPanel iceNodesTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickPreviewBrowser >> mergeType: anObject [
 	
 	self model mergeType: anObject
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipCherrypickPreviewBrowser >> newActionButton [
 
 	^ self newButton
@@ -100,7 +102,7 @@ IceTipCherrypickPreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCherrypickPreviewBrowser >> titleForWindow [
 
 	^ 'Preview result of Cherrypick'

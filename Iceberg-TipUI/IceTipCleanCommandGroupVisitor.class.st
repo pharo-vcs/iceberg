@@ -3,18 +3,20 @@ I'm a CmVisitor that in one hand, tells each command to be hidden if it can't be
 
 "
 Class {
-	#name : #IceTipCleanCommandGroupVisitor,
-	#superclass : #CmVisitor,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCleanCommandGroupVisitor',
+	#superclass : 'CmVisitor',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipCleanCommandGroupVisitor >> visitCommand: aCmCommand [
 	
 	aCmCommand beHiddenWhenCantBeRun
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTipCleanCommandGroupVisitor >> visitCommandGroup: aCmCommandsGroup [
 
 	super visitCommandGroup: aCmCommandsGroup.

@@ -1,6 +1,6 @@
-Extension { #name : #IceTokenCredentials }
+Extension { #name : 'IceTokenCredentials' }
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTokenCredentials >> applyToRequest: aRequest [
 
 	token ifNil: [ ^ self ].
@@ -10,13 +10,13 @@ IceTokenCredentials >> applyToRequest: aRequest [
 		put: self authorizationHeaderValue
 ]
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTokenCredentials >> authorizationHeaderKey [
 
 	^ 'Authorization'
 ]
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTokenCredentials >> authorizationHeaderValue [
 
 	^ 'Bearer ' , token

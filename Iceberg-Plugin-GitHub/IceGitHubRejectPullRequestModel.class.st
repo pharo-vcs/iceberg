@@ -2,18 +2,20 @@
 I'm a dialog to collect data about a pull request rejection.
 "
 Class {
-	#name : #IceGitHubRejectPullRequestModel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceGitHubRejectPullRequestModel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'messageLabel',
 		'messageText',
 		'acceptButton',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubRejectPullRequestModel >> accept [
 
 	acceptBlock ifNotNil: [ acceptBlock cull: self ].
@@ -21,19 +23,19 @@ IceGitHubRejectPullRequestModel >> accept [
 	self closeWindow
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubRejectPullRequestModel >> acceptButton [
 
 	^ acceptButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRejectPullRequestModel >> availableTypes [
 
 	^ #( 'merge' 'squash' 'rebase' )
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubRejectPullRequestModel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -44,19 +46,19 @@ IceGitHubRejectPullRequestModel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRejectPullRequestModel >> defaultType [
 
 	^ 'merge'
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 IceGitHubRejectPullRequestModel >> initialExtentForWindow [
 
 	^ (500 @ 250) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRejectPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
@@ -68,7 +70,7 @@ IceGitHubRejectPullRequestModel >> initializeDialogWindow: aDialogWindowPresente
 			presenter close ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRejectPullRequestModel >> initializePresenters [
 
 	super initializePresenters.
@@ -84,13 +86,13 @@ IceGitHubRejectPullRequestModel >> initializePresenters [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRejectPullRequestModel >> message [
 
 	^ self messageText text asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRejectPullRequestModel >> messageGhostText [
 
 	^ 'Commit title
@@ -98,25 +100,25 @@ IceGitHubRejectPullRequestModel >> messageGhostText [
 Add an optional extented description'
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubRejectPullRequestModel >> messageLabel [
 
 	^ messageLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubRejectPullRequestModel >> messageText [
 
 	^ messageText
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceGitHubRejectPullRequestModel >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceGitHubRejectPullRequestModel >> titleForWindow [
 
 	^ 'Reject pull request'
