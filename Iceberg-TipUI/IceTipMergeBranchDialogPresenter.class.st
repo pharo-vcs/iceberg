@@ -37,22 +37,20 @@ IceTipMergeBranchDialogPresenter >> beSwitchAndMerge [
 IceTipMergeBranchDialogPresenter >> createMergeBranchTypes [
 
 	| allTypes |
-	"Collect types local+remotes"	
-	allTypes :=  { 
-	 	(IceTipMergeBranchPanel on: self model) 
-			titleForWindow: 'Local';
-			withoutHead;
-			icon: (self iconNamed: #branch);
-			yourself }, 
-	(self model remoteModels collect: [ :each | 
-		(IceTipMergeBranchPanel on: each)
-			titleForWindow: each name;
-			icon: (self iconNamed: #remote);
-			yourself ]).
-	
+	"Collect types local+remotes"
+	allTypes := { ((IceTipMergeBranchPanel on: self model)
+		             titleForWindow: 'Local';
+		             icon: (self iconNamed: #branch);
+		             yourself) }
+	            , (self model remoteModels collect: [ :each |
+			             (IceTipMergeBranchPanel on: each)
+				             titleForWindow: each name;
+				             icon: (self iconNamed: #remote);
+				             yourself ]).
+
 	"Doing this because I can trigger the accept inside the panels."
 	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
-	
+
 	^ allTypes
 ]
 
