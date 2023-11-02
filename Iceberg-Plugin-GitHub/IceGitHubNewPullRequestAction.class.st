@@ -58,7 +58,7 @@ IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 
 	| status |
 	status := OrderedCollection new: 2.
-	aRepository isModified ifTrue: [ status add: 'Uncommited changes' ].
+	aRepository isModified ifTrue: [ status add: 'Uncommitted changes' ].
 	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits |
 		'{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].

@@ -114,7 +114,7 @@ IceTipPackageModel >> status [
 	[
 		self entity repository isMissing ifTrue: [ ^ 'Local repository missing' ].
 		self entity isLoaded ifFalse: [ ^ 'Not loaded' ].
-		self entity isModified ifTrue: [ ^ 'Uncommited changes' ].
+		self entity isModified ifTrue: [ ^ 'Uncommitted changes' ].
 		^ 'Up to date' ] 
 	on: Error do: [ :e | 
 		^ e description ]
