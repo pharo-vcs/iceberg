@@ -327,7 +327,7 @@ IceGitMergeTest >> testMergeWithMissingProjectFile [
 	fileRef := self repository location / 'test1.txt'.
 	fileRef writeStreamDo: [ :stream | stream << 'test1' ].
 	self repository index addPath: (fileRef relativeTo: self repository location).
-	self repository commitWithMessage: 'commiting something'.
+	self repository commitWithMessage: 'committing something'.
 	incomingBranch := self repository branch.
 	
 	self repository checkoutBranch: 'master'.	

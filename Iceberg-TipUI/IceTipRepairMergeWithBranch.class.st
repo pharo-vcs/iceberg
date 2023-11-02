@@ -18,7 +18,7 @@ This will not lose any change in the image but may lead to conflicts. If there a
 
 This situation happens because loaded code in your image is from a different commit than the current commit (HEAD) in the repository.
 
-This operation will modify the state of your working copy in disk, the checkouted branch will replace the disk working copy. All non-commited changes in your disk working copy will be lost. If you want to keep them, perform a commit from outside before.'
+This operation will modify the state of your working copy in disk, the checkouted branch will replace the disk working copy. All non-committed changes in your disk working copy will be lost. If you want to keep them, perform a commit from outside before.'
 ]
 
 { #category : #accessing }

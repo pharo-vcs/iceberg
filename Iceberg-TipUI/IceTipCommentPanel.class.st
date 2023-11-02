@@ -85,14 +85,14 @@ IceTipCommentPanel >> initializePresenters [
 		add: (self newToolbarToggleButton
 			icon: (self application iconNamed: #smallSave);
 			label: 'Save image';
-			help: 'Save image when commiting';
+			help: 'Save image when committing';
 			state: self isSaving;
 			whenChangedDo: [ :aBoolean | self saveOnCommit: aBoolean ];
 			yourself);
 		add: (self newToolbarToggleButton
 			icon: (self application iconNamed: #smallError);
 			label: 'Run critics';
-			help: 'Run critics when commiting';
+			help: 'Run critics when committing';
 			state: self isRunningCriticsOnCommit;
 			whenChangedDo: [ :aBoolean | self runCriticsOnCommit: aBoolean ];
 			yourself);
@@ -113,7 +113,7 @@ IceTipCommentPanel >> initializePresenters [
 		placeholder: 'A comment for your commit';
 		yourself.
 
-	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be commited or merged in the default branch'.
+	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
 	fixesLabel := self newLabel
 		label: 'Fixes #';
 		help: fixesHelpString;
