@@ -2,12 +2,14 @@
 I resolve Gilab repositories
 "
 Class {
-	#name : #IceGitlabRepositoryType,
-	#superclass : #IceProviderRepositoryType,
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#name : 'IceGitlabRepositoryType',
+	#superclass : 'IceProviderRepositoryType',
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitlabRepositoryType class >> type [
 	^ 'gitlab'
 ]

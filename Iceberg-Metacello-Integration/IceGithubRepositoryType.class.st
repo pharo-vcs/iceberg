@@ -2,17 +2,19 @@
 I resolve Github repositories
 "
 Class {
-	#name : #IceGithubRepositoryType,
-	#superclass : #IceProviderRepositoryType,
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#name : 'IceGithubRepositoryType',
+	#superclass : 'IceProviderRepositoryType',
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGithubRepositoryType class >> type [
 	^ 'github'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGithubRepositoryType >> mcRepository [
 	| baseRepo |
 	
