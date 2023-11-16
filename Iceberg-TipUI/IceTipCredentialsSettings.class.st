@@ -1,26 +1,28 @@
 Class {
-	#name : #IceTipCredentialsSettings,
-	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Credentials'
+	#name : 'IceTipCredentialsSettings',
+	#superclass : 'Object',
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCredentialsSettings class >> editButtonAction [
 
 	IceTipCredentialsStoreBrowser new open.
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCredentialsSettings class >> editButtonLabel [
 	^ 'Edit'
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCredentialsSettings class >> editButtonState [
 	^ true
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCredentialsSettings class >> settingsOn: aBuilder [
 	<systemsettings>
 

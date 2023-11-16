@@ -1,19 +1,21 @@
 Trait {
-	#name : #TWithBranchModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'TWithBranchModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #branches }
+{ #category : 'branches' }
 TWithBranchModel >> branchModels [
 	^ self branches collect: [ :each | (IceTipBranchModel repositoryModel: self repositoryModel on: each) beCached ]
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 TWithBranchModel >> branches [
 	^ self explicitRequirement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TWithBranchModel >> defaultBranchSelection [
 	^ self branchModels
 		detect: #isHead
@@ -21,12 +23,12 @@ TWithBranchModel >> defaultBranchSelection [
 				ifTrue: [ self branchModels ifNotEmpty: #anyOne ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TWithBranchModel >> hasBranches [ 
 	^ self branches isNotEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TWithBranchModel >> repositoryModel [ 
 	^ self explicitRequirement
 ]

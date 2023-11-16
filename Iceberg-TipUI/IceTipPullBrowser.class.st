@@ -3,18 +3,20 @@ I perform a pull of incoming commits.
 
 "
 Class {
-	#name : #IceTipPullBrowser,
-	#superclass : #IceTipRemoteActionBrowser,
-	#category : #'Iceberg-TipUI-View-Repository'
+	#name : 'IceTipPullBrowser',
+	#superclass : 'IceTipRemoteActionBrowser',
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipPullBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipFetchInPullCommand forSpec
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipPullBrowser class >> onRepositoryModel: aModel [
 
 	^ self on: (IceTipPullModel 
@@ -24,20 +26,20 @@ IceTipPullBrowser class >> onRepositoryModel: aModel [
 
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPullBrowser >> doPull [
 
 	self model newPullAction executeWithContext: self.
 	self closeWindow
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipPullBrowser >> labelForRemotePanel [
 
 	^ 'Pull from remote'
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipPullBrowser >> newActionButton [
 
 	^ self newButton
@@ -49,7 +51,7 @@ IceTipPullBrowser >> newActionButton [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipPullBrowser >> titleForWindow [
 
 	^ 'Pull {1}/{2} from {3}' format: { 

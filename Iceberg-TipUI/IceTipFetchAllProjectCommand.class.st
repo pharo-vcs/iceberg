@@ -2,31 +2,33 @@
 I'm a command to perform a fetch operation on all registered projects.
 "
 Class {
-	#name : #IceTipFetchAllProjectCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipFetchAllProjectCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchAllProjectCommand class >> defaultDescription [
 
 	^ 'Fetch (bring new commits) from all repositories in your list.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchAllProjectCommand class >> defaultName [
 
 	^ 'Fetch all'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipFetchAllProjectCommand >> canBeExecuted [ 
 	
 	"This command can be executed with our without selection"
 	^ true
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipFetchAllProjectCommand >> execute [
 
 	| repositories |
@@ -47,13 +49,13 @@ IceTipFetchAllProjectCommand >> execute [
 	Iceberg announcer announce: IceRepositoryModified new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFetchAllProjectCommand >> iconName [
 
 	^ #smallUpdate
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipFetchAllProjectCommand >> isConfirmed [
 
 	^ self application newConfirm

@@ -4,23 +4,25 @@ Repository groups are taken from tags added to the repository metadata (usually 
 NOTICE: first tag will be taken as the group.
 "
 Class {
-	#name : #IceTipRepositoryGroupModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipRepositoryGroupModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'repositoryProvider',
 		'repositories',
 		'group'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel class >> defaultLabel [
 
 	^ 'Projects'
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 IceTipRepositoryGroupModel >> containsRepository: aRepository [
 	
 	(self group isEmpty and: [ aRepository project tags isEmpty ])
@@ -29,19 +31,19 @@ IceTipRepositoryGroupModel >> containsRepository: aRepository [
 	^ aRepository project tags includes: self group
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel >> group [
 
 	^ group
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel >> group: aGroup [
 
 	group := aGroup
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel >> label [
 	
 	^ self group 
@@ -49,7 +51,7 @@ IceTipRepositoryGroupModel >> label [
 		ifEmpty: [ self class defaultLabel ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel >> repositories [
 	
 	^ repositories := repositoryProvider repositories 
@@ -57,7 +59,7 @@ IceTipRepositoryGroupModel >> repositories [
 		thenCollect: [ :each | (IceTipRepositoryModel on: each) beCached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupModel >> repositoryProvider: aProvider [
 
 	repositoryProvider := aProvider

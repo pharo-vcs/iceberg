@@ -2,41 +2,43 @@
 I'm like a lightweight command, used in general for apply concrete actions. 
 "
 Class {
-	#name : #IceTipAction,
-	#superclass : #Object,
+	#name : 'IceTipAction',
+	#superclass : 'Object',
 	#instVars : [
 		'context',
 		'repository',
 		'successBlock'
 	],
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAction class >> isAbstract [
 
 	^ self == IceTipAction
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAction >> basicExecute [
 	self subclassResponsibility
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAction >> context [
 
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAction >> context: aContext [
 
 	context := aContext
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAction >> execute [
 
 	| result |
@@ -48,19 +50,19 @@ IceTipAction >> execute [
 	^ result.
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAction >> executeWithContext: aContext [
 
 	self context: aContext.
 	^ self execute
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipAction >> finishSuccess [
 	successBlock ifNotNil: [ successBlock value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAction >> onSuccess: aBlock [ 
 	"Some actions need to execute something right after finish. Like a refresh of panels, etc.
 	 If a block is defined here, it will be evaluated right after the command is executed, if 
@@ -68,17 +70,17 @@ IceTipAction >> onSuccess: aBlock [
 	successBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAction >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAction >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipAction >> withErrorHandlingDo: aBlock [
 	aBlock
 	on: IceError, IceWarning

@@ -2,24 +2,26 @@
 Command that launches a refresh of the commit tree during commit
 "
 Class {
-	#name : #IceTipRefreshCommitCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRefreshCommitCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRefreshCommitCommand class >> defaultDescription [
 
 	^ 'Refresh this change tree'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRefreshCommitCommand class >> defaultName [
 
 	^ 'Refresh'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRefreshCommitCommand >> execute [
 
 	self repositoryModel reset.
@@ -28,13 +30,13 @@ IceTipRefreshCommitCommand >> execute [
 	self toolAnnouncer announce: (IceTipDiffRefreshed for: self repository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRefreshCommitCommand >> iconName [
 
 	^ #glamorousRefresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRefreshCommitCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

@@ -2,42 +2,44 @@
 Command that fetches from remote repositories
 "
 Class {
-	#name : #IceTipFetchRemoteCommand,
-	#superclass : #IceTipRemotesTreeCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipFetchRemoteCommand',
+	#superclass : 'IceTipRemotesTreeCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchRemoteCommand class >> defaultDescription [
 
 	^ 'Fetch commits from this remote'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchRemoteCommand class >> defaultName [
 
 	^ 'Fetch remote'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipFetchRemoteCommand >> actsOnRemote: aRemoteModel [
 
 	^ true
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipFetchRemoteCommand >> execute [
 
 	self remoteModel fetch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFetchRemoteCommand >> iconName [
 
 	^ #smallUpdate
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipFetchRemoteCommand >> remoteModel [
 
 	^ self item

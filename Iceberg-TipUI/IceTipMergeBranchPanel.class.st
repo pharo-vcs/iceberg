@@ -2,21 +2,23 @@
 I'm a panel to peform the merge of an existing branch.
 "
 Class {
-	#name : #IceTipMergeBranchPanel,
-	#superclass : #IceTipExistingBranchPanel,
+	#name : 'IceTipMergeBranchPanel',
+	#superclass : 'IceTipExistingBranchPanel',
 	#instVars : [
 		'mergeType'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchPanel >> beSwitchAndMerge [
 
 	self mergeType: IceTipMergeType switchAndMerge
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergeBranchPanel >> doAccept [
 
 	IceTipStandardAction new
@@ -27,19 +29,19 @@ IceTipMergeBranchPanel >> doAccept [
 		executeWithContext: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchPanel >> mergeType [
 
 	^ mergeType ifNil: [ IceTipMergeType default ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchPanel >> mergeType: anObject [
 
 	mergeType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeBranchPanel >> withoutHead [
 
 	self branchesList items: (self branchModels reject: #isHead).

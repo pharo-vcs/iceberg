@@ -2,42 +2,44 @@
 I'm a model for IceCommit entries. 
 "
 Class {
-	#name : #IceTipCommitModel,
-	#superclass : #IceTipCommitishModel,
+	#name : 'IceTipCommitModel',
+	#superclass : 'IceTipCommitishModel',
 	#traits : 'TIceCopyCommitId',
 	#classTraits : 'TIceCopyCommitId classTrait',
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceTipCommitModel >> adopt [
 	
 	self entity adopt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> ancestorShortId [
 	^ self entity ancestors first shortId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> ancestorShortIdOrOrigin [
 	^ self entity ancestors 
 		ifNotEmpty: [ self ancestorShortId ]
 		ifEmpty: [ 'Origin' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> ancestors [
 	^ self entity ancestors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> author [
 	^ self entity author
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitModel >> calculateDiff: aBlock [
 	| diff |
 	
@@ -50,18 +52,18 @@ IceTipCommitModel >> calculateDiff: aBlock [
 	^ diff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> comment [
 	^ self entity comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> commit [
 	
 	^ self entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> commitModels [
 	| commits |
 	commits := OrderedCollection new.
@@ -73,18 +75,18 @@ IceTipCommitModel >> commitModels [
 	^ commits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> datetime [
 	^ self entity datetime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> description [
 
 	^ self entity comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> diffFromFirstAncestor [
 	| diff ancestorCommit |
 	
@@ -97,7 +99,7 @@ IceTipCommitModel >> diffFromFirstAncestor [
 		on: diff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> diffFromHead [
 	| head diff |
 	
@@ -108,7 +110,7 @@ IceTipCommitModel >> diffFromHead [
 		on: diff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> diffToFirstAncestor [
 	| diff ancestorCommit |
 	
@@ -121,7 +123,7 @@ IceTipCommitModel >> diffToFirstAncestor [
 		on: diff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> diffToHead [
 	| head diff |
 	
@@ -132,7 +134,7 @@ IceTipCommitModel >> diffToHead [
 		on: diff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> diffToWorkingCopy [
 	| diff |
 	diff := self calculateDiff: [ self entity diffToWorkingCopy ].
@@ -141,18 +143,18 @@ IceTipCommitModel >> diffToWorkingCopy [
 		on: diff
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommitModel >> hasMultipleAncestors [
 	
 	^ self entity hasMultipleAncestors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> id [
 	^ self entity id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> info [
 	^ {('Commit:' -> ('[' , self shortId , '] ' , self id)).
 	('Parents:' -> (self entity ancestors collect: #shortId) asCommaString).
@@ -162,12 +164,12 @@ IceTipCommitModel >> info [
 	('Comment:' -> self entity comment)}
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommitModel >> isMerged [
 	^ self entity isMerged
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitModel >> mergeHistoryFromAncestor: anIceGitCommit [ 
 	^ (IceTipCommitRangeModel 
 		repositoryModel: self repositoryModel 
@@ -176,44 +178,44 @@ IceTipCommitModel >> mergeHistoryFromAncestor: anIceGitCommit [
 		beCached
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitModel >> mergeHistoryFromSecondAncestor [
 	<noCache>
 	
 	^ self mergeHistoryFromAncestor: self entity ancestors second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> name [
 	
 	^ self entity description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> shortId [
 
 	^ self entity shortId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> tagDecorator [
 	
 	^ IceTipTagDecorator uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> tagNames [
 
 	^ self entity tagNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> tagsDescription [
 
 	^ ', ' join: self tagNames 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitModel >> timeStamp [
 	^ self entity timeStamp
 ]

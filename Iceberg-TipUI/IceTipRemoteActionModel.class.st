@@ -1,24 +1,26 @@
 Class {
-	#name : #IceTipRemoteActionModel,
-	#superclass : #IceTipCommitishModel,
+	#name : 'IceTipRemoteActionModel',
+	#superclass : 'IceTipCommitishModel',
 	#instVars : [
 		'remote'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> branchName [
 	^ entity branchName
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemoteActionModel >> isRepositoryDetached [
 	^ self entity workingCopy isDetached 
 		or: [ self entity head isDetached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> remote [
 	^ remote ifNil: [ | head |
 		head := self repositoryModel entity head.
@@ -27,27 +29,27 @@ IceTipRemoteActionModel >> remote [
 				ifFalse: [ self remoteModels first entity ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> remoteModel [
 	^ repositoryModel remoteModels detect: [ :e | e entity = self remote ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> remoteModels [
 	^ self repositoryModel remoteModels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> remoteName [
 	^ self remote name, '/', self entity branch name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> repositoryName [
 	^ self repositoryModel name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoteActionModel >> useRemote: aRemoteModel [
 	remote := aRemoteModel entity.
 ]

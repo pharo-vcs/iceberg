@@ -2,51 +2,53 @@
 I'm a model to for IceWorkingCopy entries.
 "
 Class {
-	#name : #IceTipWorkingCopyModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipWorkingCopyModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'sortingStrategy',
 		'repositoryModel'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipWorkingCopyModel class >> new [
 	self error: 'use #for:'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipWorkingCopyModel class >> on: aRepositoryModel [ 
 	^ self basicNew 
 		initializeRepositoryModel: aRepositoryModel;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> branchName [
 	^ self repositoryModel branchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> commitId [
 	^ repositoryModel commitId
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipWorkingCopyModel >> copyCommitIDToClipboard [
 	<noCache>
 
 	repositoryModel copyCommitIDToClipboard
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyModel >> initializeRepositoryModel: aRepositoryModel [
 	repositoryModel := aRepositoryModel.
 	self initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> packageModels [
 	^ self sortingStrategy sort: (self repositoryModel entity workingCopy packages 
 		collect: [ :each | 
@@ -56,37 +58,37 @@ IceTipWorkingCopyModel >> packageModels [
 				beCached ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> repositoryName [
 	^ self repositoryModel name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> reset [
 	self repositoryModel reset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> shortCommitId [
 	^ repositoryModel shortCommitId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> sortingStrategy [
 	^ sortingStrategy ifNil: [ sortingStrategy := IceSortingStrategy new first: #modified ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> status [
 	^ self repositoryModel status
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> statusDecorator [
 
 	^ self repositoryModel statusDecorator

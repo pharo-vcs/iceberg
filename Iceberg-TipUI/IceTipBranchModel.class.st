@@ -2,17 +2,19 @@
 I expose data of a branch.
 "
 Class {
-	#name : #IceTipBranchModel,
-	#superclass : #IceTipCommitishModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipBranchModel',
+	#superclass : 'IceTipCommitishModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> checkoutStrategies [
 	^ IceCheckoutStrategy allStrategies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> commitModels [
 	| commits |
 	commits := OrderedCollection new.
@@ -24,12 +26,12 @@ IceTipBranchModel >> commitModels [
 	^ commits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> commits [
 	self shouldBeImplemented.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> description [
 
 	^ self entity isRemote 
@@ -37,49 +39,49 @@ IceTipBranchModel >> description [
 		ifFalse: [ self name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> descriptionDecorator [
 		
 	self entity isHead ifTrue: [ ^ IceTipDescriptionDecorator head ].
 	^ super descriptionDecorator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> diffFromHead [
 	| commitModel |
 	commitModel := IceTipCommitModel on: self entity commit.
 	^ commitModel diffFromHead
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> diffToWorkingCopy [
 	| commitModel |
 	commitModel := IceTipCommitModel on: self entity commit.
 	^ commitModel diffToWorkingCopy
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipBranchModel >> hasUpstream [
 	
 	^ entity hasUpstream
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipBranchModel >> isHead [
 	^ self entity isHead
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipBranchModel >> isLocal [
 	^ self entity isLocal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> name [
 	^ self entity name
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
 	<noCache>
 	
@@ -91,7 +93,7 @@ IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> newDeleteAction [
 	<noCache>
 	
@@ -103,7 +105,7 @@ IceTipBranchModel >> newDeleteAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> newDirectMergeAction [
 	<noCache>
 
@@ -115,7 +117,7 @@ IceTipBranchModel >> newDirectMergeAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> newSwitchAndMergeAction [
 	<noCache>
 
@@ -127,7 +129,7 @@ IceTipBranchModel >> newSwitchAndMergeAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> previewCheckout [
 
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
@@ -137,7 +139,7 @@ IceTipBranchModel >> previewCheckout [
 	(IceTipCheckoutPreviewBrowser onBranch: self) open
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipBranchModel >> previewMerge: aMergeType [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
@@ -147,7 +149,7 @@ IceTipBranchModel >> previewMerge: aMergeType [
 		open
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTipBranchModel >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -156,12 +158,12 @@ IceTipBranchModel >> printOn: aStream [
 		nextPut: $]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBranchModel >> repositoryName [
 	^ self repositoryModel name
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceTipBranchModel >> resetToCommit: anIceTipCachedModel [ 
 	
 	entity resetToCommit: anIceTipCachedModel entity

@@ -2,8 +2,8 @@
 I am a dialog to add token credentials.
 "
 Class {
-	#name : #IceTipAddTokenCredentialsPresenter,
-	#superclass : #IceTipAbstractCredentialsPresenter,
+	#name : 'IceTipAddTokenCredentialsPresenter',
+	#superclass : 'IceTipAbstractCredentialsPresenter',
 	#instVars : [
 		'hostInput',
 		'tokenInput',
@@ -12,16 +12,18 @@ Class {
 		'usernameInput',
 		'usernameLabel'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddTokenCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddTokenCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -36,19 +38,19 @@ IceTipAddTokenCredentialsPresenter >> defaultLayout [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddTokenCredentialsPresenter >> hostnameFromInput [
 	
 	^ hostInput text
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddTokenCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddTokenCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -80,7 +82,7 @@ IceTipAddTokenCredentialsPresenter >> initializePresenters [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddTokenCredentialsPresenter >> isOkEnabled [
 
 	^ self usernameFromInput isNotEmpty and: [ 
@@ -88,7 +90,7 @@ IceTipAddTokenCredentialsPresenter >> isOkEnabled [
 			  self tokenFromInput isNotEmpty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddTokenCredentialsPresenter >> newCredentials [
 	
 	^ IceTokenCredentials new
@@ -98,19 +100,19 @@ IceTipAddTokenCredentialsPresenter >> newCredentials [
 		yourself 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddTokenCredentialsPresenter >> titleForWindow [
 
 	^ 'Add token credentials'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddTokenCredentialsPresenter >> tokenFromInput [
 	
 	^ tokenInput text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddTokenCredentialsPresenter >> usernameFromInput [
 	
 	^ usernameInput text

@@ -6,12 +6,14 @@ matches if:
 
 "
 Class {
-	#name : #IceTipRepairFetchRemoteBranch,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairFetchRemoteBranch',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairFetchRemoteBranch class >> help [
 	^ 'You can fetch commits from a remote to find your image commit in your repository.
 This will not lose any change in the image or the repository.
@@ -23,12 +25,12 @@ After doing the fetch, it is required to create a new branch to commit into the 
 A second repair action will help you.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairFetchRemoteBranch class >> icon [
 	^ self iconNamed: #smallUpdate
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairFetchRemoteBranch class >> isAvailableFor: aRepository [
 	"matches if: 
 		- workingCopy referenceCommit isUnknownCommit"
@@ -37,24 +39,24 @@ IceTipRepairFetchRemoteBranch class >> isAvailableFor: aRepository [
 		and: [ aRepository workingCopy referenceCommit isUnknownCommit ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairFetchRemoteBranch class >> order [
 	^ 15
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairFetchRemoteBranch class >> title [
 	^ 'Fetch remote commits including the commits of the image version'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairFetchRemoteBranch >> basicExecute [
 	"Fetching remotes is necessary in case the current image commit is not in the repository.
 	Could be optimized"
 	self fetchAllRemotes
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairFetchRemoteBranch >> finishSuccess [
 	super finishSuccess.
 	Iceberg announcer announce: (IceRepositoryModified for: self repository)

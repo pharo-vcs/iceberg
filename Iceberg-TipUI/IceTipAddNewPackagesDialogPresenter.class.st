@@ -2,8 +2,8 @@
 I am an small dialog to ask the user to select new packages to load. New packages are packages in the commit but not in the image.
 "
 Class {
-	#name : #IceTipAddNewPackagesDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipAddNewPackagesDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'packagesList',
 		'selectedPackages',
@@ -12,10 +12,12 @@ Class {
 		'checkoutModel',
 		'checkoutPreviewWindow'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipAddNewPackagesDialogPresenter class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
 
 	rootCommandGroup register:
@@ -25,7 +27,7 @@ IceTipAddNewPackagesDialogPresenter class >> buildCommandsGroupWith: presenterIn
 			 yourself)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipAddNewPackagesDialogPresenter >> accept [
 
 	| selectedPackageNames |
@@ -42,19 +44,19 @@ IceTipAddNewPackagesDialogPresenter >> accept [
 		executeWithContext: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddNewPackagesDialogPresenter >> checkoutModel: anIceTipCheckoutModel [ 
 	
 	checkoutModel := anIceTipCheckoutModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddNewPackagesDialogPresenter >> checkoutPreviewWindow: anIceTipCheckoutPreviewBrowser [ 
 	
 	checkoutPreviewWindow := anIceTipCheckoutPreviewBrowser 
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddNewPackagesDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -63,13 +65,13 @@ IceTipAddNewPackagesDialogPresenter >> defaultLayout [
 			yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddNewPackagesDialogPresenter >> iconForWindow [
 
 	^ self iconNamed: #branch
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddNewPackagesDialogPresenter >> initializePackagesList [
 
 	packagesList
@@ -90,7 +92,7 @@ IceTipAddNewPackagesDialogPresenter >> initializePackagesList [
 		contextMenu: [ (self rootCommandsGroup / 'package list commands') beRoot asMenuPresenter ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddNewPackagesDialogPresenter >> initializePresenters [
 
 	selectedPackages := OrderedCollection new.
@@ -108,49 +110,49 @@ Please select the packages if you wish to load them in the image'.
 	self initializePackagesList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddNewPackagesDialogPresenter >> packagesList [
 
 	^ packagesList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddNewPackagesDialogPresenter >> selectedPackage [
 
 	^ packagesList selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddNewPackagesDialogPresenter >> selectedPackages [
 
 	^ selectedPackages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddNewPackagesDialogPresenter >> selectedPackages: anObject [
 
 	selectedPackages := anObject
 ]
 
-{ #category : #'accessing - model' }
+{ #category : 'accessing - model' }
 IceTipAddNewPackagesDialogPresenter >> setModelBeforeInitialization: somePackages [
 
 	packages := somePackages
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddNewPackagesDialogPresenter >> titleForWindow [ 
 
 	^ 'Select New Packages to Load'.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddNewPackagesDialogPresenter >> updatePresenter [
 
 	packagesList items: packages
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 IceTipAddNewPackagesDialogPresenter >> validate [
 
 	self

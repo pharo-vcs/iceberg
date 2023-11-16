@@ -2,30 +2,32 @@
 I open a the commit window, with all latest changes.
 "
 Class {
-	#name : #IceTipCommitCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCommitCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCommitCommand class >> defaultDescription [
 
 	^ 'Commit changes to this repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCommitCommand class >> defaultName [
 
 	^ 'Commit'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommitCommand >> canBeExecuted [
 
 	^ self isRepositoryOperational
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCommitCommand >> execute [
 
 	(IceTipCommitBrowser 
@@ -34,13 +36,13 @@ IceTipCommitCommand >> execute [
 		open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitCommand >> iconName [
 
 	^ #smallOk
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitCommand >> shortcutKey [
 
 	^ $s meta
