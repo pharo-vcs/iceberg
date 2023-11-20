@@ -1,29 +1,31 @@
 Class {
-	#name : #IceTipFetchInPullCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipFetchInPullCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchInPullCommand class >> defaultDescription [
 
 	^ 'Fetch from the selected remote'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipFetchInPullCommand class >> defaultName [
 
 	^ 'Fetch'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipFetchInPullCommand >> execute [
 
 	context model remoteModel newFetchAction executeWithContext: self context
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFetchInPullCommand >> iconName [
 
 	^ #smallUpdate

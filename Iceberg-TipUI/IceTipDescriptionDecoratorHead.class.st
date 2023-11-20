@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTipDescriptionDecoratorHead,
-	#superclass : #IceTipDescriptionDecorator,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipDescriptionDecoratorHead',
+	#superclass : 'IceTipDescriptionDecorator',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipDescriptionDecoratorHead >> isBold [
 
 	^ true

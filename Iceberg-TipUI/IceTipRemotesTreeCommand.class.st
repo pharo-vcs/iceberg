@@ -2,36 +2,38 @@
 I'm a the abstract superclass of commands that act on repositories. 
 "
 Class {
-	#name : #IceTipRemotesTreeCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRemotesTreeCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemotesTreeCommand class >> isAbstract [
 
 	^ self == IceTipRemotesTreeCommand
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemotesTreeCommand >> actsOnBranch: aBranchModel [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemotesTreeCommand >> actsOnRemote: aRemoteModel [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemotesTreeCommand >> actsOnTag: aTagModel [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRemotesTreeCommand >> canBeExecuted [
 
 	^ self hasSelectedItem and: [ self item canActivateCommand: self ]

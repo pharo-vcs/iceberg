@@ -1,28 +1,30 @@
 Class {
-	#name : #IceGitHubNewBranchFromIssueCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubNewBranchFromIssueCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubNewBranchFromIssueCommand class >> defaultName [
 
 	^ 'Create new branch for issue...'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubNewBranchFromIssueCommand class >> defaultToolbarItemName [
 
 	^ 'New issue'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubNewBranchFromIssueCommand >> canBeExecuted [ 
 
 	^ self repositoryModel isNotNil
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubNewBranchFromIssueCommand >> execute [
 
 	(IceTipCheckoutBranchDialog on: self repositoryModel)
@@ -30,13 +32,13 @@ IceGitHubNewBranchFromIssueCommand >> execute [
 		openDialog
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubNewBranchFromIssueCommand >> iconName [
 
 	^ #github
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubNewBranchFromIssueCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

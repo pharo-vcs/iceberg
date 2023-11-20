@@ -1,16 +1,18 @@
 Class {
-	#name : #IceTipRemoveRepositoryDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipRemoveRepositoryDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'model',
 		'iconPanel',
 		'confirmLabel',
 		'removeFileSystemCheckbox'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRemoveRepositoryDialogPresenter >> accept [
 
 	(self removeFileSystemCheckbox state
@@ -19,18 +21,18 @@ IceTipRemoveRepositoryDialogPresenter >> accept [
 		executeWithContext: self
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoveRepositoryDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoveRepositoryDialogPresenter >> confirmMessage [
 	^ 'Are you sure to remove your repository {1} from your image?'
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRemoveRepositoryDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -44,13 +46,13 @@ IceTipRemoveRepositoryDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoveRepositoryDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoveRepositoryDialogPresenter >> initialExtentForWindow [
 
 	^ (500@(
@@ -60,7 +62,7 @@ IceTipRemoveRepositoryDialogPresenter >> initialExtentForWindow [
 		)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoveRepositoryDialogPresenter >> initializePresenters [
 
 	iconPanel := self newImage
@@ -74,36 +76,36 @@ IceTipRemoveRepositoryDialogPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoveRepositoryDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoveRepositoryDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRemoveRepositoryDialogPresenter >> removeFileSystemCheckbox [
 
 	^ removeFileSystemCheckbox
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRemoveRepositoryDialogPresenter >> removeMessage [
 	^ 'Also remove repository from file system'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoveRepositoryDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRemoveRepositoryDialogPresenter >> titleForWindow [
 
 	^ 'Remove repository'

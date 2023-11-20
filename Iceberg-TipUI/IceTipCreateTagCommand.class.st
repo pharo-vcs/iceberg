@@ -2,30 +2,32 @@
 I an a commander command that will be activated on any commitish or repository and ask the selected item to create a tag on itself.
 "
 Class {
-	#name : #IceTipCreateTagCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCreateTagCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCreateTagCommand class >> defaultDescription [
 
 	^ 'Creates a tag for the selected commit'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCreateTagCommand class >> defaultName [
 
 	^ 'Create tag'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCreateTagCommand >> canBeExecuted [ 
 
 	^ self repositoryModel isNotNil
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCreateTagCommand >> execute [
 	
 	(IceTipCreateTagPanel 
@@ -36,7 +38,7 @@ IceTipCreateTagCommand >> execute [
 			open
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 IceTipCreateTagCommand >> iconName [
 
 	^ #glamorousBookmark

@@ -5,38 +5,40 @@ I understand
 	- icon
 "
 Class {
-	#name : #IceTipTreeNode,
-	#superclass : #Object,
+	#name : 'IceTipTreeNode',
+	#superclass : 'Object',
 	#instVars : [
 		'model',
 		'parent',
 		'icon'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipTreeNode class >> on: aModel [
 	^ self new model: aModel
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeNode >> canActivateCommand: aCommandClass [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> children [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> description [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 IceTipTreeNode >> doesNotUnderstand: aMessage [
 	"redirect to model to provide polymorphism."
 	self flag: #pharoTodo. "I'm not sure this is good practice... we'll see how it works"
@@ -44,59 +46,59 @@ IceTipTreeNode >> doesNotUnderstand: aMessage [
 	^ aMessage sendTo: self model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> icon [
 	^ icon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> icon: anIcon [
 	icon := anIcon
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeNode >> isGroup [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeNode >> isLeaf [
 	^ self isGroup not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeNode >> isSameAs: aNode [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> parent [
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> parent: anObject [
 	parent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> path [
 	^ self parent 
 		ifNotNil: [ :p | p path, { self } ]
 		ifNil: [ { self } ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeNode >> traversingDo: aBlock parents: anArray [
 	self subclassResponsibility
 ]

@@ -1,14 +1,16 @@
 Class {
-	#name : #IceTipAskForPlaintextOtpCredentialsPresenter,
-	#superclass : #IceTipAskForPlaintextCredentialsPresenter,
+	#name : 'IceTipAskForPlaintextOtpCredentialsPresenter',
+	#superclass : 'IceTipAskForPlaintextCredentialsPresenter',
 	#instVars : [
 		'tokenLabel',
 		'tokenInput'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAskForPlaintextOtpCredentialsPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom 
@@ -26,13 +28,13 @@ IceTipAskForPlaintextOtpCredentialsPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAskForPlaintextOtpCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ 210) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAskForPlaintextOtpCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -43,7 +45,7 @@ IceTipAskForPlaintextOtpCredentialsPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAskForPlaintextOtpCredentialsPresenter >> newCredentials [
 
 	^ IcePlaintextOtpCredentials new
@@ -53,7 +55,7 @@ IceTipAskForPlaintextOtpCredentialsPresenter >> newCredentials [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAskForPlaintextOtpCredentialsPresenter >> token [
 
 	^ tokenInput text

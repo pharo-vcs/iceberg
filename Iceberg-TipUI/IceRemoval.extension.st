@@ -1,6 +1,6 @@
-Extension { #name : #IceRemoval }
+Extension { #name : 'IceRemoval' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceRemoval >> icon [
 
 	^ self iconNamed: #changeRemove

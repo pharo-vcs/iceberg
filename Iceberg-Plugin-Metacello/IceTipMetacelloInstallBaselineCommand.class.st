@@ -2,18 +2,19 @@
 I'm a general command to install metacello baselines.
 "
 Class {
-	#name : #IceTipMetacelloInstallBaselineCommand,
-	#superclass : #IceTipPackageCommand,
-	#category : #'Iceberg-Plugin-Metacello'
+	#name : 'IceTipMetacelloInstallBaselineCommand',
+	#superclass : 'IceTipPackageCommand',
+	#category : 'Iceberg-Plugin-Metacello',
+	#package : 'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMetacelloInstallBaselineCommand class >> isAbstract [
 
 	^ self == IceTipMetacelloInstallBaselineCommand
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> basicInstallBaseline: icePackage groups: anArray [
 
 	| packageDir sourceDirectory |
@@ -34,13 +35,13 @@ IceTipMetacelloInstallBaselineCommand >> basicInstallBaseline: icePackage groups
 		load: anArray
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMetacelloInstallBaselineCommand >> canBeExecuted [
 
-	^ self packageModel notNil and: [ self package isMetacelloBaseline ]
+	^ self packageModel isNotNil and: [ self package isMetacelloBaseline ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyFor: aMetacelloUpgradeRequest [
 
 	| projectName optionA optionB sessionContext |
@@ -60,7 +61,7 @@ IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyFor: aMetacelloUpgr
 				optionB: optionB ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyProject: projectName optionA: optionA optionB: optionB [
 
 	^ UIManager default 
@@ -74,7 +75,7 @@ IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyProject: projectNam
 		title: 'Conflicting project versions'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyFor: aMetacelloUpgradeRequest [
 	| projectName optionA optionB sessionContext |
 
@@ -94,7 +95,7 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyFor: aMetacelloUpgra
 				optionB: optionB ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName optionA: optionA optionB: optionB [
 
 	^ UIManager default 
@@ -108,19 +109,19 @@ IceTipMetacelloInstallBaselineCommand >> chooseUpgradePolicyProject: projectName
 		title: 'Duplicated project!'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipMetacelloInstallBaselineCommand >> iconName [
 
 	^ #smallLoadProject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage [ 
 
 	^ self installBaseline: icePackage groups: #()
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> installBaseline: icePackage groups: anArray [
 
 	IceTipStandardAction new

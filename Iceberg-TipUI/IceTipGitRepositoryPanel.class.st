@@ -3,18 +3,20 @@ I'm a presenter to define remote repositories.
 Repositories needs to have a valid url (one that can be parsed by IceRemote) and a valid location (where to place the clone)
 "
 Class {
-	#name : #IceTipGitRepositoryPanel,
-	#superclass : #IceTipRepositoryTypePanel,
-	#category : #'Iceberg-TipUI-View-Repository'
+	#name : 'IceTipGitRepositoryPanel',
+	#superclass : 'IceTipRepositoryTypePanel',
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitRepositoryPanel class >> order [
 
 	^ 1000 "to the end"
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipGitRepositoryPanel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -26,7 +28,7 @@ IceTipGitRepositoryPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceTipGitRepositoryPanel >> extractProjectName: aString [
 
 	^ [ (IceGitRemote url: aString) projectName ]
@@ -34,13 +36,13 @@ IceTipGitRepositoryPanel >> extractProjectName: aString [
 		  do: [ 'invalid-url' ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #git
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitRepositoryPanel >> initializePresenters [
 
 	super initializePresenters.
@@ -53,7 +55,7 @@ IceTipGitRepositoryPanel >> initializePresenters [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitRepositoryPanel >> newRepository [
 
 	UIManager default
@@ -66,19 +68,19 @@ IceTipGitRepositoryPanel >> newRepository [
 				createRepository ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitRepositoryPanel >> remoteUrl [
 
 	^ self remoteInputText text asString trimmed
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitRepositoryPanel >> titleForWindow [
 
 	^ 'Clone remote repository'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitRepositoryPanel >> validate [
 
 	| remoteString |
@@ -90,7 +92,7 @@ IceTipGitRepositoryPanel >> validate [
 		assert: (IceGitRemote isValidUrl: remoteString)
 		description: 'The url is incorrect.'.
 	self
-		assert: self projectLocation location notNil
+		assert: self projectLocation location isNotNil
 		description:
 		'Project location must be defined (if it does not exists, it will be created).'
 ]

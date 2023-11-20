@@ -2,25 +2,27 @@
 I'm a command that makes a working copy to recalculate the dirty packages (via #forceCalculateDirtyPackages).
 "
 Class {
-	#name : #IceTipCalculateDirtyPackagesCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCalculateDirtyPackagesCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCalculateDirtyPackagesCommand class >> defaultName [
 
 	^ 'Recalculate dirty packages'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCalculateDirtyPackagesCommand >> canBeExecuted [
 
 	^ self hasSelectedItem
 
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCalculateDirtyPackagesCommand >> execute [
 
 	IceTipStandardAction new
@@ -31,7 +33,7 @@ IceTipCalculateDirtyPackagesCommand >> execute [
 		executeWithContext: context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCalculateDirtyPackagesCommand >> iconName [
 
 	^ #repair

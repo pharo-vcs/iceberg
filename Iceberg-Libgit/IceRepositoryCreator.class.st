@@ -34,7 +34,7 @@ IceRepositoryCreator class >> defaultSubdirectory [
 IceRepositoryCreator class >> isGitRoot: aReference [
 	self flag: #pharoTodo. "This does not understand submodules"
 	^ aReference isDirectory 
-		and: [ (aReference directoriesMatching: '.git') notEmpty
+		and: [ (aReference directoriesMatching: '.git') isNotEmpty
 		and: [ (aReference / '.git' / 'config') exists ] ]
 ]
 
@@ -198,7 +198,7 @@ IceRepositoryCreator >> initialize [
 
 { #category : 'private - testing' }
 IceRepositoryCreator >> isCloning [
-	^ self remoteToUse notNil
+	^ self remoteToUse isNotNil
 ]
 
 { #category : 'accessing' }
@@ -277,7 +277,7 @@ IceRepositoryCreator >> validateAlreadyPresentAndNotGit [
 	"Validate if I will add a local repository (url isNil and location isNotNil)... 
 	 testing the local directory actually exists"	
 	(self remoteToUse isNil
-		and: [ self location notNil
+		and: [ self location isNotNil
 		and: [ self location exists
 		and: [ (self class isGitRoot: self location) not ] ] ])
 		ifTrue: [ 

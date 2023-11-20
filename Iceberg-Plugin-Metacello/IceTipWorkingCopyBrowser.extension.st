@@ -1,6 +1,6 @@
-Extension { #name : #IceTipWorkingCopyBrowser }
+Extension { #name : 'IceTipWorkingCopyBrowser' }
 
-{ #category : #'*Iceberg-Plugin-Metacello' }
+{ #category : '*Iceberg-Plugin-Metacello' }
 IceTipWorkingCopyBrowser class >> metacelloCommandsWith: presenter forRootGroup: aCommandGroup [
 	<extensionCommands>
 	| newGroup |
@@ -21,7 +21,7 @@ IceTipWorkingCopyBrowser class >> metacelloCommandsWith: presenter forRootGroup:
 
 ]
 
-{ #category : #'*Iceberg-Plugin-Metacello' }
+{ #category : '*Iceberg-Plugin-Metacello' }
 IceTipWorkingCopyBrowser class >> metacelloDecorators [
 	<extensionDecorators>
 	

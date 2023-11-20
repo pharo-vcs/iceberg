@@ -4,16 +4,18 @@ I keep groups with elements.
 I can provide also a contexts for menu operations and other kind of options to be associated with group.
 "
 Class {
-	#name : #IceTipTreeGroup,
-	#superclass : #IceTipTreeNode,
+	#name : 'IceTipTreeGroup',
+	#superclass : 'IceTipTreeNode',
 	#instVars : [
 		'name',
 		'children'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipTreeGroup class >> name: aName children: aCollection [
 	^ self new 
 		name: aName;
@@ -21,7 +23,7 @@ IceTipTreeGroup class >> name: aName children: aCollection [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipTreeGroup class >> name: aName icon: anIcon children: aCollection [
 	^ self new 
 		name: aName;
@@ -30,7 +32,7 @@ IceTipTreeGroup class >> name: aName icon: anIcon children: aCollection [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> addChild: anObject [
 	children ifNil: [ children := OrderedCollection new ].
 	children add: anObject.
@@ -38,23 +40,23 @@ IceTipTreeGroup >> addChild: anObject [
 	^ anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> children [
 	^ children ifNil: [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> children: aCollection [
 	children := aCollection.
 	children do: [ :each | each parent: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> description [
 	^ self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> ensurePath: aPath [
 	| first next |
 	
@@ -67,34 +69,34 @@ IceTipTreeGroup >> ensurePath: aPath [
 		ifEmpty: [ next ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeGroup >> isGroup [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipTreeGroup >> isSameAs: aNode [
 	^ aNode species = self species 
 		and: [ self name = aNode name
-		and: [ aNode name notNil ] ]
+		and: [ aNode name isNotNil ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> traversingDo: aBlock [
 	^ self traversingDo: aBlock parents: #() 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTreeGroup >> traversingDo: aBlock parents: anArray [
 	aBlock cull: self cull: anArray.
 	self children do: [ :each | 

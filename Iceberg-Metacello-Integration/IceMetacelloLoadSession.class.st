@@ -5,28 +5,30 @@ I will be active during the context of a ""metacello load"" command, and it will
 Tipically, I will be used to keep some state needed during the full execution, like a choice of what whas selected when conflicting or upgraded versions acts.  
 "
 Class {
-	#name : #IceMetacelloLoadSession,
-	#superclass : #Object,
+	#name : 'IceMetacelloLoadSession',
+	#superclass : 'Object',
 	#instVars : [
 		'choices'
 	],
-	#category : #'Iceberg-Metacello-Integration-Session'
+	#category : 'Iceberg-Metacello-Integration-Session',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'Session'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceMetacelloLoadSession >> initialize [
 
 	super initialize.
 	choices := Set new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloLoadSession >> recordChoice: anIceMetacelloLoadChoice [
 	
 	^ choices add: anIceMetacelloLoadChoice
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloLoadSession >> recordChoiceProject: projectName optionA: optionA optionB: optionB ifAbsentAnswer: aBlock [
 	
 	^ choices 

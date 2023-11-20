@@ -1,16 +1,18 @@
 Class {
-	#name : #IceTipRepositoryGroupPanel,
-	#superclass : #SpPresenter,
+	#name : 'IceTipRepositoryGroupPanel',
+	#superclass : 'SpPresenter',
 	#traits : 'SpTModel',
 	#classTraits : 'SpTModel classTrait',
 	#instVars : [
 		'repositoryList',
 		'repositoryFilter'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoryGroupPanel class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup [
 
 	self flag: #HACK. "I extracted this panel from IceTipRepositoriesBrowser, 
@@ -21,7 +23,7 @@ IceTipRepositoryGroupPanel class >> buildCommandsGroupWith: presenter forRoot: a
 		forRoot: aCommandGroup
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoryGroupPanel class >> buildRootCommandsGroupFor: aPresenter [
 	| rootCommandGroup |
 
@@ -36,13 +38,13 @@ IceTipRepositoryGroupPanel class >> buildRootCommandsGroupFor: aPresenter [
 	^ rootCommandGroup
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> allListItems [
 	
 	^ self model repositories
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRepositoryGroupPanel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -51,26 +53,26 @@ IceTipRepositoryGroupPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #transmission }
+{ #category : 'transmission' }
 IceTipRepositoryGroupPanel >> defaultOutputPort [
 
 	^ self outputSelectionPort
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> filteredItemsFor: pattern [
 
 	^ self allListItems select: [ :each | 
 		  each name asLowercase includesSubstring: pattern asLowercase ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryGroupPanel >> hasSelectedItem [
 	
-	^ repositoryList selectedItem notNil
+	^ repositoryList selectedItem isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryGroupPanel >> initializePresenters [
 
 	repositoryList := self newTable.
@@ -78,7 +80,7 @@ IceTipRepositoryGroupPanel >> initializePresenters [
 	self initializeRepositoryFilter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryGroupPanel >> initializeRepositoryFilter [
 
 	repositoryFilter := self newTextInput.
@@ -88,7 +90,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryFilter [
 		
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryGroupPanel >> initializeRepositoryList [
 
 	repositoryList
@@ -122,7 +124,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> isShowingRepository: anIceLibgitRepository [
 	"this method is using just for test"
 	
@@ -130,7 +132,7 @@ IceTipRepositoryGroupPanel >> isShowingRepository: anIceLibgitRepository [
 		  aRepositoryModel entity = anIceLibgitRepository ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> keyBindingsCommandsGroup [
 
 	^ self rootCommandsGroup
@@ -138,7 +140,7 @@ IceTipRepositoryGroupPanel >> keyBindingsCommandsGroup [
 		ifNone: [ nil ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryGroupPanel >> openManagePackagesWindow [
 
 	IceTipManagePackagesCommand new
@@ -146,7 +148,7 @@ IceTipRepositoryGroupPanel >> openManagePackagesWindow [
 		execute
 ]
 
-{ #category : #transmission }
+{ #category : 'transmission' }
 IceTipRepositoryGroupPanel >> outputSelectionPort [
 
 	^ (SpSelectionPort newPresenter: self)
@@ -154,7 +156,7 @@ IceTipRepositoryGroupPanel >> outputSelectionPort [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> refreshRepositoryList [
 	
 	repositoryList updateItemsKeepingSelection:  (repositoryFilter text
@@ -163,25 +165,25 @@ IceTipRepositoryGroupPanel >> refreshRepositoryList [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupPanel >> repositoryList [
 
 	^ repositoryList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupPanel >> repositoryModel [
 	
 	^ self selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryGroupPanel >> selectedItem [
 	
 	^ repositoryList selectedItem
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> selectionCommandsGroup [ 
 
 	^ self visibleRootCommandsGroup
@@ -189,13 +191,13 @@ IceTipRepositoryGroupPanel >> selectionCommandsGroup [
 		ifNone: [ nil ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryGroupPanel >> updatePresenter [
 
 	self refreshRepositoryList
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryGroupPanel >> visibleRootCommandsGroup [
 	| rootGroup |	
 		
