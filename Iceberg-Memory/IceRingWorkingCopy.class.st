@@ -10,9 +10,10 @@ Class {
 
 { #category : 'helpers' }
 IceRingWorkingCopy >> addClassVariable: aVariableName to: aClassName [
+
 	| class |
 	class := ringEnvironment ensureClassNamed: aClassName.
-	class addClassVariable: (RG2ClassVariableDefinition named: aVariableName asSymbol parent: class ).
+	class addClassVariable: (RGClassVariable named: aVariableName asSymbol parent: class)
 ]
 
 { #category : 'private-impacting-changes' }
@@ -139,7 +140,7 @@ IceRingWorkingCopy >> environment [
 IceRingWorkingCopy >> initialize [
 
 	super initialize.
-	ringEnvironment := RG2Environment new.
+	ringEnvironment := RGEnvironment new.
 ]
 
 { #category : 'packages' }
