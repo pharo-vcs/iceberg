@@ -2,7 +2,9 @@
 I store metadata for this package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
 "
 Class {
-	#name : #ManifestIcebergPluginPharo,
-	#superclass : #PackageManifest,
-	#category : #'Iceberg-Plugin-Pharo-Manifest'
+	#name : 'ManifestIcebergPluginPharo',
+	#superclass : 'PackageManifest',
+	#category : 'Iceberg-Plugin-Pharo-Manifest',
+	#package : 'Iceberg-Plugin-Pharo',
+	#tag : 'Manifest'
 }

@@ -2,8 +2,8 @@
 I'm a dialog to select a list of anything (used by branches now).
 "
 Class {
-	#name : #IceGitHubRemoveBranchesModel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceGitHubRemoveBranchesModel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'selectedItems',
 		'listPanel',
@@ -11,17 +11,19 @@ Class {
 		'displayBlock',
 		'remote'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubRemoveBranchesModel >> confirmSelection [
 
 	acceptBlock ifNotNil: [ acceptBlock value: selectedItems ].
 	self closeWindow
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubRemoveBranchesModel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -30,26 +32,26 @@ IceGitHubRemoveBranchesModel >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 IceGitHubRemoveBranchesModel >> displayBlock: aBlock [
 	
 	displayBlock := aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRemoveBranchesModel >> initialExtentForWindow [
 
 	^ 550 @ 500
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRemoveBranchesModel >> initialize [
 
 	selectedItems := Set new.
 	super initialize
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRemoveBranchesModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
@@ -61,7 +63,7 @@ IceGitHubRemoveBranchesModel >> initializeDialogWindow: aDialogWindowPresenter [
 			presenter close ]	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRemoveBranchesModel >> initializePresenters [
 
 	listPanel := self newTable.
@@ -76,37 +78,37 @@ IceGitHubRemoveBranchesModel >> initializePresenters [
 		addColumn: (SpStringTableColumn evaluated: [ :branch | self timeSinceLastCommit: branch ])
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 IceGitHubRemoveBranchesModel >> items: aCollection [
 
 	self listPanel items: aCollection
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubRemoveBranchesModel >> listPanel [
 
 	^ listPanel
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceGitHubRemoveBranchesModel >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRemoveBranchesModel >> remote [
 
 	^ remote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRemoveBranchesModel >> remote: anObject [
 
 	remote := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubRemoveBranchesModel >> timeSinceLastCommit: branch [
 
 	| lastCommitDate |
@@ -115,14 +117,14 @@ IceGitHubRemoveBranchesModel >> timeSinceLastCommit: branch [
 		^ '{1} days' format: {(Date today - lastCommitDate) days}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubRemoveBranchesModel >> titleForWindow [
 
 	^ 'Select branches to remove on remote {1}' format:
 		  { self remote name }
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubRemoveBranchesModel >> triggerAcceptAction [
 		
 	acceptBlock ifNil: [ ^ self ].

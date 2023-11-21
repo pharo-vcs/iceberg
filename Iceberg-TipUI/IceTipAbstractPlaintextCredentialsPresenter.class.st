@@ -3,18 +3,20 @@ I implement the basic behavior of all the plaintext credentials.
 My subclasses implements the specific behavior for each of the operations.
 "
 Class {
-	#name : #IceTipAbstractPlaintextCredentialsPresenter,
-	#superclass : #IceTipAbstractCredentialsPresenter,
+	#name : 'IceTipAbstractPlaintextCredentialsPresenter',
+	#superclass : 'IceTipAbstractCredentialsPresenter',
 	#instVars : [
 		'usernameLabel',
 		'usernameInput',
 		'passwordLabel',
 		'passwordInput'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAbstractPlaintextCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -32,13 +34,13 @@ IceTipAbstractPlaintextCredentialsPresenter >> initializePresenters [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAbstractPlaintextCredentialsPresenter >> isOkEnabled [
 
 	^ self username isNotEmpty and: [ self password isNotEmpty ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractPlaintextCredentialsPresenter >> newCredentials [
 
 	^ IcePlaintextCredentials new
@@ -47,31 +49,31 @@ IceTipAbstractPlaintextCredentialsPresenter >> newCredentials [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractPlaintextCredentialsPresenter >> password [
 
 	^ passwordInput text
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAbstractPlaintextCredentialsPresenter >> passwordInput [
 
 	^ passwordInput
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipAbstractPlaintextCredentialsPresenter >> passwordLabel [
 
 	^ 'Password:'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractPlaintextCredentialsPresenter >> username [
 
 	^ usernameInput text
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAbstractPlaintextCredentialsPresenter >> usernameInput [
 
 	^ usernameInput

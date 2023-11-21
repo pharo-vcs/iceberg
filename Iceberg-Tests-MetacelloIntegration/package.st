@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Tests-MetacelloIntegration' }
+Package { #name : 'Iceberg-Tests-MetacelloIntegration' }

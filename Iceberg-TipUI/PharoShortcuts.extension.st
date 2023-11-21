@@ -1,6 +1,6 @@
-Extension { #name : #PharoShortcuts }
+Extension { #name : 'PharoShortcuts' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 PharoShortcuts >> openIcebergShortcut [
 	^ $o meta, $i meta
 ]

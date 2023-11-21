@@ -1,12 +1,12 @@
-Extension { #name : #IceMethodDefinition }
+Extension { #name : 'IceMethodDefinition' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodDefinition >> browse [
 	
 	(self contextClass >> name) browse
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodDefinition >> canBeBrowsed [
 	
 	^ self contextClass
@@ -14,13 +14,13 @@ IceMethodDefinition >> canBeBrowsed [
 		ifNil: [ false ]
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodDefinition >> canBrowseReferences [
 	
 	^ false
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodDefinition >> icon [
 	
 	^ self iconNamed: #changeUpdate

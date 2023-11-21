@@ -7,23 +7,25 @@ also #elements answer should be a collection of elements that also understand el
 (IceTipDiffPanel onDiff: (IceRepository registry first workingCopyDiff)) openWithSpec
 "
 Class {
-	#name : #IceTipDiffPanel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceTipDiffPanel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'model',
 		'diffPanel',
 		'iceNodesTree'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
 
 	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> basicRefresh [
 
 	self resetDiffContents.
@@ -32,7 +34,7 @@ IceTipDiffPanel >> basicRefresh [
 		expandAll
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> changeDescriptionColumn [
 
 	^ SpStringTableColumn new
@@ -40,7 +42,7 @@ IceTipDiffPanel >> changeDescriptionColumn [
 		  yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
@@ -52,7 +54,7 @@ IceTipDiffPanel >> changeListColumn [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffPanel >> collapsePath: aPath [
 
 	iceNodesTree 
@@ -60,7 +62,7 @@ IceTipDiffPanel >> collapsePath: aPath [
 		selectPath: aPath
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipDiffPanel >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
@@ -70,7 +72,7 @@ IceTipDiffPanel >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 
 	diffPanel
@@ -82,25 +84,25 @@ IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 		rightText: rightString
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipDiffPanel >> diffPanel [
 
 	^ diffPanel
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipDiffPanel >> doCollapseSelection [
 	
 	self collapsePath: iceNodesTree selection selectedPath
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipDiffPanel >> doExpandSelection [
 	
 	self expandPath: iceNodesTree selection selectedPath
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffPanel >> expandPath: aPath [
 
 	iceNodesTree 
@@ -108,38 +110,38 @@ IceTipDiffPanel >> expandPath: aPath [
 		selectPath: aPath
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipDiffPanel >> handleArrowLeft [
 
 	self collapsePath: iceNodesTree selection selectedPath
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipDiffPanel >> handleArrowRight [
 
 	self expandPath: iceNodesTree selection selectedPath
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipDiffPanel >> iceNodesTree [
 
 	^ iceNodesTree
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> initialize [
 
 	super initialize.
 	self subscribeToAnnouncements
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> initializeDiffPanel [
 
 	diffPanel showOptions: false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> initializePresenters [
 
 	iceNodesTree := self newTreeTable.
@@ -149,7 +151,7 @@ IceTipDiffPanel >> initializePresenters [
 	self initializeDiffPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> initializeTree [
 
 	iceNodesTree
@@ -163,19 +165,19 @@ IceTipDiffPanel >> initializeTree [
 			toAction: [ self handleArrowRight ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> leftLabel: aString [
 
 	diffPanel leftLabel: aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> refresh [
 
 	self model reset.
@@ -183,25 +185,25 @@ IceTipDiffPanel >> refresh [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffPanel >> resetDiffContents [
 
 	self diffContentsLeft: '' right: ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> rightLabel: aString [
 
 	diffPanel rightLabel: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPanel >> selectedItem [
 
 	^ iceNodesTree selectedItem
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipDiffPanel >> selectionChanged [
 
 	| itemValue |
@@ -212,13 +214,13 @@ IceTipDiffPanel >> selectionChanged [
 			right: itemValue leftContents ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> subscribeToAnnouncements [
 
 	self announcer
@@ -228,13 +230,13 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceTipDiffPanel >> titleForWindow [
 
 	^ 'Diff'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffPanel >> updatePresenter [
 
 	self basicRefresh

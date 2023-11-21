@@ -6,8 +6,8 @@ for each provider.
 
 "
 Class {
-	#name : #IceTipGitProviderRepositoryPanel,
-	#superclass : #IceTipGitRepositoryPanel,
+	#name : 'IceTipGitProviderRepositoryPanel',
+	#superclass : 'IceTipGitRepositoryPanel',
 	#instVars : [
 		'userNameLabel',
 		'userNameInputText',
@@ -16,22 +16,24 @@ Class {
 		'protocolDropList',
 		'protocolLabel'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipGitProviderRepositoryPanel class >> isAbstract [
 
 	^ super isAbstract or: [ self = IceTipGitProviderRepositoryPanel ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 
 	self subclassResponsibility
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipGitProviderRepositoryPanel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -45,7 +47,7 @@ IceTipGitProviderRepositoryPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitProviderRepositoryPanel >> initializePresenters [
 
 	super initializePresenters.
@@ -79,7 +81,7 @@ IceTipGitProviderRepositoryPanel >> initializePresenters [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipGitProviderRepositoryPanel >> projectAsPathToAppend [
 
 	^ (self userName isEmpty and: [ self projectName isEmpty ])
@@ -88,43 +90,43 @@ IceTipGitProviderRepositoryPanel >> projectAsPathToAppend [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> projectName [
 
 	^ self projectNameInputText text asString trimmed
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> projectNameInputText [
 
 	^ projectNameInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> projectNameLabel [
 
 	^ projectNameLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> protocolDropList [
 
 	^ protocolDropList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> protocolLabel [
 
 	^ protocolLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> providerName [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> remoteUrl [
 	
 	| builder |
@@ -135,31 +137,31 @@ IceTipGitProviderRepositoryPanel >> remoteUrl [
 	^ builder buildUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> selectedProtocol [
 
 	^ self protocolDropList selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> userName [
 
 	^ self userNameInputText text asString trimmed
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> userNameInputText [
 
 	^ userNameInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitProviderRepositoryPanel >> userNameLabel [
 
 	^ userNameLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> validate [
 
 	self

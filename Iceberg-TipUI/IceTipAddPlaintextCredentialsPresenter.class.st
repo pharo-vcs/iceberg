@@ -2,22 +2,24 @@
 I implement the dialog to add plaintext credentials.
 "
 Class {
-	#name : #IceTipAddPlaintextCredentialsPresenter,
-	#superclass : #IceTipAbstractPlaintextCredentialsPresenter,
+	#name : 'IceTipAddPlaintextCredentialsPresenter',
+	#superclass : 'IceTipAbstractPlaintextCredentialsPresenter',
 	#instVars : [
 		'hostLabel',
 		'hostInput'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddPlaintextCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddPlaintextCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -30,20 +32,20 @@ IceTipAddPlaintextCredentialsPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPlaintextCredentialsPresenter >> hostnameFromInput [
 
 	^ hostInput text
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPlaintextCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 5 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPlaintextCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -54,13 +56,13 @@ IceTipAddPlaintextCredentialsPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddPlaintextCredentialsPresenter >> isOkEnabled [
 
 	^ super isOkEnabled and: [ self hostnameFromInput isNotEmpty ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPlaintextCredentialsPresenter >> titleForWindow [
 
 	^ 'Add new Plain Text Credential'

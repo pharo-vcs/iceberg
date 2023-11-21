@@ -4,8 +4,8 @@ A presenter to request aditional data and publish the content of a playground as
 The method `StPlaygroundPublishGistPresenter>>#publishThen:` will use the `IceGitHubAPI` to publish the data.
 "
 Class {
-	#name : #IcePublishGistPresenter,
-	#superclass : #SpPresenter,
+	#name : 'IcePublishGistPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'descriptionTextInput',
 		'contentCode',
@@ -15,34 +15,36 @@ Class {
 	#classVars : [
 		'GistPublic'
 	],
-	#category : #'Iceberg-Playground-Plugin-Gist-View'
+	#category : 'Iceberg-Playground-Plugin-Gist-View',
+	#package : 'Iceberg-Playground-Plugin-Gist',
+	#tag : 'View'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePublishGistPresenter class >> initialExtent [
 
 	^ 600@400
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePublishGistPresenter class >> windowTitle [
 
 	^ 'Publish Gist'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePublishGistPresenter >> content: aString [
 
 	contentCode text: aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePublishGistPresenter >> defaultPublic [
 		
 	^ GistPublic ifNil: [ GistPublic := true ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IcePublishGistPresenter >> fileNameFrom: aString [
 	| normalized |
 	
@@ -54,7 +56,7 @@ IcePublishGistPresenter >> fileNameFrom: aString [
 	^ normalized, '.st'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePublishGistPresenter >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
@@ -65,7 +67,7 @@ IcePublishGistPresenter >> initializeDialogWindow: aDialogWindowPresenter [
 			self publishThen: [ presenter close ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePublishGistPresenter >> initializePresenters [
 
 	self layout: (SpBoxLayout newTopToBottom
@@ -86,7 +88,7 @@ IcePublishGistPresenter >> initializePresenters [
 		beForScripting
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePublishGistPresenter >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter 
@@ -94,7 +96,7 @@ IcePublishGistPresenter >> initializeWindow: aWindowPresenter [
 		initialExtent: self class initialExtent.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IcePublishGistPresenter >> publishThen: aBlock [
 	| description public jsonResult |
 
@@ -116,7 +118,7 @@ IcePublishGistPresenter >> publishThen: aBlock [
 	aBlock value.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IcePublishGistPresenter >> showError: aString [
 
 	self application newInform
@@ -125,7 +127,7 @@ IcePublishGistPresenter >> showError: aString [
 		openModalWithSpecParent: self window
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IcePublishGistPresenter >> validate [
 	
 	descriptionTextInput text trimmed ifEmpty: [ 
@@ -136,7 +138,7 @@ IcePublishGistPresenter >> validate [
 		
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePublishGistPresenter >> whenPublishedDo: aBlock [
 
 	publishedAction := aBlock

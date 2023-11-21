@@ -1,11 +1,11 @@
-Extension { #name : #IceAbstractCredentials }
+Extension { #name : 'IceAbstractCredentials' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceAbstractCredentials >> askForModelClass [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceAbstractCredentials >> editModelClass [
 	^ self subclassResponsibility
 ]

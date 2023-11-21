@@ -1,6 +1,6 @@
-Extension { #name : #MCPatchOperation }
+Extension { #name : 'MCPatchOperation' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 MCPatchOperation >> canBeBrowsed [
 	^ true
 ]

@@ -4,17 +4,19 @@ Reads an MCVersion from a git repository (its blob, not a working copy!) using l
 Currently we only support metadata-less repositories.
 "
 Class {
-	#name : #IceLibgitFiletreeReader,
-	#superclass : #MCFileTreeStCypressReader,
+	#name : 'IceLibgitFiletreeReader',
+	#superclass : 'MCFileTreeStCypressReader',
 	#traits : 'TIceRepositoryReader',
 	#classTraits : 'TIceRepositoryReader classTrait',
 	#instVars : [
 		'iceVersion'
 	],
-	#category : #'Iceberg-Libgit-Filetree-Reader'
+	#category : 'Iceberg-Libgit-Filetree-Reader',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Reader'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader class >> compatibleAuthorNameOf: aString [
 	"Timestamp of method has a very precise format that needs to be fulfiled: 
 		
@@ -26,60 +28,60 @@ IceLibgitFiletreeReader class >> compatibleAuthorNameOf: aString [
 	^ aString reject: [ :each | each = Character space ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeReader class >> id [
 	^ #filetree
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeReader class >> isLegacyDefault [
 	^ true
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLibgitFiletreeReader class >> on: aCommitOrTree iceVersion: iceVersion [
 	^ (self on: aCommitOrTree) 
 		iceVersion: iceVersion; 
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> commit [
 	^ stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> fileUtils [
 	^ IceLibgitFiletreeFileUtils
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeReader >> hasMonticelloMetadata [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> iceVersion [
 	^ iceVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> iceVersion: anObject [
 	iceVersion := anObject.
 	self packageDirectory: (iceVersion commit project sourceDirectoryPath / (IceLibgitFiletreeWriter directoryNameFor: (IcePackage named: iceVersion package name repository: iceVersion commit repository))) pathString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> loadVersionInfo [
 	^ info := self iceVersion info
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> packageNameFromPackageDirectory [
 	^ iceVersion packageName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeReader >> versionName [
 	^ ('{1}-{2}.{3}' format: {
 		self packageNameFromPackageDirectory. 

@@ -3,8 +3,8 @@ I am a pull request.
 I can be sent using ==#sendWithCredentials:== protocol.
 "
 Class {
-	#name : #IceGitHubPullRequestDefinition,
-	#superclass : #Object,
+	#name : 'IceGitHubPullRequestDefinition',
+	#superclass : 'Object',
 	#instVars : [
 		'credentials',
 		'title',
@@ -14,70 +14,72 @@ Class {
 		'headBranchName',
 		'body'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> baseBranchName [
 	^ baseBranchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> baseBranchName: anObject [
 	baseBranchName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> baseRemote [
 	^ baseRemote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> baseRemote: anObject [
 	baseRemote := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> body [
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> body: anObject [
 	body := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> credentials [
 	^ credentials
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> credentials: anObject [
 	credentials := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> headBranchName [
 	^ headBranchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> headBranchName: anObject [
 	headBranchName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> headRemote [
 	^ headRemote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> headRemote: anObject [
 	headRemote := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubPullRequestDefinition >> send [
 	| pullRequestData |
 
@@ -95,12 +97,12 @@ IceGitHubPullRequestDefinition >> send [
 			data: pullRequestData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> title [
 	^ title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDefinition >> title: anObject [
 	title := anObject
 ]

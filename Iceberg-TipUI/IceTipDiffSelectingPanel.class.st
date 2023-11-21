@@ -10,15 +10,17 @@ also #elements answer should be a collection of elements that also understand el
 
 "
 Class {
-	#name : #IceTipDiffSelectingPanel,
-	#superclass : #IceTipDiffPanel,
+	#name : 'IceTipDiffSelectingPanel',
+	#superclass : 'IceTipDiffPanel',
 	#instVars : [
 		'checkedIceNodes'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffSelectingPanel >> activateItem: iceNode [
 		
 	checkedIceNodes add: iceNode.
@@ -31,7 +33,7 @@ IceTipDiffSelectingPanel >> activateItem: iceNode [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffSelectingPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
@@ -49,7 +51,7 @@ IceTipDiffSelectingPanel >> changeListColumn [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffSelectingPanel >> deactivateItem: iceNode [
 		
 	checkedIceNodes remove: iceNode.
@@ -61,7 +63,7 @@ IceTipDiffSelectingPanel >> deactivateItem: iceNode [
 	self refreshCheckbox.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffSelectingPanel >> initialize [
 
 	super initialize.
@@ -72,7 +74,7 @@ IceTipDiffSelectingPanel >> initialize [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipDiffSelectingPanel >> initializeTree [
 
 	super initializeTree.
@@ -81,7 +83,7 @@ IceTipDiffSelectingPanel >> initializeTree [
 		toAction: [ self toggleActivationItem: iceNodesTree selectedItem ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffSelectingPanel >> refresh [
 
 	super refresh.
@@ -89,20 +91,20 @@ IceTipDiffSelectingPanel >> refresh [
 		root withAllChildrenDo: [ :each | checkedIceNodes add: each ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffSelectingPanel >> refreshCheckbox [
 	"Refresh after a checkbox state has changed. When a node with children changes this state, all children might change too. That's the reason of this special refresh. When a leave node changed such state, this refresh is redundant."
 
 	iceNodesTree refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffSelectingPanel >> selectedItems [
 
 	^ checkedIceNodes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipDiffSelectingPanel >> toggleActivationItem: iceNode [
 
 	(checkedIceNodes includes: iceNode)

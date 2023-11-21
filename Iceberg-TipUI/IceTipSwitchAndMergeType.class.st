@@ -8,12 +8,14 @@ I will switch first to the new branch, and then I will perform a merge with curr
 This strategy is used to re-attach image when it is detached from current development branch.
 "
 Class {
-	#name : #IceTipSwitchAndMergeType,
-	#superclass : #IceTipMergeType,
-	#category : #'Iceberg-TipUI-View-Branch'
+	#name : 'IceTipSwitchAndMergeType',
+	#superclass : 'IceTipMergeType',
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipSwitchAndMergeType >> newMergeAction: aModel [
 
 	^ aModel newSwitchAndMergeAction

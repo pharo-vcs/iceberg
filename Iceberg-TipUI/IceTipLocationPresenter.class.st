@@ -3,8 +3,8 @@ I'm an abstract model to provide locations (directories or files).
 I need to be included in other components (search references to my children for examples)
 "
 Class {
-	#name : #IceTipLocationPresenter,
-	#superclass : #SpPresenter,
+	#name : 'IceTipLocationPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'locationInput',
 		'chooseButton',
@@ -12,16 +12,18 @@ Class {
 		'chooseBlock',
 		'keptLocation'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipLocationPresenter class >> isAbstract [
 
 	^ self == IceTipLocationPresenter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> appendPath: aString [
 
 	keptLocation ifNil: [ keptLocation := self location ].
@@ -31,13 +33,13 @@ IceTipLocationPresenter >> appendPath: aString [
 		ifEmpty: [ keptLocation ]).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipLocationPresenter >> basicLocation: aReference [
 
 	locationInput text: aReference pathString
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipLocationPresenter >> choose [
 
 	self chooseReference ifNotNil: [ :reference | 
@@ -45,43 +47,43 @@ IceTipLocationPresenter >> choose [
 		self onChoose ifNotNil: #value ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipLocationPresenter >> chooseButton [
 
 	^ chooseButton
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipLocationPresenter >> chooseReference [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> chooseTitle [
 
 	^ chooseTitle ifNil: [ self defaultChooseDialogTitle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> chooseTitle: aString [
 
 	chooseTitle := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> defaultChooseDialogTitle [
 
 	^ 'Choose directory'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> defaultLabel [
 
 	^ 'Directory'
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipLocationPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -93,13 +95,13 @@ IceTipLocationPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> icon [
 
 	^ self iconNamed: #open
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipLocationPresenter >> initializePresenters [
 
 	locationInput := self newTextInput
@@ -113,7 +115,7 @@ IceTipLocationPresenter >> initializePresenters [
 	chooseButton action: [ self choose ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> location [
 	"This method return the location to use in the repository
 	If the location is relative to IceLibgitRepository >> #localRepositoriesLocation
@@ -135,7 +137,7 @@ IceTipLocationPresenter >> location [
 	^ IceLibgitRepository localRepositoriesLocation resolvePath: relativePath 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocationPresenter >> location: aReferenceOrString [
 
 	| ref |
@@ -152,26 +154,26 @@ IceTipLocationPresenter >> location: aReferenceOrString [
 	self basicLocation: ref
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipLocationPresenter >> locationInput [
 
 	^ locationInput
 ]
 
-{ #category : #hook }
+{ #category : 'hook' }
 IceTipLocationPresenter >> onChoose [
 
 	^ chooseBlock
 ]
 
-{ #category : #hook }
+{ #category : 'hook' }
 IceTipLocationPresenter >> onChoose: aBlockClosure [
 	"I allow to set a hook to execute when the user select a location."
 
 	chooseBlock := aBlockClosure
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipLocationPresenter >> whenTextChanged: aBlockClosure [
 
 	self locationInput whenTextChangedDo: aBlockClosure

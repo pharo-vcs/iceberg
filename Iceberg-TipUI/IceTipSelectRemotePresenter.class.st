@@ -1,21 +1,23 @@
 Class {
-	#name : #IceTipSelectRemotePresenter,
-	#superclass : #SpPresenter,
+	#name : 'IceTipSelectRemotePresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'remoteList',
 		'addButton',
 		'model'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipSelectRemotePresenter >> addButton [
 
 	^ addButton
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipSelectRemotePresenter >> addRemote [
 
 	((IceTipAddRemoteDialogPresenter 
@@ -30,7 +32,7 @@ IceTipSelectRemotePresenter >> addRemote [
 			open
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipSelectRemotePresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -40,13 +42,13 @@ IceTipSelectRemotePresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSelectRemotePresenter >> icon [
 
 	^ self iconNamed: #add
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipSelectRemotePresenter >> initializePresenters [
 
 	remoteList := self newDropList
@@ -60,44 +62,44 @@ IceTipSelectRemotePresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSelectRemotePresenter >> label: aString [
 
 	self remoteLabel label: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSelectRemotePresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSelectRemotePresenter >> refresh [
 
 	remoteList items: self model remoteModels
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipSelectRemotePresenter >> remoteList [
 
 	^ remoteList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipSelectRemotePresenter >> selectRemoteNamed: aString [
 
 	remoteList selectItem:
 		(self model remoteModels detect: [ :each | each name = aString ])
 ]
 
-{ #category : #'accessing - model' }
+{ #category : 'accessing - model' }
 IceTipSelectRemotePresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipSelectRemotePresenter >> updatePresenter [ 
 
 	self refresh.

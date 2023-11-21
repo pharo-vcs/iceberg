@@ -2,19 +2,21 @@
 I'm a model for IcePackage entries.
 "
 Class {
-	#name : #IceTipPackageModel,
-	#superclass : #IceTipEntityModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipPackageModel',
+	#superclass : 'IceTipEntityModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> browsePackage [
 	<noCache>
 
 	self entity browse
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> browseRepositoryVersion [
 	<noCache>
 	| snapshot |
@@ -24,7 +26,7 @@ IceTipPackageModel >> browseRepositoryVersion [
 		showLabelled: 'Snapshot for ', self entity name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> description [
 	| text |
 	
@@ -34,7 +36,7 @@ IceTipPackageModel >> description [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> descriptionDecorator [
 
 	self entity isModified 
@@ -45,22 +47,22 @@ IceTipPackageModel >> descriptionDecorator [
 	^ super descriptionDecorator
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipPackageModel >> isLoaded [
 	^ self entity isLoaded
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipPackageModel >> isModified [
 	^ self entity isModified
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> name [
 	^ self entity name
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> newLoadAction [
 	<noCache>
 
@@ -75,12 +77,12 @@ IceTipPackageModel >> newLoadAction [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> packageName [
 	^ self entity packageName
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> reload [
 	<noCache>
 
@@ -94,7 +96,7 @@ IceTipPackageModel >> reload [
 				while: [ self entity reload ] ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> remove [
 	<noCache>
 
@@ -108,7 +110,7 @@ IceTipPackageModel >> remove [
 				while: [ self entity remove ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> status [
 	"entity could be a repository or a package"
 	[
@@ -120,7 +122,7 @@ IceTipPackageModel >> status [
 		^ e description ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> statusDecorator [
 
 	self entity isLoaded 
@@ -128,7 +130,7 @@ IceTipPackageModel >> statusDecorator [
 	^ super statusDecorator
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> unload [
 	<noCache>
 

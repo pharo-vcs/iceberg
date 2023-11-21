@@ -1,20 +1,22 @@
 Class {
-	#name : #IceTipMergeModel,
-	#superclass : #IceTipDiffPreviewModel,
+	#name : 'IceTipMergeModel',
+	#superclass : 'IceTipDiffPreviewModel',
 	#instVars : [
 		'mergeType',
 		'mergeAction'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergeModel >> calculateDiff [
 
 	^ self mergeAction
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMergeModel >> mergeAction [
 
 	^ mergeAction ifNil: [
@@ -24,13 +26,13 @@ IceTipMergeModel >> mergeAction [
 			yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeModel >> mergeType: aMergeType [
 
 	mergeType := aMergeType
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergeModel >> newExecuteMergeAction [ 
 	<noCache>
 	
@@ -42,13 +44,13 @@ IceTipMergeModel >> newExecuteMergeAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergeModel >> newMergeAction [
 
 	^ mergeType newMergeAction: commitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeModel >> repositoryModel [
 	^ commitish repositoryModel
 ]
