@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Plugin-GitHub' }
+Package { #name : 'Iceberg-Plugin-GitHub' }

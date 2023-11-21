@@ -1,15 +1,16 @@
 Class {
-	#name : #IceShouldHandleLibgitErrorsTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-ArchitecturalRules'
+	#name : 'IceShouldHandleLibgitErrorsTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-ArchitecturalRules',
+	#package : 'Iceberg-ArchitecturalRules'
 }
 
-{ #category : #rules }
+{ #category : 'rules' }
 IceShouldHandleLibgitErrorsTest class >> libgitRepositoryHandleAccessors [
 	self shouldBeImplemented.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> check: aRule on: aMethod [
 
 	| lintRule |
@@ -18,7 +19,7 @@ IceShouldHandleLibgitErrorsTest >> check: aRule on: aMethod [
 	^ lintRule result smallLintCritics
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testDefinedRepositoryAccessorDoesNotBreakRule [
 
 	| critiques |
@@ -27,7 +28,7 @@ IceShouldHandleLibgitErrorsTest >> testDefinedRepositoryAccessorDoesNotBreakRule
 	self assert: critiques isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testDirectHandleAccessWithErrorChecking [
 
 	| critiques |
@@ -36,7 +37,7 @@ IceShouldHandleLibgitErrorsTest >> testDirectHandleAccessWithErrorChecking [
 	self assert: critiques isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testDirectHandleAccessWithoutErrorChecking [
 
 	| critiques |
@@ -45,7 +46,7 @@ IceShouldHandleLibgitErrorsTest >> testDirectHandleAccessWithoutErrorChecking [
 	self assert: critiques notEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testHandleAccessThroughAllowedAccessorWithErrorChecking [
 
 	| critiques |
@@ -54,7 +55,7 @@ IceShouldHandleLibgitErrorsTest >> testHandleAccessThroughAllowedAccessorWithErr
 	self assert: critiques isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testHandleAccessThroughAllowedAccessorWithoutErrorChecking [
 
 	| critiques |
@@ -63,7 +64,7 @@ IceShouldHandleLibgitErrorsTest >> testHandleAccessThroughAllowedAccessorWithout
 	self assert: critiques notEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testMethodNotBreakingRuleYieldsNoCritiques [
 
 	| critiques |
@@ -72,7 +73,7 @@ IceShouldHandleLibgitErrorsTest >> testMethodNotBreakingRuleYieldsNoCritiques [
 	self assert: critiques isEmpty.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testNonDefinedRepositoryAccessorBreaksRule [
 
 	| critiques |

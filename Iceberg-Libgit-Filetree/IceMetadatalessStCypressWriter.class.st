@@ -2,17 +2,19 @@
 I can write filetree metadataless versions of a snapshot.
 "
 Class {
-	#name : #IceMetadatalessStCypressWriter,
-	#superclass : #MCFileTreeStCypressWriter,
-	#category : #'Iceberg-Libgit-Filetree-Writer'
+	#name : 'IceMetadatalessStCypressWriter',
+	#superclass : 'MCFileTreeStCypressWriter',
+	#category : 'Iceberg-Libgit-Filetree-Writer',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Writer'
 }
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessStCypressWriter class >> on: aStream [
 	^ self new stream: aStream
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessStCypressWriter >> writeClassDefinition: definition to: classPath [
 	self
 		writeInDirectoryName: classPath
@@ -26,7 +28,7 @@ IceMetadatalessStCypressWriter >> writeClassDefinition: definition to: classPath
 		visit: [ self writeClassDefinition: definition ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessStCypressWriter >> writeDefinitions: aCollection [
 	| classDirExtension extensionClasses extensionMethodDefinitions extensionMethodMap methodHolders |
 	self writeBasicDefinitions: aCollection.
@@ -95,14 +97,14 @@ IceMetadatalessStCypressWriter >> writeDefinitions: aCollection [
 						filename: filename ] ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessStCypressWriter >> writeMethodProperties: classMethodDefinitions [
 	"We don't want to write that."
 
 	self shouldNotImplement
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessStCypressWriter >> writeTraitDefinition: definition to: classPath [
 	self
 		writeInDirectoryName: classPath

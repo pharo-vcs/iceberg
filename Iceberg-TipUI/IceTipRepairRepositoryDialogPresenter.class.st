@@ -1,6 +1,6 @@
 Class {
-	#name : #IceTipRepairRepositoryDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipRepairRepositoryDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'optionsList',
 		'detailPanel',
@@ -8,16 +8,18 @@ Class {
 		'selectedOption',
 		'reasonPanel'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepairRepositoryDialogPresenter class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepairRepositoryDialogPresenter >> accept [
 
 	self closeWindow.
@@ -26,13 +28,13 @@ IceTipRepairRepositoryDialogPresenter >> accept [
 		model: self model
 ]
 
-{ #category : #'api - focus' }
+{ #category : 'api - focus' }
 IceTipRepairRepositoryDialogPresenter >> defaultKeyboardFocus [
 
 	^ optionsList
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRepairRepositoryDialogPresenter >> defaultLayout [
 
 	self flag: #TODO. "Replace the fixed height with a correct style"
@@ -44,19 +46,19 @@ IceTipRepairRepositoryDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepairRepositoryDialogPresenter >> detailPanel [
 
 	^ detailPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> initialExtentForWindow [
 
 	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> initializeDialogWindow: aWindow [
 
 	super initializeDialogWindow: aWindow.
@@ -70,7 +72,7 @@ IceTipRepairRepositoryDialogPresenter >> initializeDialogWindow: aWindow [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> initializeOptionsList [
 
 	optionsList
@@ -89,7 +91,7 @@ IceTipRepairRepositoryDialogPresenter >> initializeOptionsList [
 		whenActivatedDo: [ :selection | selection ifNotNil: [ self accept ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> initializePresenters [
 
 	reasonPanel := self newText
@@ -108,31 +110,31 @@ IceTipRepairRepositoryDialogPresenter >> initializePresenters [
 	self initializeOptionsList
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepairRepositoryDialogPresenter >> initializeReasonPanel [
 
 	reasonPanel text: self model longStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairRepositoryDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepairRepositoryDialogPresenter >> optionsList [
 
 	^ optionsList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepairRepositoryDialogPresenter >> reasonPanel [
 
 	^ reasonPanel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepairRepositoryDialogPresenter >> refreshDetailPanel [
 
 	selectedOption ifNotNil: [ 
@@ -141,14 +143,14 @@ IceTipRepairRepositoryDialogPresenter >> refreshDetailPanel [
 			yourself ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> refreshDialogButtons [
 
 	self window ifNotNil: [ :aWindow |
 		aWindow buttons first enabled: (selectedOption isNotNil) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepairRepositoryDialogPresenter >> selectionChanged: selectedItem [
 
 	selectedOption := selectedItem.
@@ -157,13 +159,13 @@ IceTipRepairRepositoryDialogPresenter >> selectionChanged: selectedItem [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> titleForWindow [
 
 	^ 'Repair repository'

@@ -23,8 +23,8 @@ IceTraitsCherryPickingTest >> testAddTraitDependingInATrait [
 		inPackage: self packageName1 asSymbol
 		with: [ :class | 
 			| composition transformations |
-			composition := RG2TraitCompositionDefinition parent: class.
-			transformations := RG2TraitCompositionVisitor new
+			composition := RGTraitComposition parent: class.
+			transformations := RGTraitCompositionVisitor new
 				parse: 'TestTrait'
 				for: composition.
 			class traitComposition: composition.
@@ -72,8 +72,8 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByAClass [
 		inPackage: self packageName1 asSymbol
 		with: [ :class | 
 			| transformations composition |
-			composition := RG2TraitCompositionDefinition parent: class.
-			transformations := RG2TraitCompositionVisitor new
+			composition := RGTraitComposition parent: class.
+			transformations := RGTraitCompositionVisitor new
 				parse: 'TestTraitInitial'
 				for: composition.
 			class traitComposition: composition.
@@ -112,8 +112,8 @@ IceTraitsCherryPickingTest >> testRemoveTraitUsedByATrait [
 		inPackage: self packageName1 asSymbol
 		with: [ :class |
 			| transformations composition |
-			composition := (RG2TraitCompositionDefinition parent: class).
-			transformations := RG2TraitCompositionVisitor new
+			composition := (RGTraitComposition parent: class).
+			transformations := RGTraitCompositionVisitor new
 				parse: 'TestTraitInitial'
 				for: composition.
 

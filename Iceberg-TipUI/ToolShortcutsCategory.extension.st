@@ -1,6 +1,6 @@
-Extension { #name : #ToolShortcutsCategory }
+Extension { #name : 'ToolShortcutsCategory' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 ToolShortcutsCategory >> openIceberg [
 
 	<shortcut>

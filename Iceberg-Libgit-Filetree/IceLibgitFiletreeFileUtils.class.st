@@ -2,27 +2,29 @@
 Emulates other 'file utils' classes by reading from a git repository (its blob, not a working copy'). Allows for reading any tree (from any commit) in the repository.
 "
 Class {
-	#name : #IceLibgitFiletreeFileUtils,
-	#superclass : #Object,
-	#category : #'Iceberg-Libgit-Filetree-Utilities'
+	#name : 'IceLibgitFiletreeFileUtils',
+	#superclass : 'Object',
+	#category : 'Iceberg-Libgit-Filetree-Utilities',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Utilities'
 }
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> deleteAll: aTreeBuilder [ 
     ^ aTreeBuilder deleteAll
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> directoryExists: aLGitTreeEntry [ 
 	^ aLGitTreeEntry type = LGitObjectTypeEnum git_obj_tree
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> directoryFromEntry: treeEntry [ 
 	^ treeEntry object
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> directoryFromPath: aString relativeTo: aCommitOrTree [
 	^ aCommitOrTree 
 		entryByPath: aString 
@@ -31,27 +33,27 @@ IceLibgitFiletreeFileUtils class >> directoryFromPath: aString relativeTo: aComm
 
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> directoryName: anEntry [
     ^ anEntry filename
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> fileName: anEntry [
     ^ anEntry filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeFileUtils class >> pathNameDelimiter [
 	^ $/
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> readStreamFor: fileName in: tree do: aBlock [
 	(tree entryByPath: fileName) readStreamDo: aBlock
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> writeStreamFor: fileName in: directory do: aBlock [ 
 	directory addEntryNamed: fileName withContents: (String streamContents: aBlock).
 ]

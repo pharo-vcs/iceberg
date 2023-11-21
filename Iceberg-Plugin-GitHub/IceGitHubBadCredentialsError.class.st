@@ -2,17 +2,19 @@
 I'm an error that happens when credentials are bad.
 "
 Class {
-	#name : #IceGitHubBadCredentialsError,
-	#superclass : #IceGitHubError,
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#name : 'IceGitHubBadCredentialsError',
+	#superclass : 'IceGitHubError',
+	#category : 'Iceberg-Plugin-GitHub-Model',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubBadCredentialsError class >> isAppropriateFor: aResponse [ 
 	^ aResponse status = 401
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubBadCredentialsError >> messageBody [
 	^ 'Credentials provided are wrong'
 ]

@@ -5,17 +5,19 @@ I define basic actions and an entry point to manage each repository individually
 IceTipRepositoriesBrowser new open.
 "
 Class {
-	#name : #IceTipRepositoriesBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipRepositoriesBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'currentGroupPanel',
 		'repositoryNotebook',
 		'notifyPanel'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 	IceTipFetchAllProjectCommand.
@@ -26,7 +28,7 @@ IceTipRepositoriesBrowser class >> buildGeneralCommandGroupWith: presenter for: 
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{
@@ -47,7 +49,7 @@ IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
 	super buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup.
@@ -60,13 +62,13 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesBrowser class >> iconForWorldMenu [
 
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [ 
 	"Add a custom menu item to the world menu"	
 	<worldMenu> 
@@ -80,13 +82,13 @@ IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
 		action: [ self new open ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepositoriesBrowser class >> new [
 	
 	^ self newOnRepositoryProvider: IceRepository
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [ 
 	| application |
 	
@@ -104,7 +106,7 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> addLibGitNotAvailableWarning [
 	
 	notifyPanel layout add: (notifyPanel newLabel 
@@ -112,7 +114,7 @@ IceTipRepositoriesBrowser >> addLibGitNotAvailableWarning [
 		yourself)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> connectPresenters [
 
 	repositoryNotebook whenSelectedPageChangedDo: [ :newPage |
@@ -120,19 +122,19 @@ IceTipRepositoriesBrowser >> connectPresenters [
 			aPresenter updatePresenter ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> currentGroupPanel [
 
 	^ currentGroupPanel ifNil: [ currentGroupPanel := self layout children first ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoriesBrowser >> defaultKeyboardFocus [
 
 	^ repositoryNotebook
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRepositoriesBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -141,7 +143,7 @@ IceTipRepositoriesBrowser >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> hasSelectedItem [
 	
 	^ repositoryNotebook selectedPage 
@@ -150,19 +152,19 @@ IceTipRepositoriesBrowser >> hasSelectedItem [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> iconForWindow [
 
 	^ self class iconForWorldMenu
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> initialExtentForWindow [
 
 	^ (600 @ 500) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> initializePresenters [
 
 	notifyPanel := self newPresenter.
@@ -172,14 +174,14 @@ IceTipRepositoriesBrowser >> initializePresenters [
 	repositoryNotebook := self newNotebook
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoriesBrowser >> mainList [
 	"should not arrive here"
 
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> openManagePackagesWindow [
 
 	IceTipManagePackagesCommand new
@@ -187,20 +189,20 @@ IceTipRepositoriesBrowser >> openManagePackagesWindow [
 		execute
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> projectsPanel [
 	"this method is using exclusively for testing."
 	
 	^ repositoryNotebook pages first activePresenter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> projectsPanelIsShowingRepository: anIceLibgitRepository [
 
 	^ self projectsPanel isShowingRepository: anIceLibgitRepository
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> projectsPanelRepositoryList [
 	"this method is using exclusively for testing. 
 	 it will answer the repository list form the projects page"
@@ -208,21 +210,21 @@ IceTipRepositoriesBrowser >> projectsPanelRepositoryList [
 	^ self projectsPanel repositoryList
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> projectsPanelRepositoryModels [
 	"this method is used exclusively for testing"
 
 	^ self projectsPanelRepositoryList items
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoriesBrowser >> refresh [
 
 	repositoryNotebook selectedPage ifNil: [ ^ self ].
 	repositoryNotebook selectedPage activePresenter updatePresenter
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser >> refreshCommands [
 	| rootGroup |
 
@@ -233,13 +235,13 @@ IceTipRepositoriesBrowser >> refreshCommands [
 		refreshToolbarWith: rootGroup
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesBrowser >> repositoryModel [
 	
 	^ self selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesBrowser >> selectedItem [
 
 	^ repositoryNotebook selectedPage 
@@ -247,7 +249,7 @@ IceTipRepositoriesBrowser >> selectedItem [
 		ifNil: [ nil ]
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser >> selectionCommandsGroup [ 
 
 	^ self visibleRootCommandsGroup
@@ -255,7 +257,7 @@ IceTipRepositoriesBrowser >> selectionCommandsGroup [
 		ifNone: [ nil ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 
 	Iceberg announcer weak 
@@ -264,13 +266,13 @@ IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> titleForWindow [
 
 	^ 'Repositories'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> updatePresenter [
 
 	LGitLibrary uniqueInstance isAvailable 
@@ -287,7 +289,7 @@ IceTipRepositoriesBrowser >> updatePresenter [
 	self refresh
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoriesBrowser >> visibleRootCommandsGroup [
 	| rootGroup |	
 		

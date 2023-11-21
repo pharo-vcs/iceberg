@@ -15,26 +15,28 @@ Internal Representation and Key Implementation Points.
 	last:		<aSymbol>		Represent the entities to display last.
 "
 Class {
-	#name : #IceSortingStrategy,
-	#superclass : #Object,
+	#name : 'IceSortingStrategy',
+	#superclass : 'Object',
 	#instVars : [
 		'first',
 		'last'
 	],
-	#category : #'Iceberg-TipUI-View-WorkingCopy'
+	#category : 'Iceberg-TipUI-View-WorkingCopy',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-WorkingCopy'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy class >> possibleValues [
 	^ #(#none #modified #notLoaded)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> first [
 	^ first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> first: anObject [
 	first := anObject.
 	
@@ -42,19 +44,19 @@ IceSortingStrategy >> first: anObject [
 		ifTrue: [ self last: #none ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceSortingStrategy >> initialize [
 	super initialize.
 	first := #modified.
 	last := #notLoaded
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> last [
 	^ last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> last: anObject [
 	last := anObject.
 	
@@ -62,7 +64,7 @@ IceSortingStrategy >> last: anObject [
 		ifTrue: [ self first: #none ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> selectMatching: aSymbol from: aCollection [
 	aSymbol = #modified
 		ifTrue: [ ^ aCollection select: #isModified ].
@@ -71,7 +73,7 @@ IceSortingStrategy >> selectMatching: aSymbol from: aCollection [
 	self error: 'This sorting is not accepted: ' , aSymbol
 ]
 
-{ #category : #sorting }
+{ #category : 'sorting' }
 IceSortingStrategy >> sort: aListOfPackages [
 	| result packages lasts |
 	packages := aListOfPackages.
@@ -85,12 +87,12 @@ IceSortingStrategy >> sort: aListOfPackages [
 	^ result
 ]
 
-{ #category : #sorting }
+{ #category : 'sorting' }
 IceSortingStrategy >> sortByName: aCollection [
 	^ aCollection sorted: #packageName ascending
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSortingStrategy >> withOthers: aSymbol [ 
 	self first = aSymbol ifTrue: [ self first: nil ].
 	self last = aSymbol ifTrue: [ self last: nil ]

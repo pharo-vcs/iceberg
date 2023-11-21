@@ -3,44 +3,46 @@ I'm a reader for the tonel file format.
 
 "
 Class {
-	#name : #IceLibgitTonelReader,
-	#superclass : #TonelReader,
+	#name : 'IceLibgitTonelReader',
+	#superclass : 'TonelReader',
 	#traits : 'TIceRepositoryReader',
 	#classTraits : 'TIceRepositoryReader classTrait',
 	#instVars : [
 		'iceVersion'
 	],
-	#category : #'Iceberg-Libgit-Tonel-Reader'
+	#category : 'Iceberg-Libgit-Tonel-Reader',
+	#package : 'Iceberg-Libgit-Tonel',
+	#tag : 'Reader'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader class >> id [
 	^ #tonel
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLibgitTonelReader class >> on: aCommitOrTree iceVersion: iceVersion [
 	^ (self on: aCommitOrTree) 
 		iceVersion: iceVersion; 
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> commit [
 	^ stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> fileUtils [
 	^ IceLibgitTonelFileUtils
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> iceVersion [
 	^ iceVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> iceVersion: anObject [
 	| repository packageDirectoryName |
 	iceVersion := anObject.
@@ -51,27 +53,27 @@ IceLibgitTonelReader >> iceVersion: anObject [
 	self packageDirectory: (repository subdirectoryPath / packageDirectoryName) pathString
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IceLibgitTonelReader >> loadVersionInfo [
 	^ info := self iceVersion info
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> package [
 	^ MCPackage named: self iceVersion packageName
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelReader >> packageNameFromPackageDirectory [
 	^ iceVersion packageName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> repository [
 	^ self iceVersion repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitTonelReader >> versionName [
 	^ ('{1}-{2}.{3}' format: {
 		self packageNameFromPackageDirectory. 

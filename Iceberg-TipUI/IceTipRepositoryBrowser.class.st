@@ -3,16 +3,18 @@ I'm a browser to show the internals of a repository.
 I will show remotes, branches, tags and all possible operations in low level repository (pull, push,  branch. But all edit remotes, etc.)
 "
 Class {
-	#name : #IceTipRepositoryBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipRepositoryBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'sidebarTree',
 		'historyPanel'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	{	IceTipAddRemoteCommand.
@@ -24,7 +26,7 @@ IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aC
 			aCommandGroup register: each forSpec ]
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	| aGroup |
@@ -50,30 +52,30 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepositoryBrowser class >> new [
 	self error: 'Use #onRepository:'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepositoryBrowser class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipRepositoryBrowser class >> onRepositoryNamed: aString [
 
 	^ self onRepository: (IceRepository registry detect: [ :each | each name = aString ])
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
 	historyPanel model: ann
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipRepositoryBrowser >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
@@ -83,19 +85,19 @@ IceTipRepositoryBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryBrowser >> historyPanel [
 
 	^ historyPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> initialExtentForWindow [
 
 	^ (1000 @ 700) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> initializePresenters [
 
 	sidebarTree := self newTreeTable.
@@ -109,7 +111,7 @@ IceTipRepositoryBrowser >> initializePresenters [
 	self initializeSidebarTree
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> initializeSidebarTree [
 
 	sidebarTree
@@ -129,14 +131,14 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 				ifTrue: [ self commitishSelected: selection selectedItem ] ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ sidebarTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryBrowser >> refresh [
 
 	self refreshCommands.
@@ -145,7 +147,7 @@ IceTipRepositoryBrowser >> refresh [
 	self selectCurrentBranch
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 
 	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
@@ -153,7 +155,7 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 	self updatePresenter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> selectCurrentBranch [
 
 	| branch |
@@ -166,13 +168,13 @@ IceTipRepositoryBrowser >> selectCurrentBranch [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryBrowser >> sidebarTree [
 
 	^ sidebarTree
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipRepositoryBrowser >> subscribeToAnnouncements [
 
     Iceberg announcer weak 
@@ -181,13 +183,13 @@ IceTipRepositoryBrowser >> subscribeToAnnouncements [
         to: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> titleForWindow [
 
 	^ 'Repository of ' , self model name
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> updatePresenter [
 
 	self refresh

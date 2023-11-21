@@ -2,36 +2,38 @@
 Command that checks out the selected branch
 "
 Class {
-	#name : #IceTipCheckoutSelectedBranchCommand,
-	#superclass : #IceTipRemotesTreeCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCheckoutSelectedBranchCommand',
+	#superclass : 'IceTipRemotesTreeCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCheckoutSelectedBranchCommand class >> defaultDescription [
 
 	^ 'Checkout this branch'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCheckoutSelectedBranchCommand class >> defaultName [
 
 	^ 'Checkout branch'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCheckoutSelectedBranchCommand >> actsOnBranch: aBranchModel [
 
 	^ true
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCheckoutSelectedBranchCommand >> execute [
 
 	self item previewCheckout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutSelectedBranchCommand >> iconName [
 	^ #branch
 ]

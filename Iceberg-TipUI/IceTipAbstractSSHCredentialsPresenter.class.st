@@ -3,8 +3,8 @@ I implement the basic behavior of all the ssh credentials.
 My subclasses implements the specific behavior for each of the operations.
 "
 Class {
-	#name : #IceTipAbstractSSHCredentialsPresenter,
-	#superclass : #IceTipAbstractCredentialsPresenter,
+	#name : 'IceTipAbstractSSHCredentialsPresenter',
+	#superclass : 'IceTipAbstractCredentialsPresenter',
 	#instVars : [
 		'usernameInput',
 		'usernameLabel',
@@ -15,10 +15,12 @@ Class {
 		'publicKeyLabel',
 		'privateKeyLabel'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAbstractSSHCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -56,20 +58,20 @@ IceTipAbstractSSHCredentialsPresenter >> initializePresenters [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAbstractSSHCredentialsPresenter >> isOkEnabled [
 
 	^ self username isNotEmpty and: [ 
 		  self publicKey isNotEmpty and: [ self privateKey isNotEmpty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractSSHCredentialsPresenter >> passphrase [
 
 	^ passphraseInput text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractSSHCredentialsPresenter >> privateKey [
 
 	^ privateKeyInput location
@@ -77,7 +79,7 @@ IceTipAbstractSSHCredentialsPresenter >> privateKey [
 		  ifNotNil: [ :x | x pathString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractSSHCredentialsPresenter >> publicKey [
 
 	^ publicKeyInput location
@@ -85,7 +87,7 @@ IceTipAbstractSSHCredentialsPresenter >> publicKey [
 		  ifNotNil: [ :x | x pathString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAbstractSSHCredentialsPresenter >> username [
 
 	^ usernameInput text

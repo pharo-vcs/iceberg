@@ -2,22 +2,24 @@
 I implement the dialog to add SSH credentials.
 "
 Class {
-	#name : #IceTipAddSSHCredentialsPresenter,
-	#superclass : #IceTipAbstractSSHCredentialsPresenter,
+	#name : 'IceTipAddSSHCredentialsPresenter',
+	#superclass : 'IceTipAbstractSSHCredentialsPresenter',
 	#instVars : [
 		'hostLabel',
 		'hostInput'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipAddSSHCredentialsPresenter >> accept [
 
 	self acceptAddAction
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddSSHCredentialsPresenter >> defaultLayout [
 
 	^ SpGridLayout new
@@ -31,20 +33,20 @@ IceTipAddSSHCredentialsPresenter >> defaultLayout [
 			add: passphraseLabel; add: passphraseInput; nextRow ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddSSHCredentialsPresenter >> hostnameFromInput [
 	
 	^ hostInput text
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddSSHCredentialsPresenter >> initialExtentForWindow [
 
 	^ (350 @ (self class inputTextHeight * 7 + self class buttonHeight))
 		  scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddSSHCredentialsPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -57,7 +59,7 @@ IceTipAddSSHCredentialsPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddSSHCredentialsPresenter >> newCredentials [
 	
 	^ IceSshCredentials new
@@ -68,7 +70,7 @@ IceTipAddSSHCredentialsPresenter >> newCredentials [
 		yourself 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddSSHCredentialsPresenter >> titleForWindow [
 
 	^ 'Add SSH credential'
