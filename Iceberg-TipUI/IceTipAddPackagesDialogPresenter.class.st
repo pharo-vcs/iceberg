@@ -30,9 +30,7 @@ IceTipAddPackagesDialogPresenter >> accept [
 { #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> allPackages [
 
-	^ RPackageOrganizer default packages
-		asOrderedCollection 
-		sort: [ :a :b | a name < b name ]
+	^ self packageOrganizer packages asOrderedCollection sort: [ :a :b | a name < b name ]
 ]
 
 { #category : 'accessing' }
