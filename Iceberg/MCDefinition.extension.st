@@ -5,12 +5,6 @@ MCDefinition >> addAnalysisToPackageChangeSet: aPackageChangeSet change: aChange
 	aPackageChangeSet addChange: aChange
 ]
 
-{ #category : '*Iceberg-Changes' }
-MCDefinition >> buildOn: anIceDiffBuilder [
-	
-	self subclassResponsibility
-]
-
 { #category : '*Iceberg-changes' }
 MCDefinition >> isFileDefinition [
 	
