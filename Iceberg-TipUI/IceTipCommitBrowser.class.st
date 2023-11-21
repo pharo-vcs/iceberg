@@ -146,6 +146,8 @@ IceTipCommitBrowser >> initialize [
 
 	super initialize.
 	saveAction := IceTipSaveImageAction new
+		context: self;
+		yourself
 ]
 
 { #category : 'initialization' }

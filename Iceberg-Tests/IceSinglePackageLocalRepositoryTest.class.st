@@ -428,8 +428,8 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCodeRepositoryInstallsCodeInI
 	self repository commitWithMessage: message.
 
 	self repository unload.
-	self deny: (RPackageOrganizer default hasPackage: self packageName1).
-
+	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
+	
 	self repository head checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: self packageName1
@@ -454,8 +454,8 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCommitInstallsCodeInImage [
 	self repository commitWithMessage: message.
 
 	self repository unload.
-	self deny: (RPackageOrganizer default hasPackage: self packageName1).
-
+	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
+	
 	self repository branch commit checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: self packageName1

@@ -29,7 +29,7 @@ IceTipSelectAllPackagesCommand >> canBeExecuted [
 	| pkgList |
 
 	pkgList := self packagesList.
- 	^ pkgList items notEmpty and: [ pkgList items size ~= pkgList selectedItems size ]
+ 	^ pkgList items isNotEmpty and: [ pkgList items size ~= pkgList selectedItems size ]
 ]
 
 { #category : 'executing' }

@@ -77,7 +77,7 @@ IceLibgitRepository class >> libgitErrorHandlerSelector [
 	
 	This selector is mainly used by architectural rules to ensure that libgit is being called correctly."
 	^ (self methods detect: [ :each |
-		each pragmas anySatisfy: [ :pragma | pragma keyword = self libgitErrorHandlerPragmaSelector ] ]) selector
+			each pragmas anySatisfy: [ :pragma | pragma selector = self libgitErrorHandlerPragmaSelector ] ]) selector
 ]
 
 { #category : 'rules' }
@@ -90,8 +90,8 @@ IceLibgitRepository class >> libgitRepositoryHandleAccessorPragmaSelector [
 
 { #category : 'rules' }
 IceLibgitRepository class >> libgitRepositoryHandleAccessors [
-	
-	^ self allMethods select: [ :m | m pragmas anySatisfy: [ :p | p keyword = self libgitRepositoryHandleAccessorPragmaSelector ] ]
+	 
+	^ self allMethods select: [ :m | m pragmas anySatisfy: [ :p | p selector = self libgitRepositoryHandleAccessorPragmaSelector ] ]
 ]
 
 { #category : 'accessing' }

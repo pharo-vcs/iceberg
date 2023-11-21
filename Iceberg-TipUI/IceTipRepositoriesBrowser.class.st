@@ -111,7 +111,8 @@ IceTipRepositoriesBrowser >> addLibGitNotAvailableWarning [
 	
 	notifyPanel layout add: (notifyPanel newLabel 
 		label: 'There is no libgit2 available in your system! Please verify everything is fine before continue.';
-		yourself)
+		yourself).
+	notifyPanel show
 ]
 
 { #category : 'initialization' }
@@ -170,6 +171,7 @@ IceTipRepositoriesBrowser >> initializePresenters [
 	notifyPanel := self newPresenter.
 	notifyPanel layout: SpBoxLayout newVertical.
 	notifyPanel addStyle: 'libgit2NotAvailable'.
+	notifyPanel hide.
 	
 	repositoryNotebook := self newNotebook
 ]

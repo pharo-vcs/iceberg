@@ -129,7 +129,7 @@ IceTipRepositoryModel >> descriptionDecorator [
 
 { #category : 'testing' }
 IceTipRepositoryModel >> hasRemotes [
-	^ self entity remotes notEmpty
+	^ self entity remotes isNotEmpty
 ]
 
 { #category : 'testing' }
@@ -187,7 +187,7 @@ IceTipRepositoryModel >> isLibGitAvailable [
 
 { #category : 'private - testing' }
 IceTipRepositoryModel >> isLoaded [
-	^ self entity loadedPackages notEmpty 
+	^ self entity loadedPackages isNotEmpty 
 ]
 
 { #category : 'testing' }
@@ -441,7 +441,7 @@ IceTipRepositoryModel >> status [
 			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
 		entity workingCopy isDetached 
 			ifTrue: [  ^ 'Detached Working Copy' ].
-		(entity head isDetached and: [ entity head tags notEmpty ])
+		(entity head isDetached and: [ entity head tags isNotEmpty ])
 			ifTrue: [ ^ 'Detached HEAD' ].
 		entity head isDetached 
 			ifTrue: [ ^ 'Detached HEAD' ].
@@ -477,7 +477,7 @@ IceTipRepositoryModel >> statusDecorator [
 			ifTrue: [ ^ IceTipStatusDecorator error ].	
 		entity workingCopy isDetached 
 			ifTrue: [  ^ IceTipStatusDecorator error ].
-		(entity head isDetached and: [ entity head tags notEmpty ])
+		(entity head isDetached and: [ entity head tags isNotEmpty ])
 			ifTrue: [ ^ IceTipStatusDecorator warning ].
 		entity head isDetached 
 			ifTrue: [ ^ IceTipStatusDecorator error ].
@@ -501,7 +501,7 @@ IceTipRepositoryModel >> statusString [
 			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
 		entity workingCopy isDetached 
 			ifTrue: [  ^ 'Detached Working Copy' ].
-		(entity head isDetached and: [ entity head tags notEmpty ])
+		(entity head isDetached and: [ entity head tags isNotEmpty ])
 			ifTrue: [ ^ 'Detached HEAD' ].
 		entity head isDetached 
 			ifTrue: [ ^ 'Detached HEAD' ].

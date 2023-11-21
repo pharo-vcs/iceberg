@@ -142,10 +142,10 @@ IceTipAddRemoteDialogPresenter >> urlText [
 IceTipAddRemoteDialogPresenter >> validate [
 
 	self
-		assert: self remoteName notEmpty 
+		assert: self remoteName isNotEmpty 
 		description: 'You need to specify a remote name.'.
 	self
-		assert: self remoteUrl notEmpty
+		assert: self remoteUrl isNotEmpty
 		description: 'You need to specify a remote url.'
 
 ]

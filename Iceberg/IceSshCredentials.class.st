@@ -51,9 +51,9 @@ IceSshCredentials >> isDefault [
 
 { #category : 'testing' }
 IceSshCredentials >> isPresent [
-	^ self username notEmpty 
-		and: [ self publicKey notEmpty 
-		and: [ self privateKey notEmpty ] ]
+	^ self username isNotEmpty 
+		and: [ self publicKey isNotEmpty 
+		and: [ self privateKey isNotEmpty ] ]
 ]
 
 { #category : 'accessing' }
