@@ -103,7 +103,7 @@ IceAbstractTestCase >> setUp [
 { #category : 'running' }
 IceAbstractTestCase >> tearDown [
 
-	fixture tearDown.
+	fixture ifNotNil: [ fixture tearDown ].
 	super tearDown.
 ]
 
