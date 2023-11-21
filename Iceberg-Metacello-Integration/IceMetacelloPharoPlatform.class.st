@@ -6,7 +6,7 @@ Class {
 	#category : 'Iceberg-Metacello-Integration-Platform',
 	#package : 'Iceberg-Metacello-Integration',
 	#tag : 'Platform'
-	#name : 'IceMetacelloPharoPlatform',
+	#name : 'IceMetacelloPharoPlatform'
 }
 
 { #category : 'class initialization' }
