@@ -1,6 +1,6 @@
-Extension { #name : #IceHttpsProtocol }
+Extension { #name : 'IceHttpsProtocol' }
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceHttpsProtocol class >> githubRequestUrlKey [
 	
 	^ #'clone_url'

@@ -9,30 +9,32 @@ git@github.com:user/project.git
 WARNING: This repository is meant to be used with iceberg and it will not work with plain Monticello/Metacello (because there is no way to know how to download a zip)
 "
 Class {
-	#name : #MCGitRemoteRepository,
-	#superclass : #MCGitBasedNetworkRepository,
+	#name : 'MCGitRemoteRepository',
+	#superclass : 'MCGitBasedNetworkRepository',
 	#instVars : [
 		'host',
 		'port',
 		'path',
 		'user'
 	],
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository class >> basicDescription [
 
   ^ 'git'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository class >> description [
 
   ^ self basicDescription , ':'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MCGitRemoteRepository class >> parseLocation: aLocation version: aVersion [ 
 
 	^ self new
@@ -40,13 +42,13 @@ MCGitRemoteRepository class >> parseLocation: aLocation version: aVersion [
 	yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> host [
 
 	^ host
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> httpsUrl [
 
 	^ 'https://{1}{2}/{3}.git' format: { 
@@ -57,13 +59,13 @@ MCGitRemoteRepository >> httpsUrl [
 		self path }
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MCGitRemoteRepository >> initialize [
 	
 	super initialize.
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 MCGitRemoteRepository >> parseHTTPLocation: aString [
 	| url |
 
@@ -73,7 +75,7 @@ MCGitRemoteRepository >> parseHTTPLocation: aString [
 	path := self pathFrom: url path
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 MCGitRemoteRepository >> parseLocation: aString [
 
 	(#('http:' 'https:') 
@@ -82,7 +84,7 @@ MCGitRemoteRepository >> parseLocation: aString [
 		ifFalse: [ self parseSSHLocation: aString ]
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 MCGitRemoteRepository >> parseSSHLocation: aString [
 	| segments |
 	
@@ -92,13 +94,13 @@ MCGitRemoteRepository >> parseSSHLocation: aString [
 	path := self pathFrom: segments third
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> path [
 
 	^ path
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 MCGitRemoteRepository >> pathFrom: aString [
 
 	^ (aString endsWith: '.git')
@@ -106,19 +108,19 @@ MCGitRemoteRepository >> pathFrom: aString [
 		ifFalse: [ aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> port [
 
 	^ port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> projectPath [
 
 	^ self path
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> scpUrl [
 
 	^ '{1}@{2}/{3}.git' format: { 
@@ -127,7 +129,7 @@ MCGitRemoteRepository >> scpUrl [
 		self path }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MCGitRemoteRepository >> user [
 
 	^ user

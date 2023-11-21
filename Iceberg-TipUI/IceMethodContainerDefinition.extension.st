@@ -1,6 +1,6 @@
-Extension { #name : #IceMethodContainerDefinition }
+Extension { #name : 'IceMethodContainerDefinition' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodContainerDefinition >> actualClass [
 	
 	| actualClass |
@@ -8,7 +8,7 @@ IceMethodContainerDefinition >> actualClass [
 	^ isMeta ifTrue: [ actualClass classSide ] ifFalse: [ actualClass ]
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodContainerDefinition >> browse [
 	
 	| browsed |
@@ -17,13 +17,13 @@ IceMethodContainerDefinition >> browse [
 	browsed browse
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodContainerDefinition >> canBeBrowsed [
 	
 	^ Smalltalk globals includesKey: name
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceMethodContainerDefinition >> canBrowseReferences [
 	
 	^ self canBeBrowsed

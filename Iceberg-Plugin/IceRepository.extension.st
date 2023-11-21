@@ -1,6 +1,6 @@
-Extension { #name : #IceRepository }
+Extension { #name : 'IceRepository' }
 
-{ #category : #'*Iceberg-Plugin' }
+{ #category : '*Iceberg-Plugin' }
 IceRepository >> pluginManager [
 	^ IcePluginManager managerFor: self
 ]

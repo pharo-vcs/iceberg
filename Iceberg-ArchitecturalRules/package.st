@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-ArchitecturalRules' }
+Package { #name : 'Iceberg-ArchitecturalRules' }

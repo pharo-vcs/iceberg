@@ -8,8 +8,8 @@ I display the list of commits of the PR for review, allow the user to merge the 
 
 "
 Class {
-	#name : #IceGitHubTipPullRequestBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceGitHubTipPullRequestBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'repositoryModel',
 		'pullRequest',
@@ -20,22 +20,24 @@ Class {
 		'acceptButton',
 		'rejectButton'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceGitHubTipPullRequestBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceGitHubTipPullRequestBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubTipPullRequestBrowser class >> newApplication: app model: aModel pullRequest: aPullRequest [
 
 	^ self basicNew
@@ -46,19 +48,19 @@ IceGitHubTipPullRequestBrowser class >> newApplication: app model: aModel pullRe
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser class >> taskbarIconName [
 
 	^ #komitterSmalltalkhubRemote
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> acceptButton [
 
 	^ acceptButton
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 
 	IceGitHubAcceptPullRequestModel new
@@ -69,19 +71,19 @@ IceGitHubTipPullRequestBrowser >> acceptPullRequest [
 		open
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> commitLabel [
 
 	^ commitLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> commits [
 
 	^ commits
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> connectPresenters [
 
 	super connectPresenters.
@@ -93,7 +95,7 @@ IceGitHubTipPullRequestBrowser >> connectPresenters [
 	rejectButton action: [ self rejectPullRequest ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubTipPullRequestBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -112,19 +114,19 @@ IceGitHubTipPullRequestBrowser >> defaultLayout [
   			yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> diff [
 
 	^ diff
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> initialExtentForWindow [
 
 	^ (1050 @ 800) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> initializeCommitsTable [
 
 	| textStylingBlock |
@@ -165,14 +167,14 @@ IceGitHubTipPullRequestBrowser >> initializeCommitsTable [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> initializeDiff [
 
 	diff beForMerge.
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -201,20 +203,20 @@ IceGitHubTipPullRequestBrowser >> initializePresenters [
 		icon: (self iconNamed: #testRed)
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ commits
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> mergeButton [
 
 	^ mergeButton
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubTipPullRequestBrowser >> mergePullRequestIntoImage [
 
 	(self confirm:
@@ -226,17 +228,17 @@ IceGitHubTipPullRequestBrowser >> mergePullRequestIntoImage [
 	self pullRequest mergeIntoWorkingCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser >> pullRequest [
 	^ pullRequest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser >> pullRequest: anObject [
 	pullRequest := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> refresh [
 	| commitModels |
 	
@@ -250,13 +252,13 @@ IceGitHubTipPullRequestBrowser >> refresh [
 	commits items: commitModels
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubTipPullRequestBrowser >> rejectButton [
 
 	^ rejectButton
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 
 	((IceGitHubRejectPullRequestModel newApplication: self application)
@@ -269,30 +271,30 @@ IceGitHubTipPullRequestBrowser >> rejectPullRequest [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser >> repositoryModel [
 	^ repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser >> repositoryModel: anObject [
 	repositoryModel := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> setModelBeforeInitialization: aModel [
 
 	self repositoryModel: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubTipPullRequestBrowser >> titleForWindow [
 
 	^ 'Browsing pull request: #{1} {2}' format: { self pullRequest number. self pullRequest title }
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> updatePresenter [
 
 	self refresh

@@ -3,32 +3,34 @@ I read exclusively the definition of the method defined in fileName.
 I'm using to speed the creation of a version list on IceLibgitFiletreeLog.
 "
 Class {
-	#name : #IceLibgitFiletreeLogReader,
-	#superclass : #IceLibgitFiletreeReader,
+	#name : 'IceLibgitFiletreeLogReader',
+	#superclass : 'IceLibgitFiletreeReader',
 	#instVars : [
 		'fileName'
 	],
-	#category : #'Iceberg-Libgit-Filetree-Reader'
+	#category : 'Iceberg-Libgit-Filetree-Reader',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Reader'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLibgitFiletreeLogReader class >> fileName: aString on: aCommit [
 	^ (self on: aCommit)
 		fileName: aString;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeLogReader >> fileName [
 	^ fileName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeLogReader >> fileName: aString [
 	fileName := aString
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitFiletreeLogReader >> loadDefinitions [
  	| entry segments className classIsMeta entryPath packageIndex |	
 	
@@ -63,12 +65,12 @@ IceLibgitFiletreeLogReader >> loadDefinitions [
 			source: source) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeLogReader >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeLogReader >> package: aPackage [
 	package := aPackage
 ]

@@ -1,12 +1,14 @@
 Class {
-	#name : #IceTipHiedraAltHistoryRowPresenter,
-	#superclass : #SpPresenter,
+	#name : 'IceTipHiedraAltHistoryRowPresenter',
+	#superclass : 'SpPresenter',
 	#traits : 'SpTModel',
 	#classTraits : 'SpTModel classTrait',
-	#category : #'Iceberg-TipUI-View-Repository-HiedraAlt'
+	#category : 'Iceberg-TipUI-View-Repository-HiedraAlt',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository-HiedraAlt'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltHistoryRowPresenter >> addTagsTo: aLayout [
 	| tagNames tagLayout |
 	
@@ -30,13 +32,13 @@ IceTipHiedraAltHistoryRowPresenter >> addTagsTo: aLayout [
 	aLayout add: tagLayout expand: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltHistoryRowPresenter >> form [
 
 	^ self model first
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHiedraAltHistoryRowPresenter >> initializePresenters [
 
 	self layout: (SpBoxLayout newLeftToRight
@@ -51,7 +53,7 @@ IceTipHiedraAltHistoryRowPresenter >> initializePresenters [
 		yourself).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHiedraAltHistoryRowPresenter >> item [
 
 	^ self model second

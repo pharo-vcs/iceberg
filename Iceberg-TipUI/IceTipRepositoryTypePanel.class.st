@@ -3,8 +3,8 @@ I'm a generic repository type panel.
 I'm used as part of the creation dialog and to edit repository properties.
 "
 Class {
-	#name : #IceTipRepositoryTypePanel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceTipRepositoryTypePanel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'projectLocationLabel',
 		'projectLocation',
@@ -12,10 +12,12 @@ Class {
 		'remoteInputText',
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryTypePanel class >> allTypes [
 	^ ((self allSubclasses 
 		reject: #isAbstract)
@@ -23,37 +25,37 @@ IceTipRepositoryTypePanel class >> allTypes [
 		collect: #new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryTypePanel class >> isAbstract [
 
 	^ self = IceTipRepositoryTypePanel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryTypePanel class >> order [
 
 	^ 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryTypePanel >> defaultLocation [
 
 	^ IceLibgitRepository repositoriesLocation pathString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryTypePanel >> defaultSubdirectory [
 
 	^ IceLibgitRepository defaultCodeSubdirectory
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryTypePanel >> initializePresenters [
 
 	self initializeProjectLocation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryTypePanel >> initializeProjectLocation [
 
 	projectLocationLabel := self newLabel label: 'Local directory'.
@@ -63,7 +65,7 @@ IceTipRepositoryTypePanel >> initializeProjectLocation [
 		location: self defaultLocation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipRepositoryTypePanel >> initializeRemoteURL [
 
 	remoteLabel := self newLabel label: 'Remote URL'; yourself.
@@ -73,50 +75,50 @@ IceTipRepositoryTypePanel >> initializeRemoteURL [
 		yourself.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryTypePanel >> isLocalRepository [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryTypePanel >> isNewRepository [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryTypePanel >> newRepository [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryTypePanel >> projectLocation [
 
 	^ projectLocation
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryTypePanel >> remoteInputText [
 
 	^ remoteInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipRepositoryTypePanel >> remoteLabel [
 
 	^ remoteLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryTypePanel >> repository: aRepository [
 	"Used if editing an existing repository"
 
 	repository := aRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryTypePanel >> validate [
 
 	^ self subclassResponsibility

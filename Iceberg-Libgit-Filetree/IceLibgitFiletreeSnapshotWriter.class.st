@@ -3,22 +3,24 @@ I'm a filetree snapshot writer to ensure the output will be libgit2 compatible.
 I'm not surre I cannot unify myself class with my parent.
 "
 Class {
-	#name : #IceLibgitFiletreeSnapshotWriter,
-	#superclass : #IceMetadatalessStCypressWriter,
-	#category : #'Iceberg-Libgit-Filetree-Writer'
+	#name : 'IceLibgitFiletreeSnapshotWriter',
+	#superclass : 'IceMetadatalessStCypressWriter',
+	#category : 'Iceberg-Libgit-Filetree-Writer',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Writer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeSnapshotWriter >> fileUtils [
 	^ IceLibgitFiletreeFileUtils
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 IceLibgitFiletreeSnapshotWriter >> propertyFileExtension [
   ^ MCFileTreeRepository defaultPropertyFileExtension
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitFiletreeSnapshotWriter >> writeInDirectoryName: directoryNameOrPath fileName: fileName extension: ext visit: visitBlock [
     | directory |
     directory := self directoryForDirectoryNamed: directoryNameOrPath.

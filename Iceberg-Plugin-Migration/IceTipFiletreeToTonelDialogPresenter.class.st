@@ -3,8 +3,8 @@ I'm a dialog validate and perform a migration of sources from filetree to tonel.
 
 "
 Class {
-	#name : #IceTipFiletreeToTonelDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipFiletreeToTonelDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'iconPanel',
 		'confirmLabel',
@@ -12,10 +12,12 @@ Class {
 		'branchName',
 		'repository'
 	],
-	#category : #'Iceberg-Plugin-Migration-UI'
+	#category : 'Iceberg-Plugin-Migration-UI',
+	#package : 'Iceberg-Plugin-Migration',
+	#tag : 'UI'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipFiletreeToTonelDialogPresenter >> accept [
 	
 	IceTipStandardAction new
@@ -27,25 +29,25 @@ IceTipFiletreeToTonelDialogPresenter >> accept [
 		executeWithContext: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFiletreeToTonelDialogPresenter >> branchBaseName [
 
 	^ 'migrate-sources-to-tonel'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFiletreeToTonelDialogPresenter >> branchName [
 
 	^ branchName ifNil: [ branchName := self obtainBranchName ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipFiletreeToTonelDialogPresenter >> confirmLabel [
 
 	^ confirmLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFiletreeToTonelDialogPresenter >> confirmMessage [
 
 	^ 'Convert repository {1} sources from filetree format to tonel. 
@@ -55,7 +57,7 @@ You can choose to not merge immediately your migration.
 ARE YOU SURE?'
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipFiletreeToTonelDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
@@ -69,7 +71,7 @@ IceTipFiletreeToTonelDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipFiletreeToTonelDialogPresenter >> doAccept [
 	
 	IceConvertFormatAction new 
@@ -80,13 +82,13 @@ IceTipFiletreeToTonelDialogPresenter >> doAccept [
 		execute
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipFiletreeToTonelDialogPresenter >> iconPanel [
 
 	^ iconPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipFiletreeToTonelDialogPresenter >> initialExtentForWindow [
 
 	^ (500
@@ -94,7 +96,7 @@ IceTipFiletreeToTonelDialogPresenter >> initialExtentForWindow [
 		  scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipFiletreeToTonelDialogPresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -113,13 +115,13 @@ IceTipFiletreeToTonelDialogPresenter >> initializePresenters [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipFiletreeToTonelDialogPresenter >> mergeWithMasterCheckbox [
 
 	^ mergeWithMasterCheckbox
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipFiletreeToTonelDialogPresenter >> obtainBranchName [
 
 	| baseName suffix count |
@@ -134,19 +136,19 @@ IceTipFiletreeToTonelDialogPresenter >> obtainBranchName [
 		suffix := '-' , count asString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipFiletreeToTonelDialogPresenter >> repository [
 
 	^ repository
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipFiletreeToTonelDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	repository := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipFiletreeToTonelDialogPresenter >> titleForWindow [
 
 	^ 'Convert sources to tonel'

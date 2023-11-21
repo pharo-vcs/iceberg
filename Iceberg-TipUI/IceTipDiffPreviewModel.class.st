@@ -1,31 +1,33 @@
 Class {
-	#name : #IceTipDiffPreviewModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipDiffPreviewModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'commitish',
 		'diffModel'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> calculateDiff [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> commitish [
 	^ commitish entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> commitish: aCommitish [
 	
 	commitish := aCommitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> diff [
 
 	^ diffModel ifNil: [ | diff |
@@ -37,19 +39,19 @@ IceTipDiffPreviewModel >> diff [
 					on: diff ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> repository [
 	
 	^ commitish repositoryModel entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> repositoryName [
 	
 	^ self repository name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiffPreviewModel >> targetName [
 	
 	^ commitish name

@@ -3,47 +3,49 @@ I am a IceNode (containing an IceOperationMerge) visitor meant to update a SpCod
  with the highlighted code.
 "
 Class {
-	#name : #IceNodeCodeDisplayVisitor,
-	#superclass : #Object,
+	#name : 'IceNodeCodeDisplayVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'codePresenter'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceNodeCodeDisplayVisitor class >> onCodePresenter: aSpCodePresenter [
 	^ self new
 		codePresenter: aSpCodePresenter ;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNodeCodeDisplayVisitor >> codePresenter [
 
 	^ codePresenter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNodeCodeDisplayVisitor >> codePresenter: aSpCodePresenter [
 
 	codePresenter := aSpCodePresenter
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNodeCodeDisplayVisitor >> visitClassDefinition: anIceClassDefinition [
 
 	codePresenter text: anIceClassDefinition contents.
 	codePresenter behavior: nil
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNodeCodeDisplayVisitor >> visitConflictingOperation: anIceConflictingOperation [
 
 	anIceConflictingOperation chosenOperation definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNodeCodeDisplayVisitor >> visitMethodNode: anIceMethodDefinition [
 
 	codePresenter
@@ -53,13 +55,13 @@ IceNodeCodeDisplayVisitor >> visitMethodNode: anIceMethodDefinition [
 					 UndefinedObject ])
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNodeCodeDisplayVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [
 
 	anIceNonConflictingOperation definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNodeCodeDisplayVisitor >> visitPackage: anIcePackageDefinition [
 
 	codePresenter

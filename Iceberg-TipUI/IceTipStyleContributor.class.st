@@ -4,12 +4,14 @@ This class is call by Spec2 to extend the default stylesheet.
 Check its superclass to understand the way of working.
 "
 Class {
-	#name : #IceTipStyleContributor,
-	#superclass : #StPharoStyleContributor,
-	#category : #'Iceberg-TipUI-Styles'
+	#name : 'IceTipStyleContributor',
+	#superclass : 'StPharoStyleContributor',
+	#category : 'Iceberg-TipUI-Styles',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Styles'
 }
 
-{ #category : #styles }
+{ #category : 'styles' }
 IceTipStyleContributor >> styleSheetContribution [
 	
 	^ SpStyle newApplication 

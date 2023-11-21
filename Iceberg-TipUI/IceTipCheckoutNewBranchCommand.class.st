@@ -3,24 +3,26 @@ Action to start the creation of a new branch from the selected commit.
 Then checkout the selected branch.
 "
 Class {
-	#name : #IceTipCheckoutNewBranchCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCheckoutNewBranchCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCheckoutNewBranchCommand class >> defaultDescription [
 
 	^ 'Create a new branch from the selected commit and switch to it'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCheckoutNewBranchCommand class >> defaultName [
 
 	^ 'Branch...'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCheckoutNewBranchCommand >> execute [
 
 	((IceTipCheckoutNewBranchPanel 
@@ -33,13 +35,13 @@ IceTipCheckoutNewBranchCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchCommand >> iconName [
 
 	^ #branch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutNewBranchCommand >> selectedCommit [
 
 	^ self item entity

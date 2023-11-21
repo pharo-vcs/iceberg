@@ -2,12 +2,13 @@
 A decorator to react to the fact that a package is a Baseline
 "
 Class {
-	#name : #IceTipMetacelloBaselineDecorator,
-	#superclass : #IceTipDecorator,
-	#category : #'Iceberg-Plugin-Metacello'
+	#name : 'IceTipMetacelloBaselineDecorator',
+	#superclass : 'IceTipDecorator',
+	#category : 'Iceberg-Plugin-Metacello',
+	#package : 'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloBaselineDecorator >> iconNameForPackage: aPackage [
 
 	(self isBaseline: aPackage) ifFalse: [ ^ nil ].
@@ -17,13 +18,13 @@ IceTipMetacelloBaselineDecorator >> iconNameForPackage: aPackage [
 		ifFalse: [ #package ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMetacelloBaselineDecorator >> isBaseline: aPackage [
 	
 	^ aPackage name beginsWith: 'BaselineOf'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMetacelloBaselineDecorator >> isLocked: aPackage [
 	
 	^ (MetacelloProjectRegistration 

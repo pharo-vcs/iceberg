@@ -1,6 +1,6 @@
-Extension { #name : #IceSavedPackageVersion }
+Extension { #name : 'IceSavedPackageVersion' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceSavedPackageVersion >> description [
 	^ self commit description 
 ]

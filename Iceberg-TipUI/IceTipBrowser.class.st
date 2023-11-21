@@ -9,16 +9,18 @@ Some design remarks:
 * Browsers have a context menu on list or table items, that provide commands that are specific for the selection.
 "
 Class {
-	#name : #IceTipBrowser,
-	#superclass : #IceTipPresenter,
+	#name : 'IceTipBrowser',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'model',
 		'toolbar'
 	],
-	#category : #'Iceberg-TipUI-View'
+	#category : 'Iceberg-TipUI-View',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup [
 
 	| generalCommandGroup selectionCommandGroup selectionExtraCommandGroup |
@@ -42,81 +44,81 @@ IceTipBrowser class >> buildCommandsGroupWith: presenter forRoot: aCommandGroup 
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	self subclassResponsibility
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	self subclassResponsibility
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipInspectCommand forSpec.
 	aCommandGroup register: IceFiletreeToTonelCommand forSpec
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> generalCommandGroupName [
 
 	^ 'General'
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> selectionCommandGroupName [
 
 	^ 'Selection'
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser class >> selectionExtraCommandGroupName [
 
 	^ 'Extra'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> connectPresenters [
 
 	self mainList whenSelectionChangedDo: [ self refreshCommands ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> defaultKeyboardFocus [
 
 	^ self mainList
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipBrowser >> hasSelectedItem [
 	
 	^ self mainList selection isEmpty not
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> iconForWindow [
 
 	^ self iconNamed: #komitterSmalltalkhubRemote
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> initialize [
 
 	super initialize.
 	self subscribeToAnnouncements
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
 	super initializeWindow: aSpWindowPresenter.
@@ -125,31 +127,31 @@ IceTipBrowser >> initializeWindow: aSpWindowPresenter [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBrowser >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBrowser >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBrowser >> refresh [
 	"Update the UI elements given a possible update in the model."
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser >> refreshCommands [
 	| rootGroup |
 
@@ -163,7 +165,7 @@ IceTipBrowser >> refreshCommands [
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
 	"Update context menu (for mainList)."
 
@@ -173,7 +175,7 @@ IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
 			self mainList contextMenuFromCommandsGroup: subgroup ].
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser >> refreshShortcutsWith: rootGroup [
 	"Update shortcuts with available commands"
 
@@ -184,7 +186,7 @@ IceTipBrowser >> refreshShortcutsWith: rootGroup [
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipBrowser >> refreshToolbarWith: rootGroup [
 	"Update toolbar (in window)."
 
@@ -208,31 +210,31 @@ IceTipBrowser >> refreshToolbarWith: rootGroup [
 	self window toolbar: toolbar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBrowser >> repositoryModel [
 	"Answer the IceTipRepositoryModel associated to this presenter."
 
 	^ self model repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipBrowser >> selectedItem [
 	"Answer the object selected in the main list of this browser. The answer is nil when there isn't a selection."
 
 	^ self mainList selection selectedItem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipBrowser >> subscribeToAnnouncements [
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipBrowser >> toolbar [
 
 	^ toolbar

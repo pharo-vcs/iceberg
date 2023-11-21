@@ -1,6 +1,6 @@
-Extension { #name : #CmUIDisableWhenCantBeRun }
+Extension { #name : 'CmUIDisableWhenCantBeRun' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 CmUIDisableWhenCantBeRun >> ifVisible: aCmSpecCommand do: aBlock [
 	"Always visible"
 
