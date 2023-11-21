@@ -110,6 +110,5 @@ IceNotYetClonedRepositoryFixture >> setUp [
 { #category : 'running' }
 IceNotYetClonedRepositoryFixture >> tearDown [
 
-	Smalltalk garbageCollect.
-	self location ifNotNil: #ensureDeleteAll.
+	self location ifNotNil: #ensureDeleteAll
 ]
