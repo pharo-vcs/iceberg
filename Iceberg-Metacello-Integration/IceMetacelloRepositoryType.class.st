@@ -3,21 +3,23 @@ I'm a base class to provide different type of MCRepositories from iceberg, so me
 My children define specific types, visit them to have more details of what you can do.
 "
 Class {
-	#name : #IceMetacelloRepositoryType,
-	#superclass : #Object,
+	#name : 'IceMetacelloRepositoryType',
+	#superclass : 'Object',
 	#instVars : [
 		'location'
 	],
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryType class >> allTypes [
 
 	^ self allSubclasses reject: [ :each | each isAbstract ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryType class >> canHandleType: aType [ 
 
 	^ self allTypes
@@ -25,35 +27,35 @@ IceMetacelloRepositoryType class >> canHandleType: aType [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceMetacelloRepositoryType class >> extractTypeOf: aString [ 
 
 	^ aString copyUpTo: $:
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMetacelloRepositoryType class >> for: aLocationString [
 	^ (self allTypes
 		detect: [ :each | each isSuitableForLocation: aLocationString ])
 		location: aLocationString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryType class >> isAbstract [
 	^ self = IceMetacelloRepositoryType
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryType class >> isSuitableForLocation: aLocationString [
 	^ self isSuitableForType: (self extractTypeOf: aLocationString) 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryType class >> isSuitableForType: aType [
 	^ self type = aType
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceMetacelloRepositoryType class >> location: aLocationString [
 	self = IceMetacelloRepositoryType 
 		ifTrue: [ self error: 'I''m an abstract class, use one of my children instead.' ].
@@ -63,23 +65,23 @@ IceMetacelloRepositoryType class >> location: aLocationString [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryType class >> type [
 	^ self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceMetacelloRepositoryType >> initializeLocation: aString [
 	location := aString.
 	self initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryType >> location [
 	^ location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryType >> mcRepository [
 	self subclassResponsibility
 ]

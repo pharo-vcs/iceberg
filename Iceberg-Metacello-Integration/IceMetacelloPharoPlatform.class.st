@@ -2,23 +2,25 @@
 I'm a class to add support for iceberg to metacello.
 "
 Class {
-	#name : #IceMetacelloPharoPlatform,
-	#superclass : #MetacelloPharoPlatform,
-	#category : #'Iceberg-Metacello-Integration-Platform'
+	#name : 'IceMetacelloPharoPlatform',
+	#superclass : 'MetacelloPharoPlatform',
+	#category : 'Iceberg-Metacello-Integration-Platform',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'Platform'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 IceMetacelloPharoPlatform class >> initialize [
 	 self select
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloPharoPlatform >> canHandleType: type [
 	^ Iceberg enableMetacelloIntegration 
 		and: [ IceMetacelloRepositoryType canHandleType: type ]
 ]
 
-{ #category : #'repository creation' }
+{ #category : 'repository creation' }
 IceMetacelloPharoPlatform >> createRepository: aRepositorySpec [
 	(self canHandleType: aRepositorySpec type)
 		ifTrue: [ ^ Iceberg mcRepositoryFor: aRepositorySpec description ].
@@ -26,7 +28,7 @@ IceMetacelloPharoPlatform >> createRepository: aRepositorySpec [
 	^ super createRepository: aRepositorySpec
 ]
 
-{ #category : #'repository creation' }
+{ #category : 'repository creation' }
 IceMetacelloPharoPlatform >> extractTypeFromDescription: description [
 
 	(description beginsWith: 'ftp://') ifTrue: [ ^'ftp' ].
@@ -36,7 +38,7 @@ IceMetacelloPharoPlatform >> extractTypeFromDescription: description [
 	^ super extractTypeFromDescription: description
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceMetacelloPharoPlatform >> withMetacelloLoadSessionDo: aBlock [ 
 	| context |
 

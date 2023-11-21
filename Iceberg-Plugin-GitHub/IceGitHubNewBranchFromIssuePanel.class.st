@@ -5,8 +5,8 @@ A GitHub issue will be created in the form:
 123-a-github-issue
 "
 Class {
-	#name : #IceGitHubNewBranchFromIssuePanel,
-	#superclass : #IceTipCheckoutNewBranchPanel,
+	#name : 'IceGitHubNewBranchFromIssuePanel',
+	#superclass : 'IceTipCheckoutNewBranchPanel',
 	#instVars : [
 		'remotePanel',
 		'issueNumberText',
@@ -18,10 +18,12 @@ Class {
 		'issueText',
 		'remoteLabel'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubNewBranchFromIssuePanel >> branchName [
 	
 	^ '{1}-{2}' format: { 
@@ -29,13 +31,13 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 		issueText text trim }.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> defaultApplication [
 
 	^ SpApplication defaultApplication
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubNewBranchFromIssuePanel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -54,26 +56,26 @@ IceGitHubNewBranchFromIssuePanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubNewBranchFromIssuePanel >> icon [
 
 	^ (self iconNamed: #github) scaledToSize: 16@16
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubNewBranchFromIssuePanel >> initialExtentForWindow [
 
 	^ 800 @ 175
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubNewBranchFromIssuePanel >> initialize [
 
 	super initialize.
 	fetched := false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 
 	super initializePresenters.
@@ -102,31 +104,31 @@ IceGitHubNewBranchFromIssuePanel >> initializePresenters [
 	issueNumberText whenTextChangedDo: [ :text | self validateIssue: text ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueLabel [
 
 	^ issueLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueNumberText [
 
 	^ issueNumberText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> issueText [
 
 	^ issueText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubNewBranchFromIssuePanel >> remotePanel [
 
 	^ remotePanel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> sanitizeTitle: aString [
 	| separators safeSeparator |
 	
@@ -140,7 +142,7 @@ IceGitHubNewBranchFromIssuePanel >> sanitizeTitle: aString [
 			c isAlphaNumeric ifTrue: [ str nextPut: c ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubNewBranchFromIssuePanel >> selectRemoteModel [
 
 	^ selectRemoteModel ifNil: [
@@ -149,32 +151,32 @@ IceGitHubNewBranchFromIssuePanel >> selectRemoteModel [
 			on: self model entity ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubNewBranchFromIssuePanel >> titleForWindow [
 
 	^ 'New branch from issue'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubNewBranchFromIssuePanel >> unknownTitle [
 
 	^ 'INVALID-ISSUE'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> updateText: aString [ 
 
 	issueText text: aString.
 	fetched := true
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> useRemote: aRemoteModel [
 
 	self selectRemoteModel useRemote: aRemoteModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubNewBranchFromIssuePanel >> validate [
 	
 	self
@@ -185,7 +187,7 @@ IceGitHubNewBranchFromIssuePanel >> validate [
 		description: 'Please fetch a valid issue number'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> validateIssue: aString [
 
 	| number remote |
@@ -213,7 +215,7 @@ IceGitHubNewBranchFromIssuePanel >> validateIssue: aString [
 					self updateText: self unknownTitle ] ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> wait: time thenDo: aBlock [
 	"This method avoids to request too many times the github api. 
 	 It does it in the simplest way possible: it starts a process that waits some 

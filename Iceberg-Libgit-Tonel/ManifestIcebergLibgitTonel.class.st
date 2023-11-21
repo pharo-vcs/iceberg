@@ -2,12 +2,14 @@
 I store metadata for this package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
 "
 Class {
-	#name : #ManifestIcebergLibgitTonel,
-	#superclass : #PackageManifest,
-	#category : 'Iceberg-Libgit-Tonel-Manifest'
+	#name : 'ManifestIcebergLibgitTonel',
+	#superclass : 'PackageManifest',
+	#category : 'Iceberg-Libgit-Tonel-Manifest',
+	#package : 'Iceberg-Libgit-Tonel',
+	#tag : 'Manifest'
 }
 
-{ #category : #'meta-data' }
+{ #category : 'meta-data' }
 ManifestIcebergLibgitTonel class >> description [
 
 	^ 'I contain the libgit binding for the Tonel export format. 

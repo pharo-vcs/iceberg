@@ -1,47 +1,48 @@
 Class {
-	#name : #IceLibgitRuleBreakerRepository,
-	#superclass : #IceLibgitRepository,
-	#category : 'Iceberg-ArchitecturalRules'
+	#name : 'IceLibgitRuleBreakerRepository',
+	#superclass : 'IceLibgitRepository',
+	#category : 'Iceberg-ArchitecturalRules',
+	#package : 'Iceberg-ArchitecturalRules'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testDefinedRepositoryAccessor [
 
 	<repositoryHandleAccessor>
 	^ handle
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testMethodAccessHandleDirectly [
 
 	^ handle allBranches
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testMethodAccessHandleDirectlyWithErrorHandler [
 
 	self handleLibgitError: [handle allBranches]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testMethodAccessHandleThroughAccessor [
 
 	^ self testDefinedRepositoryAccessor allBranches
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testMethodAccessHandleThroughAccessorWithErrorHandler [
 
 	self handleLibgitError: [ self testDefinedRepositoryAccessor allBranches]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testMethodNotBreakingRule [
 
 	^ 1+1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceLibgitRuleBreakerRepository >> testNonDefinedRepositoryAccessor [
 
 	^ handle

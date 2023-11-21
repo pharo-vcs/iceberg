@@ -1,6 +1,6 @@
-Extension { #name : #IceTipRepositoriesBrowser }
+Extension { #name : 'IceTipRepositoriesBrowser' }
 
-{ #category : #'*Iceberg-Plugin-Metacello' }
+{ #category : '*Iceberg-Plugin-Metacello' }
 IceTipRepositoriesBrowser class >> metacelloCommandsWith: presenter forRootGroup: aCommandGroup [
 
 	<extensionCommands>

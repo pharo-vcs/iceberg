@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Libgit-Tonel' }
+Package { #name : 'Iceberg-Libgit-Tonel' }

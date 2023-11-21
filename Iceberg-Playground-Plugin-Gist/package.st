@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Playground-Plugin-Gist' }
+Package { #name : 'Iceberg-Playground-Plugin-Gist' }

@@ -1,16 +1,17 @@
 Class {
-	#name : #IceMetacelloIntegrationWithMissingClone,
-	#superclass : #AbstractIceMetacelloIntegrationTests,
-	#category : 'Iceberg-Tests-MetacelloIntegration'
+	#name : 'IceMetacelloIntegrationWithMissingClone',
+	#superclass : 'AbstractIceMetacelloIntegrationTests',
+	#category : 'Iceberg-Tests-MetacelloIntegration',
+	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloIntegrationWithMissingClone >> repositoryName [
 	
 	^ 'test-project-source-properties-tonel'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationWithMissingClone >> setUp [
 
 	super setUp.
@@ -26,7 +27,7 @@ IceMetacelloIntegrationWithMissingClone >> setUp [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationWithMissingClone >> tearDown [
 
 	super tearDown.
@@ -43,7 +44,7 @@ IceMetacelloIntegrationWithMissingClone >> tearDown [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationWithMissingClone >> testMissingRepositoryShouldNotFail [
 
 	Metacello new

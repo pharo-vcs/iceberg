@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Plugin-Migration' }
+Package { #name : 'Iceberg-Plugin-Migration' }

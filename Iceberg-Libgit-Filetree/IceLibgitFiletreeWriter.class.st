@@ -3,58 +3,60 @@ I'm a filetree writer to ensure the output will be libgit2 compatible.
 I'm not surre I cannot unify myself class with my parent.
 "
 Class {
-	#name : #IceLibgitFiletreeWriter,
-	#superclass : #IceMetadatalessFileTreeWriter,
+	#name : 'IceLibgitFiletreeWriter',
+	#superclass : 'IceMetadatalessFileTreeWriter',
 	#traits : 'TIceRepositoryWriter',
 	#classTraits : 'TIceRepositoryWriter classTrait',
-	#category : #'Iceberg-Libgit-Filetree-Writer'
+	#category : 'Iceberg-Libgit-Filetree-Writer',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Writer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter class >> description [
 	^ 'Filetree'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter class >> directoryNameFor: aPackage [
 	^ aPackage name, '.package'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter class >> forInternalStore [
 	^ IceMetadatalessFileTreeWriter
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceLibgitFiletreeWriter class >> forInternalStoreFileOut: aMCVersion on: aRepository [
 	self forInternalStore 
 		fileOut: aMCVersion
 		on: (IceBackendWriterAdapter for: aRepository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter class >> id [
 	^ #filetree
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeWriter class >> isLegacyDefault [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeWriter class >> isValidPackage: aFileReference [
 	^ (aFileReference basename endsWith: '.package') 
 		and: [ aFileReference isDirectory 
 			and: [(aFileReference / 'monticello.meta') exists]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter class >> packageNameFromDirectory: aFileReference [
 	^ aFileReference basenameWithoutExtension
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceLibgitFiletreeWriter >> addString: string at: fileNameOrPath encodedTo: ignored [
     "fileNameOrPath may have one or two elements"
     "encodeTo: arg, because FileTree uses UTF8 by default"
@@ -69,22 +71,22 @@ IceLibgitFiletreeWriter >> addString: string at: fileNameOrPath encodedTo: ignor
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter >> fileUtils [
 	^ IceLibgitFiletreeFileUtils
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitFiletreeWriter >> snapshotWriterClass [
 	^ IceLibgitFiletreeSnapshotWriter
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitFiletreeWriter >> subPackageFileDirectoryFor: directoryNameOrPath [
 	^ self packageFileDirectory entryByPath: directoryNameOrPath 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceLibgitFiletreeWriter >> writeVersion: aVersion [
 	directory := aVersion package name, '.package'.
 	packageFileDirectory := stream / directory.
