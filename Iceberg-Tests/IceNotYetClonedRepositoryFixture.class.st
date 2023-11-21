@@ -110,5 +110,9 @@ IceNotYetClonedRepositoryFixture >> setUp [
 { #category : 'running' }
 IceNotYetClonedRepositoryFixture >> tearDown [
 
-	self location ifNotNil: #ensureDeleteAll
+	[ self location ifNotNil: #ensureDeleteAll ]
+		on: CannotDeleteFileException
+		do: [ "On windows it is possible we need to finalize everything before deleting the files. We do not do it directly to avoid to lose too much speed"
+			Smalltalk garbageCollect.
+			self location ifNotNil: #ensureDeleteAll ]
 ]
