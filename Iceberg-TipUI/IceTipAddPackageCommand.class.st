@@ -2,24 +2,26 @@
 Command that opens a dialog to add a/many package/s into the selected repository.
 "
 Class {
-	#name : #IceTipAddPackageCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipAddPackageCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddPackageCommand class >> defaultDescription [
 
 	^ 'Adds an existing package to this repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddPackageCommand class >> defaultName [
 
 	^ 'Add package'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAddPackageCommand >> execute [
 
 	(IceTipAddPackagesDialogPresenter 
@@ -30,19 +32,19 @@ IceTipAddPackageCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackageCommand >> iconName [
 
 	^ #add
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackageCommand >> shortcutKey [
 
 	^ $n meta
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddPackageCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

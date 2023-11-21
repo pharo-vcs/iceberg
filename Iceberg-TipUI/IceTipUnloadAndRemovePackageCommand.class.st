@@ -7,30 +7,32 @@ It gives the user with two checkboxes to choose:
 Right now this is only shown for loaded packages.
 "
 Class {
-	#name : #IceTipUnloadAndRemovePackageCommand,
-	#superclass : #IceTipPackageCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipUnloadAndRemovePackageCommand',
+	#superclass : 'IceTipPackageCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipUnloadAndRemovePackageCommand class >> defaultDescription [
 
 	^ 'Opens a dialog to choose between unloading from system and/or removing a package from the repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipUnloadAndRemovePackageCommand class >> defaultName [
 
 	^ 'Unload and/or remove from repository'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipUnloadAndRemovePackageCommand >> canBeExecuted [
 
 	^ self isPackageLoaded
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipUnloadAndRemovePackageCommand >> execute [
 
 	(IceTipRemovePackageDialogPresenter 
@@ -41,7 +43,7 @@ IceTipUnloadAndRemovePackageCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipUnloadAndRemovePackageCommand >> iconName [
 
 	^ #glamorousTrash

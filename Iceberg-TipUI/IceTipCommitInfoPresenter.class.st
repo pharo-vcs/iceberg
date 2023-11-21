@@ -4,8 +4,8 @@ I'm a panel to show the history of a commitish (usually a branch or a tag). I di
 I'm usually used as part of an IceTipHistoryBrowser.
 "
 Class {
-	#name : #IceTipCommitInfoPresenter,
-	#superclass : #SpPresenter,
+	#name : 'IceTipCommitInfoPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'model',
 		'selectedModel',
@@ -16,10 +16,12 @@ Class {
 		'headPage',
 		'ancestorPage'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCommitInfoPresenter class >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -27,21 +29,21 @@ IceTipCommitInfoPresenter class >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitInfoPresenter >> beForCommit [
 
 	headTabContainer := IceTipHistoryDiffFromHead tab: headPage.
 	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorPage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitInfoPresenter >> beForMerge [
 
 	headTabContainer := IceTipHistoryDiffToHead tab: headPage.
 	ancestorTabContainer := IceTipHistoryDiffToAncestor tab: ancestorPage
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> commitInfo [
 
 	selectedModel ifNil: [ ^ self newEmpty ].
@@ -50,28 +52,28 @@ IceTipCommitInfoPresenter >> commitInfo [
 		application: self application
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> diffFromAncestor [
 	
 	selectedModel ifNil: [ ^ self newEmpty ].
 	^ IceTipDiffPanel on: (ancestorTabContainer diffFor: selectedModel)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> diffFromHead [
 	
 	selectedModel ifNil: [ ^ self newEmpty ].
 	^ IceTipDiffPanel on: (headTabContainer diffFor: selectedModel)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitInfoPresenter >> initialize [
 
 	self beForCommit.
 	super initialize
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitInfoPresenter >> initializeCommitPanel [
 	"This will be initialised in fact on the first refresh"
 
@@ -87,14 +89,14 @@ IceTipCommitInfoPresenter >> initializeCommitPanel [
 			yourself)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitInfoPresenter >> initializePresenters [
 
 	notebookPanel := self newNotebook.
 	self initializeCommitPanel
 ]
 
-{ #category : #'private factory' }
+{ #category : 'private factory' }
 IceTipCommitInfoPresenter >> newDiffPage [
 
 	^ SpNotebookPage 
@@ -103,7 +105,7 @@ IceTipCommitInfoPresenter >> newDiffPage [
 		provider: [ "It will be overriden" ]
 ]
 
-{ #category : #'private factory' }
+{ #category : 'private factory' }
 IceTipCommitInfoPresenter >> newEmpty [
 
 	^ self newLabel
@@ -111,7 +113,7 @@ IceTipCommitInfoPresenter >> newEmpty [
 		  yourself
 ]
 
-{ #category : #'private factory' }
+{ #category : 'private factory' }
 IceTipCommitInfoPresenter >> newInfoPage [
 
 	^ SpNotebookPage  
@@ -120,7 +122,7 @@ IceTipCommitInfoPresenter >> newInfoPage [
 		provider: [ self commitInfo ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitInfoPresenter >> refresh [
 	
 	selectedModel ifNil: [ ^ self ].
@@ -130,38 +132,38 @@ IceTipCommitInfoPresenter >> refresh [
 	notebookPanel resetAllPageContents
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> refreshDiffFromAncestor [
 
 	ancestorTabContainer updateContentsOn: selectedModel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> refreshDiffFromAncestorLabel [
 
 	ancestorTabContainer updateLabelOn: selectedModel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> refreshDiffFromHead [
 
 	headTabContainer updateContentsOn: selectedModel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitInfoPresenter >> refreshDiffFromHeadLabel [
 
 	headTabContainer updateLabelOn: selectedModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitInfoPresenter >> selectedModel: aModel [
 
 	selectedModel := aModel.
 	self refresh
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitInfoPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject

@@ -5,18 +5,20 @@ Description
 I am a command opening the repository page of the remote on GitHub if possible.
 "
 Class {
-	#name : #IceGitHubOpenOnGithubCommand,
-	#superclass : #IceGitHubRemoteCommand,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubOpenOnGithubCommand',
+	#superclass : 'IceGitHubRemoteCommand',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceGitHubOpenOnGithubCommand class >> defaultName [
 
 	^ 'Open on github'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubOpenOnGithubCommand >> execute [
 
 	(IceGitHubOpenOnGithubAction

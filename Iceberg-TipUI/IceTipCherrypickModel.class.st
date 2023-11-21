@@ -1,14 +1,16 @@
 Class {
-	#name : #IceTipCherrypickModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipCherrypickModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'mergeTree',
 		'commitish'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCherrypickModel class >> onCommitish: aCommitish [
 
 	^ self new
@@ -16,33 +18,33 @@ IceTipCherrypickModel class >> onCommitish: aCommitish [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> commitish [
 	^commitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> commitish: aCommistish [
 	commitish := aCommistish.
 	mergeTree := commitish repository cherryPickFrom: aCommistish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> diff [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> mergeTree [
 	^mergeTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> repository [
 	^commitish repository.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCherrypickModel >> treeToShow [
 " Return the tree to display in windows "
 	^ self mergeTree

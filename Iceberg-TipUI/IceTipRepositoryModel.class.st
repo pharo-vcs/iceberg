@@ -2,26 +2,28 @@
 I'm a model for IceRepository entries.
 "
 Class {
-	#name : #IceTipRepositoryModel,
-	#superclass : #IceTipEntityModel,
+	#name : 'IceTipRepositoryModel',
+	#superclass : 'IceTipEntityModel',
 	#traits : 'TIceCopyCommitId + TWithBranchModel',
 	#classTraits : 'TIceCopyCommitId classTrait + TWithBranchModel classTrait',
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel class >> unknownBranchLabel [
 	^ 'Unknown'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTipRepositoryModel >> = other [
 
 	^ self species = other species
 		and: [ self entity = other entity ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> allBranchModels [
 	^ self entity allBranches 
 		collect: [ :each | 
@@ -31,14 +33,14 @@ IceTipRepositoryModel >> allBranchModels [
 				beCached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> availableRepairOptions [
 	<noCache>
 	
 	^ IceTipRepairAction allAvailableFor: self entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> branchModel [
 
 	^ (IceTipBranchModel 
@@ -47,7 +49,7 @@ IceTipRepositoryModel >> branchModel [
 		beCached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> branchModelFor: aBranch [
 	^ (IceTipBranchModel 
 		repositoryModel: self 
@@ -55,7 +57,7 @@ IceTipRepositoryModel >> branchModelFor: aBranch [
 		beCached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> branchName [
 	
 	(self isLibGitAvailable not or: [ self entity isMissing ]) 
@@ -64,36 +66,36 @@ IceTipRepositoryModel >> branchName [
 	^ self entity head description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> branchNamed: aString [
 
 	^ self entity branchNamed: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> branches [
 	^ self entity localBranches
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 IceTipRepositoryModel >> checkMissing [
 	
 	self isMissing ifTrue: [ 
 		IceError signal: ('You have no repository attached to project "{1}"' format: { self name }) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> commit [
 	
 	^ self entity workingCopy referenceCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> commitId [
 	^ [ self entity headCommit id ] on: Error do: [ nil ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> commitModelFor: aCommit [
 	^ (IceTipCommitModel 
 		repositoryModel: self 
@@ -101,13 +103,13 @@ IceTipRepositoryModel >> commitModelFor: aCommit [
 		beCached
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipRepositoryModel >> createSourceDirectory [
 	<noCache>
 	entity createSourceDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> description [
 	| text |
 	
@@ -117,7 +119,7 @@ IceTipRepositoryModel >> description [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> descriptionDecorator [
 
 	(self isLibGitAvailable and: [ self entity isModified ]) 
@@ -125,24 +127,24 @@ IceTipRepositoryModel >> descriptionDecorator [
 	^ super descriptionDecorator
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> hasRemotes [
 	^ self entity remotes notEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> hasUnbornProject [
 	^ self entity workingCopy project isUnborn
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTipRepositoryModel >> hash [
 
 	^ self species hash
 		bitXor: self entity hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> headModel [
 	
 	| head |
@@ -152,12 +154,12 @@ IceTipRepositoryModel >> headModel [
 		ifFalse: [ self commitModelFor: head ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> incomingCommits [
 	^ self entity incomingCommits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> info [ 
 	^ { 
 		'Branch' -> self entity branch name.
@@ -166,46 +168,46 @@ IceTipRepositoryModel >> info [
 	  }
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> isCodeMissing [
 	^ entity isCodeMissing
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> isDetached [
 	^ self entity workingCopy isDetached 
 		or: [ self entity head isDetached ]
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 IceTipRepositoryModel >> isLibGitAvailable [
 
 	^ LGitLibrary uniqueInstance isAvailable
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 IceTipRepositoryModel >> isLoaded [
 	^ self entity loadedPackages notEmpty 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> isMissing [
 	^ self entity isMissing
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryModel >> localRepositoryMissing [
 
 	^ 'Local repository missing'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> location [
 	
 	^ entity location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> longStatus [
 
 	(entity isMissing and: [ entity location isNil ])
@@ -229,17 +231,17 @@ IceTipRepositoryModel >> longStatus [
 	^ 'Your repository seems ok. Please report a ticket in Iceberg''s issue tracker. If you can, please send us a backup of your image in this state for debugging.'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryModel >> matches: aString [
 	^ self entity name matchesRegexIgnoringCase: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> name [
 	^ self entity name
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newAddPackagesAction: aCollection [
 	<noCache>
 
@@ -253,7 +255,7 @@ IceTipRepositoryModel >> newAddPackagesAction: aCollection [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newAddRemoteActionName: aName url: anUrl [
 	<noCache>
 	
@@ -268,7 +270,7 @@ IceTipRepositoryModel >> newAddRemoteActionName: aName url: anUrl [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
 	<noCache>
 
@@ -279,7 +281,7 @@ IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
 		action: [ self entity createBranch: aString inCommit: aCommit ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newCommitAction [
 
 	^ IceTipCommitAction new
@@ -287,7 +289,7 @@ IceTipRepositoryModel >> newCommitAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newDeleteAction [
 	<noCache>
 	
@@ -298,7 +300,7 @@ IceTipRepositoryModel >> newDeleteAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newDiscardChangesAction [
 	<noCache>
 	
@@ -312,7 +314,7 @@ IceTipRepositoryModel >> newDiscardChangesAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newFetchAction [
 	<noCache>
 	
@@ -324,7 +326,7 @@ IceTipRepositoryModel >> newFetchAction [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipRepositoryModel >> newForgetAction [
 	<noCache>
 	
@@ -335,12 +337,12 @@ IceTipRepositoryModel >> newForgetAction [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> numberOfIncomingCommits [
 	^ self incomingCommits size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> numberOfOutgoingCommits [
 	^ [ | size |
 		self entity branch hasUpstream ifFalse: [ ^ '*' ].
@@ -351,40 +353,40 @@ IceTipRepositoryModel >> numberOfOutgoingCommits [
 		on: IceNotInBranch do: [ :e | '0' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> outgoingCommits [
 	^ self entity outgoingCommits
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> packages [
 	^ self entity workingCopy packages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> pushRemoteName [
 
 	^ self entity branch upstream name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> remoteModels [
 	^ self entity remotes collect: [ :each |
 		(IceTipRemoteModel repositoryModel: self on: each) beCached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> remotes [
 	
 	^ entity remotes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> repositoryModel [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> repositoryModelsByGroup [
 	| branches tags |
 	branches := self allBranchModels.
@@ -422,12 +424,12 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 	}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> shortCommitId [
 	^ [self entity headCommit shortId] on: Error do: [ nil ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> status [
 	[
 		| status incoming outgoing | 
@@ -465,7 +467,7 @@ IceTipRepositoryModel >> status [
 	do: [ :e | ^ e description ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> statusDecorator [
 
 	[
@@ -488,7 +490,7 @@ IceTipRepositoryModel >> statusDecorator [
 	^ IceTipStatusDecorator none
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> statusString [
 	[
 		| status incoming outgoing | 
@@ -525,13 +527,13 @@ IceTipRepositoryModel >> statusString [
 	do: [ :e | ^ e description ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> subdirectory [
 
 	^ self entity subdirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> tagModels [
 	
 	^ self entity tags 
@@ -542,7 +544,7 @@ IceTipRepositoryModel >> tagModels [
 				beCached ]
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipRepositoryModel >> updateLocation: aReference [
 	
 	"change location"
@@ -552,18 +554,18 @@ IceTipRepositoryModel >> updateLocation: aReference [
 	Iceberg announcer announce: (IceRepositoryModified for: self entity)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepositoryModel >> verifyDirectoryStructureIfMissing: aBlock [
 	self entity isMissing ifTrue: [ ^ aBlock value: self localRepositoryMissing ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> workingCopy [
 	
 	^ IceTipWorkingCopyModel on: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoryModel >> workingCopyDiff [
 	<noCache>
 

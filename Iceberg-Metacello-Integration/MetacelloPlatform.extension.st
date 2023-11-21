@@ -1,6 +1,6 @@
-Extension { #name : #MetacelloPlatform }
+Extension { #name : 'MetacelloPlatform' }
 
-{ #category : #'*Iceberg-Metacello-Integration' }
+{ #category : '*Iceberg-Metacello-Integration' }
 MetacelloPlatform >> withMetacelloLoadSessionDo: aBlock [ 
 
 	aBlock value

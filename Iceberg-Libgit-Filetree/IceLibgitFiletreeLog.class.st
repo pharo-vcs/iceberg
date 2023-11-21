@@ -2,52 +2,54 @@
 I'm a tool to ask the full history of a method (based on filetree file format).
 "
 Class {
-	#name : #IceLibgitFiletreeLog,
-	#superclass : #IceLog,
-	#category : #'Iceberg-Libgit-Filetree-Log'
+	#name : 'IceLibgitFiletreeLog',
+	#superclass : 'IceLog',
+	#category : 'Iceberg-Libgit-Filetree-Log',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Log'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitFiletreeLog class >> isAvailableFor: aRepository [
 	^ aRepository writerClass id = #filetree
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> basepathOf: aPath [
 	^ aPath
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> cypressClassOrTraitName: aMethod [
 	^ aMethod origin instanceSide name, (self cypressMethodClassExtension: aMethod)
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> cypressMethodClassExtension: aMethod [ 
 	aMethod isExtension ifTrue: [ ^ '.extension' ].
 	aMethod origin isTrait ifTrue: [ ^ '.trait' ].
 	^ '.class'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> cypressMethodName: aMethod [
 	^ (MCFileTreeStCypressWriter fileNameForSelector: aMethod selector asString), '.st'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> cypressMethodSideName: aMethod [ 
 	^ aMethod origin isClassSide
 		ifTrue: [ 'class' ]
 		ifFalse: [ 'instance' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> cypressPackageName: aPackage [ 
 	^ aPackage name, '.package'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> definitionFor: aMethod path: aPath commit: aCommit [
 	^ ((IceLibgitFiletreeLogReader fileName: aPath on: aCommit)
 		package: aMethod package mcPackage;
@@ -66,7 +68,7 @@ IceLibgitFiletreeLog >> definitionFor: aMethod path: aPath commit: aCommit [
 				source: '' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> fileNameForMethod: aMethod [
 	| path |
 	
@@ -83,7 +85,7 @@ IceLibgitFiletreeLog >> fileNameForMethod: aMethod [
 		path asStringOn: stream delimiter: '/' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitFiletreeLog >> toFileName: aMethod [
 	^ self fileNameForMethod: aMethod
 ]

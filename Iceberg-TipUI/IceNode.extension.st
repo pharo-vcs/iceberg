@@ -1,6 +1,6 @@
-Extension { #name : #IceNode }
+Extension { #name : 'IceNode' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceNode >> inspectorItems [
 	<inspectorPresentationOrder: 0 title: 'Items'>
 

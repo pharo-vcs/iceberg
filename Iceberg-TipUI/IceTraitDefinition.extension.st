@@ -1,6 +1,6 @@
-Extension { #name : #IceTraitDefinition }
+Extension { #name : 'IceTraitDefinition' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceTraitDefinition >> icon [
 	^ self iconNamed: #trait
 ]

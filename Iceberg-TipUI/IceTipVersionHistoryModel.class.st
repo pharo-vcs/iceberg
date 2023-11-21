@@ -2,22 +2,24 @@
 I'm a model to provide the history of a method.
 "
 Class {
-	#name : #IceTipVersionHistoryModel,
-	#superclass : #IceTipCommitishModel,
+	#name : 'IceTipVersionHistoryModel',
+	#superclass : 'IceTipCommitishModel',
 	#instVars : [
 		'commitModels'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryModel >> commitModelAfter: aModel [
 	^ self commitModels 
 		after: aModel
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryModel >> commitModels [
 	^ commitModels ifNil: [ 
 		commitModels := self retrieveHistory collect: [ :each | 
@@ -27,18 +29,18 @@ IceTipVersionHistoryModel >> commitModels [
 				beCached ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryModel >> description [
 
 	^ self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryModel >> name [
 	^ '{1}>>{2}' format: { self entity origin name. self entity selector }
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipVersionHistoryModel >> retrieveHistory [
 
 	self repositoryModel checkMissing.

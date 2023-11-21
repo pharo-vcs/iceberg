@@ -13,16 +13,18 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #IceGitHubOpenOnGithubAction,
-	#superclass : #IceGitHubAction,
+	#name : 'IceGitHubOpenOnGithubAction',
+	#superclass : 'IceGitHubAction',
 	#instVars : [
 		'organisation',
 		'projectName'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubOpenOnGithubAction class >> organisation: aString projectName: anotherString [
 	^ self new
 		organisation: aString;
@@ -30,7 +32,7 @@ IceGitHubOpenOnGithubAction class >> organisation: aString projectName: anotherS
 		yourself
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubOpenOnGithubAction >> basicExecute [
 
 	[
@@ -59,22 +61,22 @@ IceGitHubOpenOnGithubAction >> basicExecute [
 				openModal ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubOpenOnGithubAction >> organisation [
 	^ organisation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubOpenOnGithubAction >> organisation: anObject [
 	organisation := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubOpenOnGithubAction >> projectName [
 	^ projectName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubOpenOnGithubAction >> projectName: anObject [
 	projectName := anObject
 ]

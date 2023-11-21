@@ -20,18 +20,20 @@ Metacello new
 	load: 'mongo tests'.
 "
 Class {
-	#name : #IceProviderRepositoryType,
-	#superclass : #IceMetacelloRepositoryType,
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#name : 'IceProviderRepositoryType',
+	#superclass : 'IceMetacelloRepositoryType',
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceProviderRepositoryType class >> isAbstract [
 	^ super isAbstract
 		or: [ self = IceProviderRepositoryType ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProviderRepositoryType >> guessRegisteredRepository [
 	"I get the project name and try to find it into the already registered projects. 
 	 If I find it, I will use this instead cloning a new one."
@@ -41,7 +43,7 @@ IceProviderRepositoryType >> guessRegisteredRepository [
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProviderRepositoryType >> mcRepository [
 	| baseRepo |
 	
@@ -55,7 +57,7 @@ IceProviderRepositoryType >> mcRepository [
 	^ baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProviderRepositoryType >> mcRepositoryClass [
 
 	^ (MCGitBasedNetworkRepository allSubclasses 
@@ -63,13 +65,13 @@ IceProviderRepositoryType >> mcRepositoryClass [
 		detect: [ :each | each basicDescription = self class type ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProviderRepositoryType >> projectName [
 
 	^ (self location substrings: '/') third copyUpTo: $:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceProviderRepositoryType >> projectVersion [
 
 	^ (location substrings: '/') third copyAfter: $:

@@ -6,42 +6,44 @@ I can define
 - ... (TBD)
 "
 Class {
-	#name : #IcePlugin,
-	#superclass : #Object,
-	#category : #'Iceberg-Plugin-Base'
+	#name : 'IcePlugin',
+	#superclass : 'Object',
+	#category : 'Iceberg-Plugin-Base',
+	#package : 'Iceberg-Plugin',
+	#tag : 'Base'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePlugin class >> allAvailableFor: aRepository [
 	^ self allSubclasses select: [ :each | each isAvailableFor: aRepository ]
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePlugin class >> isAbstract [
 
 	^ self == IcePlugin
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePlugin class >> isAvailableFor: aRepository [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IcePlugin >> checkoutBranchPanelsOnModel: anIceTipCachedModel [ 
 
 	"Hook for subclasses"
 	^ #()
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePlugin >> repositoryWasCreated: aRepository [
 	"Hook. Allows plugins to do an action when a repository is created"
 
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePlugin >> repositoryWillBeCreated: aRepository [
 	"Hook. Allows plugins to do an action when a repository will be added"
 

@@ -4,19 +4,21 @@ I'm a datasource for pull request status, to be used when showing pull requests 
 See IceGitHubPullRequestDetailModel
 "
 Class {
-	#name : #IceGitHubPullRequestDataSource,
-	#superclass : #IceGitHubJSONDataSource,
-	#category : #'Iceberg-Plugin-GitHub-Utils'
+	#name : 'IceGitHubPullRequestDataSource',
+	#superclass : 'IceGitHubJSONDataSource',
+	#category : 'Iceberg-Plugin-GitHub-Utils',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Utils'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDataSource >> actionColumn: column [
 	column id = #target_url ifTrue: [ ^ self ].
 	^ super actionColumn: column
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDataSource >> cellColumn: column row: rowIndex [ 
 	column id = #target_url ifTrue: [ ^ self targetUrlCellColumn: column rowIndex: rowIndex ].
 	column id = #state ifTrue: [ ^ self statusCellColumn: column rowIndex: rowIndex ].
@@ -24,13 +26,13 @@ IceGitHubPullRequestDataSource >> cellColumn: column row: rowIndex [
 	^ super cellColumn: column row: rowIndex 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> columnTitleFor: column [
 	column id = #target_url ifTrue: [ ^ '' ].
 	^ super columnTitleFor: column
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> contextCellColumn: column rowIndex: rowIndex [
 	| context |
 	context := (self elementAt: rowIndex) at: column id.
@@ -42,17 +44,17 @@ IceGitHubPullRequestDataSource >> contextCellColumn: column rowIndex: rowIndex [
 		
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubPullRequestDataSource >> copyToClipboard: url [
 	Clipboard clipboardText: url informing: ('Url {1} copied to clipboard' format: {url})
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> iconForStatus: status [
 	^ self iconNamed: (self iconNameForStatus: status)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> iconNameForStatus: status [
 	status = 'success' ifTrue: [ ^ #testGreen ].
 	status = 'failure' ifTrue: [ ^ #testRed ].
@@ -61,7 +63,7 @@ IceGitHubPullRequestDataSource >> iconNameForStatus: status [
 	^ #testNotRun
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> statusCellColumn: column rowIndex: rowIndex [
 	| status |
 	status := (self elementAt: rowIndex) at: column id.
@@ -73,7 +75,7 @@ IceGitHubPullRequestDataSource >> statusCellColumn: column rowIndex: rowIndex [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDataSource >> targetUrlCellColumn: column rowIndex: rowIndex [
 	| url |
 	url := (self elementAt: rowIndex) at: column id.
