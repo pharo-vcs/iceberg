@@ -2,11 +2,11 @@
 I'm a class to add support for iceberg to metacello.
 "
 Class {
+	#name : 'IceMetacelloPharoPlatform',
 	#superclass : 'MetacelloPlatform',
 	#category : 'Iceberg-Metacello-Integration-Platform',
 	#package : 'Iceberg-Metacello-Integration',
 	#tag : 'Platform'
-	#name : 'IceMetacelloPharoPlatform'
 }
 
 { #category : 'class initialization' }
