@@ -139,12 +139,10 @@ IceParameterizedTestCase >> printOn: aStream [
 IceParameterizedTestCase >> setUp [
 
 	super setUp.
-	oldShareRepositoriesBetweenImages := IceLibgitRepository
-		                                     shareRepositoriesBetweenImages.
+	oldShareRepositoriesBetweenImages := IceLibgitRepository shareRepositoriesBetweenImages.
 	IceLibgitRepository shareRepositoriesBetweenImages: false.
 	provider := IceCredentialsProvider providerType.
-	IceCredentialsProvider providerType:
-		IceNonInteractiveCredentialsProvider.
+	IceCredentialsProvider providerType: IceNonInteractiveCredentialsProvider.
 	self parameters do: [ :each | each activate ]
 ]
 

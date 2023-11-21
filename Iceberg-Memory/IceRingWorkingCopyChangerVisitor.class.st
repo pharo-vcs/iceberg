@@ -180,8 +180,8 @@ IceRingWorkingCopyChangerVisitor >> visitTraitDefinition: anIceTraitDefinition [
 		inPackage: package name
 	 	with: [ :trait |
 			| composition transformations |
-			composition := RG2TraitCompositionDefinition parent: trait.
-			transformations := RG2TraitCompositionVisitor new
+			composition := RGTraitComposition parent: trait.
+			transformations := RGTraitCompositionVisitor new
 				parse: anIceTraitDefinition asMCDefinition traitComposition 
 				for: composition.
 			trait traitComposition: composition.
