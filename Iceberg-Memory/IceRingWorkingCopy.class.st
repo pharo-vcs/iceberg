@@ -170,7 +170,7 @@ IceRingWorkingCopy >> loadPackagesNamed: packageNames fromCommit: aCommit [
 			fromCommit: aCommit
 			package: package)
 				mcSnapshot.
-		snapshot ring2ImportInto: ringEnvironment asPackageNamed: packageName.
+		snapshot importInto: ringEnvironment asPackageNamed: packageName.
 		package beClean.
 	].
 	self referenceCommit: aCommit
