@@ -221,5 +221,5 @@ Iceberg class >> update [
 	#(Iceberg LGitRepository MCFileTreeGitRepository) do: [:className | 
 		Smalltalk 
 			at: className 
-			ifPresent: [ :class | class package iceRepository pull ] ]
+			ifPresent: [ :class | ( self class repositoryForPackage:class package) pull ] ]
 ]
