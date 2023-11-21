@@ -1,10 +1,12 @@
 Class {
-	#name : #MCGitlabRepositoryIcebergExtensionsTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#name : 'MCGitlabRepositoryIcebergExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 MCGitlabRepositoryIcebergExtensionsTest >> testHttpsUrl [
 
 	| repository |
@@ -13,7 +15,7 @@ MCGitlabRepositoryIcebergExtensionsTest >> testHttpsUrl [
 	self assert: repository httpsUrl equals: 'https://gitlab.com/pharo-project/pharo.git'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MCGitlabRepositoryIcebergExtensionsTest >> testHttpsUrlForSelfHostedGitlab [
 
 	| repository |
@@ -24,7 +26,7 @@ MCGitlabRepositoryIcebergExtensionsTest >> testHttpsUrlForSelfHostedGitlab [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MCGitlabRepositoryIcebergExtensionsTest >> testScpUrl [
 
 	| repository |
@@ -33,7 +35,7 @@ MCGitlabRepositoryIcebergExtensionsTest >> testScpUrl [
 	self assert: repository scpUrl equals: 'git@gitlab.com:pharo-project/pharo.git'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MCGitlabRepositoryIcebergExtensionsTest >> testScpUrlForSelfHostedGitlab [
 
 	| repository |
@@ -44,7 +46,7 @@ MCGitlabRepositoryIcebergExtensionsTest >> testScpUrlForSelfHostedGitlab [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MCGitlabRepositoryIcebergExtensionsTest >> testScpUrlForSelfHostedGitlabWithNonDefaultSSHPort [
 	| repository |
 	SystemVersion current major <= 6 ifTrue: [ self skip ].

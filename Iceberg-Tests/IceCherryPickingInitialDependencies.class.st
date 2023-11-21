@@ -1,10 +1,12 @@
 Class {
-	#name : #IceCherryPickingInitialDependencies,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceCherryPickingInitialDependencies',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCherryPickingInitialDependencies >> testAddClassWithMethod [
 	| commitToCherryPick initialDiff commonAncestor extendedDiff receiverDiff cherrypicker |
 	self repository createBranch: 'b2'.
@@ -45,7 +47,7 @@ IceCherryPickingInitialDependencies >> testAddClassWithMethod [
 		equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCherryPickingInitialDependencies >> testRemoveClassWithMethod [
 	| commitToCherryPick initialDiff commonAncestor extendedDiff receiverDiff cherrypicker |
 

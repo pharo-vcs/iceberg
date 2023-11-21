@@ -1,17 +1,19 @@
 Class {
-	#name : #IceUnbornRepositoryProperties,
-	#superclass : #IceRepositoryProperties,
-	#category : #'Iceberg-Libgit-Core'
+	#name : 'IceUnbornRepositoryProperties',
+	#superclass : 'IceRepositoryProperties',
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornRepositoryProperties >> addToChangeBuilder: anIceChangeImporter [ 
 
 	"I'm unborn"
 	^ self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornRepositoryProperties >> asBornProperties [
 	
 	^ IceRepositoryProperties
@@ -19,7 +21,7 @@ IceUnbornRepositoryProperties >> asBornProperties [
 		commitish: commitish
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornRepositoryProperties >> isUnborn [
 
 	^ true

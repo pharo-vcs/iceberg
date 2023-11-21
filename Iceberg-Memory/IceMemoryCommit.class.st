@@ -15,8 +15,11 @@ Class {
 { #category : 'comparing' }
 IceMemoryCommit >> = aCommit [
 
-	^ (self mcCommit dependencies asArray sort: [ :a :b | a timeStamp > b timeStamp ])
-			= (aCommit mcCommit dependencies asArray sort: [ :a :b | a timeStamp > b timeStamp ])
+	self == aCommit ifTrue: [ ^ true ].
+
+	self species = aCommit species ifFalse: [ ^ false ].
+
+	^ self mcCommit dependencies asSet = aCommit mcCommit dependencies asSet
 ]
 
 { #category : 'accessing' }

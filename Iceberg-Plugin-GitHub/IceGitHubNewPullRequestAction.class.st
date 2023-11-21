@@ -2,18 +2,20 @@
 I'm an action to create a new pull request.
 "
 Class {
-	#name : #IceGitHubNewPullRequestAction,
-	#superclass : #IceGitHubAction,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubNewPullRequestAction',
+	#superclass : 'IceGitHubAction',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewPullRequestAction >> askRemote: aRepository [
 
 	^ aRepository remotes anyOne
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubNewPullRequestAction >> basicExecute [
 
 	credentials := IceGitHubAPI ensureCredentials.
@@ -37,7 +39,7 @@ IceGitHubNewPullRequestAction >> basicExecute [
 			open
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 	[ 
 		| pullRequestDatas url |
@@ -53,12 +55,12 @@ IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 	do: [ :e | self reportError: e ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 
 	| status |
 	status := OrderedCollection new: 2.
-	aRepository isModified ifTrue: [ status add: 'Uncommited changes' ].
+	aRepository isModified ifTrue: [ status add: 'Uncommitted changes' ].
 	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits |
 		'{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].

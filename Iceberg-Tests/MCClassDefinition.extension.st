@@ -1,6 +1,6 @@
-Extension { #name : #MCClassDefinition }
+Extension { #name : 'MCClassDefinition' }
 
-{ #category : #'*Iceberg-Tests' }
+{ #category : '*Iceberg-Tests' }
 MCClassDefinition >> ensureRing2DefinitionIn: aRG2Environment package: aRG2PackageDefinition [
 	
 	| def |

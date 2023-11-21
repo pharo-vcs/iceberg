@@ -1,13 +1,14 @@
 Class {
-	#name : #IceMetacelloIntegrationTests,
-	#superclass : #AbstractIceMetacelloIntegrationTests,
+	#name : 'IceMetacelloIntegrationTests',
+	#superclass : 'AbstractIceMetacelloIntegrationTests',
 	#classVars : [
 		'CommitishToUse'
 	],
-	#category : 'Iceberg-Tests-MetacelloIntegration'
+	#category : 'Iceberg-Tests-MetacelloIntegration',
+	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> commitishConfiguration [
 
 	^ IceTestParameter 
@@ -18,7 +19,7 @@ IceMetacelloIntegrationTests class >> commitishConfiguration [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> commitishOptions [
 
 	^	{	''. "Without commitish"
@@ -28,37 +29,37 @@ IceMetacelloIntegrationTests class >> commitishOptions [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> commitishToUse [
 
 	^ CommitishToUse ifNil: [ '' ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> commitishToUse: aValue [
 
 	CommitishToUse := aValue
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> isAbstract [
 	^ self name = #IceMetacelloIntegrationTests
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests class >> parameters [
 
 	^ { self remoteTypeConfiguration. 
 		 self commitishConfiguration }
 ]
 
-{ #category : #creation }
+{ #category : 'creation' }
 IceMetacelloIntegrationTests >> createConflictingRepository [
 	
 	self createConflictingRepositoryIn: 'temp/test'
 ]
 
-{ #category : #creation }
+{ #category : 'creation' }
 IceMetacelloIntegrationTests >> createConflictingRepositoryIn: aLocation [
 	
 	conflictingRepository := (IceRepositoryCreator new
@@ -68,19 +69,19 @@ IceMetacelloIntegrationTests >> createConflictingRepositoryIn: aLocation [
 			yourself.
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloIntegrationTests >> expectedFileFormat [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloIntegrationTests >> hasProject [
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> installBaseline [
 
 	Metacello new
@@ -89,25 +90,25 @@ IceMetacelloIntegrationTests >> installBaseline [
 		load.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests >> isTestingHTTPS [
 
 	^ Iceberg remoteTypeSelector = #httpsUrl
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloIntegrationTests >> isTestingSSH [
 
 	^ Iceberg remoteTypeSelector = #scpUrl
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloIntegrationTests >> shouldBeDirty [
 	
 	^ false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallBaselineWhenNoSSHIsAvailableUsesHTTPS [
 
 	"This test is meant to run in the CI using SSH, when SSH is not available.
@@ -120,7 +121,7 @@ IceMetacelloIntegrationTests >> testInstallBaselineWhenNoSSHIsAvailableUsesHTTPS
 	self assert: repository origin url asUrl scheme equals: 'https'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallBaselineWhenSSHIsAvailableUsesSSH [
 
 	"This test is meant to run on SSH when SSH is running only.
@@ -134,7 +135,7 @@ IceMetacelloIntegrationTests >> testInstallBaselineWhenSSHIsAvailableUsesSSH [
 	self assert: (repository origin url beginsWith: 'git@')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallBaselineWhileMissingRepositoryIsInstalledIsPossible [
 
 	"Avoid this test if on ssh on the CI"
@@ -150,7 +151,7 @@ IceMetacelloIntegrationTests >> testInstallBaselineWhileMissingRepositoryIsInsta
 	self assert: repository workingCopy isModified equals: self shouldBeDirty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallBaselineWithConflictingRepositoryInDiskThrowsError [
 
 	"Avoid this test if on ssh on the CI"
@@ -164,7 +165,7 @@ IceMetacelloIntegrationTests >> testInstallBaselineWithConflictingRepositoryInDi
 	self installBaseline
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallBaselineWithConflictingUnrelatedRepositoryInDiskThrowsError [
 
 	"Avoid this test if on ssh on the CI"
@@ -176,7 +177,7 @@ IceMetacelloIntegrationTests >> testInstallBaselineWithConflictingUnrelatedRepos
 	self should: [ self installBaseline ] raise: IceMetacelloDuplicatedNotification
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testInstallingAMetacelloBaselineCreatesAnIcebergRepository [
 
 	"Avoid this test if on ssh on the CI"
@@ -186,7 +187,7 @@ IceMetacelloIntegrationTests >> testInstallingAMetacelloBaselineCreatesAnIceberg
 	self installBaseline
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testNewRepositoryPackagesAreClean [
 
 	"Avoid this test if on ssh on the CI"
@@ -199,7 +200,7 @@ IceMetacelloIntegrationTests >> testNewRepositoryPackagesAreClean [
 	self assert: repository workingCopy isModified equals: self shouldBeDirty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testProjectDirtiness [
 
 	"Avoid this test if on ssh on the CI"
@@ -212,7 +213,7 @@ IceMetacelloIntegrationTests >> testProjectDirtiness [
 	self assert: repository isModified equals: self shouldBeDirty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testProjectFileFormat [
 
 	"Avoid this test if on ssh on the CI"
@@ -225,7 +226,7 @@ IceMetacelloIntegrationTests >> testProjectFileFormat [
 	self assert: repository properties fileFormat equals: self expectedFileFormat.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetacelloIntegrationTests >> testProjectHasDescriptor [
 
 	"Avoid this test if on ssh on the CI"

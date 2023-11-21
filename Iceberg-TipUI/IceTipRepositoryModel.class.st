@@ -452,7 +452,7 @@ IceTipRepositoryModel >> status [
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
-		entity isModified ifTrue: [ status add: 'Uncommited changes' ].
+		entity isModified ifTrue: [ status add: 'Uncommitted changes' ].
 		
 		incoming := self incomingCommits size.
 		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].
@@ -512,7 +512,7 @@ IceTipRepositoryModel >> statusString [
 		self isLoaded ifFalse: [ ^ 'Not loaded' ].
 
 		status := OrderedCollection new.
-		entity isModified ifTrue: [ status add: 'Uncommited changes' ].
+		entity isModified ifTrue: [ status add: 'Uncommitted changes' ].
 		
 		incoming := self incomingCommits size.
 		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].

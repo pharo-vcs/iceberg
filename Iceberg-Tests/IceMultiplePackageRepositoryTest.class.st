@@ -1,16 +1,18 @@
 Class {
-	#name : #IceMultiplePackageRepositoryTest,
-	#superclass : #IceBornRepositoryTest,
-	#category : #'Iceberg-Tests-Common'
+	#name : 'IceMultiplePackageRepositoryTest',
+	#superclass : 'IceBornRepositoryTest',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMultiplePackageRepositoryTest class >> isAbstract [
 
 	^ self == IceMultiplePackageRepositoryTest
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testAdoptCommitChangesWorkingCopyCommit [
 
 	| message commitToAdopt |
@@ -27,7 +29,7 @@ IceMultiplePackageRepositoryTest >> testAdoptCommitChangesWorkingCopyCommit [
 	self assert: self repository workingCopy referenceCommit equals: commitToAdopt
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeBranchCommit [
 
 	| message commitToAdopt branchCommitBeforeAdopt |
@@ -45,7 +47,7 @@ IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeBranchCommit [
 	self assert: self repository branch commit equals: branchCommitBeforeAdopt 
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeCheckedOutCodeInImage [
 
 	| message commitToAdopt |
@@ -62,7 +64,7 @@ IceMultiplePackageRepositoryTest >> testAdoptCommitDoesNotChangeCheckedOutCodeIn
 	self assert: (self repository workingCopy environment ask includesClassNamed: 'IceGeneratedClassForTesting')
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testAdoptCommitMarksPackagesAsDirty [
 
 	| message commitToAdopt |
@@ -79,14 +81,14 @@ IceMultiplePackageRepositoryTest >> testAdoptCommitMarksPackagesAsDirty [
 	self assert: (self repository workingCopy packageNamed: self packageName1 asSymbol) isDirty
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutBranchDoesNotLeaveDetachedHead [
 
 	self repository branch checkout.
 	self deny: self repository head isDetached
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutBranchInstallsCodeInImage [
 
 	| message |
@@ -117,7 +119,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutBranchInstallsCodeInImage [
 	self assertPackageExists: self packageName2
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutBranchInstallsPackageInImage [
 
 	self repository branch checkout.
@@ -125,7 +127,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutBranchInstallsPackageInImage [
 	self assertPackageExists: self packageName2.
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutCodeRepositoryInstallsCodeInImage [
 
 	| message |
@@ -154,7 +156,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutCodeRepositoryInstallsCodeInImag
 	self assertPackageExists: self packageName2
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutCodeRepositoryInstallsPackageInImage [
 
 	self  repository checkoutAllPackages.
@@ -162,7 +164,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutCodeRepositoryInstallsPackageInI
 	self assertPackageExists: self packageName2
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutCommitInstallsCodeInImage [
 
 	| message |
@@ -191,7 +193,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutCommitInstallsCodeInImage [
 	self assertPackageExists: self packageName2
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutCommitInstallsPackageInImage [
 
 	self  repository branch commit checkout.
@@ -199,7 +201,7 @@ IceMultiplePackageRepositoryTest >> testCheckoutCommitInstallsPackageInImage [
 	self assertPackageExists: self packageName2
 ]
 
-{ #category : #'tests-branch' }
+{ #category : 'tests-branch' }
 IceMultiplePackageRepositoryTest >> testCheckoutDoesNotAffectBranchCommit [
 
 	| commitAtBranchTime createdBranch message |
@@ -221,14 +223,14 @@ IceMultiplePackageRepositoryTest >> testCheckoutDoesNotAffectBranchCommit [
 	self assert: createdBranch commit equals: commitAtBranchTime
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutLatestBranchCommitLeavesDetachedHead [
 
 	self  repository branch commit checkoutAllPackages.
 	self assert: self  repository head isDetached.
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutOlderCommitLeavesRepositoryInDetachedMode [
 
 	| message |
@@ -250,14 +252,14 @@ IceMultiplePackageRepositoryTest >> testCheckoutOlderCommitLeavesRepositoryInDet
 	self assert: self  repository head isDetached
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceMultiplePackageRepositoryTest >> testCheckoutRepositoryDoesNotLeaveDetachedHead [
 
 	self  repository checkoutAllPackages.
 	self deny: self  repository head isDetached
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testCommitModificationsCreatesNewCommit [
 
 	| message |
@@ -272,7 +274,7 @@ IceMultiplePackageRepositoryTest >> testCommitModificationsCreatesNewCommit [
 	self deny: self  repository workingCopy isDetached.
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testCommitModificationsDoNotCreateBranch [
 
 	| message |
@@ -287,7 +289,7 @@ IceMultiplePackageRepositoryTest >> testCommitModificationsDoNotCreateBranch [
 	self deny: self repository workingCopy isDetached.
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testCommitWithDetachedHeadRaisesException [
 
 	| message |
@@ -303,7 +305,7 @@ IceMultiplePackageRepositoryTest >> testCommitWithDetachedHeadRaisesException [
 	self should: [self repository commitWithMessage: message] raise: IceWorkingCopyDesyncronized.
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testCreateClassInImageInNotManagedPackageKeepChangesEmpty [
 
 	"This is a Ring working copy"
@@ -313,7 +315,7 @@ IceMultiplePackageRepositoryTest >> testCreateClassInImageInNotManagedPackageKee
 	self assert: self repository workingCopyDiff isEmpty
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesChangesContainClassDefinition [
 
 	| diff |
@@ -330,7 +332,7 @@ IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesChangesContainCla
 	self assert: (diff tree / self packageName1 / 'IceGeneratedClassForTesting') value definition name equals: #IceGeneratedClassForTesting.
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesChangesNonEmpty [
 
 	"This is a Ring working copy"
@@ -340,7 +342,7 @@ IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesChangesNonEmpty [
 	self deny: self repository workingCopyDiff isEmpty
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesRespositoryModifications [
 
 	"This is a Ring working copy"
@@ -350,13 +352,13 @@ IceMultiplePackageRepositoryTest >> testCreateClassInImageMakesRespositoryModifi
 	self assert: self repository isModified
 ]
 
-{ #category : #'tests-queries' }
+{ #category : 'tests-queries' }
 IceMultiplePackageRepositoryTest >> testCurrentBranchIsDefaultMasterBranch [
 
 	self assert: self repository branch name equals: 'master'
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testDetachedHeadCannotCommit [
 
 	self repository branch commit checkout.
@@ -364,7 +366,7 @@ IceMultiplePackageRepositoryTest >> testDetachedHeadCannotCommit [
 	self should: [self repository validateCanCommit] raise: IceWorkingCopyDesyncronized.
 ]
 
-{ #category : #'tests-queries' }
+{ #category : 'tests-queries' }
 IceMultiplePackageRepositoryTest >> testListBranchCommitsListsCommitsInBranch [
 
 	| branches commits |
@@ -375,7 +377,7 @@ IceMultiplePackageRepositoryTest >> testListBranchCommitsListsCommitsInBranch [
 	self assert: commits first comment equals: 'Initial commit'.
 ]
 
-{ #category : #'tests-queries' }
+{ #category : 'tests-queries' }
 IceMultiplePackageRepositoryTest >> testListPackagesListExistingPackage [
 
 	| packages |
@@ -385,19 +387,19 @@ IceMultiplePackageRepositoryTest >> testListPackagesListExistingPackage [
 	self assert: (packages includes: self packageName2).
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testNoChangesInImageMakesChangesEmpty [
 
 	self assert: self repository workingCopyDiff isEmpty
 ]
 
-{ #category : #'tests-changes' }
+{ #category : 'tests-changes' }
 IceMultiplePackageRepositoryTest >> testNoChangesInImageMakesNoModifications [
 
 	self deny: self repository isModified
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCodeInImage [
 
 	| message commitToReset |
@@ -415,7 +417,7 @@ IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCodeIn
 	self assert: (self repository workingCopy environment ask includesClassNamed: 'IceGeneratedClassForTesting')
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCommit [
 
 	| message commitToReset workingCopyCommitBeforeReset |
@@ -433,7 +435,7 @@ IceMultiplePackageRepositoryTest >> testResetBranchDoesNotChangeCheckedOutCommit
 	self assert: self repository workingCopy referenceCommit equals: workingCopyCommitBeforeReset 
 ]
 
-{ #category : #'tests-commit' }
+{ #category : 'tests-commit' }
 IceMultiplePackageRepositoryTest >> testResetBranchRestoresBranchCommit [
 
 	| message commitToReset |

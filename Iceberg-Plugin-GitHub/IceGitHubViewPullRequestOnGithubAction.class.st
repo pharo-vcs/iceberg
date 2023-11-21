@@ -1,14 +1,16 @@
 Class {
-	#name : #IceGitHubViewPullRequestOnGithubAction,
-	#superclass : #IceGitHubAction,
+	#name : 'IceGitHubViewPullRequestOnGithubAction',
+	#superclass : 'IceGitHubAction',
 	#instVars : [
 		'organisation',
 		'projectName'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubViewPullRequestOnGithubAction class >> organisation: aString projectName: anotherString [
 	^ self new
 		organisation: aString;
@@ -16,7 +18,7 @@ IceGitHubViewPullRequestOnGithubAction class >> organisation: aString projectNam
 		yourself
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubViewPullRequestOnGithubAction >> basicExecute [
 
 	[
@@ -45,22 +47,22 @@ IceGitHubViewPullRequestOnGithubAction >> basicExecute [
 				openModal ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> organisation [
 	^ organisation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> organisation: anObject [
 	organisation := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> projectName [
 	^ projectName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> projectName: anObject [
 	projectName := anObject
 ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #IceGitRemoteBranch,
-	#superclass : #IceRemoteBranch,
-	#category : #'Iceberg-Libgit-Core'
+	#name : 'IceGitRemoteBranch',
+	#superclass : 'IceRemoteBranch',
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> commit [
 	
 	repository handleLibgitError: [ | gitCommit gitId |
@@ -13,7 +15,7 @@ IceGitRemoteBranch >> commit [
 		^ self repository commitFromGitCommit: gitCommit ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceGitRemoteBranch >> delete [
 	
 	repository handleLibgitError: [ | found |
@@ -21,43 +23,43 @@ IceGitRemoteBranch >> delete [
 		self repositoryHandle deleteBranch: found ]
 ]
 
-{ #category : #filesystem }
+{ #category : 'filesystem' }
 IceGitRemoteBranch >> fileSystem [
 	^ self commit fileSystem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> gitRef [
 	
 	^ self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> name [
 
 	^ self fullname withoutPrefix: self prefix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> prefix [
 
 	^ 'refs/remotes/'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> remoteName [
 	
 	^ (self fullname substrings: '/') third
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> repositoryHandle [
 
 	<repositoryHandleAccessor>
 	^ repository repositoryHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemoteBranch >> shortname [
 
 	^ self name withoutPrefix: self remoteName, '/'

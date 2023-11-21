@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-Plugin-Metacello' }
+Package { #name : 'Iceberg-Plugin-Metacello' }

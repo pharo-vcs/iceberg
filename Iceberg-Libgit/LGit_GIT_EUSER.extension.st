@@ -1,6 +1,6 @@
-Extension { #name : #'LGit_GIT_EUSER' }
+Extension { #name : 'LGit_GIT_EUSER' }
 
-{ #category : #'*Iceberg-Libgit' }
+{ #category : '*Iceberg-Libgit' }
 LGit_GIT_EUSER >> acceptError: aVisitor [
 	^ aVisitor visitEUSER: self
 ]

@@ -1,14 +1,16 @@
 Class {
-	#name : #IceBasicRepositoryFixture,
-	#superclass : #IceNotYetClonedRepositoryFixture,
+	#name : 'IceBasicRepositoryFixture',
+	#superclass : 'IceNotYetClonedRepositoryFixture',
 	#instVars : [
 		'repository',
 		'subdirectory'
 	],
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceBasicRepositoryFixture class >> inGit [
 
 	^ self new
@@ -16,7 +18,7 @@ IceBasicRepositoryFixture class >> inGit [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceBasicRepositoryFixture class >> inMemory [
 
 	^ self new
@@ -24,43 +26,43 @@ IceBasicRepositoryFixture class >> inMemory [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceBasicRepositoryFixture >> initialize [
 	super initialize.
 	subdirectory := ''.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceBasicRepositoryFixture >> newRemoteNamed: aName [
 
 	^ factory newRemoteNamed: aName toRepository: repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicRepositoryFixture >> repository [
 	^ repository
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceBasicRepositoryFixture >> setUp [
 
 	super setUp.
 	repository := factory newRepositoryNamed: projectName withSubdirectory: self subdirectory
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceBasicRepositoryFixture >> subdirectory [
 	
 	^ subdirectory
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceBasicRepositoryFixture >> subdirectory: aSubdirectory [
 	
 	subdirectory := aSubdirectory
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceBasicRepositoryFixture >> tearDown [
 
 	factory tearDownWithRepository: repository.

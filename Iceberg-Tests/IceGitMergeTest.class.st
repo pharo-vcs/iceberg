@@ -1,15 +1,17 @@
 Class {
-	#name : #IceGitMergeTest,
-	#superclass : #IceMergeTest,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceGitMergeTest',
+	#superclass : 'IceMergeTest',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitMergeTest >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testConflictFile [
 	| fileRef branchMaster branchRemove |
 	
@@ -33,7 +35,7 @@ IceGitMergeTest >> testConflictFile [
 	self should: [ branchRemove merge ] raise: IceMergeResolutionRequest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeBinaryFileAdditionCreatesFileInWorkingCopy [
 	| fileRef branchMaster newBranch |
 
@@ -59,7 +61,7 @@ IceGitMergeTest >> testMergeBinaryFileAdditionCreatesFileInWorkingCopy [
 	self assert: fileRef exists.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeOfInnessaryMergeCommit [
 	| c1 c2 c3 c4 i1  fileRef|
 
@@ -135,7 +137,7 @@ IceGitMergeTest >> testMergeOfInnessaryMergeCommit [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeTextFileAdditionCreatesFileInWorkingCopy [
 	| fileRef branchMaster newBranch |
 
@@ -160,7 +162,7 @@ IceGitMergeTest >> testMergeTextFileAdditionCreatesFileInWorkingCopy [
 	self assert: fileRef exists.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithDirectoryRemovedOnOneBranchButNotOtherCausesConflict [
 	| fileRef otherFileRef branchMaster branchRemove |
 	
@@ -187,7 +189,7 @@ IceGitMergeTest >> testMergeWithDirectoryRemovedOnOneBranchButNotOtherCausesConf
 	self should: [ branchRemove merge ] raise: IceMergeResolutionRequest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithDirectoryRemovedWithFastForward [
 	| fileRef branchMaster branchRemove |
 	
@@ -211,7 +213,7 @@ IceGitMergeTest >> testMergeWithDirectoryRemovedWithFastForward [
 	self deny: fileRef parent exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithDirectoryRemovedWithMerge [
 	| fileRef otherFileRef branchMaster branchRemove |
 	
@@ -240,7 +242,7 @@ IceGitMergeTest >> testMergeWithDirectoryRemovedWithMerge [
 	self deny: fileRef parent exists.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithEmptyIncomingCommitCreatesMergeCommit [
 	| incomingBranch |
 
@@ -262,7 +264,7 @@ IceGitMergeTest >> testMergeWithEmptyIncomingCommitCreatesMergeCommit [
 	self assert: self repository workingCopy referenceCommit comment equals: 'Merge ' , incomingBranch commit id
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithFileRemovedWithFastForward [
 	| fileRef branchMaster branchRemove |
 	
@@ -285,7 +287,7 @@ IceGitMergeTest >> testMergeWithFileRemovedWithFastForward [
 	self deny: fileRef exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithFileRemovedWithMerge [
 	| fileRef otherFileRef branchMaster branchRemove |
 	
@@ -313,7 +315,7 @@ IceGitMergeTest >> testMergeWithFileRemovedWithMerge [
 	self deny: fileRef exists.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testMergeWithMissingProjectFile [
 	| incomingBranch fileRef |
 
@@ -325,7 +327,7 @@ IceGitMergeTest >> testMergeWithMissingProjectFile [
 	fileRef := self repository location / 'test1.txt'.
 	fileRef writeStreamDo: [ :stream | stream << 'test1' ].
 	self repository index addPath: (fileRef relativeTo: self repository location).
-	self repository commitWithMessage: 'commiting something'.
+	self repository commitWithMessage: 'committing something'.
 	incomingBranch := self repository branch.
 	
 	self repository checkoutBranch: 'master'.	
@@ -340,7 +342,7 @@ IceGitMergeTest >> testMergeWithMissingProjectFile [
 	self assert: self repository workingCopy referenceCommit comment equals: 'Merge ' , incomingBranch commit id
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitMergeTest >> testResolveConflictInFileCreatesCorrectMergeCommit [
 	| fileRef branchMaster conflictingCommit baseCommit |
 	

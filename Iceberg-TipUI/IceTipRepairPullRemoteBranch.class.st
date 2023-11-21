@@ -19,7 +19,7 @@ This will not lose any change in the image.
 
 This situation happens because the code loaded in your image is not in the branch currently selected on your repository.
 
-This operation will modify the state of your working copy in disk. All non-commited changes in your disk working copy that are not in the image will be lost. If you want to keep them, perform a commit from outside before.'
+This operation will modify the state of your working copy in disk. All non-committed changes in your disk working copy that are not in the image will be lost. If you want to keep them, perform a commit from outside before.'
 ]
 
 { #category : 'accessing' }

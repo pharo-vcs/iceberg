@@ -2,8 +2,8 @@
 I'm a spec model to present a detailed view of a Pull Request.
 "
 Class {
-	#name : #IceGitHubPullRequestDetailModel,
-	#superclass : #SpPresenter,
+	#name : 'IceGitHubPullRequestDetailModel',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'urlLabel',
 		'urlText',
@@ -24,10 +24,12 @@ Class {
 		'statusIcon',
 		'scheduler'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
 
 	rootCommandGroup register:
@@ -35,27 +37,27 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 			register: IceTipOpenCheckUrlCommand forSpec)
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> authorLabel [
 	^ authorLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> authorText [
 	^ authorText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> bodyText [
 	^ bodyText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> checksTable [
 	^ checksTable
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubPullRequestDetailModel >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -88,23 +90,23 @@ IceGitHubPullRequestDetailModel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> fromLabel [
 	^ fromLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> fromText [
 	^ fromText
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> iconForMergeable: mergeable [
 	mergeable = true ifTrue: [ ^ self iconNamed: #smallOk ].
 	^ self iconNamed: #smallCancel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> iconForStatus: status [
 	status = 'success' ifTrue: [ ^ self iconNamed: #testGreen ].
 	status = 'failure' ifTrue: [ ^ self iconNamed: #testRed ].
@@ -113,7 +115,7 @@ IceGitHubPullRequestDetailModel >> iconForStatus: status [
 	^ self iconNamed: #testNotRun
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubPullRequestDetailModel >> initializePresenters [
 
 	urlLabel := self newLabel label: 'Url'.
@@ -139,17 +141,17 @@ IceGitHubPullRequestDetailModel >> initializePresenters [
 		addStyle: 'iceTipReadonly'
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> mergeableLabel [
 	^ mergeableLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> mergeableMessage [
 	^ mergeableMessage
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceGitHubPullRequestDetailModel >> newChecksTable [
 
 	^ self newTable
@@ -173,19 +175,19 @@ IceGitHubPullRequestDetailModel >> newChecksTable [
 		contextMenu: [ (self rootCommandsGroup / 'checks commands') beRoot asMenuPresenter ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDetailModel >> pullRequest [
 	^ pullRequest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubPullRequestDetailModel >> pullRequest: aPullRequest [
 	
 	pullRequest := aPullRequest.
 	self updatePresenter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> retrieveDetail [
 	
 	self mergeableMessage text: (self mergeableMessage text , '  Loading...' ).
@@ -202,7 +204,7 @@ IceGitHubPullRequestDetailModel >> retrieveDetail [
 			mergeableIcon image: ( self iconForMergeable: mergeable) ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> retrieveStatuses [
 "	self statusPanel widget addMorphBack: 'Loading...' asMorph."
 	self statusMessage text: (statusMessage text , '  Loading...').
@@ -222,13 +224,13 @@ IceGitHubPullRequestDetailModel >> retrieveStatuses [
 			checksTable defer: [ checksTable items:(statuses ) ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> schedule: aBlock [
 
 	self scheduler schedule: aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> scheduler [
 
 	^ scheduler ifNil: [ 
@@ -238,22 +240,22 @@ IceGitHubPullRequestDetailModel >> scheduler [
 				yourself ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusIcon [
 	^ statusIcon
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusLabel [
 	^ statusLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> statusMessage [
 	^ statusMessage
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubPullRequestDetailModel >> textForMergeable: mergeable [
 
 	mergeable = true ifTrue: [ ^ 'Yes' ].
@@ -263,17 +265,17 @@ IceGitHubPullRequestDetailModel >> textForMergeable: mergeable [
 		ifNil: [ 'Unknown' ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> toLabel [
 	^ toLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> toText [
 	^ toText
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubPullRequestDetailModel >> updatePresenter [
 
 	self pullRequest ifNil: [ ^ self ].
@@ -287,12 +289,12 @@ IceGitHubPullRequestDetailModel >> updatePresenter [
 	self retrieveDetail
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> urlLabel [
 	^ urlLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubPullRequestDetailModel >> urlText [
 	^ urlText
 ]

@@ -1,35 +1,37 @@
 Class {
-	#name : #IceWithRemoteAndLocalCommitFixture,
-	#superclass : #IceBasicRepositoryFixture,
+	#name : 'IceWithRemoteAndLocalCommitFixture',
+	#superclass : 'IceBasicRepositoryFixture',
 	#instVars : [
 		'remote',
 		'remoteBranchName'
 	],
-	#category : #'Iceberg-Tests-Common-Fixtures'
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWithRemoteAndLocalCommitFixture >> remote [
 	^ remote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWithRemoteAndLocalCommitFixture >> remoteBranchName [
 	^ remoteBranchName ifNil: [ remoteBranchName  := 'master' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWithRemoteAndLocalCommitFixture >> remoteBranchName: aBranchName [
 	
 	remoteBranchName := aBranchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceWithRemoteAndLocalCommitFixture >> remoteRepository [
 	^ remoteRepository
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceWithRemoteAndLocalCommitFixture >> setUp [
 	super setUp.
 	remoteRepository := self ensureRemoteRepository.

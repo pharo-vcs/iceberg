@@ -2,12 +2,14 @@
 I store metadata for this package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
 "
 Class {
-	#name : #ManifestIcebergPluginGitHub,
-	#superclass : #PackageManifest,
-	#category : 'Iceberg-Plugin-GitHub-Manifest'
+	#name : 'ManifestIcebergPluginGitHub',
+	#superclass : 'PackageManifest',
+	#category : 'Iceberg-Plugin-GitHub-Manifest',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Manifest'
 }
 
-{ #category : #'meta-data' }
+{ #category : 'meta-data' }
 ManifestIcebergPluginGitHub class >> description [
 
 	^ 'I contains a plugin to ease the integration of Iceberg with GitHub''s services.

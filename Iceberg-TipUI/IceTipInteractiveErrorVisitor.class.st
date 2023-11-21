@@ -230,7 +230,7 @@ IceTipInteractiveErrorVisitor >> visitShouldCommitBeforePullError: anError [
 	| continue |
 	continue := context application newConfirm
 		            label: 
-			            'Your repository has uncommited changes. Merging incoming commits will change
+			            'Your repository has uncommitted changes. Merging incoming commits will change
 your current working copy and your current state will not be recoverable. 
 We recommend that you commit first and then pull incoming changes again.';
 		            title: 'You might loose your current changes!';

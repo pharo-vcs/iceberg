@@ -1,10 +1,11 @@
 Class {
-	#name : #IceMetacelloProjectSourcePropertiesTonel,
-	#superclass : #IceMetacelloIntegrationTests,
-	#category : 'Iceberg-Tests-MetacelloIntegration'
+	#name : 'IceMetacelloProjectSourcePropertiesTonel',
+	#superclass : 'IceMetacelloIntegrationTests',
+	#category : 'Iceberg-Tests-MetacelloIntegration',
+	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloProjectSourcePropertiesTonel class >> commitishOptions [
 
 	^	super commitishOptions , {	
@@ -20,24 +21,24 @@ IceMetacelloProjectSourcePropertiesTonel class >> commitishOptions [
 
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloProjectSourcePropertiesTonel >> expectedFileFormat [
 	^ IceLibgitTonelWriter
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloProjectSourcePropertiesTonel >> hasProject [
 	
 	^ true
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloProjectSourcePropertiesTonel >> repositoryName [
 
 	^ 'test-project-source-properties-tonel'
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloProjectSourcePropertiesTonel >> shouldBeDirty [
 	
 	^ false

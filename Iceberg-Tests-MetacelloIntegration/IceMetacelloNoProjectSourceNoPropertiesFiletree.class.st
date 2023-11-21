@@ -1,10 +1,11 @@
 Class {
-	#name : #IceMetacelloNoProjectSourceNoPropertiesFiletree,
-	#superclass : #IceMetacelloIntegrationTests,
-	#category : 'Iceberg-Tests-MetacelloIntegration'
+	#name : 'IceMetacelloNoProjectSourceNoPropertiesFiletree',
+	#superclass : 'IceMetacelloIntegrationTests',
+	#category : 'Iceberg-Tests-MetacelloIntegration',
+	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree class >> commitishOptions [
 
 	^	{	'/src'. "Without commitish"
@@ -15,30 +16,30 @@ IceMetacelloNoProjectSourceNoPropertiesFiletree class >> commitishOptions [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree class >> commitishToUse [
 
 	^ CommitishToUse ifNil: [ '/src' ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree >> expectedFileFormat [
 	^ IceLibgitFiletreeWriter
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree >> hasProject [
 	
 	^ true
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree >> repositoryName [
 
 	^ 'test-noproject-source-noproperties-filetree'
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourceNoPropertiesFiletree >> shouldBeDirty [
 	
 	^ true

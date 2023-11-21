@@ -19,7 +19,7 @@ IceTipRepairDiscardAndLoad class >> help [
 
 This action will synchronize your image with the code in the repository.
 
-All the changes in the image that have not been commited will be lost.
+All the changes in the image that have not been committed will be lost.
 
 This situation happens because loaded code in your image is from a different commit than the current commit (HEAD) in the repository.
 
