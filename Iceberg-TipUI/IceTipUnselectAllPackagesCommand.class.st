@@ -29,7 +29,7 @@ IceTipUnselectAllPackagesCommand >> canBeExecuted [
 	| pkgList |
 
 	pkgList := self context packagesList.
- 	^ pkgList items notEmpty
+ 	^ pkgList items isNotEmpty
 ]
 
 { #category : 'executing' }

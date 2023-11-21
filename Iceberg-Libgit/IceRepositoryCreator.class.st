@@ -34,7 +34,7 @@ IceRepositoryCreator class >> defaultSubdirectory [
 IceRepositoryCreator class >> isGitRoot: aReference [
 	self flag: #pharoTodo. "This does not understand submodules"
 	^ aReference isDirectory 
-		and: [ (aReference directoriesMatching: '.git') notEmpty
+		and: [ (aReference directoriesMatching: '.git') isNotEmpty
 		and: [ (aReference / '.git' / 'config') exists ] ]
 ]
 

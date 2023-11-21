@@ -31,7 +31,7 @@ IceTokenCredentials >> hostDescription [
 
 { #category : 'accessing' }
 IceTokenCredentials >> isPresent [
-	^ self token notEmpty
+	^ self token isNotEmpty
 ]
 
 { #category : 'accessing' }

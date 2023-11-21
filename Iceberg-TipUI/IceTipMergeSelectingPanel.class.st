@@ -28,13 +28,13 @@ IceTipMergeSelectingPanel >> changeListColumn [
 				onActivation: [ :iceNode |
 					checkedIceNodes add: iceNode.
 					iceNode value selectLeft.
-					iceNode notEmpty ifTrue: [
+					iceNode isNotEmpty ifTrue: [
 						iceNode allChildrenDo: [ :child | checkedIceNodes add: child ].
 						self basicRefresh ] ];
 				onDeactivation: [ :iceNode |
 					checkedIceNodes remove: iceNode.
 					iceNode value selectRight.
-					iceNode notEmpty ifTrue: [
+					iceNode isNotEmpty ifTrue: [
 						iceNode allChildrenDo: [ :child |
 							checkedIceNodes remove: child ifAbsent: [  ] ].
 						self basicRefresh ].
