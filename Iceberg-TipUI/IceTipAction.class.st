@@ -38,6 +38,12 @@ IceTipAction >> context: aContext [
 	context := aContext
 ]
 
+{ #category : 'private' }
+IceTipAction >> defaultApplication [
+	"why this is not context application?"
+	^ SpApplication defaultApplication
+]
+
 { #category : 'executing' }
 IceTipAction >> execute [
 

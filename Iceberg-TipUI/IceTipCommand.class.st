@@ -24,7 +24,7 @@ IceTipCommand class >> isAbstract [
 
 { #category : 'accessing' }
 IceTipCommand >> application [
-
+	"why not context application?"
 	^ SpApplication defaultApplication
 ]
 

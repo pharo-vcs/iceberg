@@ -27,7 +27,7 @@ IceTipRefreshPullRequestsCommand class >> defaultName [
 { #category : 'executing' }
 IceTipRefreshPullRequestsCommand >> execute [
 
-	UIManager default
+	self application
 		informUser: 'Refreshing pull request list'
 		during: [ self tool refreshPullRequests ]
 ]

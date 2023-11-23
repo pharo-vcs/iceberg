@@ -16,7 +16,7 @@ Class {
 { #category : 'execute' }
 IceGitHubRemoveBranchesAction >> basicExecute [
 	credentials := IceGitHubAPI ensureCredentials.	
-	UIManager default
+	context application
 		informUser: ('Retrieving branch information from {1}' format: {self remote url})
 		during: [ self cacheAllBranches ].
 	

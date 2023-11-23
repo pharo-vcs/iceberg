@@ -203,7 +203,7 @@ IceTipGitHubPullRequestListBrowser >> updateSelectedPullRequest: aSpSingleSelect
 { #category : 'actions' }
 IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 
-	UIManager default
+	self application
 		informUser: (
 				'Opening pull request {1} {2}' format: { 
 					 aPullRequest number.

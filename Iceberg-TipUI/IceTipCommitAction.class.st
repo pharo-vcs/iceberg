@@ -17,7 +17,7 @@ Class {
 { #category : 'executing' }
 IceTipCommitAction >> basicExecute [
 	self validateCanCommit.
-	UIManager default
+	self defaultApplication
 		informUser: 'Committing...' 
 		during: [ 
 			self repository

@@ -25,12 +25,6 @@ IceGitHubAction >> credentials [
 	^ credentials ifNil: [ credentials := self obtainCredentials ]
 ]
 
-{ #category : 'private' }
-IceGitHubAction >> defaultApplication [
-
-	^ SpApplication defaultApplication
-]
-
 { #category : 'executing' }
 IceGitHubAction >> execute [
 	self withErrorHandlingDo: [ 

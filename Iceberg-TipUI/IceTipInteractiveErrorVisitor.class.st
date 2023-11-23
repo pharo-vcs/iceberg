@@ -48,7 +48,8 @@ IceTipInteractiveErrorVisitor >> context: anObject [
 
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> defaultApplication [
-
+	"why this is not ^ context application"
+	
 	^ SpApplication defaultApplication
 ]
 
@@ -64,7 +65,7 @@ IceTipInteractiveErrorVisitor >> repository: anObject [
 
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
-	self defaultApplication 
+	context application
 		label: anError messageText;
 		title: 'Iceberg authentication Error';
 		openModal
@@ -73,7 +74,7 @@ IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
 
-	self defaultApplication
+	context application
 		label: anError messageText;
 		title: 'Iceberg conflicts while checking out';
 		openModal
@@ -82,7 +83,7 @@ IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 
-		self defaultApplication 
+	context application
 		label:
 		('The clone location {1} already exists' format:
 			 { anError location });
@@ -93,7 +94,7 @@ IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
 
-		self defaultApplication 
+	context application
 		label: ('The clone remote {1} could not been found' format:
 				 { anError remoteUrl });
 		title: 'Clone action failed';
@@ -128,7 +129,7 @@ IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitMergeAborted: anError [
 
-		self defaultApplication 
+	context application
 		label: (anError messageText ifNil: [
 				 'Automatic (fast-forward) merge is not possible. 
 Please perform the merge manually, then proceed with your previous operation.
@@ -167,7 +168,7 @@ IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitNoRemote: anError [
 
-		self defaultApplication 
+	context application 
 		label: 'There are no remotes defined for this repository. 
 Add one before continue.';
 		title: 'Remote action failed';
@@ -177,7 +178,7 @@ Add one before continue.';
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitNothingToCommitError: anError [
 
-	self defaultApplication newInform
+	context application newInform
 		title: 'There is nothing to commit.';
 		openModal
 ]
@@ -185,7 +186,7 @@ IceTipInteractiveErrorVisitor >> visitNothingToCommitError: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitRemoteAlreadyExistError: anError [
 
-	self defaultApplication newInform
+	context application newInform
 		title:
 			('Remote "{1}" already exists.' format: { anError remoteName });
 		openModal
