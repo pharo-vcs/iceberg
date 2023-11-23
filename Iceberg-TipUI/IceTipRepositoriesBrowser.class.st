@@ -96,6 +96,7 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 	 But in case is present, I want iceberg to run within the same context"
 	application := (self environment classNamed: #StPharoApplication)
 		ifNotNil: [ :c | c current ].
+	"SD: why not using self application?"
 
 	^ self basicNew
 		application: application;

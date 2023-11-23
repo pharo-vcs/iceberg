@@ -41,14 +41,13 @@ IceTipCommitModel >> author [
 
 { #category : 'private' }
 IceTipCommitModel >> calculateDiff: aBlock [
+
 	| diff |
-	
-	UIManager default 
+	self application 
 		informUser: 'Calculating diff'
 		during: [ 
 			diff := aBlock value.
 			diff build ].
-
 	^ diff
 ]
 

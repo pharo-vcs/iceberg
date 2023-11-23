@@ -33,7 +33,7 @@ IceTipDiffModel >> diff [
 
 { #category : 'actions' }
 IceTipDiffModel >> reset [
-	UIManager default 	
+	self application	
 		informUser: 'Refreshing changes' 
 		during: [ 
 			self resetDiff.
