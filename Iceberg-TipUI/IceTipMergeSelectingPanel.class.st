@@ -1,21 +1,23 @@
 Class {
-	#name : #IceTipMergeSelectingPanel,
-	#superclass : #IceTipDiffPanel,
+	#name : 'IceTipMergeSelectingPanel',
+	#superclass : 'IceTipDiffPanel',
 	#instVars : [
 		'codePanel',
 		'checkedIceNodes'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeSelectingPanel >> basicRefresh [
 
 	super basicRefresh.
 	self refreshCodePanel.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergeSelectingPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
@@ -26,13 +28,13 @@ IceTipMergeSelectingPanel >> changeListColumn [
 				onActivation: [ :iceNode |
 					checkedIceNodes add: iceNode.
 					iceNode value selectLeft.
-					iceNode notEmpty ifTrue: [
+					iceNode isNotEmpty ifTrue: [
 						iceNode allChildrenDo: [ :child | checkedIceNodes add: child ].
 						self basicRefresh ] ];
 				onDeactivation: [ :iceNode |
 					checkedIceNodes remove: iceNode.
 					iceNode value selectRight.
-					iceNode notEmpty ifTrue: [
+					iceNode isNotEmpty ifTrue: [
 						iceNode allChildrenDo: [ :child |
 							checkedIceNodes remove: child ifAbsent: [  ] ].
 						self basicRefresh ].
@@ -46,13 +48,13 @@ IceTipMergeSelectingPanel >> changeListColumn [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeSelectingPanel >> codePanel [
 
 	^ codePanel
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipMergeSelectingPanel >> defaultLayout [
 
 	^ SpPanedLayout newLeftToRight
@@ -66,7 +68,7 @@ IceTipMergeSelectingPanel >> defaultLayout [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergeSelectingPanel >> initialize [
 
 	super initialize.
@@ -77,7 +79,7 @@ IceTipMergeSelectingPanel >> initialize [
 			child value isConflict ifTrue: [ child value selectLeft ] ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMergeSelectingPanel >> initializePresenters [
 
 	codePanel := self newCode.
@@ -87,7 +89,7 @@ IceTipMergeSelectingPanel >> initializePresenters [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeSelectingPanel >> refresh [
 
 	super refresh.
@@ -96,7 +98,7 @@ IceTipMergeSelectingPanel >> refresh [
 	self refreshCodePanel 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMergeSelectingPanel >> refreshCodePanel [
 
 	| visitor mergeNode |
@@ -107,13 +109,13 @@ IceTipMergeSelectingPanel >> refreshCodePanel [
 		ifNotNil: [ mergeNode accept: visitor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeSelectingPanel >> selectedItems [
 
 	^ checkedIceNodes
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipMergeSelectingPanel >> selectionChanged [
 
 	super selectionChanged.

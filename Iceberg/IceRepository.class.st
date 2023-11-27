@@ -507,7 +507,7 @@ IceRepository >> hasIncomingCommitsFrom: aRemote [
 
 { #category : 'testing' }
 IceRepository >> hasLoadedPackages [
-	^ self loadedPackages notEmpty
+	^ self loadedPackages isNotEmpty
 ]
 
 { #category : 'API - branches' }

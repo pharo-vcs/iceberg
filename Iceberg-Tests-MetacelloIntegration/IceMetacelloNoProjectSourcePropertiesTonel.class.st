@@ -1,10 +1,11 @@
 Class {
-	#name : #IceMetacelloNoProjectSourcePropertiesTonel,
-	#superclass : #IceMetacelloIntegrationTests,
-	#category : 'Iceberg-Tests-MetacelloIntegration'
+	#name : 'IceMetacelloNoProjectSourcePropertiesTonel',
+	#superclass : 'IceMetacelloIntegrationTests',
+	#category : 'Iceberg-Tests-MetacelloIntegration',
+	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloNoProjectSourcePropertiesTonel class >> commitishOptions [
 
 	^	{	'/src'. "Without commitish"
@@ -15,30 +16,30 @@ IceMetacelloNoProjectSourcePropertiesTonel class >> commitishOptions [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloNoProjectSourcePropertiesTonel class >> commitishToUse [
 
 	^ CommitishToUse ifNil: [ '/src' ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourcePropertiesTonel >> expectedFileFormat [
 	^ IceLibgitTonelWriter
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourcePropertiesTonel >> hasProject [
 	
 	^ true
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourcePropertiesTonel >> repositoryName [
 
 	^ 'test-noproject-source-properties-tonel'
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 IceMetacelloNoProjectSourcePropertiesTonel >> shouldBeDirty [
 	
 	^ true

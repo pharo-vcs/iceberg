@@ -2,18 +2,20 @@
 I'm a dialog to add packages to a repository.
 "
 Class {
-	#name : #IceTipAddPackagesDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipAddPackagesDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'model',
 		'packagesList',
 		'packageNameText',
 		'selectedPackages'
 	],
-	#category : #'Iceberg-TipUI-View-WorkingCopy'
+	#category : 'Iceberg-TipUI-View-WorkingCopy',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-WorkingCopy'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipAddPackagesDialogPresenter >> accept [
 
 	"ensure window goes away (in case accept comes from a keybinding and not the ok button)"
@@ -25,15 +27,13 @@ IceTipAddPackagesDialogPresenter >> accept [
 		executeWithContext: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> allPackages [
 
-	^ RPackageOrganizer default packages
-		asOrderedCollection 
-		sort: [ :a :b | a name < b name ]
+	^ self packageOrganizer packages asOrderedCollection sort: [ :a :b | a name < b name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> allPackagesNotRegistered [
 
 	| currentPackagesNames |
@@ -42,7 +42,7 @@ IceTipAddPackagesDialogPresenter >> allPackagesNotRegistered [
 		  currentPackagesNames includes: rPackage name ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddPackagesDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -51,13 +51,13 @@ IceTipAddPackagesDialogPresenter >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> iconForWindow [
 
 	^ self iconNamed: #branch
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> initializePackageNameText [
 
 	packageNameText
@@ -66,7 +66,7 @@ IceTipAddPackagesDialogPresenter >> initializePackageNameText [
 		whenTextChangedDo: [ :text | self refresh ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> initializePackagesList [
 
 	packagesList addColumn: (SpCompositeTableColumn new
@@ -86,7 +86,7 @@ IceTipAddPackagesDialogPresenter >> initializePackagesList [
 		yourself)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> initializePresenters [
 
 	selectedPackages := OrderedCollection new.
@@ -97,32 +97,32 @@ IceTipAddPackagesDialogPresenter >> initializePresenters [
 	self initializePackageNameText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> model: anObject [
 
 	model := anObject.
 	self refresh
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddPackagesDialogPresenter >> packageNameText [
 
 	^ packageNameText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddPackagesDialogPresenter >> packagesList [
 
 	^ packagesList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> refresh [
 
 	packagesList items: (packageNameText text
@@ -135,31 +135,31 @@ IceTipAddPackagesDialogPresenter >> refresh [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> selectedPackage [
 
 	^ packagesList selectedItem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> titleForWindow [
 
 	^ 'Add packages'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddPackagesDialogPresenter >> updatePresenter [
 
 	self refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddPackagesDialogPresenter >> validate [
 
 	self

@@ -171,10 +171,10 @@ Iceberg class >> remoteTypeSelector: anObject [
 ]
 
 { #category : 'accessing' }
-Iceberg class >> repositoryForPackage: anRPackage [
+Iceberg class >> repositoryForPackage: aPackage [
 
 	| existingRepositories possibleRepositoryTypes |
-	existingRepositories := anRPackage mcWorkingCopy repositoryGroup repositories.
+	existingRepositories := aPackage mcWorkingCopy repositoryGroup repositories.
 	possibleRepositoryTypes := IceRepository allSubclasses , { IceMetacelloRepositoryAdapter . MCGitHubRepository }.
 
 	possibleRepositoryTypes do: [ :class |
@@ -182,7 +182,7 @@ Iceberg class >> repositoryForPackage: anRPackage [
 			detect: [ :repo | repo isKindOf: class ]
 			ifFound: [ :repo | ^ repo getOrCreateIcebergRepository ] ].
 
-	self error: ('Could not find a git repository for {1}' format: { anRPackage name })
+	self error: ('Could not find a git repository for {1}' format: { aPackage name })
 ]
 
 { #category : 'settings' }
@@ -221,5 +221,5 @@ Iceberg class >> update [
 	#(Iceberg LGitRepository MCFileTreeGitRepository) do: [:className | 
 		Smalltalk 
 			at: className 
-			ifPresent: [ :class | class package iceRepository pull ] ]
+			ifPresent: [ :class | ( self class repositoryForPackage:class package) pull ] ]
 ]

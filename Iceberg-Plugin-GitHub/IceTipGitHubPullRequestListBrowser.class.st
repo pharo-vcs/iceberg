@@ -14,23 +14,25 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #IceTipGitHubPullRequestListBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipGitHubPullRequestListBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'remote',
 		'pullRequests',
 		'details'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipRefreshPullRequestsCommand forSpec
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 
@@ -41,19 +43,19 @@ IceTipGitHubPullRequestListBrowser class >> buildSelectionCommandGroupWith: pres
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipGitHubPullRequestListBrowser class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser class >> taskbarIconName [
 
 	^ #komitterSmalltalkhubRemote
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubPullRequestListBrowser >> connectPresenters [
 
 	super connectPresenters.
@@ -65,7 +67,7 @@ IceTipGitHubPullRequestListBrowser >> connectPresenters [
 
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipGitHubPullRequestListBrowser >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
@@ -75,13 +77,13 @@ IceTipGitHubPullRequestListBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser >> details [
 
 	^ details
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipGitHubPullRequestListBrowser >> fetchPullRequests [
 
 	^ (IceGitHubAPI new
@@ -92,13 +94,13 @@ IceTipGitHubPullRequestListBrowser >> fetchPullRequests [
 				yourself ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubPullRequestListBrowser >> initialExtentForWindow [
 
 	^ (700 @ 700) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubPullRequestListBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -109,7 +111,7 @@ IceTipGitHubPullRequestListBrowser >> initializePresenters [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 
 	pullRequests
@@ -140,19 +142,19 @@ IceTipGitHubPullRequestListBrowser >> initializePullRequestsTable [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipGitHubPullRequestListBrowser >> mainList [
 
 	^ pullRequests
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser >> pullRequests [
 
 	^ pullRequests
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipGitHubPullRequestListBrowser >> refreshPullRequests [
 	
 	self pullRequests
@@ -161,44 +163,44 @@ IceTipGitHubPullRequestListBrowser >> refreshPullRequests [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser >> remote [
 
 	^ remote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser >> remote: aRemote [
 
 	remote := aRemote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubPullRequestListBrowser >> repository [
 
 	^ model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipGitHubPullRequestListBrowser >> strongSelection: aSelection [
 
 	self viewPullRequest: aSelection selectedItem
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubPullRequestListBrowser >> titleForWindow [
 
 	^ 'Pull requests on {1} ({2})' format: { self remote name. self remote url }
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipGitHubPullRequestListBrowser >> updateSelectedPullRequest: aSpSingleSelectionMode [
 
 	aSpSingleSelectionMode isEmpty ifFalse: [ 
 		self details pullRequest: aSpSingleSelectionMode selectedItem ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 
 	UIManager default

@@ -2,21 +2,23 @@
 I'm a model to provide access to all repositories registered.
 "
 Class {
-	#name : #IceTipRepositoriesModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipRepositoriesModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'repositoryProvider'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesModel >> repositories [
 	
 	^ repositoryProvider repositories collect: [ :each | (IceTipRepositoryModel on: each) beCached ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesModel >> repositoryGroups [
 	| sortGroup groups |
 
@@ -46,7 +48,7 @@ IceTipRepositoriesModel >> repositoryGroups [
 			group: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepositoriesModel >> repositoryProvider: aProvider [
 
 	repositoryProvider := aProvider

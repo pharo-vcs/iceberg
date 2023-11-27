@@ -4,28 +4,30 @@ I take all unary messages sent to my realObject and I cache their values.
 I keep a cache with rules for reset it, which can be accessedon the #resetOn: family of messages.
 "
 Class {
-	#name : #IceTipCachedModel,
-	#superclass : #Object,
+	#name : 'IceTipCachedModel',
+	#superclass : 'Object',
 	#instVars : [
 		'realObject',
 		'cache'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCachedModel class >> for: anObject [
 	^ self basicNew initializeObject: anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTipCachedModel >> = aObject [
 
 	self species ~= aObject species ifTrue: [ ^ false ].
 	^ self realObject = aObject realObject
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 IceTipCachedModel >> doesNotUnderstand: aMessage [
 	aMessage selector isUnary
 		ifTrue: [ 
@@ -42,27 +44,27 @@ IceTipCachedModel >> doesNotUnderstand: aMessage [
 	^ self forwardMessage: aMessage
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 IceTipCachedModel >> forwardMessage: aMessage [
 	^ realObject 
 		perform: aMessage selector 
 		withArguments: aMessage arguments 
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTipCachedModel >> hash [
 
 	^ self realObject hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCachedModel >> initializeObject: anObject [
 	realObject := anObject.
 	cache := IceTipCache proxy: self.
 	self initialize
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTipCachedModel >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPut: $(.
@@ -70,12 +72,12 @@ IceTipCachedModel >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCachedModel >> realObject [
 	^ realObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCachedModel >> reset [
 	cache reset
 ]

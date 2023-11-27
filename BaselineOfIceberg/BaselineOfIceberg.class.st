@@ -17,7 +17,6 @@ BaselineOfIceberg >> baseline: spec [
 		
 		self tonel: spec.
 		self libgit: spec.
-		self ring2: spec.
 		
 		spec
 			"iceberg"
@@ -31,7 +30,7 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
 			"tests"
-			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-Memory' 'Ring2') ];
+			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-Memory') ];
 			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
 			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
@@ -77,7 +76,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.8';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.9';
   			loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
@@ -123,13 +122,6 @@ BaselineOfIceberg >> resetKMRepository [
 	Smalltalk 
 		at: #KMRepository 
 		ifPresent: [ :class | class reset ]
-]
-
-{ #category : 'baseline' }
-BaselineOfIceberg >> ring2: spec [
-	spec
-		baseline: 'Ring2'
-		with: [ spec repository: 'github://guillep/Ring2:v2.0.0/src' ]
 ]
 
 { #category : 'baseline' }

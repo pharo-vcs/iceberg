@@ -2,22 +2,24 @@
 I can write metadataless filetree versions from an ice formed version.
 "
 Class {
-	#name : #IceMetadatalessFileTreeWriter,
-	#superclass : #MCFileTreeWriter,
-	#category : #'Iceberg-Libgit-Filetree-Writer'
+	#name : 'IceMetadatalessFileTreeWriter',
+	#superclass : 'MCFileTreeWriter',
+	#category : 'Iceberg-Libgit-Filetree-Writer',
+	#package : 'Iceberg-Libgit-Filetree',
+	#tag : 'Writer'
 }
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceMetadatalessFileTreeWriter class >> fileOut: aVersion on: aStream [
 	(self on: aStream) writeVersion: aVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetadatalessFileTreeWriter >> snapshotWriterClass [
 	^ IceMetadatalessStCypressWriter
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMetadatalessFileTreeWriter >> writeVersion: aVersion [
 	"We have to do that to avoid writing the version info."
 

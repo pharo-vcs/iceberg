@@ -5,12 +5,14 @@ I'm active when:
 	- src subdirectory is not found.
 "
 Class {
-	#name : #IceTipRepairEditRepository,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairEditRepository',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairEditRepository class >> help [
 	^ 'You can edit the repository to inform another subdirectory name. 
 Once the new subdirectory is updated, the packages in the repository are available.
@@ -20,28 +22,28 @@ This happens because the source code directory has been moved or renamed.
 '
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairEditRepository class >> icon [
 	^ self iconNamed: #edit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairEditRepository class >> isAvailableFor: aRepository [
 
 	^ aRepository isMissing not and: [aRepository isCodeMissing]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairEditRepository class >> order [
 	^ 17
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairEditRepository class >> title [
 	^ 'Edit the repository to select the correct code subdirectory'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairEditRepository >> basicExecute [
 
 	(IceTipEditProjectDialogPresenter

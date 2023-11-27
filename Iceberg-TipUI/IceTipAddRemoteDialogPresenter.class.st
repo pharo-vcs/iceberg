@@ -2,8 +2,8 @@
 I'm a dialog to add remotes to a repository.
 "
 Class {
-	#name : #IceTipAddRemoteDialogPresenter,
-	#superclass : #IceTipDialogPresenter,
+	#name : 'IceTipAddRemoteDialogPresenter',
+	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
 		'model',
 		'nameLabel',
@@ -12,10 +12,12 @@ Class {
 		'nameText',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipAddRemoteDialogPresenter >> accept [
 
 	self validate.
@@ -27,7 +29,7 @@ IceTipAddRemoteDialogPresenter >> accept [
 	^ acceptBlock ifNotNil: [ acceptBlock cull: self remoteName ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipAddRemoteDialogPresenter >> defaultLayout [
 
 	^ SpGridLayout new
@@ -41,7 +43,7 @@ IceTipAddRemoteDialogPresenter >> defaultLayout [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddRemoteDialogPresenter >> initialExtentForWindow [
 
 	^ (500@(
@@ -51,7 +53,7 @@ IceTipAddRemoteDialogPresenter >> initialExtentForWindow [
 		)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddRemoteDialogPresenter >> initializePresenters [
 
 	nameLabel := self newLabel
@@ -70,80 +72,80 @@ IceTipAddRemoteDialogPresenter >> initializePresenters [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> model [
 
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> model: anObject [
 
 	model := anObject
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddRemoteDialogPresenter >> nameLabel [
 
 	^ nameLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddRemoteDialogPresenter >> nameText [
 
 	^ nameText
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipAddRemoteDialogPresenter >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> remoteName [
 
 	^ self nameText text trimmed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> remoteUrl [
 
 	^ self urlText text trimmed
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddRemoteDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAddRemoteDialogPresenter >> titleForWindow [
 
 	^ 'Add remote'
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddRemoteDialogPresenter >> urlLabel [
 
 	^ urlLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipAddRemoteDialogPresenter >> urlText [
 
 	^ urlText
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipAddRemoteDialogPresenter >> validate [
 
 	self
-		assert: self remoteName notEmpty 
+		assert: self remoteName isNotEmpty 
 		description: 'You need to specify a remote name.'.
 	self
-		assert: self remoteUrl notEmpty
+		assert: self remoteUrl isNotEmpty
 		description: 'You need to specify a remote url.'
 
 ]

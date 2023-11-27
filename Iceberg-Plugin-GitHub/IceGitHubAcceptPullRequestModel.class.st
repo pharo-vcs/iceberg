@@ -2,8 +2,8 @@
 I'm a dialog for collecting data to accept a pull request.
 "
 Class {
-	#name : #IceGitHubAcceptPullRequestModel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceGitHubAcceptPullRequestModel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'messageLabel',
 		'messageText',
@@ -11,10 +11,12 @@ Class {
 		'typeList',
 		'acceptBlock'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubAcceptPullRequestModel >> accept [
 
 	acceptBlock ifNotNil: [ 
@@ -22,13 +24,13 @@ IceGitHubAcceptPullRequestModel >> accept [
 	self closeWindow
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAcceptPullRequestModel >> availableTypes [
 
 	^ #( 'merge' 'squash' 'rebase' )
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubAcceptPullRequestModel >> connectPresenters [
 
 	self typeList
@@ -36,7 +38,7 @@ IceGitHubAcceptPullRequestModel >> connectPresenters [
 		selectItem: self defaultType
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubAcceptPullRequestModel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -48,19 +50,19 @@ IceGitHubAcceptPullRequestModel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAcceptPullRequestModel >> defaultType [
 
 	^ 'merge'
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 IceGitHubAcceptPullRequestModel >> initialExtentForWindow [
 
 	^ (600 @ 300) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubAcceptPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
 	
 	aDialogWindowPresenter
@@ -71,7 +73,7 @@ IceGitHubAcceptPullRequestModel >> initializeDialogWindow: aDialogWindowPresente
 			presenter close ]	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubAcceptPullRequestModel >> initializePresenters [
 
 	messageLabel := self newLabel.
@@ -85,13 +87,13 @@ IceGitHubAcceptPullRequestModel >> initializePresenters [
 	typeLabel label: 'Merge type'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAcceptPullRequestModel >> message [
 
 	^ self messageText text asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAcceptPullRequestModel >> messageGhostText [
 
 	^ 'Commit title
@@ -99,42 +101,42 @@ IceGitHubAcceptPullRequestModel >> messageGhostText [
 Add an optional extented description'
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> messageLabel [
 
 	^ messageLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> messageText [
 
 	^ messageText
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceGitHubAcceptPullRequestModel >> onAccept: aBlock [
 	acceptBlock := aBlock
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceGitHubAcceptPullRequestModel >> titleForWindow [
 
 	^ 'Accept pull request'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAcceptPullRequestModel >> type [
 
 	^ self typeList selectedItem
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> typeLabel [
 
 	^ typeLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubAcceptPullRequestModel >> typeList [
 
 	^ typeList

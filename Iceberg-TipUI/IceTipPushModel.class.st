@@ -2,12 +2,14 @@
 I'm a model to present push commits and operations.
 "
 Class {
-	#name : #IceTipPushModel,
-	#superclass : #IceTipRemoteActionModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipPushModel',
+	#superclass : 'IceTipRemoteActionModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPushModel >> commitModels [
 	^ (self entity outgoingCommitsTo: self remote)
 		collect: [ :each | 
@@ -17,7 +19,7 @@ IceTipPushModel >> commitModels [
 				beCached ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPushModel >> newPushAction [
 
 	^ IceTipStandardAction new 

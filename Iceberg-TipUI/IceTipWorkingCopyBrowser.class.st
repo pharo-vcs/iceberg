@@ -5,17 +5,19 @@ I show the packages managed by this repository and a series of actions to proper
 (IceTipPackagesBrowser forRepository: IceRepository registry anyOne) openWithSpec
 "
 Class {
-	#name : #IceTipWorkingCopyBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipWorkingCopyBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'statusBar',
 		'packagesTable',
 		'filterInput'
 	],
-	#category : #'Iceberg-TipUI-View-WorkingCopy'
+	#category : 'Iceberg-TipUI-View-WorkingCopy',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-WorkingCopy'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	{	IceTipRepairCommand. 	
@@ -33,7 +35,7 @@ IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: a
 
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 	IceTipBrowsePackageCommand.
@@ -47,19 +49,19 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyBrowser >> allListItems [
 
 	^ self model packageModels
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 	| commandClass |
 	
@@ -72,7 +74,7 @@ IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 		execute
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> connectPresenters [
 
 	super connectPresenters.
@@ -82,7 +84,7 @@ IceTipWorkingCopyBrowser >> connectPresenters [
 
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipWorkingCopyBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -91,20 +93,20 @@ IceTipWorkingCopyBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipWorkingCopyBrowser >> filterInput [
 
 	^ filterInput
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipWorkingCopyBrowser >> filteredItemsFor: pattern [
 
 	^ self allListItems select: [ :each | 
 		  each name asLowercase includesSubstring: pattern asLowercase ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipWorkingCopyBrowser >> iconFor: aPackage [ 
 
 	self decorations do: [ :each | 
@@ -114,13 +116,13 @@ IceTipWorkingCopyBrowser >> iconFor: aPackage [
 	^ self iconNamed: #package
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> initialExtentForWindow [
 
 	^ (700 @ 500) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> initializePackagesTable [
 
 	packagesTable
@@ -147,7 +149,7 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 		whenActivatedDo: [ :selection | self browsePackage: selection selectedItem ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> initializePresenters [
 
 	filterInput := self newTextInput.
@@ -156,7 +158,7 @@ IceTipWorkingCopyBrowser >> initializePresenters [
 	statusBar := self instantiate: IceTipWorkingCopyStatusBarPresenter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
 	
 	super initializeWindow: aSpWindowPresenter.
@@ -165,25 +167,25 @@ IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
 
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipWorkingCopyBrowser >> mainList [
 
 	^ packagesTable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyBrowser >> packageModel [
 	
 	^ packagesTable selectedItem
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipWorkingCopyBrowser >> packagesTable [
 
 	^ packagesTable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipWorkingCopyBrowser >> refresh [
 
 	self refreshCommands.
@@ -191,7 +193,7 @@ IceTipWorkingCopyBrowser >> refresh [
 	self refreshPackagesTable
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipWorkingCopyBrowser >> refreshPackagesTable [
 
 	packagesTable items: (filterInput text
@@ -200,13 +202,13 @@ IceTipWorkingCopyBrowser >> refreshPackagesTable [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipWorkingCopyBrowser >> refreshStatusBar [
 
 	statusBar model: self model
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 
 	(ann repository isNil or: [ 
@@ -217,25 +219,25 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 
 ]
 
-{ #category : #'accessing - model' }
+{ #category : 'accessing - model' }
 IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
 
 	self model: ( IceTipWorkingCopyModel on: aRepositoryModel )
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipWorkingCopyBrowser >> showsPackageNamed: aString [ 
 	
 	^ packagesTable items anySatisfy: [ :packageModel | packageModel name = aString ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipWorkingCopyBrowser >> statusBar [
 
 	^ statusBar
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 
 	Iceberg announcer weak
@@ -244,13 +246,13 @@ IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> titleForWindow [
 
 	^ 'Working copy of ', self model repositoryName
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipWorkingCopyBrowser >> updatePresenter [
 
 	self refresh

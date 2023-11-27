@@ -63,10 +63,7 @@ IceMemoryRepository class >> exampleWithChanges [
 	anotherPackageName := 'AnotherNonExistentPackage' asSymbol.
 	repository := self exampleWithNoChanges.
 	repository workingCopy addPackageNamed: anotherPackageName.
-	Object subclass: 'IceGeneratedClassForUI'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: anotherPackageName.
+	(Object << 'IceGeneratedClassForUI' package: anotherPackageName) install.
 	self assert: repository isModified.
 	^ repository
 ]

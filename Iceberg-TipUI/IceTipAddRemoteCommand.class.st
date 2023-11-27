@@ -2,31 +2,33 @@
 Command that opens a dialog to add a remote to a repository.
 "
 Class {
-	#name : #IceTipAddRemoteCommand,
-	#superclass : #IceTipRemotesTreeCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipAddRemoteCommand',
+	#superclass : 'IceTipRemotesTreeCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddRemoteCommand class >> defaultDescription [
 
 	^ 'Adds a remote to this repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddRemoteCommand class >> defaultName [
 
 	^ 'Add remote'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddRemoteCommand >> canBeExecuted [
 	"Any repository can have more remotes."
 
 	^ true
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAddRemoteCommand >> execute [
 
 	(IceTipAddRemoteDialogPresenter 
@@ -37,13 +39,13 @@ IceTipAddRemoteCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAddRemoteCommand >> iconName [
 
 	^ #add
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipAddRemoteCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ true

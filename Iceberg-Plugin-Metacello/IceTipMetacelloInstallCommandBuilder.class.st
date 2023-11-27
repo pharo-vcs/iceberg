@@ -1,10 +1,11 @@
 Class {
-	#name : #IceTipMetacelloInstallCommandBuilder,
-	#superclass : #Object,
-	#category : #'Iceberg-Plugin-Metacello'
+	#name : 'IceTipMetacelloInstallCommandBuilder',
+	#superclass : 'Object',
+	#category : 'Iceberg-Plugin-Metacello',
+	#package : 'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #builder }
+{ #category : 'builder' }
 IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel intoGroup: aSpCommandGroup [ 
 	
 	| baselines |
@@ -18,7 +19,7 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel 
 		self addCommandsForPackage: aPackage intoGroup: aSpCommandGroup ]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGroup: commandGroup [ 
 	| defaultBaselineCommand groupBaselineCommand baselineName |
 	

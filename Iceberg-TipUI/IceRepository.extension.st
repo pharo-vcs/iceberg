@@ -1,6 +1,6 @@
-Extension { #name : #IceRepository }
+Extension { #name : 'IceRepository' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceRepository >> inspectorItems [
 	<inspectorPresentationOrder: 0 title: 'Packages'>
 

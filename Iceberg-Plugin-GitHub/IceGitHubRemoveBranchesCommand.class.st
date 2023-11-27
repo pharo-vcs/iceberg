@@ -2,18 +2,20 @@
 I'm a command to remove branches from remotes.
 "
 Class {
-	#name : #IceGitHubRemoveBranchesCommand,
-	#superclass : #IceGitHubRemoteCommand,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubRemoveBranchesCommand',
+	#superclass : 'IceGitHubRemoteCommand',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceGitHubRemoveBranchesCommand class >> defaultName [
 
 	^ 'Remove Branches...'
 ]
 
-{ #category : #execute }
+{ #category : 'execute' }
 IceGitHubRemoveBranchesCommand >> execute [
 
 	^ IceGitHubRemoveBranchesAction new

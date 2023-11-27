@@ -1,11 +1,11 @@
-Extension { #name : #MCRemoval }
+Extension { #name : 'MCRemoval' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 MCRemoval >> canBeBrowsed [
 	^ false
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 MCRemoval >> icon [
 	^ self iconNamed: #changeRemove
 ]

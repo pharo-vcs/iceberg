@@ -165,14 +165,14 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsComposi
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
 				| composition transformations classSideComposition classSideTransformations| 
-				composition := RG2TraitCompositionDefinition parent: class.
-				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				composition := RGTraitComposition parent: class.
+				transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 				class traitComposition: composition.
 				transformations do: [ :each |
 					composition addTransformation: each ].
 			
-				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
-				classSideTransformations := RG2TraitCompositionVisitor new 
+				classSideComposition := RGTraitComposition parent: class classSide.
+				classSideTransformations := RGTraitCompositionVisitor new 
 					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
 				class classSide traitComposition: classSideComposition.
 				classSideTransformations do: [ :each | 
@@ -203,14 +203,14 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsComposi
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
 				| composition transformations classSideComposition classSideTransformations| 
-				composition := RG2TraitCompositionDefinition parent: class.
-				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				composition := RGTraitComposition parent: class.
+				transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 				class traitComposition: composition.
 				transformations do: [ :each |
 					composition addTransformation: each ].
 			
-				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
-				classSideTransformations := RG2TraitCompositionVisitor new 
+				classSideComposition := RGTraitComposition parent: class classSide.
+				classSideTransformations := RGTraitCompositionVisitor new 
 					parse: 'T1 classTrait' for: classSideComposition.
 				class classSide traitComposition: classSideComposition.
 				classSideTransformations do: [ :each | 
@@ -221,14 +221,14 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithClassSideTraitsComposi
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
 				| composition transformations classSideComposition classSideTransformations| 
-				composition := RG2TraitCompositionDefinition parent: class.
-				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				composition := RGTraitComposition parent: class.
+				transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 				class traitComposition: composition.
 				transformations do: [ :each |
 					composition addTransformation: each ].
 			
-				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
-				classSideTransformations := RG2TraitCompositionVisitor new 
+				classSideComposition := RGTraitComposition parent: class classSide.
+				classSideTransformations := RGTraitCompositionVisitor new 
 					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
 				class classSide traitComposition: classSideComposition.
 				classSideTransformations do: [ :each | 
@@ -260,8 +260,8 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExpor
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
 			| composition transformations | 
-			composition := RG2TraitCompositionDefinition parent: class.
-			transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+			composition := RGTraitComposition parent: class.
+			transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 			class traitComposition: composition.
 			transformations do: [ :each |
 				composition addTransformation: each ]
@@ -295,8 +295,8 @@ IceSinglePackageLocalRepositoryTest >> testChangeClassWithTraitsSideMakesIsExpor
 	self repository workingCopy
 		createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol with: [ :class | 
 			| composition transformations | 
-			composition := RG2TraitCompositionDefinition parent: class.
-			transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+			composition := RGTraitComposition parent: class.
+			transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 			class traitComposition: composition.
 			transformations do: [ :each |
 				composition addTransformation: each ]
@@ -337,14 +337,14 @@ IceSinglePackageLocalRepositoryTest >> testChangeTraitWithClassSideTraitsComposi
 	self repository workingCopy
 		createTrait: 'T2' inPackage: self packageName1 asSymbol with: [ :class | 
 				| composition transformations classSideComposition classSideTransformations| 
-				composition := RG2TraitCompositionDefinition parent: class.
-				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				composition := RGTraitComposition parent: class.
+				transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 				class traitComposition: composition.
 				transformations do: [ :each |
 					composition addTransformation: each ].
 			
-				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
-				classSideTransformations := RG2TraitCompositionVisitor new 
+				classSideComposition := RGTraitComposition parent: class classSide.
+				classSideTransformations := RGTraitCompositionVisitor new 
 					parse: 'T1 classTrait' for: classSideComposition.
 				class classSide traitComposition: classSideComposition.
 				classSideTransformations do: [ :each | 
@@ -355,14 +355,14 @@ IceSinglePackageLocalRepositoryTest >> testChangeTraitWithClassSideTraitsComposi
 	self repository workingCopy
 		createTrait: 'T2' inPackage: self packageName1 asSymbol with: [ :class | 
 				| composition transformations classSideComposition classSideTransformations| 
-				composition := RG2TraitCompositionDefinition parent: class.
-				transformations := RG2TraitCompositionVisitor new parse: 'T1' for: composition.
+				composition := RGTraitComposition parent: class.
+				transformations := RGTraitCompositionVisitor new parse: 'T1' for: composition.
 				class traitComposition: composition.
 				transformations do: [ :each |
 					composition addTransformation: each ].
 			
-				classSideComposition := RG2TraitCompositionDefinition parent: class classSide.
-				classSideTransformations := RG2TraitCompositionVisitor new 
+				classSideComposition := RGTraitComposition parent: class classSide.
+				classSideTransformations := RGTraitCompositionVisitor new 
 					parse: 'T1 classTrait - {#m1}' for: classSideComposition.
 				class classSide traitComposition: classSideComposition.
 				classSideTransformations do: [ :each | 
@@ -421,20 +421,18 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCodeRepositoryInstallsCodeInI
 
 	| message |
 	message := 'Added IceGeneratedClassForTesting'.
-	
+
 	"This is a Ring working copy"
-	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting' 
-		inPackage: self packageName1 asSymbol.
-	
+	self repository workingCopy createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol.
+
 	self repository commitWithMessage: message.
-	
+
 	self repository unload.
-	self deny: (RPackageOrganizer default includesPackageNamed: self packageName1).
+	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
 	
 	self repository head checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
-	self assertPackageExists: self packageName1.
+	self assertPackageExists: self packageName1
 ]
 
 { #category : 'tests-checkout' }
@@ -451,18 +449,16 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCommitInstallsCodeInImage [
 	message := 'Added IceGeneratedClassForTesting'.
 
 	"This is a Ring working copy"
-	self repository workingCopy
-		createClass: 'IceGeneratedClassForTesting' 
-		inPackage: self packageName1 asSymbol.
+	self repository workingCopy createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol.
 
 	self repository commitWithMessage: message.
-	
+
 	self repository unload.
-	self deny: (RPackageOrganizer default includesPackageNamed: self packageName1).
+	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
 	
 	self repository branch commit checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
-	self assertPackageExists: self packageName1.
+	self assertPackageExists: self packageName1
 ]
 
 { #category : 'tests-checkout' }

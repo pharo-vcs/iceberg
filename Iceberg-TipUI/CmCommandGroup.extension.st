@@ -1,6 +1,6 @@
-Extension { #name : #CmCommandGroup }
+Extension { #name : 'CmCommandGroup' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 CmCommandGroup >> commandOrGroupNamed: aString ifFound: aBlock [
 
 	^ entries

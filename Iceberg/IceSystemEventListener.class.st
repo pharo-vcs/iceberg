@@ -48,26 +48,25 @@ IceSystemEventListener class >> handleVersionLoaded: ann [
 
 	| package |
 	"this is ugly, but since I do not have a package I need to look for it"
-	package := RPackageOrganizer default packageMatchingExtensionName: ann label.
-	
-	"The package can be nil".
-	package ifNil: [ ^self ].
+	package := self packageOrganizer packageMatchingExtensionName: ann label.
 
-	"now we can verify its status"
-	RPackageSet withoutCacheDo: [
-		IceRepository registry
-			do: [ :repository | 
-				(repository includesPackageNamed: package name)
-					ifTrue: [ | icePackage isDirty |
-						icePackage := repository packageNamed: package name.
-						self flag: #pharoTodo. "Ugly hack. Should enhance for next version"
-						isDirty := repository workingCopy referenceCommit isUnknownCommit
-							ifTrue: [ true ]
-							ifFalse: [ | diff |
-								diff := repository workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
-								diff includesPackageNamed: package name ].
-						icePackage beDirty: isDirty.
-						Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]]
+	"The package can be nil"
+	package ifNil: [ ^ self ].
+
+
+	IceRepository registry do: [ :repository |
+		(repository includesPackageNamed: package name) ifTrue: [
+			| icePackage isDirty |
+			icePackage := repository packageNamed: package name.
+			self flag: #pharoTodo. "Ugly hack. Should enhance for next version"
+			isDirty := repository workingCopy referenceCommit isUnknownCommit
+				           ifTrue: [ true ]
+				           ifFalse: [
+					           | diff |
+					           diff := repository workingCopy referenceCommit diffToWorkingCopyForPackage: icePackage.
+					           diff includesPackageNamed: package name ].
+			icePackage beDirty: isDirty.
+			Iceberg announcer announce: (IceRepositoryModified for: repository) ] ]
 ]
 
 { #category : 'class initialization' }

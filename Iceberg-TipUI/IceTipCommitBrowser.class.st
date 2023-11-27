@@ -4,23 +4,25 @@ I'm a browser to commit changes to a repository.
 (self onRepository: IceRepository registry anyOne) openWithSpec
 "
 Class {
-	#name : #IceTipCommitBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipCommitBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'diffPanel',
 		'commentPanel',
 		'saveAction'
 	],
-	#category : #'Iceberg-TipUI-View-Commit'
+	#category : 'Iceberg-TipUI-View-Commit',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Commit'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCommitBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	aCommandGroup register: IceTipRefreshCommitCommand forSpec
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 	
@@ -37,31 +39,31 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCommitBrowser class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitBrowser >> accept [
 
 	^ self doCommit
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommitBrowser >> commentPanel [
 
 	^ commentPanel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommitBrowser >> commentPanel: aSpPresenter [
 
 	commentPanel := aSpPresenter
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCommitBrowser >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
@@ -71,25 +73,25 @@ IceTipCommitBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommitBrowser >> diffPanel [
 
 	^ diffPanel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommitBrowser >> diffPanel: aSpPresenter [
 
 	diffPanel := aSpPresenter
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitBrowser >> doCollapseSelection [
 
 	diffPanel doCollapseSelection
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitBrowser >> doCommit [
 	| selectedItems message isPushing isSaving commitBlock|
 
@@ -111,7 +113,7 @@ IceTipCommitBrowser >> doCommit [
 		openIfCritiques
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
 
 	self model newCommitAction
@@ -127,26 +129,28 @@ IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBo
 		executeWithContext: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCommitBrowser >> doExpandSelection [
 	
 	diffPanel doExpandSelection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> initialExtentForWindow [
 
 	^ (800@600) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> initialize [
 
 	super initialize.
 	saveAction := IceTipSaveImageAction new
+		context: self;
+		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> initializeAcceptShortcut [
 
 	self
@@ -159,7 +163,7 @@ IceTipCommitBrowser >> initializeAcceptShortcut [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> initializePresenters [
 
 	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
@@ -172,27 +176,27 @@ IceTipCommitBrowser >> initializePresenters [
 	self initializeAcceptShortcut
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> initializeWindow: aWindow [
 
 	super initializeWindow: aWindow.
 	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommitBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ diffPanel iceNodesTree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitBrowser >> refresh [
 
 	diffPanel refresh
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitBrowser >> refreshWhenRepository: ann [
 
 	(self model isModelOf: ann repository)
@@ -201,13 +205,13 @@ IceTipCommitBrowser >> refreshWhenRepository: ann [
 	self refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitBrowser >> saveAction: anAction [
 
 	saveAction := anAction
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> subscribeToAnnouncements [
 
 	self announcer
@@ -216,7 +220,7 @@ IceTipCommitBrowser >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommitBrowser >> titleForWindow [
 
 	^ 'Commit on {1} branch {2}' format: { 
@@ -224,7 +228,7 @@ IceTipCommitBrowser >> titleForWindow [
 			  self model branchName }
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCommitBrowser >> verifyNeedsRefreshOrClose [
 	"Verifies if there are remaining changes to commit. 
 	 In case there are none, close the window."

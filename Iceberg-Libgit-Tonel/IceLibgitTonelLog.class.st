@@ -2,22 +2,24 @@
 I'm a tool to ask the full history of a method (based on tonel file format).
 "
 Class {
-	#name : #IceLibgitTonelLog,
-	#superclass : #IceLog,
-	#category : #'Iceberg-Libgit-Tonel-Log'
+	#name : 'IceLibgitTonelLog',
+	#superclass : 'IceLog',
+	#category : 'Iceberg-Libgit-Tonel-Log',
+	#package : 'Iceberg-Libgit-Tonel',
+	#tag : 'Log'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitTonelLog class >> isAvailableFor: aRepository [
 	^ aRepository writerClass id = #tonel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> basepathOf: aPath [ 
 	^ aPath copyAfterLast: $/
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> definitionFor: aMethod path: aPath commit: aCommit [
 	^ ((IceLibgitTonelLogReader fileName: aPath on: aCommit)
 		package: aMethod package mcPackage;
@@ -36,7 +38,7 @@ IceLibgitTonelLog >> definitionFor: aMethod path: aPath commit: aCommit [
 				source: '' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> fileNameForMethod: aMethod [
 	| path |
 	
@@ -50,23 +52,23 @@ IceLibgitTonelLog >> fileNameForMethod: aMethod [
 		path asStringOn: stream delimiter: '/' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> toFileName: aMethod [
 	^ self fileNameForMethod: aMethod
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> tonelClassExtension: aClass [
 	aClass isTrait ifTrue: [ ^ '.trait' ].
 	^ '.class'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> tonelClassOrTraitName: aClass [
 	^ aClass name, (self tonelClassExtension: aClass), '.st'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> tonelMethodClassExtension: aMethod [
 	aMethod isExtension ifTrue: [ ^ '.extension' ].
 	aMethod origin isTrait ifTrue: [ ^ '.trait' ].
@@ -74,14 +76,14 @@ IceLibgitTonelLog >> tonelMethodClassExtension: aMethod [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> tonelMethodClassOrTraitName: aMethod [
 	^ aMethod origin instanceSide name, (self tonelMethodClassExtension: aMethod), '.st'
 	
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceLibgitTonelLog >> tonelPackageName: aPackage [
 	^ aPackage name	
 ]
