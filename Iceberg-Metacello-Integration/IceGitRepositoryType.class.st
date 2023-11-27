@@ -7,18 +7,20 @@ git:https://github.com/user/project.git
 git:git@github.com:user/project.git
 "
 Class {
-	#name : #IceGitRepositoryType,
-	#superclass : #IceProviderRepositoryType,
-	#category : #'Iceberg-Metacello-Integration-RepoTypes'
+	#name : 'IceGitRepositoryType',
+	#superclass : 'IceProviderRepositoryType',
+	#category : 'Iceberg-Metacello-Integration-RepoTypes',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'RepoTypes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRepositoryType class >> type [
 
 	^ 'git'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRepositoryType >> mcRepositoryClass [
 	
 	^ MCGitRemoteRepository

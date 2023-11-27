@@ -2,12 +2,14 @@
 I store metadata for this package. These meta data are used by other tools such as the SmalllintManifestChecker and the critics Browser
 "
 Class {
-	#name : #ManifestIcebergMetacelloIntegration,
-	#superclass : #PackageManifest,
-	#category : 'Iceberg-Metacello-Integration-Manifest'
+	#name : 'ManifestIcebergMetacelloIntegration',
+	#superclass : 'PackageManifest',
+	#category : 'Iceberg-Metacello-Integration-Manifest',
+	#package : 'Iceberg-Metacello-Integration',
+	#tag : 'Manifest'
 }
 
-{ #category : #'meta-data' }
+{ #category : 'meta-data' }
 ManifestIcebergMetacelloIntegration class >> description [
 
 	^ 'I contains the code related to the Metacello integration of Iceberg. 
