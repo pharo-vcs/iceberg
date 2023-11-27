@@ -70,7 +70,7 @@ IceGitHubAction >> reportError: error [
 	message := error messageBody.
 	message = 'Invalid field: head' ifTrue: [
 		message := 'Branch does not exist on github. Please commit and push your changes.' ].
-	self defaultApplication newInform
+	self application newInform
 		label: message;
 		title: 'Error creating pull request: ' , error messageText;
 		openModal

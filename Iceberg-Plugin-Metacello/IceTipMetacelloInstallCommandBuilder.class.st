@@ -6,7 +6,7 @@ Class {
 }
 
 { #category : 'builder' }
-IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel intoGroup: aSpCommandGroup [ 
+IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel intoGroup: aSpCommandGroup context: context [
 	
 	| baselines |
 	
@@ -16,11 +16,11 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel 
 		
 	
 	baselines do: [ :aPackage |
-		self addCommandsForPackage: aPackage intoGroup: aSpCommandGroup ]
+		self addCommandsForPackage: aPackage intoGroup: aSpCommandGroup context: context ]
 ]
 
 { #category : 'builder' }
-IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGroup: commandGroup [ 
+IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGroup: commandGroup context: context [
 	| defaultBaselineCommand groupBaselineCommand baselineName |
 	
 	baselineName := aPackage name allButFirst: 'BaselineOf' size.
@@ -28,14 +28,17 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsForPackage: aPackage intoGrou
 	defaultBaselineCommand := IceTipMetacelloInstallBaselineDefaultCommand new.
 	defaultBaselineCommand name: ('Install baseline of {1} (Default)' format: { baselineName }).
 	defaultBaselineCommand packageModel: aPackage.
+	defaultBaselineCommand context: context.
 	commandGroup register: defaultBaselineCommand asSpecCommand.
 	
 	groupBaselineCommand := IceTipMetacelloInstallBaselineGroupCommand new.
 	groupBaselineCommand name: ('Install baseline of {1} ...' format: { baselineName }).
 	groupBaselineCommand packageModel: aPackage.
+	groupBaselineCommand context: context.
 	commandGroup register: groupBaselineCommand asSpecCommand.
 	
 	commandGroup register: (IceTipMetacelloToggleLockCommand new 
 		packageModel: aPackage;
+		context: context;
 		asSpecCommand)
 ]

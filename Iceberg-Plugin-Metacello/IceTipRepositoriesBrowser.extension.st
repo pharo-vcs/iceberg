@@ -14,6 +14,6 @@ IceTipRepositoriesBrowser class >> metacelloCommandsWith: presenter forRootGroup
 
 	presenter selectedItem ifNotNil: [ 
 		IceTipMetacelloInstallCommandBuilder new
-			addCommandsFor: presenter selectedItem intoGroup: newGroup ]	
+			addCommandsFor: presenter selectedItem intoGroup: newGroup context: presenter ]	
 
 ]

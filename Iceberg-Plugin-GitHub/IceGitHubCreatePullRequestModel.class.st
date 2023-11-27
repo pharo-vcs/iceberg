@@ -62,7 +62,7 @@ IceGitHubCreatePullRequestModel >> accept [
 	| title |
 	title := self titlePanel text trim.
 	title ifEmpty: [ 
-		SpApplication defaultApplication newInform
+		self application newInform
 			label: 'You need to specify a title for the pull request.'; 
 			title: 'Error';
 			openModal.

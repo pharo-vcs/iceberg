@@ -11,12 +11,6 @@ Class {
 	#tag : 'Model'
 }
 
-{ #category : 'accessing' }
-IceTipModel >> application [
-	"we should address the singleton later by passing the application to the model"
-	^ StPharoApplication current
-]
-
 { #category : 'converting' }
 IceTipModel >> beCached [
 	^ IceTipCachedModel for: self

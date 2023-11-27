@@ -19,7 +19,7 @@ IceTipCredentialsStoreBrowser class >> buildGeneralCommandGroupWith: presenter f
 		IceTipAddSshCredentialCommand.
 		IceTipAddTokenCredentialCommand }
 	do: [ :each |
-		aCommandGroup register: each forSpec ]
+		aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
 { #category : 'commands' }
@@ -28,13 +28,13 @@ IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter
 	{ 	IceTipEditCredentialCommand.
 		IceTipRemoveCredentialCommand }
 	do: [ :each |
-		aCommandGroup register: each forSpec ]
+		aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
 { #category : 'commands' }
 IceTipCredentialsStoreBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipInspectCommand forSpec
+	aCommandGroup register: (IceTipInspectCommand forSpecContext: presenter)
 ]
 
 { #category : 'accessing' }

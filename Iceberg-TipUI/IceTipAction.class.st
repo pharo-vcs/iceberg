@@ -20,6 +20,12 @@ IceTipAction class >> isAbstract [
 	^ self == IceTipAction
 ]
 
+{ #category : 'private' }
+IceTipAction >> application [
+
+	^ context application
+]
+
 { #category : 'executing' }
 IceTipAction >> basicExecute [
 	self subclassResponsibility
@@ -36,12 +42,6 @@ IceTipAction >> context [
 IceTipAction >> context: aContext [
 
 	context := aContext
-]
-
-{ #category : 'private' }
-IceTipAction >> defaultApplication [
-	"why this is not context application?"
-	^ SpApplication defaultApplication
 ]
 
 { #category : 'executing' }

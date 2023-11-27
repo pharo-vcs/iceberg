@@ -33,7 +33,7 @@ IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter f
 
 	{ 	IceTipInstallVersionCommand }
 			do: [ :each |
-				aCommandGroup register: each forSpec ]
+				aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 

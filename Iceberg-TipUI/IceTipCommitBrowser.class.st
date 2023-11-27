@@ -19,7 +19,7 @@ Class {
 { #category : 'commands' }
 IceTipCommitBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipRefreshCommitCommand forSpec
+	aCommandGroup register: (IceTipRefreshCommitCommand forSpecContext: presenter)
 ]
 
 { #category : 'commands' }
@@ -29,12 +29,12 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 		IceTipBrowseCommand.
 		IceTipRevertChangeCommand.
 	} 
-	do: [ :each | aCommandGroup register: each forSpec ].
+	do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ].
 	
 	aCommandGroup register: ((CmCommandGroup named: 'Edit') asSpecGroup
 		beDisplayedAsGroup;
-		register: IceTipTreeExpandCommand forSpec;
-		register: IceTipTreeCollapseCommand forSpec;
+		register: (IceTipTreeExpandCommand forSpecContext: presenter);
+		register: (IceTipTreeCollapseCommand forSpecContext: presenter);
 		yourself).
 
 ]
@@ -232,11 +232,12 @@ IceTipCommitBrowser >> titleForWindow [
 IceTipCommitBrowser >> verifyNeedsRefreshOrClose [
 	"Verifies if there are remaining changes to commit. 
 	 In case there are none, close the window."
-	
-	self model reset.
-	diffPanel model reset.
-	diffPanel model isEmpty
-		ifTrue: [ ^ self closeWindow ].
-	self commentPanel clear. 
+
+	self application informUser: 'Refreshing changes' during: [
+		self model reset.
+		diffPanel model reset ].
+
+	diffPanel model isEmpty ifTrue: [ ^ self closeWindow ].
+	self commentPanel clear.
 	diffPanel basicRefresh
 ]

@@ -13,7 +13,7 @@ Class {
 IceGitHubViewPullRequestAction >> basicExecute [
 	credentials := IceGitHubAPI ensureCredentials.
 	
-	self defaultApplication
+	self application
 		informUser: ('Retrieving pull requests from {1}' format: {self remote})
 		during: [ 
 			(IceTipGitHubPullRequestListBrowser onRepository: self repository)

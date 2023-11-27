@@ -29,7 +29,7 @@ Class {
 { #category : 'commands' }
 IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipRefreshPullRequestsCommand forSpec
+	aCommandGroup register: (IceTipRefreshPullRequestsCommand forSpecContext: presenter)
 ]
 
 { #category : 'commands' }

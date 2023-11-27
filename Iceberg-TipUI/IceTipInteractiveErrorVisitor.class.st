@@ -46,13 +46,6 @@ IceTipInteractiveErrorVisitor >> context: anObject [
 	context := anObject
 ]
 
-{ #category : 'visiting' }
-IceTipInteractiveErrorVisitor >> defaultApplication [
-	"why this is not ^ context application"
-	
-	^ SpApplication defaultApplication
-]
-
 { #category : 'accessing' }
 IceTipInteractiveErrorVisitor >> repository [
 	^ repository

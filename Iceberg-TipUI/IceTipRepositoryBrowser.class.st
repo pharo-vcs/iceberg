@@ -23,7 +23,7 @@ IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aC
 		IceTipFetchCommand.
 		IceTipCheckoutBranchCommand.
 		IceTipMergeCommand } do: [ :each | 
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
 { #category : 'commands' }
@@ -38,7 +38,7 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 		IceTipCheckoutSelectedTagCommand.
 		IceTipDeleteRemoteCommand
 		}  do: [ :each |
-			aCommandGroup register: each forSpec ].
+			aCommandGroup register: (each forSpecContext: presenter) ].
 	
 	aGroup := (CmCommandGroup named: 'GitHub' ) asSpecGroup
 		icon: (self iconNamed: #github);
@@ -48,7 +48,7 @@ IceTipRepositoryBrowser class >> buildSelectionCommandGroupWith: presenter for: 
 	aCommandGroup register: aGroup.
 
 	IceGitHubTreeCommand allSubclasses do: [ :each |
-		aGroup register: each forSpec ]
+		aGroup register: (each forSpecContext: presenter) ]
 
 ]
 

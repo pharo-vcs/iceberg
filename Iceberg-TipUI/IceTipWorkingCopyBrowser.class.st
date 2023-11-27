@@ -31,7 +31,7 @@ IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: a
 		IceTipDiscardChangesCommand.
 		IceTipAddPackageCommand } 
 		do: [ :each |
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
@@ -45,7 +45,7 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 		IceTipUnloadPackageCommand.
 		IceTipUnloadAndRemovePackageCommand.
 		IceTipRemoveFromRepositoryPackageCommand }
-			do: [ :each | aCommandGroup register: each forSpec ]
+			do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 

@@ -423,13 +423,15 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCodeRepositoryInstallsCodeInI
 	message := 'Added IceGeneratedClassForTesting'.
 
 	"This is a Ring working copy"
-	self repository workingCopy createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting'
+		inPackage: self packageName1 asSymbol.
 
 	self repository commitWithMessage: message.
 
 	self repository unload.
-	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
-	
+	self deny: (PackageOrganizer default hasPackage: self packageName1).
+
 	self repository head checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: self packageName1
@@ -449,13 +451,15 @@ IceSinglePackageLocalRepositoryTest >> testCheckoutCommitInstallsCodeInImage [
 	message := 'Added IceGeneratedClassForTesting'.
 
 	"This is a Ring working copy"
-	self repository workingCopy createClass: 'IceGeneratedClassForTesting' inPackage: self packageName1 asSymbol.
+	self repository workingCopy
+		createClass: 'IceGeneratedClassForTesting'
+		inPackage: self packageName1 asSymbol.
 
 	self repository commitWithMessage: message.
 
 	self repository unload.
-	self deny: (PackageOrganizer default includesPackageNamed: self packageName1).
-	
+	self deny: (PackageOrganizer default hasPackage: self packageName1).
+
 	self repository branch commit checkoutAllPackages.
 	self assertClassExists: #IceGeneratedClassForTesting.
 	self assertPackageExists: self packageName1

@@ -64,7 +64,7 @@ IceGitHubRemoveBranchesAction >> removeBranch: json [
 		deleteBranch: self remote owner
 		project: self remote projectBasename
 		name: branchName.
-	self defaultApplication
+	self application
 		title: ('Branch {1} removed.' format: { branchName });
 		openModal
 ]
