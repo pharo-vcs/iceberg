@@ -4,5 +4,5 @@ Extension { #name : 'MetacelloScriptApiExecutor' }
 MetacelloScriptApiExecutor >> execute: statements [
 
 	MetacelloPlatform current withMetacelloLoadSessionDo: [ 
-		super execute: statements ]
+		^ super execute: statements ]
 ]
