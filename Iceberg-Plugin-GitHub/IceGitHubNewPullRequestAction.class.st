@@ -46,7 +46,7 @@ IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 		
 		pullRequestDatas := pullRequest send.
 		url := pullRequestDatas at: 'html_url'.
-		self defaultApplication newInform
+		self application newInform
 			title: 'Pull request created. Click to view on Github.';
 			onAccept: [ WebBrowser openOn: url ];
 			openModal.
@@ -65,7 +65,7 @@ IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 		'{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
 
-	^ self defaultApplication newConfirm
+	^ self application newConfirm
 		  title:
 			  ('{1} has ongoing modifications.' format: { aRepository name });
 		  label: ('{2} 

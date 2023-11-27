@@ -31,12 +31,6 @@ IceGitHubNewBranchFromIssuePanel >> branchName [
 		issueText text trim }.
 ]
 
-{ #category : 'private' }
-IceGitHubNewBranchFromIssuePanel >> defaultApplication [
-
-	^ SpApplication defaultApplication
-]
-
 { #category : 'layout' }
 IceGitHubNewBranchFromIssuePanel >> defaultLayout [
 

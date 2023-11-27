@@ -21,7 +21,10 @@ IceTipAdoptCommitCommand class >> defaultDescription [
 { #category : 'accessing' }
 IceTipAdoptCommitCommand >> defaultNameFromContext [
 
-	^ 'Adopt commit ' , self selectedCommitish shortId
+	| shortId |
+	shortId := self selectedCommitish ifNotNil: [ :commitish | commitish shortId ] ifNil: [''].
+
+	^ 'Adopt commit ' , shortId.
 ]
 
 { #category : 'executing' }

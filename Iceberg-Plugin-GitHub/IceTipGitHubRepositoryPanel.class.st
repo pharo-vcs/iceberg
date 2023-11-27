@@ -49,7 +49,7 @@ IceTipGitHubRepositoryPanel >> newRepository [
 
 	| newRepository |
 	newRepository := super newRepository.
-	UIManager default 
+	self application
 		informUser: 'Configuring Remotes...'
 		during: [ | githubRepository |
 			githubRepository := self getGitHubRepository.

@@ -17,7 +17,7 @@ IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: a
 		yourself.
 
 	{ IceGitHubNewBranchFromIssueCommand }
-			do: [ :each | pluginGroup register: each forSpec ].
+			do: [ :each | pluginGroup register: (each forSpecContext: presenter) ].
 
 	(aCommandGroup / self selectionCommandGroupName) 
 		register: pluginGroup. 

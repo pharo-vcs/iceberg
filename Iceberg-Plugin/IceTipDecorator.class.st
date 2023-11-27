@@ -11,8 +11,9 @@ It is expected that more decorators will be created with time.
 Class {
 	#name : 'IceTipDecorator',
 	#superclass : 'Object',
-	#category : 'Iceberg-Plugin',
-	#package : 'Iceberg-Plugin'
+	#category : 'Iceberg-Plugin-Base',
+	#package : 'Iceberg-Plugin',
+	#tag : 'Base'
 }
 
 { #category : 'accessing' }

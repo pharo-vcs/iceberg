@@ -22,7 +22,7 @@ IceTipDiscardAllModel >> diff [
 
 	^ diffModel ifNil: [ 
 		  | diff |
-		  UIManager default
+		  self application
 			  informUser: 'Calculating diff'
 			  during: [ diff := self calculateDiff ].
 		  diffModel := IceTipCommitDiffModel

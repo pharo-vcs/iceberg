@@ -24,8 +24,8 @@ IceTipCommand class >> isAbstract [
 
 { #category : 'accessing' }
 IceTipCommand >> application [
-
-	^ SpApplication defaultApplication
+	
+	^ context application
 ]
 
 { #category : 'converting' }

@@ -16,7 +16,7 @@ Class {
 { #category : 'execute' }
 IceGitHubRemoveBranchesAction >> basicExecute [
 	credentials := IceGitHubAPI ensureCredentials.	
-	UIManager default
+	context application
 		informUser: ('Retrieving branch information from {1}' format: {self remote url})
 		during: [ self cacheAllBranches ].
 	
@@ -64,7 +64,7 @@ IceGitHubRemoveBranchesAction >> removeBranch: json [
 		deleteBranch: self remote owner
 		project: self remote projectBasename
 		name: branchName.
-	self defaultApplication
+	self application
 		title: ('Branch {1} removed.' format: { branchName });
 		openModal
 ]

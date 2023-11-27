@@ -34,7 +34,7 @@ IceGitHubPullRequestDetailModel class >> buildCommandsGroupWith: presenterIntanc
 
 	rootCommandGroup register:
 		((CmCommandGroup named: 'checks commands') asSpecGroup 
-			register: IceTipOpenCheckUrlCommand forSpec)
+			register: (IceTipOpenCheckUrlCommand forSpecContext: presenterIntance))
 ]
 
 { #category : 'accessing - ui' }

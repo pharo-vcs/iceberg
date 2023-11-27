@@ -18,7 +18,11 @@ IceTipResetBranchToThisCommitCommand class >> defaultDescription [
 { #category : 'executing' }
 IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
 
-	^ 'Reset ', self selectedBranch name, ' to commit ', self selectedCommitish shortId
+	| shortId branchName |
+	shortId := self selectedCommitish ifNotNil: [ :commitish | commitish shortId ] ifNil: [''].
+	branchName := self selectedBranch ifNotNil: [:branch | branch branchName] ifNil: [ '' ].
+
+	^ 'Reset ', branchName, ' to commit ', shortId
 ]
 
 { #category : 'executing' }

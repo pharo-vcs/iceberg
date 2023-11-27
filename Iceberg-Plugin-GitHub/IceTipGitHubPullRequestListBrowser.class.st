@@ -29,7 +29,7 @@ Class {
 { #category : 'commands' }
 IceTipGitHubPullRequestListBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipRefreshPullRequestsCommand forSpec
+	aCommandGroup register: (IceTipRefreshPullRequestsCommand forSpecContext: presenter)
 ]
 
 { #category : 'commands' }
@@ -203,7 +203,7 @@ IceTipGitHubPullRequestListBrowser >> updateSelectedPullRequest: aSpSingleSelect
 { #category : 'actions' }
 IceTipGitHubPullRequestListBrowser >> viewPullRequest: aPullRequest [
 
-	UIManager default
+	self application
 		informUser: (
 				'Opening pull request {1} {2}' format: { 
 					 aPullRequest number.

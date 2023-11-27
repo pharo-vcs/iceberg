@@ -45,14 +45,14 @@ IceGitHubOpenOnGithubAction >> basicExecute [
 		at: #WebBrowser
 		ifPresent: [ :webBrowser | webBrowser openOn: url ]
 		ifAbsent: [
-			self defaultApplication
+			self application
 				title: ('Cannot open "{1}"' format: { url });
 				label:
 					'Because the project WebBrowser is not present by default in Pharo 6.';
 				openModal ] ]
 		on: IceGitHubError
 		do: [
-			self defaultApplication
+			self application
 				title: 'Invalid Github repository.';
 				label:
 					('No project named "{1}" found for the owner "{2}"' format: {

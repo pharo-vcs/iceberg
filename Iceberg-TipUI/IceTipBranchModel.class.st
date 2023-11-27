@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : 'accessing' }
+IceTipBranchModel >> branchName [
+	^ self entity name
+]
+
+{ #category : 'accessing' }
 IceTipBranchModel >> checkoutStrategies [
 	^ IceCheckoutStrategy allStrategies
 ]

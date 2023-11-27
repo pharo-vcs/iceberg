@@ -22,8 +22,8 @@ IceTipAddNewPackagesDialogPresenter class >> buildCommandsGroupWith: presenterIn
 
 	rootCommandGroup register:
 		((CmCommandGroup named: 'package list commands') asSpecGroup
-			 register: IceTipSelectAllPackagesCommand forSpec;
-			 register: IceTipUnselectAllPackagesCommand forSpec;
+			 register: (IceTipSelectAllPackagesCommand forSpecContext: presenterInstance);
+			 register: (IceTipUnselectAllPackagesCommand forSpecContext: presenterInstance);
 			 yourself)
 ]
 

@@ -33,7 +33,7 @@ IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 		IceTipCopyCommitishCommand.
 		IceTipCherryPickCommand.
 		} do: [ :each |
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter)  ]
 
 ]
 

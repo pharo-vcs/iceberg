@@ -24,7 +24,7 @@ IceTipRepositoriesBrowser class >> buildGeneralCommandGroupWith: presenter for: 
 		IceTipAddRepositoryCommand.
 		IceTipSettingsCommand
 		} do: [ :each | 
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
@@ -45,7 +45,7 @@ IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for
 		IceTipEditRepositoryCommand.
 		IceTipForgetRepositoryCommand.
 		} do: [ :each |
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
@@ -58,7 +58,7 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 		IceTipCopyCommitishCommand.
 		IceTipOpenNativelyCommand.
 		} do: [ :each |
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
@@ -96,6 +96,7 @@ IceTipRepositoriesBrowser class >> newOnRepositoryProvider: aProvider [
 	 But in case is present, I want iceberg to run within the same context"
 	application := (self environment classNamed: #StPharoApplication)
 		ifNotNil: [ :c | c current ].
+	"SD: why not using self application?"
 
 	^ self basicNew
 		application: application;
