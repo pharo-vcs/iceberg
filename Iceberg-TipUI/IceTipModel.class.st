@@ -11,6 +11,12 @@ Class {
 	#tag : 'Model'
 }
 
+{ #category : 'accessing' }
+IceTipModel >> application [
+
+	^ StPharoApplication current
+]
+
 { #category : 'converting' }
 IceTipModel >> beCached [
 	^ IceTipCachedModel for: self
