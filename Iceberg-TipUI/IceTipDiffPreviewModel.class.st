@@ -30,13 +30,12 @@ IceTipDiffPreviewModel >> commitish: aCommitish [
 { #category : 'accessing' }
 IceTipDiffPreviewModel >> diff [
 
-	^ diffModel ifNil: [ | diff |
-		self application 
-			informUser: 'Calculating diff'
-			during: [ diff := self calculateDiff ].
-			diffModel := IceTipCommitDiffModel
-					repositoryModel: self repositoryModel 
-					on: diff ]
+	^ diffModel ifNil: [
+		  | diff |
+		  diff := self calculateDiff.
+		  diffModel := IceTipCommitDiffModel
+			               repositoryModel: self repositoryModel
+			               on: diff ]
 ]
 
 { #category : 'accessing' }
