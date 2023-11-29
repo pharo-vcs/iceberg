@@ -64,13 +64,16 @@ IceTipLocalRepositoryPanel >> location: aReferenceOrString [
 { #category : 'accessing' }
 IceTipLocalRepositoryPanel >> newRepository [
 
+	| repo |
 	self application
 		informUser: ('Importing repository from {1}' format: { self location fullName })
 		during: [ 
-			^ IceRepositoryCreator new
+			repo := IceRepositoryCreator new
 				repository: repository;
 				location: self location;
-				createRepository ]
+				createRepository ].
+			
+	^ repo
 ]
 
 { #category : 'initialization' }
