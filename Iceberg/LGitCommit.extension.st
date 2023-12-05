@@ -15,6 +15,6 @@ LGitCommit >> changesFileNamed: fileName [
 	^ (myVersion 
 		ifNil: [ parentVersions includes: nil ]
 		ifNotNil: [ parentVersions anySatisfy: [ :version | 
-				version notNil and: [ version objectId = myVersion objectId ]]]) not
+				version isNotNil and: [ version objectId = myVersion objectId ]]]) not
 
 ]

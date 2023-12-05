@@ -125,7 +125,7 @@ IceTipMergePatchMorph >> selectionHasActualClass [
 
 	^self selectedChangeWrapper
 		ifNil: [false]
-		ifNotNil: [:w | w item value contextClass notNil]
+		ifNotNil: [:w | w item value contextClass isNotNil]
 ]
 
 { #category : 'testing' }

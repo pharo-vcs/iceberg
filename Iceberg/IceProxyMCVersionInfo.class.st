@@ -32,7 +32,7 @@ IceProxyMCVersionInfo class >> lastCommitFound: aCommit [
 	"This is just a cleanup mechanism... in general iceberg will be scanning 
 	 a full repository and each proxy will be pointing to same commit so no 
 	 point in keep it waiting"
-	(LastCommitFound notNil and: [ oldCommit isNil ]) ifTrue: [ 
+	(LastCommitFound isNotNil and: [ oldCommit isNil ]) ifTrue: [ 
 		[ (Delay forSeconds: 60) wait. 
 		 	LastCommitFound := nil ] fork ]
 ]
@@ -93,7 +93,7 @@ IceProxyMCVersionInfo >> doesNotUnderstand: aMessage [
 IceProxyMCVersionInfo >> findVersionInfo [ 
 	| repo remote commit |
 
-	(self class lastCommitFound notNil 
+	(self class lastCommitFound isNotNil 
 		and: [ self class lastCommitFound id = commitId ])
 		ifTrue: [ 
 			commit := self class lastCommitFound.

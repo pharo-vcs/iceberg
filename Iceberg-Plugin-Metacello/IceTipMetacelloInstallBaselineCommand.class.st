@@ -38,7 +38,7 @@ IceTipMetacelloInstallBaselineCommand >> basicInstallBaseline: icePackage groups
 { #category : 'testing' }
 IceTipMetacelloInstallBaselineCommand >> canBeExecuted [
 
-	^ self packageModel notNil and: [ self package isMetacelloBaseline ]
+	^ self packageModel isNotNil and: [ self package isMetacelloBaseline ]
 ]
 
 { #category : 'private' }

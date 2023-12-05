@@ -263,7 +263,7 @@ IceGitHubAPI >> newRequestTo: aString [
 
 	^ ZnClient new 
 		in: [ :this | 
-			(self credentials notNil and: [ isAnonymous not]) ifTrue: [ 
+			(self credentials isNotNil and: [ isAnonymous not]) ifTrue: [ 
 				self credentials applyToRequest: this ] ]; 
 		headerAt: 'Accept' put: self acceptMediaType;
 		url: 'https://api.github.com/', (aString first = $/

@@ -74,7 +74,7 @@ IceOperationMerge >> isLoadable [
 { #category : 'testing' }
 IceOperationMerge >> isResolved [
 	
-	^ chosen notNil
+	^ chosen isNotNil
 ]
 
 { #category : 'resolution' }

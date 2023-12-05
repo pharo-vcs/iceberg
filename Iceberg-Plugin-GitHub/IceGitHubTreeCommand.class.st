@@ -36,7 +36,7 @@ IceGitHubTreeCommand >> actsOnTag: aRemoteModel [
 { #category : 'testing' }
 IceGitHubTreeCommand >> canBeExecuted [
 
-	^ self item notNil and: [(self item canActivateCommand: self) and: [super canBeExecuted]]
+	^ self item isNotNil and: [(self item canActivateCommand: self) and: [super canBeExecuted]]
 ]
 
 { #category : 'accessing' }

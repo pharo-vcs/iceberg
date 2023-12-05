@@ -85,7 +85,7 @@ IceTipLocalRepositoryPanel >> titleForWindow [
 IceTipLocalRepositoryPanel >> validate [
 
 	self
-		assert: self location notNil
+		assert: self location isNotNil
 		description: 'Project location must exist!'.
 	self
 		assert: self location exists

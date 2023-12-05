@@ -69,7 +69,7 @@ IceTipRepositoryGroupPanel >> filteredItemsFor: pattern [
 { #category : 'testing' }
 IceTipRepositoryGroupPanel >> hasSelectedItem [
 	
-	^ repositoryList selectedItem notNil
+	^ repositoryList selectedItem isNotNil
 ]
 
 { #category : 'initialization' }

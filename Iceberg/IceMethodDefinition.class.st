@@ -114,7 +114,7 @@ IceMethodDefinition >> install [
 
 { #category : 'morphic - compatibility' }
 IceMethodDefinition >> isLoadable [
-	^ self contextClass notNil
+	^ self contextClass isNotNil
 ]
 
 { #category : 'testing' }
