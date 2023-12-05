@@ -36,12 +36,6 @@ IceTipTagModel >> description [
 	^ self entity name
 ]
 
-{ #category : 'accessing' }
-IceTipTagModel >> name [
-	
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipTagModel >> previewCheckout [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
