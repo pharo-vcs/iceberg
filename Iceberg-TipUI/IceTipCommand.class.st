@@ -57,13 +57,13 @@ IceTipCommand >> badge [
 { #category : 'testing' }
 IceTipCommand >> hasRepository [
 
-	^ self repositoryModel notNil
+	^ self repositoryModel isNotNil
 ]
 
 { #category : 'testing' }
 IceTipCommand >> hasSelectedItem [
 
-	^ self context selectedItem notNil
+	^ self context selectedItem isNotNil
 ]
 
 { #category : 'testing' }

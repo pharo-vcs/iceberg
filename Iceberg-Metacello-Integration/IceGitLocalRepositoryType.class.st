@@ -46,7 +46,7 @@ IceGitLocalRepositoryType >> mcRepository [
 	extractedLocation := tuple first asFileReference asAbsolute.
 	repository := IceRepository registry 
 		detect: [ :each | 
-			each location notNil 
+			each location isNotNil 
 				and: [ each location resolve asAbsolute = extractedLocation ] ]
 		ifNone: [ 
 			(IceRepositoryCreator new 

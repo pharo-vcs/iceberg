@@ -242,7 +242,7 @@ IceNode >> hasChanges [
 { #category : 'testing' }
 IceNode >> hasParent [
 	
-	^ self parent notNil
+	^ self parent isNotNil
 ]
 
 { #category : 'comparing' }

@@ -21,7 +21,7 @@ IceTipPackageCommand class >> isAbstract [
 { #category : 'testing' }
 IceTipPackageCommand >> hasPackageModel [
 
-	^ self packageModel notNil
+	^ self packageModel isNotNil
 ]
 
 { #category : 'testing' }

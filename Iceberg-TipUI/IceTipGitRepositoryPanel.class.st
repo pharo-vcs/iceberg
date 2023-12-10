@@ -92,7 +92,7 @@ IceTipGitRepositoryPanel >> validate [
 		assert: (IceGitRemote isValidUrl: remoteString)
 		description: 'The url is incorrect.'.
 	self
-		assert: self projectLocation location notNil
+		assert: self projectLocation location isNotNil
 		description:
 		'Project location must be defined (if it does not exists, it will be created).'
 ]

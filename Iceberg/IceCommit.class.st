@@ -179,7 +179,7 @@ IceCommit >> diffToWorkingCopyForPackages: aCollection [
 IceCommit >> hasMultipleAncestors [
 	| ancestors |
 	ancestors := self ancestors.
-	^ ancestors notNil 
+	^ ancestors isNotNil 
 		and: [ ancestors size > 1 ]
 ]
 
