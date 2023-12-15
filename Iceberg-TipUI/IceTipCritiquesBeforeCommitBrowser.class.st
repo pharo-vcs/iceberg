@@ -155,8 +155,8 @@ IceTipCritiquesBeforeCommitBrowser >> initializeDialogWindow: aWindow [
 		action: (MessageSend receiver: self selector: #updatePresenter);
 		yourself).
 
-	aWindow buttons second label: 'Force Commit'.
-	aWindow buttons third label: 'Cancel Commit'.
+	aWindow buttons second label: 'Cancel Commit'.
+	aWindow buttons third label: 'Force Commit'.
 	
 	aWindow 
 		bindKeyCombination: Character cr asShortcut toAction: [ self accept].
