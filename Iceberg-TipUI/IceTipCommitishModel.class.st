@@ -22,6 +22,12 @@ IceTipCommitishModel >> commitModels [
 ]
 
 { #category : 'testing' }
+IceTipCommitishModel >> isBranch [
+
+	^ self entity isBranch
+]
+
+{ #category : 'testing' }
 IceTipCommitishModel >> isCommitish [
 
 	^ true
