@@ -77,37 +77,54 @@ IceTipPackageModel >> newLoadAction [
 		yourself
 ]
 
+{ #category : 'actions' }
+IceTipPackageModel >> newReloadAction [
+
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self entity repository;
+		  message: ('Reloading package {1}' format: { self entity name });
+		  onSuccessRepositoryModified;
+		  action: [
+			  Iceberg announcer
+				  suspendAllForRepository: self entity repository
+				  while: [ self entity reload ] ];
+		  yourself
+]
+
+{ #category : 'actions' }
+IceTipPackageModel >> newRemoveAction [
+
+	<noCache>
+	^IceTipStandardAction new
+		repository: self entity repository;
+		message: ('Removing package {1}' format: { self entity name });
+		onSuccessRepositoryModified;
+		action: [
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity remove ] ];
+		yourself
+]
+
+{ #category : 'actions' }
+IceTipPackageModel >> newUnloadAction [
+
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self entity repository;
+		  message: ('Unloading package {1}' format: { self entity name });
+		  onSuccessRepositoryModified;
+		  action: [
+			  Iceberg announcer
+				  suspendAllForRepository: self entity repository
+				  while: [ self entity unload ] ];
+		  yourself
+]
+
 { #category : 'accessing' }
 IceTipPackageModel >> packageName [
 	^ self entity packageName
-]
-
-{ #category : 'actions' }
-IceTipPackageModel >> reload [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Reloading package {1}' format: { self entity name }) ;
-		onSuccessRepositoryModified;
-		execute: [ 
-			Iceberg announcer 
-				suspendAllForRepository: self entity repository 
-				while: [ self entity reload ] ]
-]
-
-{ #category : 'actions' }
-IceTipPackageModel >> remove [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Removing package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity remove ] ]
 ]
 
 { #category : 'accessing' }
@@ -128,18 +145,4 @@ IceTipPackageModel >> statusDecorator [
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
-]
-
-{ #category : 'actions' }
-IceTipPackageModel >> unload [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Unloading package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity unload ] ]
 ]

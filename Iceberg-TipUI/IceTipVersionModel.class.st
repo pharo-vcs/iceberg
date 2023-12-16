@@ -12,30 +12,23 @@ Class {
 	#tag : 'Model'
 }
 
-{ #category : 'private' }
-IceTipVersionModel >> basicInstall [
-	| definition |
-	
-	definition := self entity definition.
-	definition realClass 
-		compile: definition sourceCode
-		classified: definition category	
-]
-
 { #category : 'accessing' }
 IceTipVersionModel >> commit [
 	^ self entity commit
 ]
 
 { #category : 'actions' }
-IceTipVersionModel >> install [
-	<noCache>
+IceTipVersionModel >> newInstallAction [
 
-	IceTipStandardAction new 
-		repository: self repositoryModel entity; 
-		message: ('Installing {1} - {2}' format: { self entity definition. self name });
-		onSuccessRepositoryModified;
-		execute: [ self basicInstall ]
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self repositoryModel entity;
+		  message: ('Installing {1} - {2}' format: {
+						   self entity definition.
+						   self name });
+		  onSuccessRepositoryModified;
+		  action: [ self entity install ];
+		  yourself
 ]
 
 { #category : 'accessing' }

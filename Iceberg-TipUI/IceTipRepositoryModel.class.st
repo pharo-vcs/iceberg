@@ -272,13 +272,14 @@ IceTipRepositoryModel >> newAddRemoteActionName: aName url: anUrl [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
-	<noCache>
 
-	^ IceTipStandardAction new 
-		repository: self entity;
-		message: ('Checking out new branch {1}' format: { aString });
-		onSuccessRepositoryModified;
-		action: [ self entity createBranch: aString inCommit: aCommit ]
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self entity;
+		  message: ('Checking out new branch {1}' format: { aString });
+		  onSuccessRepositoryModified;
+		  action: [ self entity createBranch: aString inCommit: aCommit ];
+		  yourself
 ]
 
 { #category : 'actions' }

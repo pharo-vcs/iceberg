@@ -17,9 +17,9 @@ Class {
 IceTipRemovePackageDialogPresenter >> accept [
 
 	self removeFromRepositoryCheckbox state
-		ifTrue: [ self model remove ].
+		ifTrue: [ self model newRemoveAction executeWithContext: self ].
 	self unloadFromImageCheckbox state
-		ifTrue: [ self model unload ].
+		ifTrue: [ self model newUnloadAction executeWithContext: self ].
 ]
 
 { #category : 'accessing - ui' }
