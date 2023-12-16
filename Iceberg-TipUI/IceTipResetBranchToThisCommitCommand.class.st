@@ -18,7 +18,7 @@ IceTipResetBranchToThisCommitCommand class >> defaultDescription [
 { #category : 'testing' }
 IceTipResetBranchToThisCommitCommand >> canBeExecuted [
 
-	^ self selectedBranch notNil and: [ self selectedBranch isBranch ]
+	^ self selectedBranch notNil
 ]
 
 { #category : 'executing' }
@@ -55,7 +55,9 @@ IceTipResetBranchToThisCommitCommand >> name [
 { #category : 'accessing' }
 IceTipResetBranchToThisCommitCommand >> selectedBranch [
 
-	^ self context model
+	| selected |
+	selected := self context model.
+	^ (selected notNil and: [ selected isBranch ]) ifTrue: [ selected ]
 ]
 
 { #category : 'accessing' }
