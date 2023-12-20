@@ -62,11 +62,11 @@ IceGitHubRejectPullRequestModel >> initialExtentForWindow [
 IceGitHubRejectPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
-		addButton: 'Reject' do: [ :presenter | 
-			presenter triggerOkAction.
-			presenter close ];
 		addButton: 'Cancel' do: [ :presenter | 
 			presenter triggerCancelAction.
+			presenter close ];
+		addDefaultButton: 'Reject' do: [ :presenter | 
+			presenter triggerOkAction.
 			presenter close ]
 ]
 

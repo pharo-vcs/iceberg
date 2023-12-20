@@ -66,11 +66,11 @@ IceGitHubAcceptPullRequestModel >> initialExtentForWindow [
 IceGitHubAcceptPullRequestModel >> initializeDialogWindow: aDialogWindowPresenter [
 	
 	aDialogWindowPresenter
-		addButton: 'Accept' do: [ :presenter | 
-			self accept ];
 		addButton: 'Cancel' do: [ :presenter | 
 			presenter triggerCancelAction.
-			presenter close ]	
+			presenter close ];
+		addDefaultButton: 'Accept' do: [ :presenter | 
+			self accept ]
 ]
 
 { #category : 'initialization' }

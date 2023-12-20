@@ -75,11 +75,8 @@ IceTipErrorDialogPresenter >> initialExtentForWindow [
 IceTipErrorDialogPresenter >> initializeDialogWindow: aWindow [
 
 	aWindow 
-		addButton: 'Debug' 
-		do: [ :presenter | self accept. presenter close ].
-	aWindow 
-		addButton: 'Ignore' 
-		do: [ :presenter | presenter close ].
+		addButton: 'Ignore' do: [ :presenter | presenter close ];
+		addDefaultButton: 'Debug' do: [ :presenter | self accept. presenter close ]
 ]
 
 { #category : 'initialization' }

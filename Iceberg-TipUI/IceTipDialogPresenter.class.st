@@ -28,8 +28,7 @@ IceTipDialogPresenter >> initializeDialogWindow: aWindow [
 	super initializeDialogWindow: aWindow.
 
 	aWindow 
-		  okAction: [ self accept ];
-		  cancelAction: [ self cancel ]; 
-		  bindKeyCombination: Character escape asShortcut toAction: [ self cancel ].
-		
+		okAction: [ self accept ];
+		cancelAction: [ self cancel ]; 
+		bindKeyCombination: Character escape asShortcut toAction: [ self cancel ]
 ]
