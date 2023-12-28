@@ -561,6 +561,12 @@ IceWorkingCopy >> packageNamed: aString [
 ]
 
 { #category : 'API - packages' }
+IceWorkingCopy >> packageNamed: aString ifAbsent: aBlock [
+	
+	^ self packagesDictionary at: aString ifAbsent: aBlock
+]
+
+{ #category : 'API - packages' }
 IceWorkingCopy >> packageNames [
 	
 	^ self packagesDictionary keys

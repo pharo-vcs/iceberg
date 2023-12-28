@@ -139,6 +139,20 @@ Do you want to open the Iceberg Browser instead?' format: {
 ]
 
 { #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifAbsent: aBlock [
+
+	| package |
+	self repository head description = projectVersion ifFalse: [
+		(self repository commitishNamed: projectVersion)
+			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ].
+
+	package := self repository workingCopy
+				   packageNamed: aName
+				   ifAbsent: [ ^ aBlock value ].
+	^ package latestVersion mcVersion
+]
+
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectPath [
 	^ self repository origin projectPath
 ]
