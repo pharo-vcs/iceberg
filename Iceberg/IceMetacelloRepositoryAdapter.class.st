@@ -132,9 +132,13 @@ IceMetacelloRepositoryAdapter >> isValid [
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
 
-	| package |
+	| package found |
 	package := self repository workingCopy packageNamed: aName.
-	^ aLoader addVersion: package latestVersion mcVersion
+	found := package latestVersion mcVersion.
+	aLoader addVersion: found.
+	^ {
+		  found.
+		  self }
 ]
 
 { #category : 'MonticelloGUI' }
