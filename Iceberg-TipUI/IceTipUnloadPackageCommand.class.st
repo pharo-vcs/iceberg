@@ -30,7 +30,7 @@ IceTipUnloadPackageCommand >> canBeExecuted [
 { #category : 'executing' }
 IceTipUnloadPackageCommand >> execute [
 
-	self packageModel unload
+	self packageModel newUnloadAction executeWithContext: self context
 ]
 
 { #category : 'accessing' }

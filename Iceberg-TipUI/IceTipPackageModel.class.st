@@ -107,6 +107,21 @@ IceTipPackageModel >> newRemoveAction [
 		yourself
 ]
 
+{ #category : 'actions' }
+IceTipPackageModel >> newUnloadAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Unloading package {1}' format: { self entity name });
+		onSuccessRepositoryModified; 
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity unload ] ];
+		yourself
+]
+
 { #category : 'accessing' }
 IceTipPackageModel >> packageName [
 	^ self entity packageName
@@ -130,18 +145,4 @@ IceTipPackageModel >> statusDecorator [
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
-]
-
-{ #category : 'actions' }
-IceTipPackageModel >> unload [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Unloading package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity unload ] ]
 ]
