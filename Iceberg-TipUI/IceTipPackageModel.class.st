@@ -77,23 +77,24 @@ IceTipPackageModel >> newLoadAction [
 		yourself
 ]
 
-{ #category : 'accessing' }
-IceTipPackageModel >> packageName [
-	^ self entity packageName
-]
-
 { #category : 'actions' }
-IceTipPackageModel >> reload [
+IceTipPackageModel >> newReloadAction [
 	<noCache>
 
-	IceTipStandardAction new 
+	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Reloading package {1}' format: { self entity name }) ;
 		onSuccessRepositoryModified;
-		execute: [ 
+		action: [ 
 			Iceberg announcer 
 				suspendAllForRepository: self entity repository 
-				while: [ self entity reload ] ]
+				while: [ self entity reload ] ];
+		yourself
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> packageName [
+	^ self entity packageName
 ]
 
 { #category : 'actions' }
