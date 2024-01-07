@@ -92,23 +92,24 @@ IceTipPackageModel >> newReloadAction [
 		yourself
 ]
 
-{ #category : 'accessing' }
-IceTipPackageModel >> packageName [
-	^ self entity packageName
-]
-
 { #category : 'actions' }
-IceTipPackageModel >> remove [
+IceTipPackageModel >> newRemoveAction [
 	<noCache>
 
-	IceTipStandardAction new 
+	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Removing package {1}' format: { self entity name });
 		onSuccessRepositoryModified; 
-		execute: [ 
+		action: [ 
 			Iceberg announcer
 				suspendAllForRepository: self entity repository
-				while: [ self entity remove ] ]
+				while: [ self entity remove ] ];
+		yourself
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> packageName [
+	^ self entity packageName
 ]
 
 { #category : 'accessing' }

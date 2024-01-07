@@ -24,7 +24,7 @@ IceTipRemoveFromRepositoryPackageCommand class >> defaultName [
 { #category : 'executing' }
 IceTipRemoveFromRepositoryPackageCommand >> execute [
 
-	self packageModel remove
+	self packageModel newRemoveAction executeWithContext: self context
 ]
 
 { #category : 'accessing' }
