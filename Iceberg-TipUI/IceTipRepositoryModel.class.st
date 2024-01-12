@@ -322,7 +322,14 @@ IceTipRepositoryModel >> newFetchAction [
 		repository: self entity;
 		message: ('Fetching incoming commits of {1}' format: { self name });
 		onSuccessRepositoryModified;
-		action: [ self entity fetch ];
+		action: [ :aContext :aJob |
+			| remotes |
+			remotes := self entity remotes.
+			aJob max: remotes size.
+			remotes withIndexDo: [ :each :index |
+				aJob title: 'Remote: ' , each name asString.
+				each fetch.
+				aJob value: index ] ];
 		yourself
 ]
 

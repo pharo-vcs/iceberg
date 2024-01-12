@@ -99,23 +99,27 @@ IceTipCritiquesBeforeCommitBrowser >> disableCommitAfterChanges [
 
 { #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> doAutofix [
+	| critique |
 
-	critiquesList selectedItem ifNotNil: [ :aCritique | 
-		(RePropertyAction new
-			 icon: (aCritique iconNamed: #repair);
-			 description: 'Automatically resolve the issue';
-			 action: [ :crit | 
-				 | changesBrowser |
-				 changesBrowser := (ChangesBrowser changes: { crit change })
-					                   extent: 500 @ 400;
-					                   yourself.
+	(critique := critiquesList selectedItem) ifNil: [ ^ self ].
+	 
+	(RePropertyAction new
+		icon: (critique iconNamed: #repair);
+		description: 'Automatically resolve the issue';
+		action: [ :crit | 
+			| changesBrowser |
 
-				 changesBrowser openModal
-					 okAction: [ 
-						 changesBrowser accept.
-						 self disableCommitAfterChanges.
-						 self updatePresenter ];
-					 centered ]) actOnCritic: aCritique ofEntity: aCritique entity ]
+			changesBrowser := (StChangesBrowserPresenter changes: { crit change })
+				extent: 500 @ 400;
+				yourself.
+
+		 changesBrowser openModal
+			 okAction: [ 
+				 changesBrowser accept.
+				 self disableCommitAfterChanges.
+				 self updatePresenter ];
+			 centered ]) 
+		actOnCritic: critique ofEntity: critique entity
 ]
 
 { #category : 'actions' }
@@ -228,12 +232,9 @@ IceTipCritiquesBeforeCommitBrowser >> onAccept: aFullBlockClosure [
 IceTipCritiquesBeforeCommitBrowser >> openIfCritiques [
 
 	"If the setting is disabled we just commit"
-	IceTipCommitSettings critiquesOnCommit 
-		ifFalse: [ ^ onAcceptAction value ].
-	critiques 
-		ifEmpty: [ ^ onAcceptAction value ].
+	IceTipCommitSettings critiquesOnCommit ifFalse: [ ^ onAcceptAction value ].
+	critiques ifEmpty: [ ^ onAcceptAction value ].
 		
-	
 	self asDialogWindow
 		centeredRelativeTo: self window;
 		open
