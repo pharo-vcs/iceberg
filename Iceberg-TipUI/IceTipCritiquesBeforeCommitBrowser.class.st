@@ -39,6 +39,24 @@ IceTipCritiquesBeforeCommitBrowser >> accept [
 	onAcceptAction value
 ]
 
+{ #category : 'private' }
+IceTipCritiquesBeforeCommitBrowser >> calculateCritics [
+	| visitor calculatedCritics |	
+	
+	calculatedCritics := #().
+	self application 
+		informUser: 'Calculating Critiques...'
+		during: [ :aJob | 
+			visitor := IceCritiquesVisitor new.
+			aJob max: self model size.
+			self model withIndexDo: [ :each :index | 
+				each accept: visitor.
+				aJob currentValue: index ].
+			calculatedCritics := visitor critiques asOrderedCollection ].
+	
+	^ calculatedCritics
+]
+
 { #category : 'accessing' }
 IceTipCritiquesBeforeCommitBrowser >> commitModel [
 
@@ -240,12 +258,11 @@ IceTipCritiquesBeforeCommitBrowser >> titleForWindow [
 IceTipCritiquesBeforeCommitBrowser >> updatePresenter [ 
 
 	super updatePresenter.
+	
 	critiques := IceTipCommitSettings critiquesOnCommit
-		             ifFalse: [ OrderedCollection new ]
-		             ifTrue: [ 
-			             (IceCritiquesVisitor new
-				              visitAll: self model;
-				              critiques) asOrderedCollection ].
+		ifTrue: [ self calculateCritics ]
+		ifFalse: [ #() ].
+	
 	critiquesList items: critiques.
 
 	critiques ifNotEmpty: [ critiquesList selectIndex: 1].

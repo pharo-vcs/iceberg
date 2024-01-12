@@ -197,6 +197,8 @@ IcePharoPlugin >> fetchIfNeeded: aRepository [
 
 { #category : 'events' }
 IcePharoPlugin >> repositoryWillBeCreated: aRepository [
+	
+	"this is just supported on Pharo 8+"
 	SystemVersion current major < 7 ifTrue: [ ^ self ].
 	
 	self fetchIfNeeded: aRepository.

@@ -33,9 +33,7 @@ IceCritiquesVisitor >> visitAddition: anIceAddition [
 { #category : 'visiting' }
 IceCritiquesVisitor >> visitAll: aCollection [
 
-	aCollection
-		do: [ :each | each accept: self ]
-		displayingProgress: [ :each | 'Calculating Critiques...' ]
+	aCollection do: [ :each | each accept: self ]
 ]
 
 { #category : 'visiting' }
