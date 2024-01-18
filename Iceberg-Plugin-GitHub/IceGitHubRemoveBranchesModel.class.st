@@ -55,12 +55,12 @@ IceGitHubRemoveBranchesModel >> initialize [
 IceGitHubRemoveBranchesModel >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
-		addButton: 'Remove' do: [ :presenter | 
-			self triggerAcceptAction.
-			presenter close ];
 		addButton: 'Cancel' do: [ :presenter | 
 			presenter triggerCancelAction.
-			presenter close ]	
+			presenter close ];
+		addDefaultButton: 'Remove' do: [ :presenter | 
+			self triggerAcceptAction.
+			presenter close ]		
 ]
 
 { #category : 'initialization' }

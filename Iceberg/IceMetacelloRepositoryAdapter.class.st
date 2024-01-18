@@ -59,6 +59,15 @@ IceMetacelloRepositoryAdapter >> description [
 	^ self repository origin url, '[', projectVersion, ']'
 ]
 
+{ #category : 'fetching' }
+IceMetacelloRepositoryAdapter >> fetchPackageNamed: aString [
+	"The fetch operation just makes sure we have the correct version in disk"
+
+	self repository head description = projectVersion ifFalse: [
+		(self repository commitishNamed: projectVersion)
+			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ]
+]
+
 { #category : 'initialization' }
 IceMetacelloRepositoryAdapter >> flushForScriptGet [
 	"do nothing"
@@ -120,6 +129,18 @@ IceMetacelloRepositoryAdapter >> isValid [
 	^ true
 ]
 
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
+
+	| package found |
+	package := self repository workingCopy packageNamed: aName.
+	found := package latestVersion mcVersion.
+	aLoader addVersion: found.
+	^ {
+		  found.
+		  self }
+]
+
 { #category : 'MonticelloGUI' }
 IceMetacelloRepositoryAdapter >> morphicOpen: workingCopy [
 
@@ -136,6 +157,44 @@ Do you want to open the Iceberg Browser instead?' format: {
 		   openModal.
 	shouldOpenIceberg ifFalse: [ ^ self ].
 	IceTipRepositoriesBrowser new open
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName [
+
+	^ self packageNamed: aName ifAbsent: [ NotFound signal: aName ]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifAbsent: aBlock [
+
+	^ self
+		packageNamed: aName
+		ifPresent: [ :found | found ]
+		ifAbsent: aBlock
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifPresent: aBlock [
+
+	^ self
+		  packageNamed: aName
+		  ifPresent: aBlock
+		  ifAbsent: [ NotFound signal: aName ]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [
+
+	| package |
+	self repository head description = projectVersion ifFalse: [
+		(self repository commitishNamed: projectVersion)
+			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ].
+
+	package := self repository workingCopy
+		           packageNamed: aName
+		           ifAbsent: [ ^ absentBlock value ].
+	^ presentBlock value: package latestVersion mcVersion
 ]
 
 { #category : 'accessing' }

@@ -113,14 +113,14 @@ IceTipAbstractCredentialsPresenter >> initialize [
 	accepted := false
 ]
 
-{ #category : 'accessing' }
+{ #category : 'initialization' }
 IceTipAbstractCredentialsPresenter >> initializeDialogWindow: aDialogWindowPresenter [
 
 	super initializeDialogWindow: aDialogWindowPresenter.
 	self updateOkButton.
 
-	aDialogWindowPresenter whenClosedDo: [ accepted ifFalse: [ self cancelAskAction ] ] 
-	
+	aDialogWindowPresenter whenClosedDo: [ 
+		accepted ifFalse: [ self cancelAskAction ] ]
 ]
 
 { #category : 'initialization' }

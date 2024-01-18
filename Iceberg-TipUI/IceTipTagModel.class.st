@@ -25,12 +25,6 @@ IceTipTagModel >> description [
 	^ self entity name
 ]
 
-{ #category : 'accessing' }
-IceTipTagModel >> name [
-	
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipTagModel >> newDeleteAction [
 

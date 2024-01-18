@@ -68,8 +68,8 @@ IceTipOptionDialogPresenter >> initialExtentForWindow [
 IceTipOptionDialogPresenter >> initializeDialogWindow: aWindowPresenter [
 
 	aWindowPresenter
-		addButton: 'Ok' do: [ :presenter | self accept ];
-		addButton: 'Cancel' do: [ :presenter | presenter close ].	
+		addButton: 'Cancel' do: [ :presenter | presenter close ];
+		addDefaultButton: 'Ok' do: [ :presenter | self accept ].	
 			
 	aWindowPresenter whenOpenedDo: [ self typeList selectIndex: 1 ]
 ]
