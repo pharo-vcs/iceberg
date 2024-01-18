@@ -260,7 +260,8 @@ IceCommit >> newCommitWalk [
 { #category : 'API - packages' }
 IceCommit >> packages [
 
-	^ self packageNames collect: [ :name | IcePackage named: name repository: self repository ]
+	^ self packageNames collect: [ :name |
+		  IcePackage named: name repository: self repository ]
 ]
 
 { #category : 'API - history' }

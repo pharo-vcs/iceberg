@@ -275,6 +275,17 @@ IceTipRepositoryModel >> newCommitAction [
 		yourself
 ]
 
+{ #category : 'tagging' }
+IceTipRepositoryModel >> newCreateTagAction: aString [
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
+		onSuccessRepositoryModified;
+		action: [ self commit createTag: aString ]
+		yourself
+]
+
 { #category : 'actions' }
 IceTipRepositoryModel >> newDeleteAction [
 	

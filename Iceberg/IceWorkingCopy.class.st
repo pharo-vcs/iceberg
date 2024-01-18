@@ -124,7 +124,7 @@ IceWorkingCopy >> addPackage: aPackage [
 { #category : 'API - packages' }
 IceWorkingCopy >> addPackageNamed: aString [ 
 	
-	self addPackage: (IcePackage named: aString asSymbol repository: repository) beDirty
+	self addPackage: (IcePackage named: aString asSymbol workingCopy: self) beDirty
 ]
 
 { #category : 'API - packages' }
@@ -632,16 +632,24 @@ IceWorkingCopy >> refreshDirtyPackages [
 
 { #category : 'private - packages' }
 IceWorkingCopy >> refreshPackages [
-	| commitPackages |
-	commitPackages := self referenceCommit isCollection
-		ifTrue: [ (self referenceCommit flatCollect: [ :each | each packages ]) asSet ]
-		ifFalse: [ self referenceCommit project packages ].
+
+	| commitPackages commitPackageNames |
+	commitPackageNames := self referenceCommit isCollection
+		                      ifTrue: [
+			                      (self referenceCommit flatCollect: [ :each |
+				                       each packageNames ]) asSet ]
+		                      ifFalse: [
+		                      self referenceCommit project packageNames ].
+
+	commitPackages := commitPackageNames collect: [ :each |
+		                  IcePackage named: each workingCopy: self ].
 
 	"remove packages that are not there anymore"
-	(self packages \ commitPackages) do: [ :each | self basicRemovePackage: each ].
+	self packages \ commitPackages do: [ :each |
+		self basicRemovePackage: each ].
 	"Add packages not already there"
-	(commitPackages \ self packages) do: [ :each | self basicAddPackage: each ].
-
+	commitPackages \ self packages do: [ :each |
+		self basicAddPackage: each ]
 ]
 
 { #category : 'private - project' }
@@ -752,7 +760,7 @@ IceWorkingCopy >> unloadPackage: aPackage [
 { #category : 'API - loading' }
 IceWorkingCopy >> unloadPackageNamed: aPackageName [
 
-	self unloadPackage: (IcePackage named: aPackageName repository: repository)
+	self unloadPackage: (IcePackage named: aPackageName workingCopy: self)
 	
 ]
 

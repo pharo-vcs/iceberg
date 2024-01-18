@@ -50,9 +50,7 @@ IceTipWorkingCopyModel >> packageModels [
 
 	^ self sortingStrategy sort:
 		  (self workingCopy packages collect: [ :each |
-			   IceTipPackageModel
-				   repositoryModel: self repositoryModel
-				   on: each ])
+			   IceTipPackageModel workingCopyModel: self on: each ])
 ]
 
 { #category : 'accessing' }

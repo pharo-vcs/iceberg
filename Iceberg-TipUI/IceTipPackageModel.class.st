@@ -4,10 +4,23 @@ I'm a model for IcePackage entries.
 Class {
 	#name : 'IceTipPackageModel',
 	#superclass : 'IceTipEntityModel',
+	#instVars : [
+		'workingCopyModel'
+	],
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
 	#tag : 'Model'
 }
+
+{ #category : 'as yet unclassified' }
+IceTipPackageModel class >> workingCopyModel: aWorkingCopyModel on: aPackage [
+
+	^ (self
+		   repositoryModel: aWorkingCopyModel repositoryModel
+		   on: aPackage)
+		  workingCopyModel: aWorkingCopyModel;
+		  yourself
+]
 
 { #category : 'actions' }
 IceTipPackageModel >> browsePackage [
@@ -139,4 +152,16 @@ IceTipPackageModel >> statusDecorator [
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> workingCopyModel [
+
+	^ workingCopyModel
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> workingCopyModel: anObject [
+
+	workingCopyModel := anObject
 ]

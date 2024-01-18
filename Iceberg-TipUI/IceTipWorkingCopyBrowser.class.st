@@ -220,9 +220,9 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 ]
 
 { #category : 'accessing - model' }
-IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
+IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aWorkingCopyModel [
 
-	self model: ( IceTipWorkingCopyModel on: aRepositoryModel )
+	self model: aWorkingCopyModel
 ]
 
 { #category : 'testing' }

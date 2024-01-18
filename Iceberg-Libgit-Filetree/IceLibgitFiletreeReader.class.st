@@ -67,8 +67,13 @@ IceLibgitFiletreeReader >> iceVersion [
 
 { #category : 'accessing' }
 IceLibgitFiletreeReader >> iceVersion: anObject [
+
 	iceVersion := anObject.
-	self packageDirectory: (iceVersion commit project sourceDirectoryPath / (IceLibgitFiletreeWriter directoryNameFor: (IcePackage named: iceVersion package name repository: iceVersion commit repository))) pathString
+	self packageDirectory:
+		(iceVersion commit project sourceDirectoryPath
+		 / (IceLibgitFiletreeWriter directoryNameFor: (IcePackage
+					   named: iceVersion package name
+					   repository: iceVersion commit repository))) pathString
 ]
 
 { #category : 'accessing' }

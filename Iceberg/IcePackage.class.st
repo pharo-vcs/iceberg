@@ -10,8 +10,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'package',
-		'repository',
-		'isDirty'
+		'isDirty',
+		'workingCopy'
 	],
 	#category : 'Iceberg-Core',
 	#package : 'Iceberg',
@@ -20,9 +20,15 @@ Class {
 
 { #category : 'instance creation' }
 IcePackage class >> named: packageName repository: repository [
+
+	^ self named: packageName workingCopy: repository workingCopy
+]
+
+{ #category : 'instance creation' }
+IcePackage class >> named: packageName workingCopy: repository [
 	^ self new 
 		package: packageName;
-		repository: repository; 
+		workingCopy: repository; 
 		yourself
 ]
 
@@ -55,13 +61,13 @@ IcePackage >> beDirty: aBoolean [
 { #category : 'accessing - monticello' }
 IcePackage >> currentCommit [
 	
-	^ repository workingCopy referenceCommit
+	^ workingCopy referenceCommit
 ]
 
 { #category : 'accessing - monticello' }
 IcePackage >> currentCommits [
 	
-	^ repository workingCopy referenceCommits
+	^ workingCopy referenceCommits
 ]
 
 { #category : 'accessing' }
@@ -94,15 +100,9 @@ IcePackage >> isDirty [
 ]
 
 { #category : 'testing' }
-IcePackage >> isExported [
-
-	^ repository isPackageExported: self
-]
-
-{ #category : 'testing' }
 IcePackage >> isLoaded [
 	
-	^ repository workingCopy isLoadedPackageNamed: self packageName
+	^ workingCopy isLoadedPackageNamed: self packageName
 ]
 
 { #category : 'accessing - monticello' }
@@ -216,23 +216,19 @@ IcePackage >> reload [
 IcePackage >> remove [
 	"Removes the package from the repository.
 	Does not unload from the image"
-	repository workingCopy basicRemovePackage: self
+	workingCopy basicRemovePackage: self
 ]
 
 { #category : 'accessing' }
 IcePackage >> repository [
-	^ repository
-]
 
-{ #category : 'accessing' }
-IcePackage >> repository: anObject [
-	repository := anObject
+	^ workingCopy repository
 ]
 
 { #category : 'actions' }
 IcePackage >> unload [
 
-	repository workingCopy unloadPackage: self
+	workingCopy unloadPackage: self
 ]
 
 { #category : 'querying' }
@@ -257,4 +253,16 @@ IcePackage >> versions [
 	Containing info in the repo makes it easier to refresh."
 	^ self repository branch versionsFor: self
 
+]
+
+{ #category : 'accessing' }
+IcePackage >> workingCopy [
+
+	^ workingCopy
+]
+
+{ #category : 'accessing' }
+IcePackage >> workingCopy: anObject [
+
+	workingCopy := anObject
 ]

@@ -68,36 +68,35 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 
 { #category : 'adding' }
 IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCollection tags: tagArray [
-	| repository commit workingCopy |
 
+	| repository commit workingCopy |
 	repository := IceLibgitRepository new
-		name: aName;
-		yourself.
+		              name: aName;
+		              yourself.
 
 	commit := IceUnknownCommit new
-		repository: repository;
-		id: aCommitId;
-	 	yourself.
+		          repository: repository;
+		          id: aCommitId;
+		          yourself.
 
 	workingCopy := IceWorkingCopy basicNew
-		repository: repository;
-		initialize;
-		referenceCommit: commit;
-		project: ((IceBasicProject onRepository: repository)
-			sourceDirectory: 'src';
-			tags: tagArray;
-			yourself);
-		yourself.
+		               repository: repository;
+		               initialize;
+		               referenceCommit: commit;
+		               project: ((IceBasicProject onRepository: repository)
+				                sourceDirectory: 'src';
+				                tags: tagArray;
+				                yourself);
+		               yourself.
 
 	repository workingCopy: workingCopy.
 
 	(aCollection
-		flatCollect: [ :each | (Smalltalk globals at: each) allPackageNames copyWith: each ]
-		as: Set)
-		do: [ :each |
-			repository workingCopy basicAddPackage: (IcePackage
-				named: each
-				repository: repository) ].
+		 flatCollect: [ :each |
+		 (Smalltalk globals at: each) allPackageNames copyWith: each ]
+		 as: Set) do: [ :each |
+		workingCopy basicAddPackage:
+			(IcePackage named: each workingCopy: workingCopy) ].
 
 	repository register
 ]
