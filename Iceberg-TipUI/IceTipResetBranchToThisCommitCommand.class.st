@@ -15,6 +15,12 @@ IceTipResetBranchToThisCommitCommand class >> defaultDescription [
 	^ 'Resets the selected branch to the selected commit. It does not modify the working copy (!!).'
 ]
 
+{ #category : 'testing' }
+IceTipResetBranchToThisCommitCommand >> canBeExecuted [
+
+	^ self selectedBranch notNil
+]
+
 { #category : 'executing' }
 IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
 
@@ -49,7 +55,9 @@ IceTipResetBranchToThisCommitCommand >> name [
 { #category : 'accessing' }
 IceTipResetBranchToThisCommitCommand >> selectedBranch [
 
-	^ self context model
+	| selected |
+	selected := self context model.
+	^ (selected notNil and: [ selected isBranch ]) ifTrue: [ selected ]
 ]
 
 { #category : 'accessing' }
