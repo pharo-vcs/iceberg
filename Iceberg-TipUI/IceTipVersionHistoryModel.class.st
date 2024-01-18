@@ -21,12 +21,12 @@ IceTipVersionHistoryModel >> commitModelAfter: aModel [
 
 { #category : 'accessing' }
 IceTipVersionHistoryModel >> commitModels [
-	^ commitModels ifNil: [ 
-		commitModels := self retrieveHistory collect: [ :each | 
-			(IceTipVersionModel 
-				repositoryModel: self repositoryModel 
-				on: each) 
-				beCached ] ]
+
+	^ commitModels ifNil: [
+		  commitModels := self retrieveHistory collect: [ :each |
+			                  IceTipVersionModel
+				                  repositoryModel: self repositoryModel
+				                  on: each ] ]
 ]
 
 { #category : 'accessing' }

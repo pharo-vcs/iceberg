@@ -14,8 +14,9 @@ Class {
 
 { #category : 'accessing' }
 IceTipRepositoriesModel >> repositories [
-	
-	^ repositoryProvider repositories collect: [ :each | (IceTipRepositoryModel on: each) beCached ]
+
+	^ repositoryProvider repositories collect: [ :each |
+		  IceTipRepositoryModel on: each ]
 ]
 
 { #category : 'accessing' }

@@ -82,7 +82,6 @@ IceTipEntityModel >> isModelOf: anObject [
 
 { #category : 'tagging' }
 IceTipEntityModel >> newCreateTagAction: aString [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self entity;

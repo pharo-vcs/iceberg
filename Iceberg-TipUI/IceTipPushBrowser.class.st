@@ -19,11 +19,8 @@ IceTipPushBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommand
 { #category : 'instance creation' }
 IceTipPushBrowser class >> onRepositoryModel: aModel [
 
-	^ self on: (IceTipPushModel 
-		repositoryModel: aModel 
-		on: aModel entity) 
-		beCached
-
+	^ self on:
+		  (IceTipPushModel repositoryModel: aModel on: aModel entity)
 ]
 
 { #category : 'actions' }

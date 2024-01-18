@@ -34,7 +34,6 @@ IceTipMergeModel >> mergeType: aMergeType [
 
 { #category : 'actions' }
 IceTipMergeModel >> newExecuteMergeAction [ 
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self repository;

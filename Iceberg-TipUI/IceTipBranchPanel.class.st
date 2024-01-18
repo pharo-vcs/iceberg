@@ -17,7 +17,7 @@ Class {
 { #category : 'instance creation' }
 IceTipBranchPanel class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
+	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : 'actions' }

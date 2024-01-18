@@ -11,14 +11,12 @@ Class {
 
 { #category : 'actions' }
 IceTipPackageModel >> browsePackage [
-	<noCache>
-
+	
 	self entity browse
 ]
 
 { #category : 'actions' }
 IceTipPackageModel >> browseRepositoryVersion [
-	<noCache>
 	| snapshot |
 	
 	snapshot := self entity mcSnapshotInRepository.
@@ -64,7 +62,6 @@ IceTipPackageModel >> name [
 
 { #category : 'actions' }
 IceTipPackageModel >> newLoadAction [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self entity repository;
@@ -79,8 +76,7 @@ IceTipPackageModel >> newLoadAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newReloadAction [
-	<noCache>
-
+	
 	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Reloading package {1}' format: { self entity name }) ;
@@ -94,8 +90,7 @@ IceTipPackageModel >> newReloadAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newRemoveAction [
-	<noCache>
-
+	
 	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Removing package {1}' format: { self entity name });
@@ -109,8 +104,7 @@ IceTipPackageModel >> newRemoveAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newUnloadAction [
-	<noCache>
-
+	
 	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Unloading package {1}' format: { self entity name });

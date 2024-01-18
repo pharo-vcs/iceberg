@@ -29,7 +29,6 @@ IceTipVersionModel >> commit [
 
 { #category : 'actions' }
 IceTipVersionModel >> install [
-	<noCache>
 
 	IceTipStandardAction new 
 		repository: self repositoryModel entity; 

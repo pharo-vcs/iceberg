@@ -59,7 +59,6 @@ IceTipCheckoutModel >> initialize [
 
 { #category : 'actions' }
 IceTipCheckoutModel >> newCheckoutAction [ 
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self repository;

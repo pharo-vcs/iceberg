@@ -6,7 +6,8 @@ Class {
 	#superclass : 'IceTipModel',
 	#instVars : [
 		'sortingStrategy',
-		'repositoryModel'
+		'repositoryModel',
+		'workingCopy'
 	],
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
@@ -37,8 +38,7 @@ IceTipWorkingCopyModel >> commitId [
 
 { #category : 'operations' }
 IceTipWorkingCopyModel >> copyCommitIDToClipboard [
-	<noCache>
-
+	
 	repositoryModel copyCommitIDToClipboard
 ]
 
@@ -50,12 +50,12 @@ IceTipWorkingCopyModel >> initializeRepositoryModel: aRepositoryModel [
 
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> packageModels [
-	^ self sortingStrategy sort: (self repositoryModel entity workingCopy packages 
-		collect: [ :each | 
-			(IceTipPackageModel 
-				repositoryModel: self repositoryModel 
-				on: each) 
-				beCached ])
+
+	^ self sortingStrategy sort:
+		  (self workingCopy packages collect: [ :each |
+			   IceTipPackageModel
+				   repositoryModel: self repositoryModel
+				   on: each ])
 ]
 
 { #category : 'accessing' }
