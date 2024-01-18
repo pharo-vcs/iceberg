@@ -608,6 +608,12 @@ IceRepository >> internalStoreVersion: aMCVersion [
 ]
 
 { #category : 'testing' }
+IceRepository >> isBranch [
+	
+	^ false
+]
+
+{ #category : 'testing' }
 IceRepository >> isCloneOfUrl: aString [ 
 
 	^ self origin url = aString
