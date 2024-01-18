@@ -26,7 +26,7 @@ IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
 
 	| shortId branchName |
 	shortId := self selectedCommitish ifNotNil: [ :commitish | commitish shortId ] ifNil: [''].
-	branchName := self selectedBranch ifNotNil: [:branch | branch branchName] ifNil: [ '' ].
+	branchName := self selectedBranch ifNotNil: [:branch | branch name ] ifNil: [ '' ].
 
 	^ 'Reset ', branchName, ' to commit ', shortId
 ]
