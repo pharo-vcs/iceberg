@@ -56,16 +56,16 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: [: branch | self shortDescriptionFor: branch ]);
+		addColumn: (SpStringTableColumn evaluated: #shortDescription);
 		items: self model branchModels.
 
 	self model branchModels
 		detect: #isHead
 		ifFound: [ :head | branchesList selectItem: head ]
-		ifNone: [
-		self model hasBranches ifTrue: [ branchesList selectIndex: 1 ] ].
+		ifNone: [ self model hasBranches ifTrue: [ branchesList selectIndex: 1 ] ].
 
-	self flag: #pharoTodo "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
+	self flag: #pharoTodo. "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
+
 ]
 
 { #category : #initialization }
@@ -79,12 +79,6 @@ IceTipExistingBranchPanel >> initializePresenters [
 IceTipExistingBranchPanel >> selectedBranch [
 
 	^ self branchesList selection selectedItem
-]
-
-{ #category : #initialization }
-IceTipExistingBranchPanel >> shortDescriptionFor: aBranch [
-	aBranch isHead ifFalse: [ ^aBranch shortDescription  ].
-	^aBranch shortDescription , ' (current)'
 ]
 
 { #category : #initialization }
