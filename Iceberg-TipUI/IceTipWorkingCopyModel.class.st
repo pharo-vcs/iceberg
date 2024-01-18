@@ -15,15 +15,18 @@ Class {
 }
 
 { #category : 'instance creation' }
-IceTipWorkingCopyModel class >> new [
-	self error: 'use #for:'
+IceTipWorkingCopyModel class >> on: aRepositoryModel [
+
+	^ self on: aRepositoryModel workingCopy: aRepositoryModel workingCopy
 ]
 
 { #category : 'instance creation' }
-IceTipWorkingCopyModel class >> on: aRepositoryModel [ 
-	^ self basicNew 
-		initializeRepositoryModel: aRepositoryModel;
-		yourself
+IceTipWorkingCopyModel class >> on: aRepositoryModel workingCopy: aWorkingCopy [
+
+	^ self new
+		  repositoryModel: aRepositoryModel;
+		  workingCopy: aWorkingCopy;
+		  yourself
 ]
 
 { #category : 'accessing' }
@@ -42,12 +45,6 @@ IceTipWorkingCopyModel >> copyCommitIDToClipboard [
 	repositoryModel copyCommitIDToClipboard
 ]
 
-{ #category : 'initialization' }
-IceTipWorkingCopyModel >> initializeRepositoryModel: aRepositoryModel [
-	repositoryModel := aRepositoryModel.
-	self initialize
-]
-
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> packageModels [
 
@@ -59,8 +56,19 @@ IceTipWorkingCopyModel >> packageModels [
 ]
 
 { #category : 'accessing' }
+IceTipWorkingCopyModel >> repository [
+
+	^ self repositoryModel entity
+]
+
+{ #category : 'accessing' }
 IceTipWorkingCopyModel >> repositoryModel [
 	^ repositoryModel
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> repositoryModel: anIceTipRepositoryModel [ 
+	repositoryModel := anIceTipRepositoryModel
 ]
 
 { #category : 'accessing' }
@@ -92,4 +100,16 @@ IceTipWorkingCopyModel >> status [
 IceTipWorkingCopyModel >> statusDecorator [
 
 	^ self repositoryModel statusDecorator
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> workingCopy [
+
+	^ workingCopy
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> workingCopy: aWorkingCopy [
+
+	workingCopy := aWorkingCopy
 ]
