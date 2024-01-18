@@ -2,36 +2,38 @@
 Directory does not exist in the specified version in the repository.
 "
 Class {
-	#name : #IceMissingRepositoryEntry,
-	#superclass : #IceError,
+	#name : 'IceMissingRepositoryEntry',
+	#superclass : 'IceError',
 	#instVars : [
 		'name',
 		'owner'
 	],
-	#category : 'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMissingRepositoryEntry >> messageText [
 	^ self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMissingRepositoryEntry >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMissingRepositoryEntry >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMissingRepositoryEntry >> owner [
 	^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMissingRepositoryEntry >> owner: anObject [
 	owner := anObject
 ]

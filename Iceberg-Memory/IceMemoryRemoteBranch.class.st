@@ -1,36 +1,37 @@
 Class {
-	#name : #IceMemoryRemoteBranch,
-	#superclass : #IceRemoteBranch,
+	#name : 'IceMemoryRemoteBranch',
+	#superclass : 'IceRemoteBranch',
 	#instVars : [
 		'remote',
 		'commit'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemoteBranch >> commit [
 	^ commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemoteBranch >> commit: anIceMemoryCommit [ 
 	commit := anIceMemoryCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemoteBranch >> remote: anIceMemoryRemote [ 
 	
 	remote := anIceMemoryRemote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemoteBranch >> remoteName [
 	
 	^ remote name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRemoteBranch >> shortname [
 	
 	^ name

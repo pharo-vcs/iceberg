@@ -1,79 +1,81 @@
 Class {
-	#name : #IceIndexUpdateVisitor,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceIndexUpdateVisitor',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'diff',
 		'index'
 	],
-	#category : #'Iceberg-Libgit-Commit'
+	#category : 'Iceberg-Libgit-Commit',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Commit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceIndexUpdateVisitor >> diff: anIceDiff [ 
 	diff := anIceDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceIndexUpdateVisitor >> index: anIndex [
 	
 	index := anIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceIndexUpdateVisitor >> repository [
 
 	^ index repository
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitAddition: anIceAddition [ 
 	
 	anIceAddition definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitFileNode: anIceFileDefinition [ 
 	
 	index addPath: anIceFileDefinition path
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitModification: anIceModification [ 
 	
 	^ anIceModification leftDefinition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitNoModification: anIceNoModification [ 
 	
 	anIceNoModification definition accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
 	
 	anIceNonConflictingOperation chosenOperation accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitPackage: anIcePackageDefinition [ 
 	
 	index addPackage: anIcePackageDefinition
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitRemoval: anIceRemoval [
 
 	"Do the same as an addition"
 	self visitAddition: anIceRemoval
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceIndexUpdateVisitor >> visitRootDefinition: anIceRootDefinition [ 
 	
 	self visitChildrenOf: currentNode

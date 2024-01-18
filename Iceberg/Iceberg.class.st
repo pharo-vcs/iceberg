@@ -15,8 +15,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #Iceberg,
-	#superclass : #Object,
+	#name : 'Iceberg',
+	#superclass : 'Object',
 	#classVars : [
 		'EnableMetacelloIntegration',
 		'ProxyURLExternalString',
@@ -26,15 +26,17 @@ Class {
 	#classInstVars : [
 		'icebergAnnouncer'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> announcer [
 	^ icebergAnnouncer ifNil: [ icebergAnnouncer := IceAnnouncer new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> bootstrap [
 	| metacelloRegistrationEntry |
 	metacelloRegistrationEntry := MetacelloProjectRegistration registry baselineRegistry at: 'BaselineOfIceberg'.
@@ -43,7 +45,7 @@ Iceberg class >> bootstrap [
 		packageList: (metacelloRegistrationEntry baselineProjectSpec version packages collect: #name)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> bootstrapWithCommitId: commitId packageList: packageNameList [
 
 	| commit repository |
@@ -65,7 +67,7 @@ Iceberg class >> bootstrapWithCommitId: commitId packageList: packageNameList [
 	repository register
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 Iceberg class >> configureLGitProxyOpt: aLGitProxyOptions [ 
 	
 	| proxyURL |
@@ -77,7 +79,7 @@ Iceberg class >> configureLGitProxyOpt: aLGitProxyOptions [
 	aLGitProxyOptions prim_url: proxyURL
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 Iceberg class >> createProxyURLExternalString [
 
 	NetworkSystemSettings httpProxyServer isEmpty 
@@ -86,17 +88,17 @@ Iceberg class >> createProxyURLExternalString [
 	ProxyURLExternalString := ExternalAddress fromString: self formatNetworkSettingsProxyServer. 
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 Iceberg class >> enableMetacelloIntegration [
 	^ EnableMetacelloIntegration ifNil: [ EnableMetacelloIntegration := true ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 Iceberg class >> enableMetacelloIntegration: anObject [
 	EnableMetacelloIntegration := anObject
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 Iceberg class >> ensureProxyURLExternalString [
 
 
@@ -111,7 +113,7 @@ Iceberg class >> ensureProxyURLExternalString [
 	^ self createProxyURLExternalString
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 Iceberg class >> formatNetworkSettingsProxyServer [
 
 	^ String streamContents: [ :s |
@@ -121,7 +123,7 @@ Iceberg class >> formatNetworkSettingsProxyServer [
 		  s nextPutAll: NetworkSystemSettings httpProxyPort printString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> icebergRepositoriesURLs [
 	^ {
 		'git@github.com:pharo-vcs/iceberg.git'. 
@@ -130,12 +132,12 @@ Iceberg class >> icebergRepositoriesURLs [
 	}
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Iceberg class >> initialize [
 	self initializeSettings
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Iceberg class >> initializeSettings [
 	Smalltalk 
 		at: #SystemSettingsPersistence 
@@ -145,56 +147,45 @@ Iceberg class >> initializeSettings [
 			class updateSettingNodes: nodes ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> mcRepositoryFor: aLocationString [
 	^ (IceMetacelloRepositoryType for: aLocationString) mcRepository 
 ]
 
-{ #category : #accessing }
-Iceberg class >> packageForCategoryNamed: categoryName [
-	| systemPackage |
-	systemPackage := RPackageOrganizer default packageMatchingExtensionName: categoryName.
-	^ self packageNamed: systemPackage name
-
-]
-
-{ #category : #proxy }
+{ #category : 'proxy' }
 Iceberg class >> proxyURLExternalString [
 
 	self ensureProxyURLExternalString.
 	^ ProxyURLExternalString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> remoteTypeSelector [
 	"Should be #scpURL or #httpsURL"
 	^ RemoteTypeSelector ifNil: [ RemoteTypeSelector := #scpUrl ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Iceberg class >> remoteTypeSelector: anObject [
 	RemoteTypeSelector := anObject
 ]
 
-{ #category : #accessing }
-Iceberg class >> repositoryForPackage: anRPackage [ 
-	| existingRepositories possibleRepositoryTypes |
-	
-	existingRepositories := (MCWorkingCopy forPackage: anRPackage mcPackage) repositoryGroup repositories.
-	possibleRepositoryTypes := IceRepository allSubclasses, 
-		{ IceMetacelloRepositoryAdapter. 
-		  MCGitHubRepository }.
-	
-	possibleRepositoryTypes do: [ :class |
-		existingRepositories 
-			detect: [ :repo | repo isKindOf: class ]
-			ifFound: [ : repo |  ^ repo getOrCreateIcebergRepository ] ].
+{ #category : 'accessing' }
+Iceberg class >> repositoryForPackage: aPackage [
 
-	self error: ('Could not find a git repository for {1}' format: {anRPackage name})
-	
+	| existingRepositories possibleRepositoryTypes |
+	existingRepositories := aPackage mcWorkingCopy repositoryGroup repositories.
+	possibleRepositoryTypes := IceRepository allSubclasses , { IceMetacelloRepositoryAdapter . MCGitHubRepository }.
+
+	possibleRepositoryTypes do: [ :class |
+		existingRepositories
+			detect: [ :repo | repo isKindOf: class ]
+			ifFound: [ :repo | ^ repo getOrCreateIcebergRepository ] ].
+
+	self error: ('Could not find a git repository for {1}' format: { aPackage name })
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 Iceberg class >> settingsOn: aBuilder [
 	<systemsettings>
 	(aBuilder group: #Iceberg)
@@ -215,20 +206,20 @@ Iceberg class >> settingsOn: aBuilder [
 							('HTTP (http://github.com/<username>/<project>.git)' -> #httpUrl)} ] ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 Iceberg class >> showSystemRepositories [
 	^ ShowSystemRepositories ifNil: [ ShowSystemRepositories := false ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 Iceberg class >> showSystemRepositories: aBoolean [
 	ShowSystemRepositories := aBoolean
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 Iceberg class >> update [
 	#(Iceberg LGitRepository MCFileTreeGitRepository) do: [:className | 
 		Smalltalk 
 			at: className 
-			ifPresent: [ :class | class package iceRepository pull ] ]
+			ifPresent: [ :class | ( self class repositoryForPackage:class package) pull ] ]
 ]

@@ -2,18 +2,20 @@
 I'm a paginated answer from github (he sends results in pages and includes information in headers)
 "
 Class {
-	#name : #IceGitHubAPIPaginatedResult,
-	#superclass : #Object,
+	#name : 'IceGitHubAPIPaginatedResult',
+	#superclass : 'Object',
 	#instVars : [
 		'api',
 		'request',
 		'result',
 		'nextPage'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubAPIPaginatedResult class >> api: anAPI request: aString [
 	^ self new 
 		api: anAPI;
@@ -22,7 +24,7 @@ IceGitHubAPIPaginatedResult class >> api: anAPI request: aString [
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> all [
 	| stream |
 	stream := Array new writeStream.
@@ -31,22 +33,22 @@ IceGitHubAPIPaginatedResult >> all [
 	^ stream contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> api [
 	^ api
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> api: anObject [
 	api := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> hasNext [
 	^ result isNil or: [ self parseMorePages: (result headers at: 'Link' ifAbsent: [ nil ]) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> next [
 
 	nextPage ifNil: [ nextPage := 1 ].
@@ -59,7 +61,7 @@ IceGitHubAPIPaginatedResult >> next [
 		] ensure: [ nextPage := nextPage + 1 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubAPIPaginatedResult >> parseMorePages: aString [ 
 	"github does not send 'Links' header if there are no pages, and it does not sends 'next' link
 	 if we are at the last page"
@@ -67,12 +69,12 @@ IceGitHubAPIPaginatedResult >> parseMorePages: aString [
 	^ (aString substrings: ',') anySatisfy: [ :each | each includesSubstring: 'rel="next"' ] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> request [
 	^ request
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubAPIPaginatedResult >> request: anObject [
 	request := anObject
 ]

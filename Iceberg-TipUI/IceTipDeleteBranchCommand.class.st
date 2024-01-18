@@ -2,36 +2,38 @@
 Command that deletes the selected branch
 "
 Class {
-	#name : #IceTipDeleteBranchCommand,
-	#superclass : #IceTipRemotesTreeCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipDeleteBranchCommand',
+	#superclass : 'IceTipRemotesTreeCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipDeleteBranchCommand class >> defaultDescription [
 
 	^ 'Delete this branch for this repository'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipDeleteBranchCommand class >> defaultName [
 
 	^ 'Delete branch'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipDeleteBranchCommand >> actsOnBranch: aBranchModel [
 
 	^ aBranchModel isLocal
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipDeleteBranchCommand >> execute [
 
 	self item newDeleteAction executeWithContext: self context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDeleteBranchCommand >> iconName [
 
 	^ #delete

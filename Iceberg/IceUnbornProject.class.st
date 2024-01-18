@@ -1,22 +1,24 @@
 Class {
-	#name : #IceUnbornProject,
-	#superclass : #IceAbstractProject,
-	#category : 'Iceberg-Project'
+	#name : 'IceUnbornProject',
+	#superclass : 'IceAbstractProject',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornProject >> isUnborn [
 	
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornProject >> readOnlyVersion [
 
 	^ IceInvalidProject onCommitish: commitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnbornProject >> sourceDirectory [
 
 	"Tricky method.

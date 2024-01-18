@@ -1,17 +1,17 @@
-Extension { #name : #MCWorkingCopy }
+Extension { #name : 'MCWorkingCopy' }
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCWorkingCopy >> ancestry: anAncestry [
 
 	ancestry := anAncestry
 ]
 
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCWorkingCopy >> info [
 	^ self versionInfo
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : '*Iceberg-Adapters' }
 MCWorkingCopy >> loadedVersion [
 	self ancestors do: [ :ancestor |
 		(self repositoryGroup 

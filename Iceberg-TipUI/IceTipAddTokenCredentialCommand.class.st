@@ -1,24 +1,26 @@
 Class {
-	#name : #IceTipAddTokenCredentialCommand,
-	#superclass : #IceTipAbstractCredentialStoreCommand,
-	#category : #'Iceberg-TipUI-Credentials'
+	#name : 'IceTipAddTokenCredentialCommand',
+	#superclass : 'IceTipAbstractCredentialStoreCommand',
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddTokenCredentialCommand class >> defaultDescription [
 
 	^ 'Add a new token credential'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAddTokenCredentialCommand class >> defaultName [
 	^ 'Token'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAddTokenCredentialCommand >> execute [
 
-	((IceTipAddTokenCredentialsModel newApplication: context application)
+	((IceTipAddTokenCredentialsPresenter newApplication: context application)
 		credentialStore: self store;
 		tool: self tool;
 		asDialogWindow)

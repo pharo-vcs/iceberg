@@ -1,10 +1,12 @@
 Class {
-	#name : #IceUrlBuilderTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Git'
+	#name : 'IceUrlBuilderTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testArbitraryHttpsUrl [
 
 	| url |
@@ -17,7 +19,7 @@ IceUrlBuilderTest >> testArbitraryHttpsUrl [
 	self assert: url equals: 'https://localhost/repo.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testArbitrarySSHUrl [
 
 	| url |
@@ -30,7 +32,7 @@ IceUrlBuilderTest >> testArbitrarySSHUrl [
 	self assert: url equals: 'git@localhost:repo.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testBitbucketHttpsUrl [
 
 	| url |
@@ -43,7 +45,7 @@ IceUrlBuilderTest >> testBitbucketHttpsUrl [
 	self assert: url equals: 'https://bitbucket.org/username/project.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testBitbucketSSHUrl [
 
 	| url |
@@ -56,7 +58,7 @@ IceUrlBuilderTest >> testBitbucketSSHUrl [
 	self assert: url equals: 'git@bitbucket.org:username/project.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testExplicitHttpsProtocolUrl [
 
 	| url |
@@ -69,7 +71,7 @@ IceUrlBuilderTest >> testExplicitHttpsProtocolUrl [
 	self assert: url equals: 'https://localhost/repo.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testExplicitSSHProtocolUrl [
 
 	| url |
@@ -82,7 +84,7 @@ IceUrlBuilderTest >> testExplicitSSHProtocolUrl [
 	self assert: url equals: 'git@localhost:repo.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testGitHubHttpsUrl [
 
 	| url |
@@ -95,7 +97,7 @@ IceUrlBuilderTest >> testGitHubHttpsUrl [
 	self assert: url equals: 'https://github.com/username/project.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testGitHubSSHUrl [
 
 	| url |
@@ -108,7 +110,7 @@ IceUrlBuilderTest >> testGitHubSSHUrl [
 	self assert: url equals: 'git@github.com:username/project.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testGitLabHttpsUrl [
 
 	| url |
@@ -121,7 +123,7 @@ IceUrlBuilderTest >> testGitLabHttpsUrl [
 	self assert: url equals: 'https://gitlab.com/username/project.git'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceUrlBuilderTest >> testGitLabSSHUrl [
 
 	| url |

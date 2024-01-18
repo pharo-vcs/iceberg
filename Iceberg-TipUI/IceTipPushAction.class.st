@@ -2,15 +2,17 @@
 I perform a push.
 "
 Class {
-	#name : #IceTipPushAction,
-	#superclass : #IceTipAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipPushAction',
+	#superclass : 'IceTipAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipPushAction >> basicExecute [
 	
-	UIManager default
+	context application
 		informUser: 'Pushing...' 
 		during: [ self repository push ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).

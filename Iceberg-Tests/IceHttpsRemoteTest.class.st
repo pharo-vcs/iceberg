@@ -2,19 +2,21 @@
 Test for IceHttpsRemoteTest
 "
 Class {
-	#name : #IceHttpsRemoteTest,
-	#superclass : #IceHttpRemoteTest,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#name : 'IceHttpsRemoteTest',
+	#superclass : 'IceHttpRemoteTest',
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #'private - defaults' }
+{ #category : 'private - defaults' }
 IceHttpsRemoteTest >> defaultTestClass [
 	"Return the default test class"
 	
 	^IceGitHttpsRemote
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpsRemoteTest >> testSameRemoteReference [
 
 	| r1 r2 |
@@ -23,7 +25,7 @@ IceHttpsRemoteTest >> testSameRemoteReference [
 	self assert: (r1 referencesSameRemoteLocationAs: r2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceHttpsRemoteTest >> testSameRemoteReferenceWithoutGitExtension [
 
 	| r1 r2 |

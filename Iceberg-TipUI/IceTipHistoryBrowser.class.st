@@ -5,22 +5,24 @@ I'm usually used as part of an IceTipRepositoryBrowser.
 (self onBranch: IceRepository registry anyOne branch) openWithSpec.
 "
 Class {
-	#name : #IceTipHistoryBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipHistoryBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'commitList',
 		'commitInfoTabs'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipHistoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{	IceTipAdoptCommitCommand.
@@ -31,11 +33,11 @@ IceTipHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCo
 		IceTipCopyCommitishCommand.
 		IceTipCherryPickCommand.
 		} do: [ :each |
-			aCommandGroup register: each forSpec ]
+			aCommandGroup register: (each forSpecContext: presenter)  ]
 
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceTipHistoryBrowser class >> panelSpec [
 	
 	^ SpPanedLayout newTopToBottom
@@ -44,25 +46,25 @@ IceTipHistoryBrowser class >> panelSpec [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryBrowser >> beForMerge [
 
 	self commitInfoTabs beForMerge
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryBrowser >> commitInfoTabs [
 
 	^ commitInfoTabs
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryBrowser >> commitList [
 
 	^ commitList
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipHistoryBrowser >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
@@ -71,13 +73,13 @@ IceTipHistoryBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryBrowser >> initialExtentForWindow [
 
 	^ (700 @ 700) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryBrowser >> initializeCommitList [
 
 	commitList
@@ -102,7 +104,7 @@ IceTipHistoryBrowser >> initializeCommitList [
 		whenSelectionChangedDo: [ :aSelection | self selectionChanged: aSelection selectedItem ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryBrowser >> initializePresenters [
 
 	commitList := self newTable.
@@ -111,27 +113,27 @@ IceTipHistoryBrowser >> initializePresenters [
 	self initializeCommitList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipHistoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ commitList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryBrowser >> model: anObject [
 
 	super model: anObject.
 	self refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryBrowser >> refresh [
 
 	self refreshCommitList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryBrowser >> refreshCommitList [
 
 	| commitModels |
@@ -141,19 +143,19 @@ IceTipHistoryBrowser >> refreshCommitList [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipHistoryBrowser >> selectedCommit [
 
 	^ commitList selection selectedItem
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipHistoryBrowser >> selectionChanged: anElement [
 
 	commitInfoTabs selectedModel: anElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryBrowser >> titleForWindow [
 
 	^ self model
@@ -162,13 +164,13 @@ IceTipHistoryBrowser >> titleForWindow [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipHistoryBrowser >> updatePresenter [
 
 	self refresh
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipHistoryBrowser >> whenSelectionChangedDo: aBlock [ 
 	
 	commitList whenSelectionChangedDo: aBlock

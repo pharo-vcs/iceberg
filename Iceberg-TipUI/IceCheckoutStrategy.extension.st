@@ -1,12 +1,12 @@
-Extension { #name : #IceCheckoutStrategy }
+Extension { #name : 'IceCheckoutStrategy' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceCheckoutStrategy >> description [
 
 	^ self class description
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceCheckoutStrategy class >> description [
 	^ self subclassResponsibility
 ]

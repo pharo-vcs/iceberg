@@ -2,12 +2,14 @@
 I'm an error to be sent when the error that comes from external library can be guessed to be the absense of user.name and user.email properties.
 "
 Class {
-	#name : #IceGitUsernameOrEmailNotFound,
-	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#name : 'IceGitUsernameOrEmailNotFound',
+	#superclass : 'IceError',
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitUsernameOrEmailNotFound class >> guessKind: anError ifNot: notBlock [ 
 	(anError messageText asLowercase = 'Config value ''user.name'' was not found' asLowercase
 		or: [ anError messageText asLowercase = 'Config value ''user.email'' was not found' asLowercase
@@ -16,12 +18,12 @@ IceGitUsernameOrEmailNotFound class >> guessKind: anError ifNot: notBlock [
 	notBlock value
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitUsernameOrEmailNotFound >> acceptError: anObject [
 	anObject visitMissingCredentialsError: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceGitUsernameOrEmailNotFound >> isResumable [
 
 	^ true

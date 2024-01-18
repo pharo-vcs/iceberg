@@ -5,24 +5,26 @@ Usually, I'm part of an IceTipRegisterProjectPresenter.
 I will define location, name and source subdirectory and I will use that to create a #newRepository.
 "
 Class {
-	#name : #IceTipNewRepositoryPanel,
-	#superclass : #IceTipRepositoryTypePanel,
+	#name : 'IceTipNewRepositoryPanel',
+	#superclass : 'IceTipRepositoryTypePanel',
 	#instVars : [
 		'projectNameLabel',
 		'projectNameInputText',
 		'subdirectoryLabel',
 		'subdirectoryInputText'
 	],
-	#category : #'Iceberg-TipUI-View-Repository'
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipNewRepositoryPanel class >> order [
 
 	^ 10
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipNewRepositoryPanel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -35,13 +37,13 @@ IceTipNewRepositoryPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipNewRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipNewRepositoryPanel >> initializePresenters [
 
 	super initializePresenters.
@@ -58,7 +60,7 @@ IceTipNewRepositoryPanel >> initializePresenters [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipNewRepositoryPanel >> initializeSourceDirectory [
 
 	subdirectoryLabel := self newLabel
@@ -72,67 +74,69 @@ IceTipNewRepositoryPanel >> initializeSourceDirectory [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipNewRepositoryPanel >> isNewRepository [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipNewRepositoryPanel >> newRepository [
 
 	| repositoryName location subdirectory |
 	repositoryName := self projectNameInputText text trimmed.
 	location := self projectLocation location.
 	subdirectory := self subdirectoryInputText text asString trimmed.
-	
-	UIManager default
-		informUser: ('Cloning repository {1} at {2}' format: { repositoryName. location fullName })
-		during: [ 
-			^ IceRepositoryCreator new
-				repository: repository;
-				location: location;
-				subdirectory: subdirectory;
-				createNewRepositoryNamed: repositoryName ]
+
+	^ self application
+		informUser: ('Cloning repository {1} at {2}' format: {
+					 repositoryName.
+					 location fullName })
+		during: [
+			IceRepositoryCreator new
+				  repository: repository;
+				  location: location;
+				  subdirectory: subdirectory;
+				  createNewRepositoryNamed: repositoryName ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipNewRepositoryPanel >> projectNameInputText [
 
 	^ projectNameInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipNewRepositoryPanel >> projectNameLabel [
 
 	^ projectNameLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipNewRepositoryPanel >> subdirectoryInputText [
 
 	^ subdirectoryInputText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipNewRepositoryPanel >> subdirectoryLabel [
 
 	^ subdirectoryLabel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipNewRepositoryPanel >> titleForWindow [
 
 	^ 'New repository'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipNewRepositoryPanel >> validate [
 
 	self 
 		assert: self projectNameInputText text isNotEmpty  
 		description: 'You must enter a project name (it will be used also as part of the path).'.
 	self
-		assert: self projectLocation location notNil  
+		assert: self projectLocation location isNotNil  
 		description: 'Project location must be defined (if it does not exists, it will be created).'
 ]

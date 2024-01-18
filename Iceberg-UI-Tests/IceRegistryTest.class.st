@@ -1,25 +1,26 @@
 Class {
-	#name : #IceRegistryTest,
-	#superclass : #TestCase,
+	#name : 'IceRegistryTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'currentRegistry'
 	],
-	#category : #'Iceberg-UI-Tests'
+	#category : 'Iceberg-UI-Tests',
+	#package : 'Iceberg-UI-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceRegistryTest >> setUp [
 	super setUp.
 	currentRegistry := IceRepository registry.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceRegistryTest >> tearDown [
 	currentRegistry collect: [ :repo | repo ] into: IceRepository registry.
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceRegistryTest >> testRegistryResetDoesNotThrowErrorUponOpenningWindow [
 	| window |
 	IceRepository reset.

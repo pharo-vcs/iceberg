@@ -5,16 +5,18 @@ Doing a checkout then means also introduce new versions into the image, and ther
 My children will implement method #checkoutPackagesOn: to perform this task.
 "
 Class {
-	#name : #IceCheckoutStrategy,
-	#superclass : #Object,
+	#name : 'IceCheckoutStrategy',
+	#superclass : 'Object',
 	#instVars : [
 		'committish',
 		'diff'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy class >> allStrategies [
 
 	^ (self allSubclasses sorted: [ :a :b | a order < b order ])
@@ -22,61 +24,61 @@ IceCheckoutStrategy class >> allStrategies [
 		  thenCollect: [ :e | e new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy class >> canBeUsedFromUI [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy class >> order [
 	^ self subclassResponsibility
 ]
 
-{ #category : #checkout }
+{ #category : 'checkout' }
 IceCheckoutStrategy >> checkoutOn: anIceWorkingCopy [ 
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> commitish: aCommittish [
 	
 	committish := aCommittish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> committish: aCommittish [
 	
 	committish := aCommittish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> diff [
 	
 	^ diff ifNil: [ 
 		diff := committish diffTo: self workingCopy ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> diff: anIceDiff [ 
 	
 	diff := anIceDiff
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCheckoutStrategy >> isLoadAlreadyLoadedStrategy [
 	
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> repository [
 
 	^ committish repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCheckoutStrategy >> workingCopy [
 	
 	^ self repository workingCopy

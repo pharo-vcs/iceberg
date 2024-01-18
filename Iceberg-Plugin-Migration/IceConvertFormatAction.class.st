@@ -1,75 +1,63 @@
 Class {
-	#name : #IceConvertFormatAction,
-	#superclass : #Object,
+	#name : 'IceConvertFormatAction',
+	#superclass : 'Object',
 	#instVars : [
 		'repository',
 		'branchName',
 		'format',
 		'mergeWithCurrentBranch'
 	],
-	#category : #'Iceberg-Plugin-Migration-Conversion'
+	#category : 'Iceberg-Plugin-Migration-Conversion',
+	#package : 'Iceberg-Plugin-Migration',
+	#tag : 'Conversion'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> branchName [
 	^ branchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> branchName: anObject [
 	branchName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> codeDirectory [
 	^ self repository codeDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> codeDirectoryWithDelim [
 	 ^ self repository subdirectory isEmptyOrNil 
 		ifTrue: [ '' ]
 		ifFalse: [ self repository subdirectory, '/' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceConvertFormatAction >> ensureMCClassOrganisationHasCorrectStructure: mcVersion [
- 	| organisation |
 
-   	organisation := mcVersion snapshot definitions 
- 		detect: [ :each | each isOrganizationDefinition ].
-
-   	(organisation categories size = 1) ifFalse: [ | baseCategory |
- 		baseCategory := self 
- 			obtainCommonCategory: organisation categories first 
- 			from: organisation categories.
- 		baseCategory ifEmpty: [ 
- 			self error: 'I didn''t find a base category, something is wrong with the package definition' ].
- 		baseCategory = organisation categories first ifFalse: [ 
- 			organisation categories: (organisation categories copyWithFirst: baseCategory) ] ].
-
-   	^ mcVersion  
+	(mcVersion snapshot definitions detect: [ :each | each isOrganizationDefinition ]) packageName ifNil: [
+		self error: 'I have no package name in the organization definition' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceConvertFormatAction >> ensureMCVersionWithClassOrganisation: mcVersion [
 	"if a package does not has class organisation (happens when package is composed 
 	 only for extensions, we need to ensure it has one, otherwise package creation will 
 	 fail"
 
-	^ mcVersion snapshot definitions 
-		detect: [ :each | each isClassDefinition ]
-		ifFound: [ :each | mcVersion ]
-		ifNone: [ 
-			MCVersion 
-				package: mcVersion package
-				info: mcVersion info
-				snapshot: (MCSnapshot fromDefinitions: (
-					{ MCOrganizationDefinition categories: { mcVersion package name }}, 
-					mcVersion snapshot definitions)) ]
+	^ mcVersion snapshot definitions
+		  detect: [ :each | each isClassDefinition ]
+		  ifFound: [ :each | mcVersion ]
+		  ifNone: [
+			  MCVersion
+				  package: mcVersion package
+				  info: mcVersion info
+				  snapshot: (MCSnapshot fromDefinitions: { (MCOrganizationDefinition packageName: mcVersion package name) } , mcVersion snapshot definitions) ]
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 IceConvertFormatAction >> execute [
 	| oldBranch newBranch |
 
@@ -81,47 +69,45 @@ IceConvertFormatAction >> execute [
 		newBranch merge ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> format [
 	^ format
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> format: anObject [
 	format := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceConvertFormatAction >> isMergeWithCurrentBranch [
 	^ mergeWithCurrentBranch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> mergeWithCurrentBranch: anObject [
 	mergeWithCurrentBranch := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceConvertFormatAction >> migratePackage: packageName commit: commit [
+
 	| filetreePackage srcDir subDirWithDelim mcVersion |
-	
 	srcDir := self codeDirectory.
 	subDirWithDelim := self codeDirectoryWithDelim.
-	
+
 	mcVersion := (commit versionFor: packageName) mcVersion.
 	mcVersion := self ensureMCVersionWithClassOrganisation: mcVersion.
-	mcVersion := self ensureMCClassOrganisationHasCorrectStructure: mcVersion.
-	self writerClass 
-		forInternalStoreFileOut: mcVersion 
-		on: repository.
+	self ensureMCClassOrganisationHasCorrectStructure: mcVersion.
+	self writerClass forInternalStoreFileOut: mcVersion on: repository.
 	filetreePackage := commit writerClass directoryNameFor: packageName.
 	(srcDir / filetreePackage) ensureDeleteAll.
-	self repository addFilesToIndex: { 
-		subDirWithDelim, (IceLibgitTonelWriter directoryNameFor: packageName).
-		subDirWithDelim, (IceLibgitFiletreeWriter directoryNameFor: packageName) }
+	self repository addFilesToIndex: {
+			(subDirWithDelim , (IceLibgitTonelWriter directoryNameFor: packageName)).
+			(subDirWithDelim , (IceLibgitFiletreeWriter directoryNameFor: packageName)) }
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceConvertFormatAction >> migrateSources [
 	| commit |
 	
@@ -152,18 +138,7 @@ IceConvertFormatAction >> migrateSources [
 		andParents: { commit }.
 ]
 
-{ #category : #private }
-IceConvertFormatAction >> obtainCommonCategory: aString from: aCollection [
-
-   	^ (aCollection allSatisfy: [ :each | each beginsWith: aString ])
- 		ifTrue: [ aString ]
- 		ifFalse: [ 
- 			(aString includes: $-) 
- 				ifTrue: [ self obtainCommonCategory: (aString copyUpToLast: $-) from: aCollection ]
- 				ifFalse: [ '' ] ] 
-]
-
-{ #category : #private }
+{ #category : 'private' }
 IceConvertFormatAction >> removeFiletreeRemnants [
 	"remove .filetree remaining"
 	| filetreeFiles |
@@ -175,17 +150,17 @@ IceConvertFormatAction >> removeFiletreeRemnants [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceConvertFormatAction >> writerClass [
 	
 	^ format = #tonel

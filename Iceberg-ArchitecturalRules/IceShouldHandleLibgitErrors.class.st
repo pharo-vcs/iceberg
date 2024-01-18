@@ -6,18 +6,19 @@ Otherwise, libgit errors may be thrown to the user and produce ugly effects. E.g
 	- Libgit errors are criptyc and can only be understood by reading the message text...
 "
 Class {
-	#name : #IceShouldHandleLibgitErrors,
-	#superclass : #ReAbstractRule,
-	#category : 'Iceberg-ArchitecturalRules'
+	#name : 'IceShouldHandleLibgitErrors',
+	#superclass : 'ReAbstractRule',
+	#category : 'Iceberg-ArchitecturalRules',
+	#package : 'Iceberg-ArchitecturalRules'
 }
 
-{ #category : #'testing-interest' }
+{ #category : 'testing-interest' }
 IceShouldHandleLibgitErrors class >> checksNode [
 
 	^ true
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceShouldHandleLibgitErrors >> check: aNode forCritiquesDo: aBlock [
 
 	"Detect strange case where method node is nil"
@@ -44,21 +45,21 @@ IceShouldHandleLibgitErrors >> check: aNode forCritiquesDo: aBlock [
 		ifFalse: [ aBlock cull: (self critiqueFor: aNode) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceShouldHandleLibgitErrors >> group [
 
 	^ 'Architectural'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceShouldHandleLibgitErrors >> libgitRepositoryHandleAccessorsForClass: aClass [
 
 	^ aClass allMethods
 		select:
-			[ :m | m pragmas anySatisfy: [ :p | p keyword = IceLibgitRepository libgitRepositoryHandleAccessorPragmaSelector ] ]
+			[ :m | m pragmas anySatisfy: [ :p | p selector = IceLibgitRepository libgitRepositoryHandleAccessorPragmaSelector ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceShouldHandleLibgitErrors >> name [
 
 	^ 'Should manage errors when doing a libgit call'

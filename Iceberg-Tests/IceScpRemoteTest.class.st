@@ -2,44 +2,46 @@
 Unit test for IceScpRemote
 "
 Class {
-	#name : #IceScpRemoteTest,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Core-Remotes'
+	#name : 'IceScpRemoteTest',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #support }
+{ #category : 'support' }
 IceScpRemoteTest >> gitoliteUrl1 [
 	^ 'gitolite3@server.bogus.edu:reponame'
 ]
 
-{ #category : #support }
+{ #category : 'support' }
 IceScpRemoteTest >> gitoliteUrl2 [
 	^ 'ssh://gitolite3@server.bogus.edu/reponame'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testCanHandleGitProtocol [
 
 	self assert: (IceGitScpRemote canHandleUrl: 'git@github.com:owner/repo.git')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testCanHandleGitoliteProtocol1 [		
 	self assert: (IceGitScpRemote canHandleUrl: self gitoliteUrl1)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testCanHandleGitoliteProtocol2 [		
 	self assert: (IceGitScpRemote canHandleUrl: self gitoliteUrl2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testCanHandleSSHProtocol [
 
 	self assert: (IceGitScpRemote canHandleUrl: 'ssh://github.com:owner/repo.git')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testGitHubURL [
 	| remote |
 	remote := IceGitRemote url: 'git@github.com:owner/repo.git'.
@@ -50,7 +52,7 @@ IceScpRemoteTest >> testGitHubURL [
 		assert: remote projectName equals: 'repo'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testGitoliteURL1 [
 	| remote |
 	remote := IceGitRemote url: self gitoliteUrl1.
@@ -61,7 +63,7 @@ IceScpRemoteTest >> testGitoliteURL1 [
 		assert: remote projectName equals: 'reponame'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testGitoliteURL2 [
 	| remote |
 	remote := IceGitRemote url: self gitoliteUrl2.
@@ -72,7 +74,7 @@ IceScpRemoteTest >> testGitoliteURL2 [
 		assert: remote projectName equals: 'reponame'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testSameRemoteReference [
 
 	| r1 r2 |
@@ -81,7 +83,7 @@ IceScpRemoteTest >> testSameRemoteReference [
 	self assert: (r1 referencesSameRemoteLocationAs: r2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testSameRemoteReferenceWithoutGitExtension [
 
 	| r1 r2 |
@@ -90,7 +92,7 @@ IceScpRemoteTest >> testSameRemoteReferenceWithoutGitExtension [
 	self assert: (r1 referencesSameRemoteLocationAs: r2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceScpRemoteTest >> testSshUrl [
 	| remote |
 	remote := IceGitRemote url: 'git@github.com:npasserini/pharo-git.git'.

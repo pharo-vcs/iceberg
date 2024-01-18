@@ -1,10 +1,12 @@
 Class {
-	#name : #IceInitialPropertiesFileTestCase,
-	#superclass : #IceParameterizedTestCase,
-	#category : 'Iceberg-Tests-Formats'
+	#name : 'IceInitialPropertiesFileTestCase',
+	#superclass : 'IceParameterizedTestCase',
+	#category : 'Iceberg-Tests-Formats',
+	#package : 'Iceberg-Tests',
+	#tag : 'Formats'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceInitialPropertiesFileTestCase >> testNewRepositoryHasPropertiesFileWithFileTreeInIndex [
 	| format |
 	format := IceLibgitRepository defaultFileFormatType.
@@ -19,7 +21,7 @@ IceInitialPropertiesFileTestCase >> testNewRepositoryHasPropertiesFileWithFileTr
 		ensure: [ IceLibgitRepository defaultFileFormatType: format ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceInitialPropertiesFileTestCase >> testNewRepositoryHasPropertiesFileWithTonelInIndex [
 	| format |
 	format := IceLibgitRepository defaultFileFormatType.

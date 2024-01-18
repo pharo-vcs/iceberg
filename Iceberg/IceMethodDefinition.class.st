@@ -6,18 +6,20 @@ My contents is the code of the method.
 See my superclasses for more information.
 "
 Class {
-	#name : #IceMethodDefinition,
-	#superclass : #IceCodeDefinition,
+	#name : 'IceMethodDefinition',
+	#superclass : 'IceCodeDefinition',
 	#instVars : [
 		'className',
 		'classIsMeta',
 		'protocol',
 		'sourceCode'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMethodDefinition class >> className: aClassName classIsMeta: classIsMeta protocol: protocol name: aString sourceCode: source [
 
 	^ (self named: aString)
@@ -28,7 +30,7 @@ IceMethodDefinition class >> className: aClassName classIsMeta: classIsMeta prot
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMethodDefinition >> = anotherDefinition [
 	"A method can be equal and belong to another class (and be in the other side). 
 	 And yes, even if this usually should not happen, it happens (and not always is incorrect)"
@@ -37,25 +39,25 @@ IceMethodDefinition >> = anotherDefinition [
 		and: [ self classIsMeta = anotherDefinition classIsMeta ] ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceMethodDefinition >> accept: aVisitor [
 	
 	^ aVisitor visitMethodNode: self
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceMethodDefinition >> actualClass [
 
 	^ self contextClass
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodDefinition >> addToPatcher: aMCPatcher [ 
 	
 	aMCPatcher addDefinition: self asMCDefinition
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodDefinition >> asMCDefinition [
 
 	^ MCMethodDefinition 
@@ -67,35 +69,35 @@ IceMethodDefinition >> asMCDefinition [
 		source: sourceCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> classIsMeta [
 	^ classIsMeta
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> classIsMeta: anObject [
 	classIsMeta := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> className [
 
 	^ className
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> className: anObject [
 	className := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> contents [
 
 	^ '"', self protocol, '"
 ', sourceCode
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceMethodDefinition >> contextClass [
 	
 	| class |
@@ -104,64 +106,64 @@ IceMethodDefinition >> contextClass [
 	^ class
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceMethodDefinition >> install [
 	
 	self asMCDefinition load
 ]
 
-{ #category : #'morphic - compatibility' }
+{ #category : 'morphic - compatibility' }
 IceMethodDefinition >> isLoadable [
-	^ self contextClass notNil
+	^ self contextClass isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMethodDefinition >> isMethodDefinition [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> ownerName [
 	
 	^ className
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> protocol [
 	^ protocol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> protocol: anObject [
 	protocol := anObject
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodDefinition >> removeFrom: aPatcher [
 	
 	aPatcher removeMethod: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodDefinition >> removeFromPatcher: aMCPatcher [ 
 	
 	aMCPatcher removeDefinition: self asMCDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> selector [
 	
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> sourceCode [
 
 	^ sourceCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodDefinition >> sourceCode: aString [
 
 	sourceCode := aString

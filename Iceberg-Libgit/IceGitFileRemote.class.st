@@ -2,35 +2,37 @@
 I am a 'remote' repository which is stored locally in your machine and accessed through a 'file://' url.
 "
 Class {
-	#name : #IceGitFileRemote,
-	#superclass : #IceGitRemote,
+	#name : 'IceGitFileRemote',
+	#superclass : 'IceGitRemote',
 	#instVars : [
 		'path'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitFileRemote class >> canHandleUrl: aRepositoryUrl [
 	^ (aRepositoryUrl beginsWith: 'file:') or: [aRepositoryUrl beginsWith: '/']
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitFileRemote >> detailedInfo [
 	^ { 'Origin' -> path pathString }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitFileRemote >> host [
 	^ 'local filesystem'
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceGitFileRemote >> organizer [
 	^ 'local'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitFileRemote >> parseUrl [
 	| znUrl |
 	znUrl := ZnUrl fromString: url defaultScheme: 'file'.
@@ -39,7 +41,7 @@ IceGitFileRemote >> parseUrl [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitFileRemote >> projectName [
 	^ path basename
 

@@ -1,11 +1,11 @@
-Extension { #name : #UITheme }
+Extension { #name : 'UITheme' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 UITheme >> badgeColor [
 	^ Color red
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 UITheme >> badgeTextColor [
 	^ Color white
 ]

@@ -2,18 +2,20 @@
 I am a null object representing the absence of a merge. I am used when no merge is needed between two versions, for example, in case the commit to merge is already in the image and the commit to merge into is an ancestor of this commit.
 "
 Class {
-	#name : #IceEmptyMerge,
-	#superclass : #Object,
-	#category : 'Iceberg-Changes'
+	#name : 'IceEmptyMerge',
+	#superclass : 'Object',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyMerge >> mergeTree [
 	
 	^ IceEmptyNode new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyMerge >> tree [
 	
 	^ self mergeTree

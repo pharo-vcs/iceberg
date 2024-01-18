@@ -1,10 +1,12 @@
 Class {
-	#name : #IceGitLocalBranch,
-	#superclass : #IceLocalBranch,
-	#category : #'Iceberg-Libgit-Core'
+	#name : 'IceGitLocalBranch',
+	#superclass : 'IceLocalBranch',
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #'private - pushing' }
+{ #category : 'private - pushing' }
 IceGitLocalBranch >> basicPushTo: aRemote [
 	| gitRemote |
 	
@@ -32,13 +34,13 @@ IceGitLocalBranch >> basicPushTo: aRemote [
 			yourself) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> branchNamePrefix [
 
 	^ 'refs/heads/'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> commit [
 	
 	repository handleLibgitError: [ | gitCommit gitId |
@@ -47,7 +49,7 @@ IceGitLocalBranch >> commit [
 		^ self repository commitFromGitCommit: gitCommit ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> commit: anIceGitCommit [
 	"Update the branch to point to a commit.
 	If the branch is HEAD, check it out in disk also."
@@ -65,44 +67,44 @@ IceGitLocalBranch >> commit: anIceGitCommit [
 							yourself) ]]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceGitLocalBranch >> delete [
 	repository handleLibgitError: [ | found |
 		found := self repositoryHandle lookupLocalBranch: self name ifAbsent: [ nil ].
 		self repositoryHandle deleteBranch: found ]
 ]
 
-{ #category : #'file-access' }
+{ #category : 'file-access' }
 IceGitLocalBranch >> fileSystem [
 	
 	^ self commit fileSystem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> gitRef [
 	
 	^ self name
 ]
 
-{ #category : #'private - tracking' }
+{ #category : 'private - tracking' }
 IceGitLocalBranch >> hasUpstream [
 	
 	self upstreamIfNone: [ ^ false ].
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceGitLocalBranch >> mergeWithBranch: anIceGitRemoteBranch [ 
 	self shouldBeImplemented.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> name [
 
 	^ self fullname withoutPrefix: self branchNamePrefix
 ]
 
-{ #category : #'private - pushing' }
+{ #category : 'private - pushing' }
 IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
 	| pushOptions |
@@ -127,7 +129,7 @@ IceGitLocalBranch >> pushBranchToRemote: aRemote gitRemote: gitRemote progress: 
 		pushOptions: pushOptions
 ]
 
-{ #category : #'private - pushing' }
+{ #category : 'private - pushing' }
 IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
 	| pushOptions |
@@ -152,7 +154,7 @@ IceGitLocalBranch >> pushTag: tag toRemote: aRemote gitRemote: gitRemote progres
 		pushOptions: pushOptions
 ]
 
-{ #category : #'private - pushing' }
+{ #category : 'private - pushing' }
 IceGitLocalBranch >> pushTagsToRemote: aRemote gitRemote: gitRemote progress: pushProgress [
 
 	self tags do: [ :tag | 
@@ -163,21 +165,21 @@ IceGitLocalBranch >> pushTagsToRemote: aRemote gitRemote: gitRemote progress: pu
 			progress: pushProgress ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceGitLocalBranch >> pushTo: aRemote [
 
 	repository handleLibgitError: [ 
 		self basicPushTo: aRemote ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> repositoryHandle [
 	
 	<repositoryHandleAccessor>
 	^ repository repositoryHandle
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceGitLocalBranch >> setUpstream: anIceGitRemoteBranch [
 	
 	repository handleLibgitError: [ | localBranch |
@@ -185,20 +187,20 @@ IceGitLocalBranch >> setUpstream: anIceGitRemoteBranch [
 		localBranch setUpstream: anIceGitRemoteBranch gitRef ]
 ]
 
-{ #category : #'private - pushing' }
+{ #category : 'private - pushing' }
 IceGitLocalBranch >> setUpstreamIfMissing: aRemote [
 	
 	self hasUpstream ifTrue: [ ^ self ].
 	self setUpstream: (aRemote remoteBranchNamed: self gitRef)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> shortname [
 
 	^ self name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitLocalBranch >> trackedBranch [
 	
 	| upstream |
@@ -209,19 +211,19 @@ IceGitLocalBranch >> trackedBranch [
 	^ upstream
 ]
 
-{ #category : #tracking }
+{ #category : 'tracking' }
 IceGitLocalBranch >> tracksRemoteBranch [
 	
 	^ self hasUpstream
 ]
 
-{ #category : #'private - tracking' }
+{ #category : 'private - tracking' }
 IceGitLocalBranch >> upstream [
 	
 	^ self upstreamIfNone: [ IceUpstreamNotConfigured signal ]
 ]
 
-{ #category : #'private - tracking' }
+{ #category : 'private - tracking' }
 IceGitLocalBranch >> upstreamIfNone: aBlock [
 	repository handleLibgitError: [ | localBranch gitUpstream |
 		localBranch := self repositoryHandle lookupLocalBranch: self name.

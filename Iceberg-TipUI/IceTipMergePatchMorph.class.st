@@ -2,19 +2,21 @@
 I redefine part of monticello's PSMCMergePatchMorph to not require to rebuild a tree but use Iceberg's one directly. I also adapt the patch morph to handle files and several packages at the same time.
 "
 Class {
-	#name : #IceTipMergePatchMorph,
-	#superclass : #PSMCMergePatchMorph,
-	#category : #'Iceberg-TipUI-Morphic'
+	#name : 'IceTipMergePatchMorph',
+	#superclass : 'PSMCMergePatchMorph',
+	#category : 'Iceberg-TipUI-Morphic',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Morphic'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergePatchMorph >> changes [
 	"Answer the changes tree roots."
 	
 	^ model ifNotNil: [ model mergeTree children collect: [ :each | IceMergeListWrapper with: each model: model ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> hasAnyNonConflictConflicts [
 	"Answer whether there are any conflicts not marked as a conflict."
 
@@ -22,7 +24,7 @@ IceTipMergePatchMorph >> hasAnyNonConflictConflicts [
 		conflict isConflict and: [ conflict isResolved ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> hasAnyNonIncomingConflicts [
 	"Answer whether there are any conflicts not marked as incoming."
 
@@ -31,7 +33,7 @@ IceTipMergePatchMorph >> hasAnyNonIncomingConflicts [
 			conflict isResolved not or: [conflict isLeftChosen ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> hasAnyNonKeptConflicts [
 	"Answer whether there are any conflicts not marked as keep."
 
@@ -40,7 +42,7 @@ IceTipMergePatchMorph >> hasAnyNonKeptConflicts [
 			conflict isResolved not or: [conflict isRightChosen ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> hasConflicts [
 	"Answer whether there are any conflicts."
 	
@@ -48,7 +50,7 @@ IceTipMergePatchMorph >> hasConflicts [
 		conflict isConflict ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> keepAllCurrentVersion [
 	"Mark all conflicts as local."
 	
@@ -58,16 +60,7 @@ IceTipMergePatchMorph >> keepAllCurrentVersion [
 	self updateSource
 ]
 
-{ #category : #actions }
-IceTipMergePatchMorph >> keepCurrentVersion [
-	"Mark the conflict as local."
-	
-	self selectedChangeWrapper chooseLocal.
-	self changed: #changes.
-	self updateSource
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> markAllAsConflict [
 	"Mark all conflicts as unresolved."
 	
@@ -77,7 +70,7 @@ IceTipMergePatchMorph >> markAllAsConflict [
 	self updateSource
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergePatchMorph >> markAsConflict [
 	"Mark the operation as unresolved conflict."
 	
@@ -86,7 +79,7 @@ IceTipMergePatchMorph >> markAsConflict [
 	self updateSource.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergePatchMorph >> nextConflict [
 	"Answer the next (unresolved) conflict or, nil if none."
 
@@ -101,7 +94,7 @@ IceTipMergePatchMorph >> nextConflict [
 	^ IceMergeListWrapper with: node model: model.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> notAllConflictsResolved [
 	"Answer whether any conflicts are unresolved."
 	
@@ -109,7 +102,7 @@ IceTipMergePatchMorph >> notAllConflictsResolved [
 		item isConflict and: [item isResolved not]]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipMergePatchMorph >> selectNextConflict [
 	"Select the next conflict after the current selection, if any."
 
@@ -118,31 +111,31 @@ IceTipMergePatchMorph >> selectNextConflict [
 	self changed: {#openPath}, next item path segments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergePatchMorph >> selectedChange [
 	"Answer the selected change."
 
 	^(self selectedChangeWrapper ifNil: [^nil]) item value
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipMergePatchMorph >> selectionHasActualClass [
 	"Answer whether the currently selected change has an actual
 	class in the image."
 
 	^self selectedChangeWrapper
 		ifNil: [false]
-		ifNotNil: [:w | w item value contextClass notNil]
+		ifNotNil: [:w | w item value contextClass isNotNil]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> selectionIsRemoteChosen [
 	self selectedChange ifNil: [ ^ false].
 	^ self selectedChange isConflict
 		and: [ self selectedChange isRightChosen ]
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceTipMergePatchMorph >> updateSource [
 	"Update the source difference morph."
 
@@ -168,7 +161,7 @@ IceTipMergePatchMorph >> updateSource [
 		ifFalse: [self diffMorph indicateSrc]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergePatchMorph >> useAllIncomingVersion [
 	"Mark all conflicts as remote."
 	

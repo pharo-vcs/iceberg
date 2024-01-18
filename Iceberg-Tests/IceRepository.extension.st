@@ -1,12 +1,12 @@
-Extension { #name : #IceRepository }
+Extension { #name : 'IceRepository' }
 
-{ #category : #'*Iceberg-Tests' }
+{ #category : '*Iceberg-Tests' }
 IceRepository >> latestVersion: packageName [
 	^ (self packageNamed: packageName) latestVersion
 
 ]
 
-{ #category : #'*Iceberg-Tests' }
+{ #category : '*Iceberg-Tests' }
 IceRepository >> loadPackageNamed: packageName [
 
 	self workingCopy

@@ -6,23 +6,26 @@ My contents are the tags defined in the package.
 See my superclasses for more information.
 "
 Class {
-	#name : #IcePackageDefinition,
-	#superclass : #IceDefinition,
+	#name : 'IcePackageDefinition',
+	#superclass : 'IceDefinition',
 	#instVars : [
 		'package',
-		'categories',
-		'path'
+		'path',
+		'packageName',
+		'tagNames'
 	],
-	#category : 'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IcePackageDefinition >> accept: aVisitor [
 	
 	^ aVisitor visitPackage: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IcePackageDefinition >> addModification: anIceModification toPatcher: aMCPatcher [ 
 
 	"In MC there is no such thing as a MCPackage definition.
@@ -35,78 +38,88 @@ IcePackageDefinition >> addModification: anIceModification toPatcher: aMCPatcher
 	^ aMCPatcher addDefinition: anIceModification leftDefinition asMCDefinition
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IcePackageDefinition >> addToPatcher: aPatcher [
-	
-	aPatcher addDefinition: (MCOrganizationDefinition categories: categories)
+
+	aPatcher addDefinition: self asMCDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDefinition >> asMCDefinition [
-	
-	^ MCOrganizationDefinition categories: categories
+
+	^ MCOrganizationDefinition packageName: packageName tagNames: tagNames
 ]
 
-{ #category : #accessing }
-IcePackageDefinition >> categories [
-	^ categories
-]
-
-{ #category : #accessing }
-IcePackageDefinition >> categories: aCollection [
-
-	categories := aCollection
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDefinition >> contents [
-	
+
 	^ String streamContents: [ :stream |
-		stream nextPutAll:	'Package tags: '.
-		categories do: [ :elem | 
-			stream nextPutAll: String crlf;
-				nextPutAll: String tab;
-				nextPutAll: elem.
-	]]
+		  stream
+			  nextPutAll: 'Package: ';
+			  nextPutAll: self packageName;
+			  crlf;
+			  nextPutAll: 'Tags: '.
+		  self tagNames do: [ :tagName |
+			  stream
+				  nextPutAll: String crlf;
+				  nextPutAll: String tab;
+				  nextPutAll: tagName ] ]
 ]
 
-{ #category : #initialization }
-IcePackageDefinition >> initialize [
-
-	super initialize.
-	categories := #()
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 IcePackageDefinition >> isPackageDefinition [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDefinition >> package [
 	
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+IcePackageDefinition >> packageName [
+
+	^ packageName
+]
+
+{ #category : 'accessing' }
+IcePackageDefinition >> packageName: anObject [
+
+	packageName := anObject
+]
+
+{ #category : 'accessing' }
 IcePackageDefinition >> path [
 	^ path
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackageDefinition >> path: aRelativePath [ 
 	
 	path := aRelativePath
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IcePackageDefinition >> removeFrom: aVisitor [ 
 	aVisitor removePackage: self
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IcePackageDefinition >> removeFromPatcher: aPatcher [
-	
-	aPatcher removeDefinition: (MCOrganizationDefinition categories: categories)
+
+	aPatcher removeDefinition: self asMCDefinition
+]
+
+{ #category : 'accessing' }
+IcePackageDefinition >> tagNames [
+
+	^ tagNames
+]
+
+{ #category : 'accessing' }
+IcePackageDefinition >> tagNames: anObject [
+
+	tagNames := anObject
 ]

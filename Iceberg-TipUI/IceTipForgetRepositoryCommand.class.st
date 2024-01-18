@@ -3,27 +3,29 @@ I will allow the ""forget"" of a repository (remote it from list of registered r
 I also add the possibility of remove the repository from file system.
 "
 Class {
-	#name : #IceTipForgetRepositoryCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipForgetRepositoryCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipForgetRepositoryCommand class >> defaultDescription [
 
 	^ 'Removes this repository from the list of managed repositories (it will not remove any local repository)'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipForgetRepositoryCommand class >> defaultName [
 
 	^ 'Forget repository'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipForgetRepositoryCommand >> execute [
 
-	(IceTipRemoveRepositoryDialog 
+	(IceTipRemoveRepositoryDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel)
 		asModalWindow 
@@ -31,13 +33,13 @@ IceTipForgetRepositoryCommand >> execute [
 			open		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipForgetRepositoryCommand >> iconName [
 
 	^ #remove
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipForgetRepositoryCommand >> shortcutKey [
 
 	^ $x meta

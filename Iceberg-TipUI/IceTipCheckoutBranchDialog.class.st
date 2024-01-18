@@ -4,28 +4,30 @@ I'm a dialog to perform a checkout of a branch.
 (self onRepository: IceRepository registry anyOne) openDialogWithSpec
 "
 Class {
-	#name : #IceTipCheckoutBranchDialog,
-	#superclass : #IceTipOptionDialog,
+	#name : 'IceTipCheckoutBranchDialog',
+	#superclass : 'IceTipOptionDialogPresenter',
 	#instVars : [
 		'model',
 		'types'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCheckoutBranchDialog class >> onRepository: aRepository [
 
 	^ self on: (IceTipRepositoryModel on: aRepository) beCached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutBranchDialog >> allTypes [
 
 	^ types ifNil: [ types := self createCheckoutBranchTypes ]
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 
 	| allTypes |
@@ -49,50 +51,50 @@ IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 	^ allTypes
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCheckoutBranchDialog >> doAccept [
 
 	self selectedType doAccept
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutBranchDialog >> initialExtentForWindow [
 
 	^ (600 @ 400) scaledByDisplayScaleFactor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutBranchDialog >> model [
 
 	^ model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutBranchDialog >> setModelBeforeInitialization: anObject [
 
 	model := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutBranchDialog >> titleForWindow [
 
 	^ 'Checkout branch'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutBranchDialog >> withOnlyNewBranch [
 
 	types := self allTypes select: #isNewBranch.
 	typeList items: types
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutBranchDialog >> withTypes: aCollection [
 	types := aCollection.
 	typeList items: types.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutBranchDialog >> withoutNewBranch [
 	types := self allTypes reject: #isNewBranch.
 	typeList items: types.

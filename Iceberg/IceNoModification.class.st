@@ -2,47 +2,44 @@
 I am a no modification in a tree. I am useful to represent a container (that did not change) containing elements that did change. I contain the definition I represent to be able to show it. I delegate the icon to my definition and I know how to calculate a conflict with other operations.
 "
 Class {
-	#name : #IceNoModification,
-	#superclass : #IceOperation,
-	#category : #'Iceberg-Changes'
+	#name : 'IceNoModification',
+	#superclass : 'IceOperation',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceNoModification >> accept: aVisitor [
 	
 	^ aVisitor visitNoModification: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceNoModification >> hasChanges [
 	
 	^ false
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceNoModification >> inverse [
 	
 	^ self
 ]
 
-{ #category : #testing }
-IceNoModification >> isConflict [
-	^ false
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 IceNoModification >> isNoModification [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceNoModification >> leftContents [
 	
 	^ definition contents
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceNoModification >> mergeWithLeftAddition: anIceAddition [ 
 	
 	"This should not happen. If I represent a no modification of a node, that means that the original definition existed on the base version.
@@ -50,20 +47,20 @@ IceNoModification >> mergeWithLeftAddition: anIceAddition [
 	self shouldNotImplement
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceNoModification >> mergeWithLeftModification: anIceModification [ 
 	
 	^ IceNonConflictingOperation operation: anIceModification
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceNoModification >> mergeWithLeftNoOperation: anIceNoModification [ 
 	
 	"There was no modifications on both sides, I can just return the left side"
 	^ IceNonConflictingOperation operation: anIceNoModification
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceNoModification >> mergeWithLeftRemoval: anIceRemoval [
 	
 	"We assume that if I'm in the operation tree this means my children have modifications.
@@ -73,7 +70,7 @@ IceNoModification >> mergeWithLeftRemoval: anIceRemoval [
 	^ IceConflictingOperation left: anIceRemoval right: self
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceNoModification >> mergeWithOperation: anOperation [
 	
 	^ anOperation mergeWithLeftNoOperation: self

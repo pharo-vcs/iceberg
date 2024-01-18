@@ -1,6 +1,6 @@
-Extension { #name : #MorphicUIManager }
+Extension { #name : 'MorphicUIManager' }
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 MorphicUIManager >> inform: aStringOrText actionOnClick: aBlock [
 	"Display a message for the user to read and then dismiss. When clicked, execute an action."
 

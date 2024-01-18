@@ -4,18 +4,20 @@ I will be active in repository list browser, when repository is in filetree form
 
 "
 Class {
-	#name : #IceFiletreeToTonelCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-Plugin-Migration-Commands'
+	#name : 'IceFiletreeToTonelCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-Plugin-Migration-Commands',
+	#package : 'Iceberg-Plugin-Migration',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceFiletreeToTonelCommand class >> defaultName [
 
 	^ 'Convert repository sources to tonel'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceFiletreeToTonelCommand >> canBeExecuted [
 	| repository |
 
@@ -28,8 +30,8 @@ IceFiletreeToTonelCommand >> canBeExecuted [
 				and: [ repository head isUnbornBranch not ] ] ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceFiletreeToTonelCommand >> execute [
 
-	(IceTipFiletreeToTonelDialog on: self repository) openDialog
+	(IceTipFiletreeToTonelDialogPresenter on: self repository) openDialog
 ]

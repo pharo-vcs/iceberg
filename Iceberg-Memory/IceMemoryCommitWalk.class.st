@@ -1,43 +1,44 @@
 Class {
-	#name : #IceMemoryCommitWalk,
-	#superclass : #IceAbstractCommitWalk,
+	#name : 'IceMemoryCommitWalk',
+	#superclass : 'IceAbstractCommitWalk',
 	#instVars : [
 		'startingPoint',
 		'queue'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #walking }
+{ #category : 'walking' }
 IceMemoryCommitWalk >> commitsDo: aBlock [ 
 	self rawResultsDo: aBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryCommitWalk >> fromBranch: aBranch [
 	
 	self fromCommit: aBranch commit
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryCommitWalk >> fromCommit: anIceMemoryCommit [ 
 	
 	queue add: anIceMemoryCommit
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryCommitWalk >> fromTag: anIceTag [ 
 	self shouldBeImplemented.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceMemoryCommitWalk >> initialize [
 
 	super initialize.
 	queue := OrderedCollection new
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 IceMemoryCommitWalk >> rawResultsDo: aBlockClosure [ 
 	
 	| current |

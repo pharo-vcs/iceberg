@@ -1,21 +1,23 @@
 Class {
-	#name : #IceDependencyEnvironment,
-	#superclass : #Object,
+	#name : 'IceDependencyEnvironment',
+	#superclass : 'Object',
 	#instVars : [
 		'commit',
 		'definitions'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceDependencyEnvironment class >> on: anIceGitCommit [ 
 	^ self new 
 	commit: anIceGitCommit;
 	yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependencyEnvironment >> allSubclassesNamesOf: aName [
 
 	| result |
@@ -25,7 +27,7 @@ IceDependencyEnvironment >> allSubclassesNamesOf: aName [
 	^ result , (result flatCollect: [ :e | self allSubclassesNamesOf: e ]).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependencyEnvironment >> allUsingTraitNamed: aName [ 
 	| result |
 	result := self usersOfTraitNamed: aName.
@@ -35,18 +37,18 @@ IceDependencyEnvironment >> allUsingTraitNamed: aName [
 		, (result flatCollect: [ :e | self allUsingTraitNamed:  e ])
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceDependencyEnvironment >> classes [
 	
 	^ self definitions select: [ :e | e isClassDefinition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependencyEnvironment >> commit: anIceGitCommit [ 
 	commit := anIceGitCommit
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceDependencyEnvironment >> definitions [
 
 	^ definitions
@@ -54,19 +56,19 @@ IceDependencyEnvironment >> definitions [
 			definitions := commit packages flatCollect: [ :package | (commit snapshotForPackage: package) definitions ] ]
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceDependencyEnvironment >> subclassNamesOf: aString [
 	^ self classes
 		select: [ :e | e superclassName = aString ]
 		thenCollect: [ :e | e className ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependencyEnvironment >> traits [
 	^ self definitions select: [ :e | e isTraitDefinition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceDependencyEnvironment >> usersOfTraitNamed: aName [ 
 	^ (self traits , self classes) 
 		select: [ :e | e traitComposition includesSubstring: aName ]

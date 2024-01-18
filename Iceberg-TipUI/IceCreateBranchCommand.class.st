@@ -3,12 +3,14 @@ I'm a command to create a new branch from a commit.
 this is usefull in the case of commiting changes in unsync repositories (so you open a branch and you commit there)
 "
 Class {
-	#name : #IceCreateBranchCommand,
-	#superclass : #IceRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceCreateBranchCommand',
+	#superclass : 'IceRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #execute }
+{ #category : 'execute' }
 IceCreateBranchCommand >> execute [
 	| selection |
 	

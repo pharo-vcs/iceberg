@@ -3,27 +3,29 @@ I'm a command to install a chunk of code from a commit (shown in a diff) into th
 ""chunk"" can be a package, class or single method.
 "
 Class {
-	#name : #IceTipRevertChangeCommand,
-	#superclass : #IceTipCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRevertChangeCommand',
+	#superclass : 'IceTipCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRevertChangeCommand class >> defaultDescription [
 
 	^ 'Revert selected change in the image'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipRevertChangeCommand class >> defaultName [
 
 	^ 'Revert change'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRevertChangeCommand >> execute [
 
-	UIManager default
+	context application
 		informUser: 'Reverting change...'
 		during: [ self repository workingCopy discardChanges: self item ].
 
@@ -33,13 +35,13 @@ IceTipRevertChangeCommand >> execute [
 		(IceRepositoryModified for: self repository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRevertChangeCommand >> iconName [
 
 	^ #smallUndo
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRevertChangeCommand >> tool [
 	"We consider the diffPanel of the context as our tool. This is important because we have to announce in the same Announcer instance that is subscribed for our news."
 

@@ -2,19 +2,21 @@
 I'm a model for IcePackage entries.
 "
 Class {
-	#name : #IceTipPackageModel,
-	#superclass : #IceTipEntityModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipPackageModel',
+	#superclass : 'IceTipEntityModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> browsePackage [
 	<noCache>
 
 	self entity browse
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> browseRepositoryVersion [
 	<noCache>
 	| snapshot |
@@ -24,7 +26,7 @@ IceTipPackageModel >> browseRepositoryVersion [
 		showLabelled: 'Snapshot for ', self entity name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> description [
 	| text |
 	
@@ -34,7 +36,7 @@ IceTipPackageModel >> description [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> descriptionDecorator [
 
 	self entity isModified 
@@ -45,22 +47,22 @@ IceTipPackageModel >> descriptionDecorator [
 	^ super descriptionDecorator
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipPackageModel >> isLoaded [
 	^ self entity isLoaded
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipPackageModel >> isModified [
 	^ self entity isModified
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> name [
 	^ self entity name
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipPackageModel >> newLoadAction [
 	<noCache>
 
@@ -75,69 +77,72 @@ IceTipPackageModel >> newLoadAction [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'actions' }
+IceTipPackageModel >> newReloadAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Reloading package {1}' format: { self entity name }) ;
+		onSuccessRepositoryModified;
+		action: [ 
+			Iceberg announcer 
+				suspendAllForRepository: self entity repository 
+				while: [ self entity reload ] ];
+		yourself
+]
+
+{ #category : 'actions' }
+IceTipPackageModel >> newRemoveAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Removing package {1}' format: { self entity name });
+		onSuccessRepositoryModified; 
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity remove ] ];
+		yourself
+]
+
+{ #category : 'actions' }
+IceTipPackageModel >> newUnloadAction [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Unloading package {1}' format: { self entity name });
+		onSuccessRepositoryModified; 
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity unload ] ];
+		yourself
+]
+
+{ #category : 'accessing' }
 IceTipPackageModel >> packageName [
 	^ self entity packageName
 ]
 
-{ #category : #actions }
-IceTipPackageModel >> reload [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Reloading package {1}' format: { self entity name }) ;
-		onSuccessRepositoryModified;
-		execute: [ 
-			Iceberg announcer 
-				suspendAllForRepository: self entity repository 
-				while: [ self entity reload ] ]
-]
-
-{ #category : #actions }
-IceTipPackageModel >> remove [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Removing package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity remove ] ]
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> status [
 	"entity could be a repository or a package"
 	[
 		self entity repository isMissing ifTrue: [ ^ 'Local repository missing' ].
 		self entity isLoaded ifFalse: [ ^ 'Not loaded' ].
-		self entity isModified ifTrue: [ ^ 'Uncommited changes' ].
+		self entity isModified ifTrue: [ ^ 'Uncommitted changes' ].
 		^ 'Up to date' ] 
 	on: Error do: [ :e | 
 		^ e description ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPackageModel >> statusDecorator [
 
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
-]
-
-{ #category : #actions }
-IceTipPackageModel >> unload [
-	<noCache>
-
-	IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Unloading package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		execute: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity unload ] ]
 ]

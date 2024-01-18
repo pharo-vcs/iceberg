@@ -1,18 +1,20 @@
 Class {
-	#name : #IceAsDependencyVisitor,
-	#superclass : #Object,
+	#name : 'IceAsDependencyVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'cherrypicker'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAsDependencyVisitor >> cherrypicker: anIceCherrypicker [ 
 	cherrypicker := anIceCherrypicker
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitClassDefinition: anIceClassDefinition [
 	^ IceClassDependency new
 		definition: anIceClassDefinition;
@@ -20,7 +22,7 @@ IceAsDependencyVisitor >> visitClassDefinition: anIceClassDefinition [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
 	^ IceExtendedClassDependency new
 		definition: anIceExtensionDefinition;
@@ -28,7 +30,7 @@ IceAsDependencyVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitMethodNode: anIceMethodDefinition [ 
 	^ IceMethodDependency new
 	definition: anIceMethodDefinition ;
@@ -36,7 +38,7 @@ IceAsDependencyVisitor >> visitMethodNode: anIceMethodDefinition [
 	yourself 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [
 	^ IcePackageDependency new
 		definition: anIcePackageDefinition;
@@ -44,7 +46,7 @@ IceAsDependencyVisitor >> visitPackage: anIcePackageDefinition [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitTraitDefinition: anIceTraitDefinition [
 	^ IceTraitDependency new
 		definition: anIceTraitDefinition;
@@ -52,7 +54,7 @@ IceAsDependencyVisitor >> visitTraitDefinition: anIceTraitDefinition [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAsDependencyVisitor >> visitTreeNode: anIceNode [
 	^ anIceNode value definition accept: self
 ]

@@ -3,8 +3,8 @@ I'm a comment panel.
 I can obtain a comment text and certain ""commit specific"" options. 
 "
 Class {
-	#name : #IceTipCommentPanel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceTipCommentPanel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'repositoryModel',
 		'commentText',
@@ -15,34 +15,36 @@ Class {
 		'fixesLabel',
 		'optionsButton'
 	],
-	#category : #'Iceberg-TipUI-View-Commit'
+	#category : 'Iceberg-TipUI-View-Commit',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Commit'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> actionButtonBar [
 
 	^ actionButtonBar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> clear [
 
 	commentText text: ''
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommentPanel >> commentText [
 
 	^ commentText
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommentPanel >> commitButton [
 
 	^ commitButton
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCommentPanel >> defaultLayout [
 
 	self flag: #pharoTodo. "FIXES ISSUE NUMBER INPUT is disabled. See below.
@@ -63,19 +65,19 @@ IceTipCommentPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> fixesField [
 
 	^ fixesField
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> fixesLabel [
 
 	^ fixesLabel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommentPanel >> initializePresenters [
 	| fixesHelpString |
 
@@ -85,14 +87,14 @@ IceTipCommentPanel >> initializePresenters [
 		add: (self newToolbarToggleButton
 			icon: (self application iconNamed: #smallSave);
 			label: 'Save image';
-			help: 'Save image when commiting';
+			help: 'Save image when committing';
 			state: self isSaving;
 			whenChangedDo: [ :aBoolean | self saveOnCommit: aBoolean ];
 			yourself);
 		add: (self newToolbarToggleButton
 			icon: (self application iconNamed: #smallError);
 			label: 'Run critics';
-			help: 'Run critics when commiting';
+			help: 'Run critics when committing';
 			state: self isRunningCriticsOnCommit;
 			whenChangedDo: [ :aBoolean | self runCriticsOnCommit: aBoolean ];
 			yourself);
@@ -113,7 +115,7 @@ IceTipCommentPanel >> initializePresenters [
 		placeholder: 'A comment for your commit';
 		yourself.
 
-	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be commited or merged in the default branch'.
+	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
 	fixesLabel := self newLabel
 		label: 'Fixes #';
 		help: fixesHelpString;
@@ -132,25 +134,25 @@ IceTipCommentPanel >> initializePresenters [
 		yourself)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommentPanel >> isPushing [
 
 	^ IceTipCommitSettings pushOnCommit and: [ self repositoryModel branchModel hasUpstream ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommentPanel >> isRunningCriticsOnCommit [
 
 	^ IceTipCommitSettings critiquesOnCommit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommentPanel >> isSaving [
 
 	^ IceTipCommitSettings saveImageOnCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> message [
 
 	self fixesField text isAllDigits ifFalse: [ 
@@ -163,7 +165,7 @@ IceTipCommentPanel >> message [
 			  nextPutAll: self fixesField number asString ]
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceTipCommentPanel >> onCommit: aBlock [
 
 	commitButton action: [ 
@@ -172,62 +174,62 @@ IceTipCommentPanel >> onCommit: aBlock [
 			cull: self isPushing ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCommentPanel >> pushCheckbox [
 
 	^ pushCheckbox
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> pushOnCommit: aBoolean [
 
 	IceTipCommitSettings pushOnCommit: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> refresh [
 
 	commitButton help: ('Commit your changes to {1}' format: { self repositoryName }).
 	pushCheckbox label: ('Push changes to {1}' format: { self repositoryRemoteName })
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> repositoryModel [
 
 	^ repositoryModel
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 IceTipCommentPanel >> repositoryName [
 
 	^ self repositoryModel name
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 IceTipCommentPanel >> repositoryRemoteName [
 
 	^ self repositoryModel pushRemoteName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> runCriticsOnCommit: aBoolean [
 
 	IceTipCommitSettings critiquesOnCommit: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommentPanel >> saveOnCommit: aBoolean [
 
 	IceTipCommitSettings saveImageOnCommit: aBoolean
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCommentPanel >> setModelBeforeInitialization: aRepositoryModel [
 
 	repositoryModel := aRepositoryModel
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceTipCommentPanel >> titleForWindow [
 
 	^ 'Comment'

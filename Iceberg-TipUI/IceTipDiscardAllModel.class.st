@@ -1,26 +1,28 @@
 Class {
-	#name : #IceTipDiscardAllModel,
-	#superclass : #IceTipModel,
+	#name : 'IceTipDiscardAllModel',
+	#superclass : 'IceTipModel',
 	#instVars : [
 		'workingCopy',
 		'diffModel',
 		'repository'
 	],
-	#category : #'Iceberg-TipUI-Model'
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipDiscardAllModel >> calculateDiff [
 	
 	^ workingCopy referenceCommit diffTo: workingCopy
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipDiscardAllModel >> diff [
 
 	^ diffModel ifNil: [ 
 		  | diff |
-		  UIManager default
+		  self application
 			  informUser: 'Calculating diff'
 			  during: [ diff := self calculateDiff ].
 		  diffModel := IceTipCommitDiffModel
@@ -28,13 +30,13 @@ IceTipDiscardAllModel >> diff [
 			               on: diff ]
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipDiscardAllModel >> discardAll [
 	
 	workingCopy discardChanges
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipDiscardAllModel >> newDiscardAction [
 	<noCache>
 
@@ -46,24 +48,24 @@ IceTipDiscardAllModel >> newDiscardAction [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiscardAllModel >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiscardAllModel >> repository: anIceTipCachedModel [ 
 	
 	repository := anIceTipCachedModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiscardAllModel >> workingCopy [
 
 	^ workingCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipDiscardAllModel >> workingCopy: anObject [
 
 	workingCopy := anObject

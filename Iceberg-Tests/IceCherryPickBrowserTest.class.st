@@ -1,10 +1,12 @@
 Class {
-	#name : #IceCherryPickBrowserTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceCherryPickBrowserTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 
 	| commitToCherryPick presenter |

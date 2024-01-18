@@ -1,6 +1,6 @@
-Extension { #name : #IceTipRepositoriesBrowser }
+Extension { #name : 'IceTipRepositoriesBrowser' }
 
-{ #category : #'*Iceberg-Plugin-Metacello' }
+{ #category : '*Iceberg-Plugin-Metacello' }
 IceTipRepositoriesBrowser class >> metacelloCommandsWith: presenter forRootGroup: aCommandGroup [
 
 	<extensionCommands>
@@ -14,6 +14,6 @@ IceTipRepositoriesBrowser class >> metacelloCommandsWith: presenter forRootGroup
 
 	presenter selectedItem ifNotNil: [ 
 		IceTipMetacelloInstallCommandBuilder new
-			addCommandsFor: presenter selectedItem intoGroup: newGroup ]	
+			addCommandsFor: presenter selectedItem intoGroup: newGroup context: presenter ]	
 
 ]

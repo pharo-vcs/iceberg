@@ -1,6 +1,6 @@
-Extension { #name : #IceWorkingCopy }
+Extension { #name : 'IceWorkingCopy' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceWorkingCopy >> description [
 	
 	^ self workingCopyState description

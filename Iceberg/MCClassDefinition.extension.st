@@ -1,13 +1,6 @@
-Extension { #name : #MCClassDefinition }
+Extension { #name : 'MCClassDefinition' }
 
-{ #category : #'*Iceberg-Adapters' }
-MCClassDefinition >> classCategory [
-	"Avoid direct use of #category, because MCClassDefinitions and 
-	MCMethodDefinition use the same message for different things. "
-	^ self category
-]
-
-{ #category : #'*Iceberg' }
+{ #category : '*Iceberg' }
 MCClassDefinition >> fullDefinitionString [
 	^ String streamContents: [:stream | 
 		self printDefinitionOn: stream.
@@ -15,7 +8,7 @@ MCClassDefinition >> fullDefinitionString [
 		stream << self comment ]
 ]
 
-{ #category : #'*Iceberg-Changes' }
+{ #category : '*Iceberg-Changes' }
 MCClassDefinition >> removeMetaSideVariables [
 	
 	variables := variables reject: [ :e | e isClassInstanceVariable ].

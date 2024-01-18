@@ -1,19 +1,21 @@
 Class {
-	#name : #IceTipRepositoryBrowserTest,
-	#superclass : #IceAbstractTestCase,
+	#name : 'IceTipRepositoryBrowserTest',
+	#superclass : 'IceAbstractTestCase',
 	#instVars : [
 		'presenter'
 	],
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest class >> isAbstract [
 
 	^ self name = #IceTipRepositoryBrowserTest
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasAddRemoteButtonOnTheRight [
 	self
 		assert:
@@ -21,7 +23,7 @@ IceTipRepositoryBrowserTest >> testHasAddRemoteButtonOnTheRight [
 				anySatisfy: [ :aButton | aButton label = 'Add remote' ])
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasBranchButtonOnTheLeft [
 	self
 		assert:
@@ -29,7 +31,7 @@ IceTipRepositoryBrowserTest >> testHasBranchButtonOnTheLeft [
 				anySatisfy: [ :aButton | aButton label = 'Branch' ])
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasCorrectSideTreeBar [
 	self
 		assertCollection: (presenter sidebarTree roots collect: #name)
@@ -37,16 +39,16 @@ IceTipRepositoryBrowserTest >> testHasCorrectSideTreeBar [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasHiedraHistoryBrowser [
 
 	presenter historyPanel class = IceTipHiedraAltHistoryBrowser
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasMergeButtonOnTheLeft [
 	self
 		assert:
 			(presenter toolbar leftItems
-				anySatisfy: [ :aButton | aButton label = 'Merge' ])
+				anySatisfy: [ :aButton | 'Merge*' match: aButton label ])
 ]

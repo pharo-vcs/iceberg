@@ -1,69 +1,71 @@
 Class {
-	#name : #IceTipCommitSettings,
-	#superclass : #Object,
+	#name : 'IceTipCommitSettings',
+	#superclass : 'Object',
 	#classInstVars : [
 		'pushOnCommit',
 		'saveImageOnCommit',
 		'critiquesOnCommit'
 	],
-	#category : #'Iceberg-Settings'
+	#category : 'Iceberg-Settings',
+	#package : 'Iceberg',
+	#tag : 'Settings'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommit [
 
 	^ critiquesOnCommit ifNil: [ 
 		  critiquesOnCommit := self critiquesOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommit: aBoolean [
 	critiquesOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> critiquesOnCommitDefaultValue [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommit [
 
 	^ pushOnCommit ifNil: [ 
 		  pushOnCommit := self pushOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommit: aBoolean [
 	pushOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> pushOnCommitDefaultValue [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommit [
 
 	^ saveImageOnCommit ifNil: [ 
 		  saveImageOnCommit := self saveImageOnCommitDefaultValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommit: aBoolean [
 	saveImageOnCommit := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommitSettings class >> saveImageOnCommitDefaultValue [
 
 	^ true
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceTipCommitSettings class >> settingsOn: aBuilder [
 
 	<systemsettings>
@@ -78,21 +80,21 @@ IceTipCommitSettings class >> settingsOn: aBuilder [
 				noOrdering;
 				target: self;
 				default: self critiquesOnCommitDefaultValue;
-				label: 'Run Code Critiques when commiting';
+				label: 'Run Code Critiques when committing';
 				description:
 					'Check if you want to run the code critiques on the changes each time you commit them'.
 			(aBuilder setting: #saveImageOnCommit)
 				noOrdering;
 				target: self;
 				default: self saveImageOnCommitDefaultValue;
-				label: 'Save the image when commiting';
+				label: 'Save the image when committing';
 				description:
 					'Check if you want to save the image each time you commit something'.
 			(aBuilder setting: #pushOnCommit)
 				noOrdering;
 				target: self;
 				default: self pushOnCommitDefaultValue;
-				label: 'Push when commiting';
+				label: 'Push when committing';
 				description:
 					'Check if you want to push your changes each time you commit something' ]
 ]

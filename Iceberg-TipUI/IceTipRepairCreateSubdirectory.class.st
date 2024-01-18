@@ -5,43 +5,45 @@ I'm active when:
 	- src subdirectory is not found.
 "
 Class {
-	#name : #IceTipRepairCreateSubdirectory,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairCreateSubdirectory',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCreateSubdirectory class >> help [
 	^ 'Create a new subdirectory for the code. 
 
 The configured source directory does not exist in the repository. 
-It is possible that the directory has been deleted or never commited after creating the meta-data.
+It is possible that the directory has been deleted or never committed after creating the meta-data.
 
-This operation will modify the state of your working copy on disk. All non-commited changes in your disk working copy that are not in the image will be lost (this can happen if you edited the repository from outside). If you want to keep them, perform a commit from outside before.'
+This operation will modify the state of your working copy on disk. All non-committed changes in your disk working copy that are not in the image will be lost (this can happen if you edited the repository from outside). If you want to keep them, perform a commit from outside before.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCreateSubdirectory class >> icon [
 	^ self iconNamed: #smallNew
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairCreateSubdirectory class >> isAvailableFor: aRepository [
 
 	^ aRepository isMissing not and: [aRepository isCodeMissing]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCreateSubdirectory class >> order [
 	^ 17
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairCreateSubdirectory class >> title [
 	^ 'Create code subdirectory'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairCreateSubdirectory >> basicExecute [
 
 	self repositoryModel createSourceDirectory.

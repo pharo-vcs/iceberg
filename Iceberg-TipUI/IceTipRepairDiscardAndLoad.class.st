@@ -6,30 +6,32 @@ I'm active when:
 	- repository HEAD is NOT detached
 "
 Class {
-	#name : #IceTipRepairDiscardAndLoad,
-	#superclass : #IceTipRepairAction,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipRepairDiscardAndLoad',
+	#superclass : 'IceTipRepairAction',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairDiscardAndLoad class >> help [
 	^ 'Discard all changes in your image and checkout the current commit (HEAD) in the repository.
 
 This action will synchronize your image with the code in the repository.
 
-All the changes in the image that have not been commited will be lost.
+All the changes in the image that have not been committed will be lost.
 
 This situation happens because loaded code in your image is from a different commit than the current commit (HEAD) in the repository.
 
 Opens a preview window with the incoming changes before doing any change.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairDiscardAndLoad class >> icon [
 	^ self iconNamed: #refresh
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipRepairDiscardAndLoad class >> isAvailableFor: aRepository [
 	"matches if: 
 		- workingCopy is detached
@@ -40,17 +42,17 @@ IceTipRepairDiscardAndLoad class >> isAvailableFor: aRepository [
 		and: [ aRepository head isDetached not ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairDiscardAndLoad class >> order [
 	^ 40
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipRepairDiscardAndLoad class >> title [
 	^ 'Discard image changes and load repository version'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipRepairDiscardAndLoad >> basicExecute [
 			
 	(IceTipCheckoutPreviewBrowser onBranch: self repositoryModel branchModel) 
@@ -58,7 +60,7 @@ IceTipRepairDiscardAndLoad >> basicExecute [
 		open
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipRepairDiscardAndLoad >> finishSuccess [
 	super finishSuccess.
 	Iceberg announcer announce: (IceRepositoryModified for: self repository)

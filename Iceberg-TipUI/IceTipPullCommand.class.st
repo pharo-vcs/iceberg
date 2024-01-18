@@ -3,24 +3,26 @@ I'm a command to perform a pull of incomming commits.
 I open a pull view window.
 "
 Class {
-	#name : #IceTipPullCommand,
-	#superclass : #IceTipRemoteActionCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipPullCommand',
+	#superclass : 'IceTipRemoteActionCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipPullCommand class >> defaultDescription [
 
 	^ 'Pulls into image all commits from your version to the origin remote HEAD'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipPullCommand class >> defaultName [
 
 	^ 'Pull'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipPullCommand >> badge [
 
 	| result |
@@ -33,7 +35,7 @@ IceTipPullCommand >> badge [
 	^ result
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipPullCommand >> execute [
 
 	self withErrorHandlingDo: [ 
@@ -42,7 +44,7 @@ IceTipPullCommand >> execute [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipPullCommand >> iconName [
 
 	^ #down

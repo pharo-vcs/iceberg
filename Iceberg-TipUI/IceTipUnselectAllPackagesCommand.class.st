@@ -3,34 +3,36 @@ Implements the unselect all option behavior in the ""Select New Packages to Load
 
 "
 Class {
-	#name : #IceTipUnselectAllPackagesCommand,
-	#superclass : #IceTipSelectPackagesCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipUnselectAllPackagesCommand',
+	#superclass : 'IceTipSelectPackagesCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipUnselectAllPackagesCommand class >> defaultDescription [
 
 	^ 'Opens a dialog to choose select and/or removing new package(s) from the repository'
 ]
 
-{ #category : #default }
+{ #category : 'default' }
 IceTipUnselectAllPackagesCommand class >> defaultName [
 
 	^ 'Unselect all packages'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipUnselectAllPackagesCommand >> canBeExecuted [
 	" Answer <true> if the receiver has items to display "
 
 	| pkgList |
 
 	pkgList := self context packagesList.
- 	^ pkgList items notEmpty
+ 	^ pkgList items isNotEmpty
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipUnselectAllPackagesCommand >> execute [
 	" Private - Unselect all the receiver's packages "
 
@@ -38,7 +40,7 @@ IceTipUnselectAllPackagesCommand >> execute [
 	self packagesList refresh
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipUnselectAllPackagesCommand >> iconName [
 
 	^ #checkboxUnselected

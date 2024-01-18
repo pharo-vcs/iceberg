@@ -1,10 +1,12 @@
 Class {
-	#name : #IceSinglePackageFixture,
-	#superclass : #IceBasicRepositoryFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceSinglePackageFixture',
+	#superclass : 'IceBasicRepositoryFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceSinglePackageFixture >> setUp [
 
 	super setUp.

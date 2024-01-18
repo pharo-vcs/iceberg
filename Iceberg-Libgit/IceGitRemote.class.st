@@ -1,34 +1,36 @@
 Class {
-	#name : #IceGitRemote,
-	#superclass : #IceRemote,
-	#category : #'Iceberg-Libgit-Core'
+	#name : 'IceGitRemote',
+	#superclass : 'IceRemote',
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitRemote class >> canHandleUrl: aRepositoryUrl [
 	^ self subclassResponsibility 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitRemote class >> isAbstract [
 
 	^ self == IceGitRemote
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitRemote class >> isValidUrl: aRepositoryUrl [
 	^ self allSubclasses  
 		anySatisfy: [ :subclass | subclass canHandleUrl: aRepositoryUrl ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitRemote class >> name: aName url: anUrl [
 	^ (self url: anUrl)
 		name: aName;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitRemote class >> url: aRepositoryUrl [
 	self allSubclasses
 		detect: [ :subclass | subclass canHandleUrl: aRepositoryUrl ]
@@ -36,19 +38,19 @@ IceGitRemote class >> url: aRepositoryUrl [
 		ifNone: [ IceWrongUrl signal: 'Remote repository scheme not supported: ', aRepositoryUrl ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceGitRemote >> = another [
 	^ self species = another species
 		and: [ self referencesSameRemoteLocationAs: another ]
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceGitRemote >> branches [
 	
 	^ self localRepository remoteTrackedBranches select: [ :e | e remoteName = self name ]
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceGitRemote >> doFetchWithRefSpec: refSpec [
 
 	localRepository handleLibgitError: [
@@ -64,7 +66,7 @@ IceGitRemote >> doFetchWithRefSpec: refSpec [
 			do: [ :e | e acceptError: (IceLibgitErrorVisitor onContext: self) ] ]
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceGitRemote >> fetch [
 
 	self doFetchWithRefSpec: nil.
@@ -73,7 +75,7 @@ IceGitRemote >> fetch [
 	localRepository postFetch
 ]
 
-{ #category : #fetching }
+{ #category : 'fetching' }
 IceGitRemote >> fetchBranch: aBranch [
 
 	| refSpec |
@@ -85,7 +87,7 @@ IceGitRemote >> fetchBranch: aBranch [
 	self doFetchWithRefSpec: refSpec
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceGitRemote >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock [
 
 	localRepository handleLibgitError: [
@@ -98,7 +100,7 @@ IceGitRemote >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: abs
 			ifNil: absentBlock ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitRemote >> repositoryHandle [
 
 	<repositoryHandleAccessor>

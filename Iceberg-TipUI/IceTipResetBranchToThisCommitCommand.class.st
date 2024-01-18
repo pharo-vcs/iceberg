@@ -2,37 +2,49 @@
 I'm a command to reset the selected branch to the selected commit. It does not modify the working copy.
 "
 Class {
-	#name : #IceTipResetBranchToThisCommitCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipResetBranchToThisCommitCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipResetBranchToThisCommitCommand class >> defaultDescription [
 
 	^ 'Resets the selected branch to the selected commit. It does not modify the working copy (!!).'
 ]
 
-{ #category : #executing }
-IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
+{ #category : 'testing' }
+IceTipResetBranchToThisCommitCommand >> canBeExecuted [
 
-	^ 'Reset ', self selectedBranch name, ' to commit ', self selectedCommitish shortId
+	^ self selectedBranch notNil
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
+IceTipResetBranchToThisCommitCommand >> defaultNameFromContext [
+
+	| shortId branchName |
+	shortId := self selectedCommitish ifNotNil: [ :commitish | commitish shortId ] ifNil: [''].
+	branchName := self selectedBranch ifNotNil: [:branch | branch name ] ifNil: [ '' ].
+
+	^ 'Reset ', branchName, ' to commit ', shortId
+]
+
+{ #category : 'executing' }
 IceTipResetBranchToThisCommitCommand >> execute [
 	
 	self selectedBranch resetToCommit: self selectedCommitish.
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipResetBranchToThisCommitCommand >> iconName [
 
 	^ #bottom
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipResetBranchToThisCommitCommand >> name [
 
 	^ self context
@@ -40,13 +52,15 @@ IceTipResetBranchToThisCommitCommand >> name [
 		  ifNotNil: [ self defaultNameFromContext ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipResetBranchToThisCommitCommand >> selectedBranch [
 
-	^ self context model
+	| selected |
+	selected := self context model.
+	^ (selected notNil and: [ selected isBranch ]) ifTrue: [ selected ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipResetBranchToThisCommitCommand >> selectedCommitish [
 
 	^ self item

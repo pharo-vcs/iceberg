@@ -5,37 +5,42 @@ I won't modify the loaded code, but will calculate the differences between the
 loaded packages and the new commit, to mark packages as dirty.
 "
 Class {
-	#name : #IceTipAdoptCommitCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipAdoptCommitCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipAdoptCommitCommand class >> defaultDescription [
 
 	^ 'Sets this commit as the commit of your working copy. It will not modify your loaded code, but it will calculate the differences between your loaded packages and the the new commit to mark packages as dirty.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAdoptCommitCommand >> defaultNameFromContext [
 
-	^ 'Adopt commit ' , self selectedCommitish shortId
+	| shortId |
+	shortId := self selectedCommitish ifNotNil: [ :commitish | commitish shortId ] ifNil: [''].
+
+	^ 'Adopt commit ' , shortId.
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipAdoptCommitCommand >> execute [
 	
 	self selectedCommitish adopt.
 	Iceberg announcer announce: (IceRepositoryModified for: self repository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAdoptCommitCommand >> iconName [
 
 	^ #recoverLostChanges
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipAdoptCommitCommand >> name [
 	"Answer the name for the command. In order to have a specialized string for certain parameters of the context, and given the fact that sometimes the context is nil (e.g. when a context menu is calculated when the selection is empty)."
 
@@ -45,7 +50,7 @@ IceTipAdoptCommitCommand >> name [
 		  ifNotNil: [ self defaultNameFromContext ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipAdoptCommitCommand >> selectedCommitish [
 
 	^ self item

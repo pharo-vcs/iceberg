@@ -1,11 +1,11 @@
-Extension { #name : #IceSshCredentials }
+Extension { #name : 'IceSshCredentials' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceSshCredentials >> askForModelClass [
 	^ self notYetImplemented
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceSshCredentials >> editModelClass [
-	^ IceTipEditSSHCredentialsModel
+	^ IceTipEditSSHCredentialsPresenter
 ]

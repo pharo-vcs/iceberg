@@ -2,12 +2,14 @@
 I am a dependency to a trait.
 "
 Class {
-	#name : #IceTraitDependency,
-	#superclass : #IceDefinedDependency,
-	#category : #'Iceberg-Cherrypicking'
+	#name : 'IceTraitDependency',
+	#superclass : 'IceDefinedDependency',
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTraitDependency >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -15,37 +17,37 @@ IceTraitDependency >> = anObject [
 		and: [ self definition name = anObject definition name ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceTraitDependency >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 	^ super hash bitXor: definition name hash.
 	"^ definition hash"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceTraitDependency >> isDependencyTo: anIceTraitDefinition [
 	^ anIceTraitDefinition name = definition name
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceTraitDependency >> referencedClasses [
 
 	^ {  }
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceTraitDependency >> referencedPackages [
 	^ self definition asMCDefinition category
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceTraitDependency >> referencedTraits [
 	^ (((RBParser
 		parseExpression: definition asMCDefinition traitComposition)
 		allChildren select: #isVariable) collect: #name ) , self usedTraitsNames  
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTraitDependency >> usedTraitsNames [
 	^ self cherrypicker environment
 		allUsingTraitNamed: self definition name

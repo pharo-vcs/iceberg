@@ -1,1 +1,1 @@
-Package { #name : #'Iceberg-TipUI' }
+Package { #name : 'Iceberg-TipUI' }

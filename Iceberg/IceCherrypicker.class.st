@@ -6,8 +6,8 @@ I know how to cherry-pick changes from a source IceDiff into a target IceDiff.
 
 "
 Class {
-	#name : #IceCherrypicker,
-	#superclass : #Object,
+	#name : 'IceCherrypicker',
+	#superclass : 'Object',
 	#instVars : [
 		'dependencies',
 		'sourceDiff',
@@ -16,10 +16,12 @@ Class {
 		'incomingChangesDiff',
 		'environment'
 	],
-	#category : #'Iceberg-Cherrypicking'
+	#category : 'Iceberg-Cherrypicking',
+	#package : 'Iceberg',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
 	dependencies
 		add:
@@ -29,12 +31,12 @@ IceCherrypicker >> addClassDependencyOf: aIceClassDefinition [
 				yourself)
 ]
 
-{ #category : #'accessing - options' }
+{ #category : 'accessing - options' }
 IceCherrypicker >> addDependency: anIceDependency [ 
 	self dependencies add: anIceDependency .
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addExtendedClassDependency: aIceExtensionDefinition [
 	dependencies
 		add:
@@ -44,7 +46,7 @@ IceCherrypicker >> addExtendedClassDependency: aIceExtensionDefinition [
 				yourself)
 ]
 
-{ #category : #'execution - private' }
+{ #category : 'execution - private' }
 IceCherrypicker >> addInitialDependencies [
 
 	sourceDiff accept: (IceCherrypickerInitialDependenciesCollector new
@@ -52,7 +54,7 @@ IceCherrypicker >> addInitialDependencies [
 				yourself)
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addMetaclassDependency: anIceClassDefinition [
 	dependencies
 		add:
@@ -62,7 +64,7 @@ IceCherrypicker >> addMetaclassDependency: anIceClassDefinition [
 				yourself)
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [
 	dependencies
 		add:
@@ -72,7 +74,7 @@ IceCherrypicker >> addMethodDependencyOf: aIceMethodDefinition [
 				yourself)
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addPackageDependency: aIcePackageDefinition [
 	dependencies
 		add:
@@ -82,7 +84,7 @@ IceCherrypicker >> addPackageDependency: aIcePackageDefinition [
 				yourself)
 ]
 
-{ #category : #dependencies }
+{ #category : 'dependencies' }
 IceCherrypicker >> addTraitDependencyOf: aIceTraitDefinition [
 	dependencies
 		add:
@@ -92,7 +94,7 @@ IceCherrypicker >> addTraitDependencyOf: aIceTraitDefinition [
 				yourself)
 ]
 
-{ #category : #'execution - private' }
+{ #category : 'execution - private' }
 IceCherrypicker >> addTransitiveDependencies [
 	| originalDependencies |
 	originalDependencies := nil.
@@ -103,22 +105,22 @@ IceCherrypicker >> addTransitiveDependencies [
 				do: [ :each | each addTransitiveDependenciesFrom: incomingChangesDiff to: self ]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> dependencies [
 	^ dependencies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> environment [
 	^ environment ifNil: [ environment := IceDependencyEnvironment on: receiverToAncestorDiff targetVersion  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> environment: anObject [
 	environment:= anObject 
 ]
 
-{ #category : #'execution - public' }
+{ #category : 'execution - public' }
 IceCherrypicker >> execute [
 	"Obtain the initial change set (ICS)"
 
@@ -135,27 +137,27 @@ IceCherrypicker >> execute [
 	^ mergeTree
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceCherrypicker >> includesDependencyTo: aDefinition [
 
 	^ dependencies anySatisfy: [ :each | each isDependencyTo: aDefinition ]. 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceCherrypicker >> initialize [
 
 	super initialize.
 	dependencies := Set new
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceCherrypicker >> mergeWithCurrentBranch [
 	mergeTree  := IceTreeMerger new
 		merge: self targetDiff tree
 		into: self receiverToAncestorDiff tree
 ]
 
-{ #category : #'execution - private' }
+{ #category : 'execution - private' }
 IceCherrypicker >> pruneUndependedNodesInTargetDiff [
 
 	IceCherrypickerDiffPruner new
@@ -163,32 +165,32 @@ IceCherrypicker >> pruneUndependedNodesInTargetDiff [
 		applyTo: incomingChangesDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> receiverToAncestorDiff [
 	^ receiverToAncestorDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> receiverToAncestorDiff: anIceDiff [ 
 	receiverToAncestorDiff:= anIceDiff.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> sourceDiff [
 	^ sourceDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> sourceDiff: anObject [
 	sourceDiff := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> targetDiff [
 	^ incomingChangesDiff
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceCherrypicker >> targetDiff: anObject [
 	incomingChangesDiff := anObject
 ]

@@ -8,8 +8,8 @@ I do this (trying in this order):
 You can also define  branchName to checkout a specific branch.
 "
 Class {
-	#name : #IceRepositoryCreator,
-	#superclass : #Object,
+	#name : 'IceRepositoryCreator',
+	#superclass : 'Object',
 	#instVars : [
 		'location',
 		'url',
@@ -20,23 +20,25 @@ Class {
 		'ensureProjectFile',
 		'isBareRepository'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator class >> defaultSubdirectory [
 	^ ''
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryCreator class >> isGitRoot: aReference [
 	self flag: #pharoTodo. "This does not understand submodules"
 	^ aReference isDirectory 
-		and: [ (aReference directoriesMatching: '.git') notEmpty
+		and: [ (aReference directoriesMatching: '.git') isNotEmpty
 		and: [ (aReference / '.git' / 'config') exists ] ]
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 IceRepositoryCreator >> addLocalRepository [
 	self repository location: self locationToUse.
 	self repository pluginManager repositoryWillBeCreated: self repository.
@@ -48,7 +50,7 @@ IceRepositoryCreator >> addLocalRepository [
 	^ self repository	
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 IceRepositoryCreator >> addLocalRepositoryAndCheckout [
 	| localRepository |
 	localRepository := self addLocalRepository.
@@ -59,7 +61,7 @@ IceRepositoryCreator >> addLocalRepositoryAndCheckout [
 	^ localRepository
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> addProjectFileTo: aRepository [
 	
 	| newProject |
@@ -68,24 +70,24 @@ IceRepositoryCreator >> addProjectFileTo: aRepository [
 	aRepository workingCopy basicSetProject: newProject.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> addPropertiesFileTo: aRepository [
 	aRepository properties fileFormat: self formatToUse
 ]
 
-{ #category : #remotes }
+{ #category : 'remotes' }
 IceRepositoryCreator >> addRemote: aString [ 
 	
 	self remote: (IceGitRemote url: aString)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceRepositoryCreator >> beBare [
 
 	isBareRepository := true
 ]
 
-{ #category : #'private - actions' }
+{ #category : 'private - actions' }
 IceRepositoryCreator >> cloneRepository [
 	IceGitClone new
 		location: self locationToUse;
@@ -104,17 +106,17 @@ IceRepositoryCreator >> cloneRepository [
 	^ self repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> commitishName [
 	^ branchName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> commitishName: aName [
 	branchName := aName
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceRepositoryCreator >> createNewRepositoryNamed: aString [
 	| locationToUse  |
 	self validate.
@@ -136,7 +138,7 @@ IceRepositoryCreator >> createNewRepositoryNamed: aString [
 	^ repository
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceRepositoryCreator >> createRepository [	
 	^ [
 		self validate.
@@ -149,7 +151,7 @@ IceRepositoryCreator >> createRepository [
 		e signal ]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 IceRepositoryCreator >> defaultLocation [
 	| remoteToUse |
 	remoteToUse := self remoteToUse.
@@ -158,7 +160,7 @@ IceRepositoryCreator >> defaultLocation [
 		/ remoteToUse projectName
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> doEnsureProject [
 
 	ensureProjectFile ifFalse: [ ^ self ].
@@ -177,105 +179,105 @@ IceRepositoryCreator >> doEnsureProject [
 	self repository workingCopy refreshPackages.
 ]
 
-{ #category : #'API-project' }
+{ #category : 'API-project' }
 IceRepositoryCreator >> ensureProjectFile [
 	ensureProjectFile := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> formatToUse [ 
 	^ IceLibgitRepository defaultFileFormat
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceRepositoryCreator >> initialize [
 	super initialize.
 	ensureProjectFile := false.
 	isBareRepository := false
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 IceRepositoryCreator >> isCloning [
-	^ self remoteToUse notNil
+	^ self remoteToUse isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> location [
 	^ location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> location: anObject [
 	location := anObject
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 IceRepositoryCreator >> locationToUse [
 	^ self location ifNil: [ self defaultLocation ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> remote [
 	^ remote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> remote: anObject [
 	remote := anObject
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 IceRepositoryCreator >> remoteToUse [
 	self remote ifNotNil: [ ^ self remote ].
 	self url ifNotNil: [ ^ IceGitRemote url: self url ]. 
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> repository [
 
 	^ repository ifNil: [ repository := IceLibgitRepository new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> repository: anExistingRepository [
 
 	repository := anExistingRepository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> subdirectory [
 	^ subdirectory ifNil: [ self class defaultSubdirectory ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> subdirectory: anObject [
 	subdirectory := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRepositoryCreator >> url: anObject [
 	url := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> validate [
 	self validateLocation.
 	self validateAlreadyPresentAndNotGit.
 	self validateNotDuplicated
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> validateAlreadyPresentAndNotGit [
 	"Validate if I will add a local repository (url isNil and location isNotNil)... 
 	 testing the local directory actually exists"	
 	(self remoteToUse isNil
-		and: [ self location notNil
+		and: [ self location isNotNil
 		and: [ self location exists
 		and: [ (self class isGitRoot: self location) not ] ] ])
 		ifTrue: [ 
@@ -283,14 +285,14 @@ IceRepositoryCreator >> validateAlreadyPresentAndNotGit [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> validateLocation [
 	(self location isNil 
 		and: [ self remoteToUse isNil ])
 		ifTrue: [ IceError signal: 'No location/url or remote defined.' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceRepositoryCreator >> validateNotDuplicated [
 	(self remoteToUse isNotNil
 		and: [ self locationToUse exists and: [ self locationToUse hasChildren ] ])

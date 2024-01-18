@@ -3,15 +3,17 @@ A basic project is the project defined in a .project file.
 It contains properties like sourceDirectory, format and tags.
 "
 Class {
-	#name : #IceBasicProject,
-	#superclass : #IceAbstractProject,
+	#name : 'IceBasicProject',
+	#superclass : 'IceAbstractProject',
 	#instVars : [
 		'properties'
 	],
-	#category : #'Iceberg-Project'
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceBasicProject class >> onProperties: properties commitish: aCommitish [
 	
 	^ self basicNew
@@ -21,7 +23,7 @@ IceBasicProject class >> onProperties: properties commitish: aCommitish [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceBasicProject class >> onRepository: aRepository [
 	
 	^ self basicNew
@@ -31,7 +33,7 @@ IceBasicProject class >> onRepository: aRepository [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceBasicProject class >> onRepository: aRepository withSourceDirectory: aDirectory [
 	
 	^ self basicNew
@@ -42,7 +44,7 @@ IceBasicProject class >> onRepository: aRepository withSourceDirectory: aDirecto
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceBasicProject >> = anotherProject [
 
 	self species = anotherProject species ifFalse: [ ^ false ].
@@ -52,7 +54,7 @@ IceBasicProject >> = anotherProject [
 	^ true.
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceBasicProject >> addProjectFileToChangeBuilder: anIceChangeImporter [ 
 	
 	| projectFileName |
@@ -67,20 +69,20 @@ IceBasicProject >> addProjectFileToChangeBuilder: anIceChangeImporter [
 		contents: self contentsString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> addTag: aString [
 
 	self tags: (self tags copyWith: aString)
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 IceBasicProject >> addToChangeBuilder: anIceChangeImporter [
 
 	self addProjectFileToChangeBuilder: anIceChangeImporter.
 	"self addPropertiesFileToChangeBuilder: anIceChangeImporter."
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> backwardsCompatibleFormat [
 
 	^ TIceRepositoryWriter users
@@ -88,12 +90,12 @@ IceBasicProject >> backwardsCompatibleFormat [
 		ifNone: [ Smalltalk at: #IceLibgitFiletreeWriter ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> commitish [
 	^ commitish
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceBasicProject >> contentsString [
 
 	^ ByteArray streamContents: [ :stream |
@@ -103,31 +105,31 @@ IceBasicProject >> contentsString [
 			nextPut: self properties ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> fileFormat: aFileFormat [
 
 	self fileFormatId: aFileFormat id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> fileFormatId: aFileFormat [
 
 	self repositoryProperties fileFormatId: aFileFormat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> fileSystem [
 	
 	^ commitish fileSystem
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceBasicProject >> hash [
 
 	^ commitish hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceBasicProject >> initialize [
 	super initialize.
 "	repositoryProperties := self readProperties.
@@ -136,88 +138,72 @@ IceBasicProject >> initialize [
 		ifAbsent: [ 	repositoryProperties fileFormat: self backwardsCompatibleFormat ]"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> name [
 	
 	^ self repository name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> projectFileIn: aCommitish [ 
 	
 	^ aCommitish fileSystem resolve: self projectFilePath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> projectFilePath [
 
 	^ RelativePath with: '.project'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> projectFileReference [
 
 	^ self projectFileIn: commitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> projectName [
 	
 	^ properties at: #projectName ifAbsent: [ self repository name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> properties [
 
 	^ properties
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> properties: aDictionary [
 
 	properties := aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> removeTag: aString [
 
 	self tags: (self tags copyWithout: aString)
 ]
 
-{ #category : #accessing }
-IceBasicProject >> repository [
-	^ commitish repository
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> repositoryProperties [
 	^ self repository properties
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> sourceDirectory [
 	
 	^ properties at: 'srcDirectory' ifAbsent: [ 'src' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> sourceDirectory: aString [ 
 	
 	properties at: 'srcDirectory' put: aString
 ]
 
-{ #category : #accessing }
-IceBasicProject >> sourceDirectoryPath [
-
-	"API compatible both with Pharo6 and Pharo7.
-	This could be replaced by the Pharo7 API
-	
-	RelativePath with: self subdirectory
-	"
-	^ (RelativePath withAll: (RelativePath canonicalizeElements: ($/ split: self sourceDirectory)))
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> tags [
 
 	^ self properties 
@@ -225,7 +211,7 @@ IceBasicProject >> tags [
 		ifAbsent: [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceBasicProject >> tags: anArray [
 
 	self properties

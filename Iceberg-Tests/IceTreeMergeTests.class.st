@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTreeMergeTests,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Changes'
+	#name : 'IceTreeMergeTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> buildTestTreeWithOperation: anOperation [
 
 	^ (IceNode value: (IceNoModification definition: IceRootDefinition new))
@@ -12,7 +14,7 @@ IceTreeMergeTests >> buildTestTreeWithOperation: anOperation [
 		yourself
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testConflictingModificationWithRemoval [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -31,7 +33,7 @@ IceTreeMergeTests >> testConflictingModificationWithRemoval [
 	self assert: conflictOperation rightContents equals: ''.
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testConflictingNoModificationWithRemoval [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -48,7 +50,7 @@ IceTreeMergeTests >> testConflictingNoModificationWithRemoval [
 	self assert: conflictOperation rightContents equals: ''.
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testConflictingRemovalWithModification [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -68,7 +70,7 @@ IceTreeMergeTests >> testConflictingRemovalWithModification [
 	self assert: conflictOperation rightContents equals: 'new'.
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testConflictingRemovalWithNoModification [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -85,7 +87,7 @@ IceTreeMergeTests >> testConflictingRemovalWithNoModification [
 	self assert: conflictOperation rightContents equals: 'old'.
 ]
 
-{ #category : #'test-additions' }
+{ #category : 'test-additions' }
 IceTreeMergeTests >> testMergeConflictingAdditions [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -102,7 +104,7 @@ IceTreeMergeTests >> testMergeConflictingAdditions [
 	self assert: conflictOperation rightContents equals: 'new2'.
 ]
 
-{ #category : #'tests-basic' }
+{ #category : 'tests-basic' }
 IceTreeMergeTests >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
 
 	| rightTree leftTree mergedTree |
@@ -112,7 +114,7 @@ IceTreeMergeTests >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
 	self assert: mergedTree isEmpty.
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testMergeTwoEqualAdditionsIsNoModification [
 
 	| rightTree leftTree mergedTree operation |
@@ -126,7 +128,7 @@ IceTreeMergeTests >> testMergeTwoEqualAdditionsIsNoModification [
 	self deny: operation chosenOperation isModification.
 ]
 
-{ #category : #'test-removals' }
+{ #category : 'test-removals' }
 IceTreeMergeTests >> testMergeTwoEqualRemovalsIsNoModification [
 
 	| rightTree leftTree mergedTree operation |
@@ -140,7 +142,7 @@ IceTreeMergeTests >> testMergeTwoEqualRemovalsIsNoModification [
 	self deny: operation chosenOperation isModification.
 ]
 
-{ #category : #'test-modifications' }
+{ #category : 'test-modifications' }
 IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsInverseIsConflict [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -159,7 +161,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsInverseIsCon
 	self assert: conflictOperation leftContents equals: 'new'.
 ]
 
-{ #category : #'test-modifications' }
+{ #category : 'test-modifications' }
 IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
 
 	| rightTree leftTree mergedTree conflictOperation |
@@ -179,7 +181,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
 	self assert: conflictOperation rightContents equals: 'old'.
 ]
 
-{ #category : #'test-modifications' }
+{ #category : 'test-modifications' }
 IceTreeMergeTests >> testMergeTwoModificationsToTheSameDefinitionIsNoModification [
 
 	| rightTree leftTree mergedTree operation |

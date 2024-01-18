@@ -2,18 +2,20 @@
 I'm an action to create a new pull request.
 "
 Class {
-	#name : #IceGitHubNewPullRequestAction,
-	#superclass : #IceGitHubAction,
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#name : 'IceGitHubNewPullRequestAction',
+	#superclass : 'IceGitHubAction',
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewPullRequestAction >> askRemote: aRepository [
 
 	^ aRepository remotes anyOne
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubNewPullRequestAction >> basicExecute [
 
 	credentials := IceGitHubAPI ensureCredentials.
@@ -37,33 +39,36 @@ IceGitHubNewPullRequestAction >> basicExecute [
 			open
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubNewPullRequestAction >> informPullRequestDone: pullRequest [
 	[ 
 		| pullRequestDatas url |
 		
 		pullRequestDatas := pullRequest send.
 		url := pullRequestDatas at: 'html_url'.
-		UIManager default
-			inform: 'Pull request created. Click to view on Github.' 
-			actionOnClick: [ WebBrowser openOn: url ] 
+		self application newInform
+			title: 'Pull request created. Click to view on Github.';
+			onAccept: [ WebBrowser openOn: url ];
+			openModal.
 	]
 	on: IceGitHubError
 	do: [ :e | self reportError: e ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
+
 	| status |
-	
 	status := OrderedCollection new: 2.
-	aRepository isModified 
-		ifTrue: [ status add: 'Uncommited changes' ].
-	(aRepository outgoingCommitsTo: remote) 
-		ifNotEmpty: [ :commits | '{1} not published' format: { commits size } ].
+	aRepository isModified ifTrue: [ status add: 'Uncommitted changes' ].
+	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits |
+		'{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
-	
-	^ UIManager default 
-		confirm: (('{1} has ongoing modifications ({2}). 
-Do you want to continue anyway?') format: { aRepository name. status asCommaString })
+
+	^ self application newConfirm
+		  title:
+			  ('{1} has ongoing modifications.' format: { aRepository name });
+		  label: ('{2} 
+Do you want to continue anyway?' format: { status asCommaString });
+		  openModal
 ]

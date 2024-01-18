@@ -3,18 +3,20 @@ I will define a repository that already exists.
 
 "
 Class {
-	#name : #IceTipLocalRepositoryPanel,
-	#superclass : #IceTipRepositoryTypePanel,
-	#category : #'Iceberg-TipUI-View-Repository'
+	#name : 'IceTipLocalRepositoryPanel',
+	#superclass : 'IceTipRepositoryTypePanel',
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocalRepositoryPanel class >> order [
 
 	^ 20
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipLocalRepositoryPanel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -25,13 +27,13 @@ IceTipLocalRepositoryPanel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipLocalRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #smallOpen
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipLocalRepositoryPanel >> initialExtentForWindow [
 
 	^ (500@(
@@ -41,47 +43,49 @@ IceTipLocalRepositoryPanel >> initialExtentForWindow [
 		)) scaledByDisplayScaleFactor
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipLocalRepositoryPanel >> isLocalRepository [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocalRepositoryPanel >> location [
 
 	^ self projectLocation location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocalRepositoryPanel >> location: aReferenceOrString [
 
 	^ self projectLocation location: aReferenceOrString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocalRepositoryPanel >> newRepository [
 
-	UIManager default
-		informUser: ('Importing repository from {1}' format: { self location fullName })
-		during: [ 
-			^ IceRepositoryCreator new
-				repository: repository;
-				location: self location;
-				createRepository ]
+	^ self application
+		informUser:
+		('Importing repository from {1}' format: { self location fullName })
+		during: [
+			IceRepositoryCreator new
+				        repository: repository;
+				        location: self location;
+				        createRepository ].
+
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipLocalRepositoryPanel >> titleForWindow [
 
 	^ 'Import from existing clone'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLocalRepositoryPanel >> validate [
 
 	self
-		assert: self location notNil
+		assert: self location isNotNil
 		description: 'Project location must exist!'.
 	self
 		assert: self location exists

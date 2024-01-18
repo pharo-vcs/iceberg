@@ -6,17 +6,19 @@ Can give information about a package that is saved in a repository, for example:
 
 "
 Class {
-	#name : #IcePackage,
-	#superclass : #Object,
+	#name : 'IcePackage',
+	#superclass : 'Object',
 	#instVars : [
 		'package',
 		'repository',
 		'isDirty'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IcePackage class >> named: packageName repository: repository [
 	^ self new 
 		package: packageName;
@@ -24,7 +26,7 @@ IcePackage class >> named: packageName repository: repository [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IcePackage >> = another [
 	^ self species = another species 
 		and: [ self repository = another repository 
@@ -32,165 +34,165 @@ IcePackage >> = another [
 
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IcePackage >> beClean [
 
 	isDirty := false
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IcePackage >> beDirty [
 
 	isDirty := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> beDirty: aBoolean [
 	
 	isDirty := aBoolean
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> currentCommit [
 	
 	^ repository workingCopy referenceCommit
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> currentCommits [
 	
 	^ repository workingCopy referenceCommits
 ]
 
-{ #category : #'*Iceberg-Adapters' }
+{ #category : 'accessing' }
 IcePackage >> directoryName [
 
 	^ self repository directoryNameForPackage: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IcePackage >> hash [
 	^ self name hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IcePackage >> initialize [
 	super initialize.
 	isDirty := false
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IcePackage >> isClean [
 
 	^ self isDirty not
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IcePackage >> isDirty [
 
 	^ self isLoaded and: [isDirty ifNil: [ isDirty := false ]]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePackage >> isExported [
 
 	^ repository isPackageExported: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePackage >> isLoaded [
 	
 	^ repository workingCopy isLoadedPackageNamed: self packageName
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> isMetacelloBaseline [
 	
 	^ self name beginsWith: self metacelloBaselinePrefix
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePackage >> isModified [
 	
 	^ self isDirty
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IcePackage >> latestVersion [
 	
 	^ self versionFor: self repository head commit
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 IcePackage >> load [
 	
 	self repository workingCopy loadPackageNamed: self name
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IcePackage >> loadedVersion [
 	^ self repository workingCopy versionFor: self
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> mcPackage [
 	
 	^ MCPackage named: self packageName
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> mcSnapshotInRepository [
 	"Answer a version of the package as it is present on repository. 
 	 Useful to browse non-loaded packages."
 	^ self repository branch snapshotFor: self
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> mcWorkingCopy [
 
 	^ self isLoaded ifTrue: [
 		self mcPackage workingCopy ]
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> metacelloBaselineName [
 
 	^ self name allButFirst: self metacelloBaselinePrefix size
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IcePackage >> metacelloBaselinePrefix [
 	
 	^ 'BaselineOf'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> name [
 	^ package
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IcePackage >> outgoingCommits [
 	^ self repository branch outgoingCommits: [ :walk | walk modifyingPackage: self ]
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> package: anObject [
 	package := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> packageName [
 	^ package
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IcePackage >> printDescriptionOn: aStream [
 	aStream nextPut: $(;
 		nextPutAll: package;
@@ -199,46 +201,46 @@ IcePackage >> printDescriptionOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IcePackage >> printOn: aStream [
 	aStream nextPutAll: self class name.
 	self printDescriptionOn: aStream
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IcePackage >> reload [
 	self load
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IcePackage >> remove [
 	"Removes the package from the repository.
 	Does not unload from the image"
 	repository workingCopy basicRemovePackage: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> repository [
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IcePackage >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IcePackage >> unload [
 
 	repository workingCopy unloadPackage: self
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IcePackage >> versionFor: aCommitId [
 	^ aCommitId commit versionFor: self
 ]
 
-{ #category : #versions }
+{ #category : 'versions' }
 IcePackage >> versionLike: selectBlock ifNone: ifNoneBlock [
 	"Return all versions of this package in the current branch, latest first. 
 	Containing info in the repo makes it easier to refresh."
@@ -249,7 +251,7 @@ IcePackage >> versionLike: selectBlock ifNone: ifNoneBlock [
 
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IcePackage >> versions [
 	"Return all versions of this package in the current branch, latest first. 
 	Containing info in the repo makes it easier to refresh."

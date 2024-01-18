@@ -1,10 +1,12 @@
 Class {
-	#name : #IceWithRemoteAndMergeConflictFixture,
-	#superclass : #IceWithRemoteFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceWithRemoteAndMergeConflictFixture',
+	#superclass : 'IceWithRemoteFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceWithRemoteAndMergeConflictFixture >> setUp [
 	super setUp.
 

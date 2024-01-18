@@ -4,27 +4,29 @@ I represent a project registration in iceberg. I adapt the behavior of metacello
 For the moment I'm only used for compatibility reasons.
 "
 Class {
-	#name : #IceMetacelloProjectRegistration,
-	#superclass : #Object,
+	#name : 'IceMetacelloProjectRegistration',
+	#superclass : 'Object',
 	#instVars : [
 		'version'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters',
+	#package : 'Iceberg',
+	#tag : 'Adapters'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceMetacelloProjectRegistration >> locked [
 	"Only for compatibility for now"
 	^ false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceMetacelloProjectRegistration >> printOn: aStream [
 
 	aStream nextPutAll: version asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloProjectRegistration >> version: aString [ 
 	version := aString
 ]

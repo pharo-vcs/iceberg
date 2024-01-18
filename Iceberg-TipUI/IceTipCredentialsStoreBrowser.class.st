@@ -2,46 +2,48 @@
 I am the browser used to show a credentials store.
 "
 Class {
-	#name : #IceTipCredentialsStoreBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipCredentialsStoreBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'credentialsList'
 	],
-	#category : #'Iceberg-TipUI-Credentials'
+	#category : 'Iceberg-TipUI-Credentials',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Credentials'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCredentialsStoreBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	{	IceTipAddPlainTextCredentialCommand.
 		IceTipAddSshCredentialCommand.
 		IceTipAddTokenCredentialCommand }
 	do: [ :each |
-		aCommandGroup register: each forSpec ]
+		aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCredentialsStoreBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 	IceTipEditCredentialCommand.
 		IceTipRemoveCredentialCommand }
 	do: [ :each |
-		aCommandGroup register: each forSpec ]
+		aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipCredentialsStoreBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
 
-	aCommandGroup register: IceTipInspectCommand forSpec
+	aCommandGroup register: (IceTipInspectCommand forSpecContext: presenter)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCredentialsStoreBrowser >> credentialsList [
 
 	^ credentialsList
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCredentialsStoreBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -49,14 +51,14 @@ IceTipCredentialsStoreBrowser >> defaultLayout [
 		  yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCredentialsStoreBrowser >> initialize [
 
 	model ifNil: [ model := IceCredentialStore current ].
 	super initialize
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 
 	credentialsList
@@ -78,32 +80,32 @@ IceTipCredentialsStoreBrowser >> initializeCredentialsList [
 				evaluated: #description)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCredentialsStoreBrowser >> initializePresenters [
 
 	credentialsList := self newTable.
 	self initializeCredentialsList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCredentialsStoreBrowser >> mainList [
 
 	^ credentialsList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCredentialsStoreBrowser >> refresh [
 
 	credentialsList items: self model allCredentials
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCredentialsStoreBrowser >> store [
 
 	^ self model
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCredentialsStoreBrowser >> titleForWindow [
 
 	^ model isCurrent
@@ -111,7 +113,7 @@ IceTipCredentialsStoreBrowser >> titleForWindow [
 		  ifFalse: [ 'Credentials of ' , model printString ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCredentialsStoreBrowser >> updatePresenter [
 
 	self refresh

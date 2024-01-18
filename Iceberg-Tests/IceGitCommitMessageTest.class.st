@@ -1,15 +1,17 @@
 Class {
-	#name : #IceGitCommitMessageTest,
-	#superclass : #IceAbstractTestCase,
-	#category : #'Iceberg-Tests-Git'
+	#name : 'IceGitCommitMessageTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitCommitMessageTest >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCommitMessageTest >> testCommitEmptyString [	
 	self repository commitWithMessage: ''.
 	
@@ -17,14 +19,23 @@ IceGitCommitMessageTest >> testCommitEmptyString [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCommitMessageTest >> testCommitNullString [	
 	self should: [self repository commitWithMessage: nil] raise: Error.
 	
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+IceGitCommitMessageTest >> testCommitWideString [
+	| msg |
+	msg := ZnUTF8Encoder new decodeBytes: (ByteArray readHexFrom: 'e38182e38184e38186'). "Japanese vowels a,i, and u - 'あいう'"
+	self repository commitWithMessage: msg.
+	self assert: self repository head commit comment equals: msg.
+
+]
+
+{ #category : 'tests' }
 IceGitCommitMessageTest >> testCommitWithEndingPesosSign [
 	"We used to have a problem that in some messages (depending of padding) the $ was added at the end"
 	| msg |
@@ -34,7 +45,7 @@ IceGitCommitMessageTest >> testCommitWithEndingPesosSign [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCommitMessageTest >> testCommitWithoutPesosSign [
 	"We used to have a problem that in some messages (depending of padding) the $ was added at the end"
 	| msg |
@@ -44,7 +55,7 @@ IceGitCommitMessageTest >> testCommitWithoutPesosSign [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCommitMessageTest >> testDifferentSizes [
 	"We used to have a problem that in some messages (depending of padding) the $ was added at the end"
 	| msg |

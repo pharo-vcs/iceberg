@@ -2,33 +2,35 @@
 Command that opens a dialog to select a branch to merge in the current merge
 "
 Class {
-	#name : #IceTipMergeCommand,
-	#superclass : #IceTipRepositoryCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipMergeCommand',
+	#superclass : 'IceTipRepositoryCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipMergeCommand class >> defaultDescription [
 
 	^ 'Merge a given branch into your current branch.'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipMergeCommand class >> defaultName [
 
-	^ 'Merge'
+	^ 'Merge to current'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMergeCommand >> canBeExecuted [
 
 	^ self isRepositoryOperational
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipMergeCommand >> execute [
 	
-	(IceTipMergeBranchDialog 
+	(IceTipMergeBranchDialogPresenter 
 		newApplication: context application 
 		model: self repositoryModel) 
 		asDialogWindow 
@@ -36,7 +38,7 @@ IceTipMergeCommand >> execute [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMergeCommand >> iconName [
 
 	^ #merge

@@ -1,19 +1,19 @@
-Extension { #name : #IcePlaintextCredentials }
+Extension { #name : 'IcePlaintextCredentials' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IcePlaintextCredentials >> askForModelClass [
-	^ IceTipAskForPlaintextCredentialsModel 
+	^ IceTipAskForPlaintextCredentialsPresenter 
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IcePlaintextCredentials >> askForModelClassOn: aString [
 
 	^ (aString includesSubstring: 'github.com' caseSensitive: false) 
-		ifTrue: [ IceTipAskGithubForPlaintextCredentialsModel ]
+		ifTrue: [ IceTipAskGithubForPlaintextCredentialsPresenter ]
 		ifFalse: [ self askForModelClass ]
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IcePlaintextCredentials >> editModelClass [
-	^ IceTipEditPlaintextCredentialsModel 
+	^ IceTipEditPlaintextCredentialsPresenter 
 ]

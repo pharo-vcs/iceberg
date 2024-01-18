@@ -1,23 +1,25 @@
 Class {
-	#name : #IceRemoteAlreadyExistsError,
-	#superclass : #IceError,
+	#name : 'IceRemoteAlreadyExistsError',
+	#superclass : 'IceError',
 	#instVars : [
 		'remoteName'
 	],
-	#category : 'Iceberg-Errors'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRemoteAlreadyExistsError >> acceptError: aVisitor [
 	aVisitor visitRemoteAlreadyExistError: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteAlreadyExistsError >> remoteName [
 	^ remoteName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteAlreadyExistsError >> remoteName: aString [ 
 	remoteName := aString
 ]

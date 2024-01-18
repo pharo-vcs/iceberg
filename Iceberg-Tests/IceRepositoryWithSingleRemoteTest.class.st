@@ -1,42 +1,44 @@
 Class {
-	#name : #IceRepositoryWithSingleRemoteTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Tests-Common'
+	#name : 'IceRepositoryWithSingleRemoteTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Tests-Common',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRepositoryWithSingleRemoteTest class >> isAbstract [
 
 	^ self == IceRepositoryWithSingleRemoteTest
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceRepositoryWithSingleRemoteTest >> testAfterFetchingARepositoryTracksRemoteBranch [
 
 	self repository fetch.
 	self assert: self repository remoteTrackedBranches notEmpty
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceRepositoryWithSingleRemoteTest >> testBeforeFetchingARepositoryHasNoRemoteTrackedBranches [
 
 	self assert: self repository remoteTrackedBranches isEmpty
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceRepositoryWithSingleRemoteTest >> testFetchUpdatesTrackedRemoteBranch [
 
 	| newCommit remoteTrackedBranches |
 	self remoteRepository workingCopy addPackageNamed: 'AnotherPackage'.
 	newCommit := self remoteRepository commitWithMessage: 'Another commit message'.
-	
+
 	self repository fetch.
 	remoteTrackedBranches := self repository remoteTrackedBranches.
 	self assert: remoteTrackedBranches size equals: 1.
-	self assert: self repository remoteTrackedBranches anyOne commit equals: newCommit
+	self assert: remoteTrackedBranches anyOne commit equals: newCommit
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceRepositoryWithSingleRemoteTest >> testLocalBranchDoesNotTrackARemoteBranchBeforeFetching [
 
 	"We commit to force the creation of the local branch"
@@ -46,7 +48,7 @@ IceRepositoryWithSingleRemoteTest >> testLocalBranchDoesNotTrackARemoteBranchBef
 	self deny: (self repository branchNamed: self remoteBranchName) tracksRemoteBranch.
 ]
 
-{ #category : #'tests-checkout' }
+{ #category : 'tests-checkout' }
 IceRepositoryWithSingleRemoteTest >> testLocalCheckedOutBranchIsEqualsToHEAD [
 
 	"We commit to force the creation of the local branch"
@@ -56,7 +58,7 @@ IceRepositoryWithSingleRemoteTest >> testLocalCheckedOutBranchIsEqualsToHEAD [
 	self assert: (self repository branchNamed: self repository head name) equals: self repository head.
 ]
 
-{ #category : #'tests-push' }
+{ #category : 'tests-push' }
 IceRepositoryWithSingleRemoteTest >> testPushPushesTags [
 
 	(self repository isKindOf: IceMemoryRepository)
@@ -71,40 +73,40 @@ IceRepositoryWithSingleRemoteTest >> testPushPushesTags [
 	self assert: (self remoteRepository tagNames includes: 'exampleTag')
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceRepositoryWithSingleRemoteTest >> testRemoteTrackedBranchHasSameNameAsRemoteBranch [
 
 	self repository fetch.
 	self assert: self repository remoteTrackedBranches anyOne shortname equals: self remoteBranchName
 ]
 
-{ #category : #'tests-push' }
+{ #category : 'tests-push' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryHasIncomingCommits [
 
 	self assert: self repository hasIncomingCommits
 ]
 
-{ #category : #'tests-push' }
+{ #category : 'tests-push' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryHasNoMoreIncomingCommitsAfterPull [
 
 	self repository pull.
 	self deny: self repository hasIncomingCommits
 ]
 
-{ #category : #'tests-push' }
+{ #category : 'tests-push' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryHasNoOutgoingCommits [
 
 	self deny: self repository hasOutgoingCommits
 ]
 
-{ #category : #'tests-pull' }
+{ #category : 'tests-pull' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryPullDoesFetchAndMergeFromOrigin [
 
 	self repository pull.
 	self assert: self repository head commit equals: self remoteRepository head commit.
 ]
 
-{ #category : #'tests-pull' }
+{ #category : 'tests-pull' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryPullFromBranchThatDoesNotHaveACorrespondingRemoteBranchDoesNothing [
 
 	| prePullCommit |
@@ -117,7 +119,7 @@ IceRepositoryWithSingleRemoteTest >> testRepositoryPullFromBranchThatDoesNotHave
 	self assert: self repository head commit equals: prePullCommit.
 ]
 
-{ #category : #'tests-pull' }
+{ #category : 'tests-pull' }
 IceRepositoryWithSingleRemoteTest >> testRepositoryPullFromUnbornBranchThatDoesNotHaveACorrespondingRemoteBranchDoesNothing [
 
 	| prePullCommit |
@@ -129,7 +131,7 @@ IceRepositoryWithSingleRemoteTest >> testRepositoryPullFromUnbornBranchThatDoesN
 	self assert: self repository head commit equals: prePullCommit.
 ]
 
-{ #category : #'tests-fetch' }
+{ #category : 'tests-fetch' }
 IceRepositoryWithSingleRemoteTest >> testWithoutFetchTrackedRemoteBranchIsNotUpdated [
 
 	| newCommit |

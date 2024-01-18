@@ -8,16 +8,18 @@ I also contain the monticello definition that corresponds to me.
 See my super/subclasses for more information.
 "
 Class {
-	#name : #IceMethodContainerDefinition,
-	#superclass : #IceCodeDefinition,
+	#name : 'IceMethodContainerDefinition',
+	#superclass : 'IceCodeDefinition',
 	#instVars : [
 		'isMeta',
 		'mcDefinition'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMethodContainerDefinition class >> named: aString isMeta: isMeta [
 	
 	^ self new
@@ -26,19 +28,19 @@ IceMethodContainerDefinition class >> named: aString isMeta: isMeta [
 		yourself
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodContainerDefinition >> asMCDefinition [
 
 	^ mcDefinition
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceMethodContainerDefinition >> asMCDefinitionWithoutMetaSide [
 	
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodContainerDefinition >> contents [
 	mcDefinition ifNil: [ ^ '' ].
 	^ self isMeta
@@ -46,40 +48,34 @@ IceMethodContainerDefinition >> contents [
 		ifTrue: [ mcDefinition classDefinitionString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodContainerDefinition >> isMeta [
 	^ isMeta
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodContainerDefinition >> isMeta: anObject [
 	isMeta := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodContainerDefinition >> key [
 	
 	^ super key , (self isMeta ifTrue: [ ' class' ] ifFalse: [ '' ])
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodContainerDefinition >> mcDefinition: aMCDefinition [
 
 	mcDefinition := aMCDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMethodContainerDefinition >> name [
 	^ name , (isMeta ifTrue: [ ' class' ] ifFalse: [ '' ])
 ]
 
-{ #category : #accessing }
-IceMethodContainerDefinition >> name: aString [
-
-	name := aString
-]
-
-{ #category : #patching }
+{ #category : 'patching' }
 IceMethodContainerDefinition >> removeFrom: aPatcher [
 	
 	aPatcher removeClass: self

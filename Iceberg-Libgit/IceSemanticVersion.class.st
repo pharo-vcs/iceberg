@@ -4,17 +4,19 @@ Since I exist just to be able to compare versions, I'm limited (reason why I'm n
 
 "
 Class {
-	#name : #IceSemanticVersion,
-	#superclass : #Magnitude,
+	#name : 'IceSemanticVersion',
+	#superclass : 'Magnitude',
 	#instVars : [
 		'major',
 		'minor',
 		'patch'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceSemanticVersion class >> fromArray: anArray [
 	^ self 
 		major: anArray first 
@@ -22,7 +24,7 @@ IceSemanticVersion class >> fromArray: anArray [
 		patch: anArray third
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceSemanticVersion class >> major: majorNumber minor: minorNumber patch: patchNumber [
 	^ self basicNew 
 		initializeMajor: majorNumber 
@@ -31,12 +33,12 @@ IceSemanticVersion class >> major: majorNumber minor: minorNumber patch: patchNu
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceSemanticVersion class >> new [
 	self error: 'Use one of my siblings'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSemanticVersion >> < aMagnitude [ 
 	"Answer whether the receiver is less than the argument."
 	| version |
@@ -45,7 +47,7 @@ IceSemanticVersion >> < aMagnitude [
 
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSemanticVersion >> = aMagnitude [ 
 	"Compare the receiver with the argument and answer with true if the 
 	receiver is equal to the argument. Otherwise answer false."
@@ -56,7 +58,7 @@ IceSemanticVersion >> = aMagnitude [
 
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceSemanticVersion >> asInteger [
 	"this does not works for versions 0.100+.*, but I do not think it will arrive to that"
 	^ (self major * 10000) 
@@ -64,7 +66,7 @@ IceSemanticVersion >> asInteger [
 		+ self patch
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSemanticVersion >> hash [
 	^ ((self species hash
 		bitXor: self major)
@@ -73,34 +75,34 @@ IceSemanticVersion >> hash [
 
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceSemanticVersion >> iceSemanticVersion [
 	^ self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceSemanticVersion >> initializeMajor: majorNumber minor: minorNumber patch: patchNumber [
 	major := majorNumber.
 	minor := minorNumber. 
 	patch := patchNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSemanticVersion >> major [
 	^ major
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSemanticVersion >> minor [
 	^ minor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSemanticVersion >> patch [
 	^ patch
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceSemanticVersion >> printOn: stream [ 
 	stream 
 		<< self major asString 

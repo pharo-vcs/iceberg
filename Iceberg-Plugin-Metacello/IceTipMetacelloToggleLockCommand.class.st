@@ -1,22 +1,23 @@
 Class {
-	#name : #IceTipMetacelloToggleLockCommand,
-	#superclass : #IceTipMetacelloInstallBaselineCommand,
-	#category : #'Iceberg-Plugin-Metacello'
+	#name : 'IceTipMetacelloToggleLockCommand',
+	#superclass : 'IceTipMetacelloInstallBaselineCommand',
+	#category : 'Iceberg-Plugin-Metacello',
+	#package : 'Iceberg-Plugin-Metacello'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> baselineName [
 
 	^ self packageName allButFirst: 10
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> description [
 
 	^ 'Toggle lock/unlock baseline.'
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipMetacelloToggleLockCommand >> execute [
 	| metacello |
 
@@ -31,20 +32,20 @@ IceTipMetacelloToggleLockCommand >> execute [
 	context ifNotNil: [ context refresh ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> iconName [
 
 	^ #smallLock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipMetacelloToggleLockCommand >> isBaseline [
 	
 	self packageModel ifNil: [ ^ false ]. 
 	^ self packageName beginsWith: 'BaselineOf'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> isLocked [
 	
 	self isBaseline ifFalse: [ ^ false ].
@@ -55,7 +56,7 @@ IceTipMetacelloToggleLockCommand >> isLocked [
 		isLocked
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> name [ 
 
 	self isBaseline ifFalse: [ ^ 'Lock/Unlock' ].
@@ -65,7 +66,7 @@ IceTipMetacelloToggleLockCommand >> name [
 		ifFalse: [ 'Lock {1}' format: { self baselineName } ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> packageName [
 	
 	^ self package name

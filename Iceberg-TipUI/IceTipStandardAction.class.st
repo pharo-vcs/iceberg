@@ -4,69 +4,70 @@ I will perform an action by informing user what's happening.
 I will also check for errors happening while performing the task and try to recover from them.
 "
 Class {
-	#name : #IceTipStandardAction,
-	#superclass : #IceTipAction,
+	#name : 'IceTipStandardAction',
+	#superclass : 'IceTipAction',
 	#instVars : [
 		'message',
 		'successAnnounceBlock',
 		'actionBlock'
 	],
-	#category : #'Iceberg-TipUI-Commands'
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> action [
 	^ actionBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> action: aBlock [
 	actionBlock := aBlock
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipStandardAction >> basicExecute [
 
 	| result |
-
-	UIManager default
+	context application
 		informUser: self message
 		during: [ result := actionBlock cull: self context ].
 	successAnnounceBlock 
 		ifNotNil: [ Iceberg announcer announce: successAnnounceBlock value ].
-		
 	^ result
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipStandardAction >> do: aBlock [
+
 	self action: aBlock.
 	self execute
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipStandardAction >> execute: aBlock [
 
 	self action: aBlock.
 	self execute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> message [
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> message: anObject [
 	message := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> onSuccessAnnounce: aValuable [
 	successAnnounceBlock := aValuable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipStandardAction >> onSuccessRepositoryModified [
 	^ self onSuccessAnnounce: [ IceRepositoryModified for: self repository ]
 ]

@@ -2,8 +2,8 @@
 I'm a dialog to ask for data relevant to create a pull request.
 "
 Class {
-	#name : #IceGitHubCreatePullRequestModel,
-	#superclass : #IceTipPresenter,
+	#name : 'IceGitHubCreatePullRequestModel',
+	#superclass : 'IceTipPresenter',
 	#instVars : [
 		'repository',
 		'titleLabel',
@@ -26,15 +26,17 @@ Class {
 		'titleTextInput',
 		'bodyText'
 	],
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubCreatePullRequestModel class >> new [
 	self error: 'Use #repository:credentials:headRemote:'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubCreatePullRequestModel class >> newApplication: anApplication 
 	repository: aRepository 
 	credentials: aCredentials 
@@ -48,21 +50,22 @@ IceGitHubCreatePullRequestModel class >> newApplication: anApplication
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel class >> titleSize [
 
 	^ 80
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceGitHubCreatePullRequestModel >> accept [
 
 	| title |
 	title := self titlePanel text trim.
 	title ifEmpty: [ 
-		UIManager default 
-			alert: 'You need to specify a title for the pull request.' 
-			title: 'Error'. 
+		self application newInform
+			label: 'You need to specify a title for the pull request.'; 
+			title: 'Error';
+			openModal.
 		^ self ].
 	
 	acceptBlock ifNotNil: [ 
@@ -71,14 +74,14 @@ IceGitHubCreatePullRequestModel >> accept [
 	self closeWindow
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> availableBranchNames [
 
 	^ availableBranchNames ifNil: [ 
 		  availableBranchNames := self obtainAvailableBranchNames ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> availableRemotes [
 	"Retrieves available remotes to perform the PR"
 
@@ -86,40 +89,40 @@ IceGitHubCreatePullRequestModel >> availableRemotes [
 		  availableRemotes := self obtainAvailableRemotes ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseBranchList [
 	^ baseBranchList
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> baseBranchNames [
 
 	^ self baseBranches collect: [ :each | each at: #name ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> baseBranches [
 
 	^ baseBranches ifNil: [ baseBranches := self requestBaseBranches ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> baseDefaultBranchName [
 
 	^ self gitBase at: #default_branch
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseForkList [
 	^ baseForkList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> baseLabel [
 	^ baseLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> baseRemote [
 	"This is the 'base' remote (the place where the repository is forked). This is used to 
 	 suggest fork PR destination (base)"
@@ -127,23 +130,23 @@ IceGitHubCreatePullRequestModel >> baseRemote [
 	^ baseRemote ifNil: [ baseRemote := self obtainBaseRemote ]
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> bodyLabel [
 	^ bodyLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> bodyPanel [
 	^ bodyText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> branch [
 
 	^ self repository branch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> createPullRequest [
 
 	^ IceGitHubPullRequestDefinition new 
@@ -157,19 +160,19 @@ IceGitHubCreatePullRequestModel >> createPullRequest [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> credentials [
 
 	^ credentials
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> credentials: aCredentials [
 
 	credentials := aCredentials
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> defaultBaseBranchName [
 
 	self hasParent ifFalse: [ ^ self baseDefaultBranchName ].
@@ -178,13 +181,13 @@ IceGitHubCreatePullRequestModel >> defaultBaseBranchName [
 		  ifNone: [ self baseDefaultBranchName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> defaultHeadBranchName [
 
 	^ self branch shortname
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceGitHubCreatePullRequestModel >> defaultLayout [
 
 	^ SpGridLayout new 
@@ -199,7 +202,7 @@ IceGitHubCreatePullRequestModel >> defaultLayout [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> gitBase [
 
 	| json |
@@ -207,58 +210,59 @@ IceGitHubCreatePullRequestModel >> gitBase [
 	^ json at: #parent ifAbsent: [ json ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> gitRepositoryInfo [
 
 	^ gitRepositoryInfo ifNil: [ 
 		  gitRepositoryInfo := self requestGitRepositoryInfo ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> hasParent [
 
 	^ self gitRepositoryInfo includesKey: #parent
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headBranchList [
 	^ headBranchList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headForkList [
 	^ headForkList
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> headLabel [
 	^ headLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> headRemote [
 
 	^ headRemote ifNil: [ self repository head upstream remote ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubCreatePullRequestModel >> initialExtentForWindow [
 
 	^ (700 @ 300) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubCreatePullRequestModel >> initializeDialogWindow: aWindow [
 
 	aWindow
-		addButton: 'Create' do: [ 
-			self accept ];
 		addButton: 'Cancel' do: [ :presenter | 
 			presenter triggerCancelAction.
-			presenter close ]			
+			presenter close ];
+		addDefaultButton: 'Create' do: [ 
+			self accept ]
+
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubCreatePullRequestModel >> initializePresenters [
 
 	titleLabel := self newLabel label: 'Title'.
@@ -279,7 +283,7 @@ IceGitHubCreatePullRequestModel >> initializePresenters [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubCreatePullRequestModel >> initializeRepository: aRepository credentials: aCredentials headRemote: aRemote [
 
 	repository := aRepository.
@@ -288,13 +292,13 @@ IceGitHubCreatePullRequestModel >> initializeRepository: aRepository credentials
 	self initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> lastCommitMessage [
 
 	^ lastCommitMessage ifNil: [ lastCommitMessage := self obtainLastCommitMessage ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> obtainAvailableBranchNames [
 
 	^ ((self repository allBranches collect: #shortname as: Set)
@@ -304,7 +308,7 @@ IceGitHubCreatePullRequestModel >> obtainAvailableBranchNames [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> obtainAvailableRemotes [
 
 	| remotes |
@@ -315,7 +319,7 @@ IceGitHubCreatePullRequestModel >> obtainAvailableRemotes [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> obtainBaseRemote [
 	| base sshUrl httpUrl |
 	
@@ -330,19 +334,19 @@ IceGitHubCreatePullRequestModel >> obtainBaseRemote [
 				yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> obtainLastCommitMessage [
 
 	^ self branch commit comment
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IceGitHubCreatePullRequestModel >> onAccept: aBlock [
 
 	acceptBlock := aBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> proposedComment [
 	| lines firstLine remainingLines |
 	
@@ -361,7 +365,7 @@ IceGitHubCreatePullRequestModel >> proposedComment [
 				separatedBy: [ stream cr ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubCreatePullRequestModel >> proposedTitle [
 	
 	self lastCommitMessage linesDo: [ :eachLine |
@@ -372,13 +376,13 @@ IceGitHubCreatePullRequestModel >> proposedTitle [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubCreatePullRequestModel >> repository [
 
 	^ repository
 ]
 
-{ #category : #'private - request' }
+{ #category : 'private - request' }
 IceGitHubCreatePullRequestModel >> requestBaseBranches [
 
 	^ IceGitHubAPI new
@@ -387,7 +391,7 @@ IceGitHubCreatePullRequestModel >> requestBaseBranches [
 		  project: self baseRemote projectBasename
 ]
 
-{ #category : #'private - request' }
+{ #category : 'private - request' }
 IceGitHubCreatePullRequestModel >> requestGitRepositoryInfo [
 
 	| remote |
@@ -397,25 +401,25 @@ IceGitHubCreatePullRequestModel >> requestGitRepositoryInfo [
 		  getRepository: remote owner project: remote projectBasename
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 IceGitHubCreatePullRequestModel >> titleForWindow [
 
 	^ 'New pull request'
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> titleLabel [
 
 	^ titleLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceGitHubCreatePullRequestModel >> titlePanel [
 
 	^ titleTextInput
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitHubCreatePullRequestModel >> updatePresenter [
 
 	baseForkList

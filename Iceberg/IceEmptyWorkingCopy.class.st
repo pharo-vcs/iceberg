@@ -2,36 +2,32 @@
 I am an empty working copy, with no loaded packages.
 "
 Class {
-	#name : #IceEmptyWorkingCopy,
-	#superclass : #IceWorkingCopyState,
-	#category : 'Iceberg-WorkingCopy'
+	#name : 'IceEmptyWorkingCopy',
+	#superclass : 'IceWorkingCopyState',
+	#category : 'Iceberg-WorkingCopy',
+	#package : 'Iceberg',
+	#tag : 'WorkingCopy'
 }
 
-{ #category : #display }
+{ #category : 'display' }
 IceEmptyWorkingCopy >> description [
 	
 	^ 'Nothing loaded'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceEmptyWorkingCopy >> isDetached [
 	"I have no reference commit, I cannot be detached"
 	^ false
 ]
 
-{ #category : #merging }
-IceEmptyWorkingCopy >> mergeStateWith: aMergeableState [
-	
-	^ aMergeableState mergeWithEmptyWorkingCopyState: self
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyWorkingCopy >> referenceCommit [
 	
 	^ repository head commit
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceEmptyWorkingCopy >> validateCanCommit [
 	
 	"I've no packages loaded. I can always commit.

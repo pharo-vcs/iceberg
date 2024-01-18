@@ -2,17 +2,19 @@
 I indicate when an error trying to authenticate occurs (tipically, when cloning without credentials)
 "
 Class {
-	#name : #IceAuthenticationError,
-	#superclass : #IceError,
-	#category : 'Iceberg-Errors'
+	#name : 'IceAuthenticationError',
+	#superclass : 'IceError',
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceAuthenticationError >> acceptError: aVisitor [
 	aVisitor visitAuthenticationError: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAuthenticationError >> defaultMessageText [
 	^ 'There was an authentication error while trying to execute the operation: {1}. 
 This happens usually because you didn''t provide a valid set of credentials. 
@@ -24,7 +26,7 @@ add your public and private keys).
 3. using HTTPS instead SSH (Just use an url in the form HTTPS://etc.git)'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAuthenticationError >> messageText [
 	^ messageText ifNil: [self defaultMessageText format: { super messageText }]
 ]

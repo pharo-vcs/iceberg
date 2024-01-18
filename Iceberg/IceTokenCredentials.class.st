@@ -8,31 +8,33 @@ I implement authentication credentials via OAUTH-like token.
 
 "
 Class {
-	#name : #IceTokenCredentials,
-	#superclass : #IceAbstractCredentials,
+	#name : 'IceTokenCredentials',
+	#superclass : 'IceAbstractCredentials',
 	#instVars : [
 		'token',
 		'username'
 	],
-	#category : #'Iceberg-Security'
+	#category : 'Iceberg-Security',
+	#package : 'Iceberg',
+	#tag : 'Security'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTokenCredentials >> description [
 	^ 'User: ', username
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTokenCredentials >> hostDescription [
 	^ host
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> isPresent [
-	^ self token notEmpty
+	^ self token isNotEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> password [
 	"For git operations in GitHub, the token can be used as password.
 	
@@ -41,36 +43,36 @@ IceTokenCredentials >> password [
 	^ token
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 IceTokenCredentials >> removeFrom: anIceCredentialStore [ 
 
 	anIceCredentialStore removePlainTextCredential: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> token [
 
 	^ token
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> token: aString [
 
 	token := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> type [
 
 	^ 'Token'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> username [
 	^ username
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTokenCredentials >> username: aString [
 	username := aString
 ]

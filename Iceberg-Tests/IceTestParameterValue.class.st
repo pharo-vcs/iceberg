@@ -18,44 +18,46 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #IceTestParameterValue,
-	#superclass : #Object,
+	#name : 'IceTestParameterValue',
+	#superclass : 'Object',
 	#instVars : [
 		'value',
 		'target',
 		'selector',
 		'previousValue'
 	],
-	#category : 'Iceberg-Tests-Base'
+	#category : 'Iceberg-Tests-Base',
+	#package : 'Iceberg-Tests',
+	#tag : 'Base'
 }
 
-{ #category : #activating }
+{ #category : 'activating' }
 IceTestParameterValue >> activate [
 	self previousValue: self getValue.
 	self setValue: self value
 ]
 
-{ #category : #activating }
+{ #category : 'activating' }
 IceTestParameterValue >> deactivate [
 	self setValue: self previousValue
 ]
 
-{ #category : #activating }
+{ #category : 'activating' }
 IceTestParameterValue >> getValue [
 	^ self target perform: self selector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> previousValue [
 	^ previousValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> previousValue: anObject [
 	previousValue := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTestParameterValue >> printOn: aStream [
 	aStream 
 		print: self class; 
@@ -64,44 +66,44 @@ IceTestParameterValue >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> selector [
 	^ selector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> selector: anObject [
 	selector := anObject
 ]
 
-{ #category : #activating }
+{ #category : 'activating' }
 IceTestParameterValue >> setValue: newValue [
 	^ self target perform: self selector asMutator with: newValue
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceTestParameterValue >> shortName [
 	^ (self value respondsTo: #shortName)
 		ifTrue: [ self value shortName ]
 		ifFalse: [ self value printString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> target: anObject [
 	target := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTestParameterValue >> value: anObject [
 	value := anObject
 ]

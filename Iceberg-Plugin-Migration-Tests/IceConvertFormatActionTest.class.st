@@ -1,10 +1,11 @@
 Class {
-	#name : #IceConvertFormatActionTest,
-	#superclass : #IceAbstractTestCase,
-	#category : 'Iceberg-Plugin-Migration-Tests'
+	#name : 'IceConvertFormatActionTest',
+	#superclass : 'IceAbstractTestCase',
+	#category : 'Iceberg-Plugin-Migration-Tests',
+	#package : 'Iceberg-Plugin-Migration-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> commitProjectFile [
 
 	| change1 change2 |
@@ -24,12 +25,12 @@ IceConvertFormatActionTest >> commitProjectFile [
 	self repository commitWithMessage: 'Add project file'.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceConvertFormatActionTest >> newFixture [
 	^ IceBasicRepositoryFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertEmptyRepositoryToFiletree [
 
 	self commitProjectFile.
@@ -46,7 +47,7 @@ IceConvertFormatActionTest >> testConvertEmptyRepositoryToFiletree [
 		equals: IceLibgitFiletreeWriter
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertEmptyRepositoryToTonel [
 
 	self commitProjectFile.
@@ -63,7 +64,7 @@ IceConvertFormatActionTest >> testConvertEmptyRepositoryToTonel [
 		equals: IceLibgitTonelWriter
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToFiletree [
 	self repository properties fileFormat: IceLibgitTonelWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -89,7 +90,7 @@ IceConvertFormatActionTest >> testConvertToFiletree [
 	self assert: (self repository headCommit packageNames includes: self packageName1)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToFiletreeDoesNotCorruptPropertiesFile [
 	self repository properties fileFormat: IceLibgitTonelWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -116,7 +117,7 @@ IceConvertFormatActionTest >> testConvertToFiletreeDoesNotCorruptPropertiesFile 
 }')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToTonel [
 	self repository properties fileFormat: IceLibgitFiletreeWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -142,7 +143,7 @@ IceConvertFormatActionTest >> testConvertToTonel [
 	self assert: (self repository headCommit packageNames includes: self packageName1)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToTonelDoesNotCorruptPropertiesFile [
 	self repository properties fileFormat: IceLibgitFiletreeWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -169,7 +170,7 @@ IceConvertFormatActionTest >> testConvertToTonelDoesNotCorruptPropertiesFile [
 }')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToTonelRemovesFiletreeMetadataFile [
 	self repository properties fileFormat: IceLibgitFiletreeWriter.
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -199,7 +200,7 @@ IceConvertFormatActionTest >> testConvertToTonelRemovesFiletreeMetadataFile [
 	self deny: (self repository subdirectoryReference / '.filetree') exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageName [
 
    	self repository properties fileFormat: IceLibgitFiletreeWriter.
@@ -231,7 +232,7 @@ IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageName [
  	self deny: (self repository headCommit packageNames includes: (self packageName1, '-Tagged')) 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageNameWhenMethodExtensions [
 
    	self repository properties fileFormat: IceLibgitFiletreeWriter.
@@ -262,22 +263,4 @@ IceConvertFormatActionTest >> testConvertToTonelUsesCorrectPackageNameWhenMethod
 
    	self assert: (self repository headCommit packageNames includes: self packageName1).
  	self deny: (self repository headCommit packageNames includes: (self packageName1, '-Tagged')) 
-]
-
-{ #category : #tests }
-IceConvertFormatActionTest >> testObtainCommonCategoryFrom [
- 	| action categories |
-
-   	action := IceConvertFormatAction new.
- 	categories := #('Seaside-Tests-Component-Stubs' 'Seaside-Tests-Component-Base').
-
-   	self
- 		assert: (action obtainCommonCategory: 'Seaside-Tests-Component-Stubs' from: categories)
- 		equals: 'Seaside-Tests-Component'.
- 	self
- 		assert: (action obtainCommonCategory: 'Seaside-Tests' from: categories)
- 		equals: 'Seaside-Tests'.
- 	self
- 		assert: (action obtainCommonCategory: 'NONE' from: categories)
- 		equals: ''  
 ]

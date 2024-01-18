@@ -1,11 +1,6 @@
-Extension { #name : #MCClassTraitDefinition }
+Extension { #name : 'MCClassTraitDefinition' }
 
-{ #category : #'*Iceberg-Adapters' }
-MCClassTraitDefinition >> classCategory [
-	^ self category
-]
-
-{ #category : #'*Iceberg-Core' }
+{ #category : '*Iceberg-Core' }
 MCClassTraitDefinition >> traitComposition [
 	^ self classTraitComposition 
 ]

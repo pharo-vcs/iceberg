@@ -2,26 +2,28 @@
 I create unborn projects from a commitish if it is HEAD and it does not have a '.project' file.
 "
 Class {
-	#name : #IceUnbornProjectReader,
-	#superclass : #IceProjectReader,
-	#category : 'Iceberg-Project'
+	#name : 'IceUnbornProjectReader',
+	#superclass : 'IceProjectReader',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceUnbornProjectReader >> canReadProjectFromCommitish: aCommitish [
 	
 	^ aCommitish isWorkingCopy
 		and: [ (aCommitish fileSystem / '.project') exists not ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceUnbornProjectReader >> priority [
 
 	"The unborn project reader should be the default one in case no other matches"
 	^ 100000
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 IceUnbornProjectReader >> readProjectFromCommitish: anIceCommitish [
 
 	^ IceUnbornProject onCommitish: anIceCommitish

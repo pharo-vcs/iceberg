@@ -1,6 +1,6 @@
-Extension { #name : #IceTipRepositoriesBrowser }
+Extension { #name : 'IceTipRepositoriesBrowser' }
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: aCommandGroup [
 
 	<extensionCommands>
@@ -17,7 +17,7 @@ IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: a
 		yourself.
 
 	{ IceGitHubNewBranchFromIssueCommand }
-			do: [ :each | pluginGroup register: each forSpec ].
+			do: [ :each | pluginGroup register: (each forSpecContext: presenter) ].
 
 	(aCommandGroup / self selectionCommandGroupName) 
 		register: pluginGroup. 
@@ -34,7 +34,7 @@ IceTipRepositoriesBrowser class >> githubCommandsWith: presenter forRootGroup: a
 
 ]
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRootGroup: aCommandGroup [
 
 	| thisRemoteGroup |
@@ -54,7 +54,7 @@ IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRoo
 
 ]
 
-{ #category : #'*Iceberg-Plugin-GitHub' }
+{ #category : '*Iceberg-Plugin-GitHub' }
 IceTipRepositoriesBrowser class >> githubRemoteCommands: anIceRemoteModel forRootGroup: aCommandGroup context: aPresenter [
 
 	| thisRemoteGroup |

@@ -1,10 +1,12 @@
 Class {
-	#name : #IceMetaClassCherryPickingTest,
-	#superclass : #IceCherryPickingTest,
-	#category : #'Iceberg-Tests-Cherrypicking'
+	#name : 'IceMetaClassCherryPickingTest',
+	#superclass : 'IceCherryPickingTest',
+	#category : 'Iceberg-Tests-Cherrypicking',
+	#package : 'Iceberg-Tests',
+	#tag : 'Cherrypicking'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testAddExtensionMethodInMetaSideOfExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository createBranch: 'b2'.
@@ -34,7 +36,7 @@ IceMetaClassCherryPickingTest >> testAddExtensionMethodInMetaSideOfExistingClass
 		assert: (diff / self packageName2 / 'TestClass class' / 'm1') value isAddition 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testAddMethodInMetaSideOfExistingClass [
 
 	| commitToCherryPick diff mergeTree |
@@ -61,7 +63,7 @@ IceMetaClassCherryPickingTest >> testAddMethodInMetaSideOfExistingClass [
 		assert: (diff / self packageName1 / 'TestClass class' / 'm1') value isAddition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testModifyExtensionMethodInMetaSideOfExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName2.
@@ -104,7 +106,7 @@ IceMetaClassCherryPickingTest >> testModifyExtensionMethodInMetaSideOfExistingCl
 		assert: (diff / self packageName2 / 'TestClass class' / 'm1') value isModification 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testModifyMethodInMetaSideOfExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
@@ -143,7 +145,7 @@ IceMetaClassCherryPickingTest >> testModifyMethodInMetaSideOfExistingClass [
 		assert: (diff / self packageName1 / 'TestClass class' / 'm1') value isModification 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testRemoveExtensionMethodInMetaSideOfExistingClass [
 	| commitToCherryPick diff mergeTree |
 
@@ -182,7 +184,7 @@ IceMetaClassCherryPickingTest >> testRemoveExtensionMethodInMetaSideOfExistingCl
 		assert: (diff / self packageName2 / 'TestClass class' / 'm1') value isRemoval .
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceMetaClassCherryPickingTest >> testRemoveMethodInMetaSideOfExistingClass [
 	| commitToCherryPick diff mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.

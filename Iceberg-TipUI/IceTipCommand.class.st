@@ -2,31 +2,33 @@
 I'm the superclass of all commands of the IceTip UI.
 "
 Class {
-	#name : #IceTipCommand,
-	#superclass : #CmCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipCommand',
+	#superclass : 'CmCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipCommand class >> defaultToolbarItemName [
 
 	^ self defaultName
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand class >> isAbstract [
 
 	^ self == IceTipCommand
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> application [
-
-	^ SpApplication defaultApplication
+	
+	^ context application
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 IceTipCommand >> asSpecCommand [ 
 
 	| spCommand |
@@ -45,31 +47,31 @@ IceTipCommand >> asSpecCommand [
 	^ spCommand
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> badge [
 	"Answer a number as extra information in the button. An answer of nil means no information."
 
 	^ nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> hasRepository [
 
-	^ self repositoryModel notNil
+	^ self repositoryModel isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> hasSelectedItem [
 
-	^ self context selectedItem notNil
+	^ self context selectedItem isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> hasUnbornProject [
 	^ self repositoryModel hasUnbornProject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> iconName [
 	"Answer the icon name (a Symbol) for this command."
 	
@@ -77,13 +79,13 @@ IceTipCommand >> iconName [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> isRepositoryDetached [
 	^ self repositoryModel isNil 
 		or: [ self  repositoryModel isDetached ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> isRepositoryMissing [
 
 	^ self hasRepository and: [
@@ -91,32 +93,32 @@ IceTipCommand >> isRepositoryMissing [
 			self repositoryModel isCodeMissing ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> isRepositoryOperational [
 	^ self isRepositoryMissing not 
 		and: [ self isRepositoryDetached not
 			and: [ self hasUnbornProject not ] ]
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipCommand >> item [
 
 	^ self context selectedItem
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> repository [
 
 	^ self repositoryModel entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> repositoryModel [
 
 	^ self context repositoryModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> shortcutKey [
 	"Answer the key combination to execute this command. Answer nil if there isn't a key combination."
 	
@@ -124,31 +126,31 @@ IceTipCommand >> shortcutKey [
 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipCommand >> shouldBeDisplayedOnRightSideInToolbar [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> tool [
 
 	^ self context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> toolAnnouncer [
 
 	^ self tool announcer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> toolbarItemName [
 	
 	^ self class defaultToolbarItemName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCommand >> withErrorHandlingDo: aBlock [
 
 	aBlock

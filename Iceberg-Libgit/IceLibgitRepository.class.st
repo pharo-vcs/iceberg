@@ -5,8 +5,8 @@ I have a handle to a LGitRepository that is lazily initialized on usage, and cle
 Every access to the libgit repository should be wrapped with a call to #handleLibgitError: to manage possible libgit errors and transform them to a correct iceberg error.
 "
 Class {
-	#name : #IceLibgitRepository,
-	#superclass : #IceRepository,
+	#name : 'IceLibgitRepository',
+	#superclass : 'IceRepository',
 	#instVars : [
 		'location',
 		'commitCache',
@@ -18,27 +18,29 @@ Class {
 		'ShareRepositoriesBetweenImages',
 		'SharedRepositoriesLocation'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> defaultCodeSubdirectory [
 	^ DefaultCodeSubdirectory ifNil: [ DefaultCodeSubdirectory := 'src' ]
 
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> defaultCodeSubdirectory: aString [
 	DefaultCodeSubdirectory := aString
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitRepository class >> defaultFileFormat [
 	^ Smalltalk at: self defaultFileFormatType asSymbol
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> defaultFileFormatType [
 	^ DefaultFileFormatType ifNil: [ 
 		DefaultFileFormatType := TIceRepositoryWriter traitUsers 
@@ -47,19 +49,19 @@ IceLibgitRepository class >> defaultFileFormatType [
 			ifNone: [ nil "To be filled later (on first demand)" ] ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> defaultFileFormatType: anObject [
 	DefaultFileFormatType := anObject
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> formatTypeDomainValues [
 	^ TIceRepositoryWriter traitUsers 
 		ifNotEmpty: [ :users | users collect: [ :each | each description -> each name ] ]
 		ifEmpty: [ { 'Undefined' -> nil } ]
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 IceLibgitRepository class >> libgitErrorHandlerPragmaSelector [
 	
 	"Pragma selector used to detect methods used as libgit error handlers.
@@ -67,7 +69,7 @@ IceLibgitRepository class >> libgitErrorHandlerPragmaSelector [
 	^ #libgitErrorHandler
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 IceLibgitRepository class >> libgitErrorHandlerSelector [
 	
 	"Detect what method is used for handling libgit errors.
@@ -75,10 +77,10 @@ IceLibgitRepository class >> libgitErrorHandlerSelector [
 	
 	This selector is mainly used by architectural rules to ensure that libgit is being called correctly."
 	^ (self methods detect: [ :each |
-		each pragmas anySatisfy: [ :pragma | pragma keyword = self libgitErrorHandlerPragmaSelector ] ]) selector
+			each pragmas anySatisfy: [ :pragma | pragma selector = self libgitErrorHandlerPragmaSelector ] ]) selector
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 IceLibgitRepository class >> libgitRepositoryHandleAccessorPragmaSelector [
 	
 	"Pragma selector used to detect methods allowed to directly access the repository handle. 
@@ -86,25 +88,25 @@ IceLibgitRepository class >> libgitRepositoryHandleAccessorPragmaSelector [
 	^ #repositoryHandleAccessor
 ]
 
-{ #category : #rules }
+{ #category : 'rules' }
 IceLibgitRepository class >> libgitRepositoryHandleAccessors [
-	
-	^ self allMethods select: [ :m | m pragmas anySatisfy: [ :p | p keyword = self libgitRepositoryHandleAccessorPragmaSelector ] ]
+	 
+	^ self allMethods select: [ :m | m pragmas anySatisfy: [ :p | p selector = self libgitRepositoryHandleAccessorPragmaSelector ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitRepository class >> localRepositoriesLocation [
 	^ FileLocator localDirectory / #iceberg
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLibgitRepository class >> repositoriesLocation [
  	^ self shareRepositoriesBetweenImages 
 		ifTrue: [ self sharedRepositoriesLocation ]
 		ifFalse: [ self localRepositoriesLocation ] 
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitRepository class >> requiredLibGit2MinimumVersion [
 	^ IceSemanticVersion 
 		major: 0 
@@ -112,7 +114,7 @@ IceLibgitRepository class >> requiredLibGit2MinimumVersion [
 		patch: 1
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> settingsOn: aBuilder [ 
 	<systemsettings>
 	
@@ -148,38 +150,38 @@ IceLibgitRepository class >> settingsOn: aBuilder [
 		
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> shareRepositoriesBetweenImages [
 	^ ShareRepositoriesBetweenImages ifNil: [ ShareRepositoriesBetweenImages := false ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> shareRepositoriesBetweenImages: anObject [
 	ShareRepositoriesBetweenImages := anObject
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> sharedRepositoriesLocation [
 	^ SharedRepositoriesLocation ifNil: [ 
 		SharedRepositoriesLocation := (FileLocator home / #iceberg) asFileReference ]
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> sharedRepositoriesLocation: anObject [
 	SharedRepositoriesLocation := anObject
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> sharedRepositoriesLocationString [
 	^ self sharedRepositoriesLocation fullName
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 IceLibgitRepository class >> sharedRepositoriesLocationString: aString [
 	SharedRepositoriesLocation := aString asFileReference
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 IceLibgitRepository class >> verifyBackendAvailabilityIfNot: aBlock [
 	| presentVersion requiredVersion |
 	
@@ -189,13 +191,13 @@ IceLibgitRepository class >> verifyBackendAvailabilityIfNot: aBlock [
 		ifFalse: [ ^ aBlock cull: requiredVersion cull: presentVersion ]
 ]
 
-{ #category : #'API - files' }
+{ #category : 'API - files' }
 IceLibgitRepository >> addFileToIndex: aFile [
 	
 	self addFilesToIndex: { aFile }
 ]
 
-{ #category : #'API - files' }
+{ #category : 'API - files' }
 IceLibgitRepository >> addFilesToIndex: aCollection [
 
 	self handleLibgitError: [
@@ -214,37 +216,37 @@ IceLibgitRepository >> addFilesToIndex: aCollection [
 			free ]
 ]
 
-{ #category : #'to-cleanup' }
+{ #category : 'to-cleanup' }
 IceLibgitRepository >> addTo: aMCRepositoryGroup [ 
 	"For now do not add me as an MCRepository"
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> allBranches [
 	
 	^ self localBranches, self remoteTrackedBranches
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> basicCodeDirectory [
 	^ self subdirectory isEmptyOrNil 
 		ifTrue: [ self repositoryDirectory ]
 		ifFalse: [ self repositoryDirectory / self subdirectory  ].
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> basicNewBranchNamed: aString [ 
 
 	^ IceGitLocalBranch named: aString inRepository: self
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> basicNewRemoteBranchNamed: aString [ 
 
 	^ IceGitRemoteBranch named: aString inRepository: self
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> branchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock [
 
 	self handleLibgitError: [ | found |
@@ -252,7 +254,7 @@ IceLibgitRepository >> branchNamed: aString ifPresent: presentBlock ifAbsent: ab
 		^ found ifNil: absentBlock ifNotNil: [ presentBlock value: (self basicNewBranchNamed: found name) ] ]
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceLibgitRepository >> changedFilesBetween: aCommitish and: otherCommitish [
 	"Answer a list of files that changed between two commits"
 
@@ -263,7 +265,7 @@ IceLibgitRepository >> changedFilesBetween: aCommitish and: otherCommitish [
 		^ diff files ]
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceLibgitRepository >> checkForRegistryConflicts [
 	
 	"If the repository has no location, do not check for conflicts."
@@ -292,7 +294,7 @@ and the original repository''s url is {3}.'
 					 format: {self location. self origin. repo origin}) ]].
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> codeDirectory [
 	"Code repository might have been deleted or image might have been moved."
 	self repositoryDirectory exists
@@ -300,13 +302,13 @@ IceLibgitRepository >> codeDirectory [
 		ifFalse: [ IceLocalRepositoryMissing signalFor: self ]
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceLibgitRepository >> commitCache [
 	
 	^ commitCache ifNil: [ commitCache := LRUCache new maximumWeight: 30  ]
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceLibgitRepository >> commitFromGitCommit: aLGitCommit [ 
 	
 	^ self commitCache at: aLGitCommit id hexString ifAbsentPut: [
@@ -321,12 +323,12 @@ IceLibgitRepository >> commitFromGitCommit: aLGitCommit [
 			yourself ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> commitIdFrom: aLGitCommit [ 
 	^ aLGitCommit id hexString
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> commitishNamed: aName [
 	"Resolve a name in the form of:
 	  - a commit hash
@@ -345,7 +347,7 @@ IceLibgitRepository >> commitishNamed: aName [
 			self revparse: aName ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> createBranch: branchName [
 	| newBranch |
 	"This is really low level and may provoke problems.
@@ -370,7 +372,7 @@ IceLibgitRepository >> createBranch: branchName [
 			^ self head ]
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> createBranch: aString inCommit: anIceGitCommit [
 
 	self handleLibgitError: [
@@ -382,7 +384,7 @@ IceLibgitRepository >> createBranch: aString inCommit: anIceGitCommit [
 			yourself ]
 ]
 
-{ #category : #'API - working copy' }
+{ #category : 'API - working copy' }
 IceLibgitRepository >> createSourceDirectory [
 	(location / self subdirectory) ensureCreateDirectory.
 	
@@ -391,7 +393,7 @@ IceLibgitRepository >> createSourceDirectory [
 		store	
 ]
 
-{ #category : #'API - registry' }
+{ #category : 'API - registry' }
 IceLibgitRepository >> delete [
 	"Delete is idempotent. If the repository does not exist, do nothing.
 	Otherwise, forget the repository and remove it from the disk.
@@ -403,7 +405,7 @@ IceLibgitRepository >> delete [
 	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceLibgitRepository >> description [
 	^ [ super description ] on: Error do: [ 
 		self location isNil
@@ -411,7 +413,7 @@ IceLibgitRepository >> description [
 			ifFalse: [ 'Bad location: ', self location path pathString ] ]
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> directoryForPackage: mcPackage [
 	| package |
 	package := self packageNamed: mcPackage name.
@@ -420,7 +422,7 @@ IceLibgitRepository >> directoryForPackage: mcPackage [
 		ifFalse: [ self subdirectory, '/', (self directoryNameForPackage: package) ]
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> directoryNameForPackage: package [
 
 	^ (self writerClass 
@@ -428,7 +430,7 @@ IceLibgitRepository >> directoryNameForPackage: package [
 		asString
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> directoryPathStringForPackage: aMCPackage [ 
 
 	^ self subdirectory isEmptyOrNil 
@@ -436,7 +438,7 @@ IceLibgitRepository >> directoryPathStringForPackage: aMCPackage [
 		ifFalse: [ self subdirectory, '/',  (self directoryNameForPackage: aMCPackage) ]
 ]
 
-{ #category : #'private - remotes' }
+{ #category : 'private - remotes' }
 IceLibgitRepository >> doRemoveRemote: aRemote [
 	self handleLibgitError: [
 		(LGitRemote of: self repositoryHandle named: aRemote name)
@@ -444,7 +446,7 @@ IceLibgitRepository >> doRemoveRemote: aRemote [
 			delete ]
 ]
 
-{ #category : #'private - libgit' }
+{ #category : 'private - libgit' }
 IceLibgitRepository >> free [
 
 	(handle isNil or: [ handle isNull ])
@@ -453,7 +455,7 @@ IceLibgitRepository >> free [
 			handle := nil ]
 ]
 
-{ #category : #'API - configuration' }
+{ #category : 'API - configuration' }
 IceLibgitRepository >> getConfigurationGlobal: aBoolean [
 
 	self handleLibgitError: [ | config |
@@ -463,7 +465,7 @@ IceLibgitRepository >> getConfigurationGlobal: aBoolean [
 			ifFalse: [ config ] ]
 ]
 
-{ #category : #'private - libgit' }
+{ #category : 'private - libgit' }
 IceLibgitRepository >> handleLibgitError: aBlock [
 	"Handle errors while calling libgit.
 	The pragma is used to detect this method and verify on architectural rules that it is correctly called"
@@ -472,32 +474,32 @@ IceLibgitRepository >> handleLibgitError: aBlock [
 	aBlock on: LGitCallReturnHandler do: [ :error | error acceptError: (IceLibgitErrorVisitor onContext: self) ]
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceLibgitRepository >> hasTagNamed: aString [ 
 	
 	^ self tagNames includes: aString
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> head [
 	
 	^ self lookupHead
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceLibgitRepository >> headDescription [
 	
 	^ [ super headDescription ] on: Error do: [ 'Bad location' ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> iceCommitFrom: aGitCommit [
 	"The type of 'aCommitish' depends on how each backend internal representation. "
 
 	^ self commitFromGitCommit: aGitCommit
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 IceLibgitRepository >> init [
 	"Initialize new repository. This is the equivalent to running in the command line:
 	  $ git init
@@ -506,45 +508,45 @@ IceLibgitRepository >> init [
 	self initBare: false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceLibgitRepository >> initBare: isBare [
 	(LGitRepository on: self location) initBare: isBare
 ]
 
-{ #category : #'private - commits' }
+{ #category : 'private - commits' }
 IceLibgitRepository >> internalStoreVersion: aMCVersion [
 	self writerClass
 		forInternalStoreFileOut: aMCVersion 
 		on: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitRepository >> isCloneOfUrl: aString [
 
 	^ self isMissing not and: [ super isCloneOfUrl: aString ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitRepository >> isCodeMissing [
 	^ self subdirectory isEmptyOrNil 
 		ifTrue: [ self isMissing ]
 		ifFalse: [ (self repositoryDirectory / self subdirectory) exists not  ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitRepository >> isMissing [
 	^ self repositoryDirectory isNil 
 		or: [ self repositoryDirectory exists not ]
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> isModified [
 	"We cannot correctly determine if a repository is modified if it is missing so, false"
 	
 	^ self isMissing not and: [ super isModified ]
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> isPackageExported: anIceSavedPackage [
 
 	| packageLocation |
@@ -552,13 +554,13 @@ IceLibgitRepository >> isPackageExported: anIceSavedPackage [
 	^ packageLocation exists and: [ packageLocation hasChildren ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceLibgitRepository >> isValid [
 	self flag: #pharoTodo. "Make this tests more solid"
 	^ self isMissing not
 ]
 
-{ #category : #'API - branches' }
+{ #category : 'API - branches' }
 IceLibgitRepository >> localBranches [
 
 	self handleLibgitError: [ 
@@ -569,24 +571,24 @@ IceLibgitRepository >> localBranches [
 			streamContents: [ :stream | self repositoryHandle localBranchesDo: [ :br :isLocal | stream nextPut: (self basicNewBranchNamed: br name) ] ] ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> location [
 	^ location
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> location: aFileReference [
 	location := aFileReference.
 	self resetHandle
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> locationIfPresent: aBlock [
 
 	^ self locationIfPresent: aBlock ifAbsent: [ self ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> locationIfPresent: aBlock ifAbsent: absentBlock [
 
 	self location ifNil: [ ^ absentBlock value ].
@@ -596,25 +598,25 @@ IceLibgitRepository >> locationIfPresent: aBlock ifAbsent: absentBlock [
 		ifFalse: [ absentBlock value ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> log [
 	^ self logClass for: self
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> logClass [
 	^ IceLog allSubclasses 
 		detect: [ :each | each isAvailableFor: self ]
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceLibgitRepository >> lookupCommit: commitId ifAbsent: aBlock [
 	^ [ self revparse: commitId ]
 		on: NotFound
 		do: aBlock
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> lookupHead [
 	self handleLibgitError: [ | head |
 		self repositoryHandle isUnborn
@@ -625,7 +627,7 @@ IceLibgitRepository >> lookupHead [
 			ifFalse: [ head object asIcebergObjectInRepository: self ] ]
 ]
 
-{ #category : #'private - monticello' }
+{ #category : 'private - monticello' }
 IceLibgitRepository >> mcVersionFor: iceVersion [
 	[ | commit |
 		commit := iceVersion commit libgitCommit.
@@ -637,7 +639,7 @@ IceLibgitRepository >> mcVersionFor: iceVersion [
 			signal ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> mergeBaseBetween: aCommitId and: anotherCommitId [
 	
 	self handleLibgitError: [ ^ (self repositoryHandle
@@ -645,42 +647,42 @@ IceLibgitRepository >> mergeBaseBetween: aCommitId and: anotherCommitId [
 			and: (LGitId fromHexString: anotherCommitId)) hexString ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> name [
 
 	^ name ifNil: [ name := self obtainRepositoryName ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> newCommitWalk [
 	^ IceLibgitCommitWalk forRepository: self
 ]
 
-{ #category : #'private - changes' }
+{ #category : 'private - changes' }
 IceLibgitRepository >> newIndex [
 	
 	^ IceGitIndex on: self
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceLibgitRepository >> newNoCommit [
 	
 	^ IceNoCommit repository: self
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceLibgitRepository >> newProjectFromCommit: aCommit [
 
 	^ IceProjectReader readProjectFrom: self
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> obtainRepositoryName [
 	
 	^ self location basename
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> origin [
 	
 	^ self
@@ -691,7 +693,7 @@ IceLibgitRepository >> origin [
 				yourself ]
 ]
 
-{ #category : #'API - packages' }
+{ #category : 'API - packages' }
 IceLibgitRepository >> packageLocationFor: anIceSavedPackage [
 	| packageLocation directoryName |
 	 
@@ -703,36 +705,36 @@ IceLibgitRepository >> packageLocationFor: anIceSavedPackage [
 	^ packageLocation
 ]
 
-{ #category : #'private - tags' }
+{ #category : 'private - tags' }
 IceLibgitRepository >> peelTag: anIceTag [ 
 	self handleLibgitError: [ | lgitRef |
 		lgitRef := (self repositoryHandle lookup: 'refs/tags/', anIceTag name).
 		^ self lookupCommit: lgitRef targetId hexString ]
 ]
 
-{ #category : #'API - project' }
+{ #category : 'API - project' }
 IceLibgitRepository >> project [
 	
 	^ self workingCopy project
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> properties [
 	^ self workingCopy repositoryProperties
 ]
 
-{ #category : #'API - properties' }
+{ #category : 'API - properties' }
 IceLibgitRepository >> readerClass [
 	^ self properties readerClass
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> remoteAt: aString put: aRemote [
 
 	self handleLibgitError: [ self repositoryHandle addRemote: aRemote name url: aRemote url ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> remoteBranchNamed: aString ifPresent: presentBlock ifAbsent: absentBlock [
 	
 	self handleLibgitError: [ | branchRef |
@@ -740,7 +742,7 @@ IceLibgitRepository >> remoteBranchNamed: aString ifPresent: presentBlock ifAbse
 		presentBlock value: (self basicNewRemoteBranchNamed: branchRef name) ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> remoteNamed: aName ifAbsent: aBlockClosure [
 	
 	self handleLibgitError: [ | gitRemote |
@@ -752,7 +754,7 @@ IceLibgitRepository >> remoteNamed: aName ifAbsent: aBlockClosure [
 		do: [ ^ aBlockClosure value ] ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> remoteTrackedBranches [
 	
 	self handleLibgitError: [
@@ -765,8 +767,13 @@ IceLibgitRepository >> remoteTrackedBranches [
 						stream nextPut: (self basicNewRemoteBranchNamed: br name) ] ] ]
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceLibgitRepository >> remotes [
+	
+	LGitLibrary uniqueInstance isAvailable 
+		ifFalse: [ 
+			'No libgit2 available, skipping.' crTrace.
+			^ #() ].
 	
 	self handleLibgitError: [ | gitRemotes |
 		self isValid ifFalse: [ ^ #() ].
@@ -778,19 +785,19 @@ IceLibgitRepository >> remotes [
 					yourself ] ]
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceLibgitRepository >> removeTag: anIceTag [ 
 	
 	self handleLibgitError: [
 		self repositoryHandle git_tag_delete: anIceTag name ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> repositoryDirectory [
 	^ self location
 ]
 
-{ #category : #'private - libgit' }
+{ #category : 'private - libgit' }
 IceLibgitRepository >> repositoryHandle [
 
 	<repositoryHandleAccessor>
@@ -799,12 +806,12 @@ IceLibgitRepository >> repositoryHandle [
 	^ handle
 ]
 
-{ #category : #'private - libgit' }
+{ #category : 'private - libgit' }
 IceLibgitRepository >> resetHandle [
 	handle := nil
 ]
 
-{ #category : #'API - commits' }
+{ #category : 'API - commits' }
 IceLibgitRepository >> revparse: aName [
 
 	self handleLibgitError: [ | gitCommit gitId |
@@ -813,7 +820,7 @@ IceLibgitRepository >> revparse: aName [
 		^ self commitFromGitCommit: gitCommit ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> setHead: anIceGitCommitish [
 	
 	"Need to keep the reference, if not it is garbage collected. As the options are only passed to a FFI call"
@@ -830,18 +837,18 @@ IceLibgitRepository >> setHead: anIceGitCommitish [
 					yourself) ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> subdirectory [
 	^ self project sourceDirectory
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> subdirectory: aString [ 
 	
 	self project sourceDirectory: aString
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> subdirectoryPath [
 	
 	"API compatible both with Pharo6 and Pharo7.
@@ -852,13 +859,13 @@ IceLibgitRepository >> subdirectoryPath [
 	^ RelativePath withAll: (RelativePath canonicalizeElements: ($/ split: self subdirectory))
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> subdirectoryReference [
 	
 	^ self location resolve: self subdirectoryPath
 ]
 
-{ #category : #'API - tags' }
+{ #category : 'API - tags' }
 IceLibgitRepository >> tags [
 	self handleLibgitError: [ 
 		^ self repositoryHandle tags
@@ -866,7 +873,7 @@ IceLibgitRepository >> tags [
 				IceTag named: each inRepository: self ] ]
 ]
 
-{ #category : #'API - accessing' }
+{ #category : 'API - accessing' }
 IceLibgitRepository >> writerClass [
 	^ self project writerClass
 ]

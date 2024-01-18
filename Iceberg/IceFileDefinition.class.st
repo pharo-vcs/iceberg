@@ -6,15 +6,17 @@ My contents are the contents of the file, utf8 decoded.
 See my superclasses for more information.
 "
 Class {
-	#name : #IceFileDefinition,
-	#superclass : #IceFileSystemDefinition,
+	#name : 'IceFileDefinition',
+	#superclass : 'IceFileSystemDefinition',
 	#instVars : [
 		'contents'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceFileDefinition class >> named: aString path: aPath contents: contents [
 	
 	^ (self named: aString path: aPath)
@@ -22,7 +24,7 @@ IceFileDefinition class >> named: aString path: aPath contents: contents [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceFileDefinition class >> named: aString path: aPath fileReference: aFileReference [
 	^ self
 		named: aString
@@ -30,31 +32,31 @@ IceFileDefinition class >> named: aString path: aPath fileReference: aFileRefere
 		contents: (aFileReference binaryReadStreamDo: [ :each | each upToEnd ])
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceFileDefinition >> = anotherDefinition [
 
 	^ super = anotherDefinition and: [ contents = anotherDefinition basicContents ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceFileDefinition >> accept: aVisitor [
 	
 	^ aVisitor visitFileNode: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceFileDefinition >> basicContents [
 
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceFileDefinition >> basicContents: anObject [
 
 	contents := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceFileDefinition >> contents [
 	"Contents for display purposes.
 	If the file is binary (or could not detect as utf8 file) then just return an hexa dump representation of the contents
@@ -65,32 +67,32 @@ IceFileDefinition >> contents [
 		ifFalse: [ contents utf8Decoded ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceFileDefinition >> contents: anObject [
 
 	contents := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceFileDefinition >> hash [
 	
 	^ self contents hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceFileDefinition >> isBinary [
 	
 	[contents utf8Decoded] on: ZnInvalidUTF8 do: [ ^ true ].
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceFileDefinition >> isFileDefinition [
 	
 	^ true
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceFileDefinition >> removeFrom: aVisitor [ 
 	aVisitor removeFile: self
 ]

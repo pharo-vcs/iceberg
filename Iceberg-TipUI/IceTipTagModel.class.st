@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTipTagModel,
-	#superclass : #IceTipCommitishModel,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipTagModel',
+	#superclass : 'IceTipCommitishModel',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTagModel >> commitModels [
 	
 	| commits |
@@ -17,7 +19,7 @@ IceTipTagModel >> commitModels [
 	^ commits
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipTagModel >> delete [
 	<noCache>
 	
@@ -28,19 +30,13 @@ IceTipTagModel >> delete [
 		do: [ self repositoryModel entity removeTag: self entity ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipTagModel >> description [
 	
 	^ self entity name
 ]
 
-{ #category : #accessing }
-IceTipTagModel >> name [
-	
-	^ self entity name
-]
-
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipTagModel >> previewCheckout [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"

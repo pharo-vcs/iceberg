@@ -6,23 +6,25 @@ In current implementation of Iceberg, I will be used mainly for the convenience 
 
 "
 Class {
-	#name : #IceAnnouncer,
-	#superclass : #Announcer,
+	#name : 'IceAnnouncer',
+	#superclass : 'Announcer',
 	#instVars : [
 		'suspendedConditions',
 		'suspendAll'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #announce }
+{ #category : 'announce' }
 IceAnnouncer >> announce: anAnnouncement [
 
 	(self isAnnouncementSuspended: anAnnouncement) ifTrue: [ ^ anAnnouncement asAnnouncement ].
 	^ super announce: anAnnouncement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceAnnouncer >> initialize [
 
 	super initialize.
@@ -30,7 +32,7 @@ IceAnnouncer >> initialize [
 	suspendedConditions := OrderedCollection new: 5
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAnnouncer >> isAnnouncementSuspended: anAnnouncement [
 
 	suspendAll ifTrue: [ ^ true ].
@@ -39,13 +41,13 @@ IceAnnouncer >> isAnnouncementSuspended: anAnnouncement [
 		each value: anAnnouncement ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAnnouncer >> isSuspended [
 
 	^ suspendAll
 ]
 
-{ #category : #suspending }
+{ #category : 'suspending' }
 IceAnnouncer >> suspendAllForRepository: aRepository while: aBlock [
 
 	^ self 
@@ -53,14 +55,14 @@ IceAnnouncer >> suspendAllForRepository: aRepository while: aBlock [
 		while: aBlock 
 ]
 
-{ #category : #suspending }
+{ #category : 'suspending' }
 IceAnnouncer >> suspendAllMatching: matchBlock while: aBlock [
 
 	suspendedConditions add: matchBlock.
 	aBlock ensure: [ suspendedConditions remove: matchBlock ]
 ]
 
-{ #category : #suspending }
+{ #category : 'suspending' }
 IceAnnouncer >> suspendAllWhile: aBlock [
 	| previousSuspensionState |
 	

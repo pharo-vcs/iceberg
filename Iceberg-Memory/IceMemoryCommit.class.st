@@ -3,22 +3,26 @@ I'm a commit that works on memory.
 I'm used for testing.
 "
 Class {
-	#name : #IceMemoryCommit,
-	#superclass : #IceCommit,
+	#name : 'IceMemoryCommit',
+	#superclass : 'IceCommit',
 	#instVars : [
 		'mcCommit'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMemoryCommit >> = aCommit [
 
-	^ (self mcCommit dependencies asArray sort: [ :a :b | a timeStamp > b timeStamp ])
-			= (aCommit mcCommit dependencies asArray sort: [ :a :b | a timeStamp > b timeStamp ])
+	self == aCommit ifTrue: [ ^ true ].
+
+	self species = aCommit species ifFalse: [ ^ false ].
+
+	^ self mcCommit dependencies asSet = aCommit mcCommit dependencies asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> ancestors [
 	
 	^ self mcCommit info ancestors collect: [ :parentMcCommitInfo | | iceCommit parentMcCommit |
@@ -29,13 +33,13 @@ IceMemoryCommit >> ancestors [
 		iceCommit ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> author [
 	
 	^ mcCommit info author
 ]
 
-{ #category : #'private-changes' }
+{ #category : 'private-changes' }
 IceMemoryCommit >> changedPackagesToCommitInfo: aCommit [
 	
 	| otherDependencies |
@@ -47,20 +51,20 @@ IceMemoryCommit >> changedPackagesToCommitInfo: aCommit [
 			collect: [ :each | each package ] as: Array
 ]
 
-{ #category : #'private-changes' }
+{ #category : 'private-changes' }
 IceMemoryCommit >> changesFromCommit: anIceCommit [ 
 
 	^ (anIceCommit changedPackagesToCommitInfo: self)
 		collect: [ :package | IceMemoryChange on: package ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> comment [
 	
 	^ mcCommit info message
 ]
 
-{ #category : #ancestry }
+{ #category : 'ancestry' }
 IceMemoryCommit >> commonAncestorWithCommit: anIceMemoryCommit [ 
 	
 	| ancestor ancestorInfo |
@@ -74,13 +78,13 @@ IceMemoryCommit >> commonAncestorWithCommit: anIceMemoryCommit [
 		yourself
 ]
 
-{ #category : #'private-monticello' }
+{ #category : 'private-monticello' }
 IceMemoryCommit >> commonMCAncestorWith: anIceMemoryCommit [ 
 	
 	^ mcCommit info commonAncestorWith: anIceMemoryCommit mcCommit info
 ]
 
-{ #category : #'API-tags' }
+{ #category : 'API-tags' }
 IceMemoryCommit >> createTag: aString [ 
 	
 	(self repository hasTagNamed: aString) ifTrue: [ 
@@ -91,13 +95,13 @@ IceMemoryCommit >> createTag: aString [
 	^ IceTag named: aString inRepository: self repository.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> datetime [
 	
 	^ self mcCommit info timeStamp
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMemoryCommit >> hash [
 
 	self mcCommit dependencies isEmpty ifTrue: [ ^ 0 hash ].
@@ -109,17 +113,17 @@ IceMemoryCommit >> hash [
 			fold: [ :a :b | a hash bitXor: b hash ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> id [
 	^ self mcCommit info id asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> mcCommit [
 	^ mcCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> mcCommit: aMCVersion [ 
 	self assert: (aMCVersion isKindOf: MCVersion).
 	self assert: (aMCVersion dependencies allSatisfy: [ :each |
@@ -127,25 +131,25 @@ IceMemoryCommit >> mcCommit: aMCVersion [
 	mcCommit := aMCVersion
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceMemoryCommit >> mergeWith: anIceMemoryCommit [ 
 	
 	^ repository workingCopy mergeCommit: anIceMemoryCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> packageNames [
 	
 	^ (mcCommit dependencies collect: [ :each | each package name ]) asArray
 ]
 
-{ #category : #'API-project' }
+{ #category : 'API-project' }
 IceMemoryCommit >> project [
 	
 	^ IceMemoryProject onRepository: self repository commitish: self
 ]
 
-{ #category : #'API-properties' }
+{ #category : 'API-properties' }
 IceMemoryCommit >> properties [
 
 	^ IceRepositoryProperties
@@ -153,13 +157,13 @@ IceMemoryCommit >> properties [
 		commitish: self
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IceMemoryCommit >> snapshotFor: package [
 
 	^ (self repository mcVersionFor: (self versionFor: package)) snapshot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryCommit >> timeStamp [
 	
 	^ self mcCommit info timeStamp

@@ -3,18 +3,20 @@ I am a basic project reader that is used by default in case no other project rea
 I create an IceBasicProject in case a .project file is found, or an IceUnbornProject otherwise.
 "
 Class {
-	#name : #IceBasicProjectReader,
-	#superclass : #IceProjectReader,
-	#category : 'Iceberg-Project'
+	#name : 'IceBasicProjectReader',
+	#superclass : 'IceProjectReader',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceBasicProjectReader >> canReadProjectFromCommitish: aCommitish [
 	
 	^ (aCommitish fileSystem / '.project') exists
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 IceBasicProjectReader >> readProjectFromCommitish: anIceCommitish [ 
 
 	| properties projectFileReference |

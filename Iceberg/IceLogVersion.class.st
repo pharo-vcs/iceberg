@@ -3,16 +3,18 @@ I'm a log version.
 I keep a commit and a method definition from each method version tracked on IceLog>>#historyOfMethod:.
 "
 Class {
-	#name : #IceLogVersion,
-	#superclass : #Object,
+	#name : 'IceLogVersion',
+	#superclass : 'Object',
 	#instVars : [
 		'commit',
 		'definition'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceLogVersion class >> commit: aCommit definition: aRingDefinition [ 
 	^ self new 
 		commit: aCommit; 
@@ -20,68 +22,68 @@ IceLogVersion class >> commit: aCommit definition: aRingDefinition [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> ancestors [
 	^ self commit ancestors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> author [
 	^ self commit author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> comment [
 	^ self commit comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> commit [
 	^ commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> commit: aCommit [
 	commit := aCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> datetime [
 	^ self commit datetime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> definition [
 	^ definition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> definition: aRingDefinition [
 	definition := aRingDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> description [
 	^ '{1} at {2}' format: { self author. self datetime asLocalStringYMDHM }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> id [
 	^ self commit id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> originMethod [
 	^ (Smalltalk at: self definition methodClass name) >> self definition selector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> shortId [
 
 	^ self commit shortId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> source [
 	^ String streamContents: [ :stream | 
 		stream 
@@ -89,17 +91,17 @@ IceLogVersion >> source [
 			<< self definition sourceCode ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> tagNames [
 	^ self commit tagNames
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> tags [
 	^ self commit tags
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceLogVersion >> timeStamp [
 	^ self commit timeStamp
 ]

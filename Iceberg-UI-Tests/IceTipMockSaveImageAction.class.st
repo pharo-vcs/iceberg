@@ -1,26 +1,28 @@
 Class {
-	#name : #IceTipMockSaveImageAction,
-	#superclass : #Object,
+	#name : 'IceTipMockSaveImageAction',
+	#superclass : 'Object',
 	#instVars : [
 		'timesExecuted'
 	],
-	#category : #'Iceberg-UI-Tests-Browsers'
+	#category : 'Iceberg-UI-Tests-Browsers',
+	#package : 'Iceberg-UI-Tests',
+	#tag : 'Browsers'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMockSaveImageAction >> execute [
 
 	timesExecuted := timesExecuted + 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipMockSaveImageAction >> initialize [ 
 
 	super initialize.
 	timesExecuted := 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipMockSaveImageAction >> timesExecuted [
 	^timesExecuted 
 ]

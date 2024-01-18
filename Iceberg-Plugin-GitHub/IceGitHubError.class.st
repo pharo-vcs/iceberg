@@ -2,56 +2,58 @@
 I'm an error that happens when something fails when performing a GitHub action.
 "
 Class {
-	#name : #IceGitHubError,
-	#superclass : #Error,
+	#name : 'IceGitHubError',
+	#superclass : 'Error',
 	#instVars : [
 		'response',
 		'jsonContents'
 	],
-	#category : 'Iceberg-Plugin-GitHub-Model'
+	#category : 'Iceberg-Plugin-GitHub-Model',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubError class >> errorClassFor: aResponse [
 	^ self allSubclasses 
 		detect: [ :each | each isAppropriateFor: aResponse  ]
 		ifNone: [ self ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubError class >> for: aResponse [
 	^ (self errorClassFor: aResponse) new 
 		response: aResponse;
 		yourself	
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitHubError class >> isAppropriateFor: aResponse [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubError class >> signalFor: aResponse [
 	^ (self for: aResponse) signal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> code [
 	^ self response status
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> contents [
 	^ self response contents
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubError >> customError: aDictionary [
 	^ aDictionary at: #message
 		
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubError >> errorToString: aDictionary [ 
 	(aDictionary at: #code) = 'custom' ifTrue: [ ^ self customError: aDictionary ].
 	(aDictionary at: #code) = 'invalid' ifTrue: [ ^ self invalidError: aDictionary ].
@@ -59,20 +61,20 @@ IceGitHubError >> errorToString: aDictionary [
 	^ self unknownError: aDictionary	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubError >> invalidError: aDictionary [
 	^ 'Invalid field: ', (aDictionary at: #field)
 	
 		
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> jsonContents [
 	^ jsonContents ifNil: [ jsonContents := STON fromString: self contents ]	
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> messageBody [
 	| errors |
 	errors := self jsonContents at: #errors ifAbsent: [ ^ '' ].
@@ -82,22 +84,22 @@ IceGitHubError >> messageBody [
 			separatedBy: [ stream cr ] ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> messageText [
 	^ self jsonContents at: #message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> response [
 	^ response
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubError >> response: anObject [
 	response := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceGitHubError >> unknownError: aDictionary [
 	^ String streamContents: [ :stream | 
 		(aDictionary associations sorted: [ :a :b | a key < b key  ])

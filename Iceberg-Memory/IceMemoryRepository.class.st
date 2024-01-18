@@ -1,6 +1,6 @@
 Class {
-	#name : #IceMemoryRepository,
-	#superclass : #IceRepository,
+	#name : 'IceMemoryRepository',
+	#superclass : 'IceRepository',
 	#instVars : [
 		'branchRepository',
 		'codeRepository',
@@ -9,10 +9,11 @@ Class {
 		'remoteBranchRepository',
 		'tagDictionary'
 	],
-	#category : 'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleDetachedHead [
 
 	| repository |
@@ -22,7 +23,7 @@ IceMemoryRepository class >> exampleDetachedHead [
 	^ repository
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleDetachedWorkingCopy [
 
 	| repository |
@@ -34,7 +35,7 @@ IceMemoryRepository class >> exampleDetachedWorkingCopy [
 	^ repository
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleNotLoaded [
 
 	| repository |
@@ -46,7 +47,7 @@ IceMemoryRepository class >> exampleNotLoaded [
 	^ repository
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleUnbornRepository [
 
 	| repository |
@@ -55,22 +56,19 @@ IceMemoryRepository class >> exampleUnbornRepository [
 	^ repository
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleWithChanges [
 
 	| repository anotherPackageName |
 	anotherPackageName := 'AnotherNonExistentPackage' asSymbol.
 	repository := self exampleWithNoChanges.
 	repository workingCopy addPackageNamed: anotherPackageName.
-	Object subclass: 'IceGeneratedClassForUI'
-		instanceVariableNames: ''
-		classVariableNames: ''
-		package: anotherPackageName.
+	(Object << 'IceGeneratedClassForUI' package: anotherPackageName) install.
 	self assert: repository isModified.
 	^ repository
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 IceMemoryRepository class >> exampleWithNoChanges [
 
 	| repository |
@@ -80,7 +78,7 @@ IceMemoryRepository class >> exampleWithNoChanges [
 	^ repository
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMemoryRepository class >> new [
 
 	| newRepository |
@@ -91,7 +89,7 @@ IceMemoryRepository class >> new [
 	^ newRepository
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> allBranches [
 	
 	^ self latestMCCommits collect: [ :latestVersion |
@@ -106,14 +104,14 @@ IceMemoryRepository >> allBranches [
 			yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRepository >> branch [
 	
 	head validateIsBranch.
 	^ head
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> branchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [
 	
 	^ self
@@ -131,23 +129,23 @@ IceMemoryRepository >> branchNamed: aName ifPresent: presentBlock ifAbsent: abse
 		inBranchMCRepository: branchRepository
 ]
 
-{ #category : #'private-accessing' }
+{ #category : 'private-accessing' }
 IceMemoryRepository >> branchRepository [
 	^ branchRepository
 ]
 
-{ #category : #'API-registry' }
+{ #category : 'API-registry' }
 IceMemoryRepository >> checkForRegistryConflicts [
 
 	"Nothing. I never create registry conflicts"
 ]
 
-{ #category : #'private-accessing' }
+{ #category : 'private-accessing' }
 IceMemoryRepository >> codeRepository [
 	^ codeRepository
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRepository >> commitPackage: aMCPackage author: aString ancestors: ancestors dependencies: dependencies inInternalRepository: aRepository [ 
 	
 	^ self
@@ -159,7 +157,7 @@ IceMemoryRepository >> commitPackage: aMCPackage author: aString ancestors: ance
 		inInternalRepository: aRepository
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRepository >> commitPackage: aMCPackage author: authorString message: messageString ancestors: ancestors dependencies: dependencies inInternalRepository: aRepository [ 
 	
 	| newCommit |
@@ -179,14 +177,14 @@ IceMemoryRepository >> commitPackage: aMCPackage author: authorString message: m
 	^ newCommit
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IceMemoryRepository >> computeLoadedVersionOf: anIceSavedPackage [ 
 	^ IceSavedPackageVersion
 		fromCommit: head commit
 		package: anIceSavedPackage
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> createBranch: branchName inCommit: aCommit [
 
 	| newBranchCommit iceCommit |
@@ -217,7 +215,7 @@ IceMemoryRepository >> createBranch: branchName inCommit: aCommit [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMemoryRepository >> hasBranchNamed: aString [ 
 	
 	"This could be optimized at the cost of complicating a bit the code.
@@ -226,19 +224,19 @@ IceMemoryRepository >> hasBranchNamed: aString [
 	[ self branchNamed: aString. ^ true ] on: IceBranchNotFound do: [ ^ false ]
 ]
 
-{ #category : #'API-tags' }
+{ #category : 'API-tags' }
 IceMemoryRepository >> hasTagNamed: aString [ 
 	
 	^ tagDictionary includesKey: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRepository >> head [
 
 	^ head
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceMemoryRepository >> initialize [
 
 	super initialize.
@@ -246,7 +244,7 @@ IceMemoryRepository >> initialize [
 	remotes := Dictionary new
 ]
 
-{ #category : #'private-initialize-release' }
+{ #category : 'private-initialize-release' }
 IceMemoryRepository >> initializeWithBranchRepository: aRepository initializeWithCodeRepository: anotherRepository [
 
 	branchRepository := aRepository.
@@ -254,19 +252,19 @@ IceMemoryRepository >> initializeWithBranchRepository: aRepository initializeWit
 	self setHead: (IceMemoryUnbornBranch inRepository: self named: 'master').
 ]
 
-{ #category : #'private-monticello' }
+{ #category : 'private-monticello' }
 IceMemoryRepository >> internalStoreVersion: aMCVersion [ 
 	
 	codeRepository storeVersion: aMCVersion
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IceMemoryRepository >> isPackageExported: anIceSavedPackage [ 
 	
 	^ head commit packageNames includes: anIceSavedPackage packageName
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRepository >> latestCommitsOf: aRepository [ 
 self halt.
 	^ (aRepository sortedVersionInfos
@@ -276,7 +274,7 @@ self halt.
 				aRepository versionWithInfo: versionInfo ]
 ]
 
-{ #category : #'private-commits' }
+{ #category : 'private-commits' }
 IceMemoryRepository >> latestMCCommits [
 	
 	^ (branchRepository sortedVersionInfos
@@ -286,7 +284,7 @@ IceMemoryRepository >> latestMCCommits [
 				branchRepository versionWithInfo: versionInfo ]
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> latestMCVersionForBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock inBranchMCRepository: aBranchMCRepository [
 	
 	| latestVersionInfo latestVersion branchCommits |
@@ -301,7 +299,7 @@ IceMemoryRepository >> latestMCVersionForBranchNamed: aName ifPresent: presentBl
 	presentBlock value: latestVersion
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> localBranches [
 	
 	^ (self latestCommitsOf: branchRepository) collect: [ :latestVersion |
@@ -316,7 +314,7 @@ IceMemoryRepository >> localBranches [
 			yourself ]
 ]
 
-{ #category : #TOMOVE }
+{ #category : 'TOMOVE' }
 IceMemoryRepository >> mcVersionFor: iceVersion [
 
 	| branchCommit dependencyCommitInfo |
@@ -332,7 +330,7 @@ IceMemoryRepository >> mcVersionFor: iceVersion [
 	^ codeRepository versionWithInfo: dependencyCommitInfo
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> newBranchNamed: aString commit: aCommit [
 
 	^ IceMemoryLocalBranch new
@@ -342,62 +340,62 @@ IceMemoryRepository >> newBranchNamed: aString commit: aCommit [
 		yourself
 ]
 
-{ #category : #commits }
+{ #category : 'commits' }
 IceMemoryRepository >> newCommitWalk [
 	
 	^ IceMemoryCommitWalk forRepository: self
 ]
 
-{ #category : #'private-changes' }
+{ #category : 'private-changes' }
 IceMemoryRepository >> newIndex [
 	
 	^ IceMemoryIndex on: self
 ]
 
-{ #category : #'API-commits' }
+{ #category : 'API-commits' }
 IceMemoryRepository >> newNoCommit [
 	
 	^ IceMemoryNoCommit repository: self
 ]
 
-{ #category : #'API-project' }
+{ #category : 'API-project' }
 IceMemoryRepository >> newProjectFromCommit: aCommit [ 
 	
 	^ IceMemoryProject onRepository: self
 ]
 
-{ #category : #'API-project' }
+{ #category : 'API-project' }
 IceMemoryRepository >> newUnbornProject [
 	
 	^ IceMemoryProject onRepository: self commitish: workingCopy referenceCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRepository >> origin [
 	
 	^ self remoteNamed: 'origin'
 ]
 
-{ #category : #'private-tags' }
+{ #category : 'private-tags' }
 IceMemoryRepository >> peelTag: anIceTag [ 
 	
 	^ tagDictionary at: anIceTag name
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceMemoryRepository >> printOn: aStream [
 	aStream
 		nextPutAll: 'an';
 		nextPutAll: self class name
 ]
 
-{ #category : #remotes }
+{ #category : 'remotes' }
 IceMemoryRepository >> remoteAt: aString put: aRemote [
 
 	remotes at: aString put: aRemote
 ]
 
-{ #category : #'remote-branches' }
+{ #category : 'remote-branches' }
 IceMemoryRepository >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [ 
 
 	self halt.
@@ -416,74 +414,74 @@ IceMemoryRepository >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent
 		inBranchMCRepository: remoteBranchRepository
 ]
 
-{ #category : #'private-accessing' }
+{ #category : 'private-accessing' }
 IceMemoryRepository >> remoteBranchRepository [
 	self halt.
 	^ remoteBranchRepository
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 IceMemoryRepository >> remoteBranchRepository: aMCRepository [
 
 	self halt.
 	remoteBranchRepository := aMCRepository
 ]
 
-{ #category : #remotes }
+{ #category : 'remotes' }
 IceMemoryRepository >> remoteNamed: aString ifAbsent: aBlockClosure [ 
 	
 	^ remotes at: aString ifAbsent: aBlockClosure
 ]
 
-{ #category : #'remote-branches' }
+{ #category : 'remote-branches' }
 IceMemoryRepository >> remoteTrackedBranches [
 
 	^ remotes flatCollect: [ :each | each branches ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRepository >> remotes [
 	
 	^ remotes values
 ]
 
-{ #category : #'API-tags' }
+{ #category : 'API-tags' }
 IceMemoryRepository >> removeTag: aTag [
 	
 	tagDictionary removeKey: aTag name
 ]
 
-{ #category : #'private-head' }
+{ #category : 'private-head' }
 IceMemoryRepository >> setHead: aCommitish [
 
 	head := aCommitish
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMemoryRepository >> subdirectory [
 	"Required for compatibility with some diff utilities that expect a tree"
 	^ ''
 ]
 
-{ #category : #'API-accessing' }
+{ #category : 'API-accessing' }
 IceMemoryRepository >> subdirectoryPath [
 	
 	^ RelativePath new
 ]
 
-{ #category : #branches }
+{ #category : 'branches' }
 IceMemoryRepository >> switchToBranchNamed: aString onCommit: aCommit [ 
 	
 	head := self newBranchNamed: aString commit: aCommit
 ]
 
-{ #category : #'API-tags' }
+{ #category : 'API-tags' }
 IceMemoryRepository >> tags [
 	
 	^ tagDictionary keys collect: [ :k | IceTag named: k inRepository: self ]
 ]
 
-{ #category : #'private-tags' }
+{ #category : 'private-tags' }
 IceMemoryRepository >> tagsAt: aString put: anIceMemoryCommit [ 
 	
 	tagDictionary at: aString put: anIceMemoryCommit

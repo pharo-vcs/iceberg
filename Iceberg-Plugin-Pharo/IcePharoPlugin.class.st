@@ -1,10 +1,12 @@
 Class {
-	#name : #IcePharoPlugin,
-	#superclass : #IcePlugin,
-	#category : #'Iceberg-Plugin-Pharo-Core'
+	#name : 'IcePharoPlugin',
+	#superclass : 'IcePlugin',
+	#category : 'Iceberg-Plugin-Pharo-Core',
+	#package : 'Iceberg-Plugin-Pharo',
+	#tag : 'Core'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 IcePharoPlugin class >> addIcebergProjectToIceberg [
 
 	self
@@ -24,7 +26,7 @@ IcePharoPlugin class >> addIcebergProjectToIceberg [
 
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IcePharoPlugin class >> addPharoProjectToIceberg [
 	"It will take all packages corresponding to Pharo project and it will create an iceberg 
 	 project with it"
@@ -54,7 +56,7 @@ IcePharoPlugin class >> addPharoProjectToIceberg [
 			BaselineOfUnifiedFFI).
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCollection [
 
 	self
@@ -64,7 +66,7 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 		tags: #(#system)
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCollection tags: tagArray [
 	| repository commit workingCopy |
 
@@ -100,7 +102,7 @@ IcePharoPlugin class >> addProjectNamed: aName commit: aCommitId baselines: aCol
 	repository register
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> commitOfExternalProject: aName [
 	| externalProject tags branch |
 	
@@ -123,7 +125,7 @@ IcePharoPlugin class >> commitOfExternalProject: aName [
 	^ branch at: #commit at: #sha
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner repository: repository [
 
 	| shortHash |
@@ -141,7 +143,7 @@ IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner reposito
 		   project: repository) at: #sha
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> icebergCommitHash [
 
 	^ self
@@ -150,13 +152,13 @@ IcePharoPlugin class >> icebergCommitHash [
 		  repository: 'iceberg'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IcePharoPlugin class >> isAvailableFor: aRepository [
 
 	^ aRepository remotes anySatisfy: [ :each | each projectName = 'pharo' ]
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> libgitCommitHash [
 
 	^ self
@@ -165,13 +167,13 @@ IcePharoPlugin class >> libgitCommitHash [
 		  repository: 'libgit2-pharo-bindings'
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> pharoCommitHash [
 
 	^ SystemVersion current commitHash
 ]
 
-{ #category : #'accessing - commits' }
+{ #category : 'accessing - commits' }
 IcePharoPlugin class >> tonelCommitHash [
 
 	^ self
@@ -180,7 +182,7 @@ IcePharoPlugin class >> tonelCommitHash [
 		  repository: 'tonel'
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 IcePharoPlugin >> fetchIfNeeded: aRepository [
 
 	(aRepository lookupCommit: SystemVersion current commitHash) isUnknownCommit
@@ -193,12 +195,7 @@ IcePharoPlugin >> fetchIfNeeded: aRepository [
 				ifFound: [ :each | each fetch ] ]
 ]
 
-{ #category : #events }
-IcePharoPlugin >> repositoryWasCreated: aRepository [
-
-]
-
-{ #category : #events }
+{ #category : 'events' }
 IcePharoPlugin >> repositoryWillBeCreated: aRepository [
 	SystemVersion current major < 7 ifTrue: [ ^ self ].
 	

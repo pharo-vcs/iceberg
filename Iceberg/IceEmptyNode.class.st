@@ -2,51 +2,53 @@
 I am a null object representing an empty node of a tree. I'm used together with IceNode.
 "
 Class {
-	#name : #IceEmptyNode,
-	#superclass : #IceAbstractNode,
-	#category : #'Iceberg-Changes'
+	#name : 'IceEmptyNode',
+	#superclass : 'IceAbstractNode',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceEmptyNode >> accept: aVisitor [
 	
 	^ aVisitor visitEmptyNode: self
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceEmptyNode >> addTo: anotherNode [ 
 	"I'm empty, so I do not add myself to a tree."
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> anySatisfy: aBlockClosure [ 
 	
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyNode >> children [
 	
 	^ #()
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> collect: aBlockClosure [ 
 
 	^ self
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> collectWithPath: aBlockClosure [ 
 	^ self
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> do: aBlock [
 	"Do nothing"
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> firstNodeSuchThat: conditionBlock ifNone: noneBlock [
 	
 	^ (conditionBlock value: self)
@@ -54,48 +56,48 @@ IceEmptyNode >> firstNodeSuchThat: conditionBlock ifNone: noneBlock [
 		ifFalse: noneBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceEmptyNode >> hasChanges [
 	
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyNode >> includesKey: aString [ 
 	
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceEmptyNode >> isEmpty [
 	
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceEmptyNode >> isEmptyNode [
 	
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceEmptyNode >> mergeWith: anotherNode onLeft: leftBlock onRight: rightBlock onMerge: mergeBlock [
 	
 	^ anotherNode collect: rightBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyNode >> path [
 
 	^ RelativePath new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceEmptyNode >> resolve: aRelativePath ifPresent: presentBlock ifAbsent: absentBlock [ 
 	^ absentBlock value
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 IceEmptyNode >> select: aBlockClosure [ 
 	
 	^ self

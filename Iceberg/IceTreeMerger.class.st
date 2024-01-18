@@ -1,10 +1,12 @@
 Class {
-	#name : #IceTreeMerger,
-	#superclass : #Object,
-	#category : #'Iceberg-Changes'
+	#name : 'IceTreeMerger',
+	#superclass : 'Object',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #building }
+{ #category : 'building' }
 IceTreeMerger >> merge: changeTree into: currentTree [
 
 	^ changeTree collectWithPath: [ :operation :path | 

@@ -8,8 +8,8 @@ For versions, I show the same commands of a regular history browser, but add som
 
 "
 Class {
-	#name : #IceTipVersionHistoryBrowser,
-	#superclass : #IceTipBrowser,
+	#name : 'IceTipVersionHistoryBrowser',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'commitList',
 		'selectedModel',
@@ -17,25 +17,27 @@ Class {
 		'diffPage',
 		'commitPanel'
 	],
-	#category : #'Iceberg-TipUI-View-Versions'
+	#category : 'Iceberg-TipUI-View-Versions',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Versions'
 }
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipVersionHistoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommandGroup [
 
 	"Nothing to add"
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
 	{ 	IceTipInstallVersionCommand }
 			do: [ :each |
-				aCommandGroup register: each forSpec ]
+				aCommandGroup register: (each forSpecContext: presenter) ]
 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 	
 	^ self on: (IceTipVersionHistoryModel 
@@ -44,13 +46,13 @@ IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
 		beCached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryBrowser >> commitList [
 
 	^ commitList
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipVersionHistoryBrowser >> defaultLayout [
 	
 	^ SpPanedLayout newTopToBottom
@@ -59,13 +61,13 @@ IceTipVersionHistoryBrowser >> defaultLayout [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> initialExtentForWindow [
 
 	^ (700@700) scaledByDisplayScaleFactor
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> initializeCommitList [
 
 	commitList
@@ -94,7 +96,7 @@ IceTipVersionHistoryBrowser >> initializeCommitList [
 		self selectionChanged: aSelection selectedItem ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> initializeCommitPanel [
 	"This will be initialised in fact on the first refresh"
 
@@ -106,7 +108,7 @@ IceTipVersionHistoryBrowser >> initializeCommitPanel [
 			yourself)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> initializePresenters [
 
 	commitList := self newTable.
@@ -116,21 +118,21 @@ IceTipVersionHistoryBrowser >> initializePresenters [
 	self initializeCommitPanel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipVersionHistoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ commitList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryBrowser >> model: anObject [
 
 	super model: anObject.
 	self refresh
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipVersionHistoryBrowser >> newDiffPage [
 
 	^ SpNotebookPage  
@@ -139,7 +141,7 @@ IceTipVersionHistoryBrowser >> newDiffPage [
 		provider: [ self newDiffPresenter ]
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipVersionHistoryBrowser >> newDiffPanelLeft: leftString right: rightString [
 
 	^ (self instantiate: SpDiffPresenter) 
@@ -148,7 +150,7 @@ IceTipVersionHistoryBrowser >> newDiffPanelLeft: leftString right: rightString [
 		showOptions: false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipVersionHistoryBrowser >> newDiffPresenter [
 	
 	selectedModel ifNil: [ ^ self ].
@@ -159,7 +161,7 @@ IceTipVersionHistoryBrowser >> newDiffPresenter [
 		right: selectedModel source
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipVersionHistoryBrowser >> newInfoPage [
 
 	^ SpNotebookPage  
@@ -169,14 +171,14 @@ IceTipVersionHistoryBrowser >> newInfoPage [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipVersionHistoryBrowser >> newVersionInfoPresenter [
 	
 	selectedModel ifNil: [ ^ self ].
 	^ IceTipReadOnlyFormBuilder newBuiltFor: selectedModel info application: self application
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipVersionHistoryBrowser >> refresh [
 
 	commitList items: self model commitModels.
@@ -186,7 +188,7 @@ IceTipVersionHistoryBrowser >> refresh [
 	self refreshCommitTabPanel
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 	
 	selectedModel ifNil: [ ^ self ].
@@ -198,14 +200,14 @@ IceTipVersionHistoryBrowser >> refreshCommitTabPanel [
 	commitPanel resetAllPageContents
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 IceTipVersionHistoryBrowser >> selectionChanged: aSelectedItem [
 
 	selectedModel := aSelectedItem.
 	self refreshCommitTabPanel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> titleForWindow [
 
 	^ self model  
@@ -213,7 +215,7 @@ IceTipVersionHistoryBrowser >> titleForWindow [
 		ifNil: [ 'Versions' ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipVersionHistoryBrowser >> updatePresenter [
 
 	self refresh

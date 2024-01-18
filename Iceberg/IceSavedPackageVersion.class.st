@@ -8,24 +8,26 @@ Internal representation
 
 "
 Class {
-	#name : #IceSavedPackageVersion,
-	#superclass : #Object,
+	#name : 'IceSavedPackageVersion',
+	#superclass : 'Object',
 	#instVars : [
 		'entry',
 		'info',
 		'commit',
 		'package'
 	],
-	#category : #'Iceberg-Core'
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceSavedPackageVersion class >> forPackage: package [
 	"Use fromCommit:package: instead"
 	self shouldNotImplement 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceSavedPackageVersion class >> fromCommit: commit package: package [
 	^ self new
 		commit: commit;
@@ -33,7 +35,7 @@ IceSavedPackageVersion class >> fromCommit: commit package: package [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSavedPackageVersion >> = another [
 	self species = another species ifFalse: [ ^ false ].
 	
@@ -41,100 +43,100 @@ IceSavedPackageVersion >> = another [
 	^ self commit = another commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> author [
 	^ self info author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> commit [
 	^ commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> commit: anIceCommit [
 	commit := anIceCommit 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> entry [
 	^ entry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> entry: anObject [
 	entry := anObject.
 	entry repository: self repository
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSavedPackageVersion >> hash [
 	^ self commit hash
 ]
 
-{ #category : #'walk definition' }
+{ #category : 'walk definition' }
 IceSavedPackageVersion >> hideYourselfFromCommitWalk: commitWalk [
 	commitWalk uptoCommit: self commit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> info [
 	^ info ifNil: [ info := IceMCVersionInfo new fromCommit: self commit package: package ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> info: anObject [
 	info := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSavedPackageVersion >> isAncestorOf: anotherVersion [
 	^ self commit isAncestorOf: anotherVersion commit
 
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSavedPackageVersion >> isAncestorOfCommitId: anotherCommitId [
 	^ self commit isAncestorOf: (self repository lookupCommit: anotherCommitId)
 
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceSavedPackageVersion >> isNewerThan: another [
 	^ self info timeStamp > another info timeStamp
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IceSavedPackageVersion >> lookupSnapshot [
 	
 	^ commit snapshotForPackage: self package
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IceSavedPackageVersion >> mcPackage [
 	
 	^ package mcPackage
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IceSavedPackageVersion >> mcSnapshot [
 
 	^ self mcVersion snapshot
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IceSavedPackageVersion >> mcVersion [
 
 	^ commit mcVersionFor: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceSavedPackageVersion >> merge [
 	self mcVersion merge
 
 ]
 
-{ #category : #patches }
+{ #category : 'patches' }
 IceSavedPackageVersion >> nextVersionName [
 	^ ('{1}-{2}.{3}' format: {
 		self package packageName. 
@@ -144,22 +146,22 @@ IceSavedPackageVersion >> nextVersionName [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> package [
 	^ package
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> package: anObject [
 	package := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> packageName [
 	^ self package name
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 IceSavedPackageVersion >> printOn: aStream [
 	aStream print: self class;
 		nextPut: $(;
@@ -179,18 +181,18 @@ IceSavedPackageVersion >> printOn: aStream [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceSavedPackageVersion >> repository [
 	^ self package repository
 ]
 
-{ #category : #'accessing - monticello' }
+{ #category : 'accessing - monticello' }
 IceSavedPackageVersion >> snapshot [
 	"compatibility method"
 	^ self mcSnapshot
 ]
 
-{ #category : #patches }
+{ #category : 'patches' }
 IceSavedPackageVersion >> updated [
 	^ self
 ]

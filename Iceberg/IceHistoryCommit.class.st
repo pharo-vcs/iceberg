@@ -4,16 +4,18 @@ I am a commit optimizing history access. I know a history and can determine if I
 All other operations are simply forwarded to my wrapped ice commit.
 "
 Class {
-	#name : #IceHistoryCommit,
-	#superclass : #Object,
+	#name : 'IceHistoryCommit',
+	#superclass : 'Object',
 	#instVars : [
 		'iceCommit',
 		'history'
 	],
-	#category : #'Iceberg-Changes'
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceHistoryCommit class >> commit: anIceCommit history: aHistory [
 	
 	^ self new
@@ -22,87 +24,87 @@ IceHistoryCommit class >> commit: anIceCommit history: aHistory [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> ancestors [
 	
 	^ iceCommit ancestorIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> author [
 	
 	^ iceCommit author
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceHistoryCommit >> canRevertChanges [
 	
 	^ iceCommit canRevertChanges
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> comment [
 	
 	^ iceCommit comment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> datetime [
 	
 	^ iceCommit datetime
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceHistoryCommit >> diffFromHead [
 	
 	^ iceCommit diffFromHead
 ]
 
-{ #category : #'API - changes' }
+{ #category : 'API - changes' }
 IceHistoryCommit >> diffToParent [
 	
 	^ iceCommit diffToParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> history [
 	^ history
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> history: anObject [
 	history := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> iceCommit [
 	^ iceCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> iceCommit: anIceGitCommit [ 
 	iceCommit := anIceGitCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> id [
 	
 	^ iceCommit id
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceHistoryCommit >> isMerged [
 	
 	^ history headHistory includes: iceCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> repository [
 	
 	^ iceCommit repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceHistoryCommit >> shortId [
 	
 	^ iceCommit shortId

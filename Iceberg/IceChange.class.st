@@ -2,17 +2,19 @@
 I represent an abstract change.
 "
 Class {
-	#name : #IceChange,
-	#superclass : #Object,
-	#category : #'Iceberg-Changes'
+	#name : 'IceChange',
+	#superclass : 'Object',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceChange >> accept: anIceChangeImporter [
 	^ self subclassResponsibility
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceChange >> displayingProgressString [
 	^ self subclassResponsibility
 ]

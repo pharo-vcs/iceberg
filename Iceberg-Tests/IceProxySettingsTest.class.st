@@ -1,14 +1,16 @@
 Class {
-	#name : #IceProxySettingsTest,
-	#superclass : #TestCase,
+	#name : 'IceProxySettingsTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'oldNetworkSettingsHost',
 		'oldNetworkSettingsPort'
 	],
-	#category : #'Iceberg-Tests-Core-Remotes'
+	#category : 'Iceberg-Tests-Core-Remotes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Core-Remotes'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 IceProxySettingsTest >> assertProxyURLExternalStringHasValue: aString [ 
 	
 	| value |
@@ -20,7 +22,7 @@ IceProxySettingsTest >> assertProxyURLExternalStringHasValue: aString [
 	self assert: value utf8StringFromCString equals: aString
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceProxySettingsTest >> setUp [ 
 
 	super setUp.
@@ -29,7 +31,7 @@ IceProxySettingsTest >> setUp [
 	oldNetworkSettingsPort := NetworkSystemSettings httpProxyPort.	
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 IceProxySettingsTest >> tearDown [ 
 
 	NetworkSystemSettings httpProxyServer: oldNetworkSettingsHost.
@@ -38,7 +40,7 @@ IceProxySettingsTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceProxySettingsTest >> testConfigureProxyOptWithCorrectProxyUrl [
 
 	| proxyOpt |
@@ -53,7 +55,7 @@ IceProxySettingsTest >> testConfigureProxyOptWithCorrectProxyUrl [
 	self assert: proxyOpt prim_url utf8StringFromCString equals: 'https://myproxy.company.com:8080'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceProxySettingsTest >> testEmptyHostReturnsNullPointer [
 
 	NetworkSystemSettings httpProxyServer: ''.
@@ -61,7 +63,7 @@ IceProxySettingsTest >> testEmptyHostReturnsNullPointer [
 	self assert: Iceberg proxyURLExternalString isNull.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceProxySettingsTest >> testHostAndDefaultPortHasCorrectAddress [
 
 	NetworkSystemSettings httpProxyServer: 'myproxy.company.com'.
@@ -69,7 +71,7 @@ IceProxySettingsTest >> testHostAndDefaultPortHasCorrectAddress [
 	self assertProxyURLExternalStringHasValue: 'https://myproxy.company.com:80'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceProxySettingsTest >> testHostAndPortHasCorrectAddress [
 
 	NetworkSystemSettings httpProxyServer: 'myproxy.company.com'.

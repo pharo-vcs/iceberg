@@ -3,18 +3,20 @@ I represent a project that cannot be read from the history.
 I fetch most of my properties from the current project that may be a project or an unborn project.
 "
 Class {
-	#name : #IceInvalidProject,
-	#superclass : #IceAbstractProject,
-	#category : 'Iceberg-Project'
+	#name : 'IceInvalidProject',
+	#superclass : 'IceAbstractProject',
+	#category : 'Iceberg-Project',
+	#package : 'Iceberg',
+	#tag : 'Project'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceInvalidProject >> isInvalid [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceInvalidProject >> sourceDirectory [
 	
 	"I'm an invalid project.

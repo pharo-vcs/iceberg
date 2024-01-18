@@ -4,23 +4,25 @@ I preview the changes that will be introduced in the image when a checkout occur
 (self onBranch: IceRepository registry anyOne branch) openWithSpec.
 "
 Class {
-	#name : #IceTipCheckoutPreviewBrowser,
-	#superclass : #IceTipPreviewBrowser,
+	#name : 'IceTipCheckoutPreviewBrowser',
+	#superclass : 'IceTipPreviewBrowser',
 	#instVars : [
 		'checkoutStrategyLabel',
 		'checkoutStrategyList',
 		'selectedCheckoutStrategy'
 	],
-	#category : #'Iceberg-TipUI-View-Branch'
+	#category : 'Iceberg-TipUI-View-Branch',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Branch'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipCheckoutPreviewBrowser class >> maxBranchNameLength [
 
 	^ 32
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 
 	^ self on: (IceTipCheckoutModel new
@@ -28,19 +30,19 @@ IceTipCheckoutPreviewBrowser class >> onBranch: aBranch [
 		yourself)
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyLabel [
 
 	^ checkoutStrategyLabel
 ]
 
-{ #category : #'accessing - ui' }
+{ #category : 'accessing - ui' }
 IceTipCheckoutPreviewBrowser >> checkoutStrategyList [
 
 	^ checkoutStrategyList
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 IceTipCheckoutPreviewBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -57,7 +59,7 @@ IceTipCheckoutPreviewBrowser >> defaultLayout [
 		yourself
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipCheckoutPreviewBrowser >> doCheckout [
 
 	(self model hasNewPackages and: [ self model checkoutStrategy isLoadAlreadyLoadedStrategy ])
@@ -69,7 +71,7 @@ IceTipCheckoutPreviewBrowser >> doCheckout [
 				executeWithContext: self ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 
 	| checkoutStrategies |
@@ -81,7 +83,7 @@ IceTipCheckoutPreviewBrowser >> initializeCheckoutStrategyList [
 		self model checkoutStrategy: aStrategy ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutPreviewBrowser >> initializePresenters [
 
 	super initializePresenters.
@@ -96,7 +98,7 @@ IceTipCheckoutPreviewBrowser >> initializePresenters [
 	self initializeCheckoutStrategyList
 ]
 
-{ #category : #'private - factory' }
+{ #category : 'private - factory' }
 IceTipCheckoutPreviewBrowser >> newActionButton [
 
 	^ self newButton
@@ -107,10 +109,10 @@ IceTipCheckoutPreviewBrowser >> newActionButton [
 		yourself
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 
-	((IceTipAddNewPackagesDialog 
+	((IceTipAddNewPackagesDialogPresenter 
 		newApplication: self application 
 		model: self model newPackages) 
 		checkoutModel: self model;
@@ -120,13 +122,13 @@ IceTipCheckoutPreviewBrowser >> openAddNewPackagesDialog [
 			open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipCheckoutPreviewBrowser >> selectedCheckoutStrategy [
 
 	^ selectedCheckoutStrategy
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipCheckoutPreviewBrowser >> titleForWindow [
 
 	^ 'Preview checkout of {1}/{2}' format: { 

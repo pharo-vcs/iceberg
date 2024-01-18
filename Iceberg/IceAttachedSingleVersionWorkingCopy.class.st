@@ -2,12 +2,14 @@
 I am a working copy whose packages were all loaded from the same single commit.
 "
 Class {
-	#name : #IceAttachedSingleVersionWorkingCopy,
-	#superclass : #IceWorkingCopyState,
-	#category : #'Iceberg-WorkingCopy'
+	#name : 'IceAttachedSingleVersionWorkingCopy',
+	#superclass : 'IceWorkingCopyState',
+	#category : 'Iceberg-WorkingCopy',
+	#package : 'Iceberg',
+	#tag : 'WorkingCopy'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceAttachedSingleVersionWorkingCopy class >> on: anIceCommit repository: aRepository [
 	
 	^ self new
@@ -16,37 +18,37 @@ IceAttachedSingleVersionWorkingCopy class >> on: anIceCommit repository: aReposi
 		yourself
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 IceAttachedSingleVersionWorkingCopy >> description [
 	
 	^ self referenceCommit description
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAttachedSingleVersionWorkingCopy >> includesCommit: anIceCommit [
 	
 	^ self referenceCommit = anIceCommit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAttachedSingleVersionWorkingCopy >> isCommitMerged: aCommit [
 
 	^ aCommit isAncestorOf: self referenceCommit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAttachedSingleVersionWorkingCopy >> isDetached [
 	
 	^ self referenceCommit ~= repository head commit
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceAttachedSingleVersionWorkingCopy >> isSingleCommitState [
 	
 	^ true
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceAttachedSingleVersionWorkingCopy >> mergeCommit: mergeCommit [
 	
 	^ IceMerge new
@@ -55,31 +57,13 @@ IceAttachedSingleVersionWorkingCopy >> mergeCommit: mergeCommit [
 		execute.
 ]
 
-{ #category : #merging }
-IceAttachedSingleVersionWorkingCopy >> mergeStateWith: aMergeableState [
-	
-	^ aMergeableState mergeWithSingleVersionWorkingCopyState: self
-]
-
-{ #category : #accessing }
-IceAttachedSingleVersionWorkingCopy >> referenceCommit [
-	
-	^ repository workingCopy referenceCommit
-]
-
-{ #category : #accessing }
-IceAttachedSingleVersionWorkingCopy >> referenceCommits [
-	
-	^ { self referenceCommit }
-]
-
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceAttachedSingleVersionWorkingCopy >> singleCommit [
 	
 	^ self referenceCommit
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 IceAttachedSingleVersionWorkingCopy >> validateCanCommit [
 	
 	self isDetached

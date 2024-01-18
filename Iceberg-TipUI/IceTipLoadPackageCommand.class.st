@@ -2,30 +2,32 @@
 Command that loads the current non-loaded selected package
 "
 Class {
-	#name : #IceTipLoadPackageCommand,
-	#superclass : #IceTipPackageCommand,
-	#category : #'Iceberg-TipUI-Commands'
+	#name : 'IceTipLoadPackageCommand',
+	#superclass : 'IceTipPackageCommand',
+	#category : 'Iceberg-TipUI-Commands',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Commands'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipLoadPackageCommand class >> defaultDescription [
 
 	^ 'Load selected package in the image'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 IceTipLoadPackageCommand class >> defaultName [
 
 	^ 'Load'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipLoadPackageCommand >> canBeExecuted [
 
 	^ self isPackageLoaded not
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceTipLoadPackageCommand >> execute [
 
 	self packageModel newLoadAction executeWithContext: self context.
@@ -33,7 +35,7 @@ IceTipLoadPackageCommand >> execute [
 		(IceRepositoryModified for: self repository)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipLoadPackageCommand >> iconName [
 
 	^ #add

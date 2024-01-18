@@ -1,69 +1,70 @@
 Class {
-	#name : #IceRingWorkingCopyChangerVisitor,
-	#superclass : #IceTreeVisitor,
+	#name : 'IceRingWorkingCopyChangerVisitor',
+	#superclass : 'IceTreeVisitor',
 	#instVars : [
 		'workingCopy'
 	],
-	#category : #'Iceberg-Memory'
+	#category : 'Iceberg-Memory',
+	#package : 'Iceberg-Memory'
 }
 
-{ #category : #'instance-creation' }
+{ #category : 'instance-creation' }
 IceRingWorkingCopyChangerVisitor class >> on: anIceRingWorkingCopy [
 	^ self new
 		workingCopy: anIceRingWorkingCopy;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRingWorkingCopyChangerVisitor >> environment [
 
 	^ self workingCopy environment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRingWorkingCopyChangerVisitor >> packages [
 	
 	^ self workingCopy packages
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceRingWorkingCopyChangerVisitor >> removeClass: anIceClassDefinition [ 
 	
 	workingCopy removeClassNamed: anIceClassDefinition name
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceRingWorkingCopyChangerVisitor >> removeFile: anIceFileDefinition [ 
 	
 	(workingCopy repository location resolvePath: anIceFileDefinition path) 
 		ensureDelete
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceRingWorkingCopyChangerVisitor >> removeFileReferenceInPath: aRelativePath [ 
 	
 	(workingCopy fileSystem resolve: aRelativePath) ensureDelete
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceRingWorkingCopyChangerVisitor >> removeMethod: anIceMethodDefinition [ 
 	
 	workingCopy removeMethod: anIceMethodDefinition selector fromClass: anIceMethodDefinition className.
 ]
 
-{ #category : #patching }
+{ #category : 'patching' }
 IceRingWorkingCopyChangerVisitor >> removePackage: anIcePackageDefinition [
 	
 	workingCopy unloadPackage: anIcePackageDefinition
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitAddition: anIceAddition [ 
 	anIceAddition definition accept: self.
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [ 
 	
 	| package |
@@ -79,7 +80,7 @@ IceRingWorkingCopyChangerVisitor >> visitClassDefinition: anIceClassDefinition [
 			class instanceVariables: anIceClassDefinition asMCDefinition instVarNames ].
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitConflictingOperation: anIceConflictingOperation [ 
 	
 	anIceConflictingOperation isResolved
@@ -88,25 +89,25 @@ IceRingWorkingCopyChangerVisitor >> visitConflictingOperation: anIceConflictingO
 	^ anIceConflictingOperation chosenOperation accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitDirectoryDefinition: anIceDirectoryDefinition [ 
 	
 	"Do nothing for a ring working copy."
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitExtensionDefinition: anExtensionDefinition [ 
 	
 	workingCopy environment ask behaviorNamed: anExtensionDefinition name ifAbsent: [ self error: 'Not found' ].
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitFileNode: anIceFileDefinition [ 
 	
 	"Nothing, there are no files in the working copy"
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitMethodNode: anIceMethodDefinition [ 
 
 	| isExtensionMethod |
@@ -123,51 +124,46 @@ IceRingWorkingCopyChangerVisitor >> visitMethodNode: anIceMethodDefinition [
 				inClass: anIceMethodDefinition className ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitModification: aModification [
 	
 	aModification leftDefinition accept: self.
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitNoModification: anIceNoModification [ 
 	
 	"Nothing with me. Just visit children"
 	self visitChildrenOf: currentNode
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitNonConflictingOperation: anIceNonConflictingOperation [ 
 	
 	anIceNonConflictingOperation chosenOperation accept: self.
 ]
 
-{ #category : #visiting }
-IceRingWorkingCopyChangerVisitor >> visitPackage: anIcePackageDefinition [ 
-	
-	| visitor |
-		
-	anIcePackageDefinition categories do: [ :categoryName | 
-		self workingCopy packages
-			detect: [ :package | categoryName beginsWith: package name ]
-			ifFound: [ :package | 
-				(self environment ensurePackageNamed: package name)
-					addClassTag: categoryName ]
-			ifNone: [ self environment ensurePackageNamed: categoryName ] ].
-	
+{ #category : 'visiting' }
+IceRingWorkingCopyChangerVisitor >> visitPackage: anIcePackageDefinition [
+
+	| visitor package |
+	package := self environment ensurePackageNamed: anIcePackageDefinition packageName.
+
+	anIcePackageDefinition tagNames do: [ :tagName | package addClassTag: tagName ].
+
 	visitor := IceRingWorkingCopyChangerVisitor on: self workingCopy.
-	currentNode childrenDo: [ :each | each accept: visitor ]	
+	currentNode childrenDo: [ :each | each accept: visitor ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitRemoval: anIceRemoval [ 
 	
 	anIceRemoval definition removeFrom: self.
 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRingWorkingCopyChangerVisitor >> visitTraitDefinition: anIceTraitDefinition [ 
 	|package|
 
@@ -184,21 +180,21 @@ IceRingWorkingCopyChangerVisitor >> visitTraitDefinition: anIceTraitDefinition [
 		inPackage: package name
 	 	with: [ :trait |
 			| composition transformations |
-			composition := RG2TraitCompositionDefinition parent: trait.
-			transformations := RG2TraitCompositionVisitor new
+			composition := RGTraitComposition parent: trait.
+			transformations := RGTraitCompositionVisitor new
 				parse: anIceTraitDefinition asMCDefinition traitComposition 
 				for: composition.
 			trait traitComposition: composition.
 			transformations do: [ :each | composition addTransformation: each ]  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRingWorkingCopyChangerVisitor >> workingCopy [
 
 	^ workingCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRingWorkingCopyChangerVisitor >> workingCopy: anIceRingWorkingCopy [ 
 	workingCopy := anIceRingWorkingCopy 
 ]

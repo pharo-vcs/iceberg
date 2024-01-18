@@ -1,28 +1,30 @@
 Class {
-	#name : #IceInMemoryTestFactory,
-	#superclass : #IceAbstractTestFactory,
-	#category : 'Iceberg-Tests-Memory'
+	#name : 'IceInMemoryTestFactory',
+	#superclass : 'IceAbstractTestFactory',
+	#category : 'Iceberg-Tests-Memory',
+	#package : 'Iceberg-Tests',
+	#tag : 'Memory'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceInMemoryTestFactory class >> setUp [
 
 	^ self new setUp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceInMemoryTestFactory >> ensureRemoteRepository [
 	
 	^ self newRepositoryNamed: 'remoteRepo'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceInMemoryTestFactory >> isGit [
 	
 	^ false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceInMemoryTestFactory >> newRemoteNamed: aName toRepository: remoteRepository [
 
 	^ IceMemoryRemote
@@ -31,7 +33,7 @@ IceInMemoryTestFactory >> newRemoteNamed: aName toRepository: remoteRepository [
 		branchRepository: MCDictionaryRepository new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceInMemoryTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirectory [
 	"Ignore the subdirectory in memory"
 	| repository |
@@ -40,7 +42,7 @@ IceInMemoryTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSub
 	^ repository
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceInMemoryTestFactory >> tearDownWithRepository: aRepository [
 		
 	"Nothing"

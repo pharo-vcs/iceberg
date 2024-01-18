@@ -1,30 +1,32 @@
 Class {
-	#name : #IceMetacelloDuplicatedNotification,
-	#superclass : #MetacelloAllowProjectUpgrade,
+	#name : 'IceMetacelloDuplicatedNotification',
+	#superclass : 'MetacelloAllowProjectUpgrade',
 	#instVars : [
 		'builder'
 	],
-	#category : 'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters',
+	#package : 'Iceberg',
+	#tag : 'Adapters'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> builder [
 	^ builder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> builder: anObject [
 	builder := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> defaultAction [
     "Default for Upgrade is to allow"
 
 	^ self useIncoming
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> existingProjectRegistration [
 
 	| repository |
@@ -35,7 +37,7 @@ IceMetacelloDuplicatedNotification >> existingProjectRegistration [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> newProjectRegistration [
 
 	^ IceMetacelloProjectRegistration new
@@ -43,18 +45,18 @@ IceMetacelloDuplicatedNotification >> newProjectRegistration [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloDuplicatedNotification >> projectName [
 	
 	^ builder locationToUse basename
 ]
 
-{ #category : #'exception handling' }
+{ #category : 'exception handling' }
 IceMetacelloDuplicatedNotification >> useIncoming [
 	^ self resume: self builder addLocalRepositoryAndCheckout
 ]
 
-{ #category : #'exception handling' }
+{ #category : 'exception handling' }
 IceMetacelloDuplicatedNotification >> useLoaded [
 	^ self resume: self builder addLocalRepository
 ]

@@ -1,7 +1,7 @@
-Extension { #name : #LGitCredentialsPlaintext }
+Extension { #name : 'LGitCredentialsPlaintext' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 LGitCredentialsPlaintext >> askForModelClassOn: aString [ 
 	
-	^ IceTipAskForPlaintextCredentialsModel
+	^ IceTipAskForPlaintextCredentialsPresenter
 ]

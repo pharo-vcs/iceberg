@@ -2,12 +2,14 @@
 I'm a model to choose files.
 "
 Class {
-	#name : #IceTipFilePresenter,
-	#superclass : #IceTipLocationPresenter,
-	#category : #'Iceberg-TipUI-View-Repository'
+	#name : 'IceTipFilePresenter',
+	#superclass : 'IceTipLocationPresenter',
+	#category : 'Iceberg-TipUI-View-Repository',
+	#package : 'Iceberg-TipUI',
+	#tag : 'View-Repository'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipFilePresenter >> chooseReference [
 
 	^ UIManager default

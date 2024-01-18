@@ -1,13 +1,15 @@
 Class {
-	#name : #IceGitIndex,
-	#superclass : #IceIndex,
+	#name : 'IceGitIndex',
+	#superclass : 'IceIndex',
 	#instVars : [
 		'modifiedFilePaths'
 	],
-	#category : #'Iceberg-Libgit-Core'
+	#category : 'Iceberg-Libgit-Core',
+	#package : 'Iceberg-Libgit',
+	#tag : 'Core'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 IceGitIndex >> addPackage: anIcePackageDefinition [ 
 	
 	| pathSegments |
@@ -16,19 +18,19 @@ IceGitIndex >> addPackage: anIcePackageDefinition [
 	self addPath: (RelativePath withAll: pathSegments)
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceGitIndex >> addPath: aPath [
 
 	modifiedFilePaths add: aPath
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceGitIndex >> addToGitIndex [
 
 	repository addFilesToIndex: modifiedFilePaths.
 ]
 
-{ #category : #'API - commiting' }
+{ #category : 'API - commiting' }
 IceGitIndex >> commitWithMessage: message andParents: parentCommits [
 	
 	| index |
@@ -42,7 +44,7 @@ IceGitIndex >> commitWithMessage: message andParents: parentCommits [
 		index free.
 		commitId := (LGitCommitBuilder of: self repositoryHandle)
 			tree: (LGitTree of: self repositoryHandle fromId: indexTreeId);
-			message: message withUnixLineEndings utf8Encoded asString "FFI is expecting an string";
+			message: message withUnixLineEndings "FFI is expecting an string";
 			parents:
 				(self repositoryHandle isUnborn
 					ifTrue: [ #() ]
@@ -60,33 +62,33 @@ IceGitIndex >> commitWithMessage: message andParents: parentCommits [
 		^ repository commitFromGitCommit: (LGitCommit of: self repositoryHandle fromId: commitId)]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitIndex >> includes: aRelativePath [ 
 	
 	^ modifiedFilePaths includes: aRelativePath
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceGitIndex >> initialize [
 
 	super initialize.
 	modifiedFilePaths := Set new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceGitIndex >> isEmpty [
 	
 	^ modifiedFilePaths isEmpty
 ]
 
-{ #category : #'API - commiting' }
+{ #category : 'API - commiting' }
 IceGitIndex >> libGitCommitsFrom: aLGitRepository for: aListOfCommitish [
 	^ aListOfCommitish collect: 
 		[ :commitish | 
 		LGitCommit of: aLGitRepository fromId: (LGitId fromHexString: commitish id) ]
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceGitIndex >> removeFileDefinition: anIceFileDefinition [ 
 	
 	(repository location resolve: anIceFileDefinition path)
@@ -95,14 +97,14 @@ IceGitIndex >> removeFileDefinition: anIceFileDefinition [
 	self addPath: anIceFileDefinition path
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitIndex >> repositoryHandle [
 	
 	<repositoryHandleAccessor>
 	^ repository repositoryHandle
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceGitIndex >> storeFileDefinition: anIceFileDefinition [ 
 	
 	(repository location resolve: anIceFileDefinition path)
@@ -113,7 +115,7 @@ IceGitIndex >> storeFileDefinition: anIceFileDefinition [
 	self addPath: anIceFileDefinition path
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceGitIndex >> storeMCVersion: aMCVersion [ 
 
 	| pathSegments |
@@ -126,13 +128,13 @@ IceGitIndex >> storeMCVersion: aMCVersion [
 	self addPath: (RelativePath withAll: pathSegments)
 ]
 
-{ #category : #storing }
+{ #category : 'storing' }
 IceGitIndex >> storeVersion: aMCVersion [ 
 	
 	repository internalStoreVersion: aMCVersion
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 IceGitIndex >> updateDiskWorkingCopy: anIceDiff [
 	anIceDiff tree
 		accept:

@@ -1,6 +1,6 @@
-Extension { #name : #FTRootItem }
+Extension { #name : 'FTRootItem' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 FTRootItem >> isRoot [
 	^ true
 ]

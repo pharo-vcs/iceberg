@@ -1,14 +1,16 @@
 Class {
-	#name : #IceGitHubViewPullRequestOnGithubAction,
-	#superclass : #IceGitHubAction,
+	#name : 'IceGitHubViewPullRequestOnGithubAction',
+	#superclass : 'IceGitHubAction',
 	#instVars : [
 		'organisation',
 		'projectName'
 	],
-	#category : #'Iceberg-Plugin-GitHub-Commands'
+	#category : 'Iceberg-Plugin-GitHub-Commands',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'Commands'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceGitHubViewPullRequestOnGithubAction class >> organisation: aString projectName: anotherString [
 	^ self new
 		organisation: aString;
@@ -16,44 +18,51 @@ IceGitHubViewPullRequestOnGithubAction class >> organisation: aString projectNam
 		yourself
 ]
 
-{ #category : #executing }
+{ #category : 'executing' }
 IceGitHubViewPullRequestOnGithubAction >> basicExecute [
-	[ 
-	
+
+	[
 	| url |
-	url := (self github getRepository: self organisation project: self projectName) at: 'html_url'.
-	
-	self class environment 
-		at: #WebBrowser 
-		ifPresent: [ :webBrowser | webBrowser openOn: url ] 
-		ifAbsent: [ 
-			UIManager default inform: ('Cannot open "{1}" because the project WebBrowser is not present by default in Pharo 6.' format: { url }) ] 
-	
-	]
+	url := (self github
+		        getRepository: self organisation
+		        project: self projectName) at: 'html_url'.
+
+	self class environment
+		at: #WebBrowser
+		ifPresent: [ :webBrowser | webBrowser openOn: url ]
+		ifAbsent: [
+			self application newInform
+				title: ('Cannot open "{1}"' format: { url });
+				label:
+					'Because the project WebBrowser is not present by default in Pharo 6.';
+				openModal ] ]
 		on: IceGitHubError
-		do: [ 
-			UIManager default inform: ('Invalid Github repository. No project named "{1}" found for the owner "{2}"' 
-				format: {
-					self projectName. 
-					self organisation}) ]
+		do: [
+			self application newInform
+				title: 'Invalid Github repository.';
+				label:
+					('No project named "{1}" found for the owner "{2}"' format: {
+								 self projectName.
+								 self organisation });
+				openModal ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> organisation [
 	^ organisation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> organisation: anObject [
 	organisation := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> projectName [
 	^ projectName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceGitHubViewPullRequestOnGithubAction >> projectName: anObject [
 	projectName := anObject
 ]

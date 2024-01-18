@@ -1,6 +1,6 @@
-Extension { #name : #IceOperationMerge }
+Extension { #name : 'IceOperationMerge' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceOperationMerge >> icon [
 
 	self isRightChosen ifTrue: [ ^ self iconNamed: #changeBlock ].
@@ -9,7 +9,7 @@ IceOperationMerge >> icon [
 	^ self operationIcon
 ]
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IceOperationMerge >> operationIcon [
 	self subclassResponsibility
 ]

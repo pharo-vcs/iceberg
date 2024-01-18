@@ -1,19 +1,21 @@
 Class {
-	#name : #IceGitCloneTest,
-	#superclass : #IceAbstractTestCase,
+	#name : 'IceGitCloneTest',
+	#superclass : 'IceAbstractTestCase',
 	#instVars : [
 		'oldProviderType'
 	],
-	#category : #'Iceberg-Tests-Git'
+	#category : 'Iceberg-Tests-Git',
+	#package : 'Iceberg-Tests',
+	#tag : 'Git'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceGitCloneTest >> newFixture [
 
 	^ IceNotYetClonedRepositoryFixture inGit
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> setUp [
 
 	super setUp.
@@ -21,14 +23,14 @@ IceGitCloneTest >> setUp [
 	IceCredentialsProvider providerType: IceNonInteractiveCredentialsProvider.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> tearDown [
 
 	IceCredentialsProvider providerType: oldProviderType.
 	super tearDown.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testCloneErrorRemovesLocation [
 
 	fixture ensureRemoteRepository.
@@ -41,7 +43,7 @@ IceGitCloneTest >> testCloneErrorRemovesLocation [
 	self deny: fixture location exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testClonedRepositoryIsGitClone [
 
 	fixture ensureRemoteRepository.
@@ -54,7 +56,7 @@ IceGitCloneTest >> testClonedRepositoryIsGitClone [
 	self assert: (fixture location / '.git') exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testLocationAlreadyExistsThrowsException [
 	
 	| action |
@@ -70,13 +72,13 @@ IceGitCloneTest >> testLocationAlreadyExistsThrowsException [
 	self should: [ action execute ] raise: IceCloneLocationAlreadyExists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testLocationDoesNotInitiallyExist [
 
 	self deny: fixture location exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testLocationExistsAfterClone [
 
 	fixture ensureRemoteRepository.
@@ -89,7 +91,7 @@ IceGitCloneTest >> testLocationExistsAfterClone [
 	self assert: fixture location exists
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self isCI ifTrue: [ self skip ].

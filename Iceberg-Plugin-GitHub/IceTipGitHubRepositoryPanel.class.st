@@ -3,24 +3,26 @@ I'm a presenter to define a new remote repository from a GitHub repository (owne
 
 "
 Class {
-	#name : #IceTipGitHubRepositoryPanel,
-	#superclass : #IceTipGitProviderRepositoryPanel,
-	#category : #'Iceberg-Plugin-GitHub-View'
+	#name : 'IceTipGitHubRepositoryPanel',
+	#superclass : 'IceTipGitProviderRepositoryPanel',
+	#category : 'Iceberg-Plugin-GitHub-View',
+	#package : 'Iceberg-Plugin-GitHub',
+	#tag : 'View'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubRepositoryPanel class >> order [
 
 	^ 100
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubRepositoryPanel >> configureBuilder: aBuilder [
 
 	aBuilder beGithub
 ]
 
-{ #category : #'querying - github' }
+{ #category : 'querying - github' }
 IceTipGitHubRepositoryPanel >> getGitHubRepository [
 
 	^ [ [ IceGitHubAPI new
@@ -36,18 +38,18 @@ IceTipGitHubRepositoryPanel >> getGitHubRepository [
 			error pass ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubRepositoryPanel >> iconForWindow [
 
 	^ (self iconNamed: #github) lighter: 0.50 "just to be sure is visible in all themes"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubRepositoryPanel >> newRepository [
 
 	| newRepository |
 	newRepository := super newRepository.
-	UIManager default 
+	self application
 		informUser: 'Configuring Remotes...'
 		during: [ | githubRepository |
 			githubRepository := self getGitHubRepository.
@@ -64,13 +66,13 @@ IceTipGitHubRepositoryPanel >> newRepository [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitHubRepositoryPanel >> providerName [
 
 	^ 'GitHub'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitHubRepositoryPanel >> titleForWindow [
 
 	^ 'Clone from github.com'

@@ -1,7 +1,7 @@
-Extension { #name : #IcePackage }
+Extension { #name : 'IcePackage' }
 
-{ #category : #'*Iceberg-TipUI' }
+{ #category : '*Iceberg-TipUI' }
 IcePackage >> browse [
 	
-	(RPackageOrganizer default packageNamed: self name) browse
+	(PackageOrganizer default packageNamed: self name) browse
 ]

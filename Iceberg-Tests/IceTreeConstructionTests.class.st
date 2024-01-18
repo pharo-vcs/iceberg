@@ -1,22 +1,24 @@
 Class {
-	#name : #IceTreeConstructionTests,
-	#superclass : #TestCase,
-	#category : 'Iceberg-Tests-Changes'
+	#name : 'IceTreeConstructionTests',
+	#superclass : 'TestCase',
+	#category : 'Iceberg-Tests-Changes',
+	#package : 'Iceberg-Tests',
+	#tag : 'Changes'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceTreeConstructionTests >> includesPackageNamed: aString [ 
 	
 	^ aString = 'MonticelloMocks'
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 IceTreeConstructionTests >> snapshotForPackage: anIcePackage [ 
 	
 	^ anIcePackage name asPackage mcWorkingCopy snapshot
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateDirectoryWithDirectory [
 
 	| tree child |
@@ -27,7 +29,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithDirectory [
 	self assert: (tree / 'src' / 'tmp') value isDirectoryDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateDirectoryWithFile [
 
 	| tree child |
@@ -38,7 +40,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithFile [
 	self assert: (tree / 'src' / 'tmp') value isFileDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateDirectoryWithPackage [
 
 	| tree importer child |
@@ -63,7 +65,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithPackage [
 	self assert: (tree / 'src' / 'MonticelloMocks' / 'MCSnapshotTest' / 'mockClassExtension') value isMethodDefinition.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateTreeWithDirectory [
 
 	| tree |
@@ -73,7 +75,7 @@ IceTreeConstructionTests >> testCreateTreeWithDirectory [
 	self assert: (tree / 'src') value isDirectoryDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateTreeWithFile [
 
 	| tree |
@@ -83,7 +85,7 @@ IceTreeConstructionTests >> testCreateTreeWithFile [
 	self assert: (tree / 'Readme.md') value isFileDefinition
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testCreateTreeWithPackage [
 
 	| tree importer |
@@ -107,7 +109,7 @@ IceTreeConstructionTests >> testCreateTreeWithPackage [
 	self assert: (tree / 'MonticelloMocks' / 'MCSnapshotTest' / 'mockClassExtension') value isMethodDefinition.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 IceTreeConstructionTests >> testEmptyTreeIsRootNode [
 
 	| tree |

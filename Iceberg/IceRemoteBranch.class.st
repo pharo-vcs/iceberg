@@ -8,19 +8,21 @@ I am a remote tracked branch. I am a copy to a branch that exists in a remote. I
   branch hasOutgoingCommits.
 "
 Class {
-	#name : #IceRemoteBranch,
-	#superclass : #IceBranch,
-	#category : #'Iceberg-Core'
+	#name : 'IceRemoteBranch',
+	#superclass : 'IceBranch',
+	#category : 'Iceberg-Core',
+	#package : 'Iceberg',
+	#tag : 'Core'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceRemoteBranch >> = aBranch [
 
 	^ aBranch isRemote
 		and: [ self name = aBranch name ]
 ]
 
-{ #category : #'API - checkout' }
+{ #category : 'API - checkout' }
 IceRemoteBranch >> checkout: aCheckoutStrategy [
 
 	| localBranch |
@@ -36,7 +38,7 @@ IceRemoteBranch >> checkout: aCheckoutStrategy [
 	^ localBranch checkout: aCheckoutStrategy
 ]
 
-{ #category : #'API - actions' }
+{ #category : 'API - actions' }
 IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 	"checkouts a remote branch"
 
@@ -53,34 +55,34 @@ IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 	^ super checkoutWithStrategy: aCheckoutStrategy
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceRemoteBranch >> hash [
 
 	^ self name hash
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRemoteBranch >> incomingCommits [
 	^ #()
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemoteBranch >> isRemote [
 
 	^ true
 ]
 
-{ #category : #'API - remotes' }
+{ #category : 'API - remotes' }
 IceRemoteBranch >> outgoingCommits [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteBranch >> remote [
 	^ repository remoteNamed: self remoteName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoteBranch >> shortName [
 	^ self name copyAfter: $/
 ]

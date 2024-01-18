@@ -2,36 +2,38 @@
 I am a removal in a tree. I contain the definition I'm removing. I know what is the icon for removal and how to calculate a conflict with other operations.
 "
 Class {
-	#name : #IceRemoval,
-	#superclass : #IceOperation,
-	#category : 'Iceberg-Changes'
+	#name : 'IceRemoval',
+	#superclass : 'IceOperation',
+	#category : 'Iceberg-Changes',
+	#package : 'Iceberg',
+	#tag : 'Changes'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 IceRemoval >> accept: aVisitor [
 	
 	^ aVisitor visitRemoval: self
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 IceRemoval >> inverse [
 	
 	^ IceAddition definition: definition
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceRemoval >> isRemoval [
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceRemoval >> leftContents [
 	
 	^ ''
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceRemoval >> mergeWithLeftAddition: anIceAddition [ 
 	
 	"This should not happen. If I represent a removal of a node, that means that the original definition existed on the base version.
@@ -39,7 +41,7 @@ IceRemoval >> mergeWithLeftAddition: anIceAddition [
 	self shouldNotImplement
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceRemoval >> mergeWithLeftModification: anIceModification [ 
 	
 	^ IceConflictingOperation
@@ -47,7 +49,7 @@ IceRemoval >> mergeWithLeftModification: anIceModification [
 		right: self
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceRemoval >> mergeWithLeftNoOperation: anIceNoModification [ 
 	
 	"We assume that if the IceNoModification is in the tree this means its children have modifications.
@@ -57,13 +59,13 @@ IceRemoval >> mergeWithLeftNoOperation: anIceNoModification [
 	^ IceConflictingOperation left: anIceNoModification right: self
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceRemoval >> mergeWithLeftRemoval: anIceRemoval [ 
 	
 	^ IceNonConflictingOperation operation: anIceRemoval
 ]
 
-{ #category : #merging }
+{ #category : 'merging' }
 IceRemoval >> mergeWithOperation: anOperation [
 	
 	^ anOperation mergeWithLeftRemoval: self

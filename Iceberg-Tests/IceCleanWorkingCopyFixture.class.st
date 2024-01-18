@@ -1,10 +1,12 @@
 Class {
-	#name : #IceCleanWorkingCopyFixture,
-	#superclass : #IceBasicRepositoryFixture,
-	#category : 'Iceberg-Tests-Common-Fixtures'
+	#name : 'IceCleanWorkingCopyFixture',
+	#superclass : 'IceBasicRepositoryFixture',
+	#category : 'Iceberg-Tests-Common-Fixtures',
+	#package : 'Iceberg-Tests',
+	#tag : 'Common-Fixtures'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 IceCleanWorkingCopyFixture >> setUp [
 
 	super setUp.

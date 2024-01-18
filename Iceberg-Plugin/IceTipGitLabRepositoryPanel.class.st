@@ -2,36 +2,38 @@
 I'm a panel to show and/or manipulate a project definition in a GitLab git repository.
 "
 Class {
-	#name : #IceTipGitLabRepositoryPanel,
-	#superclass : #IceTipGitProviderRepositoryPanel,
-	#category : #'Iceberg-Plugin-Gitlab'
+	#name : 'IceTipGitLabRepositoryPanel',
+	#superclass : 'IceTipGitProviderRepositoryPanel',
+	#category : 'Iceberg-Plugin-Gitlab',
+	#package : 'Iceberg-Plugin',
+	#tag : 'Gitlab'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitLabRepositoryPanel class >> order [
 
 	^ 120
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 IceTipGitLabRepositoryPanel >> configureBuilder: aBuilder [
 
 	aBuilder beGitLab
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitLabRepositoryPanel >> iconForWindow [
 
 	^ self iconNamed: #gitlab
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipGitLabRepositoryPanel >> providerName [
 
 	^ 'GitLab'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 IceTipGitLabRepositoryPanel >> titleForWindow [
 
 	^ 'Clone from gitlab.com'

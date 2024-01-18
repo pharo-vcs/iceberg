@@ -4,35 +4,43 @@ Each tip component refers to one (and just one) model, which will provide model 
 Models can be cached using #beCached.
 "
 Class {
-	#name : #IceTipModel,
-	#superclass : #Object,
-	#category : #'Iceberg-TipUI-Model'
+	#name : 'IceTipModel',
+	#superclass : 'Object',
+	#category : 'Iceberg-TipUI-Model',
+	#package : 'Iceberg-TipUI',
+	#tag : 'Model'
 }
 
-{ #category : #converting }
+{ #category : 'accessing' }
+IceTipModel >> application [
+
+	^ StPharoApplication current
+]
+
+{ #category : 'converting' }
 IceTipModel >> beCached [
 	^ IceTipCachedModel for: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 IceTipModel >> colorForError [
 
 	^ Smalltalk ui theme dangerTextColor
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceTipModel >> matches: aString [
 	"Override this if you want to make this model discoverable"
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipModel >> repositoryModel [
 	"this model does not provides a repository model"
 	^ nil 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceTipModel >> reset [
 	"to provide polymorphism with cached version"
 ]

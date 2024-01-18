@@ -2,16 +2,18 @@
 Adapter for allowing metacello to use Iceberg to download packages and versions.
 "
 Class {
-	#name : #IceMetacelloRepositoryAdapter,
-	#superclass : #Object,
+	#name : 'IceMetacelloRepositoryAdapter',
+	#superclass : 'Object',
 	#instVars : [
 		'repository',
 		'projectVersion'
 	],
-	#category : #'Iceberg-Adapters'
+	#category : 'Iceberg-Adapters',
+	#package : 'Iceberg',
+	#tag : 'Adapters'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 IceMetacelloRepositoryAdapter class >> for: anIceRepository withVersion: aString [ 
 
 	| projectVersion |
@@ -26,18 +28,18 @@ IceMetacelloRepositoryAdapter class >> for: anIceRepository withVersion: aString
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMetacelloRepositoryAdapter >> = other [
 	^ other species = self species 
 		and: [ other description = self description ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [ 
 	"Do nothing, we do not need to register the repository into the monticello registry"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [ 
   (anMCGitBasedRepository isKindOf: self class) ifFalse: [ ^ false ].
 
@@ -45,35 +47,44 @@ IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [
 	and: [ self repoPath = anMCGitBasedRepository repoPath and: [ self projectVersion = anMCGitBasedRepository projectVersion ]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> commitIdFor: aWorkingCopy ifFound: aBlock [
 
 	self flag: #pharoTodo. "Do nothing?"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> description [
 		
 	^ self repository origin url, '[', projectVersion, ']'
 ]
 
-{ #category : #initialization }
+{ #category : 'fetching' }
+IceMetacelloRepositoryAdapter >> fetchPackageNamed: aString [
+	"The fetch operation just makes sure we have the correct version in disk"
+
+	self repository head description = projectVersion ifFalse: [
+		(self repository commitishNamed: projectVersion)
+			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ]
+]
+
+{ #category : 'initialization' }
 IceMetacelloRepositoryAdapter >> flushForScriptGet [
 	"do nothing"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> getOrCreateIcebergRepository [
 
 	^ self repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> goferPriority [
 	^ 8
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> goferReferences [
 	
 	self repository head description = projectVersion ifFalse: [ (self repository commitishNamed: projectVersion) checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ].
@@ -85,7 +96,7 @@ IceMetacelloRepositoryAdapter >> goferReferences [
 				repository: self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryAdapter >> hasNoLoadConflicts: anMCGitBasedRepository [
 	"Copied from MCGitBasedNetworkRepository"
   	(anMCGitBasedRepository isKindOf: self class) ifFalse: [ ^ false ].
@@ -95,93 +106,146 @@ IceMetacelloRepositoryAdapter >> hasNoLoadConflicts: anMCGitBasedRepository [
 			self projectVersion = anMCGitBasedRepository projectVersion ] ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 IceMetacelloRepositoryAdapter >> hash [
 	"Not a good hash, but is copied from MCRepository"
 	^ self description hash
 ]
 
-{ #category : #compatibility }
+{ #category : 'compatibility' }
 IceMetacelloRepositoryAdapter >> isCache [
 	"User for Kommiter and Versionner"
 	^ false
 ]
 
-{ #category : #compatibility }
+{ #category : 'compatibility' }
 IceMetacelloRepositoryAdapter >> isRemote [
 	"User for Komitter"
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 IceMetacelloRepositoryAdapter >> isValid [
 	^ true
 ]
 
-{ #category : #MonticelloGUI }
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
+
+	| package found |
+	package := self repository workingCopy packageNamed: aName.
+	found := package latestVersion mcVersion.
+	aLoader addVersion: found.
+	^ {
+		  found.
+		  self }
+]
+
+{ #category : 'MonticelloGUI' }
 IceMetacelloRepositoryAdapter >> morphicOpen: workingCopy [
+
 	| shouldOpenIceberg |
-	shouldOpenIceberg := UIManager default 
-		confirm: ('{1} belongs to {2} and cannot be browsed here. 
-Do you want to open the Iceberg Browser instead?' format: { workingCopy packageName. self repository name }) 
-		label: 'Browsing an iceberg repository'
-		trueChoice: 'Open' 
-		falseChoice: 'Cancel'
-		cancelChoice: nil
-		default: true.
+	shouldOpenIceberg := 
+		SpApplication defaultApplication newConfirm
+			title: 'Browsing an iceberg repository';
+			label:  ('{1} belongs to {2} and cannot be browsed here. 
+Do you want to open the Iceberg Browser instead?' format: {
+					                      workingCopy packageName.
+					                      self repository name });
+			acceptLabel: 'Open';
+			cancelLabel: 'Cancel';
+		   openModal.
 	shouldOpenIceberg ifFalse: [ ^ self ].
 	IceTipRepositoriesBrowser new open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName [
+
+	^ self packageNamed: aName ifAbsent: [ NotFound signal: aName ]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifAbsent: aBlock [
+
+	^ self
+		packageNamed: aName
+		ifPresent: [ :found | found ]
+		ifAbsent: aBlock
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifPresent: aBlock [
+
+	^ self
+		  packageNamed: aName
+		  ifPresent: aBlock
+		  ifAbsent: [ NotFound signal: aName ]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> packageNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [
+
+	| package |
+	self repository head description = projectVersion ifFalse: [
+		(self repository commitishNamed: projectVersion)
+			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ].
+
+	package := self repository workingCopy
+		           packageNamed: aName
+		           ifAbsent: [ ^ absentBlock value ].
+	^ presentBlock value: package latestVersion mcVersion
+]
+
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectPath [
 	^ self repository origin projectPath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectVersion [
 	^ projectVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectVersion: anObject [
 	projectVersion := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> repoPath [
 	^ self repository subdirectory 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> repository [
 
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> repository: anObject [
 	repository := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> repositoryDescription [
 	^ self repository description
 
 ]
 
-{ #category : #querying }
+{ #category : 'querying' }
 IceMetacelloRepositoryAdapter >> repositoryVersionString [
 	^ self repository workingCopy referenceCommit id
 ]
 
-{ #category : #compatibility }
+{ #category : 'compatibility' }
 IceMetacelloRepositoryAdapter >> unregister [
 
 	^ MCRepositoryGroup default removeRepository: self
 ]
 
-{ #category : #versions }
+{ #category : 'versions' }
 IceMetacelloRepositoryAdapter >> versionFrom: aVersionName [ 
 	| packageName package version |
 	packageName := (MCFileTreeRepository parseName: aVersionName) first.
