@@ -116,14 +116,14 @@ IceTipCommitBrowser >> doCommit [
 { #category : 'actions' }
 IceTipCommitBrowser >> doCommit: aCollection message: aString pushing: pushingBoolean saving: savingBoolean [
 
-	self model newCommitAction
-		diff: self model workingCopyDiff;
+	self workingCopyModel newCommitAction
+		diff: self workingCopyModel diffToReferenceCommit;
 		items: aCollection;
 		message: aString;
 		onSuccess: [ 
 			self verifyNeedsRefreshOrClose.
 			pushingBoolean ifTrue: [ 
-				(IceTipPushAction new repository: self model entity) executeWithContext: self ].
+				(IceTipPushAction new repository: self repository) executeWithContext: self ].
 			savingBoolean ifTrue: [ 
 				saveAction execute ] ];
 		executeWithContext: self
@@ -166,11 +166,11 @@ IceTipCommitBrowser >> initializeAcceptShortcut [
 { #category : 'initialization' }
 IceTipCommitBrowser >> initializePresenters [
 
-	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self model workingCopyDiff.
+	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self workingCopyModel diffToReferenceCommit.
 	diffPanel leftLabel: 'Repository'.
 	diffPanel rightLabel: 'Working Copy'.
 	
-	commentPanel := self instantiate: IceTipCommentPanel on: self model.
+	commentPanel := self instantiate: IceTipCommentPanel on: self repositoryModel.
 	commentPanel onCommit: [ self doCommit ].
 	
 	self initializeAcceptShortcut
@@ -206,6 +206,12 @@ IceTipCommitBrowser >> refreshWhenRepository: ann [
 ]
 
 { #category : 'accessing' }
+IceTipCommitBrowser >> repository [
+	
+	^ self repositoryModel repository
+]
+
+{ #category : 'accessing' }
 IceTipCommitBrowser >> saveAction: anAction [
 
 	saveAction := anAction
@@ -224,8 +230,8 @@ IceTipCommitBrowser >> subscribeToAnnouncements [
 IceTipCommitBrowser >> titleForWindow [
 
 	^ 'Commit on {1} branch {2}' format: { 
-			  self model name.
-			  self model branchName }
+			  self repositoryModel name.
+			  self repositoryModel branchName }
 ]
 
 { #category : 'private' }
@@ -240,4 +246,10 @@ IceTipCommitBrowser >> verifyNeedsRefreshOrClose [
 	diffPanel model isEmpty ifTrue: [ ^ self closeWindow ].
 	self commentPanel clear.
 	diffPanel basicRefresh
+]
+
+{ #category : 'accessing' }
+IceTipCommitBrowser >> workingCopyModel [
+	
+	^ self model
 ]

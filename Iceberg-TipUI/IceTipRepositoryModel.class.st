@@ -267,14 +267,6 @@ IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
 		action: [ self entity createBranch: aString inCommit: aCommit ]
 ]
 
-{ #category : 'actions' }
-IceTipRepositoryModel >> newCommitAction [
-
-	^ IceTipCommitAction new
-		repository: self entity;
-		yourself
-]
-
 { #category : 'tagging' }
 IceTipRepositoryModel >> newCreateTagAction: aString [
 
@@ -567,7 +559,9 @@ IceTipRepositoryModel >> workingCopy [
 { #category : 'accessing' }
 IceTipRepositoryModel >> workingCopyDiff [
 
-	^ IceTipWorkingCopyDiffModel repositoryModel: self on: self entity
+	^ IceTipWorkingCopyDiffModel
+		  repositoryModel: self
+		  on: self workingCopy
 ]
 
 { #category : 'accessing' }

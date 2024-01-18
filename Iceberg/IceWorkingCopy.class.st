@@ -229,8 +229,7 @@ IceWorkingCopy >> commitChanges: aDiff withMessage: message [
 ]
 
 { #category : 'API - commits' }
-IceWorkingCopy >> commitChanges: aDiff withMessage: message force: forcing [ 
-
+IceWorkingCopy >> commitChanges: aDiff withMessage: message force: forcing [
 	"Creates a commit with the given changes using the comment given as argument.
 	The forcing parameter allows to create an empty commit. This is used by the merge.
 	
@@ -245,12 +244,17 @@ IceWorkingCopy >> commitChanges: aDiff withMessage: message force: forcing [
 		updateDiskWorkingCopy: aDiff;
 		updateIndex: aDiff.
 
-	(forcing not and: [repository index isEmpty]) 
-		ifTrue: [ IceNothingToCommit signal ].
+	(forcing not and: [ repository index isEmpty ]) ifTrue: [
+		IceNothingToCommit signal ].
 
 	newCommit := self repository
-		commitIndexWithMessage: message
-		andParents: (self workingCopyState referenceCommits reject: [ :each | each isNoCommit ]).
+		             commitIndexWithMessage: message
+		             andParents:
+			             (self workingCopyState referenceCommits reject: [
+				              :each | each isNoCommit ]).
+	self referenceCommit: newCommit.
+	self refreshDirtyPackages.
+
 	^ newCommit
 ]
 

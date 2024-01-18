@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'diff',
 		'items',
-		'message'
+		'message',
+		'workingCopy'
 	],
 	#category : 'Iceberg-TipUI-Commands',
 	#package : 'Iceberg-TipUI',
@@ -20,7 +21,7 @@ IceTipCommitAction >> basicExecute [
 	self application
 		informUser: 'Committing...' 
 		during: [ 
-			self repository
+			self workingCopy
 				commitChanges: (diff copyWithOnly: items)
 				withMessage: message ].
 	Iceberg announcer announce: (IceRepositoryModified for: self repository).
@@ -72,4 +73,15 @@ IceTipCommitAction >> validateChangeListNotEmpty [
 { #category : 'validating' }
 IceTipCommitAction >> validateMessageNotEmpty [
 	self message ifEmpty: [ IceNoCommitMessage signal ]
+]
+
+{ #category : 'accessing' }
+IceTipCommitAction >> workingCopy [
+	^ workingCopy
+]
+
+{ #category : 'accessing' }
+IceTipCommitAction >> workingCopy: aWorkingCopy [
+
+	workingCopy := aWorkingCopy
 ]

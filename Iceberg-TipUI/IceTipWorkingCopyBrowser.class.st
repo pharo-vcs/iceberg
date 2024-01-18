@@ -257,3 +257,9 @@ IceTipWorkingCopyBrowser >> updatePresenter [
 
 	self refresh
 ]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyBrowser >> workingCopyModel [
+	
+	^ self model
+]

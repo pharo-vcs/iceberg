@@ -24,7 +24,7 @@ IceTipWorkingCopyDiffModel >> isEmpty [
 
 { #category : 'private - factory' }
 IceTipWorkingCopyDiffModel >> newDiff [
-	^ self entity workingCopyDiff
+	^ self entity diffToReferenceCommit
 ]
 
 { #category : 'private' }

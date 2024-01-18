@@ -45,6 +45,22 @@ IceTipWorkingCopyModel >> copyCommitIDToClipboard [
 	repositoryModel copyCommitIDToClipboard
 ]
 
+{ #category : 'API - changes' }
+IceTipWorkingCopyModel >> diffToReferenceCommit [
+
+	^ IceTipWorkingCopyDiffModel
+		  repositoryModel: self repositoryModel
+		  on: self workingCopy
+]
+
+{ #category : 'instance creation' }
+IceTipWorkingCopyModel >> newCommitAction [
+
+	^ IceTipCommitAction new
+		workingCopy: self workingCopy;
+		yourself
+]
+
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> packageModels [
 
