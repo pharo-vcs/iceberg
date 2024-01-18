@@ -42,7 +42,7 @@ IceTipCommitBrowser class >> buildSelectionCommandGroupWith: presenter for: aCom
 { #category : 'instance creation' }
 IceTipCommitBrowser class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository)
+	^ self on: (IceTipWorkingCopyModel on: (IceTipRepositoryModel on: aRepository) workingCopy: aRepository workingCopy)
 ]
 
 { #category : 'actions' }

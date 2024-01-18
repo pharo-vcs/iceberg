@@ -52,7 +52,7 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 { #category : 'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository)
+	^ self on: (IceTipWorkingCopyModel on: (IceTipRepositoryModel on: aRepository) workingCopy: aRepository workingCopy)
 ]
 
 { #category : 'accessing' }

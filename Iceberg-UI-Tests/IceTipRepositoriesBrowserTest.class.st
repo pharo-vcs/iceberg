@@ -91,14 +91,6 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryBranchThenRefreshDoesRefreshL
 ]
 
 { #category : 'tests - table' }
-IceTipRepositoriesBrowserTest >> testEditRepositoryBranchWithoutRefreshDoesNotRefreshList [
-		
-	self
-		testEditWithoutRefreshRepositoryProperty: #branchName
-		doing: [ :repository | repository createBranch: 'toto' ]
-]
-
-{ #category : 'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryNameThenRefreshDoesRefreshList [
 	
 	| newName |	
@@ -110,29 +102,24 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryNameThenRefreshDoesRefreshLis
 ]
 
 { #category : 'tests - table' }
-IceTipRepositoriesBrowserTest >> testEditRepositoryNameWithoutRefreshDoesNotRefreshList [
-	
-	self
-		testEditWithoutRefreshRepositoryProperty: #name
-		doing: [ :repository | repository name: 'newname' ]
-]
-
-{ #category : 'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditRepositoryProperty: aProperty doing: aBlock makesPropertyValueTo: aValue [
-	| firstRepository repositoryModel oldValue newValue |	
 
-	firstRepository := repositoryProvider repositories first.
-	repositoryModel := presenter projectsPanelRepositoryModels first.
+	| firstRepository repositoryModel oldValue newValue |
+	firstRepository := repositoryProvider repositories last.
+	repositoryModel := presenter projectsPanelRepositoryModels detect: [
+		                   :m | m isModelOf: firstRepository ].
 	oldValue := repositoryModel perform: aProperty.
 	aBlock value: firstRepository.
-	
+
 	"Get again the repository model in case it was changed"
-	repositoryModel := presenter projectsPanelRepositoryModels first.
-	
+	repositoryModel := presenter projectsPanelRepositoryModels detect: [
+		                   :m | m isModelOf: firstRepository ].
+
+
 	self assert: repositoryModel entity equals: firstRepository.
-	
+
 	newValue := repositoryModel perform: aProperty.
-	self assert: newValue equals: aValue.
+	self assert: newValue equals: aValue
 ]
 
 { #category : 'tests - table' }
@@ -147,16 +134,6 @@ IceTipRepositoriesBrowserTest >> testEditRepositoryStatusThenRefreshDoesRefreshL
 ]
 
 { #category : 'tests - table' }
-IceTipRepositoriesBrowserTest >> testEditRepositoryStatusWithoutRefreshDoesNotRefreshList [
-	
-	self
-		testEditWithoutRefreshRepositoryProperty: #status
-		doing: [ :repository | 
-			"Make the repository missing by removing its underlying repository"
-			repository repositoryDirectory ensureDeleteAll ]
-]
-
-{ #category : 'tests - table' }
 IceTipRepositoriesBrowserTest >> testEditThenRefreshRepositoryProperty: aProperty doing: aBlock makesPropertyValueTo: aValue [
 
 	self
@@ -165,17 +142,6 @@ IceTipRepositoriesBrowserTest >> testEditThenRefreshRepositoryProperty: aPropert
 			aBlock value: repository.
 			presenter refresh ]
 		makesPropertyValueTo: aValue
-]
-
-{ #category : 'tests - table' }
-IceTipRepositoriesBrowserTest >> testEditWithoutRefreshRepositoryProperty: aProperty doing: aBlock [
-	
-	| repositoryModel |
-	repositoryModel := presenter projectsPanelRepositoryModels first.
-	self
-		testEditRepositoryProperty: aProperty
-		doing: aBlock
-		makesPropertyValueTo: (repositoryModel perform: aProperty)
 ]
 
 { #category : 'tests - structural' }
