@@ -45,7 +45,7 @@ IceTipVersionHistoryModel >> retrieveHistory [
 	| history |
 
 	self repositoryModel checkMissing.
-	self application 
+	^self application 
 		informUser: ('Retrieving history of {1}' format: { self entity printString }) 
 		during: [ history := self repositoryModel entity log historyOfMethod: self entity ].
 	^ history

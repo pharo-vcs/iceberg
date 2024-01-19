@@ -22,10 +22,10 @@ IceTipInstallVersionCommand class >> defaultName [
 	^ 'Install this version'
 ]
 
-{ #category : 'execution' }
+{ #category : 'executing' }
 IceTipInstallVersionCommand >> execute [
-	
-	self version install
+
+	self version newInstallAction executeWithContext: self context
 ]
 
 { #category : 'activation' }

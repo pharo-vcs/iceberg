@@ -19,7 +19,7 @@ IceTipAddSshCredentialCommand class >> defaultName [
 	^ 'SSH Pair'
 ]
 
-{ #category : 'execution' }
+{ #category : 'executing' }
 IceTipAddSshCredentialCommand >> execute [
 
 	((IceTipAddSSHCredentialsPresenter newApplication: context application)

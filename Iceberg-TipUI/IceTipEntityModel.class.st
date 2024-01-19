@@ -81,6 +81,24 @@ IceTipEntityModel >> isModelOf: anObject [
 ]
 
 { #category : 'accessing' }
+IceTipEntityModel >> name [
+	
+	^ self entity name
+]
+
+{ #category : 'tagging' }
+IceTipEntityModel >> newCreateTagAction: aString [
+	<noCache>
+
+	^ IceTipStandardAction new 
+		repository: self entity;
+		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
+		onSuccessRepositoryModified;
+		action: [ self commit createTag: aString ]
+		yourself
+]
+
+{ #category : 'accessing' }
 IceTipEntityModel >> repositoryModel [
 	^ repositoryModel
 ]

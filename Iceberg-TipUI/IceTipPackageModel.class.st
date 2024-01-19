@@ -107,8 +107,8 @@ IceTipPackageModel >> newRemoveAction [
 	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Removing package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		action: [ 
+		onSuccessRepositoryModified;
+		action: [
 			Iceberg announcer
 				suspendAllForRepository: self entity repository
 				while: [ self entity remove ] ];

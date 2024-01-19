@@ -15,7 +15,7 @@ IceGitHubRemoveBranchesCommand class >> defaultName [
 	^ 'Remove Branches...'
 ]
 
-{ #category : 'execute' }
+{ #category : 'executing' }
 IceGitHubRemoveBranchesCommand >> execute [
 
 	^ IceGitHubRemoveBranchesAction new

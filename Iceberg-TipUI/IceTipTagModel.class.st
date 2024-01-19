@@ -33,10 +33,16 @@ IceTipTagModel >> description [
 	^ self entity name
 ]
 
-{ #category : 'accessing' }
-IceTipTagModel >> name [
-	
-	^ self entity name
+{ #category : 'actions' }
+IceTipTagModel >> newDeleteAction [
+
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self repositoryModel entity;
+		  message: ('Removing tag {1}' format: { self name });
+		  onSuccessRepositoryModified;
+		  action: [ self entity delete ];
+		  yourself
 ]
 
 { #category : 'actions' }
