@@ -19,21 +19,22 @@ IceTipTagModel >> commitModels [
 	^ commits
 ]
 
-{ #category : 'actions' }
-IceTipTagModel >> delete [
-	<noCache>
-	
-	IceTipStandardAction new
-		repository: self repositoryModel entity;
-		message: ('Removing tag {1}' format: { self name });
-		onSuccessRepositoryModified;
-		do: [ self repositoryModel entity removeTag: self entity ]
-]
-
 { #category : 'accessing' }
 IceTipTagModel >> description [
 	
 	^ self entity name
+]
+
+{ #category : 'actions' }
+IceTipTagModel >> newDeleteAction [
+
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self repositoryModel entity;
+		  message: ('Removing tag {1}' format: { self name });
+		  onSuccessRepositoryModified;
+		  action: [ self entity delete ];
+		  yourself
 ]
 
 { #category : 'actions' }

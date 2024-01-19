@@ -79,28 +79,28 @@ IceTipPackageModel >> newLoadAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newReloadAction [
-	<noCache>
 
-	^ IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Reloading package {1}' format: { self entity name }) ;
-		onSuccessRepositoryModified;
-		action: [ 
-			Iceberg announcer 
-				suspendAllForRepository: self entity repository 
-				while: [ self entity reload ] ];
-		yourself
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self entity repository;
+		  message: ('Reloading package {1}' format: { self entity name });
+		  onSuccessRepositoryModified;
+		  action: [
+			  Iceberg announcer
+				  suspendAllForRepository: self entity repository
+				  while: [ self entity reload ] ];
+		  yourself
 ]
 
 { #category : 'actions' }
 IceTipPackageModel >> newRemoveAction [
-	<noCache>
 
-	^ IceTipStandardAction new 
+	<noCache>
+	^IceTipStandardAction new
 		repository: self entity repository;
 		message: ('Removing package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		action: [ 
+		onSuccessRepositoryModified;
+		action: [
 			Iceberg announcer
 				suspendAllForRepository: self entity repository
 				while: [ self entity remove ] ];
@@ -109,17 +109,17 @@ IceTipPackageModel >> newRemoveAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newUnloadAction [
-	<noCache>
 
-	^ IceTipStandardAction new 
-		repository: self entity repository;
-		message: ('Unloading package {1}' format: { self entity name });
-		onSuccessRepositoryModified; 
-		action: [ 
-			Iceberg announcer
-				suspendAllForRepository: self entity repository
-				while: [ self entity unload ] ];
-		yourself
+	<noCache>
+	^ IceTipStandardAction new
+		  repository: self entity repository;
+		  message: ('Unloading package {1}' format: { self entity name });
+		  onSuccessRepositoryModified;
+		  action: [
+			  Iceberg announcer
+				  suspendAllForRepository: self entity repository
+				  while: [ self entity unload ] ];
+		  yourself
 ]
 
 { #category : 'accessing' }

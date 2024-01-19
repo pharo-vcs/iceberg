@@ -15,7 +15,7 @@ IceGitHubViewPullRequestsCommand class >> defaultName [
 	^ 'View Pull Requests...'
 ]
 
-{ #category : 'execute' }
+{ #category : 'executing' }
 IceGitHubViewPullRequestsCommand >> execute [
 
 	^ IceGitHubViewPullRequestAction new

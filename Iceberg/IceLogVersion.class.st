@@ -72,6 +72,14 @@ IceLogVersion >> id [
 	^ self commit id
 ]
 
+{ #category : 'actions' }
+IceLogVersion >> install [
+
+	definition realClass
+		compile: definition sourceCode
+		classified: definition category
+]
+
 { #category : 'accessing' }
 IceLogVersion >> originMethod [
 	^ (Smalltalk at: self definition methodClass name) >> self definition selector

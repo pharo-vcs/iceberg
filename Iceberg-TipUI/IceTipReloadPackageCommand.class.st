@@ -31,7 +31,6 @@ IceTipReloadPackageCommand >> canBeExecuted [
 IceTipReloadPackageCommand >> execute [
 
 	self packageModel newReloadAction executeWithContext: self context.
-	Iceberg announcer announce: (IceRepositoryModified for: self repository)
 ]
 
 { #category : 'accessing' }
