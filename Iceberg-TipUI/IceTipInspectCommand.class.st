@@ -48,3 +48,9 @@ IceTipInspectCommand >> item [
 	^ (maybeCachedObject respondsTo: #realObject)
 		ifTrue: [ maybeCachedObject realObject ] ifFalse: [ maybeCachedObject ]
 ]
+
+{ #category : 'activation' }
+IceTipBrowseCommand >> shortcutKey [
+
+	^ $i meta
+]
