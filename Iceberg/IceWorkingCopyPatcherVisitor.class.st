@@ -90,6 +90,13 @@ IceWorkingCopyPatcherVisitor >> visitDirectoryDefinition: anIceDirectoryDefiniti
 ]
 
 { #category : 'visiting' }
+IceWorkingCopyPatcherVisitor >> visitExtensionDefinition: anIceExtensionDefinition [
+	"An extension definition represents no changes on its own, visit the individual extension-method changes."
+
+	self visitChildrenOf: currentNode
+]
+
+{ #category : 'visiting' }
 IceWorkingCopyPatcherVisitor >> visitFileNode: anIceFileDefinition [
 	
 	"Ignore files, they are not loaded in the image"
