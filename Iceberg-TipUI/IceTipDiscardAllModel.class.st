@@ -38,7 +38,6 @@ IceTipDiscardAllModel >> discardAll [
 
 { #category : 'operations' }
 IceTipDiscardAllModel >> newDiscardAction [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self repository;

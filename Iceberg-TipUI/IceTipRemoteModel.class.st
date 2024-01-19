@@ -37,7 +37,6 @@ IceTipRemoteModel >> name [
 
 { #category : 'actions' }
 IceTipRemoteModel >> newDeleteAction [
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self repositoryModel entity;
@@ -49,7 +48,6 @@ IceTipRemoteModel >> newDeleteAction [
 
 { #category : 'actions' }
 IceTipRemoteModel >> newFetchAction [
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self repositoryModel entity;

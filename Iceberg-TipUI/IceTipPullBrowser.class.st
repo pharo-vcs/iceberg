@@ -19,11 +19,8 @@ IceTipPullBrowser class >> buildGeneralCommandGroupWith: presenter for: aCommand
 { #category : 'instance creation' }
 IceTipPullBrowser class >> onRepositoryModel: aModel [
 
-	^ self on: (IceTipPullModel 
-		repositoryModel: aModel 
-		on: aModel entity) 
-		beCached
-
+	^ self on:
+		  (IceTipPullModel repositoryModel: aModel on: aModel entity)
 ]
 
 { #category : 'actions' }

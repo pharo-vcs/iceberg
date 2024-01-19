@@ -8,15 +8,23 @@ Class {
 
 { #category : 'accessing' }
 IceTipTagModel >> commitModels [
-	
+
 	| commits |
 	commits := OrderedCollection new.
-	self entity commitsDo: [ :each | 
-		commits add: (IceTipCommitModel 
-			repositoryModel: self repositoryModel 
-			on: each) 
-			beCached ].
+	self entity commitsDo: [ :each |
+		commits add:
+			(IceTipCommitModel repositoryModel: self repositoryModel on: each) ].
 	^ commits
+]
+
+{ #category : 'actions' }
+IceTipTagModel >> delete [
+	
+	IceTipStandardAction new
+		repository: self repositoryModel entity;
+		message: ('Removing tag {1}' format: { self name });
+		onSuccessRepositoryModified;
+		do: [ self repositoryModel entity removeTag: self entity ]
 ]
 
 { #category : 'accessing' }
@@ -41,7 +49,6 @@ IceTipTagModel >> newDeleteAction [
 IceTipTagModel >> previewCheckout [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
-	<noCache>
 
 	(IceTipCheckoutPreviewBrowser onBranch: self) open
 ]

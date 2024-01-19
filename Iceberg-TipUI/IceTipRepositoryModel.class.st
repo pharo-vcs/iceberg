@@ -25,17 +25,13 @@ IceTipRepositoryModel >> = other [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> allBranchModels [
-	^ self entity allBranches 
-		collect: [ :each | 
-			(IceTipBranchModel 
-				repositoryModel: self 
-				on: each) 
-				beCached ]
+
+	^ self entity allBranches collect: [ :each |
+		  IceTipBranchModel repositoryModel: self on: each ]
 ]
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> availableRepairOptions [
-	<noCache>
 	
 	^ IceTipRepairAction allAvailableFor: self entity
 ]
@@ -43,18 +39,13 @@ IceTipRepositoryModel >> availableRepairOptions [
 { #category : 'accessing' }
 IceTipRepositoryModel >> branchModel [
 
-	^ (IceTipBranchModel 
-		repositoryModel: self 
-		on: self entity branch)
-		beCached
+	^ IceTipBranchModel repositoryModel: self on: self entity branch
 ]
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> branchModelFor: aBranch [
-	^ (IceTipBranchModel 
-		repositoryModel: self 
-		on: aBranch)
-		beCached
+
+	^ IceTipBranchModel repositoryModel: self on: aBranch
 ]
 
 { #category : 'accessing' }
@@ -97,15 +88,13 @@ IceTipRepositoryModel >> commitId [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> commitModelFor: aCommit [
-	^ (IceTipCommitModel 
-		repositoryModel: self 
-		on: aCommit)
-		beCached
+
+	^ IceTipCommitModel repositoryModel: self on: aCommit
 ]
 
 { #category : 'operations' }
 IceTipRepositoryModel >> createSourceDirectory [
-	<noCache>
+
 	entity createSourceDirectory
 ]
 
@@ -243,7 +232,6 @@ IceTipRepositoryModel >> name [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newAddPackagesAction: aCollection [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self entity;
@@ -257,7 +245,6 @@ IceTipRepositoryModel >> newAddPackagesAction: aCollection [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newAddRemoteActionName: aName url: anUrl [
-	<noCache>
 	
 	^ IceTipStandardAction new 
 		repository: self entity;
@@ -282,17 +269,19 @@ IceTipRepositoryModel >> newCheckoutNewBranchNamed: aString inCommit: aCommit [
 		  yourself
 ]
 
-{ #category : 'actions' }
-IceTipRepositoryModel >> newCommitAction [
+{ #category : 'tagging' }
+IceTipRepositoryModel >> newCreateTagAction: aString [
 
-	^ IceTipCommitAction new
+	^ IceTipStandardAction new 
 		repository: self entity;
+		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
+		onSuccessRepositoryModified;
+		action: [ self commit createTag: aString ]
 		yourself
 ]
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newDeleteAction [
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self entity;
@@ -303,7 +292,6 @@ IceTipRepositoryModel >> newDeleteAction [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newDiscardChangesAction [
-	<noCache>
 	
 	^ IceTipStandardAction new 
 		repository: self entity;
@@ -317,7 +305,6 @@ IceTipRepositoryModel >> newDiscardChangesAction [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newFetchAction [
-	<noCache>
 	
 	^ IceTipStandardAction new 
 		repository: self entity;
@@ -329,7 +316,6 @@ IceTipRepositoryModel >> newFetchAction [
 
 { #category : 'actions' }
 IceTipRepositoryModel >> newForgetAction [
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self entity;
@@ -372,8 +358,9 @@ IceTipRepositoryModel >> pushRemoteName [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> remoteModels [
+
 	^ self entity remotes collect: [ :each |
-		(IceTipRemoteModel repositoryModel: self on: each) beCached ]
+		  IceTipRemoteModel repositoryModel: self on: each ]
 ]
 
 { #category : 'accessing' }
@@ -383,46 +370,55 @@ IceTipRepositoryModel >> remotes [
 ]
 
 { #category : 'accessing' }
+IceTipRepositoryModel >> repository [
+	
+	^ entity
+]
+
+{ #category : 'accessing' }
 IceTipRepositoryModel >> repositoryModel [
 	^ self
 ]
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> repositoryModelsByGroup [
+
 	| branches tags |
 	branches := self allBranchModels.
 	tags := self tagModels.
-	^ { 
+	^ {
+		  ((IceTipTreeRepositoryGroup on: self)
+			   name: 'Branches';
+			   icon: (self iconNamed: #branch);
+			   children: (branches
+					    select: [ :each | each entity isLocal ]
+					    thenCollect: [ :each | IceTipTreeBranch on: each ]);
+			   yourself).
+		  "Remotes group"
+		  ((IceTipTreeRepositoryGroup on: self)
+			   name: 'Remotes';
+			   icon: (self iconNamed: #remote);
+			   children: (self entity remotes collect: [ :eachRemote |
+						    | remoteModel |
+						    remoteModel := IceTipRemoteModel
+							                   repositoryModel: self
+							                   on: eachRemote.
+						    (IceTipTreeRemote on: remoteModel)
+							    name: remoteModel name;
+							    children: (branches
+									     select: [ :each |
+										     each entity isRemote and: [
+												     each entity remoteName = eachRemote name ] ]
+									     thenCollect: [ :each | IceTipTreeBranch on: each ]);
+							    yourself ]);
+			   yourself).
+		  "Tags group"
+		  ((IceTipTreeRepositoryGroup on: self)
+			   name: 'Tags';
+			   icon: (self iconNamed: #glamorousBookmark);
+			   children: (tags collect: [ :each | IceTipTreeTag on: each ]);
+			   yourself) }
 	"Branches group"
-	(IceTipTreeRepositoryGroup on: self)
-		name: 'Branches';
-		icon: (self iconNamed: #branch);
-		children: (branches
-			select: [ :each | each entity isLocal ]
-			thenCollect: [ :each | IceTipTreeBranch on: each ]);
-		yourself.
-	"Remotes group"
-	(IceTipTreeRepositoryGroup on: self)
-		name: 'Remotes';
-		icon: (self iconNamed: #remote);
-		children: (self entity remotes collect: [ :eachRemote | | remoteModel |
-			remoteModel := (IceTipRemoteModel repositoryModel: self on: eachRemote) beCached.
-			(IceTipTreeRemote on: remoteModel)
-				name: remoteModel name;
-				children: (branches 
-					select: [ :each | 
-						each entity isRemote 
-						and: [ each entity remoteName = eachRemote name ] ]
-					thenCollect: [ :each | IceTipTreeBranch on: each ]);
-				yourself	]);
-		yourself.
-	"Tags group"
-	(IceTipTreeRepositoryGroup on: self)
-		name: 'Tags';
-		icon: (self iconNamed: #glamorousBookmark);
-		children: (tags collect: [ :each | IceTipTreeTag on: each ]);
-		yourself.
-	}
 ]
 
 { #category : 'accessing' }
@@ -536,13 +532,9 @@ IceTipRepositoryModel >> subdirectory [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> tagModels [
-	
-	^ self entity tags 
-		collect: [ :each | 
-			(IceTipTagModel 
-				repositoryModel: self 
-				on: each) 
-				beCached ]
+
+	^ self entity tags collect: [ :each |
+		  IceTipTagModel repositoryModel: self on: each ]
 ]
 
 { #category : 'operations' }
@@ -563,12 +555,19 @@ IceTipRepositoryModel >> verifyDirectoryStructureIfMissing: aBlock [
 { #category : 'accessing' }
 IceTipRepositoryModel >> workingCopy [
 	
-	^ IceTipWorkingCopyModel on: self
+	^ self repository workingCopy
 ]
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> workingCopyDiff [
-	<noCache>
 
-	^ IceTipWorkingCopyDiffModel repositoryModel: self on: self entity
+	^ IceTipWorkingCopyDiffModel
+		  repositoryModel: self
+		  on: self workingCopy
+]
+
+{ #category : 'accessing' }
+IceTipRepositoryModel >> workingCopyModel [
+
+	^ IceTipWorkingCopyModel on: self
 ]

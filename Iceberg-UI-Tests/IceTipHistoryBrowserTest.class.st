@@ -36,7 +36,7 @@ IceTipHistoryBrowserTest >> tearDown [
 { #category : 'running' }
 IceTipHistoryBrowserTest >> testCommitListDisplayData [
 	| commit |
-	commit := (presenter commitList items at: 1) realObject.
+	commit := (presenter commitList items at: 1).
 	self
 		assert: (presenter commitList valueAtColumn: 4 row: 1)
 		equals: commit description.

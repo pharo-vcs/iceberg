@@ -361,12 +361,12 @@ IceRepository >> commitIndexWithMessage: message andParents: parentCommitishList
 	"Low level.
 	
 	Commit what is saved in the index"
-	
+
 	| newCommit |
-	newCommit := index commitWithMessage: message andParents: parentCommitishList.
+	newCommit := index
+		             commitWithMessage: message
+		             andParents: parentCommitishList.
 	index := self newIndex.
-	self workingCopy referenceCommit: newCommit.
-	self workingCopy refreshDirtyPackages.
 	^ newCommit
 ]
 
@@ -605,6 +605,12 @@ IceRepository >> initialize [
 IceRepository >> internalStoreVersion: aMCVersion [ 
 	
 	self subclassResponsibility
+]
+
+{ #category : 'testing' }
+IceRepository >> isBranch [
+	
+	^ false
 ]
 
 { #category : 'testing' }
@@ -1027,6 +1033,6 @@ IceRepository >> workingCopy: aWorkingCopy [
 
 { #category : 'accessing' }
 IceRepository >> workingCopyDiff [
-	
+
 	^ self workingCopy diffToReferenceCommit
 ]

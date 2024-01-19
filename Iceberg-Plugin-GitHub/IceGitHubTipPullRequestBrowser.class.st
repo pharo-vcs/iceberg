@@ -240,14 +240,12 @@ IceGitHubTipPullRequestBrowser >> pullRequest: anObject [
 
 { #category : 'initialization' }
 IceGitHubTipPullRequestBrowser >> refresh [
+
 	| commitModels |
-	
-	commitModels := self pullRequest commits 
-		collect: [ :each | 
-			(IceTipCommitModel	
-				repositoryModel: self repositoryModel
-				on: each) 
-				beCached ].
+	commitModels := self pullRequest commits collect: [ :each |
+		                IceTipCommitModel
+			                repositoryModel: self repositoryModel
+			                on: each ].
 
 	commits items: commitModels
 ]

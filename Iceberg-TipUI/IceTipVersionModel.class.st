@@ -20,7 +20,6 @@ IceTipVersionModel >> commit [
 { #category : 'actions' }
 IceTipVersionModel >> newInstallAction [
 
-	<noCache>
 	^ IceTipStandardAction new
 		  repository: self repositoryModel entity;
 		  message: ('Installing {1} - {2}' format: {

@@ -21,13 +21,12 @@ IceTipBranchModel >> checkoutStrategies [
 
 { #category : 'accessing' }
 IceTipBranchModel >> commitModels [
+
 	| commits |
 	commits := OrderedCollection new.
-	self entity commitsDo: [ :each | 
-		commits add: (IceTipCommitModel 
-			repositoryModel: self repositoryModel 
-			on: each) 
-			beCached ].
+	self entity commitsDo: [ :each |
+		commits add:
+			(IceTipCommitModel repositoryModel: self repositoryModel on: each) ].
 	^ commits
 ]
 
@@ -88,7 +87,6 @@ IceTipBranchModel >> name [
 
 { #category : 'actions' }
 IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
-	<noCache>
 	
 	^ IceTipStandardAction new 
 		repository: self entity repository; 
@@ -100,7 +98,6 @@ IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
 
 { #category : 'actions' }
 IceTipBranchModel >> newDeleteAction [
-	<noCache>
 	
 	^ IceTipStandardAction new
 		repository: self repositoryModel entity;
@@ -112,7 +109,6 @@ IceTipBranchModel >> newDeleteAction [
 
 { #category : 'actions' }
 IceTipBranchModel >> newDirectMergeAction [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self repositoryModel entity;
@@ -124,8 +120,7 @@ IceTipBranchModel >> newDirectMergeAction [
 
 { #category : 'actions' }
 IceTipBranchModel >> newSwitchAndMergeAction [
-	<noCache>
-
+	
 	^ IceTipStandardAction new
 		repository: self entity repository; 
 		message: ('Merging branch {1} from {2}' format: { self name. self repositoryName });
@@ -140,7 +135,6 @@ IceTipBranchModel >> previewCheckout [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
 
-	<noCache>
 	(IceTipCheckoutPreviewBrowser onBranch: self) open
 ]
 
@@ -148,7 +142,7 @@ IceTipBranchModel >> previewCheckout [
 IceTipBranchModel >> previewMerge: aMergeType [
 	"this will open a 'checkout browser' that will allow user to validate the changes before 
 	 actually checking out (checkout operation will be called in my sibling method, #checkout)"
-	<noCache>
+
 	(IceTipMergePreviewBrowser onBranch: self) 
 		mergeType: aMergeType;
 		open

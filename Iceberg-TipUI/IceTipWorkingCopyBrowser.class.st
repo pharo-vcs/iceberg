@@ -52,7 +52,7 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 { #category : 'instance creation' }
 IceTipWorkingCopyBrowser class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository)
+	^ self on: (IceTipWorkingCopyModel on: (IceTipRepositoryModel on: aRepository) workingCopy: aRepository workingCopy)
 ]
 
 { #category : 'accessing' }
@@ -220,9 +220,9 @@ IceTipWorkingCopyBrowser >> refreshWhenRepository: ann [
 ]
 
 { #category : 'accessing - model' }
-IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aRepositoryModel [
+IceTipWorkingCopyBrowser >> setModelBeforeInitialization: aWorkingCopyModel [
 
-	self model: ( IceTipWorkingCopyModel on: aRepositoryModel )
+	self model: aWorkingCopyModel
 ]
 
 { #category : 'testing' }
@@ -256,4 +256,10 @@ IceTipWorkingCopyBrowser >> titleForWindow [
 IceTipWorkingCopyBrowser >> updatePresenter [
 
 	self refresh
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyBrowser >> workingCopyModel [
+	
+	^ self model
 ]

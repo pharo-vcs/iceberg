@@ -4,21 +4,32 @@ I'm a model for IcePackage entries.
 Class {
 	#name : 'IceTipPackageModel',
 	#superclass : 'IceTipEntityModel',
+	#instVars : [
+		'workingCopyModel'
+	],
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
 	#tag : 'Model'
 }
 
+{ #category : 'as yet unclassified' }
+IceTipPackageModel class >> workingCopyModel: aWorkingCopyModel on: aPackage [
+
+	^ (self
+		   repositoryModel: aWorkingCopyModel repositoryModel
+		   on: aPackage)
+		  workingCopyModel: aWorkingCopyModel;
+		  yourself
+]
+
 { #category : 'actions' }
 IceTipPackageModel >> browsePackage [
-	<noCache>
-
+	
 	self entity browse
 ]
 
 { #category : 'actions' }
 IceTipPackageModel >> browseRepositoryVersion [
-	<noCache>
 	| snapshot |
 	
 	snapshot := self entity mcSnapshotInRepository.
@@ -64,7 +75,6 @@ IceTipPackageModel >> name [
 
 { #category : 'actions' }
 IceTipPackageModel >> newLoadAction [
-	<noCache>
 
 	^ IceTipStandardAction new 
 		repository: self entity repository;
@@ -79,24 +89,22 @@ IceTipPackageModel >> newLoadAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newReloadAction [
-
-	<noCache>
-	^ IceTipStandardAction new
-		  repository: self entity repository;
-		  message: ('Reloading package {1}' format: { self entity name });
-		  onSuccessRepositoryModified;
-		  action: [
-			  Iceberg announcer
-				  suspendAllForRepository: self entity repository
-				  while: [ self entity reload ] ];
-		  yourself
+	
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Reloading package {1}' format: { self entity name }) ;
+		onSuccessRepositoryModified;
+		action: [ 
+			Iceberg announcer 
+				suspendAllForRepository: self entity repository 
+				while: [ self entity reload ] ];
+		yourself
 ]
 
 { #category : 'actions' }
 IceTipPackageModel >> newRemoveAction [
-
-	<noCache>
-	^IceTipStandardAction new
+	
+	^ IceTipStandardAction new 
 		repository: self entity repository;
 		message: ('Removing package {1}' format: { self entity name });
 		onSuccessRepositoryModified;
@@ -109,17 +117,16 @@ IceTipPackageModel >> newRemoveAction [
 
 { #category : 'actions' }
 IceTipPackageModel >> newUnloadAction [
-
-	<noCache>
-	^ IceTipStandardAction new
-		  repository: self entity repository;
-		  message: ('Unloading package {1}' format: { self entity name });
-		  onSuccessRepositoryModified;
-		  action: [
-			  Iceberg announcer
-				  suspendAllForRepository: self entity repository
-				  while: [ self entity unload ] ];
-		  yourself
+	
+	^ IceTipStandardAction new 
+		repository: self entity repository;
+		message: ('Unloading package {1}' format: { self entity name });
+		onSuccessRepositoryModified; 
+		action: [ 
+			Iceberg announcer
+				suspendAllForRepository: self entity repository
+				while: [ self entity unload ] ];
+		yourself
 ]
 
 { #category : 'accessing' }
@@ -145,4 +152,16 @@ IceTipPackageModel >> statusDecorator [
 	self entity isLoaded 
 		ifFalse: [ IceTipDescriptionDecorator notLoaded ].
 	^ super statusDecorator
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> workingCopyModel [
+
+	^ workingCopyModel
+]
+
+{ #category : 'accessing' }
+IceTipPackageModel >> workingCopyModel: anObject [
+
+	workingCopyModel := anObject
 ]

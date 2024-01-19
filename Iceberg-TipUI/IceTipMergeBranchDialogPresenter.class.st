@@ -18,7 +18,7 @@ Class {
 { #category : 'instance creation' }
 IceTipMergeBranchDialogPresenter class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
+	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : 'accessing' }
