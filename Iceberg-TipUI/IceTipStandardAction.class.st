@@ -46,13 +46,6 @@ IceTipStandardAction >> do: aBlock [
 	self execute
 ]
 
-{ #category : 'executing' }
-IceTipStandardAction >> execute: aBlock [
-
-	self action: aBlock.
-	self execute
-]
-
 { #category : 'accessing' }
 IceTipStandardAction >> message [
 	^ message

@@ -80,6 +80,12 @@ IceTipEntityModel >> isModelOf: anObject [
 	^ self entity = anObject
 ]
 
+{ #category : 'accessing' }
+IceTipEntityModel >> name [
+	
+	^ self entity name
+]
+
 { #category : 'tagging' }
 IceTipEntityModel >> newCreateTagAction: aString [
 	<noCache>

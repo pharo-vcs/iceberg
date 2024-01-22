@@ -17,11 +17,6 @@ IceTipModel >> application [
 	^ StPharoApplication current
 ]
 
-{ #category : 'converting' }
-IceTipModel >> beCached [
-	^ IceTipCachedModel for: self
-]
-
 { #category : 'private' }
 IceTipModel >> colorForError [
 

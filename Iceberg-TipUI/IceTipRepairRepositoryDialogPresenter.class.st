@@ -16,7 +16,7 @@ Class {
 { #category : 'instance creation' }
 IceTipRepairRepositoryDialogPresenter class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
+	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : 'actions' }

@@ -10,7 +10,7 @@ IceTipMetacelloInstallCommandBuilder >> addCommandsFor: anIceTipRepositoryModel 
 	
 	| baselines |
 	
-	baselines := (anIceTipRepositoryModel workingCopy packageModels 
+	baselines := (anIceTipRepositoryModel workingCopyModel packageModels 
 		select: [ :each | each name beginsWith: 'BaselineOf' ])
 		sorted: [ :a :b | a name < b name ].
 		

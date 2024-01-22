@@ -7,7 +7,9 @@ Trait {
 
 { #category : 'branches' }
 TWithBranchModel >> branchModels [
-	^ self branches collect: [ :each | (IceTipBranchModel repositoryModel: self repositoryModel on: each) beCached ]
+
+	^ self branches collect: [ :each |
+		  IceTipBranchModel repositoryModel: self repositoryModel on: each ]
 ]
 
 { #category : 'branches' }

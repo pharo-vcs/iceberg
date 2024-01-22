@@ -26,7 +26,7 @@ IceTipManagePackagesCommand >> execute [
 
 	(IceTipWorkingCopyBrowser 
 		newApplication: context application 
-		model: self repositoryModel) 
+		model: self repositoryModel workingCopyModel) 
 		open
 ]
 

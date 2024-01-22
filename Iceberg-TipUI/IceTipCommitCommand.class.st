@@ -32,7 +32,7 @@ IceTipCommitCommand >> execute [
 
 	(IceTipCommitBrowser 
 		newApplication: context application 
-		model: self repositoryModel) 
+		model: context workingCopyModel) 
 		open
 ]
 

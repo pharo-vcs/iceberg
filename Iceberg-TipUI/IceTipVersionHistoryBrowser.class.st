@@ -39,11 +39,10 @@ IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter f
 
 { #category : 'instance creation' }
 IceTipVersionHistoryBrowser class >> onRepository: aRepository method: aMethod [
-	
-	^ self on: (IceTipVersionHistoryModel 
-		repositoryModel: (IceTipRepositoryModel on: aRepository) beCached 
-		on: aMethod)
-		beCached
+
+	^ self on: (IceTipVersionHistoryModel
+			   repositoryModel: (IceTipRepositoryModel on: aRepository)
+			   on: aMethod)
 ]
 
 { #category : 'accessing' }

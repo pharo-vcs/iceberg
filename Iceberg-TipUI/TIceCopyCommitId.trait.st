@@ -13,7 +13,7 @@ Trait {
 
 { #category : 'copying' }
 TIceCopyCommitId >> copyCommitIDToClipboard [
-	<noCache>
+
 	self copyToClipboardId: self commitId
 ]
 

@@ -53,10 +53,11 @@ IceTipRepositoryGroupModel >> label [
 
 { #category : 'accessing' }
 IceTipRepositoryGroupModel >> repositories [
-	
-	^ repositories := repositoryProvider repositories 
-		select: [ :each | self containsRepository: each ]
-		thenCollect: [ :each | (IceTipRepositoryModel on: each) beCached ]
+
+	^ repositories := repositoryProvider repositories
+		                  select: [ :each | self containsRepository: each ]
+		                  thenCollect: [ :each |
+		                  IceTipRepositoryModel on: each ]
 ]
 
 { #category : 'accessing' }

@@ -64,13 +64,12 @@ IceTipCommitModel >> commit [
 
 { #category : 'accessing' }
 IceTipCommitModel >> commitModels [
+
 	| commits |
 	commits := OrderedCollection new.
-	self entity commitsDo: [ :each | 
-		commits add: (IceTipCommitModel 
-			repositoryModel: self repositoryModel 
-			on: each) 
-			beCached ].
+	self entity commitsDo: [ :each |
+		commits add:
+			(IceTipCommitModel repositoryModel: self repositoryModel on: each) ].
 	^ commits
 ]
 
@@ -169,17 +168,17 @@ IceTipCommitModel >> isMerged [
 ]
 
 { #category : 'private' }
-IceTipCommitModel >> mergeHistoryFromAncestor: anIceGitCommit [ 
-	^ (IceTipCommitRangeModel 
-		repositoryModel: self repositoryModel 
-		on: anIceGitCommit)
-		toCommit: self entity parent;
-		beCached
+IceTipCommitModel >> mergeHistoryFromAncestor: anIceGitCommit [
+
+	^ (IceTipCommitRangeModel
+		   repositoryModel: self repositoryModel
+		   on: anIceGitCommit)
+		  toCommit: self entity parent;
+		  yourself
 ]
 
 { #category : 'actions' }
 IceTipCommitModel >> mergeHistoryFromSecondAncestor [
-	<noCache>
 	
 	^ self mergeHistoryFromAncestor: self entity ancestors second
 ]

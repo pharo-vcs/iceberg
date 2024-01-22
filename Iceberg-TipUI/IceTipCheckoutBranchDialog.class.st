@@ -18,7 +18,7 @@ Class {
 { #category : 'instance creation' }
 IceTipCheckoutBranchDialog class >> onRepository: aRepository [
 
-	^ self on: (IceTipRepositoryModel on: aRepository) beCached
+	^ self on: (IceTipRepositoryModel on: aRepository)
 ]
 
 { #category : 'accessing' }

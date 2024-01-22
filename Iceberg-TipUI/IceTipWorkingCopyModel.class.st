@@ -6,7 +6,8 @@ Class {
 	#superclass : 'IceTipModel',
 	#instVars : [
 		'sortingStrategy',
-		'repositoryModel'
+		'repositoryModel',
+		'workingCopy'
 	],
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
@@ -14,15 +15,18 @@ Class {
 }
 
 { #category : 'instance creation' }
-IceTipWorkingCopyModel class >> new [
-	self error: 'use #for:'
+IceTipWorkingCopyModel class >> on: aRepositoryModel [
+
+	^ self on: aRepositoryModel workingCopy: aRepositoryModel workingCopy
 ]
 
 { #category : 'instance creation' }
-IceTipWorkingCopyModel class >> on: aRepositoryModel [ 
-	^ self basicNew 
-		initializeRepositoryModel: aRepositoryModel;
-		yourself
+IceTipWorkingCopyModel class >> on: aRepositoryModel workingCopy: aWorkingCopy [
+
+	^ self new
+		  repositoryModel: aRepositoryModel;
+		  workingCopy: aWorkingCopy;
+		  yourself
 ]
 
 { #category : 'accessing' }
@@ -37,30 +41,48 @@ IceTipWorkingCopyModel >> commitId [
 
 { #category : 'operations' }
 IceTipWorkingCopyModel >> copyCommitIDToClipboard [
-	<noCache>
-
+	
 	repositoryModel copyCommitIDToClipboard
 ]
 
-{ #category : 'initialization' }
-IceTipWorkingCopyModel >> initializeRepositoryModel: aRepositoryModel [
-	repositoryModel := aRepositoryModel.
-	self initialize
+{ #category : 'API - changes' }
+IceTipWorkingCopyModel >> diffToReferenceCommit [
+
+	^ IceTipWorkingCopyDiffModel
+		  repositoryModel: self repositoryModel
+		  on: self workingCopy
+]
+
+{ #category : 'instance creation' }
+IceTipWorkingCopyModel >> newCommitAction [
+
+	^ IceTipCommitAction new
+		workingCopy: self workingCopy;
+		yourself
 ]
 
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> packageModels [
-	^ self sortingStrategy sort: (self repositoryModel entity workingCopy packages 
-		collect: [ :each | 
-			(IceTipPackageModel 
-				repositoryModel: self repositoryModel 
-				on: each) 
-				beCached ])
+
+	^ self sortingStrategy sort:
+		  (self workingCopy packages collect: [ :each |
+			   IceTipPackageModel workingCopyModel: self on: each ])
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> repository [
+
+	^ self repositoryModel entity
 ]
 
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> repositoryModel [
 	^ repositoryModel
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> repositoryModel: anIceTipRepositoryModel [ 
+	repositoryModel := anIceTipRepositoryModel
 ]
 
 { #category : 'accessing' }
@@ -92,4 +114,16 @@ IceTipWorkingCopyModel >> status [
 IceTipWorkingCopyModel >> statusDecorator [
 
 	^ self repositoryModel statusDecorator
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> workingCopy [
+
+	^ workingCopy
+]
+
+{ #category : 'accessing' }
+IceTipWorkingCopyModel >> workingCopy: aWorkingCopy [
+
+	workingCopy := aWorkingCopy
 ]

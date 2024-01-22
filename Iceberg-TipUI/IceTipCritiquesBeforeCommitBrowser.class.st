@@ -251,8 +251,8 @@ IceTipCritiquesBeforeCommitBrowser >> setModelBeforeInitialization: someNodes [
 IceTipCritiquesBeforeCommitBrowser >> titleForWindow [
 
 	^ 'Critiques for Commit on {1} branch {2}' format: { 
-			  commitModel name.
-			  commitModel branchName }
+			  commitModel repositoryModel name.
+			  commitModel repositoryModel branchName }
 ]
 
 { #category : 'initialization' }

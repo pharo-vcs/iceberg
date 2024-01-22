@@ -54,6 +54,12 @@ IceMemoryProject >> isUnbornProject [
 ]
 
 { #category : 'API-projects' }
+IceMemoryProject >> packageNames [
+	
+	^ commitish packageNames
+]
+
+{ #category : 'API-projects' }
 IceMemoryProject >> packages [
 	
 	^ commitish packages

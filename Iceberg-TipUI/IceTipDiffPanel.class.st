@@ -84,6 +84,29 @@ IceTipDiffPanel >> diffContentsLeft: leftString right: rightString [
 		rightText: rightString
 ]
 
+{ #category : 'initialization' }
+IceTipDiffPanel >> diffEntryRemoved: announcement [
+
+	| parent |
+	(parent := announcement entry parent) removeChild: announcement entry.
+	"Removing all changes to a class should remove the class node too,
+	unless the class definition has changed as well. Extension definitions
+	may appear as an 'addition' or 'removal', but can only exist when methods
+	of that class have changed. Repeat this process to check if the containing
+	package no longer has any changes. Cannot remove the root node as it has
+	no parent, but it's fine to just leave it there empty--though perhaps we should
+	close the browser instead in that case?"
+	[
+	parent parent notNil and: [
+		parent isEmpty and: [
+			parent value isNoModification or: [
+				parent value definition isExtensionDefinition ] ] ] ] whileTrue: [
+		parent parent removeChild: parent.
+		parent := parent parent ].
+
+	self basicRefresh
+]
+
 { #category : 'accessing - ui' }
 IceTipDiffPanel >> diffPanel [
 
@@ -224,10 +247,9 @@ IceTipDiffPanel >> setModelBeforeInitialization: anObject [
 IceTipDiffPanel >> subscribeToAnnouncements [
 
 	self announcer
-		when: IceTipDiffEntryRemoved 
-		send: #refresh
+		when: IceTipDiffEntryRemoved
+		send: #diffEntryRemoved:
 		to: self
-
 ]
 
 { #category : 'specs' }

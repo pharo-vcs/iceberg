@@ -21,12 +21,12 @@ IceTipVersionHistoryModel >> commitModelAfter: aModel [
 
 { #category : 'accessing' }
 IceTipVersionHistoryModel >> commitModels [
-	^ commitModels ifNil: [ 
-		commitModels := self retrieveHistory collect: [ :each | 
-			(IceTipVersionModel 
-				repositoryModel: self repositoryModel 
-				on: each) 
-				beCached ] ]
+
+	^ commitModels ifNil: [
+		  commitModels := self retrieveHistory collect: [ :each |
+			                  IceTipVersionModel
+				                  repositoryModel: self repositoryModel
+				                  on: each ] ]
 ]
 
 { #category : 'accessing' }
@@ -45,7 +45,7 @@ IceTipVersionHistoryModel >> retrieveHistory [
 	| history |
 
 	self repositoryModel checkMissing.
-	self application 
+	^self application 
 		informUser: ('Retrieving history of {1}' format: { self entity printString }) 
 		during: [ history := self repositoryModel entity log historyOfMethod: self entity ].
 	^ history
