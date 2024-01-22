@@ -16,7 +16,8 @@ Class {
 { #category : 'events' }
 IceExternalJob >> changed [
 
-	current >= max ifTrue: [ ^ Job jobAnnouncer announce: (JobEnd on: self) ].
+	current >= max 
+		ifTrue: [ ^ Job jobAnnouncer announce: (JobEnd on: self) ].
 	Job jobAnnouncer announce: (JobChange on: self)
 ]
 
@@ -32,6 +33,7 @@ IceExternalJob >> end [
 
 { #category : 'events' }
 IceExternalJob >> ensureStarted [
+
 	started ifFalse: [ self start ]
 ]
 
@@ -63,8 +65,8 @@ IceExternalJob >> progress [
 
 { #category : 'events' }
 IceExternalJob >> start [
-	started := true.
 
+	started := true.
 	Job jobAnnouncer announce: (JobStart on: self)
 ]
 
