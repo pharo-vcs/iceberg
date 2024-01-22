@@ -32,7 +32,7 @@ IceTipStandardAction >> basicExecute [
 
 	context application
 		informUser: self message
-		during: [ result := actionBlock cull: self context ].
+		during: [ :aJob | result := actionBlock cull: self context cull: aJob ].
 	successAnnounceBlock 
 		ifNotNil: [ Iceberg announcer announce: successAnnounceBlock value ].
 
