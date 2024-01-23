@@ -31,7 +31,7 @@ IceGitCheckoutProgress >> initialize [
 		title: 'Checking out...';
 		yourself.
 		
-	self initializeBlock.
+	self initializeBlock
 ]
 
 { #category : 'initialization' }

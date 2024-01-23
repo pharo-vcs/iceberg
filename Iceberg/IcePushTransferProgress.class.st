@@ -33,7 +33,7 @@ IcePushTransferProgress >> initialize [
 		title: self title;
 		yourself.
 		
-	self initializeBlock.
+	self initializeBlock
 ]
 
 { #category : 'initialization' }

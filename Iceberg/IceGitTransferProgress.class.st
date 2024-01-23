@@ -35,7 +35,7 @@ IceGitTransferProgress >> initialize [
 		title: 'Fetching Git objects...';
 		yourself.
 		
-	self initializeBlock.
+	self initializeBlock
 ]
 
 { #category : 'initialize-release' }
