@@ -199,7 +199,7 @@ IceTipCommitBrowser >> refresh [
 { #category : 'private' }
 IceTipCommitBrowser >> refreshWhenRepository: ann [
 
-	(self model isModelOf: ann repository)
+	(self repository = ann repository)
 		ifFalse: [ ^ self ].
 	self model reset.
 	self refresh
