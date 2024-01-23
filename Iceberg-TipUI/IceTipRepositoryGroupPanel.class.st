@@ -205,3 +205,9 @@ IceTipRepositoryGroupPanel >> visibleRootCommandsGroup [
 	IceTipCleanCommandGroupVisitor new visit: rootGroup.
 	^ rootGroup
 ]
+
+{ #category : 'accessing' }
+IceTipRepositoryGroupPanel >> workingCopyModel [
+	
+	^ self selectedItem workingCopyModel
+]
