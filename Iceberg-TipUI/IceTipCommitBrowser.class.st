@@ -85,6 +85,12 @@ IceTipCommitBrowser >> diffPanel: aSpPresenter [
 	diffPanel := aSpPresenter
 ]
 
+{ #category : 'private' }
+IceTipCommitBrowser >> diffToReferenceCommit [
+
+	^ self workingCopyModel diffToReferenceCommit
+]
+
 { #category : 'actions' }
 IceTipCommitBrowser >> doCollapseSelection [
 
@@ -166,7 +172,7 @@ IceTipCommitBrowser >> initializeAcceptShortcut [
 { #category : 'initialization' }
 IceTipCommitBrowser >> initializePresenters [
 
-	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self workingCopyModel diffToReferenceCommit.
+	diffPanel := self instantiate: IceTipDiffSelectingPanel on: self diffToReferenceCommit.
 	diffPanel leftLabel: 'Repository'.
 	diffPanel rightLabel: 'Working Copy'.
 	

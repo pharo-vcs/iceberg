@@ -252,7 +252,7 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 		to: self
 ]
 
-{ #category : 'specs' }
+{ #category : 'initialization' }
 IceTipDiffPanel >> titleForWindow [
 
 	^ 'Diff'
