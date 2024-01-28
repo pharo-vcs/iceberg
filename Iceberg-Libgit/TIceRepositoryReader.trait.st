@@ -8,11 +8,6 @@ Trait {
 	#tag : 'Writing'
 }
 
-{ #category : 'accessing' }
-TIceRepositoryReader classSide >> id [
-	^ self required
-]
-
 { #category : 'testing' }
 TIceRepositoryReader classSide >> isLegacyDefault [
 	^ false
