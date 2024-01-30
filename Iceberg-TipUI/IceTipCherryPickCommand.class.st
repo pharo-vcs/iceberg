@@ -38,5 +38,5 @@ IceTipCherryPickCommand >> execute [
 { #category : 'executing' }
 IceTipCherryPickCommand >> selectedCommitish [
 
-	^ self context selectedCommit realObject entity
+	^ self context selectedCommit entity
 ]
