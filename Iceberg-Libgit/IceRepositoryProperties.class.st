@@ -210,6 +210,12 @@ IceRepositoryProperties >> storeOnFileReference: aFileReference [
 				nextPut: self properties  ]
 ]
 
+{ #category : 'private' }
+IceRepositoryProperties >> tonelVersion [
+
+	^ self properties at: #version ifAbsent: [ nil ]
+]
+
 { #category : 'accessing' }
 IceRepositoryProperties >> writerClass [
 	^ self properties
