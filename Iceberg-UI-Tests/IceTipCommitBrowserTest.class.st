@@ -119,7 +119,7 @@ IceTipCommitBrowserTest >> testIsAutomaticallySavingWhenChecked [
 ]
 
 { #category : 'tests' }
-IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
+IceTipCommitBrowserTest >> testIsCommittingCheckedItems [
 	| diffTree |
 
 	presenter doCommit.
@@ -144,7 +144,7 @@ IceTipCommitBrowserTest >> testIsCommitingCheckedItems [
 ]
 
 { #category : 'tests' }
-IceTipCommitBrowserTest >> testIsCommitingWithTheRightMessage [
+IceTipCommitBrowserTest >> testIsCommittingWithTheRightMessage [
 	presenter doCommit.
 	self
 		assert: self repository branch commit comment
@@ -164,7 +164,7 @@ IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
 ]
 
 { #category : 'tests' }
-IceTipCommitBrowserTest >> testIsNotCommitingUncheckedItems [
+IceTipCommitBrowserTest >> testIsNotCommittingUncheckedItems [
 	| diffTree |
 	presenter diffPanel selectedItems
 		remove:

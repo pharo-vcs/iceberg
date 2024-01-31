@@ -1,5 +1,5 @@
 "
-Announces when a repository has commited.
+Announces when a repository has committed.
 "
 Class {
 	#name : 'IceCommited',

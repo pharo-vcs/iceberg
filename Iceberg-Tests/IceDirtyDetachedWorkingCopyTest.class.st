@@ -21,7 +21,7 @@ IceDirtyDetachedWorkingCopyTest >> testIsDetached [
 { #category : 'tests' }
 IceDirtyDetachedWorkingCopyTest >> testPackageIsDirty [
 
-	"There are uncommited changes"
+	"There are uncommitted changes"
 	self assert: self repository workingCopy isModified
 ]
 
