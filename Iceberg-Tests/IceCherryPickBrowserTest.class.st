@@ -33,7 +33,7 @@ IceCherryPickBrowserTest >> testWindowOnMethodConflict [
 	self repository commitWithMessage: 'Adding the same method in master'.
 	presenter := IceTipCherrypickPreviewBrowser
 		onCommitish: commitToCherryPick.
-	presenter openWithSpec.
+	presenter open.
 	presenter doCherryPick.
 	self assert: 	(self repository workingCopy environment ask classNamed: 'TestClass2')
 		methods first sourceCode equals: 'm1 ^42'
