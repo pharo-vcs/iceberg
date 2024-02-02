@@ -23,7 +23,6 @@ IceGitPropertiesFileTest >> testCommitSavesPropertiesFile [
 { #category : 'tests' }
 IceGitPropertiesFileTest >> testPropertiesFileIsStoredInMemory [
 
-	| ston |
 	self repository properties
 		at: #bla put: #blo.
 		

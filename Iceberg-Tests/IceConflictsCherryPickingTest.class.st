@@ -38,7 +38,7 @@ IceConflictsCherryPickingTest >> testAddPackageConflict [
 
 { #category : 'tests' }
 IceConflictsCherryPickingTest >> testMethodModificationConflict [
-	| commitToCherryPick diff mergeTree |
+	| commitToCherryPick mergeTree |
 	self repository workingCopy addPackageNamed: self packageName1.
 	self repository workingCopy
 		createClass: 'TestClass2'
