@@ -13,8 +13,6 @@ IceMetacelloIntegrationUpdateALoadedVersionTest >> repositoryName [
 
 { #category : 'running' }
 IceMetacelloIntegrationUpdateALoadedVersionTest >> tearDown [
-
-	super tearDown.
 	
 	(IceRepository registry select: [ :e | e name = 'test-project-with-dep' ]) do: [ :each | each ifNotNil: [ :repo |
 		repo unload.
@@ -26,6 +24,7 @@ IceMetacelloIntegrationUpdateALoadedVersionTest >> tearDown [
 		detect: [ :registration | registration projectName = 'TestProjectWithDep' ]
 		ifFound: [ :registration | registration unregisterProject ].
 	
+	super tearDown
 ]
 
 { #category : 'tests' }

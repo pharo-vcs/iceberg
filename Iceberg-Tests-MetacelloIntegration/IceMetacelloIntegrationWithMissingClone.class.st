@@ -29,8 +29,6 @@ IceMetacelloIntegrationWithMissingClone >> setUp [
 
 { #category : 'running' }
 IceMetacelloIntegrationWithMissingClone >> tearDown [
-
-	super tearDown.
 	
 	(IceRepository registry select: [ :e | e name = 'test-project-with-dep' ]) do: [ :each | each ifNotNil: [ :repo |
 		repo unload.
@@ -42,6 +40,7 @@ IceMetacelloIntegrationWithMissingClone >> tearDown [
 		detect: [ :registration | registration projectName = 'TestProjectWithDep' ]
 		ifFound: [ :registration | registration unregisterProject ].
 	
+	super tearDown
 ]
 
 { #category : 'tests' }

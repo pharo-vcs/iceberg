@@ -23,8 +23,8 @@ IceTipRepositoryBrowserWithoutRemoteTest >> setUp [
 { #category : 'running' }
 IceTipRepositoryBrowserWithoutRemoteTest >> tearDown [
 
-	presenter ifNotNil: [ presenter window close ]
-	"super tearDown"
+	presenter ifNotNil: [ presenter window close ].
+	super tearDown
 ]
 
 { #category : 'testing' }

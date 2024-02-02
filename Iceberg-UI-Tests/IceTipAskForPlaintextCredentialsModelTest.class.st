@@ -27,7 +27,9 @@ IceTipAskForPlaintextCredentialsModelTest >> setUp [
 
 { #category : 'running' }
 IceTipAskForPlaintextCredentialsModelTest >> tearDown [
+
 	dialog ifNotNil: [ [dialog window close] on: LGitNoCredentialsProvided do: [  ] ].
+	super tearDown
 ]
 
 { #category : 'tests' }
