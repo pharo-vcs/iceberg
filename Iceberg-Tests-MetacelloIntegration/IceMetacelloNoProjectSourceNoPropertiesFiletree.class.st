@@ -1,6 +1,6 @@
 Class {
 	#name : 'IceMetacelloNoProjectSourceNoPropertiesFiletree',
-	#superclass : 'IceMetacelloIntegrationTests',
+	#superclass : 'IceMetacelloIntegrationTest',
 	#category : 'Iceberg-Tests-MetacelloIntegration',
 	#package : 'Iceberg-Tests-MetacelloIntegration'
 }

@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceTreeTests',
+	#name : 'IceTreeTest',
 	#superclass : 'TestCase',
 	#category : 'Iceberg-Tests-Changes',
 	#package : 'Iceberg-Tests',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : 'tests' }
-IceTreeTests >> testDetectFoundElement [
+IceTreeTest >> testDetectFoundElement [
 
 	| selected |
 	selected := (IceNode value: 2) detect: [ :e | e value even ].
@@ -16,12 +16,12 @@ IceTreeTests >> testDetectFoundElement [
 ]
 
 { #category : 'tests' }
-IceTreeTests >> testDetectNotFoundElement [
+IceTreeTest >> testDetectNotFoundElement [
 	self should: [ (IceNode value: 1) detect: [ :e | e value even ] ] raise: NotFound
 ]
 
 { #category : 'tests' }
-IceTreeTests >> testSelect [
+IceTreeTest >> testSelect [
 
 	| selected |
 	selected := (IceNode value: 1) select: [ :e | e even ].

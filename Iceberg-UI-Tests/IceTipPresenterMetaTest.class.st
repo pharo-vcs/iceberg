@@ -1,12 +1,12 @@
 Class {
-	#name : 'IceTipPresenterMetaTests',
+	#name : 'IceTipPresenterMetaTest',
 	#superclass : 'TestCase',
 	#category : 'Iceberg-UI-Tests',
 	#package : 'Iceberg-UI-Tests'
 }
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> allClassesInAnyIcebergPackage [
+IceTipPresenterMetaTest >> allClassesInAnyIcebergPackage [
 
 	^ Array streamContents: [ :str | 
 		  Smalltalk allClassesAndTraitsDo: [ :c | 
@@ -14,7 +14,7 @@ IceTipPresenterMetaTests >> allClassesInAnyIcebergPackage [
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> allMethodsInPresenters [
+IceTipPresenterMetaTest >> allMethodsInPresenters [
 	
 	^ Array streamContents: [ :stream |
 		self presenterClasses do: [ :each |
@@ -24,7 +24,7 @@ IceTipPresenterMetaTests >> allMethodsInPresenters [
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
+IceTipPresenterMetaTest >> allMethodsInPresentersThatMatch: aRBPattern [
 
 	| searcher |
 	searcher := RBParseTreeSearcher new
@@ -39,7 +39,7 @@ IceTipPresenterMetaTests >> allMethodsInPresentersThatMatch: aRBPattern [
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: isMeta [
+IceTipPresenterMetaTest >> assertSendSuperAllMethodsNamed: aSelector isMeta: isMeta [
 
 	| aCollection |
 	aCollection := (self methodsInPresentersWithName: aSelector isMeta: isMeta)
@@ -58,7 +58,7 @@ IceTipPresenterMetaTests >> assertSendSuperAllMethodsNamed: aSelector isMeta: is
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMeta [
+IceTipPresenterMetaTest >> methodsInPresentersWithName: aSelector isMeta: isMeta [
 
 	^ Array streamContents: [ :stream |
 		self presenterClasses do: [ :each | 
@@ -69,21 +69,21 @@ IceTipPresenterMetaTests >> methodsInPresentersWithName: aSelector isMeta: isMet
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> presenterClasses [
+IceTipPresenterMetaTest >> presenterClasses [
 
 	^ self allClassesInAnyIcebergPackage select: [ :each | 
 		  each inheritsFrom: SpPresenter ]
 ]
 
 { #category : 'running' }
-IceTipPresenterMetaTests >> presenterClassesDefining: aSelector isMeta: isMeta [
+IceTipPresenterMetaTest >> presenterClassesDefining: aSelector isMeta: isMeta [
 
 	^ (self methodsInPresentersWithName: aSelector isMeta: isMeta)
 		collect: [ :each | each origin ]
 ]
 
 { #category : 'tests' }
-IceTipPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
+IceTipPresenterMetaTest >> testDefaultSpecDoesntUsePragma [
 	"Do not use the <spec> pragma, that was necessary in Spec1 but not in Spec2."
 
 	| aCollection |
@@ -94,7 +94,7 @@ IceTipPresenterMetaTests >> testDefaultSpecDoesntUsePragma [
 ]
 
 { #category : 'tests' }
-IceTipPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
+IceTipPresenterMetaTest >> testDoNotImplementDiscouragedSelectors [
 
 	"Either instance or class-side, the old #title is named #titleForWindow in inst-side."
 	self assertEmpty: (self presenterClassesDefining: #title isMeta: true).
@@ -114,7 +114,7 @@ IceTipPresenterMetaTests >> testDoNotImplementDiscouragedSelectors [
 ]
 
 { #category : 'tests' }
-IceTipPresenterMetaTests >> testDontAccessUnderlyingWidget [
+IceTipPresenterMetaTest >> testDontAccessUnderlyingWidget [
 	"In general, we don't want uses of #whenBuiltDo: or #adapter or similar. 
 	They are not prohibited by Spec2, but they are often used to manipulate the
 	underlaying Morph, assuming that Morphic is the Spec2 application backend."
@@ -132,7 +132,7 @@ IceTipPresenterMetaTests >> testDontAccessUnderlyingWidget [
 ]
 
 { #category : 'tests' }
-IceTipPresenterMetaTests >> testPreferCloseWindow [
+IceTipPresenterMetaTest >> testPreferCloseWindow [
 	"IceTipSpPresenter provides #closeWindow to avoid 'self window close' and 'self window delete'."
 
 	self assertEmpty: (self allMethodsInPresentersThatMatch: 'self window delete').

@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceDiffTests',
+	#name : 'IceDiffTest',
 	#superclass : 'TestCase',
 	#category : 'Iceberg-Tests-Changes',
 	#package : 'Iceberg-Tests',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff [
+IceDiffTest >> testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff [
 
 	| left right diff |
 	left := IceNode new.	
@@ -19,7 +19,7 @@ IceDiffTests >> testSimmetricDifferenceOfEmptyTreesGivesEmptyDiff [
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation [
+IceDiffTest >> testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation [
 
 	| left right diff |
 	left := IceNode new.	
@@ -32,7 +32,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileAdditionCreatesAdditionOperation [
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfFileModificationCreatesModificationOperation [
+IceDiffTest >> testSimmetricDifferenceOfFileModificationCreatesModificationOperation [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
 	leftMemoryFileSystem := FileSystem memory.
@@ -57,7 +57,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationCreatesModificationOper
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDirectory [
+IceDiffTest >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOnDirectory [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef |
 	leftMemoryFileSystem := FileSystem memory.
@@ -80,7 +80,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesM
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOperationOnFile [
+IceDiffTest >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesModificationOperationOnFile [
 
 	| left right diff leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef leftSrc rightSrc |
 	leftMemoryFileSystem := FileSystem memory.
@@ -107,7 +107,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileModificationWithinDirectoryCreatesM
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation [
+IceDiffTest >> testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation [
 
 	| left right diff |
 	left := IceNode new.
@@ -120,7 +120,7 @@ IceDiffTests >> testSimmetricDifferenceOfFileRemovalCreatesRemovalOperation [
 ]
 
 { #category : 'tests' }
-IceDiffTests >> testTwoSimmetricDifferencesShouldGiveTheSameResult [
+IceDiffTest >> testTwoSimmetricDifferencesShouldGiveTheSameResult [
 
 	| left right leftMemoryFileSystem leftFileRef rightMemoryFileSystem rightFileRef diff1 diff2 leftSrc rightSrc |
 	leftMemoryFileSystem := FileSystem memory.

@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceTreeMergeTests',
+	#name : 'IceTreeMergeTest',
 	#superclass : 'TestCase',
 	#category : 'Iceberg-Tests-Changes',
 	#package : 'Iceberg-Tests',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> buildTestTreeWithOperation: anOperation [
+IceTreeMergeTest >> buildTestTreeWithOperation: anOperation [
 
 	^ (IceNode value: (IceNoModification definition: IceRootDefinition new))
 		addChild: anOperation;
@@ -15,7 +15,7 @@ IceTreeMergeTests >> buildTestTreeWithOperation: anOperation [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testConflictingModificationWithRemoval [
+IceTreeMergeTest >> testConflictingModificationWithRemoval [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceRemoval definition: (IceTestDefinition named: 'common')).
@@ -34,7 +34,7 @@ IceTreeMergeTests >> testConflictingModificationWithRemoval [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testConflictingNoModificationWithRemoval [
+IceTreeMergeTest >> testConflictingNoModificationWithRemoval [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceRemoval definition: ((IceTestDefinition named: 'common')
@@ -51,7 +51,7 @@ IceTreeMergeTests >> testConflictingNoModificationWithRemoval [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testConflictingRemovalWithModification [
+IceTreeMergeTest >> testConflictingRemovalWithModification [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceRemoval definition: ((IceTestDefinition named: 'common')
@@ -71,7 +71,7 @@ IceTreeMergeTests >> testConflictingRemovalWithModification [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testConflictingRemovalWithNoModification [
+IceTreeMergeTest >> testConflictingRemovalWithNoModification [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceRemoval definition: ((IceTestDefinition named: 'common')
@@ -88,7 +88,7 @@ IceTreeMergeTests >> testConflictingRemovalWithNoModification [
 ]
 
 { #category : 'test-additions' }
-IceTreeMergeTests >> testMergeConflictingAdditions [
+IceTreeMergeTest >> testMergeConflictingAdditions [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceAddition definition: ((IceTestDefinition named: 'common')
@@ -105,7 +105,7 @@ IceTreeMergeTests >> testMergeConflictingAdditions [
 ]
 
 { #category : 'tests-basic' }
-IceTreeMergeTests >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
+IceTreeMergeTest >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
 
 	| rightTree leftTree mergedTree |
 	leftTree := rightTree := IceEmptyNode new.
@@ -115,7 +115,7 @@ IceTreeMergeTests >> testMergeEmptyRootNodesReturnsNewEmptyRootNode [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testMergeTwoEqualAdditionsIsNoModification [
+IceTreeMergeTest >> testMergeTwoEqualAdditionsIsNoModification [
 
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceAddition definition: (IceTestDefinition named: 'new')).
@@ -129,7 +129,7 @@ IceTreeMergeTests >> testMergeTwoEqualAdditionsIsNoModification [
 ]
 
 { #category : 'test-removals' }
-IceTreeMergeTests >> testMergeTwoEqualRemovalsIsNoModification [
+IceTreeMergeTest >> testMergeTwoEqualRemovalsIsNoModification [
 
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceRemoval definition: (IceTestDefinition named: 'old') ).
@@ -143,7 +143,7 @@ IceTreeMergeTests >> testMergeTwoEqualRemovalsIsNoModification [
 ]
 
 { #category : 'test-modifications' }
-IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsInverseIsConflict [
+IceTreeMergeTest >> testMergeTwoModificationsToDifferentDefinitionsInverseIsConflict [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceNoModification definition: (IceTestDefinition named: 'common')).
@@ -162,7 +162,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsInverseIsCon
 ]
 
 { #category : 'test-modifications' }
-IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
+IceTreeMergeTest >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
 
 	| rightTree leftTree mergedTree conflictOperation |
 	leftTree := self buildTestTreeWithOperation: (IceNoModification definition: ((IceTestDefinition named: 'common')
@@ -182,7 +182,7 @@ IceTreeMergeTests >> testMergeTwoModificationsToDifferentDefinitionsIsConflict [
 ]
 
 { #category : 'test-modifications' }
-IceTreeMergeTests >> testMergeTwoModificationsToTheSameDefinitionIsNoModification [
+IceTreeMergeTest >> testMergeTwoModificationsToTheSameDefinitionIsNoModification [
 
 	| rightTree leftTree mergedTree operation |
 	leftTree := rightTree := self buildTestTreeWithOperation: (IceModification left: (IceTestDefinition named: 'm1' contents: 'old') right: (IceTestDefinition named: 'm1' contents: 'new')).

@@ -1,6 +1,6 @@
 Class {
 	#name : 'IceMetacelloIntegrationWithMissingClone',
-	#superclass : 'AbstractIceMetacelloIntegrationTests',
+	#superclass : 'AbstractIceMetacelloIntegrationTest',
 	#category : 'Iceberg-Tests-MetacelloIntegration',
 	#package : 'Iceberg-Tests-MetacelloIntegration'
 }

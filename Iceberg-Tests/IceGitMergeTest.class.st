@@ -49,7 +49,7 @@ IceGitMergeTest >> testMergeBinaryFileAdditionCreatesFileInWorkingCopy [
 
 	fileRef := self repository location / 'test-to-remove.bin'.
 
-	fileRef binaryWriteStreamDo: [ :stream | stream nextPutAll: IceFileDefinitionTests bytesWithIlegalLeadingBytes ].
+	fileRef binaryWriteStreamDo: [ :stream | stream nextPutAll: IceFileDefinitionTest bytesWithIlegalLeadingBytes ].
 	self repository index addPath: (fileRef relativeTo: self repository location).
 	self repository commitWithMessage: 'Add file'.
 	

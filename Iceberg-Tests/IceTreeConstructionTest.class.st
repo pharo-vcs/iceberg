@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceTreeConstructionTests',
+	#name : 'IceTreeConstructionTest',
 	#superclass : 'TestCase',
 	#category : 'Iceberg-Tests-Changes',
 	#package : 'Iceberg-Tests',
@@ -7,25 +7,25 @@ Class {
 }
 
 { #category : 'helpers' }
-IceTreeConstructionTests >> includesPackageNamed: aString [ 
+IceTreeConstructionTest >> includesPackageNamed: aString [ 
 	
 	^ aString = 'MonticelloMocks'
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> newWorkingCopy [
+IceTreeConstructionTest >> newWorkingCopy [
 
 	^ IceWorkingCopy repository: IceMemoryRepository new
 ]
 
 { #category : 'helpers' }
-IceTreeConstructionTests >> snapshotForPackage: anIcePackage [ 
+IceTreeConstructionTest >> snapshotForPackage: anIcePackage [ 
 	
 	^ anIcePackage name asPackage mcWorkingCopy snapshot
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateDirectoryWithDirectory [
+IceTreeConstructionTest >> testCreateDirectoryWithDirectory [
 
 	| tree child |
 	tree := IceNode new.
@@ -36,7 +36,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithDirectory [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateDirectoryWithFile [
+IceTreeConstructionTest >> testCreateDirectoryWithFile [
 
 	| tree child |
 	tree := IceNode new.
@@ -47,7 +47,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithFile [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateDirectoryWithPackage [
+IceTreeConstructionTest >> testCreateDirectoryWithPackage [
 
 	| tree importer child |
 	tree := IceNode new.
@@ -89,7 +89,7 @@ IceTreeConstructionTests >> testCreateDirectoryWithPackage [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateTreeWithDirectory [
+IceTreeConstructionTest >> testCreateTreeWithDirectory [
 
 	| tree |
 	tree := IceNode new.
@@ -99,7 +99,7 @@ IceTreeConstructionTests >> testCreateTreeWithDirectory [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateTreeWithFile [
+IceTreeConstructionTest >> testCreateTreeWithFile [
 
 	| tree |
 	tree := IceNode new.
@@ -109,7 +109,7 @@ IceTreeConstructionTests >> testCreateTreeWithFile [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testCreateTreeWithPackage [
+IceTreeConstructionTest >> testCreateTreeWithPackage [
 
 	| tree importer workingCopy |
 	tree := IceNode new.
@@ -145,7 +145,7 @@ IceTreeConstructionTests >> testCreateTreeWithPackage [
 ]
 
 { #category : 'tests' }
-IceTreeConstructionTests >> testEmptyTreeIsRootNode [
+IceTreeConstructionTest >> testEmptyTreeIsRootNode [
 
 	| tree |
 	tree := IceNode value: IceRootDefinition new.

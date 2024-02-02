@@ -1,5 +1,5 @@
 Class {
-	#name : 'AbstractIceMetacelloIntegrationTests',
+	#name : 'AbstractIceMetacelloIntegrationTest',
 	#superclass : 'IceParameterizedTestCase',
 	#instVars : [
 		'repository',
@@ -10,42 +10,42 @@ Class {
 }
 
 { #category : 'testing' }
-AbstractIceMetacelloIntegrationTests class >> isAbstract [
+AbstractIceMetacelloIntegrationTest class >> isAbstract [
 
-	^ self name = #AbstractIceMetacelloIntegrationTests
+	^ self name = #AbstractIceMetacelloIntegrationTest
 ]
 
 { #category : 'accessing' }
-AbstractIceMetacelloIntegrationTests >> defaultTimeLimit [
+AbstractIceMetacelloIntegrationTest >> defaultTimeLimit [
 	^ 30 seconds
 ]
 
 { #category : 'tests' }
-AbstractIceMetacelloIntegrationTests >> repositoriesForTest [
+AbstractIceMetacelloIntegrationTest >> repositoriesForTest [
 
 	^ IceRepository registry select: [ :e | e name = self repositoryName ]
 ]
 
 { #category : 'configuring' }
-AbstractIceMetacelloIntegrationTests >> repository [
+AbstractIceMetacelloIntegrationTest >> repository [
 	
 	^ 'github://pharo-vcs/' , self repositoryName
 ]
 
 { #category : 'tests' }
-AbstractIceMetacelloIntegrationTests >> repositoryForTest [
+AbstractIceMetacelloIntegrationTest >> repositoryForTest [
 
 	^ IceRepository registry detect: [ :e | e name = self repositoryName ]
 ]
 
 { #category : 'configuring' }
-AbstractIceMetacelloIntegrationTests >> repositoryName [
+AbstractIceMetacelloIntegrationTest >> repositoryName [
 	
 	^ self subclassResponsibility
 ]
 
 { #category : 'running' }
-AbstractIceMetacelloIntegrationTests >> tearDown [
+AbstractIceMetacelloIntegrationTest >> tearDown [
 
 	(self repositoriesForTest, { conflictingRepository }) do: [ :each | each ifNotNil: [ :repo |
 		repo unload.
