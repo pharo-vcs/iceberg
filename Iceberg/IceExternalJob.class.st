@@ -39,8 +39,12 @@ IceExternalJob >> ensureStarted [
 
 { #category : 'initialization' }
 IceExternalJob >> initialize [
+
 	super initialize.
-	started := false
+	started := false.
+	current := 0.
+	min := 0. 
+	max := 100
 ]
 
 { #category : 'accessing' }
