@@ -266,7 +266,7 @@ IceMemoryRepository >> isPackageExported: anIceSavedPackage [
 
 { #category : 'private-commits' }
 IceMemoryRepository >> latestCommitsOf: aRepository [ 
-self halt.
+
 	^ (aRepository sortedVersionInfos
 		groupedBy:[ :each | each name ])
 			values collect: [ :versions | | versionInfo |
@@ -398,7 +398,6 @@ IceMemoryRepository >> remoteAt: aString put: aRemote [
 { #category : 'remote-branches' }
 IceMemoryRepository >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent: absentBlock [ 
 
-	self halt.
 	^ self
 		latestMCVersionForBranchNamed: aName
 		ifPresent: [ :latestVersion | 
@@ -416,14 +415,13 @@ IceMemoryRepository >> remoteBranchNamed: aName ifPresent: presentBlock ifAbsent
 
 { #category : 'private-accessing' }
 IceMemoryRepository >> remoteBranchRepository [
-	self halt.
+
 	^ remoteBranchRepository
 ]
 
 { #category : 'initialize-release' }
 IceMemoryRepository >> remoteBranchRepository: aMCRepository [
 
-	self halt.
 	remoteBranchRepository := aMCRepository
 ]
 
