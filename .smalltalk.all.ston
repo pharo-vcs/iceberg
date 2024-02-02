@@ -1,0 +1,39 @@
+SmalltalkCISpec {
+  #name: 'Iceberg',
+  #preLoading: 'scripts/preLoading.st',
+  #postLoading: 'scripts/postLoading.st',
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Iceberg',
+      #platforms : [ #pharo ],
+      #ignoreImage : true,
+      #onConflict : #useIncoming,
+      #onUpgrade : #useIncoming,
+      #onWarningLog : true,
+      #load : [ 'development' ]
+     }
+  ],
+  #testing : {
+  	#include : { 
+  		#packages : [ '.*' ] 
+  	},
+  	#exclude : {
+  		#packages : [ 
+  			'GT-Tests.*', 
+  			'Glamour-Tests.*',
+  			'UnifiedFFI.*',
+  			'ThreadedFFI.*',
+  			'Monticello.*',
+  			'Metacello.*',
+  			'System-Settings-Tests.*',
+  			'RPackage.*',
+  			'ReleaseTests.*' ],
+  		#classes : [
+  			#OutOfMemoryTest,
+  			#TraitFileOutTest,
+  			#PlatformResolverTest,
+  			#ProcessSpecificTest
+  		] 
+  	}
+  }  
+}
