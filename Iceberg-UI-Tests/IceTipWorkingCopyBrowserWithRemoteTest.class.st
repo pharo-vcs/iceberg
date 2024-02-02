@@ -9,13 +9,13 @@ Class {
 	#tag : 'Browsers'
 }
 
-{ #category : 'running' }
+{ #category : 'factory' }
 IceTipWorkingCopyBrowserWithRemoteTest >> newFixture [
 
 	^ IceClonedFromRemoteFixture inGit
 ]
 
-{ #category : 'tests-fetch' }
+{ #category : 'running' }
 IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
 
 	super setUp.

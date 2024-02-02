@@ -15,7 +15,7 @@ IceGitCloneTest >> newFixture [
 	^ IceNotYetClonedRepositoryFixture inGit
 ]
 
-{ #category : 'tests' }
+{ #category : 'running' }
 IceGitCloneTest >> setUp [
 
 	super setUp.
@@ -23,7 +23,7 @@ IceGitCloneTest >> setUp [
 	IceCredentialsProvider providerType: IceNonInteractiveCredentialsProvider.
 ]
 
-{ #category : 'tests' }
+{ #category : 'running' }
 IceGitCloneTest >> tearDown [
 
 	IceCredentialsProvider providerType: oldProviderType.

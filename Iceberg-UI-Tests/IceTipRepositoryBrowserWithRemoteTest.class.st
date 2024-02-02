@@ -6,12 +6,12 @@ Class {
 	#tag : 'Browsers'
 }
 
-{ #category : 'running' }
+{ #category : 'factory' }
 IceTipRepositoryBrowserWithRemoteTest >> newFixture [
 	^ IceWithRemoteFixture inGit
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoryBrowserWithRemoteTest >> setUp [
 
 	super setUp.
@@ -19,7 +19,7 @@ IceTipRepositoryBrowserWithRemoteTest >> setUp [
 	presenter open
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoryBrowserWithRemoteTest >> tearDown [
 	presenter ifNotNil: [ "super tearDown" presenter window close ].
 	super tearDown.

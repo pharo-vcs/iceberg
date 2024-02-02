@@ -11,19 +11,19 @@ Class {
 	#tag : 'Browsers'
 }
 
-{ #category : 'running' }
+{ #category : 'factory' }
 IceTipRepositoriesBrowserTest >> newFixture [
 	
 	^ IceSinglePackageFixture inGit
 ]
 
-{ #category : 'testing' }
+{ #category : 'factory' }
 IceTipRepositoriesBrowserTest >> newRepositoryNamed: aName [
 
 	^ fixture factory newRepositoryNamed: aName
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoriesBrowserTest >> setUp [
 
 	| alphabeticallyLastRepository |
@@ -44,7 +44,7 @@ IceTipRepositoriesBrowserTest >> setUp [
 	presenter open
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoriesBrowserTest >> tearDown [
 	presenter ifNotNil: [ presenter window close ]. super tearDown
 ]

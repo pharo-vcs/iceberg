@@ -11,7 +11,7 @@ IceMetacelloIntegrationWithMissingClone >> repositoryName [
 	^ 'test-project-source-properties-tonel'
 ]
 
-{ #category : 'tests' }
+{ #category : 'running' }
 IceMetacelloIntegrationWithMissingClone >> setUp [
 
 	super setUp.
@@ -27,7 +27,7 @@ IceMetacelloIntegrationWithMissingClone >> setUp [
 	
 ]
 
-{ #category : 'tests' }
+{ #category : 'running' }
 IceMetacelloIntegrationWithMissingClone >> tearDown [
 
 	super tearDown.

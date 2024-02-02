@@ -6,13 +6,13 @@ Class {
 	#tag : 'Browsers'
 }
 
-{ #category : 'running' }
+{ #category : 'factory' }
 IceTipRepositoryBrowserWithoutRemoteTest >> newFixture [
 	
 	^ IceSinglePackageFixture inGit
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoryBrowserWithoutRemoteTest >> setUp [
 
 	super setUp.
@@ -20,7 +20,7 @@ IceTipRepositoryBrowserWithoutRemoteTest >> setUp [
 	presenter open
 ]
 
-{ #category : 'testing' }
+{ #category : 'running' }
 IceTipRepositoryBrowserWithoutRemoteTest >> tearDown [
 
 	presenter ifNotNil: [ presenter window close ]
