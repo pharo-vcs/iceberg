@@ -6,7 +6,6 @@ Class {
 		'projectName',
 		'packageName1',
 		'packageName2',
-		'remoteFileUrl',
 		'remoteRepository',
 		'location'
 	],
