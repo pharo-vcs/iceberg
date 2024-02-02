@@ -8,7 +8,7 @@ Class {
 	#package : 'Iceberg-Memory'
 }
 
-{ #category : 'instance-creation' }
+{ #category : 'instance creation' }
 IceMemoryUnbornBranch class >> inRepository: anIceMemoryRepository named: aString [ 
 	
 	^ (super inRepository: anIceMemoryRepository)

@@ -9,7 +9,7 @@ Class {
 	#package : 'Iceberg-Memory'
 }
 
-{ #category : 'instance-creation' }
+{ #category : 'instance creation' }
 IceMemoryRemote class >> name: aString remoteRepository: aRepository branchRepository: aMCBranchRepository [
 
 	^ self new

@@ -9,7 +9,7 @@ Class {
 	#package : 'Iceberg-Memory'
 }
 
-{ #category : 'instance-creation' }
+{ #category : 'instance creation' }
 IceMemoryProject class >> onRepository: anIceMemoryRepository commitish: aCommitish [
 
 	^ self new

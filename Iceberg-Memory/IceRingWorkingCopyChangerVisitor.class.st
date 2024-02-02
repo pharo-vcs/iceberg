@@ -8,7 +8,7 @@ Class {
 	#package : 'Iceberg-Memory'
 }
 
-{ #category : 'instance-creation' }
+{ #category : 'instance creation' }
 IceRingWorkingCopyChangerVisitor class >> on: anIceRingWorkingCopy [
 	^ self new
 		workingCopy: anIceRingWorkingCopy;
