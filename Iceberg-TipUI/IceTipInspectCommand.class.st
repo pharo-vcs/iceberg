@@ -38,13 +38,3 @@ IceTipInspectCommand >> iconName [
 
 	^ #glamorousInspect
 ]
-
-{ #category : 'accessing' }
-IceTipInspectCommand >> item [
-
-	| maybeCachedObject |
-	maybeCachedObject := super item.
-	
-	^ (maybeCachedObject respondsTo: #realObject)
-		ifTrue: [ maybeCachedObject realObject ] ifFalse: [ maybeCachedObject ]
-]

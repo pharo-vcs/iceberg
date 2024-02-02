@@ -8,11 +8,6 @@ Trait {
 	#tag : 'Writing'
 }
 
-{ #category : 'accessing' }
-TIceRepositoryWriter classSide >> id [
-	^ self required
-]
-
 { #category : 'testing' }
 TIceRepositoryWriter classSide >> isDefault [
 	"Indicates when this is default when create new repositories"

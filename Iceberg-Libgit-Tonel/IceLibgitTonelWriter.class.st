@@ -37,9 +37,10 @@ IceLibgitTonelWriter class >> forInternalStore [
 
 { #category : 'writing' }
 IceLibgitTonelWriter class >> forInternalStoreFileOut: aMCVersion on: aRepository [
-	self forInternalStore 
-		fileOut: aMCVersion
-		on: aRepository subdirectoryReference
+
+	(self forInternalStore forVersion: (aRepository properties tonelVersion ifNil: [ self forInternalStore defaultVersion ])) new
+		directoryReference: aRepository subdirectoryReference;
+		writeVersion: aMCVersion
 ]
 
 { #category : 'accessing' }

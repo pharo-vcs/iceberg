@@ -12,7 +12,7 @@ Class {
 	#tag : 'Model'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'instance creation' }
 IceTipPackageModel class >> workingCopyModel: aWorkingCopyModel on: aPackage [
 
 	^ (self
