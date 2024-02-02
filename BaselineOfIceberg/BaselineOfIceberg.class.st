@@ -70,13 +70,13 @@ BaselineOfIceberg >> customProjectAttributes [
 	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
 ]
 
-{ #category : 'baseline' }
+{ #category : 'external projects' }
 BaselineOfIceberg >> libgit: spec [
 	spec 
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:v3.0.9';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:master';
   			loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
@@ -124,7 +124,7 @@ BaselineOfIceberg >> resetKMRepository [
 		ifPresent: [ :class | class reset ]
 ]
 
-{ #category : 'baseline' }
+{ #category : 'external projects' }
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
