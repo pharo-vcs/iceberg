@@ -11,7 +11,7 @@ IceMetacelloIntegrationUpdateALoadedVersionTest >> repositoryName [
 	^ 'test-project-source-properties-tonel'
 ]
 
-{ #category : 'tests' }
+{ #category : 'running' }
 IceMetacelloIntegrationUpdateALoadedVersionTest >> tearDown [
 
 	super tearDown.
