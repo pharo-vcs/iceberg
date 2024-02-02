@@ -1,18 +1,18 @@
 Class {
-	#name : 'IceMetacelloIntegrationWithMissingClone',
+	#name : 'IceMetacelloIntegrationWithMissingCloneTest',
 	#superclass : 'AbstractIceMetacelloIntegrationTest',
 	#category : 'Iceberg-Tests-MetacelloIntegration',
 	#package : 'Iceberg-Tests-MetacelloIntegration'
 }
 
 { #category : 'configuring' }
-IceMetacelloIntegrationWithMissingClone >> repositoryName [
+IceMetacelloIntegrationWithMissingCloneTest >> repositoryName [
 	
 	^ 'test-project-source-properties-tonel'
 ]
 
 { #category : 'running' }
-IceMetacelloIntegrationWithMissingClone >> setUp [
+IceMetacelloIntegrationWithMissingCloneTest >> setUp [
 
 	super setUp.
 	
@@ -28,7 +28,7 @@ IceMetacelloIntegrationWithMissingClone >> setUp [
 ]
 
 { #category : 'running' }
-IceMetacelloIntegrationWithMissingClone >> tearDown [
+IceMetacelloIntegrationWithMissingCloneTest >> tearDown [
 	
 	(IceRepository registry select: [ :e | e name = 'test-project-with-dep' ]) do: [ :each | each ifNotNil: [ :repo |
 		repo unload.
@@ -44,7 +44,7 @@ IceMetacelloIntegrationWithMissingClone >> tearDown [
 ]
 
 { #category : 'tests' }
-IceMetacelloIntegrationWithMissingClone >> testMissingRepositoryShouldNotFail [
+IceMetacelloIntegrationWithMissingCloneTest >> testMissingRepositoryShouldNotFail [
 
 	Metacello new
 		baseline: 'PharoGitTest';
