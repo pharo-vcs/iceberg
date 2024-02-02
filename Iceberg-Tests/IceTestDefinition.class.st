@@ -9,7 +9,7 @@ Class {
 	#tag : 'Changes'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'instance creation' }
 IceTestDefinition class >> named: aString contents: aContensts [
 	
 	^ self new

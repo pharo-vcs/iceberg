@@ -47,7 +47,7 @@ IceMemoryProject >> isMemoryProject [
 	^ true
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'testing' }
 IceMemoryProject >> isUnbornProject [
 	
 	^ false

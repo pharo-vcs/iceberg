@@ -6,7 +6,7 @@ Class {
 	#tag : 'Changes'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 IceFileDefinitionTests class >> bytesWithIlegalLeadingBytes [
 
 	^ #[102 111 111 160 102 111 111]

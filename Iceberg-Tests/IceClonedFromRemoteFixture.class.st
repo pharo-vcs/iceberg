@@ -38,7 +38,7 @@ IceClonedFromRemoteFixture >> remoteRepository [
 	^ remoteRepository
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 IceClonedFromRemoteFixture >> repository [
 	^ repository
 ]

@@ -104,7 +104,7 @@ IceMemoryIndex >> updateDiskWorkingCopy: anIceDiff [
 				diff: anIceDiff)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'updating' }
 IceMemoryIndex >> updateProject: anIceUnbornProject [ 
 	
 	"Nothing for now"	1halt.
