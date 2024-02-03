@@ -16,10 +16,10 @@ Class {
 { #category : 'events' }
 IceExternalJob >> changed [
 
-	self currentWorld defer: [  
+	"self currentWorld defer: [  
 		Job jobAnnouncer announce: (current >= max 
 			ifTrue: [ JobEnd on: self ]
-			ifFalse: [ JobChange on: self ]) ]
+			ifFalse: [ JobChange on: self ]) ]"
 ]
 
 { #category : 'accessing' }
@@ -30,8 +30,8 @@ IceExternalJob >> current: anInteger [
 { #category : 'events' }
 IceExternalJob >> end [
 
-	self currentWorld defer: [ 
-		Job jobAnnouncer announce: (JobEnd on: self) ]
+	"self currentWorld defer: [ 
+		Job jobAnnouncer announce: (JobEnd on: self) ]"
 ]
 
 { #category : 'events' }
@@ -74,8 +74,8 @@ IceExternalJob >> progress [
 IceExternalJob >> start [
 
 	started := true.
-	self currentWorld defer: [ 
-		Job jobAnnouncer announce: (JobStart on: self) ]
+	"self currentWorld defer: [ 
+		Job jobAnnouncer announce: (JobStart on: self) ]"
 ]
 
 { #category : 'accessing' }
