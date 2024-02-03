@@ -6,7 +6,8 @@ Class {
 		'started',
 		'min',
 		'max',
-		'current'
+		'current',
+		'mutex'
 	],
 	#category : 'Iceberg-Progress',
 	#package : 'Iceberg',
@@ -16,10 +17,11 @@ Class {
 { #category : 'events' }
 IceExternalJob >> changed [
 
-	self currentWorld defer: [  
-		Job jobAnnouncer announce: (current >= max 
-			ifTrue: [ JobEnd on: self ]
-			ifFalse: [ JobChange on: self ]) ]
+	mutex critical: [  
+		self currentWorld defer: [  
+			Job jobAnnouncer announce: (current < max 
+				ifTrue: [ JobEnd on: self ]
+				ifFalse: [ JobChange on: self ]) ] ]
 ]
 
 { #category : 'accessing' }
@@ -30,8 +32,9 @@ IceExternalJob >> current: anInteger [
 { #category : 'events' }
 IceExternalJob >> end [
 
-	self currentWorld defer: [ 
-		Job jobAnnouncer announce: (JobEnd on: self) ]
+	mutex critical: [ 
+		self currentWorld defer: [ 
+			Job jobAnnouncer announce: (JobEnd on: self) ] ]
 ]
 
 { #category : 'events' }
@@ -44,10 +47,11 @@ IceExternalJob >> ensureStarted [
 IceExternalJob >> initialize [
 
 	super initialize.
+	mutex := Mutex new.
 	started := false.
 	current := 0.
 	min := 0. 
-	max := 0
+	max := 100
 ]
 
 { #category : 'accessing' }
@@ -76,8 +80,9 @@ IceExternalJob >> progress [
 IceExternalJob >> start [
 
 	started := true.
-	self currentWorld defer: [ 
-		Job jobAnnouncer announce: (JobStart on: self) ]
+	mutex critical: [
+		self currentWorld defer: [ 
+			Job jobAnnouncer announce: (JobStart on: self) ] ]
 ]
 
 { #category : 'accessing' }
