@@ -19,8 +19,7 @@ IcePushTransferProgress >> block [
 			job max: total.
 			job current: current.
 			job title: ((self title, ' ({1}/{2})') format: { current. total}).
-			job changed.
-			current = total ifTrue: [ job end ] ]
+			job changed ]
 		fork.
 		0
 	]

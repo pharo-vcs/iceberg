@@ -20,7 +20,10 @@ IceExternalJob >> changed [
 	mutex critical: [  
 		self currentWorld defer: [  
 			Job jobAnnouncer announce: (current < max 
-				ifTrue: [ JobEnd on: self ]
+				ifTrue: [ 
+					'END' crTrace.
+					self title crTrace.
+					JobEnd on: self ]
 				ifFalse: [ JobChange on: self ]) ] ]
 ]
 
