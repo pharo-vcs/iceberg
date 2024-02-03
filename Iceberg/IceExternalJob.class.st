@@ -47,7 +47,7 @@ IceExternalJob >> initialize [
 	started := false.
 	current := 0.
 	min := 0. 
-	max := 100
+	max := 0
 ]
 
 { #category : 'accessing' }
