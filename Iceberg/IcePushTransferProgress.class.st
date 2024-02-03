@@ -13,14 +13,14 @@ Class {
 IcePushTransferProgress >> block [
 	
 	^ [ :current :total :bytes :payload | 
-		
-		job ensureStarted.
-		job min: 1.
-		job max: total.
-		job current: current.
-		job title: ((self title, ' ({1}/{2})') format: { current. total}).
-		job changed.
-		
+		[
+			job ensureStarted.
+			job min: 0.
+			job max: total.
+			job current: current.
+			job title: ((self title, ' ({1}/{2})') format: { current. total}).
+			job changed ]
+		fork.
 		0
 	]
 ]
@@ -38,7 +38,10 @@ IcePushTransferProgress >> initialize [
 
 { #category : 'initialization' }
 IcePushTransferProgress >> initializeBlock [
-	self signature: self class fnSpec block: self block.
+
+	self 
+		signature: self class fnSpec 
+		block: self block.
 ]
 
 { #category : 'accessing' }
