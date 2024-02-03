@@ -17,14 +17,11 @@ Class {
 { #category : 'events' }
 IceExternalJob >> changed [
 
-	mutex critical: [  
+	"mutex critical: [  
 		self currentWorld defer: [  
 			Job jobAnnouncer announce: (current < max 
-				ifTrue: [ 
-					'END' crTrace.
-					self title crTrace.
-					JobEnd on: self ]
-				ifFalse: [ JobChange on: self ]) ] ]
+				ifTrue: [ JobEnd on: self ]
+				ifFalse: [ JobChange on: self ]) ] ]"
 ]
 
 { #category : 'accessing' }
@@ -35,9 +32,9 @@ IceExternalJob >> current: anInteger [
 { #category : 'events' }
 IceExternalJob >> end [
 
-	mutex critical: [ 
+	"mutex critical: [ 
 		self currentWorld defer: [ 
-			Job jobAnnouncer announce: (JobEnd on: self) ] ]
+			Job jobAnnouncer announce: (JobEnd on: self) ] ]"
 ]
 
 { #category : 'events' }
@@ -83,9 +80,9 @@ IceExternalJob >> progress [
 IceExternalJob >> start [
 
 	started := true.
-	mutex critical: [
+	"mutex critical: [
 		self currentWorld defer: [ 
-			Job jobAnnouncer announce: (JobStart on: self) ] ]
+			Job jobAnnouncer announce: (JobStart on: self) ] ]"
 ]
 
 { #category : 'accessing' }
