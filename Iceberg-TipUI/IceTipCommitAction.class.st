@@ -65,7 +65,7 @@ IceTipCommitAction >> validateCanCommit [
 
 { #category : 'validating' }
 IceTipCommitAction >> validateChangeListNotEmpty [
-	"If there are no selected changed, no point on commiting :)"
+	"If there are no selected changed, no point on committing :)"
 	
 	items ifEmpty: [ IceNothingToCommit signal ]
 ]

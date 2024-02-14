@@ -4,7 +4,7 @@
 ***Q.** The Image seems to freeze when doing a clone of a repository.*  
 **A.** This is because the operation is taking time and Iceberg still does not show feedback properly. You just need to be patient :)  
 
-***Q.** The Image freezes when cloning/commiting and there is nothing I can do to fix it. I used HTTPS as the protocol when doing the clone.*  
+***Q.** The Image freezes when cloning/committing and there is nothing I can do to fix it. I used HTTPS as the protocol when doing the clone.*  
 **A.** There is a known bug around HTTPS and getting the credentials. We will fix this, but while waiting for the fix, you can work around the problem by:  
 - Adding your credentials **before** doing any operation (go to `System Settings/Tools/Software Configuration Management/Iceberg/Plain credentials`)
 - Just using the SSH protocol instead (but that option is not as easy on Windows).  

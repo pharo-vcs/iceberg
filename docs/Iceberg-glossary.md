@@ -10,7 +10,7 @@ Iceberg also includes an object called the [working copy](The-Working-Copy(ies).
 Iceberg's working copy represents the code loaded in the image, with the loaded commit and the packages.
 
 #### The git index
-The index is an intermediate structure which is used to select the contents that are going to be commited. 
+The index is an intermediate structure which is used to select the contents that are going to be committed. 
 
 So, to commit changes to your local repository, two actions are needed: 
 1. `git add someFileOrDirectory` will add `someFileOrDirectory` to the index. 
