@@ -83,7 +83,7 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 	self formatList
 		items: self formats;
 		display: [ :each | each description ];
-		selectItem: model repositoryProperties fileFormat.
+		selectItem: (self guessFormatFromDirectory: model sourceDirectoryReference).
 
 	self expandAndSelect: (RelativePath with: model sourceDirectory).
 
@@ -181,6 +181,8 @@ IceTipEditProjectDialogPresenter >> guessFormatFromDirectory: aFileReference [
 	"We take as guinea pig a sub-directory to guess what format it is on.
 	In case the current directory has no children directories, we just select the default format"
 	| guineaPig |
+	aFileReference exists ifFalse: [ ^ defaultFormat ].
+	
 	guineaPig := aFileReference children detect: [ :any | any isDirectory ] ifNone: [ ^ defaultFormat ].
 	
 	"Filetree must have precedence as it has the most restrictive name convention (directories ending with .package)"
