@@ -225,11 +225,6 @@ IceTipRepositoryModel >> matches: aString [
 	^ self entity name matchesRegexIgnoringCase: aString
 ]
 
-{ #category : 'accessing' }
-IceTipRepositoryModel >> name [
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipRepositoryModel >> newAddPackagesAction: aCollection [
 

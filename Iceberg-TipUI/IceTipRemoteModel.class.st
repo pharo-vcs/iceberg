@@ -30,11 +30,6 @@ IceTipRemoteModel >> description [
 	^ '{1} <{2}>' format: { self name. self entity url }
 ]
 
-{ #category : 'accessing' }
-IceTipRemoteModel >> name [
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipRemoteModel >> newDeleteAction [
 	

@@ -68,11 +68,6 @@ IceTipPackageModel >> isModified [
 	^ self entity isModified
 ]
 
-{ #category : 'accessing' }
-IceTipPackageModel >> name [
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipPackageModel >> newLoadAction [
 

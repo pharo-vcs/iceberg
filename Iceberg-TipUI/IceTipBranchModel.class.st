@@ -80,11 +80,6 @@ IceTipBranchModel >> isLocal [
 	^ self entity isLocal
 ]
 
-{ #category : 'accessing' }
-IceTipBranchModel >> name [
-	^ self entity name
-]
-
 { #category : 'actions' }
 IceTipBranchModel >> newCheckoutWithStrategyAction: aCheckoutStrategy [
 	
