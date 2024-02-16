@@ -13,6 +13,7 @@ SmalltalkCISpec {
       #load : [ 'development' ]
      }
   ],
+  #preTesting: 'scripts/preTesting.st',
   #testing : {
   	#include : { 
   		#packages : [ '.*' ] 
