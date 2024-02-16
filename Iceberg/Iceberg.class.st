@@ -94,8 +94,9 @@ Iceberg class >> enableMetacelloIntegration [
 ]
 
 { #category : 'settings' }
-Iceberg class >> enableMetacelloIntegration: anObject [
-	EnableMetacelloIntegration := anObject
+Iceberg class >> enableMetacelloIntegration: aBoolean [
+
+	EnableMetacelloIntegration := aBoolean
 ]
 
 { #category : 'proxy' }

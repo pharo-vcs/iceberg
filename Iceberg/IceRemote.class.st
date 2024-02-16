@@ -189,14 +189,6 @@ IceRemote >> remoteBranchNamed: aString ifPresent: presentClosure ifAbsent: abse
 ]
 
 { #category : 'accessing' }
-IceRemote >> upstreamForBranch: aBranch backend: backend [
-	^ backend 
-		lookupBranchNamed: aBranch name 
-		inRemote: self remoteName
-
-]
-
-{ #category : 'accessing' }
 IceRemote >> url [
 	^ url
 ]

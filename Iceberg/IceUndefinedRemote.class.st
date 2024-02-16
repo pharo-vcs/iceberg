@@ -39,8 +39,3 @@ IceUndefinedRemote >> initialize [
 IceUndefinedRemote >> isUndefined [
 	^ true
 ]
-
-{ #category : 'accessing' }
-IceUndefinedRemote >> upstreamForBranch: aBranch backend: backend [
-	^ nil
-]

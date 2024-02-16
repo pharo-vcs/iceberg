@@ -171,12 +171,6 @@ IcePackage >> name [
 	^ package
 ]
 
-{ #category : 'querying' }
-IcePackage >> outgoingCommits [
-	^ self repository branch outgoingCommits: [ :walk | walk modifyingPackage: self ]
-
-]
-
 { #category : 'accessing' }
 IcePackage >> package [
 	^ package

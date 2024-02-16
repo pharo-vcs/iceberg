@@ -99,9 +99,9 @@ IceLibgitCommitWalk >> revwalk [
 IceLibgitCommitWalk >> shouldInclude: aLGitCommit [ 
 	^ self modifyingPackage 
 		ifNil: [ true ] 
-		ifNotNil: [ :package | 
-			aLGitCommit changesFileNamed: package directoryPathString ]
-
+		ifNotNil: [ :package |
+			self flag: #TODO. "Remove when we are sure this does not happens"
+			self error: 'Should not arrive here' ]
 ]
 
 { #category : 'walk definition' }

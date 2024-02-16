@@ -49,7 +49,6 @@ IceProxyMCVersionInfo class >> remoteUrl: anUrl packageName: aName commit: aComm
 			message: aString
 			date: aCommit datetime asDate
 			time: aCommit datetime asTime
-			author: authorString
 			ancestors: #())
 ]
 
@@ -155,7 +154,6 @@ IceProxyMCVersionInfo >> stubVersionInfo [
 			message: 'fabricated from a proxy repository'
 			date: nil
 			time: nil
-			author: ''
 			ancestors: #() ]
 ]
 

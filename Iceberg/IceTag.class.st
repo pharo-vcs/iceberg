@@ -48,7 +48,8 @@ IceTag >> isTag [
 
 { #category : 'querying' }
 IceTag >> lastCommit [
-	^ self repository backend revparseCommit: self name
+
+	^ self repository backend revparse: self name
 ]
 
 { #category : 'accessing' }
