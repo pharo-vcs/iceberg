@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceTipCommitBrowserTestWithoutRemoteSet',
+	#name : 'IceTipCommitBrowserTestWithoutRemoteSetTest',
 	#superclass : 'IceTipCommitBrowserTest',
 	#category : 'Iceberg-UI-Tests-Browsers',
 	#package : 'Iceberg-UI-Tests',
@@ -7,11 +7,11 @@ Class {
 }
 
 { #category : 'running' }
-IceTipCommitBrowserTestWithoutRemoteSet >> newFixture [
+IceTipCommitBrowserTestWithoutRemoteSetTest >> newFixture [
 	^ IceCleanWorkingCopyFixture inGit
 ]
 
 { #category : 'tests' }
-IceTipCommitBrowserTestWithoutRemoteSet >> testPushSettingCheckbox [
+IceTipCommitBrowserTestWithoutRemoteSetTest >> testPushSettingCheckbox [
 	self assert: presenter commentPanel isPushing equals: false
 ]
