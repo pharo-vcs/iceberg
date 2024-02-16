@@ -16,7 +16,8 @@ Class {
 
 { #category : 'events' }
 IceExternalJob >> changed [
-
+	
+	started ifFalse: [ ^ self ].
 	mutex critical: [  
 		self currentWorld defer: [  
 			Job jobAnnouncer announce: (current < max 
@@ -34,7 +35,8 @@ IceExternalJob >> end [
 
 	mutex critical: [ 
 		self currentWorld defer: [ 
-			Job jobAnnouncer announce: (JobEnd on: self) ] ]
+			Job jobAnnouncer announce: (JobEnd on: self) ] ].
+	started := false
 ]
 
 { #category : 'events' }
@@ -52,6 +54,12 @@ IceExternalJob >> initialize [
 	current := 0.
 	min := 0. 
 	max := 100
+]
+
+{ #category : 'accessing' }
+IceExternalJob >> isRunning [
+
+	^ started 
 ]
 
 { #category : 'accessing' }
