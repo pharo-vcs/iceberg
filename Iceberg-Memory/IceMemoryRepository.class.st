@@ -169,7 +169,6 @@ IceMemoryRepository >> commitPackage: aMCPackage author: authorString message: m
 			message: messageString
 			date: Date today
 			time: Time now
-			author: authorString
 			ancestors: ancestors)
 		snapshot: aMCPackage snapshot
 		dependencies: dependencies.
