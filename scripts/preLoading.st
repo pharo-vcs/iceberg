@@ -14,6 +14,28 @@ MetacelloPharoPlatform select.
 #(
     'BaselineOfLibGit'
     'BaselineOfIceberg'
+    'Iceberg-UI' 
+    'Iceberg-TipUI'
+    'Iceberg-Plugin-Pharo' 
+    'Iceberg-Plugin-Metacello' 
+    'Iceberg-Plugin-GitHub'
+    'Iceberg-Plugin-Migration'
+    'Iceberg-Plugin' 
+    'Iceberg-Metacello-Integration' 
+    'Iceberg-Libgit-Tonel' 
+    'Iceberg-Libgit-Filetree' 
+    'Iceberg-Libgit' 
+    'Iceberg-Tests'
+    'Iceberg-Memory'
+    'Iceberg-UI-Tests'
+    'Iceberg-Core' 
+    'Iceberg-Changes' 
+    'Iceberg-Adapters' 
+    'Iceberg'
+    'Iceberg-GitCommand'
+    'Iceberg-SmartUI'
+    'Iceberg-Pharo6'
+    'LibGit-Core'
 )
 do: [ :each |
     (each asPackageIfAbsent: [ 
