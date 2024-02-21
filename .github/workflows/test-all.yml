@@ -3,6 +3,9 @@ name: Iceberg-Pharo-Integration
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PHARO_CI_TESTING_ENVIRONMENT: 1
+  # Allowing this obsolete in the release tests since it is caused by the unload/reload of 
+  # iceberg, and that is something made just  
+  PHARO_CI_ALLOWED_OBSOLETES: IceGitHubAPI
 
 on:
   push:
