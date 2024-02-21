@@ -18,11 +18,10 @@ Class {
 IceExternalJob >> changed [
 	
 	started ifFalse: [ ^ self ].
-	mutex critical: [  
-		self currentWorld defer: [  
-			Job jobAnnouncer announce: (current < max 
-				ifTrue: [ JobEnd on: self ]
-				ifFalse: [ JobChange on: self ]) ] ]
+	mutex critical: [
+		self currentWorld defer: [
+			Job jobAnnouncer announce: (JobChange on: self) ] ].
+	current = max ifTrue: [ self end ]
 ]
 
 { #category : 'accessing' }

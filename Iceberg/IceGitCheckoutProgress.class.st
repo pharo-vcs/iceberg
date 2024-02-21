@@ -18,8 +18,7 @@ IceGitCheckoutProgress >> block [
 		job max: total.
 		job current: completed.
 		job title: ('Checking out... ({1}/{2})' format: { completed. total}).
-		
-		job changed.
+		job changed
 	]
 ]
 
