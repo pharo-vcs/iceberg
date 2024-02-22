@@ -12,8 +12,9 @@ Otherwise obsolete instances will stay".
 "Workaround to avoid keeping an entry in World Menu to the obsolete class."
 ((Smalltalk classNamed: #IceTipRepositoriesBrowser) class>>#menuCommandOn:) removeFromSystem.
 
-"Working copy keeps some annoying references that prevent a correct clean up"
-MCWorkingCopy registry removeAll.
+"Working copy keeps some annoying references that prevent a correct clean up. 
+ this is a hack to keep one element in the registry (needed for the tests)"
+MCWorkingCopy registry becomeForward: (MCWorkingCopy registry select: [ :each | each packageName = 'MonticelloMocks' ]).
 
 "Remove iceberg from system (so I can reload it)"
 MetacelloPharoPlatform select.
