@@ -18,9 +18,8 @@ Class {
 IceExternalJob >> changed [
 	
 	started ifFalse: [ ^ self ].
-	mutex critical: [
-		self currentWorld defer: [
-			Job jobAnnouncer announce: (JobChange on: self) ] ].
+	mutex critical: [ 
+		Job jobAnnouncer announce: (JobChange on: self) ].
 	current = max ifTrue: [ self end ]
 ]
 
@@ -33,8 +32,7 @@ IceExternalJob >> current: anInteger [
 IceExternalJob >> end [
 
 	mutex critical: [ 
-		self currentWorld defer: [ 
-			Job jobAnnouncer announce: (JobEnd on: self) ] ].
+		Job jobAnnouncer announce: (JobEnd on: self) ].
 	started := false
 ]
 
@@ -88,8 +86,7 @@ IceExternalJob >> start [
 
 	started := true.
 	mutex critical: [
-		self currentWorld defer: [ 
-			Job jobAnnouncer announce: (JobStart on: self) ] ]
+		Job jobAnnouncer announce: (JobStart on: self) ]
 ]
 
 { #category : 'accessing' }
