@@ -1,6 +1,6 @@
 There are many places where Iceberg can be improved. Some are due to missing knowledge, others from lack of resources (it goes without saying that all help is greatly appreciated). Apart from fixing issue and perfroming reviews, this page explains several standalone sub-projects where people could usefully help to improve Iceberg's general quality, in a smaller space.
 
-# Support Exporting without commiting
+# Support Exporting without committing
 
 There is no UI support for this, but it is doable from the backend although not correctly exposed.
 

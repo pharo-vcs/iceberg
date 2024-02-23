@@ -22,7 +22,7 @@ IceMemoryIndex >> addPackage: anIcePackageDefinition [
 	"Nothing, the package should be already added"
 ]
 
-{ #category : 'API-commiting' }
+{ #category : 'API - committing' }
 IceMemoryIndex >> commitWithMessage: message andParents: parentCommits [
 
 	| newCommit versionInfos packageNames iceCommit head headCommit |

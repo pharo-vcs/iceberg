@@ -30,7 +30,7 @@ IceIndex >> addPackage: aPackage [
 	self subclassResponsibility
 ]
 
-{ #category : 'API - commiting' }
+{ #category : 'API - committing' }
 IceIndex >> commitWithMessage: message andParents: parentCommits [
 
 	self subclassResponsibility.	
