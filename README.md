@@ -2,8 +2,8 @@
 
 Iceberg is the main toolset for handling [VCS](https://en.wikipedia.org/wiki/Version_control) in Pharo.
 
-[![Iceberg-Pharo-Integration](https://github.com/pharo-vcs/iceberg/actions/workflows/test-all.yml/badge.svg)](https://github.com/pharo-vcs/iceberg/actions/workflows/test-all.yml)
-[![ceberg-dev](https://github.com/pharo-vcs/iceberg/actions/workflows/test.yml/badge.svg)](https://github.com/pharo-vcs/iceberg/actions/workflows/test.yml)
+[![Iceberg-Pharo-Integration](https://github.com/pharo-vcs/iceberg/actions/workflows/test-all.yml/badge.svg)](https://github.com/pharo-vcs/iceberg/actions/workflows/test-all.yml)  
+[![Complete Test](https://github.com/pharo-vcs/iceberg/actions/workflows/test.yml/badge.svg)](https://github.com/pharo-vcs/iceberg/actions/workflows/test.yml)
 
 More concretely, Iceberg provides tools to checkout, commit, merge and other common operations in git repositories, all directly from the image.
 In fact, git is currently the only VCS backend for Iceberg, but it's design supports the addition of other options.
