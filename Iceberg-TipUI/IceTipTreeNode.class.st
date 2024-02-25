@@ -52,11 +52,6 @@ IceTipTreeNode >> icon [
 ]
 
 { #category : 'accessing' }
-IceTipTreeNode >> icon: aForm [
-	self iconFormSet: (aForm ifNotNil: [ FormSet form: aForm ])
-]
-
-{ #category : 'accessing' }
 IceTipTreeNode >> iconFormSet [
 	^ iconFormSet
 ]
