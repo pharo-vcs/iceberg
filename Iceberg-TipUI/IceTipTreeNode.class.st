@@ -10,7 +10,7 @@ Class {
 	#instVars : [
 		'model',
 		'parent',
-		'icon'
+		'iconFormSet'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -48,12 +48,22 @@ IceTipTreeNode >> doesNotUnderstand: aMessage [
 
 { #category : 'accessing' }
 IceTipTreeNode >> icon [
-	^ icon
+	^ self iconFormSet ifNotNil: [ :formSet | formSet asForm ]
 ]
 
 { #category : 'accessing' }
-IceTipTreeNode >> icon: anIcon [
-	icon := anIcon
+IceTipTreeNode >> icon: aForm [
+	self iconFormSet: (aForm ifNotNil: [ FormSet form: aForm ])
+]
+
+{ #category : 'accessing' }
+IceTipTreeNode >> iconFormSet [
+	^ iconFormSet
+]
+
+{ #category : 'accessing' }
+IceTipTreeNode >> iconFormSet: aFormSet [
+	iconFormSet := aFormSet
 ]
 
 { #category : 'testing' }
