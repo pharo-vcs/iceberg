@@ -1,9 +1,9 @@
 Extension { #name : 'IceNonConflictingOperation' }
 
 { #category : '*Iceberg-TipUI' }
-IceNonConflictingOperation >> operationIcon [
+IceNonConflictingOperation >> operationIconName [
 	
-	^ operation icon
+	^ operation iconName
 ]
 
 { #category : '*Iceberg-TipUI' }
