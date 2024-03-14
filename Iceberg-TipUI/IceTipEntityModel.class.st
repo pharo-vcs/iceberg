@@ -94,7 +94,7 @@ IceTipEntityModel >> newCreateTagAction: aString [
 		repository: self entity;
 		message: ('Creating tag {1} on commit {2}' format: { aString. self commit shortId });
 		onSuccessRepositoryModified;
-		action: [ self commit createTag: aString ]
+		action: [ self entity createTag: aString ]
 		yourself
 ]
 
@@ -114,4 +114,13 @@ IceTipEntityModel >> shortDescription [
 	^ self description asString
 		ifNotEmpty: [ :aString | aString lines first ]
 		ifEmpty: [ 'No message' ]
+]
+
+{ #category : 'accessing' }
+IceTipEntityModel >> shortDescriptionWithTags [
+
+	^ String streamContents: [ :stream |
+		self entity tags do: [ :each | 
+			stream << '[' << each name << '] ' ].
+		stream << self shortDescription ]
 ]

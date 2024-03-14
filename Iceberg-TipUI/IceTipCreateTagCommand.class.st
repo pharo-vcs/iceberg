@@ -29,11 +29,12 @@ IceTipCreateTagCommand >> canBeExecuted [
 
 { #category : 'executing' }
 IceTipCreateTagCommand >> execute [
-	
+
 	(IceTipCreateTagPanel 
 		newApplication: context application 
 		model: self item) 		
-		asDialogWindow 
+		asDialogWindow
+			okAction: [ self context refreshTags ];
 			centeredRelativeTo: context window;
 			open
 ]

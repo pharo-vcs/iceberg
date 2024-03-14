@@ -84,22 +84,24 @@ IceTipHistoryBrowser >> initializeCommitList [
 
 	commitList
 		beResizable;
-		addColumn: ((SpStringTableColumn
-			evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
+		addColumn: ((SpStringTableColumn new
 			title: 'Timestamp';
 			width: 120;
+			evaluated: [ :each | each timeStamp asLocalStringYMDHM ])
 			yourself);
-		addColumn: ((SpStringTableColumn evaluated: #shortId)
+		addColumn: (SpStringTableColumn new
 			title: 'Commit';
 			width: 70;
+			evaluated: #shortId;
 			yourself);	
-		addColumn: ((SpStringTableColumn evaluated: #author)
+		addColumn: (SpStringTableColumn new
 			title: 'Author';
 			width: 180;
+			evaluated: #author;
 			yourself);
 		addColumn: (SpStringTableColumn new 
 			title: 'Description';
-			evaluated: [ :each | each shortDescription ];
+			evaluated: [ :each | each shortDescriptionWithTags ];
 			yourself);
 		whenSelectionChangedDo: [ :aSelection | self selectionChanged: aSelection selectedItem ]
 ]
@@ -141,6 +143,13 @@ IceTipHistoryBrowser >> refreshCommitList [
 	commitList items: commitModels.
 	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
 
+]
+
+{ #category : 'accessing' }
+IceTipHistoryBrowser >> refreshTags [
+
+	"force refresh of table because a tag was added (or removed)"
+	commitList refresh
 ]
 
 { #category : 'accessing' }

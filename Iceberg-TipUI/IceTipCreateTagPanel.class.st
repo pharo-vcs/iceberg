@@ -7,13 +7,13 @@ I'm done to be embedded in a dialog, so I implement doAccept to execute my actio
 Class {
 	#name : 'IceTipCreateTagPanel',
 	#superclass : 'IceTipPresenter',
+	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'callback',
 		'tagNameInputText',
 		'commitishToTag',
 		'currentCommitishLabel',
 		'tagNameLabel',
-		'acceptBlock',
 		'existingTagsList',
 		'majorButton',
 		'minorButton',
@@ -28,8 +28,14 @@ Class {
 IceTipCreateTagPanel >> accept [
 
 	self validate.
-	self doAccept.
-	acceptBlock ifNotNil: [ acceptBlock cull: self ]
+	self doAccept
+]
+
+{ #category : 'accessing' }
+IceTipCreateTagPanel >> acceptThen: aBlock [
+
+	self accept.
+	aBlock value
 ]
 
 { #category : 'accessing' }
@@ -106,6 +112,21 @@ IceTipCreateTagPanel >> initializeCurrentBranchLabel [
 		label: 'Current commit: ', commitishToTag commit shortId;
 		yourself
 
+]
+
+{ #category : 'initialization' }
+IceTipCreateTagPanel >> initializeDialogWindow: aDialogWindowPresenter [
+	"Used to initialize the model in the case of the use into a dialog window.
+	 Override this to set buttons other than the default (Ok, Cancel)."
+	
+	aDialogWindowPresenter
+		addButton: 'Cancel' do: [ :presenter |
+			presenter triggerCancelAction.
+			presenter close ];
+		addDefaultButton: 'Create Tag' do: [ :presenter | 
+			self acceptThen: [ 
+				presenter triggerOkAction.
+				presenter close ] ]
 ]
 
 { #category : 'initialization' }
@@ -252,10 +273,10 @@ IceTipCreateTagPanel >> validate [
 
 	self 
 		assert: self tagName isNotEmpty
-		description: 'Please enter your new branch name.'.
+		description: 'Please enter your new tag name.'.
 	self 
 		assert: (self tagName noneSatisfy: #isSeparator)
-		description: 'You can''t have spaces in your branch name.'
+		description: 'You can''t have spaces in your tag name.'
 ]
 
 { #category : 'callbacks' }
