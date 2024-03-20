@@ -1,7 +1,7 @@
 Extension { #name : 'IceNoModification' }
 
 { #category : '*Iceberg-TipUI' }
-IceNoModification >> icon [
+IceNoModification >> iconName [
 
-	^ definition icon
+	^ definition iconName
 ]

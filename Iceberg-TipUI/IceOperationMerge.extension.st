@@ -3,13 +3,19 @@ Extension { #name : 'IceOperationMerge' }
 { #category : '*Iceberg-TipUI' }
 IceOperationMerge >> icon [
 
-	self isRightChosen ifTrue: [ ^ self iconNamed: #changeBlock ].
-	self isLeftChosen ifTrue: [ ^ self iconNamed: #forward ].
-	
-	^ self operationIcon
+	^ self iconNamed: self iconName
 ]
 
 { #category : '*Iceberg-TipUI' }
-IceOperationMerge >> operationIcon [
+IceOperationMerge >> iconName [
+
+	self isRightChosen ifTrue: [ ^ #changeBlock ].
+	self isLeftChosen ifTrue: [ ^ #forward ].
+	
+	^ self operationIconName
+]
+
+{ #category : '*Iceberg-TipUI' }
+IceOperationMerge >> operationIconName [
 	self subclassResponsibility
 ]

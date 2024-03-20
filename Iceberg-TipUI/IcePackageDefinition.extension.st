@@ -20,6 +20,6 @@ IcePackageDefinition >> canBrowseReferences [
 ]
 
 { #category : '*Iceberg-TipUI' }
-IcePackageDefinition >> icon [
-	^ self iconNamed: #package
+IcePackageDefinition >> iconName [
+	^ #package
 ]
