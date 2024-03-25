@@ -21,6 +21,12 @@ IceOperation >> canBrowseReferences [
 { #category : '*Iceberg-TipUI' }
 IceOperation >> icon [
 	
+	^ self iconNamed: self iconName
+]
+
+{ #category : '*Iceberg-TipUI' }
+IceOperation >> iconName [
+	
 	self subclassResponsibility
 ]
 

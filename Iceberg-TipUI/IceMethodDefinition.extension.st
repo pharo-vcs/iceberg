@@ -21,7 +21,7 @@ IceMethodDefinition >> canBrowseReferences [
 ]
 
 { #category : '*Iceberg-TipUI' }
-IceMethodDefinition >> icon [
+IceMethodDefinition >> iconName [
 	
-	^ self iconNamed: #changeUpdate
+	^ #changeUpdate
 ]

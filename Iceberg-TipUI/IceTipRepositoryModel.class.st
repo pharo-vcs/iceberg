@@ -392,7 +392,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 	^ {
 		  ((IceTipTreeRepositoryGroup on: self)
 			   name: 'Branches';
-			   icon: (self iconNamed: #branch);
+			   iconFormSet: (self iconFormSetNamed: #branch);
 			   children: (branches
 					    select: [ :each | each entity isLocal ]
 					    thenCollect: [ :each | IceTipTreeBranch on: each ]);
@@ -400,7 +400,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 		  "Remotes group"
 		  ((IceTipTreeRepositoryGroup on: self)
 			   name: 'Remotes';
-			   icon: (self iconNamed: #remote);
+			   iconFormSet: (self iconFormSetNamed: #remote);
 			   children: (self entity remotes collect: [ :eachRemote |
 						    | remoteModel |
 						    remoteModel := IceTipRemoteModel
@@ -418,7 +418,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 		  "Tags group"
 		  ((IceTipTreeRepositoryGroup on: self)
 			   name: 'Tags';
-			   icon: (self iconNamed: #glamorousBookmark);
+			   iconFormSet: (self iconFormSetNamed: #glamorousBookmark);
 			   children: (tags collect: [ :each | IceTipTreeTag on: each ]);
 			   yourself) }
 	"Branches group"
