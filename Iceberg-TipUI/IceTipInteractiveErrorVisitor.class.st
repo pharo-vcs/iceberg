@@ -87,7 +87,7 @@ IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneRemoteNotFound: anError [
 
-	context application
+	context application newInform
 		label: ('The clone remote {1} could not been found' format:
 				 { anError remoteUrl });
 		title: 'Clone action failed';
