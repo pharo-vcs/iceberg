@@ -30,6 +30,15 @@ IceNotYetClonedRepositoryFixture class >> inMemory [
 		yourself
 ]
 
+{ #category : 'private' }
+IceNotYetClonedRepositoryFixture >> deleteAllForcingClose [
+	"On windows it is possible we need to finalize everything before deleting the files. 
+	 We do not do it directly to avoid to lose too much speed"
+
+	Smalltalk garbageCollect.
+	self location ifNotNil: #ensureDeleteAll
+]
+
 { #category : 'initialization' }
 IceNotYetClonedRepositoryFixture >> ensureRemoteRepository [
 	
@@ -111,7 +120,8 @@ IceNotYetClonedRepositoryFixture >> tearDown [
 
 	[ self location ifNotNil: #ensureDeleteAll ]
 		on: CannotDeleteFileException
-		do: [ "On windows it is possible we need to finalize everything before deleting the files. We do not do it directly to avoid to lose too much speed"
-			Smalltalk garbageCollect.
-			self location ifNotNil: #ensureDeleteAll ]
+		do: [ 
+			"On windows it is possible we need to finalize everything before deleting the files. 
+			 We do not do it directly to avoid to lose too much speed"
+			self deleteAllForcingClose ]
 ]

@@ -12,6 +12,13 @@ Class {
 	#tag : 'Common-Fixtures'
 }
 
+{ #category : 'private' }
+IceClonedFromRemoteFixture >> deleteAllForcingClose [
+	
+	self repository free. 
+	super deleteAllForcingClose
+]
+
 { #category : 'accessing' }
 IceClonedFromRemoteFixture >> pushRepository [
 	^ pushRepository

@@ -39,6 +39,7 @@ IceTipCommitBrowserTest >> setUp [
 
 { #category : 'running' }
 IceTipCommitBrowserTest >> tearDown [
+
 	presenter ifNotNil: [ presenter window close ].
 	super tearDown 
 ]
@@ -154,6 +155,7 @@ IceTipCommitBrowserTest >> testIsCommittingWithTheRightMessage [
 { #category : 'tests' }
 IceTipCommitBrowserTest >> testIsNotAutomaticallySavingWhenNotChecked [
 	| previousState |
+	
 	previousState := presenter commentPanel isSaving.
 	presenter commentPanel saveOnCommit: false.
 	[
