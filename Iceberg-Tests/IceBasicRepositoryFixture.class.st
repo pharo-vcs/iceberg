@@ -26,6 +26,13 @@ IceBasicRepositoryFixture class >> inMemory [
 		yourself
 ]
 
+{ #category : 'private' }
+IceBasicRepositoryFixture >> deleteAllForcingClose [
+	
+	self repository free. 
+	super deleteAllForcingClose
+]
+
 { #category : 'initialization' }
 IceBasicRepositoryFixture >> initialize [
 	super initialize.
