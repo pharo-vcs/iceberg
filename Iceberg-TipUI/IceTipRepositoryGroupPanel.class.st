@@ -61,9 +61,11 @@ IceTipRepositoryGroupPanel >> defaultOutputPort [
 
 { #category : 'private' }
 IceTipRepositoryGroupPanel >> filteredItemsFor: pattern [
-
-	^ self allListItems select: [ :each | 
-		  each name asLowercase includesSubstring: pattern asLowercase ]
+	|orStrings|
+	orStrings := (pattern trim asLowercase substrings: '||') collect: #trim.
+	
+	^ self allListItems select: [ :repository | 
+		  orStrings anySatisfy: [:subPattern | repository name asLowercase includesSubstring: subPattern] ]
 ]
 
 { #category : 'testing' }
@@ -85,7 +87,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryFilter [
 
 	repositoryFilter := self newTextInput.
 	repositoryFilter 
-		placeholder: 'Filter...';
+		placeholder: 'Filter: name1 || name2 || name3 ...';
 		whenTextChangedDo: [ :text | self refreshRepositoryList ]
 		
 ]
