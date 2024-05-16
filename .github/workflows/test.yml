@@ -19,14 +19,14 @@ jobs:
       # Default value means that a failure in one OS cancels all 
       fail-fast: false
       matrix:
-        smalltalk: [ Pharo64-13 ]
+        smalltalk: [ Pharo64-alpha ]
         os: [ ubuntu-latest, macos-latest ]
         ston: [ .smalltalk.ston ]
         # Test Windows with some exclusions. 
         # At least a part of the problem is reported here: 
         # https://github.com/pharo-vcs/iceberg/issues/1394
         include:
-          - smalltalk: Pharo64-13
+          - smalltalk: Pharo64-alpha
             os: windows-latest
             ston: .smalltalk.windows.ston
     runs-on: ${{ matrix.os }}
