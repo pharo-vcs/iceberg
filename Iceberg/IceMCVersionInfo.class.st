@@ -80,7 +80,7 @@ IceMCVersionInfo >> fromPackage: aPackage message: commitMessage [
 	
 	To improve this implementation we should review the fileout process."
 
-	name := ('{1}-{2}.{3}' format: {aPackage name. Author fullName. 'unknown'}).
+	name := ('{1}-{2}.{3}' format: {aPackage name. 'CompatibleUserName'. 'unknown'}).
 	package := aPackage.
 	message := commitMessage.
 	id := UUID new
