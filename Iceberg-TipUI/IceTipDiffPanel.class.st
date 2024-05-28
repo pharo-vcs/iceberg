@@ -97,7 +97,7 @@ IceTipDiffPanel >> diffEntryRemoved: announcement [
 	no parent, but it's fine to just leave it there empty--though perhaps we should
 	close the browser instead in that case?"
 	[
-	parent parent notNil and: [
+	parent parent isNotNil and: [
 		parent isEmpty and: [
 			parent value isNoModification or: [
 				parent value definition isExtensionDefinition ] ] ] ] whileTrue: [
