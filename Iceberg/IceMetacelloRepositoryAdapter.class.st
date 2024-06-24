@@ -124,24 +124,6 @@ IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
 		  self }
 ]
 
-{ #category : 'MonticelloGUI' }
-IceMetacelloRepositoryAdapter >> morphicOpen: workingCopy [
-
-	| shouldOpenIceberg |
-	shouldOpenIceberg := 
-		SpApplication defaultApplication newConfirm
-			title: 'Browsing an iceberg repository';
-			label:  ('{1} belongs to {2} and cannot be browsed here. 
-Do you want to open the Iceberg Browser instead?' format: {
-					                      workingCopy packageName.
-					                      self repository name });
-			acceptLabel: 'Open';
-			cancelLabel: 'Cancel';
-		   openModal.
-	shouldOpenIceberg ifFalse: [ ^ self ].
-	IceTipRepositoriesBrowser new open
-]
-
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> packageNamed: aName [
 
