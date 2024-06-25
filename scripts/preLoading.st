@@ -17,7 +17,7 @@ Otherwise obsolete instances will stay".
 MCWorkingCopy registry becomeForward: (MCWorkingCopy registry select: [ :each | each packageName = 'MonticelloMocks' ]).
 
 "Remove iceberg from system (so I can reload it)"
-MetacelloPharoPlatform select.
+MetacelloPlatform select.
 
 #(
 	'Calypso-SystemPlugins-Monticello-Browser'
