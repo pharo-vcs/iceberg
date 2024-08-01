@@ -48,12 +48,6 @@ IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [
 ]
 
 { #category : 'accessing' }
-IceMetacelloRepositoryAdapter >> commitIdFor: aWorkingCopy ifFound: aBlock [
-
-	self flag: #pharoTodo. "Do nothing?"
-]
-
-{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> description [
 		
 	^ self repository origin url, '[', projectVersion, ']'
@@ -93,12 +87,6 @@ IceMetacelloRepositoryAdapter >> hasNoLoadConflicts: anMCGitBasedRepository [
 IceMetacelloRepositoryAdapter >> hash [
 	"Not a good hash, but is copied from MCRepository"
 	^ self description hash
-]
-
-{ #category : 'compatibility' }
-IceMetacelloRepositoryAdapter >> isCache [
-	"User for Kommiter and Versionner"
-	^ false
 ]
 
 { #category : 'compatibility' }
