@@ -133,10 +133,21 @@ IceTipNewRepositoryPanel >> titleForWindow [
 { #category : 'accessing' }
 IceTipNewRepositoryPanel >> validate [
 
-	self 
-		assert: self projectNameInputText text isNotEmpty  
-		description: 'You must enter a project name (it will be used also as part of the path).'.
+	self projectNameInputText text isNotEmpty ifFalse: [
+		self alert: 'You must enter a project name (it will be used also as part of the path).'.
+		^ false ].
+	
+	self projectLocation location isNotNil ifFalse: [
+		self alert: 'You must enter a project name (it will be used also as part of the path).'.
+		^ false ].
+	^true.
+
+	"self
+		assert: self projectNameInputText text isNotEmpty
+		description:
+		'You must enter a project name (it will be used also as part of the path).'.
 	self
-		assert: self projectLocation location isNotNil  
-		description: 'Project location must be defined (if it does not exists, it will be created).'
+		assert: self projectLocation location isNotNil
+		description:
+		'Project location must be defined (if it does not exists, it will be created).'"
 ]

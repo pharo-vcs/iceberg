@@ -19,6 +19,17 @@ Class {
 	#tag : 'View-Repository'
 }
 
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> accept [
+
+	[
+	self doAccept ifFalse: [ ^ false ].
+	self closeWindow ]
+		on: IceError , IceWarning
+		do: [ :e |
+			e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
+]
+
 { #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> allTypes [
 
@@ -37,7 +48,7 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 IceTipRegisterRepositoryDialogPresenter >> doAccept [
 
 	| newRepository |
-	self selectedType validate.
+	(self selectedType validate) ifFalse: [^false].
 	self isEditing ifTrue: [ self selectedType repository: repository ].
 	newRepository := self selectedType newRepository.
 	self isEditing ifFalse: [ newRepository register ].
