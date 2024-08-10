@@ -85,16 +85,14 @@ IceTipGitRepositoryPanel >> validate [
 
 	| remoteString |
 	remoteString := self remoteUrl.
-	remoteString isNotEmpty ifFalse: [
-		self alert: 'You must enter your project url.'.
-		^ false ].
-	(IceGitRemote isValidUrl: remoteString) ifFalse: [
-		self alert: 'You must enter your project url.'.
-		^ false ].
-
-	self projectLocation location ifNil: [
-		self alert:
-			'Project location must be defined (if it does not exists, it will be created).'.
-		^ false ].
-	^ true
+	self
+		assert: remoteString isNotEmpty
+		description: 'You must enter your project url.'.
+	self
+		assert: (IceGitRemote isValidUrl: remoteString)
+		description: 'The url is incorrect.'.
+	self
+		assert: self projectLocation location isNotNil
+		description:
+		'Project location must be defined (if it does not exists, it will be created).'
 ]
