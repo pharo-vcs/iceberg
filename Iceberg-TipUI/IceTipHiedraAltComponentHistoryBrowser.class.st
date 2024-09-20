@@ -11,11 +11,8 @@ Class {
 
 { #category : 'commands' }
 IceTipHiedraAltComponentHistoryBrowser >> availableCommands [ 
-	| rootGroup |
-	
-	rootGroup := self rootCommandsGroup.
-	IceTipCleanCommandGroupVisitor new visit: rootGroup.
-	^ rootGroup
+
+	^ self cleanRootsCommandGroup
 ]
 
 { #category : 'commands' }

@@ -58,7 +58,10 @@ IceTipRemoteActionBrowser >> initializeWindow: aWindow [
 
 	super initializeWindow: aWindow.
 	
-	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
+	aWindow
+		addShortcutWith: [ :action | action 
+			shortcutKey: $s actionModifier;
+			action: [ self accept ] ]
 ]
 
 { #category : 'initialization' }

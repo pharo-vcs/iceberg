@@ -25,6 +25,19 @@ IceTipDiffPanel class >> onDiff: aDiff [
 	^ self on: (IceTipCommitDiffModel on: aDiff)
 ]
 
+{ #category : 'initialization' }
+IceTipDiffPanel >> baseTreeActions [
+		
+	^ SpActionGroup new 
+		addShortcutWith: [ :action | action 
+			shortcutKey: KeyboardKey left asKeyCombination;
+			action: [ self handleArrowLeft ] ];
+		addShortcutWith: [ :action | action 
+			shortcutKey: KeyboardKey right asKeyCombination;
+			action: [ self handleArrowRight ] ];
+		yourself
+]
+
 { #category : 'accessing' }
 IceTipDiffPanel >> basicRefresh [
 
@@ -97,7 +110,7 @@ IceTipDiffPanel >> diffEntryRemoved: announcement [
 	no parent, but it's fine to just leave it there empty--though perhaps we should
 	close the browser instead in that case?"
 	[
-	parent parent notNil and: [
+	parent parent isNotNil and: [
 		parent isEmpty and: [
 			parent value isNoModification or: [
 				parent value definition isExtensionDefinition ] ] ] ] whileTrue: [
@@ -182,10 +195,7 @@ IceTipDiffPanel >> initializeTree [
 		addColumn: self changeListColumn;
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ self selectionChanged ];
-		bindKeyCombination: Character arrowLeft asKeyCombination 
-			toAction: [ self handleArrowLeft ];
-		bindKeyCombination: Character arrowRight asKeyCombination 
-			toAction: [ self handleArrowRight ].
+		actions: self baseTreeActions
 ]
 
 { #category : 'accessing' }
@@ -256,6 +266,15 @@ IceTipDiffPanel >> subscribeToAnnouncements [
 IceTipDiffPanel >> titleForWindow [
 
 	^ 'Diff'
+]
+
+{ #category : 'accessing - ui' }
+IceTipDiffPanel >> treeActions: anActionGroup [ 
+	
+	iceNodesTree actions: (SpActionGroup new 
+		add: anActionGroup beDisplayedAsGroup beRoot;
+		add: self baseTreeActions beRoot;
+		yourself)
 ]
 
 { #category : 'initialization' }

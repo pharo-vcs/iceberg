@@ -87,9 +87,9 @@ IceTipAddNewPackagesDialogPresenter >> initializePackagesList [
 				beNotExpandable;
 				yourself);
 			addColumn: (SpStringTableColumn new
-				evaluated: [:e | e name];
+				evaluated: [ :each | each name ];
 				yourself));
-		contextMenu: [ (self rootCommandsGroup / 'package list commands') beRoot asMenuPresenter ]
+		actions: self rootCommandsGroup / 'package list commands'
 ]
 
 { #category : 'initialization' }

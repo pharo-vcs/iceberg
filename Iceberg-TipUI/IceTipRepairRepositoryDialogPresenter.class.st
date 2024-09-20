@@ -66,10 +66,9 @@ IceTipRepairRepositoryDialogPresenter >> initializeDialogWindow: aWindow [
 	self refreshDialogButtons.	
 	
 	aWindow 
-		bindKeyCombination: Character cr asShortcut toAction: [ 
-			selectedOption ifNotNil: [self accept] ]
-
-
+		addShortcutWith: [ :action | action 
+			shortcutKey: KeyboardKey enter asKeyCombination;
+			action: [ self accept ] ]
 ]
 
 { #category : 'initialization' }

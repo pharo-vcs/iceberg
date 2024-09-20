@@ -232,10 +232,9 @@ IceTipRepositoriesBrowser >> refreshCommands [
 	| rootGroup |
 
 	rootGroup := self visibleRootCommandsGroup.
+	self window actions: rootGroup.
 
-	self
-		refreshShortcutsWith: rootGroup;
-		refreshToolbarWith: rootGroup
+	self refreshToolbarWith: rootGroup
 ]
 
 { #category : 'accessing' }
@@ -294,9 +293,6 @@ IceTipRepositoriesBrowser >> updatePresenter [
 
 { #category : 'commands' }
 IceTipRepositoriesBrowser >> visibleRootCommandsGroup [
-	| rootGroup |	
-		
-	rootGroup := self rootCommandsGroup.
-	IceTipCleanCommandGroupVisitor new visit: rootGroup.
-	^ rootGroup
+
+	^ self cleanRootsCommandGroup
 ]

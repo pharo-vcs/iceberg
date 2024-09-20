@@ -87,6 +87,7 @@ IceGitHubTipPullRequestBrowser >> commits [
 IceGitHubTipPullRequestBrowser >> connectPresenters [
 
 	super connectPresenters.
+
 	self commits whenSelectionChangedDo: [ :selection | 
 		self diff selectedModel: selection selectedItem ].
 

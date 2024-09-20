@@ -66,7 +66,7 @@ IceTipBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aComm
 { #category : 'commands' }
 IceTipBrowser class >> generalCommandGroupName [
 
-	^ 'General'
+	^ 'Actions'
 ]
 
 { #category : 'commands' }
@@ -82,9 +82,23 @@ IceTipBrowser class >> selectionExtraCommandGroupName [
 ]
 
 { #category : 'initialization' }
-IceTipBrowser >> connectPresenters [
+IceTipBrowser >> cleanRootsCommandGroup [
+	| rootGroup |
 
-	self mainList whenSelectionChangedDo: [ self refreshCommands ]
+	rootGroup := self rootCommandsGroup.
+	IceTipCleanCommandGroupVisitor new visit: rootGroup.
+	^ rootGroup
+
+]
+
+{ #category : 'initialization' }
+IceTipBrowser >> connectPresenters [
+	| rootGroup |
+
+	rootGroup := self cleanRootsCommandGroup.
+	self
+		refreshShortcutsWith: rootGroup;
+		refreshMainListContextMenuWith: rootGroup
 ]
 
 { #category : 'initialization' }
@@ -134,6 +148,21 @@ IceTipBrowser >> mainList [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'accessing - ui' }
+IceTipBrowser >> mainListActions: anActionGroup [
+
+	self mainListDefaultActions 
+		ifNotNil: [ :defaultActionsGroup | anActionGroup add: defaultActionsGroup ].
+
+	self mainList actions: anActionGroup
+]
+
+{ #category : 'private' }
+IceTipBrowser >> mainListDefaultActions [
+	
+	^ nil
+]
+
 { #category : 'accessing' }
 IceTipBrowser >> model [
 
@@ -153,26 +182,26 @@ IceTipBrowser >> refresh [
 
 { #category : 'commands' }
 IceTipBrowser >> refreshCommands [
-	| rootGroup |
 
-	rootGroup := self rootCommandsGroup.
-	IceTipCleanCommandGroupVisitor new visit: rootGroup.
-
-	self
-		refreshShortcutsWith: rootGroup;
-		refreshMainListContextMenuWith: rootGroup;
-		refreshToolbarWith: rootGroup.
-
+	self refreshToolbarWith: self cleanRootsCommandGroup
 ]
 
 { #category : 'commands' }
 IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
 	"Update context menu (for mainList)."
+	| actionGroup |
 
+	actionGroup := SpActionGroup new.
 	rootGroup
 		commandOrGroupNamed: self class selectionCommandGroupName
 		ifFound: [ :subgroup |
-			self mainList contextMenuFromCommandsGroup: subgroup ].
+			actionGroup add: subgroup beDisplayedAsGroup ].
+	rootGroup
+		commandOrGroupNamed: self class generalCommandGroupName
+		ifFound: [ :subgroup |
+			actionGroup add: subgroup beDisplayedAsSubMenu ].
+		
+	self mainListActions: actionGroup
 ]
 
 { #category : 'commands' }
