@@ -55,21 +55,19 @@ IceMCVersionInfo >> fromCommit: aCommit package: aPackage [
 	"See #fromPackage:message:"
 	commit := aCommit.
 	package := aPackage.
-	
+
    	date := commit datetime asDate.
    	time := commit datetime asTime.
-	
+
 	name := ('{1}-{2}.{3}' format: {
 		package name. 
 		commit compatibleUsername. 
 		commit datetime asUnixTime 
 	}).
-	
+
 	id := self class uuidFromCommit: aCommit package: aPackage.
 
-   	message := commit comment.
-   	author := commit compatibleUsername
-
+   	message := commit comment
 ]
 
 { #category : 'initialization' }
@@ -80,7 +78,7 @@ IceMCVersionInfo >> fromPackage: aPackage message: commitMessage [
 	
 	To improve this implementation we should review the fileout process."
 
-	name := ('{1}-{2}.{3}' format: {aPackage name. Author fullName. 'unknown'}).
+	name := ('{1}-{2}.{3}' format: {aPackage name. 'CompatibleUserName'. 'unknown'}).
 	package := aPackage.
 	message := commitMessage.
 	id := UUID new

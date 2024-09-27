@@ -48,12 +48,6 @@ IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [
 ]
 
 { #category : 'accessing' }
-IceMetacelloRepositoryAdapter >> commitIdFor: aWorkingCopy ifFound: aBlock [
-
-	self flag: #pharoTodo. "Do nothing?"
-]
-
-{ #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> description [
 		
 	^ self repository origin url, '[', projectVersion, ']'
@@ -96,12 +90,6 @@ IceMetacelloRepositoryAdapter >> hash [
 ]
 
 { #category : 'compatibility' }
-IceMetacelloRepositoryAdapter >> isCache [
-	"User for Kommiter and Versionner"
-	^ false
-]
-
-{ #category : 'compatibility' }
 IceMetacelloRepositoryAdapter >> isRemote [
 	"User for Komitter"
 	^ false
@@ -122,24 +110,6 @@ IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
 	^ {
 		  found.
 		  self }
-]
-
-{ #category : 'MonticelloGUI' }
-IceMetacelloRepositoryAdapter >> morphicOpen: workingCopy [
-
-	| shouldOpenIceberg |
-	shouldOpenIceberg := 
-		SpApplication defaultApplication newConfirm
-			title: 'Browsing an iceberg repository';
-			label:  ('{1} belongs to {2} and cannot be browsed here. 
-Do you want to open the Iceberg Browser instead?' format: {
-					                      workingCopy packageName.
-					                      self repository name });
-			acceptLabel: 'Open';
-			cancelLabel: 'Cancel';
-		   openModal.
-	shouldOpenIceberg ifFalse: [ ^ self ].
-	IceTipRepositoriesBrowser new open
 ]
 
 { #category : 'accessing' }

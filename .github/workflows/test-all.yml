@@ -9,12 +9,12 @@ env:
 
 on:
   push:
-    branches: [ Pharo12 ]
+    branches: [ Pharo13 ]
     paths-ignore:
     - 'README.md'
     - 'docs/**'
   pull_request:
-    branches: [ Pharo12 ]
+    branches: [ Pharo13 ]
     paths-ignore:
     - 'README.md'
     - 'docs/**'
@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        smalltalk: [ Pharo64-12 ]
+        smalltalk: [ Pharo64-alpha ]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
     steps:

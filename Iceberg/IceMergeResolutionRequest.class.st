@@ -9,24 +9,6 @@ Class {
 	#tag : 'Errors'
 }
 
-{ #category : 'exception description' }
-IceMergeResolutionRequest >> defaultAction [
-
-	| window mergeMorph |
-	mergeMorph := (IceTipMergeMorph forMerger: merge).
-
-	mergeMorph
-		fromDescription: merge sourceDescription;
-		toDescription: merge targetDescription.
-
-	window := mergeMorph newWindow
-		title: 'Merge';
-		yourself.
-
-	window openModal.
-	^ mergeMorph merged
-]
-
 { #category : 'accessing' }
 IceMergeResolutionRequest >> merge [
 	^ merge

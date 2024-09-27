@@ -70,12 +70,6 @@ IcePackage >> currentCommits [
 	^ workingCopy referenceCommits
 ]
 
-{ #category : 'accessing' }
-IcePackage >> directoryName [
-
-	^ self repository directoryNameForPackage: self
-]
-
 { #category : 'comparing' }
 IcePackage >> hash [
 	^ self name hash

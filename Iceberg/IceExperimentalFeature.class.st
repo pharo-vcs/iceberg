@@ -6,9 +6,9 @@ This is useful to guarantee the correct keeping of the changes.
 Class {
 	#name : 'IceExperimentalFeature',
 	#superclass : 'IceWarning',
-	#category : 'Iceberg-TipUI-Exceptions',
-	#package : 'Iceberg-TipUI',
-	#tag : 'Exceptions'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
 { #category : 'visiting' }

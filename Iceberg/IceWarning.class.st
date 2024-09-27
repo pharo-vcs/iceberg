@@ -1,12 +1,12 @@
 "
-I'm a general warning in the context of iceberg UI.
+I'm a general warning in the context of iceberg.
 "
 Class {
 	#name : 'IceWarning',
 	#superclass : 'Warning',
-	#category : 'Iceberg-TipUI-Exceptions',
-	#package : 'Iceberg-TipUI',
-	#tag : 'Exceptions'
+	#category : 'Iceberg-Errors',
+	#package : 'Iceberg',
+	#tag : 'Errors'
 }
 
 { #category : 'visiting' }
