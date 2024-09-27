@@ -19,12 +19,6 @@ MCGitHubRepository class >> commitIdFor: aWorkingCopy [
 ]
 
 { #category : '*Iceberg-Adapters' }
-MCGitHubRepository >> commitIdFor: aMCWorkingCopy ifFound: aBlockClosure [ 
-	(aMCWorkingCopy repositoryGroup includes: self)
-		ifTrue: [ aBlockClosure value: self commitId ]
-]
-
-{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> httpsUrl [
 	^ 'https://github.com/', projectPath, '.git'
 ]
