@@ -69,6 +69,15 @@ IceTipRepositoryBrowser class >> onRepositoryNamed: aString [
 	^ self onRepository: (IceRepository registry detect: [ :each | each name = aString ])
 ]
 
+{ #category : 'opening' }
+IceTipRepositoryBrowser class >> openOnCommit: commit [
+
+	^ (self onRepository: commit repository)
+		open;
+		selectCommit: commit scrollToSelection: true;
+		yourself
+]
+
 { #category : 'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
@@ -153,6 +162,12 @@ IceTipRepositoryBrowser >> refreshWhenRepository: ann [
 	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
 	self model reset.
 	self updatePresenter
+]
+
+{ #category : 'selection' }
+IceTipRepositoryBrowser >> selectCommit: commit scrollToSelection: shouldScrollToSelection [
+
+	self historyPanel selectCommit: commit scrollToSelection: shouldScrollToSelection
 ]
 
 { #category : 'initialization' }
