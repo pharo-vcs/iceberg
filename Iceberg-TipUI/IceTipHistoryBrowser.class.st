@@ -152,6 +152,13 @@ IceTipHistoryBrowser >> refreshTags [
 	commitList refresh
 ]
 
+{ #category : 'selection' }
+IceTipHistoryBrowser >> selectCommit: commit scrollToSelection: shouldScrollToSelection [
+
+	self commitList selectIndex: (self commitList items detectIndex: [ :item | item commit = commit ])
+		scrollToSelection: shouldScrollToSelection
+]
+
 { #category : 'accessing' }
 IceTipHistoryBrowser >> selectedCommit [
 

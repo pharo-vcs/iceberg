@@ -31,7 +31,7 @@ IceTipVersionHistoryBrowser class >> buildGeneralCommandGroupWith: presenter for
 { #category : 'commands' }
 IceTipVersionHistoryBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
 
-	{ 	IceTipInstallVersionCommand }
+	{ 	IceTipInstallVersionCommand. IceTipBrowseCommitCommand }
 			do: [ :each |
 				aCommandGroup register: (each forSpecContext: presenter) ]
 
