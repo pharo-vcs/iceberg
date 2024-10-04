@@ -95,7 +95,8 @@ IceTipBrowser >> cleanRootsCommandGroup [
 IceTipBrowser >> connectPresenters [
 	| rootGroup |
 
-	rootGroup := self cleanRootsCommandGroup.
+	"rootGroup := self cleanRootsCommandGroup."
+	rootGroup := self rootCommandsGroup.
 	self
 		refreshShortcutsWith: rootGroup;
 		refreshMainListContextMenuWith: rootGroup
@@ -195,7 +196,7 @@ IceTipBrowser >> refreshMainListContextMenuWith: rootGroup [
 	rootGroup
 		commandOrGroupNamed: self class selectionCommandGroupName
 		ifFound: [ :subgroup |
-			actionGroup add: subgroup beDisplayedAsGroup ].
+			actionGroup add: subgroup beDisplayedAsGroup beRoot ].
 	rootGroup
 		commandOrGroupNamed: self class generalCommandGroupName
 		ifFound: [ :subgroup |

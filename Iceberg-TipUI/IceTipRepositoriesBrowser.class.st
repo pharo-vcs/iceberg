@@ -294,5 +294,5 @@ IceTipRepositoriesBrowser >> updatePresenter [
 { #category : 'commands' }
 IceTipRepositoriesBrowser >> visibleRootCommandsGroup [
 
-	^ self cleanRootsCommandGroup
+	^ self rootCommandsGroup
 ]

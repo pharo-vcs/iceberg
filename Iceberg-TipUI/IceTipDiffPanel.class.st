@@ -270,9 +270,9 @@ IceTipDiffPanel >> titleForWindow [
 
 { #category : 'accessing - ui' }
 IceTipDiffPanel >> treeActions: anActionGroup [ 
-	
+
 	iceNodesTree actions: (SpActionGroup new 
-		add: anActionGroup beDisplayedAsGroup beRoot;
+		add: anActionGroup beRoot;
 		add: self baseTreeActions beRoot;
 		yourself)
 ]
