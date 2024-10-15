@@ -26,15 +26,10 @@ IceTipCredentialsSettings class >> editButtonState [
 IceTipCredentialsSettings class >> settingsOn: aBuilder [
 	<systemsettings>
 
-	(aBuilder group: #EditCredentials)
+	(aBuilder button: #editButtonAction)
 		parent: #icebergCredentials;
 		noOrdering;
 		target: self;
 		label: 'Current list of credentials';
-		dialog: [
-			PluggableButtonMorph
-				on: self
-				getState: nil
-				action: #editButtonAction
-				label: #editButtonLabel ]
+		buttonLabel: self editButtonLabel 
 ]
