@@ -118,8 +118,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			title: 'Branch';
 			evaluated: #branchName;
 			yourself);
-		contextMenu: [ self selectionCommandsGroup ifNotNil: [ :group | group beRoot asMenuPresenter ] ];
-		contextKeyBindings: self keyBindingsCommandsGroup asKMCategory;
+		actions: self selectionCommandsGroup;
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
 ]
@@ -130,14 +129,6 @@ IceTipRepositoryGroupPanel >> isShowingRepository: anIceLibgitRepository [
 	
 	^ repositoryList items anySatisfy: [ :aRepositoryModel | 
 		  aRepositoryModel entity = anIceLibgitRepository ]
-]
-
-{ #category : 'private' }
-IceTipRepositoryGroupPanel >> keyBindingsCommandsGroup [
-
-	^ self rootCommandsGroup
-		commandOrGroupNamed: IceTipRepositoriesBrowser selectionCommandGroupName
-		ifNone: [ nil ]
 ]
 
 { #category : 'actions' }
@@ -186,7 +177,7 @@ IceTipRepositoryGroupPanel >> selectedItem [
 { #category : 'private' }
 IceTipRepositoryGroupPanel >> selectionCommandsGroup [ 
 
-	^ self visibleRootCommandsGroup
+	^ self rootCommandsGroup
 		commandOrGroupNamed: IceTipRepositoriesBrowser selectionCommandGroupName
 		ifNone: [ nil ]
 ]

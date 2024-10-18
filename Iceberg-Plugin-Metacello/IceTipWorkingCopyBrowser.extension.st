@@ -4,7 +4,7 @@ Extension { #name : 'IceTipWorkingCopyBrowser' }
 IceTipWorkingCopyBrowser class >> metacelloCommandsWith: presenter forRootGroup: aCommandGroup [
 	<extensionCommands>
 	| newGroup |
-	
+
 	newGroup := CmCommandGroup forSpec
 		name: 'Metacello';
 		description: 'Metacello install operations';

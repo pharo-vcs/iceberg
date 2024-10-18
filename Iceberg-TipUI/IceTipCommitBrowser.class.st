@@ -160,13 +160,14 @@ IceTipCommitBrowser >> initialize [
 IceTipCommitBrowser >> initializeAcceptShortcut [
 
 	self
-		bindKeyCombination: $s meta
-		toAction: [ self accept ].
+		addShortcutWith: [ :action | action 
+			shortcutKey: $s actionModifier;
+			action: [ self accept ] ].
 		
 	commentPanel commentText
-		bindKeyCombination: $s meta
-		toAction: [ self accept ].
-
+		addShortcutWith: [ :action | action 
+			shortcutKey: $s actionModifier;
+			action: [ self accept ] ]
 ]
 
 { #category : 'initialization' }
@@ -185,8 +186,11 @@ IceTipCommitBrowser >> initializePresenters [
 { #category : 'initialization' }
 IceTipCommitBrowser >> initializeWindow: aWindow [
 
-	super initializeWindow: aWindow.
-	aWindow bindKeyCombination: $s meta toAction: [ self accept ]
+	super initializeWindow: aWindow.	
+	aWindow addShortcutWith: [ :action | action 
+		shortcutKey: $s actionModifier;
+		action: [ self accept ] ].
+
 ]
 
 { #category : 'accessing - ui' }
@@ -194,6 +198,13 @@ IceTipCommitBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ diffPanel iceNodesTree
+]
+
+{ #category : 'accessing - ui' }
+IceTipCommitBrowser >> mainListActions: anActionGroup [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ diffPanel treeActions: anActionGroup
 ]
 
 { #category : 'accessing' }

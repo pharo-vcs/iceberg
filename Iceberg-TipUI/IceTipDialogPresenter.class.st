@@ -30,5 +30,7 @@ IceTipDialogPresenter >> initializeDialogWindow: aWindow [
 	aWindow 
 		okAction: [ self accept ];
 		cancelAction: [ self cancel ]; 
-		bindKeyCombination: Character escape asShortcut toAction: [ self cancel ]
+		addShortcutWith: [ :action | action 
+			shortcutKey: KeyboardKey escape asKeyCombination;
+			action: [ self cancel ] ]
 ]

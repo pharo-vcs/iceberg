@@ -69,8 +69,7 @@ IceTipCherrypickPreviewBrowser >> initialExtentForWindow [
 { #category : 'initialization' }
 IceTipCherrypickPreviewBrowser >> initializePresenters [
 
-	diffPanel := self
-		instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).
+	diffPanel := self instantiate: (IceTipMergeSelectingPanel onDiff: self model diff).
 	buttonBar := self newButtonBar.
 	buttonBar add: self newActionButton.
 
@@ -83,6 +82,13 @@ IceTipCherrypickPreviewBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
 
 	^ diffPanel iceNodesTree
+]
+
+{ #category : 'accessing - ui' }
+IceTipCherrypickPreviewBrowser >> mainListActions: anActionGroup [
+	"Answer the presenter that is the main list of items of this browser."
+
+	^ diffPanel mainListActions: anActionGroup
 ]
 
 { #category : 'accessing' }

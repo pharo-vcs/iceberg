@@ -34,6 +34,16 @@ IceTipDiffSelectingPanel >> activateItem: iceNode [
 ]
 
 { #category : 'initialization' }
+IceTipDiffSelectingPanel >> baseTreeActions [ 
+
+	^ super baseTreeActions
+		addShortcutWith: [ :action | action 
+			shortcutKey: Character space asKeyCombination;
+			action: [ self toggleActivationItem: iceNodesTree selectedItem ] ];
+		yourself
+]
+
+{ #category : 'initialization' }
 IceTipDiffSelectingPanel >> changeListColumn [
 
 	^ SpCompositeTableColumn new
@@ -72,15 +82,6 @@ IceTipDiffSelectingPanel >> initialize [
 		checkedIceNodes add: root.
 		root allChildrenDo: [ :child | checkedIceNodes add: child ] ]
 
-]
-
-{ #category : 'initialization' }
-IceTipDiffSelectingPanel >> initializeTree [
-
-	super initializeTree.
-	iceNodesTree 
-		bindKeyCombination: Character space asKeyCombination 
-		toAction: [ self toggleActivationItem: iceNodesTree selectedItem ]
 ]
 
 { #category : 'accessing' }

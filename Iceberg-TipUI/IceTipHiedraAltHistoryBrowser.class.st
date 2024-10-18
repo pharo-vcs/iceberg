@@ -11,11 +11,8 @@ Class {
 
 { #category : 'commands' }
 IceTipHiedraAltHistoryBrowser >> availableCommands [ 
-	| rootGroup |
-	
-	rootGroup := self rootCommandsGroup.
-	IceTipCleanCommandGroupVisitor new visit: rootGroup.
-	^ rootGroup
+
+	^ self cleanRootsCommandGroup
 ]
 
 { #category : 'commands' }
@@ -24,7 +21,7 @@ IceTipHiedraAltHistoryBrowser >> contextMenuCommands [
 	self availableCommands
 		commandOrGroupNamed: self class selectionCommandGroupName
 		ifFound: [ :subgroup | 
-			^ subgroup beRoot asMenuPresenter ].
+			^ subgroup beRoot ].
 		
 	self error: 'Should not arrive here'
 ]
@@ -98,7 +95,7 @@ IceTipHiedraAltHistoryBrowser >> initializeHiedraColumn [
 IceTipHiedraAltHistoryBrowser >> initializePresenters [
 
 	commitList := self newTable.
-	commitList contextMenu: [ self contextMenuCommands ].
+	commitList actions: self contextMenuCommands.
 	
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
 	

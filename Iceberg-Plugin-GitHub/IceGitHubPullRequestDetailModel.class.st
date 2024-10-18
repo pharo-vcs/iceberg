@@ -172,7 +172,7 @@ IceGitHubPullRequestDetailModel >> newChecksTable [
 			evaluated: [ :aStatus | aStatus at: 'description' ];
 			yourself);
 		beResizable;
-		contextMenu: [ (self rootCommandsGroup / 'checks commands') beRoot asMenuPresenter ]
+		actions: (self rootCommandsGroup / 'checks commands')
 ]
 
 { #category : 'accessing' }
