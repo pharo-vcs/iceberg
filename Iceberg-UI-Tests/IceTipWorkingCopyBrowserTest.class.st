@@ -19,7 +19,7 @@ IceTipWorkingCopyBrowserTest class >> isAbstract [
 IceTipWorkingCopyBrowserTest >> contextMenuForIndex: index [
 
 	presenter packagesTable selectIndex: index.
-	^ presenter packagesTable contextMenu value.
+	^ presenter packagesTable actions.
 ]
 
 { #category : 'running' }
@@ -54,7 +54,7 @@ IceTipWorkingCopyBrowserTest >> testPackageHasBrowseRepositoryVersionOption [
 	| menu |
 	
 	menu := self contextMenuForIndex: 1.
-	self assert: (menu defaultGroup menuItems anySatisfy: [ :e | e name = 'Browse this version in Monticello' ])
+	self assert: (menu allCommands anySatisfy: [ :e | e name = 'Browse this version in Monticello' ])
 ]
 
 { #category : 'tests' }

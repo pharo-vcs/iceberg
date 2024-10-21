@@ -181,8 +181,9 @@ IceTipCritiquesBeforeCommitBrowser >> initializeDialogWindow: aWindow [
 	aWindow buttons third label: 'Commit'.
 	
 	aWindow 
-		bindKeyCombination: Character cr asShortcut toAction: [ self accept].
-
+		addShortcutWith: [ :action | action 
+			shortcutKey: KeyboardKey enter asKeyCombination;
+			action: [ self accept ] ]
 ]
 
 { #category : 'initialization' }

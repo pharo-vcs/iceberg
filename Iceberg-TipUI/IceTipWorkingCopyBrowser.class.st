@@ -78,10 +78,10 @@ IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 IceTipWorkingCopyBrowser >> connectPresenters [
 
 	super connectPresenters.
+
 	filterInput
 		placeholder: 'Filter...';
 		whenTextChangedDo: [ :text | self refreshPackagesTable ]
-
 ]
 
 { #category : 'layout' }

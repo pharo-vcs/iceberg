@@ -2,18 +2,19 @@ Extension { #name : 'IceTipRepositoriesBrowser' }
 
 { #category : '*Iceberg-Plugin-Metacello' }
 IceTipRepositoriesBrowser class >> metacelloCommandsWith: presenter forRootGroup: aCommandGroup [
-
 	<extensionCommands>
 	| newGroup |
-	newGroup := CmCommandGroup forSpec
+
+	newGroup := SpDynamicActionGroup new
 		name: 'Metacello';
 		description: 'Metacello install operations';
+		with: [ :aGroup |
+			presenter selectedItem ifNotNil: [ 
+				IceTipMetacelloInstallCommandBuilder new
+					addCommandsFor: presenter selectedItem 
+					intoGroup: aGroup 
+					context: presenter ] ];
 		yourself.
 	
-	(aCommandGroup commandOrGroupNamed: 'Selection') register: newGroup.
-
-	presenter selectedItem ifNotNil: [ 
-		IceTipMetacelloInstallCommandBuilder new
-			addCommandsFor: presenter selectedItem intoGroup: newGroup context: presenter ]	
-
+	(aCommandGroup commandOrGroupNamed: 'Selection') register: newGroup
 ]

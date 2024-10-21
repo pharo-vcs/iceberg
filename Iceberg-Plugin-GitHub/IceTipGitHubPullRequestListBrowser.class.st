@@ -59,6 +59,7 @@ IceTipGitHubPullRequestListBrowser class >> taskbarIconName [
 IceTipGitHubPullRequestListBrowser >> connectPresenters [
 
 	super connectPresenters.
+
 	self pullRequests
 		activateOnDoubleClick;
 		whenActivatedDo: [ :selection | self strongSelection: selection ];
