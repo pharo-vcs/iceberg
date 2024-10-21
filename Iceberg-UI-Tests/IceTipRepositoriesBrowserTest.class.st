@@ -182,10 +182,10 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuHasPackagesOptionEnabled 
 	| menu |
 	
 	presenter projectsPanelRepositoryList selectIndex: 1.
-	menu := presenter projectsPanelRepositoryList contextMenu value.
+	menu := presenter projectsPanelRepositoryList actions.
 	
-	self assert: (menu defaultGroup menuItems at: 1) name equals: 'Packages'.
-	self assert: (menu defaultGroup menuItems at: 1) isEnabled
+	self assert: (menu allCommands anySatisfy: [ :each | each name = 'Packages' ]).
+	self assert: (menu allCommands detect: [ :each | each name = 'Packages' ]) canBeExecuted
 ]
 
 { #category : 'tests - context menu' }
@@ -193,10 +193,10 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuHasRepairRepositoryOption
 
 	| menu |
 	presenter projectsPanelRepositoryList selectIndex: 1.
-	menu := presenter projectsPanelRepositoryList contextMenu value.
+	menu := presenter projectsPanelRepositoryList actions.
 
-	self deny: (menu defaultGroup menuItems anySatisfy: [ :each | 
-			 each name = IceTipRepairCommand defaultName ])
+	self assert: (menu allCommands anySatisfy: [ :each | each name = IceTipRepairCommand defaultName ]).
+	self deny: (menu allCommands detect: [ :each | each name = IceTipRepairCommand defaultName ]) canBeExecuted	
 ]
 
 { #category : 'tests - context menu' }
@@ -205,9 +205,9 @@ IceTipRepositoriesBrowserTest >> testListHasContextMenuOnSelection [
 	| menu |
 
 	presenter projectsPanelRepositoryList selectIndex: 1.
-	menu := presenter projectsPanelRepositoryList contextMenu value.
+	menu := presenter projectsPanelRepositoryList actions.
 	
-	self assert: menu defaultGroup menuItems isNotEmpty
+	self assert: (menu allCommands select: [ :each | each canBeExecuted ]) isNotEmpty
 ]
 
 { #category : 'tests - table' }
