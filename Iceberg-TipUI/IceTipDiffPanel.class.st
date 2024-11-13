@@ -8,9 +8,8 @@ also #elements answer should be a collection of elements that also understand el
 "
 Class {
 	#name : 'IceTipDiffPanel',
-	#superclass : 'IceTipPresenter',
+	#superclass : 'IceTipBrowser',
 	#instVars : [
-		'model',
 		'diffPanel',
 		'iceNodesTree'
 	],
@@ -18,6 +17,20 @@ Class {
 	#package : 'Iceberg-TipUI',
 	#tag : 'View-Branch'
 }
+
+{ #category : 'commands' }
+IceTipDiffPanel class >> buildGeneralCommandGroupWith: presenter for:  aCommandGroup [
+
+	"Nothing to add"
+]
+
+{ #category : 'commands' }
+IceTipDiffPanel class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [ 
+	{
+		IceTipBrowseCommand.
+		IceTipInspectCommand } do: [ :each |
+		aCommandGroup register: (each forSpecContext: presenter)]
+]
 
 { #category : 'instance creation' }
 IceTipDiffPanel class >> onDiff: aDiff [
@@ -202,6 +215,12 @@ IceTipDiffPanel >> initializeTree [
 IceTipDiffPanel >> leftLabel: aString [
 
 	diffPanel leftLabel: aString.
+]
+
+{ #category : 'accessing - ui' }
+IceTipDiffPanel >> mainList [ 
+
+^iceNodesTree 
 ]
 
 { #category : 'accessing' }
