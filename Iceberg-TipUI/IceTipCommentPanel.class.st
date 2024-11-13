@@ -112,7 +112,7 @@ IceTipCommentPanel >> initializePresenters [
 				enabled: false ].
 
 	commentText := self newText
-		placeholder: 'A comment for your commit';
+		text: 'Branch: ', repositoryModel branchName, ',  Fix #' 
 		yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
