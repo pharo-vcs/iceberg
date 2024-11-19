@@ -167,7 +167,9 @@ IceGitHubNewBranchFromIssuePanel >> updateText: aString [
 { #category : 'private' }
 IceGitHubNewBranchFromIssuePanel >> useRemote: aRemoteModel [
 
-	self selectRemoteModel useRemote: aRemoteModel
+	self selectRemoteModel useRemote: aRemoteModel.
+	self validateIssue: issueNumberText text
+
 ]
 
 { #category : 'accessing' }
