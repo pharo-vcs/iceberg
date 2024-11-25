@@ -86,7 +86,7 @@ IceTipLocalRepositoryPanel >> validate [
 
 	self
 		assert: self location isNotNil
-		description: 'Project location must exist!'.
+		description: 'Please provide a location!'.
 	self
 		assert: self location exists
 		description: 'Project location must exist!'.
