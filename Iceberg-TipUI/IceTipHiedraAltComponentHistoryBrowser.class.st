@@ -73,12 +73,6 @@ IceTipHiedraAltComponentHistoryBrowser >> initializePresenters [
 ]
 
 { #category : 'initialization' }
-IceTipHiedraAltComponentHistoryBrowser >> initializeWindow: aWindowPresenter [
-
-	super initializeWindow: aWindowPresenter.
-]
-
-{ #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> newCommitRow: index commit: item [ 
 	
 	^ self 

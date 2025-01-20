@@ -26,7 +26,7 @@ Class {
 { #category : 'accessing' }
 IceTipEditProjectDialogPresenter class >> defaultPreferredExtent [
 
-	^ (475 @ 525) scaledByDisplayScaleFactor
+	^ 475 @ 525
 ]
 
 { #category : 'actions' }
