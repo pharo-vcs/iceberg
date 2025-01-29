@@ -32,6 +32,18 @@ IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: pres
 	
 ]
 
+{ #category : 'commands' }
+IceTipCritiquesBeforeCommitBrowser class >> onApplication: anApplication model: aModel commitModel: aCommitModel acceptBlock: anAcceptBlock [
+
+	^ self basicNew
+		  application: anApplication;
+		  setModelBeforeInitialization: aModel;
+		  commitModel: aCommitModel;
+		  onAccept: anAcceptBlock;
+		  initialize;
+		  yourself
+]
+
 { #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> accept [
 
