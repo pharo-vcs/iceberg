@@ -96,19 +96,18 @@ IceTipPresenterMetaTest >> testDefaultSpecDoesntUsePragma [
 { #category : 'tests' }
 IceTipPresenterMetaTest >> testDoNotImplementDiscouragedSelectors [
 
-	"Either instance or class-side, the old #title is named #titleForWindow in inst-side."
-	self assertEmpty: (self presenterClassesDefining: #title isMeta: true).
-	self assertEmpty: (self presenterClassesDefining: #title isMeta: false).
+	"Either instance the old #title is named #windowTitle in inst-side."
+	self assertEmpty: (self presenterClassesDefining: #windowTitle isMeta: true).
 
-	"The #icon is called #iconForWindow in IceTip UI."
-	self assertEmpty: (self presenterClassesDefining: #icon isMeta: true).
+	"The #icon is called #windowIcon in IceTip UI."
+	self assertEmpty: (self presenterClassesDefining: #windowIcon isMeta: true).
 
 	"These methods are not yet deprecated via pragma, but discouraged in Spec2."
 	self assertEmpty: (self presenterClassesDefining: #initialExtent isMeta: false).
 	self assertEmpty: (self presenterClassesDefining: #initializeWidgets isMeta: false).
 	self assertEmpty: (self presenterClassesDefining: #initializePresenter isMeta: false).
 
-	self assertEmpty: (self presenterClassesDefining: #windowIcon isMeta: false).
+
 
 
 ]
