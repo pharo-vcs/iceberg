@@ -109,8 +109,10 @@ IceTipAbstractCredentialsPresenter >> hostnameFromInput [
 
 { #category : 'initialization' }
 IceTipAbstractCredentialsPresenter >> initialize [
+	askingHostname := 'default host name'.
 	super initialize.
-	accepted := false
+	accepted := false.
+	
 ]
 
 { #category : 'initialization' }

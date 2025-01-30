@@ -21,15 +21,9 @@ Class {
 }
 
 { #category : 'accessing' }
-IcePublishGistPresenter class >> initialExtent [
+IcePublishGistPresenter class >> defaultPreferredExtent [
 
 	^ 600@400
-]
-
-{ #category : 'accessing' }
-IcePublishGistPresenter class >> windowTitle [
-
-	^ 'Publish Gist'
 ]
 
 { #category : 'accessing' }
@@ -88,14 +82,6 @@ IcePublishGistPresenter >> initializePresenters [
 		beForScripting
 ]
 
-{ #category : 'initialization' }
-IcePublishGistPresenter >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter 
-		title: self class windowTitle;
-		initialExtent: self class initialExtent.
-]
-
 { #category : 'actions' }
 IcePublishGistPresenter >> publishThen: aBlock [
 	| description public jsonResult |
@@ -142,4 +128,10 @@ IcePublishGistPresenter >> validate [
 IcePublishGistPresenter >> whenPublishedDo: aBlock [
 
 	publishedAction := aBlock
+]
+
+{ #category : 'events' }
+IcePublishGistPresenter >> windowTitle [
+
+	^ 'Publish Gist'
 ]

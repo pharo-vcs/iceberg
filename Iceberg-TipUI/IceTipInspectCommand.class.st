@@ -36,5 +36,5 @@ IceTipInspectCommand >> execute [
 { #category : 'accessing' }
 IceTipInspectCommand >> iconName [
 
-	^ #glamorousInspect
+	^ #inspect
 ]

@@ -27,7 +27,7 @@ This happens if the repository has been removed from the disk or the image was p
 
 { #category : 'accessing' }
 IceTipRepairLocateRepository class >> icon [
-	^ self iconNamed: #glamorousFolder
+	^ self iconNamed: #folder
 ]
 
 { #category : 'testing' }

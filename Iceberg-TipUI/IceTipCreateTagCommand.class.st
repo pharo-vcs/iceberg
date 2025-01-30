@@ -42,5 +42,5 @@ IceTipCreateTagCommand >> execute [
 { #category : 'activation' }
 IceTipCreateTagCommand >> iconName [
 
-	^ #glamorousBookmark
+	^ #bookmark
 ]

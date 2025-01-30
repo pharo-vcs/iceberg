@@ -44,12 +44,6 @@ IceTipPresenter >> decorations [
 	^ decorations ifNil: [ decorations := self class buildDecorations ]
 ]
 
-{ #category : 'initialization' }
-IceTipPresenter >> setInitialExtentTo: aSpWindowPresenter [
-	
-	aSpWindowPresenter initialExtent: self initialExtentForWindow
-]
-
 { #category : 'extensions' }
 IceTipPresenter >> updateTitle [
 	
