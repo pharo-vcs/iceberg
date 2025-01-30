@@ -204,7 +204,7 @@ IceTipCritiquesBeforeCommitBrowser >> initializePresenters [
 	browseButton := self newButton.
 	browseButton label: 'Browse Entity'.
 	browseButton action: (MessageSend receiver: self selector: #doBrowse).
-	browseButton icon: (self iconNamed: #glamorousBrowse).
+	browseButton icon: (self iconNamed: #browse).
 
 	autofixButton := self newButton.
 	autofixButton label: 'Autofix'.

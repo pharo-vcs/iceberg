@@ -30,5 +30,5 @@ IceTipRemoveFromRepositoryPackageCommand >> execute [
 { #category : 'accessing' }
 IceTipRemoveFromRepositoryPackageCommand >> iconName [
 
-	^ #glamorousTrash
+	^ #trash
 ]

@@ -418,7 +418,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 		  "Tags group"
 		  ((IceTipTreeRepositoryGroup on: self)
 			   name: 'Tags';
-			   iconFormSet: (self iconFormSetNamed: #glamorousBookmark);
+			   iconFormSet: (self iconFormSetNamed: #bookmark);
 			   children: (tags collect: [ :each | IceTipTreeTag on: each ]);
 			   yourself) }
 	"Branches group"

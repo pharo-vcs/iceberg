@@ -35,7 +35,7 @@ IceTipRefreshPullRequestsCommand >> execute [
 { #category : 'accessing' }
 IceTipRefreshPullRequestsCommand >> iconName [
 
-	^ #glamorousRefresh
+	^ #refresh
 ]
 
 { #category : 'accessing' }

@@ -33,7 +33,7 @@ IceTipRefreshCommitCommand >> execute [
 { #category : 'accessing' }
 IceTipRefreshCommitCommand >> iconName [
 
-	^ #glamorousRefresh
+	^ #refresh
 ]
 
 { #category : 'accessing' }

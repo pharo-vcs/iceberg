@@ -46,5 +46,5 @@ IceTipUnloadAndRemovePackageCommand >> execute [
 { #category : 'accessing' }
 IceTipUnloadAndRemovePackageCommand >> iconName [
 
-	^ #glamorousTrash
+	^ #trash
 ]
