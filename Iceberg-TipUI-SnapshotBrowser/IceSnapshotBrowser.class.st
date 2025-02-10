@@ -109,12 +109,6 @@ IceSnapshotBrowser >> allClassNames [
 
 ]
 
-{ #category : 'initialization' }
-IceSnapshotBrowser >> browserTitle [
-		
-	^ 'Snapshot Browser for: ' , titleString
-]
-
 { #category : 'listing' }
 IceSnapshotBrowser >> categorySelection [
 
@@ -390,15 +384,6 @@ IceSnapshotBrowser >> initializeSideSelectorPresenter [
 ]
 
 { #category : 'initialization' }
-IceSnapshotBrowser >> initializeWindow: aWindowPresenter [
-
-	aWindowPresenter
-		title: self browserTitle;
-		initialExtent: 1000 @ 700;
-		centered
-]
-
-{ #category : 'initialization' }
 IceSnapshotBrowser >> isClassSide [
 	"Answer <true> if the receiver's class side is selected"
 
@@ -567,4 +552,10 @@ IceSnapshotBrowser >> visibleProtocols [
 		text: self classCommentString;
 		unselectAll.
 	^ (methods collect: [ :ea | ea category ]) asSet asSortedCollection
+]
+
+{ #category : 'initialization' }
+IceSnapshotBrowser >> windowTitle [
+		
+	^ 'Snapshot Browser for: ' , titleString
 ]
