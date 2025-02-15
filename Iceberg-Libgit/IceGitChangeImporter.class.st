@@ -70,10 +70,10 @@ IceGitChangeImporter >> importOn: aNode [
 	For now, we only support packages inside the declared subdirectory (or root otherwise).
 	All other changes are simple directory/file changes"
 	
-	"If path = 1 this means it is a file"
+	"If path = 1 this means it is not a directory"
 	path size = 1
 		ifTrue: [ 
-				fileReference exists ifTrue: [
+				(fileReference exists and: [ fileReference isFile ]) ifTrue: [
 				^ aNode addChild: (IceFileDefinition named: currentSegment path: filePath fileReference: fileReference) ] ].
 	
 	path size > 1 ifTrue: [ | directoryReference directoryPath |
