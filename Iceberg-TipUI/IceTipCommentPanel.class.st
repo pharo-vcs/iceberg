@@ -53,16 +53,18 @@ IceTipCommentPanel >> defaultLayout [
 	migration from Spec1+Commander1 to Spec2+Commander2)."
 
 	^ SpBoxLayout newTopToBottom
-		spacing: 5;
-		add: (SpBoxLayout newLeftToRight
-				vAlignCenter;
-				add: pushCheckbox;
-				addLast: optionsButton expand: false;
-				yourself)
-		  	expand: false;
-		add: commentText;
-		add: actionButtonBar expand: false;
-		yourself
+		  spacing: 5;
+		  add: (SpBoxLayout newLeftToRight
+				   vAlignCenter;
+				   add: pushCheckbox;
+				   addLast: optionsButton expand: false;
+				   yourself)
+		  expand: false;
+		  add: commentText;
+		  add: fixesLabel expand: false;
+		  add: fixesField expand: false;
+		  add: actionButtonBar expand: false;
+		  yourself
 ]
 
 { #category : 'accessing' }
@@ -115,9 +117,15 @@ IceTipCommentPanel >> initializePresenters [
 					'Cannot push new branch automatically. Use the `Push` option';
 				enabled: false ].
 
-	commentText := self newText text:
-		               'Branch: ' , repositoryModel branchName
-		               , ',  Fixes # ' yourself.
+	commentText := self newText
+		               text:
+			               SystemVersion current majorMinorVersion , ':'
+			               , String cr , String cr , '#Branch: '
+			               , repositoryModel branchName , String cr
+			               , '#Please use one of those' , String cr , '#feat:'
+			               , String cr , '#fix:' , String cr , '#refactor:'
+			               , String cr , '#chore:' , String cr , '#comment:';
+		               yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
 	fixesLabel := self newLabel
