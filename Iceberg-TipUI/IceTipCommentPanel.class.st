@@ -61,8 +61,6 @@ IceTipCommentPanel >> defaultLayout [
 				   yourself)
 		  expand: false;
 		  add: commentText;
-		  add: fixesLabel expand: false;
-		  add: fixesField expand: false;
 		  add: actionButtonBar expand: false;
 		  yourself
 ]
@@ -121,10 +119,11 @@ IceTipCommentPanel >> initializePresenters [
 		               text:
 			               SystemVersion current majorMinorVersion , ':'
 			               , String cr , String cr , '#Branch: '
-			               , repositoryModel branchName , String cr
-			               , '#Please use one of those' , String cr , '#feat:'
-			               , String cr , '#fix:' , String cr , '#refactor:'
-			               , String cr , '#chore:' , String cr , '#comment:';
+			               , repositoryModel branchName , ' Fixes #'
+			               , String cr , '#Please use one of those' , String cr
+			               , '#feat:' , String cr , '#fix:' , String cr
+			               , '#refactor:' , String cr , '#chore:' , String cr
+			               , '#comment:';
 		               yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
