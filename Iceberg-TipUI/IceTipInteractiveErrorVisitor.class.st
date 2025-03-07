@@ -77,7 +77,7 @@ IceTipInteractiveErrorVisitor >> visitCheckoutConflict: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitCloneLocationAlreadyExists: anError [
 
-	context application
+	context application newAlert
 		label:
 		('The clone location {1} already exists' format:
 			 { anError location });

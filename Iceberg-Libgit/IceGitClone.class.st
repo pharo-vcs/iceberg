@@ -34,7 +34,7 @@ IceGitClone >> execute [
 	[location ensureCreateDirectory.
 
 	repo := LGitRepository on: location.
-	cloneOptions := repo cloneOptionsStructureClass withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
+	cloneOptions := LGitCloneOptions withCredentialsProvider: (IceCredentialsProvider defaultForRemoteUrl: url).
 
 	Iceberg configureLGitProxyOpt: cloneOptions fetchOptions proxyOptions.
 
