@@ -117,8 +117,9 @@ IceTipCommentPanel >> initializePresenters [
 
 	commentText := self newText
 		               text:
-			               SystemVersion current majorMinorVersion , ':'
-			               , String cr , String cr , '#Branch: '
+			               String cr , String cr
+			               , SystemVersion current majorMinorVersion , ':'
+			               , String cr , '#Branch: '
 			               , repositoryModel branchName , ' Fixes #'
 			               , String cr , '#Please use one of those' , String cr
 			               , '#feat:' , String cr , '#fix:' , String cr
