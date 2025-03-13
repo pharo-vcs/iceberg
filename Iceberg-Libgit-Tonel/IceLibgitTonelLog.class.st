@@ -40,16 +40,15 @@ IceLibgitTonelLog >> definitionFor: aMethod path: aPath commit: aCommit [
 
 { #category : 'private' }
 IceLibgitTonelLog >> fileNameForMethod: aMethod [
+
 	| path |
-	
 	path := OrderedCollection new.
-	self repository subdirectory 
-		ifNotEmpty: [ :subDir | path add: subDir ].
+	self repository subdirectory ifNotEmpty: [ :subDir |
+		path add: subDir ].
 	path add: (self tonelPackageName: aMethod package).
 	path add: (self tonelMethodClassOrTraitName: aMethod).
-	
-	^ String streamContents: [ :stream |
-		path asStringOn: stream delimiter: '/' ]
+
+	^ String streamContents: [ :stream | path joinUsing: '/' ]
 ]
 
 { #category : 'private' }

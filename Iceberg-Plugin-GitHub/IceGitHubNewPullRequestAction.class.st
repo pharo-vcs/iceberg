@@ -69,6 +69,6 @@ IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 		  title:
 			  ('{1} has ongoing modifications.' format: { aRepository name });
 		  label: ('{2} 
-Do you want to continue anyway?' format: { status asCommaString });
+Do you want to continue anyway?' format: { status joinUsing: ', ' });
 		  openModal
 ]
