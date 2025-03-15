@@ -204,6 +204,7 @@ IceLibgitRepository >> addFilesToIndex: aCollection [
 		| gitIndex |
 		gitIndex := self repositoryHandle index.
 		gitIndex
+			refresh;
 			addAll:
 				(aCollection
 					collect: [ :each | 
