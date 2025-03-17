@@ -58,7 +58,6 @@ IceTipWorkingCopyModel >> newCommitAction [
 
 	^ IceTipCommitAction new
 		workingCopy: self workingCopy;
-		repository: self workingCopy repository;
 		yourself
 ]
 
