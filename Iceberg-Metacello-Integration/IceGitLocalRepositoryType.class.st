@@ -32,6 +32,16 @@ IceGitLocalRepositoryType class >> type [
 	^ 'gitlocal'
 ]
 
+{ #category : 'private' }
+IceGitLocalRepositoryType >> homoginizePath: urlPrefix [
+	"All possible paths are converted to absolute path"
+
+	| path |
+
+	path := Path from: (self location withoutPrefix: urlPrefix).
+	^ path asAbsolute asFileReference 
+]
+
 { #category : 'testing' }
 IceGitLocalRepositoryType >> isGitRoot: aReference [
 	^ IceRepositoryCreator isGitRoot: aReference
@@ -61,18 +71,21 @@ IceGitLocalRepositoryType >> mcRepository [
 
 { #category : 'private' }
 IceGitLocalRepositoryType >> splitRootAndSubdirectoryFromLocation [
-	| root subDir |
-	(self location beginsWith: (self class type, '://'))
-		ifFalse: [ self error: 'Invalid URL (It should be ', self class type, '://...)' ].
-	root := (self location allButFirst: self class type size + 3) asFileReference.
+	| urlPrefix  subDir root |
+	urlPrefix := self class type, '://'.
 	subDir := #().
+
+	(self location beginsWith: urlPrefix)
+		ifFalse: [ self error: 'Invalid URL (It should be ', urlPrefix ].
+	root := self homoginizePath: urlPrefix.
+
 	[ root isRoot or: [ self isGitRoot: root ] ] 
 	whileFalse: [ 
 		(root asAbsolute = FileSystem workingDirectory)
 			ifFalse: [ subDir := subDir copyWithFirst: root basename ].
 		root := root parent ].
 	root isRoot ifTrue: [ self error: 'I can''t find a .git/config file.' ].
-	
+
 	^ { 
 		root. "a FileReference"
 		String streamContents: [ :stream | subDir asStringOn: stream delimiter: '/' ] "a String" }
