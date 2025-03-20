@@ -15,8 +15,7 @@ Class {
 		'classOrInstanceSelectorPresenter',
 		'categoriesPresenter',
 		'commentPresenter',
-		'classDefinitionPresenter',
-		'titleString'
+		'classDefinitionPresenter'
 	],
 	#category : 'Iceberg-TipUI-SnapshotBrowser',
 	#package : 'Iceberg-TipUI-SnapshotBrowser'
@@ -488,8 +487,8 @@ IceSnapshotBrowser >> selectedMethod [
 { #category : 'accessing - model' }
 IceSnapshotBrowser >> setModelBeforeInitialization: aMCSnapshot [
 
-	items := aMCSnapshot definitions asSortedCollection.
-	titleString := (aMCSnapshot definitions detect: #isOrganizationDefinition) packageName
+	super setModelBeforeInitialization: aMCSnapshot.
+	items := aMCSnapshot definitions asSortedCollection
 ]
 
 { #category : 'accessing' }
@@ -556,6 +555,6 @@ IceSnapshotBrowser >> visibleProtocols [
 
 { #category : 'initialization' }
 IceSnapshotBrowser >> windowTitle [
-		
-	^ 'Snapshot Browser for: ' , titleString
+
+	^ 'Snapshot Browser for: ' , (items detect: #isOrganizationDefinition) packageName
 ]
