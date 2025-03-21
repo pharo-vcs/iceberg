@@ -167,7 +167,7 @@ IceTipCommentPanel >> isSaving [
 IceTipCommentPanel >> message [
 
 	self fixesField text isAllDigits ifFalse: [
-		^ (self commentText text asString lines reject: [ :line |
+		^ (self commentText text asString lines reject: [ :line | 
 			   line beginsWith: '#' ]) joinUsing: String lf ].
 
 	^ String streamContents: [ :stream |
