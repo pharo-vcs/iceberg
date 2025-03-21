@@ -121,7 +121,7 @@ IceTipCommentPanel >> initializePresenters [
 			               ,
 				               '# Please enter the commit message for your changes. 
 # Lines starting with # will be ignored, and an empty message aborts the commit.
-# On branch ' , repositoryModel branchName , String cr, '#Fixes #
+# On branch ' , repositoryModel branchName , ', Fixes #
 #Please use one of those
 #feat:
 #fix:
