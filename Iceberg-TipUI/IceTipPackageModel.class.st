@@ -30,8 +30,11 @@ IceTipPackageModel >> browsePackage [
 
 { #category : 'actions' }
 IceTipPackageModel >> browseRepositoryVersion [
-
-	(IceSnapshotBrowser forSnapshot: self entity mcSnapshotInRepository) open
+	| snapshot |
+	
+	snapshot := self entity mcSnapshotInRepository.
+	(MCSnapshotBrowser forSnapshot: snapshot)
+		showLabelled: 'Snapshot for ', self entity name
 ]
 
 { #category : 'accessing' }
