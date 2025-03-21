@@ -193,13 +193,3 @@ IcePharoPlugin >> fetchIfNeeded: aRepository [
 				detect: [ :each | each projectName = 'pharo-project' ]
 				ifFound: [ :each | each fetch ] ]
 ]
-
-{ #category : 'events' }
-IcePharoPlugin >> repositoryWillBeCreated: aRepository [
-	
-	"this is just supported on Pharo 8+"
-	SystemVersion current major < 7 ifTrue: [ ^ self ].
-	
-	self fetchIfNeeded: aRepository.
-	(aRepository lookupCommit: SystemVersion current commitHash) adopt.
-]
