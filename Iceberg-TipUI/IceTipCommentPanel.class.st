@@ -121,7 +121,13 @@ IceTipCommentPanel >> initializePresenters [
 			               ,
 				               '# Please enter the commit message for your changes. 
 # Lines starting with # will be ignored, and an empty message aborts the commit.
-# On branch ' , repositoryModel branchName;
+# On branch ' , repositoryModel branchName , String cr, '#Fixes #
+#Please use one of those
+#feat:
+#fix:
+#refactor:
+#chore:
+#comment:';
 		               yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
@@ -167,7 +173,7 @@ IceTipCommentPanel >> isSaving [
 IceTipCommentPanel >> message [
 
 	self fixesField text isAllDigits ifFalse: [
-		^ (self commentText text asString lines reject: [ :line | 
+		^ (self commentText text asString lines reject: [ :line |  
 			   line beginsWith: '#' ]) joinUsing: String lf ].
 
 	^ String streamContents: [ :stream |
