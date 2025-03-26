@@ -37,7 +37,7 @@ IceTipSelectRemotePresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		spacing: 3;
-		add: remoteList;
+		add: remoteList width: 280;
 		add: addButton expand: false;
 		add: self newNullPresenter  expand: false;
 		yourself
