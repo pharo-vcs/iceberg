@@ -12,7 +12,11 @@ Class {
 { #category : 'actions' }
 IceTipDirectoryPresenter >> chooseReference [
 
-	^ UIManager default 
-		chooseDirectory: self chooseTitle 
-		path: self location
+
+	^ StOpenDirectoryPresenter new
+		        openFolder:
+			        (self location ifNil: [ FileLocator workingDirectory ]);
+		        title: self chooseTitle;
+		        "okAction: [ :directoryReference |
+			        reference := directoryReference ]"open
 ]
