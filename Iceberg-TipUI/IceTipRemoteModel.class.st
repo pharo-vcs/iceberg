@@ -4,7 +4,7 @@ I'm a model for IceRemote entries.
 Class {
 	#name : 'IceTipRemoteModel',
 	#superclass : 'IceTipEntityModel',
-	#traits : 'TWithBranchModel',
+	#traits : 'TWithBranchModel - {#repositoryModel}',
 	#classTraits : 'TWithBranchModel classTrait',
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
@@ -50,10 +50,4 @@ IceTipRemoteModel >> newFetchAction [
 		onSuccessRepositoryModified;
 		action: [ self entity fetch ];
 		yourself
-]
-
-{ #category : 'accessing' }
-IceTipRemoteModel >> repositoryModel [ 
-	
-	^ repositoryModel
 ]
