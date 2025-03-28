@@ -126,20 +126,20 @@ IceTipWorkingCopyBrowser >> initializePackagesTable [
 
 	packagesTable
 		beResizable;
-		addColumn: (SpImageTableColumn new 
+		addColumn: (SpImageTableColumn new
 			beNotExpandable;
 			evaluated: [ :aPackage | self iconFor: aPackage ];
 			yourself);
 		addColumn: (SpStringTableColumn new
 			title: 'Name';
-			evaluated: #description;
+			formatted: #description;
 			displayColor: [ :each | each descriptionDecorator color ];
 			displayBold: [ :each | each descriptionDecorator isBold ];
 			displayItalic: [ :each | each descriptionDecorator isItalic ];			
 			yourself);
 		addColumn: (SpStringTableColumn new
 			title: 'Status';
-			evaluated: #status;
+			formatted: #status;
 			displayColor: [ :each | each descriptionDecorator color ];
 			displayBold: [ :each | each descriptionDecorator isBold ];
 			displayItalic: [ :each | each descriptionDecorator isItalic ];			

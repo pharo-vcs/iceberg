@@ -707,10 +707,11 @@ IceLibgitRepository >> packageLocationFor: anIceSavedPackage [
 ]
 
 { #category : 'private - tags' }
-IceLibgitRepository >> peelTag: anIceTag [ 
-	self handleLibgitError: [ | lgitRef |
-		lgitRef := (self repositoryHandle lookup: 'refs/tags/', anIceTag name).
-		^ self lookupCommit: lgitRef targetId hexString ]
+IceLibgitRepository >> peelTag: anIceTag [
+
+	| id |
+	id := self tagTargetCommitId: anIceTag.
+	self handleLibgitError: [ ^ self lookupCommit: id ]
 ]
 
 { #category : 'API - project' }
@@ -864,6 +865,16 @@ IceLibgitRepository >> subdirectoryPath [
 IceLibgitRepository >> subdirectoryReference [
 	
 	^ self location resolve: self subdirectoryPath
+]
+
+{ #category : 'private - tags' }
+IceLibgitRepository >> tagTargetCommitId: anIceTag [
+
+	self handleLibgitError: [
+		| lgitRef |
+		lgitRef := self repositoryHandle lookup:
+			           'refs/tags/' , anIceTag name.
+		^ lgitRef targetId hexString ]
 ]
 
 { #category : 'API - tags' }
