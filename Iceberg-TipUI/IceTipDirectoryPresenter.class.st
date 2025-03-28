@@ -12,11 +12,11 @@ Class {
 { #category : 'actions' }
 IceTipDirectoryPresenter >> chooseReference [
 
-
-	^ StOpenDirectoryPresenter new
-		        openFolder:
-			        (self location ifNil: [ FileLocator workingDirectory ]);
-		        title: self chooseTitle;
-		        "okAction: [ :directoryReference |
-			        reference := directoryReference ]"open
+	| reference |
+	StOpenDirectoryPresenter new
+		openFolder: (self location ifNil: [ FileLocator workingDirectory ]);
+		title: self chooseTitle;
+		okAction: [ :directoryReference | reference := directoryReference ];
+		openModal.
+	^ reference
 ]
