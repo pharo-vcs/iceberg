@@ -51,3 +51,9 @@ IceTipRemoteModel >> newFetchAction [
 		action: [ self entity fetch ];
 		yourself
 ]
+
+{ #category : 'accessing' }
+IceTipRemoteModel >> repositoryModel [ 
+	
+	^ repositoryModel
+]
