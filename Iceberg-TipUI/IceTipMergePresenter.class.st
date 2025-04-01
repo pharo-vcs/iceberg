@@ -4,12 +4,19 @@ Class {
 	#instVars : [
 		'merger',
 		'fromLabel',
-		'toLabel'
+		'toLabel',
+		'changesTree'
 	],
 	#category : 'Iceberg-TipUI-View-Merge',
 	#package : 'Iceberg-TipUI',
 	#tag : 'View-Merge'
 }
+
+{ #category : 'accessing' }
+IceTipMergePresenter class >> defaultPreferredExtent [
+
+	^ (900 @ 600) scaledByDisplayScaleFactor
+]
 
 { #category : 'instance creation' }
 IceTipMergePresenter class >> forMerger: anIceMerge [
@@ -20,12 +27,12 @@ IceTipMergePresenter class >> forMerger: anIceMerge [
 { #category : 'layout' }
 IceTipMergePresenter >> defaultLayout [
 
-	^ SpBoxLayout newLeftToRight 
-		  add: fromLabel expand: true;
-		  add:  (SpBoxLayout newLeftToRight 
-			hAlignEnd
-			add: toLabel;  
-			yourself);
+	^ SpBoxLayout newLeftToRight
+		  add: fromLabel;
+		  add: (SpBoxLayout newLeftToRight
+				   hAlignEnd;
+				   add: toLabel;
+				   yourself);
 		  yourself
 ]
 
@@ -36,9 +43,12 @@ IceTipMergePresenter >> initializePresenters [
 
 	fromLabel := self newLabel.
 	toLabel := self newLabel.
+	changesTree := self newTree.
 
 	fromLabel label: merger sourceDescription.
-	toLabel label: merger targetDescription
+	toLabel label: merger targetDescription.
+	
+	
 ]
 
 { #category : 'accessing' }
@@ -52,4 +62,10 @@ IceTipMergePresenter >> setModelBeforeInitialization: aMerger [
 
 	super setModelBeforeInitialization: aMerger.
 	self merger: aMerger
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> windowTitle [
+
+	^ 'Merge'
 ]
