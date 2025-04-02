@@ -4,6 +4,7 @@ Extension { #name : 'IceMergeResolutionRequest' }
 IceMergeResolutionRequest >> defaultAction [
 
 	| window mergeMorph |
+	1halt.
 	mergeMorph := (IceTipMergeMorph forMerger: merge).
 
 	mergeMorph

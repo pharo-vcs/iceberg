@@ -24,15 +24,27 @@ IceTipMergePresenter class >> forMerger: anIceMerge [
 	^ self on: anIceMerge
 ]
 
+{ #category : 'accessing' }
+IceTipMergePresenter >> changes [
+	"Answer the changes tree roots."
+
+	self flag: #todo. "Do we need the wrapper without worphic?"
+	^ merger mergeTree children collect: [ :each | IceMergeListWrapper with: each model: merger ]
+]
+
 { #category : 'layout' }
 IceTipMergePresenter >> defaultLayout [
 
-	^ SpBoxLayout newLeftToRight
-		  add: fromLabel;
+	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
-				   hAlignEnd;
-				   add: toLabel;
-				   yourself);
+				   add: fromLabel;
+				   add: (SpBoxLayout newLeftToRight
+						    hAlignEnd;
+						    add: toLabel;
+						    yourself);
+				   yourself)
+		  expand: false;
+		  add: changesTree;
 		  yourself
 ]
 
@@ -47,8 +59,12 @@ IceTipMergePresenter >> initializePresenters [
 
 	fromLabel label: merger sourceDescription.
 	toLabel label: merger targetDescription.
-	
-	
+
+	changesTree
+		items: self changes;
+		children: [ :item | item contents ];
+		displayIcon: [ :item | item icon ];
+		expandAll
 ]
 
 { #category : 'accessing' }
