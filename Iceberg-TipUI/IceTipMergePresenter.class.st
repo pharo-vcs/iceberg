@@ -1,3 +1,9 @@
+"
+I am a browser to resolve merge conflicts in Iceberg.
+
+For now I only allow to select incoming or current versions of the conflicting elements. 
+In the future it would be nice to add the support to be able to produce a 3rd version of the elements mixing both with a code presenter, but this is not yet supported.
+"
 Class {
 	#name : 'IceTipMergePresenter',
 	#superclass : 'StPresenter',
@@ -6,7 +12,8 @@ Class {
 		'fromLabel',
 		'toLabel',
 		'changesTree',
-		'diff'
+		'diff',
+		'code'
 	],
 	#category : 'Iceberg-TipUI-View-Merge',
 	#package : 'Iceberg-TipUI',
@@ -43,16 +50,31 @@ IceTipMergePresenter >> connectPresenters [
 		diff
 			leftText: item rightContents;
 			rightText: item leftContents;
-			contextClass: item contextClass ]
+			contextClass: item contextClass ].
+
+	changesTree transmitTo: code transform: [ :item |
+		'<<<<<<<
+' , item value rightContents , '
+=======
+' , item value leftContents , '
+>>>>>>>' ].
+
+	code whenSubmitDo: [ :text |
+		self flag: #todo. "Implement feature."
+		self inform: 'Feature not supported yet' ]
 ]
 
 { #category : 'layout' }
 IceTipMergePresenter >> defaultLayout [
 
-	^ SpPanedLayout newLeftToRight
-		  add: changesTree;
-		  add: diff;
-		  positionOfSlider: 30 percent;
+	^ SpPanedLayout newTopToBottom
+		  positionOfSlider: 60 percent;
+		  add: (SpPanedLayout newLeftToRight
+				   add: changesTree;
+				   add: diff;
+				   positionOfSlider: 30 percent;
+				   yourself);
+		  add: code;
 		  yourself
 ]
 
@@ -63,6 +85,7 @@ IceTipMergePresenter >> initializePresenters [
 
 	changesTree := self newTree.
 	diff := self newDiff.
+	code := self newCode.
 
 	diff leftLabel: merger sourceDescription.
 	diff rightLabel: merger targetDescription.
