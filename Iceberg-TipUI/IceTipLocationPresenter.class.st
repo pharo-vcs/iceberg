@@ -42,7 +42,7 @@ IceTipLocationPresenter >> basicLocation: aReference [
 { #category : 'actions' }
 IceTipLocationPresenter >> choose [
 
-	self chooseReference ifNotNil: [ :reference | 
+	self chooseReference ifNotNil: [ :reference |
 		self location: reference.
 		self onChoose ifNotNil: #value ]
 ]
@@ -105,13 +105,13 @@ IceTipLocationPresenter >> icon [
 IceTipLocationPresenter >> initializePresenters [
 
 	locationInput := self newTextInput
-		autoAccept: true;
-		yourself.
+		                 autoAccept: true;
+		                 yourself.
 	chooseButton := self newButton
-		addStyle: 'small';
-		icon: self icon;
-		yourself.
-	
+		                addStyle: 'small';
+		                icon: self icon;
+		                yourself.
+
 	chooseButton action: [ self choose ]
 ]
 
