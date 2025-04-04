@@ -5,7 +5,8 @@ Class {
 		'merger',
 		'fromLabel',
 		'toLabel',
-		'changesTree'
+		'changesTree',
+		'diff'
 	],
 	#category : 'Iceberg-TipUI-View-Merge',
 	#package : 'Iceberg-TipUI',
@@ -28,8 +29,7 @@ IceTipMergePresenter class >> forMerger: anIceMerge [
 IceTipMergePresenter >> changes [
 	"Answer the changes tree roots."
 
-	self flag: #todo. "Do we need the wrapper without worphic?"
-	^ merger mergeTree children collect: [ :each | IceMergeListWrapper with: each model: merger ]
+	^ merger mergeTree children
 ]
 
 { #category : 'layout' }
@@ -37,6 +37,7 @@ IceTipMergePresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
+				   borderWidth: 10;
 				   add: fromLabel;
 				   add: (SpBoxLayout newLeftToRight
 						    hAlignEnd;
@@ -44,7 +45,11 @@ IceTipMergePresenter >> defaultLayout [
 						    yourself);
 				   yourself)
 		  expand: false;
-		  add: changesTree;
+		  add: (SpPanedLayout newLeftToRight
+				   add: changesTree;
+				   add: diff;
+				   positionOfSlider: 30 percent;
+				   yourself);
 		  yourself
 ]
 
@@ -56,14 +61,16 @@ IceTipMergePresenter >> initializePresenters [
 	fromLabel := self newLabel.
 	toLabel := self newLabel.
 	changesTree := self newTree.
+	diff := self newDiff.
 
 	fromLabel label: merger sourceDescription.
 	toLabel label: merger targetDescription.
 
 	changesTree
-		items: self changes;
-		children: [ :item | item contents ];
-		displayIcon: [ :item | item icon ];
+		roots: self changes;
+		display: [ :item | item value description ];
+		children: [ :item | item children ];
+		displayIcon: [ :item | item value icon ];
 		expandAll
 ]
 
