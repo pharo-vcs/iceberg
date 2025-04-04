@@ -32,24 +32,27 @@ IceTipMergePresenter >> changes [
 	^ merger mergeTree children
 ]
 
+{ #category : 'initialization' }
+IceTipMergePresenter >> connectPresenters [
+
+	super connectPresenters.
+
+	changesTree whenSelectionChangedDo: [ :selection |
+		| item |
+		item := selection selectedItem value.
+		diff
+			leftText: item rightContents;
+			rightText: item leftContents;
+			contextClass: item contextClass ]
+]
+
 { #category : 'layout' }
 IceTipMergePresenter >> defaultLayout [
 
-	^ SpBoxLayout newTopToBottom
-		  add: (SpBoxLayout newLeftToRight
-				   borderWidth: 10;
-				   add: fromLabel;
-				   add: (SpBoxLayout newLeftToRight
-						    hAlignEnd;
-						    add: toLabel;
-						    yourself);
-				   yourself)
-		  expand: false;
-		  add: (SpPanedLayout newLeftToRight
-				   add: changesTree;
-				   add: diff;
-				   positionOfSlider: 30 percent;
-				   yourself);
+	^ SpPanedLayout newLeftToRight
+		  add: changesTree;
+		  add: diff;
+		  positionOfSlider: 30 percent;
 		  yourself
 ]
 
@@ -58,13 +61,11 @@ IceTipMergePresenter >> initializePresenters [
 
 	super initializePresenters.
 
-	fromLabel := self newLabel.
-	toLabel := self newLabel.
 	changesTree := self newTree.
 	diff := self newDiff.
 
-	fromLabel label: merger sourceDescription.
-	toLabel label: merger targetDescription.
+	diff leftLabel: merger sourceDescription.
+	diff rightLabel: merger targetDescription.
 
 	changesTree
 		roots: self changes;
