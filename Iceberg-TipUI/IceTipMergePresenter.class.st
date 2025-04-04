@@ -9,8 +9,6 @@ Class {
 	#superclass : 'StPresenter',
 	#instVars : [
 		'merger',
-		'fromLabel',
-		'toLabel',
 		'changesTree',
 		'diff',
 		'code'
