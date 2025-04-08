@@ -96,21 +96,47 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: [ :node |
-						 (node isKindOf: Association)
-							 ifTrue: [ node key ]
-							 ifFalse: [
-									 | segments |
-									 segments := node entity name splitOn: '/'.
-									 segments size > 1
-										 ifTrue: [ segments last ]
-										 ifFalse: [ node entity name ] ] ]);
+		display: [ :node |
+				(node isKindOf: Association)
+					ifTrue: [ node key ]
+					ifFalse: [
+							| segments |
+							segments := node entity name splitOn: '/'.
+							segments size > 1
+								ifTrue: [ segments last ]
+								ifFalse: [ node entity name ] ] ];
 		expandAll;
 		children: [ :node |
 				(node isKindOf: Association)
-					ifTrue: [ node value ]
+					ifTrue: [
+							node value sorted: [ :a :b |
+										(a isKindOf: Association)
+											ifTrue: [
+													(b isKindOf: Association)
+														ifFalse: [
+															a key asLowercase <= b entity name asLowercase ]
+														ifTrue: [ a key asLowercase <= b key asLowercase ] ]
+											ifFalse: [
+													(b isKindOf: Association)
+														ifFalse: [
+															a entity name asLowercase <= b entity name asLowercase ]
+														ifTrue: [
+															a entity name asLowercase <= b key asLowercase ] ] ] ]
 					ifFalse: [ #(  ) ] ];
-		roots: (self createBranchHierarchy: self model branchModels).
+		roots:
+			((self createBranchHierarchy: self model branchModels) sorted: [
+						 :a
+						 :b |
+						 (a isKindOf: Association)
+							 ifTrue: [
+									 (b isKindOf: Association)
+										 ifFalse: [ a key asLowercase <= b entity name asLowercase ]
+										 ifTrue: [ a key asLowercase <= b key asLowercase ] ]
+							 ifFalse: [
+									 (b isKindOf: Association)
+										 ifFalse: [
+											 a entity name asLowercase <= b entity name asLowercase ]
+										 ifTrue: [ a entity name asLowercase <= b key asLowercase ] ] ]).
 
 	self model branchModels
 		detect: #isHead
@@ -124,7 +150,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 { #category : 'initialization' }
 IceTipExistingBranchPanel >> initializePresenters [
 
-	branchesList := self newTreeTable.
+	branchesList := self newTree.
 	self initializeBranchesList
 ]
 
