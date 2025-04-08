@@ -87,6 +87,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 									 segments size > 1
 										 ifTrue: [ segments second ]
 										 ifFalse: [ node entity name ] ] ]);
+		expandAll;
 		children: [ :node |
 				(node isKindOf: Association)
 					ifTrue: [ node value ]
