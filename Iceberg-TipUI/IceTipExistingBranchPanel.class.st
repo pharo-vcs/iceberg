@@ -15,6 +15,30 @@ Class {
 	#tag : 'View-Branch'
 }
 
+{ #category : 'adding' }
+IceTipExistingBranchPanel >> addBranchWithSegments: segments branch: branch toHierarchy: hierarchy [
+
+	| groupName group |
+	groupName := segments first.
+	group := hierarchy
+		         detect: [ :item |
+		         (item isKindOf: Association) and: [ item key = groupName ] ]
+		         ifNone: [
+				         | newGroup |
+				         newGroup := Association
+					                     key: groupName
+					                     value: OrderedCollection new.
+				         hierarchy add: newGroup ].
+
+	segments size > 2
+		ifTrue: [
+				self
+					addBranchWithSegments: segments allButFirst
+					branch: branch
+					toHierarchy: group value ]
+		ifFalse: [ group value add: branch ]
+]
+
 { #category : 'initialization' }
 IceTipExistingBranchPanel >> branchModels [
 
@@ -38,16 +62,10 @@ IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
 			segments := branch entity name splitOn: '/'.
 			segments size > 1
 				ifTrue: [
-						| groupName |
-						groupName := segments first.
-						(groups includesKey: groupName) ifFalse: [
-								| newGroup |
-								newGroup := Association
-									            key: groupName
-									            value: OrderedCollection new.
-								groups at: groupName put: newGroup.
-								hierarchy add: newGroup ].
-						(groups at: groupName) value add: branch ]
+						self
+							addBranchWithSegments: segments
+							branch: branch
+							toHierarchy: hierarchy ]
 				ifFalse: [ hierarchy add: branch ] ].
 
 	^ hierarchy
@@ -85,7 +103,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 									 | segments |
 									 segments := node entity name splitOn: '/'.
 									 segments size > 1
-										 ifTrue: [ segments second ]
+										 ifTrue: [ segments last ]
 										 ifFalse: [ node entity name ] ] ]);
 		expandAll;
 		children: [ :node |
