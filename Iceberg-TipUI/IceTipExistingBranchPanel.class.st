@@ -139,7 +139,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 										 ifTrue: [ a entity name asLowercase <= b key asLowercase ] ] ]).
 
 	self model branchModels
-		detect: #isHead
+		detect: #isHead 
 		ifFound: [ :head | branchesList selectItem: head ]
 		ifNone: [
 		self model hasBranches ifTrue: [ branchesList selectPath: #( 1 ) ] ].
