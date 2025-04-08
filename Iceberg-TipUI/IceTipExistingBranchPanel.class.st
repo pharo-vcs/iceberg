@@ -27,6 +27,32 @@ IceTipExistingBranchPanel >> branchesList [
 	^ branchesList
 ]
 
+{ #category : 'creation' }
+IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
+
+	| hierarchy groups |
+	hierarchy := OrderedCollection new.
+	groups := Dictionary new.
+	branchModels do: [ :branch |
+			| segments |
+			segments := branch entity name splitOn: '/'.
+			segments size > 1
+				ifTrue: [
+						| groupName |
+						groupName := segments first.
+						(groups includesKey: groupName) ifFalse: [
+								| newGroup |
+								newGroup := Association
+									            key: groupName
+									            value: OrderedCollection new.
+								groups at: groupName put: newGroup.
+								hierarchy add: newGroup ].
+						(groups at: groupName) value add: branch ]
+				ifFalse: [ hierarchy add: branch ] ].
+
+	^ hierarchy
+]
+
 { #category : 'layout' }
 IceTipExistingBranchPanel >> defaultLayout [
 
@@ -52,14 +78,26 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: [: branch | self shortDescriptionFor: branch ]);
-		items: self model branchModels.
+		addColumn: (SpStringTableColumn evaluated: [ :node |
+						 (node isKindOf: Association)
+							 ifTrue: [ node key ]
+							 ifFalse: [
+									 | segments |
+									 segments := node entity name splitOn: '/'.
+									 segments size > 1
+										 ifTrue: [ segments second ]
+										 ifFalse: [ node entity name ] ] ]);
+		children: [ :node |
+				(node isKindOf: Association)
+					ifTrue: [ node value ]
+					ifFalse: [ #(  ) ] ];
+		roots: (self createBranchHierarchy: self model branchModels).
 
 	self model branchModels
 		detect: #isHead
 		ifFound: [ :head | branchesList selectItem: head ]
 		ifNone: [
-		self model hasBranches ifTrue: [ branchesList selectIndex: 1 ] ].
+		self model hasBranches ifTrue: [ branchesList selectPath: #( 1 ) ] ].
 
 	self flag: #pharoTodo "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
 ]
@@ -67,7 +105,7 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 { #category : 'initialization' }
 IceTipExistingBranchPanel >> initializePresenters [
 
-	branchesList := self newTable.
+	branchesList := self newTreeTable.
 	self initializeBranchesList
 ]
 
