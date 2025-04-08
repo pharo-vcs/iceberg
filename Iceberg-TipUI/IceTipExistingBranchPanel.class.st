@@ -54,9 +54,8 @@ IceTipExistingBranchPanel >> branchesList [
 { #category : 'creation' }
 IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
 
-	| hierarchy groups |
+	| hierarchy |
 	hierarchy := OrderedCollection new.
-	groups := Dictionary new.
 	branchModels do: [ :branch |
 			| segments |
 			segments := branch entity name splitOn: '/'.
