@@ -110,7 +110,7 @@ IceTipMergePresenter >> initializePresenters [
 		label: self conflictCountString;
 		icon: (self iconNamed: #changeUpdate);
 		help: 'Select next conflict to resolve';
-		action: [ self inform: 'Todo' ].
+		action: [ self selectNextConflict ].
 
 	diff leftLabel: merger sourceDescription.
 	diff rightLabel: merger targetDescription.
@@ -132,6 +132,22 @@ IceTipMergePresenter >> merger [
 IceTipMergePresenter >> merger: anIceMerger [
 
 	merger := anIceMerger
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> nextConflict [
+
+	| currentNode |
+	currentNode := changesTree selectedItem ifNil: [ merger mergeTree children first ].
+	^ currentNode nextNodeSuchThat: [ :item | item value isConflict and: [ item value isResolved not ] ] ifNone: [ nil ]
+]
+
+{ #category : 'as yet unclassified' }
+IceTipMergePresenter >> selectNextConflict [
+
+	^ self nextConflict
+		  ifNotNil: [ :change | changesTree selectItem: change ]
+		  ifNil: [ self inform: 'No next conflict to resolve.' ]
 ]
 
 { #category : 'accessing' }
