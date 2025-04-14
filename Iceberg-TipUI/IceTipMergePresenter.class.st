@@ -40,6 +40,29 @@ IceTipMergePresenter >> changes [
 	^ merger mergeTree children
 ]
 
+{ #category : 'actions' }
+IceTipMergePresenter >> changesTreeActions [
+
+	^ SpActionGroup new
+		  addActionWith: [ :action |
+			  action
+				  name: 'Browse senders';
+				  iconName: #search;
+				  description: 'Browse the senders of the selected method.';
+				  shortcutKey: $n actionModifier;
+				  action: [ self systemNavigation browseAllSendersOf: self selectedMethodSelector ];
+				  actionEnabled: [ self selectedMethod isNotNil ] ];
+		  addActionWith: [ :action |
+			  action
+				  name: 'Browse implementors';
+				  iconName: #search;
+				  description: 'Browse the implementors of the selected method.';
+				  shortcutKey: $m actionModifier;
+				  action: [ self systemNavigation browseAllImplementorsOf: self selectedMethodSelector ];
+				  actionEnabled: [ self selectedMethod isNotNil ] ];
+		  yourself
+]
+
 { #category : 'accessing' }
 IceTipMergePresenter >> conflictCountString [
 	"Answer a string describing the number of conflicts."
@@ -120,6 +143,7 @@ IceTipMergePresenter >> initializePresenters [
 		display: [ :item | item value description ];
 		children: [ :item | item children ];
 		displayIcon: [ :item | item value icon ];
+		actions: self changesTreeActions;
 		expandAll
 ]
 
@@ -142,12 +166,29 @@ IceTipMergePresenter >> nextConflict [
 	^ currentNode nextNodeSuchThat: [ :item | item value isConflict and: [ item value isResolved not ] ] ifNone: [ nil ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'actions' }
 IceTipMergePresenter >> selectNextConflict [
 
 	^ self nextConflict
 		  ifNotNil: [ :change | changesTree selectItem: change ]
 		  ifNil: [ self inform: 'No next conflict to resolve.' ]
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> selectedMethod [
+	"Return the selected method change if the selected element is one. Else return nil."
+
+	| item |
+	item := changesTree selectedItem.
+	^ (item isNotNil and: [ item definition isMethodDefinition and: [ item definition isLoadable ] ])
+		  ifTrue: [ item ]
+		  ifFalse: [ nil ]
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> selectedMethodSelector [
+
+	^ self selectedMethod definition selector
 ]
 
 { #category : 'accessing' }
