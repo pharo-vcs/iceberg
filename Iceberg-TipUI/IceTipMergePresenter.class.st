@@ -11,7 +11,10 @@ Class {
 		'merger',
 		'changesTree',
 		'diff',
-		'code'
+		'code',
+		'conflictNumberLabel',
+		'toolbar',
+		'conflictsButton'
 	],
 	#category : 'Iceberg-TipUI-View-Merge',
 	#package : 'Iceberg-TipUI',
@@ -35,6 +38,17 @@ IceTipMergePresenter >> changes [
 	"Answer the changes tree roots."
 
 	^ merger mergeTree children
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> conflictCountString [
+	"Answer a string describing the number of conflicts."
+
+	| count |
+	count := self merger unresolvedConflictCount.
+	^ count = 1
+		  ifTrue: [ '1 conflict' translated ]
+		  ifFalse: [ '{1} conflicts' translated format: { count } ]
 ]
 
 { #category : 'initialization' }
@@ -67,10 +81,13 @@ IceTipMergePresenter >> defaultLayout [
 
 	^ SpPanedLayout newTopToBottom
 		  positionOfSlider: 60 percent;
-		  add: (SpPanedLayout newLeftToRight
-				   add: changesTree;
-				   add: diff;
-				   positionOfSlider: 30 percent;
+		  add: (SpBoxLayout newTopToBottom
+				   add: (SpPanedLayout newLeftToRight
+						    add: changesTree;
+						    add: diff;
+						    positionOfSlider: 30 percent;
+						    yourself);
+				   add: toolbar expand: false;
 				   yourself);
 		  add: code;
 		  yourself
@@ -84,6 +101,16 @@ IceTipMergePresenter >> initializePresenters [
 	changesTree := self newTree.
 	diff := self newDiff.
 	code := self newCode.
+	toolbar := self newToolbar.
+	conflictsButton := self newToolbarButton.
+
+	toolbar addItemRight: conflictsButton.
+
+	conflictsButton
+		label: self conflictCountString;
+		icon: (self iconNamed: #changeUpdate);
+		help: 'Select next conflict to resolve';
+		action: [ self inform: 'Todo' ].
 
 	diff leftLabel: merger sourceDescription.
 	diff rightLabel: merger targetDescription.
@@ -94,6 +121,11 @@ IceTipMergePresenter >> initializePresenters [
 		children: [ :item | item children ];
 		displayIcon: [ :item | item value icon ];
 		expandAll
+]
+
+{ #category : 'accessing' }
+IceTipMergePresenter >> merger [
+	^ merger
 ]
 
 { #category : 'accessing' }
