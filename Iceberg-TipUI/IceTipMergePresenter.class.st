@@ -46,6 +46,14 @@ IceTipMergePresenter >> changesTreeActions [
 	^ SpActionGroup new
 		  addActionWith: [ :action |
 			  action
+				  name: 'Browse';
+				  iconName: #browse;
+				  description: 'Browse the selected class or method.';
+				  shortcutKey: $b actionModifier;
+				  action: [ (Smalltalk tools toolNamed: #browser) openOnClass: self selectedClass selector: self selectedMethodSelector ];
+				  actionEnabled: [ self selectedClass isNotNil ] ];
+		  addActionWith: [ :action |
+			  action
 				  name: 'Browse senders';
 				  iconName: #search;
 				  description: 'Browse the senders of the selected method.';
@@ -175,20 +183,25 @@ IceTipMergePresenter >> selectNextConflict [
 ]
 
 { #category : 'accessing' }
+IceTipMergePresenter >> selectedClass [
+
+	^ changesTree selectedItem value actualClass
+]
+
+{ #category : 'accessing' }
 IceTipMergePresenter >> selectedMethod [
 	"Return the selected method change if the selected element is one. Else return nil."
 
 	| item |
-	item := changesTree selectedItem.
-	^ (item isNotNil and: [ item definition isMethodDefinition and: [ item definition isLoadable ] ])
-		  ifTrue: [ item ]
-		  ifFalse: [ nil ]
+	item := changesTree selectedItem ifNil: [ ^ nil ].
+	(item definition isMethodDefinition and: [ item definition isLoadable ]) ifTrue: [ ^ item ].
+	^ nil
 ]
 
 { #category : 'accessing' }
 IceTipMergePresenter >> selectedMethodSelector [
 
-	^ self selectedMethod definition selector
+	^ self selectedMethod ifNotNil: [ :node | node definition selector ]
 ]
 
 { #category : 'accessing' }
