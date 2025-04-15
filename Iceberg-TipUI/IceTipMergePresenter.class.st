@@ -12,7 +12,6 @@ Class {
 		'changesTree',
 		'diff',
 		'code',
-		'conflictNumberLabel',
 		'toolbar',
 		'mergeButton',
 		'conflictsButton'
