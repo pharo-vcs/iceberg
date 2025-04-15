@@ -97,6 +97,13 @@ IceTipMergePresenter >> changesTreeActions [
 						  description: 'Revert the selected change.';
 						  action: [ changesTree selectedItem inverseDefinition install ];
 						  actionEnabled: [ changesTree selectedItem isNotNil ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Keep current version';
+						  iconName: #smallBackIcon;
+						  description: 'For this conflict, keep the current version and not the version been merged.';
+						  action: [ self chooseLocal ];
+						  actionEnabled: [ self selectedItemIsInConflict ] ];
 				  yourself ];
 		  addGroupWith: [ :aGroup |
 			  aGroup
@@ -108,6 +115,12 @@ IceTipMergePresenter >> changesTreeActions [
 						  iconName: #inspect;
 						  action: [ changesTree selectedItem inspect ];
 						  actionEnabled: [ changesTree selectedItem isNotNil ] ] ] yourself
+]
+
+{ #category : 'actions' }
+IceTipMergePresenter >> chooseLocal [
+	changesTree selectedItem value selectRight.
+	self updateConflicts
 ]
 
 { #category : 'accessing' }
@@ -127,19 +140,26 @@ IceTipMergePresenter >> connectPresenters [
 	super connectPresenters.
 
 	changesTree whenSelectionChangedDo: [ :selection |
-		| item |
-		item := selection selectedItem value.
-		diff
-			leftText: item rightContents;
-			rightText: item leftContents;
-			contextClass: item contextClass ].
+		selection selectedItem value
+			ifNil: [
+				diff
+					leftText: '';
+					rightText: '' ]
+			ifNotNil: [ :item |
+				diff
+					leftText: item rightContents;
+					rightText: item leftContents;
+					contextClass: item contextClass ] ].
 
 	changesTree transmitTo: code transform: [ :item |
-		'<<<<<<<
+		item
+			ifNotNil: [
+				'<<<<<<<
 ' , item value rightContents , '
 =======
 ' , item value leftContents , '
->>>>>>>' ].
+>>>>>>>' ]
+			ifNil: [ '' ] ].
 
 	code whenSubmitDo: [ :text |
 		self flag: #todo. "Implement feature."
@@ -227,6 +247,14 @@ IceTipMergePresenter >> selectedClass [
 	^ changesTree selectedItem value actualClass
 ]
 
+{ #category : 'testing' }
+IceTipMergePresenter >> selectedItemIsInConflict [
+
+	^ changesTree selectedItem
+		  ifNotNil: [ :item | item value isConflict ]
+		  ifNil: [ false ]
+]
+
 { #category : 'accessing' }
 IceTipMergePresenter >> selectedMethod [
 	"Return the selected method change if the selected element is one. Else return nil."
@@ -248,6 +276,15 @@ IceTipMergePresenter >> setModelBeforeInitialization: aMerger [
 
 	super setModelBeforeInitialization: aMerger.
 	self merger: aMerger
+]
+
+{ #category : 'initialization' }
+IceTipMergePresenter >> updateConflicts [
+
+	conflictsButton label: self conflictCountString.
+
+	"Changing the roots in order to refresh the tree."
+	changesTree updateRootsKeepingSelection: self changes
 ]
 
 { #category : 'accessing' }
