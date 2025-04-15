@@ -78,7 +78,8 @@ IceTipMergePresenter >> changesTreeActions [
 						  description: 'Show local method versions.';
 						  shortcutKey: $v actionModifier;
 						  action: [ (Smalltalk tools toolNamed: #versionBrowser) browseVersionsForClass: self selectedClass selector: self selectedMethodSelector ];
-						  actionEnabled: [ self selectedMethod isNotNil ] ] ];
+						  actionEnabled: [ self selectedMethod isNotNil ] ];
+				  yourself ];
 		  addGroupWith: [ :aGroup |
 			  aGroup
 				  beDisplayedAsGroup;
@@ -88,8 +89,25 @@ IceTipMergePresenter >> changesTreeActions [
 						  iconName: #smallUpdate;
 						  description: 'Install the version been merged in the image.';
 						  action: [ self selectedMethod definition install ];
-						  actionEnabled: [ self selectedMethod isNotNil ] ] ];
-		  yourself
+						  actionEnabled: [ self selectedMethod isNotNil ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Revert change';
+						  iconName: #cancel;
+						  description: 'Revert the selected change.';
+						  action: [ changesTree selectedItem inverseDefinition install ];
+						  actionEnabled: [ changesTree selectedItem isNotNil ] ];
+				  yourself ];
+		  addGroupWith: [ :aGroup |
+			  aGroup
+				  beDisplayedAsSubMenu;
+				  name: 'Extra';
+				  addActionWith: [ :action |
+					  action
+						  name: 'Inspect';
+						  iconName: #inspect;
+						  action: [ changesTree selectedItem inspect ];
+						  actionEnabled: [ changesTree selectedItem isNotNil ] ] ] yourself
 ]
 
 { #category : 'accessing' }

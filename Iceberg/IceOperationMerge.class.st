@@ -56,6 +56,12 @@ IceOperationMerge >> hasChanges [
 	^ self chosenOperation hasChanges
 ]
 
+{ #category : 'accessing' }
+IceOperationMerge >> inverseDefinition [
+
+	^ self subclassResponsibility
+]
+
 { #category : 'testing' }
 IceOperationMerge >> isConflict [
 	self subclassResponsibility
