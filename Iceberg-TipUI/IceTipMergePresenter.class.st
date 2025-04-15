@@ -14,6 +14,7 @@ Class {
 		'code',
 		'conflictNumberLabel',
 		'toolbar',
+		'mergeButton',
 		'conflictsButton'
 	],
 	#category : 'Iceberg-TipUI-View-Merge',
@@ -226,6 +227,22 @@ IceTipMergePresenter >> defaultLayout [
 ]
 
 { #category : 'initialization' }
+IceTipMergePresenter >> initializeDialogWindow: aDialogWindowPresenter [
+	"Used to initialize the model in the case of the use into a dialog window.
+	 Override this to set buttons other than the default (Ok, Cancel)."
+
+	aDialogWindowPresenter addButton: 'Cancel' do: [ :presenter |
+		presenter triggerCancelAction.
+		presenter close ].
+	mergeButton := aDialogWindowPresenter addDefaultButton: 'Merge' do: [ :presenter |
+		               presenter triggerOkAction.
+		               presenter beOk.
+		               presenter close ].
+
+	mergeButton disable
+]
+
+{ #category : 'initialization' }
 IceTipMergePresenter >> initializePresenters [
 
 	super initializePresenters.
@@ -359,7 +376,9 @@ IceTipMergePresenter >> updateConflicts [
 		updateRootsKeepingSelection: self changes;
 		expandAll.
 
-	self selectNextConflict
+	self selectNextConflict.
+
+	mergeButton ifNotNil: [ :button | button enabled: merger isMerged ]
 ]
 
 { #category : 'accessing' }
