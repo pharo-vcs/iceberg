@@ -44,30 +44,51 @@ IceTipMergePresenter >> changes [
 IceTipMergePresenter >> changesTreeActions [
 
 	^ SpActionGroup new
-		  addActionWith: [ :action |
-			  action
-				  name: 'Browse';
-				  iconName: #browse;
-				  description: 'Browse the selected class or method.';
-				  shortcutKey: $b actionModifier;
-				  action: [ (Smalltalk tools toolNamed: #browser) openOnClass: self selectedClass selector: self selectedMethodSelector ];
-				  actionEnabled: [ self selectedClass isNotNil ] ];
-		  addActionWith: [ :action |
-			  action
-				  name: 'Browse senders';
-				  iconName: #search;
-				  description: 'Browse the senders of the selected method.';
-				  shortcutKey: $n actionModifier;
-				  action: [ self systemNavigation browseAllSendersOf: self selectedMethodSelector ];
-				  actionEnabled: [ self selectedMethod isNotNil ] ];
-		  addActionWith: [ :action |
-			  action
-				  name: 'Browse implementors';
-				  iconName: #search;
-				  description: 'Browse the implementors of the selected method.';
-				  shortcutKey: $m actionModifier;
-				  action: [ self systemNavigation browseAllImplementorsOf: self selectedMethodSelector ];
-				  actionEnabled: [ self selectedMethod isNotNil ] ];
+		  addGroupWith: [ :aGroup |
+			  aGroup
+				  beDisplayedAsGroup;
+				  addActionWith: [ :action |
+					  action
+						  name: 'Browse';
+						  iconName: #browse;
+						  description: 'Browse the selected class or method.';
+						  shortcutKey: $b actionModifier;
+						  action: [ (Smalltalk tools toolNamed: #browser) openOnClass: self selectedClass selector: self selectedMethodSelector ];
+						  actionEnabled: [ self selectedClass isNotNil ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Browse senders';
+						  iconName: #search;
+						  description: 'Browse the senders of the selected method.';
+						  shortcutKey: $n actionModifier;
+						  action: [ self systemNavigation browseAllSendersOf: self selectedMethodSelector ];
+						  actionEnabled: [ self selectedMethod isNotNil ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Browse implementors';
+						  iconName: #search;
+						  description: 'Browse the implementors of the selected method.';
+						  shortcutKey: $m actionModifier;
+						  action: [ self systemNavigation browseAllImplementorsOf: self selectedMethodSelector ];
+						  actionEnabled: [ self selectedMethod isNotNil ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Versions';
+						  iconName: #history;
+						  description: 'Show local method versions.';
+						  shortcutKey: $v actionModifier;
+						  action: [ (Smalltalk tools toolNamed: #versionBrowser) browseVersionsForClass: self selectedClass selector: self selectedMethodSelector ];
+						  actionEnabled: [ self selectedMethod isNotNil ] ] ];
+		  addGroupWith: [ :aGroup |
+			  aGroup
+				  beDisplayedAsGroup;
+				  addActionWith: [ :action |
+					  action
+						  name: 'Install incoming version';
+						  iconName: #smallUpdate;
+						  description: 'Install the version been merged in the image.';
+						  action: [ self selectedMethod definition install ];
+						  actionEnabled: [ self selectedMethod isNotNil ] ] ];
 		  yourself
 ]
 
