@@ -121,6 +121,11 @@ IceTipMergePresenter >> changesTreeActions [
 						  shortcutKey: $x actionModifier;
 						  action: [ self markAsConflict ];
 						  actionEnabled: [ self selectedItemIsInConflict ] ];
+				  addActionWith: [ :action |
+					  action
+						  name: 'Select next conflict';
+						  action: [ self selectNextConflict ];
+						  actionEnabled: [ self selectedItemIsInConflict ] ];
 				  yourself ];
 		  addGroupWith: [ :aGroup |
 			  aGroup
@@ -132,6 +137,20 @@ IceTipMergePresenter >> changesTreeActions [
 						  iconName: #inspect;
 						  action: [ changesTree selectedItem inspect ];
 						  actionEnabled: [ changesTree selectedItem isNotNil ] ] ] yourself
+]
+
+{ #category : 'actions' }
+IceTipMergePresenter >> chooseAllLocal [
+
+	merger conflictsDo: [ :conflict | conflict selectRight ].
+	self updateConflicts
+]
+
+{ #category : 'actions' }
+IceTipMergePresenter >> chooseAllRemote [
+
+	merger conflictsDo: [ :conflict | conflict selectLeft ].
+	self updateConflicts
 ]
 
 { #category : 'actions' }
@@ -217,7 +236,23 @@ IceTipMergePresenter >> initializePresenters [
 	toolbar := self newToolbar.
 	conflictsButton := self newToolbarButton.
 
-	toolbar addItemRight: conflictsButton.
+	toolbar
+		addItemRight: (self newToolbarButton
+				 icon: (self iconNamed: #uncommentedClass);
+				 label: 'Clear all conflicts';
+				 help: 'Cancel all choices already made on conflicts.';
+				 action: [ self markAllAsConflict ]);
+		addItemRight: (self newToolbarButton
+				 icon: (self iconNamed: #smallForwardIcon);
+				 label: 'Use all incoming';
+				 help: 'This action will resolve all conflict saying to use the incoming versions.';
+				 action: [ self chooseAllRemote ]);
+		addItemRight: (self newToolbarButton
+				 icon: (self iconNamed: #smallBackIcon);
+				 label: 'Keep all currents';
+				 help: 'This action will resolve all conflict saying to keep the current versions.';
+				 action: [ self chooseAllLocal ]);
+		addItemRight: conflictsButton.
 
 	conflictsButton
 		icon: (self iconNamed: #changeUpdate);
@@ -231,9 +266,15 @@ IceTipMergePresenter >> initializePresenters [
 		display: [ :item | item value description ];
 		children: [ :item | item children ];
 		displayIcon: [ :item | item value icon ];
-		actions: self changesTreeActions;
-		expandAll.
+		actions: self changesTreeActions.
 
+	self updateConflicts
+]
+
+{ #category : 'actions' }
+IceTipMergePresenter >> markAllAsConflict [
+
+	merger conflictsDo: [ :conflict | conflict clearSelection ].
 	self updateConflicts
 ]
 
@@ -314,7 +355,9 @@ IceTipMergePresenter >> updateConflicts [
 	conflictsButton label: self conflictCountString.
 
 	"Changing the roots in order to refresh the tree."
-	changesTree updateRootsKeepingSelection: self changes.
+	changesTree
+		updateRootsKeepingSelection: self changes;
+		expandAll.
 
 	self selectNextConflict
 ]
