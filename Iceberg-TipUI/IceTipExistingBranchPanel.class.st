@@ -18,16 +18,18 @@ Class {
 { #category : 'adding' }
 IceTipExistingBranchPanel >> addBranchWithSegments: segments branch: branch toHierarchy: hierarchy [
 
-	| groupName group |
+	| groupName group newGroup |
 	groupName := segments first.
 	group := hierarchy
 		         detect: [ :item |
-		         (item isKindOf: Association) and: [ item key = groupName ] ]
+				         (item isKindOf: IceTipBranch)
+					         ifTrue: [ item branch = groupName ]
+					         ifFalse: [ item entity remoteName = groupName ] ]
 		         ifNone: [
-				         | newGroup |
-				         newGroup := Association
-					                     key: groupName
-					                     value: OrderedCollection new.
+				         newGroup := IceTipBranch new
+					                     branch: groupName;
+					                     isCategory: true.
+
 				         hierarchy add: newGroup ].
 
 	segments size > 2
@@ -35,8 +37,8 @@ IceTipExistingBranchPanel >> addBranchWithSegments: segments branch: branch toHi
 				self
 					addBranchWithSegments: segments allButFirst
 					branch: branch
-					toHierarchy: group value ]
-		ifFalse: [ group value add: branch ]
+					toHierarchy: group branches ]
+		ifFalse: [ group branches add: branch ]
 ]
 
 { #category : 'initialization' }
@@ -54,7 +56,7 @@ IceTipExistingBranchPanel >> branchesList [
 { #category : 'creation' }
 IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
 
-	| hierarchy |
+	| hierarchy iceBranch |
 	hierarchy := OrderedCollection new.
 	branchModels do: [ :branch |
 			| segments |
@@ -65,7 +67,9 @@ IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
 							addBranchWithSegments: segments
 							branch: branch
 							toHierarchy: hierarchy ]
-				ifFalse: [ hierarchy add: branch ] ].
+				ifFalse: [
+						iceBranch := IceTipBranch new branch: branch.
+						hierarchy add: iceBranch ] ].
 
 	^ hierarchy
 ]
@@ -96,8 +100,8 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 	branchesList
 		hideColumnHeaders;
 		display: [ :node |
-				(node isKindOf: Association)
-					ifTrue: [ node key ]
+				node isCategory
+					ifTrue: [ node branch entity name ]
 					ifFalse: [
 							| segments |
 							segments := node entity name splitOn: '/'.
@@ -106,39 +110,13 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 								ifFalse: [ node entity name ] ] ];
 		expandAll;
 		children: [ :node |
-				(node isKindOf: Association)
-					ifTrue: [
-							node value sorted: [ :a :b |
-										(a isKindOf: Association)
-											ifTrue: [
-													(b isKindOf: Association)
-														ifFalse: [
-															a key asLowercase <= b entity name asLowercase ]
-														ifTrue: [ a key asLowercase <= b key asLowercase ] ]
-											ifFalse: [
-													(b isKindOf: Association)
-														ifFalse: [
-															a entity name asLowercase <= b entity name asLowercase ]
-														ifTrue: [
-															a entity name asLowercase <= b key asLowercase ] ] ] ]
+				node isCategory
+					ifTrue: [ node branch ]
 					ifFalse: [ #(  ) ] ];
-		roots:
-			((self createBranchHierarchy: self model branchModels) sorted: [
-						 :a
-						 :b |
-						 (a isKindOf: Association)
-							 ifTrue: [
-									 (b isKindOf: Association)
-										 ifFalse: [ a key asLowercase <= b entity name asLowercase ]
-										 ifTrue: [ a key asLowercase <= b key asLowercase ] ]
-							 ifFalse: [
-									 (b isKindOf: Association)
-										 ifFalse: [
-											 a entity name asLowercase <= b entity name asLowercase ]
-										 ifTrue: [ a entity name asLowercase <= b key asLowercase ] ] ]).
+		roots: (self createBranchHierarchy: self model branchModels).
 
 	self model branchModels
-		detect: #isHead 
+		detect: #isHead
 		ifFound: [ :head | branchesList selectItem: head ]
 		ifNone: [
 		self model hasBranches ifTrue: [ branchesList selectPath: #( 1 ) ] ].
