@@ -1,3 +1,13 @@
+"
+I represent an item of a branch tree that can be a folder or a branch.
+
+For example, i can be any item of this tree:
+	- a
+	- b
+	  | - d
+	  | - e
+	-c
+"
 Class {
 	#name : 'IceTipBranchItem',
 	#superclass : 'Object',
