@@ -18,27 +18,18 @@ Class {
 { #category : 'adding' }
 IceTipExistingBranchPanel >> addBranchWithSegments: segments branch: branch toHierarchy: hierarchy [
 
-	| groupName group newGroup |
+	| groupName group |
 	groupName := segments first.
 	group := hierarchy
-		         detect: [ :item |
-				         (item isKindOf: IceTipBranch)
-					         ifTrue: [ item branch = groupName ]
-					         ifFalse: [ item entity remoteName = groupName ] ]
+		         detect: [ :item | item itemName = groupName ]
 		         ifNone: [
-				         newGroup := IceTipBranch new
-					                     branch: groupName;
-					                     isCategory: true.
+		         hierarchy add: (IceTipBranchItem itemName: groupName branch: branch) ].
 
-				         hierarchy add: newGroup ].
-
-	segments size > 2
-		ifTrue: [
-				self
-					addBranchWithSegments: segments allButFirst
-					branch: branch
-					toHierarchy: group branches ]
-		ifFalse: [ group branches add: branch ]
+	segments size > 1 ifTrue: [
+			self
+				addBranchWithSegments: segments allButFirst
+				branch: branch
+				toHierarchy: group branches ]
 ]
 
 { #category : 'initialization' }
@@ -56,22 +47,18 @@ IceTipExistingBranchPanel >> branchesList [
 { #category : 'creation' }
 IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
 
-	| hierarchy iceBranch |
+	| hierarchy |
 	hierarchy := OrderedCollection new.
 	branchModels do: [ :branch |
 			| segments |
 			segments := branch entity name splitOn: '/'.
-			segments size > 1
-				ifTrue: [
-						self
-							addBranchWithSegments: segments
-							branch: branch
-							toHierarchy: hierarchy ]
-				ifFalse: [
-						iceBranch := IceTipBranch new branch: branch.
-						hierarchy add: iceBranch ] ].
 
-	^ hierarchy
+			self
+				addBranchWithSegments: segments
+				branch: branch
+				toHierarchy: hierarchy ].
+
+	^ hierarchy sorted: #itemName ascending
 ]
 
 { #category : 'layout' }
@@ -99,29 +86,13 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		display: [ :node |
-				node isCategory
-					ifTrue: [ node branch entity name ]
-					ifFalse: [
-							| segments |
-							segments := node entity name splitOn: '/'.
-							segments size > 1
-								ifTrue: [ segments last ]
-								ifFalse: [ node entity name ] ] ];
+		display: [ :node | node displayName ];
+		displayIcon: [ :node | self iconNamed: node iconName ];
 		expandAll;
-		children: [ :node |
-				node isCategory
-					ifTrue: [ node branch ]
-					ifFalse: [ #(  ) ] ];
-		roots: (self createBranchHierarchy: self model branchModels).
-
-	self model branchModels
-		detect: #isHead
-		ifFound: [ :head | branchesList selectItem: head ]
-		ifNone: [
-		self model hasBranches ifTrue: [ branchesList selectPath: #( 1 ) ] ].
-
-	self flag: #pharoTodo "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
+		enableSearch;
+		children: [ :node | node branches ];
+		roots: (self createBranchHierarchy: self model branchModels);
+		selectItem: branchesList roots first
 ]
 
 { #category : 'initialization' }

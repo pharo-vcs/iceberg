@@ -12,7 +12,7 @@ Class {
 { #category : 'actions' }
 IceTipCheckoutBranchPanel >> doAccept [
 
-	(self selectedBranch isKindOf: Association)
-		ifFalse: [ self selectedBranch previewCheckout ]
+	self selectedBranch isCategory
+		ifFalse: [ self selectedBranch branch previewCheckout ]
 		ifTrue: [ self inform: 'The selected item is not a branch' ]
 ]
