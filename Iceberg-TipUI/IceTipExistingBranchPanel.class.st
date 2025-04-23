@@ -15,6 +15,23 @@ Class {
 	#tag : 'View-Branch'
 }
 
+{ #category : 'adding' }
+IceTipExistingBranchPanel >> addBranchWithSegments: segments branch: branch toHierarchy: hierarchy [
+
+	| groupName group |
+	groupName := segments first.
+	group := hierarchy
+		         detect: [ :item | item itemName = groupName ]
+		         ifNone: [
+		         hierarchy add: (IceTipBranchItem itemName: groupName branch: branch) ].
+
+	segments size > 1 ifTrue: [
+			self
+				addBranchWithSegments: segments allButFirst
+				branch: branch
+				toHierarchy: group branches ]
+]
+
 { #category : 'initialization' }
 IceTipExistingBranchPanel >> branchModels [
 
@@ -25,6 +42,23 @@ IceTipExistingBranchPanel >> branchModels [
 IceTipExistingBranchPanel >> branchesList [
 
 	^ branchesList
+]
+
+{ #category : 'creation' }
+IceTipExistingBranchPanel >> createBranchHierarchy: branchModels [
+
+	| hierarchy |
+	hierarchy := OrderedCollection new.
+	branchModels do: [ :branch |
+			| segments |
+			segments := branch entity name splitOn: '/'.
+
+			self
+				addBranchWithSegments: segments
+				branch: branch
+				toHierarchy: hierarchy ].
+
+	^ hierarchy sorted: #itemName ascending
 ]
 
 { #category : 'layout' }
@@ -52,22 +86,19 @@ IceTipExistingBranchPanel >> initializeBranchesList [
 
 	branchesList
 		hideColumnHeaders;
-		addColumn: (SpStringTableColumn evaluated: [: branch | self shortDescriptionFor: branch ]);
-		items: self model branchModels.
-
-	self model branchModels
-		detect: #isHead
-		ifFound: [ :head | branchesList selectItem: head ]
-		ifNone: [
-		self model hasBranches ifTrue: [ branchesList selectIndex: 1 ] ].
-
-	self flag: #pharoTodo "Instead of detecting 'isHead', we would prefer to select 'self model defaultBranchSelection' but we have a bug with the caches. The reason is that #branchModels returns the same cache used by the list but not #defaultBranchSelection."
+		display: [ :node | node displayName ];
+		displayIcon: [ :node | self iconNamed: node iconName ];
+		expandAll;
+		enableSearch;
+		children: [ :node | node branches ];
+		roots: (self createBranchHierarchy: self model branchModels);
+		selectItem: branchesList roots first
 ]
 
 { #category : 'initialization' }
 IceTipExistingBranchPanel >> initializePresenters [
 
-	branchesList := self newTable.
+	branchesList := self newTree.
 	self initializeBranchesList
 ]
 
