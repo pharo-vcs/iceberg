@@ -164,11 +164,11 @@ IceTipGitProviderRepositoryPanel >> userNameLabel [
 { #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> validate [
 
-	self
-		assert: self userName isNotEmpty
-		description: 'You must enter a GitHub owner (e.g. username).'.
-	self
-		assert: self projectName isNotEmpty
-		description: 'You must enter a GitHub project name.'.
+	self userName isEmpty ifTrue: [
+		IceError signal: 'You must enter a GitHub owner (e.g. username).'.
+	].
+	self projectName isEmpty ifTrue: [
+		IceError signal: 'You must enter a GitHub project name.'.
+	].
 	super validate
 ]

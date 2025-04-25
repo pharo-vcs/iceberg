@@ -121,12 +121,11 @@ IceTipNewRepositoryPanel >> subdirectoryLabel [
 { #category : 'accessing' }
 IceTipNewRepositoryPanel >> validate [
 
-	self 
-		assert: self projectNameInputText text isNotEmpty  
-		description: 'You must enter a project name (it will be used also as part of the path).'.
-	self
-		assert: self projectLocation location isNotNil  
-		description: 'Project location must be defined (if it does not exists, it will be created).'
+	self projectNameInputText text isEmpty ifTrue: [
+		IceError signal: 'You must enter a project name (it will be used also as part of the path).'. 	].
+	self projectLocation location ifNil: [
+		IceError signal: 'Project location must be defined (if it does not exists, it will be created).'
+	].
 ]
 
 { #category : 'initialization' }
