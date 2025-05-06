@@ -57,7 +57,7 @@ IceRepositoryCreator >> addLocalRepositoryAndCheckout [
 	localRepository remotes 
 		detect:[ :each | each referencesSameRemoteLocationAs: self remoteToUse ]
 		ifFound: [ :found | localRepository fetchFrom: found ].
-	localRepository switchToCommitishNamed: self commitishName.
+	self commitishName ifNotNil: [ localRepository switchToCommitishNamed: self commitishName ].
 	^ localRepository
 ]
 
