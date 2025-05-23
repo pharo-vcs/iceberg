@@ -48,7 +48,6 @@ IceTipSyncToDiskCommand >> execute [
 		updateDiskWorkingCopy: aDiff diff;
 		updateIndex: aDiff diff.
 
-	1 halt.
 		"| col |
 col := Set new.
 self treeRoots do: [ :root |
