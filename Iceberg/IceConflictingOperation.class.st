@@ -60,6 +60,12 @@ IceConflictingOperation >> description [
 	^ leftOperation description
 ]
 
+{ #category : 'accessing' }
+IceConflictingOperation >> inverseDefinition [
+
+	^ leftOperation inverse
+]
+
 { #category : 'testing' }
 IceConflictingOperation >> isConflict [
 
