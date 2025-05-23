@@ -80,7 +80,7 @@ BaselineOfIceberg >> libgit: spec [
 		baseline: 'LibGit' 
 		with: [ 
 			spec
-				repository: 'github://pharo-vcs/libgit2-pharo-bindings:Pharo13';
+				repository: 'github://pharo-vcs/libgit2-pharo-bindings:Pharo14';
   				loads: 'default' ].
 	spec  
 		project: 'LibGit-Tests'
@@ -132,5 +132,5 @@ BaselineOfIceberg >> resetKMRepository [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo13' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo14' ]
 ]
