@@ -50,20 +50,22 @@ IceLog >> collectCommitsFor: aMethod path: aPath [
 	options pathspec: pathSpecArray.
 
 	commits := OrderedCollection new.
-	self repository newCommitWalk 
-		fromCommit: commit;
-		rawResultsDo: [ :eachCommit | | parents tree | 
-			parents := eachCommit numberOfParents.
-			tree := eachCommit tree.
-			parents = 0 
-				ifTrue: [
-					(tree matchesPathSpec: pathSpec)
-						ifTrue: [ commits add: eachCommit ] ]
-				ifFalse: [ 
-					eachCommit parents do: [ :eachParent | | diff |
-						diff := tree diffTo: eachParent tree options: options. 
-						diff numberOfDeltas > 0 
-							ifTrue: [ commits add: eachCommit ] ] ] ].
+
+	self repository withCommitWalkDo: [ :walk |
+		walk 
+			fromCommit: commit;
+			rawResultsDo: [ :eachCommit | | parents tree | 
+				parents := eachCommit numberOfParents.
+				tree := eachCommit tree.
+				parents = 0 
+					ifTrue: [
+						(tree matchesPathSpec: pathSpec)
+							ifTrue: [ commits add: eachCommit ] ]
+					ifFalse: [ 
+						eachCommit parents do: [ :eachParent | | diff |
+							diff := tree diffTo: eachParent tree options: options. 
+							diff numberOfDeltas > 0 
+								ifTrue: [ commits add: eachCommit ] ] ] ]].
 
 	^ commits
 ]

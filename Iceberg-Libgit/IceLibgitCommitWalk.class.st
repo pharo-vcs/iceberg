@@ -13,6 +13,13 @@ Class {
 	#tag : 'Core'
 }
 
+{ #category : 'initialize-release' }
+IceLibgitCommitWalk >> close [
+
+	revwalk free.
+	revwalk := nil.
+]
+
 { #category : 'walking' }
 IceLibgitCommitWalk >> commitsDo: aBlock [ 
 	self maxNumber 

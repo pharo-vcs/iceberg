@@ -12,9 +12,15 @@ Class {
 { #category : 'accessing' }
 IceTipCommitRangeModel >> commitModels [
 
-	^ (self fromCommit newCommitWalk uptoCommit: self toCommit) commits
-		  collect: [ :each |
-			  IceTipCommitModel repositoryModel: self repositoryModel on: each ]
+	| commits |
+	
+	commits := self fromCommit withCommitWalkDo: [ :walk |
+		           walk
+			           uptoCommit: self toCommit;
+			           commit ].
+
+	^ commits collect: [ :each |
+		  IceTipCommitModel repositoryModel: self repositoryModel on: each ]
 ]
 
 { #category : 'accessing' }

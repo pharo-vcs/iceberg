@@ -221,7 +221,7 @@ IceCommit >> isNoCommit [
 { #category : 'API - history' }
 IceCommit >> isParentOf: aCommit [
 
-	^ self newCommitWalk includesCommit: aCommit
+	^ self withCommitWalkDo: [ :walk | walk includesCommit: aCommit ]
 ]
 
 { #category : 'testing' }
@@ -298,7 +298,7 @@ IceCommit >> status [
 		anySatisfy: [ :each | each isNoCommit not and: [ self isAncestorOf: each ]])
 			ifTrue: [ ^ 'Loaded' ].
 
-	(self repository branch newCommitWalk includesCommit: self)
+	(self repository branch includesCommit: self)
 			ifTrue: [ ^ 'Not loaded' ].
 
 	^ 'Not merged'
