@@ -123,7 +123,7 @@ MCGitRemoteRepository >> projectPath [
 { #category : 'accessing' }
 MCGitRemoteRepository >> scpUrl [
 
-	^ '{1}@{2}/{3}.git' format: { 
+	^ '{1}@{2}:{3}.git' format: { 
 		self user. 
 		self host. 
 		self path }
