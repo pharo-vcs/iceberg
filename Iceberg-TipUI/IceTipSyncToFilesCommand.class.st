@@ -32,7 +32,7 @@ IceTipSyncToFilesCommand >> execute [
 
 	IceTipSyncToFilesAction new
 		onSuccess: [
-			self inform: 'Image changes synched to GitHub''s working directory' ];
+			self inform: 'Image changes synched to Git''s working directory' ];
 		executeWithContext: context
 ]
 
