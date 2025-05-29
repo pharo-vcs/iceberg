@@ -39,5 +39,5 @@ IceTipSyncToFilesCommand >> execute [
 { #category : 'accessing' }
 IceTipSyncToFilesCommand >> iconName [
 
-	^ #smallSave
+	^ #rightSide
 ]
