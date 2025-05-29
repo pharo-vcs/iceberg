@@ -41,7 +41,7 @@ IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for
 		IceTipCheckoutBranchCommand.
 	 	IceTipCreateTagCommand.
 		IceTipMergeCommand.
-		IceTipSyncToFilesCommand.
+		IceTipWriteToFilesCommand.
 		IceTipManageRepositoryCommand.
 		IceTipEditRepositoryCommand.
 		IceTipForgetRepositoryCommand.

@@ -2,7 +2,7 @@
 Syncs the image changes with the file system. Ensures that all changes to classes and methods are reflected in the Git repository’s working directory. It does not execute any staging (git add) nor commits.
 "
 Class {
-	#name : 'IceTipSyncToFilesAction',
+	#name : 'IceTipWriteToFilesAction',
 	#superclass : 'IceTipAction',
 	#category : 'Iceberg-TipUI-Commands',
 	#package : 'Iceberg-TipUI',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : 'executing' }
-IceTipSyncToFilesAction >> basicExecute [
+IceTipWriteToFilesAction >> basicExecute [
 
 	| aDiff |
 	aDiff := context workingCopyModel diffToReferenceCommit.

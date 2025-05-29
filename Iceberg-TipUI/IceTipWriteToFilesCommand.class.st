@@ -2,7 +2,7 @@
 Syncs the image changes with the file system. Ensures that all changes to classes and methods are reflected in the Git repository’s working directory. It does not execute any staging (git add) nor commits.
 "
 Class {
-	#name : 'IceTipSyncToFilesCommand',
+	#name : 'IceTipWriteToFilesCommand',
 	#superclass : 'IceTipRepositoryCommand',
 	#category : 'Iceberg-TipUI-Commands',
 	#package : 'Iceberg-TipUI',
@@ -10,34 +10,34 @@ Class {
 }
 
 { #category : 'default' }
-IceTipSyncToFilesCommand class >> defaultDescription [
+IceTipWriteToFilesCommand class >> defaultDescription [
 
-	^ 'Updates the file system to match the current state of the Pharo image. Ensures that all changes to classes and methods are reflected in the Git repository’s working directory, without staging or committing them.'
+	^ 'Writes all changes made to classes and methods to the Git working directory, without staging or committing them.'
 ]
 
 { #category : 'default' }
-IceTipSyncToFilesCommand class >> defaultName [
+IceTipWriteToFilesCommand class >> defaultName [
 
-	^ 'Sync to files'
+	^ 'Write to files'
 ]
 
 { #category : 'testing' }
-IceTipSyncToFilesCommand >> canBeExecuted [
+IceTipWriteToFilesCommand >> canBeExecuted [
 
 	^ self isRepositoryOperational
 ]
 
 { #category : 'executing' }
-IceTipSyncToFilesCommand >> execute [
+IceTipWriteToFilesCommand >> execute [
 
-	IceTipSyncToFilesAction new
+	IceTipWriteToFilesAction new
 		onSuccess: [
 			self inform: 'Image changes synched to Git''s working directory' ];
 		executeWithContext: context
 ]
 
 { #category : 'accessing' }
-IceTipSyncToFilesCommand >> iconName [
+IceTipWriteToFilesCommand >> iconName [
 
 	^ #rightSide
 ]
