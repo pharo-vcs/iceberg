@@ -18,7 +18,7 @@ IceTipSyncToFilesCommand class >> defaultDescription [
 { #category : 'default' }
 IceTipSyncToFilesCommand class >> defaultName [
 
-	^ 'Sync To Files'
+	^ 'Sync to files'
 ]
 
 { #category : 'testing' }
