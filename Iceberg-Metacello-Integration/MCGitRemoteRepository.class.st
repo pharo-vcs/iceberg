@@ -39,6 +39,7 @@ MCGitRemoteRepository class >> parseLocation: aLocation version: aVersion [
 
 	^ self new
 	parseLocation: (aLocation allButFirst: self description size);
+	projectVersion: aVersion;
 	yourself 
 ]
 

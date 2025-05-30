@@ -53,14 +53,15 @@ IceProviderRepositoryType >> mcRepository [
 			Because Metacello want to use it"
 		repo forget ].
 
-	baseRepo := self mcRepositoryClass location: self location.
+	baseRepo := self mcRepositoryClass 
+		location: self location 
+		version: (self projectVersion ifEmpty: [ nil ]).
 	^ (Iceberg icebergRepositoriesURLs includes: baseRepo scpUrl)
 		  ifTrue: [ "Do not use Iceberg to load iceberg code, 
 			see https://github.com/pharo-vcs/iceberg/issues/168"
 			  baseRepo ]
 		  ifFalse: [
-			  baseRepo getOrCreateIcebergRepository metacelloAdapter:
-				  self projectVersion ]
+			  baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion ]
 ]
 
 { #category : 'accessing' }

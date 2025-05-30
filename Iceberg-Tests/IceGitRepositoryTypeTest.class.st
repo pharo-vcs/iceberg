@@ -5,13 +5,13 @@ Class {
 	#package : 'Iceberg-Tests'
 }
 
-{ #category : 'tests' }
+{ #category : 'accessing' }
 IceGitRepositoryTypeTest >> repoHTTPS [
 	
 	^ IceGitRepositoryType location: 'git:https://forge.aplaceinthe.eu/estebanlm/ASuperProject.git:main'
 ]
 
-{ #category : 'tests' }
+{ #category : 'accessing' }
 IceGitRepositoryTypeTest >> repoSSH [
 	
 	^ IceGitRepositoryType location: 'git:git@forge.aplaceinthe.eu:estebanlm/ASuperProject.git:main'
