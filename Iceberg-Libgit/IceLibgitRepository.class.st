@@ -295,6 +295,13 @@ and the original repository''s url is {3}.'
 					 format: {self location. self origin. repo origin}) ]].
 ]
 
+{ #category : 'initialize-release' }
+IceLibgitRepository >> close [
+	
+	handle ifNil: [ ^self ].
+	handle free.
+]
+
 { #category : 'API - accessing' }
 IceLibgitRepository >> codeDirectory [
 	"Code repository might have been deleted or image might have been moved."
@@ -400,10 +407,15 @@ IceLibgitRepository >> delete [
 	Otherwise, forget the repository and remove it from the disk.
 	Cleanup also the FFI handles."
 	
-	super delete.
-	
-	handle := nil.
-	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ]
+	"We will forget the repository before"
+	self forget.
+
+	self close.
+
+	self assert: (handle isNull).
+
+	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ].	
+
 ]
 
 { #category : 'printing' }

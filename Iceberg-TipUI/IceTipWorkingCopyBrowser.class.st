@@ -79,6 +79,17 @@ IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 		execute
 ]
 
+{ #category : 'private' }
+IceTipWorkingCopyBrowser >> closeWhenRepository: ann [
+
+	(ann repository isNil or: [ 
+		self model repositoryModel isModelOf: ann repository ]) ifFalse: [ 
+		^ self ].
+	
+	self delete.
+
+]
+
 { #category : 'initialization' }
 IceTipWorkingCopyBrowser >> connectPresenters [
 
@@ -238,6 +249,11 @@ IceTipWorkingCopyBrowser >> statusBar [
 
 { #category : 'initialization' }
 IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
+
+	Iceberg announcer weak
+		when: IceRepositoryForgotten
+		send: #closeWhenRepository:
+		to: self.
 
 	Iceberg announcer weak
 		when: IceRepositoryAnnouncement

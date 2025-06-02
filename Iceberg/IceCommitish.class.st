@@ -119,13 +119,14 @@ IceCommitish >> commit [
 { #category : 'API - history' }
 IceCommitish >> commits [
 	
-	^ self newCommitWalk commits
+	^ self withCommitWalkDo: [:walk | walk commits ]
 ]
 
 { #category : 'API - history' }
 IceCommitish >> commitsDo: aBlockClosure [ 
+
+	self withCommitWalkDo: [ :walk | walk commitsDo: aBlockClosure ]
 	
-	self newCommitWalk commitsDo: aBlockClosure
 ]
 
 { #category : 'API - history' }
@@ -316,6 +317,15 @@ IceCommitish >> validateIsBranch [
 IceCommitish >> versionFor: aPackage [
 
 	self subclassResponsibility
+]
+
+{ #category : 'API - history' }
+IceCommitish >> withCommitWalkDo: aBlock [
+
+	| commitWalk |
+	
+	commitWalk := self newCommitWalk.
+	^ [ aBlock value: commitWalk ] ensure: [ commitWalk close ]
 ]
 
 { #category : 'API - properties' }

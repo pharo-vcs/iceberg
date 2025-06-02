@@ -126,18 +126,21 @@ IceTipHiedraAltHistoryBrowser >> refreshCommands [
 
 { #category : 'accessing' }
 IceTipHiedraAltHistoryBrowser >> refreshHiedraColumn [
-	| ancestorIds walk |
+	| ancestorIds |
 
 	self flag: #TODO. "Move this to a model"
 	ancestorIds := OrderedDictionary new.
-	walk := self model entity newCommitWalk. 
-	walk revwalk 
-		beSortedByCommitTime;
-		beSortedParentsBeforeChildren.
-	walk commitsDo: [ :aCommit |
-		ancestorIds
-			at: aCommit id
-			put: aCommit ancestorIds ].
+	
+	self model entity withCommitWalkDo: [ :walk |
+		walk revwalk 
+			beSortedByCommitTime;
+			beSortedParentsBeforeChildren.
+		walk commitsDo: [ :aCommit |
+			ancestorIds
+				at: aCommit id
+				put: aCommit ancestorIds ]		
+	].
+	
 	hiedraColumnController reset.
 
 	"Note: ids should keep the original order to generate the ruler correctly."

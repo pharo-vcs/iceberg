@@ -79,11 +79,17 @@ IceUnbornBranch >> incomingCommits [
 
 { #category : 'API - remotes' }
 IceUnbornBranch >> incomingCommitsFrom: aRemote [
+
 	| remoteBranch |
-	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ ^ #() ].
-	^ remoteBranch newCommitWalk
-		uptoCommit: self commit;
-		commits
+
+	remoteBranch := aRemote
+		                remoteBranchNamed: self name
+		                ifAbsent: [ ^ #(  ) ].
+
+	^ remoteBranch withCommitWalkDo: [ :walk |
+		  walk
+			  uptoCommit: self commit;
+			  commits ]
 ]
 
 { #category : 'testing' }

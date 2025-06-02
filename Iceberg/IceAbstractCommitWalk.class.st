@@ -25,6 +25,12 @@ IceAbstractCommitWalk class >> isAbstract [
 	^ self == IceAbstractCommitWalk 
 ]
 
+{ #category : 'initialize-release' }
+IceAbstractCommitWalk >> close [
+
+	self subclassResponsibility 
+]
+
 { #category : 'private' }
 IceAbstractCommitWalk >> commitFrom: result [
 	^ self repository commitFromGitCommit: result
