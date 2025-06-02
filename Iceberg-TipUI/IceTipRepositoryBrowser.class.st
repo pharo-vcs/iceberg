@@ -83,6 +83,14 @@ IceTipRepositoryBrowser class >> openOnCommit: commit [
 		yourself
 ]
 
+{ #category : 'private - factory' }
+IceTipRepositoryBrowser >> closeWhenRepository: ann [
+
+	(self model isModelOf: ann repository) ifFalse: [ ^ self ].
+	self model reset.
+	self delete
+]
+
 { #category : 'event handling' }
 IceTipRepositoryBrowser >> commitishSelected: ann [
 
@@ -188,8 +196,13 @@ IceTipRepositoryBrowser >> sidebarTree [
 	^ sidebarTree
 ]
 
-{ #category : 'private - factory' }
+{ #category : 'initialization' }
 IceTipRepositoryBrowser >> subscribeToAnnouncements [
+
+	Iceberg announcer weak
+		when: IceRepositoryForgotten 
+		send: #closeWhenRepository:
+		to: self.
 
     Iceberg announcer weak 
         when: IceRepositoryAnnouncement 

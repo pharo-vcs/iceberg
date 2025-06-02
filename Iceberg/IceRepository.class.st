@@ -1010,6 +1010,16 @@ IceRepository >> validateCanPushTo: aRemote [
 		signal
 ]
 
+{ #category : 'API - history' }
+IceRepository >> withCommitWalkDo: aBlock [
+
+	| commitWalk |
+	
+	commitWalk := self newCommitWalk.
+	
+	^ [ aBlock value: commitWalk ] ensure: [ commitWalk close ]
+]
+
 { #category : 'private - packages' }
 IceRepository >> workingCopies [
 	^ self loadedPackages collect: #workingCopy
