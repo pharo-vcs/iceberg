@@ -27,6 +27,7 @@ IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: a
 		IceTipFetchCommand.
 		IceTipCheckoutBranchCommand.
 		IceTipMergeCommand.
+		IceTipWriteToFilesCommand.
 		IceTipManageRepositoryCommand.
 		IceTipDiscardChangesCommand.
 		IceTipAddPackageCommand } 
