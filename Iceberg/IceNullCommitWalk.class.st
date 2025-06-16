@@ -6,6 +6,13 @@ Class {
 	#tag : 'Core'
 }
 
+{ #category : 'initialization' }
+IceNullCommitWalk >> close [
+	"Nothing to do here"
+
+	
+]
+
 { #category : 'accessing' }
 IceNullCommitWalk >> commits [
 	"A null commit walk has no commits"
