@@ -406,16 +406,16 @@ IceLibgitRepository >> delete [
 	"Delete is idempotent. If the repository does not exist, do nothing.
 	Otherwise, forget the repository and remove it from the disk.
 	Cleanup also the FFI handles."
-	
+
 	"We will forget the repository before"
+
 	self forget.
 
 	self close.
 
-	self assert: (handle isNull).
+	self assert: self hasHandle not.
 
-	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ].	
-
+	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ]
 ]
 
 { #category : 'printing' }
@@ -462,10 +462,10 @@ IceLibgitRepository >> doRemoveRemote: aRemote [
 { #category : 'private - libgit' }
 IceLibgitRepository >> free [
 
-	(handle isNil or: [ handle isNull ])
-		ifFalse: [ 
-			handle free.
-			handle := nil ]
+	self hasHandle ifFalse: [ ^ self ].
+
+	handle free.
+	handle := nil
 ]
 
 { #category : 'API - configuration' }
@@ -485,6 +485,13 @@ IceLibgitRepository >> handleLibgitError: aBlock [
 	<libgitErrorHandler>
 	
 	aBlock on: LGitCallReturnHandler do: [ :error | error acceptError: (IceLibgitErrorVisitor onContext: self) ]
+]
+
+{ #category : 'testing' }
+IceLibgitRepository >> hasHandle [
+
+	handle ifNil: [ ^ false ].
+	^ handle isNull not
 ]
 
 { #category : 'API - tags' }
@@ -814,8 +821,7 @@ IceLibgitRepository >> repositoryDirectory [
 IceLibgitRepository >> repositoryHandle [
 
 	<repositoryHandleAccessor>
-	(handle isNil or: [ handle isNull ])
-		ifTrue: [ handle := (LGitRepository on: self location) open ].
+	self hasHandle ifFalse: [ handle := (LGitRepository on: self location) open ].
 	^ handle
 ]
 
