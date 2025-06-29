@@ -26,7 +26,10 @@ IceTipAddRemoteDialogPresenter class >> defaultPreferredExtent [
 { #category : 'actions' }
 IceTipAddRemoteDialogPresenter >> accept [
 
-	self validate.
+	[ self validate ]
+		on: IceError , IceWarning
+		do: [ :e |
+			^ e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ].
 	(self model 
 		newAddRemoteActionName: self remoteName 
 		url: self remoteUrl)
@@ -128,16 +131,13 @@ IceTipAddRemoteDialogPresenter >> urlText [
 	^ urlText
 ]
 
-{ #category : 'actions' }
+{ #category : 'validation' }
 IceTipAddRemoteDialogPresenter >> validate [
 
-	self
-		assert: self remoteName isNotEmpty 
-		description: 'You need to specify a remote name.'.
-	self
-		assert: self remoteUrl isNotEmpty
-		description: 'You need to specify a remote url.'
-
+	self remoteName isEmpty ifTrue: [
+		IceError signal: 'You need to specify a remote name.' ].
+	self remoteUrl isEmpty ifTrue: [
+		IceError signal: 'You need to specify a remote url.' ]
 ]
 
 { #category : 'initialization' }
