@@ -38,6 +38,55 @@ IceTipRepositoryGroupPanel class >> buildRootCommandsGroupFor: aPresenter [
 	^ rootCommandGroup
 ]
 
+{ #category : 'commands' }
+IceTipRepositoryGroupPanel class >> githubCommandsWith: presenter forRootGroup: aCommandGroup [
+
+	<extensionCommands>
+	| pluginGroup remotesGroup |
+	pluginGroup := CmCommandGroup forSpec
+		               name: 'Github';
+		               description: 'Github operations';
+		               iconName: #github;
+		               yourself.
+
+	remotesGroup := CmCommandGroup forSpec
+		                name: 'Remotes';
+		                yourself.
+	{ IceGitHubNewBranchFromIssueCommand } do: [ :each |
+		pluginGroup register: (each forSpecContext: presenter) ].
+	pluginGroup register: remotesGroup.
+	aCommandGroup / 'Selection' register: pluginGroup.
+	presenter repositoryList whenSelectionChangedDo: [
+			remotesGroup entries copy do: [ :entry |
+				remotesGroup unregister: entry ].
+			(presenter hasSelectedItem and: [
+				 presenter selectedItem hasRemotes ]) ifTrue: [
+					presenter selectedItem remoteModels do: [ :each |
+							self
+								githubRemoteCommands: each
+								forRootGroup: remotesGroup
+								context: presenter ] ] ]
+]
+
+{ #category : 'commands' }
+IceTipRepositoryGroupPanel class >> githubRemoteCommands: anIceRemoteModel forRootGroup: aCommandGroup context: aPresenter [
+
+	| remoteGroup |
+	remoteGroup := CmCommandGroup forSpec
+		               name: anIceRemoteModel description;
+		               yourself.
+	{
+		IceGitHubOpenOnGithubCommand.
+		"IceGitHubViewPullRequestsCommand."
+		IceGitHubNewPullRequestCommand.
+		IceGitHubRemoveBranchesCommand } do: [ :each |
+			remoteGroup register: (each new
+					 context: aPresenter;
+					 remoteModel: anIceRemoteModel;
+					 asSpecCommand) ].
+	aCommandGroup register: remoteGroup
+]
+
 { #category : 'private' }
 IceTipRepositoryGroupPanel >> allListItems [
 	
