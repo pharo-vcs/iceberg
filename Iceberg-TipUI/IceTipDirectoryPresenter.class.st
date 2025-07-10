@@ -14,7 +14,10 @@ IceTipDirectoryPresenter >> chooseReference [
 
 	| reference |
 	StOpenDirectoryPresenter new
-		openFolder: (self location ifNil: [ FileLocator workingDirectory ]);
+		openFolder:
+			((self location ifNil: [ FileLocator workingDirectory ]) exists
+				 ifTrue: [ self location ifNil: [ FileLocator workingDirectory ] ]
+				 ifFalse: [ FileLocator imageDirectory parent ]);
 		title: self chooseTitle;
 		okAction: [ :directoryReference | reference := directoryReference ];
 		openModal.
