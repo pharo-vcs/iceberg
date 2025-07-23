@@ -111,27 +111,26 @@ IceTipCritiquesBeforeCommitBrowser >> disableCommitAfterChanges [
 
 { #category : 'actions' }
 IceTipCritiquesBeforeCommitBrowser >> doAutofix [
+
 	| critique |
-
 	(critique := critiquesList selectedItem) ifNil: [ ^ self ].
-	 
+
 	(RePropertyAction new
-		icon: (critique iconNamed: #repair);
-		description: 'Automatically resolve the issue';
-		action: [ :crit | 
-			| changesBrowser |
+		 icon: (critique iconNamed: #repair);
+		 description: 'Automatically resolve the issue';
+		 action: [ :crit |
+				 | changesBrowser |
+				 changesBrowser := ((self application toolNamed: #changesBrowser)
+					                    changes: { crit change })
+					                   extent: 500 @ 400;
+					                   yourself.
 
-			changesBrowser := (StChangesBrowserPresenter changes: { crit change })
-				extent: 500 @ 400;
-				yourself.
-
-		 changesBrowser openModal
-			 okAction: [ 
-				 changesBrowser accept.
-				 self disableCommitAfterChanges.
-				 self updatePresenter ];
-			 centered ]) 
-		actOnCritic: critique ofEntity: critique entity
+				 changesBrowser openModal
+					 okAction: [
+							 changesBrowser accept.
+							 self disableCommitAfterChanges.
+							 self updatePresenter ];
+					 centered ]) actOnCritic: critique ofEntity: critique entity
 ]
 
 { #category : 'actions' }
