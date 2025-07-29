@@ -271,7 +271,7 @@ IceTipWorkingCopyBrowser >> updatePresenter [
 { #category : 'initialization' }
 IceTipWorkingCopyBrowser >> windowTitle [
 
-	^ 'Working copy of ', self model repositoryName
+	^ self model repositoryName
 ]
 
 { #category : 'accessing' }
