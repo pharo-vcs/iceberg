@@ -68,6 +68,20 @@ IceTipRepositoriesBrowser class >> defaultPreferredExtent [
 	^ (600 @ 500)
 ]
 
+{ #category : 'as yet unclassified' }
+IceTipRepositoriesBrowser class >> ensureIsOpen [
+
+	<script>
+	(self currentWorld windowsSatisfying: [ :window | (window isKindOf: SpWindowMorph) and: [ window model presenter isKindOf: self ] ])
+		ifEmpty: [ self new open ]
+		ifNotEmpty: [ :windows |
+				| window |
+				window := windows anyOne.
+				window isMinimized
+					ifTrue: [ window restore ]
+					ifFalse: [ window activate ] ]
+]
+
 { #category : 'accessing' }
 IceTipRepositoriesBrowser class >> iconForWorldMenu [
 
