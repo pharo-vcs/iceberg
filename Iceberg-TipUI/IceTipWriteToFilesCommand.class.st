@@ -24,7 +24,7 @@ IceTipWriteToFilesCommand class >> defaultName [
 { #category : 'testing' }
 IceTipWriteToFilesCommand >> canBeExecuted [
 
-	^ self isRepositoryOperational
+	^ self repositoryModel isNotNil and: [ self isRepositoryMissing not ]
 ]
 
 { #category : 'executing' }
