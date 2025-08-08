@@ -68,7 +68,7 @@ IceTipRepositoriesBrowser class >> defaultPreferredExtent [
 	^ (600 @ 500)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'instance creation' }
 IceTipRepositoriesBrowser class >> ensureIsOpen [
 
 	<script>
