@@ -93,7 +93,7 @@ IceTipGitProviderRepositoryPanel >> projectAsPathToAppend [
 { #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> projectName [
 
-	^ self projectNameInputText text asString trimmed
+	^ self projectNameInputText text asString trimBoth
 ]
 
 { #category : 'accessing - ui' }
@@ -146,7 +146,7 @@ IceTipGitProviderRepositoryPanel >> selectedProtocol [
 { #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> userName [
 
-	^ self userNameInputText text asString trimmed
+	^ self userNameInputText text asString trimBoth
 ]
 
 { #category : 'accessing - ui' }

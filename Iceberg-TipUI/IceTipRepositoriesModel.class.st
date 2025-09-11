@@ -42,33 +42,24 @@ IceTipRepositoriesModel >> repositories [
 
 { #category : 'accessing' }
 IceTipRepositoriesModel >> repositoryGroups [
+
 	| groups |
-
 	groups := self repositories
-		collect: [ :each |
-			each entity project tags
-				ifNotEmpty: [ :tags | tags first asString ]
-				ifEmpty: [ '' ] ]
-		as: Set.
-
-	"sort groups:
+		          collect: [ :each | each entity project tags ifNotEmpty: [ :tags | tags first asString ] ifEmpty: [ '' ] ]
+		          as: Set. "sort groups:
 		1. user defined groups with a defined priority (<0) sorted by priority
 	 	2. 'general' group (all projects without a group tag).
 		3. user defined groups without defined priority, sorted alphabetically
 		4. last (always last) system group
 		See class side"
 	groups := groups sorted:
-		[ :each | self class sortGroup at: each ifAbsent: [ 1 ] ] ascending,
-		[ :each | each yourself ] ascending.
-
-	"add default group first if it is not there yet."
-	(groups isEmpty or: [ groups first = ''])
-		ifFalse: [ groups := groups copyWithFirst: '' ].
+		          [ :each | self class sortGroup at: each ifAbsent: [ 1 ] ] ascending , [ :each | each yourself ] ascending. "add default group first if it is not there yet."
+	(groups isEmpty or: [ groups first = '' ]) ifFalse: [ groups := groups copyWithFirst: '' ].
 
 	^ groups collect: [ :each |
-		IceTipRepositoryGroupModel new
-			repositoryProvider: repositoryProvider;
-			group: each ]
+			  IceTipRepositoryGroupModel new
+				  repositoryProvider: repositoryProvider;
+				  group: each ]
 ]
 
 { #category : 'accessing' }
