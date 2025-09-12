@@ -16,7 +16,9 @@ Class {
 		'messageIcon',
 		'messageText',
 		'removeButton',
-		'addButton'
+		'addButton',
+		'tabLabel',
+		'tabList'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -32,23 +34,22 @@ IceTipEditProjectDialogPresenter class >> defaultPreferredExtent [
 { #category : 'actions' }
 IceTipEditProjectDialogPresenter >> accept [
 
+	| newTagValue |
+	newTagValue := self tabList selectedItem group ifEmpty: [ 'projects' ] ifNotEmpty: [ :group | group ].
+	model repository project properties at: #tags put: { newTagValue }.
 	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
-		onSuccessRepositoryModified;
-		action: [
-			"Update the project"
-			model sourceDirectory: self selectedDirectoryPath pathString.
-			model fileFormat: self selectedFileFormat.
-			(model repositoryProperties fileFormat = self selectedFileFormat)
-				ifFalse: [ self error: 'Selected file format is incorrect.' ].
-			"Set the project in the repository"
-			model repository workingCopy project: model ];
+		onSuccessRepositoryModified; 
+		action: [ "Update the project"
+				model sourceDirectory: self selectedDirectoryPath pathString.
+				model fileFormat: self selectedFileFormat.
+				model repositoryProperties fileFormat = self selectedFileFormat ifFalse: [ self error: 'Selected file format is incorrect.' ]. "Set the project in the repository"
+				model repository workingCopy project: model ];
 		executeWithContext: self.
 
 	self closeWindow.
-	acceptCallback ifNotNil: [
-		acceptCallback value ]
+	acceptCallback ifNotNil: [ acceptCallback value ]
 ]
 
 { #category : 'accessing' }
@@ -91,8 +92,11 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 		display: [ :each | each description ];
 		selectItem: (self guessFormatFromDirectory: model sourceDirectoryReference).
 
-	self expandAndSelect: (RelativePath with: model sourceDirectory).
+	self tabList
+		items: IceTipRepositoriesBrowser new model repositoryGroups asSet asArray;
+		display: [ :each | each group capitalized ifEmpty: 'Projects' ].
 
+	self expandAndSelect: (RelativePath with: model sourceDirectory)
 ]
 
 { #category : 'accessing' }
@@ -105,35 +109,42 @@ IceTipEditProjectDialogPresenter >> defaultFormat [
 IceTipEditProjectDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		borderWidth: 5;
-		spacing: 5;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				vAlignCenter;
-				add: nameLabel expand: false;
-				add: nameInput;
-				add: addButton expand: false;
-				add: removeButton expand: false;
-				yourself)
-		  	expand: false;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				add: sourceDirectoryLabel expand: false;
-				add: sourceDirectoryTree;
-				yourself);
-		add: (SpBoxLayout newLeftToRight
-				vAlignCenter;
-				spacing: 5;
-				add: formatLabel expand: false;
-				add: formatList;
-				yourself)
-			expand: false;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				add: messageIcon expand: false;
-				add: messageText;
-				yourself);
-		yourself
+		  borderWidth: 5;
+		  spacing: 5;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   vAlignCenter;
+				   add: nameLabel expand: false;
+				   add: nameInput;
+				   add: addButton expand: false;
+				   add: removeButton expand: false;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   add: sourceDirectoryLabel expand: false;
+				   add: sourceDirectoryTree;
+				   yourself);
+		  add: (SpBoxLayout newLeftToRight
+				   vAlignCenter;
+				   spacing: 5;
+				   add: formatLabel expand: false;
+				   add: formatList;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   vAlignCenter;
+				   spacing: 5;
+				   add: tabLabel expand: false;
+				   add: tabList;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   add: messageIcon expand: false;
+				   add: messageText;
+				   yourself);
+		  yourself
 ]
 
 { #category : 'utilities' }
@@ -253,35 +264,39 @@ IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 IceTipEditProjectDialogPresenter >> initializePresenters [
 
 	nameLabel := self newLabel
-		label: 'Project Name';
-		yourself.
+		             label: 'Project Name';
+		             yourself.
 	nameInput := self newLabel
-		label: self model name;
-		yourself.
+		             label: self model name;
+		             yourself.
 	sourceDirectoryLabel := self newLabel
-		label: 'Code directory';
-		yourself.
+		                        label: 'Code directory';
+		                        yourself.
 	sourceDirectoryTree := self newTreeTable
-		hideColumnHeaders;
-		yourself.
+		                       hideColumnHeaders;
+		                       yourself.
 	formatLabel := self newLabel
-		label: 'Format';
-		yourself.
+		               label: 'Format';
+		               yourself.
 	formatList := self newDropList.
+	tabLabel := self newLabel 
+		            label: 'Tabs';
+		            yourself.
+	tabList := self newDropList.
 	messageIcon := self newImage.
 	messageText := self newText
-		beNotEditable;
-		addStyle: 'iceTipReadonly';
-		yourself.
+		               beNotEditable;
+		               addStyle: 'iceTipReadonly';
+		               yourself.
 
-	removeButton := self newButton 
-		addStyle: 'small';
-		icon: (self iconNamed: #remove); 
-		yourself.
-	addButton := self newButton 
-		addStyle: 'small';
-		icon: (self iconNamed: #add); 
-		yourself.
+	removeButton := self newButton
+		                addStyle: 'small';
+		                icon: (self iconNamed: #remove);
+		                yourself.
+	addButton := self newButton
+		             addStyle: 'small';
+		             icon: (self iconNamed: #add);
+		             yourself.
 
 	self initializeMessagePanel.
 	self initializeDirectoryTree
@@ -385,6 +400,12 @@ IceTipEditProjectDialogPresenter >> sourceDirectorySelectionChanged: selectedPat
 IceTipEditProjectDialogPresenter >> sourceDirectoryTree [
 
 	^ sourceDirectoryTree
+]
+
+{ #category : 'accessing' }
+IceTipEditProjectDialogPresenter >> tabList [
+
+	^ tabList
 ]
 
 { #category : 'accessing' }
