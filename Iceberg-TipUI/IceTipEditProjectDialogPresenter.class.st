@@ -2,22 +2,18 @@ Class {
 	#name : 'IceTipEditProjectDialogPresenter',
 	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
-		'nameLabel',
 		'nameInput',
 		'model',
 		'acceptCallback',
-		'sourceDirectoryLabel',
 		'sourceDirectoryTree',
 		'selectedDirectoryPath',
 		'formatList',
-		'formatLabel',
 		'formats',
 		'defaultFormat',
 		'messageIcon',
 		'messageText',
 		'removeButton',
 		'addButton',
-		'tabLabel',
 		'tabList'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
@@ -114,7 +110,7 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 		  add: (SpBoxLayout newLeftToRight
 				   spacing: 5;
 				   vAlignCenter;
-				   add: nameLabel expand: false;
+				   add: 'Project name' expand: false;
 				   add: nameInput;
 				   add: addButton expand: false;
 				   add: removeButton expand: false;
@@ -122,20 +118,20 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 		  expand: false;
 		  add: (SpBoxLayout newLeftToRight
 				   spacing: 5;
-				   add: sourceDirectoryLabel expand: false;
+				   add: 'Code directory' expand: false;
 				   add: sourceDirectoryTree;
 				   yourself);
 		  add: (SpBoxLayout newLeftToRight
 				   vAlignCenter;
 				   spacing: 5;
-				   add: formatLabel expand: false;
+				   add: 'Format' expand: false;
 				   add: formatList;
 				   yourself)
 		  expand: false;
 		  add: (SpBoxLayout newLeftToRight
 				   vAlignCenter;
 				   spacing: 5;
-				   add: tabLabel expand: false;
+				   add: 'Group' expand: false;
 				   add: tabList;
 				   yourself)
 		  expand: false;
@@ -172,12 +168,6 @@ IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [
 	
 
 
-]
-
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> formatLabel [
-
-	^ formatLabel
 ]
 
 { #category : 'accessing - ui' }
@@ -263,25 +253,13 @@ IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 { #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initializePresenters [
 
-	nameLabel := self newLabel
-		             label: 'Project Name';
-		             yourself.
 	nameInput := self newLabel
 		             label: self model name;
 		             yourself.
-	sourceDirectoryLabel := self newLabel
-		                        label: 'Code directory';
-		                        yourself.
 	sourceDirectoryTree := self newTreeTable
 		                       hideColumnHeaders;
 		                       yourself.
-	formatLabel := self newLabel
-		               label: 'Format';
-		               yourself.
 	formatList := self newDropList.
-	tabLabel := self newLabel 
-		            label: 'Tabs';
-		            yourself.
 	tabList := self newDropList.
 	messageIcon := self newImage.
 	messageText := self newText
@@ -326,12 +304,6 @@ IceTipEditProjectDialogPresenter >> nameInput [
 	^ nameInput
 ]
 
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> nameLabel [
-
-	^ nameLabel
-]
-
 { #category : 'events' }
 IceTipEditProjectDialogPresenter >> onAccept: aBlockClosure [ 
 	
@@ -372,12 +344,6 @@ IceTipEditProjectDialogPresenter >> selectedFileFormat [
 IceTipEditProjectDialogPresenter >> setModelBeforeInitialization: anObject [
 
 	model := anObject
-]
-
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> sourceDirectoryLabel [
-
-	^ sourceDirectoryLabel
 ]
 
 { #category : 'accessing' }
