@@ -14,7 +14,8 @@ Class {
 		'messageText',
 		'removeButton',
 		'addButton',
-		'tabList'
+		'tabList',
+		'addTabButton'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -78,10 +79,22 @@ IceTipEditProjectDialogPresenter >> addDirectory [
 { #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> connectPresenters [
 
+	| presenter |
 	super connectPresenters.
 
 	removeButton action: [ self removeDirectory ].
 	addButton action: [ self addDirectory ].
+	addTabButton action: [
+			presenter := SpRequestDialog new
+				             title: 'Add new repository group';
+				             label: 'What is the name of your group?';
+				             text: '';
+				             acceptLabel: 'Confirm';
+				             cancelLabel: 'Cancel';
+				             onAccept: [ :dialog | model repository project properties at: #tags put: { dialog presenter text asSymbol } ];
+				             openDialog.
+			self closeWindow.
+			acceptCallback ifNotNil: [ acceptCallback value ] ].
 
 	self formatList
 		items: self formats;
@@ -133,6 +146,7 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 				   spacing: 5;
 				   add: 'Group' expand: false;
 				   add: tabList;
+				   add: addTabButton expand: false;
 				   yourself)
 		  expand: false;
 		  add: (SpBoxLayout newLeftToRight
@@ -275,7 +289,10 @@ IceTipEditProjectDialogPresenter >> initializePresenters [
 		             addStyle: 'small';
 		             icon: (self iconNamed: #add);
 		             yourself.
-
+	addTabButton := self newButton
+		                addStyle: 'small';
+		                icon: (self iconNamed: #add);
+		                yourself.
 	self initializeMessagePanel.
 	self initializeDirectoryTree
 ]
