@@ -54,7 +54,7 @@ IceTipRepositoriesModel >> repositoryGroups [
 		See class side"
 	groups := groups sorted:
 		          [ :each | self class sortGroup at: each ifAbsent: [ 1 ] ] ascending , [ :each | each yourself ] ascending. "add default group first if it is not there yet."
-	(groups isEmpty or: [ groups first = '' ]) ifFalse: [ groups := groups copyWithFirst: '' ].
+	(groups isEmpty or: [ groups first = '' ]) ifFalse: [ groups := groups copyWithFirst: '' ]. 
 
 	^ groups collect: [ :each |
 			  IceTipRepositoryGroupModel new

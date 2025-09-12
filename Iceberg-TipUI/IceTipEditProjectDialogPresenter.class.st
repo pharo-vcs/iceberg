@@ -34,23 +34,22 @@ IceTipEditProjectDialogPresenter class >> defaultPreferredExtent [
 { #category : 'actions' }
 IceTipEditProjectDialogPresenter >> accept [
 
+	| newTagValue |
+	newTagValue := self tabList selectedItem group ifEmpty: [ 'projects' ] ifNotEmpty: [ :group | group ].
+	model repository project properties at: #tags put: { newTagValue }.
 	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;
-		action: [
-			"Update the project"
-			model sourceDirectory: self selectedDirectoryPath pathString.
-			model fileFormat: self selectedFileFormat.
-			(model repositoryProperties fileFormat = self selectedFileFormat)
-				ifFalse: [ self error: 'Selected file format is incorrect.' ].
-			"Set the project in the repository"
-			model repository workingCopy project: model ];
+		action: [ "Update the project"
+				model sourceDirectory: self selectedDirectoryPath pathString.
+				model fileFormat: self selectedFileFormat.
+				model repositoryProperties fileFormat = self selectedFileFormat ifFalse: [ self error: 'Selected file format is incorrect.' ]. "Set the project in the repository"
+				model repository workingCopy project: model ];
 		executeWithContext: self.
 
 	self closeWindow.
-	acceptCallback ifNotNil: [
-		acceptCallback value ]
+	acceptCallback ifNotNil: [ acceptCallback value ]
 ]
 
 { #category : 'accessing' }
@@ -94,9 +93,8 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 		selectItem: (self guessFormatFromDirectory: model sourceDirectoryReference).
 
 	self tabList
-		items: (IceTipRepositoriesBrowser new model repositories collect: [ :each |
-					 each entity project tags ifNotEmpty: [ :tags | tags first asString capitalized ] ifEmpty: [ '' ] ]) asSet asArray;
-		display: [ :each | each ].
+		items: IceTipRepositoriesBrowser new model repositoryGroups asSet asArray;
+		display: [ :each | each group capitalized ifEmpty: 'Projects' ].
 
 	self expandAndSelect: (RelativePath with: model sourceDirectory)
 ]
