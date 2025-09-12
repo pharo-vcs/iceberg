@@ -36,11 +36,11 @@ IceTipEditProjectDialogPresenter >> accept [
 
 	| newTagValue |
 	newTagValue := self tabList selectedItem group ifEmpty: [ 'projects' ] ifNotEmpty: [ :group | group ].
-	model repository project properties at: #tags put: { newTagValue }.
+	model repository project properties at: #tags put: { newTagValue asSymbol }.
 	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
-		onSuccessRepositoryModified; 
+		onSuccessRepositoryModified;
 		action: [ "Update the project"
 				model sourceDirectory: self selectedDirectoryPath pathString.
 				model fileFormat: self selectedFileFormat.
