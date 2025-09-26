@@ -16,6 +16,12 @@ Class {
 	#tag : 'View-Branch'
 }
 
+{ #category : 'commands' }
+IceTipCheckoutPreviewBrowser class >> buildSelectionCommandGroupWith: presenter for: aCommandGroup [
+
+	{ IceTipBrowseCommand } do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ]
+]
+
 { #category : 'private' }
 IceTipCheckoutPreviewBrowser class >> maxBranchNameLength [
 
