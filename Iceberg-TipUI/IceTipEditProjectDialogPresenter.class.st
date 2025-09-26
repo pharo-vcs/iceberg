@@ -58,22 +58,15 @@ IceTipEditProjectDialogPresenter >> acceptCallback [
 { #category : 'actions' }
 IceTipEditProjectDialogPresenter >> addDirectory [
 
-	| newDirectoryName newDirectory previousSelection |
+	| newDirectoryName |
 	
 	newDirectoryName := self application newRequest
 		title: 'Create a directory';
 		label: 'Enter the new Directory name';
 		openModalWithParent: self window.
 	newDirectoryName ifNil: [ ^ self ].
+	self createNewDirectory: newDirectoryName .
 	
-	previousSelection := selectedDirectoryPath.
-	newDirectory := (previousSelection / newDirectoryName) asResolvedBy: self model fileSystem. 
-	
-	newDirectory exists 
-		ifFalse: [ newDirectory createDirectory ].
-	
-	sourceDirectoryTree roots: { self model fileSystem }.
-	self expandAndSelect: previousSelection
 ]
 
 { #category : 'initialization' }
@@ -104,8 +97,20 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 	self tabList
 		items: IceTipRepositoriesBrowser new model repositoryGroups asSet asArray;
 		display: [ :each | each group capitalized ifEmpty: 'Projects' ].
+	self createNewDirectory: 'src'.
+	self expandAndSelect: (RelativePath with: 'src')
+]
 
-	self expandAndSelect: (RelativePath with: model sourceDirectory)
+{ #category : 'creation' }
+IceTipEditProjectDialogPresenter >> createNewDirectory: aString [
+
+	| newDirectory previousSelection |
+	previousSelection := selectedDirectoryPath.
+	newDirectory := previousSelection / aString asResolvedBy: self model fileSystem.
+	newDirectory ifExists: [ ^ self ].
+	newDirectory createDirectory.
+	sourceDirectoryTree roots: { self model fileSystem }.
+	self expandAndSelect: previousSelection
 ]
 
 { #category : 'accessing' }
@@ -158,30 +163,25 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 ]
 
 { #category : 'utilities' }
-IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [ 
+IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [
 
-	
 	| path aPathForSpec currentNode |
-	path := aRelativePath segments	asOrderedCollection.
-	
+	path := aRelativePath segments asOrderedCollection.
+
 	aPathForSpec := OrderedCollection new.
 	aPathForSpec add: 1.
-	
+
 	currentNode := self model fileSystem.
-	
-	path do: [ :aPart | | found |
-		found := currentNode directories detect: [ :e | e basename = aPart ] ifNone: [ ^self ].
-		aPathForSpec add: (currentNode directories indexOf: found).
-		currentNode := found].
-	
+
+	path do: [ :aPart |
+			| found |
+			found := currentNode directories detect: [ :e | e basename = aPart ] ifNone: [ ^ self ].
+			aPathForSpec add: (currentNode directories indexOf: found) - 1. "because we ignore the .git directory"
+			currentNode := found ].
+
 	sourceDirectoryTree expandPath: aPathForSpec.
 
-	sourceDirectoryTree withAdapterPerformOrDefer: [ :anAdapter |
-		sourceDirectoryTree selectPaths: { aPathForSpec } ].
-	
-	
-
-
+	sourceDirectoryTree withAdapterPerformOrDefer: [ :anAdapter | sourceDirectoryTree selectPaths: { aPathForSpec } ]
 ]
 
 { #category : 'accessing - ui' }
@@ -246,9 +246,8 @@ IceTipEditProjectDialogPresenter >> initializeDirectoryTree [
 						  evaluated: #basename;
 						  yourself));
 		roots: { self model fileSystem };
-		children: [ :each | each directories ];
-		whenSelectionChangedDo: [ :announcement | 
-			self sourceDirectorySelectionChanged: announcement selectedPaths ]
+		children: [ :each | each directories reject: [ :dir | dir basename = '.git' ] ];
+		whenSelectionChangedDo: [ :announcement | self sourceDirectorySelectionChanged: announcement selectedPaths ]
 ]
 
 { #category : 'initialization' }
