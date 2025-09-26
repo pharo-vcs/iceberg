@@ -281,7 +281,7 @@ IceTipRepositoriesBrowser >> updatePresenter [
 
 	LGitLibrary uniqueInstance isAvailable ifFalse: [ self addLibGitNotAvailableWarning ].
 	self model repositoryGroups do: [ :group |
-			(repositoryNotebook pageNamed: group label) ifNil: [
+			(repositoryNotebook hasPageNamed: group label) ifFalse: [
 					repositoryNotebook addPageTitle: group label provider: [
 							(self instantiate: IceTipRepositoryGroupPanel on: group)
 								transmitDo: [ "self refreshCommands" ];
