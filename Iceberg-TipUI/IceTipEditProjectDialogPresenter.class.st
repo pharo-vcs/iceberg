@@ -246,7 +246,7 @@ IceTipEditProjectDialogPresenter >> initializeDirectoryTree [
 						  evaluated: #basename;
 						  yourself));
 		roots: { self model fileSystem };
-		children: [ :each | each directories reject: [ :dir | dir basename endsWith: '.git' ] ];
+		children: [ :each | each directories reject: [ :dir | dir basename = '.git' ] ];
 		whenSelectionChangedDo: [ :announcement | self sourceDirectorySelectionChanged: announcement selectedPaths ]
 ]
 
