@@ -32,7 +32,7 @@ IceTipEditProjectDialogPresenter class >> defaultPreferredExtent [
 IceTipEditProjectDialogPresenter >> accept [
 
 	| newTagValue |
-	newTagValue := self tabList selectedItem group ifEmpty: [ 'projects' ] ifNotEmpty: [ :group | group ].
+	newTagValue := self tabList selectedItem group.
 	model repository project properties at: #tags put: { newTagValue asSymbol }.
 	IceTipStandardAction new
 		repository: model repository;
@@ -91,7 +91,9 @@ IceTipEditProjectDialogPresenter >> connectPresenters [
 				             text: '';
 				             acceptLabel: 'Confirm';
 				             cancelLabel: 'Cancel';
-				             onAccept: [ :dialog | model repository project properties at: #tags put: { dialog presenter text asSymbol } ];
+				             onAccept: [ :dialog |
+						             model repository project properties at: #tags put: { dialog presenter text asSymbol }.
+						             IceTipRepositoriesBrowser allInstancesDo: [ :instance | instance updatePresenter ] ];
 				             openDialog.
 			self closeWindow.
 			acceptCallback ifNotNil: [ acceptCallback value ] ].
