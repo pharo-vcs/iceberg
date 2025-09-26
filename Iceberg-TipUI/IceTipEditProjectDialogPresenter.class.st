@@ -107,10 +107,10 @@ IceTipEditProjectDialogPresenter >> createNewDirectory: aString [
 	| newDirectory previousSelection |
 	previousSelection := selectedDirectoryPath.
 	newDirectory := previousSelection / aString asResolvedBy: self model fileSystem.
-	newDirectory ifPresent: [ ^ self ].
+	newDirectory ifExists: [ ^ self ].
 	newDirectory createDirectory.
 	sourceDirectoryTree roots: { self model fileSystem }.
-
+	self expandAndSelect: previousSelection
 ]
 
 { #category : 'accessing' }
