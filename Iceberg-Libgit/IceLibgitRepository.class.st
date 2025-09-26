@@ -97,7 +97,7 @@ IceLibgitRepository class >> libgitRepositoryHandleAccessors [
 { #category : 'accessing' }
 IceLibgitRepository class >> localRepositoriesLocation [
 
-	^ FileLocator localDirectory
+	^ (FileLocator localDirectory / 'iceberg') ensureCreateDirectory
 ]
 
 { #category : 'accessing' }
