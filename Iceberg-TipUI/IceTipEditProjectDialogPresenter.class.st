@@ -107,7 +107,7 @@ IceTipEditProjectDialogPresenter >> createNewDirectory: aString [
 	| newDirectory previousSelection |
 	previousSelection := selectedDirectoryPath.
 	newDirectory := previousSelection / aString asResolvedBy: self model fileSystem.
-	newDirectory exists ifTrue: [ ^ self ].
+	newDirectory ifPresent: [ ^ self ].
 	newDirectory createDirectory.
 	sourceDirectoryTree roots: { self model fileSystem }.
 
