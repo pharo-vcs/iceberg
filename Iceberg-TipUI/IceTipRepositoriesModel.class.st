@@ -62,7 +62,7 @@ IceTipRepositoriesModel >> repositoryGroups [
 		[ :each | each yourself ] ascending.
 
 	"add default group first if it is not there yet."
-	(groups isEmpty or: [ groups first = ''])
+	(groups isEmpty or: [ groups includes: ''])
 		ifFalse: [ groups := groups copyWithFirst: '' ].
 
 	^ groups collect: [ :each |
