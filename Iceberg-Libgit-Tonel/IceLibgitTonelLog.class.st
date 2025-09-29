@@ -43,12 +43,13 @@ IceLibgitTonelLog >> fileNameForMethod: aMethod [
 
 	| path |
 	path := OrderedCollection new.
-	self repository subdirectory ifNotEmpty: [ :subDir |
-		path add: subDir ].
+
+	self repository subdirectory ifNotEmpty: [ :subDir | path add: subDir ].
 	path add: (self tonelPackageName: aMethod package).
 	path add: (self tonelMethodClassOrTraitName: aMethod).
 
-	^ String streamContents: [ :stream | path joinUsing: '/' ]
+	^ String streamContents: [ :stream | path do: [ :elem | stream nextPutAll: elem asString ] separatedBy: [ stream nextPutAll: '/' ] ]
+
 ]
 
 { #category : 'private' }

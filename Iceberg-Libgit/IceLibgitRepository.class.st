@@ -295,6 +295,13 @@ and the original repository''s url is {3}.'
 					 format: {self location. self origin. repo origin}) ]].
 ]
 
+{ #category : 'initialize-release' }
+IceLibgitRepository >> close [
+	
+	handle ifNil: [ ^self ].
+	handle free.
+]
+
 { #category : 'API - accessing' }
 IceLibgitRepository >> codeDirectory [
 	"Code repository might have been deleted or image might have been moved."
@@ -399,10 +406,15 @@ IceLibgitRepository >> delete [
 	"Delete is idempotent. If the repository does not exist, do nothing.
 	Otherwise, forget the repository and remove it from the disk.
 	Cleanup also the FFI handles."
-	
-	super delete.
-	
-	handle := nil.
+
+	"We will forget the repository before"
+
+	self forget.
+
+	self close.
+
+	self assert: self hasHandle not.
+
 	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ]
 ]
 
@@ -450,10 +462,10 @@ IceLibgitRepository >> doRemoveRemote: aRemote [
 { #category : 'private - libgit' }
 IceLibgitRepository >> free [
 
-	(handle isNil or: [ handle isNull ])
-		ifFalse: [ 
-			handle free.
-			handle := nil ]
+	self hasHandle ifFalse: [ ^ self ].
+
+	handle free.
+	handle := nil
 ]
 
 { #category : 'API - configuration' }
@@ -473,6 +485,13 @@ IceLibgitRepository >> handleLibgitError: aBlock [
 	<libgitErrorHandler>
 	
 	aBlock on: LGitCallReturnHandler do: [ :error | error acceptError: (IceLibgitErrorVisitor onContext: self) ]
+]
+
+{ #category : 'testing' }
+IceLibgitRepository >> hasHandle [
+
+	handle ifNil: [ ^ false ].
+	^ handle isNull not
 ]
 
 { #category : 'API - tags' }
@@ -802,8 +821,7 @@ IceLibgitRepository >> repositoryDirectory [
 IceLibgitRepository >> repositoryHandle [
 
 	<repositoryHandleAccessor>
-	(handle isNil or: [ handle isNull ])
-		ifTrue: [ handle := (LGitRepository on: self location) open ].
+	self hasHandle ifFalse: [ handle := (LGitRepository on: self location) open ].
 	^ handle
 ]
 

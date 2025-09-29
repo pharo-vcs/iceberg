@@ -56,6 +56,7 @@ IceGitScpRemote >> isSSHUrl: aString [
 { #category : 'private - patches' }
 IceGitScpRemote >> parseUrl [
 	| urlStream restSegments |
+	
 	(self isSSHUrl: url)
 		ifTrue: [ ^ super parseUrl ].
 	

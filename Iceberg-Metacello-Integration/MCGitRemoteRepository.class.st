@@ -39,6 +39,7 @@ MCGitRemoteRepository class >> parseLocation: aLocation version: aVersion [
 
 	^ self new
 	parseLocation: (aLocation allButFirst: self description size);
+	projectVersion: aVersion;
 	yourself 
 ]
 
@@ -123,7 +124,7 @@ MCGitRemoteRepository >> projectPath [
 { #category : 'accessing' }
 MCGitRemoteRepository >> scpUrl [
 
-	^ '{1}@{2}/{3}.git' format: { 
+	^ '{1}@{2}:{3}.git' format: { 
 		self user. 
 		self host. 
 		self path }

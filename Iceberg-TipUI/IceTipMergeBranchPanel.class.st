@@ -22,9 +22,12 @@ IceTipMergeBranchPanel >> beSwitchAndMerge [
 IceTipMergeBranchPanel >> doAccept [
 
 	IceTipStandardAction new
-		repository: self model entity; 
-		message: ('Verifying merge from {1}' format: { self selectedBranch name });
-		onSuccess: [ self selectedBranch previewMerge: self mergeType ];
+		repository: self model entity;
+		message:
+			('Verifying merge from {1}' format:
+					 { self selectedBranch itemName });
+		onSuccess: [
+			self selectedBranch branch previewMerge: self mergeType ];
 		action: [ self validate ];
 		executeWithContext: self
 ]

@@ -2,21 +2,20 @@ Class {
 	#name : 'IceTipEditProjectDialogPresenter',
 	#superclass : 'IceTipDialogPresenter',
 	#instVars : [
-		'nameLabel',
 		'nameInput',
 		'model',
 		'acceptCallback',
-		'sourceDirectoryLabel',
 		'sourceDirectoryTree',
 		'selectedDirectoryPath',
 		'formatList',
-		'formatLabel',
 		'formats',
 		'defaultFormat',
 		'messageIcon',
 		'messageText',
 		'removeButton',
-		'addButton'
+		'addButton',
+		'tabList',
+		'addTabButton'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -32,23 +31,22 @@ IceTipEditProjectDialogPresenter class >> defaultPreferredExtent [
 { #category : 'actions' }
 IceTipEditProjectDialogPresenter >> accept [
 
+	| newTagValue |
+	newTagValue := self tabList selectedItem group.
+	model repository project properties at: #tags put: { newTagValue asSymbol }.
 	IceTipStandardAction new
 		repository: model repository;
 		message: 'Setting up project';
 		onSuccessRepositoryModified;
-		action: [
-			"Update the project"
-			model sourceDirectory: self selectedDirectoryPath pathString.
-			model fileFormat: self selectedFileFormat.
-			(model repositoryProperties fileFormat = self selectedFileFormat)
-				ifFalse: [ self error: 'Selected file format is incorrect.' ].
-			"Set the project in the repository"
-			model repository workingCopy project: model ];
+		action: [ "Update the project"
+				model sourceDirectory: self selectedDirectoryPath pathString.
+				model fileFormat: self selectedFileFormat.
+				model repositoryProperties fileFormat = self selectedFileFormat ifFalse: [ self error: 'Selected file format is incorrect.' ]. "Set the project in the repository"
+				model repository workingCopy project: model ];
 		executeWithContext: self.
 
 	self closeWindow.
-	acceptCallback ifNotNil: [
-		acceptCallback value ]
+	acceptCallback ifNotNil: [ acceptCallback value ]
 ]
 
 { #category : 'accessing' }
@@ -60,39 +58,61 @@ IceTipEditProjectDialogPresenter >> acceptCallback [
 { #category : 'actions' }
 IceTipEditProjectDialogPresenter >> addDirectory [
 
-	| newDirectoryName newDirectory previousSelection |
+	| newDirectoryName |
 	
 	newDirectoryName := self application newRequest
 		title: 'Create a directory';
 		label: 'Enter the new Directory name';
 		openModalWithParent: self window.
 	newDirectoryName ifNil: [ ^ self ].
+	self createNewDirectory: newDirectoryName .
 	
-	previousSelection := selectedDirectoryPath.
-	newDirectory := (previousSelection / newDirectoryName) asResolvedBy: self model fileSystem. 
-	
-	newDirectory exists 
-		ifFalse: [ newDirectory createDirectory ].
-	
-	sourceDirectoryTree roots: { self model fileSystem }.
-	self expandAndSelect: previousSelection
 ]
 
 { #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> connectPresenters [
 
+	| presenter |
 	super connectPresenters.
 
 	removeButton action: [ self removeDirectory ].
 	addButton action: [ self addDirectory ].
+	addTabButton action: [
+			presenter := SpRequestDialog new
+				             title: 'Add new repository group';
+				             label: 'What is the name of your group?';
+				             text: '';
+				             acceptLabel: 'Confirm';
+				             cancelLabel: 'Cancel';
+				             onAccept: [ :dialog |
+						             model repository project properties at: #tags put: { dialog presenter text asSymbol }.
+						             IceTipRepositoriesBrowser allInstancesDo: [ :instance | instance updatePresenter ] ];
+				             openDialog.
+			self closeWindow.
+			acceptCallback ifNotNil: [ acceptCallback value ] ].
 
 	self formatList
 		items: self formats;
 		display: [ :each | each description ];
 		selectItem: (self guessFormatFromDirectory: model sourceDirectoryReference).
 
-	self expandAndSelect: (RelativePath with: model sourceDirectory).
+	self tabList
+		items: IceTipRepositoriesBrowser new model repositoryGroups asSet asArray;
+		display: [ :each | each group capitalized ifEmpty: 'Projects' ].
+	self createNewDirectory: 'src'.
+	self expandAndSelect: (RelativePath with: 'src')
+]
 
+{ #category : 'creation' }
+IceTipEditProjectDialogPresenter >> createNewDirectory: aString [
+
+	| newDirectory previousSelection |
+	previousSelection := selectedDirectoryPath.
+	newDirectory := previousSelection / aString asResolvedBy: self model fileSystem.
+	newDirectory ifExists: [ ^ self ].
+	newDirectory createDirectory.
+	sourceDirectoryTree roots: { self model fileSystem }.
+	self expandAndSelect: previousSelection
 ]
 
 { #category : 'accessing' }
@@ -105,68 +125,65 @@ IceTipEditProjectDialogPresenter >> defaultFormat [
 IceTipEditProjectDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		borderWidth: 5;
-		spacing: 5;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				vAlignCenter;
-				add: nameLabel expand: false;
-				add: nameInput;
-				add: addButton expand: false;
-				add: removeButton expand: false;
-				yourself)
-		  	expand: false;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				add: sourceDirectoryLabel expand: false;
-				add: sourceDirectoryTree;
-				yourself);
-		add: (SpBoxLayout newLeftToRight
-				vAlignCenter;
-				spacing: 5;
-				add: formatLabel expand: false;
-				add: formatList;
-				yourself)
-			expand: false;
-		add: (SpBoxLayout newLeftToRight
-				spacing: 5;
-				add: messageIcon expand: false;
-				add: messageText;
-				yourself);
-		yourself
+		  borderWidth: 5;
+		  spacing: 5;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   vAlignCenter;
+				   add: 'Project name' expand: false;
+				   add: nameInput;
+				   add: addButton expand: false;
+				   add: removeButton expand: false;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   add: 'Code directory' expand: false;
+				   add: sourceDirectoryTree;
+				   yourself);
+		  add: (SpBoxLayout newLeftToRight
+				   vAlignCenter;
+				   spacing: 5;
+				   add: 'Format' expand: false;
+				   add: formatList;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   vAlignCenter;
+				   spacing: 5;
+				   add: 'Group' expand: false;
+				   add: tabList;
+				   add: addTabButton expand: false;
+				   yourself)
+		  expand: false;
+		  add: (SpBoxLayout newLeftToRight
+				   spacing: 5;
+				   add: messageIcon expand: false;
+				   add: messageText;
+				   yourself);
+		  yourself
 ]
 
 { #category : 'utilities' }
-IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [ 
+IceTipEditProjectDialogPresenter >> expandAndSelect: aRelativePath [
 
-	
 	| path aPathForSpec currentNode |
-	path := aRelativePath segments	asOrderedCollection.
-	
+	path := aRelativePath segments asOrderedCollection.
+
 	aPathForSpec := OrderedCollection new.
 	aPathForSpec add: 1.
-	
+
 	currentNode := self model fileSystem.
-	
-	path do: [ :aPart | | found |
-		found := currentNode directories detect: [ :e | e basename = aPart ] ifNone: [ ^self ].
-		aPathForSpec add: (currentNode directories indexOf: found).
-		currentNode := found].
-	
+
+	path do: [ :aPart |
+			| found |
+			found := currentNode directories detect: [ :e | e basename = aPart ] ifNone: [ ^ self ].
+			aPathForSpec add: (currentNode directories indexOf: found) - 1. "because we ignore the .git directory"
+			currentNode := found ].
+
 	sourceDirectoryTree expandPath: aPathForSpec.
 
-	sourceDirectoryTree withAdapterPerformOrDefer: [ :anAdapter |
-		sourceDirectoryTree selectPaths: { aPathForSpec } ].
-	
-	
-
-
-]
-
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> formatLabel [
-
-	^ formatLabel
+	sourceDirectoryTree withAdapterPerformOrDefer: [ :anAdapter | sourceDirectoryTree selectPaths: { aPathForSpec } ]
 ]
 
 { #category : 'accessing - ui' }
@@ -231,9 +248,8 @@ IceTipEditProjectDialogPresenter >> initializeDirectoryTree [
 						  evaluated: #basename;
 						  yourself));
 		roots: { self model fileSystem };
-		children: [ :each | each directories ];
-		whenSelectionChangedDo: [ :announcement | 
-			self sourceDirectorySelectionChanged: announcement selectedPaths ]
+		children: [ :each | each directories reject: [ :dir | dir basename = '.git' ] ];
+		whenSelectionChangedDo: [ :announcement | self sourceDirectorySelectionChanged: announcement selectedPaths ]
 ]
 
 { #category : 'initialization' }
@@ -252,37 +268,32 @@ IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 { #category : 'initialization' }
 IceTipEditProjectDialogPresenter >> initializePresenters [
 
-	nameLabel := self newLabel
-		label: 'Project Name';
-		yourself.
 	nameInput := self newLabel
-		label: self model name;
-		yourself.
-	sourceDirectoryLabel := self newLabel
-		label: 'Code directory';
-		yourself.
+		             label: self model name;
+		             yourself.
 	sourceDirectoryTree := self newTreeTable
-		hideColumnHeaders;
-		yourself.
-	formatLabel := self newLabel
-		label: 'Format';
-		yourself.
+		                       hideColumnHeaders;
+		                       yourself.
 	formatList := self newDropList.
+	tabList := self newDropList.
 	messageIcon := self newImage.
 	messageText := self newText
-		beNotEditable;
-		addStyle: 'iceTipReadonly';
-		yourself.
+		               beNotEditable;
+		               addStyle: 'iceTipReadonly';
+		               yourself.
 
-	removeButton := self newButton 
-		addStyle: 'small';
-		icon: (self iconNamed: #remove); 
-		yourself.
-	addButton := self newButton 
-		addStyle: 'small';
-		icon: (self iconNamed: #add); 
-		yourself.
-
+	removeButton := self newButton
+		                addStyle: 'small';
+		                icon: (self iconNamed: #remove);
+		                yourself.
+	addButton := self newButton
+		             addStyle: 'small';
+		             icon: (self iconNamed: #add);
+		             yourself.
+	addTabButton := self newButton
+		                addStyle: 'small';
+		                icon: (self iconNamed: #add);
+		                yourself.
 	self initializeMessagePanel.
 	self initializeDirectoryTree
 ]
@@ -309,12 +320,6 @@ IceTipEditProjectDialogPresenter >> model [
 IceTipEditProjectDialogPresenter >> nameInput [
 
 	^ nameInput
-]
-
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> nameLabel [
-
-	^ nameLabel
 ]
 
 { #category : 'events' }
@@ -359,12 +364,6 @@ IceTipEditProjectDialogPresenter >> setModelBeforeInitialization: anObject [
 	model := anObject
 ]
 
-{ #category : 'accessing - ui' }
-IceTipEditProjectDialogPresenter >> sourceDirectoryLabel [
-
-	^ sourceDirectoryLabel
-]
-
 { #category : 'accessing' }
 IceTipEditProjectDialogPresenter >> sourceDirectorySelectionChanged: selectedPaths [
 
@@ -385,6 +384,12 @@ IceTipEditProjectDialogPresenter >> sourceDirectorySelectionChanged: selectedPat
 IceTipEditProjectDialogPresenter >> sourceDirectoryTree [
 
 	^ sourceDirectoryTree
+]
+
+{ #category : 'accessing' }
+IceTipEditProjectDialogPresenter >> tabList [
+
+	^ tabList
 ]
 
 { #category : 'accessing' }

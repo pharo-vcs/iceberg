@@ -61,8 +61,8 @@ IceBranch >> hash [
 
 { #category : 'API - history' }
 IceBranch >> includesCommit: aCommit [
-	
-	^ self newCommitWalk includesCommit: aCommit
+
+	^ self withCommitWalkDo: [ :walk | walk includesCommit: aCommit ]
 ]
 
 { #category : 'API - packages' }

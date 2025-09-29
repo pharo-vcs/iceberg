@@ -157,11 +157,10 @@ IceTipCommitModel >> info [
 
 	^ {
 		  ('Commit:' -> ('[' , self shortId , '] ' , self id)).
-		  ('Parents:'
-		   -> ((self entity ancestors collect: #shortId) joinUsing: ', ')).
+		  ('Parents:' -> (', ' join: (self entity ancestors collect: #shortId))).
 		  ('Author:' -> self entity author).
 		  ('Date:' -> self entity timeStamp asStringYMDHM).
-		  ('Tags:' -> (self entity tagNames joinUsing: ', ')).
+		  ('Tags:' -> (', ' join: self entity tagNames)).
 		  ('Comment:' -> self entity comment) }
 ]
 

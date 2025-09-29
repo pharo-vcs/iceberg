@@ -264,6 +264,12 @@ IceNode >> initialize [
 	childrenDictionary := Dictionary new
 ]
 
+{ #category : 'accessing' }
+IceNode >> inverseDefinition [
+
+	^ value inverseDefinition
+]
+
 { #category : 'testing' }
 IceNode >> isEmpty [
 	

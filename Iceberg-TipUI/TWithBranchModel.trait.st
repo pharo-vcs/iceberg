@@ -29,8 +29,3 @@ TWithBranchModel >> defaultBranchSelection [
 TWithBranchModel >> hasBranches [ 
 	^ self branches isNotEmpty
 ]
-
-{ #category : 'accessing' }
-TWithBranchModel >> repositoryModel [ 
-	^ self explicitRequirement
-]

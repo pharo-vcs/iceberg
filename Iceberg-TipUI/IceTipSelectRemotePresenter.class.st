@@ -37,8 +37,9 @@ IceTipSelectRemotePresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		spacing: 3;
-		add: remoteList;
+		add: remoteList width: 280;
 		add: addButton expand: false;
+		add: self newNullPresenter  expand: false;
 		yourself
 ]
 
@@ -60,12 +61,6 @@ IceTipSelectRemotePresenter >> initializePresenters [
 		icon: self icon;
 		action: [ self addRemote ];
 		yourself
-]
-
-{ #category : 'accessing' }
-IceTipSelectRemotePresenter >> label: aString [
-
-	self remoteLabel label: aString
 ]
 
 { #category : 'accessing' }
