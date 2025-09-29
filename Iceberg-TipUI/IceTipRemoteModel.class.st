@@ -4,7 +4,7 @@ I'm a model for IceRemote entries.
 Class {
 	#name : 'IceTipRemoteModel',
 	#superclass : 'IceTipEntityModel',
-	#traits : 'TWithBranchModel',
+	#traits : 'TWithBranchModel - {#repositoryModel}',
 	#classTraits : 'TWithBranchModel classTrait',
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
@@ -28,6 +28,12 @@ IceTipRemoteModel >> branches [
 IceTipRemoteModel >> description [
 
 	^ '{1} <{2}>' format: { self name. self entity url }
+]
+
+{ #category : 'comparing' }
+IceTipRemoteModel >> hash [
+
+	^ entity hash
 ]
 
 { #category : 'actions' }
