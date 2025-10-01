@@ -96,14 +96,16 @@ IceLibgitRepository class >> libgitRepositoryHandleAccessors [
 
 { #category : 'accessing' }
 IceLibgitRepository class >> localRepositoriesLocation [
-	^ FileLocator localDirectory / #iceberg
+
+	^ (FileLocator localDirectory / 'iceberg') ensureCreateDirectory
 ]
 
 { #category : 'accessing' }
 IceLibgitRepository class >> repositoriesLocation [
- 	^ self shareRepositoriesBetweenImages 
-		ifTrue: [ self sharedRepositoriesLocation ]
-		ifFalse: [ self localRepositoriesLocation ] 
+
+	^ self shareRepositoriesBetweenImages
+		  ifTrue: [ self sharedRepositoriesLocation ]
+		  ifFalse: [ self localRepositoriesLocation ]
 ]
 
 { #category : 'utilities' }
@@ -162,8 +164,9 @@ IceLibgitRepository class >> shareRepositoriesBetweenImages: anObject [
 
 { #category : 'settings' }
 IceLibgitRepository class >> sharedRepositoriesLocation [
-	^ SharedRepositoriesLocation ifNil: [ 
-		SharedRepositoriesLocation := (FileLocator home / #iceberg) asFileReference ]
+
+	^ SharedRepositoriesLocation ifNil: [
+		  SharedRepositoriesLocation := FileLocator home asFileReference ]
 ]
 
 { #category : 'settings' }
