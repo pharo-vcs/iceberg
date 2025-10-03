@@ -33,6 +33,17 @@ IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 	self subclassResponsibility
 ]
 
+{ #category : 'initialization' }
+IceTipGitProviderRepositoryPanel >> connectPresenters [
+
+	super connectPresenters.
+
+	projectNameInputText addShortcutWith: [ :action |
+			action
+				shortcutKey: Character cr asKeyCombination;
+				action: [ self owner accept ] ]
+]
+
 { #category : 'layout' }
 IceTipGitProviderRepositoryPanel >> defaultLayout [
 
