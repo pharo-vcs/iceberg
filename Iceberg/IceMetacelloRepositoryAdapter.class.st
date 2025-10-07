@@ -104,6 +104,10 @@ IceMetacelloRepositoryAdapter >> isValid [
 IceMetacelloRepositoryAdapter >> loadPackageNamed: aName intoLoader: aLoader [
 
 	| package found |
+
+	"We need to check if we have the correct version of the package"
+	self fetchPackageNamed: aName.
+
 	package := self repository workingCopy packageNamed: aName.
 	found := package latestVersion mcVersion.
 	aLoader addVersion: found.
