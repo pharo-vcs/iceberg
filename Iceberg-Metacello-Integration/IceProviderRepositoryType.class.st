@@ -75,11 +75,30 @@ IceProviderRepositoryType >> mcRepositoryClass [
 { #category : 'accessing' }
 IceProviderRepositoryType >> projectName [
 
-	^ (self location substrings: '/') third copyUpTo: $:
+	| parts mightBeProjectName |
+
+	"I need to handle the possibility that there are subprojects"
+	parts := self location substrings: '/'.
+	mightBeProjectName := parts allButFirst: 2.
+	
+	^ mightBeProjectName 
+		detect: [ :e | e includes: $: ]
+		ifFound: [ :e | e copyUpTo: $: ]
+		ifNone: [ parts third ]
 ]
 
 { #category : 'accessing' }
 IceProviderRepositoryType >> projectVersion [
 
-	^ (location substrings: '/') third copyAfter: $:
+	"I need to handle the possibility that there are subprojects"
+	| parts mightBeProjectName |
+	parts := self location substrings: '/'.
+	mightBeProjectName := parts allButFirst: 2.
+	
+	^ mightBeProjectName 
+		detect: [ :e | e includes: $: ]
+		ifFound: [ :e | e copyAfter: $: ]
+		ifNone: [ '' ]
+
+
 ]
