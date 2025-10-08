@@ -78,9 +78,6 @@ IceSnapshotBrowser class >> buildCommandsGroupWith: presenterInstance forRoot: r
 					  register: ((IceSBBrowseMethodVersionsCommand
 							    forSpecWithIconNamed: #versionControl
 							    shortcutKey: 'V' asShortcut) context: presenterInstance);
-					  register: ((IceSBFileOutMethodCommand
-							    forSpecWithIconNamed: #save
-							    shortcutKey: 'O' asShortcut) context: presenterInstance);
 					  register: ((IceSBCopySelectorCommand
 							    forSpecWithIconNamed: #smallCopy
 							    shortcutKey: 'C' asShortcut) context: presenterInstance);
@@ -222,54 +219,6 @@ IceSnapshotBrowser >> extensionClassNames [
 { #category : 'accessing' }
 IceSnapshotBrowser >> extensionsCategory [
 	^ '*Extensions'
-]
-
-{ #category : 'file in/out' }
-IceSnapshotBrowser >> fileOutMessage [
-	"Put a description of the selected message on a file"
-
-	| fileName |
-	self selectedMessageName ifNotNil: [
-		Cursor write showWhile: [
-			self selectedClassOrMetaClass fileOutMethod: self selectedMessageName ].
-			^ self ].
-	items isEmpty ifTrue: [ ^ self ].
-	fileName := MorphicUIManager new
-		            request: 'File out on which file?'
-		            initialAnswer: 'methods'.
-	Cursor write showWhile: [
-		| internalStream |
-		internalStream := WriteStream on: (String new: 1000).
-		internalStream
-			header;
-			timeStamp.
-		items do: [ :patchOp |
-			patchOp definition isMethodDefinition ifTrue: [
-				(patchOp definition actualClass isNotNil and: [
-					 patchOp definition actualClass includesSelector:
-						 patchOp definition selector ])
-					ifTrue: [
-						patchOp definition actualClass
-							printMethodChunk: patchOp definition selector
-							on: internalStream ]
-					ifFalse: [
-						internalStream nextChunkPut:
-							patchOp definition className , ' removeSelector: '
-							, patchOp definition selector printString ] ].
-			patchOp definition isClassDefinition ifTrue: [
-				patchOp definition actualClass
-					ifNotNil: [
-						internalStream nextChunkPut:
-							patchOp definition actualClass definition.
-						patchOp definition comment ifNotNil: [
-							patchOp definition actualClass putCommentOnFile: internalStream ] ]
-					ifNil: [
-						internalStream nextChunkPut:
-							patchOp definition className , ' removeFromSystem' ] ] ].
-		CodeExporter
-			writeSourceCodeFrom: internalStream
-			baseName: fileName
-			isSt: true ]
 ]
 
 { #category : 'accessing' }
