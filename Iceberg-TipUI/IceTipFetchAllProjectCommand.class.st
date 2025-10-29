@@ -35,7 +35,7 @@ IceTipFetchAllProjectCommand >> execute [
 	self isConfirmed ifFalse: [ ^ self ].
 	
 	repositories := IceRepository registry.
-	UIManager default
+	self application
 		informUserDuring: [ :bar | 
 			bar max: repositories size.
 			bar value: 1.

@@ -64,7 +64,7 @@ IceTipRepairAction >> executeWithContext: aContext model: aRepositoryModel [
 IceTipRepairAction >> fetchAllRemotes [
 	| remotes |
 	remotes := self repository remotes.
-	UIManager default informUserDuring: [ :bar | 
+	self application informUserDuring: [ :bar | 
 		bar label: 'Fetching incoming commits'.
 		bar max: remotes size.
 		bar value: 1.
