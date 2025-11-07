@@ -49,18 +49,23 @@ IceTipRepairLocateRepository class >> title [
 
 { #category : 'executing' }
 IceTipRepairLocateRepository >> basicExecute [
+
 	| dialog |
-	
 	dialog := (IceTipLocalRepositoryPanel newApplication: context application)
-		location: (self repository location ifNil: [ self defaultLocation ]);
-		yourself.
-	
-	dialog asDialogWindow 
-		okAction: [ 
-			dialog validate.
-			self repositoryModel updateLocation: dialog location.
-			true ];
+		          location: (self repository location ifNil: [ self defaultLocation ]);
+		          yourself.
+
+	dialog asDialogWindow
+		okAction: [
+				(IceRepositoryCreator isGitRoot: dialog location)
+					ifTrue: [
+							dialog validate.
+							self repositoryModel updateLocation: dialog location.
+							true ]
+					ifFalse: [ StPharoApplication current inform: dialog location , 'is not a git repository' ] ];
 		open.
+
+	
 ]
 
 { #category : 'private' }
