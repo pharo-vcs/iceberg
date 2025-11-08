@@ -74,7 +74,7 @@ IceTipGitRepositoryPanel >> newRepository [
 { #category : 'accessing' }
 IceTipGitRepositoryPanel >> remoteUrl [
 
-	^ self remoteInputText text asString trimmed
+	^ self remoteInputText text asString trimBoth
 ]
 
 { #category : 'accessing' }
