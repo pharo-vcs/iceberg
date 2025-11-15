@@ -64,9 +64,7 @@ IceTipRepairAction >> executeWithContext: aContext model: aRepositoryModel [
 IceTipRepairAction >> fetchAllRemotes [
 	| remotes |
 	remotes := self repository remotes.
-	self halt. "We should not use UIManager default.
-	Now the replacement is not clear to me. SD."
-	UIManager default informUserDuring: [ :bar | 
+	self application informUser: 'Working...' during: [ :bar | 
 		bar label: 'Fetching incoming commits'.
 		bar max: remotes size.
 		bar value: 1.
