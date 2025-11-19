@@ -46,7 +46,7 @@ IceLibgitErrorVisitor >> visitECONFLICT: anError [
 { #category : 'visiting' }
 IceLibgitErrorVisitor >> visitEEOF: aLGit_GIT_EEOF [
 
-	aLGit_GIT_EEOF messageText trimmed = 'ERROR: Repository not found.'
+	aLGit_GIT_EEOF messageText trimBoth = 'ERROR: Repository not found.'
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 	
 	^ self visitGenericError: aLGit_GIT_EEOF
@@ -85,11 +85,11 @@ IceLibgitErrorVisitor >> visitERROR: anError [
 		ifTrue: [ self visitEUSER: anError  ].
 
 	"Error in libgit in non-windows"
-	anError messageText trimmed asLowercase = 'Unexpected HTTP status code: 404' asLowercase
+	anError messageText trimBoth asLowercase = 'Unexpected HTTP status code: 404' asLowercase
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 
 	"Error in libgit in windows"
-	anError messageText trimmed = 'request failed with status code: 404'
+	anError messageText trimBoth = 'request failed with status code: 404'
 		ifTrue: [ IceCloneRemoteNotFound signalFor: context url ].
 
 	self visitGenericError: anError
