@@ -28,6 +28,6 @@ IceTipMetacelloInstallBaselineGroupCommand >> execute [
 		installBaseline: self package
 		groups:
 		((result substrings: ',')
-			 collect: [ :each | each trimmed ]
+			 collect: [ :each | each trimBoth ]
 			 as: Array)
 ]

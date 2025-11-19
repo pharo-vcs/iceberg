@@ -101,13 +101,13 @@ IceTipAddRemoteDialogPresenter >> onAccept: aBlock [
 { #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> remoteName [
 
-	^ self nameText text trimmed
+	^ self nameText text trimBoth
 ]
 
 { #category : 'accessing' }
 IceTipAddRemoteDialogPresenter >> remoteUrl [
 
-	^ self urlText text trimmed
+	^ self urlText text trimBoth
 ]
 
 { #category : 'initialization' }
