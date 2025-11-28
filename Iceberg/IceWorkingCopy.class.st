@@ -331,6 +331,18 @@ IceWorkingCopy >> forceCalculateDirtyPackages [
 		package beDirty: (diff includesPackageNamed: package name) ].
 ]
 
+{ #category : 'API - changes' }
+IceWorkingCopy >> forceCalculateOneDirtyPackage: aPackage [
+
+	| diff |
+	diff := IceDiff new
+		        sourceVersion: self;
+		        targetVersion: self referenceCommit;
+		        buildFull.
+
+	aPackage beDirty: (diff includesPackageNamed: aPackage name)
+]
+
 { #category : 'API - commits' }
 IceWorkingCopy >> hasSingleCommit [
 	"Returns true if all loaded packages were loaded from the single same commit"

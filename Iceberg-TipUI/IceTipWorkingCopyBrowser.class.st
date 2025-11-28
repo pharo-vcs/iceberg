@@ -50,6 +50,13 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 
 ]
 
+{ #category : 'commands' }
+IceTipWorkingCopyBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+
+	super buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup.
+	aCommandGroup register: (IceTipCalculateDirtyPackageCommand forSpecContext: presenter)
+]
+
 { #category : 'accessing' }
 IceTipWorkingCopyBrowser class >> defaultPreferredExtent [
 	^ (700 @ 500)
