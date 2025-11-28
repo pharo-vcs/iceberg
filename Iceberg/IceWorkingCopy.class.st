@@ -735,7 +735,7 @@ IceWorkingCopy >> rootFileReference [
 	^ repository location
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'selecting' }
 IceWorkingCopy >> selectPackage [
 
 	| presenter pkg |
