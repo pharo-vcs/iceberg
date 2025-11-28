@@ -331,6 +331,18 @@ IceWorkingCopy >> forceCalculateDirtyPackages [
 		package beDirty: (diff includesPackageNamed: package name) ].
 ]
 
+{ #category : 'API - changes' }
+IceWorkingCopy >> forceCalculateOneDirtyPackage [
+
+	| diff pkg |
+	diff := IceDiff new
+		        sourceVersion: self;
+		        targetVersion: self referenceCommit;
+		        buildFull.
+	pkg := self selectPackage.
+	pkg beDirty: (diff includesPackageNamed: pkg name)
+]
+
 { #category : 'API - commits' }
 IceWorkingCopy >> hasSingleCommit [
 	"Returns true if all loaded packages were loaded from the single same commit"
@@ -721,6 +733,22 @@ IceWorkingCopy >> repositoryProperties [
 IceWorkingCopy >> rootFileReference [
 	
 	^ repository location
+]
+
+{ #category : 'as yet unclassified' }
+IceWorkingCopy >> selectPackage [
+
+	| presenter pkg |
+	presenter := SpSelectDialog new
+		             application: StPharoApplication current;
+		             title: 'Select a package';
+		             message: 'Select the package you want to recalculate';
+		             items: self loadedPackages;
+		             display: [ :each | each name ];
+		             onAccept: [ :dialog | pkg := dialog presenter selectedItem ].
+	presenter openModal.
+
+	^ pkg
 ]
 
 { #category : 'private - commits' }
