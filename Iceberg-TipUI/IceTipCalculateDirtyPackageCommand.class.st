@@ -27,7 +27,7 @@ IceTipCalculateDirtyPackageCommand >> execute [
 
 	IceTipStandardAction new
 		repository: self item entity;
-		message: 'Recalculating Dirty Packages';
+		message: 'Recalculating The Dirty Package';
 		onSuccessRepositoryModified;
 		action: [ self item entity workingCopy forceCalculateOneDirtyPackage: self item entity ];
 		executeWithContext: context
