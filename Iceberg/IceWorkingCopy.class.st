@@ -332,15 +332,15 @@ IceWorkingCopy >> forceCalculateDirtyPackages [
 ]
 
 { #category : 'API - changes' }
-IceWorkingCopy >> forceCalculateOneDirtyPackage [
+IceWorkingCopy >> forceCalculateOneDirtyPackage: aPackage [
 
-	| diff pkg |
+	| diff |
 	diff := IceDiff new
 		        sourceVersion: self;
 		        targetVersion: self referenceCommit;
 		        buildFull.
-	pkg := self selectPackage.
-	pkg beDirty: (diff includesPackageNamed: pkg name)
+
+	aPackage beDirty: (diff includesPackageNamed: aPackage name)
 ]
 
 { #category : 'API - commits' }
@@ -733,22 +733,6 @@ IceWorkingCopy >> repositoryProperties [
 IceWorkingCopy >> rootFileReference [
 	
 	^ repository location
-]
-
-{ #category : 'selecting' }
-IceWorkingCopy >> selectPackage [
-
-	| presenter pkg |
-	presenter := SpSelectDialog new
-		             application: StPharoApplication current;
-		             title: 'Select a package';
-		             message: 'Select the package you want to recalculate';
-		             items: self loadedPackages;
-		             display: [ :each | each name ];
-		             onAccept: [ :dialog | pkg := dialog presenter selectedItem ].
-	presenter openModal.
-
-	^ pkg
 ]
 
 { #category : 'private - commits' }

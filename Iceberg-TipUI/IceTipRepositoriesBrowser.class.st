@@ -56,7 +56,6 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 	super buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup.
 
 	{	IceTipCalculateDirtyPackagesCommand.
-		IceTipCalculateDirtyPackageCommand .
 		IceTipCopyCommitishCommand.
 		IceTipOpenNativelyCommand.
 		} do: [ :each |
