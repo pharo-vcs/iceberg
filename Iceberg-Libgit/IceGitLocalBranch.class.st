@@ -74,6 +74,13 @@ IceGitLocalBranch >> delete [
 		self repositoryHandle deleteBranch: found ]
 ]
 
+{ #category : 'private - pushing' }
+IceGitLocalBranch >> doPushTo: aRemote [
+
+	repository handleLibgitError: [ 
+		self basicPushTo: aRemote ]
+]
+
 { #category : 'file-access' }
 IceGitLocalBranch >> fileSystem [
 	
@@ -168,8 +175,12 @@ IceGitLocalBranch >> pushTagsToRemote: aRemote gitRemote: gitRemote progress: pu
 { #category : 'API - remotes' }
 IceGitLocalBranch >> pushTo: aRemote [
 
-	repository handleLibgitError: [ 
-		self basicPushTo: aRemote ]
+	IceGitOperationSettings pushOperationClass new
+		repository: repository;
+		branch: self;
+		remote: aRemote;
+		execute. 
+
 ]
 
 { #category : 'accessing' }

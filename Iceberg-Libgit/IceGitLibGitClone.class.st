@@ -1,5 +1,8 @@
+"
+I implement the cloning by using libgit2
+"
 Class {
-	#name : 'IceGitClone',
+	#name : 'IceGitLibGitClone',
 	#superclass : 'Object',
 	#instVars : [
 		'location',
@@ -11,7 +14,7 @@ Class {
 }
 
 { #category : 'private - operations' }
-IceGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries [ 
+IceGitLibGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries [ 
 
 	[repo clone: url options: cloneOptions] 
 		on: LGit_GIT_ERROR 
@@ -25,7 +28,7 @@ IceGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: rema
 ]
 
 { #category : 'actions' }
-IceGitClone >> execute [
+IceGitLibGitClone >> execute [
 
 	| repo cloneOptions checkoutOptions callbacks |
 	location exists
@@ -58,21 +61,21 @@ IceGitClone >> execute [
 ]
 
 { #category : 'accessing' }
-IceGitClone >> location [
+IceGitLibGitClone >> location [
 	^ location
 ]
 
 { #category : 'accessing' }
-IceGitClone >> location: aFileReference [
+IceGitLibGitClone >> location: aFileReference [
 	location := aFileReference
 ]
 
 { #category : 'accessing' }
-IceGitClone >> url [
+IceGitLibGitClone >> url [
 	^ url
 ]
 
 { #category : 'accessing' }
-IceGitClone >> url: aString [ 
+IceGitLibGitClone >> url: aString [ 
 	url := aString
 ]
