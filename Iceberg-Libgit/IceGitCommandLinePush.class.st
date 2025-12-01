@@ -29,6 +29,7 @@ IceGitCommandLinePush >> execute [
 			        s
 				        nextPut: 'push';
 				        nextPut: '--progress';
+						  nextPut: '--set-upstream';
 			       	  nextPut: remote name ].
 
 	self
