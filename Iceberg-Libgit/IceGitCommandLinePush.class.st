@@ -30,7 +30,8 @@ IceGitCommandLinePush >> execute [
 				        nextPut: 'push';
 				        nextPut: '--progress';
 						  nextPut: '--set-upstream';
-			       	  nextPut: remote name ].
+			       	  nextPut: remote name;
+						  nextPut: branch name ].
 
 	self
 		executeSubProcess: 'git'
