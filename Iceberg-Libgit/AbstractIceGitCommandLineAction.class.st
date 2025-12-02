@@ -64,14 +64,16 @@ AbstractIceGitCommandLineAction >> executeUsingUnixSubProcess: command arguments
 { #category : 'executing' }
 AbstractIceGitCommandLineAction >> executeUsingWindowsSubProcess: command arguments: arguments workingDirectory: workingDirectory onExit: onExitBlock [
 
-	| stderrFile stdoutFile commandString return osWSWinProcessClass |
+	| stderrFile stdoutFile commandString return osWSWinProcessClass rnd |
 
 	osWSWinProcessClass := self class environment 
 		at: #OSWSWinProcess 
 		ifAbsent: [ self error: 'Missing OSWSWinProcess class' ]. 
 
-	stderrFile := FileLocator temp / 'git-stderr.txt'.
-	stdoutFile := FileLocator temp / 'git-stdout.txt'.
+	rnd := (Random new nextInteger:16r10000) printStringHex.
+
+	stderrFile := FileLocator temp / ('git-stderr-' , rnd , '.txt').
+	stdoutFile := FileLocator temp / ('git-stdout-' , rnd , '.txt').
 
 	commandString := String streamContents: [ :stream |
 		           stream
