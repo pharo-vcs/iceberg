@@ -62,7 +62,7 @@ IceTipRepairLocateRepository >> basicExecute [
 							dialog validate.
 							self repositoryModel updateLocation: dialog location.
 							true ]
-					ifFalse: [ self inform: dialog location , 'is not a git repository' ] ];
+					ifFalse: [ self application inform: dialog location , 'is not a git repository' ] ];
 		open.
 
 	
