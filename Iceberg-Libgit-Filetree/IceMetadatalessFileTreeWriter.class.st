@@ -29,7 +29,6 @@ IceMetadatalessFileTreeWriter >> writeVersion: aVersion [
 	self deleteExistingPackageStructureFor: members.
 	self fileUtils ensureDirectoryExists: self packageFileDirectory.
 	self initializePackageFileDirectoryCache.
-	self writeFormat.
 	self writePackage: aVersion package.
 	self writeDefinitions: aVersion.
 	aVersion dependencies do: [ :ea | self writeVersionDependency: ea ]

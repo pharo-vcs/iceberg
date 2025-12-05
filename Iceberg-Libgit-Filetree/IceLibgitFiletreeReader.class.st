@@ -85,12 +85,3 @@ IceLibgitFiletreeReader >> loadVersionInfo [
 IceLibgitFiletreeReader >> packageNameFromPackageDirectory [
 	^ iceVersion packageName
 ]
-
-{ #category : 'accessing' }
-IceLibgitFiletreeReader >> versionName [
-	^ ('{1}-{2}.{3}' format: {
-		self packageNameFromPackageDirectory. 
-		self commit compatibleUsername. 
-		self versionNumber
-	})
-]

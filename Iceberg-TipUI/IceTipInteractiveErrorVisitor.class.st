@@ -149,11 +149,11 @@ IceTipInteractiveErrorVisitor >> visitNoCommitMessage: aWarning [
 
 	| proceed |
 	proceed := context application newConfirm
-		           label: aWarning messageText;
+		           message: aWarning messageText;
 		           title: 'Warning!';
 		           acceptLabel: 'Commit';
 		           cancelLabel: 'Cancel';
-		         		openModal.
+		           openModal.
 
 	proceed ifFalse: [ ^ self ].
 	aWarning resume
