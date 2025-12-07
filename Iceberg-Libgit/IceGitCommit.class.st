@@ -8,7 +8,6 @@ Class {
 		'ancestorIds',
 		'comment',
 		'packageNamesCache',
-		'projectCache',
 		'writerClass'
 	],
 	#category : 'Iceberg-Libgit-Core',
@@ -183,8 +182,7 @@ IceGitCommit >> project [
 	
 	This is a quick fix of the issue for Pharo 7 release."
 
-	projectCache ifNotNil: [ ^ projectCache ].
-	^ [ projectCache := IceProjectReader readProjectFrom: self ] 
+	^ [ IceProjectReader readProjectFrom: self ] 
 		on: NotFound 
 		do: [ self repository fetch. IceProjectReader readProjectFrom: self ]
 ]

@@ -147,8 +147,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 		beResizable;
 		addColumn: (SpStringTableColumn new
 			title: 'Repositories';
-			evaluated: [ :x | x description ];
-			formatted: [ :each | each descriptionString ];
+			evaluated: #description;
 			displayColor: [ :each | each descriptionDecorator color ];
 			displayBold: [ :each | each descriptionDecorator isBold ];
 			displayItalic: [ :each | each descriptionDecorator isItalic ];
@@ -157,8 +156,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			yourself);
 		addColumn: (SpStringTableColumn new
 			title: 'Status';
-			evaluated: [ :x | x status ];
-			formatted: [ :each | each statusString ];
+			evaluated: #status;
 			displayColor: [ :each | each statusDecorator color ];
 			displayBold: [ :each | each statusDecorator isBold ];
 			displayItalic: [ :each | each statusDecorator isItalic ];
@@ -167,8 +165,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			yourself);
 		addColumn: (SpStringTableColumn new
 			title: 'Branch';
-			evaluated: [ :x | x status ];
-			formatted: [ :each | each branchName ];
+			evaluated: #branchName;
 			yourself);
 		actions: self selectionCommandsGroup;
 		activateOnDoubleClick;

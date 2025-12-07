@@ -307,7 +307,7 @@ IceCommit >> status [
 { #category : 'API - tags' }
 IceCommit >> tags [
 	
-	^ self repository tags select: [ :each | each commitId = self id ]
+	^ self repository tags select: [ :each | each commit = self ]
 ]
 
 { #category : 'accessing' }
