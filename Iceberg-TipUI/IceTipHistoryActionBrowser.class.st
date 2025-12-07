@@ -31,6 +31,17 @@ IceTipHistoryActionBrowser >> actionButtonBar [
 	^ actionButtonBar
 ]
 
+{ #category : 'private' }
+IceTipHistoryActionBrowser >> closeWhenRepository: ann [
+
+	(ann repository isNil or: [ 
+		self model repositoryModel isModelOf: ann repository ]) ifFalse: [ 
+		^ self ].
+	
+	self delete.
+
+]
+
 { #category : 'accessing - ui' }
 IceTipHistoryActionBrowser >> commitsPanel [
 
@@ -101,5 +112,11 @@ IceTipHistoryActionBrowser >> subscribeToAnnouncements [
 	Iceberg announcer weak
 		when: IceRepositoryAnnouncement
 		send: #refreshWhenRepository:
+		to: self.
+		
+	Iceberg announcer weak
+		when: IceRepositoryForgotten
+		send: #closeWhenRepository:
 		to: self
+
 ]

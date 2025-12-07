@@ -2,7 +2,8 @@ Extension { #name : 'IceConflictingOperation' }
 
 { #category : '*Iceberg-TipUI' }
 IceConflictingOperation >> operationIconName [
-	^ #changeUpdate
+
+	^ #uncommentedClass
 ]
 
 { #category : '*Iceberg-TipUI' }

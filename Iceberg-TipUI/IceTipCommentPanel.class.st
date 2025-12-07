@@ -117,14 +117,17 @@ IceTipCommentPanel >> initializePresenters [
 
 	commentText := self newText
 		               text:
-			               String cr , String cr
-			               , SystemVersion current majorMinorVersion , ':'
-			               , String cr , '#Branch: '
-			               , repositoryModel branchName , ' Fixes #'
-			               , String cr , '#Please use one of those' , String cr
-			               , '#feat:' , String cr , '#fix:' , String cr
-			               , '#refactor:' , String cr , '#chore:' , String cr
-			               , '#comment:';
+			               String cr
+			               ,
+				               '# Please enter the commit message for your changes. 
+# Lines starting with # will be ignored, and an empty message aborts the commit.
+# On branch ' , repositoryModel branchName , ', Fixes #
+#Please use one of those
+#feat:
+#fix:
+#refactor:
+#chore:
+#comment:';
 		               yourself.
 
 	fixesHelpString := 'Enter the number of the issue that you fixed. Github will close it when it will be committed or merged in the default branch'.
@@ -169,12 +172,15 @@ IceTipCommentPanel >> isSaving [
 { #category : 'accessing' }
 IceTipCommentPanel >> message [
 
-	self fixesField text isAllDigits ifFalse: [ 
-		^ self commentText text asString ].
+	self fixesField text isAllDigits ifFalse: [
+		^ (self commentText text asString lines reject: [ :line |
+			   line trimLeft beginsWith: '#' ]) joinUsing: String lf ].
 
-	^ String streamContents: [ :stream | 
+
+	^ String streamContents: [ :stream |
 		  stream
-			  nextPutAll: self commentText text asString; cr;
+			  nextPutAll: self commentText text asString;
+			  cr;
 			  nextPutAll: 'Fixes #';
 			  nextPutAll: self fixesField number asString ]
 ]

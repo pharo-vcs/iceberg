@@ -27,6 +27,7 @@ IceTipWorkingCopyBrowser class >> buildGeneralCommandGroupWith: presenter for: a
 		IceTipFetchCommand.
 		IceTipCheckoutBranchCommand.
 		IceTipMergeCommand.
+		IceTipWriteToFilesCommand.
 		IceTipManageRepositoryCommand.
 		IceTipDiscardChangesCommand.
 		IceTipAddPackageCommand } 
@@ -47,6 +48,13 @@ IceTipWorkingCopyBrowser class >> buildSelectionCommandGroupWith: presenter for:
 		IceTipRemoveFromRepositoryPackageCommand }
 			do: [ :each | aCommandGroup register: (each forSpecContext: presenter) ]
 
+]
+
+{ #category : 'commands' }
+IceTipWorkingCopyBrowser class >> buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup [
+
+	super buildSelectionExtraCommandGroupWith: presenter for: aCommandGroup.
+	aCommandGroup register: (IceTipCalculateDirtyPackageCommand forSpecContext: presenter)
 ]
 
 { #category : 'accessing' }
@@ -77,6 +85,17 @@ IceTipWorkingCopyBrowser >> browsePackage: aPackageModel [
 	 commandClass new
 		packageModel: aPackageModel;
 		execute
+]
+
+{ #category : 'private' }
+IceTipWorkingCopyBrowser >> closeWhenRepository: ann [
+
+	(ann repository isNil or: [ 
+		self model repositoryModel isModelOf: ann repository ]) ifFalse: [ 
+		^ self ].
+	
+	self delete.
+
 ]
 
 { #category : 'initialization' }
@@ -240,6 +259,11 @@ IceTipWorkingCopyBrowser >> statusBar [
 IceTipWorkingCopyBrowser >> subscribeToAnnouncements [
 
 	Iceberg announcer weak
+		when: IceRepositoryForgotten
+		send: #closeWhenRepository:
+		to: self.
+
+	Iceberg announcer weak
 		when: IceRepositoryAnnouncement
 		send: #refreshWhenRepository:
 		to: self
@@ -254,7 +278,7 @@ IceTipWorkingCopyBrowser >> updatePresenter [
 { #category : 'initialization' }
 IceTipWorkingCopyBrowser >> windowTitle [
 
-	^ 'Working copy of ', self model repositoryName
+	^ self model repositoryName
 ]
 
 { #category : 'accessing' }

@@ -29,11 +29,15 @@ IceTipGitRepositoryPanel >> defaultLayout [
 ]
 
 { #category : 'utilities' }
-IceTipGitRepositoryPanel >> extractProjectName: aString [
+IceTipGitRepositoryPanel >> extractProjectNameAndOwner: aString into: aBlock [
 
-	^ [ (IceGitRemote url: aString) projectName ]
+	| remote |
+
+	^ [
+		  remote := IceGitRemote url: aString.
+		  aBlock value: remote owner value: remote projectName ]
 		  on: IceWrongUrl
-		  do: [ 'invalid-url' ]
+		  do: [ aBlock value: nil value: 'invalid-url' ]
 ]
 
 { #category : 'initialization' }
@@ -45,7 +49,12 @@ IceTipGitRepositoryPanel >> initializePresenters [
 	self remoteInputText
 		placeholder: 'e.g., ssh://[user@]host.xz[:port]/path/to/repo.git'.
 	self remoteInputText whenTextChangedDo: [ :text |
-		self projectLocation appendPath: (self extractProjectName: text) ].
+		self 
+			extractProjectNameAndOwner: text 
+			into: [ :anOwner :projectName | 
+				anOwner 
+					ifNil: [ self projectLocation appendPath: projectName ]
+					ifNotNil: [ self projectLocation appendPath: (anOwner , DiskStore delimiter asString , projectName)  ]] ].
 
 ]
 
@@ -65,7 +74,7 @@ IceTipGitRepositoryPanel >> newRepository [
 { #category : 'accessing' }
 IceTipGitRepositoryPanel >> remoteUrl [
 
-	^ self remoteInputText text asString trimmed
+	^ self remoteInputText text asString trimBoth
 ]
 
 { #category : 'accessing' }

@@ -7,10 +7,31 @@ Class {
 	#instVars : [
 		'repositoryProvider'
 	],
+	#classInstVars : [
+		'sortGroup'
+	],
 	#category : 'Iceberg-TipUI-Model',
 	#package : 'Iceberg-TipUI',
 	#tag : 'Model'
 }
+
+{ #category : 'adding' }
+IceTipRepositoriesModel class >> addTag: aTag priority: aPriority [
+
+	sortGroup at: aTag put: aPriority
+]
+
+{ #category : 'class initialization' }
+IceTipRepositoriesModel class >> initialize [
+
+	sortGroup := Dictionary newFromPairs: { ''. 0. 'system'. 100 }
+]
+
+{ #category : 'accessing' }
+IceTipRepositoriesModel class >> sortGroup [
+
+	^ sortGroup 
+]
 
 { #category : 'accessing' }
 IceTipRepositoriesModel >> repositories [
@@ -21,7 +42,7 @@ IceTipRepositoriesModel >> repositories [
 
 { #category : 'accessing' }
 IceTipRepositoriesModel >> repositoryGroups [
-	| sortGroup groups |
+	| groups |
 
 	groups := self repositories
 		collect: [ :each |
@@ -31,16 +52,17 @@ IceTipRepositoriesModel >> repositoryGroups [
 		as: Set.
 
 	"sort groups:
-	 	1. 'general' group (all projects without a group tag).
-		2. user defined groups sorted alphabetically
-		3. last (always last) system group"
-	sortGroup := Dictionary newFromPairs: { ''. 0. 'system'. 100 }.
+		1. user defined groups with a defined priority (<0) sorted by priority
+	 	2. 'general' group (all projects without a group tag).
+		3. user defined groups without defined priority, sorted alphabetically
+		4. last (always last) system group
+		See class side"
 	groups := groups sorted:
-		[ :each | sortGroup at: each ifAbsent: [ 1 ] ] ascending,
+		[ :each | self class sortGroup at: each ifAbsent: [ 1 ] ] ascending,
 		[ :each | each yourself ] ascending.
 
 	"add default group first if it is not there yet."
-	(groups isEmpty or: [ groups first = ''])
+	(groups isEmpty or: [ groups includes: ''])
 		ifFalse: [ groups := groups copyWithFirst: '' ].
 
 	^ groups collect: [ :each |

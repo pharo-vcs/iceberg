@@ -8,6 +8,13 @@ Class {
 	#package : 'Iceberg-Memory'
 }
 
+{ #category : 'initialize-release' }
+IceMemoryCommitWalk >> close [
+	"Nothing to do in memory"
+
+	
+]
+
 { #category : 'walking' }
 IceMemoryCommitWalk >> commitsDo: aBlock [ 
 	self rawResultsDo: aBlock

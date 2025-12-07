@@ -41,6 +41,7 @@ IceTipRepositoriesBrowser class >> buildSelectionCommandGroupWith: presenter for
 		IceTipCheckoutBranchCommand.
 	 	IceTipCreateTagCommand.
 		IceTipMergeCommand.
+		IceTipWriteToFilesCommand.
 		IceTipManageRepositoryCommand.
 		IceTipEditRepositoryCommand.
 		IceTipForgetRepositoryCommand.
@@ -65,6 +66,20 @@ IceTipRepositoriesBrowser class >> buildSelectionExtraCommandGroupWith: presente
 { #category : 'accessing' }
 IceTipRepositoriesBrowser class >> defaultPreferredExtent [
 	^ (600 @ 500)
+]
+
+{ #category : 'instance creation' }
+IceTipRepositoriesBrowser class >> ensureIsOpen [
+
+	<script>
+	(self currentWorld windowsSatisfying: [ :window | (window isKindOf: SpWindowMorph) and: [ window model presenter isKindOf: self ] ])
+		ifEmpty: [ self new open ]
+		ifNotEmpty: [ :windows |
+				| window |
+				window := windows anyOne.
+				window isMinimized
+					ifTrue: [ window restore ]
+					ifFalse: [ window activate ] ]
 ]
 
 { #category : 'accessing' }
@@ -264,17 +279,14 @@ IceTipRepositoriesBrowser >> subscribeToAnnouncements [
 { #category : 'initialization' }
 IceTipRepositoriesBrowser >> updatePresenter [
 
-	LGitLibrary uniqueInstance isAvailable 
-		ifFalse: [ self addLibGitNotAvailableWarning ].
-	
+	LGitLibrary uniqueInstance isAvailable ifFalse: [ self addLibGitNotAvailableWarning ].
 	self model repositoryGroups do: [ :group |
-		repositoryNotebook 
-			addPageTitle: group label 
-			provider: [ 
-				(self instantiate: IceTipRepositoryGroupPanel on: group)
-					transmitDo: [ "self refreshCommands" ];
-				yourself ] ].
-	
+			(repositoryNotebook hasPageNamed: group label) ifFalse: [
+					repositoryNotebook addPageTitle: group label provider: [
+							(self instantiate: IceTipRepositoryGroupPanel on: group)
+								transmitDo: [ "self refreshCommands" ];
+								yourself ] ] ].
+
 	self refresh
 ]
 

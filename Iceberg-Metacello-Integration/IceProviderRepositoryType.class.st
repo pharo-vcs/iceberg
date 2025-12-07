@@ -53,14 +53,15 @@ IceProviderRepositoryType >> mcRepository [
 			Because Metacello want to use it"
 		repo forget ].
 
-	baseRepo := self mcRepositoryClass location: self location.
+	baseRepo := self mcRepositoryClass 
+		location: self location 
+		version: (self projectVersion ifEmpty: [ nil ]).
 	^ (Iceberg icebergRepositoriesURLs includes: baseRepo scpUrl)
 		  ifTrue: [ "Do not use Iceberg to load iceberg code, 
 			see https://github.com/pharo-vcs/iceberg/issues/168"
 			  baseRepo ]
 		  ifFalse: [
-			  baseRepo getOrCreateIcebergRepository metacelloAdapter:
-				  self projectVersion ]
+			  baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion ]
 ]
 
 { #category : 'accessing' }
@@ -74,11 +75,30 @@ IceProviderRepositoryType >> mcRepositoryClass [
 { #category : 'accessing' }
 IceProviderRepositoryType >> projectName [
 
-	^ (self location substrings: '/') third copyUpTo: $:
+	| parts mightBeProjectName |
+
+	"I need to handle the possibility that there are subprojects"
+	parts := self location substrings: '/'.
+	mightBeProjectName := parts allButFirst: 2.
+	
+	^ mightBeProjectName 
+		detect: [ :e | e includes: $: ]
+		ifFound: [ :e | e copyUpTo: $: ]
+		ifNone: [ parts third ]
 ]
 
 { #category : 'accessing' }
 IceProviderRepositoryType >> projectVersion [
 
-	^ (location substrings: '/') third copyAfter: $:
+	"I need to handle the possibility that there are subprojects"
+	| parts mightBeProjectName |
+	parts := self location substrings: '/'.
+	mightBeProjectName := parts allButFirst: 2.
+	
+	^ mightBeProjectName 
+		detect: [ :e | e includes: $: ]
+		ifFound: [ :e | e copyAfter: $: ]
+		ifNone: [ '' ]
+
+
 ]

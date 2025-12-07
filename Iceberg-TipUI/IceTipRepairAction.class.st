@@ -18,7 +18,7 @@ IceTipRepairAction class >> allAvailableFor: aRepository [
 	^ ((self allSubclasses 
 		select: [ :each | each isAvailableFor: aRepository ])
 		sorted: [ :a :b | a order < b order ])
-		collect: #new
+		collect: [:aClass | aClass new ]
 ]
 
 { #category : 'accessing' }
@@ -64,7 +64,7 @@ IceTipRepairAction >> executeWithContext: aContext model: aRepositoryModel [
 IceTipRepairAction >> fetchAllRemotes [
 	| remotes |
 	remotes := self repository remotes.
-	UIManager default informUserDuring: [ :bar | 
+	self application informUser: 'Working...' during: [ :bar | 
 		bar label: 'Fetching incoming commits'.
 		bar max: remotes size.
 		bar value: 1.

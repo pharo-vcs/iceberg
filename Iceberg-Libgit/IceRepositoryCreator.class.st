@@ -95,7 +95,9 @@ IceRepositoryCreator >> cloneRepository [
 		execute.
 
 	self repository location: self locationToUse.
-		
+	(self commitishName isNotNil and: [ (self repository head name = self commitishName) not ])
+		ifTrue: [ self repository switchToCommitishNamed: self commitishName ].
+
 	self repository pluginManager repositoryWillBeCreated: self repository.	
 
 	self repository workingCopy initializePackagesFromRepository.

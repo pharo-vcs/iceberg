@@ -1,10 +1,11 @@
 Extension { #name : 'IceRepository' }
 
 { #category : '*Iceberg-TipUI' }
-IceRepository >> inspectorItems [
+IceRepository >> inspectorItems: aBuilder [
 	<inspectorPresentationOrder: 0 title: 'Packages'>
 
-	^ SpTablePresenter new
+	^ aBuilder newTable 
+		addStyle: 'stList';
 		beResizable;
 		items: self workingCopy packages;
 		addColumn: (SpStringTableColumn new

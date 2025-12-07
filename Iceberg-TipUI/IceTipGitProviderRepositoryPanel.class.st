@@ -33,6 +33,17 @@ IceTipGitProviderRepositoryPanel >> configureBuilder: aBuilder [
 	self subclassResponsibility
 ]
 
+{ #category : 'initialization' }
+IceTipGitProviderRepositoryPanel >> connectPresenters [
+
+	super connectPresenters.
+
+	projectNameInputText addShortcutWith: [ :action |
+			action
+				shortcutKey: Character cr asKeyCombination;
+				action: [ self owner accept ] ]
+]
+
 { #category : 'layout' }
 IceTipGitProviderRepositoryPanel >> defaultLayout [
 
@@ -93,7 +104,7 @@ IceTipGitProviderRepositoryPanel >> projectAsPathToAppend [
 { #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> projectName [
 
-	^ self projectNameInputText text asString trimmed
+	^ self projectNameInputText text asString trimBoth
 ]
 
 { #category : 'accessing - ui' }
@@ -146,7 +157,7 @@ IceTipGitProviderRepositoryPanel >> selectedProtocol [
 { #category : 'accessing' }
 IceTipGitProviderRepositoryPanel >> userName [
 
-	^ self userNameInputText text asString trimmed
+	^ self userNameInputText text asString trimBoth
 ]
 
 { #category : 'accessing - ui' }

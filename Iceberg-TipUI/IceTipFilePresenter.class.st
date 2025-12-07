@@ -12,9 +12,11 @@ Class {
 { #category : 'actions' }
 IceTipFilePresenter >> chooseReference [
 
-	^ UIManager default
-		   chooseExistingFileReference: self chooseTitle
-		   extensions: nil
-		   path: self location
-		   preview: nil
+	| reference |
+	StOpenFilePresenter new
+		openFolder: (self location ifNil: [ FileLocator workingDirectory ]);
+		title: self chooseTitle;
+		okAction: [ :directoryReference | reference := directoryReference ];
+		openModal.
+	^ reference
 ]

@@ -20,8 +20,46 @@ IceGitRepositoryType class >> type [
 	^ 'git'
 ]
 
+{ #category : 'private' }
+IceGitRepositoryType >> locationTokens [
+
+	^ self location substrings: ':/'
+]
+
 { #category : 'accessing' }
 IceGitRepositoryType >> mcRepositoryClass [
 	
 	^ MCGitRemoteRepository
+]
+
+{ #category : 'private' }
+IceGitRepositoryType >> projectArgumentPosition [
+
+	^ (self location beginsWith: 'git:http')
+		ifTrue: [ 5 ]
+		ifFalse: [ 4 ]
+]
+
+{ #category : 'accessing' }
+IceGitRepositoryType >> projectName [
+
+	 ^ (self locationTokens at: self projectArgumentPosition) copyUpTo: $.
+]
+
+{ #category : 'accessing' }
+IceGitRepositoryType >> projectVersion [
+	| tokens |
+	
+	tokens := self locationTokens.
+	^ tokens size >= self versionArgumentPosition
+		ifTrue: [ tokens at: self versionArgumentPosition ]
+		ifFalse: [ '' ]
+]
+
+{ #category : 'private' }
+IceGitRepositoryType >> versionArgumentPosition [
+
+	^ (self location beginsWith: 'git:http')
+		ifTrue: [ 6 ]
+		ifFalse: [ 5 ]
 ]

@@ -93,17 +93,19 @@ IceLocalBranch >> incomingCommitsFrom: aRemote [
 	| remoteBranch |
 
 	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ ^ #() ].
-	^ remoteBranch newCommitWalk
-		uptoCommit: self commit;
-		commits
+	^ remoteBranch withCommitWalkDo: [:walk | 
+		walk
+			uptoCommit: self commit;
+			commits]
 ]
 
 { #category : 'API - remotes' }
 IceLocalBranch >> incomingCommitsFromBranch: aBranch [
-	
-	^ aBranch newCommitWalk
-		uptoCommit: self commit;
-		commits
+
+	^ aBranch withCommitWalkDo: [ :walk |
+		  walk
+			  uptoCommit: self commit;
+			  commits ]
 ]
 
 { #category : 'testing' }
@@ -133,16 +135,18 @@ IceLocalBranch >> outgoingCommits [
 
 { #category : 'API - remotes' }
 IceLocalBranch >> outgoingCommitsTo: aRemote [
-	
-	| remoteBranch walk |
 
+	| remoteBranch |
 	"If there is no remote tracking branch in the remote, we cannot calculate outgoing commits.
 	All the commits in the branch are going to be outgoing, so I will take the first 20 to show."
-	remoteBranch := aRemote remoteBranchNamed: self name ifAbsent: [ ^ self reducedOutgoingCommitsWhenNoRemote ].
-	walk := self newCommitWalk.
-	remoteBranch ifNotNil: [ 
-		walk uptoCommit: remoteBranch commit ].
-	^ walk commits
+	remoteBranch := aRemote
+		                remoteBranchNamed: self name
+		                ifAbsent: [
+		                ^ self reducedOutgoingCommitsWhenNoRemote ].
+
+	^ self withCommitWalkDo: [ :walk |
+		  remoteBranch ifNotNil: [ walk uptoCommit: remoteBranch commit ].
+		  walk commits ]
 ]
 
 { #category : 'API - remotes' }
@@ -176,9 +180,11 @@ IceLocalBranch >> pushTo: aRemote [
 
 { #category : 'API - remotes' }
 IceLocalBranch >> reducedOutgoingCommitsWhenNoRemote [
-	^ self newCommitWalk
-		maxNumber: 20;
-		commits
+
+	^ self withCommitWalkDo: [ :walk |
+		  walk
+			  maxNumber: 20;
+			  commits ]
 ]
 
 { #category : 'API - commits' }

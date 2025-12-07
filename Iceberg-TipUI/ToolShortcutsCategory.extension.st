@@ -4,7 +4,5 @@ Extension { #name : 'ToolShortcutsCategory' }
 ToolShortcutsCategory >> openIceberg [
 
 	<shortcut>
-	^ KMKeymap
-		  shortcut: PharoShortcuts current openIcebergShortcut
-		  action: [ IceTipRepositoriesBrowser new open ]
+	^ KMKeymap shortcut: PharoShortcuts current openIcebergShortcut action: [ IceTipRepositoriesBrowser ensureIsOpen ]
 ]

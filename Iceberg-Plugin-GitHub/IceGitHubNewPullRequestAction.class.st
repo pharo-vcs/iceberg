@@ -61,14 +61,12 @@ IceGitHubNewPullRequestAction >> validateMakePullRequestOn: aRepository [
 	| status |
 	status := OrderedCollection new: 2.
 	aRepository isModified ifTrue: [ status add: 'Uncommitted changes' ].
-	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits |
-		'{1} not published' format: { commits size } ].
+	(aRepository outgoingCommitsTo: remote) ifNotEmpty: [ :commits | '{1} not published' format: { commits size } ].
 	status ifEmpty: [ ^ true ].
 
 	^ self application newConfirm
-		  title:
-			  ('{1} has ongoing modifications.' format: { aRepository name });
+		  title: ('{1} has ongoing modifications.' format: { aRepository name });
 		  label: ('{2} 
-Do you want to continue anyway?' format: { status asCommaString });
+Do you want to continue anyway?' format: { (', ' join: status) });
 		  openModal
 ]
