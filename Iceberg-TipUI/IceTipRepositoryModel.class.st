@@ -100,20 +100,8 @@ IceTipRepositoryModel >> createSourceDirectory [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> description [
-	| text |
-	
-	text := self displayString.
-	(self isLibGitAvailable and: [ self entity isModified ]) 
-		ifTrue: [ text := '*', text ].
-	^ text
-]
 
-{ #category : 'accessing' }
-IceTipRepositoryModel >> descriptionDecorator [
-
-	(self isLibGitAvailable and: [ self entity isModified ]) 
-		ifTrue: [ ^ IceTipDescriptionDecorator modified ].
-	^ super descriptionDecorator
+	^ IceTipRepositoryStatusModel on: self
 ]
 
 { #category : 'testing' }
@@ -431,100 +419,8 @@ IceTipRepositoryModel >> shortCommitId [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> status [
-	[
-		| status incoming outgoing | 
-
-		self verifyDirectoryStructureIfMissing: [ :message | ^ message asString ].
-		self isLibGitAvailable ifFalse: [ ^ 'Unknown (No libgit2)' ].
-		
-		entity workingCopy workingCopyState isUnknownCommitState 
-			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
-		entity workingCopy isDetached 
-			ifTrue: [  ^ 'Detached Working Copy' ].
-		(entity head isDetached and: [ entity head tags isNotEmpty ])
-			ifTrue: [ ^ 'Detached HEAD' ].
-		entity head isDetached 
-			ifTrue: [ ^ 'Detached HEAD' ].
-
-		entity workingCopy project isUnborn
-			ifTrue: [ ^ 'No Project Found' ].
-
-		self isLoaded ifFalse: [ ^ 'Not loaded' ].
-
-		status := OrderedCollection new.
-		entity isModified ifTrue: [ status add: 'Uncommitted changes' ].
-		
-		incoming := self incomingCommits size.
-		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].
-		
-		outgoing := self outgoingCommits size.
-		outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
-
-		status ifEmpty: [ status add: 'Up to date' ].
-		
-		^ ', ' join: status ] 
-	on: Error 
-	do: [ :e | ^ e description ]
-]
-
-{ #category : 'accessing' }
-IceTipRepositoryModel >> statusDecorator [
-
-	[
-		self entity isMissing 
-			ifTrue: [ ^ IceTipStatusDecorator error ].
-		entity workingCopy workingCopyState isUnknownCommitState 
-			ifTrue: [ ^ IceTipStatusDecorator error ].	
-		entity workingCopy isDetached 
-			ifTrue: [  ^ IceTipStatusDecorator error ].
-		(entity head isDetached and: [ entity head tags isNotEmpty ])
-			ifTrue: [ ^ IceTipStatusDecorator warning ].
-		entity head isDetached 
-			ifTrue: [ ^ IceTipStatusDecorator error ].
-		entity workingCopy project isUnborn
-			ifTrue: [ ^ IceTipStatusDecorator error ] 
-	] 
-	on: Error 
-	do: [ :e | ^ IceTipStatusDecorator error ].
 	
-	^ IceTipStatusDecorator none
-]
-
-{ #category : 'accessing' }
-IceTipRepositoryModel >> statusString [
-	[
-		| status incoming outgoing | 
-
-		self verifyDirectoryStructureIfMissing: [ :message | ^ message asString ].
-		
-		entity workingCopy workingCopyState isUnknownCommitState 
-			ifTrue: [ ^ entity workingCopy workingCopyState description ].	
-		entity workingCopy isDetached 
-			ifTrue: [  ^ 'Detached Working Copy' ].
-		(entity head isDetached and: [ entity head tags isNotEmpty ])
-			ifTrue: [ ^ 'Detached HEAD' ].
-		entity head isDetached 
-			ifTrue: [ ^ 'Detached HEAD' ].
-
-		entity workingCopy project isUnborn
-			ifTrue: [ ^ 'No Project Found' ].
-
-		self isLoaded ifFalse: [ ^ 'Not loaded' ].
-
-		status := OrderedCollection new.
-		entity isModified ifTrue: [ status add: 'Uncommitted changes' ].
-		
-		incoming := self incomingCommits size.
-		incoming > 0 ifTrue: [ status add: ('{1} incoming' format: { incoming })].
-		
-		outgoing := self outgoingCommits size.
-		outgoing > 0 ifTrue: [ status add: ('{1} not published' format: { outgoing })].
-
-		status ifEmpty: [ status add: 'Up to date' ].
-		
-		^ ', ' join: status ] 
-	on: Error 
-	do: [ :e | ^ e description ]
+	^ IceTipRepositoryStatusModel on: self
 ]
 
 { #category : 'accessing' }
