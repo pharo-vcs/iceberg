@@ -7,7 +7,8 @@ Class {
 		'datetime',
 		'ancestorIds',
 		'comment',
-		'packageNamesCache'
+		'packageNamesCache',
+		'writerClass'
 	],
 	#category : 'Iceberg-Libgit-Core',
 	#package : 'Iceberg-Libgit',
@@ -220,5 +221,5 @@ IceGitCommit >> timeStamp [
 { #category : 'API - properties' }
 IceGitCommit >> writerClass [
 
-	^ self properties writerClass
+	^ writerClass ifNil: [ writerClass := self properties writerClass ]
 ]
