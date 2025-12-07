@@ -8,7 +8,7 @@ Class {
 		'ancestorIds',
 		'comment',
 		'packageNamesCache',
-		'projectCache'
+		'projectCache',
 		'writerClass'
 	],
 	#category : 'Iceberg-Libgit-Core',
