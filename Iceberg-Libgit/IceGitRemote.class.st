@@ -69,7 +69,10 @@ IceGitRemote >> doFetchWithRefSpec: refSpec [
 { #category : 'fetching' }
 IceGitRemote >> fetch [
 
-	self doFetchWithRefSpec: nil.
+	IceGitOperationSettings fetchOperationClass new
+		repository: localRepository;
+		remote: self;
+		execute. 
 
 	"Call post fetch to fix unknown commits"
 	localRepository postFetch
@@ -84,7 +87,11 @@ IceGitRemote >> fetchBranch: aBranch [
 				            self name.
 				            aBranch name }).
 
-	self doFetchWithRefSpec: refSpec
+	IceGitOperationSettings fetchOperationClass new
+		repository: localRepository;
+		remote: self;
+		spec: refSpec;
+		execute. 
 ]
 
 { #category : 'branches' }
