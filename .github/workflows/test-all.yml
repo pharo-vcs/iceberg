@@ -2,32 +2,14 @@ name: Iceberg-Pharo-Integration
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PHARO_CI_TESTING_ENVIRONMENT: 1
-  # Allowing this obsolete in the release tests since it is caused by the unload/reload of 
-  # iceberg, and that is something made just  
-  PHARO_CI_ALLOWED_OBSOLETES: IceGitHubAPI
 
-on:
-  push:
-    branches: [ Pharo13 ]
-    paths-ignore:
-    - 'README.md'
-    - 'docs/**'
-  pull_request:
-    branches: [ Pharo13 ]
-    paths-ignore:
-    - 'README.md'
-    - 'docs/**'
+on: [push, pull_request, workflow_dispatch]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ macos-latest ]
         smalltalk: [ Pharo64-alpha ]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
@@ -44,4 +26,4 @@ jobs:
         run: rm -Rf ${{ env.SMALLTALK_CI_BUILD }}
       - name: Load Image and Run Tests
         run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalk.all.ston
-        timeout-minutes: 30
+        timeout-minutes: 20
