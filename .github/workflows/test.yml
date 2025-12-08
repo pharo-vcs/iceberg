@@ -1,17 +1,6 @@
 name: Complete Test
 
-on:
-  # Run on push and pull requests on any branch, but ignore if change doesn't affect code.
-  push:
-    paths-ignore:
-    - 'README.md'
-    - 'docs/**'
-  pull_request:
-    paths-ignore:
-    - 'README.md'
-    - 'docs/**'
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   test:
@@ -32,12 +21,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup smalltalkCI
-        uses: hpi-swa/setup-smalltalkCI@v1
+      - uses: actions/checkout@v6
+      - uses: hpi-swa/setup-smalltalkCI@v1
         with:
-          smalltalk-version: ${{ matrix.smalltalk }}
-      - name: Load Image and Run Tests
-        run: smalltalkci -s ${{ matrix.smalltalk }} ${{ matrix.ston }}
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }} ${{ matrix.ston }}
         shell: bash
-        timeout-minutes: 30
+        timeout-minutes: 20
