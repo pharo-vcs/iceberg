@@ -44,14 +44,16 @@ IceTipWorkingCopyStatusBarPresenter >> initializePresenters [
 IceTipWorkingCopyStatusBarPresenter >> model: aModel [
 	"Fill labels from a IceTipWorkingCopyModel."
 
+	| status |
 	aModel shortCommitId
 		ifNil: [ self refreshWithoutCommitId: aModel ]
 		ifNotNil: [ self refreshWithCommitId: aModel ].
-	statusLabel 
-		label: aModel status;
-		displayColor: [ :aString | aModel statusDecorator color ];
-		displayBold: [ :aString | aModel statusDecorator isBold ].
 
+	status := aModel status.
+	statusLabel
+		label: status statusString;
+		displayColor: [ :aString | status statusDecorator color ];
+		displayBold: [ :aString | status statusDecorator isBold ]
 ]
 
 { #category : 'accessing' }
