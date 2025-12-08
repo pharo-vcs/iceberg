@@ -104,6 +104,12 @@ IceTipRepositoryModel >> description [
 	^ IceTipRepositoryStatusModel on: self
 ]
 
+{ #category : 'accessing' }
+IceTipRepositoryModel >> descriptionDecorator [
+
+	^ self description descriptionDecorator
+]
+
 { #category : 'testing' }
 IceTipRepositoryModel >> hasRemotes [
 	^ self entity remotes isNotEmpty
@@ -421,6 +427,12 @@ IceTipRepositoryModel >> shortCommitId [
 IceTipRepositoryModel >> status [
 	
 	^ IceTipRepositoryStatusModel on: self
+]
+
+{ #category : 'accessing' }
+IceTipRepositoryModel >> statusDecorator [
+	
+	^ self status statusDecorator
 ]
 
 { #category : 'accessing' }
