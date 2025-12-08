@@ -12,5 +12,8 @@ SmalltalkCISpec {
       #onWarningLog : true,
       #load : [ 'development' ]
      }
-  ]
+  ],
+  #testing : { 
+  	#packages: [ 'Iceberg.*' ]
+  }
 }
