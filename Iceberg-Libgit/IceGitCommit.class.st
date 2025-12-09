@@ -111,15 +111,14 @@ IceGitCommit >> entryByPath: aString [
 { #category : 'accessing' }
 IceGitCommit >> fetchPackageNames [
 
-	| writerClass dir |
-	writerClass := self writerClass.
+	| dir |
 	dir := self fileSystem resolve: (self project sourceDirectory).
 		
 	dir exists ifFalse: [ ^ #() ].
 	
 	^ dir children
-		select: [ :each | writerClass isValidPackage: each ]
-		thenCollect: [ :each | writerClass packageNameFromDirectory: each ]
+		select: [ :each | self writerClass isValidPackage: each ]
+		thenCollect: [ :each | self writerClass packageNameFromDirectory: each ]
 ]
 
 { #category : 'accessing - file' }
