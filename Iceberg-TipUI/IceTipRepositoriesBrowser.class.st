@@ -89,17 +89,18 @@ IceTipRepositoriesBrowser class >> iconForWorldMenu [
 ]
 
 { #category : 'world menu' }
-IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [ 
-	"Add a custom menu item to the world menu"	
-	<worldMenu> 
-	
-	(aBuilder item: #'Git Repositories Browser')
-		order: 1;
-		icon: self iconForWorldMenu;
-		parent: #'Versioning';
-		keyText: 'o, i';
-		help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
-		action: [ self new open ]
+IceTipRepositoriesBrowser class >> menuCommandOn: aBuilder [
+	"Add a custom menu item to the world menu. We add Iceberg to two menus"
+
+	<worldMenu>
+	{ #Browsing. #Versioning } do: [ :parent |
+			(aBuilder item: #'Git Repositories Browser')
+				order: 1;
+				icon: self iconForWorldMenu;
+				parent: parent;
+				keyText: 'o, i';
+				help: 'Iceberg is a set of tools that allow one to handle git repositories directly from a Pharo image.';
+				action: [ self ensureIsOpen ] ]
 ]
 
 { #category : 'instance creation' }
