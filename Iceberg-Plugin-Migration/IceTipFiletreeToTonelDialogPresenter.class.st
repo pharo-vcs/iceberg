@@ -30,7 +30,7 @@ IceTipFiletreeToTonelDialogPresenter >> accept [
 		repository: self repository; 
 		message: ('Migrating {1} sources to tonel' format: { self repository name });
 		onSuccessRepositoryModified;
-		onSuccess: [ self window inform: 'Sources migrated!' ];
+		onSuccess: [ self inform: 'Sources migrated!' ];
 		action: [ self doAccept ];
 		executeWithContext: self
 ]
