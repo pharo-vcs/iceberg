@@ -29,6 +29,7 @@ AbstractIceGitCommandLineAction >> executeSubProcess: command arguments: argumen
 { #category : 'executing' }
 AbstractIceGitCommandLineAction >> executeUsingUnixSubProcess: command arguments: arguments workingDirectory: workingDirectory onExit: onExitBlock [
 
+	<ignoreNotImplementedSelectors: #(workingDirectory: redirectStdout redirectStderr runAndWaitPollingEvery:doing:onExitDo: )>
 	| outFullStream errFullStream osUnixSubprocessClass |
 
 	osUnixSubprocessClass := self class environment 
@@ -64,6 +65,7 @@ AbstractIceGitCommandLineAction >> executeUsingUnixSubProcess: command arguments
 { #category : 'executing' }
 AbstractIceGitCommandLineAction >> executeUsingWindowsSubProcess: command arguments: arguments workingDirectory: workingDirectory onExit: onExitBlock [
 
+	<ignoreNotImplementedSelectors: #(workingDirectory: shellCommand: exitCode creationFlags:)>
 	| stderrFile stdoutFile commandString return osWSWinProcessClass rnd |
 
 	osWSWinProcessClass := self class environment 
