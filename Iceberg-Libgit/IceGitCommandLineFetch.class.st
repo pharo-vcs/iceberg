@@ -22,7 +22,9 @@ IceGitCommandLineFetch >> execute [
 				s 
 					nextPut: 'fetch';
 					nextPut: '--progress'.
-				spec ifNotNil: [ s nextPut: spec ]].
+				spec ifNotNil: [ 
+					s nextPut: remote name.
+					s nextPut: spec asString ]].
 	
 	self 
 		executeSubProcess: 'git'
