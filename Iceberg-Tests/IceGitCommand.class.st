@@ -114,22 +114,19 @@ IceGitCommand >> runLibCGitCommand [
 
 	| exitCode aCommandString |
 	"Enclose all parameters with double quotes to protect."
-	aCommandString := String streamContents: [ :stream | 
-		                  stream
-			                  nextPutAll: self gitCommand;
-			                  nextPutAll: ' -C "';
-			                  nextPutAll:
-				                  (MCFileTreeFileUtils current 
-					                   directoryPathString: self directory);
-			                  nextPutAll: '" '.
-		                  self command do: [ :e | 
+	aCommandString := String streamContents: [ :stream |
 			                  stream
-				                  nextPut: $";
-				                  nextPutAll: e;
-				                  nextPutAll: '" ' ] ].
+				                  nextPutAll: self gitCommand;
+				                  nextPutAll: ' -C "';
+				                  nextPutAll: (MCFileTreeFileUtils directoryPathString: self directory);
+				                  nextPutAll: '" '.
+			                  self command do: [ :e |
+					                  stream
+						                  nextPut: $";
+						                  nextPutAll: e;
+						                  nextPutAll: '" ' ] ].
 
 	exitCode := LibC runCommand: aCommandString.
 
-	exitCode > 0 ifTrue: [ 
-		Error signal: 'Shell git error (but message was lost)' ]
+	exitCode > 0 ifTrue: [ Error signal: 'Shell git error (but message was lost)' ]
 ]

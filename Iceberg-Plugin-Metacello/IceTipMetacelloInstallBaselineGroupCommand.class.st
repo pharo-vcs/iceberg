@@ -20,14 +20,10 @@ IceTipMetacelloInstallBaselineGroupCommand >> execute [
 	| result |
 	result := self application newRequest
 		          title: 'Enter groups to install';
-		          label: 'Groups to install (a comma separated string)';
-		          text: 'All'; openModal.
-	 result ifNil: [ ^ self ].
+		          message: 'Groups to install (a comma separated string)';
+		          text: 'All';
+		          openModal.
+	result ifNil: [ ^ self ].
 
-	self
-		installBaseline: self package
-		groups:
-		((result substrings: ',')
-			 collect: [ :each | each trimBoth ]
-			 as: Array)
+	self installBaseline: self package groups: ((result substrings: ',') collect: [ :each | each trimBoth ] as: Array)
 ]

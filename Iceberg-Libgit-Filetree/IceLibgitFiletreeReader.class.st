@@ -5,7 +5,7 @@ Currently we only support metadata-less repositories.
 "
 Class {
 	#name : 'IceLibgitFiletreeReader',
-	#superclass : 'MCFileTreeStCypressReader',
+	#superclass : 'MCFileTreeReader',
 	#traits : 'TIceRepositoryReader',
 	#classTraits : 'TIceRepositoryReader classTrait',
 	#instVars : [
