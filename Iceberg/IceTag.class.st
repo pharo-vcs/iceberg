@@ -23,6 +23,12 @@ IceTag >> commit [
 	^ commit ifNil: [ commit := self repository peelTag: self ]
 ]
 
+{ #category : 'querying' }
+IceTag >> commitId [
+
+	^ self repository tagTargetCommitId: self
+]
+
 { #category : 'API - tags' }
 IceTag >> delete [
 
