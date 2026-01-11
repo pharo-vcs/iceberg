@@ -84,7 +84,8 @@ IceDiff >> buildForChanges: aCollection [
 						 diff: self;
 						 parentNode: rightTree;
 						 yourself) ]
-		displayingProgress: [ :change | change displayingProgressString ].
+		displayingProgress: [ :change | change displayingProgressString ]
+		every: 200.
 
 	mergedTree := self mergedTreeOf: leftTree with: rightTree.
 	tree := mergedTree select: [ :operation | operation hasChanges ]
