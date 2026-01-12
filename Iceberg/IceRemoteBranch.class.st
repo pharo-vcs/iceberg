@@ -59,7 +59,7 @@ IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 { #category : 'handling' }
 IceRemoteBranch >> handleBranchConflictWith: existingBranch [
 
-	(IceTipBranchConflictResolutionDialog onRepository: self repository) asDialogWindow open
+	(IceTipBranchConflictResolutionDialog onRepository: self repository existingBranch: existingBranch) asDialogWindow open 
 ]
 
 { #category : 'comparing' }
