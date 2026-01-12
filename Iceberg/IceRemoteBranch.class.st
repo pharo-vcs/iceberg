@@ -26,13 +26,14 @@ IceRemoteBranch >> = aBranch [
 IceRemoteBranch >> checkout: aCheckoutStrategy [
 
 	| localBranch |
-	self repository 
+
+	self repository
 		branchNamed: self shortName
-		ifPresent: [ :branch | IceError signal: ('Branch {1} already exists' format: { self shortName }) ].
-	
-	localBranch := self repository
-		createBranch: self shortName
-		inCommit: self commit.
+		ifPresent: [ :existingBranch | 
+		localBranch := self handleBranchConflictWith: existingBranch ]
+		ifAbsent: [ localBranch := self repository createBranch: self shortName inCommit: self commit ].
+
+	localBranch ifNil: [ ^ nil ].
 
 	aCheckoutStrategy committish: localBranch.
 	^ localBranch checkout: aCheckoutStrategy
@@ -53,6 +54,12 @@ IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 		inCommit: self commit.
 	"then we can do the checkout"
 	^ super checkoutWithStrategy: aCheckoutStrategy
+]
+
+{ #category : 'handling' }
+IceRemoteBranch >> handleBranchConflictWith: existingBranch [
+
+	(IceTipBranchConflictResolutionDialog onRepository: self repository) asDialogWindow open
 ]
 
 { #category : 'comparing' }

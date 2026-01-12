@@ -1,5 +1,5 @@
 Class {
-	#name : 'IceBranchAlreadyExists',
+	#name : 'IceBranchAlreadyExistsError',
 	#superclass : 'IceError',
 	#instVars : [
 		'branchName'
@@ -10,13 +10,13 @@ Class {
 }
 
 { #category : 'accessing' }
-IceBranchAlreadyExists >> branchName [
+IceBranchAlreadyExistsError >> branchName [
 
 	^ branchName
 ]
 
 { #category : 'accessing' }
-IceBranchAlreadyExists >> branchName: aBranchName [
+IceBranchAlreadyExistsError >> branchName: anObject [
 
-	branchName := aBranchName
+	branchName := anObject
 ]
