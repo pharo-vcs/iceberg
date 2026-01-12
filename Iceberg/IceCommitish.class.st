@@ -28,6 +28,7 @@ Class {
 	#name : 'IceCommitish',
 	#superclass : 'Object',
 	#instVars : [
+		'properties',
 		'repository'
 	],
 	#category : 'Iceberg-Core',
@@ -231,9 +232,9 @@ IceCommitish >> project [
 
 { #category : 'API - properties' }
 IceCommitish >> properties [
-	^ IceRepositoryProperties
-		fromFileReferenceDirectory: self project sourceDirectoryReference
-		commitish: self
+	"Caching for performance reasons. We might ask them multiple times by operation and it takes time to compute."
+
+	^ properties ifNil: [ properties := IceRepositoryProperties fromFileReferenceDirectory: self project sourceDirectoryReference commitish: self ]
 ]
 
 { #category : 'API - properties' }
