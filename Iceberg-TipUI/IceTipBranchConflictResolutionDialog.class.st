@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'existingBranch',
 		'types',
-		'model'
+		'model',
+		'reasonPanel'
 	],
 	#category : 'Iceberg-TipUI-View-Branch',
 	#package : 'Iceberg-TipUI',
@@ -36,19 +37,20 @@ IceTipBranchConflictResolutionDialog >> createConflictBranchTypes [
 
 	| allTypes |
 	"Collect types new+local+remotes"
-	allTypes := {
-		            (IceTipCheckoutNewBranchPanel on: self model). "New branch"
-		            ((IceTipCheckoutBranchPanel on: self model)
-			             titleForWindow: 'Local';
-			             icon: (self iconNamed: #branch);
-			             yourself) } , (self model remoteModels collect: [ :each |
-			             (IceTipCheckoutBranchPanel on: each)
-				             titleForWindow: each name;
-				             icon: (self iconNamed: #remote);
-				             yourself ]) , (self model entity pluginManager checkoutBranchPanelsOnModel: self model). "Doing this because I can trigger the accept inside the panels."
+	allTypes := { (IceTipCancelBranchPanel on: self model) }.
 	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
 
 	^ allTypes
+]
+
+{ #category : 'layout' }
+IceTipBranchConflictResolutionDialog >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: reasonPanel;
+		  spacing: 40;
+		  add: super defaultLayout;
+		  yourself
 ]
 
 { #category : 'actions' }
@@ -61,6 +63,27 @@ IceTipBranchConflictResolutionDialog >> doAccept [
 IceTipBranchConflictResolutionDialog >> existingBranch: aBranch [
 
 	existingBranch := aBranch
+]
+
+{ #category : 'initialization' }
+IceTipBranchConflictResolutionDialog >> initializePresenters [
+
+	super initializePresenters.
+	reasonPanel := self newText
+		               beNotEditable;
+		               addStyle: 'iceTipReadonly';
+		               beWrapWord;
+		               yourself.
+	self initializeReasonPanel.
+	self allTypes
+]
+
+{ #category : 'initialization' }
+IceTipBranchConflictResolutionDialog >> initializeReasonPanel [
+
+	reasonPanel text: 'The branch already exists in your local repository. 
+Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch. 
+What would you like to do?'
 ]
 
 { #category : 'accessing' }

@@ -36,16 +36,20 @@ IceTipCheckoutBranchDialog >> allTypes [
 IceTipCheckoutBranchDialog >> createCheckoutBranchTypes [
 
 	| allTypes |
+	"Collect types new+local+remotes"	
+	allTypes :=  { 
+		IceTipCheckoutNewBranchPanel on: self model. "New branch"
+	 	(IceTipCheckoutBranchPanel on: self model) 
+			titleForWindow: 'Local';
+			icon: (self iconNamed: #branch);
+			yourself }, 
+	(self model remoteModels collect: [ :each | 
+		(IceTipCheckoutBranchPanel on: each)
+			titleForWindow: each name;
+			icon: (self iconNamed: #remote);
+			yourself ]),
+	(self model entity pluginManager checkoutBranchPanelsOnModel: self model).
 	
-		allTypes := { ((IceTipMergeBranchPanel on: self model)
-		             titleForWindow: 'Local';
-		             icon: (self iconNamed: #branch);
-		             yourself) }
-	            , (self model remoteModels collect: [ :each |
-			             (IceTipMergeBranchPanel on: each)
-				             titleForWindow: each name;
-				             icon: (self iconNamed: #remote);
-				             yourself ]).
 	"Doing this because I can trigger the accept inside the panels."
 	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
 	
