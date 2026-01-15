@@ -10,8 +10,15 @@ Class {
 	#tag : 'View-Branch'
 }
 
-{ #category : 'actions' }
-IceTipCancelBranchPanel >> doAccept [
+{ #category : 'layout' }
+IceTipCancelBranchPanel >> defaultLayout [
+
+	^ SpBoxLayout newLeftToRight yourself
+]
+
+{ #category : 'action' }
+IceTipCancelBranchPanel >> executeFor: remoteBranch localBranch: localBranch inRepository: aRepository [
+	"Return nil to indicate cancellation"
 
 	^ nil
 ]
@@ -22,8 +29,14 @@ IceTipCancelBranchPanel >> icon [
 	^ self iconNamed: #cancel
 ]
 
+{ #category : 'initialization' }
+IceTipCancelBranchPanel >> windowIcon [
+
+	^ self icon
+]
+
 { #category : 'accessing' }
 IceTipCancelBranchPanel >> windowTitle [
 
-	^ 'Cancel'
+	^ 'Cancel checkout operation'
 ]

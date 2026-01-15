@@ -5,7 +5,9 @@ Class {
 		'existingBranch',
 		'types',
 		'model',
-		'reasonPanel'
+		'reasonPanel',
+		'resultBranch',
+		'remoteBranch'
 	],
 	#category : 'Iceberg-TipUI-View-Branch',
 	#package : 'Iceberg-TipUI',
@@ -19,7 +21,7 @@ IceTipBranchConflictResolutionDialog class >> onRepository: aRepository [
 ]
 
 { #category : 'instance creation' }
-IceTipBranchConflictResolutionDialog class >> onRepository: aRepository existingBranch: aBranch [
+IceTipBranchConflictResolutionDialog class >> onRepository: aRepository remoteBranch: aRemote existingBranch: aBranch [
 
 	^ (self on: (IceTipRepositoryModel on: aRepository))
 		  existingBranch: aBranch;
@@ -32,7 +34,7 @@ IceTipBranchConflictResolutionDialog >> allTypes [
 	^ types ifNil: [ types := self createConflictBranchTypes ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'private - factory' }
 IceTipBranchConflictResolutionDialog >> createConflictBranchTypes [
 
 	| allTypes |
@@ -47,8 +49,12 @@ IceTipBranchConflictResolutionDialog >> createConflictBranchTypes [
 IceTipBranchConflictResolutionDialog >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: reasonPanel;
-		  spacing: 40;
+		  add: reasonPanel withConstraints: [ :constraints |
+				  constraints
+					  expand: false;
+					  fill: false;
+					  height: 20 ];
+		  spacing: 10;
 		  add: super defaultLayout;
 		  yourself
 ]
@@ -56,40 +62,51 @@ IceTipBranchConflictResolutionDialog >> defaultLayout [
 { #category : 'actions' }
 IceTipBranchConflictResolutionDialog >> doAccept [
 
-	self selectedType doAccept
+	resultBranch := type executeFor: remoteBranch localBranch: existingBranch inRepository: self model repository
 ]
 
 { #category : 'accessing' }
 IceTipBranchConflictResolutionDialog >> existingBranch: aBranch [
 
-	existingBranch := aBranch
+	existingBranch := aBranch.
+	self initializeReasonPanel
 ]
 
 { #category : 'initialization' }
 IceTipBranchConflictResolutionDialog >> initializePresenters [
 
 	super initializePresenters.
-	reasonPanel := self newText
-		               beNotEditable;
+	reasonPanel := self newLabel
 		               addStyle: 'iceTipReadonly';
-		               beWrapWord;
 		               yourself.
-	self initializeReasonPanel.
+	
 	self allTypes
 ]
 
 { #category : 'initialization' }
 IceTipBranchConflictResolutionDialog >> initializeReasonPanel [
 
-	reasonPanel text: 'The branch already exists in your local repository. 
-Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch. 
-What would you like to do?'
+	reasonPanel label: 'The branch ' , existingBranch name , ' already exists in your local repository.' , String cr
+		, 'Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch.' , String cr
+		, 'What would you like to do?'
 ]
 
 { #category : 'accessing' }
 IceTipBranchConflictResolutionDialog >> model [
 
 	^ model
+]
+
+{ #category : 'accessing' }
+IceTipBranchConflictResolutionDialog >> remoteBranch: aRemoteBranch [
+
+	remoteBranch := aRemoteBranch
+]
+
+{ #category : 'accessing' }
+IceTipBranchConflictResolutionDialog >> resultBranch [
+
+	^ resultBranch
 ]
 
 { #category : 'accessing - model' }

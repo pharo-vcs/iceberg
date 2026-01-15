@@ -26,6 +26,7 @@ IceRemoteBranch >> = aBranch [
 IceRemoteBranch >> checkout: aCheckoutStrategy [
 
 	| localBranch |
+
 	self repository
 		branchNamed: self shortName
 		ifPresent: [ :existingBranch | localBranch := self handleBranchConflictWith: existingBranch ]
@@ -57,8 +58,11 @@ IceRemoteBranch >> checkoutWithStrategy: aCheckoutStrategy [
 { #category : 'handling' }
 IceRemoteBranch >> handleBranchConflictWith: existingBranch [
 
-	1 halt.
-	(IceTipBranchConflictResolutionDialog onRepository: self repository existingBranch: existingBranch) asDialogWindow open
+	| dialog |
+	dialog := IceTipBranchConflictResolutionDialog onRepository: self repository remoteBranch: self existingBranch: existingBranch.
+	dialog openModal.
+
+	^ dialog resultBranch
 ]
 
 { #category : 'comparing' }
