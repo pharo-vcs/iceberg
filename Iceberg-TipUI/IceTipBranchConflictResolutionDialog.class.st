@@ -21,9 +21,10 @@ IceTipBranchConflictResolutionDialog class >> onRepository: aRepository [
 ]
 
 { #category : 'instance creation' }
-IceTipBranchConflictResolutionDialog class >> onRepository: aRepository remoteBranch: aRemote existingBranch: aBranch [
+IceTipBranchConflictResolutionDialog class >> onRepository: aRepository remoteBranch: aRemoteBranch existingBranch: aBranch [
 
 	^ (self on: (IceTipRepositoryModel on: aRepository))
+		  remoteBranch: aRemoteBranch;
 		  existingBranch: aBranch;
 		  yourself
 ]
@@ -39,7 +40,10 @@ IceTipBranchConflictResolutionDialog >> createConflictBranchTypes [
 
 	| allTypes |
 	"Collect types new+local+remotes"
-	allTypes := { (IceTipCancelBranchPanel on: self model) }.
+	allTypes := {
+		            (IceTipConflictCheckoutAsNewPanel on: self model).
+		            (IceTipConflictCheckoutReplaceLocalPanel on: self model).
+		            (IceTipCancelBranchPanel on: self model) }.
 	allTypes do: [ :each | each onAccept: [ self closeWindow ] ].
 
 	^ allTypes
@@ -69,6 +73,7 @@ IceTipBranchConflictResolutionDialog >> doAccept [
 IceTipBranchConflictResolutionDialog >> existingBranch: aBranch [
 
 	existingBranch := aBranch.
+	self initializeTypeVariables.
 	self initializeReasonPanel
 ]
 
@@ -80,7 +85,7 @@ IceTipBranchConflictResolutionDialog >> initializePresenters [
 		               addStyle: 'iceTipReadonly';
 		               yourself.
 	
-	self allTypes
+
 ]
 
 { #category : 'initialization' }
@@ -89,6 +94,15 @@ IceTipBranchConflictResolutionDialog >> initializeReasonPanel [
 	reasonPanel label: 'The branch ' , existingBranch name , ' already exists in your local repository.' , String cr
 		, 'Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch.' , String cr
 		, 'What would you like to do?'
+]
+
+{ #category : 'initialization' }
+IceTipBranchConflictResolutionDialog >> initializeTypeVariables [
+
+	types do: [ :panel |
+			panel
+				remoteBranch: remoteBranch;
+				existingBranch: existingBranch ]
 ]
 
 { #category : 'accessing' }
