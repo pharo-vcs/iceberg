@@ -28,8 +28,7 @@ IceTipConflictCheckoutReplaceLocalPanel >> confirmDeletionOf: aBranch [
 		  title: 'Confirm Destructive Action';
 		  message: ('Are you sure you want to delete the local branch "{1}"?
 This action cannot be undone and you may LOSE CODE!' format: { aBranch name });
-		  openModal;
-		  yourself
+		  openModal
 ]
 
 { #category : 'layout' }
@@ -55,22 +54,25 @@ Only use this option if you are certain that:
 { #category : 'action' }
 IceTipConflictCheckoutReplaceLocalPanel >> executeFor: aRemoteBranch localBranch: aLocalBranch inRepository: aRepository [
 
-	self validate "
-	(self hasUncommittedChangesIn: localBranch)
-		ifTrue: [ 
+	self validate.
+	(self hasUncommittedChangesIn: aLocalBranch) ifTrue: [
 			IceError signal: 'Cannot delete local branch: it has uncommitted changes.
 Please commit or discard changes before proceeding.' ].
 
-	localBranch delete.
-	^ remoteBranch repository
-		createBranch: remoteBranch shortName
-		inCommit: remoteBranch commit"
+	aLocalBranch delete.
+	^ remoteBranch repository createBranch: remoteBranch shortName inCommit: remoteBranch commit
 ]
 
 { #category : 'accessing' }
 IceTipConflictCheckoutReplaceLocalPanel >> existingBranch: aBranch [
 
 	existingBranch := aBranch
+]
+
+{ #category : 'testing' }
+IceTipConflictCheckoutReplaceLocalPanel >> hasUncommittedChangesIn: aBranch [
+
+	^ aBranch repository workingCopy notNil and: [ aBranch repository workingCopy isModified ]
 ]
 
 { #category : 'accessing' }
