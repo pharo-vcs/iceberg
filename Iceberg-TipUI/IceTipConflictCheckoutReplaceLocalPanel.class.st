@@ -54,7 +54,7 @@ IceTipConflictCheckoutReplaceLocalPanel >> defaultLayout [
 { #category : 'accessing' }
 IceTipConflictCheckoutReplaceLocalPanel >> descriptionText [
 
-	^ 'This will DELETE your local branch and replace it with the remote version.
+	^ 'This will reset your local branch and replace it with the remote version.
 
 Any uncommitted changes or commits in the local branch that have not been pushed will be lost.
 
@@ -71,8 +71,8 @@ IceTipConflictCheckoutReplaceLocalPanel >> executeFor: aRemoteBranch localBranch
 			(self confirmDiscardChanges: aLocalBranch) ifFalse: [ ^ nil ].
 			aLocalBranch repository workingCopy discardChanges ].
 
-	aLocalBranch delete.
-	^ remoteBranch repository createBranch: remoteBranch shortName inCommit: remoteBranch commit
+	aLocalBranch commit: remoteBranch commit.
+	^ aLocalBranch
 ]
 
 { #category : 'accessing' }
