@@ -57,7 +57,7 @@ IceBornRepositoryTest >> testBranchAlreadyExistsErrorInformsExistingBranchName [
 	branchName := 'master'.
 	[ self repository createBranch: branchName.
 	  self fail ]
-		on: IceBranchAlreadyExists
+		on: IceBranchAlreadyExistsError
 	 	do: [ :error | self assert: error branchName equals: branchName ]
 ]
 
@@ -88,7 +88,7 @@ IceBornRepositoryTest >> testCreateExistingBranchRaisesError [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
 	
-	self should: [self repository createBranch: 'master'] raise: IceBranchAlreadyExists
+	self should: [self repository createBranch: 'master'] raise: IceBranchAlreadyExistsError 
 ]
 
 { #category : 'tests-tags' }

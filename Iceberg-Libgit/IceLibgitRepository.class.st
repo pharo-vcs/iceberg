@@ -377,7 +377,7 @@ IceLibgitRepository >> createBranch: branchName [
 					self repositoryHandle setHead: newBranch ] ]
 				on: LGit_GIT_EEXISTS
 				do: [ :error | 
-					IceBranchAlreadyExists new
+					IceBranchAlreadyExistsError new 
 						branchName: branchName;
 						signal ].
 			^ self head ]

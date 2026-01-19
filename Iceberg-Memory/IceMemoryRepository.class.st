@@ -192,7 +192,7 @@ IceMemoryRepository >> createBranch: branchName inCommit: aCommit [
 		ifTrue: [ ^ head := IceMemoryUnbornBranch inRepository: self named: branchName ].
 
 	(self hasBranchNamed: branchName)
-		ifTrue: [ IceBranchAlreadyExists new
+		ifTrue: [ IceBranchAlreadyExistsError new
 			branchName: branchName;
 			signal ].
 	
