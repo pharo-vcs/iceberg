@@ -31,6 +31,18 @@ This action cannot be undone and you may LOSE CODE!' format: { aBranch name });
 		  openModal
 ]
 
+{ #category : 'ui - dialogs' }
+IceTipConflictCheckoutReplaceLocalPanel >> confirmDiscardChanges: aBranch [
+
+	^ SpConfirmDialog new
+		  title: 'Uncommitted Changes Detected';
+		  message: ('Branch "{1}" has uncommitted changes.
+
+Do you want to discard all changes and continue?' format: { aBranch name });
+		  acceptLabel: 'Discard changes';
+		  openModal
+]
+
 { #category : 'layout' }
 IceTipConflictCheckoutReplaceLocalPanel >> defaultLayout [
 
@@ -56,8 +68,8 @@ IceTipConflictCheckoutReplaceLocalPanel >> executeFor: aRemoteBranch localBranch
 
 	self validate.
 	(self hasUncommittedChangesIn: aLocalBranch) ifTrue: [
-			IceError signal: 'Cannot delete local branch: it has uncommitted changes.
-Please commit or discard changes before proceeding.' ].
+			(self confirmDiscardChanges: aLocalBranch) ifFalse: [ ^ nil ].
+			aLocalBranch repository workingCopy discardChanges ].
 
 	aLocalBranch delete.
 	^ remoteBranch repository createBranch: remoteBranch shortName inCommit: remoteBranch commit

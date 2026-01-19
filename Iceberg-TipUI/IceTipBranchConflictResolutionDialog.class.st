@@ -53,12 +53,7 @@ IceTipBranchConflictResolutionDialog >> createConflictBranchTypes [
 IceTipBranchConflictResolutionDialog >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		  add: reasonPanel withConstraints: [ :constraints |
-				  constraints
-					  expand: false;
-					  fill: false;
-					  height: 20 ];
-		  spacing: 10;
+		  add: reasonPanel expand: false;
 		  add: super defaultLayout;
 		  yourself
 ]
