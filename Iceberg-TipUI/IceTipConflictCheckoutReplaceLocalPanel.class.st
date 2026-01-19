@@ -54,13 +54,14 @@ IceTipConflictCheckoutReplaceLocalPanel >> defaultLayout [
 { #category : 'accessing' }
 IceTipConflictCheckoutReplaceLocalPanel >> descriptionText [
 
-	^ 'This will reset your local branch and replace it with the remote version.
-
-Any uncommitted changes or commits in the local branch that have not been pushed will be lost.
-
-Only use this option if you are certain that:
-- The local branch is no longer needed
-- All important work has been saved elsewhere'
+	^ SpBoxLayout newTopToBottom
+		  add: (self newLabel label: 'This will reset your local branch and replace it with the remote version.') expand: false;
+		  add: (self newLabel label: 'Any uncommitted changes or commits in the local branch that have not been pushed will be lost.')
+		  expand: false;
+		  add: (self newLabel label: 'Only use this option if you are certain that:') expand: false;
+		  add: (self newLabel label: '- The local branch is no longer needed') expand: false;
+		  add: (self newLabel label: '- All important work has been saved elsewhere') expand: false;
+		  yourself
 ]
 
 { #category : 'action' }
@@ -117,8 +118,8 @@ IceTipConflictCheckoutReplaceLocalPanel >> windowIcon [
 	^ self icon
 ]
 
-{ #category : 'initialization' }
+{ #category : 'accessing' }
 IceTipConflictCheckoutReplaceLocalPanel >> windowTitle [
 
-	^ 'Delete local branch and checkout remote (DANGEROUS)'
+	^ 'Reset local branch to remote commit (DANGEROUS)'
 ]

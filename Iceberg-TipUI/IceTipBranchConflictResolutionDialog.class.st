@@ -86,9 +86,16 @@ IceTipBranchConflictResolutionDialog >> initializePresenters [
 { #category : 'initialization' }
 IceTipBranchConflictResolutionDialog >> initializeReasonPanel [
 
-	reasonPanel label: 'The branch ' , existingBranch name , ' already exists in your local repository.' , String cr
-		, 'Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch.' , String cr
-		, 'What would you like to do?'
+	| line1 line2 line3 |
+	line1 := 'The branch ' , existingBranch name , ' already exists in your local repository.'.
+	line2 := 'Iceberg cannot check out the remote branch because doing so would overwrite the existing local branch.'.
+	line3 := 'What would you like to do?'.
+
+	reasonPanel := SpBoxLayout newTopToBottom
+		               add: (self newLabel label: line1) expand: false;
+		               add: (self newLabel label: line2) expand: false;
+		               add: (self newLabel label: line3) expand: false;
+		               yourself
 ]
 
 { #category : 'initialization' }
