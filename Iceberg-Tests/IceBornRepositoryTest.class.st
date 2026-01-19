@@ -88,7 +88,7 @@ IceBornRepositoryTest >> testCreateExistingBranchRaisesError [
 
 	self repository head isUnbornBranch ifTrue: [ ^ self skip ].
 	
-	self should: [self repository createBranch: 'master'] raise: IceBranchAlreadyExists
+	self should: [self repository createBranch: 'master'] raise: IceBranchAlreadyExistsError 
 ]
 
 { #category : 'tests-tags' }
