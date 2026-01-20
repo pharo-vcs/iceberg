@@ -35,11 +35,14 @@ IceGitCloneTest >> testCloneErrorRemovesLocation [
 
 	fixture ensureRemoteRepository.
 
-	self should: [IceGitClone new
-		location: fixture location;
-		url: 'bad url';
-		execute] raise: IceGenericError.
-		
+	self
+		should: [
+				IceGitLibGitClone new
+					location: fixture location;
+					url: 'bad url';
+					execute ]
+		raise: IceGenericError.
+
 	self deny: fixture location exists
 ]
 
@@ -48,27 +51,26 @@ IceGitCloneTest >> testClonedRepositoryIsGitClone [
 
 	fixture ensureRemoteRepository.
 
-	IceGitClone new
+	IceGitLibGitClone new
 		location: fixture location;
 		url: fixture factory defaultRemoteUrl;
 		execute.
-		
+
 	self assert: (fixture location / '.git') exists
 ]
 
 { #category : 'tests' }
 IceGitCloneTest >> testLocationAlreadyExistsThrowsException [
-	
+
 	| action |
-	
-	fixture ensureRemoteRepository.	
+	fixture ensureRemoteRepository.
 	fixture location resolve ensureCreateDirectory.
-	
-	action := IceGitClone new
-				location: fixture location;
-				url: fixture factory defaultRemoteUrl;
-				yourself. 
-				
+
+	action := IceGitLibGitClone new
+		          location: fixture location;
+		          url: fixture factory defaultRemoteUrl;
+		          yourself.
+
 	self should: [ action execute ] raise: IceCloneLocationAlreadyExists
 ]
 
@@ -83,7 +85,7 @@ IceGitCloneTest >> testLocationExistsAfterClone [
 
 	fixture ensureRemoteRepository.
 
-	IceGitClone new
+	IceGitLibGitClone new
 		location: fixture location;
 		url: fixture factory defaultRemoteUrl;
 		execute.
@@ -96,8 +98,11 @@ IceGitCloneTest >> testRemoteDoesNotExistsShouldThrowException [
 
 	self isCI ifTrue: [ self skip ].
 
-	self should: [ IceGitClone new
-				location: fixture location;
-				url: 'https://google.com/guillep/doesNotExist111.git';
-				execute ] raise: IceCloneRemoteNotFound
+	self
+		should: [
+				IceGitLibGitClone new
+					location: fixture location;
+					url: 'https://google.com/guillep/doesNotExist111.git';
+					execute ]
+		raise: IceCloneRemoteNotFound
 ]
