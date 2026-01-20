@@ -6,12 +6,6 @@ Class {
 	#tag : 'Memory'
 }
 
-{ #category : 'initialization' }
-IceInMemoryTestFactory class >> setUp [
-
-	^ self new setUp
-]
-
 { #category : 'accessing' }
 IceInMemoryTestFactory >> ensureRemoteRepository [
 	

@@ -37,12 +37,6 @@ IceTipConflictCheckoutAsNewPanel >> existingBranch: aBranch [
 ]
 
 { #category : 'accessing' }
-IceTipConflictCheckoutAsNewPanel >> icon [
-
-	^ self iconNamed: #smallNew
-]
-
-{ #category : 'accessing' }
 IceTipConflictCheckoutAsNewPanel >> remoteBranch: aRemoteBranch [
 
 	remoteBranch := aRemoteBranch

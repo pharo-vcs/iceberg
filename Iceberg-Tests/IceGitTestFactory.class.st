@@ -7,12 +7,6 @@ Class {
 }
 
 { #category : 'initialization' }
-IceGitTestFactory class >> setUp [
-
-	^ self new setUp
-]
-
-{ #category : 'initialization' }
 IceGitTestFactory >> defaultRemoteUrl [
 
 	^ self remoteFileUrl asString

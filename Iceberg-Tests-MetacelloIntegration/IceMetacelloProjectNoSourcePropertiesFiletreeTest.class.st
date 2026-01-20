@@ -29,9 +29,3 @@ IceMetacelloProjectNoSourcePropertiesFiletreeTest >> repositoryName [
 
 	^ 'test-project-nosource-properties-filetree'
 ]
-
-{ #category : 'configuring' }
-IceMetacelloProjectNoSourcePropertiesFiletreeTest >> shouldBeDirty [
-	
-	^ false
-]

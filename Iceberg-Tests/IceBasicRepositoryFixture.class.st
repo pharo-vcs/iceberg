@@ -10,22 +10,6 @@ Class {
 	#tag : 'Common-Fixtures'
 }
 
-{ #category : 'initialization' }
-IceBasicRepositoryFixture class >> inGit [
-
-	^ self new
-		factory: IceGitTestFactory new;
-		yourself
-]
-
-{ #category : 'initialization' }
-IceBasicRepositoryFixture class >> inMemory [
-
-	^ self new
-		factory: IceInMemoryTestFactory new;
-		yourself
-]
-
 { #category : 'private' }
 IceBasicRepositoryFixture >> deleteAllForcingClose [
 	

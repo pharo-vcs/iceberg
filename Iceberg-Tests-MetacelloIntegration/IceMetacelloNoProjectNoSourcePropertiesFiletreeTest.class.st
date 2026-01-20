@@ -32,7 +32,7 @@ IceMetacelloNoProjectNoSourcePropertiesFiletreeTest >> repositoryName [
 ]
 
 { #category : 'configuring' }
-IceMetacelloNoProjectNoSourcePropertiesFiletreeTest >> shouldBeDirty [
+IceMetacelloNoProjectNoSourcePropertiesFiletreeTest >> repositoryShouldBeDirty [
 	
 	^ true
 ]

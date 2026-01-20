@@ -103,7 +103,7 @@ IceMetacelloIntegrationTest >> isTestingSSH [
 ]
 
 { #category : 'configuring' }
-IceMetacelloIntegrationTest >> shouldBeDirty [
+IceMetacelloIntegrationTest >> repositoryShouldBeDirty [
 	
 	^ false
 ]
@@ -148,7 +148,7 @@ IceMetacelloIntegrationTest >> testInstallBaselineWhileMissingRepositoryIsInstal
 	self installBaseline.
 	repository := self repositoryForTest.
 		
-	self assert: repository workingCopy isModified equals: self shouldBeDirty
+	self assert: repository workingCopy isModified equals: self repositoryShouldBeDirty
 ]
 
 { #category : 'tests' }
@@ -197,7 +197,7 @@ IceMetacelloIntegrationTest >> testNewRepositoryPackagesAreClean [
 	self installBaseline.
 	repository := self repositoryForTest.
 		
-	self assert: repository workingCopy isModified equals: self shouldBeDirty
+	self assert: repository workingCopy isModified equals: self repositoryShouldBeDirty
 ]
 
 { #category : 'tests' }
@@ -210,7 +210,7 @@ IceMetacelloIntegrationTest >> testProjectDirtiness [
 	self installBaseline.
 	repository := self repositoryForTest.
 	
-	self assert: repository isModified equals: self shouldBeDirty
+	self assert: repository isModified equals: self repositoryShouldBeDirty
 ]
 
 { #category : 'tests' }

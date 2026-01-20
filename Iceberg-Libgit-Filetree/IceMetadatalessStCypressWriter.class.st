@@ -10,11 +10,6 @@ Class {
 }
 
 { #category : 'writing' }
-IceMetadatalessStCypressWriter class >> on: aStream [
-	^ self new stream: aStream
-]
-
-{ #category : 'writing' }
 IceMetadatalessStCypressWriter >> writeClassDefinition: definition to: classPath [
 	self
 		writeInDirectoryName: classPath
