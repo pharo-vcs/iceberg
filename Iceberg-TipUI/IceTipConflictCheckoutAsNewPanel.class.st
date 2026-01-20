@@ -5,8 +5,6 @@ Class {
 	#name : 'IceTipConflictCheckoutAsNewPanel',
 	#superclass : 'IceTipCheckoutNewBranchPanel',
 	#instVars : [
-		'title',
-		'icon',
 		'existingBranch',
 		'remoteBranch'
 	],
