@@ -32,7 +32,7 @@ IceMetacelloNoProjectNoSourcePropertiesTonelTest >> repositoryName [
 ]
 
 { #category : 'configuring' }
-IceMetacelloNoProjectNoSourcePropertiesTonelTest >> shouldBeDirty [
+IceMetacelloNoProjectNoSourcePropertiesTonelTest >> repositoryShouldBeDirty [
 	
 	^ true
 ]

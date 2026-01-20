@@ -58,9 +58,9 @@ IceTipInteractiveErrorVisitor >> repository: anObject [
 
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitAuthenticationError: anError [
- 
+
 	context application newInform
-		label: anError messageText;
+		message: anError messageText;
 		title: 'Iceberg authentication Error';
 		openModal
 ]

@@ -5,8 +5,6 @@ Class {
 	#name : 'IceTipCancelBranchPanel',
 	#superclass : 'IceTipBranchPanel',
 	#instVars : [
-		'title',
-		'icon',
 		'remoteBranch',
 		'existingBranch'
 	],

@@ -26,9 +26,6 @@ IceTipMetacelloBaselineDecorator >> isBaseline: aPackage [
 
 { #category : 'testing' }
 IceTipMetacelloBaselineDecorator >> isLocked: aPackage [
-	
-	^ (MetacelloProjectRegistration 
-		projectSpecForClassNamed: aPackage name 
-		ifAbsent: [ ^ false ])
-		isLocked
+
+	^ MetacelloProjectRegistry registrationNamed: aPackage name ifPresent: [ :registration | registration locked ] ifAbsent: [ false ]
 ]

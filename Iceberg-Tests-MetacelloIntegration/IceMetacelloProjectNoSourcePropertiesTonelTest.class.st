@@ -29,9 +29,3 @@ IceMetacelloProjectNoSourcePropertiesTonelTest >> repositoryName [
 
 	^ 'test-project-nosource-properties-tonel'
 ]
-
-{ #category : 'configuring' }
-IceMetacelloProjectNoSourcePropertiesTonelTest >> shouldBeDirty [
-	
-	^ false
-]

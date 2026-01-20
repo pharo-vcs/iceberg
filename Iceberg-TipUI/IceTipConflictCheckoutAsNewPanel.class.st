@@ -5,8 +5,6 @@ Class {
 	#name : 'IceTipConflictCheckoutAsNewPanel',
 	#superclass : 'IceTipCheckoutNewBranchPanel',
 	#instVars : [
-		'title',
-		'icon',
 		'existingBranch',
 		'remoteBranch'
 	],
@@ -36,12 +34,6 @@ IceTipConflictCheckoutAsNewPanel >> executeFor: aRemoteBranch localBranch: aLoca
 IceTipConflictCheckoutAsNewPanel >> existingBranch: aBranch [
 
 	existingBranch := aBranch
-]
-
-{ #category : 'accessing' }
-IceTipConflictCheckoutAsNewPanel >> icon [
-
-	^ self iconNamed: #smallNew
 ]
 
 { #category : 'accessing' }
