@@ -126,20 +126,17 @@ IcePharoPlugin class >> commitOfExternalProject: aName [
 
 { #category : 'accessing - commits' }
 IcePharoPlugin class >> getCommitishOfProject: projectName owner: owner repository: repository [
-
-	| shortHash |
-
-	"We need to get the short hash from Metacello"
-	shortHash := (MetacelloProjectRegistration registry registrations 
-		              detect: [ :e | e projectName = projectName ])
-		             versionInfo versionString.
-
-	"We need to get the full hash from github api"
-
-	^ (IceGitHubAPI new
-		   getCommit: shortHash
-		   owner: owner
-		   project: repository) at: #sha
+	
+	MetacelloProjectRegistry
+		registrationNamed: projectName
+		ifPresent: [ :registration |
+				| shortHash |
+				"We need to get the short hash from Metacello"
+				shortHash := registration versionString.
+				
+				"We need to get the full hash from github api"
+				^ (IceGitHubAPI new getCommit: shortHash owner: owner project: repository) at: #sha ]
+		ifAbsent: [ self error: 'Project ' , projectName , ' is not present in Metacello registry.' ]
 ]
 
 { #category : 'accessing - commits' }

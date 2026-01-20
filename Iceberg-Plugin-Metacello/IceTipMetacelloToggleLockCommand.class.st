@@ -47,13 +47,10 @@ IceTipMetacelloToggleLockCommand >> isBaseline [
 
 { #category : 'accessing' }
 IceTipMetacelloToggleLockCommand >> isLocked [
-	
+
 	self isBaseline ifFalse: [ ^ false ].
-	
-	^ (MetacelloProjectRegistration 
-		projectSpecForClassNamed: self package name 
-		ifAbsent: [ ^ false ])
-		isLocked
+
+	^ MetacelloProjectRegistry registrationNamed: self package name ifPresent: [ :registration | registration locked ] ifAbsent: [ false ]
 ]
 
 { #category : 'accessing' }

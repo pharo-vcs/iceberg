@@ -38,11 +38,14 @@ Iceberg class >> announcer [
 
 { #category : 'accessing' }
 Iceberg class >> bootstrap [
-	| metacelloRegistrationEntry |
-	metacelloRegistrationEntry := MetacelloProjectRegistration registry baselineRegistry at: 'BaselineOfIceberg'.
-	self
-		bootstrapWithCommitId: metacelloRegistrationEntry currentVersionString
-		packageList: (metacelloRegistrationEntry baselineProjectSpec version packages collect: #name)
+
+	MetacelloProjectRegistry
+		registrationNamed: 'BaselineOfIceberg'
+		ifPresent: [ :registration |
+			self
+				bootstrapWithCommitId: registration currentVersionString
+				packageList: (registration projectSpec version packages collect: #name) ]
+		ifAbsent: [ self error: 'BaselineOfIceberg is not in the registry' ]
 ]
 
 { #category : 'accessing' }

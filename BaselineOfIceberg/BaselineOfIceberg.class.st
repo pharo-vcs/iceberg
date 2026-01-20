@@ -101,10 +101,7 @@ BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	self resetKMRepository.
 
 	"Getting the repository from metacello..."
-	"The catch should be removed soon. It's just to allow the transition with the new API. We should only keep what is in the #do: block."
-	repository := [ aSpec repositories list first spec createRepository ]
-	              on: Error
-	              do: [ aSpec repositorySpecs first createRepository ].
+	repository :=  aSpec repositorySpecs first createRepository.
 	
 	"We only apply the bootstrap only of the repository is a github repository.
 	This is because in Iceberg's CI, the repository is cloned before and the code is loaded using filetree, so we have no commit information here..."
