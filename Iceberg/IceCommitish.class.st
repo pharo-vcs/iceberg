@@ -28,7 +28,6 @@ Class {
 	#name : 'IceCommitish',
 	#superclass : 'Object',
 	#instVars : [
-		'properties',
 		'repository'
 	],
 	#category : 'Iceberg-Core',
