@@ -35,10 +35,8 @@ IceMetacelloIntegrationWithMissingCloneTest >> tearDown [
 		repo forget.
 		repo location ifNotNil: #ensureDeleteAll ] ].
 
-	"Cleanup Metacello registry to avoid conflicts"		
-	MetacelloProjectRegistration registry baselineRegistry
-		detect: [ :registration | registration projectName = 'TestProjectWithDep' ]
-		ifFound: [ :registration | registration unregisterProject ].
+	"Cleanup Metacello registry to avoid conflicts"
+	MetacelloProjectRegistry registrationNamed: 'TestProjectWithDep' ifPresent: [ :registration | registration unregisterProject ].
 	
 	super tearDown
 ]

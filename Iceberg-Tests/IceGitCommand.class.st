@@ -103,10 +103,10 @@ IceGitCommand >> gitCommand [
 { #category : 'running' }
 IceGitCommand >> run [
 
-	UIManager default informUserDuring: [ :bar | 
-		bar label: self gitCommand , ' ' , (' ' join: self command).
-		self runLibCGitCommand ]
-
+	Job new
+		title: self gitCommand , ' ' , (' ' join: self command);
+		block: [ :job | self runLibCGitCommand ];
+		run
 ]
 
 { #category : 'running' }

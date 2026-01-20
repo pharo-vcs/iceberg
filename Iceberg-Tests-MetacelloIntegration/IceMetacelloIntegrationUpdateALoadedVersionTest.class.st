@@ -20,9 +20,7 @@ IceMetacelloIntegrationUpdateALoadedVersionTest >> tearDown [
 		repo location ifNotNil: #ensureDeleteAll ] ].
 
 	"Cleanup Metacello registry to avoid conflicts"		
-	MetacelloProjectRegistration registry baselineRegistry
-		detect: [ :registration | registration projectName = 'TestProjectWithDep' ]
-		ifFound: [ :registration | registration unregisterProject ].
+	MetacelloProjectRegistry registrationNamed: 'TestProjectWithDep' ifPresent: [ :registration | registration unregisterProject ].
 	
 	super tearDown
 ]
