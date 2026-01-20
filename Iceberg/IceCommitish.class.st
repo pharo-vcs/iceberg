@@ -232,9 +232,8 @@ IceCommitish >> project [
 
 { #category : 'API - properties' }
 IceCommitish >> properties [
-	"Caching for performance reasons. We might ask them multiple times by operation and it takes time to compute."
 
-	^ properties ifNil: [ properties := IceRepositoryProperties fromFileReferenceDirectory: self project sourceDirectoryReference commitish: self ]
+	^ IceRepositoryProperties fromFileReferenceDirectory: self project sourceDirectoryReference commitish: self
 ]
 
 { #category : 'API - properties' }

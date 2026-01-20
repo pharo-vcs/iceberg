@@ -53,9 +53,7 @@ AbstractIceMetacelloIntegrationTest >> tearDown [
 		repo location ifNotNil: #ensureDeleteAll ] ].
 
 	"Cleanup Metacello registry to avoid conflicts"		
-	MetacelloProjectRegistration registry baselineRegistry
-		detect: [ :registration | registration projectName = 'PharoGitTest' ]
-		ifFound: [ :registration | registration unregisterProject ].
+	MetacelloProjectRegistry registrationNamed: 'PharoGitTest' ifPresent: [ :registration | registration unregisterProject ].
 
 	"Remove temporary repository just in case"
 	'temp/test' asFileReference ensureDeleteAll.
