@@ -14,6 +14,12 @@ Class {
 	#tag : 'GitActions'
 }
 
+{ #category : 'testing' }
+IceGitLibGitFetch class >> requiresSubprocessLib [
+
+	^ false
+]
+
 { #category : 'executing' }
 IceGitLibGitFetch >> execute [
 

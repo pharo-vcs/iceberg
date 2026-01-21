@@ -11,6 +11,12 @@ Class {
 	#tag : 'GitActions'
 }
 
+{ #category : 'testing' }
+AbstractIceGitCommandLineAction class >> requiresSubprocessLib [
+
+	^ true
+]
+
 { #category : 'executing' }
 AbstractIceGitCommandLineAction >> execute [
 

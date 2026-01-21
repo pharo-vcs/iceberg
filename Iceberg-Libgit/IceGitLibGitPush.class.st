@@ -14,6 +14,12 @@ Class {
 	#tag : 'GitActions'
 }
 
+{ #category : 'testing' }
+IceGitLibGitPush class >> requiresSubprocessLib [
+
+	^ false
+]
+
 { #category : 'accessing' }
 IceGitLibGitPush >> branch: anIceGitLocalBranch [
 

@@ -13,6 +13,12 @@ Class {
 	#tag : 'GitActions'
 }
 
+{ #category : 'testing' }
+IceGitLibGitClone class >> requiresSubprocessLib [
+
+	^ false
+]
+
 { #category : 'private - operations' }
 IceGitLibGitClone >> cloneRepo: repo cloneOptions: cloneOptions remainingRetries: remainingRetries [ 
 
