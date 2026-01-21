@@ -18,10 +18,39 @@ Class {
 	#tag : 'GitActions'
 }
 
+{ #category : 'private - operations' }
+IceGitOperationSettings class >> checkUnixSubprocessLib [
+
+	self environment at: #OSSUnixSubprocess ifAbsent: [
+			Metacello new
+				baseline: 'OSSubprocess';
+				repository: 'github://pharo-contributions/OSSubprocess:master/repository';
+				load ]
+]
+
+{ #category : 'private - operations' }
+IceGitOperationSettings class >> checkWindowsSubprocessLib [
+
+	self environment at: #OSWSWinProcess ifAbsent: [
+			Metacello new
+				baseline: 'OSWinSubprocess';
+				repository: 'github://pharo-contributions/OSWinSubprocess:master/src';
+				load ]
+]
+
 { #category : 'settings' }
 IceGitOperationSettings class >> cloneOperationClass [
 	
 	^ self uniqueInstance cloneOperationClass 
+]
+
+{ #category : 'private - operations' }
+IceGitOperationSettings class >> ensureSubprocessLib [
+
+	OSPlatform current isWindows 
+		ifTrue: [ self checkWindowsSubprocessLib ]
+		ifFalse: [ self checkUnixSubprocessLib ].
+
 ]
 
 { #category : 'accessing' }
@@ -103,26 +132,6 @@ IceGitOperationSettings class >> uniqueInstance [
 	^ UniqueInstance ifNil: [ UniqueInstance := self new ]
 ]
 
-{ #category : 'private - operations' }
-IceGitOperationSettings >> checkUnixSubprocessLib [
-
-	self class environment at: #OSSUnixSubprocess ifAbsent: [
-			Metacello new
-				baseline: 'OSSubprocess';
-				repository: 'github://pharo-contributions/OSSubprocess:master/repository';
-				load ]
-]
-
-{ #category : 'private - operations' }
-IceGitOperationSettings >> checkWindowsSubprocessLib [
-
-	self class environment at: #OSWSWinProcess ifAbsent: [
-			Metacello new
-				baseline: 'OSWinSubprocess';
-				repository: 'github://pharo-contributions/OSWinSubprocess:master/src';
-				load ]
-]
-
 { #category : 'accessing' }
 IceGitOperationSettings >> cloneOperationClass [
 
@@ -133,6 +142,8 @@ IceGitOperationSettings >> cloneOperationClass [
 
 { #category : 'accessing' }
 IceGitOperationSettings >> cloneOperationClass: aClass [
+
+	aClass requiresSubprocessLib ifTrue: [ self class ensureSubprocessLib ].
 
 	cloneOperationClass := aClass
 
@@ -167,6 +178,8 @@ IceGitOperationSettings >> fetchOperationClass [
 { #category : 'accessing' }
 IceGitOperationSettings >> fetchOperationClass: aClass [
 
+	aClass requiresSubprocessLib ifTrue: [ self class ensureSubprocessLib ].
+
 	fetchOperationClass := aClass
 
 ]
@@ -178,9 +191,11 @@ IceGitOperationSettings >> pushOperationClass [
 ]
 
 { #category : 'accessing' }
-IceGitOperationSettings >> pushOperationClass: anObject [
+IceGitOperationSettings >> pushOperationClass: aClass [
 
-	pushOperationClass := anObject
+	aClass requiresSubprocessLib ifTrue: [ self class ensureSubprocessLib ].
+
+	pushOperationClass := aClass
 ]
 
 { #category : 'operations' }
@@ -194,10 +209,8 @@ IceGitOperationSettings >> refreshSettingsBrowserIfNeeded [
 
 { #category : 'operations' }
 IceGitOperationSettings >> useGitCommandLineOperations [
-
-	OSPlatform current isWindows 
-		ifTrue: [ self checkWindowsSubprocessLib ]
-		ifFalse: [ self checkUnixSubprocessLib ].
+		
+	self class ensureSubprocessLib.
 		
 	cloneOperationClass := IceGitCommandLineClone.
 	fetchOperationClass := IceGitCommandLineFetch.	
