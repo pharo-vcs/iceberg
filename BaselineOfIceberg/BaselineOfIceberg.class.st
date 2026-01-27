@@ -69,9 +69,9 @@ BaselineOfIceberg >> baseline: spec [
 
 { #category : 'accessing' }
 BaselineOfIceberg >> customProjectAttributes [
-	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
-	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
-	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
+	OSPlatform current isMacOS ifTrue: [ ^ #(#MacOS) ].
+	OSPlatform current isUnix ifTrue: [ ^ #(#Unix) ].
+	OSPlatform current isWindows ifTrue: [ ^ #(#Windows) ]
 ]
 
 { #category : 'external projects' }
