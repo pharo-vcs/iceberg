@@ -13,7 +13,7 @@ Class {
 	#tag : 'Core'
 }
 
-{ #category : 'initialize-release' }
+{ #category : 'initialization' }
 IceLibgitCommitWalk >> close [
 
 	revwalk free.
