@@ -25,7 +25,7 @@ IceAbstractCommitWalk class >> isAbstract [
 	^ self == IceAbstractCommitWalk 
 ]
 
-{ #category : 'initialize-release' }
+{ #category : 'initialization' }
 IceAbstractCommitWalk >> close [
 
 	self subclassResponsibility 

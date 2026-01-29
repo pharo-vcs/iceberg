@@ -298,7 +298,7 @@ and the original repository''s url is {3}.'
 					 format: {self location. self origin. repo origin}) ]].
 ]
 
-{ #category : 'initialize-release' }
+{ #category : 'initialization' }
 IceLibgitRepository >> close [
 	
 	handle ifNil: [ ^self ].
