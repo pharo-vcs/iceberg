@@ -59,6 +59,12 @@ IceTipSpCommand >> presenterBuildingStrategy: aStrategy [
 ]
 
 { #category : 'accessing' }
+IceTipSpCommand >> priority [
+
+	^ 1
+]
+
+{ #category : 'accessing' }
 IceTipSpCommand >> toolbarItemName [
 
 	^ self decoratedCommand toolbarItemName
