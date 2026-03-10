@@ -75,7 +75,8 @@ IceTipHiedraAltComponentHistoryBrowser >> initializePresenters [
 { #category : 'initialization' }
 IceTipHiedraAltComponentHistoryBrowser >> newCommitRow: index commit: item [ 
 	
-	^ self 
+	<ignoreNotImplementedSelectors: #( formAtRow: )>
+	^ self
 		instantiate: IceTipHiedraAltHistoryRowPresenter 
 		on: { (hiedraColumnController formAtRow: index). item }
 ]

@@ -29,6 +29,7 @@ IceTipHiedraAltHistoryBrowser >> contextMenuCommands [
 { #category : 'initialization' }
 IceTipHiedraAltHistoryBrowser >> initializeCommitList [
 
+	<ignoreNotImplementedSelectors: #( formAtRow: )>
 	commitList
 		beResizable;
 		addColumn: (SpCompositeTableColumn new
@@ -106,6 +107,7 @@ IceTipHiedraAltHistoryBrowser >> initializePresenters [
 { #category : 'initialization' }
 IceTipHiedraAltHistoryBrowser >> newCommitRow: index commit: item [ 
 	
+	<ignoreNotImplementedSelectors: #( formAtRow: )>
 	^ self 
 		instantiate: IceTipHiedraAltHistoryRowPresenter 
 		on: { (hiedraColumnController formAtRow: index). item }

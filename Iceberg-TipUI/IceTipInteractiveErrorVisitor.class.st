@@ -190,10 +190,8 @@ IceTipInteractiveErrorVisitor >> visitRemoteDesynchronizedError: anError [
 
 	| continue command |
 	continue := context application newConfirm
-		            label:
-			            ('Your repository is out of sync with remote {1}. 
-You need to pull remote changes before continue and push your changes.'
-				             format: { anError remote }); 
+		            message: ('Your repository is out of sync with remote {1}. 
+You need to pull remote changes before continue and push your changes.' format: { anError remote });
 		            title: 'Remote repository out of sync!';
 		            acceptLabel: 'Pull';
 		            cancelLabel: 'Cancel';
@@ -208,10 +206,10 @@ You need to pull remote changes before continue and push your changes.'
 	[ command executeWithContext: context ]
 		on: IceMergeAborted , IceShouldCommitBeforePull
 		do: [ :e |
-			self flag: #pharoTodo. "Refactor this"
-			(e isKindOf: IceShouldCommitBeforePull)
-				ifTrue: [ e resume ]
-				ifFalse: [ e acceptError: self ] ].
+				self flag: #pharoTodo. "Refactor this"
+				(e isKindOf: IceShouldCommitBeforePull)
+					ifTrue: [ e resume ]
+					ifFalse: [ e acceptError: self ] ].
 
 	command isSuccess ifFalse: [ ^ self ].
 	anError isResumable ifTrue: [ ^ anError resume ].
