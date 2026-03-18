@@ -19,11 +19,6 @@ MCGitHubRepository class >> commitIdFor: aWorkingCopy [
 ]
 
 { #category : '*Iceberg-Adapters' }
-MCGitHubRepository >> httpsUrl [
-	^ 'https://github.com/', projectPath, '.git'
-]
-
-{ #category : '*Iceberg-Adapters' }
 MCGitHubRepository >> scpUrl [
 	^ 'git@github.com:', projectPath, '.git'
 ]
