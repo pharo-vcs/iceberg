@@ -17,8 +17,3 @@ MCGitHubRepository class >> commitIdFor: aWorkingCopy [
 		ifNone: nil
 
 ]
-
-{ #category : '*Iceberg-Adapters' }
-MCGitHubRepository >> scpUrl [
-	^ 'git@github.com:', projectPath, '.git'
-]
