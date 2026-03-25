@@ -55,17 +55,18 @@ IceLog >> collectCommitsFor: aMethod path: aPath [
 		walk 
 			fromCommit: commit;
 			rawResultsDo: [ :eachCommit | | parents tree | 
-				parents := eachCommit numberOfParents.
 				tree := eachCommit tree.
+				parents := eachCommit numberOfParents.
 				parents = 0 
 					ifTrue: [
 						(tree matchesPathSpec: pathSpec)
 							ifTrue: [ commits add: eachCommit ] ]
 					ifFalse: [ 
-						eachCommit parents do: [ :eachParent | | diff |
-							diff := tree diffTo: eachParent tree options: options. 
-							diff numberOfDeltas > 0 
-								ifTrue: [ commits add: eachCommit ] ] ] ]].
+						| diff parent |
+						parent := eachCommit parents first.
+						diff := tree diffTo: parent tree options: options. 
+						diff numberOfDeltas > 0 
+							ifTrue: [ commits add: eachCommit ] ] ] ].
 
 	^ commits
 ]
