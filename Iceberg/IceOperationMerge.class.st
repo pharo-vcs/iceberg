@@ -78,6 +78,12 @@ IceOperationMerge >> isLoadable [
 ]
 
 { #category : 'testing' }
+IceOperationMerge >> isNoModification [
+
+	^ false
+]
+
+{ #category : 'testing' }
 IceOperationMerge >> isResolved [
 	
 	^ chosen isNotNil

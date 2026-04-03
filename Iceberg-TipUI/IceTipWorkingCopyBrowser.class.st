@@ -178,11 +178,10 @@ IceTipWorkingCopyBrowser >> initializePresenters [
 
 { #category : 'initialization' }
 IceTipWorkingCopyBrowser >> initializeWindow: aSpWindowPresenter [
-	
+
 	super initializeWindow: aSpWindowPresenter.
 
-	aSpWindowPresenter statusBar: statusBar.
-
+	aSpWindowPresenter statusbar: statusBar
 ]
 
 { #category : 'accessing - ui' }
