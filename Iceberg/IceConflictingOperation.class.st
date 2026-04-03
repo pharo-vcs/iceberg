@@ -98,6 +98,18 @@ IceConflictingOperation >> leftContents [
 ]
 
 { #category : 'accessing' }
+IceConflictingOperation >> leftDefinition [
+
+	^ self definition
+]
+
+{ #category : 'accessing' }
+IceConflictingOperation >> leftOperation [
+	
+	^ leftOperation
+]
+
+{ #category : 'accessing' }
 IceConflictingOperation >> leftOperation: anOperation [
 	
 	leftOperation := anOperation
@@ -110,9 +122,21 @@ IceConflictingOperation >> rightContents [
 ]
 
 { #category : 'accessing' }
+IceConflictingOperation >> rightOperation [
+	
+	^ rightOperation
+]
+
+{ #category : 'accessing' }
 IceConflictingOperation >> rightOperation: anOperation [
 	
 	rightOperation := anOperation
+]
+
+{ #category : 'accessing' }
+IceConflictingOperation >> rigthDefinition [
+
+	^ rightOperation definition
 ]
 
 { #category : 'resolution' }
