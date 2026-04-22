@@ -564,9 +564,9 @@ IceLibgitRepository >> isMissing [
 
 { #category : 'API - packages' }
 IceLibgitRepository >> isModified [
-	"We cannot correctly determine if a repository is modified if it is missing so, false"
+	"We cannot correctly determine if a repository is modified if it is not valid"
 	
-	^ self isMissing not and: [ super isModified ]
+	^ self isValid and: [ super isModified ]
 ]
 
 { #category : 'API - packages' }
