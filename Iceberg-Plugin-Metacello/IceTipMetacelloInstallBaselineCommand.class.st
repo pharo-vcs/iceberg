@@ -64,15 +64,16 @@ IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyFor: aMetacelloUpgr
 { #category : 'private' }
 IceTipMetacelloInstallBaselineCommand >> chooseConflictPolicyProject: projectName optionA: optionA optionB: optionB [
 
-	^ UIManager default 
-		chooseFrom: {
-			'Use INCOMING version {1}' format: { optionA }. 
-			'Use LOADED version {1}' format: { optionB } }
-		values: { 
-			#useIncoming. 
-			#useLoaded }
-		message: ('There are conflicting versions of project "{1}".' format: { projectName })
-		title: 'Conflicting project versions'
+^StPharoApplication current newSelect 
+    title: 'Conflicting project versions';
+    message: ('There are conflicting versions of project "{1}".'           
+	 format: { 'projectName' });
+    items: { #useIncoming . #useLoaded };
+    display: [ :choice | 
+        choice = #useIncoming 
+            ifTrue: [ 'Use INCOMING version {1}' format: { 'optionA' } ]
+            ifFalse: [ 'Use LOADED version {1}' format: { 'optionB' } ] ];
+    openModal.
 ]
 
 { #category : 'private' }
