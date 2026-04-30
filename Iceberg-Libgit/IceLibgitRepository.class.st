@@ -117,39 +117,38 @@ IceLibgitRepository class >> requiredLibGit2MinimumVersion [
 ]
 
 { #category : 'settings' }
-IceLibgitRepository class >> settingsOn: aBuilder [ 
+IceLibgitRepository class >> settingsOn: aBuilder [
+
 	<systemsettings>
-	
-	(aBuilder pickOne: #'defaultFileFormatType')
-		parent: #Iceberg;
+	(aBuilder pickOne: #defaultFileFormatType)
+		parentName: #Iceberg;
 		target: self;
-		default: #IceLibgitTonelWriter;
+		defaultValue: #IceLibgitTonelWriter;
 		label: 'File format type';
 		description: 'Select your preferred file format.';
-		domainValues: self formatTypeDomainValues.
-  
-	(aBuilder setting: #'defaultCodeSubdirectory')
-		parent: #Iceberg;
+		domainValues: self formatTypeDomainValues asOrderedCollection.
+
+	(aBuilder setting: #defaultCodeSubdirectory)
+		parentName: #Iceberg;
 		target: self;
 		label: 'Default Code Subdirectory';
-		default: 'src';
+		defaultValue: 'src';
 		description: 'Select your preferred source code folder name'.
 
-	(aBuilder setting: #shareRepositoriesBetweenImages)
-		parent: #Iceberg;
+	(aBuilder group: #shareRepositoriesBetweenImages)
+		parentName: #Iceberg;
 		target: self;
-		default: false;
+		isActive: false;
 		label: 'Share repositories between images';
-		description: 'Check if you want to have your git repositories cloned by default in a single location that is shared between all your Pharo images';
+		description:
+			'Check if you want to have your git repositories cloned by default in a single location that is shared between all your Pharo images';
 		with: [
-			(aBuilder setting: #sharedRepositoriesLocationString)
-				target: self;
-				type: #Directory;
-				default: (FileLocator home / #iceberg) asFileReference fullName;
-				label: 'Location for shared repositories';
-				description: 'A directory where you have your git repositories'.
-		].
-		
+				(aBuilder setting: #sharedRepositoriesLocationString)
+					target: self;
+					type: #Directory;
+					defaultValue: (FileLocator home / #iceberg) asFileReference fullName;
+					label: 'Location for shared repositories';
+					description: 'A directory where you have your git repositories' ]
 ]
 
 { #category : 'settings' }

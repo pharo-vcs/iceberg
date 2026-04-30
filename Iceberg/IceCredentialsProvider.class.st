@@ -65,42 +65,43 @@ IceCredentialsProvider class >> providerType: anObject [
 
 { #category : 'settings' }
 IceCredentialsProvider class >> settingsOn: aBuilder [
+
 	<systemsettings>
-	(aBuilder setting: #useCustomSsh)
-		parent: #icebergCredentials;
+	(aBuilder group: #useCustomSsh)
+		parentName: #icebergCredentials;
 		noOrdering;
 		target: self;
-		default: false;
+		isActive: false;
 		label: 'Use custom SSH keys';
-		description:
-			'Check if you want to have your own pair of keys (id_rsa and id_rsa.pub), without using the ssh-agent';
-		with: [ (aBuilder setting: #username)
-				target: self;
-				targetSelector: #sshCredentials;
-				label: 'SSH Username';
-				default: 'git';
-				description:
-					'If you are trying to connect to github through ssh (something like git@github.com:owner/projectName), the username should be `git`'.
-			(aBuilder setting: #publicKey)
-				target: self;
-				targetSelector: #sshCredentials;
-				type: #FilePathEncoder;
-				default: IceSshCredentials defaultPublicKey ;
-				label: 'Public SSH key';
-				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519.pub or id_rsa.pub'.
-			(aBuilder setting: #privateKey)
-				target: self;
-				targetSelector: #sshCredentials;
-				type: #FilePathEncoder;
-				default: IceSshCredentials defaultPrivateKey;
-				label: 'Private SSH key';
-				description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519 or id_rsa'.
-			(aBuilder setting: #keyPassphrase)
-				target: self;
-				type: #Password;
-				default: '';
-				targetSelector: #sshCredentials;
-				label: 'Passphrase of your SSH key' ]
+		description: 'Check if you want to have your own pair of keys (id_rsa and id_rsa.pub), without using the ssh-agent';
+		with: [
+				(aBuilder setting: #username)
+					target: self;
+					targetSelector: #sshCredentials;
+					label: 'SSH Username';
+					defaultValue: 'git';
+					description:
+						'If you are trying to connect to github through ssh (something like git@github.com:owner/projectName), the username should be `git`'.
+				(aBuilder setting: #publicKey)
+					target: self;
+					targetSelector: #sshCredentials;
+					type: #FilePathEncoder;
+					defaultValue: IceSshCredentials defaultPublicKey;
+					label: 'Public SSH key';
+					description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519.pub or id_rsa.pub'.
+				(aBuilder setting: #privateKey)
+					target: self;
+					targetSelector: #sshCredentials;
+					type: #FilePathEncoder;
+					defaultValue: IceSshCredentials defaultPrivateKey;
+					label: 'Private SSH key';
+					description: 'The path to your private ssh key, probably /home/<userName>/.ssh/id_ed25519 or id_rsa'.
+				(aBuilder setting: #keyPassphrase)
+					target: self;
+					type: #Password;
+					defaultValue: '';
+					targetSelector: #sshCredentials;
+					label: 'Passphrase of your SSH key' ]
 ]
 
 { #category : 'accessing' }
