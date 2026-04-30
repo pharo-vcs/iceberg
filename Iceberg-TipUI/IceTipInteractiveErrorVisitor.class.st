@@ -236,20 +236,22 @@ We recommend that you commit first and then pull incoming changes again.';
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitWorkingCopyDesynchronizedError: anError [
 
-| solveStrategy command |
-solveStrategy := StPharoApplication current newSelect title: 'Loaded code out of sync!';
-message: 'Your loaded code is not synchronized with the local sources in your repository. 
+    | solveStrategy command |
+    solveStrategy := self context application newSelect
+                         title: 'Loaded code out of sync!';
+                         message: 'Your loaded code is not synchronized with the local sources in your repository. 
 You need to solve this problem before you continue, please choose one of the strategies below.';
-items: { IceCreateBranchCommand . IceMergeWorkingCopyCommand };
-display: [ :choice | 
-        choice = IceCreateBranchCommand
-            ifTrue: [ 'Create new branch and commit'  ]
-            ifFalse: ['Merge local copy into image and commit' ]];
-openModal.
-solveStrategy ifNil: [ ^ self ].
-(command := solveStrategy new) 
-    repository: self repository;
-    executeWithContext: context.
-command isSuccess 
-    ifTrue: [ anError retry ]
+                         items: {
+                                 IceCreateBranchCommand.
+                                 IceMergeWorkingCopyCommand };
+                         display: [ :choice |
+                                 choice = IceCreateBranchCommand
+                                     ifTrue: [ 'Create new branch and commit' ]
+                                     ifFalse: [ 'Merge local copy into image and commit' ] ];
+                         openModal.
+    solveStrategy ifNil: [ ^ self ].
+    (command := solveStrategy new)
+        repository: self repository;
+        executeWithContext: context.
+    command isSuccess ifTrue: [ anError retry ]
 ]
