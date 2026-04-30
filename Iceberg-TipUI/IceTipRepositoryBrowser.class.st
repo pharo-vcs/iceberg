@@ -147,6 +147,19 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 				ifTrue: [ self commitishSelected: selection selectedItem ] ]
 ]
 
+{ #category : 'initialization' }
+IceTipRepositoryBrowser >> initializeWindow: aWindow [
+	super initializeWindow: aWindow.
+
+	aWindow toolbar add: (SpToolbarButtonPresenter new
+		label: 'Load More';
+		icon: (self iconNamed: #smallUpdate); 
+		help: 'Load more commits';
+		action: [  historyPanel loadSize: historyPanel loadSize + 20.
+            historyPanel refreshCommitList . ];
+		yourself).
+]
+
 { #category : 'accessing - ui' }
 IceTipRepositoryBrowser >> mainList [
 	"Answer the presenter that is the main list of items of this browser."
