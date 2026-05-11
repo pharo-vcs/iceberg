@@ -10,14 +10,15 @@ Class {
 
 { #category : 'testing' }
 IceSBBrowserAbstractMethodCommand >> canBeExecuted [ 
-
-	^ self selectedMethod notNil
+	"we cannot load a method of a class not loaded"
+	
+	^ self selectedMethodDefinition actualClass isNotNil
 ]
 
 { #category : 'accessing - selection' }
 IceSBBrowserAbstractMethodCommand >> selectedMethod [
 	"Answer the actual selected <CompiledMethod>"
-
+	
 	^ self selectedMethodDefinition method
 ]
 

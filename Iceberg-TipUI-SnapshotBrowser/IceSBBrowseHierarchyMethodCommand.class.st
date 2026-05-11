@@ -11,7 +11,7 @@ Class {
 { #category : 'default' }
 IceSBBrowseHierarchyMethodCommand class >> defaultName [
 
-	^ 'Browse hierarchy...'
+	^ 'Browse (in image) hierarchy...'
 ]
 
 { #category : 'testing' }

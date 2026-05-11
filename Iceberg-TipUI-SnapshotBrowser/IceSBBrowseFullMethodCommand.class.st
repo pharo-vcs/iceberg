@@ -11,13 +11,13 @@ Class {
 { #category : 'default' }
 IceSBBrowseFullMethodCommand class >> defaultName [
 
-	^ 'Browse full'
+	^ 'Browse (in image) full'
 ]
 
 { #category : 'testing' }
 IceSBBrowseFullMethodCommand >> canBeExecuted [ 
 
-	^ super canBeExecuted and: [ self selectedClassIsLoaded ]
+	^   self selectedClassIsLoaded and: [ self selectedMethodDefinition isAlreadyDefined ]
 ]
 
 { #category : 'executing' }
