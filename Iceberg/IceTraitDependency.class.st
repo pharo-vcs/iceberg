@@ -42,7 +42,7 @@ IceTraitDependency >> referencedPackages [
 
 { #category : 'dependencies' }
 IceTraitDependency >> referencedTraits [
-	^ (((RBParser
+	^ (((OCParser
 		parseExpression: definition asMCDefinition traitComposition)
 		allChildren select: #isVariable) collect: #name ) , self usedTraitsNames  
 ]
