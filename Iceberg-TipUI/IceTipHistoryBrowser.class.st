@@ -117,6 +117,13 @@ IceTipHistoryBrowser >> initializePresenters [
 ]
 
 { #category : 'actions' }
+IceTipHistoryBrowser >> loadAll [
+	self loadSize: allCommits size.
+	self refreshCommitList .
+	
+]
+
+{ #category : 'actions' }
 IceTipHistoryBrowser >> loadMore: anInteger [
 	self loadSize: self loadSize + anInteger.
    self refreshCommitList . 
