@@ -169,7 +169,7 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			yourself);
 		addColumn: (SpStringTableColumn new 
 			title: 'Hash';
-			evaluated: #commitId;
+			evaluated: #shortCommitId ;
 			yourself);
 		actions: self selectionCommandsGroup;
 		activateOnDoubleClick;
