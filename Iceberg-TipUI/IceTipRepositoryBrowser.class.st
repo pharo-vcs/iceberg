@@ -22,7 +22,8 @@ IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aC
 		IceTipPullCommand.
 		IceTipFetchCommand.
 		IceTipCheckoutBranchCommand.
-		IceTipMergeCommand } do: [ :each | 
+		IceTipMergeCommand.
+		IceTipLoadMoreCommand } do: [ :each | 
 			aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
@@ -145,19 +146,6 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 		whenSelectionChangedDo: [ :selection | 
 			(selection isEmpty not and: [ selection selectedItem isCommitish ])
 				ifTrue: [ self commitishSelected: selection selectedItem ] ]
-]
-
-{ #category : 'initialization' }
-IceTipRepositoryBrowser >> initializeWindow: aWindow [
-	super initializeWindow: aWindow.
-
-	aWindow toolbar add: (SpToolbarButtonPresenter new
-		label: 'Load More';
-		icon: (self iconNamed: #smallUpdate); 
-		help: 'Load more commits';
-		action: [  historyPanel loadSize: historyPanel loadSize + 20.
-            historyPanel refreshCommitList . ];
-		yourself).
 ]
 
 { #category : 'accessing - ui' }
