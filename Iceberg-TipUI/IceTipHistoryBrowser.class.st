@@ -125,7 +125,7 @@ IceTipHistoryBrowser >> loadAll [
 
 { #category : 'actions' }
 IceTipHistoryBrowser >> loadMore: anInteger [
-	self loadSize: self loadSize + anInteger.
+	self loadSize: ((self loadSize + anInteger) min: allCommits size).
    self refreshCommitList . 
 ]
 
