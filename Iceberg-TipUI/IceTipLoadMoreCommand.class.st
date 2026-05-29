@@ -6,6 +6,11 @@ Class {
 	#tag : 'Commands'
 }
 
+{ #category : 'accessing - defaults' }
+IceTipLoadMoreCommand class >> defaultName [ 
+	^ 'Load More'
+]
+
 { #category : 'executing' }
 IceTipLoadMoreCommand >> execute [
 	"Execute the actions that should be done by the command.
