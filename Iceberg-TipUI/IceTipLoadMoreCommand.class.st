@@ -20,5 +20,5 @@ IceTipLoadMoreCommand >> execute [
 
 { #category : 'accessing' }
 IceTipLoadMoreCommand >> iconName [ 
-	^ #smallUpdate.
+	^ #addCross.
 ]

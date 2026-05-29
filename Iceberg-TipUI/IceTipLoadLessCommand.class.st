@@ -18,5 +18,5 @@ IceTipLoadLessCommand >> execute [
 
 { #category : 'accessing' }
 IceTipLoadLessCommand >> iconName [ 
-	^ #smallUpdate.
+	^ #windowMinimize .
 ]
