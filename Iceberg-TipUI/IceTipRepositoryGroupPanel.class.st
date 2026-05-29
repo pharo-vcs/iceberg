@@ -167,6 +167,10 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			title: 'Branch';
 			evaluated: #branchName;
 			yourself);
+		addColumn: (SpStringTableColumn new 
+			title: 'Hash';
+			evaluated: #shortCommitId ;
+			yourself);
 		actions: self selectionCommandsGroup;
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
