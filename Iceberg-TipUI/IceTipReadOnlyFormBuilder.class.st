@@ -50,7 +50,7 @@ IceTipReadOnlyFormBuilder >> application: aSpApplication [
 { #category : 'building' }
 IceTipReadOnlyFormBuilder >> build [
 
-	presenter := spApplication newPresenter: SpPresenter.
+	presenter := spApplication instantiate: SpPresenter.
 	presenter layout: self buildLayout.
 	^ presenter
 ]
