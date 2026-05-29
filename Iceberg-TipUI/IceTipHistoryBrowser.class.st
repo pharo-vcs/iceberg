@@ -123,6 +123,13 @@ IceTipHistoryBrowser >> loadAll [
 	
 ]
 
+{ #category : 'as yet unclassified' }
+IceTipHistoryBrowser >> loadLess: anInteger [
+
+	self loadSize: (self loadSize - anInteger max: 0).
+	self refreshCommitList
+]
+
 { #category : 'actions' }
 IceTipHistoryBrowser >> loadMore: anInteger [
 	self loadSize: ((self loadSize + anInteger) min: allCommits size).
