@@ -426,7 +426,11 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 
 { #category : 'accessing' }
 IceTipRepositoryModel >> shortCommitId [
-	^ [self entity headCommit shortId] on: Error do: [ nil ].
+	"Return the short commit id of the commit loaded in Pharo. Be careful, this does not return the commit of the working copy if the head is detached."
+
+	^ [ self commit shortId ]
+		  on: Error
+		  do: [ nil ]
 ]
 
 { #category : 'accessing' }
