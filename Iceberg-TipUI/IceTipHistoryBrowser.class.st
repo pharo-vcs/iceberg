@@ -112,7 +112,7 @@ IceTipHistoryBrowser >> initializePresenters [
 	loadSize := 20.
 	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
-	
+	allCommits := self model commitModels.
 	self initializeCommitList
 ]
 
@@ -123,7 +123,7 @@ IceTipHistoryBrowser >> loadAll [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'actions' }
 IceTipHistoryBrowser >> loadLess: anInteger [
 
 	self loadSize: (self loadSize - anInteger max: 0).
@@ -172,7 +172,6 @@ IceTipHistoryBrowser >> refresh [
 IceTipHistoryBrowser >> refreshCommitList [
 
     | maxCommits |
-    allCommits ifNil: [ allCommits := self model commitModels]. 
     maxCommits := self loadSize min: allCommits size.
     commitList items: (allCommits first: maxCommits).
     commitInfoTabs selectedModel: ( allCommits ifNotEmpty: #first ifEmpty: [ nil ])
