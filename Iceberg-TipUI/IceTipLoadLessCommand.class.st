@@ -12,8 +12,9 @@ IceTipLoadLessCommand class >> defaultName [
 ]
 
 { #category : 'executing' }
-IceTipLoadLessCommand >> execute [ 
-	^ self context historyPanel loadLess: 20.
+IceTipLoadLessCommand >> execute [
+
+	^ self context historyPanel loadLess: 20
 ]
 
 { #category : 'accessing' }
