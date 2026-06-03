@@ -24,5 +24,5 @@ IceSBLoadMethodCommand >> canBeExecuted [
 IceSBLoadMethodCommand >> execute [
 	"Load the selected method"
 
-	self selectedMethod load
+	self selectedMethodDefinition load
 ]
