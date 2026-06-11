@@ -47,7 +47,7 @@ IceClassDependency >> referencedSharedPool [
 
 { #category : 'dependencies' }
 IceClassDependency >> referencedTraits [
-	^ ((RBParser parseExpression: definition asMCDefinition traitComposition)
+	^ ((OCParser parseExpression: definition asMCDefinition traitComposition)
 		allChildren select: #isVariable) collect: #name
 ]
 
