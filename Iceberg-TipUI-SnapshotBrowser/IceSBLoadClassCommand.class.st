@@ -20,11 +20,11 @@ IceSBLoadClassCommand >> execute [
 
 	self packageClasses
 		detect: [ :ea | ea className = self selectedClass ]
-		ifFound: [ :packageClass | 
-			packageClass load.
+		ifFound: [ :aClass | 
+			aClass load.
 			self methodsForSelectedClass 
 				do: [ :m | m load ]
-				displayingProgress: 'Loading definitions...' ]
+				displayingProgress: 'Loading class definitions...' ]
 ]
 
 { #category : 'executing' }

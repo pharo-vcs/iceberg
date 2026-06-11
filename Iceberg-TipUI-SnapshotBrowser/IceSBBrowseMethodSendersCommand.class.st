@@ -11,7 +11,7 @@ Class {
 { #category : 'default' }
 IceSBBrowseMethodSendersCommand class >> defaultName [
 
-	^ 'Browse senders'
+	^ 'Browse (in image) senders'
 ]
 
 { #category : 'executing' }

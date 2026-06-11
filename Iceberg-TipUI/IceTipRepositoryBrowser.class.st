@@ -22,7 +22,10 @@ IceTipRepositoryBrowser class >> buildGeneralCommandGroupWith: presenter for: aC
 		IceTipPullCommand.
 		IceTipFetchCommand.
 		IceTipCheckoutBranchCommand.
-		IceTipMergeCommand } do: [ :each | 
+		IceTipMergeCommand.
+		IceTipLoadMoreCommand.
+		IceTipLoadLessCommand.
+		IceTipLoadAllCommand } do: [ :each | 
 			aCommandGroup register: (each forSpecContext: presenter) ]
 ]
 
