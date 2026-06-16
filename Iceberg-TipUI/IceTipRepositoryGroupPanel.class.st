@@ -209,6 +209,12 @@ IceTipRepositoryGroupPanel >> refreshRepositoryList [
 
 ]
 
+{ #category : 'api' }
+IceTipRepositoryGroupPanel >> refreshTags [
+	
+	self refreshRepositoryList
+]
+
 { #category : 'accessing' }
 IceTipRepositoryGroupPanel >> repositoryList [
 
