@@ -269,6 +269,26 @@ IceLibgitRepository >> changedFilesBetween: aCommitish and: otherCommitish [
 		^ diff files ]
 ]
 
+{ #category : 'private - changes' }
+IceLibgitRepository >> changedFilesBetweenCommitAndWorkingCopy: aCommitish [
+	"Answer a list of file path strings that differ between the given commit and the current working directory."
+	| commitTree diff options |
+	
+	self handleLibgitError: [
+		commitTree := (LGitCommit 
+			of: self repositoryHandle 
+			fromHexString: aCommitish id) 
+			tree.
+		
+		diff := LGitDiff of: self repositoryHandle.
+		options := LGitDiffOptions defaults.
+		options prim_flags:
+			(LGitDiffOptionTypeEnum git_diff_include_untracked value bitOr: LGitDiffOptionTypeEnum git_diff_recurse_untracked_dirs value).
+		diff diffTree: commitTree toWorkdirWithIndexOptions: options.
+		
+		^ diff files ]
+]
+
 { #category : 'API - registry' }
 IceLibgitRepository >> checkForRegistryConflicts [
 	
@@ -495,6 +515,33 @@ IceLibgitRepository >> hasHandle [
 
 	handle ifNil: [ ^ false ].
 	^ handle isNull not
+]
+
+{ #category : 'private - changes' }
+IceLibgitRepository >> hasModifiedFilesOutsidePackages: aCollectionOfPackages [
+	"Answer whether there are modified files on disk outside the given packages' directories."
+	| packageDirs headTree diff options |
+	
+	packageDirs := aCollectionOfPackages collect: [ :each | 
+		self directoryPathStringForPackage: (MCPackage named: each name) ].
+
+	self handleLibgitError: [
+		headTree := self headCommit isNoCommit
+		    ifTrue: [ ^ false ]
+		    ifFalse: [ 
+		    		(LGitCommit 
+		    			of: self repositoryHandle 
+		    			fromHexString: self headCommit id) tree ].
+			
+			diff := LGitDiff of: self repositoryHandle.
+			options := LGitDiffOptions defaults.
+			options prim_flags:
+				(LGitDiffOptionTypeEnum git_diff_include_untracked value bitOr: LGitDiffOptionTypeEnum git_diff_recurse_untracked_dirs value).
+			diff diffTree: headTree toWorkdirWithIndexOptions: options.
+			
+		^ diff deltas anySatisfy: [ :delta | 
+			packageDirs noneSatisfy: [ :pDir | 
+				delta newFile path beginsWith: pDir ] ] ]
 ]
 
 { #category : 'API - tags' }

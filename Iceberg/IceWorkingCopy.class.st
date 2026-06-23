@@ -210,6 +210,7 @@ IceWorkingCopy >> changesTo: aCommitish [
 	changes addAll: (aCommitish changesFromCommit: self referenceCommit).
 	removedPackages := aCommitish packages \ self packages.
 	changes addAll: (self modifiedPackages , removedPackages collect: [ :each | IceImageChange package: each ]).
+	changes addAll: self externalChanges.
 
 	self project isDirty ifTrue: [ changes add: IceProjectChange new ].
 	self repositoryProperties isDirty ifTrue: [ changes add: IceCypressPropertiesChange new ].
@@ -312,6 +313,23 @@ IceWorkingCopy >> discardChanges: aTree [
 	self refreshDirtyPackages
 ]
 
+{ #category : 'API - changes' }
+IceWorkingCopy >> externalChanges [
+	"Answer IceGitChange objects for files modified on disk that are outside any tracked package directory."
+	| gitChanges packagePaths |
+	
+	self referenceCommit isNoCommit ifTrue: [ ^ #() ].
+	
+	gitChanges := self referenceCommit changesFromWorkingCopy.
+	packagePaths := self packages collect: [ :each | 
+		self repository directoryPathStringForPackage: (MCPackage named: each name) ].
+	
+	^ gitChanges select: [ :change |
+		  | changePath |
+		  changePath := change path asString.
+		  packagePaths noneSatisfy: [ :packagePath | changePath beginsWith: packagePath ] ]
+]
+
 { #category : 'accessing' }
 IceWorkingCopy >> fileSystem [
 	
@@ -341,6 +359,14 @@ IceWorkingCopy >> forceCalculateOneDirtyPackage: aPackage [
 		        buildFull.
 
 	aPackage beDirty: (diff includesPackageNamed: aPackage name)
+]
+
+{ #category : 'API - changes' }
+IceWorkingCopy >> hasExternalChanges [
+	"Return true if files outside package directories have been modified relative to HEAD."
+
+	self referenceCommit isNoCommit ifTrue: [ ^ false ].
+	^ self repository hasModifiedFilesOutsidePackages: self packages
 ]
 
 { #category : 'API - commits' }
@@ -428,7 +454,10 @@ IceWorkingCopy >> isLoadedPackageNamed: aString [
 
 { #category : 'API - changes' }
 IceWorkingCopy >> isModified [
-	^ self project isDirty or: [ self loadedPackages anySatisfy: [ :e | e isDirty ] ]
+
+	^ self project isDirty 
+		or: [ (self loadedPackages anySatisfy: [ :e | e isDirty ]) 
+		or: [ self hasExternalChanges ] ]
 ]
 
 { #category : 'testing' }

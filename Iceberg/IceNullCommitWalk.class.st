@@ -23,3 +23,8 @@ IceNullCommitWalk >> commits [
 IceNullCommitWalk >> commitsDo: aBlock [ 
 	"Do nothing. A null commit does not has any commits to walk."
 ]
+
+{ #category : 'accessing' }
+IceNullCommitWalk >> maxNumber: aNumber [
+	"we don't care, as this is a non-commit"
+]

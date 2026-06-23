@@ -58,6 +58,16 @@ IceGitCommit >> changesFromCommit: anIceGitCommit [
 	^ files collect: [ :each | IceGitChange on: each ]
 ]
 
+{ #category : 'API - changes' }
+IceGitCommit >> changesFromWorkingCopy [
+	"Answer IceGitChange objects for all files that differ between this commit 
+	 and the current working directory."
+	| files |
+	
+	files := self repository changedFilesBetweenCommitAndWorkingCopy: self.
+	^ files collect: [ :each | IceGitChange on: each ]
+]
+
 { #category : 'accessing' }
 IceGitCommit >> comment [
 	^ comment
