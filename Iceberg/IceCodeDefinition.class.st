@@ -46,6 +46,12 @@ IceCodeDefinition >> hash [
 	^ self contents hash
 ]
 
+{ #category : 'testing' }
+IceCodeDefinition >> isCodeDefinition [
+
+	^ true
+]
+
 { #category : 'patching' }
 IceCodeDefinition >> removeFrom: aPatcher [
 	

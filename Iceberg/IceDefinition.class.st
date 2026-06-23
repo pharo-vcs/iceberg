@@ -75,6 +75,12 @@ IceDefinition >> isClassDefinition [
 ]
 
 { #category : 'testing' }
+IceDefinition >> isCodeDefinition [
+	
+	^ false
+]
+
+{ #category : 'testing' }
 IceDefinition >> isDirectoryDefinition [
 	
 	^ false
