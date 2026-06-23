@@ -120,6 +120,18 @@ IceDiff >> codeSubdirectoryNode [
 		
 ]
 
+{ #category : 'accessing' }
+IceDiff >> codeSubdirectoryNodeOrNil [
+	
+	^ self repository subdirectory
+		ifNotEmpty: [ 
+			tree 
+				firstNodeSuchThat: [ :definition | self isCodeSubdirectory: definition ]
+				ifNone: [ nil ] ]
+		ifEmpty: [ tree ]
+		
+]
+
 { #category : 'copying' }
 IceDiff >> copyWithOnly: aCollection [ 
 	
@@ -167,8 +179,12 @@ IceDiff >> imageChangesForPackages: aCollection [
 
 { #category : 'testing' }
 IceDiff >> includesPackageNamed: aString [
-	^ self isEmpty not
-		and: [ self codeSubdirectoryNode includesKey: aString ]
+
+	self isEmpty ifTrue: [ ^ false ].
+	
+	^ self codeSubdirectoryNodeOrNil
+		ifNotNil: [ :aSubdirNode | aSubdirNode includesKey: aString ]
+		ifNil: [ false ] 
 ]
 
 { #category : 'testing' }
