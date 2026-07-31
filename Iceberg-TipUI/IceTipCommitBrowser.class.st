@@ -107,6 +107,12 @@ IceTipCommitBrowser >> doCommit [
 
 	| selectedItems message isPushing isSaving commitBlock |
 	selectedItems := diffPanel selectedItems.
+	
+	"We can't commit empty modification"
+	selectedItems isEmpty ifTrue: [ 
+		self inform: 'There is no modifications to commit.'.
+		^ self ].
+	
 	message := commentPanel message.
 	isPushing := commentPanel isPushing.
 	isSaving := commentPanel isSaving.
