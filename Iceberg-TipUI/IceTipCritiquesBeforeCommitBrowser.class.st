@@ -13,7 +13,8 @@ Class {
 		'reasonPanel',
 		'detailPanel',
 		'browseButton',
-		'autofixButton'
+		'autofixButton',
+		'onCancelAction'
 	],
 	#category : 'Iceberg-TipUI-View-Commit',
 	#package : 'Iceberg-TipUI',
@@ -33,13 +34,14 @@ IceTipCritiquesBeforeCommitBrowser class >> buildSelectionCommandGroupWith: pres
 ]
 
 { #category : 'commands' }
-IceTipCritiquesBeforeCommitBrowser class >> onApplication: anApplication model: aModel commitModel: aCommitModel acceptBlock: anAcceptBlock [
+IceTipCritiquesBeforeCommitBrowser class >> onApplication: anApplication model: aModel commitModel: aCommitModel acceptBlock: anAcceptBlock cancelBlock: aCancelBlock [
 
 	^ self basicNew
 		  application: anApplication;
 		  setModelBeforeInitialization: aModel;
 		  commitModel: aCommitModel;
 		  onAccept: anAcceptBlock;
+		  onCancel: aCancelBlock;
 		  initialize;
 		  yourself
 ]
@@ -67,6 +69,13 @@ IceTipCritiquesBeforeCommitBrowser >> calculateCritics [
 			calculatedCritics := visitor critiques asOrderedCollection ].
 	
 	^ calculatedCritics
+]
+
+{ #category : 'actions' }
+IceTipCritiquesBeforeCommitBrowser >> cancel [
+
+	self closeWindow.
+	onCancelAction value
 ]
 
 { #category : 'accessing' }
@@ -238,6 +247,12 @@ IceTipCritiquesBeforeCommitBrowser >> model [
 IceTipCritiquesBeforeCommitBrowser >> onAccept: aFullBlockClosure [ 
 	
 	onAcceptAction := aFullBlockClosure 
+]
+
+{ #category : 'accessing' }
+IceTipCritiquesBeforeCommitBrowser >> onCancel: aFullBlockClosure [ 
+	
+	onCancelAction := aFullBlockClosure 
 ]
 
 { #category : 'actions' }
