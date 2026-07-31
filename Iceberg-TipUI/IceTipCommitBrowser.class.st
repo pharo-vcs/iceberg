@@ -56,7 +56,7 @@ IceTipCommitBrowser >> accept [
 	^ self doCommit
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 IceTipCommitBrowser >> checkModifications: selectedItems ifEmpty: aBlock [
 
     selectedItems isEmpty ifTrue: [ 
