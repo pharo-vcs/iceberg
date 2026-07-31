@@ -56,6 +56,14 @@ IceTipCommitBrowser >> accept [
 	^ self doCommit
 ]
 
+{ #category : 'as yet unclassified' }
+IceTipCommitBrowser >> checkModifications: selectedItems ifEmpty: aBlock [
+
+    selectedItems isEmpty ifTrue: [ 
+        self inform: 'There is no modifications to commit.'.
+        aBlock value ]
+]
+
 { #category : 'accessing - ui' }
 IceTipCommitBrowser >> commentPanel [
 
@@ -109,9 +117,7 @@ IceTipCommitBrowser >> doCommit [
 	selectedItems := diffPanel selectedItems.
 	
 	"We can't commit empty modification"
-	selectedItems isEmpty ifTrue: [ 
-		self inform: 'There is no modifications to commit.'.
-		^ self ].
+	self checkModifications: selectedItems ifEmpty: [ ^ self ].
 	
 	message := commentPanel message.
 	isPushing := commentPanel isPushing.
