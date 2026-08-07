@@ -4,6 +4,8 @@ I'm a model to for IceWorkingCopy entries.
 Class {
 	#name : 'IceTipWorkingCopyModel',
 	#superclass : 'IceTipModel',
+	#traits : 'TIceCopyCommitId',
+	#classTraits : 'TIceCopyCommitId classTrait',
 	#instVars : [
 		'sortingStrategy',
 		'repositoryModel',
@@ -36,13 +38,8 @@ IceTipWorkingCopyModel >> branchName [
 
 { #category : 'accessing' }
 IceTipWorkingCopyModel >> commitId [
-	^ repositoryModel commitId
-]
 
-{ #category : 'operations' }
-IceTipWorkingCopyModel >> copyCommitIDToClipboard [
-	
-	repositoryModel copyCommitIDToClipboard
+	^ self shortCommitId
 ]
 
 { #category : 'API - changes' }
