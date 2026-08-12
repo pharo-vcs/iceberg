@@ -73,5 +73,8 @@ IceGitLocalRepositoryType >> splitRootAndSubdirectoryFromLocation [
 
 	^ {
 		  root. "a FileReference"
-		  (String streamContents: [ :stream |subDir do: [ :elem | stream nextPutAll: elem asString ] separatedBy: [ stream nextPutAll: '/' ] ])  "a String" }
+		  (String streamContents: [ :stream |
+				subDir 
+					do: [ :elem | stream print: elem ] 
+					separatedBy: [ stream nextPutAll: '/' ] ])  }
 ]
