@@ -109,11 +109,10 @@ IceTipHistoryBrowser >> initializeCommitList [
 
 { #category : 'initialization' }
 IceTipHistoryBrowser >> initializePresenters [
-	loadSize := 20.
 	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
-	allCommits := self model commitModels.
-	self initializeCommitList
+	self initializeCommitList.
+	self refreshCommitList.
 ]
 
 { #category : 'actions' }
@@ -172,10 +171,13 @@ IceTipHistoryBrowser >> refresh [
 { #category : 'accessing' }
 IceTipHistoryBrowser >> refreshCommitList [
 
-    | maxCommits |
-    maxCommits := self loadSize min: allCommits size.
-    commitList items: (allCommits first: maxCommits).
-    commitInfoTabs selectedModel: ( allCommits ifNotEmpty: #first ifEmpty: [ nil ])
+	| maxCommits |
+	loadSize := 20.
+	allCommits := self model commitModels.
+
+	maxCommits := self loadSize min: allCommits size.
+	commitList items: (allCommits first: maxCommits).
+	commitInfoTabs selectedModel: (allCommits ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 
 { #category : 'accessing' }
