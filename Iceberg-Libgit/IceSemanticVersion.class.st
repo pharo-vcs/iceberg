@@ -105,7 +105,9 @@ IceSemanticVersion >> patch [
 { #category : 'printing' }
 IceSemanticVersion >> printOn: stream [ 
 	stream 
-		<< self major asString 
-		<< '.' << self minor asString 
-		<< '.' << self patch asString
+		print: self major ; 
+		<< '.';
+		print: self minor ; 
+		<< '.' ; 
+		print: self patch
 ]

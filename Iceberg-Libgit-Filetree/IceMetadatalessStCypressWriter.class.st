@@ -65,7 +65,7 @@ IceMetadatalessStCypressWriter >> writeDefinitions: aCollection [
 						at: methodDefinition className
 						put: OrderedCollection new ]) add: methodDefinition.
 			classPath := methodDefinition className , classDirExtension
-				, self fileUtils pathNameDelimiter asString.
+				, self fileUtils pathNameDelimiterString.
 			self writeExtensionClassDefinition: methodDefinition to: classPath ].
 	extensionMethodMap
 		keysAndValuesDo:
@@ -79,13 +79,13 @@ IceMetadatalessStCypressWriter >> writeDefinitions: aCollection [
 					filename := (filenameMetaMap at: methodDefinition classIsMeta)
 						at: methodDefinition selector.
 					classPath := methodDefinition className , classDirExtension
-						, self fileUtils pathNameDelimiter asString.
+						, self fileUtils pathNameDelimiterString.
 					methodPath := classPath
 						,
 							(methodDefinition classIsMeta
 								ifTrue: [ 'class' ]
 								ifFalse: [ 'instance' ])
-						, self fileUtils pathNameDelimiter asString.
+						, self fileUtils pathNameDelimiterString.
 					self
 						writeMethodDefinition: methodDefinition
 						to: methodPath
