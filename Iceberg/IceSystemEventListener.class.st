@@ -26,6 +26,15 @@ IceSystemEventListener class >> handleMethodChange: aMethodChange [
 	self handlePackagesChange: aMethodChange packagesAffected
 ]
 
+{ #category : 'system annoucements' }
+IceSystemEventListener class >> handleMethodModified: aMethodChange [
+	
+	|oldMethod methodAfter|
+	oldMethod := aMethodChange oldMethod .
+	methodAfter := aMethodChange methodAffected .
+	oldMethod sourceCode ~= methodAfter sourceCode ifTrue: [ self handlePackagesChange: aMethodChange packagesAffected ] 
+]
+
 { #category : 'event handling' }
 IceSystemEventListener class >> handlePackageChange: aPackageChange [
 
@@ -82,7 +91,11 @@ IceSystemEventListener class >> registerSystemAnnouncements [
 
 	self codeChangeAnnouncer weak
 		when: ClassAnnouncement send: #handleClassChange: to: self;
-		when: MethodAnnouncement send: #handleMethodChange: to: self;
+		when: MethodAdded send: #handleMethodChange: to: self;
+		when: MethodRecategorized send: #handleMethodChange: to: self;
+		when: MethodRemoved send: #handleMethodChange: to: self;
+		when: MethodRepackaged send: #handleMethodChange: to: self;
+		when: MethodModified send: #handleMethodModified: to: self;
 		when: PackageTagAnnouncement send: #handlePackageChange: to: self.
 
 	self codeSupportAnnouncer weak when: MCVersionLoaderStopped send: #handleVersionLoaded: to: self
