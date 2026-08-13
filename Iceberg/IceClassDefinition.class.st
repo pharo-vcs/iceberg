@@ -30,7 +30,7 @@ IceClassDefinition >> addModification: anIceModification toPatcher: aMCPatcher [
 	"If the new definition has no class instance vaiables, we remove the meta side variables, and apply the new changes to the patcher "
 	(self isMeta and: [ mcDefinition isNil and: [ anIceModification rightDefinition asMCDefinition isNotNil ] ])
 		ifTrue: [ 
-			defModification := anIceModification rightDefinition asMCDefinition deepCopy.
+			defModification := anIceModification rightDefinition asMCDefinition copy.
 			defModification removeMetaSideVariables.
 			aMCPatcher
 				modifyDefinition: anIceModification rightDefinition asMCDefinition
@@ -62,7 +62,7 @@ IceClassDefinition >> addToPatcher: aMCPatcher [
 { #category : 'converting' }
 IceClassDefinition >> asMCDefinitionWithoutMetaSide [
 	
-	^ mcDefinition deepCopy removeMetaSideVariables
+	^ mcDefinition copy removeMetaSideVariables
 
 ]
 
