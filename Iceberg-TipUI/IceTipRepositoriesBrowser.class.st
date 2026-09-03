@@ -232,6 +232,9 @@ IceTipRepositoriesBrowser >> projectsPanelRepositoryModels [
 { #category : 'private' }
 IceTipRepositoriesBrowser >> refresh [
 
+	"In case we added a project that is an a different group than a group we already have, we update the full presenter to refresh the whole notebook."
+	(self model repositoryGroups anySatisfy: [ :group | (repositoryNotebook hasPageNamed: group label) not ]) ifTrue: [ ^ self updatePresenter ].
+
 	repositoryNotebook selectedPage ifNil: [ ^ self ].
 	repositoryNotebook selectedPage activePresenter updatePresenter
 ]
