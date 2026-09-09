@@ -276,7 +276,7 @@ IceCommit >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
 		nextPutAll: '(';
-		nextPutAll: self id asString;
+		print: self id;
 		nextPutAll: ')'
 ]
 

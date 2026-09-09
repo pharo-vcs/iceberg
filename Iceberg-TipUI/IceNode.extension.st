@@ -10,12 +10,12 @@ IceNode >> inspectorItems: aBuilder [
 		  addColumn: (SpStringTableColumn new
 				   title: 'Key';
 				   width: 200;
-				   evaluated: [ :each | each key asString ];
+				   evaluated: [ :each | each key displayString ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Value';
 				   width: 400;
-				   evaluated: [ :each | each value asString ];
+				   evaluated: [ :each | each value displayString ];
 				   yourself);
 		  yourself
 ]
