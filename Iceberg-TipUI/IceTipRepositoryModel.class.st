@@ -391,7 +391,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 	tags := self tagModels.
 	^ {
 		  ((IceTipTreeRepositoryGroup on: self)
-			   name: 'Branches';
+			   name: 'Branches ', entity location pathString;
 			   iconFormSet: (self iconFormSetNamed: #branch);
 			   children: (branches
 					    select: [ :each | each entity isLocal ]
@@ -407,7 +407,7 @@ IceTipRepositoryModel >> repositoryModelsByGroup [
 							                   repositoryModel: self
 							                   on: eachRemote.
 						    (IceTipTreeRemote on: remoteModel)
-							    name: remoteModel name;
+							    name: remoteModel nameAndLocation;
 							    children: (branches
 									     select: [ :each |
 										     each entity isRemote and: [

@@ -36,6 +36,11 @@ IceTipRemoteModel >> hash [
 	^ entity hash
 ]
 
+{ #category : 'accessing' }
+IceTipRemoteModel >> nameAndLocation [
+	^entity printString
+]
+
 { #category : 'actions' }
 IceTipRemoteModel >> newDeleteAction [
 	
