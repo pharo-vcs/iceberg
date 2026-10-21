@@ -56,14 +56,10 @@ IceGitChangeImporter >> importOn: aNode [
 	filePath := aNode path / currentSegment.
 	fileReference := version fileSystem resolve: filePath.
 		
-	"Do not import if the file does not exist in git"
-	fileReference exists
-		ifFalse: [ ^ self ].
-
 	"If I represent a package, let's do it and do nothing else.
 	This could be optimized to add the exact methods and avoid MC diff afterwards"
 	((diff isCodeSubdirectory: aNode)
-		and: [ version writerClass isValidPackage: fileReference ])
+		and: [ version includesPackageNamed: currentSegment ])
 			ifTrue: [ ^ self ensurePackageFromDirectory: fileReference inParentNode: aNode ].
 
 	"If I do not represent a package, I may be a file or a directory that may (recursively) contain a method or a package.
