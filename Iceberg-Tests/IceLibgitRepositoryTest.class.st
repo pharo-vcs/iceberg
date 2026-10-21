@@ -23,11 +23,9 @@ IceLibgitRepositoryTest >> testDeleteRepositoryRemovesEmptyParentDirectory [
 	parentDir := FileSystem memory / 'test-parent-dir'.
 	parentDir ensureCreateDirectory.
 	repoDir := parentDir / 'test-repo'.
-	repoDir ensureCreateDirectory.
-
-	repository := IceLibgitRepository on: repoDir.
-
-	self assert: repoDir exists.
+repository := IceRepositoryCreator new
+		location: repoDir;
+		createNewRepository.
 	self assert: parentDir exists.
 
 	repository delete.
@@ -49,7 +47,9 @@ IceLibgitRepositoryTest >> testDeleteRepositoryKeepsParentDirectoryWhenNotEmpty 
 	otherFile := parentDir / 'sibling.txt'.
 	otherFile writeStreamDo: [ :stream | stream nextPutAll: 'keep me' ].
 
-	repository := IceLibgitRepository on: repoDir.
+repository := IceRepositoryCreator new
+	location: repoDir;
+	createNewRepository.
 
 	self assert: repoDir exists.
 	self assert: parentDir exists.
