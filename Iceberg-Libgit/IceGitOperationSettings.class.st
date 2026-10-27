@@ -199,24 +199,13 @@ IceGitOperationSettings >> pushOperationClass: aClass [
 ]
 
 { #category : 'operations' }
-IceGitOperationSettings >> refreshSettingsBrowserIfNeeded [
-
-	self class environment
-		at: #SettingBrowser
-		ifPresent: [ :settingsBrowserClass |
-			settingsBrowserClass refreshAllSettingBrowsers ]
-]
-
-{ #category : 'operations' }
 IceGitOperationSettings >> useGitCommandLineOperations [
 		
 	self class ensureSubprocessLib.
 		
 	cloneOperationClass := IceGitCommandLineClone.
 	fetchOperationClass := IceGitCommandLineFetch.	
-	pushOperationClass := IceGitCommandLinePush.
-	
-	self refreshSettingsBrowserIfNeeded
+	pushOperationClass := IceGitCommandLinePush
 ]
 
 { #category : 'operations' }
@@ -224,7 +213,5 @@ IceGitOperationSettings >> useLibGitOperations [
 
 	cloneOperationClass := IceGitLibGitClone.
 	fetchOperationClass := IceGitLibGitFetch.
-	pushOperationClass := IceGitLibGitPush.	
-	
-	self refreshSettingsBrowserIfNeeded
+	pushOperationClass := IceGitLibGitPush
 ]
