@@ -143,12 +143,21 @@ Iceberg class >> initialize [
 
 { #category : 'class initialization' }
 Iceberg class >> initializeSettings [
-	Smalltalk 
-		at: #SystemSettingsPersistence 
-		ifPresent: [ :class | | tree nodes | 
-			tree := class default settingTree.
-			nodes := tree deeplySelect: [ :node | node receiverPackage name beginsWith: 'Iceberg' ].
-			class updateSettingNodes: nodes ]
+	"Load the stored values of the settings declared in Iceberg"
+
+	Smalltalk
+		at: #SettingsManager
+		ifPresent: [ :class | | manager |
+			manager := class forSystemSettings.
+			manager updateSettings: (self settingsIn: manager) ]
+]
+
+{ #category : 'class initialization' }
+Iceberg class >> settingsIn: aSettingsManager [
+	"Answer the settings of aSettingsManager declared in Iceberg packages"
+
+	^ aSettingsManager settings select: [ :each |
+		  each declaration methodClass package name beginsWith: 'Iceberg' ]
 ]
 
 { #category : 'accessing' }
