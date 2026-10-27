@@ -78,7 +78,7 @@ IceGitOperationSettings class >> settingsOn: aBuilder [
 	
 	(aBuilder group: #IcebergActions)
 		name: 'Network Actions';
-		parent: #Iceberg;
+		parentName: #Iceberg;
 		with: [ 	
 			(aBuilder button: #useLibGitOperations)
 				order: 1;
@@ -94,7 +94,7 @@ IceGitOperationSettings class >> settingsOn: aBuilder [
 
 			(aBuilder pickOne: #'cloneOperationClass')
 				target: self uniqueInstance;
-				default: self uniqueInstance defaultCloneOperationClass;
+				defaultValue: self uniqueInstance defaultCloneOperationClass;
 				order: 3;
 				label: 'Clone Operation Strategy';
 				description: 'Clone Strategy to use';
@@ -104,7 +104,7 @@ IceGitOperationSettings class >> settingsOn: aBuilder [
 
 			(aBuilder pickOne: #'fetchOperationClass')
 				target: self uniqueInstance;
-				default: self uniqueInstance defaultFetchOperationClass;
+				defaultValue: self uniqueInstance defaultFetchOperationClass;
 				order: 3;
 				label: 'Fetch Operation Strategy';
 				description: 'Fetch Strategy to use';
@@ -114,7 +114,7 @@ IceGitOperationSettings class >> settingsOn: aBuilder [
 
 			(aBuilder pickOne: #'pushOperationClass')
 				target: self uniqueInstance;
-				default: self uniqueInstance defaultPushOperationClass;
+				defaultValue: self uniqueInstance defaultPushOperationClass;
 				order: 4;
 				label: 'Push Operation Strategy';
 				description: 'Push Strategy to use';
