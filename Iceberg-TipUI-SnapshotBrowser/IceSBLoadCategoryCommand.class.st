@@ -27,9 +27,14 @@ IceSBLoadCategoryCommand >> categorySelection [
 IceSBLoadCategoryCommand >> execute [
 	"Load the entire selected category"
 
+	| loader |
+
+	loader := MCPackageLoader new.
+
 	self methodsForSelectedClassCategory 
-		do: [ :m | m load ]
-		displayingProgress: 'Loading definitions...'
+		do: [ :m | loader addDefinition: m ].
+		
+	loader load
 ]
 
 { #category : 'executing' }

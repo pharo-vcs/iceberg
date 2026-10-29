@@ -8,7 +8,7 @@ jobs:
       # Default value means that a failure in one OS cancels all 
       fail-fast: false
       matrix:
-        smalltalk: [ Pharo64-alpha ]
+        smalltalk: [ Pharo64-14 ]
         os: [ ubuntu-latest, macos-latest ]
         ston: [ .smalltalk.ston ]
         # Test Windows with some exclusions. 
