@@ -24,5 +24,7 @@ IceSBLoadMethodCommand >> canBeExecuted [
 IceSBLoadMethodCommand >> execute [
 	"Load the selected method"
 
-	self selectedMethodDefinition load
+	MCPackageLoader new 
+		addDefinition: self selectedMethodDefinition;
+		load
 ]

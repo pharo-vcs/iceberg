@@ -132,5 +132,5 @@ BaselineOfIceberg >> resetKMRepository [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo14' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo15' ]
 ]
