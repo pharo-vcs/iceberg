@@ -12,7 +12,8 @@ Class {
 		'cancelRequested',
 		'repository',
 		'done',
-		'result'
+		'result',
+		'announcer'
 	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
@@ -45,7 +46,13 @@ IceTask >> action: aBlock [
 { #category : 'running' }
 IceTask >> announce: anAnnouncementClass [
 
-	Iceberg announcer announce: (anAnnouncementClass task: self)
+	announcer announce: (anAnnouncementClass task: self)
+]
+
+{ #category : 'running' }
+IceTask >> announcer: anAnnouncer [
+
+	announcer := anAnnouncer
 ]
 
 { #category : 'running' }

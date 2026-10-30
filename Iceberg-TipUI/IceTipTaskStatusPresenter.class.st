@@ -1,5 +1,5 @@
 "
-I show the running IceTask of the default IceTaskList: its title, a progress bar and a button to cancel it. Announcements arrive from background processes, so I always update myself through #defer:.
+I am a small window showing the running IceTask of the default IceTaskList: its title, a progress bar and a button to cancel it. I open when a task starts and close when the list is empty, so progress is visible from any window. Announcements arrive from background processes, so I always update myself through #defer:.
 "
 Class {
 	#name : 'IceTipTaskStatusPresenter',
@@ -10,9 +10,43 @@ Class {
 		'stopButton',
 		'task'
 	],
+	#classInstVars : [
+		'current'
+	],
 	#category : 'Iceberg-TipUI',
 	#package : 'Iceberg-TipUI'
 }
+
+{ #category : 'class initialization' }
+IceTipTaskStatusPresenter class >> closed [
+
+	current := nil
+]
+
+{ #category : 'class initialization' }
+IceTipTaskStatusPresenter class >> initialize [
+
+	Iceberg announcer unsubscribe: self.
+	Iceberg announcer when: IceTaskStarted send: #taskStarted: to: self
+]
+
+{ #category : 'class initialization' }
+IceTipTaskStatusPresenter class >> openFor: aTask [
+	"Opening runs a UI cycle, which can close a previous window and reset current"
+
+	| presenter |
+	presenter := current ifNil: [
+			             current := self newApplication: StPharoApplication current.
+			             current open.
+			             current ifNil: [ ^ self ] ].
+	presenter taskStarted: aTask
+]
+
+{ #category : 'class initialization' }
+IceTipTaskStatusPresenter class >> taskStarted: anAnnouncement [
+
+	StPharoApplication current defer: [ self openFor: anAnnouncement task ]
+]
 
 { #category : 'initialization' }
 IceTipTaskStatusPresenter >> defaultLayout [
@@ -36,6 +70,15 @@ IceTipTaskStatusPresenter >> initializePresenters [
 		              disable;
 		              yourself.
 	self subscribe
+]
+
+{ #category : 'initialization' }
+IceTipTaskStatusPresenter >> initializeWindow: aWindowPresenter [
+
+	aWindowPresenter
+		title: 'Iceberg';
+		initialExtent: 450 @ 90;
+		whenClosedDo: [ self class closed ]
 ]
 
 { #category : 'updating' }
@@ -82,6 +125,13 @@ IceTipTaskStatusPresenter >> taskFinished: aTask [
 
 	self taskEnded.
 	Iceberg announcer announce: (IceRepositoryModified for: aTask repository)
+]
+
+{ #category : 'updating' }
+IceTipTaskStatusPresenter >> taskListEmptied [
+
+	self class closed.
+	self withWindowDo: [ :window | window close ]
 ]
 
 { #category : 'updating' }

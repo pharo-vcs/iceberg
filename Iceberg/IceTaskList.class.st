@@ -8,7 +8,8 @@ Class {
 		'queue',
 		'running',
 		'worker',
-		'lock'
+		'lock',
+		'announcer'
 	],
 	#classInstVars : [
 		'default'
@@ -21,7 +22,10 @@ Class {
 { #category : 'accessing' }
 IceTaskList class >> default [
 
-	^ default ifNil: [ default := self new ]
+	^ default ifNil: [
+			  default := self new
+				             announcer: Iceberg announcer;
+				             yourself ]
 ]
 
 { #category : 'running' }
@@ -29,6 +33,7 @@ IceTaskList >> add: aTask [
 	"Answer the task that will do the work: aTask, or the one with the same key already here"
 
 	| existing |
+	aTask announcer: announcer.
 	lock critical: [
 			existing := self taskWithKey: aTask key.
 			existing ifNil: [
@@ -37,6 +42,18 @@ IceTaskList >> add: aTask [
 	existing ifNotNil: [ ^ existing ].
 	aTask announce: IceTaskQueued.
 	^ aTask
+]
+
+{ #category : 'accessing' }
+IceTaskList >> announcer [
+
+	^ announcer
+]
+
+{ #category : 'accessing' }
+IceTaskList >> announcer: anAnnouncer [
+
+	announcer := anAnnouncer
 ]
 
 { #category : 'running' }
@@ -72,7 +89,8 @@ IceTaskList >> initialize [
 
 	super initialize.
 	queue := OrderedCollection new.
-	lock := Mutex new
+	lock := Mutex new.
+	announcer := Announcer new
 ]
 
 { #category : 'running' }
@@ -107,7 +125,8 @@ IceTaskList >> nextTask [
 IceTaskList >> runTasks [
 
 	| task |
-	[ (task := self nextTask) notNil ] whileTrue: [ task run ]
+	[ (task := self nextTask) notNil ] whileTrue: [ task run ].
+	announcer announce: IceTaskListEmptied new
 ]
 
 { #category : 'running' }

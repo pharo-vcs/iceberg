@@ -26,7 +26,9 @@ IceTaskListTest >> setUp [
 	list := IceTaskList new.
 	gate := Semaphore new.
 	events := OrderedCollection new.
-	Iceberg announcer when: IceTaskAnnouncement send: #add: to: events
+	{
+		list announcer.
+		Iceberg announcer } do: [ :each | each when: IceTaskAnnouncement send: #add: to: events ]
 ]
 
 { #category : 'running' }
@@ -58,6 +60,15 @@ IceTaskListTest >> testCancelRunningTaskStopsAtSafePoint [
 	list cancel: task.
 	self waitUntilIdle.
 	self assert: task state equals: #cancelled
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testEmptiedIsAnnouncedAfterTheLastTask [
+
+	list add: (IceTask key: #first action: [ :task |  ]).
+	self waitUntilIdle.
+	10 milliSeconds wait.
+	self assert: events last class equals: IceTaskListEmptied
 ]
 
 { #category : 'tests' }
