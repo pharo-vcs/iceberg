@@ -36,12 +36,11 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 { #category : 'actions' }
 IceTipRegisterRepositoryDialogPresenter >> doAccept [
 
-	| newRepository |
 	self selectedType validate.
 	self isEditing ifTrue: [ self selectedType repository: repository ].
-	newRepository := self selectedType newRepository.
-	self isEditing ifFalse: [ newRepository register ].
-	acceptBlock ifNotNil: [ acceptBlock cull: self ]
+	self selectedType newRepositoryDo: [ :newRepository |
+			self isEditing ifFalse: [ newRepository register ].
+			acceptBlock ifNotNil: [ acceptBlock cull: self ] ]
 ]
 
 { #category : 'actions' }

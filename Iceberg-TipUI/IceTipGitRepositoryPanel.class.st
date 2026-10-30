@@ -58,17 +58,26 @@ IceTipGitRepositoryPanel >> initializePresenters [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 IceTipGitRepositoryPanel >> newRepository [
 
-	^ self application
-		informUser: ('Cloning repository {1}' format: { self remoteUrl })
-		during: [
-			IceRepositoryCreator new
-				  repository: repository;
-				  remote: (IceGitRemote url: self remoteUrl);
-				  location: self projectLocation location;
-				  createRepository ]
+	^ IceRepositoryCreator new
+		  repository: repository;
+		  remote: (IceGitRemote url: self remoteUrl);
+		  location: self projectLocation location;
+		  createRepository
+]
+
+{ #category : 'actions' }
+IceTipGitRepositoryPanel >> newRepositoryDo: aBlock [
+	"Cloning can take long, so it runs in the task list. aBlock runs in the UI process once the repository exists"
+
+	IceTaskList default add: ((IceTask key: #clone -> self remoteUrl action: [ :task |
+					  | newRepository |
+					  newRepository := self newRepository.
+					  self defer: [ aBlock value: newRepository ] ])
+			 title: 'Cloning';
+			 yourself)
 ]
 
 { #category : 'accessing' }

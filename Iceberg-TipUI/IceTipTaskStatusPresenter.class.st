@@ -126,7 +126,7 @@ IceTipTaskStatusPresenter >> taskFailed: aTask [
 IceTipTaskStatusPresenter >> taskFinished: aTask [
 
 	self taskEnded.
-	Iceberg announcer announce: (IceRepositoryModified for: aTask repository)
+	aTask repository ifNotNil: [ :repository | Iceberg announcer announce: (IceRepositoryModified for: repository) ]
 ]
 
 { #category : 'updating' }
