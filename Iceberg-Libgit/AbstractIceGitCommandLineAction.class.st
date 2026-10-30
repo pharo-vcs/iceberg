@@ -106,7 +106,6 @@ AbstractIceGitCommandLineAction >> executeUsingWindowsSubProcess: command argume
 	[return isRunning or: [return exitCode isNil]] 
 		whileTrue: [ 
 			[self updateJobStatus: stderrFile contents] on: FileDoesNotExistException do: [  ].
-			MorphicRenderLoop new doOneCycle.
 			100 milliSecond wait ].
 
 	onExitBlock
