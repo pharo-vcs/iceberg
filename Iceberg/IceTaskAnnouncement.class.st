@@ -3,7 +3,7 @@ I announce a change in an IceTask.
 "
 Class {
 	#name : 'IceTaskAnnouncement',
-	#superclass : 'IceAnnouncement',
+	#superclass : 'Announcement',
 	#instVars : [
 		'task'
 	],

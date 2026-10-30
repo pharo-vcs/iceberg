@@ -10,7 +10,8 @@ Class {
 	#instVars : [
 		'currentGroupPanel',
 		'repositoryNotebook',
-		'notifyPanel'
+		'notifyPanel',
+		'taskStatus'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -157,13 +158,14 @@ IceTipRepositoriesBrowser >> defaultKeyboardFocus [
 	^ repositoryNotebook
 ]
 
-{ #category : 'layout' }
+{ #category : 'initialization' }
 IceTipRepositoriesBrowser >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		add: notifyPanel expand: false;
-		add: repositoryNotebook;
-		yourself
+		  add: notifyPanel expand: false;
+		  add: repositoryNotebook;
+		  add: taskStatus expand: false;
+		  yourself
 ]
 
 { #category : 'initialization' }
@@ -182,8 +184,11 @@ IceTipRepositoriesBrowser >> initializePresenters [
 	notifyPanel layout: SpBoxLayout newVertical.
 	notifyPanel addStyle: 'libgit2NotAvailable'.
 	notifyPanel hide.
-	
-	repositoryNotebook := self newNotebook
+
+	repositoryNotebook := self newNotebook.
+
+	taskStatus := self instantiate: IceTipTaskStatusPresenter.
+	taskStatus hide
 ]
 
 { #category : 'accessing - ui' }

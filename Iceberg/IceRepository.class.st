@@ -478,6 +478,13 @@ IceRepository >> fetchFrom: aRemote [
 	aRemote fetch
 ]
 
+{ #category : 'API - remotes' }
+IceRepository >> fetchInBackground [
+	"Fetch all remotes in the task list and answer the task right away. Follow it through IceTaskAnnouncements"
+
+	^ IceTaskList default add: (IceTask repository: self operation: #fetch action: [ :task | self fetch ])
+]
+
 { #category : 'API - registry' }
 IceRepository >> forget [
 	self class unregisterRepository: self ifAbsent: [ ^ nil ].

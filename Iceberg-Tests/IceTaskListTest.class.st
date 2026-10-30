@@ -186,6 +186,13 @@ IceTaskListTest >> testSameKeyAnswersExistingTask [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testTaskAnnouncementsDoNotRefreshIcebergBrowsers [
+	"Browsers refresh on every IceAnnouncement, and progress is announced many times per second"
+
+	self deny: (IceTaskProgressed inheritsFrom: IceAnnouncement)
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testTasksRunInOrder [
 
 	| order |
