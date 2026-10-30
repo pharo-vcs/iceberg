@@ -94,7 +94,7 @@ IceTipRepositoryTypePanel >> newRepository [
 ]
 
 { #category : 'actions' }
-IceTipRepositoryTypePanel >> newRepositoryDo: aBlock [
+IceTipRepositoryTypePanel >> newRepositoryDo: aBlock onFailure: failureBlock [
 
 	aBlock value: self newRepository
 ]

@@ -19,6 +19,21 @@ Class {
 	#tag : 'View-Repository'
 }
 
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> acceptAndClose [
+	"The dialog stays open until the repository exists, so a failed clone can be corrected and retried"
+
+	self selectedType validate.
+	self isEditing ifTrue: [ self selectedType repository: repository ].
+	self okButtonEnabled: false.
+	self selectedType
+		newRepositoryDo: [ :newRepository |
+				self isEditing ifFalse: [ newRepository register ].
+				acceptBlock ifNotNil: [ acceptBlock cull: self ].
+				self closeWindow ]
+		onFailure: [ :anError | self repositoryFailed: anError ]
+]
+
 { #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> allTypes [
 
@@ -31,16 +46,6 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 	self withoutNewRepository.
 	self withoutLocalRepository.
 	repository := aRepository
-]
-
-{ #category : 'actions' }
-IceTipRegisterRepositoryDialogPresenter >> doAccept [
-
-	self selectedType validate.
-	self isEditing ifTrue: [ self selectedType repository: repository ].
-	self selectedType newRepositoryDo: [ :newRepository |
-			self isEditing ifFalse: [ newRepository register ].
-			acceptBlock ifNotNil: [ acceptBlock cull: self ] ]
 ]
 
 { #category : 'actions' }
@@ -57,10 +62,27 @@ IceTipRegisterRepositoryDialogPresenter >> isEditing [
 	^ repository isNotNil
 ]
 
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> okButtonEnabled: aBoolean [
+
+	self withWindowDo: [ :window |
+		window buttons detect: [ :each | each label = 'Ok' ] ifFound: [ :button | button enabled: aBoolean ] ]
+]
+
 { #category : 'events' }
 IceTipRegisterRepositoryDialogPresenter >> onAccept: aBlock [
 
 	acceptBlock := aBlock
+]
+
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> repositoryFailed: anErrorOrNil [
+
+	self okButtonEnabled: true.
+	anErrorOrNil ifNil: [ ^ self ].
+	[ anErrorOrNil signal ]
+		on: IceError , IceWarning
+		do: [ :e | e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
 ]
 
 { #category : 'initialization' }

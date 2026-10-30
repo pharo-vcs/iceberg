@@ -28,17 +28,18 @@ IceTipOptionDialogPresenter class >> defaultPreferredExtent [
 IceTipOptionDialogPresenter >> accept [
 
 	[
-	(self selectedType class = IceTipLocalRepositoryPanel and: [
-		 (IceRepositoryCreator isGitRoot: self selectedType location) not ])
-		ifTrue: [
-			self inform: ('"{1}" git repository not found' format:
-					 { self selectedType location fullName }) ]
-		ifFalse: [
-			self doAccept.
-			self closeWindow ] ]
+		(self selectedType class = IceTipLocalRepositoryPanel and: [ (IceRepositoryCreator isGitRoot: self selectedType location) not ])
+			ifTrue: [ self inform: ('"{1}" git repository not found' format: { self selectedType location fullName }) ]
+			ifFalse: [ self acceptAndClose ] ]
 		on: IceError , IceWarning
-		do: [ :e |
-			e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
+		do: [ :e | e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
+]
+
+{ #category : 'actions' }
+IceTipOptionDialogPresenter >> acceptAndClose [
+
+	self doAccept.
+	self closeWindow
 ]
 
 { #category : 'accessing' }

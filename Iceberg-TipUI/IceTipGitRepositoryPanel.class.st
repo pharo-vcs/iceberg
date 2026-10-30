@@ -69,13 +69,19 @@ IceTipGitRepositoryPanel >> newRepository [
 ]
 
 { #category : 'actions' }
-IceTipGitRepositoryPanel >> newRepositoryDo: aBlock [
-	"Cloning can take long, so it runs in the task list. aBlock runs in the UI process once the repository exists"
+IceTipGitRepositoryPanel >> newRepositoryDo: aBlock onFailure: failureBlock [
+	"Cloning can take long, so it runs in the task list. One of the blocks runs in the UI process when it ends. The failure block is the one reporting failures, as the dialog waiting for them still has the user's input. It receives nil if the clone was cancelled"
 
 	IceTaskList default add: ((IceTask key: #clone -> self remoteUrl action: [ :task |
-					  | newRepository |
-					  newRepository := self newRepository.
-					  self defer: [ aBlock value: newRepository ] ])
+					  [
+						  | newRepository |
+						  newRepository := self newRepository.
+						  self defer: [ aBlock value: newRepository ] ]
+						  on: Error
+						  do: [ :anError |
+								  | reported |
+								  reported := task isCancelRequested ifFalse: [ anError ].
+								  self defer: [ failureBlock value: reported ] ] ])
 			 title: 'Cloning';
 			 yourself)
 ]
