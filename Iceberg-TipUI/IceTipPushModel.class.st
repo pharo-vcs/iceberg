@@ -18,6 +18,7 @@ IceTipPushModel >> commitModels [
 
 { #category : 'actions' }
 IceTipPushModel >> newPushAction [
+	"Announcing refreshes the open browsers, so it runs in the UI process, not in the task"
 
 	^ IceTipBackgroundAction new
 		  repository: self entity;
@@ -25,6 +26,6 @@ IceTipPushModel >> newPushAction [
 		  operation: #push;
 		  action: [
 				  self entity pushTo: self remote.
-				  Iceberg announcer announce: (IcePushed for: self entity) ];
+				  SpApplication defaultApplication defer: [ Iceberg announcer announce: (IcePushed for: self entity) ] ];
 		  yourself
 ]
