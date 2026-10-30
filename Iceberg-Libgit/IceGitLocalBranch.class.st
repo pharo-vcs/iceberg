@@ -69,9 +69,12 @@ IceGitLocalBranch >> commit: anIceGitCommit [
 
 { #category : 'API - branches' }
 IceGitLocalBranch >> delete [
-	repository handleLibgitError: [ | found |
-		found := self repositoryHandle lookupLocalBranch: self name ifAbsent: [ nil ].
-		self repositoryHandle deleteBranch: found ]
+
+	repository validateNotBusy.
+	repository handleLibgitError: [
+			| found |
+			found := self repositoryHandle lookupLocalBranch: self name ifAbsent: [ nil ].
+			self repositoryHandle deleteBranch: found ]
 ]
 
 { #category : 'private - pushing' }

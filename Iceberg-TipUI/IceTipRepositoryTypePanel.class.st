@@ -93,6 +93,12 @@ IceTipRepositoryTypePanel >> newRepository [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'actions' }
+IceTipRepositoryTypePanel >> newRepositoryDo: aBlock onFailure: failureBlock [
+
+	aBlock value: self newRepository
+]
+
 { #category : 'accessing - ui' }
 IceTipRepositoryTypePanel >> projectLocation [
 

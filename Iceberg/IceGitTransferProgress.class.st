@@ -2,39 +2,35 @@ Class {
 	#name : 'IceGitTransferProgress',
 	#superclass : 'LGitTransferProgressCallback',
 	#instVars : [
-		'job'
+		'progress'
 	],
 	#category : 'Iceberg-Progress',
 	#package : 'Iceberg',
 	#tag : 'Progress'
 }
 
-{ #category : 'accessing' }
+{ #category : 'private' }
 IceGitTransferProgress >> block [
-	^ [ :stats :payload | 
-		| gitStats |
-		gitStats := LGitTransferProgress fromHandle: stats.
-		job ensureStarted.
-		
-		job min: 0.
-		job max: gitStats prim_total_objects.
-		job current: gitStats prim_received_objects.
-		job title: ('Fetching Git objects... ({1}/{2})' format: { gitStats prim_received_objects. gitStats prim_total_objects}).
-		
-		job changed.
-		
-		0
-	]
+
+	^ [ :stats :payload |
+		  | gitStats received total |
+		  gitStats := LGitTransferProgress fromHandle: stats.
+		  received := gitStats prim_received_objects.
+		  total := gitStats prim_total_objects.
+		  progress
+			  reportTitle: [
+					  'Fetching Git objects... ({1}/{2})' format: {
+							  received.
+							  total } ]
+			  current: received
+			  max: total ]
 ]
 
 { #category : 'initialization' }
 IceGitTransferProgress >> initialize [
+
 	super initialize.
-	
-	job := IceExternalJob new
-		title: 'Fetching Git objects...';
-		yourself.
-		
+	progress := IceProgress new.
 	self initializeBlock
 ]
 

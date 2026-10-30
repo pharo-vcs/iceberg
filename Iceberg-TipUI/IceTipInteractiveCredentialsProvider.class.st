@@ -20,40 +20,55 @@ IceTipInteractiveCredentialsProvider class >> isDefault [
 	^ true
 ]
 
-{ #category : 'private' }
+{ #category : 'accessing' }
 IceTipInteractiveCredentialsProvider >> obtainCredentials: credentialsToReturn [
-	| returnedCred |
 
-	returnedCred := credentialsToReturn askForModelClass new
-		credentialStore: self credentialStore;
-		askingHostname: remote host;
-		open.
-
-	credentialsToReturn readFrom: returnedCred
+	self onUIProcessDo: [
+			| returnedCred |
+			returnedCred := credentialsToReturn askForModelClass new
+				                credentialStore: self credentialStore;
+				                askingHostname: remote host;
+				                open.
+			credentialsToReturn readFrom: returnedCred ]
 ]
 
-{ #category : 'private' }
+{ #category : 'accessing' }
 IceTipInteractiveCredentialsProvider >> obtainPlaintextCredentials: credentialsToReturn [
-	| returnedCred |
-	
-	returnedCred := (credentialsToReturn askForModelClassOn: remote host) new
-		askingHostname: remote host;
-		credentialStore: self credentialStore;		
-		openModal;
-		credentials.
 
-	credentialsToReturn readFrom: returnedCred
+	self onUIProcessDo: [
+			| returnedCred |
+			returnedCred := (credentialsToReturn askForModelClassOn: remote host) new
+				                askingHostname: remote host;
+				                credentialStore: self credentialStore;
+				                openModal;
+				                credentials.
+			credentialsToReturn readFrom: returnedCred ]
+]
+
+{ #category : 'accessing' }
+IceTipInteractiveCredentialsProvider >> obtainSshCredentials: credentialsToReturn [
+
+	self onUIProcessDo: [
+			| returnedCred |
+			returnedCred := IceTipAskSSHCredentialsPresenter new
+				                credentials: self sshCredentials;
+				                credentialStore: self credentialStore;
+				                open.
+			credentialsToReturn readFrom: returnedCred ]
 ]
 
 { #category : 'private' }
-IceTipInteractiveCredentialsProvider >> obtainSshCredentials: credentialsToReturn [ 
-	
-	| returnedCred |
-	
-	returnedCred := IceTipAskSSHCredentialsPresenter new
-		credentials: self sshCredentials;
-		credentialStore: self credentialStore;
-		open.
+IceTipInteractiveCredentialsProvider >> onUIProcessDo: aBlock [
+	"Credentials can be requested from a background task: it waits here while the dialog runs in the UI process"
 
-	credentialsToReturn readFrom: returnedCred
+	| answered failure |
+	UIManager default uiProcess == Processor activeProcess ifTrue: [ ^ aBlock value ].
+	answered := Semaphore new.
+	SpApplication defaultApplication defer: [
+			[
+				[ aBlock value ]
+					on: Exception
+					do: [ :anException | failure := anException ] ] ensure: [ answered signal ] ].
+	answered wait.
+	failure ifNotNil: [ failure signal ]
 ]

@@ -58,17 +58,32 @@ IceTipGitRepositoryPanel >> initializePresenters [
 
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 IceTipGitRepositoryPanel >> newRepository [
 
-	^ self application
-		informUser: ('Cloning repository {1}' format: { self remoteUrl })
-		during: [
-			IceRepositoryCreator new
-				  repository: repository;
-				  remote: (IceGitRemote url: self remoteUrl);
-				  location: self projectLocation location;
-				  createRepository ]
+	^ IceRepositoryCreator new
+		  repository: repository;
+		  remote: (IceGitRemote url: self remoteUrl);
+		  location: self projectLocation location;
+		  createRepository
+]
+
+{ #category : 'actions' }
+IceTipGitRepositoryPanel >> newRepositoryDo: aBlock onFailure: failureBlock [
+	"Cloning can take long, so it runs in the task list, and I answer its task. One of the blocks runs in the UI process when it ends. The failure block is the one reporting failures, as the dialog waiting for them still has the user's input. It receives nil if the clone was cancelled"
+
+	^ IceTaskList default add: ((IceTask key: #clone -> self remoteUrl action: [ :task |
+					    [
+						    | newRepository |
+						    newRepository := self newRepository.
+						    self defer: [ aBlock value: newRepository ] ]
+						    on: Error
+						    do: [ :anError |
+								    | reported |
+								    reported := task isCancelRequested ifFalse: [ anError ].
+								    self defer: [ failureBlock value: reported ] ] ])
+			   title: 'Cloning';
+			   yourself)
 ]
 
 { #category : 'accessing' }

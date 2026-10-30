@@ -30,7 +30,7 @@ IceTipFetchRemoteCommand >> actsOnRemote: aRemoteModel [
 { #category : 'executing' }
 IceTipFetchRemoteCommand >> execute [
 
-	self remoteModel fetch
+	self remoteModel newFetchAction executeWithContext: self context
 ]
 
 { #category : 'accessing' }
