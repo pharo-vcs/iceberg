@@ -25,6 +25,7 @@ IceTipTaskStatusPresenter class >> closed [
 { #category : 'class initialization' }
 IceTipTaskStatusPresenter class >> initialize [
 
+	IceTaskList default runInPlaceCondition: [ UIManager default uiProcess == Processor activeProcess ].
 	Iceberg announcer unsubscribe: self.
 	Iceberg announcer when: IceTaskStarted send: #taskStarted: to: self
 ]

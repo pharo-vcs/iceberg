@@ -86,6 +86,15 @@ IceTaskListTest >> testExecuteInsideTaskDoesNotDeadlock [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testExecuteRunsInPlaceWhenTheConditionAsks [
+
+	| process |
+	list runInPlaceCondition: [ true ].
+	list execute: (IceTask key: #a action: [ :task | process := Processor activeProcess ]).
+	self assert: process identicalTo: Processor activeProcess
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testExecuteSignalsFailureInCaller [
 
 	self

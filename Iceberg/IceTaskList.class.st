@@ -9,7 +9,8 @@ Class {
 		'running',
 		'worker',
 		'lock',
-		'announcer'
+		'announcer',
+		'runInPlaceCondition'
 	],
 	#classInstVars : [
 		'default'
@@ -80,7 +81,7 @@ IceTaskList >> ensureWorker [
 IceTaskList >> execute: aTask [
 	"Run aTask through the list and answer its result, as if called directly. A task calling this runs the work itself: waiting for the list from its own process would deadlock"
 
-	self isWorkerProcess ifTrue: [ ^ aTask executeDirectly ].
+	(self isWorkerProcess or: [ runInPlaceCondition notNil and: [ runInPlaceCondition value ] ]) ifTrue: [ ^ aTask executeDirectly ].
 	^ (self add: aTask) waitForResult
 ]
 
@@ -119,6 +120,13 @@ IceTaskList >> nextTask [
 			  running := queue ifEmpty: [ nil ] ifNotEmpty: [ queue removeFirst ].
 			  running ifNil: [ worker := nil ].
 			  running ]
+]
+
+{ #category : 'running' }
+IceTaskList >> runInPlaceCondition: aBlock [
+	"aBlock answers whether the active process must not wait for tasks. The UI uses it for its own process: a task may need the UI, for example to ask for credentials"
+
+	runInPlaceCondition := aBlock
 ]
 
 { #category : 'running' }

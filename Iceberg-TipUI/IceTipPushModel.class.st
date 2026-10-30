@@ -19,10 +19,12 @@ IceTipPushModel >> commitModels [
 { #category : 'actions' }
 IceTipPushModel >> newPushAction [
 
-	^ IceTipStandardAction new 
-		repository: self entity;
-		message: ('Pushing to {1}' format: { self remote name }) ;
-		onSuccessRepositoryModified;
-		action: [ self entity pushTo: self remote ];
-		yourself
+	^ IceTipBackgroundAction new
+		  repository: self entity;
+		  title: 'Pushing';
+		  operation: #push;
+		  action: [
+				  self entity pushTo: self remote.
+				  Iceberg announcer announce: (IcePushed for: self entity) ];
+		  yourself
 ]
