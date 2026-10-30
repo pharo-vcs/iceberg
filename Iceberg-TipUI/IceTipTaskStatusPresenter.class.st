@@ -78,7 +78,9 @@ IceTipTaskStatusPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter
 		title: 'Iceberg';
 		initialExtent: 350 @ 60;
-		whenClosedDo: [ self class closed ]
+		whenClosedDo: [
+				Iceberg announcer unsubscribe: self.
+				self class closed ]
 ]
 
 { #category : 'updating' }
