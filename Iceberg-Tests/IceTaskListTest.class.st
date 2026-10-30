@@ -295,6 +295,28 @@ IceTaskListTest >> testWorkerRestartsAfterIdle [
 	self assert: task state equals: #finished
 ]
 
+{ #category : 'tests' }
+IceTaskListTest >> testWorkingCopyOperationsAreRefusedWhileBusy [
+
+	| repository workingCopy started task |
+	repository := IceLibgitRepository new
+		              name: 'busy';
+		              yourself.
+	workingCopy := IceWorkingCopy basicNew
+		               repository: repository;
+		               yourself.
+	started := Semaphore new.
+	task := IceTaskList default add: (IceTask repository: repository operation: #fetch action: [ :aTask |
+				         started signal.
+				         gate wait ]).
+	started wait.
+	[
+		self should: [ workingCopy validateCanCommit ] raise: IceRepositoryBusy.
+		self should: [ workingCopy checkout: nil ] raise: IceRepositoryBusy.
+		self should: [ workingCopy mergeCommit: nil ] raise: IceRepositoryBusy.
+		self should: [ workingCopy discardChanges: nil ] raise: IceRepositoryBusy ] ensure: [ gate signal ]
+]
+
 { #category : 'running' }
 IceTaskListTest >> waitUntilIdle [
 
