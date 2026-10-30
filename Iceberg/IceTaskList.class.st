@@ -60,6 +60,14 @@ IceTaskList >> ensureWorker [
 ]
 
 { #category : 'running' }
+IceTaskList >> execute: aTask [
+	"Run aTask through the list and answer its result, as if called directly. A task calling this runs the work itself: waiting for the list from its own process would deadlock"
+
+	self isWorkerProcess ifTrue: [ ^ aTask executeDirectly ].
+	^ (self add: aTask) waitForResult
+]
+
+{ #category : 'running' }
 IceTaskList >> initialize [
 
 	super initialize.
@@ -77,6 +85,12 @@ IceTaskList >> isBusy: aRepository [
 IceTaskList >> isIdle [
 
 	^ lock critical: [ worker isNil ]
+]
+
+{ #category : 'running' }
+IceTaskList >> isWorkerProcess [
+
+	^ Processor activeProcess == worker
 ]
 
 { #category : 'running' }
@@ -113,6 +127,6 @@ IceTaskList >> taskWithKey: aKey [
 IceTaskList >> validateNotBusy: aRepository [
 	"The running task may use the repository: a pull merges from inside its task"
 
-	Processor activeProcess == worker ifTrue: [ ^ self ].
+	self isWorkerProcess ifTrue: [ ^ self ].
 	(self isBusy: aRepository) ifTrue: [ IceRepositoryBusy signal: aRepository name , ' has a running task' ]
 ]

@@ -10,7 +10,9 @@ Class {
 		'state',
 		'error',
 		'cancelRequested',
-		'repository'
+		'repository',
+		'done',
+		'result'
 	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
@@ -47,10 +49,29 @@ IceTask >> announce: anAnnouncementClass [
 ]
 
 { #category : 'running' }
+IceTask >> basicRun [
+
+	state := #running.
+	self announce: IceTaskStarted.
+	[ result := action value: self ]
+		on: Error
+		do: [ :anError |
+				error := anError.
+				state := #failed.
+				^ self announce: IceTaskFailed ].
+	cancelRequested ifTrue: [
+			state := #cancelled.
+			^ self announce: IceTaskCancelled ].
+	state := #finished.
+	self announce: IceTaskFinished
+]
+
+{ #category : 'running' }
 IceTask >> beCancelled [
 
 	state := #cancelled.
-	self announce: IceTaskCancelled
+	self announce: IceTaskCancelled.
+	done signal
 ]
 
 { #category : 'accessing' }
@@ -60,11 +81,18 @@ IceTask >> error [
 ]
 
 { #category : 'running' }
+IceTask >> executeDirectly [
+
+	^ action value: self
+]
+
+{ #category : 'running' }
 IceTask >> initialize [
 
 	super initialize.
 	state := #queued.
-	cancelRequested := false
+	cancelRequested := false.
+	done := Semaphore new
 ]
 
 { #category : 'running' }
@@ -107,21 +135,21 @@ IceTask >> requestCancel [
 IceTask >> run [
 	"Failures belong to the task: they are published with the exception, so whoever follows the task decides how to show them"
 
-	state := #running.
-	self announce: IceTaskStarted.
-	[ action value: self ]
-		on: Error
-		do: [ :anError |
-				error := anError.
-				state := #failed.
-				^ self announce: IceTaskFailed ].
-	cancelRequested ifTrue: [ ^ self beCancelled ].
-	state := #finished.
-	self announce: IceTaskFinished
+	[ self basicRun ] ensure: [ done signal ]
 ]
 
 { #category : 'accessing' }
 IceTask >> state [
 
 	^ state
+]
+
+{ #category : 'running' }
+IceTask >> waitForResult [
+	"Block until I end and answer my result, signalling my failure in the caller. Several processes can wait for a merged task, so each one wakes the next"
+
+	done wait.
+	done signal.
+	error ifNotNil: [ error signal ].
+	^ result
 ]

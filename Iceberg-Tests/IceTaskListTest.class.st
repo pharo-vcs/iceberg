@@ -61,6 +61,30 @@ IceTaskListTest >> testCancelRunningTaskStopsAtSafePoint [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testExecuteAnswersResult [
+
+	self assert: (list execute: (IceTask key: #a action: [ :task | 42 ])) equals: 42
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testExecuteInsideTaskDoesNotDeadlock [
+
+	| result |
+	result := list execute: (IceTask key: #outer action: [ :task | list execute: (IceTask key: #inner action: [ :inner | 7 ]) ]).
+	self assert: result equals: 7
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testExecuteSignalsFailureInCaller [
+
+	self
+		should: [ list execute: (IceTask key: #a action: [ :task | Error signal: 'boom' ]) ]
+		raise: Error
+		whoseDescriptionIncludes: 'boom'
+		description: 'the failure reaches the caller'
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testFailureIsPublishedWithItsError [
 
 	| task |
@@ -69,6 +93,24 @@ IceTaskListTest >> testFailureIsPublishedWithItsError [
 	self assert: task state equals: #failed.
 	self assert: task error messageText equals: 'boom'.
 	self assert: (events anySatisfy: [ :each | each class = IceTaskFailed ])
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testMergedExecuteWakesEveryWaiter [
+
+	| results finished |
+	results := OrderedCollection new.
+	finished := Semaphore new.
+	list add: (self blockedTask: #first).
+	2 timesRepeat: [
+			[
+				results add: (list execute: (IceTask key: #same action: [ :task | 1 ])).
+				finished signal ] fork ].
+	10 milliSeconds wait.
+	gate signal.
+	finished wait.
+	finished wait.
+	self assert: results asArray equals: #( 1 1 )
 ]
 
 { #category : 'tests' }
