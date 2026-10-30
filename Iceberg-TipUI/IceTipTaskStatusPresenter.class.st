@@ -148,5 +148,6 @@ IceTipTaskStatusPresenter >> taskStarted: aTask [
 { #category : 'updating' }
 IceTipTaskStatusPresenter >> title: aString current: current max: max [
 
+	(task notNil and: [ task isCancelRequested ]) ifFalse: [ self showTitle: aString ].
 	max > 0 ifTrue: [ progressBar fixedPercentage: 100 * current // max ]
 ]
