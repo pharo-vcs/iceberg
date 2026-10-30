@@ -766,7 +766,7 @@ IceRepository >> postFetch [
 IceRepository >> printOn: aStream [
 	aStream nextPutAll: self class name;
 		nextPut: $(;
-		nextPutAll: name asString;
+		print: name;
 		nextPut: $)
 ]
 

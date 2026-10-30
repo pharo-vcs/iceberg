@@ -48,6 +48,11 @@ IceLibgitFiletreeFileUtils class >> pathNameDelimiter [
 	^ $/
 ]
 
+{ #category : 'accessing' }
+IceLibgitFiletreeFileUtils class >> pathNameDelimiterString [
+	^ '/'
+]
+
 { #category : 'utilities' }
 IceLibgitFiletreeFileUtils class >> readStreamFor: fileName in: tree do: aBlock [
 	(tree entryByPath: fileName) readStreamDo: aBlock
