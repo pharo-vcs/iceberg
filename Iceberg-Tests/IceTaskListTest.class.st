@@ -39,6 +39,25 @@ IceTaskListTest >> tearDown [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testBranchOperationsAreRefusedWhileBusy [
+
+	| repository branch started |
+	repository := IceLibgitRepository new
+		              name: 'busy';
+		              yourself.
+	branch := IceGitLocalBranch named: 'other' inRepository: repository.
+	started := Semaphore new.
+	IceTaskList default add: (IceTask repository: repository operation: #fetch action: [ :aTask |
+				 started signal.
+				 gate wait ]).
+	started wait.
+	[
+		self should: [ repository createBranch: 'new' ] raise: IceRepositoryBusy.
+		self should: [ repository createBranch: 'new' inCommit: nil ] raise: IceRepositoryBusy.
+		self should: [ branch delete ] raise: IceRepositoryBusy ] ensure: [ gate signal ]
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testCancelQueuedTask [
 
 	| queued ran |

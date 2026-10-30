@@ -1019,6 +1019,12 @@ IceRepository >> validateCanPushTo: aRemote [
 		signal
 ]
 
+{ #category : 'validating' }
+IceRepository >> validateNotBusy [
+
+	IceTaskList default validateNotBusy: self
+]
+
 { #category : 'API - history' }
 IceRepository >> withCommitWalkDo: aBlock [
 
