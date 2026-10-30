@@ -482,7 +482,9 @@ IceRepository >> fetchFrom: aRemote [
 IceRepository >> fetchInBackground [
 	"Fetch all remotes in the task list and answer the task right away. Follow it through IceTaskAnnouncements"
 
-	^ IceTaskList default add: (IceTask repository: self operation: #fetch action: [ :task | self fetch ])
+	^ IceTaskList default add: ((IceTask repository: self operation: #fetch action: [ :task | self fetch ])
+			   title: 'Fetching';
+			   yourself)
 ]
 
 { #category : 'API - registry' }

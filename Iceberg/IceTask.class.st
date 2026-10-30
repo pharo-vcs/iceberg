@@ -13,7 +13,8 @@ Class {
 		'repository',
 		'done',
 		'result',
-		'announcer'
+		'announcer',
+		'title'
 	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
@@ -149,6 +150,18 @@ IceTask >> run [
 IceTask >> state [
 
 	^ state
+]
+
+{ #category : 'accessing' }
+IceTask >> title [
+
+	^ title ifNil: [ key asString ]
+]
+
+{ #category : 'accessing' }
+IceTask >> title: aString [
+
+	title := aString
 ]
 
 { #category : 'running' }

@@ -5,7 +5,6 @@ Class {
 	#name : 'IceTipTaskStatusPresenter',
 	#superclass : 'SpPresenter',
 	#instVars : [
-		'label',
 		'progressBar',
 		'stopButton',
 		'task'
@@ -53,7 +52,6 @@ IceTipTaskStatusPresenter >> defaultLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  spacing: 5;
-		  add: label;
 		  add: progressBar;
 		  add: stopButton expand: false;
 		  yourself
@@ -62,10 +60,9 @@ IceTipTaskStatusPresenter >> defaultLayout [
 { #category : 'initialization' }
 IceTipTaskStatusPresenter >> initializePresenters [
 
-	label := self newLabel.
 	progressBar := self instantiate: SpProgressBarPresenter.
 	stopButton := self newButton
-		              label: 'Stop';
+		              label: 'Cancel';
 		              action: [ self stop ];
 		              disable;
 		              yourself.
@@ -77,8 +74,14 @@ IceTipTaskStatusPresenter >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Iceberg';
-		initialExtent: 450 @ 90;
+		initialExtent: 350 @ 60;
 		whenClosedDo: [ self class closed ]
+]
+
+{ #category : 'updating' }
+IceTipTaskStatusPresenter >> showTitle: aString [
+
+	self withWindowDo: [ :window | window title: aString ]
 ]
 
 { #category : 'updating' }
@@ -86,7 +89,7 @@ IceTipTaskStatusPresenter >> stop [
 
 	task ifNil: [ ^ self ].
 	stopButton disable.
-	label label: 'Cancelling...'.
+	self showTitle: 'Cancelling'.
 	IceTaskList default cancel: task
 ]
 
@@ -106,7 +109,6 @@ IceTipTaskStatusPresenter >> taskChanged: anAnnouncement [
 IceTipTaskStatusPresenter >> taskEnded [
 
 	task := nil.
-	label label: ''.
 	progressBar fixedPercentage: 0.
 	stopButton disable
 ]
@@ -138,7 +140,7 @@ IceTipTaskStatusPresenter >> taskListEmptied [
 IceTipTaskStatusPresenter >> taskStarted: aTask [
 
 	task := aTask.
-	label label: 'Working...'.
+	self showTitle: aTask title.
 	progressBar indeterminate.
 	stopButton enable
 ]
@@ -146,6 +148,5 @@ IceTipTaskStatusPresenter >> taskStarted: aTask [
 { #category : 'updating' }
 IceTipTaskStatusPresenter >> title: aString current: current max: max [
 
-	label label: aString.
 	max > 0 ifTrue: [ progressBar fixedPercentage: 100 * current // max ]
 ]
