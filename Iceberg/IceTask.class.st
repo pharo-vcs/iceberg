@@ -170,6 +170,7 @@ IceTask >> waitForResult [
 
 	done wait.
 	done signal.
+	state = #cancelled ifTrue: [ IceTaskCancelledError signal: self title , ' was cancelled' ].
 	error ifNotNil: [ error signal ].
 	^ result
 ]

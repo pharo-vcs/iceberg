@@ -95,6 +95,26 @@ IceTaskListTest >> testExecuteRunsInPlaceWhenTheConditionAsks [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testExecuteSignalsCancellationInCaller [
+
+	| started failure finished task |
+	started := Semaphore new.
+	finished := Semaphore new.
+	task := IceTask key: #a action: [ :aTask |
+			        started signal.
+			        [ aTask isCancelRequested ] whileFalse: [ 1 milliSecond wait ] ].
+	[
+		[ list execute: task ]
+			on: IceTaskCancelledError
+			do: [ :anError | failure := anError ].
+		finished signal ] fork.
+	started wait.
+	list cancel: task.
+	finished wait.
+	self assert: failure notNil
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testExecuteSignalsFailureInCaller [
 
 	self

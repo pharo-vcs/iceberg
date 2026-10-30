@@ -1,5 +1,5 @@
 "
-I keep Iceberg's core independent from the UI: its packages must not reference Morphic, UIManager or the Jobs package, directly or through a package that does.
+I keep Iceberg's core independent from the UI: methods in its packages must not reference Morphic, UIManager or the Jobs package. I only see direct class references, not dependencies through other packages or messages such as #inform:.
 "
 Class {
 	#name : 'IceCoreDependenciesTest',

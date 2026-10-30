@@ -36,7 +36,7 @@ IceTipTaskStatusPresenter class >> openFor: aTask [
 
 	| presenter |
 	presenter := current ifNil: [
-			             current := self newApplication: StPharoApplication current.
+			             current := self newApplication: SpApplication defaultApplication.
 			             current open.
 			             current ifNil: [ ^ self ] ].
 	presenter taskStarted: aTask
@@ -45,7 +45,7 @@ IceTipTaskStatusPresenter class >> openFor: aTask [
 { #category : 'class initialization' }
 IceTipTaskStatusPresenter class >> taskStarted: anAnnouncement [
 
-	StPharoApplication current defer: [ self openFor: anAnnouncement task ]
+	SpApplication defaultApplication defer: [ self openFor: anAnnouncement task ]
 ]
 
 { #category : 'initialization' }

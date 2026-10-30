@@ -55,7 +55,7 @@ AbstractIceGitCommandLineAction >> executeUsingUnixSubProcess: command arguments
 		doing: [:process :stdStream :errStream | 
 			outFullStream nextPutAll: stdStream upToEnd.
 			errFullStream nextPutAll: errStream upToEnd.
-			self updateJobStatus: errFullStream contents]
+			self updateProgress: errFullStream contents]
 
 		onExitDo: [:process :stdStream :errStream | 
 			
@@ -105,7 +105,7 @@ AbstractIceGitCommandLineAction >> executeUsingWindowsSubProcess: command argume
 	"We need to wait until the watcher, updates the exitCode"
 	[return isRunning or: [return exitCode isNil]] 
 		whileTrue: [ 
-			[self updateJobStatus: stderrFile contents] on: FileDoesNotExistException do: [  ].
+			[self updateProgress: stderrFile contents] on: FileDoesNotExistException do: [  ].
 			100 milliSecond wait ].
 
 	onExitBlock
@@ -118,5 +118,7 @@ AbstractIceGitCommandLineAction >> executeUsingWindowsSubProcess: command argume
 ]
 
 { #category : 'executing' }
-AbstractIceGitCommandLineAction >> updateJobStatus: outputString [
+AbstractIceGitCommandLineAction >> updateProgress: outputString [
+
+	
 ]

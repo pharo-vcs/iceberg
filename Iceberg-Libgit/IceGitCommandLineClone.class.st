@@ -51,7 +51,7 @@ IceGitCommandLineClone >> location: aFileLocator [
 ]
 
 { #category : 'private' }
-IceGitCommandLineClone >> updateJobStatus: outputString [
+IceGitCommandLineClone >> updateProgress: outputString [
 
 	| lines lastLine progress matches |
 	lines := outputString lines.

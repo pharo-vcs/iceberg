@@ -12,7 +12,8 @@ Class {
 	#instVars : [
 		'types',
 		'repository',
-		'acceptBlock'
+		'acceptBlock',
+		'cloneTask'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -26,12 +27,13 @@ IceTipRegisterRepositoryDialogPresenter >> acceptAndClose [
 	self selectedType validate.
 	self isEditing ifTrue: [ self selectedType repository: repository ].
 	self okButtonEnabled: false.
-	self selectedType
-		newRepositoryDo: [ :newRepository |
-				self isEditing ifFalse: [ newRepository register ].
-				acceptBlock ifNotNil: [ acceptBlock cull: self ].
-				self closeWindow ]
-		onFailure: [ :anError | self repositoryFailed: anError ]
+	cloneTask := self selectedType
+		             newRepositoryDo: [ :newRepository |
+				             cloneTask := nil.
+				             self isEditing ifFalse: [ newRepository register ].
+				             acceptBlock ifNotNil: [ acceptBlock cull: self ].
+				             self closeWindow ]
+		             onFailure: [ :anError | self repositoryFailed: anError ]
 ]
 
 { #category : 'accessing' }
@@ -49,11 +51,24 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 ]
 
 { #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> cancelClone [
+
+	cloneTask ifNotNil: [ IceTaskList default cancel: cloneTask ]
+]
+
+{ #category : 'actions' }
 IceTipRegisterRepositoryDialogPresenter >> doEdit: aRepository [
 
 	repository
 		location: aRepository location;
 		subdirectory: aRepository subdirectory
+]
+
+{ #category : 'initialization' }
+IceTipRegisterRepositoryDialogPresenter >> initializeDialogWindow: aWindowPresenter [
+
+	super initializeDialogWindow: aWindowPresenter.
+	aWindowPresenter whenClosedDo: [ self cancelClone ]
 ]
 
 { #category : 'testing' }
@@ -78,6 +93,7 @@ IceTipRegisterRepositoryDialogPresenter >> onAccept: aBlock [
 { #category : 'actions' }
 IceTipRegisterRepositoryDialogPresenter >> repositoryFailed: anErrorOrNil [
 
+	cloneTask := nil.
 	self okButtonEnabled: true.
 	anErrorOrNil ifNil: [ ^ self ].
 	[ anErrorOrNil signal ]
