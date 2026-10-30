@@ -32,14 +32,16 @@ IceTipTaskStatusPresenter class >> initialize [
 
 { #category : 'class initialization' }
 IceTipTaskStatusPresenter class >> openFor: aTask [
-	"Opening runs a UI cycle, which can close a previous window and reset current"
+	"Opening runs a UI cycle, which can close a previous window and reset current.
+	A quick task can end before the window subscribes, so it checks the list once open"
 
 	| presenter |
 	presenter := current ifNil: [
 			             current := self newApplication: SpApplication defaultApplication.
 			             current open.
 			             current ifNil: [ ^ self ] ].
-	presenter taskStarted: aTask
+	presenter taskStarted: aTask.
+	IceTaskList default isIdle ifTrue: [ presenter taskListEmptied ]
 ]
 
 { #category : 'class initialization' }
