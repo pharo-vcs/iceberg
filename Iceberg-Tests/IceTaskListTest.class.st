@@ -72,6 +72,22 @@ IceTaskListTest >> testEmptiedIsAnnouncedAfterTheLastTask [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testErrorAfterCancelEndsCancelled [
+
+	| started task |
+	started := Semaphore new.
+	task := list add: (IceTask key: #a action: [ :aTask |
+				         started signal.
+				         gate wait.
+				         Error signal: 'callback returned -1' ]).
+	started wait.
+	list cancel: task.
+	gate signal.
+	self waitUntilIdle.
+	self assert: task state equals: #cancelled
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testExecuteAnswersResult [
 
 	self assert: (list execute: (IceTask key: #a action: [ :task | 42 ])) equals: 42

@@ -63,7 +63,10 @@ IceTask >> basicRun [
 	self announce: IceTaskStarted.
 	[ result := action value: self ]
 		on: Error
-		do: [ :anError |
+		do: [ :anError | "Cancelling aborts libgit2, which comes back as an error"
+				cancelRequested ifTrue: [
+						state := #cancelled.
+						^ self announce: IceTaskCancelled ].
 				error := anError.
 				state := #failed.
 				^ self announce: IceTaskFailed ].
