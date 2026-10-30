@@ -32,7 +32,7 @@ IceTipPushModel >> newPushAction [
 		  title: 'Pushing';
 		  operation: #push;
 		  action: [
-				  self needsPush ifTrue: [ self entity pushTo: self remote ].
+				  self entity pushTo: self remote.
 				  SpApplication defaultApplication defer: [ Iceberg announcer announce: (IcePushed for: self entity) ] ];
 		  yourself
 ]
