@@ -218,7 +218,8 @@ IceWorkingCopy >> changesTo: aCommitish [
 
 { #category : 'API - loading' }
 IceWorkingCopy >> checkout: aCheckoutStrategy [
-	
+
+	self validateNotBusy.
 	aCheckoutStrategy checkoutOn: self
 ]
 
@@ -306,9 +307,9 @@ IceWorkingCopy >> discardChanges [
 
 { #category : 'API - changes' }
 IceWorkingCopy >> discardChanges: aTree [
-	
-	self loadChangesInWorkingCopy: (aTree collect: [ :definition |
-		definition inverse ]).
+
+	self validateNotBusy.
+	self loadChangesInWorkingCopy: (aTree collect: [ :definition | definition inverse ]).
 	self refreshDirtyPackages
 ]
 
@@ -542,7 +543,8 @@ IceWorkingCopy >> mcVersionFor: anIceSavedPackageVersion [
 
 { #category : 'API - merging' }
 IceWorkingCopy >> mergeCommit: aCommit [
-	
+
+	self validateNotBusy.
 	^ self workingCopyState mergeCommit: aCommit
 ]
 
@@ -782,14 +784,23 @@ IceWorkingCopy >> unloadPackageNamed: aPackageName [
 
 { #category : 'validating' }
 IceWorkingCopy >> validateCanCommit [
-	"Verify sync between image version and working copy"	
+	"Verify sync between image version and working copy"
+
 	"If there are incomming commits is out of sync"
-	
+
 	"Check that head is not detached"
+
+	self validateNotBusy.
 	self repository validateCanCommit.
-	
+
 	"Check that our current state lets us commit"
 	self workingCopyState validateCanCommit
+]
+
+{ #category : 'validating' }
+IceWorkingCopy >> validateNotBusy [
+
+	IceTaskList default validateNotBusy: self repository
 ]
 
 { #category : 'private - monticello' }

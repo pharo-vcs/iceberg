@@ -10,10 +10,19 @@ Class {
 		'worker',
 		'lock'
 	],
+	#classInstVars : [
+		'default'
+	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
 	#tag : 'Tasks'
 }
+
+{ #category : 'accessing' }
+IceTaskList class >> default [
+
+	^ default ifNil: [ default := self new ]
+]
 
 { #category : 'running' }
 IceTaskList >> add: aTask [
@@ -59,6 +68,12 @@ IceTaskList >> initialize [
 ]
 
 { #category : 'running' }
+IceTaskList >> isBusy: aRepository [
+
+	^ lock critical: [ running notNil and: [ running repository = aRepository ] ]
+]
+
+{ #category : 'running' }
 IceTaskList >> isIdle [
 
 	^ lock critical: [ worker isNil ]
@@ -86,4 +101,12 @@ IceTaskList >> taskWithKey: aKey [
 
 	(running notNil and: [ running key = aKey ]) ifTrue: [ ^ running ].
 	^ queue detect: [ :each | each key = aKey ] ifNone: [ nil ]
+]
+
+{ #category : 'running' }
+IceTaskList >> validateNotBusy: aRepository [
+	"The running task may use the repository: a pull merges from inside its task"
+
+	Processor activeProcess == worker ifTrue: [ ^ self ].
+	(self isBusy: aRepository) ifTrue: [ IceRepositoryBusy signal: aRepository name , ' has a running task' ]
 ]

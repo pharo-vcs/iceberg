@@ -72,6 +72,40 @@ IceTaskListTest >> testFailureIsPublishedWithItsError [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testRunningTaskCanUseItsOwnRepository [
+
+	| repository task |
+	repository := IceLibgitRepository new
+		              name: 'busy';
+		              yourself.
+	task := list add: (IceTask repository: repository operation: #pull action: [ :aTask | list validateNotBusy: repository ]).
+	self waitUntilIdle.
+	self assert: task state equals: #finished
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testRunningTaskMakesItsRepositoryBusy [
+
+	| repository other started |
+	repository := IceLibgitRepository new
+		              name: 'busy';
+		              yourself.
+	other := IceLibgitRepository new
+		         name: 'other';
+		         yourself.
+	started := Semaphore new.
+	list add: (IceTask repository: repository operation: #fetch action: [ :task |
+				 started signal.
+				 gate wait ]).
+	started wait.
+	self should: [ list validateNotBusy: repository ] raise: IceRepositoryBusy.
+	self shouldnt: [ list validateNotBusy: other ] raise: IceRepositoryBusy.
+	gate signal.
+	self waitUntilIdle.
+	self shouldnt: [ list validateNotBusy: repository ] raise: IceRepositoryBusy
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testSameKeyAnswersExistingTask [
 
 	| first |

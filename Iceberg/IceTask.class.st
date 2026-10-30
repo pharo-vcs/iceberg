@@ -9,7 +9,8 @@ Class {
 		'action',
 		'state',
 		'error',
-		'cancelRequested'
+		'cancelRequested',
+		'repository'
 	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
@@ -22,6 +23,14 @@ IceTask class >> key: aKey action: aBlock [
 	^ self new
 		  key: aKey;
 		  action: aBlock;
+		  yourself
+]
+
+{ #category : 'instance creation' }
+IceTask class >> repository: aRepository operation: aSymbol action: aBlock [
+
+	^ (self key: aRepository -> aSymbol action: aBlock)
+		  repository: aRepository;
 		  yourself
 ]
 
@@ -80,6 +89,18 @@ IceTask >> key: aKey [
 IceTask >> progress [
 
 	self announce: IceTaskProgressed
+]
+
+{ #category : 'accessing' }
+IceTask >> repository [
+
+	^ repository
+]
+
+{ #category : 'accessing' }
+IceTask >> repository: aRepository [
+
+	repository := aRepository
 ]
 
 { #category : 'running' }
