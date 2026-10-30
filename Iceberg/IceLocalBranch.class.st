@@ -63,15 +63,16 @@ IceLocalBranch >> hasOutgoingCommits [
 
 { #category : 'API - remotes' }
 IceLocalBranch >> hasOutgoingCommitsTo: aRemote [
-	
-	| localCommits remoteCommits |
-	self tracksRemoteBranch
-		ifFalse: [ ^ false ].
-	
-	localCommits := self commits.
-	remoteCommits := self trackedBranch commits.
-	^ localCommits anySatisfy: [ :each |
-		(remoteCommits includes: each) not ]
+	"Equal tips have nothing outgoing. Otherwise only walk the commits missing in the tracked branch, as walking full histories takes long in big repositories"
+
+	| trackedCommit |
+	self tracksRemoteBranch ifFalse: [ ^ false ].
+
+	trackedCommit := self trackedBranch commit.
+	self commit = trackedCommit ifTrue: [ ^ false ].
+	^ self withCommitWalkDo: [ :walk |
+			  walk uptoCommit: trackedCommit.
+			  walk commits isNotEmpty ]
 ]
 
 { #category : 'API - remotes' }
