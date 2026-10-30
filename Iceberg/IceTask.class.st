@@ -85,12 +85,6 @@ IceTask >> key: aKey [
 	key := aKey
 ]
 
-{ #category : 'running' }
-IceTask >> progress [
-
-	self announce: IceTaskProgressed
-]
-
 { #category : 'accessing' }
 IceTask >> repository [
 

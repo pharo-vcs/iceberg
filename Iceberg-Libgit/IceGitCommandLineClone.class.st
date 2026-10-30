@@ -50,42 +50,26 @@ IceGitCommandLineClone >> location: aFileLocator [
 	location := aFileLocator
 ]
 
-{ #category : 'executing' }
+{ #category : 'private' }
 IceGitCommandLineClone >> updateJobStatus: outputString [
 
-	| job lines lastLine progress matches |
-	job := CurrentJob value.
-	job ifNil: [ ^ self ].
-
+	| lines lastLine progress matches |
 	lines := outputString lines.
 	lines ifEmpty: [ ^ self ].
-	
+
 	lastLine := lines last.
 	progress := 0.
-	
-	(lastLine includesSubstring: 'Counting objects')
-		ifTrue: [progress := 0].	
-		
-	(lastLine includesSubstring: 'Compressing objects')
-		ifTrue: [progress := 25].	
-			
-	(lastLine includesSubstring: 'Receiving objects')
-		ifTrue: [progress := 50].
 
-	(lastLine includesSubstring: 'Resolving deltas')
-		ifTrue: [progress := 75].
-		
-	(lastLine includesSubstring: 'done.')
-		ifTrue: [progress := 100].
-	
+	(lastLine includesSubstring: 'Counting objects') ifTrue: [ progress := 0 ].
+	(lastLine includesSubstring: 'Compressing objects') ifTrue: [ progress := 25 ].
+	(lastLine includesSubstring: 'Receiving objects') ifTrue: [ progress := 50 ].
+	(lastLine includesSubstring: 'Resolving deltas') ifTrue: [ progress := 75 ].
+	(lastLine includesSubstring: 'done.') ifTrue: [ progress := 100 ].
+
 	matches := lastLine allRegexMatches: '(\d+)%'.
-	matches ifNotEmpty: [  
-		progress := progress + (matches first allButLast asNumber / 4)
-	].
-		
-	progress ifNil: [ ^ self ].
-	
-	job value: progress
+	matches ifNotEmpty: [ progress := progress + (matches first allButLast asNumber / 4) ].
+
+	IceProgress new reportTitle: [ lastLine ] current: progress max: 100
 ]
 
 { #category : 'accessing' }

@@ -97,6 +97,12 @@ IceTaskList >> runTasks [
 ]
 
 { #category : 'running' }
+IceTaskList >> runningTask [
+
+	^ running
+]
+
+{ #category : 'running' }
 IceTaskList >> taskWithKey: aKey [
 
 	(running notNil and: [ running key = aKey ]) ifTrue: [ ^ running ].

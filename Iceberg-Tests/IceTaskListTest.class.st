@@ -72,6 +72,33 @@ IceTaskListTest >> testFailureIsPublishedWithItsError [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testProgressAbortsWhenRunningTaskIsCancelled [
+
+	| list2 started task code |
+	list2 := IceTaskList default.
+	started := Semaphore new.
+	task := list2 add: (IceTask key: self action: [ :aTask |
+				         started signal.
+				         gate wait.
+				         code := IceProgress new reportTitle: [ 'work' ] current: 1 max: 2 ]).
+	started wait.
+	list2 cancel: task.
+	gate signal.
+	[ task state = #cancelled ] whileFalse: [ 1 milliSecond wait ].
+	self assert: code equals: -1
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testProgressIsThrottledAndAlwaysReportsCompletion [
+
+	| progress |
+	progress := IceProgress new.
+	1 to: 1000 do: [ :i | self assert: (progress reportTitle: [ 'work' ] current: i max: 1000) equals: 0 ].
+	self assert: (events select: [ :each | each class = IceTaskProgressed ]) size < 20.
+	self assert: events last current equals: 1000
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testRunningTaskCanUseItsOwnRepository [
 
 	| repository task |
