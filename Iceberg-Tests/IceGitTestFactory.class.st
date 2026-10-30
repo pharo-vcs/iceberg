@@ -94,8 +94,8 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 
 { #category : 'initialization' }
 IceGitTestFactory >> remoteFileUrl [
-	
-	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
+
+	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asZnUrl
 ]
 
 { #category : 'initialization' }
