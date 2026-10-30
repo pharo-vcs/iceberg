@@ -164,7 +164,7 @@ IceTipRepositoriesBrowser >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 		  add: notifyPanel expand: false;
 		  add: repositoryNotebook;
-		  add: taskStatus expand: false;
+		  add: taskStatus withConstraints: [ :constraints | constraints height: 30 ];
 		  yourself
 ]
 
@@ -187,8 +187,7 @@ IceTipRepositoriesBrowser >> initializePresenters [
 
 	repositoryNotebook := self newNotebook.
 
-	taskStatus := self instantiate: IceTipTaskStatusPresenter.
-	taskStatus hide
+	taskStatus := self instantiate: IceTipTaskStatusPresenter
 ]
 
 { #category : 'accessing - ui' }

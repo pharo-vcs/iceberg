@@ -5,7 +5,8 @@ Class {
 	#name : 'IceProgress',
 	#superclass : 'Object',
 	#instVars : [
-		'lastReport'
+		'lastReport',
+		'lastCurrent'
 	],
 	#category : 'Iceberg-Tasks',
 	#package : 'Iceberg',
@@ -21,18 +22,23 @@ IceProgress >> initialize [
 
 { #category : 'reporting' }
 IceProgress >> reportTitle: aBlock current: current max: max [
-	"aBlock is only evaluated when announcing, so ignored callbacks stay cheap"
+	"aBlock is only evaluated when announcing, so ignored callbacks stay cheap.
+	libgit2 can repeat the last value many times, so completion is reported once.
+	Subscribers run in their own process: libgit2 waits for this callback, and the operation may hold the UI process, so a subscriber that blocks or fails here would freeze the image"
 
-	| now task |
+	| now task announcement isCompletion |
 	task := IceTaskList default runningTask.
 	(task notNil and: [ task isCancelRequested ]) ifTrue: [ ^ -1 ].
 	now := Time millisecondClockValue.
-	(current = max or: [ now - lastReport >= 100 ]) ifFalse: [ ^ 0 ].
+	isCompletion := current = max and: [ current ~= lastCurrent ].
+	(isCompletion or: [ now - lastReport >= 100 ]) ifFalse: [ ^ 0 ].
 	lastReport := now.
-	Iceberg announcer announce: ((IceTaskProgressed task: task)
-			 title: aBlock value;
-			 current: current;
-			 max: max;
-			 yourself).
+	lastCurrent := current.
+	announcement := (IceTaskProgressed task: task)
+		                title: aBlock value;
+		                current: current;
+		                max: max;
+		                yourself.
+	[ Iceberg announcer announce: announcement ] forkNamed: 'Iceberg progress'.
 	^ 0
 ]

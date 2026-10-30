@@ -33,6 +33,7 @@ IceTipTaskStatusPresenter >> initializePresenters [
 	stopButton := self newButton
 		              label: 'Stop';
 		              action: [ self stop ];
+		              disable;
 		              yourself.
 	self subscribe
 ]
@@ -62,7 +63,9 @@ IceTipTaskStatusPresenter >> taskChanged: anAnnouncement [
 IceTipTaskStatusPresenter >> taskEnded [
 
 	task := nil.
-	self hide
+	label label: ''.
+	progressBar fixedPercentage: 0.
+	stopButton disable
 ]
 
 { #category : 'updating' }
@@ -87,8 +90,7 @@ IceTipTaskStatusPresenter >> taskStarted: aTask [
 	task := aTask.
 	label label: 'Working...'.
 	progressBar indeterminate.
-	stopButton enable.
-	self show
+	stopButton enable
 ]
 
 { #category : 'updating' }

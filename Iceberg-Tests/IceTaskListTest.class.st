@@ -131,13 +131,36 @@ IceTaskListTest >> testProgressAbortsWhenRunningTaskIsCancelled [
 ]
 
 { #category : 'tests' }
+IceTaskListTest >> testProgressDoesNotWaitForSubscribers [
+
+	| blocked code |
+	blocked := Semaphore new.
+	Iceberg announcer when: IceTaskProgressed do: [ :announcement | blocked wait ] for: blocked.
+	[ code := IceProgress new reportTitle: [ 'work' ] current: 1 max: 1 ] ensure: [
+			Iceberg announcer unsubscribe: blocked.
+			10 timesRepeat: [ blocked signal ] ].
+	self assert: code equals: 0
+]
+
+{ #category : 'tests' }
 IceTaskListTest >> testProgressIsThrottledAndAlwaysReportsCompletion [
 
 	| progress |
 	progress := IceProgress new.
 	1 to: 1000 do: [ :i | self assert: (progress reportTitle: [ 'work' ] current: i max: 1000) equals: 0 ].
-	self assert: (events select: [ :each | each class = IceTaskProgressed ]) size < 20.
-	self assert: events last current equals: 1000
+	100 milliSeconds wait.
+	self assert: (events count: [ :each | each class = IceTaskProgressed ]) < 20.
+	self assert: (events anySatisfy: [ :each | each class = IceTaskProgressed and: [ each current = 1000 ] ])
+]
+
+{ #category : 'tests' }
+IceTaskListTest >> testRepeatedCompletionIsReportedOnce [
+
+	| progress |
+	progress := IceProgress new.
+	1000 timesRepeat: [ progress reportTitle: [ 'work' ] current: 5 max: 5 ].
+	100 milliSeconds wait.
+	self assert: (events count: [ :each | each class = IceTaskProgressed ]) < 5
 ]
 
 { #category : 'tests' }
