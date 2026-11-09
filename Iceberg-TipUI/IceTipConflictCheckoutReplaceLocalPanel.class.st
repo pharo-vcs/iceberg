@@ -24,7 +24,7 @@ IceTipConflictCheckoutReplaceLocalPanel >> confirmDeletionOf: aBranch [
 
 	^ SpConfirmDialog new
 		  title: 'Confirm Destructive Action';
-		  label: ('Are you sure you want to delete the local branch "{1}"?
+		  message: ('Are you sure you want to delete the local branch "{1}"?
 This action cannot be undone and you may LOSE CODE!' format: { aBranch name });
 		  openModal
 ]

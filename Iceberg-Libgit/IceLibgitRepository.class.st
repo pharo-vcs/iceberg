@@ -794,7 +794,7 @@ IceLibgitRepository >> remotes [
 	
 	LGitLibrary uniqueInstance isAvailable 
 		ifFalse: [ 
-			'No libgit2 available, skipping.' crTrace.
+			'No libgit2 available, skipping.' newLineTrace.
 			^ #() ].
 	
 	self handleLibgitError: [ | gitRemotes |
