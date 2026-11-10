@@ -39,6 +39,19 @@ IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [
 	"Do nothing, we do not need to register the repository into the monticello registry"
 ]
 
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName atVersion: aVersionName [
+	"The Monticello definitions of BaselineOf<aProjectName> at the tag aVersionName, read from its commit: nothing is checked out or loaded. nil when that commit has no such package"
+
+	| commit name |
+	commit := (self repository tagNamed: aVersionName) commit.
+	name := 'BaselineOf' , aProjectName.
+	(commit includesPackageNamed: name) ifFalse: [ ^ nil ].
+	^ (self repository mcVersionFor:
+		   (IceSavedPackageVersion fromCommit: commit package: (IcePackage named: name repository: self repository) mcPackage)) snapshot
+		  definitions
+]
+
 { #category : 'testing' }
 IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [ 
   (anMCGitBasedRepository isKindOf: self class) ifFalse: [ ^ false ].
@@ -217,4 +230,11 @@ IceMetacelloRepositoryAdapter >> versionFrom: aVersionName [
 	
 	
 	
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> versions [
+	"The versions of the project: my repository's tags, each answering name and date"
+
+	^ self repository tags
 ]
