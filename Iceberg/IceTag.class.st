@@ -23,6 +23,13 @@ IceTag >> commit [
 	^ commit ifNil: [ commit := self repository peelTag: self ]
 ]
 
+{ #category : 'accessing' }
+IceTag >> date [
+	"When the commit I name was made: a lightweight tag has no date of its own"
+
+	^ self commit datetime
+]
+
 { #category : 'API - tags' }
 IceTag >> delete [
 
