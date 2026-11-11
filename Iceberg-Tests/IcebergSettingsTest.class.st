@@ -44,4 +44,3 @@ IcebergSettingsTest >> testUseLibGitOperationsButton [
 			fetchOperationClass: previousClasses second;
 			pushOperationClass: previousClasses third ]
 ]
-
