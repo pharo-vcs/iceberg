@@ -40,11 +40,11 @@ IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [
 ]
 
 { #category : 'accessing' }
-IceMetacelloRepositoryAdapter >> baselineOf: aProjectName atVersion: aVersionName [
-	"The Monticello definitions of BaselineOf<aProjectName> at the tag aVersionName, read from its commit: nothing is checked out or loaded. nil when that commit has no such package"
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName atVersion: aRefName [
+	"The Monticello definitions of BaselineOf<aProjectName> at aRefName (a tag, a branch, a commit; see commitAt:), read from its commit: nothing is checked out or loaded. nil when that commit has no such package"
 
 	| commit name |
-	commit := (self repository tagNamed: aVersionName) commit.
+	commit := self commitAt: aRefName.
 	name := 'BaselineOf' , aProjectName.
 	(commit includesPackageNamed: name) ifFalse: [ ^ nil ].
 	^ (self repository mcVersionFor:
@@ -58,6 +58,18 @@ IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [
 
   ^ self projectPath = anMCGitBasedRepository projectPath 
 	and: [ self repoPath = anMCGitBasedRepository repoPath and: [ self projectVersion = anMCGitBasedRepository projectVersion ]]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> commitAt: aRefName [
+	"The commit aRefName names: a tag (v1.0.0), a local branch, a branch of the origin remote (master in a fresh clone), or a commit (3f2a91c). Signals NotFound when it names none"
+
+	| notFound |
+	self repository tags detect: [ :each | each name = aRefName ] ifFound: [ :tag | ^ tag commit ].
+	notFound := [ NotFound signalFor: aRefName in: self repository ].
+	^ self repository lookupCommit: aRefName ifAbsent: [
+			  self repository remotes ifEmpty: [ ^ notFound value ].
+			  self repository lookupCommit: self repository origin name , '/' , aRefName ifAbsent: notFound ]
 ]
 
 { #category : 'accessing' }
