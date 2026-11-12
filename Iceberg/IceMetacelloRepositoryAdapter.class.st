@@ -39,6 +39,12 @@ IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [
 	"Do nothing, we do not need to register the repository into the monticello registry"
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName [
+	"The baseline as my description says: at the ref it names, or as the clone is when it names none"
+	^ self baselineOf: aProjectName atVersion: projectVersion
+]
+
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> baselineOf: aProjectName atVersion: aRefName [
 	"The Monticello definitions of BaselineOf<aProjectName> at aRefName (a tag, a branch, a commit; see commitAt:), read from its commit: nothing is checked out or loaded. nil when that commit has no such package"
