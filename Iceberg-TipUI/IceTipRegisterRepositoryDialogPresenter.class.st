@@ -12,12 +12,29 @@ Class {
 	#instVars : [
 		'types',
 		'repository',
-		'acceptBlock'
+		'acceptBlock',
+		'cloneTask'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
 	#tag : 'View-Repository'
 }
+
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> acceptAndClose [
+	"The dialog stays open until the repository exists, so a failed clone can be corrected and retried"
+
+	self selectedType validate.
+	self isEditing ifTrue: [ self selectedType repository: repository ].
+	self okButtonEnabled: false.
+	cloneTask := self selectedType
+		             newRepositoryDo: [ :newRepository |
+				             cloneTask := nil.
+				             self isEditing ifFalse: [ newRepository register ].
+				             acceptBlock ifNotNil: [ acceptBlock cull: self ].
+				             self closeWindow ]
+		             onFailure: [ :anError | self repositoryFailed: anError ]
+]
 
 { #category : 'accessing' }
 IceTipRegisterRepositoryDialogPresenter >> allTypes [
@@ -34,14 +51,9 @@ IceTipRegisterRepositoryDialogPresenter >> beForCloneOfRepository: aRepository [
 ]
 
 { #category : 'actions' }
-IceTipRegisterRepositoryDialogPresenter >> doAccept [
+IceTipRegisterRepositoryDialogPresenter >> cancelClone [
 
-	| newRepository |
-	self selectedType validate.
-	self isEditing ifTrue: [ self selectedType repository: repository ].
-	newRepository := self selectedType newRepository.
-	self isEditing ifFalse: [ newRepository register ].
-	acceptBlock ifNotNil: [ acceptBlock cull: self ]
+	cloneTask ifNotNil: [ IceTaskList default cancel: cloneTask ]
 ]
 
 { #category : 'actions' }
@@ -52,16 +64,41 @@ IceTipRegisterRepositoryDialogPresenter >> doEdit: aRepository [
 		subdirectory: aRepository subdirectory
 ]
 
+{ #category : 'initialization' }
+IceTipRegisterRepositoryDialogPresenter >> initializeDialogWindow: aWindowPresenter [
+
+	super initializeDialogWindow: aWindowPresenter.
+	aWindowPresenter whenClosedDo: [ self cancelClone ]
+]
+
 { #category : 'testing' }
 IceTipRegisterRepositoryDialogPresenter >> isEditing [
 
 	^ repository isNotNil
 ]
 
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> okButtonEnabled: aBoolean [
+
+	self withWindowDo: [ :window |
+		window buttons detect: [ :each | each label = 'Ok' ] ifFound: [ :button | button enabled: aBoolean ] ]
+]
+
 { #category : 'events' }
 IceTipRegisterRepositoryDialogPresenter >> onAccept: aBlock [
 
 	acceptBlock := aBlock
+]
+
+{ #category : 'actions' }
+IceTipRegisterRepositoryDialogPresenter >> repositoryFailed: anErrorOrNil [
+
+	cloneTask := nil.
+	self okButtonEnabled: true.
+	anErrorOrNil ifNil: [ ^ self ].
+	[ anErrorOrNil signal ]
+		on: IceError , IceWarning
+		do: [ :e | e acceptError: (IceTipInteractiveErrorVisitor newContext: self) ]
 ]
 
 { #category : 'initialization' }

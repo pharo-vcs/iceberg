@@ -26,7 +26,7 @@ IceTipPushBrowser class >> onRepositoryModel: aModel [
 { #category : 'actions' }
 IceTipPushBrowser >> doPush [
 
-	self model newPushAction executeWithContext: self.
+	self model needsPush ifTrue: [ self model newPushAction executeWithContext: self ].
 	self closeWindow
 ]
 

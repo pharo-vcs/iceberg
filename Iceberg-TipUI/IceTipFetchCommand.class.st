@@ -32,7 +32,7 @@ IceTipFetchCommand >> canBeExecuted [
 { #category : 'executing' }
 IceTipFetchCommand >> execute [
 
-	self repositoryModel newFetchAction executeWithContext: self context
+	self repositoryModel entity fetchInBackground
 ]
 
 { #category : 'accessing' }

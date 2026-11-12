@@ -20,10 +20,10 @@ IceTipPullModel >> commitModels [
 { #category : 'actions' }
 IceTipPullModel >> newPullAction [
 
-	^ IceTipStandardAction new 
-		repository: self entity;
-		message: ('Pulling from {1}' format: { self remote name });
-		onSuccessRepositoryModified;
-		action: [ self entity pullFrom: self remote ];
-		yourself
+	^ IceTipBackgroundAction new
+		  repository: self entity;
+		  title: 'Pulling';
+		  operation: #pull;
+		  action: [ self entity pullFrom: self remote ];
+		  yourself
 ]

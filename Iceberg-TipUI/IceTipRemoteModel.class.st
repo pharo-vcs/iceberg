@@ -54,11 +54,11 @@ IceTipRemoteModel >> newDeleteAction [
 
 { #category : 'actions' }
 IceTipRemoteModel >> newFetchAction [
-	
-	^ IceTipStandardAction new
-		repository: self repositoryModel entity;
-		message: ('Fetching remote {1}' format: { self name });
-		onSuccessRepositoryModified;
-		action: [ self entity fetch ];
-		yourself
+
+	^ IceTipBackgroundAction new
+		  repository: self repositoryModel entity;
+		  title: 'Fetching';
+		  operation: 'fetch ' , self name;
+		  action: [ self entity fetch ];
+		  yourself
 ]
