@@ -48,6 +48,11 @@ IceLibgitTonelFileUtils class >> pathNameDelimiter [
 	^ $/
 ]
 
+{ #category : 'accessing' }
+IceLibgitTonelFileUtils class >> pathNameDelimiterString [
+	^ '/'
+]
+
 { #category : 'utilities' }
 IceLibgitTonelFileUtils class >> readStreamFor: fileName in: tree do: aBlock [
 	(tree entryByPath: fileName) readStreamDo: aBlock

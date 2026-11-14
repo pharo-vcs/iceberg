@@ -16,7 +16,7 @@ IceRepository >> inspectorItems: aBuilder [
 		addColumn: (SpStringTableColumn new
 			title: 'Status';
 			width: 400;
-			evaluated: [ :each | each asString ];
+			evaluated: [ :each | each displayString ];
 			yourself);
 		yourself.
 ]
