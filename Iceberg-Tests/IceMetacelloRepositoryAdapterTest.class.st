@@ -88,3 +88,9 @@ IceMetacelloRepositoryAdapterTest >> testReadsABaselineAtATag [
 
 	self assert: (adapter baselineOf: 'Foo' atVersion: 'v1.0.0') notNil
 ]
+
+{ #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testReadsTheBaselineAtTheRefItsDescriptionNames [
+
+	self assert: (adapter baselineOf: 'Foo') notNil
+]
