@@ -44,6 +44,13 @@ IceMetacelloRepositoryAdapterTest >> testAnswersNilForABaselineTheCommitDoesNotH
 ]
 
 { #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testLivesWhereTheDescriptionThatMadeItSays [
+
+	adapter type: (IceMetacelloRepositoryType for: 'github://owner/name:v1.0.0/src').
+	self assert: adapter projectUrl equals: 'github://owner/name'
+]
+
+{ #category : 'tests' }
 IceMetacelloRepositoryAdapterTest >> testReadsABaselineAtABranch [
 
 	self assert: (adapter baselineOf: 'Foo' atVersion: fixture repository branchName) notNil

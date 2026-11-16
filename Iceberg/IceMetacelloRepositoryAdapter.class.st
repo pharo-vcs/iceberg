@@ -6,7 +6,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'repository',
-		'projectVersion'
+		'projectVersion',
+		'type'
 	],
 	#category : 'Iceberg-Adapters',
 	#package : 'Iceberg',
@@ -190,6 +191,13 @@ IceMetacelloRepositoryAdapter >> projectPath [
 	^ self repository origin projectPath
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> projectUrl [
+	"Where my project lives for Metacello, without the version my description names"
+
+	^ type projectUrl
+]
+
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectVersion [
 	^ projectVersion
@@ -225,6 +233,13 @@ IceMetacelloRepositoryAdapter >> repositoryDescription [
 { #category : 'querying' }
 IceMetacelloRepositoryAdapter >> repositoryVersionString [
 	^ self repository workingCopy referenceCommit id
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> type: anIceMetacelloRepositoryType [
+	"The repository type that made me, which holds my description"
+
+	type := anIceMetacelloRepositoryType
 ]
 
 { #category : 'compatibility' }
