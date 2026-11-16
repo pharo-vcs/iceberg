@@ -89,9 +89,11 @@ IceProviderRepositoryType >> projectName [
 
 { #category : 'metacello' }
 IceProviderRepositoryType >> projectUrl [
-	"type://owner/name: what the Monticello repository of my description answers"
+	"type://owner/name: the Monticello repository of my description, without its version and path"
 
-	^ (self mcRepositoryClass location: self location version: nil) projectUrl
+	| repository |
+	repository := self mcRepositoryClass location: self location version: nil.
+	^ repository class basicDescription , '://' , repository projectPath
 ]
 
 { #category : 'accessing' }
