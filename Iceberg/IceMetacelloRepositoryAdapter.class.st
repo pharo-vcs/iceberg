@@ -94,6 +94,20 @@ IceMetacelloRepositoryAdapter >> fetchPackageNamed: aString [
 			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ]
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormat [
+	"The format my packages are written in at the ref my description names"
+
+	^ self fileFormatAt: projectVersion
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormatAt: aRefName [
+	"The format my packages are written in at aRefName (see commitAt:), as its .properties names it: #tonel or #filetree"
+
+	^ (self commitAt: aRefName) properties fileFormat id
+]
+
 { #category : 'initialization' }
 IceMetacelloRepositoryAdapter >> flushForScriptGet [
 	"do nothing"

@@ -44,6 +44,12 @@ IceMetacelloRepositoryAdapterTest >> testAnswersNilForABaselineTheCommitDoesNotH
 ]
 
 { #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testAnswersTheFileFormatAtARef [
+
+	self assert: (adapter fileFormatAt: 'v1.0.0') equals: fixture repository properties fileFormat id
+]
+
+{ #category : 'tests' }
 IceMetacelloRepositoryAdapterTest >> testLivesWhereTheDescriptionThatMadeItSays [
 
 	adapter type: (IceMetacelloRepositoryType for: 'github://owner/name:v1.0.0/src').
