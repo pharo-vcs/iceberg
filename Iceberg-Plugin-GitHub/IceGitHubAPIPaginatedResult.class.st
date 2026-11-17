@@ -52,13 +52,11 @@ IceGitHubAPIPaginatedResult >> hasNext [
 IceGitHubAPIPaginatedResult >> next [
 
 	nextPage ifNil: [ nextPage := 1 ].
-	^ [ 
-		| aUrl |
-		aUrl := self request asUrl ? (#page -> nextPage asString).
-		result := self api getRaw: aUrl asString.
-		STON fromString: result contents
-
-		] ensure: [ nextPage := nextPage + 1 ]
+	^ [
+		  | aUrl |
+		  aUrl := self request asZnUrl ? (#page -> nextPage asString).
+		  result := self api getRaw: aUrl asString.
+		  STON fromString: result contents ] ensure: [ nextPage := nextPage + 1 ]
 ]
 
 { #category : 'private' }
