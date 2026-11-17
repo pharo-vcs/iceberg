@@ -2,34 +2,31 @@ Class {
 	#name : 'IceGitCheckoutProgress',
 	#superclass : 'LGitCheckoutProgressCallback',
 	#instVars : [
-		'job'
+		'progress'
 	],
 	#category : 'Iceberg-Progress',
 	#package : 'Iceberg',
 	#tag : 'Progress'
 }
 
-{ #category : 'accessing' }
+{ #category : 'private' }
 IceGitCheckoutProgress >> block [
-	^ [ :path :completed :total :payload | 
-		job ensureStarted.
-		
-		job min: 0.
-		job max: total.
-		job current: completed.
-		job title: ('Checking out... ({1}/{2})' format: { completed. total}).
-		job changed
-	]
+
+	^ [ :path :completed :total :payload |
+		  progress
+			  reportTitle: [
+					  'Checking out... ({1}/{2})' format: {
+							  completed.
+							  total } ]
+			  current: completed
+			  max: total ]
 ]
 
 { #category : 'initialization' }
 IceGitCheckoutProgress >> initialize [
+
 	super initialize.
-	
-	job := IceExternalJob new
-		title: 'Checking out...';
-		yourself.
-		
+	progress := IceProgress new.
 	self initializeBlock
 ]
 

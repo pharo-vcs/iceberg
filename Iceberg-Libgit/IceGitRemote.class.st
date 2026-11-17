@@ -44,6 +44,18 @@ IceGitRemote >> = another [
 		and: [ self referencesSameRemoteLocationAs: another ]
 ]
 
+{ #category : 'fetching' }
+IceGitRemote >> basicFetch [
+
+	IceGitOperationSettings fetchOperationClass new
+		repository: localRepository;
+		remote: self;
+		execute.
+
+	"Call post fetch to fix unknown commits"
+	localRepository postFetch
+]
+
 { #category : 'branches' }
 IceGitRemote >> branches [
 	
@@ -69,13 +81,10 @@ IceGitRemote >> doFetchWithRefSpec: refSpec [
 { #category : 'fetching' }
 IceGitRemote >> fetch [
 
-	IceGitOperationSettings fetchOperationClass new
-		repository: localRepository;
-		remote: self;
-		execute. 
-
-	"Call post fetch to fix unknown commits"
-	localRepository postFetch
+	IceTaskList default execute:
+		((IceTask repository: localRepository operation: 'fetch ' , self name action: [ :task | self basicFetch ])
+			 title: 'Fetching';
+			 yourself)
 ]
 
 { #category : 'fetching' }
