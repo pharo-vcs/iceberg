@@ -6,7 +6,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'repository',
-		'projectVersion'
+		'projectVersion',
+		'type'
 	],
 	#category : 'Iceberg-Adapters',
 	#package : 'Iceberg',
@@ -37,6 +38,12 @@ IceMetacelloRepositoryAdapter >> = other [
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [ 
 	"Do nothing, we do not need to register the repository into the monticello registry"
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName [
+	"The baseline as my description says: at the ref it names, or as the clone is when it names none"
+	^ self baselineOf: aProjectName atVersion: projectVersion
 ]
 
 { #category : 'accessing' }
@@ -85,6 +92,20 @@ IceMetacelloRepositoryAdapter >> fetchPackageNamed: aString [
 	self repository head description = projectVersion ifFalse: [
 		(self repository commitishNamed: projectVersion)
 			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ]
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormat [
+	"The format my packages are written in at the ref my description names"
+
+	^ self fileFormatAt: projectVersion
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormatAt: aRefName [
+	"The format my packages are written in at aRefName (see commitAt:), as its .properties names it: #tonel or #filetree"
+
+	^ (self commitAt: aRefName) properties fileFormat id
 ]
 
 { #category : 'initialization' }
@@ -184,6 +205,13 @@ IceMetacelloRepositoryAdapter >> projectPath [
 	^ self repository origin projectPath
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> projectUrl [
+	"Where my project lives for Metacello, without the version my description names"
+
+	^ type projectUrl
+]
+
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectVersion [
 	^ projectVersion
@@ -219,6 +247,13 @@ IceMetacelloRepositoryAdapter >> repositoryDescription [
 { #category : 'querying' }
 IceMetacelloRepositoryAdapter >> repositoryVersionString [
 	^ self repository workingCopy referenceCommit id
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> type: anIceMetacelloRepositoryType [
+	"The repository type that made me, which holds my description"
+
+	type := anIceMetacelloRepositoryType
 ]
 
 { #category : 'compatibility' }

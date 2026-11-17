@@ -44,6 +44,19 @@ IceMetacelloRepositoryAdapterTest >> testAnswersNilForABaselineTheCommitDoesNotH
 ]
 
 { #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testAnswersTheFileFormatAtARef [
+
+	self assert: (adapter fileFormatAt: 'v1.0.0') equals: fixture repository properties fileFormat id
+]
+
+{ #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testLivesWhereTheDescriptionThatMadeItSays [
+
+	adapter type: (IceMetacelloRepositoryType for: 'github://owner/name:v1.0.0/src').
+	self assert: adapter projectUrl equals: 'github://owner/name'
+]
+
+{ #category : 'tests' }
 IceMetacelloRepositoryAdapterTest >> testReadsABaselineAtABranch [
 
 	self assert: (adapter baselineOf: 'Foo' atVersion: fixture repository branchName) notNil
@@ -80,4 +93,10 @@ IceMetacelloRepositoryAdapterTest >> testReadsABaselineAtACommit [
 IceMetacelloRepositoryAdapterTest >> testReadsABaselineAtATag [
 
 	self assert: (adapter baselineOf: 'Foo' atVersion: 'v1.0.0') notNil
+]
+
+{ #category : 'tests' }
+IceMetacelloRepositoryAdapterTest >> testReadsTheBaselineAtTheRefItsDescriptionNames [
+
+	self assert: (adapter baselineOf: 'Foo') notNil
 ]
