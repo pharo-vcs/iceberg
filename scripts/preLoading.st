@@ -28,6 +28,7 @@ MetacelloPlatform select.
     'Iceberg-Plugin-Pharo' 
     'Iceberg-Plugin-Metacello' 
     'Iceberg-Plugin-GitHub'
+    'Iceberg-Playground-Plugin-Gist'
     'Iceberg-Plugin-Migration'
     'Iceberg-Plugin' 
     'Iceberg-Metacello-Integration' 
