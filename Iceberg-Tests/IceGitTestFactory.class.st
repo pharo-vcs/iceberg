@@ -68,7 +68,7 @@ IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubd
 { #category : 'initialization' }
 IceGitTestFactory >> newRemoteNamed: aName toRepository: aRepository [
 
-	^ IceGitRemote name: aName url: aRepository location resolve asUrl asString
+	^ IceGitRemote name: aName url: aRepository location resolve asZnUrl asString
 ]
 
 { #category : 'initialization' }
@@ -94,8 +94,8 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 
 { #category : 'initialization' }
 IceGitTestFactory >> remoteFileUrl [
-	
-	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
+
+	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asZnUrl
 ]
 
 { #category : 'initialization' }
@@ -103,11 +103,10 @@ IceGitTestFactory >> tearDownWithRepository: aRepository [
 
 	aRepository ifNotNil: [
 		aRepository free.
-		Smalltalk garbageCollect.
-		[ aRepository location ifNotNil: #ensureDeleteAll ]
+		[ aRepository location ifNotNil: [ :location | location ensureDeleteAll ] ]
 			on: CannotDeleteFileException
 			do: [ "On windows it is possible we need to finalize everything before deleting the files. We do not do it directly to avoid to lose too much speed"
 				Smalltalk garbageCollect.
-				aRepository location ifNotNil: #ensureDeleteAll ] ].
+				aRepository location ifNotNil: [ :location | location ensureDeleteAll ] ] ].
 	self remoteFileUrl asFileReference ensureDeleteAll
 ]
