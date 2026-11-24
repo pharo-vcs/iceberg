@@ -103,11 +103,10 @@ IceGitTestFactory >> tearDownWithRepository: aRepository [
 
 	aRepository ifNotNil: [
 		aRepository free.
-		Smalltalk garbageCollect.
-		[ aRepository location ifNotNil: #ensureDeleteAll ]
+		[ aRepository location ifNotNil: [ :location | location ensureDeleteAll ] ]
 			on: CannotDeleteFileException
 			do: [ "On windows it is possible we need to finalize everything before deleting the files. We do not do it directly to avoid to lose too much speed"
 				Smalltalk garbageCollect.
-				aRepository location ifNotNil: #ensureDeleteAll ] ].
+				aRepository location ifNotNil: [ :location | location ensureDeleteAll ] ] ].
 	self remoteFileUrl asFileReference ensureDeleteAll
 ]
