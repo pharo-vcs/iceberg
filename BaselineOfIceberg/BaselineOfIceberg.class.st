@@ -103,8 +103,6 @@ BaselineOfIceberg >> postLoad [
 { #category : 'script' }
 BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	| repository |
-	self resetKMRepository.
-
 	"Getting the repository from metacello..."
 	repository :=  aSpec repositorySpecs first createRepository.
 	
