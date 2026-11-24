@@ -68,7 +68,7 @@ IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubd
 { #category : 'initialization' }
 IceGitTestFactory >> newRemoteNamed: aName toRepository: aRepository [
 
-	^ IceGitRemote name: aName url: aRepository location resolve asUrl asString
+	^ IceGitRemote name: aName url: aRepository location resolve asZnUrl asString
 ]
 
 { #category : 'initialization' }
@@ -94,8 +94,8 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 
 { #category : 'initialization' }
 IceGitTestFactory >> remoteFileUrl [
-	
-	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asUrl.
+
+	^ (IceLibgitRepository repositoriesLocation / 'remote') resolve asZnUrl
 ]
 
 { #category : 'initialization' }
