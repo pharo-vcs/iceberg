@@ -1,6 +1,3 @@
-"Shutdown Libgit"
-(Smalltalk classNamed: #LGitLibrary) shutDown: true.
-
 "Unload only the baselines, so Metacello reloads the packages from the repository"
 #(
 	'BaselineOfLibGit'
