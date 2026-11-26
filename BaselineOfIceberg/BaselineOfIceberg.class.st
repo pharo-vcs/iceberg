@@ -11,13 +11,13 @@ Class {
 { #category : 'baseline' }
 BaselineOfIceberg >> baseline: spec [
 	<baseline>
-	
-	spec for: #common do: [ 
+
+	spec for: #common do: [
 		spec postLoadDoIt: #postLoadWithDirective:projectSpec:.
-		
+
 		self tonel: spec.
 		self libgit: spec.
-		
+
 		spec
 			"iceberg"
 			package: 'Iceberg';
@@ -42,27 +42,32 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
 			"groups"
 			group: 'default' with: #(
-				minimal 
-				'Iceberg-Metacello-Integration' 
+				minimal
+				'Iceberg-Metacello-Integration'
 				'Iceberg-TipUI'
 				'Iceberg-TipUI-SnapshotBrowser'
-				'Iceberg-Plugin' 
+				'Iceberg-Plugin'
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
 				'Iceberg-Plugin-Pharo'
 				'Iceberg-Plugin-Migration');
 			group: 'minimal' with: #(
 				'Iceberg'
-				'Iceberg-Libgit' 
+				'Iceberg-Libgit'
 				'Iceberg-Libgit-Tonel'
 				'Iceberg-Libgit-Filetree');
-			group: 'allTests' with: #(
-				'Iceberg-Tests' 
-				'Iceberg-Tests-MetacelloIntegration'
-				'LibGit-Tests' 
+			"shortTests are quick to load and run. longTests install baselines from GitHub and take most of the test time"
+			group: 'shortTests' with: #(
+				'Iceberg-Tests'
 				'Iceberg-UI-Tests'
 				'Iceberg-TipUI-SnapshotBrowser-Tests'
 				'Iceberg-Plugin-Migration-Tests' );
+			group: 'longTests' with: #(
+				'Iceberg-Tests-MetacelloIntegration' );
+			group: 'allTests' with: #(
+				shortTests
+				longTests
+				'LibGit-Tests' );
 			group: 'development' with: #(default allTests) ].
 
 ]
@@ -98,8 +103,6 @@ BaselineOfIceberg >> postLoad [
 { #category : 'script' }
 BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	| repository |
-	self resetKMRepository.
-
 	"Getting the repository from metacello..."
 	repository :=  aSpec repositorySpecs first createRepository.
 	
@@ -132,5 +135,5 @@ BaselineOfIceberg >> resetKMRepository [
 BaselineOfIceberg >> tonel: spec [
 	spec
 		baseline: 'Tonel' 
-		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo14' ]
+		with: [ spec repository: 'github://pharo-vcs/tonel:Pharo15' ]
 ]

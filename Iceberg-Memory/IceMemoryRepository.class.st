@@ -158,20 +158,21 @@ IceMemoryRepository >> commitPackage: aMCPackage author: aString ancestors: ance
 ]
 
 { #category : 'private-commits' }
-IceMemoryRepository >> commitPackage: aMCPackage author: authorString message: messageString ancestors: ancestors dependencies: dependencies inInternalRepository: aRepository [ 
-	
-	| newCommit |
+IceMemoryRepository >> commitPackage: aMCPackage author: authorString message: messageString ancestors: ancestors dependencies: dependencies inInternalRepository: aRepository [
+
+	| newCommit timeStamp |
+	timeStamp := self timeStampAfter: ancestors.
 	newCommit := MCVersion new
-		setPackage: aMCPackage
-		info: (MCVersionInfo
-			name: aMCPackage name
-			id: UUID new
-			message: messageString
-			date: Date today
-			time: Time now
-			ancestors: ancestors)
-		snapshot: aMCPackage snapshot
-		dependencies: dependencies.
+		             setPackage: aMCPackage
+		             info: (MCVersionInfo
+			              name: aMCPackage name
+			              id: UUID new
+			              message: messageString
+			              date: timeStamp asDate
+			              time: timeStamp asTime
+			              ancestors: ancestors)
+		             snapshot: aMCPackage snapshot
+		             dependencies: dependencies.
 	aRepository storeVersion: newCommit.
 	^ newCommit
 ]
@@ -482,4 +483,11 @@ IceMemoryRepository >> tags [
 IceMemoryRepository >> tagsAt: aString put: anIceMemoryCommit [ 
 	
 	tagDictionary at: aString put: anIceMemoryCommit
+]
+
+{ #category : 'private-commits' }
+IceMemoryRepository >> timeStampAfter: ancestors [
+	"Branch heads are the versions with the latest timestamp, so a commit must be newer than its ancestors even when the clock did not move since they were created."
+
+	^ ancestors inject: DateAndTime now into: [ :latest :ancestor | latest max: ancestor timeStamp + (Duration nanoSeconds: 1000) ]
 ]
