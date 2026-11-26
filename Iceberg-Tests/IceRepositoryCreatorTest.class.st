@@ -13,11 +13,13 @@ IceRepositoryCreatorTest >> repositoryLocation [
 ]
 
 { #category : 'running' }
-IceRepositoryCreatorTest >> tearDown [ 
+IceRepositoryCreatorTest >> tearDown [
+	"On Windows, the files of the cloned repository stay open until it is finalized, so we collect garbage only when the deletion fails."
 
-	self repositoryLocation ensureDeleteAll.
-	
-	super tearDown.
+	[ self repositoryLocation ensureDeleteAll ] on: CannotDeleteFileException do: [
+		Smalltalk garbageCollect.
+		self repositoryLocation ensureDeleteAll ].
+	super tearDown
 ]
 
 { #category : 'tests' }
