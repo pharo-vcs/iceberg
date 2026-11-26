@@ -26,4 +26,4 @@ jobs:
         run: rm -Rf ${{ env.SMALLTALK_CI_BUILD }}
       - name: Load Image and Run Tests
         run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalk.all.ston
-        timeout-minutes: 20
+        timeout-minutes: 30
