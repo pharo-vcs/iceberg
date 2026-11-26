@@ -10,8 +10,8 @@ Class {
 
 { #category : 'baselines' }
 BaselineOfIceberg >> baseline: spec [
-
 	<baseline>
+
 	spec for: #common do: [
 		spec postLoadDoIt: #postLoadWithDirective:projectSpec:.
 
@@ -19,34 +19,58 @@ BaselineOfIceberg >> baseline: spec [
 		self libgit: spec.
 
 		spec
+			"iceberg"
 			package: 'Iceberg';
-			package: 'Iceberg-Plugin' with: [ spec requires: #( 'Iceberg' 'Iceberg-TipUI' ) ];
-			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #( 'Iceberg-Plugin' ) ];
-			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #( 'Iceberg-Plugin' ) ];
-			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #( 'Iceberg-Plugin' ) ];
-			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #( 'Iceberg-Plugin' ) ];
-			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #( 'Iceberg' ) ];
-			package: 'Iceberg-TipUI' with: [ spec requires: #( 'Iceberg' ) ];
+			package: 'Iceberg-Plugin' with: [ spec requires: #('Iceberg' 'Iceberg-TipUI') ];
+			package: 'Iceberg-Plugin-Metacello' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-GitHub' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Pharo' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Plugin-Migration' with: [ spec requires: #('Iceberg-Plugin') ];
+			package: 'Iceberg-Metacello-Integration' with: [ spec requires: #('Iceberg')];
+			package: 'Iceberg-TipUI' with: [ spec requires: #('Iceberg') ];
 			package: 'Iceberg-TipUI-SnapshotBrowser';
-			package: 'Iceberg-Memory' with: [ spec requires: #( 'Iceberg' ) ];
-			"tests"package: 'Iceberg-Tests' with: [ spec requires: #( 'Iceberg' 'Iceberg-Memory' ) ];
-			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #( 'Iceberg-Tests' ) ];
-			package: 'Iceberg-UI-Tests' with: [ spec requires: #( 'Iceberg-TipUI' 'Iceberg-Tests' ) ];
+			package: 'Iceberg-Memory' with: [ spec requires: #('Iceberg') ];
+			"tests"
+			package: 'Iceberg-Tests' with: [ spec requires: #('Iceberg' 'Iceberg-Memory') ];
+			package: 'Iceberg-Tests-MetacelloIntegration' with: [ spec requires: #('Iceberg-Tests') ];
+			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
 			package: 'Iceberg-TipUI-SnapshotBrowser-Tests' with: [ spec requires: #( 'Iceberg-TipUI-SnapshotBrowser' ) ];
-			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #( 'Iceberg-Plugin-Migration' 'Iceberg-Tests' ) ];
-			"libgit"package: 'Iceberg-Libgit' with: [ spec requires: #( 'Iceberg' 'LibGit' ) ];
-			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #( 'Iceberg' 'Iceberg-Libgit' ) ];
-			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #( 'Iceberg' 'Iceberg-Libgit' 'Tonel' ) ];
-			"groups"group: 'default'
-			with: #( minimal 'Iceberg-Metacello-Integration' 'Iceberg-TipUI' 'Iceberg-TipUI-SnapshotBrowser' 'Iceberg-Plugin' 'Iceberg-Plugin-Metacello' 'Iceberg-Plugin-GitHub' 'Iceberg-Plugin-Pharo'
-				   'Iceberg-Plugin-Migration' );
-			group: 'minimal' with: #( 'Iceberg' 'Iceberg-Libgit' 'Iceberg-Libgit-Tonel' 'Iceberg-Libgit-Filetree' );
-			"shortTests are quick to load and run. longTests install baselines from GitHub and take most of the test time"group: 'shortTests'
-			with: #( 'Iceberg-Tests' 'Iceberg-UI-Tests' 'Iceberg-TipUI-SnapshotBrowser-Tests' 'Iceberg-Plugin-Migration-Tests' 'LibGit-Tests' );
-			group: 'longTests' with: #( 'Iceberg-Tests-MetacelloIntegration' );
-			group: 'allTests' with: #( shortTests longTests );
-			group: 'development' with: #( default allTests )
-		"iceberg" ]
+			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
+			package: 'Iceberg-ArchitecturalRules' with: [ spec requires: #('Iceberg-Libgit') ];
+			"libgit"
+			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
+			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
+			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
+			"groups"
+			group: 'default' with: #(
+				minimal
+				'Iceberg-Metacello-Integration'
+				'Iceberg-TipUI'
+				'Iceberg-TipUI-SnapshotBrowser'
+				'Iceberg-Plugin'
+				'Iceberg-Plugin-Metacello'
+				'Iceberg-Plugin-GitHub'
+				'Iceberg-Plugin-Pharo'
+				'Iceberg-Plugin-Migration');
+			group: 'minimal' with: #(
+				'Iceberg'
+				'Iceberg-Libgit'
+				'Iceberg-Libgit-Tonel'
+				'Iceberg-Libgit-Filetree');
+			"shortTests are quick to load and run. longTests install baselines from GitHub and take most of the test time"
+			group: 'shortTests' with: #(
+				'Iceberg-Tests'
+				'Iceberg-UI-Tests'
+				'Iceberg-TipUI-SnapshotBrowser-Tests'
+				'Iceberg-Plugin-Migration-Tests'
+				'Iceberg-ArchitecturalRules'
+				'LibGit-Tests' );
+			group: 'longTests' with: #(
+				'Iceberg-Tests-MetacelloIntegration' );
+			group: 'allTests' with: #(
+				shortTests
+				longTests );
+			group: 'development' with: #(default allTests) ].
 ]
 
 { #category : 'accessing' }
