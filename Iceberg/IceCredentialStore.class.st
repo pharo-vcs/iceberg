@@ -39,23 +39,21 @@ IceCredentialStore class >> defaultCredentialsStoreFile [
 
 { #category : 'accessing' }
 IceCredentialStore class >> settingsOn: aBuilder [
+
 	<systemsettings>
-		
 	(aBuilder group: #PlainTextCredentials)
-		parent: #Iceberg;
+		parentName: #Iceberg;
 		name: #icebergCredentials;
 		noOrdering;
 		target: self current;
 		label: 'Credentials';
 		with: [
-			(aBuilder setting: #storeFile)
-				target: self;
-				type: #FilePathEncoder;
-				default: self defaultCredentialsStoreFile;
-				label: 'Location of credentials store';
-				description: 'The location of the credential store. The password are stored in plain... yet'.
-		].	
-
+				(aBuilder setting: #storeFile)
+					target: self;
+					type: #FilePathEncoder;
+					defaultValue: self defaultCredentialsStoreFile;
+					label: 'Location of credentials store';
+					description: 'The location of the credential store. The password are stored in plain... yet' ]
 ]
 
 { #category : 'accessing' }

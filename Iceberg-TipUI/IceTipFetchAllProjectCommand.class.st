@@ -36,7 +36,7 @@ IceTipFetchAllProjectCommand >> execute [
 	
 	repositories := IceRepository registry.
 	self application
-		informUserDuring: [ :bar | 
+	 	informUser: 'Fetching all Repositories' during: [ :bar | 
 			bar max: repositories size.
 			bar value: 1.
 			repositories
@@ -59,9 +59,8 @@ IceTipFetchAllProjectCommand >> iconName [
 IceTipFetchAllProjectCommand >> isConfirmed [
 
 	^ self application newConfirm
-		  	title: 'Proceed?';
-			label: 
-		  'This operation can take some times depending on the size and number of your repositories. Are you sure you want to fetch all repositories?';
-			openModal 
-		 
+		  title: 'Proceed?';
+		  message:
+			  'This operation can take some times depending on the size and number of your repositories. Are you sure you want to fetch all repositories?';
+		  openModal
 ]

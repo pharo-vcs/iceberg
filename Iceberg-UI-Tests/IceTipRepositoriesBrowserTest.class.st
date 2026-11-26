@@ -301,5 +301,8 @@ IceTipRepositoriesBrowserTest >> testSortingOriginalByStatusDoesNotFail [
 { #category : 'tests - table' }
 IceTipRepositoriesBrowserTest >> testTableHasTheCorrectColumns [
 
-	self assertCollection: (presenter projectsPanelRepositoryList columns collect: #title) hasSameElements:  { 'Repositories'. 'Status'. 'Branch'}
+	| titles |
+	titles := presenter projectsPanelRepositoryList columns collect: #title.
+	self assert: titles size equals: 4.
+	self assertCollection: titles hasSameElements: { 'Repositories'. 'Status'. 'Branch'. 'Hash' }
 ]

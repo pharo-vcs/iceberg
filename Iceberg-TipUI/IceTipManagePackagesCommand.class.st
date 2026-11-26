@@ -31,7 +31,7 @@ IceTipManagePackagesCommand class >> settingsOn: aBuilder [
 
 	<systemsettings>
 	(aBuilder setting: #shouldGroupRepositories)
-		parent: #Iceberg;
+		parentName: #Iceberg;
 		target: self;
 		label: 'Group repositories in a group window';
 		description: 'If this settings get enabled, the repositories you will open will be grouped in the same window.'

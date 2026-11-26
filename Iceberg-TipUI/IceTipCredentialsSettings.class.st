@@ -27,7 +27,7 @@ IceTipCredentialsSettings class >> settingsOn: aBuilder [
 	<systemsettings>
 
 	(aBuilder button: #editButtonAction)
-		parent: #icebergCredentials;
+		parentName: #icebergCredentials;
 		noOrdering;
 		target: self;
 		label: 'Current list of credentials';

@@ -56,7 +56,14 @@ IceGitLocalRepositoryType >> mcRepository [
 				createRepository)
 				register ].
 			
-	^ repository metacelloAdapter: repository head description.
+	^ repository metacelloAdapter: repository head description type: self
+]
+
+{ #category : 'metacello' }
+IceGitLocalRepositoryType >> projectUrl [
+	"A clone of this machine is named by its whole description"
+
+	^ self location
 ]
 
 { #category : 'private' }

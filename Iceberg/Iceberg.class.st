@@ -143,12 +143,13 @@ Iceberg class >> initialize [
 
 { #category : 'class initialization' }
 Iceberg class >> initializeSettings [
-	Smalltalk 
-		at: #SystemSettingsPersistence 
-		ifPresent: [ :class | | tree nodes | 
-			tree := class default settingTree.
-			nodes := tree deeplySelect: [ :node | node receiverPackage name beginsWith: 'Iceberg' ].
-			class updateSettingNodes: nodes ]
+	"Load the stored values of the settings declared in Iceberg"
+
+	Smalltalk
+		at: #SettingsManager
+		ifPresent: [ :class | | manager |
+			manager := class forSystemSettings.
+			manager updateSettings: (self settingsIn: manager) ]
 ]
 
 { #category : 'accessing' }
@@ -189,25 +190,36 @@ Iceberg class >> repositoryForPackage: aPackage [
 	self error: ('Could not find a git repository for {1}' format: { aPackage name })
 ]
 
+{ #category : 'class initialization' }
+Iceberg class >> settingsIn: aSettingsManager [
+	"Answer the settings of aSettingsManager declared in Iceberg packages"
+
+	^ aSettingsManager settings select: [ :each |
+		  each declaration methodClass package name beginsWith: 'Iceberg' ]
+]
+
 { #category : 'settings' }
 Iceberg class >> settingsOn: aBuilder [
+
 	<systemsettings>
 	(aBuilder group: #Iceberg)
-		parent: #SCM;
-		with: [ (aBuilder setting: #enableMetacelloIntegration)
-				target: self;
-				order: 0.1;
-				default: true;
-				label: 'Enable Metacello integration';
-				description: 'If selected, Metacello github:// repositories will be loaded using iceberg';
-				with: [ 
-					(aBuilder pickOne: #remoteTypeSelector)
-						label: 'Remote type';
-						description: 'When creating an Iceberg repository out of a github:// URL choose whether you want to user an SCP URL (i.e. with the form ''git@github.com:<username>/<project>.git'') or an HTTPS URL (i.e. with the form ''https://github.com/<username>/<project>.git''';
-						domainValues:
-							{('SCP (git@github.com:<username>/<project>.git)' -> #scpUrl).
-							('HTTPS (https://github.com/<username>/<project>.git)' -> #httpsUrl).
-							('HTTP (http://github.com/<username>/<project>.git)' -> #httpUrl)} ] ]
+		parentName: #SCM;
+		with: [
+				(aBuilder group: #enableMetacelloIntegration)
+					target: self;
+					order: 0.1;
+					isActive: true;
+					label: 'Enable Metacello integration';
+					description: 'If selected, Metacello github:// repositories will be loaded using iceberg';
+					with: [
+							(aBuilder pickOne: #remoteTypeSelector)
+								label: 'Remote type';
+								description:
+									'When creating an Iceberg repository out of a github:// URL choose whether you want to user an SCP URL (i.e. with the form ''git@github.com:<username>/<project>.git'') or an HTTPS URL (i.e. with the form ''https://github.com/<username>/<project>.git''';
+								domainValues: {
+										('SCP (git@github.com:<username>/<project>.git)' -> #scpUrl).
+										('HTTPS (https://github.com/<username>/<project>.git)' -> #httpsUrl).
+										('HTTP (http://github.com/<username>/<project>.git)' -> #httpUrl) } ] ]
 ]
 
 { #category : 'settings' }

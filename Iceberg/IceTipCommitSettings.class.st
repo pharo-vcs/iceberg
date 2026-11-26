@@ -70,7 +70,7 @@ IceTipCommitSettings class >> settingsOn: aBuilder [
 
 	<systemsettings>
 	(aBuilder group: #commitPreferences)
-		parent: #Iceberg;
+		parentName: #Iceberg;
 		noOrdering;
 		target: self;
 		label: 'Commit action settings';
@@ -79,21 +79,21 @@ IceTipCommitSettings class >> settingsOn: aBuilder [
 			(aBuilder setting: #critiquesOnCommit)
 				noOrdering;
 				target: self;
-				default: self critiquesOnCommitDefaultValue;
+				defaultValue: self critiquesOnCommitDefaultValue;
 				label: 'Run Code Critiques when committing';
 				description:
 					'Check if you want to run the code critiques on the changes each time you commit them'.
 			(aBuilder setting: #saveImageOnCommit)
 				noOrdering;
 				target: self;
-				default: self saveImageOnCommitDefaultValue;
+				defaultValue: self saveImageOnCommitDefaultValue;
 				label: 'Save the image when committing';
 				description:
 					'Check if you want to save the image each time you commit something'.
 			(aBuilder setting: #pushOnCommit)
 				noOrdering;
 				target: self;
-				default: self pushOnCommitDefaultValue;
+				defaultValue: self pushOnCommitDefaultValue;
 				label: 'Push when committing';
 				description:
 					'Check if you want to push your changes each time you commit something' ]
