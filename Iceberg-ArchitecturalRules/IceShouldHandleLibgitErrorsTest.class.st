@@ -11,12 +11,13 @@ IceShouldHandleLibgitErrorsTest class >> libgitRepositoryHandleAccessors [
 ]
 
 { #category : 'tests' }
-IceShouldHandleLibgitErrorsTest >> check: aRule on: aMethod [
+IceShouldHandleLibgitErrorsTest >> check: aRuleClass on: aMethod [
 
-	| lintRule |
-	lintRule := aRule asRBRule.
-	lintRule checkMethod: aMethod.
-	^ lintRule result smallLintCritics
+	| rule critiques |
+	rule := aRuleClass new.
+	critiques := OrderedCollection new.
+	aMethod ast withAllChildren do: [ :node | rule check: node forCritiquesDo: [ :critique | critiques add: critique ] ].
+	^ critiques
 ]
 
 { #category : 'tests' }
