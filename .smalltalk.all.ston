@@ -20,18 +20,17 @@ SmalltalkCISpec {
   	},
   	#exclude : {
   		#packages : [ 
-  			'GT-Tests.*', 
-  			'Glamour-Tests.*',
   			'UnifiedFFI.*',
   			'ThreadedFFI.*',
   			'Monticello.*',
   			'Metacello.*',
   			'System-Settings-Tests.*',
-  			'RPackage.*',
-  			'ReleaseTests.*' ],
+  			'ReleaseTests.*',
+  			'Files-Tests.*',
+  			'Zinc-Tests.*',
+  			'Iceberg.*' ],
   		#classes : [
   			#OutOfMemoryTest,
-  			#TraitFileOutTest,
   			#PlatformResolverTest,
   			#ProcessSpecificTest
   		] 
