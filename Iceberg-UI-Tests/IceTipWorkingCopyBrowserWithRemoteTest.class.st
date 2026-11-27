@@ -17,12 +17,10 @@ IceTipWorkingCopyBrowserWithRemoteTest >> newFixture [
 
 { #category : 'running' }
 IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them before super setUp because the failure comes from the fixture."
 
-	super setUp.
-
-	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394"
 	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
-
+	super setUp.
 	"The current fixture has three repositories.
 	remoteRepository has remote pushRepository.
 	repository has remote pushRepository.

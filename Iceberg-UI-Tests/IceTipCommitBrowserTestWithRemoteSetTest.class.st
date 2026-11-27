@@ -13,10 +13,10 @@ IceTipCommitBrowserTestWithRemoteSetTest >> newFixture [
 
 { #category : 'running' }
 IceTipCommitBrowserTestWithRemoteSetTest >> setUp [
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them before super setUp because the failure comes from the fixture."
 
-	super setUp.
-	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394"
-	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ]
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
+	super setUp
 ]
 
 { #category : 'tests' }
