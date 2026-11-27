@@ -11,15 +11,15 @@ Class {
 
 { #category : 'factory' }
 IceTipWorkingCopyBrowserWithRemoteTest >> newFixture [
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them here because the failure comes from the fixture, and newFixture runs before it is created."
 
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
 	^ IceClonedFromRemoteFixture inGit
 ]
 
 { #category : 'running' }
 IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
-	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them before super setUp because the failure comes from the fixture."
 
-	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
 	super setUp.
 	"The current fixture has three repositories.
 	remoteRepository has remote pushRepository.
@@ -27,7 +27,7 @@ IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
 	pushRepository is a bare repository so we cannot commit to it.
 	Commit in RemoteRepository, then push
 	  => this will make that commit available for fetching and pulling from repository"
-
+	
 	remoteWorkingCopy := self remoteRepository workingCopy.
 	remoteWorkingCopy addPackageNamed: self packageName2.
 	remoteWorkingCopy commitWithMessage: 'Adding Empty Package'.

@@ -8,15 +8,10 @@ Class {
 
 { #category : 'running' }
 IceTipCommitBrowserTestWithRemoteSetTest >> newFixture [
-	^ IceClonedFromRemoteFixture inGit
-]
-
-{ #category : 'running' }
-IceTipCommitBrowserTestWithRemoteSetTest >> setUp [
-	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them before super setUp because the failure comes from the fixture."
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394. We skip them here because the failure comes from the fixture, and newFixture runs before it is created."
 
 	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
-	super setUp
+	^ IceClonedFromRemoteFixture inGit
 ]
 
 { #category : 'tests' }

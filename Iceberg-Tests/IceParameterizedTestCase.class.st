@@ -124,11 +124,12 @@ IceParameterizedTestCase >> setUp [
 
 { #category : 'running' }
 IceParameterizedTestCase >> tearDown [
-	"A test can skip before calling super setUp. In that case, we have nothing to restore."
-
-	provider ifNotNil: [
-		self parameters do: [ :parameter | [ parameter deactivate ] on: Error do: [ :error | error traceNewLine ] ].
-		IceLibgitRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages.
-		IceCredentialsProvider providerType: provider ].
+	self parameters
+		do: [ :parameter | 
+			[ parameter deactivate ]
+				on: Error
+				do: [ :error | error traceNewLine ] ].
+	IceLibgitRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages.
+	IceCredentialsProvider providerType: provider.
 	super tearDown
 ]
