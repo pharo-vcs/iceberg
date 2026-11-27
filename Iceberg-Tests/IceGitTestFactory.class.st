@@ -6,6 +6,14 @@ Class {
 	#tag : 'Git'
 }
 
+{ #category : 'private' }
+IceGitTestFactory >> configureUserIdentityIn: aLocation [
+	"libgit2 needs a git identity to commit, and the machine running the tests may not have one. Set it in the test repository itself, so the tests do not depend on the host git configuration."
+
+	IceGitCommand in: aLocation execute: { 'config'. 'user.email'. '"iceberg@pharo.org"' }.
+	IceGitCommand in: aLocation execute: { 'config'. 'user.name'. '"Iceberg Tests"' }
+]
+
 { #category : 'initialization' }
 IceGitTestFactory >> defaultRemoteUrl [
 
@@ -21,18 +29,21 @@ IceGitTestFactory >> ensureDeleteAll: aFileReference [
 		aFileReference ensureDeleteAll ]
 ]
 
-{ #category : 'initialization' }
+{ #category : 'accessing' }
 IceGitTestFactory >> ensureRemoteRepository [
+
 	| remoteRepository |
 	remoteRepository := self remoteFileUrl asFileReference exists
-		ifTrue: [ IceRepositoryCreator new
-				location: self remoteFileUrl asFileReference;
-				addLocalRepository ]
-		ifFalse: [ IceRepositoryCreator new
-				location: self remoteFileUrl asFileReference;
-				createNewRepositoryNamed: self remoteFileUrl segments last ].
-	remoteRepository
-		workingCopy: (IceRingWorkingCopy fromWorkingCopy: remoteRepository workingCopy).
+		                    ifTrue: [
+			                    IceRepositoryCreator new
+				                    location: self remoteFileUrl asFileReference;
+				                    addLocalRepository ]
+		                    ifFalse: [
+			                    IceRepositoryCreator new
+				                    location: self remoteFileUrl asFileReference;
+				                    createNewRepositoryNamed: self remoteFileUrl segments last ].
+	self configureUserIdentityIn: remoteRepository location.
+	remoteRepository workingCopy: (IceRingWorkingCopy fromWorkingCopy: remoteRepository workingCopy).
 	^ remoteRepository
 ]
 
@@ -48,7 +59,7 @@ IceGitTestFactory >> location [
 	^ FileLocator imageDirectory / 'test'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'private' }
 IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubdirectory [
 
 	| repository |
@@ -58,13 +69,7 @@ IceGitTestFactory >> newBareRepositoryNamed: projectName withSubdirectory: aSubd
 		              subdirectory: aSubdirectory;
 		              beBare;
 		              createNewRepositoryNamed: projectName.
-
-	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true' ifTrue: [
-		Transcript
-			show: 'Setting user information for CI';
-			newLine.
-		IceGitCommand in: repository location execute: { 'config'. '--global'. 'user.email'. '"iceberg@pharo.org"' }.
-		IceGitCommand in: repository location execute: { 'config'. '--global'. 'user.name'. '"Iceberg CI"' } ].
+	self configureUserIdentityIn: repository location.
 	repository workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
 	^ repository
 ]
@@ -84,9 +89,7 @@ IceGitTestFactory >> newRepositoryNamed: projectName withSubdirectory: aSubdirec
 		              location: self location / projectName;
 		              subdirectory: aSubdirectory;
 		              createNewRepositoryNamed: projectName.
-	(OSEnvironment current at: 'CI' ifAbsent: [ 'false' ]) asLowercase = 'true' ifTrue: [
-		IceGitCommand in: repository location execute: { 'config'. '--global'. 'user.email'. '"iceberg@pharo.org"' }.
-		IceGitCommand in: repository location execute: { 'config'. '--global'. 'user.name'. '"Iceberg CI"' } ].
+	self configureUserIdentityIn: repository location.
 	repository workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
 	^ repository
 ]
