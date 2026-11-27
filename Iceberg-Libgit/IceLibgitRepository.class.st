@@ -417,7 +417,12 @@ IceLibgitRepository >> delete [
 
 	self assert: self hasHandle not.
 
-	self locationIfPresent: [ :aLocation | aLocation ensureDeleteAll ]
+	self locationIfPresent: [ :aLocation | 
+		| parent |
+		parent := aLocation parent.
+		aLocation ensureDeleteAll.
+		(parent exists and: [ parent children isEmpty ]) ifTrue: [ 
+			parent delete ] ]
 ]
 
 { #category : 'printing' }
