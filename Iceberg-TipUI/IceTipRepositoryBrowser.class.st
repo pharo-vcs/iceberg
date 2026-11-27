@@ -146,7 +146,7 @@ IceTipRepositoryBrowser >> initializeSidebarTree [
 			yourself);
 		children: [ :each | each children ];
 		whenSelectionChangedDo: [ :selection | 
-			(selection isEmpty not and: [ selection selectedItem isCommitish ])
+			(selection isNotEmpty and: [ selection selectedItem isCommitish ])
 				ifTrue: [ self commitishSelected: selection selectedItem ] ]
 ]
 

@@ -32,7 +32,8 @@ SmalltalkCISpec {
   		#classes : [
   			#OutOfMemoryTest,
   			#PlatformResolverTest,
-  			#ProcessSpecificTest
+  			#ProcessSpecificTest,
+  			#UDPSocketTest
   		] 
   	}
   }  
