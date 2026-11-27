@@ -52,26 +52,25 @@ IceClonedFromRemoteFixture >> repository [
 
 { #category : 'running' }
 IceClonedFromRemoteFixture >> setUp [
+
 	super setUp.
 	remoteRepository := self ensureRemoteRepository.
 	remoteRepository checkoutBranch: self remoteBranchName.
 	remoteRepository workingCopy addPackageNamed: self packageName1.
 	remoteRepository commitWithMessage: 'Initial commit'.
 
-	pushRepository := factory
-		newBareRepositoryNamed: 'pushRepository'
-		withSubdirectory: ''.
+	pushRepository := factory newBareRepositoryNamed: 'pushRepository' withSubdirectory: ''.
 
 	remote := self newRemoteNamed: 'origin' toRepository: pushRepository.
 	remoteRepository addRemote: remote.
 	remoteRepository pushTo: remote.
 	repository := IceRepositoryCreator new
-		location: self location;
-		remote: remote;
-		cloneRepository;
-		repository.
-	repository
-		workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
+		              location: self location;
+		              remote: remote;
+		              cloneRepository;
+		              repository.
+	factory configureUserIdentityIn: repository location.
+	repository workingCopy: (IceRingWorkingCopy fromWorkingCopy: repository workingCopy).
 	repository checkoutBranch: self remoteBranchName.
 
 	"IceGitClone new
