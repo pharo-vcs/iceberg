@@ -160,7 +160,8 @@ IceTipEditProjectDialogPresenter >> defaultLayout [
 				   spacing: 5;
 				   add: messageIcon expand: false;
 				   add: messageText;
-				   yourself);
+				   yourself)
+		  expand: false;
 		  yourself
 ]
 
