@@ -138,10 +138,11 @@ IceWorkingCopyPatcherVisitor >> visitPackage: anIcePackageDefinition [
 ]
 
 { #category : 'visiting' }
-IceWorkingCopyPatcherVisitor >> visitRemoval: anIceRemoval [ 
-	
+IceWorkingCopyPatcherVisitor >> visitRemoval: anIceRemoval [
+	"Removing a package unloads it, which already removes its classes and its extension methods. Its children must not be removed a second time since the system fails when removing a method that does not exist."
+
 	anIceRemoval definition removeFrom: self.
-	self visitChildrenOf: currentNode
+	anIceRemoval definition isPackageDefinition ifFalse: [ self visitChildrenOf: currentNode ]
 ]
 
 { #category : 'visiting' }
