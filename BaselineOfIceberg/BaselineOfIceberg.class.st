@@ -51,7 +51,8 @@ BaselineOfIceberg >> baseline: spec [
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
 				'Iceberg-Plugin-Pharo'
-				'Iceberg-Plugin-Migration');
+				'Iceberg-Plugin-Migration'
+				shortTests);
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit'

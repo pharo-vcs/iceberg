@@ -44,6 +44,9 @@ IceRepositoryCreatorTest >> setUp [
 
 	super setUp.
 	factory := IceGitTestFactory new.
+
+	"On Windows, the pack file of the clone stays open after the repository is freed, so tearDown cannot delete it."
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
 	sourceRepository := self newSourceRepository
 ]
 

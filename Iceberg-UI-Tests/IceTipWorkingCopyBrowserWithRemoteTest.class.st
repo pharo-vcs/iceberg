@@ -19,13 +19,17 @@ IceTipWorkingCopyBrowserWithRemoteTest >> newFixture [
 IceTipWorkingCopyBrowserWithRemoteTest >> setUp [
 
 	super setUp.
+
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394"
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ].
+
 	"The current fixture has three repositories.
 	remoteRepository has remote pushRepository.
 	repository has remote pushRepository.
 	pushRepository is a bare repository so we cannot commit to it.
 	Commit in RemoteRepository, then push
 	  => this will make that commit available for fetching and pulling from repository"
-	
+
 	remoteWorkingCopy := self remoteRepository workingCopy.
 	remoteWorkingCopy addPackageNamed: self packageName2.
 	remoteWorkingCopy commitWithMessage: 'Adding Empty Package'.

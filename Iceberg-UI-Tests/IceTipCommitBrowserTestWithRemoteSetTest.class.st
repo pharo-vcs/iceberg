@@ -11,6 +11,14 @@ IceTipCommitBrowserTestWithRemoteSetTest >> newFixture [
 	^ IceClonedFromRemoteFixture inGit
 ]
 
+{ #category : 'running' }
+IceTipCommitBrowserTestWithRemoteSetTest >> setUp [
+
+	super setUp.
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394"
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ]
+]
+
 { #category : 'tests' }
 IceTipCommitBrowserTestWithRemoteSetTest >> testNotPushingAutomatically [
 	| previousState |
