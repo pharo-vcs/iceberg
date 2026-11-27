@@ -73,19 +73,16 @@ IceLog >> collectCommitsFor: aMethod path: aPath [
 
 { #category : 'private' }
 IceLog >> collectVersionsFrom: aCollection method: aMethod path: aPath [
-	| lastDefinition basepath history |
-		
-	basepath := self basepathOf: aPath.
-	lastDefinition := MCMethodDefinition new.
-	history := OrderedCollection new.
-	aCollection reverseDo: [ :eachCommit | | definition |
-		definition := self definitionFor: aMethod path: basepath commit: eachCommit.
-		lastDefinition = definition  ifFalse: [ 
-			history add: (IceLogVersion 
-				commit: (self repository commitFromGitCommit: eachCommit)
-				definition: definition asRingDefinition).
-			lastDefinition := definition ] ].
 
+	| lastDefinition basepath history |
+	basepath := self basepathOf: aPath.
+	lastDefinition := nil.
+	history := OrderedCollection new.
+	aCollection reverseDo: [ :commit |
+			(self definitionFor: aMethod path: basepath commit: commit) ifNotNil: [ :definition |
+					(lastDefinition isNil or: [ lastDefinition ~= definition ]) ifTrue: [
+							history add: (IceLogVersion commit: (self repository commitFromGitCommit: commit) definition: definition asRingDefinition).
+							lastDefinition := definition ] ] ].
 	^ history reversed
 ]
 
