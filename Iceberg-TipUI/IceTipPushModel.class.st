@@ -17,12 +17,22 @@ IceTipPushModel >> commitModels [
 ]
 
 { #category : 'actions' }
-IceTipPushModel >> newPushAction [
+IceTipPushModel >> needsPush [
+	"Pushing nothing still costs a connection to the remote. A tag on the head may be missing in the remote, which cannot be known locally"
 
-	^ IceTipStandardAction new 
-		repository: self entity;
-		message: ('Pushing to {1}' format: { self remote name }) ;
-		onSuccessRepositoryModified;
-		action: [ self entity pushTo: self remote ];
-		yourself
+	^ (self entity outgoingCommitsTo: self remote) isNotEmpty or: [ self entity branch tags isNotEmpty ]
+]
+
+{ #category : 'actions' }
+IceTipPushModel >> newPushAction [
+	"Announcing refreshes the open browsers, so it runs in the UI process, not in the task"
+
+	^ IceTipBackgroundAction new
+		  repository: self entity;
+		  title: 'Pushing';
+		  operation: #push;
+		  action: [
+				  self entity pushTo: self remote.
+				  SpApplication defaultApplication defer: [ Iceberg announcer announce: (IcePushed for: self entity) ] ];
+		  yourself
 ]
