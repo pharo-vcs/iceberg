@@ -53,6 +53,6 @@ IceGitChange >> printOn: aStream [
 
 	aStream
 		nextPutAll: 'gitChange(';
-		nextPutAll: filePathString asString;
+		print: filePathString;
 		nextPutAll: ')'
 ]
