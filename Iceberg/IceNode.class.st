@@ -471,7 +471,7 @@ IceNode >> select: aBlock [
 		childNode select: aBlock ].
 	
 	((selectedChildren anySatisfy: [ :each | each isEmptyNode not ])
-		or: [ aBlock value: self value ])
+		or: [ self children isEmpty and: [ aBlock value: self value ]])
 			ifFalse: [ ^ IceEmptyNode new ].
 		
 	newNode := self class value: self value.
