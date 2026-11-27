@@ -96,7 +96,7 @@ IceTipCritiquesBeforeCommitBrowser >> defaultLayout [
 	^ SpBoxLayout newTopToBottom
 			borderWidth: 5;
 			spacing: 5;
-			add: reasonPanel height: 70 * self currentWorld displayScaleFactor;	
+			add: reasonPanel expand: false;	
 			add: critiquesList;
 			add: detailPanel;
 			add: (SpBoxLayout newLeftToRight 
@@ -227,15 +227,12 @@ IceTipCritiquesBeforeCommitBrowser >> initializePresenters [
 { #category : 'initialization' }
 IceTipCritiquesBeforeCommitBrowser >> initializeReasonPanel [
 
-	reasonPanel := self newText
-		beNotEditable;
-		addStyle: 'iceTipReadonly';
-		beWrapWord;
+	reasonPanel := self newLabel
+		beWrap;
 		yourself.
 
-	reasonPanel text: 'Selected changes in the commit have critiques detected.
+	reasonPanel label: 'Selected changes in the commit have critiques detected.
 Select each critique to see a detailed message of each critique.'.
-
 ]
 
 { #category : 'accessing' }

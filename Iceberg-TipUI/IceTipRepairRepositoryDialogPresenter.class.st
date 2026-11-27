@@ -40,7 +40,7 @@ IceTipRepairRepositoryDialogPresenter >> defaultLayout [
 	self flag: #TODO. "Replace the fixed height with a correct style"
 	^ SpBoxLayout newTopToBottom
 		spacing: 2;
-		add: reasonPanel height: 70 * self currentWorld displayScaleFactor;
+		add: reasonPanel expand: false;
 		add: optionsList height: 100 * self currentWorld displayScaleFactor;
 		add: detailPanel;
 		yourself
@@ -88,10 +88,8 @@ IceTipRepairRepositoryDialogPresenter >> initializeOptionsList [
 { #category : 'initialization' }
 IceTipRepairRepositoryDialogPresenter >> initializePresenters [
 
-	reasonPanel := self newText
-		beNotEditable;
-		addStyle: 'iceTipReadonly';
-		beWrapWord;
+	reasonPanel := self newLabel
+		beWrap;
 		yourself.
 	optionsList := self newTable.
 	detailPanel := self newText
@@ -107,7 +105,7 @@ IceTipRepairRepositoryDialogPresenter >> initializePresenters [
 { #category : 'private' }
 IceTipRepairRepositoryDialogPresenter >> initializeReasonPanel [
 
-	reasonPanel text: self model longStatus
+	reasonPanel label: self model longStatus
 ]
 
 { #category : 'accessing' }

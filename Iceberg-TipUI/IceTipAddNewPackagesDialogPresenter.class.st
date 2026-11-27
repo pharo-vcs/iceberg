@@ -91,14 +91,11 @@ IceTipAddNewPackagesDialogPresenter >> initializePresenters [
 
 	selectedPackages := OrderedCollection new.
 	packagesList := self newTable.
-	problemDescription := self newText
-		beNotEditable;
-		addStyle: 'iceTipReadonly';
-		addStyle: 'iceTipText4Lines';
-		beWrapWord;
+	problemDescription := self newLabel
+		beWrap;
 		yourself.
 
-	problemDescription text: 'One or more packages unloaded packages (they are in the repository, but not in the image) has been changed.
+	problemDescription label: 'One or more packages unloaded packages (they are in the repository, but not in the image) has been changed.
 Please select the packages if you wish to load them in the image'.
 
 	self initializePackagesList

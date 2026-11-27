@@ -262,7 +262,7 @@ IceTipEditProjectDialogPresenter >> initializeMessagePanel [
 		icon := icon scaledToSize: (icon extent * 2).
 
 		messageIcon image: icon .
-		messageText text: self warningMessage ]
+		messageText label: self warningMessage ]
 ]
 
 { #category : 'initialization' }
@@ -277,9 +277,8 @@ IceTipEditProjectDialogPresenter >> initializePresenters [
 	formatList := self newDropList.
 	tabList := self newDropList.
 	messageIcon := self newImage.
-	messageText := self newText
-		               beNotEditable;
-		               addStyle: 'iceTipReadonly';
+	messageText := self newLabel
+		               beWrap;
 		               yourself.
 
 	removeButton := self newButton
