@@ -33,10 +33,14 @@ IceTipRepositoryBrowserTest >> testHasBranchButtonOnTheLeft [
 
 { #category : 'testing' }
 IceTipRepositoryBrowserTest >> testHasCorrectSideTreeBar [
-	self
-		assertCollection: (presenter sidebarTree roots collect: #name)
-		hasSameElements: {'Branches' . 'Remotes' . 'Tags'}
 
+	| rootNames |
+	rootNames := presenter sidebarTree roots collect: #name.
+	self assert: rootNames size equals: 3.
+	self assertCollection: rootNames hasSameElements: {
+		('Branches ' , self repository location pathString).
+		'Remotes'.
+		'Tags' }
 ]
 
 { #category : 'testing' }

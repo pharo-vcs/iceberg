@@ -8,16 +8,16 @@ Class {
 	#package : 'BaselineOfIceberg'
 }
 
-{ #category : 'baseline' }
+{ #category : 'baselines' }
 BaselineOfIceberg >> baseline: spec [
 	<baseline>
-	
-	spec for: #common do: [ 
+
+	spec for: #common do: [
 		spec postLoadDoIt: #postLoadWithDirective:projectSpec:.
-		
+
 		self tonel: spec.
 		self libgit: spec.
-		
+
 		spec
 			"iceberg"
 			package: 'Iceberg';
@@ -36,35 +36,42 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
 			package: 'Iceberg-TipUI-SnapshotBrowser-Tests' with: [ spec requires: #( 'Iceberg-TipUI-SnapshotBrowser' ) ];
 			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
+			package: 'Iceberg-ArchitecturalRules' with: [ spec requires: #('Iceberg-Libgit') ];
 			"libgit"
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
 			package: 'Iceberg-Libgit-Tonel' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit' 'Tonel') ];
 			"groups"
 			group: 'default' with: #(
-				minimal 
-				'Iceberg-Metacello-Integration' 
+				minimal
+				'Iceberg-Metacello-Integration'
 				'Iceberg-TipUI'
 				'Iceberg-TipUI-SnapshotBrowser'
-				'Iceberg-Plugin' 
+				'Iceberg-Plugin'
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
 				'Iceberg-Plugin-Pharo'
-				'Iceberg-Plugin-Migration');
+				'Iceberg-Plugin-Migration'
+				shortTests);
 			group: 'minimal' with: #(
 				'Iceberg'
-				'Iceberg-Libgit' 
+				'Iceberg-Libgit'
 				'Iceberg-Libgit-Tonel'
 				'Iceberg-Libgit-Filetree');
-			group: 'allTests' with: #(
-				'Iceberg-Tests' 
-				'Iceberg-Tests-MetacelloIntegration'
-				'LibGit-Tests' 
+			"shortTests are quick to load and run. longTests install baselines from GitHub and take most of the test time"
+			group: 'shortTests' with: #(
+				'Iceberg-Tests'
 				'Iceberg-UI-Tests'
 				'Iceberg-TipUI-SnapshotBrowser-Tests'
-				'Iceberg-Plugin-Migration-Tests' );
+				'Iceberg-Plugin-Migration-Tests'
+				'Iceberg-ArchitecturalRules'
+				'LibGit-Tests' );
+			group: 'longTests' with: #(
+				'Iceberg-Tests-MetacelloIntegration' );
+			group: 'allTests' with: #(
+				shortTests
+				longTests );
 			group: 'development' with: #(default allTests) ].
-
 ]
 
 { #category : 'accessing' }
@@ -98,8 +105,6 @@ BaselineOfIceberg >> postLoad [
 { #category : 'script' }
 BaselineOfIceberg >> postLoadWithDirective: aDirective projectSpec: aSpec [
 	| repository |
-	self resetKMRepository.
-
 	"Getting the repository from metacello..."
 	repository :=  aSpec repositorySpecs first createRepository.
 	
