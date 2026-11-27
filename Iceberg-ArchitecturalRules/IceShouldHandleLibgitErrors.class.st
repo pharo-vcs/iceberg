@@ -42,13 +42,23 @@ IceShouldHandleLibgitErrors >> check: aNode forCritiquesDo: aBlock [
 		- reads to the handle variable
 		- usages of defined accessors "
 	((aNode isVariable and: [ aNode isRead and: [ aNode name = 'handle' ] ]) or: [
-		 aNode isMessage and: [ (self libgitRepositoryHandleAccessorsForClass: aNode methodNode methodClass) anySatisfy: [ :accessor | accessor selector = aNode selector ] ] ]) ifFalse: [ ^ self ].
+		 aNode isMessage and: [ self isLibgitRepositoryHandleAccessorSend: aNode ] ]) ifFalse: [ ^ self ].
 
 	(aNode allParents anySatisfy: [ :handleParent |
 		 handleParent isBlock and: [
 			 | blockParent |
 			 blockParent := handleParent parent.
 			 blockParent isMessage and: [ blockParent selector = IceLibgitRepository libgitErrorHandlerSelector ] ] ]) ifFalse: [ aBlock cull: (self critiqueFor: aNode) ]
+]
+
+{ #category : 'testing' }
+IceShouldHandleLibgitErrors >> isLibgitRepositoryHandleAccessorSend: aMessageNode [
+	"A snippet parsed outside of a class, such as a playground expression, has no method class and no accessor."
+
+	| methodClass |
+	methodClass := aMessageNode methodNode ifNotNil: [ :methodNode | methodNode methodClass ].
+	methodClass ifNil: [ ^ false ].
+	^ (self libgitRepositoryHandleAccessorsForClass: methodClass) anySatisfy: [ :accessor | accessor selector = aMessageNode selector ]
 ]
 
 { #category : 'accessing' }

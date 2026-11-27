@@ -75,6 +75,17 @@ IceShouldHandleLibgitErrorsTest >> testMethodNotBreakingRuleYieldsNoCritiques [
 ]
 
 { #category : 'tests' }
+IceShouldHandleLibgitErrorsTest >> testMethodWithoutClassYieldsNoCritiques [
+
+	| rule critiques |
+	rule := IceShouldHandleLibgitErrors new.
+	critiques := OrderedCollection new.
+	(OCParser parseMethod: 'foo ^ self repositoryHandle bar') withAllChildren do: [ :node | rule check: node forCritiquesDo: [ :critique | critiques add: critique ] ].
+
+	self assert: critiques isEmpty
+]
+
+{ #category : 'tests' }
 IceShouldHandleLibgitErrorsTest >> testNonDefinedRepositoryAccessorBreaksRule [
 
 	| critiques |
