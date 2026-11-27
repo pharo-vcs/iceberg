@@ -44,12 +44,6 @@ IceTipPresenter >> decorations [
 	^ decorations ifNil: [ decorations := self class buildDecorations ]
 ]
 
-{ #category : 'extensions' }
-IceTipPresenter >> updateTitle [
-	
-	self withWindowDo: [ :aWindow | aWindow title: self windowTitle ]
-]
-
 { #category : 'initialization' }
 IceTipPresenter >> windowIcon [
 	"Answer a Form to be used during initialization when opening in a SpWindowPresenter."
