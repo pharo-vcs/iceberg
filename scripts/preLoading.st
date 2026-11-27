@@ -5,8 +5,8 @@
 )
 do: [ :each |
     (each asPackageIfAbsent: [
-        (each , ' not found') traceCr.
+        (each , ' not found') traceNewLine.
         nil ])
             ifNotNil: [ :package |
-                ('Removing ', each) traceCr.
+                ('Removing ', each) traceNewLine.
                 package removeFromSystem ] ]

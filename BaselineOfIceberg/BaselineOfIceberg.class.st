@@ -8,7 +8,7 @@ Class {
 	#package : 'BaselineOfIceberg'
 }
 
-{ #category : 'baseline' }
+{ #category : 'baselines' }
 BaselineOfIceberg >> baseline: spec [
 	<baseline>
 
@@ -36,6 +36,7 @@ BaselineOfIceberg >> baseline: spec [
 			package: 'Iceberg-UI-Tests' with: [ spec requires: #('Iceberg-TipUI' 'Iceberg-Tests')];
 			package: 'Iceberg-TipUI-SnapshotBrowser-Tests' with: [ spec requires: #( 'Iceberg-TipUI-SnapshotBrowser' ) ];
 			package: 'Iceberg-Plugin-Migration-Tests' with: [ spec requires: #('Iceberg-Plugin-Migration' 'Iceberg-Tests') ];
+			package: 'Iceberg-ArchitecturalRules' with: [ spec requires: #('Iceberg-Libgit') ];
 			"libgit"
 			package: 'Iceberg-Libgit' with: [ spec requires: #('Iceberg' 'LibGit') ];
 			package: 'Iceberg-Libgit-Filetree' with: [ spec requires: #('Iceberg' 'Iceberg-Libgit') ];
@@ -50,7 +51,8 @@ BaselineOfIceberg >> baseline: spec [
 				'Iceberg-Plugin-Metacello'
 				'Iceberg-Plugin-GitHub'
 				'Iceberg-Plugin-Pharo'
-				'Iceberg-Plugin-Migration');
+				'Iceberg-Plugin-Migration'
+				shortTests);
 			group: 'minimal' with: #(
 				'Iceberg'
 				'Iceberg-Libgit'
@@ -61,15 +63,15 @@ BaselineOfIceberg >> baseline: spec [
 				'Iceberg-Tests'
 				'Iceberg-UI-Tests'
 				'Iceberg-TipUI-SnapshotBrowser-Tests'
-				'Iceberg-Plugin-Migration-Tests' );
+				'Iceberg-Plugin-Migration-Tests'
+				'Iceberg-ArchitecturalRules'
+				'LibGit-Tests' );
 			group: 'longTests' with: #(
 				'Iceberg-Tests-MetacelloIntegration' );
 			group: 'allTests' with: #(
 				shortTests
-				longTests
-				'LibGit-Tests' );
+				longTests );
 			group: 'development' with: #(default allTests) ].
-
 ]
 
 { #category : 'accessing' }

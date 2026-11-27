@@ -2,7 +2,8 @@ Class {
 	#name : 'IceMemoryCommitWalk',
 	#superclass : 'IceAbstractCommitWalk',
 	#instVars : [
-		'queue'
+		'queue',
+		'hiddenCommits'
 	],
 	#category : 'Iceberg-Memory',
 	#package : 'Iceberg-Memory'
@@ -41,16 +42,31 @@ IceMemoryCommitWalk >> fromTag: anIceTag [
 IceMemoryCommitWalk >> initialize [
 
 	super initialize.
-	queue := OrderedCollection new
+	queue := OrderedCollection new.
+	hiddenCommits := OrderedCollection new
 ]
 
-{ #category : 'iterating' }
-IceMemoryCommitWalk >> rawResultsDo: aBlockClosure [ 
-	
+{ #category : 'walk definition' }
+IceMemoryCommitWalk >> rawResultsDo: aBlockClosure [
+
 	| current |
 	[ queue notEmpty ] whileTrue: [
-		current := queue removeFirst.
-		queue addAllLast: current ancestors.
-		aBlockClosure value: current.
-	]
+			current := queue removeFirst.
+			(hiddenCommits includes: current) ifFalse: [
+					queue addAllLast: current ancestors.
+					aBlockClosure value: current ] ]
+]
+
+{ #category : 'walk definition' }
+IceMemoryCommitWalk >> uptoCommit: aCommit [
+	"Stop at aCommit and at everything reachable from it"
+
+	| pending |
+	pending := OrderedCollection with: aCommit.
+	[ pending notEmpty ] whileTrue: [
+			| current |
+			current := pending removeFirst.
+			(hiddenCommits includes: current) ifFalse: [
+					hiddenCommits add: current.
+					pending addAll: current ancestors ] ]
 ]

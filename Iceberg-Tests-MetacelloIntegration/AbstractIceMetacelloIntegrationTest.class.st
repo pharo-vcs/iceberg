@@ -45,6 +45,14 @@ AbstractIceMetacelloIntegrationTest >> repositoryName [
 ]
 
 { #category : 'running' }
+AbstractIceMetacelloIntegrationTest >> setUp [
+
+	super setUp.
+	"These tests fail on Windows, see https://github.com/pharo-vcs/iceberg/issues/1394"
+	OSPlatform current isWindows ifTrue: [ self skipOnPharoCITestingEnvironment ]
+]
+
+{ #category : 'running' }
 AbstractIceMetacelloIntegrationTest >> tearDown [
 
 	(self repositoriesForTest, { conflictingRepository }) do: [ :each | each ifNotNil: [ :repo |

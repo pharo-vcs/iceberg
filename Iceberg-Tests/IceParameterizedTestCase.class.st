@@ -128,7 +128,7 @@ IceParameterizedTestCase >> tearDown [
 		do: [ :parameter | 
 			[ parameter deactivate ]
 				on: Error
-				do: [ :error | error traceCr ] ].
+				do: [ :error | error traceNewLine ] ].
 	IceLibgitRepository shareRepositoriesBetweenImages: oldShareRepositoriesBetweenImages.
 	IceCredentialsProvider providerType: provider.
 	super tearDown
