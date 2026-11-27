@@ -116,7 +116,7 @@ IceTipBrowser >> defaultKeyboardFocus [
 { #category : 'testing' }
 IceTipBrowser >> hasSelectedItem [
 	
-	^ self mainList selection isEmpty not
+	^ self mainList selection isNotEmpty
 ]
 
 { #category : 'initialization' }

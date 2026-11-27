@@ -48,7 +48,7 @@ IceProviderRepositoryType >> mcRepository [
 
 	| baseRepo |
 	self guessRegisteredRepository ifNotNil: [ :repo |
-		repo isValid ifTrue: [ ^ repo metacelloAdapter: self projectVersion ].
+		repo isValid ifTrue: [ ^ repo metacelloAdapter: self projectVersion type: self ].
 		"If the repo is not valid, we forget it and reget a new one.
 			Because Metacello want to use it"
 		repo forget ].
@@ -61,7 +61,7 @@ IceProviderRepositoryType >> mcRepository [
 			see https://github.com/pharo-vcs/iceberg/issues/168"
 			  baseRepo ]
 		  ifFalse: [
-			  baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion ]
+			  baseRepo getOrCreateIcebergRepository metacelloAdapter: self projectVersion type: self ]
 ]
 
 { #category : 'accessing' }
@@ -85,6 +85,15 @@ IceProviderRepositoryType >> projectName [
 		detect: [ :e | e includes: $: ]
 		ifFound: [ :e | e copyUpTo: $: ]
 		ifNone: [ parts third ]
+]
+
+{ #category : 'metacello' }
+IceProviderRepositoryType >> projectUrl [
+	"type://owner/name: the Monticello repository of my description, without its version and path"
+
+	| repository |
+	repository := self mcRepositoryClass location: self location version: nil.
+	^ repository class basicDescription , '://' , repository projectPath
 ]
 
 { #category : 'accessing' }

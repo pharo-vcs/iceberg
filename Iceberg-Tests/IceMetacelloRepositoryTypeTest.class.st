@@ -1,8 +1,12 @@
+"
+I check where a Metacello repository description says its project lives, without cloning it
+"
 Class {
 	#name : 'IceMetacelloRepositoryTypeTest',
 	#superclass : 'TestCase',
-	#category : 'Iceberg-Tests-MetacelloIntegration',
-	#package : 'Iceberg-Tests-MetacelloIntegration'
+	#category : 'Iceberg-Tests-Metacello',
+	#package : 'Iceberg-Tests',
+	#tag : 'Metacello'
 }
 
 { #category : 'tests' }
@@ -13,6 +17,18 @@ IceMetacelloRepositoryTypeTest >> parse: url assertType: type projectName: proje
 	self assert: repo class equals: type.
 	self assert: repo projectName equals: projectName.
 	self assert: repo projectVersion equals: projectVersion.
+]
+
+{ #category : 'tests' }
+IceMetacelloRepositoryTypeTest >> testAHostedRepositoryLivesAtItsOwnerAndName [
+
+	self assert: (IceMetacelloRepositoryType for: 'gitlab://owner/name:v1.2.0/src') projectUrl equals: 'gitlab://owner/name'
+]
+
+{ #category : 'tests' }
+IceMetacelloRepositoryTypeTest >> testALocalCloneIsNamedByItsWholeDescription [
+
+	self assert: (IceMetacelloRepositoryType for: 'gitlocal:///tmp/name/src') projectUrl equals: 'gitlocal:///tmp/name/src'
 ]
 
 { #category : 'tests' }

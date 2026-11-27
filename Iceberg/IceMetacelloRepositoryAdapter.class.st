@@ -6,7 +6,8 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'repository',
-		'projectVersion'
+		'projectVersion',
+		'type'
 	],
 	#category : 'Iceberg-Adapters',
 	#package : 'Iceberg',
@@ -39,12 +40,43 @@ IceMetacelloRepositoryAdapter >> addTo: aMCRepositoryGroup [
 	"Do nothing, we do not need to register the repository into the monticello registry"
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName [
+	"The baseline as my description says: at the ref it names, or as the clone is when it names none"
+	^ self baselineOf: aProjectName atVersion: projectVersion
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> baselineOf: aProjectName atVersion: aRefName [
+	"The Monticello definitions of BaselineOf<aProjectName> at aRefName (a tag, a branch, a commit; see commitAt:), read from its commit: nothing is checked out or loaded. nil when that commit has no such package"
+
+	| commit name |
+	commit := self commitAt: aRefName.
+	name := 'BaselineOf' , aProjectName.
+	(commit includesPackageNamed: name) ifFalse: [ ^ nil ].
+	^ (self repository mcVersionFor:
+		   (IceSavedPackageVersion fromCommit: commit package: (IcePackage named: name repository: self repository) mcPackage)) snapshot
+		  definitions
+]
+
 { #category : 'testing' }
 IceMetacelloRepositoryAdapter >> canUpgradeTo: anMCGitBasedRepository [ 
   (anMCGitBasedRepository isKindOf: self class) ifFalse: [ ^ false ].
 
   ^ self projectPath = anMCGitBasedRepository projectPath 
 	and: [ self repoPath = anMCGitBasedRepository repoPath and: [ self projectVersion = anMCGitBasedRepository projectVersion ]]
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> commitAt: aRefName [
+	"The commit aRefName names: a tag (v1.0.0), a local branch, a branch of the origin remote (master in a fresh clone), or a commit (3f2a91c). Signals NotFound when it names none"
+
+	| notFound |
+	self repository tags detect: [ :each | each name = aRefName ] ifFound: [ :tag | ^ tag commit ].
+	notFound := [ NotFound signalFor: aRefName in: self repository ].
+	^ self repository lookupCommit: aRefName ifAbsent: [
+			  self repository remotes ifEmpty: [ ^ notFound value ].
+			  self repository lookupCommit: self repository origin name , '/' , aRefName ifAbsent: notFound ]
 ]
 
 { #category : 'accessing' }
@@ -60,6 +92,20 @@ IceMetacelloRepositoryAdapter >> fetchPackageNamed: aString [
 	self repository head description = projectVersion ifFalse: [
 		(self repository commitishNamed: projectVersion)
 			checkoutWithStrategy: IceCheckoutDoNotLoadPackages new ]
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormat [
+	"The format my packages are written in at the ref my description names"
+
+	^ self fileFormatAt: projectVersion
+]
+
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> fileFormatAt: aRefName [
+	"The format my packages are written in at aRefName (see commitAt:), as its .properties names it: #tonel or #filetree"
+
+	^ (self commitAt: aRefName) properties fileFormat id
 ]
 
 { #category : 'initialization' }
@@ -159,6 +205,13 @@ IceMetacelloRepositoryAdapter >> projectPath [
 	^ self repository origin projectPath
 ]
 
+{ #category : 'metacello' }
+IceMetacelloRepositoryAdapter >> projectUrl [
+	"Where my project lives for Metacello, without the version my description names"
+
+	^ type projectUrl
+]
+
 { #category : 'accessing' }
 IceMetacelloRepositoryAdapter >> projectVersion [
 	^ projectVersion
@@ -196,6 +249,13 @@ IceMetacelloRepositoryAdapter >> repositoryVersionString [
 	^ self repository workingCopy referenceCommit id
 ]
 
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> type: anIceMetacelloRepositoryType [
+	"The repository type that made me, which holds my description"
+
+	type := anIceMetacelloRepositoryType
+]
+
 { #category : 'compatibility' }
 IceMetacelloRepositoryAdapter >> unregister [
 
@@ -217,4 +277,11 @@ IceMetacelloRepositoryAdapter >> versionFrom: aVersionName [
 	
 	
 	
+]
+
+{ #category : 'accessing' }
+IceMetacelloRepositoryAdapter >> versions [
+	"The versions of the project: my repository's tags, each answering name and date"
+
+	^ self repository tags
 ]

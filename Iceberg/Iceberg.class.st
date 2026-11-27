@@ -152,14 +152,6 @@ Iceberg class >> initializeSettings [
 			manager updateSettings: (self settingsIn: manager) ]
 ]
 
-{ #category : 'class initialization' }
-Iceberg class >> settingsIn: aSettingsManager [
-	"Answer the settings of aSettingsManager declared in Iceberg packages"
-
-	^ aSettingsManager settings select: [ :each |
-		  each declaration methodClass package name beginsWith: 'Iceberg' ]
-]
-
 { #category : 'accessing' }
 Iceberg class >> mcRepositoryFor: aLocationString [
 	^ (IceMetacelloRepositoryType for: aLocationString) mcRepository 
@@ -196,6 +188,14 @@ Iceberg class >> repositoryForPackage: aPackage [
 			ifFound: [ :repo | ^ repo getOrCreateIcebergRepository ] ].
 
 	self error: ('Could not find a git repository for {1}' format: { aPackage name })
+]
+
+{ #category : 'class initialization' }
+Iceberg class >> settingsIn: aSettingsManager [
+	"Answer the settings of aSettingsManager declared in Iceberg packages"
+
+	^ aSettingsManager settings select: [ :each |
+		  each declaration methodClass package name beginsWith: 'Iceberg' ]
 ]
 
 { #category : 'settings' }

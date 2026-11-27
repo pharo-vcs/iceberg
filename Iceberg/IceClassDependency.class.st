@@ -47,8 +47,8 @@ IceClassDependency >> referencedSharedPool [
 
 { #category : 'dependencies' }
 IceClassDependency >> referencedTraits [
-	^ ((OCParser parseExpression: definition asMCDefinition traitComposition)
-		allChildren select: #isVariable) collect: #name
+
+	^ (OCParser parseExpression: definition asMCDefinition traitComposition) withAllChildren select: #isVariable thenCollect: #name
 ]
 
 { #category : 'private' }
