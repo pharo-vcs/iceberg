@@ -2,8 +2,7 @@ Class {
 	#name : 'IceGitWithoutUserNameTest',
 	#superclass : 'IceAbstractTestCase',
 	#instVars : [
-		'username',
-		'email'
+		'emptyGlobalConfigFolder'
 	],
 	#category : 'Iceberg-Tests-Git',
 	#package : 'Iceberg-Tests',
@@ -17,31 +16,22 @@ IceGitWithoutUserNameTest >> newFixture [
 
 { #category : 'running' }
 IceGitWithoutUserNameTest >> setUp [
+	"Point libgit2 to an empty global configuration before the repository opens, so the test never reads or writes the real one. The UUID keeps the folder apart from other images running the tests."
 
-	| global |
 	super setUp.
-	global := self repository getConfigurationGlobal: true.
-	username := global getString: 'user.name' ifAbsent: ''.
-	email := global getString: 'user.email' ifAbsent: ''.
-	
-	global unset: 'user.name'.
-	global unset: 'user.email'.
-		
+	emptyGlobalConfigFolder := (FileLocator temp / ('iceberg-empty-global-config-' , UUID new asString)) ensureCreateDirectory.
+	LGitLibrary uniqueInstance setGlobalConfigSearchPath: emptyGlobalConfigFolder pathString.
 	(self repository getConfigurationGlobal: false)
 		username: 'mock user';
-		email: 'mock mail'.
+		email: 'mock mail'
 ]
 
 { #category : 'running' }
 IceGitWithoutUserNameTest >> tearDown [
 
-	| global |
-	global := self repository getConfigurationGlobal: true.
-	global username: username.
-	global email: email.
-		
-	super tearDown.
-
+	LGitLibrary uniqueInstance setGlobalConfigSearchPath: nil.
+	emptyGlobalConfigFolder ifNotNil: [ :folder | folder ensureDeleteAll ].
+	super tearDown
 ]
 
 { #category : 'tests' }

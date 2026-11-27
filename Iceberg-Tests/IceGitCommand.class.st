@@ -43,8 +43,8 @@ Class {
 
 { #category : 'accessing' }
 IceGitCommand class >> gitCommand [
-	^ Smalltalk os isWindows ifTrue: [ 'git' ] ifFalse:[ '/usr/bin/git' ]
 
+	^ OSPlatform current isWindows ifTrue: [ 'git' ] ifFalse: [ '/usr/bin/git' ]
 ]
 
 { #category : 'execute' }

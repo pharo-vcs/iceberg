@@ -70,7 +70,7 @@ IceTipHistoryActionBrowser >> moveToRemote: aRemoteModel [
 	self model useRemote: aRemoteModel.
 	self model reset.
 	self refreshCommits.
-	self updateTitle
+	self updateWindowTitle
 ]
 
 { #category : 'private - factory' }
