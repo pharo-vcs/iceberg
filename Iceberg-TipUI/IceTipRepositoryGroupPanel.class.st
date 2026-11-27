@@ -167,6 +167,10 @@ IceTipRepositoryGroupPanel >> initializeRepositoryList [
 			title: 'Branch';
 			evaluated: #branchName;
 			yourself);
+		addColumn: (SpStringTableColumn new 
+			title: 'Hash';
+			evaluated: #shortCommitId ;
+			yourself);
 		actions: self selectionCommandsGroup;
 		activateOnDoubleClick;
 		whenActivatedDo: [ self openManagePackagesWindow ]
@@ -203,6 +207,12 @@ IceTipRepositoryGroupPanel >> refreshRepositoryList [
 		ifEmpty: [ self allListItems ]
 		ifNotEmpty: [ :pattern | self filteredItemsFor: pattern ])
 
+]
+
+{ #category : 'api' }
+IceTipRepositoryGroupPanel >> refreshTags [
+	
+	self refreshRepositoryList
 ]
 
 { #category : 'accessing' }

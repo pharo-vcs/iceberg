@@ -98,6 +98,12 @@ IceNonConflictingOperation >> leftContents [
 ]
 
 { #category : 'accessing' }
+IceNonConflictingOperation >> leftDefinition [
+	
+	^ operation leftDefinition
+]
+
+{ #category : 'accessing' }
 IceNonConflictingOperation >> operation: anIceModification [ 
 	operation := anIceModification
 ]

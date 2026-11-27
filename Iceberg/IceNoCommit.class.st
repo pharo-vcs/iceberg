@@ -141,6 +141,12 @@ IceNoCommit >> snapshotFor: anIceSavedPackage [
 	^ MCSnapshot empty
 ]
 
+{ #category : 'API - tags' }
+IceNoCommit >> tags [
+
+	^ #()
+]
+
 { #category : 'API - properties' }
 IceNoCommit >> writerClass [
 

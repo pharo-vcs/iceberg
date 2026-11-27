@@ -122,12 +122,12 @@ IceTipInteractiveErrorVisitor >> visitGenericError: anError [
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitMergeAborted: anError [
 
-	context application
-		label: (anError messageText ifNil: [
+	context application newInform
+		title: 'Automatic merge failed';
+		message: (anError messageText ifNil: [
 				 'Automatic (fast-forward) merge is not possible. 
 Please perform the merge manually, then proceed with your previous operation.
 WARNING: If you have external files, you may need to verify the conflicts there.' ]);
-		title: 'Automatic merge failed';
 		openModal
 ]
 
@@ -235,22 +235,23 @@ We recommend that you commit first and then pull incoming changes again.';
 
 { #category : 'visiting' }
 IceTipInteractiveErrorVisitor >> visitWorkingCopyDesynchronizedError: anError [
-	| solveStrategy command |
 
-	solveStrategy := UIManager default 
-		chooseFrom: #(
-			'Create new branch and commit' 
-			'Merge local copy into image and commit')		
-		values: { 
-			IceCreateBranchCommand. 
-			IceMergeWorkingCopyCommand }
-		message: 'Your loaded code is not synchronized with the local sources in your repository. 
-You need to solve this problem before you continue, please choose one of the strategies below.'
-		title: 'Loaded code out of sync!'.
-	solveStrategy ifNil: [ ^ self ].
-	(command := solveStrategy new) 
-		repository: self repository;
-		executeWithContext: context.
-	command isSuccess 
-		ifTrue: [ anError retry ]
+    | solveStrategy command |
+    solveStrategy := self context application newSelect
+                         title: 'Loaded code out of sync!';
+                         message: 'Your loaded code is not synchronized with the local sources in your repository. 
+You need to solve this problem before you continue, please choose one of the strategies below.';
+                         items: {
+                                 IceCreateBranchCommand.
+                                 IceMergeWorkingCopyCommand };
+                         display: [ :choice |
+                                 choice = IceCreateBranchCommand
+                                     ifTrue: [ 'Create new branch and commit' ]
+                                     ifFalse: [ 'Merge local copy into image and commit' ] ];
+                         openModal.
+    solveStrategy ifNil: [ ^ self ].
+    (command := solveStrategy new)
+        repository: self repository;
+        executeWithContext: context.
+    command isSuccess ifTrue: [ anError retry ]
 ]

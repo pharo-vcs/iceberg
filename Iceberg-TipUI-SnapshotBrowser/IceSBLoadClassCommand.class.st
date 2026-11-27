@@ -18,13 +18,18 @@ IceSBLoadClassCommand class >> defaultName [
 IceSBLoadClassCommand >> execute [
 	"Load the selected class"
 
+	| loader |
 	self packageClasses
 		detect: [ :ea | ea className = self selectedClass ]
-		ifFound: [ :packageClass | 
-			packageClass load.
+		ifFound: [ :aClass | 
+
+			loader := MCPackageLoader new.
+			loader addDefinition: aClass.
+
 			self methodsForSelectedClass 
-				do: [ :m | m load ]
-				displayingProgress: 'Loading definitions...' ]
+				do: [ :m | loader addDefinition: m ].
+			
+			loader load ]
 ]
 
 { #category : 'executing' }

@@ -9,7 +9,9 @@ Class {
 	#superclass : 'IceTipBrowser',
 	#instVars : [
 		'commitList',
-		'commitInfoTabs'
+		'commitInfoTabs',
+		'loadSize',
+		'allCommits'
 	],
 	#category : 'Iceberg-TipUI-View-Repository',
 	#package : 'Iceberg-TipUI',
@@ -107,11 +109,43 @@ IceTipHistoryBrowser >> initializeCommitList [
 
 { #category : 'initialization' }
 IceTipHistoryBrowser >> initializePresenters [
-
 	commitList := self newTable.
 	commitInfoTabs := self instantiate: IceTipCommitInfoPresenter.
-	
-	self initializeCommitList
+	self initializeCommitList.
+	self refreshCommitList.
+]
+
+{ #category : 'actions' }
+IceTipHistoryBrowser >> loadAll [
+
+	self loadSize: allCommits size.
+	self refreshCommitList
+]
+
+{ #category : 'actions' }
+IceTipHistoryBrowser >> loadLess: anInteger [
+
+	self loadSize: (self loadSize - anInteger max: 0).
+	self refreshCommitList
+]
+
+{ #category : 'actions' }
+IceTipHistoryBrowser >> loadMore: anInteger [
+
+	self loadSize: ((self loadSize + anInteger) min: allCommits size).
+	self refreshCommitList
+]
+
+{ #category : 'accessing' }
+IceTipHistoryBrowser >> loadSize [
+
+	^ loadSize
+]
+
+{ #category : 'accessing' }
+IceTipHistoryBrowser >> loadSize: anObject [
+
+	loadSize := anObject
 ]
 
 { #category : 'accessing - ui' }
@@ -137,11 +171,13 @@ IceTipHistoryBrowser >> refresh [
 { #category : 'accessing' }
 IceTipHistoryBrowser >> refreshCommitList [
 
-	| commitModels |
-	commitModels := self model commitModels.
-	commitList items: commitModels.
-	commitInfoTabs selectedModel: (commitModels ifNotEmpty: #first ifEmpty: [ nil ])
+	| maxCommits |
+	loadSize := 20.
+	allCommits := self model commitModels.
 
+	maxCommits := self loadSize min: allCommits size.
+	commitList items: (allCommits first: maxCommits).
+	commitInfoTabs selectedModel: (allCommits ifNotEmpty: #first ifEmpty: [ nil ])
 ]
 
 { #category : 'accessing' }

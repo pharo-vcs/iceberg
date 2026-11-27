@@ -43,7 +43,7 @@ IceMethodDependency >> isDependencyTo: anIceMethodDefinition [
 
 { #category : 'dependencies' }
 IceMethodDependency >> methodAST [
-	^ RBParser parseMethod: definition asMCDefinition source
+	^ OCParser parseMethod: definition asMCDefinition source
 ]
 
 { #category : 'dependencies' }

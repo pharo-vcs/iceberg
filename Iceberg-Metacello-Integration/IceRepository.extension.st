@@ -4,3 +4,11 @@ Extension { #name : 'IceRepository' }
 IceRepository >> metacelloAdapter: version [
 	^ IceMetacelloRepositoryAdapter for: self withVersion: version
 ]
+
+{ #category : '*Iceberg-Metacello-Integration' }
+IceRepository >> metacelloAdapter: version type: anIceMetacelloRepositoryType [
+
+	^ (self metacelloAdapter: version)
+		  type: anIceMetacelloRepositoryType;
+		  yourself
+]

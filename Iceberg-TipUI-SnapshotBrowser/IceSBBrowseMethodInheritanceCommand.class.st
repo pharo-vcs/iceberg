@@ -11,7 +11,7 @@ Class {
 { #category : 'default' }
 IceSBBrowseMethodInheritanceCommand class >> defaultName [
 
-	^ 'Browse implementors'
+	^ 'Browse (in image) inheritance'
 ]
 
 { #category : 'testing' }
