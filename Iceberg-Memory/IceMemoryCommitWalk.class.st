@@ -38,7 +38,7 @@ IceMemoryCommitWalk >> fromTag: anIceTag [
 	self shouldBeImplemented.
 ]
 
-{ #category : 'walk definition' }
+{ #category : 'initialization' }
 IceMemoryCommitWalk >> initialize [
 
 	super initialize.
